@@ -3,7 +3,7 @@ use Collections.LIST;
 
 let doors = LIST[bool]();
 
-for i in 0::100 do
+for i in 0..100 do
     doors.add(false);
 od
 
@@ -11,15 +11,15 @@ for pass in 1::100 do
     let door mut = pass;
 
     while door <= 100 do
-        doors[door] = !doors[door];
+        doors[door - 1] = !doors[door - 1];
         door = door + pass;
     od
 od
 
 write_line("open doors:");
 
-for i in 1::100 do
-    if doors[i] then
-        write_line("{i}");
+for door in 1::100 do
+    if doors[door - 1] then
+        write_line("{door}");
     fi
 od

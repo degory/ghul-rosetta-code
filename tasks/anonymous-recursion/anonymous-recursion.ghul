@@ -3,6 +3,9 @@ use IO.Std.write_line;
 // `rec` is how a function literal refers to itself, so the recursion needs no helper function and
 // introduces no name at all. The literal is applied where it is written, after the argument has
 // been checked once on entry.
+
+// FIXME: I don't get why we're wrapping the important bit in something 
+
 let fibonacci = n => val
     if n < 0 then
         throw System.ArgumentException("fibonacci is not defined for a negative argument");

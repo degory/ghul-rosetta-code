@@ -4,6 +4,7 @@ use Collections.LIST;
 sieve(limit: int) -> LIST[int] is
     let composite = LIST[bool]();
 
+    // one entry per number from 0 to the limit, so a number indexes its own flag
     for i in 0::limit do
         composite.add(false);
     od
