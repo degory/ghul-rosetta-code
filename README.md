@@ -15,9 +15,11 @@ nobody re-reads.
   or has been posted.
 - `integration-tests/<slug>/` - the matching test. The task's source is symlinked in, and
   `run.expected` holds the output the program must produce.
-- `rosetta-code.ghulproj` - a stub that names every task's source so the editor loads them all in
-  one analysis session. It is deliberately not buildable: each task is a program in its own right,
-  so compiling them together reports duplicate entry points. Build and run tasks individually.
+- `rosetta-code.ghulproj` and `root/entry.ghul` - a stub that names every task's source so the
+  editor loads them all in one analysis session. It is not buildable: each task is a program in
+  its own right, so compiling them together reports duplicate entry points. That only affects a
+  root build, which nothing needs - analysis mode does not run code generation, so the editor is
+  unaffected. Build and run tasks individually.
 - `scripts/new-task.sh` - scaffolds a task and its test.
 - `GHUL.md` - language reference, a copy of the master in the
   [`ghul`](https://github.com/degory/ghul) repo. Refresh it when it falls behind; never edit it

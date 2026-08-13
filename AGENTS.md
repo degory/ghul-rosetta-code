@@ -65,12 +65,17 @@ Both must pass before opening a pull request.
 
 ## The root project
 
-`rosetta-code.ghulproj` names every task's source so the ghūl VS Code extension loads them in one
-analysis session. **It is deliberately not buildable.** Each task is a whole program, so compiling
-them together reports `duplicate entrypoint` and the build dies with an error that names no file.
-That is expected. Build and run tasks individually, and don't try to fix it by wrapping solutions
-in an `entry()` function - a task's source should read the way it will read on the wiki. Analysis
-mode never runs code generation, so the editor is unaffected.
+`rosetta-code.ghulproj`, with `root/entry.ghul`, names every task's source so the ghūl VS Code
+extension loads them in one analysis session.
+
+**It is not buildable, and that is expected.** Each task is a whole program, so compiling them
+together reports `duplicate entrypoint` and the build dies with an error that names no file. Only
+a root build is affected: analysis mode does not run code generation, so the editor is fine, and
+CI builds each task through its own test project.
+
+Don't try to fix it by wrapping solutions in an `entry()` function. A task's source should read
+the way it will read on the wiki, and top-level statements are the reason a ghūl entry there needs
+no wrapper at all.
 
 ## Keeping GHUL.md in sync
 
