@@ -5,7 +5,7 @@
        points. Build and run each task from its own folder under tasks/. -->
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
