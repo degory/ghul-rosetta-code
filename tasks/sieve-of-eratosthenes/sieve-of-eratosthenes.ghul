@@ -1,0 +1,39 @@
+use IO.Std.write_line;
+use Collections.LIST;
+
+sieve(limit: int) -> LIST[int] is
+    let composite = LIST[bool]();
+
+    for i in 0::limit do
+        composite.add(false);
+    od
+
+    let p mut = 2;
+
+    while p * p <= limit do
+        if !composite[p] then
+            let multiple mut = p * p;
+
+            while multiple <= limit do
+                composite[multiple] = true;
+                multiple = multiple + p;
+            od
+        fi
+
+        p = p + 1;
+    od
+
+    let primes = LIST[int]();
+
+    for i in 2::limit do
+        if !composite[i] then
+            primes.add(i);
+        fi
+    od
+
+    return primes;
+si
+
+for p in sieve(100) do
+    write_line("{p}");
+od

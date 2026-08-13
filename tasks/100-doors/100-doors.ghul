@@ -1,0 +1,25 @@
+use IO.Std.write_line;
+use Collections.LIST;
+
+let doors = LIST[bool]();
+
+for i in 0::100 do
+    doors.add(false);
+od
+
+for pass in 1::100 do
+    let door mut = pass;
+
+    while door <= 100 do
+        doors[door] = !doors[door];
+        door = door + pass;
+    od
+od
+
+write_line("open doors:");
+
+for i in 1::100 do
+    if doors[i] then
+        write_line("{i}");
+    fi
+od

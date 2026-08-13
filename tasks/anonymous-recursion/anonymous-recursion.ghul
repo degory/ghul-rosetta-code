@@ -1,0 +1,16 @@
+use IO.Std.write_line;
+
+// `rec` is how a function literal refers to itself, so the recursion needs no helper function and
+// introduces no name at all. The literal is applied where it is written, after the argument has
+// been checked once on entry.
+let fibonacci = n => val
+    if n < 0 then
+        throw System.ArgumentException("fibonacci is not defined for a negative argument");
+    fi
+
+    (i rec => if i < 2 then i else rec(i - 1) + rec(i - 2) fi)(n)
+lav;
+
+for n in 0::10 do
+    write_line("fibonacci({n}) = {fibonacci(n)}");
+od

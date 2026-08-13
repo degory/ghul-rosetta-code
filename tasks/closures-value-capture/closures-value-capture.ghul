@@ -1,0 +1,12 @@
+use IO.Std.write_line;
+use Collections.LIST;
+
+let squares = LIST[() -> int]();
+
+for i in 1::10 do
+    // `i` is immutable, so the literal captures its value. A `mut` variable would be captured by
+    // reference instead, and every closure would see the same final value.
+    squares.add(() => i * i);
+od
+
+write_line("{squares[3]()}");
