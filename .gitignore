@@ -1,0 +1,23 @@
+# .NET objects
+obj/
+bin/
+
+**/*.runtimeconfig.json
+**/*.il
+**/*.dll
+**/*.exe
+**/*.exe.mdb
+
+.assemblies.json
+.build.rsp
+
+**/*.diff
+**/*.out
+**/failed
+**/*.grep
+**/*.sort
+**/*.err
+**/*.warn
+
+
+**/.*.rsp

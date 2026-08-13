@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:10.0
+
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Restore .NET tools
+      run: dotnet tool restore
+
+    # Each task is built by its own test project. The root rosetta-code.ghulproj is an
+    # editor-only stub and is deliberately not built here.
+    - name: Run Integration Tests
+      run: dotnet ghul-test --use-dotnet-build integration-tests

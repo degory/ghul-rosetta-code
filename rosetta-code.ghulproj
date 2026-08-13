@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- This project exists only so the ghūl VS Code extension loads every task's source in one
+       analysis session, and can find the reference assemblies. It is deliberately not buildable:
+       each task is a program in its own right, so compiling them together reports duplicate entry
+       points. Build and run each task from its own folder under tasks/. -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <GhulSources Include="tasks/**/*.ghul" />
+  </ItemGroup>
+</Project>
