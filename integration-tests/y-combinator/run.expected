@@ -1,10 +1,12 @@
-factorial(1) = 1, fibonacci(1) = 1, describe(1) = *
-factorial(2) = 2, fibonacci(2) = 1, describe(2) = **
-factorial(3) = 6, fibonacci(3) = 2, describe(3) = ***
-factorial(4) = 24, fibonacci(4) = 3, describe(4) = ****
-factorial(5) = 120, fibonacci(5) = 5, describe(5) = *****
-factorial(6) = 720, fibonacci(6) = 8, describe(6) = ******
-factorial(7) = 5040, fibonacci(7) = 13, describe(7) = *******
-factorial(8) = 40320, fibonacci(8) = 21, describe(8) = ********
-factorial(9) = 362880, fibonacci(9) = 34, describe(9) = *********
-factorial(10) = 3628800, fibonacci(10) = 55, describe(10) = **********
+factorial(0) = 1, fibonacci(0) = 0
+factorial(1) = 1, fibonacci(1) = 1
+factorial(2) = 2, fibonacci(2) = 1
+factorial(3) = 6, fibonacci(3) = 2
+factorial(4) = 24, fibonacci(4) = 3
+factorial(5) = 120, fibonacci(5) = 5
+factorial(6) = 720, fibonacci(6) = 8
+factorial(7) = 5040, fibonacci(7) = 13
+factorial(8) = 40320, fibonacci(8) = 21
+factorial(9) = 362880, fibonacci(9) = 34
+factorial(10) = 3628800, fibonacci(10) = 55
+countdown(5) = 5, 4, 3, 2, 1, liftoff

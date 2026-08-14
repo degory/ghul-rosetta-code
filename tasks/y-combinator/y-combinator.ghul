@@ -1,8 +1,9 @@
 use IO.Std.write_line;
 
 // The untyped Y combinator applies its argument to itself, and `x x` has no type in a language
-// without recursive types. A class whose field takes the class itself supplies one: SELF_APPLY[A, B]
-// stands for the type "function from itself to A -> B".
+// without recursive types. SELF_APPLY[A, B] supplies one: it stands for the type "function from
+// itself to A -> B". Its field is the roll and unroll of that recursive type, not mutable state -
+// nothing is ever assigned after construction, and `y` below never refers to itself.
 class SELF_APPLY[A, B] is
     _f: (SELF_APPLY[A, B]) -> (A -> B);
 
@@ -13,8 +14,9 @@ class SELF_APPLY[A, B] is
     apply(r: SELF_APPLY[A, B]) -> (A -> B) => _f(r);
 si
 
-// Y f = (\x. f (x x)) (\x. f (x x)), with the inner application deferred behind `a =>` so that
-// evaluation terminates under call-by-value.
+// Y f = (\x. f (x x)) (\x. f (x x)). Written that way it diverges under call-by-value, so the
+// self-application is deferred behind `a =>`: this is the applicative-order variant, usually
+// called Z.
 y[A, B](f: (A -> B) -> (A -> B)) -> (A -> B) is
     let wrap = SELF_APPLY[A, B]((r: SELF_APPLY[A, B]) => (a: A) => f(r.apply(r))(a));
 
@@ -24,10 +26,16 @@ si
 let factorial = y[int, long](recurse => n => if n <= 1 then 1L else cast(n) * recurse(n - 1) fi);
 let fibonacci = y[int, int](recurse => n => if n < 2 then n else recurse(n - 1) + recurse(n - 2) fi);
 
-// The combinator is generic, so the same definition builds a function over any argument and
-// result type: this one counts the characters of a spelled-out number by recursion.
-let describe = y[int, string](recurse => n => if n <= 0 then "" else "{recurse(n - 1)}*" fi);
+// The combinator is generic, so one definition serves any argument and result type rather than
+// only int -> int.
+let countdown = y[int, string](recurse => n => if n <= 0 then "liftoff" else "{n}, {recurse(n - 1)}" fi);
 
-for n in 1::10 do
-    write_line("factorial({n}) = {factorial(n)}, fibonacci({n}) = {fibonacci(n)}, describe({n}) = {describe(n)}");
+for n in 0::10 do
+    write_line("factorial({n}) = {factorial(n)}, fibonacci({n}) = {fibonacci(n)}");
 od
+
+write_line("countdown(5) = {countdown(5)}");
+
+// ghūl has self-recursive function literals of its own - `let factorial = n rec => if n <= 1 then
+// 1L else cast(n) * rec(n - 1) fi;` - so the combinator here is the exercise rather than the way
+// one would normally write this.
