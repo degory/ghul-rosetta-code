@@ -18,7 +18,7 @@ levenshtein(source: string, target: string) -> int is
 
         for j in 1::target.length do
             let substitution =
-                previous[j - 1] + if source.get_chars(i - 1) == target.get_chars(j - 1) then 0 else 1 fi;
+                previous[j - 1] + if source[i - 1] == target[j - 1] then 0 else 1 fi;
 
             current.add(min(substitution, min(previous[j] + 1, current[j - 1] + 1)));
         od

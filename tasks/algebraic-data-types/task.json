@@ -1,6 +1,5 @@
 {
     "task": "Algebraic data types",
     "url": "https://rosettacode.org/wiki/Algebraic_data_types",
-    "status": "blocked",
-    "note": "Red-black tree insertion, written with destructuring and type ascriptions. Blocked on degory/ghul#1819: a case arm's destructure binds every name at the variant type rather than at its field's type, so the bound fields cannot be compared or passed back to a constructor. The test folder carries a disabled marker until that is fixed."
+    "status": "draft"
 }

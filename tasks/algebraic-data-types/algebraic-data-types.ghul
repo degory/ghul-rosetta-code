@@ -67,7 +67,7 @@ black_height(tree: Tree) -> int =>
             let left = black_height(l);
             let right = black_height(r);
 
-            if left < 0 \/ right < 0 \/ left <> right then
+            if left < 0 \/ right < 0 \/ left != right then
                 -1
             elif c == RED /\ (is_red(l) \/ is_red(r)) then
                 -1
@@ -83,7 +83,7 @@ is_red(tree: Tree) -> bool =>
     when (c, l, v, r): NODE then c == RED
     esac;
 
-let tree mut = EMPTY;
+let tree: Tree mut = EMPTY;
 
 for element in [11, 2, 14, 1, 7, 15, 5, 8, 4] do
     tree = insert(tree, element);
