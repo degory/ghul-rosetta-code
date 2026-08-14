@@ -66,18 +66,16 @@ black_height(tree: Tree) -> int =>
     when _: EMPTY then
         1
     when (c, l, v, r): NODE then
-        val
-            let left = black_height(l);
-            let right = black_height(r);
+        let left = black_height(l);
+        let right = black_height(r);
 
-            if left < 0 \/ right < 0 \/ left != right then
-                -1
-            elif c == RED /\ (is_red(l) \/ is_red(r)) then
-                -1
-            else
-                left + if c == BLACK then 1 else 0 fi
-            fi
-        lav
+        if left < 0 \/ right < 0 \/ left != right then
+            -1
+        elif c == RED /\ (is_red(l) \/ is_red(r)) then
+            -1
+        else
+            left + if c == BLACK then 1 else 0 fi
+        fi
     esac;
 
 is_red(tree: Tree) -> bool =>
