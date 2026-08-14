@@ -1,12 +1,10 @@
 use IO.Std.write_line;
 
-// `rec` is how a function literal refers to itself, so the recursion needs no named function. The
-// argument types are inferred from the call below; only the return type has to be written.
-let move = (disks, source, target, spare) -> void rec =>
+move(disks: int, source: int, target: int, spare: int) -> void =>
     if disks > 0 then
-        rec(disks - 1, source, spare, target);
+        move(disks - 1, source, spare, target);
         write_line("move a disk from pole {source} to pole {target}");
-        rec(disks - 1, spare, target, source);
+        move(disks - 1, spare, target, source);
     fi;
 
 move(3, 1, 3, 2);

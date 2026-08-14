@@ -2,25 +2,30 @@ use IO.Std.write_line;
 use Collections.LIST;
 use System.Math;
 
-let cube = (x: double) -> double => x * x * x;
-let cube_root = (x: double) -> double => Math.cbrt(x);
+// a compose function
+>>[A, B, C](f: A -> B, g: B -> C) -> A -> C =>
+    x => g(f(x));
 
-let compose = (f: (double) -> double, g: (double) -> double) => (x: double) => f(g(x));
+// some simple functions
+let cube = x => x * x * x;
+let cube_root = x => Math.cbrt(x);
 
-// A static method referred to by name converts straight to a function type, so a built-in and a
-// user-defined function go into the same collection without either being wrapped.
-let functions = LIST[(double) -> double]();
+// store the functions in a list
+let functions = LIST();
 functions.add(Math.sin);
 functions.add(Math.cos);
 functions.add(cube);
 
-let inverses = LIST[(double) -> double]();
+let inverses = LIST();
 inverses.add(Math.asin);
 inverses.add(Math.acos);
 inverses.add(cube_root);
 
 for i in 0..functions.count do
-    let round_trip = compose(inverses[i], functions[i]);
+    // compose each function with its inverse
+    let round_trip = inverses[i] >> functions[i];
 
+    // we expect that round_trip(x) == x for all x
+    // in the domain of the function
     write_line("{round_trip(0.5D):F6}");
 od

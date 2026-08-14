@@ -9,7 +9,7 @@ show(name: string, f: (int) -> int) is
 
     line.append(name);
 
-    for n in 0::19 do
+    for n in 0..20 do
         line.append(" ");
         line.append(f(n));
     od

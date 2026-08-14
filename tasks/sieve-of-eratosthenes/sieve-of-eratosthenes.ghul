@@ -1,13 +1,11 @@
 use IO.Std.write_line;
 use Collections.LIST;
+use Ghul.Pipes;
 
 sieve(limit: int) -> LIST[int] is
     let composite = LIST[bool]();
 
-    // one entry per number from 0 to the limit, so a number indexes its own flag
-    for i in 0::limit do
-        composite.add(false);
-    od
+    (0::limit) |> each(_ => composite.add(false));
 
     let p mut = 2;
 
@@ -26,11 +24,7 @@ sieve(limit: int) -> LIST[int] is
 
     let primes = LIST[int]();
 
-    for i in 2::limit do
-        if !composite[i] then
-            primes.add(i);
-        fi
-    od
+    (2::limit) |> each(i -> void => if !composite[i] then primes.add(i) fi);
 
     return primes;
 si

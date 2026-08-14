@@ -1,12 +1,12 @@
 use IO.Std.write_line;
-use Ghul.Pipes.Pipe;
+use Ghul.Pipes;
 
 // A generator: each `yield` hands the consumer the next term and suspends there, so the sequence
 // is unbounded and only as much of it is computed as the consumer asks for.
 look_and_say(seed: string) -> Pipe[string] is
     let current mut = seed;
 
-    while true do
+    do
         yield current;
 
         let said = System.Text.StringBuilder();
@@ -29,6 +29,6 @@ look_and_say(seed: string) -> Pipe[string] is
     od
 si
 
-for term in look_and_say("1") | .take(10) do
+for term in look_and_say("1") |> take(10) do
     write_line(term);
 od
