@@ -20,4 +20,3 @@ let open_doors =
         |> filter(door => doors[door - 1]);
 
 write_line("open doors: {$open_doors}");
-
