@@ -16,10 +16,10 @@ look_and_say(seed: string) -> Pipe[string] is
         let i mut = 0;
 
         while i < current.length do
-            let digit = current.get_chars(i);
+            let digit = current[i];
             let run mut = 0;
 
-            while i < current.length /\ current.get_chars(i) == digit do
+            while i < current.length /\ current[i] == digit do
                 run = run + 1;
                 i = i + 1;
             od
@@ -50,4 +50,3 @@ look_and_say("1")
 31131211131221
 13211311123113112211
 </pre>
-

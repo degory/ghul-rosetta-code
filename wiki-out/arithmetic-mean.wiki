@@ -15,4 +15,3 @@ write_line("mean: {mean([1.0D, 2.0D, 3.0D, 4.0D, 5.0D]):F1}");
 <pre>
 mean: 3.0
 </pre>
-

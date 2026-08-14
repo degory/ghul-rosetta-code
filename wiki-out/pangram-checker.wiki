@@ -20,4 +20,3 @@ write_line("{is_pangram("Hello, World!")}");
 True
 False
 </pre>
-

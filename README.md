@@ -44,6 +44,30 @@ integration-tests/capture.sh integration-tests/binary-digits
 yourself it is what the task asks for - capturing is how a wrong answer becomes a permanent
 expectation.
 
+## Getting the markup to paste
+
+```sh
+scripts/generate-wiki.sh --all           # writes wiki-out/<slug>.wiki for every working task
+scripts/generate-wiki.sh y-combinator    # one task, to stdout
+```
+
+Each file is the complete section: the `{{header|ghul}}` heading, the source in a
+`<syntaxhighlight>` block, and the captured output in a `{{out}}` block. The source is read from
+the task and the output from its test's `run.expected`, so what gets pasted is what was tested.
+
+`--all` prints the task's wiki URL beside each file. The single-task form prints the URL to stderr,
+so stdout stays exactly what goes on the page and can be piped:
+
+```sh
+scripts/generate-wiki.sh y-combinator | xclip -selection clipboard
+```
+
+A task whose test carries a `disabled` marker is skipped rather than emitted - an entry that does
+not run should not be posted.
+
+Paste each into its page in alphabetical position among the language headers: `ghul` sorts after
+`Genie` and before `Go`. Then set that task's `status` to `published` in its `task.json`.
+
 Run everything with:
 
 ```sh

@@ -36,4 +36,3 @@ is_inexact_palindrome("A man, a plan, a canal: Panama"): True
 is_inexact_palindrome("race car"): True
 is_inexact_palindrome("hello world"): False
 </pre>
-

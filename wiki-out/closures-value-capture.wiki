@@ -7,7 +7,7 @@ use Collections.LIST;
 let squares = LIST[() -> int]();
 
 for i in 1::10 do
-    // each iteration binads a new i, and each closure captures
+    // each iteration binds a new i, and each closure captures
     // the i from its own iteration, so each closure returns a
     // different square
     squares.add(() => i * i);
@@ -20,4 +20,3 @@ write_line("{squares[3]()}");
 <pre>
 16
 </pre>
-
