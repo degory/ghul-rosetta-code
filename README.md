@@ -52,8 +52,11 @@ scripts/generate-wiki.sh y-combinator    # one task, to stdout
 ```
 
 Each file is the complete section: the `{{header|ghul}}` heading, the source in a
-`<syntaxhighlight>` block, and the captured output in a `{{out}}` block. The source is read from
-the task and the output from its test's `run.expected`, so what gets pasted is what was tested.
+`<syntaxhighlight>` block, and the program's output in a `{{out}}` block. The source is read from
+the task and the output comes from running it, so an edited solution can be generated straight
+away with nothing to update in between. Where that output differs from the test's `run.expected`,
+the entry is still emitted and the difference is reported on stderr - the test needs recapturing,
+which is worth knowing but is not a reason to withhold the markup.
 
 `--all` prints the task's wiki URL beside each file. The single-task form prints the URL to stderr,
 so stdout stays exactly what goes on the page and can be piped:
@@ -62,8 +65,8 @@ so stdout stays exactly what goes on the page and can be piped:
 scripts/generate-wiki.sh y-combinator | xclip -selection clipboard
 ```
 
-A task whose test carries a `disabled` marker is skipped rather than emitted - an entry that does
-not run should not be posted.
+A task whose test carries a `disabled` marker is skipped rather than emitted, as is one that
+fails to build or run - an entry that does not run should not be posted.
 
 Paste each into its page in alphabetical position among the language headers: `ghul` sorts after
 `Genie` and before `Go`. Then set that task's `status` to `published` in its `task.json`.

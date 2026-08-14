@@ -1,14 +1,18 @@
 #!/bin/bash
 
-# Emit Rosetta Code wiki markup for a task: heading, syntax-highlighted source, and captured
-# output. Reads the source from tasks/<slug>/<slug>.ghul and the output from the matching
-# integration test's run.expected, so what it prints is what was tested.
+# Emit Rosetta Code wiki markup for a task: heading, syntax-highlighted source, and the output
+# the program produces. Reads the source from tasks/<slug>/<slug>.ghul and gets the output by
+# running the task, so editing a solution and generating its markup needs nothing in between.
 #
 #   scripts/generate-wiki.sh <slug>     markup to stdout, ready to paste
 #   scripts/generate-wiki.sh --all      writes wiki-out/<slug>.wiki for every working task
 #
+# Where that output differs from the matching test's run.expected, the entry is emitted anyway
+# and the difference is reported on stderr: the test needs recapturing, which is worth knowing
+# but is not a reason to withhold the markup.
+#
 # Tasks whose test carries a `disabled` marker are skipped: they are not working, and an entry
-# that does not run should not be posted.
+# that does not run should not be posted. So is a task that fails to build or run.
 
 set -e
 
@@ -30,6 +34,22 @@ task_status() {
     fi
 }
 
+# Run the task and print what it writes to stdout. The built program is used when it is newer
+# than the source, and rebuilt through `dotnet run` when it is not, so an edit is always picked
+# up.
+run_task() {
+    local SLUG=$1
+    local TASK=$ROOT/tasks/$SLUG
+
+    local BUILT="$TASK/bin/Debug/net10.0/$SLUG"
+
+    if [ -x "$BUILT" ] && [ "$BUILT" -nt "$TASK/$SLUG.ghul" ] ; then
+        "$BUILT"
+    else
+        dotnet run --project "$TASK" --nologo -v quiet
+    fi
+}
+
 emit() {
     local SLUG=$1
     local TASK=$ROOT/tasks/$SLUG
@@ -43,6 +63,17 @@ emit() {
         return 1
     fi
 
+    local OUTPUT
+
+    if ! OUTPUT=$(run_task "$SLUG") ; then
+        echo "$SLUG: does not build or run" >&2
+        return 1
+    fi
+
+    if [ -f "$EXPECTED" ] && [ "$OUTPUT" != "$(cat "$EXPECTED")" ] ; then
+        echo "$SLUG: output differs from integration-tests/$SLUG/run.expected - recapture the test" >&2
+    fi
+
     echo "=={{header|ghul}}=="
     echo
     echo "<syntaxhighlight lang=\"ghul\">"
@@ -50,10 +81,10 @@ emit() {
     echo "</syntaxhighlight>"
     echo
 
-    if [ -f "$EXPECTED" ] && [ -s "$EXPECTED" ] ; then
+    if [ -n "$OUTPUT" ] ; then
         echo "{{out}}"
         echo "<pre>"
-        cat "$EXPECTED"
+        echo "$OUTPUT"
         echo "</pre>"
     fi
 }
@@ -76,7 +107,11 @@ if [ "$1" = "--all" ] ; then
             continue
         fi
 
-        emit "$SLUG" > "$OUT/$SLUG.wiki"
+        if ! emit "$SLUG" > "$OUT/$SLUG.wiki" ; then
+            rm -f "$OUT/$SLUG.wiki"
+            printf '%-28s skipped (does not run)\n' "$SLUG"
+            continue
+        fi
 
         printf '%-28s %-9s %s\n' \
             "$SLUG" "$(task_status "$dir")" "$(task_url "$dir")"
