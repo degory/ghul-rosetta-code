@@ -21,18 +21,23 @@ y[A, B](f: (A -> B) -> (A -> B)) -> (A -> B) is
     return wrap.apply(wrap);
 si
 
-let factorial = y[int, long](recurse => n => if n <= 1 then 1L else cast(n) * recurse(n - 1) fi);
-let fibonacci = y[int, int](recurse => n => if n < 2 then n else recurse(n - 1) + recurse(n - 2) fi);
+let factorial = y(recurse => n => if n <= 1 then 1L else cast(n) * recurse(n - 1) fi);
+let fibonacci = y(recurse => n => if n < 2 then n else recurse(n - 1) + recurse(n - 2) fi);
 
 // `y` is generic, so the same definition also builds functions returning something other than a
 // number.
-let countdown = y[int, string](recurse => n => if n <= 0 then "liftoff" else "{n}, {recurse(n - 1)}" fi);
+let countdown = y(recurse => n => if n <= 0 then "liftoff" else "{n}, {recurse(n - 1)}" fi);
+
+// `y` takes a function of one argument, which is less of a restriction than it looks: a function
+// of several is one that takes a tuple, and the literal can destructure it in its parameter list.
+let gcd = y(recurse => ((a, b): (int, int)) => if b == 0 then a else recurse((b, a % b)) fi);
 
 for n in 0::10 do
     write_line("factorial({n}) = {factorial(n)}, fibonacci({n}) = {fibonacci(n)}");
 od
 
 write_line("countdown(5) = {countdown(5)}");
+write_line("gcd(1071, 462) = {gcd((1071, 462))}");
 
 // ghūl has self-recursive function literals, so this would normally be written
 // `let factorial = n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi;` - the combinator here
