@@ -1,9 +1,11 @@
 use IO.Std.write_line;
 
-// The untyped Y combinator applies its argument to itself, and `x x` has no type in a language
-// without recursive types. SELF_APPLY[A, B] supplies one: it stands for the type "function from
-// itself to A -> B". Its field is the roll and unroll of that recursive type, not mutable state -
-// nothing is ever assigned after construction, and `y` below never refers to itself.
+// The Y combinator needs to apply a function to itself. In a language where every expression has a
+// type that cannot be written directly: the argument type of `f` would have to contain itself.
+// SELF_APPLY works around it by putting the function in a class, so what gets passed to `apply` is
+// a SELF_APPLY rather than a bare function.
+//
+// The field is set once, by the constructor, and never changes, and `y` below never calls `y`.
 class SELF_APPLY[A, B] is
     _f: (SELF_APPLY[A, B]) -> (A -> B);
 
@@ -14,9 +16,10 @@ class SELF_APPLY[A, B] is
     apply(r: SELF_APPLY[A, B]) -> (A -> B) => _f(r);
 si
 
-// Y f = (\x. f (x x)) (\x. f (x x)). Written that way it diverges under call-by-value, so the
-// self-application is deferred behind `a =>`: this is the applicative-order variant, usually
-// called Z.
+// `wrap.apply(wrap)` is the self-application. The `(a: A) =>` in front of it matters: without it,
+// working out `f(r.apply(r))` would mean calling `r.apply(r)` again first, and so on forever,
+// because ghūl evaluates an argument before the call it belongs to. Behind the lambda it is only
+// worked out when the returned function is actually applied to something.
 y[A, B](f: (A -> B) -> (A -> B)) -> (A -> B) is
     let wrap = SELF_APPLY[A, B]((r: SELF_APPLY[A, B]) => (a: A) => f(r.apply(r))(a));
 
@@ -26,8 +29,8 @@ si
 let factorial = y[int, long](recurse => n => if n <= 1 then 1L else cast(n) * recurse(n - 1) fi);
 let fibonacci = y[int, int](recurse => n => if n < 2 then n else recurse(n - 1) + recurse(n - 2) fi);
 
-// The combinator is generic, so one definition serves any argument and result type rather than
-// only int -> int.
+// `y` is generic, so the same definition also builds functions returning something other than a
+// number.
 let countdown = y[int, string](recurse => n => if n <= 0 then "liftoff" else "{n}, {recurse(n - 1)}" fi);
 
 for n in 0::10 do
@@ -36,6 +39,6 @@ od
 
 write_line("countdown(5) = {countdown(5)}");
 
-// ghūl has self-recursive function literals of its own - `let factorial = n rec => if n <= 1 then
-// 1L else cast(n) * rec(n - 1) fi;` - so the combinator here is the exercise rather than the way
-// one would normally write this.
+// ghūl has self-recursive function literals, so this would normally be written
+// `let factorial = n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi;` - the combinator here
+// is the exercise, not the way to do it.

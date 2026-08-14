@@ -26,6 +26,51 @@ it is run. So:
   explaining what the task is, or narrating the algorithm line by line, is noise.
 - Output must be deterministic: no clocks, no random numbers, no local paths.
 
+## Comments are published under someone else's name
+
+Everything here goes on a public wiki under the account of the person who posts
+it. They will be taken to have written it, and if a contributor disputes a claim
+on the talk page, they are the one who has to answer.
+
+So the standard for a comment is not "true". It is **"the person posting this
+could explain it, unprompted, to someone who challenged it"**. A sentence that
+is correct but that they would have to go and research before defending is worse
+than no sentence, because it reads as expertise being claimed rather than
+exercised. Under-claim.
+
+That gives a few concrete rules:
+
+- **Say what the code does and why it is shaped that way.** Those are claims a
+  reader checks against the code sitting in front of them, and the author can
+  defend by pointing at it.
+- **Don't assert facts about a field** - its terminology, its history, who
+  invented what, what another language does - unless the task page itself says
+  so. Where it does, that is a citable source and using it is fine.
+- **Don't name a concept to show it has a name.** If the name does no work for a
+  reader who does not already know it, it is decoration. If it does real work,
+  it also has to be defensible.
+- **Never carry over a claim from a review, a paper or anywhere else that you
+  cannot verify from the code.** Borrowed authority is exactly what fails on a
+  talk page: the author cannot say where it came from.
+- **Prefer the plain word.** Where a plain description and a technical term both
+  work, the plain description is not a simplification, it is the better comment.
+  "It would call itself forever" beats "it diverges".
+
+Worked example. This was written for the Y combinator entry and is accurate:
+
+> Its field is the roll and unroll of that recursive type, not mutable state.
+
+and this says the part that matters, checkably:
+
+> The field is set once, by the constructor, and never changes.
+
+The first asks the reader to know what an iso-recursive type is, and asks the
+author to defend that framing. The second is verifiable by looking three lines
+down.
+
+Ask, before every comment: *if someone replies "why do you say that?", is the
+answer in the file?*
+
 ## Adding a task
 
 ```sh
