@@ -1,0 +1,8 @@
+use IO.Std.write_line;
+use Collections;
+use Ghul.Pipes;
+
+mean(values: List[double]) -> double =>
+    values |> reduce(0.0D, (acc, x) => acc + x) / cast double(values.count);
+
+write_line("mean: {mean([1.0D, 2.0D, 3.0D, 4.0D, 5.0D]):F1}");

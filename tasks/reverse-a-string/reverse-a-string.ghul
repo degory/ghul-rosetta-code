@@ -1,0 +1,8 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+reverse(s: string) -> string =>
+    s |> reduce("", (acc, c) => "{c}{acc}");
+
+write_line(reverse("asdf"));
+write_line(reverse("Hello, World!"));

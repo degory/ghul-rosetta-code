@@ -1,0 +1,24 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+reverse(s: string) -> string =>
+    s |> reduce("", (acc, c) => "{c}{acc}");
+
+is_palindrome(s: string) -> bool => s =~ reverse(s);
+
+// Ignores non-letters and folds case, so a phrase with spaces and punctuation reads as a
+// palindrome when its letters do.
+is_inexact_palindrome(s: string) -> bool =>
+    s 
+        |> filter(c => c |> char.is_letter())
+        |> map(c => c |> char.to_lower())
+        |> reduce("", (acc, c) => "{acc}{c}")
+        |> is_palindrome();
+
+write_line("is_palindrome(\"racecar\"): {is_palindrome("racecar")}");
+write_line("is_palindrome(\"hello\"): {is_palindrome("hello")}");
+write_line("is_palindrome(\"rotor\"): {is_palindrome("rotor")}");
+
+write_line("is_inexact_palindrome(\"A man, a plan, a canal: Panama\"): {is_inexact_palindrome("A man, a plan, a canal: Panama")}");
+write_line("is_inexact_palindrome(\"race car\"): {is_inexact_palindrome("race car")}");
+write_line("is_inexact_palindrome(\"hello world\"): {is_inexact_palindrome("hello world")}");
