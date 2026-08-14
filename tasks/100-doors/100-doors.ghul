@@ -1,11 +1,10 @@
 use IO.Std.write_line;
 use Collections.LIST;
+use Ghul.Pipes;
 
-let doors = LIST[bool]();
+let doors = LIST();
 
-for i in 0..100 do
-    doors.add(false);
-od
+(0..100) |> each(_ => doors.add(false));
 
 for pass in 1::100 do
     let door mut = pass;
@@ -16,10 +15,11 @@ for pass in 1::100 do
     od
 od
 
-write_line("open doors:");
+let open_doors =
+    (1::100) 
+        |> filter(door => doors[door - 1]) 
+        |> map(door => "{door}")
+        |> $;
 
-for door in 1::100 do
-    if doors[door - 1] then
-        write_line("{door}");
-    fi
-od
+write_line("open doors: {open_doors}");
+

@@ -1,9 +1,9 @@
 use IO.Std.write_line;
-use Collections.LIST;
+use Collections;
 use Ghul.Pipes;
 
-sieve(limit: int) -> LIST[int] is
-    let composite = LIST[bool]();
+sieve(limit: int) -> List[int] is
+    let composite = LIST();
 
     (0::limit) |> each(_ => composite.add(false));
 
@@ -22,11 +22,10 @@ sieve(limit: int) -> LIST[int] is
         p = p + 1;
     od
 
-    let primes = LIST[int]();
-
-    (2::limit) |> each(i -> void => if !composite[i] then primes.add(i) fi);
-
-    return primes;
+    return 
+        (2::limit) 
+            |> filter(i => !composite[i]) 
+            |> collect();
 si
 
 for p in sieve(100) do
