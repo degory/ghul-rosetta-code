@@ -1,0 +1,44 @@
+=={{header|ghul}}==
+
+<syntaxhighlight lang="ghul">
+use IO.Std.write_line;
+use Collections.LIST;
+use System.Math.min;
+
+// One row of the edit-distance matrix at a time: `previous` holds the row for the prefix of the
+// source one character shorter than the one being filled in.
+levenshtein(source: string, target: string) -> int is
+    let previous mut = LIST();
+
+    for j in 0::target.length do
+        previous.add(j);
+    od
+
+    for i in 1::source.length do
+        let current = LIST();
+
+        current.add(i);
+
+        for j in 1::target.length do
+            let substitution =
+                previous[j - 1] + if source.get_chars(i - 1) == target.get_chars(j - 1) then 0 else 1 fi;
+
+            current.add(min(substitution, min(previous[j] + 1, current[j - 1] + 1)));
+        od
+
+        previous = current;
+    od
+
+    return previous[target.length];
+si
+
+write_line("{levenshtein("kitten", "sitting")}");
+write_line("{levenshtein("rosettacode", "raisethysword")}");
+</syntaxhighlight>
+
+{{out}}
+<pre>
+3
+8
+</pre>
+

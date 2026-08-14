@@ -1,0 +1,53 @@
+=={{header|ghul}}==
+
+<syntaxhighlight lang="ghul">
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// A generator: each `yield` hands the consumer the next term and suspends there, so the sequence
+// is unbounded and only as much of it is computed as the consumer asks for.
+look_and_say(seed: string) -> Pipe[string] is
+    let current mut = seed;
+
+    do
+        yield current;
+
+        let said = System.Text.StringBuilder();
+        let i mut = 0;
+
+        while i < current.length do
+            let digit = current.get_chars(i);
+            let run mut = 0;
+
+            while i < current.length /\ current.get_chars(i) == digit do
+                run = run + 1;
+                i = i + 1;
+            od
+
+            said.append(run);
+            said.append(digit);
+        od
+
+        current = said.to_string();
+    od
+si
+
+look_and_say("1") 
+    |> take(10) 
+    |> each(term => write_line(term));
+</syntaxhighlight>
+
+{{out}}
+<pre>
+1
+11
+21
+1211
+111221
+312211
+13112221
+1113213211
+31131211131221
+13211311123113112211
+</pre>
+

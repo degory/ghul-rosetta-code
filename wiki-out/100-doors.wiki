@@ -1,0 +1,32 @@
+=={{header|ghul}}==
+
+<syntaxhighlight lang="ghul">
+use IO.Std.write_line;
+use Collections.LIST;
+use Ghul.Pipes;
+
+let doors = LIST();
+
+(0..100) |> each(_ => doors.add(false));
+
+for pass in 1::100 do
+    let door mut = pass;
+
+    while door <= 100 do
+        doors[door - 1] = !doors[door - 1];
+        door = door + pass;
+    od
+od
+
+let open_doors =
+    (1::100) 
+        |> filter(door => doors[door - 1]);
+
+write_line("open doors: {$open_doors}");
+</syntaxhighlight>
+
+{{out}}
+<pre>
+open doors: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+</pre>
+

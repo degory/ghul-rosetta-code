@@ -1,0 +1,35 @@
+=={{header|ghul}}==
+
+<syntaxhighlight lang="ghul">
+use IO.Std.write_line;
+
+// The negative argument is checked once, on entry. `rec` is how a function literal refers to
+// itself, so the recursion that follows needs no helper function and no name at all: the literal
+// is applied where it is written.
+let fibonacci = n =>
+    if n < 0 then
+        throw System.ArgumentException("fibonacci is not defined for a negative argument")
+    else
+        (i rec => if i < 2 then i else rec(i - 1) + rec(i - 2) fi)(n)
+    fi;
+
+for n in 0::10 do
+    write_line("fibonacci({n}) = {fibonacci(n)}");
+od
+</syntaxhighlight>
+
+{{out}}
+<pre>
+fibonacci(0) = 0
+fibonacci(1) = 1
+fibonacci(2) = 1
+fibonacci(3) = 2
+fibonacci(4) = 3
+fibonacci(5) = 5
+fibonacci(6) = 8
+fibonacci(7) = 13
+fibonacci(8) = 21
+fibonacci(9) = 34
+fibonacci(10) = 55
+</pre>
+

@@ -1,0 +1,26 @@
+=={{header|ghul}}==
+
+<syntaxhighlight lang="ghul">
+use IO.Std.write_line;
+
+move(disks: int, source: int, target: int, spare: int) -> void =>
+    if disks > 0 then
+        move(disks - 1, source, spare, target);
+        write_line("move a disk from pole {source} to pole {target}");
+        move(disks - 1, spare, target, source);
+    fi;
+
+move(3, 1, 3, 2);
+</syntaxhighlight>
+
+{{out}}
+<pre>
+move a disk from pole 1 to pole 3
+move a disk from pole 1 to pole 2
+move a disk from pole 3 to pole 2
+move a disk from pole 1 to pole 3
+move a disk from pole 2 to pole 1
+move a disk from pole 2 to pole 3
+move a disk from pole 1 to pole 3
+</pre>
+

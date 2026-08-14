@@ -1,0 +1,29 @@
+use IO.Std.write_line;
+
+// The untyped Y combinator applies its argument to itself, and `x x` has no type in a language
+// without recursive types. A class whose field takes the class itself supplies one: SELF_APPLY
+// stands for the type "function from itself to int -> int".
+class SELF_APPLY is
+    _f: (SELF_APPLY) -> (int -> int);
+
+    init(f: (SELF_APPLY) -> (int -> int)) is
+        _f = f;
+    si
+
+    apply(r: SELF_APPLY) -> (int -> int) => _f(r);
+si
+
+// Y f = (\x. f (x x)) (\x. f (x x)), with the inner application deferred behind `a =>` so that
+// evaluation terminates under call-by-value.
+y(f: (int -> int) -> (int -> int)) -> (int -> int) is
+    let wrap = SELF_APPLY((r: SELF_APPLY) => (a: int) => f(r.apply(r))(a));
+
+    return wrap.apply(wrap);
+si
+
+let factorial = y(recurse => n => if n <= 1 then 1 else n * recurse(n - 1) fi);
+let fibonacci = y(recurse => n => if n < 2 then n else recurse(n - 1) + recurse(n - 2) fi);
+
+for n in 1::10 do
+    write_line("factorial({n}) = {factorial(n)}, fibonacci({n}) = {fibonacci(n)}");
+od

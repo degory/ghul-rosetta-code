@@ -1,0 +1,11 @@
+=={{header|ghul}}==
+
+<syntaxhighlight lang="ghul">
+IO.Std.write_line("Hello world!");
+</syntaxhighlight>
+
+{{out}}
+<pre>
+Hello world!
+</pre>
+
