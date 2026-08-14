@@ -2,8 +2,9 @@ use IO.Std.write_line;
 use Ghul.Pipes;
 
 is_pangram(sentence: string) -> bool =>
-    sentence.to_lower()
-        |> filter(c => (c >= 'a' /\ c <= 'z'))
+    sentence
+        |> map(c => c |> char.to_lower())
+        |> filter(c => c |> char.is_letter())
         |> distinct()
         |> count() == 26;
 
