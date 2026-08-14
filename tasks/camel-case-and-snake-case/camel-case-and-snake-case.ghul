@@ -1,0 +1,73 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Ghul.Pipes;
+use System.Text.StringBuilder;
+
+// this task is about naming conventions, and ghūl has its own, which the compiler
+// warns about breaking: concrete classes are UPPER_SNAKE_CASE, methods and global
+// functions snake_case, and a leading underscore marks a name as non-public
+class NAME(words: Collections.List[string] private) is
+    to_camel_case() -> string =>
+        _words
+        | .index()
+        | .map(((position, word)) => if position == 0 then _lower_first(word) else _upper_first(word) fi)
+        | .join("");
+
+    to_snake_case() -> string =>
+        _words
+        | .map(word => word.to_lower())
+        | .join("_");
+si
+
+// a name splits at the boundaries either convention marks: the separators the task
+// allows, and the capital that starts each word after the first in camel case
+parse(text: string) -> NAME is
+    let words = LIST[string]();
+    let word = StringBuilder();
+
+    for c in text.trim() do
+        if c == '_' \/ c == '-' \/ c == ' ' then
+            if word.length > 0 then
+                words.add(word.to_string());
+                word.clear();
+            fi
+        elif char.is_upper(c) /\ word.length > 0 then
+            words.add(word.to_string());
+            word.clear();
+            word.append(c);
+        else
+            word.append(c);
+        fi
+    od
+
+    if word.length > 0 then
+        words.add(word.to_string());
+    fi
+
+    return NAME(words);
+si
+
+_lower_first(word: string) -> string pure => "{char.to_lower(word[0])}{word.substring(1)}";
+
+_upper_first(word: string) -> string pure => "{char.to_upper(word[0])}{word.substring(1)}";
+
+_quoted(text: string) -> string pure => "\"{text}\"";
+
+let tests = [
+    "snakeCase",
+    "snake_case",
+    "variable_10_case",
+    "variable10Case",
+    "ɛrgo rE tHis",
+    "hurry-up-joe!",
+    "c://my-docs/happy_Flag-Day/12.doc",
+    "  spaces  "
+];
+
+write_line("{"input".pad_right(37)} {"snake case".pad_right(37)} camel case");
+
+for test in tests do
+    let name = parse(test);
+
+    write_line("{_quoted(test).pad_right(37)} {_quoted(name.to_snake_case()).pad_right(37)} {_quoted(name.to_camel_case())}");
+od
