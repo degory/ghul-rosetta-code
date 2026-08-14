@@ -5,14 +5,9 @@ use IO.Std.write_line;
 // SELF_APPLY works around it by putting the function in a class, so what gets passed to `apply` is
 // a SELF_APPLY rather than a bare function.
 //
-// The field is set once, by the constructor, and never changes, and `y` below never calls `y`.
-class SELF_APPLY[A, B] is
-    _f: (SELF_APPLY[A, B]) -> (A -> B);
-
-    init(f: (SELF_APPLY[A, B]) -> (A -> B)) is
-        _f = f;
-    si
-
+// The captured function is set when the object is constructed and never changes, and `y` below
+// never calls `y`.
+class SELF_APPLY[A, B](_f: (SELF_APPLY[A, B]) -> (A -> B)) is
     apply(r: SELF_APPLY[A, B]) -> (A -> B) => _f(r);
 si
 

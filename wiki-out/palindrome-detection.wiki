@@ -9,12 +9,11 @@ reverse(s: string) -> string =>
 
 is_palindrome(s: string) -> bool => s =~ reverse(s);
 
-// Ignores non-letters and folds case, so a phrase with spaces and punctuation reads as a
-// palindrome when its letters do.
+// ignores non-letters and folds case
 is_inexact_palindrome(s: string) -> bool =>
     s 
-        |> filter(c => c |> char.is_letter())
-        |> map(c => c |> char.to_lower())
+        |> filter(char.is_letter)
+        |> map(char.to_lower)
         |> reduce("", (acc, c) => "{acc}{c}")
         |> is_palindrome();
 
