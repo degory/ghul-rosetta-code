@@ -56,8 +56,6 @@ let alpha_again = connections.get("alpha");
 write_line("{alpha}");
 write_line("{beta}");
 
-// == on a class compares references, so this is asking whether it is the same object rather than
-// an equal one.
 write_line("asking twice for alpha gives the same object: {alpha == alpha_again}");
 write_line("alpha and beta are different objects: {alpha != beta}");
 write_line("requests: 3, instances made: {made}, instances held: {connections.count}");
