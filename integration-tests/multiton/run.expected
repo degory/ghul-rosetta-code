@@ -1,0 +1,5 @@
+connection to alpha
+connection to beta
+asking twice for alpha gives the same object: True
+alpha and beta are different objects: True
+requests: 3, instances made: 2, instances held: 2

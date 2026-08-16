@@ -1,0 +1,63 @@
+use IO.Std.write_line;
+use Collections.MAP;
+
+// A singleton controls creation of one instance; a multiton controls creation of one per key. The
+// map and the factory are all that differ, so neither needs to be written again for each type
+// managed this way: the key and the instance are type parameters, and how to make one is an
+// argument.
+class MULTITON[K, V] is
+    _create: K -> V;
+    _instances: MAP[K, V];
+
+    init(create: K -> V) is
+        _create = create;
+        _instances = MAP[K, V]();
+    si
+
+    // The instance for this key, made on the first request for it and shared by every request
+    // after that.
+    get(key: K) -> V is
+        let existing: V mut;
+
+        if _instances.try_get_value(key, existing ref) then
+            return existing;
+        fi
+
+        let created = _create(key);
+
+        _instances[key] = created;
+
+        return created;
+    si
+
+    count: int => _instances.count;
+si
+
+class CONNECTION(host: string) is
+    to_string() -> string => "connection to {host}";
+si
+
+let made mut = 0;
+
+let connections =
+    MULTITON[string, CONNECTION](
+        host =>
+            val
+                made = made + 1;
+
+                CONNECTION(host)
+            lav
+    );
+
+let alpha = connections.get("alpha");
+let beta = connections.get("beta");
+let alpha_again = connections.get("alpha");
+
+write_line("{alpha}");
+write_line("{beta}");
+
+// == on a class compares references, so this is asking whether it is the same object rather than
+// an equal one.
+write_line("asking twice for alpha gives the same object: {alpha == alpha_again}");
+write_line("alpha and beta are different objects: {alpha != beta}");
+write_line("requests: 3, instances made: {made}, instances held: {connections.count}");
