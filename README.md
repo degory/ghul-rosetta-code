@@ -91,8 +91,10 @@ implementations in fifty other languages.
 - Do what the task says, including the parts that look arbitrary. Solving a tidier nearby problem
   is the main thing that irritates reviewers there.
 - Keep the program self-contained and free of scaffolding a reader has to skip past.
-- Prefer the idiomatic ghūl over the shortest ghūl, and over a transliteration of the C# entry
-  above it on the same page.
+- Prefer the idiomatic ghūl over the shortest ghūl, and over a transliteration of the page's C#
+  entry: thread with `|>` and the global pipe functions rather than the
+  fluent methods, prefer functions to classes and expression bodies to blocks, and use the
+  constructs the language next door has no word for. `AGENTS.md` has the detail.
 - Keep the output deterministic. No clocks, no random numbers, no paths.
 - Rosetta Code's syntax highlighter has no ghūl lexer, so the code goes in a
   `<syntaxhighlight lang="ghul">` block, which it renders unhighlighted rather than rejecting.
@@ -112,8 +114,8 @@ Rosetta Code title.
 | `blocked` | cannot be written yet; `reason` names the issue, and it is revisited when that closes |
 
 A rejection is a decision, not a note to self, so it carries one of a fixed set of reasons:
-`needs-gui`, `needs-network`, `nondeterministic`, `needs-native-lib`, `output-unbounded`,
-`task-unclear`. The point of writing it down is that the same task is never assessed twice.
+`needs-gui`, `needs-network`, `needs-interaction`, `nondeterministic`, `needs-native-lib`,
+`output-unbounded`, `task-unclear`. The point of writing it down is that the same task is never assessed twice.
 
 Only tasks that have been judged are in the file. The 1300-odd others are whatever
 `Category:Programming Tasks` holds that the ledger does not mention.
@@ -126,11 +128,13 @@ Each `task.json` carries a copy of its own task's state, because that is what
 `tools/rosetta` is the ledger and the wiki client.
 
 ```sh
+dotnet run --project tools/rosetta -- self-test         # feed the guards the damage they exist to stop
 dotnet run --project tools/rosetta -- sync              # reconcile the ledger with the wiki and with tasks/
 dotnet run --project tools/rosetta -- candidates 20     # tasks nothing has been decided about
 dotnet run --project tools/rosetta -- show solved       # ledger entries, all or in one state
 dotnet run --project tools/rosetta -- set "Zig-zag matrix" rejected needs-gui
 dotnet run --project tools/rosetta -- publish --dry-run # where each entry would go, and the page it would leave
+dotnet run --project tools/rosetta -- publish --target "Rosetta Code:Sandbox"   # a real run, written somewhere harmless
 dotnet run --project tools/rosetta -- publish           # post every solved task
 ```
 
@@ -142,6 +146,40 @@ before publishing. It puts the section in case-insensitive alphabetical position
 page's other language headers, or replaces the ghul section already there, so re-publishing an
 improved solution is the same command. A dry run writes the whole proposed page to
 `wiki-out/<slug>.page` for reading before anything is sent.
+
+`--target <page>` sends every write to one page instead of to the task pages. The rest of the
+run is unchanged - it signs in, fetches the real task page and splices against its real language
+headers - so pointing it at a sandbox exercises the whole path and leaves only the destination
+untested. The ledger is not advanced by a targeted run, since nothing was published.
+
+Before anything is sent, the spliced page is checked against the page it came from in two ways.
+
+The first asks the page rather than the splice: every language section that was there has to
+still be there, and ghul has to be one of them. This is the check that matters, and the reason it
+ignores where the splice thought the section was going is that a guard built on the splice's own
+reasoning shares the splice's mistakes - a placement claiming the whole page satisfies a
+prefix-and-suffix comparison trivially, both halves being empty.
+
+The second is that comparison anyway: everything
+before where the section goes has to survive unchanged, and so does everything after whatever it
+replaces. A splice that fails that is refused rather than saved, so a wrong answer shows up as a
+task that did not publish instead of as a damaged page. A dry run applies the same checks, so
+the whole batch can be cleared without an edit.
+
+The third check is the wiki's own. Before the edit is offered for real, `action=compare` diffs
+the stored revision against the text it would receive, and the run stops if that diff removes
+more than the ghul section being replaced - nothing at all, for an insertion. This is the only
+check the splice does not mark its own homework on, and it is the one to keep if the others ever
+look redundant.
+
+A section containing an external link is refused before it is sent. Rosetta Code answers an edit
+that adds a new external link with an hCaptcha, and a captcha is the one refusal this cannot get
+past - there is nobody to answer it. No solution needs a URL in it, so the fix is to take the
+link out rather than to handle the refusal.
+
+The target has to be a page that already exists, because the credential is granted editing and
+not creation. `Rosetta Code:Sandbox` does; a `User:<name>/sandbox` subpage keeps the noise off a
+shared page but has to be created by hand once.
 
 ### credentials
 

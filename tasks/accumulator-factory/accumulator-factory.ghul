@@ -1,0 +1,59 @@
+use IO.Std.write_line;
+
+// The task asks for an accumulator that takes whole and fractional numbers alike, and that keeps
+// returning whole numbers for as long as it has only been given them. A union carries that: a
+// sum is one or the other, and a fractional value on either side of an addition is what widens
+// it.
+union NUMBER is
+    WHOLE(value: int);
+    FRACTIONAL(value: double);
+si
+
+use NUMBER.WHOLE;
+use NUMBER.FRACTIONAL;
+
+widen(n: NUMBER) -> double =>
+    case n
+    when (value): WHOLE then cast double(value)
+    when (value): FRACTIONAL then value
+    esac;
+
+add(left: NUMBER, right: NUMBER) -> NUMBER =>
+    if let l: WHOLE = left, r: WHOLE = right then
+        WHOLE(l.value + r.value)
+    else
+        FRACTIONAL(widen(left) + widen(right))
+    fi;
+
+show(n: NUMBER) -> string =>
+    case n
+    when (value): WHOLE then "{value}"
+    when (value): FRACTIONAL then "{value}"
+    esac;
+
+// The sum is a local of the factory call, so it is captured by reference and each accumulator
+// gets its own. Nothing outside the function returned here can reach it.
+accumulator(initial: NUMBER) -> NUMBER -> NUMBER is
+    let sum mut = initial;
+
+    return i =>
+        val
+            sum = add(sum, i);
+            sum
+        lav;
+si
+
+let x = accumulator(WHOLE(1));
+
+x(WHOLE(5));
+
+accumulator(WHOLE(3));
+
+write_line(show(x(FRACTIONAL(2.3D))));
+
+// This one has only ever been given whole numbers, so it is still counting in them.
+let y = accumulator(WHOLE(10));
+
+y(WHOLE(5));
+
+write_line(show(y(WHOLE(5))));

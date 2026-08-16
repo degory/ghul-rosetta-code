@@ -26,7 +26,102 @@ it is run. So:
   explaining what the task is, or narrating the algorithm line by line, is noise.
 - Output must be deterministic: no clocks, no random numbers, no local paths.
 
+## Write ghūl, not C# with odd syntax
+
+Most of these pages carry a C# entry, and the two languages are close enough
+that a reader could get from ours to theirs by swapping keywords. When that is
+true of an entry, it is showing them nothing, and there was no reason to write
+it.
+
+So, in rough order of how often it comes up:
+
+- **Thread with `|>` and the global pipe functions**, not `|` and the fluent
+  methods. `xs |> map(f) |> filter(p) |> join(", ")` over
+  `xs | .map(f) | .filter(p) | .join(", ")`. Both compile and mean the same
+  thing; the first is the one that reads as this language rather than as LINQ.
+- **Prefer functions to classes.** A class earns its place when the task is
+  itself about objects, or when it is plainly clearer than the alternative.
+  A task solved with a class holding two fields and one method, where three
+  functions would do, is a transliteration of somebody else's entry.
+- **Prefer an expression body.** `=>` over `is` ... `si` wherever the body is an
+  expression, including where that expression is an `if`, a `case`, or a
+  `val` ... `lav` block.
+- **Reach for what has no equivalent in the language next door.** `let x = e in`
+  and `assert c else "..." in` as expressions, `if let` and `while let` in place
+  of a test followed by a cast, unions with `case` pattern matching in place of
+  a class hierarchy and a chain of type tests, generators in place of building a
+  list to return, `rec` for a recursive function literal.
+
+None of this is a licence to be clever. A solution that reaches for a construct
+it does not need is as bad as one that reaches for none of them; the point is
+that where ghūl has its own way of saying something, the entry should say it
+that way.
+
+## Reaching shared state from a function
+
+A solution with no `namespace` runs its top-level statements as the entry point,
+and a `let` written there is a local **of that entry point**. A named function
+declared in the same file cannot see it, and says `symbol not found` - which
+reads as though the name were misspelled rather than out of scope. Two patterns
+get around it, and which one to reach for depends on the shape of the solution.
+
+**A global variable**, written at the top level as a name and a type with no
+`let`:
+
+```ghul
+rows: string[];
+
+widest() -> int =>
+    rows |> reduce(0, (w, r) => if r.length > w then r.length else w fi);
+
+rows = ["one", "three", "seventeen"];
+
+write_line("{widest()}");
+```
+
+It cannot carry an initializer, so it is declared in one place and assigned in
+another, in the top-level statements. Definitions hoist above the statements, so
+until the assignment runs the variable holds the default for its type - and a
+function that reads it before then gets `null` or zero rather than a diagnostic.
+Keep the assignment near the top of the statements for that reason.
+
+**A function literal in a `let`**, which captures the other top-level locals the
+same way any closure captures its enclosing scope:
+
+```ghul
+let rows = ["one", "three", "seventeen"];
+
+let widest = (of_at_least: int) -> int =>
+    rows |> filter(r => r.length >= of_at_least) |> reduce(0, ...);
+```
+
+Nothing is declared apart from where it is given a value, and nothing is
+readable before it holds something. A literal takes explicit argument and return
+types when they help - write them where the literal is long enough that the
+reader would otherwise have to work its signature out, or where inference does
+not get there on its own.
+
+Prefer the literal. The global is the answer when the state is genuinely shared
+across several functions, or when a named recursive function needs it; reaching
+for it because a `let` did not resolve is how a solution ends up with a mutable
+top-level variable it never needed.
+
+Neither is a reason to move a solution's working data into a global just so
+named functions can be written. Passing what a function needs as an argument is
+usually shorter than either, and always clearer.
+
 ## Comments are published under someone else's name
+
+**No comment at all beats a bad one.** That is the starting position, not a
+last resort. A comment is worse than nothing when it is hard to read, when it
+reaches for odd or academic terminology, when it reads as showing off, or when
+it says what the line underneath already says. Most comments that get written
+here fail at least one of those, so the question is not "is this comment true?"
+but "does this earn the space it takes on the page?" - and usually the answer is
+no, because the code is short and the reader is looking at it.
+
+What survives that test is a fact the reader cannot get from the code in front
+of them and would be misled without. Everything else comes out.
 
 Everything here goes on a public wiki under the account of the person who posts
 it. They will be taken to have written it, and if a contributor disputes a claim
@@ -103,8 +198,8 @@ doing, say so once and for all rather than leaving it to be reassessed:
 dotnet run --project tools/rosetta -- set "Animate a pendulum" rejected needs-gui
 ```
 
-The reasons are a fixed set - `needs-gui`, `needs-network`, `nondeterministic`,
-`needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
+The reasons are a fixed set - `needs-gui`, `needs-network`, `needs-interaction`,
+`nondeterministic`, `needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
 comes back: it names a compiler or runtime issue and is retried when that closes.
 
 ## Test requirements

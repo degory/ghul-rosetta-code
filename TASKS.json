@@ -6,14 +6,106 @@
       "state": "solved"
     },
     {
+      "title": "15 puzzle game",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "2048",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "21 game",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "24 game",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "Abstract type",
+      "slug": "abstract-type",
+      "state": "solved"
+    },
+    {
+      "title": "Accumulator factory",
+      "slug": "accumulator-factory",
+      "state": "solved"
+    },
+    {
+      "title": "Ackermann function",
+      "slug": "ackermann-function",
+      "state": "solved"
+    },
+    {
+      "title": "Active Directory/Connect",
+      "state": "rejected",
+      "reason": "needs-network"
+    },
+    {
+      "title": "Active object",
+      "state": "rejected",
+      "reason": "nondeterministic",
+      "note": "the object\u0027s state is defined as depending on the clock"
+    },
+    {
       "title": "Algebraic data types",
       "slug": "algebraic-data-types",
       "state": "published"
     },
     {
+      "title": "Align columns",
+      "slug": "align-columns",
+      "state": "solved"
+    },
+    {
+      "title": "Amicable pairs",
+      "slug": "amicable-pairs",
+      "state": "solved"
+    },
+    {
+      "title": "Anagrams",
+      "state": "rejected",
+      "reason": "needs-network",
+      "note": "the word list is fetched from a URL the task names"
+    },
+    {
+      "title": "Animate a pendulum",
+      "state": "rejected",
+      "reason": "needs-gui"
+    },
+    {
+      "title": "Animated Spinners",
+      "state": "rejected",
+      "reason": "needs-gui"
+    },
+    {
+      "title": "Animation",
+      "state": "rejected",
+      "reason": "needs-gui"
+    },
+    {
       "title": "Anonymous recursion",
       "slug": "anonymous-recursion",
       "state": "published"
+    },
+    {
+      "title": "Apply a callback to an array",
+      "slug": "apply-a-callback-to-an-array",
+      "state": "solved"
+    },
+    {
+      "title": "Arbitrary-precision integers (included)",
+      "slug": "arbitrary-precision-integers",
+      "state": "solved"
+    },
+    {
+      "title": "Arithmetic evaluation",
+      "slug": "arithmetic-evaluation",
+      "state": "solved"
     },
     {
       "title": "Averages/Arithmetic mean",
@@ -86,6 +178,11 @@
       "state": "solved"
     },
     {
+      "title": "Multiton",
+      "slug": "multiton",
+      "state": "published"
+    },
+    {
       "title": "Mutual recursion",
       "slug": "mutual-recursion",
       "state": "solved"
@@ -111,9 +208,18 @@
       "state": "published"
     },
     {
+      "title": "Smith\u2013Waterman algorithm",
+      "slug": "smith-waterman-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Towers of Hanoi",
       "slug": "towers-of-hanoi",
       "state": "solved"
+    },
+    {
+      "title": "User:Degory/sandbox",
+      "state": "published"
     },
     {
       "title": "Variadic function",

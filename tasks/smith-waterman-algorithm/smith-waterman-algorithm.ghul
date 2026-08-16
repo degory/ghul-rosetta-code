@@ -1,0 +1,126 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Ghul.Pipes;
+
+// +2 for a match, -1 for a mismatch, -2 for a gap, as the task sets out.
+score(a: char, b: char) -> int => if a == b then 2 else -1 fi;
+
+gap() -> int => -2;
+
+highest(values: int[]) -> int => values |> reduce(0, (best, v) => if v > best then v else best fi);
+
+// H(i, j) is the best score of an alignment ending at a[i] and b[j]. Zero is one of the choices,
+// which is what makes the alignment local: a prefix that scores badly is abandoned rather than
+// carried, so every cell starts a fresh alignment if that beats extending one.
+matrix(a: string, b: string) -> LIST[LIST[int]] is
+    let h = LIST[LIST[int]]();
+
+    for i in 0::a.length do
+        let row = LIST[int]();
+
+        for j in 0::b.length do
+            row.add(0);
+        od
+
+        h.add(row);
+    od
+
+    for i in 1::a.length do
+        for j in 1::b.length do
+            h[i][j] =
+                highest([
+                    0,
+                    h[i - 1][j - 1] + score(a[i - 1], b[j - 1]),
+                    h[i - 1][j] + gap(),
+                    h[i][j - 1] + gap()
+                ]);
+        od
+    od
+
+    return h;
+si
+
+// Where the best local alignment ends, which is wherever the matrix is largest.
+best_cell(h: LIST[LIST[int]]) -> (row: int, column: int) is
+    let row mut = 0;
+    let column mut = 0;
+
+    for i in 0..h.count do
+        for j in 0..h[i].count do
+            if h[i][j] > h[row][column] then
+                row = i;
+                column = j;
+            fi
+        od
+    od
+
+    return (row = row, column = column);
+si
+
+// Walking back from that cell to the first zero, taking whichever move produced each score. A
+// diagonal step consumes a character from both sequences, and the other two open a gap.
+trace(a: string, b: string, h: LIST[LIST[int]]) -> (a_aligned: string, b_aligned: string, path: string) is
+    let (row, column) = best_cell(h);
+
+    let i mut = row;
+    let j mut = column;
+
+    let top = LIST[char]();
+    let bottom = LIST[char]();
+    let cells = LIST[string]();
+
+    while i > 0 /\ j > 0 /\ h[i][j] > 0 do
+        cells.add("({i},{j})");
+
+        if h[i][j] == h[i - 1][j - 1] + score(a[i - 1], b[j - 1]) then
+            top.add(a[i - 1]);
+            bottom.add(b[j - 1]);
+
+            i = i - 1;
+            j = j - 1;
+        elif h[i][j] == h[i - 1][j] + gap() then
+            top.add(a[i - 1]);
+            bottom.add('-');
+
+            i = i - 1;
+        else
+            top.add('-');
+            bottom.add(b[j - 1]);
+
+            j = j - 1;
+        fi
+    od
+
+    top.reverse();
+    bottom.reverse();
+    cells.reverse();
+
+    return (
+        a_aligned = string(top.to_array()),
+        b_aligned = string(bottom.to_array()),
+        path = cells |> join(" ")
+    );
+si
+
+show(a: string, b: string) is
+    let h = matrix(a, b);
+    let (row, column) = best_cell(h);
+    let (a_aligned, b_aligned, path) = trace(a, b, h);
+
+    write_line("sequences: {a} and {b}");
+    write_line("highest score: {h[row][column]}");
+    write_line("aligned: {a_aligned}");
+    write_line("         {b_aligned}");
+    write_line("path: {path}");
+    write_line("");
+    // Seven spaces clears the row label and the column for the empty prefix.
+    write_line("       {b |> map(c => "{c}".pad_left(3)) |> join("")}");
+
+    for i in 0::a.length do
+        let label = if i == 0 then " " else "{a[i - 1]}" fi;
+
+        write_line("  {label} {h[i] |> map(v => "{v}".pad_left(3)) |> join("")}");
+    od
+si
+
+show("ACACACTA", "AGCACACA");

@@ -10,13 +10,14 @@ use Rosetta;
 //   rosetta candidates [count]       tasks nothing has been decided about yet
 //   rosetta show [state]             ledger entries, all of them or one state's
 //   rosetta set <title> <state> [reason] [note]
-//   rosetta check                    sign in and report the account, changing nothing
-//   rosetta publish [--dry-run] [slug ...]
+//   rosetta check [--api <url>]      sign in and report the account, changing nothing
+//   rosetta publish [--dry-run] [--replace] [--target <page>] [--api <url>] [slug ...]
+//   rosetta publish --rehearse <page> [--api <url>] <slug>
 //
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
 usage() is
-    error.write_line("usage: rosetta <sync|candidates|show|set|check|publish> [arguments]");
+    error.write_line("usage: rosetta <sync|candidates|show|set|check|self-test|publish> [arguments]");
 si
 
 // The repository root, found by walking up from the working directory. Every path the tool
@@ -199,9 +200,65 @@ credentials() -> (user: string, password: string) is
     return (user = lines[0].trim(), password = lines[1].trim());
 si
 
+// Feeds the guards the damage they exist to stop. A guard that has never been seen to refuse
+// anything is only believed to work.
+self_test() is
+    let splice = SECTION_SPLICE();
+
+    // A brace is written twice to get one, so each header below is =={{header|NAME}}==
+    let page =
+        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Gleam}}}}==\ngleam\n\n=={{{{header|Go}}}}==\ngo\n";
+
+    let section = "=={{{{header|ghul}}}}==\nghul\n";
+
+    let failures mut = 0;
+
+    let check_that = (expectation: string, held: bool) =>
+        val
+            if !held then
+                failures = failures + 1;
+            fi
+
+            write_line("{if held then "  ok  " else "  FAIL" fi}  {expectation}")
+        lav;
+
+    let spliced = splice.splice(page, "ghul", section);
+
+    check_that("a good splice keeps every section", splice.keeps_every_other_section(page, spliced, "ghul"));
+    check_that("a good splice stays confined", splice.is_confined(page, spliced, splice.placement(page, "ghul")));
+    check_that(
+        "a good splice puts ghul between Ada and Gleam",
+        spliced.index_of("ghul") > spliced.index_of("Ada") /\ spliced.index_of("ghul") < spliced.index_of("Gleam")
+    );
+
+    // The page replaced by the section alone: what a wrong placement would produce, and the
+    // failure worth being certain about.
+    check_that("wiping the page is refused", !splice.keeps_every_other_section(page, section, "ghul"));
+
+    // A splice that dropped one section on the way through.
+    let lost = splice.splice(page.replace("=={{{{header|Gleam}}}}==\ngleam\n\n", ""), "ghul", section);
+
+    check_that("losing one section is refused", !splice.keeps_every_other_section(page, lost, "ghul"));
+
+    // A section that never made it in.
+    check_that("leaving ghul out is refused", !splice.keeps_every_other_section(page, page, "ghul"));
+
+    // A placement claiming the whole page, which is what the confinement check cannot see.
+    check_that(
+        "wiping the page passes the confinement check, which is why it is not the only one",
+        splice.is_confined(page, section, PLACEMENT.REPLACES(0, page.length))
+    );
+
+    if failures > 0 then
+        error.write_line("{failures} checks failed");
+
+        System.Environment.exit_code = 1;
+    fi
+si
+
 // Signs in and reports the account, without changing anything.
-check() is
-    let wiki = WIKI(SITE.api);
+check(api: string?) is
+    let wiki = WIKI(api ?? SITE.api);
     let account = credentials();
 
     wiki.log_in(account.user, account.password);
@@ -215,10 +272,20 @@ check() is
     fi
 si
 
-publish(root: string, slugs: LIST[string], dry_run: bool) is
+// `target` redirects every write to one page, so the whole path - sign in, fetch the real task
+// page, splice, save - can be run against a sandbox. The only thing it leaves untested is which
+// page the text is sent to.
+// `rehearse` reads and writes one page instead of a task page: the section is spliced into
+// whatever that page already holds, and the result written back. Running it twice replaces the
+// section rather than adding a second one, which is the same path a corrected solution takes.
+publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?, rehearse: bool, replace: bool) is
     let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
     let splice = SECTION_SPLICE();
+
+    // Reading always comes from Rosetta Code: the point of a run against another wiki is to
+    // splice the real task page and write the result somewhere harmless.
     let wiki = WIKI(SITE.api);
+    let destination = if api? then WIKI(api) else wiki fi;
 
     let wanted = LIST[TASK_ENTRY]();
 
@@ -243,8 +310,10 @@ publish(root: string, slugs: LIST[string], dry_run: bool) is
     if !dry_run then
         let account = credentials();
 
-        wiki.log_in(account.user, account.password);
+        destination.log_in(account.user, account.password);
     fi
+
+    let refused mut = 0;
 
     for entry in wanted do
         let slug = entry.slug;
@@ -264,7 +333,15 @@ publish(root: string, slugs: LIST[string], dry_run: bool) is
         fi
 
         let section = IO.File.read_all_text(markup);
-        let page = wiki.page_wikitext(entry.title);
+
+        let source = if rehearse then target ?? entry.title else entry.title fi;
+
+        let page =
+            if rehearse then
+                destination.page_wikitext(source)
+            else
+                wiki.page_wikitext(source)
+            fi;
 
         if !page? then
             error.write_line("{entry.title}: no such page on the wiki");
@@ -272,34 +349,143 @@ publish(root: string, slugs: LIST[string], dry_run: bool) is
             continue;
         fi
 
+        let placement = splice.placement(page, SITE.language);
+
         let where =
-            case splice.placement(page, SITE.language)
+            case placement
             when _: PLACEMENT.REPLACES then "replacing the ghul section already there"
             when before: PLACEMENT.INSERTED_BEFORE then "ahead of {before.language}"
             when _: PLACEMENT.APPENDED then "at the end of the page"
             esac;
 
-        if dry_run then
-            let proposed = IO.Path.combine(root, "wiki-out", "{slug}.page");
+        // A new external link is what makes the wiki demand a captcha, and a captcha is the one
+        // refusal this cannot work around: there is nobody to answer it. No solution needs a URL
+        // in it, so the answer is to leave the link out rather than to handle the refusal.
+        if System.Text.RegularExpressions.Regex.is_match(section, "https?://") then
+            error.write_line("{entry.title}: the section contains an external link, which the wiki will answer with a captcha - take the link out");
 
-            IO.File.write_all_text(proposed, splice.splice(page, SITE.language, section));
-
-            write_line("{entry.title}: would go {where}, whole page written to wiki-out/{slug}.page");
+            refused = refused + 1;
 
             continue;
         fi
 
-        wiki.edit(entry.title, splice.splice(page, SITE.language, section), "Add a ghūl solution");
+        let spliced = splice.splice(page, SITE.language, section);
 
-        entry.state = "published";
+        if !splice.keeps_every_other_section(page, spliced, SITE.language) then
+            error.write_line("{entry.title}: the spliced page has lost a language section, so nothing was sent");
 
-        ledger.save();
+            refused = refused + 1;
 
-        write_line("{entry.title}: published, {where}");
+            continue;
+        fi
+
+        if !splice.is_confined(page, spliced, placement) then
+            error.write_line("{entry.title}: the splice would change the page outside the ghul section, so nothing was sent");
+
+            refused = refused + 1;
+
+            continue;
+        fi
+
+        if dry_run then
+            // Both sides are written, so the edit can be read as a diff before it is an edit.
+            IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.current"), page);
+
+            IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.page"), spliced);
+
+            write_line("{entry.title}: would go {where}; diff wiki-out/{slug}.current wiki-out/{slug}.page");
+
+            continue;
+        fi
+
+        if api? /\ !target? then
+            error.write_line("--api needs --target: refusing to write a task page on another wiki");
+
+            return;
+        fi
+
+        // Somebody may have edited the section since it was published - a correction, a
+        // simplification, a fix to something wrong. Replacing it then destroys their work
+        // silently, which is what happened to an edit on Multiton the first time this ran.
+        //
+        // So a replacement is only made when the section already there is the one this would
+        // have published last time. Anything else stops, and the difference is for a person to
+        // read: their change may belong in the repository rather than being thrown away.
+        if let replaced: PLACEMENT.REPLACES = placement /\ !replace then
+            let live = page.substring(replaced.start, replaced.end - replaced.start).trim();
+
+            if !string.equals(live, section.trim()) then
+                error.write_line("{entry.title}: the ghul section on the wiki is not the one here, so nothing was sent - read the difference before replacing it");
+
+                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live);
+
+                error.write_line("  what is on the wiki is in wiki-out/{slug}.live; what would replace it is wiki-out/{slug}.wiki");
+
+                refused = refused + 1;
+
+                continue;
+            fi
+        fi
+
+        // The last check before anything is sent, and the only one the splice does not mark its
+        // own homework on: the wiki diffs its own stored revision against what it is being
+        // offered. An insertion removes nothing; replacing the ghul section already there
+        // removes that section and no more.
+        let allowed_removals =
+            case placement
+            when replaced: PLACEMENT.REPLACES then
+                page.substring(replaced.start, replaced.end - replaced.start).split(['\n']).count
+            else
+                0
+            esac;
+
+        let removals =
+            if rehearse then
+                destination.lines_removed(source, spliced)
+            else
+                wiki.lines_removed(source, spliced)
+            fi;
+
+        if removals > allowed_removals then
+            error.write_line("{entry.title}: the wiki's own diff says this would remove {removals} lines, so nothing was sent");
+
+            refused = refused + 1;
+
+            continue;
+        fi
+
+        // A wiki can refuse one edit for reasons that say nothing about the next - an abuse
+        // filter, a rate limit, a page protected since the run began - so a refusal is reported
+        // against the task it happened to and the rest of the batch carries on.
+        try
+            if let sandbox = target then
+                destination.edit(sandbox, spliced, "Testing a ghūl solution's placement on {entry.title}");
+
+                write_line("{entry.title}: written to {sandbox}, would have gone {where}");
+            else
+                wiki.edit(entry.title, spliced, "Add a ghūl solution");
+
+                entry.state = "published";
+
+                ledger.save();
+
+                write_line("{entry.title}: published, {where}");
+            fi
+        catch refusal: System.Exception
+            refused = refused + 1;
+
+            error.write_line("{entry.title}: {refusal.message}");
+        yrt
 
         // The wiki asks unflagged accounts to edit no faster than this.
         System.Threading.Thread.sleep(10000);
     od
+
+    if refused > 0 then
+        error.write_line("{refused} of {wanted.count} were refused");
+
+        System.Environment.exit_code = 1;
+    fi
 si
 
 let arguments = LIST[string](System.Environment.get_command_line_args());
@@ -333,19 +519,42 @@ else
                 if arguments.count > 3 then arguments[3] else null fi
             );
         fi
+    when "self-test" then
+        self_test();
     when "check" then
-        check();
+        check(if arguments.count > 1 /\ arguments[0] =~ "--api" then arguments[1] else null fi);
     when "publish" then
         let dry_run = arguments.contains("--dry-run");
+        let target: string? mut = null;
+        let api: string? mut = null;
+        let rehearse mut = false;
+        let replace = arguments.contains("--replace");
         let slugs = LIST[string]();
+        let awaiting mut = "";
 
         for argument in arguments do
-            if argument !~ "--dry-run" then
+            if awaiting =~ "--target" then
+                target = argument;
+                awaiting = "";
+            elif awaiting =~ "--api" then
+                api = argument;
+                awaiting = "";
+            elif awaiting =~ "--rehearse" then
+                target = argument;
+                rehearse = true;
+                awaiting = "";
+            elif argument =~ "--target" \/ argument =~ "--api" \/ argument =~ "--rehearse" then
+                awaiting = argument;
+            elif argument !~ "--dry-run" /\ argument !~ "--replace" then
                 slugs.add(argument);
             fi
         od
 
-        publish(root, slugs, dry_run);
+        if awaiting.length > 0 then
+            error.write_line("{awaiting} needs a value");
+        else
+            publish(root, slugs, dry_run, target, api, rehearse, replace);
+        fi
     else
         usage();
     esac
