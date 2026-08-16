@@ -1,0 +1,132 @@
+namespace Rosetta is
+    use System.Text.Json.JsonSerializer;
+    use System.Text.Json.JsonSerializerOptions;
+    use System.Text.Json.Serialization.JsonIgnoreCondition;
+    use Collections;
+
+    // One task's standing. `title` is the Rosetta Code page title and is the key: a slug is
+    // derived from it and only exists once there is a solution to hold.
+    //
+    // state:
+    //   queued     picked to work on, not written yet
+    //   solved     written, tested, not on the wiki
+    //   published  on the wiki
+    //   rejected   will not be attempted, `reason` says why, never revisited
+    //   blocked    cannot be written yet, `reason` names the issue, revisited when it closes
+    class TASK_ENTRY is
+        title: string public;
+        slug: string? public;
+        state: string public;
+        reason: string? public;
+        note: string? public;
+
+        init() is
+            title = "";
+            state = "queued";
+        si
+    si
+
+    class LEDGER_FILE is
+        tasks: LIST[TASK_ENTRY] public;
+
+        init() is
+            tasks = LIST[TASK_ENTRY]();
+        si
+    si
+
+    class LEDGER is
+        _path: string;
+        _by_title: MAP[string, TASK_ENTRY];
+
+        _options: JsonSerializerOptions? static;
+
+        options: JsonSerializerOptions static is
+            if !_options? then
+                let o = JsonSerializerOptions();
+
+                o.write_indented = true;
+                o.default_ignore_condition = JsonIgnoreCondition.WHEN_WRITING_NULL;
+
+                _options = o;
+            fi
+
+            return _options;
+        si
+
+        init(path: string) is
+            _path = path;
+            _by_title = MAP[string, TASK_ENTRY]();
+
+            if IO.File.exists(path) then
+                let text = IO.File.read_all_text(path);
+                let file = JsonSerializer.deserialize[LEDGER_FILE](text, options);
+
+                if file? then
+                    for entry in file.tasks do
+                        _by_title[entry.title] = entry;
+                    od
+                fi
+            fi
+        si
+
+        count: int => _by_title.count;
+
+        has(title: string) -> bool => _by_title.contains_key(title);
+
+        find(title: string) -> TASK_ENTRY? is
+            let found: TASK_ENTRY mut;
+
+            if _by_title.try_get_value(title, found ref) then
+                return found;
+            fi
+
+            return null;
+        si
+
+        // The entry for `title`, created in the queued state if it is not already there.
+        entry(title: string) -> TASK_ENTRY is
+            if let existing = find(title) then
+                return existing;
+            fi
+
+            let created = TASK_ENTRY();
+
+            created.title = title;
+
+            _by_title[title] = created;
+
+            return created;
+        si
+
+        // Every entry, ordered by title, so the file's diff shows only what changed.
+        entries() -> LIST[TASK_ENTRY] is
+            let all = LIST[TASK_ENTRY](_by_title.values);
+
+            all.sort((a: TASK_ENTRY, b: TASK_ENTRY) -> int => string.compare_ordinal(a.title, b.title));
+
+            return all;
+        si
+
+        in_state(state: string) -> LIST[TASK_ENTRY] is
+            let result = LIST[TASK_ENTRY]();
+
+            for e in entries() do
+                if e.state =~ state then
+                    result.add(e);
+                fi
+            od
+
+            return result;
+        si
+
+        save() is
+            let file = LEDGER_FILE();
+
+            for e in entries() do
+                file.tasks.add(e);
+            od
+
+            IO.File.write_all_text(_path, "{JsonSerializer.serialize[LEDGER_FILE](file, options)}\n");
+        si
+    si
+si

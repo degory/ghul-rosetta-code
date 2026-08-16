@@ -1,0 +1,129 @@
+{
+  "tasks": [
+    {
+      "title": "100 doors",
+      "slug": "100-doors",
+      "state": "solved"
+    },
+    {
+      "title": "Algebraic data types",
+      "slug": "algebraic-data-types",
+      "state": "published"
+    },
+    {
+      "title": "Anonymous recursion",
+      "slug": "anonymous-recursion",
+      "state": "published"
+    },
+    {
+      "title": "Averages/Arithmetic mean",
+      "slug": "arithmetic-mean",
+      "state": "published"
+    },
+    {
+      "title": "Binary digits",
+      "slug": "binary-digits",
+      "state": "solved"
+    },
+    {
+      "title": "Call a foreign-language function",
+      "slug": "call-a-foreign-language-function",
+      "state": "published"
+    },
+    {
+      "title": "Camel case and snake case",
+      "slug": "camel-case-and-snake-case",
+      "state": "published"
+    },
+    {
+      "title": "Closures/Value capture",
+      "slug": "closures-value-capture",
+      "state": "solved"
+    },
+    {
+      "title": "Factorial",
+      "slug": "factorial",
+      "state": "solved"
+    },
+    {
+      "title": "Fibonacci sequence",
+      "slug": "fibonacci-sequence",
+      "state": "published"
+    },
+    {
+      "title": "First-class functions",
+      "slug": "first-class-functions",
+      "state": "published"
+    },
+    {
+      "title": "FizzBuzz",
+      "slug": "fizzbuzz",
+      "state": "solved"
+    },
+    {
+      "title": "Greatest common divisor",
+      "slug": "greatest-common-divisor",
+      "state": "published"
+    },
+    {
+      "title": "Hailstone sequence",
+      "slug": "hailstone-sequence",
+      "state": "solved"
+    },
+    {
+      "title": "Hello world/Text",
+      "slug": "hello-world-text",
+      "state": "published"
+    },
+    {
+      "title": "Levenshtein distance",
+      "slug": "levenshtein-distance",
+      "state": "solved"
+    },
+    {
+      "title": "Look-and-say sequence",
+      "slug": "look-and-say-sequence",
+      "state": "solved"
+    },
+    {
+      "title": "Mutual recursion",
+      "slug": "mutual-recursion",
+      "state": "solved"
+    },
+    {
+      "title": "Palindrome detection",
+      "slug": "palindrome-detection",
+      "state": "published"
+    },
+    {
+      "title": "Pangram checker",
+      "slug": "pangram-checker",
+      "state": "published"
+    },
+    {
+      "title": "Reverse a string",
+      "slug": "reverse-a-string",
+      "state": "solved"
+    },
+    {
+      "title": "Sieve of Eratosthenes",
+      "slug": "sieve-of-eratosthenes",
+      "state": "published"
+    },
+    {
+      "title": "Towers of Hanoi",
+      "slug": "towers-of-hanoi",
+      "state": "solved"
+    },
+    {
+      "title": "Variadic function",
+      "slug": "variadic-function",
+      "state": "published"
+    },
+    {
+      "title": "Y combinator",
+      "slug": "y-combinator",
+      "state": "published"
+    }
+  ]
+}

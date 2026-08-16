@@ -89,8 +89,23 @@ Read the produced output before capturing it. `capture.sh` turns whatever the pr
 the permanent expectation, so capturing without reading is how a wrong answer gets pinned as
 correct.
 
-Set `status` in the task's `task.json` to `published` only once the solution is actually on the
-wiki, and record the wiki URL there.
+Then record it in the ledger:
+
+```sh
+dotnet run --project tools/rosetta -- sync
+```
+
+`TASKS.json` is the authority on what has been done and what has been decided against. Never
+edit a `task.json` status by hand - `sync` writes it. When a task turns out not to be worth
+doing, say so once and for all rather than leaving it to be reassessed:
+
+```sh
+dotnet run --project tools/rosetta -- set "Animate a pendulum" rejected needs-gui
+```
+
+The reasons are a fixed set - `needs-gui`, `needs-network`, `nondeterministic`,
+`needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
+comes back: it names a compiler or runtime issue and is retried when that closes.
 
 ## Test requirements
 

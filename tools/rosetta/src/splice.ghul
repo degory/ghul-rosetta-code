@@ -1,0 +1,94 @@
+namespace Rosetta is
+    use System.Text.RegularExpressions.Regex;
+    use System.Text.RegularExpressions.Match;
+    use Collections;
+
+    // Where a language's section belongs in a task page, and what is already there.
+    union PLACEMENT is
+        REPLACES(start: int, end: int);
+        INSERTED_BEFORE(start: int, language: string);
+        APPENDED(start: int);
+    si
+
+    // Puts a language's section into a task page's wikitext.
+    //
+    // A task page is a run of level-two `{{header|LANGUAGE}}` sections in case-insensitive
+    // alphabetical order, one per language, each running to the next such header. Anything
+    // deeper belongs to the section above it, so only level-two headers are read here.
+    // Where the ghūl solutions live on the wiki, and what they are called there.
+    class SITE is
+        api: string static => "https://rosettacode.org/w/api.php";
+        language: string static => "ghul";
+        category: string static => "Category:Ghul";
+        task_category: string static => "Category:Programming Tasks";
+    si
+
+    class SECTION_SPLICE is
+        init() is si
+
+        // A level-two language header on a line of its own, with the name captured. A brace is
+        // written twice to get one, so the pattern this builds is:
+        //
+        //     (?m)^==[ \t]*\{\{header\|([^}|]+)\}\}[ \t]*==[ \t]*$
+        _PATTERN: string static =>
+            "(?m)^==[ \\t]*\\{{\\{{header\\|([^}}|]+)\\}}\\}}[ \\t]*==[ \\t]*$";
+
+        _headers(page: string) -> LIST[Match] is
+            let found = LIST[Match]();
+            let matches = Regex.matches(page, _PATTERN);
+
+            for i in 0..matches.count do
+                found.add(matches[i]);
+            od
+
+            return found;
+        si
+
+        _name(m: Match) -> string => m.groups[1].value.trim();
+
+        _before(left: string, right: string) -> bool =>
+            string.compare(left, right, System.StringComparison.ORDINAL_IGNORE_CASE) < 0;
+
+        // Where `language`'s section goes, without changing anything.
+        placement(page: string, language: string) -> PLACEMENT is
+            let headers = _headers(page);
+
+            for i in 0..headers.count do
+                let header = headers[i];
+
+                if string.equals(_name(header), language, System.StringComparison.ORDINAL_IGNORE_CASE) then
+                    let end =
+                        if i + 1 < headers.count then
+                            headers[i + 1].index
+                        else
+                            page.length
+                        fi;
+
+                    return PLACEMENT.REPLACES(header.index, end);
+                fi
+
+                if _before(language, _name(header)) then
+                    return PLACEMENT.INSERTED_BEFORE(header.index, _name(header));
+                fi
+            od
+
+            return PLACEMENT.APPENDED(page.length);
+        si
+
+        // The page with `section` in place of, or in alphabetical position among, the language
+        // sections already there. `section` is the whole section, heading included.
+        splice(page: string, language: string, section: string) -> string =>
+            val
+                let body = "{section.trim_end()}\n\n";
+
+                case placement(page, language)
+                when replaced: PLACEMENT.REPLACES then
+                    "{page.substring(0, replaced.start)}{body}{page.substring(replaced.end)}"
+                when inserted: PLACEMENT.INSERTED_BEFORE then
+                    "{page.substring(0, inserted.start)}{body}{page.substring(inserted.start)}"
+                when _: PLACEMENT.APPENDED then
+                    "{page.trim_end()}\n\n{body.trim_end()}\n"
+                esac
+            lav;
+    si
+si

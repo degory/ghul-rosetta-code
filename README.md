@@ -11,8 +11,8 @@ nobody re-reads.
 - `tasks/<slug>/` - one runnable .NET project per Rosetta task. The slug is the task title
   lowercased with runs of non-alphanumeric characters collapsed to a hyphen, so `Hello world/Text`
   is `hello-world-text`.
-- `tasks/<slug>/task.json` - the task's title, its wiki URL, and whether the solution is a draft
-  or has been posted.
+- `tasks/<slug>/task.json` - the task's title, its wiki URL, and a copy of its state from the
+  ledger.
 - `integration-tests/<slug>/` - the matching test. The task's source is symlinked in, and
   `run.expected` holds the output the program must produce.
 - `rosetta-code.ghulproj` and `root/entry.ghul` - a stub that names every task's source so the
@@ -20,7 +20,9 @@ nobody re-reads.
   its own right, so compiling them together reports duplicate entry points. That only affects a
   root build, which nothing needs - analysis mode does not run code generation, so the editor is
   unaffected. Build and run tasks individually.
+- `TASKS.json` - the ledger: every task that has been done, queued, rejected or blocked, and why.
 - `scripts/new-task.sh` - scaffolds a task and its test.
+- `tools/rosetta/` - the ledger and the wiki client.
 - `GHUL.md` - language reference, a copy of the master in the
   [`ghul`](https://github.com/degory/ghul) repo. Refresh it when it falls behind; never edit it
   here.
@@ -68,8 +70,9 @@ scripts/generate-wiki.sh y-combinator | xclip -selection clipboard
 A task whose test carries a `disabled` marker is skipped rather than emitted, as is one that
 fails to build or run - an entry that does not run should not be posted.
 
-Paste each into its page in alphabetical position among the language headers: `ghul` sorts after
-`Genie` and before `Go`. Then set that task's `status` to `published` in its `task.json`.
+`rosetta publish` puts these on the wiki. To paste one by hand instead, it goes in alphabetical
+position among the language headers: `ghul` sorts after `Genie` and before `Go`. Either way, run
+`rosetta sync` afterwards so the ledger records it.
 
 Run everything with:
 
@@ -91,14 +94,66 @@ implementations in fifty other languages.
 - Prefer the idiomatic ghūl over the shortest ghūl, and over a transliteration of the C# entry
   above it on the same page.
 - Keep the output deterministic. No clocks, no random numbers, no paths.
-- Rosetta Code's syntax highlighter has no ghūl lexer, so post the code in a
-  `<syntaxhighlight lang="text">` block. Follow it with the real captured output in a `{{out}}`
-  block.
+- Rosetta Code's syntax highlighter has no ghūl lexer, so the code goes in a
+  `<syntaxhighlight lang="ghul">` block, which it renders unhighlighted rather than rejecting.
+  Follow it with the real captured output in a `{{out}}` block.
 
 ## status
 
-`task.json` records whether each solution is a `draft` or has been `published` to the wiki. Keep
-it current: it is the only record of what is already up there.
+`TASKS.json` is the ledger: one entry per task that has been done or decided about, keyed by its
+Rosetta Code title.
+
+| state | meaning |
+|-------|---------|
+| `queued` | picked to work on, not written yet |
+| `solved` | written and tested here, not on the wiki |
+| `published` | on the wiki |
+| `rejected` | will not be attempted; `reason` says why, and it is not revisited |
+| `blocked` | cannot be written yet; `reason` names the issue, and it is revisited when that closes |
+
+A rejection is a decision, not a note to self, so it carries one of a fixed set of reasons:
+`needs-gui`, `needs-network`, `nondeterministic`, `needs-native-lib`, `output-unbounded`,
+`task-unclear`. The point of writing it down is that the same task is never assessed twice.
+
+Only tasks that have been judged are in the file. The 1300-odd others are whatever
+`Category:Programming Tasks` holds that the ledger does not mention.
+
+Each `task.json` carries a copy of its own task's state, because that is what
+`scripts/generate-wiki.sh` reads. `rosetta sync` writes it from the ledger; don't edit it by hand.
+
+## the rosetta tool
+
+`tools/rosetta` is the ledger and the wiki client.
+
+```sh
+dotnet run --project tools/rosetta -- sync              # reconcile the ledger with the wiki and with tasks/
+dotnet run --project tools/rosetta -- candidates 20     # tasks nothing has been decided about
+dotnet run --project tools/rosetta -- show solved       # ledger entries, all or in one state
+dotnet run --project tools/rosetta -- set "Zig-zag matrix" rejected needs-gui
+dotnet run --project tools/rosetta -- publish --dry-run # where each entry would go, and the page it would leave
+dotnet run --project tools/rosetta -- publish           # post every solved task
+```
+
+`sync` treats the wiki as the authority on what is published and `tasks/` as the authority on
+what has a solution, and leaves alone anything only the ledger knows - a rejection, a block.
+
+`publish` reads the markup `scripts/generate-wiki.sh --all` leaves in `wiki-out/`, so generate
+before publishing. It puts the section in case-insensitive alphabetical position among the
+page's other language headers, or replaces the ghul section already there, so re-publishing an
+improved solution is the same command. A dry run writes the whole proposed page to
+`wiki-out/<slug>.page` for reading before anything is sent.
+
+### credentials
+
+Publishing signs in with a credential from
+[Special:BotPasswords](https://rosettacode.org/wiki/Special:BotPasswords) on an account that can
+already edit, granted **Edit existing pages** and nothing else. Write it to
+`~/secrets/rosetta-code-bot`, the user on the first line and the password on the second, and
+`chmod 600` it. Set `ROSETTA_CREDENTIALS` to use a different path.
+
+The password that page issues is shown once. Edits appear in page history under the underlying
+account, not as a separate bot: this is a way to drive an account's own edits, not an identity of
+its own.
 
 ## licensing
 
