@@ -8,26 +8,39 @@ use Collections.MAP;
 class MULTITON[K, V] is
     _create: K -> V;
     _instances: MAP[K, V];
+    _guard: object;
 
     init(create: K -> V) is
         _create = create;
         _instances = MAP[K, V]();
+        _guard = object();
     si
 
     // The instance for this key, made on the first request for it and shared by every request
     // after that.
+    //
+    // The lookup and the store have to be one step. Without that, two callers arriving together
+    // both find the key absent, both build an instance, and the second overwrites the first -
+    // leaving two instances for a key that is supposed to have one, and callers holding whichever
+    // they were given.
     get(key: K) -> V is
-        let existing: V mut;
+        System.Threading.Monitor.enter(_guard);
 
-        if _instances.try_get_value(key, existing ref) then
-            return existing;
-        fi
+        try
+            let existing: V mut;
 
-        let created = _create(key);
+            if _instances.try_get_value(key, existing ref) then
+                return existing;
+            fi
 
-        _instances[key] = created;
+            let created = _create(key);
 
-        return created;
+            _instances[key] = created;
+
+            return created;
+        finally
+            System.Threading.Monitor.exit(_guard);
+        yrt
     si
 
     count: int => _instances.count;
@@ -59,3 +72,31 @@ write_line("{beta}");
 write_line("asking twice for alpha gives the same object: {alpha == alpha_again}");
 write_line("alpha and beta are different objects: {alpha != beta}");
 write_line("requests: 3, instances made: {made}, instances held: {connections.count}");
+
+// The count is the property at stake, so it is worth asking for under contention: many callers
+// at once, over a handful of keys. One instance per key is the answer whatever the interleaving,
+// which is what the lock is for.
+let shared mut = 0;
+
+let pool =
+    MULTITON[string, CONNECTION](
+        host =>
+            val
+                shared = shared + 1;
+
+                CONNECTION(host)
+            lav
+    );
+
+let keys = ["one", "two", "three"];
+
+Tasks.Parallel.for(
+    0,
+    300,
+    i =>
+        val
+            let _ = pool.get(keys[i % keys.count]);
+        lav
+);
+
+write_line("300 requests over {keys.count} keys, in parallel: {shared} instances made");
