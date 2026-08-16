@@ -12,7 +12,7 @@ class MULTITON[K, V] is
 
     init(create: K -> V) is
         _create = create;
-        _instances = MAP[K, V]();
+        _instances = MAP();
         _guard = object();
     si
 
@@ -53,7 +53,7 @@ si
 let made mut = 0;
 
 let connections =
-    MULTITON[string, CONNECTION](
+    MULTITON(
         host =>
             val
                 made = made + 1;
@@ -79,7 +79,7 @@ write_line("requests: 3, instances made: {made}, instances held: {connections.co
 let shared mut = 0;
 
 let pool =
-    MULTITON[string, CONNECTION](
+    MULTITON(
         host =>
             val
                 shared = shared + 1;
