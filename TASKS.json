@@ -26,6 +26,21 @@
       "reason": "needs-interaction"
     },
     {
+      "title": "Abstract type",
+      "slug": "abstract-type",
+      "state": "solved"
+    },
+    {
+      "title": "Accumulator factory",
+      "slug": "accumulator-factory",
+      "state": "solved"
+    },
+    {
+      "title": "Ackermann function",
+      "slug": "ackermann-function",
+      "state": "solved"
+    },
+    {
       "title": "Active Directory/Connect",
       "state": "rejected",
       "reason": "needs-network"
@@ -40,6 +55,16 @@
       "title": "Algebraic data types",
       "slug": "algebraic-data-types",
       "state": "published"
+    },
+    {
+      "title": "Align columns",
+      "slug": "align-columns",
+      "state": "solved"
+    },
+    {
+      "title": "Amicable pairs",
+      "slug": "amicable-pairs",
+      "state": "solved"
     },
     {
       "title": "Anagrams",
@@ -66,6 +91,21 @@
       "title": "Anonymous recursion",
       "slug": "anonymous-recursion",
       "state": "published"
+    },
+    {
+      "title": "Apply a callback to an array",
+      "slug": "apply-a-callback-to-an-array",
+      "state": "solved"
+    },
+    {
+      "title": "Arbitrary-precision integers (included)",
+      "slug": "arbitrary-precision-integers",
+      "state": "solved"
+    },
+    {
+      "title": "Arithmetic evaluation",
+      "slug": "arithmetic-evaluation",
+      "state": "solved"
     },
     {
       "title": "Averages/Arithmetic mean",
