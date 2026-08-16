@@ -7,29 +7,29 @@ use Collections.MAP;
 // argument.
 // Taking the monitor in the constructor and releasing it on disposal makes the lock a scope:
 // `let use` ends it however the block is left, including by an early return.
-class HOLDING: Ghul.Disposable is
-    _guard: object;
+class LOCK: Ghul.Disposable is
+    _lock: object;
 
-    init(guard: object) is
-        _guard = guard;
+    init(lock: object) is
+        _lock = lock;
 
-        System.Threading.Monitor.enter(_guard);
+        System.Threading.Monitor.enter(_lock);
     si
 
     dispose() is
-        System.Threading.Monitor.exit(_guard);
+        System.Threading.Monitor.exit(_lock);
     si
 si
 
 class MULTITON[K, V] is
     _create: K -> V;
     _instances: MAP[K, V];
-    _guard: object;
+    _lock: object;
 
     init(create: K -> V) is
         _create = create;
         _instances = MAP();
-        _guard = object();
+        _lock = object();
     si
 
     // The instance for this key, made on the first request for it and shared by every request
@@ -40,7 +40,7 @@ class MULTITON[K, V] is
     // leaving two instances for a key that is supposed to have one, and callers holding whichever
     // they were given.
     get(key: K) -> V is
-        let use holding = HOLDING(_guard);
+        let use held = LOCK(_lock);
 
         let existing: V mut;
 
