@@ -133,6 +133,7 @@ dotnet run --project tools/rosetta -- candidates 20     # tasks nothing has been
 dotnet run --project tools/rosetta -- show solved       # ledger entries, all or in one state
 dotnet run --project tools/rosetta -- set "Zig-zag matrix" rejected needs-gui
 dotnet run --project tools/rosetta -- publish --dry-run # where each entry would go, and the page it would leave
+dotnet run --project tools/rosetta -- publish --target "Rosetta Code:Sandbox"   # a real run, written somewhere harmless
 dotnet run --project tools/rosetta -- publish           # post every solved task
 ```
 
@@ -144,6 +145,15 @@ before publishing. It puts the section in case-insensitive alphabetical position
 page's other language headers, or replaces the ghul section already there, so re-publishing an
 improved solution is the same command. A dry run writes the whole proposed page to
 `wiki-out/<slug>.page` for reading before anything is sent.
+
+`--target <page>` sends every write to one page instead of to the task pages. The rest of the
+run is unchanged - it signs in, fetches the real task page and splices against its real language
+headers - so pointing it at a sandbox exercises the whole path and leaves only the destination
+untested. The ledger is not advanced by a targeted run, since nothing was published.
+
+The target has to be a page that already exists, because the credential is granted editing and
+not creation. `Rosetta Code:Sandbox` does; a `User:<name>/sandbox` subpage keeps the noise off a
+shared page but has to be created by hand once.
 
 ### credentials
 

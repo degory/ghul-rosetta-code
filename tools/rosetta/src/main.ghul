@@ -11,7 +11,7 @@ use Rosetta;
 //   rosetta show [state]             ledger entries, all of them or one state's
 //   rosetta set <title> <state> [reason] [note]
 //   rosetta check                    sign in and report the account, changing nothing
-//   rosetta publish [--dry-run] [slug ...]
+//   rosetta publish [--dry-run] [--target <page>] [slug ...]
 //
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
@@ -215,7 +215,10 @@ check() is
     fi
 si
 
-publish(root: string, slugs: LIST[string], dry_run: bool) is
+// `target` redirects every write to one page, so the whole path - sign in, fetch the real task
+// page, splice, save - can be run against a sandbox. The only thing it leaves untested is which
+// page the text is sent to.
+publish(root: string, slugs: LIST[string], dry_run: bool, target: string?) is
     let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
     let splice = SECTION_SPLICE();
     let wiki = WIKI(SITE.api);
@@ -289,13 +292,21 @@ publish(root: string, slugs: LIST[string], dry_run: bool) is
             continue;
         fi
 
-        wiki.edit(entry.title, splice.splice(page, SITE.language, section), "Add a ghūl solution");
+        let spliced = splice.splice(page, SITE.language, section);
 
-        entry.state = "published";
+        if let sandbox = target then
+            wiki.edit(sandbox, spliced, "Testing a ghūl solution's placement on {entry.title}");
 
-        ledger.save();
+            write_line("{entry.title}: written to {sandbox}, would have gone {where}");
+        else
+            wiki.edit(entry.title, spliced, "Add a ghūl solution");
 
-        write_line("{entry.title}: published, {where}");
+            entry.state = "published";
+
+            ledger.save();
+
+            write_line("{entry.title}: published, {where}");
+        fi
 
         // The wiki asks unflagged accounts to edit no faster than this.
         System.Threading.Thread.sleep(10000);
@@ -337,15 +348,26 @@ else
         check();
     when "publish" then
         let dry_run = arguments.contains("--dry-run");
+        let target: string? mut = null;
         let slugs = LIST[string]();
+        let expecting_target mut = false;
 
         for argument in arguments do
-            if argument !~ "--dry-run" then
+            if expecting_target then
+                target = argument;
+                expecting_target = false;
+            elif argument =~ "--target" then
+                expecting_target = true;
+            elif argument !~ "--dry-run" then
                 slugs.add(argument);
             fi
         od
 
-        publish(root, slugs, dry_run);
+        if expecting_target then
+            error.write_line("--target needs the page to write to");
+        else
+            publish(root, slugs, dry_run, target);
+        fi
     else
         usage();
     esac
