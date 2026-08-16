@@ -281,22 +281,14 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
             continue;
         fi
 
+        let placement = splice.placement(page, SITE.language);
+
         let where =
-            case splice.placement(page, SITE.language)
+            case placement
             when _: PLACEMENT.REPLACES then "replacing the ghul section already there"
             when before: PLACEMENT.INSERTED_BEFORE then "ahead of {before.language}"
             when _: PLACEMENT.APPENDED then "at the end of the page"
             esac;
-
-        if dry_run then
-            let proposed = IO.Path.combine(root, "wiki-out", "{slug}.page");
-
-            IO.File.write_all_text(proposed, splice.splice(page, SITE.language, section));
-
-            write_line("{entry.title}: would go {where}, whole page written to wiki-out/{slug}.page");
-
-            continue;
-        fi
 
         // A new external link is what makes the wiki demand a captcha, and a captcha is the one
         // refusal this cannot work around: there is nobody to answer it. No solution needs a URL
@@ -310,6 +302,25 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
         fi
 
         let spliced = splice.splice(page, SITE.language, section);
+
+        if !splice.is_confined(page, spliced, placement) then
+            error.write_line("{entry.title}: the splice would change the page outside the ghul section, so nothing was sent");
+
+            refused = refused + 1;
+
+            continue;
+        fi
+
+        if dry_run then
+            // Both sides are written, so the edit can be read as a diff before it is an edit.
+            IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.current"), page);
+
+            IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.page"), spliced);
+
+            write_line("{entry.title}: would go {where}; diff wiki-out/{slug}.current wiki-out/{slug}.page");
+
+            continue;
+        fi
 
         if api? /\ !target? then
             error.write_line("--api needs --target: refusing to write a task page on another wiki");

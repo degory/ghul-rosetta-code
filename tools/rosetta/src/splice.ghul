@@ -75,6 +75,47 @@ namespace Rosetta is
             return PLACEMENT.APPENDED(page.length);
         si
 
+        // What a splice is allowed to disturb: everything before where the section goes has to
+        // survive unchanged, and so does everything after whatever it replaces. A splice that
+        // fails this has gone wrong somewhere, and an edit to a live page is the wrong place to
+        // discover that.
+        is_confined(page: string, spliced: string, placement: PLACEMENT) -> bool is
+            let head =
+                case placement
+                when replaced: PLACEMENT.REPLACES then replaced.start
+                when inserted: PLACEMENT.INSERTED_BEFORE then inserted.start
+                when appended: PLACEMENT.APPENDED then appended.start
+                esac;
+
+            let tail =
+                case placement
+                when replaced: PLACEMENT.REPLACES then replaced.end
+                when _: PLACEMENT.INSERTED_BEFORE then head
+                when appended: PLACEMENT.APPENDED then appended.start
+                esac;
+
+            if head > spliced.length \/ tail > page.length then
+                return false;
+            fi
+
+            if !string.equals(page.substring(0, head), spliced.substring(0, head)) then
+                return false;
+            fi
+
+            let remaining = page.length - tail;
+
+            if remaining > spliced.length then
+                return false;
+            fi
+
+            // The tail is compared with its trailing whitespace off, because appending trims the
+            // page's own end before adding to it.
+            return string.equals(
+                page.substring(tail).trim_end(),
+                spliced.substring(spliced.length - remaining).trim_end()
+            );
+        si
+
         // The page with `section` in place of, or in alphabetical position among, the language
         // sections already there. `section` is the whole section, heading included.
         splice(page: string, language: string, section: string) -> string =>

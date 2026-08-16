@@ -151,6 +151,12 @@ run is unchanged - it signs in, fetches the real task page and splices against i
 headers - so pointing it at a sandbox exercises the whole path and leaves only the destination
 untested. The ledger is not advanced by a targeted run, since nothing was published.
 
+Before anything is sent, the spliced page is checked against the page it came from: everything
+before where the section goes has to survive unchanged, and so does everything after whatever it
+replaces. A splice that fails that is refused rather than saved, so a wrong answer shows up as a
+task that did not publish instead of as a damaged page. A dry run applies the same checks, so
+the whole batch can be cleared without an edit.
+
 A section containing an external link is refused before it is sent. Rosetta Code answers an edit
 that adds a new external link with an hCaptcha, and a captcha is the one refusal this cannot get
 past - there is nobody to answer it. No solution needs a URL in it, so the fix is to take the
