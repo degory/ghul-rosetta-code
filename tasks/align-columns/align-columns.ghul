@@ -1,0 +1,60 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+union Alignment is
+    LEFT;
+    RIGHT;
+    CENTRE;
+si
+
+pad(word: string, width: int, alignment: Alignment) -> string =>
+    case alignment
+    when _: Alignment.LEFT then word.pad_right(width)
+    when _: Alignment.RIGHT then word.pad_left(width)
+    when _: Alignment.CENTRE then
+        word
+        .pad_left(word.length + (width - word.length) / 2)
+        .pad_right(width)
+    esac;
+
+// One space between columns is the minimum the task asks for. Trailing spaces are insignificant,
+// so a line is cut back to its last word.
+line(row: string[], widths: int[], alignment: Alignment) -> string =>
+    (row
+     |> index()
+     |> map(((column, word)) => pad(word, widths[column], alignment))
+     |> join(" ")).trim_end();
+
+let text = [
+    "Given$a$text$file$of$many$lines,$where$fields$within$a$line$",
+    "are$delineated$by$a$single$'dollar'$character,$write$a$program",
+    "that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$",
+    "column$are$separated$by$at$least$one$space.",
+    "Further,$allow$for$each$word$in$a$column$to$be$either$left$",
+    "justified,$right$justified,$or$center$justified$within$its$column."
+];
+
+// A trailing dollar ends the line rather than introducing an empty final field.
+let rows =
+    text
+    |> map(line => line.trim_end('$').split(['$']))
+    |> collect_array();
+
+let columns =
+    rows |> reduce(0, (widest, row) => if row.count > widest then row.count else widest fi);
+
+// A column is as wide as its longest word, over the rows long enough to have one.
+let widths =
+    (0..columns)
+    |> map(column =>
+        rows
+        |> filter(row => column < row.count)
+        |> reduce(0, (widest, row) =>
+            if row[column].length > widest then row[column].length else widest fi))
+    |> collect_array();
+
+for alignment in [Alignment.LEFT, Alignment.RIGHT, Alignment.CENTRE] do
+    rows |> each(row => write_line(line(row, widths, alignment)));
+
+    write_line("");
+od
