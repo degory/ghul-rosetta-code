@@ -1,0 +1,333 @@
+use IO.Std.write_line;
+use IO.Std.error;
+use Collections;
+use Rosetta;
+
+// The ghūl solutions' side of Rosetta Code: what has been done, what is worth doing, and getting
+// a finished solution onto the wiki.
+//
+//   rosetta sync                     reconcile TASKS.json with the wiki and with tasks/
+//   rosetta candidates [count]       tasks nothing has been decided about yet
+//   rosetta show [state]             ledger entries, all of them or one state's
+//   rosetta set <title> <state> [reason] [note]
+//   rosetta publish [--dry-run] [slug ...]
+//
+// Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
+
+usage() is
+    error.write_line("usage: rosetta <sync|candidates|show|set|publish> [arguments]");
+si
+
+// The repository root, found by walking up from the working directory. Every path the tool
+// touches hangs off it, so it can be run from anywhere inside the checkout.
+find_root() -> string is
+    let directory mut = IO.Directory.get_current_directory();
+
+    while directory.length > 0 do
+        if IO.File.exists(IO.Path.combine(directory, "rosetta-code.ghulproj")) then
+            return directory;
+        fi
+
+        let parent = IO.Directory.get_parent(directory);
+
+        if !parent? then
+            break;
+        fi
+
+        directory = parent.full_name;
+    od
+
+    throw System.Exception("not inside the ghul-rosetta-code checkout");
+si
+
+// The slug and title of every task with a solution here, read from its task.json.
+local_tasks(root: string) -> MAP[string, string] is
+    let by_title = MAP[string, string]();
+    let tasks = IO.Path.combine(root, "tasks");
+
+    if !IO.Directory.exists(tasks) then
+        return by_title;
+    fi
+
+    for directory in IO.Directory.get_directories(tasks) do
+        let descriptor = IO.Path.combine(directory, "task.json");
+
+        if IO.File.exists(descriptor) then
+            let document = System.Text.Json.JsonDocument.parse(IO.File.read_all_text(descriptor), _);
+
+            if let title = document.root_element.get_property("task").get_string() then
+                by_title[title] = IO.Path.get_file_name(directory) ?? "";
+            fi
+        fi
+    od
+
+    return by_title;
+si
+
+// The wiki and the working tree are both authorities here, over different things: the wiki says
+// what is published, and tasks/ says what has a solution. Anything the ledger knows that neither
+// of them can see - a rejection and its reason, a task blocked on a compiler fix - is left alone.
+sync(root: string) is
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
+    let wiki = WIKI(SITE.api);
+
+    let published = wiki.category_members(SITE.category);
+    let local = local_tasks(root);
+
+    for title in published do
+        let entry = ledger.entry(title);
+
+        entry.state = "published";
+    od
+
+    for pair in local do
+        let entry = ledger.entry(pair.key);
+
+        entry.slug = pair.value;
+
+        if entry.state !~ "published" /\ entry.state !~ "blocked" then
+            entry.state = "solved";
+        fi
+    od
+
+    ledger.save();
+
+    // task.json carries a status too, and it is what scripts/generate-wiki.sh reads. The ledger
+    // is the authority; this is the copy of it that lives beside each solution.
+    for pair in local do
+        if let entry = ledger.find(pair.key) then
+            let descriptor = IO.Path.combine(root, "tasks", pair.value, "task.json");
+            let text = IO.File.read_all_text(descriptor);
+
+            let updated =
+                System.Text.RegularExpressions.Regex.replace(
+                    text,
+                    "\"status\"[ \\t]*:[ \\t]*\"[^\"]*\"",
+                    "\"status\": \"{entry.state}\""
+                );
+
+            if updated !~ text then
+                IO.File.write_all_text(descriptor, updated);
+            fi
+        fi
+    od
+
+    write_line("{ledger.count} tasks: {ledger.in_state("published").count} published, {ledger.in_state("solved").count} solved, {ledger.in_state("blocked").count} blocked, {ledger.in_state("rejected").count} rejected");
+si
+
+// Tasks the ledger says nothing about. Everything else has either been done or been decided
+// against, and neither needs looking at again.
+candidates(root: string, count: int) is
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
+    let wiki = WIKI(SITE.api);
+
+    let shown mut = 0;
+
+    for title in wiki.category_members(SITE.task_category) do
+        if shown >= count then
+            break;
+        fi
+
+        if !ledger.has(title) then
+            write_line(title);
+
+            shown = shown + 1;
+        fi
+    od
+si
+
+show(root: string, state: string?) is
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
+
+    let entries =
+        if let wanted = state then
+            ledger.in_state(wanted)
+        else
+            ledger.entries()
+        fi;
+
+    for entry in entries do
+        let reason = if let r = entry.reason then " ({r})" else "" fi;
+
+        write_line("{entry.state}\t{entry.title}{reason}");
+    od
+si
+
+set(root: string, title: string, state: string, reason: string?, note: string?) is
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
+    let entry = ledger.entry(title);
+
+    entry.state = state;
+
+    if reason? then
+        entry.reason = reason;
+    fi
+
+    if note? then
+        entry.note = note;
+    fi
+
+    ledger.save();
+
+    write_line("{entry.title}: {entry.state}");
+si
+
+// user and password for Special:BotPasswords, one per line, from a file outside the checkout.
+credentials() -> (user: string, password: string) is
+    let path =
+        System.Environment.get_environment_variable("ROSETTA_CREDENTIALS") ??
+        IO.Path.combine(
+            System.Environment.get_folder_path(System.Environment_SpecialFolder.USER_PROFILE),
+            "secrets",
+            "rosetta-code-bot"
+        );
+
+    if !IO.File.exists(path) then
+        throw System.Exception(
+            "no wiki credentials at {path}: create one at Special:BotPasswords and write the "
+            "user on the first line and the password on the second"
+        );
+    fi
+
+    let lines = IO.File.read_all_lines(path);
+
+    if lines.count < 2 then
+        throw System.Exception("{path} should hold the bot user on one line and the password on the next");
+    fi
+
+    return (user = lines[0].trim(), password = lines[1].trim());
+si
+
+publish(root: string, slugs: LIST[string], dry_run: bool) is
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
+    let splice = SECTION_SPLICE();
+    let wiki = WIKI(SITE.api);
+
+    let wanted = LIST[TASK_ENTRY]();
+
+    if slugs.count > 0 then
+        for entry in ledger.entries() do
+            if let slug = entry.slug /\ slugs.contains(slug) then
+                wanted.add(entry);
+            fi
+        od
+    else
+        for entry in ledger.in_state("solved") do
+            wanted.add(entry);
+        od
+    fi
+
+    if wanted.count == 0 then
+        error.write_line("nothing to publish");
+
+        return;
+    fi
+
+    if !dry_run then
+        let account = credentials();
+
+        wiki.log_in(account.user, account.password);
+    fi
+
+    for entry in wanted do
+        let slug = entry.slug;
+
+        if !slug? then
+            error.write_line("{entry.title}: no solution here to publish");
+
+            continue;
+        fi
+
+        let markup = IO.Path.combine(root, "wiki-out", "{slug}.wiki");
+
+        if !IO.File.exists(markup) then
+            error.write_line("{entry.title}: no markup at wiki-out/{slug}.wiki - generate it first");
+
+            continue;
+        fi
+
+        let section = IO.File.read_all_text(markup);
+        let page = wiki.page_wikitext(entry.title);
+
+        if !page? then
+            error.write_line("{entry.title}: no such page on the wiki");
+
+            continue;
+        fi
+
+        let where =
+            case splice.placement(page, SITE.language)
+            when _: PLACEMENT.REPLACES then "replacing the ghul section already there"
+            when before: PLACEMENT.INSERTED_BEFORE then "ahead of {before.language}"
+            when _: PLACEMENT.APPENDED then "at the end of the page"
+            esac;
+
+        if dry_run then
+            let proposed = IO.Path.combine(root, "wiki-out", "{slug}.page");
+
+            IO.File.write_all_text(proposed, splice.splice(page, SITE.language, section));
+
+            write_line("{entry.title}: would go {where}, whole page written to wiki-out/{slug}.page");
+
+            continue;
+        fi
+
+        wiki.edit(entry.title, splice.splice(page, SITE.language, section), "Add a ghūl solution");
+
+        entry.state = "published";
+
+        ledger.save();
+
+        write_line("{entry.title}: published, {where}");
+
+        // The wiki asks unflagged accounts to edit no faster than this.
+        System.Threading.Thread.sleep(10000);
+    od
+si
+
+let arguments = LIST[string](System.Environment.get_command_line_args());
+
+arguments.remove_at(0);
+
+if arguments.count == 0 then
+    usage();
+else
+    let root = find_root();
+    let command = arguments[0];
+
+    arguments.remove_at(0);
+
+    case command
+    when "sync" then
+        sync(root);
+    when "candidates" then
+        candidates(root, if arguments.count > 0 then int.parse(arguments[0]) else 20 fi);
+    when "show" then
+        show(root, if arguments.count > 0 then arguments[0] else null fi);
+    when "set" then
+        if arguments.count < 2 then
+            error.write_line("usage: rosetta set <title> <state> [reason] [note]");
+        else
+            set(
+                root,
+                arguments[0],
+                arguments[1],
+                if arguments.count > 2 then arguments[2] else null fi,
+                if arguments.count > 3 then arguments[3] else null fi
+            );
+        fi
+    when "publish" then
+        let dry_run = arguments.contains("--dry-run");
+        let slugs = LIST[string]();
+
+        for argument in arguments do
+            if argument !~ "--dry-run" then
+                slugs.add(argument);
+            fi
+        od
+
+        publish(root, slugs, dry_run);
+    else
+        usage();
+    esac
+fi

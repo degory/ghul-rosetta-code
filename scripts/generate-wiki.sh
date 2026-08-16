@@ -75,8 +75,7 @@ emit() {
     fi
 
     echo "=={{header|ghul}}=="
-    echo
-    echo "<syntaxhighlight lang=\"ghul\">"
+    printf '%s' "<syntaxhighlight lang=\"ghul\">"
     cat "$SOURCE"
     echo "</syntaxhighlight>"
     echo

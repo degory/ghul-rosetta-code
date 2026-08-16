@@ -56,7 +56,7 @@ cat >"$TASK/task.json" <<EOF
 {
     "task": "$TITLE",
     "url": "https://rosettacode.org/wiki/$URL_TITLE",
-    "status": "draft"
+    "status": "queued"
 }
 EOF
 
