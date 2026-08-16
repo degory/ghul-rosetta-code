@@ -103,8 +103,8 @@ doing, say so once and for all rather than leaving it to be reassessed:
 dotnet run --project tools/rosetta -- set "Animate a pendulum" rejected needs-gui
 ```
 
-The reasons are a fixed set - `needs-gui`, `needs-network`, `nondeterministic`,
-`needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
+The reasons are a fixed set - `needs-gui`, `needs-network`, `needs-interaction`,
+`nondeterministic`, `needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
 comes back: it names a compiler or runtime issue and is retried when that closes.
 
 ## Test requirements

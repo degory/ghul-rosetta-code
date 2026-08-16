@@ -6,9 +6,61 @@
       "state": "solved"
     },
     {
+      "title": "15 puzzle game",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "2048",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "21 game",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "24 game",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "Active Directory/Connect",
+      "state": "rejected",
+      "reason": "needs-network"
+    },
+    {
+      "title": "Active object",
+      "state": "rejected",
+      "reason": "nondeterministic",
+      "note": "the object\u0027s state is defined as depending on the clock"
+    },
+    {
       "title": "Algebraic data types",
       "slug": "algebraic-data-types",
       "state": "published"
+    },
+    {
+      "title": "Anagrams",
+      "state": "rejected",
+      "reason": "needs-network",
+      "note": "the word list is fetched from a URL the task names"
+    },
+    {
+      "title": "Animate a pendulum",
+      "state": "rejected",
+      "reason": "needs-gui"
+    },
+    {
+      "title": "Animated Spinners",
+      "state": "rejected",
+      "reason": "needs-gui"
+    },
+    {
+      "title": "Animation",
+      "state": "rejected",
+      "reason": "needs-gui"
     },
     {
       "title": "Anonymous recursion",

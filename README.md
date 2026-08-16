@@ -112,8 +112,8 @@ Rosetta Code title.
 | `blocked` | cannot be written yet; `reason` names the issue, and it is revisited when that closes |
 
 A rejection is a decision, not a note to self, so it carries one of a fixed set of reasons:
-`needs-gui`, `needs-network`, `nondeterministic`, `needs-native-lib`, `output-unbounded`,
-`task-unclear`. The point of writing it down is that the same task is never assessed twice.
+`needs-gui`, `needs-network`, `needs-interaction`, `nondeterministic`, `needs-native-lib`,
+`output-unbounded`, `task-unclear`. The point of writing it down is that the same task is never assessed twice.
 
 Only tasks that have been judged are in the file. The 1300-odd others are whatever
 `Category:Programming Tasks` holds that the ledger does not mention.
