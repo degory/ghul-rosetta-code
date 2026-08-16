@@ -298,6 +298,17 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
             continue;
         fi
 
+        // A new external link is what makes the wiki demand a captcha, and a captcha is the one
+        // refusal this cannot work around: there is nobody to answer it. No solution needs a URL
+        // in it, so the answer is to leave the link out rather than to handle the refusal.
+        if System.Text.RegularExpressions.Regex.is_match(section, "https?://") then
+            error.write_line("{entry.title}: the section contains an external link, which the wiki will answer with a captcha - take the link out");
+
+            refused = refused + 1;
+
+            continue;
+        fi
+
         let spliced = splice.splice(page, SITE.language, section);
 
         if api? /\ !target? then

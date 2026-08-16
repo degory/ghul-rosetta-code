@@ -151,6 +151,11 @@ run is unchanged - it signs in, fetches the real task page and splices against i
 headers - so pointing it at a sandbox exercises the whole path and leaves only the destination
 untested. The ledger is not advanced by a targeted run, since nothing was published.
 
+A section containing an external link is refused before it is sent. Rosetta Code answers an edit
+that adds a new external link with an hCaptcha, and a captcha is the one refusal this cannot get
+past - there is nobody to answer it. No solution needs a URL in it, so the fix is to take the
+link out rather than to handle the refusal.
+
 The target has to be a page that already exists, because the credential is granted editing and
 not creation. `Rosetta Code:Sandbox` does; a `User:<name>/sandbox` subpage keeps the noise off a
 shared page but has to be created by hand once.
