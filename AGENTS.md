@@ -26,6 +26,37 @@ it is run. So:
   explaining what the task is, or narrating the algorithm line by line, is noise.
 - Output must be deterministic: no clocks, no random numbers, no local paths.
 
+## Write ghūl, not C# with odd syntax
+
+Most of these pages carry a C# entry, and the two languages are close enough
+that a reader could get from ours to theirs by swapping keywords. When that is
+true of an entry, it is showing them nothing, and there was no reason to write
+it.
+
+So, in rough order of how often it comes up:
+
+- **Thread with `|>` and the global pipe functions**, not `|` and the fluent
+  methods. `xs |> map(f) |> filter(p) |> join(", ")` over
+  `xs | .map(f) | .filter(p) | .join(", ")`. Both compile and mean the same
+  thing; the first is the one that reads as this language rather than as LINQ.
+- **Prefer functions to classes.** A class earns its place when the task is
+  itself about objects, or when it is plainly clearer than the alternative.
+  A task solved with a class holding two fields and one method, where three
+  functions would do, is a transliteration of somebody else's entry.
+- **Prefer an expression body.** `=>` over `is` ... `si` wherever the body is an
+  expression, including where that expression is an `if`, a `case`, or a
+  `val` ... `lav` block.
+- **Reach for what has no equivalent in the language next door.** `let x = e in`
+  and `assert c else "..." in` as expressions, `if let` and `while let` in place
+  of a test followed by a cast, unions with `case` pattern matching in place of
+  a class hierarchy and a chain of type tests, generators in place of building a
+  list to return, `rec` for a recursive function literal.
+
+None of this is a licence to be clever. A solution that reaches for a construct
+it does not need is as bad as one that reaches for none of them; the point is
+that where ghūl has its own way of saying something, the entry should say it
+that way.
+
 ## Comments are published under someone else's name
 
 Everything here goes on a public wiki under the account of the person who posts

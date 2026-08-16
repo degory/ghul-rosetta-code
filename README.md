@@ -91,8 +91,10 @@ implementations in fifty other languages.
 - Do what the task says, including the parts that look arbitrary. Solving a tidier nearby problem
   is the main thing that irritates reviewers there.
 - Keep the program self-contained and free of scaffolding a reader has to skip past.
-- Prefer the idiomatic ghūl over the shortest ghūl, and over a transliteration of the C# entry
-  above it on the same page.
+- Prefer the idiomatic ghūl over the shortest ghūl, and over a transliteration of the page's C#
+  entry: thread with `|>` and the global pipe functions rather than the
+  fluent methods, prefer functions to classes and expression bodies to blocks, and use the
+  constructs the language next door has no word for. `AGENTS.md` has the detail.
 - Keep the output deterministic. No clocks, no random numbers, no paths.
 - Rosetta Code's syntax highlighter has no ghūl lexer, so the code goes in a
   `<syntaxhighlight lang="ghul">` block, which it renders unhighlighted rather than rejecting.
