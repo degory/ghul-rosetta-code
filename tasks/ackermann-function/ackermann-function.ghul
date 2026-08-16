@@ -11,10 +11,7 @@ ackermann(m: int, n: int) -> int =>
     fi;
 
 for m in 0::3 do
-    let row =
-        pipe(0::5)
-        | .map(n => "{ackermann(m, n)}")
-        | .join(" ");
+    let row = (0::5) |> map(n => "{ackermann(m, n)}") |> join(" ");
 
     write_line("A({m}, n) = {row}");
 od
