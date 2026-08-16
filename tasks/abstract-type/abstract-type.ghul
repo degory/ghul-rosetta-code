@@ -1,0 +1,69 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// A trait with no bodies is a pure interface: an implementing type has to supply every member.
+trait Shape is
+    area() -> double;
+    name() -> string;
+si
+
+// A trait member may carry a default body instead. Implementing types inherit it and need only
+// write the member to say something else.
+trait Described is
+    describe() -> string => "a shape";
+si
+
+// An abstract class is the partial implementation: it can hold state and finished behaviour, and
+// a member left without a body is what its subclasses have to provide. Naming it abstract is
+// what stops it being constructed, and Polygon() is a compile error rather than a runtime one.
+class Polygon: Shape, Described abstract is
+    _sides: int;
+
+    init(sides: int) is
+        _sides = sides;
+    si
+
+    area() -> double;
+
+    name() -> string => "{_sides}-sided polygon";
+
+    describe() -> string => "{name()}, area {area():F2}";
+si
+
+class SQUARE: Polygon is
+    _side: double;
+
+    init(side: double) is
+        super.init(4);
+
+        _side = side;
+    si
+
+    area() -> double => _side * _side;
+si
+
+class TRIANGLE: Polygon is
+    _base: double;
+    _height: double;
+
+    init(base: double, height: double) is
+        super.init(3);
+
+        _base = base;
+        _height = height;
+    si
+
+    area() -> double => _base * _height / 2.0D;
+
+    // Overriding a default a trait supplied, reaching the original with super.
+    describe() -> string => "{super.describe()}, and it is a triangle";
+si
+
+let shapes: Shape[] = [SQUARE(3.0D), TRIANGLE(4.0D, 5.0D)];
+
+shapes |> each(shape => write_line(shape.name()));
+
+// Described is a separate contract, satisfied through Polygon, so the same values pass as either.
+let described: Described[] = [SQUARE(2.0D), TRIANGLE(6.0D, 1.0D)];
+
+described |> each(d => write_line(d.describe()));
