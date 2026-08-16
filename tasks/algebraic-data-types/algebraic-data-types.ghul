@@ -17,14 +17,14 @@ use Tree.NODE;
 // the same red-over-two-blacks shape.
 balance(c: Color, l: Tree, v: int, r: Tree) -> Tree =>
     case (c, l, v, r)
-    when (Color.BLACK, (Color.RED, (Color.RED, a, x, b): NODE, y, m): NODE, z, d) then
-        NODE(Color.RED, NODE(Color.BLACK, a, x, b), y, NODE(Color.BLACK, m, z, d))
-    when (Color.BLACK, (Color.RED, a, x, (Color.RED, b, y, m): NODE): NODE, z, d) then
-        NODE(Color.RED, NODE(Color.BLACK, a, x, b), y, NODE(Color.BLACK, m, z, d))
-    when (Color.BLACK, a, x, (Color.RED, (Color.RED, b, y, m): NODE, z, d): NODE) then
-        NODE(Color.RED, NODE(Color.BLACK, a, x, b), y, NODE(Color.BLACK, m, z, d))
-    when (Color.BLACK, a, x, (Color.RED, b, y, (Color.RED, m, z, d): NODE): NODE) then
-        NODE(Color.RED, NODE(Color.BLACK, a, x, b), y, NODE(Color.BLACK, m, z, d))
+    when (~BLACK, (~RED, (~RED, a, x, b): NODE, y, m): NODE, z, d) then
+        NODE(RED, NODE(BLACK, a, x, b), y, NODE(BLACK, m, z, d))
+    when (~BLACK, (~RED, a, x, (~RED, b, y, m): NODE): NODE, z, d) then
+        NODE(RED, NODE(BLACK, a, x, b), y, NODE(BLACK, m, z, d))
+    when (~BLACK, a, x, (~RED, (~RED, b, y, m): NODE, z, d): NODE) then
+        NODE(RED, NODE(BLACK, a, x, b), y, NODE(BLACK, m, z, d))
+    when (~BLACK, a, x, (~RED, b, y, (~RED, m, z, d): NODE): NODE) then
+        NODE(RED, NODE(BLACK, a, x, b), y, NODE(BLACK, m, z, d))
     else
         NODE(c, l, v, r)
     esac;
