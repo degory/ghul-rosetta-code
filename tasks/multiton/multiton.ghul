@@ -40,7 +40,7 @@ class MULTITON[K, V] is
     // leaving two instances for a key that is supposed to have one, and callers holding whichever
     // they were given.
     get(key: K) -> V is
-        let use held = LOCK(_lock);
+        let use _ = LOCK(_lock);
 
         let existing: V mut;
 
