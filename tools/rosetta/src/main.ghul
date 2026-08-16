@@ -392,6 +392,28 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
             return;
         fi
 
+        // The last check before anything is sent, and the only one the splice does not mark its
+        // own homework on: the wiki diffs its own stored revision against what it is being
+        // offered. An insertion removes nothing; replacing the ghul section already there
+        // removes that section and no more.
+        let allowed_removals =
+            case placement
+            when replaced: PLACEMENT.REPLACES then
+                page.substring(replaced.start, replaced.end - replaced.start).split(['\n']).count
+            else
+                0
+            esac;
+
+        let removals = wiki.lines_removed(entry.title, spliced);
+
+        if removals > allowed_removals then
+            error.write_line("{entry.title}: the wiki's own diff says this would remove {removals} lines, so nothing was sent");
+
+            refused = refused + 1;
+
+            continue;
+        fi
+
         // A wiki can refuse one edit for reasons that say nothing about the next - an abuse
         // filter, a rate limit, a page protected since the run began - so a refusal is reported
         // against the task it happened to and the rest of the batch carries on.

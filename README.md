@@ -166,6 +166,12 @@ replaces. A splice that fails that is refused rather than saved, so a wrong answ
 task that did not publish instead of as a damaged page. A dry run applies the same checks, so
 the whole batch can be cleared without an edit.
 
+The third check is the wiki's own. Before the edit is offered for real, `action=compare` diffs
+the stored revision against the text it would receive, and the run stops if that diff removes
+more than the ghul section being replaced - nothing at all, for an insertion. This is the only
+check the splice does not mark its own homework on, and it is the one to keep if the others ever
+look redundant.
+
 A section containing an external link is refused before it is sent. Rosetta Code answers an edit
 that adds a new external link with an hCaptcha, and a captcha is the one refusal this cannot get
 past - there is nobody to answer it. No solution needs a URL in it, so the fix is to take the

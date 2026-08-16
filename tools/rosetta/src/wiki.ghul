@@ -166,6 +166,31 @@ namespace Rosetta is
             return (name = user.get_property("name").get_string() ?? "", can_edit = can_edit);
         si
 
+        // How many lines an edit would remove, according to the wiki's own diff of the live page
+        // against the text it is being offered. This is the one check that is not the splice
+        // marking its own work: MediaWiki computes it, from the revision actually stored.
+        lines_removed(title: string, text: string) -> int is
+            let fields = MAP[string, string]();
+
+            fields["action"] = "compare";
+            fields["fromtitle"] = title;
+            fields["toslots"] = "main";
+            fields["totext-main"] = text;
+            fields["prop"] = "diff";
+            fields["format"] = "json";
+            fields["formatversion"] = "2";
+
+            let body =
+                _post(fields)
+                    .root_element
+                    .get_property("compare")
+                    .get_property("body")
+                    .get_string() ?? "";
+
+            return
+                System.Text.RegularExpressions.Regex.matches(body, "diff-deletedline").count;
+        si
+
         // Replaces a page's whole text. `log_in` must have run first.
         edit(title: string, text: string, summary: string) is
             assert _csrf_token? else "log_in has not run, so there is no edit token";
