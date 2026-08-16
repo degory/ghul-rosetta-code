@@ -178,6 +178,11 @@
       "state": "solved"
     },
     {
+      "title": "Multiton",
+      "slug": "multiton",
+      "state": "published"
+    },
+    {
       "title": "Mutual recursion",
       "slug": "mutual-recursion",
       "state": "solved"
@@ -211,6 +216,10 @@
       "title": "Towers of Hanoi",
       "slug": "towers-of-hanoi",
       "state": "solved"
+    },
+    {
+      "title": "User:Degory/sandbox",
+      "state": "published"
     },
     {
       "title": "Variadic function",

@@ -5,6 +5,22 @@ use Collections.MAP;
 // map and the factory are all that differ, so neither needs to be written again for each type
 // managed this way: the key and the instance are type parameters, and how to make one is an
 // argument.
+// Taking the monitor in the constructor and releasing it on disposal makes the lock a scope:
+// `let use` ends it however the block is left, including by an early return.
+class HOLDING: Ghul.Disposable is
+    _guard: object;
+
+    init(guard: object) is
+        _guard = guard;
+
+        System.Threading.Monitor.enter(_guard);
+    si
+
+    dispose() is
+        System.Threading.Monitor.exit(_guard);
+    si
+si
+
 class MULTITON[K, V] is
     _create: K -> V;
     _instances: MAP[K, V];
@@ -24,23 +40,19 @@ class MULTITON[K, V] is
     // leaving two instances for a key that is supposed to have one, and callers holding whichever
     // they were given.
     get(key: K) -> V is
-        System.Threading.Monitor.enter(_guard);
+        let use holding = HOLDING(_guard);
 
-        try
-            let existing: V mut;
+        let existing: V mut;
 
-            if _instances.try_get_value(key, existing ref) then
-                return existing;
-            fi
+        if _instances.try_get_value(key, existing ref) then
+            return existing;
+        fi
 
-            let created = _create(key);
+        let created = _create(key);
 
-            _instances[key] = created;
+        _instances[key] = created;
 
-            return created;
-        finally
-            System.Threading.Monitor.exit(_guard);
-        yrt
+        return created;
     si
 
     count: int => _instances.count;

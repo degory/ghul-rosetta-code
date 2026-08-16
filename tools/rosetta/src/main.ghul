@@ -11,7 +11,8 @@ use Rosetta;
 //   rosetta show [state]             ledger entries, all of them or one state's
 //   rosetta set <title> <state> [reason] [note]
 //   rosetta check [--api <url>]      sign in and report the account, changing nothing
-//   rosetta publish [--dry-run] [--target <page>] [--api <url>] [slug ...]
+//   rosetta publish [--dry-run] [--replace] [--target <page>] [--api <url>] [slug ...]
+//   rosetta publish --rehearse <page> [--api <url>] <slug>
 //
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
@@ -274,7 +275,10 @@ si
 // `target` redirects every write to one page, so the whole path - sign in, fetch the real task
 // page, splice, save - can be run against a sandbox. The only thing it leaves untested is which
 // page the text is sent to.
-publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?) is
+// `rehearse` reads and writes one page instead of a task page: the section is spliced into
+// whatever that page already holds, and the result written back. Running it twice replaces the
+// section rather than adding a second one, which is the same path a corrected solution takes.
+publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?, rehearse: bool, replace: bool) is
     let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
     let splice = SECTION_SPLICE();
 
@@ -329,7 +333,15 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
         fi
 
         let section = IO.File.read_all_text(markup);
-        let page = wiki.page_wikitext(entry.title);
+
+        let source = if rehearse then target ?? entry.title else entry.title fi;
+
+        let page =
+            if rehearse then
+                destination.page_wikitext(source)
+            else
+                wiki.page_wikitext(source)
+            fi;
 
         if !page? then
             error.write_line("{entry.title}: no such page on the wiki");
@@ -392,6 +404,29 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
             return;
         fi
 
+        // Somebody may have edited the section since it was published - a correction, a
+        // simplification, a fix to something wrong. Replacing it then destroys their work
+        // silently, which is what happened to an edit on Multiton the first time this ran.
+        //
+        // So a replacement is only made when the section already there is the one this would
+        // have published last time. Anything else stops, and the difference is for a person to
+        // read: their change may belong in the repository rather than being thrown away.
+        if let replaced: PLACEMENT.REPLACES = placement /\ !replace then
+            let live = page.substring(replaced.start, replaced.end - replaced.start).trim();
+
+            if !string.equals(live, section.trim()) then
+                error.write_line("{entry.title}: the ghul section on the wiki is not the one here, so nothing was sent - read the difference before replacing it");
+
+                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live);
+
+                error.write_line("  what is on the wiki is in wiki-out/{slug}.live; what would replace it is wiki-out/{slug}.wiki");
+
+                refused = refused + 1;
+
+                continue;
+            fi
+        fi
+
         // The last check before anything is sent, and the only one the splice does not mark its
         // own homework on: the wiki diffs its own stored revision against what it is being
         // offered. An insertion removes nothing; replacing the ghul section already there
@@ -404,7 +439,12 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
                 0
             esac;
 
-        let removals = wiki.lines_removed(entry.title, spliced);
+        let removals =
+            if rehearse then
+                destination.lines_removed(source, spliced)
+            else
+                wiki.lines_removed(source, spliced)
+            fi;
 
         if removals > allowed_removals then
             error.write_line("{entry.title}: the wiki's own diff says this would remove {removals} lines, so nothing was sent");
@@ -487,6 +527,8 @@ else
         let dry_run = arguments.contains("--dry-run");
         let target: string? mut = null;
         let api: string? mut = null;
+        let rehearse mut = false;
+        let replace = arguments.contains("--replace");
         let slugs = LIST[string]();
         let awaiting mut = "";
 
@@ -497,9 +539,13 @@ else
             elif awaiting =~ "--api" then
                 api = argument;
                 awaiting = "";
-            elif argument =~ "--target" \/ argument =~ "--api" then
+            elif awaiting =~ "--rehearse" then
+                target = argument;
+                rehearse = true;
+                awaiting = "";
+            elif argument =~ "--target" \/ argument =~ "--api" \/ argument =~ "--rehearse" then
                 awaiting = argument;
-            elif argument !~ "--dry-run" then
+            elif argument !~ "--dry-run" /\ argument !~ "--replace" then
                 slugs.add(argument);
             fi
         od
@@ -507,7 +553,7 @@ else
         if awaiting.length > 0 then
             error.write_line("{awaiting} needs a value");
         else
-            publish(root, slugs, dry_run, target, api);
+            publish(root, slugs, dry_run, target, api, rehearse, replace);
         fi
     else
         usage();
