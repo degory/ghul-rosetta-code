@@ -1,0 +1,14 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+let LIMIT = 20000;
+
+sum_of_proper_divisors(n: int) -> int =>
+    (1::(n / 2)) |> filter(d => n % d == 0) |> reduce(0, (total, d) => total + d);
+
+// Only the smaller member of a pair is searched for, so each pair is reported once and a perfect
+// number, which is its own partner, is not reported at all.
+(1::LIMIT)
+|> map(n => (n, partner = sum_of_proper_divisors(n)))
+|> filter(((n, partner)) => partner > n /\ sum_of_proper_divisors(partner) == n)
+|> each(((n, partner)) => write_line("{n} and {partner}"));
