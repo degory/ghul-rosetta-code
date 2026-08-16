@@ -13,8 +13,8 @@ si
 use Tree.EMPTY;
 use Tree.NODE;
 
-// Okasaki's rebalancing: the four ways a red node can end up with a red child, each rewritten to
-// the same red-over-two-blacks shape.
+// The four ways a red node can end up with a red child, each rewritten to the same
+// red-over-two-blacks shape.
 balance(c: Color, l: Tree, v: int, r: Tree) -> Tree =>
     case (c, l, v, r)
     when (~BLACK, (~RED, (~RED, a, x, b): NODE, y, m): NODE, z, d) then
