@@ -190,10 +190,14 @@ namespace Rosetta is
                 throw System.Exception("the wiki refused the edit: {error.to_string()}");
             fi
 
-            let status = root.get_property("edit").get_property("result").get_string() ?? "";
+            let outcome = root.get_property("edit");
+            let status = outcome.get_property("result").get_string() ?? "";
 
+            // Whatever else the wiki says about a refusal is in the rest of the object - which
+            // captcha it wants, which filter matched - and none of it is guessable from the
+            // one-word result, so the whole thing is reported.
             if status !~ "Success" then
-                throw System.Exception("the wiki did not apply the edit: {status}");
+                throw System.Exception("the wiki did not apply the edit: {outcome.to_string()}");
             fi
         si
     si
