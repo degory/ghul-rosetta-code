@@ -3,4 +3,4 @@ connection to beta
 asking twice for alpha gives the same object: True
 alpha and beta are different objects: True
 requests: 3, instances made: 2, instances held: 2
-300 requests over 3 keys, in parallel: 3 instances made
+300 more requests over 3 keys, in parallel: 5 made in total, 5 held

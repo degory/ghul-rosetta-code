@@ -72,18 +72,6 @@ write_line("asking twice for alpha gives the same object: {alpha == alpha_again}
 write_line("alpha and beta are different objects: {alpha != beta}");
 write_line("requests: 3, instances made: {made}, instances held: {connections.count}");
 
-let shared mut = 0;
-
-let pool =
-    MULTITON(
-        host =>
-            val
-                shared = shared + 1;
-
-                CONNECTION(host)
-            lav
-    );
-
 let keys = ["one", "two", "three"];
 
 Tasks.Parallel.for(
@@ -91,8 +79,8 @@ Tasks.Parallel.for(
     300,
     i =>
         val
-            let _ = pool.get(keys[i % keys.count]);
+            let _ = connections.get(keys[i % keys.count]);
         lav
 );
 
-write_line("300 requests over {keys.count} keys, in parallel: {shared} instances made");
+write_line("300 more requests over {keys.count} keys, in parallel: {made} made in total, {connections.count} held");
