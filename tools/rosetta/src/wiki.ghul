@@ -146,6 +146,26 @@ namespace Rosetta is
             _csrf_token = _token("csrf");
         si
 
+        // The account the session is acting as, and whether it may edit. Anonymous requests get
+        // an IP address as the name, so this is how a failed sign-in shows itself.
+        account() -> (name: string, can_edit: bool) is
+            let user =
+                _get("action=query&meta=userinfo&uiprop=rights")
+                    .root_element
+                    .get_property("query")
+                    .get_property("userinfo");
+
+            let can_edit mut = false;
+
+            for right in user.get_property("rights").enumerate_array() do
+                if right.get_string() =~ "edit" then
+                    can_edit = true;
+                fi
+            od
+
+            return (name = user.get_property("name").get_string() ?? "", can_edit = can_edit);
+        si
+
         // Replaces a page's whole text. `log_in` must have run first.
         edit(title: string, text: string, summary: string) is
             assert _csrf_token? else "log_in has not run, so there is no edit token";

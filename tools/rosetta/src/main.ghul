@@ -10,12 +10,13 @@ use Rosetta;
 //   rosetta candidates [count]       tasks nothing has been decided about yet
 //   rosetta show [state]             ledger entries, all of them or one state's
 //   rosetta set <title> <state> [reason] [note]
+//   rosetta check                    sign in and report the account, changing nothing
 //   rosetta publish [--dry-run] [slug ...]
 //
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
 usage() is
-    error.write_line("usage: rosetta <sync|candidates|show|set|publish> [arguments]");
+    error.write_line("usage: rosetta <sync|candidates|show|set|check|publish> [arguments]");
 si
 
 // The repository root, found by walking up from the working directory. Every path the tool
@@ -198,6 +199,22 @@ credentials() -> (user: string, password: string) is
     return (user = lines[0].trim(), password = lines[1].trim());
 si
 
+// Signs in and reports the account, without changing anything.
+check() is
+    let wiki = WIKI(SITE.api);
+    let account = credentials();
+
+    wiki.log_in(account.user, account.password);
+
+    let signed_in = wiki.account();
+
+    write_line("signed in as {signed_in.name}");
+
+    if !signed_in.can_edit then
+        error.write_line("this account cannot edit: check the credential's grants");
+    fi
+si
+
 publish(root: string, slugs: LIST[string], dry_run: bool) is
     let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
     let splice = SECTION_SPLICE();
@@ -316,6 +333,8 @@ else
                 if arguments.count > 3 then arguments[3] else null fi
             );
         fi
+    when "check" then
+        check();
     when "publish" then
         let dry_run = arguments.contains("--dry-run");
         let slugs = LIST[string]();
