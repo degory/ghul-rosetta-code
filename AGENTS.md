@@ -112,6 +112,17 @@ usually shorter than either, and always clearer.
 
 ## Comments are published under someone else's name
 
+**No comment at all beats a bad one.** That is the starting position, not a
+last resort. A comment is worse than nothing when it is hard to read, when it
+reaches for odd or academic terminology, when it reads as showing off, or when
+it says what the line underneath already says. Most comments that get written
+here fail at least one of those, so the question is not "is this comment true?"
+but "does this earn the space it takes on the page?" - and usually the answer is
+no, because the code is short and the reader is looking at it.
+
+What survives that test is a fact the reader cannot get from the code in front
+of them and would be misled without. Everything else comes out.
+
 Everything here goes on a public wiki under the account of the person who posts
 it. They will be taken to have written it, and if a contributor disputes a claim
 on the talk page, they are the one who has to answer.
