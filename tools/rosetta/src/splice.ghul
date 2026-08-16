@@ -75,6 +75,36 @@ namespace Rosetta is
             return PLACEMENT.APPENDED(page.length);
         si
 
+        // The check that matters, and the reason it does not consult the placement: a splice
+        // reasons about where the section goes, so a guard built on that reasoning shares its
+        // mistakes. A placement of "replace the whole page" satisfies a prefix-and-suffix
+        // comparison trivially, both being empty.
+        //
+        // So this asks the page itself. Every language section that was there has to still be
+        // there afterwards, and ghul has to be one of them. Nothing a wrong placement can say
+        // makes a lost section look present.
+        keeps_every_other_section(page: string, spliced: string, language: string) -> bool is
+            let after = LIST[string]();
+
+            for header in _headers(spliced) do
+                after.add(_name(header).to_lower());
+            od
+
+            if !after.contains(language.to_lower()) then
+                return false;
+            fi
+
+            for header in _headers(page) do
+                let name = _name(header).to_lower();
+
+                if !string.equals(name, language.to_lower()) /\ !after.contains(name) then
+                    return false;
+                fi
+            od
+
+            return true;
+        si
+
         // What a splice is allowed to disturb: everything before where the section goes has to
         // survive unchanged, and so does everything after whatever it replaces. A splice that
         // fails this has gone wrong somewhere, and an edit to a live page is the wrong place to

@@ -16,7 +16,7 @@ use Rosetta;
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
 usage() is
-    error.write_line("usage: rosetta <sync|candidates|show|set|check|publish> [arguments]");
+    error.write_line("usage: rosetta <sync|candidates|show|set|check|self-test|publish> [arguments]");
 si
 
 // The repository root, found by walking up from the working directory. Every path the tool
@@ -199,6 +199,62 @@ credentials() -> (user: string, password: string) is
     return (user = lines[0].trim(), password = lines[1].trim());
 si
 
+// Feeds the guards the damage they exist to stop. A guard that has never been seen to refuse
+// anything is only believed to work.
+self_test() is
+    let splice = SECTION_SPLICE();
+
+    // A brace is written twice to get one, so each header below is =={{header|NAME}}==
+    let page =
+        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Gleam}}}}==\ngleam\n\n=={{{{header|Go}}}}==\ngo\n";
+
+    let section = "=={{{{header|ghul}}}}==\nghul\n";
+
+    let failures mut = 0;
+
+    let check_that = (expectation: string, held: bool) =>
+        val
+            if !held then
+                failures = failures + 1;
+            fi
+
+            write_line("{if held then "  ok  " else "  FAIL" fi}  {expectation}")
+        lav;
+
+    let spliced = splice.splice(page, "ghul", section);
+
+    check_that("a good splice keeps every section", splice.keeps_every_other_section(page, spliced, "ghul"));
+    check_that("a good splice stays confined", splice.is_confined(page, spliced, splice.placement(page, "ghul")));
+    check_that(
+        "a good splice puts ghul between Ada and Gleam",
+        spliced.index_of("ghul") > spliced.index_of("Ada") /\ spliced.index_of("ghul") < spliced.index_of("Gleam")
+    );
+
+    // The page replaced by the section alone: what a wrong placement would produce, and the
+    // failure worth being certain about.
+    check_that("wiping the page is refused", !splice.keeps_every_other_section(page, section, "ghul"));
+
+    // A splice that dropped one section on the way through.
+    let lost = splice.splice(page.replace("=={{{{header|Gleam}}}}==\ngleam\n\n", ""), "ghul", section);
+
+    check_that("losing one section is refused", !splice.keeps_every_other_section(page, lost, "ghul"));
+
+    // A section that never made it in.
+    check_that("leaving ghul out is refused", !splice.keeps_every_other_section(page, page, "ghul"));
+
+    // A placement claiming the whole page, which is what the confinement check cannot see.
+    check_that(
+        "wiping the page passes the confinement check, which is why it is not the only one",
+        splice.is_confined(page, section, PLACEMENT.REPLACES(0, page.length))
+    );
+
+    if failures > 0 then
+        error.write_line("{failures} checks failed");
+
+        System.Environment.exit_code = 1;
+    fi
+si
+
 // Signs in and reports the account, without changing anything.
 check(api: string?) is
     let wiki = WIKI(api ?? SITE.api);
@@ -303,6 +359,14 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
 
         let spliced = splice.splice(page, SITE.language, section);
 
+        if !splice.keeps_every_other_section(page, spliced, SITE.language) then
+            error.write_line("{entry.title}: the spliced page has lost a language section, so nothing was sent");
+
+            refused = refused + 1;
+
+            continue;
+        fi
+
         if !splice.is_confined(page, spliced, placement) then
             error.write_line("{entry.title}: the splice would change the page outside the ghul section, so nothing was sent");
 
@@ -393,6 +457,8 @@ else
                 if arguments.count > 3 then arguments[3] else null fi
             );
         fi
+    when "self-test" then
+        self_test();
     when "check" then
         check(if arguments.count > 1 /\ arguments[0] =~ "--api" then arguments[1] else null fi);
     when "publish" then

@@ -128,6 +128,7 @@ Each `task.json` carries a copy of its own task's state, because that is what
 `tools/rosetta` is the ledger and the wiki client.
 
 ```sh
+dotnet run --project tools/rosetta -- self-test         # feed the guards the damage they exist to stop
 dotnet run --project tools/rosetta -- sync              # reconcile the ledger with the wiki and with tasks/
 dotnet run --project tools/rosetta -- candidates 20     # tasks nothing has been decided about
 dotnet run --project tools/rosetta -- show solved       # ledger entries, all or in one state
@@ -151,7 +152,15 @@ run is unchanged - it signs in, fetches the real task page and splices against i
 headers - so pointing it at a sandbox exercises the whole path and leaves only the destination
 untested. The ledger is not advanced by a targeted run, since nothing was published.
 
-Before anything is sent, the spliced page is checked against the page it came from: everything
+Before anything is sent, the spliced page is checked against the page it came from in two ways.
+
+The first asks the page rather than the splice: every language section that was there has to
+still be there, and ghul has to be one of them. This is the check that matters, and the reason it
+ignores where the splice thought the section was going is that a guard built on the splice's own
+reasoning shares the splice's mistakes - a placement claiming the whole page satisfies a
+prefix-and-suffix comparison trivially, both halves being empty.
+
+The second is that comparison anyway: everything
 before where the section goes has to survive unchanged, and so does everything after whatever it
 replaces. A splice that fails that is refused rather than saved, so a wrong answer shows up as a
 task that did not publish instead of as a damaged page. A dry run applies the same checks, so
