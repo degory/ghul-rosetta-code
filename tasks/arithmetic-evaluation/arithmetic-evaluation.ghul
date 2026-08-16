@@ -1,0 +1,128 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+union Expression is
+    NUMBER(value: int);
+    ADD(left: Expression, right: Expression);
+    SUBTRACT(left: Expression, right: Expression);
+    MULTIPLY(left: Expression, right: Expression);
+    DIVIDE(left: Expression, right: Expression);
+si
+
+use Expression.NUMBER;
+use Expression.ADD;
+use Expression.SUBTRACT;
+use Expression.MULTIPLY;
+use Expression.DIVIDE;
+
+// The parser hands back the expression it built and where it stopped, so each level can carry on
+// from where the level below it left off.
+union Parsed is
+    RESULT(expression: Expression, next: int);
+si
+
+use Parsed.RESULT;
+
+skip_spaces(text: string, at: int) -> int =>
+    if at < text.length /\ text[at] == ' ' then
+        skip_spaces(text, at + 1)
+    else
+        at
+    fi;
+
+// A term is a number or a parenthesised expression; a factor is terms joined by * and /; an
+// expression is factors joined by + and -. The nesting is the precedence.
+parse_term(text: string, at: int) -> Parsed is
+    let start = skip_spaces(text, at);
+
+    if text[start] == '(' then
+        case parse_expression(text, start + 1)
+        when (expression, next): RESULT then
+            return RESULT(expression, skip_spaces(text, next) + 1);
+        esac
+    fi
+
+    let end mut = start;
+
+    while end < text.length /\ char.is_digit(text[end]) do
+        end = end + 1;
+    od
+
+    return RESULT(NUMBER(int.parse(text.substring(start, end - start))), end);
+si
+
+// The position of the next operator drawn from `operators`, or absent when what comes next is
+// not one of them, which is what ends a run.
+operator_at(text: string, position: int, operators: string) -> int? =>
+    let here = skip_spaces(text, position) in
+    if here < text.length /\ operators.contains(text[here]) then here else null fi;
+
+build(operator: char, left: Expression, right: Expression) -> Expression =>
+    case operator
+    when '+' then ADD(left, right)
+    when '-' then SUBTRACT(left, right)
+    when '*' then MULTIPLY(left, right)
+    when '/' then DIVIDE(left, right)
+    else throw System.Exception("not an operator: {operator}")
+    esac;
+
+// A left-associative run of operators over whatever `operand` parses. Both levels of precedence
+// are this same loop over a different operator set and a different operand parser.
+parse_run(text: string, at: int, operators: string, operand: (string, int) -> Parsed) -> Parsed is
+    case operand(text, at)
+    when (left, next): RESULT then
+        let expression mut = left;
+        let position mut = next;
+
+        while let here = operator_at(text, position, operators) do
+            case operand(text, here + 1)
+            when (right, after): RESULT then
+                expression = build(text[here], expression, right);
+                position = after;
+            esac
+        od
+
+        return RESULT(expression, position);
+    esac
+si
+
+parse_factor(text: string, at: int) -> Parsed => parse_run(text, at, "*/", parse_term);
+
+parse_expression(text: string, at: int) -> Parsed => parse_run(text, at, "+-", parse_factor);
+
+parse(text: string) -> Expression =>
+    case parse_expression(text, 0)
+    when (expression, _): RESULT then expression
+    esac;
+
+// The tree is what is evaluated, so nothing here looks at the input text again.
+evaluate(expression: Expression) -> int =>
+    case expression
+    when (value): NUMBER then value
+    when (left, right): ADD then evaluate(left) + evaluate(right)
+    when (left, right): SUBTRACT then evaluate(left) - evaluate(right)
+    when (left, right): MULTIPLY then evaluate(left) * evaluate(right)
+    when (left, right): DIVIDE then evaluate(left) / evaluate(right)
+    esac;
+
+show(expression: Expression) -> string =>
+    case expression
+    when (value): NUMBER then "{value}"
+    when (left, right): ADD then "(+ {show(left)} {show(right)})"
+    when (left, right): SUBTRACT then "(- {show(left)} {show(right)})"
+    when (left, right): MULTIPLY then "(* {show(left)} {show(right)})"
+    when (left, right): DIVIDE then "(/ {show(left)} {show(right)})"
+    esac;
+
+[
+    "(1+3)*7",
+    "1+3*7",
+    "2*(3+4)-10/5",
+    "((11+3)*(5-2))/7"
+]
+|> each(source =>
+    val
+        let tree = parse(source);
+
+        write_line("{source} => {show(tree)} => {evaluate(tree)}")
+    lav);
