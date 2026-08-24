@@ -1,3 +1,1 @@
-  amicable-pairs.ghul: 12,8..12,54: warn: [impure-function-value] argument must be a pure function
-  amicable-pairs.ghul: 13,11..13,80: warn: [impure-function-value] argument must be a pure function
-  amicable-pairs.ghul: 4,5..4,10: warn: [non-snake-case-name] non-snake_case name 'LIMIT'
+amicable-pairs.ghul(4,5,4,10): warning non-snake-case-name: non-snake_case name 'LIMIT' [test.ghulproj]

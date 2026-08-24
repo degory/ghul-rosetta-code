@@ -1,1 +1,1 @@
-  hailstone-sequence.ghul: 13,13..13,19: warn: [return-without-value] return without value from non void function returns default value of type Pipe[int]
+hailstone-sequence.ghul(13,13,13,19): warning return-without-value: return without value from non void function returns default value of type Pipe[int] [test.ghulproj]
