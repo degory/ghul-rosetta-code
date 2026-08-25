@@ -1,0 +1,21 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+class BOX(value: int public);
+
+let n = 5;
+
+// map calls the constructor once per element, so each of these is its own object.
+let distinct = (0..n) |> map(_ => BOX(0)) |> collect_list();
+
+distinct[0].value = 42;
+
+write_line("distinct: {distinct |> map(b => "{b.value}") |> join(" ")}");
+
+// The mistake the task is about: one object, put in the list n times.
+let shared = BOX(0);
+let same = (0..n) |> map(_ => shared) |> collect_list();
+
+same[0].value = 42;
+
+write_line("shared:   {same |> map(b => "{b.value}") |> join(" ")}");
