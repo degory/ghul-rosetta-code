@@ -16,7 +16,8 @@ use Expression.MULTIPLY;
 use Expression.DIVIDE;
 
 // The parser hands back the expression it built and where it stopped, so each level can carry on
-// from where the level below it left off.
+// from where the level below it left off. It is optional because a level that cannot read what it
+// wants has nothing to hand back, and absence travels out to the caller of parse.
 struct PARSED(expression: Expression, next: int);
 
 skip_spaces(text: string, at: int) -> int =>
@@ -28,13 +29,23 @@ skip_spaces(text: string, at: int) -> int =>
 
 // A term is a number or a parenthesised expression; a factor is terms joined by * and /; an
 // expression is factors joined by + and -. The nesting is the precedence.
-parse_term(text: string, at: int) -> PARSED is
+parse_term(text: string, at: int) -> PARSED? is
     let start = skip_spaces(text, at);
 
-    if text[start] == '(' then
-        let (expression, next) = parse_expression(text, start + 1);
+    if start == text.length then
+        return null;
+    fi
 
-        return PARSED(expression, skip_spaces(text, next) + 1);
+    if text[start] == '(' then
+        if let (expression, next) = parse_expression(text, start + 1) then
+            let close = skip_spaces(text, next);
+
+            if close < text.length /\ text[close] == ')' then
+                return PARSED(expression, close + 1);
+            fi
+        fi
+
+        return null;
     fi
 
     let end mut = start;
@@ -42,6 +53,10 @@ parse_term(text: string, at: int) -> PARSED is
     while end < text.length /\ char.is_digit(text[end]) do
         end = end + 1;
     od
+
+    if end == start then
+        return null;
+    fi
 
     return PARSED(NUMBER(int.parse(text.substring(start, end - start))), end);
 si
@@ -63,28 +78,38 @@ build(operator: char, left: Expression, right: Expression) -> Expression =>
 
 // A left-associative run of operators over whatever `operand` parses. Both levels of precedence
 // are this same loop over a different operator set and a different operand parser.
-parse_run(text: string, at: int, operators: string, operand: (string, int) -> PARSED) -> PARSED is
-    let (left, next) = operand(text, at);
+parse_run(text: string, at: int, operators: string, operand: (string, int) -> PARSED?) -> PARSED? is
+    if let (left, next) = operand(text, at) then
+        let expression mut = left;
+        let position mut = next;
 
-    let expression mut = left;
-    let position mut = next;
+        while let here = operator_at(text, position, operators) do
+            if let (right, after) = operand(text, here + 1) then
+                expression = build(text[here], expression, right);
+                position = after;
+            else
+                return null;
+            fi
+        od
 
-    while let here = operator_at(text, position, operators) do
-        let (right, after) = operand(text, here + 1);
+        return PARSED(expression, position);
+    fi
 
-        expression = build(text[here], expression, right);
-        position = after;
-    od
-
-    return PARSED(expression, position);
+    return null;
 si
 
-parse_factor(text: string, at: int) -> PARSED => parse_run(text, at, "*/", parse_term);
+parse_factor(text: string, at: int) -> PARSED? => parse_run(text, at, "*/", parse_term);
 
-parse_expression(text: string, at: int) -> PARSED => parse_run(text, at, "+-", parse_factor);
+parse_expression(text: string, at: int) -> PARSED? => parse_run(text, at, "+-", parse_factor);
 
-parse(text: string) -> Expression =>
-    let (expression, _) = parse_expression(text, 0) in expression;
+// Text left over after a complete expression is a failure too, so "1 2" is not read as just "1".
+parse(text: string) -> Expression? is
+    if let (expression, next) = parse_expression(text, 0) /\ skip_spaces(text, next) == text.length then
+        return expression;
+    fi
+
+    return null;
+si
 
 // The tree is what is evaluated, so nothing here looks at the input text again.
 evaluate(expression: Expression) -> int =>
@@ -105,15 +130,18 @@ show(expression: Expression) -> string =>
     when (left, right): DIVIDE then "(/ {show(left)} {show(right)})"
     esac;
 
-[
+for source in [
     "(1+3)*7",
     "1+3*7",
     "2*(3+4)-10/5",
-    "((11+3)*(5-2))/7"
-]
-|> each(source =>
-    val
-        let tree = parse(source);
-
-        write_line("{source} => {show(tree)} => {evaluate(tree)}")
-    lav);
+    "((11+3)*(5-2))/7",
+    "1+*2",
+    "(1+3",
+    "1 2"
+] do
+    if let tree = parse(source) then
+        write_line("{source} => {show(tree)} => {evaluate(tree)}");
+    else
+        write_line("{source} => cannot be parsed");
+    fi
+od
