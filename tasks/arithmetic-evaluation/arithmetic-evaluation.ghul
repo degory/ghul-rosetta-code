@@ -17,11 +17,7 @@ use Expression.DIVIDE;
 
 // The parser hands back the expression it built and where it stopped, so each level can carry on
 // from where the level below it left off.
-union Parsed is
-    RESULT(expression: Expression, next: int);
-si
-
-use Parsed.RESULT;
+struct PARSED(expression: Expression, next: int);
 
 skip_spaces(text: string, at: int) -> int =>
     if at < text.length /\ text[at] == ' ' then
@@ -32,14 +28,13 @@ skip_spaces(text: string, at: int) -> int =>
 
 // A term is a number or a parenthesised expression; a factor is terms joined by * and /; an
 // expression is factors joined by + and -. The nesting is the precedence.
-parse_term(text: string, at: int) -> Parsed is
+parse_term(text: string, at: int) -> PARSED is
     let start = skip_spaces(text, at);
 
     if text[start] == '(' then
-        case parse_expression(text, start + 1)
-        when (expression, next): RESULT then
-            return RESULT(expression, skip_spaces(text, next) + 1);
-        esac
+        let (expression, next) = parse_expression(text, start + 1);
+
+        return PARSED(expression, skip_spaces(text, next) + 1);
     fi
 
     let end mut = start;
@@ -48,7 +43,7 @@ parse_term(text: string, at: int) -> Parsed is
         end = end + 1;
     od
 
-    return RESULT(NUMBER(int.parse(text.substring(start, end - start))), end);
+    return PARSED(NUMBER(int.parse(text.substring(start, end - start))), end);
 si
 
 // The position of the next operator drawn from `operators`, or absent when what comes next is
@@ -68,32 +63,28 @@ build(operator: char, left: Expression, right: Expression) -> Expression =>
 
 // A left-associative run of operators over whatever `operand` parses. Both levels of precedence
 // are this same loop over a different operator set and a different operand parser.
-parse_run(text: string, at: int, operators: string, operand: (string, int) -> Parsed) -> Parsed is
-    case operand(text, at)
-    when (left, next): RESULT then
-        let expression mut = left;
-        let position mut = next;
+parse_run(text: string, at: int, operators: string, operand: (string, int) -> PARSED) -> PARSED is
+    let (left, next) = operand(text, at);
 
-        while let here = operator_at(text, position, operators) do
-            case operand(text, here + 1)
-            when (right, after): RESULT then
-                expression = build(text[here], expression, right);
-                position = after;
-            esac
-        od
+    let expression mut = left;
+    let position mut = next;
 
-        return RESULT(expression, position);
-    esac
+    while let here = operator_at(text, position, operators) do
+        let (right, after) = operand(text, here + 1);
+
+        expression = build(text[here], expression, right);
+        position = after;
+    od
+
+    return PARSED(expression, position);
 si
 
-parse_factor(text: string, at: int) -> Parsed => parse_run(text, at, "*/", parse_term);
+parse_factor(text: string, at: int) -> PARSED => parse_run(text, at, "*/", parse_term);
 
-parse_expression(text: string, at: int) -> Parsed => parse_run(text, at, "+-", parse_factor);
+parse_expression(text: string, at: int) -> PARSED => parse_run(text, at, "+-", parse_factor);
 
 parse(text: string) -> Expression =>
-    case parse_expression(text, 0)
-    when (expression, _): RESULT then expression
-    esac;
+    let (expression, _) = parse_expression(text, 0) in expression;
 
 // The tree is what is evaluated, so nothing here looks at the input text again.
 evaluate(expression: Expression) -> int =>
