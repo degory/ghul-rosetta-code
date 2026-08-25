@@ -1,0 +1,38 @@
+use IO.Std.write_line;
+use Collections.Iterable;
+use Collections.List;
+use Collections.LIST;
+use Ghul.Pipes;
+
+// Takes one value from each set in turn and yields the sequences the constraint accepts. It is a
+// generator, so a sequence is only built when one is asked for, and a caller that wants a single
+// success stops the search as soon as it has one.
+amb[T](sets: List[Iterable[T]], accepts: (T, T) -> bool pure) -> Pipe[LIST[T]] is
+    if sets.count == 0 then
+        yield LIST[T]();
+    else
+        for choice in sets[0] do
+            for rest in amb(sets |> skip(1) |> collect(), accepts) do
+                if rest.count == 0 \/ accepts(choice, rest[0]) then
+                    let sequence = LIST[T]();
+
+                    sequence.add(choice);
+                    sequence.add_range(rest);
+
+                    yield sequence;
+                fi
+            od
+        od
+    fi
+si
+
+let sets: List[Iterable[string]] = [
+    ["the", "that", "a"],
+    ["frog", "elephant", "thing"],
+    ["walked", "treaded", "grows"],
+    ["slowly", "quickly"]
+];
+
+for sentence in amb(sets, (left, right) => left[left.length - 1] == right[0]) do
+    write_line(sentence |> join(" "));
+od
