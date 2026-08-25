@@ -63,8 +63,14 @@ task_parts() {
     local PART
 
     for PART in "$TASK"/[0-9][0-9]-*/ ; do
-        [ -d "$PART" ] && basename "$PART"
+        if [ -d "$PART" ] ; then
+            basename "$PART"
+        fi
     done
+
+    # A task with no parts is the ordinary case, not a failure: saying so explicitly keeps the
+    # unmatched glob's false test from taking the whole script down under set -e.
+    return 0
 }
 
 # 01-using-map becomes "Using map": the number orders the parts and does not belong in the
