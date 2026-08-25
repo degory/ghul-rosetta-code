@@ -1,0 +1,25 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+smallest_factor(n: int) -> int =>
+    (2::n) |> find_or_throw(d => n % d == 0);
+
+// Counts the prime factors of n with repeats, so 12 = 2 x 2 x 3 counts three.
+prime_factor_count(n: int) -> int =>
+    if n == 1 then 0 else 1 + prime_factor_count(n / smallest_factor(n)) fi;
+
+almost_primes(k: int) -> Pipe[int] is
+    let n mut = 2;
+
+    do
+        if prime_factor_count(n) == k then
+            yield n;
+        fi
+
+        n = n + 1;
+    od
+si
+
+for k in 1::5 do
+    write_line("k = {k}:{almost_primes(k) |> take(10) |> map(n => "{n,5}") |> join("")}");
+od
