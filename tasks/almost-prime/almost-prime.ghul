@@ -4,7 +4,8 @@ use Ghul.Pipes;
 smallest_factor(n: int) -> int =>
     (2::n) |> find_or_throw(d => n % d == 0);
 
-// Counts the prime factors of n with repeats, so 12 = 2 x 2 x 3 counts three.
+// A repeated prime factor counts once for each time it appears: 12 is 2 x 2 x 3, so its count is
+// three.
 prime_factor_count(n: int) -> int =>
     if n == 1 then 0 else 1 + prime_factor_count(n / smallest_factor(n)) fi;
 
