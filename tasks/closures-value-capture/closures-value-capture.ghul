@@ -3,8 +3,8 @@ use Collections.LIST;
 
 let squares = LIST[() -> int]();
 
-// The loop variable is a fresh local variable on each iteration, so each function captures the
-// value that iteration had rather than sharing one variable that ends up at ten.
+// The loop variable is immutable and scoped to the loop body, so every iteration has its own. An
+// immutable local is captured by value, so each function holds the number its own iteration had.
 for i in 0..10 do
     squares.add(() => i * i);
 od
