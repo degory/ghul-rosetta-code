@@ -78,10 +78,8 @@ show(
     achilles_numbers() |> filter(n => is_achilles(totient(n))) |> take(20)
 );
 
-write_line("Achilles numbers by number of digits:");
-
 for digits in 2::5 do
     let total = (power(10, digits - 1)..power(10, digits)) |> filter(is_achilles) |> count();
 
-    write_line("{digits,2}: {total}");
+    write_line("Achilles numbers with {digits} digits: {total}");
 od
