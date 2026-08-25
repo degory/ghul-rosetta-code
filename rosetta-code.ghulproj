@@ -12,6 +12,5 @@
 
   <ItemGroup>
     <GhulSources Include="tasks/**/*.ghul" />
-    <GhulSources Include="root/**/*.ghul" />
   </ItemGroup>
 </Project>
