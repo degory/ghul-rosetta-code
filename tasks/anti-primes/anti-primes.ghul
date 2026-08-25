@@ -1,0 +1,24 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+divisor_count(n: int) -> int =>
+    (1::n) |> filter(d => n % d == 0) |> count();
+
+anti_primes() -> Pipe[int] is
+    let most mut = 0;
+    let n mut = 1;
+
+    do
+        let divisors = divisor_count(n);
+
+        if divisors > most then
+            most = divisors;
+
+            yield n;
+        fi
+
+        n = n + 1;
+    od
+si
+
+write_line(anti_primes() |> take(20) |> join(" "));
