@@ -46,21 +46,21 @@ show(t: Trit) -> string =>
     when _: FALSE then "false"
     esac;
 
-trits() -> Trit[] => [TRUE, MAYBE, FALSE];
+trits: Trit[] => [TRUE, MAYBE, FALSE];
 
 table(name: string, operator: (Trit, Trit) -> Trit) is
     write_line("");
-    write_line("{name,-8}|{trits() |> map(t => "{show(t),6}") |> join("")}");
+    write_line("{name,-8}|{trits |> map(t => "{show(t),6}") |> join("")}");
     write_line("--------+------------------");
 
-    for a in trits() do
-        write_line("{show(a),-8}|{trits() |> map(b => "{show(operator(a, b)),6}") |> join("")}");
+    for a in trits do
+        write_line("{show(a),-8}|{trits |> map(b => "{show(operator(a, b)),6}") |> join("")}");
     od
 si
 
 write_line("not");
 
-for a in trits() do
+for a in trits do
     write_line("{show(a),-8}|{show(!a),6}");
 od
 
