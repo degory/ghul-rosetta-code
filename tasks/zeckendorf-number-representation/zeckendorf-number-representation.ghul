@@ -1,8 +1,8 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-// 1, 2, 3, 5, 8, ... - the Fibonacci numbers with neither zero nor the repeated one, largest
-// first, so the greedy choice below takes the biggest that fits.
+// 1, 2, 3, 5, 8, ... - the Fibonacci numbers without zero and without the repeated one, since a
+// sum uses each of them at most once.
 fibonacci_up_to(limit: int) -> Pipe[int] is
     let smaller mut = 1;
     let larger mut = 2;
@@ -21,8 +21,8 @@ fibonacci_up_to(limit: int) -> Pipe[int] is
     od
 si
 
-// Taking the largest that fits and moving on cannot leave two neighbours chosen: whatever remains
-// after taking one is smaller than the one below it, which is what makes the answer unique.
+// Largest first, taking each one that fits. That can never choose two neighbours: after taking
+// one, what is left is smaller than the one below it.
 zeckendorf(n: int) -> string is
     let digits = System.Text.StringBuilder();
     let remaining mut = n;
