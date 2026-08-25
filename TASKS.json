@@ -200,7 +200,7 @@
     {
       "title": "Hailstone sequence",
       "slug": "hailstone-sequence",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Hello world/Text",
@@ -220,7 +220,7 @@
     {
       "title": "Man or boy test",
       "slug": "man-or-boy-test",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Multiple distinct objects",
@@ -255,12 +255,12 @@
     {
       "title": "Run-length encoding",
       "slug": "run-length-encoding",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Same fringe",
       "slug": "same-fringe",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Sieve of Eratosthenes",
@@ -275,7 +275,7 @@
     {
       "title": "Ternary logic",
       "slug": "ternary-logic",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Towers of Hanoi",
@@ -299,7 +299,7 @@
     {
       "title": "Zeckendorf number representation",
       "slug": "zeckendorf-number-representation",
-      "state": "solved"
+      "state": "published"
     }
   ]
 }
