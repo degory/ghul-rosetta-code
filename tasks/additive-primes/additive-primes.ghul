@@ -1,0 +1,17 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+is_prime(n: int) -> bool =>
+    n > 1 /\ ((2..n) |> take_while(d => d * d <= n) |> all(d => n % d != 0));
+
+digit_sum(n: int) -> int =>
+    if n == 0 then 0 else n % 10 + digit_sum(n / 10) fi;
+
+let additive = (2..500) |> filter(n => is_prime(n) /\ is_prime(digit_sum(n))) |> collect_list();
+
+for row in additive |> chunk(10) do
+    write_line(row |> map(n => "{n,4}") |> join(""));
+od
+
+write_line("");
+write_line("{additive.count} additive primes below 500");
