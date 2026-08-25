@@ -1,9 +1,8 @@
 use IO.Std.write_line;
 
-// The task asks for an accumulator that takes whole and fractional numbers alike, and that keeps
-// returning whole numbers for as long as it has only been given them. A union carries that: a
-// sum is one or the other, and a fractional value on either side of an addition is what widens
-// it.
+// The task requires that an accumulator given only whole numbers returns whole numbers. So a
+// total is either whole or fractional, and adding a fractional value to it makes it fractional
+// from then on.
 union NUMBER is
     WHOLE(value: int);
     FRACTIONAL(value: double);
@@ -31,8 +30,8 @@ show(n: NUMBER) -> string =>
     when (value): FRACTIONAL then "{value}"
     esac;
 
-// The sum is a local of the factory call, so it is captured by reference and each accumulator
-// gets its own. Nothing outside the function returned here can reach it.
+// Every call gets its own sum. A `let mut` is captured by reference, so the returned function
+// adds to that same total each time it is called, and nothing else can read or change it.
 accumulator(initial: NUMBER) -> NUMBER -> NUMBER is
     let sum mut = initial;
 
@@ -47,11 +46,13 @@ let x = accumulator(WHOLE(1));
 
 x(WHOLE(5));
 
+// The task's example builds a second accumulator at this point, to show that doing so leaves the
+// first one alone.
 accumulator(WHOLE(3));
 
 write_line(show(x(FRACTIONAL(2.3D))));
 
-// This one has only ever been given whole numbers, so it is still counting in them.
+// y has only ever been given whole numbers, so its total prints as 20 rather than 20.0.
 let y = accumulator(WHOLE(10));
 
 y(WHOLE(5));
