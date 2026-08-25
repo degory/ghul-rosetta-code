@@ -1,8 +1,5 @@
 use IO.Std.write_line;
 
-// The task requires that an accumulator given only whole numbers returns whole numbers. So a
-// total is either whole or fractional, and adding a fractional value to it makes it fractional
-// from then on.
 union NUMBER is
     WHOLE(value: int);
     FRACTIONAL(value: double);
@@ -13,7 +10,7 @@ use NUMBER.FRACTIONAL;
 
 widen(n: NUMBER) -> double =>
     case n
-    when (value): WHOLE then cast double(value)
+    when (value): WHOLE then cast(value)
     when (value): FRACTIONAL then value
     esac;
 
@@ -30,8 +27,6 @@ show(n: NUMBER) -> string =>
     when (value): FRACTIONAL then "{value}"
     esac;
 
-// Every call gets its own sum. A `let mut` is captured by reference, so the returned function
-// adds to that same total each time it is called, and nothing else can read or change it.
 accumulator(initial: NUMBER) -> NUMBER -> NUMBER is
     let sum mut = initial;
 
@@ -46,8 +41,6 @@ let x = accumulator(WHOLE(1));
 
 x(WHOLE(5));
 
-// The task's example builds a second accumulator at this point, to show that doing so leaves the
-// first one alone.
 accumulator(WHOLE(3));
 
 write_line(show(x(FRACTIONAL(2.3D))));
