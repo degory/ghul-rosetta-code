@@ -34,20 +34,23 @@ task_status() {
     fi
 }
 
-# Run the task and print what it writes to stdout. The built program is used when it is newer
-# than the source, and rebuilt through `dotnet run` when it is not, so an edit is always picked
-# up.
+# Run the task and print what it writes to stdout. The program is built first, separately, and
+# everything the build prints is discarded: MSBuild writes compiler warnings to stdout whatever
+# the verbosity, and a warning captured here would go into the {{out}} block as though the
+# program had printed it - carrying the absolute path of this checkout onto a public page. Only
+# the built program's own output is captured. It is rebuilt when the source is newer, so an edit
+# is always picked up.
 run_task() {
     local SLUG=$1
     local TASK=$ROOT/tasks/$SLUG
 
     local BUILT="$TASK/bin/Debug/net10.0/$SLUG"
 
-    if [ -x "$BUILT" ] && [ "$BUILT" -nt "$TASK/$SLUG.ghul" ] ; then
-        "$BUILT"
-    else
-        dotnet run --project "$TASK" --nologo -v quiet
+    if [ ! -x "$BUILT" ] || [ ! "$BUILT" -nt "$TASK/$SLUG.ghul" ] ; then
+        dotnet build "$TASK" --nologo -v quiet >/dev/null 2>&1 || return 1
     fi
+
+    "$BUILT"
 }
 
 emit() {
