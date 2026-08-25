@@ -46,6 +46,32 @@ integration-tests/capture.sh integration-tests/binary-digits
 yourself it is what the task asks for - capturing is how a wrong answer becomes a permanent
 expectation.
 
+## showing a task more than one way
+
+Some tasks are worth showing twice - the built-in one-liner, and the same thing written out. Those
+are held as **parts**: numbered sub-projects of the task, each a whole program with its own test.
+
+```sh
+scripts/new-part.sh apply-a-callback-to-an-array 01-using-map
+```
+
+```
+tasks/apply-a-callback-to-an-array/
+    task.json
+    01-using-map/           a whole program, with its own .ghulproj
+    02-writing-apply/
+integration-tests/apply-a-callback-to-an-array-01-using-map/
+integration-tests/apply-a-callback-to-an-array-02-writing-apply/
+```
+
+Each part becomes one `===heading===` section of the entry, with its own source and its own output,
+in the order the numbers give. The heading comes from the directory name, so `01-using-map` is
+"Using map". A task with parts has no source of its own: move the existing one into a part and
+delete the task's `.ghulproj` and `ghul.json`, or the two projects collide over the entry point.
+
+Parts are for a task that genuinely reads better as two entries. A solution that simply prints
+several things is one part.
+
 ## Getting the markup to paste
 
 ```sh

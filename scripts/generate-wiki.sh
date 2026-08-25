@@ -4,6 +4,10 @@
 # the program produces. Reads the source from tasks/<slug>/<slug>.ghul and gets the output by
 # running the task, so editing a solution and generating its markup needs nothing in between.
 #
+# A task worth showing more than one way holds parts instead: tasks/<slug>/NN-name/, each a whole
+# program with its own project and test. Each becomes a ===heading=== section with its own source
+# and output, in the order the numbers give.
+#
 #   scripts/generate-wiki.sh <slug>     markup to stdout, ready to paste
 #   scripts/generate-wiki.sh --all      writes wiki-out/<slug>.wiki for every working task
 #
@@ -41,24 +45,45 @@ task_status() {
 # the built program's own output is captured. It is rebuilt when the source is newer, so an edit
 # is always picked up.
 run_task() {
-    local SLUG=$1
-    local TASK=$ROOT/tasks/$SLUG
+    local DIR=$1
+    local NAME=$2
 
-    local BUILT="$TASK/bin/Debug/net10.0/$SLUG"
+    local BUILT="$DIR/bin/Debug/net10.0/$NAME"
 
-    if [ ! -x "$BUILT" ] || [ ! "$BUILT" -nt "$TASK/$SLUG.ghul" ] ; then
-        dotnet build "$TASK" --nologo -v quiet >/dev/null 2>&1 || return 1
+    if [ ! -x "$BUILT" ] || [ ! "$BUILT" -nt "$DIR/$NAME.ghul" ] ; then
+        dotnet build "$DIR" --nologo -v quiet >/dev/null 2>&1 || return 1
     fi
 
     "$BUILT"
 }
 
-emit() {
-    local SLUG=$1
-    local TASK=$ROOT/tasks/$SLUG
-    local TEST=$ROOT/integration-tests/$SLUG
+# The parts of a task, in order, or nothing when it is an ordinary single-program task.
+task_parts() {
+    local TASK=$ROOT/tasks/$1
+    local PART
 
-    local SOURCE="$TASK/$SLUG.ghul"
+    for PART in "$TASK"/[0-9][0-9]-*/ ; do
+        [ -d "$PART" ] && basename "$PART"
+    done
+}
+
+# 01-using-map becomes "Using map": the number orders the parts and does not belong in the
+# heading, and the rest is the heading with its hyphens opened out.
+part_heading() {
+    local NAME=${1#*-}
+
+    NAME=${NAME//-/ }
+
+    echo "${NAME^}"
+}
+
+# One program's source and output: the body of an entry, or of one part of one.
+emit_body() {
+    local DIR=$1
+    local NAME=$2
+    local TEST=$ROOT/integration-tests/$3
+
+    local SOURCE="$DIR/$NAME.ghul"
     local EXPECTED="$TEST/run.expected"
 
     if [ ! -f "$SOURCE" ] ; then
@@ -68,16 +93,15 @@ emit() {
 
     local OUTPUT
 
-    if ! OUTPUT=$(run_task "$SLUG") ; then
-        echo "$SLUG: does not build or run" >&2
+    if ! OUTPUT=$(run_task "$DIR" "$NAME") ; then
+        echo "$3: does not build or run" >&2
         return 1
     fi
 
     if [ -f "$EXPECTED" ] && [ "$OUTPUT" != "$(cat "$EXPECTED")" ] ; then
-        echo "$SLUG: output differs from integration-tests/$SLUG/run.expected - recapture the test" >&2
+        echo "$3: output differs from integration-tests/$3/run.expected - recapture the test" >&2
     fi
 
-    echo "=={{header|ghul}}=="
     printf '%s' "<syntaxhighlight lang=\"ghul\">"
     cat "$SOURCE"
     echo "</syntaxhighlight>"
@@ -91,10 +115,51 @@ emit() {
     fi
 }
 
+emit() {
+    local SLUG=$1
+    local PARTS
+
+    PARTS=$(task_parts "$SLUG")
+
+    echo "=={{header|ghul}}=="
+
+    if [ -z "$PARTS" ] ; then
+        emit_body "$ROOT/tasks/$SLUG" "$SLUG" "$SLUG"
+        return
+    fi
+
+    local PART
+    local FIRST=yes
+
+    for PART in $PARTS ; do
+        [ "$FIRST" = yes ] || echo
+
+        FIRST=no
+
+        echo "===$(part_heading "$PART")==="
+
+        emit_body "$ROOT/tasks/$SLUG/$PART" "$PART" "$SLUG-$PART" || return 1
+    done
+}
+
 working() {
     local SLUG=$1
+    local PARTS
 
-    [ ! -f "$ROOT/integration-tests/$SLUG/disabled" ]
+    PARTS=$(task_parts "$SLUG")
+
+    if [ -z "$PARTS" ] ; then
+        [ ! -f "$ROOT/integration-tests/$SLUG/disabled" ]
+        return
+    fi
+
+    local PART
+
+    for PART in $PARTS ; do
+        [ -f "$ROOT/integration-tests/$SLUG-$PART/disabled" ] && return 1
+    done
+
+    return 0
 }
 
 if [ "$1" = "--all" ] ; then

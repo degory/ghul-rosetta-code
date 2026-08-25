@@ -202,6 +202,16 @@ The reasons are a fixed set - `needs-gui`, `needs-network`, `needs-interaction`,
 `nondeterministic`, `needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
 comes back: it names a compiler or runtime issue and is retried when that closes.
 
+## Showing a task more than one way
+
+A task worth showing two ways - the library call, and the same thing written out - is held as
+parts: `tasks/<slug>/NN-name/`, each a whole program with its own project and its own test, each
+becoming one `===heading===` section of the entry. `scripts/new-part.sh <slug> <NN-name>` scaffolds
+one. `README.md` has the layout.
+
+Reach for it when the two ways are genuinely different things a reader would want to see side by
+side. A solution that prints several results is one part, not several.
+
 ## Test requirements
 
 Both must pass before opening a pull request.

@@ -1,0 +1,6 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// map applies the callback to each element, and $ renders the result, so nothing has to be
+// collected or formatted to print it.
+write_line("{$([1, 2, 3, 4, 5] |> map(x => x * x))}");
