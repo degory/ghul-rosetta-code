@@ -1,0 +1,79 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+union Tree is
+    LEAF(value: int);
+    NODE(left: Tree, right: Tree);
+si
+
+use Tree.LEAF;
+use Tree.NODE;
+
+// A generator, so a leaf is produced only when one is asked for. Nothing walks a whole tree
+// unless a caller keeps asking to the end of it.
+fringe(tree: Tree) -> Pipe[int] is
+    if isa LEAF(tree) then
+        yield tree.value;
+    elif isa NODE(tree) then
+        for leaf in fringe(tree.left) do
+            yield leaf;
+        od
+
+        for leaf in fringe(tree.right) do
+            yield leaf;
+        od
+    fi
+si
+
+// Pulls one leaf from each tree at a time and stops at the first pair that differs, so the count
+// it reports is how much of the two trees had to be looked at.
+compare(a: Tree, b: Tree) -> (same: bool, leaves: int) is
+    let left = fringe(a).iterator;
+    let right = fringe(b).iterator;
+
+    let leaves mut = 0;
+
+    do
+        let more_left = left.move_next();
+        let more_right = right.move_next();
+
+        if more_left != more_right then
+            return (false, leaves);
+        fi
+
+        if !more_left then
+            return (true, leaves);
+        fi
+
+        leaves = leaves + 1;
+
+        if left.current != right.current then
+            return (false, leaves);
+        fi
+    od
+si
+
+show(tree: Tree) -> string =>
+    case tree
+    when (value): LEAF then "{value}"
+    when (left, right): NODE then "({show(left)} {show(right)})"
+    esac;
+
+let leaning_left = NODE(NODE(LEAF(1), LEAF(2)), LEAF(3));
+let leaning_right = NODE(LEAF(1), NODE(LEAF(2), LEAF(3)));
+let differs_last = NODE(LEAF(1), NODE(LEAF(2), LEAF(4)));
+let differs_first = NODE(NODE(LEAF(9), LEAF(2)), LEAF(3));
+let shorter = NODE(LEAF(1), LEAF(2));
+
+for (a, b) in [
+    (leaning_left, leaning_right),
+    (leaning_left, differs_last),
+    (leaning_left, differs_first),
+    (leaning_left, shorter)
+] do
+    let (same, leaves) = compare(a, b);
+
+    write_line(
+        "{show(a)} and {show(b)}: {if same then "same fringe" else "different" fi}, {leaves} {if leaves == 1 then "leaf" else "leaves" fi} compared"
+    );
+od

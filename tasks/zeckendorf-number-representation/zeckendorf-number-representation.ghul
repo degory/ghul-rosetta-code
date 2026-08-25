@@ -1,0 +1,45 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// 1, 2, 3, 5, 8, ... - the Fibonacci numbers with neither zero nor the repeated one, largest
+// first, so the greedy choice below takes the biggest that fits.
+fibonacci_up_to(limit: int) -> Pipe[int] is
+    let smaller mut = 1;
+    let larger mut = 2;
+
+    do
+        yield smaller;
+
+        if larger > limit then
+            break;
+        fi
+
+        let next = smaller + larger;
+
+        smaller = larger;
+        larger = next;
+    od
+si
+
+// Taking the largest that fits and moving on cannot leave two neighbours chosen: whatever remains
+// after taking one is smaller than the one below it, which is what makes the answer unique.
+zeckendorf(n: int) -> string is
+    let digits = System.Text.StringBuilder();
+    let remaining mut = n;
+
+    for value in fibonacci_up_to(n) |> collect_list() |> reverse() do
+        if value <= remaining then
+            digits.append('1');
+
+            remaining = remaining - value;
+        elif digits.length > 0 then
+            digits.append('0');
+        fi
+    od
+
+    return if digits.length == 0 then "0" else digits.to_string() fi;
+si
+
+for n in 0::20 do
+    write_line("{n,2}: {zeckendorf(n)}");
+od

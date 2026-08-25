@@ -218,6 +218,11 @@
       "state": "published"
     },
     {
+      "title": "Man or boy test",
+      "slug": "man-or-boy-test",
+      "state": "solved"
+    },
+    {
       "title": "Multiple distinct objects",
       "slug": "multiple-distinct-objects",
       "state": "published"
@@ -248,6 +253,16 @@
       "state": "published"
     },
     {
+      "title": "Run-length encoding",
+      "slug": "run-length-encoding",
+      "state": "solved"
+    },
+    {
+      "title": "Same fringe",
+      "slug": "same-fringe",
+      "state": "solved"
+    },
+    {
       "title": "Sieve of Eratosthenes",
       "slug": "sieve-of-eratosthenes",
       "state": "published"
@@ -256,6 +271,11 @@
       "title": "Smith\u2013Waterman algorithm",
       "slug": "smith-waterman-algorithm",
       "state": "published"
+    },
+    {
+      "title": "Ternary logic",
+      "slug": "ternary-logic",
+      "state": "solved"
     },
     {
       "title": "Towers of Hanoi",
@@ -275,6 +295,11 @@
       "title": "Y combinator",
       "slug": "y-combinator",
       "state": "published"
+    },
+    {
+      "title": "Zeckendorf number representation",
+      "slug": "zeckendorf-number-representation",
+      "state": "solved"
     }
   ]
 }
