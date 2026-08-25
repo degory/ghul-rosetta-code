@@ -6,6 +6,11 @@
       "state": "solved"
     },
     {
+      "title": "100 prisoners",
+      "state": "rejected",
+      "reason": "nondeterministic"
+    },
+    {
       "title": "15 puzzle game",
       "state": "rejected",
       "reason": "needs-interaction"
@@ -26,6 +31,11 @@
       "reason": "needs-interaction"
     },
     {
+      "title": "ABC problem",
+      "slug": "abc-problem",
+      "state": "solved"
+    },
+    {
       "title": "Abstract type",
       "slug": "abstract-type",
       "state": "solved"
@@ -33,6 +43,11 @@
     {
       "title": "Accumulator factory",
       "slug": "accumulator-factory",
+      "state": "solved"
+    },
+    {
+      "title": "Achilles numbers",
+      "slug": "achilles-numbers",
       "state": "solved"
     },
     {
@@ -46,10 +61,20 @@
       "reason": "needs-network"
     },
     {
+      "title": "Active Directory/Search for a user",
+      "state": "rejected",
+      "reason": "needs-network"
+    },
+    {
       "title": "Active object",
       "state": "rejected",
       "reason": "nondeterministic",
       "note": "the object\u0027s state is defined as depending on the clock"
+    },
+    {
+      "title": "Additive primes",
+      "slug": "additive-primes",
+      "state": "solved"
     },
     {
       "title": "Algebraic data types",
@@ -59,6 +84,16 @@
     {
       "title": "Align columns",
       "slug": "align-columns",
+      "state": "solved"
+    },
+    {
+      "title": "Almost prime",
+      "slug": "almost-prime",
+      "state": "solved"
+    },
+    {
+      "title": "Amb",
+      "slug": "amb",
       "state": "solved"
     },
     {
@@ -93,6 +128,11 @@
       "state": "published"
     },
     {
+      "title": "Anti-primes",
+      "slug": "anti-primes",
+      "state": "solved"
+    },
+    {
       "title": "Apply a callback to an array",
       "slug": "apply-a-callback-to-an-array",
       "state": "solved"
@@ -101,6 +141,11 @@
       "title": "Arbitrary-precision integers (included)",
       "slug": "arbitrary-precision-integers",
       "state": "solved"
+    },
+    {
+      "title": "Archimedean spiral",
+      "state": "rejected",
+      "reason": "needs-gui"
     },
     {
       "title": "Arithmetic evaluation",
