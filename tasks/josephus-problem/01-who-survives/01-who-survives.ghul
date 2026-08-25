@@ -1,0 +1,9 @@
+use IO.Std.write_line;
+
+// With one prisoner the survivor is number 0. Adding a prisoner shifts the answer round the
+// circle by k, and the circle wraps, so each larger case is one step from the one below it.
+survivor(n: int, k: int) -> int =>
+    if n == 1 then 0 else (survivor(n - 1, k) + k) % n fi;
+
+write_line("41 prisoners, every 3rd killed: prisoner {survivor(41, 3)} survives");
+write_line("5 prisoners, every 2nd killed:  prisoner {survivor(5, 2)} survives");

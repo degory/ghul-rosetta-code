@@ -1,0 +1,27 @@
+use IO.Std.write_line;
+use Collections.MAP;
+use Ghul.Pipes;
+
+// The next term answers "how long since this one last appeared", which is zero when it has not.
+// Remembering where each term was last seen makes that a lookup rather than a search back.
+van_eck() -> Pipe[int] is
+    let last_seen = MAP[int, int]();
+
+    let term mut = 0;
+    let position mut = 0;
+
+    do
+        yield term;
+
+        let previous mut = 0;
+        let next = if last_seen.try_get_value(term, previous ref) then position - previous else 0 fi;
+
+        last_seen[term] = position;
+
+        term = next;
+        position = position + 1;
+    od
+si
+
+write_line("first ten:      {van_eck() |> take(10) |> join(" ")}");
+write_line("terms 991-1000: {van_eck() |> skip(990) |> take(10) |> join(" ")}");

@@ -1,0 +1,24 @@
+use IO.Std.write_line;
+use Collections.List;
+use Ghul.Pipes;
+
+// The pivot splits the rest into what sorts before it and what sorts after, and those two are
+// sorted the same way. Partitioning with filter says that directly, at the cost of walking the
+// tail twice and building new lists rather than exchanging in place.
+quicksort[T: Ghul.Comparable[T]](values: List[T]) -> List[T] =>
+    if values.count <= 1 then
+        values
+    else
+        val
+            let pivot = values[0];
+            let rest = values |> skip(1) |> collect();
+
+            quicksort(rest |> filter(v => v < pivot) |> collect())
+                |> cat([pivot])
+                |> cat(quicksort(rest |> filter(v => v >= pivot) |> collect()))
+                |> collect()
+        lav
+    fi;
+
+write_line("{$quicksort([6, 2, 9, 2, 5, 1, 8, 3] |> collect())}");
+write_line("{$quicksort(["pear", "apple", "fig", "date"] |> collect())}");

@@ -1,0 +1,40 @@
+use IO.Std.write_line;
+use Collections.Iterable;
+use Collections.List;
+use Collections.LIST;
+use Ghul.Pipes;
+
+// Every subset either leaves the first element out or takes it in, so each element doubles the
+// answer: the power set of the rest, and that same power set with the element added to each.
+power_set[T](values: List[T]) -> LIST[LIST[T]] is
+    if values.count == 0 then
+        let empty: LIST[LIST[T]] = _();
+
+        empty.add(LIST[T]());
+
+        return empty;
+    fi
+
+    let first = values[0];
+    let result: LIST[LIST[T]] = _();
+
+    for subset in power_set(values |> skip(1) |> collect()) do
+        let with_first: LIST[T] = _();
+
+        with_first.add(first);
+        with_first.add_range(subset);
+
+        result.add(subset);
+        result.add(with_first);
+    od
+
+    return result;
+si
+
+braced[T](values: Iterable[T]) -> string => "{{{values |> join(", ")}}}";
+
+show[T](sets: LIST[LIST[T]]) -> string => braced(sets |> map(s => braced(s)));
+
+write_line(show(power_set(LIST[int]())));
+write_line(show(power_set([1, 2, 3] |> collect())));
+write_line(show(power_set(["a", "b"] |> collect())));

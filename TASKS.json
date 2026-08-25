@@ -208,6 +208,11 @@
       "state": "published"
     },
     {
+      "title": "Josephus problem",
+      "slug": "josephus-problem",
+      "state": "solved"
+    },
+    {
       "title": "Levenshtein distance",
       "slug": "levenshtein-distance",
       "state": "published"
@@ -248,9 +253,19 @@
       "state": "published"
     },
     {
+      "title": "Power set",
+      "slug": "power-set",
+      "state": "solved"
+    },
+    {
       "title": "Reverse a string",
       "slug": "reverse-a-string",
       "state": "published"
+    },
+    {
+      "title": "Roman numerals/Encode",
+      "slug": "roman-numerals-encode",
+      "state": "solved"
     },
     {
       "title": "Run-length encoding",
@@ -273,9 +288,19 @@
       "state": "published"
     },
     {
+      "title": "Sorting algorithms/Quicksort",
+      "slug": "sorting-algorithms-quicksort",
+      "state": "solved"
+    },
+    {
       "title": "Ternary logic",
       "slug": "ternary-logic",
       "state": "published"
+    },
+    {
+      "title": "Text processing/Max licenses in use",
+      "state": "rejected",
+      "reason": "needs-network"
     },
     {
       "title": "Towers of Hanoi",
@@ -285,6 +310,11 @@
     {
       "title": "User:Degory/sandbox",
       "state": "published"
+    },
+    {
+      "title": "Van Eck sequence",
+      "slug": "van-eck-sequence",
+      "state": "solved"
     },
     {
       "title": "Variadic function",

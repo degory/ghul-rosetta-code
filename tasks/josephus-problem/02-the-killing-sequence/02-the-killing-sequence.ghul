@@ -1,0 +1,26 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// Walking the circle for real: the executioner steps k - 1 places past the last one killed, and
+// removing a prisoner closes the gap, so the next count carries on from the same index.
+killings(n: int, k: int) -> Pipe[int] is
+    let standing = (0..n) |> collect_list();
+    let at mut = 0;
+
+    while standing.count > 1 do
+        at = (at + k - 1) % standing.count;
+
+        yield standing[at];
+
+        standing.remove_at(at);
+    od
+si
+
+show(n: int, k: int) is
+    let killed = killings(n, k) |> collect_list();
+
+    write_line("n = {n}, k = {k}: killed {killed |> join(", ")}");
+si
+
+show(5, 2);
+show(7, 3);

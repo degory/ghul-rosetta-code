@@ -1,0 +1,26 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// Largest value first, and the four subtractive pairs sit in the table as values of their own, so
+// taking as many of each as fit needs no special case for them.
+roman(n: int) -> string is
+    let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    let symbols = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+
+    let numeral = System.Text.StringBuilder();
+    let remaining mut = n;
+
+    for i in 0..values.count do
+        while remaining >= values[i] do
+            numeral.append(symbols[i]);
+
+            remaining = remaining - values[i];
+        od
+    od
+
+    return numeral.to_string();
+si
+
+for n in [1990, 2008, 1666, 4, 9, 3999] do
+    write_line("{n,4} = {roman(n)}");
+od
