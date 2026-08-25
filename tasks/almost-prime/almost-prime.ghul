@@ -4,7 +4,6 @@ use Ghul.Pipes;
 smallest_factor(n: int) -> int =>
     (2::n) |> find_or_throw(d => n % d == 0);
 
-// Repeats count separately: 12 is 2 x 2 x 3, so it has three prime factors, not two.
 prime_factor_count(n: int) -> int =>
     if n == 1 then 0 else 1 + prime_factor_count(n / smallest_factor(n)) fi;
 
