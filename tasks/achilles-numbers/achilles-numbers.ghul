@@ -37,9 +37,9 @@ gcd(a: int, b: int) -> int =>
 power(base: int, exponent: int) -> int =>
     if exponent == 0 then 1 else base * power(base, exponent - 1) fi;
 
-// Powerful means every exponent is at least two. A perfect power is one whose exponents share a
-// common divisor, since that divisor is the k it could be raised by, so an Achilles number is a
-// powerful number whose exponents have none.
+// Powerful means every exponent is at least two. A number is some m raised to the power k exactly
+// when k divides every one of its exponents, so an imperfect one is a number whose exponents have
+// no common divisor above one.
 is_achilles(n: int) -> bool =>
     let factors = factorize(n) in
         factors.count > 0 /\
