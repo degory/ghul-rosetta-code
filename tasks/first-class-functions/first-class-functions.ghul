@@ -21,9 +21,9 @@ inverses.add(Math.asin);
 inverses.add(Math.acos);
 inverses.add(cube_root);
 
-for i in 0..functions.count do
+for (function, inverse) in functions | .zip(inverses) do
     // compose each function with its inverse
-    let round_trip = inverses[i] >> functions[i];
+    let round_trip = inverse >> function;
 
     // we expect that round_trip(x) == x for all x
     // in the domain of the function

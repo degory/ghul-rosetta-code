@@ -1,6 +1,6 @@
-is_palindrome("racecar"): True
-is_palindrome("hello"): False
-is_palindrome("rotor"): True
-is_inexact_palindrome("A man, a plan, a canal: Panama"): True
-is_inexact_palindrome("race car"): True
-is_inexact_palindrome("hello world"): False
+"racecar" is a palindrome
+"hello" is not a palindrome
+"rotor" is a palindrome
+"A man, a plan, a canal: Panama" is a palindrome
+"race car" is a palindrome
+"hello world" is not a palindrome

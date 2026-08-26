@@ -1,4 +1,5 @@
-use IO.Std.write_line;
+use wl = IO.Std.write_line;
+use Ghul.Collections;
 use Ghul.Pipes;
 
 reverse(s: string) -> string =>
@@ -14,11 +15,17 @@ is_inexact_palindrome(s: string) -> bool =>
         |> reduce("", (acc, c) => "{acc}{c}")
         |> is_palindrome();
 
-write_line("is_palindrome(\"racecar\"): {is_palindrome("racecar")}");
-write_line("is_palindrome(\"hello\"): {is_palindrome("hello")}");
-write_line("is_palindrome(\"rotor\"): {is_palindrome("rotor")}");
+test(maybe_palindrome: string, palindrome_check: string -> bool) -> string =>
+    if palindrome_check(maybe_palindrome) then
+        "\"{maybe_palindrome}\" is a palindrome"
+    else
+        "\"{maybe_palindrome}\" is not a palindrome"
+    fi;
 
-for text in ["A man, a plan, a canal: Panama", "race car", "hello world"] do
-    write_line(
-        "is_inexact_palindrome(\"{text}\"): {is_inexact_palindrome(text)}");
-od
+wl(test("racecar", is_palindrome));
+wl(test("hello", is_palindrome));
+wl(test("rotor", is_palindrome));
+
+wl(test("A man, a plan, a canal: Panama", is_inexact_palindrome));
+wl(test("race car", is_inexact_palindrome));
+wl(test("hello world", is_inexact_palindrome));

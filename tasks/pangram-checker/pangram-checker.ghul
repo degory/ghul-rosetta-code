@@ -3,8 +3,8 @@ use Ghul.Pipes;
 
 is_pangram(sentence: string) -> bool =>
     sentence
-        |> map(c => c |> char.to_lower())
-        |> filter(c => c |> char.is_letter())
+        |> map(char.to_lower)
+        |> filter(char.is_letter)
         |> distinct()
         |> count() == 26;
 
