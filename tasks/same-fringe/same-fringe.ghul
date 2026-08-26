@@ -9,8 +9,7 @@ si
 use Tree.LEAF;
 use Tree.NODE;
 
-// A generator, so a leaf is produced only when one is asked for. Nothing
-// walks a whole tree unless a caller keeps asking to the end of it.
+// A generator, so a leaves are produced lazily
 fringe(tree: Tree) -> Pipe[int] is
     if isa LEAF(tree) then
         yield tree.value;
@@ -25,9 +24,6 @@ fringe(tree: Tree) -> Pipe[int] is
     fi
 si
 
-// Pulls one leaf from each tree at a time and stops at the first pair that
-// differs, so the count it reports is how much of the two
-// trees had to be looked at.
 compare(a: Tree, b: Tree) -> (same: bool, leaves: int) is
     let left = fringe(a).iterator;
     let right = fringe(b).iterator;
@@ -74,10 +70,7 @@ for (a, b) in [
 ] do
     let (same, leaves) = compare(a, b);
 
-    let verdict = if same then "same fringe" else "different" fi;
-    let plural = if leaves == 1 then "leaf" else "leaves" fi;
-
     write_line(
-        "{show(a)} and {show(b)}: {verdict}, {leaves} {plural} compared"
+        "{show(a)} and {show(b)}: {if same then "same fringe" else "different" fi}, {leaves} {if leaves == 1 then "leaf" else "leaves" fi} compared"
     );
 od
