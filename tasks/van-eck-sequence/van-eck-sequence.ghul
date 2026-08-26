@@ -15,7 +15,12 @@ van_eck() -> Pipe[int] is
         yield term;
 
         let previous mut = 0;
-        let next = if last_seen.try_get_value(term, previous ref) then position - previous else 0 fi;
+        let next =
+            if last_seen.try_get_value(term, previous ref) then
+                position - previous
+            else
+                0
+            fi;
 
         last_seen[term] = position;
 
@@ -25,4 +30,5 @@ van_eck() -> Pipe[int] is
 si
 
 write_line("first ten:      {van_eck() |> take(10) |> join(" ")}");
-write_line("terms 991-1000: {van_eck() |> skip(990) |> take(10) |> join(" ")}");
+write_line(
+    "terms 991-1000: {van_eck() |> skip(990) |> take(10) |> join(" ")}");

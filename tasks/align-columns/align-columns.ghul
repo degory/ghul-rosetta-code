@@ -42,7 +42,9 @@ let rows =
     |> collect_array();
 
 let columns =
-    rows |> reduce(0, (widest, row) => if row.count > widest then row.count else widest fi);
+    rows
+    |> reduce(0, (widest, row) =>
+        if row.count > widest then row.count else widest fi);
 
 // A column is as wide as its longest word, over the rows
 // long enough to have one.
@@ -52,7 +54,11 @@ let widths =
         rows
         |> filter(row => column < row.count)
         |> reduce(0, (widest, row) =>
-            if row[column].length > widest then row[column].length else widest fi))
+            if row[column].length > widest then
+                row[column].length
+            else
+                widest
+            fi))
     |> collect_array();
 
 for alignment in [Alignment.LEFT, Alignment.RIGHT, Alignment.CENTRE] do

@@ -5,7 +5,14 @@ use IO.Std.write_line;
 // k, and the B it builds captures that one: a `let mut` is captured by
 // reference, so B decrements the k of the call it was made in, even when it
 // is called long afterwards from somewhere further down.
-a(k: int, x1: () -> int, x2: () -> int, x3: () -> int, x4: () -> int, x5: () -> int) -> int is
+a(
+    k: int,
+    x1: () -> int,
+    x2: () -> int,
+    x3: () -> int,
+    x4: () -> int,
+    x5: () -> int
+) -> int is
     let counter mut = k;
 
     let b = () rec =>
@@ -19,5 +26,7 @@ a(k: int, x1: () -> int, x2: () -> int, x3: () -> int, x4: () -> int, x5: () -> 
 si
 
 for k in 0::10 do
-    write_line("k = {k,2}: {a(k, () => 1, () => -1, () => -1, () => 1, () => 0)}");
+    let result = a(k, () => 1, () => -1, () => -1, () => 1, () => 0);
+
+    write_line("k = {k,2}: {result}");
 od

@@ -3,7 +3,11 @@ use Collections.List;
 use Ghul.Pipes;
 
 without(blocks: List[string], at: int) -> List[string] =>
-    blocks |> index() |> filter(b => b.index != at) |> map(b => b.value) |> collect();
+    blocks
+    |> index()
+    |> filter(b => b.index != at)
+    |> map(b => b.value)
+    |> collect();
 
 // Every block carrying the letter has to be tried, not just the first: two
 // blocks can both offer a letter, and taking the wrong one strands a
@@ -13,7 +17,8 @@ can_spell(word: string, blocks: List[string]) -> bool =>
     (blocks
         |> index()
         |> filter(b => b.value.contains(word[0]))
-        |> any(b => can_spell(word.substring(1), blocks |> without(b.index))));
+        |> any(b =>
+            can_spell(word.substring(1), blocks |> without(b.index))));
 
 let blocks = [
     "BO", "XK", "DQ", "CP", "NA", "GT", "RE", "TG", "QD", "FS",

@@ -8,7 +8,10 @@ use Ghul.Pipes;
 // constraint accepts. It is a generator, so a sequence is only built when
 // one is asked for, and a caller that wants a single success stops the
 // search as soon as it has one.
-amb[T](sets: List[Iterable[T]], accepts: (T, T) -> bool pure) -> Pipe[LIST[T]] is
+amb[T](
+    sets: List[Iterable[T]],
+    accepts: (T, T) -> bool pure
+) -> Pipe[LIST[T]] is
     if sets.count == 0 then
         yield LIST[T]();
     else
@@ -34,6 +37,9 @@ let sets: List[Iterable[string]] = [
     ["slowly", "quickly"]
 ];
 
-for sentence in amb(sets, (left, right) => left[left.length - 1] == right[0]) do
+let joins =
+    (left: string, right: string) => left[left.length - 1] == right[0];
+
+for sentence in amb(sets, joins) do
     write_line(sentence |> join(" "));
 od

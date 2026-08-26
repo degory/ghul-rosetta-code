@@ -7,7 +7,8 @@ score(a: char, b: char) -> int => if a == b then 2 else -1 fi;
 
 gap() -> int => -2;
 
-highest(values: int[]) -> int => values |> reduce(0, (best, v) => if v > best then v else best fi);
+highest(values: int[]) -> int =>
+    values |> reduce(0, (best, v) => if v > best then v else best fi);
 
 // H(i, j) is the best score of an alignment ending at a[i] and b[j]. Zero
 // is one of the choices, which is what makes the alignment local: a prefix
@@ -62,7 +63,11 @@ si
 // Walking back from that cell to the first zero, taking whichever move
 // produced each score. A diagonal step consumes a character from both
 // sequences, and the other two open a gap.
-trace(a: string, b: string, h: LIST[LIST[int]]) -> (a_aligned: string, b_aligned: string, path: string) is
+trace(
+    a: string,
+    b: string,
+    h: LIST[LIST[int]]
+) -> (a_aligned: string, b_aligned: string, path: string) is
     let (row, column) = best_cell(h);
 
     let i mut = row;
@@ -123,7 +128,9 @@ show(a: string, b: string) is
     for i in 0::a.length do
         let label = if i == 0 then " " else "{a[i - 1]}" fi;
 
-        write_line("  {label} {h[i] |> map(v => "{v}".pad_left(3)) |> join("")}");
+        let row = h[i] |> map(v => "{v}".pad_left(3)) |> join("");
+
+        write_line("  {label} {row}");
     od
 si
 

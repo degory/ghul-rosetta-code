@@ -18,6 +18,7 @@ write_line("is_palindrome(\"racecar\"): {is_palindrome("racecar")}");
 write_line("is_palindrome(\"hello\"): {is_palindrome("hello")}");
 write_line("is_palindrome(\"rotor\"): {is_palindrome("rotor")}");
 
-write_line("is_inexact_palindrome(\"A man, a plan, a canal: Panama\"): {is_inexact_palindrome("A man, a plan, a canal: Panama")}");
-write_line("is_inexact_palindrome(\"race car\"): {is_inexact_palindrome("race car")}");
-write_line("is_inexact_palindrome(\"hello world\"): {is_inexact_palindrome("hello world")}");
+for text in ["A man, a plan, a canal: Panama", "race car", "hello world"] do
+    write_line(
+        "is_inexact_palindrome(\"{text}\"): {is_inexact_palindrome(text)}");
+od

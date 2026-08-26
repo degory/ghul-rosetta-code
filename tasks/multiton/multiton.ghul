@@ -68,9 +68,12 @@ let alpha_again = connections.get("alpha");
 write_line("{alpha}");
 write_line("{beta}");
 
-write_line("asking twice for alpha gives the same object: {alpha == alpha_again}");
+write_line(
+    "asking twice for alpha gives the same object: {alpha == alpha_again}");
 write_line("alpha and beta are different objects: {alpha != beta}");
-write_line("requests: 3, instances made: {made}, instances held: {connections.count}");
+write_line(
+    "requests: 3, instances made: {made}, "
+    "instances held: {connections.count}");
 
 let keys = ["one", "two", "three"];
 
@@ -83,4 +86,6 @@ Tasks.Parallel.`for(
         lav
 );
 
-write_line("300 more requests over {keys.count} keys, in parallel: {made} made in total, {connections.count} held");
+write_line(
+    "300 more requests over {keys.count} keys, in parallel: "
+    "{made} made in total, {connections.count} held");

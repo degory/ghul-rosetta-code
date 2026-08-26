@@ -14,9 +14,12 @@ quicksort[T: Ghul.Comparable[T]](values: List[T]) -> List[T] =>
             let pivot = values[0];
             let rest = values |> skip(1) |> collect();
 
-            quicksort(rest |> filter(v => v < pivot) |> collect())
+            let below = rest |> filter(v => v < pivot) |> collect();
+            let above = rest |> filter(v => v >= pivot) |> collect();
+
+            quicksort(below)
                 |> cat([pivot])
-                |> cat(quicksort(rest |> filter(v => v >= pivot) |> collect()))
+                |> cat(quicksort(above))
                 |> collect()
         lav
     fi;

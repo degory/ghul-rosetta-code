@@ -55,7 +55,9 @@ table(name: string, operator: (Trit, Trit) -> Trit) is
     write_line("--------+------------------");
 
     for a in trits do
-        write_line("{show(a),-8}|{trits |> map(b => "{show(operator(a, b)),6}") |> join("")}");
+        let row = trits |> map(b => "{show(operator(a, b)),6}") |> join("");
+
+        write_line("{show(a),-8}|{row}");
     od
 si
 

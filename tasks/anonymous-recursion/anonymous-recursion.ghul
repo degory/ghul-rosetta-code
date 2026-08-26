@@ -5,7 +5,8 @@ use IO.Std.write_line;
 // function and no name at all: the literal is applied where it is written.
 let fibonacci = n =>
     if n < 0 then
-        throw System.ArgumentException("fibonacci is not defined for a negative argument")
+        throw System.ArgumentException(
+            "fibonacci is not defined for a negative argument")
     else
         (i rec => if i < 2 then i else rec(i - 1) + rec(i - 2) fi)(n)
     fi;

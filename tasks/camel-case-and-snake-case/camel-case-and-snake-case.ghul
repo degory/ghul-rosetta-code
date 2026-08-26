@@ -11,7 +11,12 @@ class NAME(words: Collections.List[string] private) is
     to_camel_case() -> string =>
         _words
         | .index()
-        | .map(((position, word)) => if position == 0 then _lower_first(word) else _upper_first(word) fi)
+        | .map(((position, word)) =>
+            if position == 0 then
+                _lower_first(word)
+            else
+                _upper_first(word)
+            fi)
         | .join("");
 
     to_snake_case() -> string =>
@@ -49,9 +54,11 @@ parse(text: string) -> NAME is
     return NAME(words);
 si
 
-_lower_first(word: string) -> string pure => "{char.to_lower(word[0])}{word.substring(1)}";
+_lower_first(word: string) -> string pure =>
+    "{char.to_lower(word[0])}{word.substring(1)}";
 
-_upper_first(word: string) -> string pure => "{char.to_upper(word[0])}{word.substring(1)}";
+_upper_first(word: string) -> string pure =>
+    "{char.to_upper(word[0])}{word.substring(1)}";
 
 _quoted(text: string) -> string pure => "\"{text}\"";
 
@@ -66,10 +73,15 @@ let tests = [
     "  spaces  "
 ];
 
-write_line("{"input".pad_right(37)} {"snake case".pad_right(37)} camel case");
+write_line(
+    "{"input".pad_right(37)} {"snake case".pad_right(37)} camel case");
 
 for test in tests do
     let name = parse(test);
 
-    write_line("{_quoted(test).pad_right(37)} {_quoted(name.to_snake_case()).pad_right(37)} {_quoted(name.to_camel_case())}");
+    let snake = _quoted(name.to_snake_case());
+    let camel = _quoted(name.to_camel_case());
+
+    write_line(
+        "{_quoted(test).pad_right(37)} {snake.pad_right(37)} {camel}");
 od

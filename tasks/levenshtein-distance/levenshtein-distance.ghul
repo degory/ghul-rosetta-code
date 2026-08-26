@@ -18,10 +18,13 @@ levenshtein(source: string, target: string) -> int is
         current.add(i);
 
         for j in 1::target.length do
-            let substitution =
-                previous[j - 1] + if source[i - 1] == target[j - 1] then 0 else 1 fi;
+            let same = source[i - 1] == target[j - 1];
+            let substitution = previous[j - 1] + if same then 0 else 1 fi;
 
-            current.add(min(substitution, min(previous[j] + 1, current[j - 1] + 1)));
+            let insertion = previous[j] + 1;
+            let deletion = current[j - 1] + 1;
+
+            current.add(min(substitution, min(insertion, deletion)));
         od
 
         previous = current;
