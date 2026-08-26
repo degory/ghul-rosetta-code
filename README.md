@@ -122,6 +122,9 @@ implementations in fifty other languages.
   fluent methods, prefer functions to classes and expression bodies to blocks, and use the
   constructs the language next door has no word for. `AGENTS.md` has the detail.
 - Keep the output deterministic. No clocks, no random numbers, no paths.
+- Keep lines under 64 columns, and never past 76. A solution is read in a fixed-width block on
+  Rosetta Code and in a prose column about 77 characters wide on ghul.dev, so anything longer
+  scrolls out of sight. `scripts/check-width.sh` reports the offenders.
 - Rosetta Code's syntax highlighter has no ghūl lexer, so the code goes in a
   `<syntaxhighlight lang="ghul">` block, which it renders unhighlighted rather than rejecting.
   Follow it with the real captured output in a `{{out}}` block.

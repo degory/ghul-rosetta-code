@@ -57,6 +57,37 @@ it does not need is as bad as one that reaches for none of them; the point is
 that where ghūl has its own way of saying something, the entry should say it
 that way.
 
+## Keep lines narrow
+
+A solution is read in a column, not in your editor: on Rosetta Code it sits in a fixed-width block,
+and on ghul.dev it sits in a prose column narrower than that. A line that runs past the edge either
+wraps in the middle of an expression or scrolls out of sight, and neither reads well.
+
+**Aim for 64 columns. Never exceed 76.** Those come from where the code is read rather than from
+habit. ghul.dev renders an example in a prose column about 77 characters wide at the size it uses,
+so a line past that scrolls out of sight - and the examples written for that site sit well inside
+it, 99% of their lines at 68 columns or less. The usual 80 and 100 are already too wide here.
+
+```sh
+scripts/check-width.sh            # every line over the limits, worst first
+```
+
+The compiler's formatter can do the wrapping where an expression is simply long, though it targets
+100 columns and cannot yet be told otherwise (degory/ghul#2191), so it will not get a line under 76
+on its own:
+
+```sh
+dotnet ghul-compiler --format tasks/<slug>/<slug>.ghul
+```
+
+It writes to standard output rather than rewriting the file, so redirect it somewhere and compare
+before replacing anything - the formatter is faithful but it is not the author, and a solution's
+line breaks are often deliberate.
+
+Where a line is long because of what it says rather than how it is laid out, break it up: a local
+variable for a sub-expression usually reads better than a continuation, and a long string of
+output is better built than written out.
+
 ## Reaching shared state from a function
 
 A solution with no `namespace` runs its top-level statements as the entry point,
