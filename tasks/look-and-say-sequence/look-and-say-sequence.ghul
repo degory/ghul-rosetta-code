@@ -1,8 +1,9 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-// A generator: each `yield` hands the consumer the next term and suspends there, so the sequence
-// is unbounded and only as much of it is computed as the consumer asks for.
+// A generator: each `yield` hands the consumer the next term and suspends
+// there, so the sequence is unbounded and only as much of it is computed
+// as the consumer asks for.
 look_and_say(seed: string) -> Pipe[string] is
     let current mut = seed;
 

@@ -15,9 +15,10 @@ use Expression.SUBTRACT;
 use Expression.MULTIPLY;
 use Expression.DIVIDE;
 
-// The parser hands back the expression it built and where it stopped, so each level can carry on
-// from where the level below it left off. It is optional because a level that cannot read what it
-// wants has nothing to hand back, and absence travels out to the caller of parse.
+// The parser hands back the expression it built and where it stopped, so
+// each level can carry on from where the level below it left off. It is
+// optional because a level that cannot read what it wants has nothing to
+// hand back, and absence travels out to the caller of parse.
 struct PARSED(expression: Expression, next: int);
 
 skip_spaces(text: string, at: int) -> int =>
@@ -27,8 +28,9 @@ skip_spaces(text: string, at: int) -> int =>
         at
     fi;
 
-// A term is a number or a parenthesised expression; a factor is terms joined by * and /; an
-// expression is factors joined by + and -. The nesting is the precedence.
+// A term is a number or a parenthesised expression; a factor is terms
+// joined by * and /; an expression is factors joined by + and -. The
+// nesting is the precedence.
 parse_term(text: string, at: int) -> PARSED? is
     let start = skip_spaces(text, at);
 
@@ -61,8 +63,8 @@ parse_term(text: string, at: int) -> PARSED? is
     return PARSED(NUMBER(int.parse(text.substring(start, end - start))), end);
 si
 
-// The position of the next operator drawn from `operators`, or absent when what comes next is
-// not one of them, which is what ends a run.
+// The position of the next operator drawn from `operators`, or absent when
+// what comes next is not one of them, which is what ends a run.
 operator_at(text: string, position: int, operators: string) -> int? =>
     let here = skip_spaces(text, position) in
     if here < text.length /\ operators.contains(text[here]) then here else null fi;
@@ -76,8 +78,9 @@ build(operator: char, left: Expression, right: Expression) -> Expression =>
     else throw System.Exception("not an operator: {operator}")
     esac;
 
-// A left-associative run of operators over whatever `operand` parses. Both levels of precedence
-// are this same loop over a different operator set and a different operand parser.
+// A left-associative run of operators over whatever `operand` parses. Both
+// levels of precedence are this same loop over a different operator set and
+// a different operand parser.
 parse_run(text: string, at: int, operators: string, operand: (string, int) -> PARSED?) -> PARSED? is
     if let (left, next) = operand(text, at) then
         let expression mut = left;
@@ -102,7 +105,8 @@ parse_factor(text: string, at: int) -> PARSED? => parse_run(text, at, "*/", pars
 
 parse_expression(text: string, at: int) -> PARSED? => parse_run(text, at, "+-", parse_factor);
 
-// Text left over after a complete expression is a failure too, so "1 2" is not read as just "1".
+// Text left over after a complete expression is a failure too, so "1 2"
+// is not read as just "1".
 parse(text: string) -> Expression? is
     if let (expression, next) = parse_expression(text, 0) /\ skip_spaces(text, next) == text.length then
         return expression;
@@ -111,7 +115,8 @@ parse(text: string) -> Expression? is
     return null;
 si
 
-// The tree is what is evaluated, so nothing here looks at the input text again.
+// The tree is what is evaluated, so nothing here looks
+// at the input text again.
 evaluate(expression: Expression) -> int =>
     case expression
     when (value): NUMBER then value

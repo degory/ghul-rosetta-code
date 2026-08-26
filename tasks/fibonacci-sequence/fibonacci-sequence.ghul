@@ -1,8 +1,9 @@
 use IO.Std.write_line;
 use Ghul.Pipes.Pipe;
 
-// A generator: each `yield` hands the consumer the next element and suspends, so the sequence is
-// unbounded and only as much of it is computed as the consumer asks for.
+// A generator: each `yield` hands the consumer the next element and
+// suspends, so the sequence is unbounded and only as much of it is computed
+// as the consumer asks for.
 fibonacci() -> Pipe[long] is
     let current mut = 0L;
     let next mut = 1L;

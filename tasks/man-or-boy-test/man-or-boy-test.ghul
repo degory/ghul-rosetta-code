@@ -1,8 +1,9 @@
 use IO.Std.write_line;
 
-// Knuth's A, with the by-name arguments x1 to x5 written as functions, which is what call by name
-// amounts to here. Each call to A gets its own k, and the B it builds captures that one: a `let
-// mut` is captured by reference, so B decrements the k of the call it was made in, even when it
+// Knuth's A, with the by-name arguments x1 to x5 written as functions,
+// which is what call by name amounts to here. Each call to A gets its own
+// k, and the B it builds captures that one: a `let mut` is captured by
+// reference, so B decrements the k of the call it was made in, even when it
 // is called long afterwards from somewhere further down.
 a(k: int, x1: () -> int, x2: () -> int, x3: () -> int, x4: () -> int, x5: () -> int) -> int is
     let counter mut = k;

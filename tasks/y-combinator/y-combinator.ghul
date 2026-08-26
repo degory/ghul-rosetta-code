@@ -1,44 +1,58 @@
 use IO.Std.write_line;
 
-// The Y combinator needs to apply a function to itself. In a language where every expression has a
-// type that cannot be written directly: the argument type of `f` would have to contain itself.
-// SELF_APPLY works around it by putting the function in a class, so what gets passed to `apply` is
-// a SELF_APPLY rather than a bare function.
-//
-// The captured function is set when the object is constructed and never changes, and `y` below
-// never calls `y`.
+// The Y combinator applies a function to itself, and the argument type
+// that would take is one containing itself, which cannot be written down.
+// SELF_APPLY works around that by putting the function in a class, so what
+// `apply` receives is a SELF_APPLY rather than a bare function.
 class SELF_APPLY[A, B](_f: (SELF_APPLY[A, B]) -> (A -> B)) is
     apply(r: SELF_APPLY[A, B]) -> (A -> B) => _f(r);
 si
 
-// `wrap.apply(wrap)` is the self-application. The `(a: A) =>` in front of it matters: without it,
-// working out `f(r.apply(r))` would mean calling `r.apply(r)` again first, and so on forever,
-// because ghūl evaluates an argument before the call it belongs to. Behind the lambda it is only
+// `wrap.apply(wrap)` is the self-application. The `(a: A) =>` in front of
+// it matters: without it, working out `f(r.apply(r))` would mean calling
+// `r.apply(r)` again first, and so on forever, because ghūl evaluates an
+// argument before the call it belongs to. Behind the lambda it is only
 // worked out when the returned function is actually applied to something.
 y[A, B](f: (A -> B) -> (A -> B)) -> (A -> B) is
-    let wrap = SELF_APPLY[A, B]((r: SELF_APPLY[A, B]) => (a: A) => f(r.apply(r))(a));
+    let wrap = SELF_APPLY[A, B](
+        (r: SELF_APPLY[A, B]) => (a: A) => f(r.apply(r))(a)
+    );
 
     return wrap.apply(wrap);
 si
 
-let factorial = y(recurse => n => if n <= 1 then 1L else cast(n) * recurse(n - 1) fi);
-let fibonacci = y(recurse => n => if n < 2 then n else recurse(n - 1) + recurse(n - 2) fi);
+let factorial = y(
+    recurse => n => if n <= 1 then 1L else cast(n) * recurse(n - 1) fi
+);
 
-// `y` is generic, so the same definition also builds functions returning something other than a
-// number.
-let countdown = y(recurse => n => if n <= 0 then "liftoff" else "{n}, {recurse(n - 1)}" fi);
+let fibonacci = y(
+    recurse => n => if n < 2 then n else recurse(n - 1) + recurse(n - 2) fi
+);
 
-// `y` takes a function of one argument, which is less of a restriction than it looks: a function
-// of several is one that takes a tuple, and the literal can destructure it in its parameter list.
-let gcd = y(recurse => ((a, b): (int, int)) => if b == 0 then a else recurse((b, a % b)) fi);
+// `y` is generic, so the same definition also builds functions returning
+// something other than a number.
+let countdown = y(
+    recurse => n => if n <= 0 then "liftoff" else "{n}, {recurse(n - 1)}" fi
+);
+
+// `y` takes a function of one argument, which is less of a restriction than
+// it looks: a function of several is one that takes a tuple, and the
+// literal can destructure it in its parameter list.
+let gcd = y(
+    recurse => ((a, b): (int, int)) =>
+        if b == 0 then a else recurse((b, a % b)) fi
+);
 
 for n in 0::10 do
-    write_line("factorial({n}) = {factorial(n)}, fibonacci({n}) = {fibonacci(n)}");
+    write_line(
+        "factorial({n}) = {factorial(n)}, fibonacci({n}) = {fibonacci(n)}"
+    );
 od
 
 write_line("countdown(5) = {countdown(5)}");
 write_line("gcd(1071, 462) = {gcd((1071, 462))}");
 
-// ghūl has self-recursive function literals, so this would normally be written
-// `let factorial = n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi;` - the combinator here
-// is the exercise, not the way to do it.
+// ghūl has self-recursive function literals, so this would normally be
+// written as
+// `n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi`
+// - the combinator here is the exercise, not the way to do it.

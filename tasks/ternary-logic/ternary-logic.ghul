@@ -11,8 +11,9 @@ use Trit.TRUE;
 use Trit.MAYBE;
 use Trit.FALSE;
 
-// The three values are ordered false, maybe, true, and that ordering is the whole definition:
-// not reverses it, and takes the lesser of its operands, or takes the greater.
+// The three values are ordered false, maybe, true, and that ordering is the
+// whole definition: not reverses it, and takes the lesser of its
+// operands, or takes the greater.
 rank(t: Trit) -> int =>
     case t
     when _: FALSE then 0
@@ -35,8 +36,8 @@ of_rank(r: int) -> Trit =>
 
 implies(a: Trit, b: Trit) -> Trit => !a \/ b;
 
-// Equivalence is implication both ways, which gives the task's table without a special case for
-// maybe.
+// Equivalence is implication both ways, which gives the task's table
+// without a special case for maybe.
 equivalent(a: Trit, b: Trit) -> Trit => implies(a, b) /\ implies(b, a);
 
 show(t: Trit) -> string =>

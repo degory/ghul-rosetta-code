@@ -4,9 +4,10 @@ use Collections.List;
 use Collections.LIST;
 use Ghul.Pipes;
 
-// Takes one value from each set in turn and yields the sequences the constraint accepts. It is a
-// generator, so a sequence is only built when one is asked for, and a caller that wants a single
-// success stops the search as soon as it has one.
+// Takes one value from each set in turn and yields the sequences the
+// constraint accepts. It is a generator, so a sequence is only built when
+// one is asked for, and a caller that wants a single success stops the
+// search as soon as it has one.
 amb[T](sets: List[Iterable[T]], accepts: (T, T) -> bool pure) -> Pipe[LIST[T]] is
     if sets.count == 0 then
         yield LIST[T]();

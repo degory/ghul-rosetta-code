@@ -5,8 +5,9 @@ use Ghul.Pipes;
 without(blocks: List[string], at: int) -> List[string] =>
     blocks |> index() |> filter(b => b.index != at) |> map(b => b.value) |> collect();
 
-// Every block carrying the letter has to be tried, not just the first: two blocks can both offer
-// a letter, and taking the wrong one strands a letter further along the word.
+// Every block carrying the letter has to be tried, not just the first: two
+// blocks can both offer a letter, and taking the wrong one strands a
+// letter further along the word.
 can_spell(word: string, blocks: List[string]) -> bool =>
     word.length == 0 \/
     (blocks

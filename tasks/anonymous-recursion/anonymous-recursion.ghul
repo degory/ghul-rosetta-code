@@ -1,8 +1,8 @@
 use IO.Std.write_line;
 
-// The negative argument is checked once, on entry. `rec` is how a function literal refers to
-// itself, so the recursion that follows needs no helper function and no name at all: the literal
-// is applied where it is written.
+// The negative argument is checked once, on entry. `rec` is how a function
+// literal refers to itself, so the recursion that follows needs no helper
+// function and no name at all: the literal is applied where it is written.
 let fibonacci = n =>
     if n < 0 then
         throw System.ArgumentException("fibonacci is not defined for a negative argument")

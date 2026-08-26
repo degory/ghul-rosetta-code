@@ -5,7 +5,8 @@ class BOX(value: int public);
 
 let n = 5;
 
-// map calls the constructor once per element, so each of these is its own object.
+// map calls the constructor once per element, so each of
+// these is its own object.
 let distinct = (0..n) |> map(_ => BOX(0)) |> collect_list();
 
 distinct[0].value = 42;

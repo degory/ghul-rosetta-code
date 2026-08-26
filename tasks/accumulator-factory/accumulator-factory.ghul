@@ -45,7 +45,8 @@ accumulator(WHOLE(3));
 
 write_line(show(x(FRACTIONAL(2.3D))));
 
-// y has only ever been given whole numbers, so its total prints as 20 rather than 20.0.
+// y has only ever been given whole numbers, so its total
+// prints as 20 rather than 20.0.
 let y = accumulator(WHOLE(10));
 
 y(WHOLE(5));

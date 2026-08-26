@@ -2,8 +2,9 @@ use IO.Std.write_line;
 use Collections.MAP;
 use Ghul.Pipes;
 
-// The next term answers "how long since this one last appeared", which is zero when it has not.
-// Remembering where each term was last seen makes that a lookup rather than a search back.
+// The next term answers "how long since this one last appeared", which is
+// zero when it has not. Remembering where each term was last seen makes
+// that a lookup rather than a search back.
 van_eck() -> Pipe[int] is
     let last_seen = MAP[int, int]();
 

@@ -2,8 +2,9 @@ use IO.Std.write_line;
 use Collections.LIST;
 use Ghul.Pipes;
 
-// ghūl has no variadic functions. A function that takes any number of values
-// takes an array, and the caller writes an array literal at the call site.
+// ghūl has no variadic functions. A function that takes any number of
+// values takes an array, and the caller writes an array
+// literal at the call site.
 print_all(values: object[]) is
     for value in values do
         write_line("{value}");

@@ -1,8 +1,8 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-// Each run becomes its length followed by the character, so the runs of the input are the pairs
-// of the output and nothing else has to be remembered.
+// Each run becomes its length followed by the character, so the runs of the
+// input are the pairs of the output and nothing else has to be remembered.
 encode(text: string) -> string is
     let runs = System.Text.StringBuilder();
     let at mut = 0;
