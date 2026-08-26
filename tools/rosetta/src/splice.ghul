@@ -50,6 +50,12 @@ namespace Rosetta is
             string.compare(left, right, System.StringComparison.ORDINAL_IGNORE_CASE) < 0;
 
         // Where `language`'s section goes, without changing anything.
+        //
+        // An existing section is looked for across the whole page before any
+        // insertion point is considered. A page whose sections are not in
+        // alphabetical order - and many are not - has one sitting after the
+        // header the ordering walk would stop at, so deciding on the walk
+        // alone inserts a second section beside the one already there.
         placement(page: string, language: string) -> PLACEMENT is
             let headers = _headers(page);
 
@@ -66,9 +72,12 @@ namespace Rosetta is
 
                     return PLACEMENT.REPLACES(header.index, end);
                 fi
+            od
 
-                if _before(language, _name(header)) then
-                    return PLACEMENT.INSERTED_BEFORE(header.index, _name(header));
+            for i in 0..headers.count do
+                if _before(language, _name(headers[i])) then
+                    return PLACEMENT.INSERTED_BEFORE(
+                        headers[i].index, _name(headers[i]));
                 fi
             od
 
