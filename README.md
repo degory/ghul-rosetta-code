@@ -198,3 +198,7 @@ its own.
 The contents of this repository are MIT licensed, per `LICENSE`. Text and code posted to Rosetta
 Code are additionally licensed under that site's own terms, so post only what you are willing to
 license that way.
+
+## issues
+
+[View open issues](https://github.com/degory/ghul/issues?q=is%3Aopen+is%3Aissue+label%3Aghul-rosetta-code) or [raise a new one](https://github.com/degory/ghul/issues/new?labels=ghul-rosetta-code).
