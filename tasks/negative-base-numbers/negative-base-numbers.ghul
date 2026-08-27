@@ -1,10 +1,12 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
+let digit_set = "0123456789abcdefghijklmnopqrstuvwxyz";
+
 // The remainder of a negative base can come out negative, and a digit cannot
 // be, so it is carried up into the next place by adding the base back on and
 // stepping the quotient to match.
-encode(n: int, base: int, digit_set: string) -> string =>
+encode(n: int, base: int) -> string =>
     val
         let rest mut = n;
         let digits mut = "";
@@ -25,15 +27,11 @@ encode(n: int, base: int, digit_set: string) -> string =>
         if digits.length == 0 then "0" else digits fi
     lav;
 
-decode(encoded: string, base: int, digit_set: string) -> int =>
+decode(encoded: string, base: int) -> int =>
     encoded |> reduce(0, (value, digit) => value * base + digit_set.index_of(digit));
 
-let digit_set = "0123456789abcdefghijklmnopqrstuvwxyz";
-
 for (n, base) in [(10, -2), (146, -3), (15, -10)] do
-    let encoded = encode(n, base, digit_set);
+    let encoded = encode(n, base);
 
-    write_line(
-        "{n} in base {base} is {encoded}, and back again is {decode(encoded, base, digit_set)}"
-    );
+    write_line("{n} in base {base} is {encoded}, and back again is {decode(encoded, base)}");
 od

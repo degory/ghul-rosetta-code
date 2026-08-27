@@ -162,6 +162,11 @@
       "state": "published"
     },
     {
+      "title": "Church numerals",
+      "state": "blocked",
+      "reason": "ghul#2219"
+    },
+    {
       "title": "Closures/Value capture",
       "slug": "closures-value-capture",
       "state": "published"
@@ -169,7 +174,12 @@
     {
       "title": "Cumulative standard deviation",
       "state": "blocked",
-      "reason": "ghul#2212"
+      "reason": "ghul#2216"
+    },
+    {
+      "title": "Descending primes",
+      "slug": "descending-primes",
+      "state": "solved"
     },
     {
       "title": "Factorial",
@@ -212,9 +222,19 @@
       "state": "published"
     },
     {
+      "title": "Haversine formula",
+      "slug": "haversine-formula",
+      "state": "solved"
+    },
+    {
       "title": "Hello world/Text",
       "slug": "hello-world-text",
       "state": "published"
+    },
+    {
+      "title": "Intersecting number wheels",
+      "slug": "intersecting-number-wheels",
+      "state": "solved"
     },
     {
       "title": "Josephus problem",
@@ -223,7 +243,7 @@
     {
       "title": "Lah numbers",
       "state": "blocked",
-      "reason": "ghul#2213"
+      "reason": "ghul#2215"
     },
     {
       "title": "Left factorials",
@@ -264,6 +284,11 @@
       "state": "published"
     },
     {
+      "title": "Negative base numbers",
+      "slug": "negative-base-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Numbers with equal rises and falls",
       "slug": "numbers-with-equal-rises-and-falls",
       "state": "solved"
@@ -295,7 +320,7 @@
     {
       "title": "Prime decomposition",
       "state": "blocked",
-      "reason": "ghul#2213"
+      "reason": "ghul#2215"
     },
     {
       "title": "Reverse a string",

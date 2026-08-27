@@ -25,8 +25,8 @@ balanced(n: int) -> bool =>
         balance == 0
     lav;
 
-// a fresh pipe for each traversal: a stream is consumed once, so a pipe held
-// in a variable and read twice carries on from where the first read stopped
+// a fresh pipe for each traversal: reading one twice would continue from
+// where the first read left it rather than starting again
 sequence() -> Ghul.Pipes.Pipe[int] => stream(1, n => n || n + 1) |> filter(balanced);
 
 write_line("the first 200 numbers with equal rises and falls:");

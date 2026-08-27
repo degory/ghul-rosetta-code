@@ -53,7 +53,13 @@ show(wheels: (name: char, values: Value[])[]) is
         write_line("{name}: {values |> map(describe) |> join(" ")}");
     od
 
-    write_line("  {(1::20) |> map(_ => "{set.next(wheels[0].name)}") |> join(" ")}");
+    let generated = LIST[string]();
+
+    for _ in 1::20 do
+        generated.add("{set.next(wheels[0].name)}");
+    od
+
+    write_line("  {generated |> join(" ")}");
 si
 
 let simple: (name: char, values: Value[])[] =
