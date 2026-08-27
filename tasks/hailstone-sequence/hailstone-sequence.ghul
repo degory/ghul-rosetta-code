@@ -20,8 +20,8 @@ si
 // The Collatz sequence for 27: 112 elements, starting 27, 82, 41, 124 and ending 8, 4, 2, 1.
 let sequence = hailstone(27) | .collect_list();
 write_line("length of hailstone(27): {sequence.count}");
-write_line("first four: {sequence[0]}, {sequence[1]}, {sequence[2]}, {sequence[3]}");
-write_line("last four: {sequence[sequence.count - 4]}, {sequence[sequence.count - 3]}, {sequence[sequence.count - 2]}, {sequence[sequence.count - 1]}");
+write_line("first four: {sequence[0..4] |> join(", ")}");
+write_line("last four: {sequence[4..<<0] |> join(", ")}");
 
 // The number under 100,000 with the longest sequence, and that sequence's length.
 let longest mut = 0;

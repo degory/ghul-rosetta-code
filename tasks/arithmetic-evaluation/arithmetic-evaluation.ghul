@@ -48,7 +48,7 @@ parse_term(text: string, at: int) -> Parsed is
         end = end + 1;
     od
 
-    return RESULT(NUMBER(int.parse(text.substring(start, end - start))), end);
+    return RESULT(NUMBER(int.parse(text[start..end])), end);
 si
 
 // The position of the next operator drawn from `operators`, or absent when what comes next is

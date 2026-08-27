@@ -10,6 +10,6 @@ power(base: int, exponent: int) -> int =>
 // precision, it only asks for it.
 let digits = BigInteger.pow(cast(5), power(4, power(3, 2))).to_string();
 
-write_line("first 20 digits: {digits.substring(0, 20)}");
-write_line("last 20 digits:  {digits.substring(digits.length - 20)}");
+write_line("first 20 digits: {digits[0..20]}");
+write_line("last 20 digits:  {digits[20..<<0]}");
 write_line("decimal digits:  {digits.length}");

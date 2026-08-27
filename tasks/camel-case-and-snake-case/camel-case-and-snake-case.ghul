@@ -47,9 +47,9 @@ parse(text: string) -> NAME is
     return NAME(words);
 si
 
-_lower_first(word: string) -> string pure => "{char.to_lower(word[0])}{word.substring(1)}";
+_lower_first(word: string) -> string pure => "{char.to_lower(word[0])}{word[1..<0]}";
 
-_upper_first(word: string) -> string pure => "{char.to_upper(word[0])}{word.substring(1)}";
+_upper_first(word: string) -> string pure => "{char.to_upper(word[0])}{word[1..<0]}";
 
 _quoted(text: string) -> string pure => "\"{text}\"";
 
