@@ -4,12 +4,12 @@ use System.Math.sqrt;
 // A stateful closure, which is the most natural of the forms the task lists
 // for this language: n, total and squares are captured by reference, so each
 // call carries the running sums of every value seen so far.
-let standard_deviation = val
-    let n mut = 0;
-    let total mut = 0.0D;
-    let squares mut = 0.0D;
+let standard_deviation =
+    let n mut = 0 in
+    let total mut = 0.0D in
+    let squares mut = 0.0D in
 
-    (x: double) -> double is
+    (x: double) -> double => val
         n = n + 1;
         total = total + x;
         squares = squares + x * x;
@@ -17,8 +17,7 @@ let standard_deviation = val
         let mean = total / cast double(n);
 
         sqrt(squares / cast double(n) - mean * mean)
-    si
-lav;
+    lav;
 
 for x in [2.0D, 4.0D, 4.0D, 4.0D, 5.0D, 5.0D, 7.0D, 9.0D] do
     write_line("after {x}: {standard_deviation(x)}");
