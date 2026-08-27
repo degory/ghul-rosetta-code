@@ -163,7 +163,8 @@
     },
     {
       "title": "Church numerals",
-      "state": "blocked",
+      "slug": "church-numerals",
+      "state": "solved",
       "reason": "ghul#2219"
     },
     {
@@ -173,7 +174,8 @@
     },
     {
       "title": "Cumulative standard deviation",
-      "state": "blocked",
+      "slug": "cumulative-standard-deviation",
+      "state": "solved",
       "reason": "ghul#2216"
     },
     {
@@ -247,7 +249,8 @@
     },
     {
       "title": "Left factorials",
-      "state": "blocked",
+      "slug": "left-factorials",
+      "state": "solved",
       "reason": "ghul#2213"
     },
     {
@@ -319,7 +322,8 @@
     },
     {
       "title": "Prime decomposition",
-      "state": "blocked",
+      "slug": "prime-decomposition",
+      "state": "solved",
       "reason": "ghul#2215"
     },
     {

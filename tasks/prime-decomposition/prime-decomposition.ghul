@@ -1,0 +1,58 @@
+use IO.Std.write_line;
+use Collections;
+use Ghul.Pipes;
+use System.Numerics.BigInteger;
+use System.Numerics.IAdditionOperators.`+;
+use System.Numerics.IMultiplyOperators.`*;
+use System.Numerics.IDivisionOperators.`/;
+use System.Numerics.IModulusOperators.`%;
+
+// Trial division by 2 and then the odd numbers. Whatever is left once no
+// divisor below the square root remains is itself prime, which is what stops
+// the last factor of a large semiprime needing a search of its own.
+decompose(n: BigInteger) -> List[BigInteger] is
+    let factors = LIST[BigInteger]();
+
+    let two = cast BigInteger(2);
+    let rest mut = n;
+
+    while rest % two =~ BigInteger.zero do
+        factors.add(two);
+        rest = rest / two;
+    od
+
+    let divisor mut = cast BigInteger(3);
+
+    while divisor * divisor <= rest do
+        if rest % divisor =~ BigInteger.zero then
+            factors.add(divisor);
+            rest = rest / divisor;
+        else
+            divisor = divisor + two;
+        fi
+    od
+
+    if rest > BigInteger.one then
+        factors.add(rest);
+    fi
+
+    return factors;
+si
+
+show(n: BigInteger) is
+    let rendered = LIST[string]();
+
+    for factor in decompose(n) do
+        rendered.add("{factor}");
+    od
+
+    write_line("{n} = {rendered |> join(" x ")}");
+si
+
+for n in [12L, 2L, 9L, 1024L, 1048576L, 4294967297L, 1234567890L] do
+    show(cast BigInteger(n));
+od
+
+// beyond what a machine word holds
+show(BigInteger.parse("576460752303423488"));
+show(BigInteger.parse("12345678901234567890"));
