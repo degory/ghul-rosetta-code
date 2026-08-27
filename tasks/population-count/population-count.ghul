@@ -1,0 +1,39 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+popcount(n: long) -> int =>
+    val
+        let bits mut = n;
+        let count mut = 0;
+
+        while bits != 0L do
+            count = count + cast int(bits & 1L);
+            bits = bits >>> 1;
+        od;
+
+        count
+    lav;
+
+// yields 3^0, 3^1, 3^2, ...: each element is the power, the state steps to the next
+let powers_of_three = stream(1L, power => power || power * 3L);
+
+// 3^29 needs more digits than an int holds, so the whole sequence is long
+write_line(
+    "population counts of the first thirty powers of 3: {
+        powers_of_three |> take(30) |> map(popcount) |> map(i => "{i}") |> join(", ")
+    }"
+);
+
+let naturals = stream(0L, n => n || n + 1L);
+
+write_line(
+    "the first thirty evil numbers: {
+        naturals |> filter(n => popcount(n) % 2 == 0) |> take(30) |> map(i => "{i}") |> join(", ")
+    }"
+);
+
+write_line(
+    "the first thirty odious numbers: {
+        naturals |> filter(n => popcount(n) % 2 == 1) |> take(30) |> map(i => "{i}") |> join(", ")
+    }"
+);
