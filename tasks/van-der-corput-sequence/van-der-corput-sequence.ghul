@@ -1,0 +1,27 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// the digits of n in the given base, read off least significant first, are the
+// digits of the term most significant first, so each one is divided by a
+// weight that shrinks as the number is consumed
+van_der_corput(n: int, base: int) -> double =>
+    val
+        let rest mut = n;
+        let weight mut = 1.0D / cast double(base);
+        let term mut = 0.0D;
+
+        while rest > 0 do
+            term = term + cast double(rest % base) * weight;
+
+            rest = rest / base;
+            weight = weight / cast double(base);
+        od
+
+        term
+    lav;
+
+write_line("base 2: {(0::9) |> map(n => "{van_der_corput(n, 2)}") |> join(", ")}");
+
+for base in 3::5 do
+    write_line("base {base}: {(0::9) |> map(n => "{van_der_corput(n, base):F4}") |> join(", ")}");
+od
