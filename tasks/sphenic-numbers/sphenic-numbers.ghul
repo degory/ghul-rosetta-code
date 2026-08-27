@@ -1,0 +1,129 @@
+use IO.Std.write_line;
+use Collections;
+use Ghul.Pipes;
+
+let LIMIT = 1000000;
+
+smallest_prime_factors(limit: int) -> List[int] is
+    let factor = LIST[int]();
+
+    (0..limit) |> each(_ => factor.add(0));
+
+    let p mut = 2;
+
+    while p * p < limit do
+        if factor[p] == 0 then
+            let multiple mut = p * p;
+
+            while multiple < limit do
+                if factor[multiple] == 0 then
+                    factor[multiple] = p;
+                fi
+
+                multiple = multiple + p;
+            od
+        fi
+
+        p = p + 1;
+    od
+
+    // whatever the sieve never touched is prime, and is its own smallest factor
+    let n mut = 2;
+
+    while n < limit do
+        if factor[n] == 0 then
+            factor[n] = n;
+        fi
+
+        n = n + 1;
+    od
+
+    return factor;
+si
+
+// a sphenic number is the product of three distinct primes, so it has exactly
+// three prime factors and no two of them are the same; the smallest-factor
+// walk yields them smallest first, so equal neighbours mean a repeated prime
+is_sphenic(n: int, factor: List[int]) -> bool =>
+    val
+        let rest mut = n;
+        let previous mut = 0;
+        let total mut = 0;
+        let distinct mut = 0;
+
+        while rest > 1 do
+            let p = factor[rest];
+
+            total = total + 1;
+
+            if p != previous then
+                distinct = distinct + 1;
+                previous = p;
+            fi
+
+            rest = rest / p;
+        od
+
+        total == 3 /\ distinct == 3
+    lav;
+
+prime_factors(n: int, factor: List[int]) -> List[string] =>
+    val
+        let rest mut = n;
+        let factors = LIST[string]();
+
+        while rest > 1 do
+            let p = factor[rest];
+            factors.add("{p}");
+            rest = rest / p;
+        od
+
+        factors
+    lav;
+
+let factor = smallest_prime_factors(LIMIT);
+
+let sphenics = (2..LIMIT) |> filter(n => is_sphenic(n, factor)) |> collect_list();
+
+let below_1000 = sphenics |> filter(n => n < 1000) |> join(", ");
+
+write_line("sphenic numbers below 1000: {below_1000}");
+
+// every fourth consecutive integer is divisible by 4, so three sphenic numbers
+// in a row is the longest run there can be
+let triplets = LIST[int]();
+
+let i mut = 0;
+
+while i + 2 < sphenics.count do
+    if sphenics[i + 1] == sphenics[i] + 1 /\ sphenics[i + 2] == sphenics[i] + 2 then
+        triplets.add(sphenics[i]);
+    fi
+
+    i = i + 1;
+od
+
+write_line("sphenic triplets below 10000:");
+
+for first in triplets do
+    if first + 2 < 10000 then
+        write_line("({first}, {first + 1}, {first + 2})");
+    fi
+od
+
+write_line("sphenic numbers below {LIMIT}: {sphenics.count}");
+write_line("sphenic triplets below {LIMIT}: {triplets.count}");
+
+let sphenic_200000th = sphenics[200000 - 1];
+
+write_line(
+    "the 200000th sphenic number is {sphenic_200000th} = {
+        prime_factors(sphenic_200000th, factor) |> join(" x ")
+    }"
+);
+
+let triplet_5000th = triplets[5000 - 1];
+
+write_line(
+    "the 5000th sphenic triplet is ({triplet_5000th}, {triplet_5000th + 1}, {triplet_5000th + 2})"
+);
