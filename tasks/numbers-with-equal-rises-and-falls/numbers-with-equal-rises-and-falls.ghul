@@ -1,0 +1,42 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// walks the decimal digits from the least significant end, comparing each with
+// the one above it; which end the walk starts from does not matter, since it
+// only swaps which differences count as rises and which as falls
+balanced(n: int) -> bool =>
+    val
+        let rest mut = n;
+        let balance mut = 0;
+
+        while rest >= 10 do
+            let lower = rest % 10;
+            let upper = rest / 10 % 10;
+
+            if upper < lower then
+                balance = balance + 1;
+            elif upper > lower then
+                balance = balance - 1;
+            fi
+
+            rest = rest / 10;
+        od
+
+        balance == 0
+    lav;
+
+// a fresh pipe for each traversal: a stream is consumed once, so a pipe held
+// in a variable and read twice carries on from where the first read stopped
+sequence() -> Ghul.Pipes.Pipe[int] => stream(1, n => n || n + 1) |> filter(balanced);
+
+write_line("the first 200 numbers with equal rises and falls:");
+
+let first_200 = sequence() |> take(200) |> collect_list();
+
+for row in 0::19 do
+    write_line(
+        (0::9) |> map(column => "{first_200[row * 10 + column],5}") |> join("")
+    );
+od
+
+write_line("the 10000000th is {sequence() |> skip(10000000 - 1) |> first()}");
