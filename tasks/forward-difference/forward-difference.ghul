@@ -1,0 +1,17 @@
+use IO.Std.write_line;
+use Collections;
+use Ghul.Pipes;
+
+differences(xs: List[int]) -> List[int] =>
+    (0::xs.count - 2) |> map(i => xs[i + 1] - xs[i]) |> collect_list();
+
+forward(order: int, xs: List[int]) -> List[int] =>
+    if order == 0 then xs
+    else forward(order - 1, differences(xs))
+    fi;
+
+let cubes = (0::6) |> map(n => n * n * n) |> collect_list();
+
+for order in 0::4 do
+    write_line("order {order}: {forward(order, cubes) |> join(", ")}");
+od
