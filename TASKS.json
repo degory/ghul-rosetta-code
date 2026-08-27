@@ -164,8 +164,8 @@
     {
       "title": "Church numerals",
       "slug": "church-numerals",
-      "state": "solved",
-      "reason": "ghul#2219"
+      "state": "blocked",
+      "reason": "ghul#757"
     },
     {
       "title": "Closures/Value capture",

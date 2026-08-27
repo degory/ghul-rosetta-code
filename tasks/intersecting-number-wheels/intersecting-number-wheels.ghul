@@ -2,8 +2,6 @@ use IO.Std.write_line;
 use Collections;
 use Ghul.Pipes;
 
-// A value on a wheel is either a number to yield or the name of another wheel
-// to take the next number from.
 union Value is
     NUMBER(digit: int);
     WHEEL(name: char);

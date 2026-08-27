@@ -2,8 +2,9 @@ use IO.Std.write_line;
 use Collections;
 use Ghul.Pipes;
 
-// the 2006th taxicab number is below 2 x 1188^3, so every pair of cubes that
-// can add up to any number the task asks for has both sides below 1200
+// the 2006th taxicab number is below twice the cube of 1188, so every pair of
+// cubes that can add up to any number the task asks for has both sides below
+// 1200
 let pair_bound = 1200;
 
 let sums = LIST[long]();
