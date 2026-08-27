@@ -1,0 +1,80 @@
+use IO.Std.write_line;
+use Collections;
+use Ghul.Pipes;
+
+// A value on a wheel is either a number to yield or the name of another wheel
+// to take the next number from.
+union Value is
+    NUMBER(digit: int);
+    WHEEL(name: char);
+si
+
+class WHEEL_SET is
+    _values: MAP[char, Value[]];
+    _position: MAP[char, int];
+
+    init(wheels: (name: char, values: Value[])[]) is
+        _values = MAP[char, Value[]]();
+        _position = MAP[char, int]();
+
+        for (name, values) in wheels do
+            _values[name] = values;
+            _position[name] = 0;
+        od
+    si
+
+    // Every wheel a name is followed through advances, so a wheel referred to
+    // twice has one position that both references share.
+    next(name: char) -> int is
+        let values = _values[name];
+        let at = _position[name];
+
+        _position[name] = (at + 1) % values.count;
+
+        case values[at]
+        when n: Value.NUMBER then
+            return n.digit;
+        when w: Value.WHEEL then
+            return next(w.name);
+        esac
+    si
+si
+
+describe(value: Value) -> string =>
+    case value
+    when n: Value.NUMBER then "{n.digit}"
+    when w: Value.WHEEL then "{w.name}"
+    esac;
+
+show(wheels: (name: char, values: Value[])[]) is
+    let set = WHEEL_SET(wheels);
+
+    for (name, values) in wheels do
+        write_line("{name}: {values |> map(describe) |> join(" ")}");
+    od
+
+    write_line("  {(1::20) |> map(_ => "{set.next(wheels[0].name)}") |> join(" ")}");
+si
+
+let simple: (name: char, values: Value[])[] =
+    [(name = 'A', values = [Value.NUMBER(1), Value.NUMBER(2), Value.NUMBER(3)])];
+
+let two_wheels: (name: char, values: Value[])[] = [
+    (name = 'A', values = [Value.NUMBER(1), Value.WHEEL('B'), Value.NUMBER(2)]),
+    (name = 'B', values = [Value.NUMBER(3), Value.NUMBER(4)])
+];
+
+let shared: (name: char, values: Value[])[] = [
+    (name = 'A', values = [Value.NUMBER(1), Value.WHEEL('D'), Value.WHEEL('D')]),
+    (name = 'D', values = [Value.NUMBER(6), Value.NUMBER(7), Value.NUMBER(8)])
+];
+
+let multiply_connected: (name: char, values: Value[])[] = [
+    (name = 'A', values = [Value.NUMBER(1), Value.WHEEL('B'), Value.WHEEL('C')]),
+    (name = 'B', values = [Value.NUMBER(3), Value.NUMBER(4)]),
+    (name = 'C', values = [Value.NUMBER(5), Value.WHEEL('B')])
+];
+
+for group in [simple, two_wheels, shared, multiply_connected] do
+    show(group);
+od
