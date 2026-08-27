@@ -25,7 +25,7 @@ balanced(n: int) -> bool =>
         balance == 0
     lav;
 
-sequence() -> Ghul.Pipes.Pipe[int] => stream(1, n => n || n + 1) |> filter(balanced);
+sequence() -> Pipe[int] => stream(1, n => n || n + 1) |> filter(balanced);
 
 write_line("the first 200 numbers with equal rises and falls:");
 

@@ -3,7 +3,7 @@ use Collections;
 
 swaps(deck: int[]) -> int =>
     val
-        let cards = LIST[int]();
+        let cards = LIST();
 
         for card in deck do
             cards.add(card);
@@ -31,7 +31,7 @@ swaps(deck: int[]) -> int =>
 // walks every permutation of 1..n, keeping the largest round count seen
 topswops(n: int) -> int =>
     val
-        let deck = LIST[int]();
+        let deck = LIST();
 
         for card in 1::n do
             deck.add(card);

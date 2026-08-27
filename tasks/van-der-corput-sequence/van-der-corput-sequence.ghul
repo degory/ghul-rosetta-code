@@ -8,14 +8,14 @@ use Ghul.Pipes;
 van_der_corput(n: int, base: int) -> double pure =>
     val
         let rest mut = n;
-        let weight mut = 1.0D / cast double(base);
+        let weight mut = 1.0D / cast(base);
         let term mut = 0.0D;
 
         while rest > 0 do
-            term = term + cast double(rest % base) * weight;
+            term = term + cast(rest % base) * weight;
 
             rest = rest / base;
-            weight = weight / cast double(base);
+            weight = weight / cast(base);
         od
 
         term
@@ -24,7 +24,7 @@ van_der_corput(n: int, base: int) -> double pure =>
 write_line("base 2: {(0::9) |> map(n => "{van_der_corput(n, 2)}") |> join(", ")}");
 
 for base in 3::5 do
-    let terms = LIST[string]();
+    let terms = LIST();
 
     for n in 0::9 do
         terms.add("{van_der_corput(n, base):F4}");

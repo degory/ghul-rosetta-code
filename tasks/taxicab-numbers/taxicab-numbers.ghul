@@ -44,7 +44,7 @@ od
 // 0 when v is not a perfect cube
 cube_root(v: long) -> long =>
     val
-        let r = cast long(System.Math.floor(System.Math.cbrt(cast double(v)) + 0.5D));
+        let r = cast long(System.Math.floor(System.Math.cbrt(cast(v)) + 0.5D));
 
         if r * r * r == v then r else 0L fi
     lav;

@@ -6,15 +6,13 @@ is_prime(n: int) -> bool =>
     if n < 2 then false
     elif n % 2 == 0 then n == 2
     else
-        val
-            let d mut = 3;
+        let d mut = 3;
 
-            while d * d <= n /\ n % d != 0 do
-                d = d + 2;
-            od
+        while d * d <= n /\ n % d != 0 do
+            d = d + 2;
+        od
 
-            d * d > n
-        lav
+        d * d > n
     fi;
 
 // Every number with strictly descending digits is one choice of digits out of
@@ -30,7 +28,7 @@ descending(so_far: int, next_digit: int, found: LIST[int]) is
     od
 si
 
-let found = LIST[int]();
+let found = LIST();
 
 descending(0, 9, found);
 

@@ -7,13 +7,16 @@ union Value is
     WHEEL(name: char);
 si
 
+use Value.NUMBER;
+use Value.WHEEL;
+
 class WHEEL_SET is
     _values: MAP[char, Value[]];
     _position: MAP[char, int];
 
     init(wheels: (name: char, values: Value[])[]) is
-        _values = MAP[char, Value[]]();
-        _position = MAP[char, int]();
+        _values = MAP();
+        _position = MAP();
 
         for (name, values) in wheels do
             _values[name] = values;
@@ -30,9 +33,9 @@ class WHEEL_SET is
         _position[name] = (at + 1) % values.count;
 
         case values[at]
-        when n: Value.NUMBER then
+        when n: NUMBER then
             return n.digit;
-        when w: Value.WHEEL then
+        when w: WHEEL then
             return next(w.name);
         esac
     si
@@ -40,8 +43,8 @@ si
 
 describe(value: Value) -> string =>
     case value
-    when n: Value.NUMBER then "{n.digit}"
-    when w: Value.WHEEL then "{w.name}"
+    when n: NUMBER then "{n.digit}"
+    when w: WHEEL then "{w.name}"
     esac;
 
 show(wheels: (name: char, values: Value[])[]) is
@@ -51,7 +54,7 @@ show(wheels: (name: char, values: Value[])[]) is
         write_line("{name}: {values |> map(describe) |> join(" ")}");
     od
 
-    let generated = LIST[string]();
+    let generated = LIST();
 
     for _ in 1::20 do
         generated.add("{set.next(wheels[0].name)}");
@@ -61,22 +64,22 @@ show(wheels: (name: char, values: Value[])[]) is
 si
 
 let simple: (name: char, values: Value[])[] =
-    [(name = 'A', values = [Value.NUMBER(1), Value.NUMBER(2), Value.NUMBER(3)])];
+    [(name = 'A', values = [NUMBER(1), NUMBER(2), NUMBER(3)])];
 
 let two_wheels: (name: char, values: Value[])[] = [
-    (name = 'A', values = [Value.NUMBER(1), Value.WHEEL('B'), Value.NUMBER(2)]),
-    (name = 'B', values = [Value.NUMBER(3), Value.NUMBER(4)])
+    (name = 'A', values = [NUMBER(1), WHEEL('B'), NUMBER(2)]),
+    (name = 'B', values = [NUMBER(3), NUMBER(4)])
 ];
 
 let shared: (name: char, values: Value[])[] = [
-    (name = 'A', values = [Value.NUMBER(1), Value.WHEEL('D'), Value.WHEEL('D')]),
-    (name = 'D', values = [Value.NUMBER(6), Value.NUMBER(7), Value.NUMBER(8)])
+    (name = 'A', values = [NUMBER(1), WHEEL('D'), WHEEL('D')]),
+    (name = 'D', values = [NUMBER(6), NUMBER(7), NUMBER(8)])
 ];
 
 let multiply_connected: (name: char, values: Value[])[] = [
-    (name = 'A', values = [Value.NUMBER(1), Value.WHEEL('B'), Value.WHEEL('C')]),
-    (name = 'B', values = [Value.NUMBER(3), Value.NUMBER(4)]),
-    (name = 'C', values = [Value.NUMBER(5), Value.WHEEL('B')])
+    (name = 'A', values = [NUMBER(1), WHEEL('B'), WHEEL('C')]),
+    (name = 'B', values = [NUMBER(3), NUMBER(4)]),
+    (name = 'C', values = [NUMBER(5), WHEEL('B')])
 ];
 
 for group in [simple, two_wheels, shared, multiply_connected] do

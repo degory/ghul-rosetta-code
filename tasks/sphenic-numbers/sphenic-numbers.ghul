@@ -5,7 +5,7 @@ use Ghul.Pipes;
 let search_limit = 1000000;
 
 smallest_prime_factors(limit: int) -> List[int] is
-    let factor = LIST[int]();
+    let factor = LIST();
 
     (0..limit) |> each(_ => factor.add(0));
 
@@ -91,7 +91,7 @@ write_line("sphenic numbers below 1000: {below_1000}");
 
 // every fourth consecutive integer is divisible by 4, so three sphenic numbers
 // in a row is the longest run there can be
-let triplets = LIST[int]();
+let triplets = LIST();
 
 let i mut = 0;
 
