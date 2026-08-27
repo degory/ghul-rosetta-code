@@ -1,0 +1,33 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+// divides out factors smallest first, counting them, and stops as soon as
+// there are more than two: a semiprime has exactly two, so the whole
+// factorisation is never needed
+is_semiprime(n: int) -> bool =>
+    val
+        let rest mut = n;
+        let count mut = 0;
+        let d mut = 2;
+
+        while d * d <= rest /\ count < 3 do
+            while rest % d == 0 do
+                rest = rest / d;
+                count = count + 1;
+            od
+
+            d = d + 1;
+        od
+
+        if rest > 1 then
+            count = count + 1;
+        fi
+
+        count == 2
+    lav;
+
+write_line("semiprimes up to 100: {(2::100) |> filter(is_semiprime) |> join(", ")}");
+
+for n in [1679, 1234, 5, 9, 2093] do
+    write_line("{n} is {if is_semiprime(n) then "" else "not " fi}semiprime");
+od
