@@ -178,6 +178,11 @@
       "state": "published"
     },
     {
+      "title": "Catamorphism",
+      "slug": "catamorphism",
+      "state": "solved"
+    },
+    {
       "title": "Church numerals",
       "slug": "church-numerals",
       "state": "published",
@@ -229,9 +234,19 @@
       "state": "published"
     },
     {
+      "title": "Flatten a list",
+      "slug": "flatten-a-list",
+      "state": "solved"
+    },
+    {
       "title": "Forward difference",
       "slug": "forward-difference",
       "state": "published"
+    },
+    {
+      "title": "Generic swap",
+      "slug": "generic-swap",
+      "state": "solved"
     },
     {
       "title": "Gray code",
@@ -259,6 +274,11 @@
       "state": "published"
     },
     {
+      "title": "Huffman coding",
+      "slug": "huffman-coding",
+      "state": "solved"
+    },
+    {
       "title": "Intersecting number wheels",
       "slug": "intersecting-number-wheels",
       "state": "published"
@@ -272,6 +292,11 @@
       "title": "Jaro similarity",
       "slug": "jaro-similarity",
       "state": "published"
+    },
+    {
+      "title": "Jensen\u0027s Device",
+      "slug": "jensens-device",
+      "state": "solved"
     },
     {
       "title": "Josephus problem",
@@ -334,6 +359,11 @@
       "state": "published"
     },
     {
+      "title": "Null object",
+      "slug": "null-object",
+      "state": "solved"
+    },
+    {
       "title": "Numbers with equal rises and falls",
       "slug": "numbers-with-equal-rises-and-falls",
       "state": "published"
@@ -374,6 +404,11 @@
       "state": "published"
     },
     {
+      "title": "Queue/Definition",
+      "slug": "queue-definition",
+      "state": "solved"
+    },
+    {
       "title": "Reverse a string",
       "slug": "reverse-a-string",
       "state": "published"
@@ -387,6 +422,11 @@
       "title": "Run-length encoding",
       "slug": "run-length-encoding",
       "state": "published"
+    },
+    {
+      "title": "S-expressions",
+      "slug": "s-expressions",
+      "state": "solved"
     },
     {
       "title": "Same fringe",
@@ -442,6 +482,11 @@
       "title": "Towers of Hanoi",
       "slug": "towers-of-hanoi",
       "state": "published"
+    },
+    {
+      "title": "Tree traversal",
+      "slug": "tree-traversal",
+      "state": "solved"
     },
     {
       "title": "URL decoding",
