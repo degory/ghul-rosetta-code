@@ -1,0 +1,91 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Collections.List;
+use Collections.MAP;
+use Ghul.Pipes;
+
+union HUFFMAN(weight: int) is
+    LEAF(symbol: char, ..);
+    NODE(left: HUFFMAN, right: HUFFMAN, ..);
+si
+
+use HUFFMAN.LEAF;
+use HUFFMAN.NODE;
+
+take_lightest(pending: LIST[HUFFMAN]) -> HUFFMAN is
+    let at mut = 0;
+
+    for i in 1..pending.count do
+        if pending[i].weight < pending[at].weight then
+            at = i;
+        fi
+    od
+
+    let lightest = pending[at];
+
+    pending.remove_at(at);
+
+    return lightest;
+si
+
+huffman(leaves: List[HUFFMAN]) -> HUFFMAN is
+    let pending = LIST[HUFFMAN](leaves);
+
+    while pending.count > 1 do
+        let first = take_lightest(pending);
+        let second = take_lightest(pending);
+
+        pending.add(NODE(first, second, first.weight + second.weight));
+    od
+
+    return pending[0];
+si
+
+codes(node: HUFFMAN, prefix: string)
+    -> Pipe[(symbol: char, weight: int, code: string)]
+is
+    if let leaf: LEAF = node then
+        let code = if prefix.length == 0 then "0" else prefix fi;
+
+        yield (symbol = leaf.symbol, weight = leaf.weight, code = code);
+    elif let branch: NODE = node then
+        for entry in codes(branch.left, "{prefix}0") do yield entry; od
+        for entry in codes(branch.right, "{prefix}1") do yield entry; od
+    fi
+si
+
+let text = "this is an example for huffman encoding";
+
+let weights = MAP[char, int]();
+
+for c in text do
+    let seen mut = 0;
+
+    weights.try_get_value(c, seen ref);
+
+    weights[c] = seen + 1;
+od
+
+let leaves = LIST[HUFFMAN]();
+
+for symbol in weights.keys |> sort() do
+    leaves.add(LEAF(symbol, weights[symbol]));
+od
+
+let table =
+    codes(huffman(leaves), "")
+    |> sort((a, b) =>
+        if a.weight != b.weight then
+            b.weight - a.weight
+        else
+            cast int(a.symbol) - cast int(b.symbol)
+        fi)
+    |> collect_list();
+
+write_line("symbol  weight  code");
+
+for entry in table do
+    let symbol = "'{entry.symbol}'";
+
+    write_line("{symbol,-6}  {entry.weight,6}  {entry.code}");
+od
