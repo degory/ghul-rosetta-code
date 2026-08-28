@@ -2,8 +2,6 @@ use IO.Std.write_line;
 use Collections.List;
 use Collections.LIST;
 
-// Taking a callback needs nothing special: it is an argument like any
-// other. A named function goes in the same slot as a literal.
 apply[T, U](values: T[], callback: T -> U pure) -> List[U] is
     let applied = LIST[U]();
 

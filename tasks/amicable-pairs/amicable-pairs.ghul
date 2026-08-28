@@ -5,11 +5,11 @@ let limit = 20000;
 
 sum_of_proper_divisors(n: int) -> int =>
     (1::(n / 2))
-    |> filter(d => n % d == 0)
-    |> reduce(0, (total, d) => total + d);
+        |> filter(d => n % d == 0)
+        |> reduce(0, (total, d) => total + d);
 
 (1::limit)
-|> map(n => (n, partner = sum_of_proper_divisors(n)))
-|> filter(((n, partner)) =>
-    partner > n /\ sum_of_proper_divisors(partner) == n)
-|> each(((n, partner)) => write_line("{n} and {partner}"));
+    |> map(n => (n, partner = sum_of_proper_divisors(n)))
+    |> filter(((n, partner)) =>
+        partner > n /\ sum_of_proper_divisors(partner) == n)
+    |> each(((n, partner)) => write_line("{n} and {partner}"));

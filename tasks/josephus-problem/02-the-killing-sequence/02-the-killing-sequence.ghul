@@ -1,9 +1,6 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-// Walking the circle for real: the executioner steps k - 1 places past the
-// last one killed, and removing a prisoner closes the gap, so the next
-// count carries on from the same index.
 killings(n: int, k: int) -> Pipe[int] is
     let standing = (0..n) |> collect_list();
     let at mut = 0;
