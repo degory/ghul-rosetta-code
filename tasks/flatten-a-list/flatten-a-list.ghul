@@ -1,0 +1,48 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+union NESTED is
+    ATOM(value: int);
+    LIST(items: NESTED[]);
+si
+
+use NESTED.ATOM;
+use NESTED.LIST;
+
+atom(value: int) -> NESTED => ATOM(value);
+
+list(items: NESTED[]) -> NESTED => LIST(items);
+
+flatten(node: NESTED) -> Pipe[int] is
+    case node
+    when (value): ATOM then
+        yield value;
+    when (items): LIST then
+        for item in items do
+            for value in flatten(item) do
+                yield value;
+            od
+        od
+    esac
+si
+
+show(node: NESTED) -> string =>
+    case node
+    when (value): ATOM then "{value}"
+    when (items): LIST then "[{items |> map(show) |> join(", ")}]"
+    esac;
+
+let input =
+    list([
+        list([atom(1)]),
+        atom(2),
+        list([list([atom(3), atom(4)]), atom(5)]),
+        list([list([list([])])]),
+        list([list([list([atom(6)])])]),
+        atom(7),
+        atom(8),
+        list([])
+    ]);
+
+write_line(show(input));
+write_line("[{flatten(input) |> join(", ")}]");
