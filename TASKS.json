@@ -6,6 +6,11 @@
       "state": "published"
     },
     {
+      "title": "100 prisoners",
+      "state": "rejected",
+      "reason": "nondeterministic"
+    },
+    {
       "title": "15 puzzle game",
       "state": "rejected",
       "reason": "needs-interaction"
@@ -27,6 +32,7 @@
     },
     {
       "title": "ABC problem",
+      "slug": "abc-problem",
       "state": "published"
     },
     {
@@ -41,6 +47,7 @@
     },
     {
       "title": "Achilles numbers",
+      "slug": "achilles-numbers",
       "state": "published"
     },
     {
@@ -66,12 +73,8 @@
     },
     {
       "title": "Additive primes",
+      "slug": "additive-primes",
       "state": "published"
-    },
-    {
-      "title": "Address of a variable",
-      "state": "rejected",
-      "reason": "needs-native-lib"
     },
     {
       "title": "Algebraic data types",
@@ -85,10 +88,12 @@
     },
     {
       "title": "Almost prime",
+      "slug": "almost-prime",
       "state": "published"
     },
     {
       "title": "Amb",
+      "slug": "amb",
       "state": "published"
     },
     {
@@ -124,6 +129,7 @@
     },
     {
       "title": "Anti-primes",
+      "slug": "anti-primes",
       "state": "published"
     },
     {
@@ -132,9 +138,9 @@
       "state": "published"
     },
     {
-      "title": "Arbitrary-precision integers (included)",
-      "slug": "arbitrary-precision-integers",
-      "state": "solved"
+      "title": "Archimedean spiral",
+      "state": "rejected",
+      "reason": "needs-gui"
     },
     {
       "title": "Arithmetic evaluation",
@@ -162,25 +168,8 @@
       "state": "published"
     },
     {
-      "title": "Church numerals",
-      "slug": "church-numerals",
-      "state": "blocked",
-      "reason": "ghul#757"
-    },
-    {
       "title": "Closures/Value capture",
       "slug": "closures-value-capture",
-      "state": "published"
-    },
-    {
-      "title": "Cumulative standard deviation",
-      "slug": "cumulative-standard-deviation",
-      "state": "published",
-      "reason": "ghul#2216"
-    },
-    {
-      "title": "Descending primes",
-      "slug": "descending-primes",
       "state": "published"
     },
     {
@@ -204,16 +193,6 @@
       "state": "published"
     },
     {
-      "title": "Forward difference",
-      "slug": "forward-difference",
-      "state": "published"
-    },
-    {
-      "title": "Gray code",
-      "slug": "gray-code",
-      "state": "published"
-    },
-    {
       "title": "Greatest common divisor",
       "slug": "greatest-common-divisor",
       "state": "published"
@@ -224,34 +203,14 @@
       "state": "published"
     },
     {
-      "title": "Haversine formula",
-      "slug": "haversine-formula",
-      "state": "published"
-    },
-    {
       "title": "Hello world/Text",
       "slug": "hello-world-text",
       "state": "published"
     },
     {
-      "title": "Intersecting number wheels",
-      "slug": "intersecting-number-wheels",
-      "state": "solved"
-    },
-    {
       "title": "Josephus problem",
+      "slug": "josephus-problem",
       "state": "published"
-    },
-    {
-      "title": "Lah numbers",
-      "state": "blocked",
-      "reason": "ghul#2215"
-    },
-    {
-      "title": "Left factorials",
-      "slug": "left-factorials",
-      "state": "solved",
-      "reason": "ghul#2213"
     },
     {
       "title": "Levenshtein distance",
@@ -265,15 +224,12 @@
     },
     {
       "title": "Man or boy test",
+      "slug": "man-or-boy-test",
       "state": "published"
     },
     {
-      "title": "Map range",
-      "slug": "map-range",
-      "state": "solved"
-    },
-    {
       "title": "Multiple distinct objects",
+      "slug": "multiple-distinct-objects",
       "state": "published"
     },
     {
@@ -287,16 +243,6 @@
       "state": "published"
     },
     {
-      "title": "Negative base numbers",
-      "slug": "negative-base-numbers",
-      "state": "solved"
-    },
-    {
-      "title": "Numbers with equal rises and falls",
-      "slug": "numbers-with-equal-rises-and-falls",
-      "state": "solved"
-    },
-    {
       "title": "Palindrome detection",
       "slug": "palindrome-detection",
       "state": "published"
@@ -307,24 +253,9 @@
       "state": "published"
     },
     {
-      "title": "Pig the dice game",
-      "state": "rejected",
-      "reason": "needs-interaction"
-    },
-    {
-      "title": "Population count",
-      "slug": "population-count",
-      "state": "solved"
-    },
-    {
       "title": "Power set",
+      "slug": "power-set",
       "state": "published"
-    },
-    {
-      "title": "Prime decomposition",
-      "slug": "prime-decomposition",
-      "state": "solved",
-      "reason": "ghul#2215"
     },
     {
       "title": "Reverse a string",
@@ -333,20 +264,18 @@
     },
     {
       "title": "Roman numerals/Encode",
+      "slug": "roman-numerals-encode",
       "state": "published"
     },
     {
       "title": "Run-length encoding",
+      "slug": "run-length-encoding",
       "state": "published"
     },
     {
       "title": "Same fringe",
+      "slug": "same-fringe",
       "state": "published"
-    },
-    {
-      "title": "Semiprime",
-      "slug": "semiprime",
-      "state": "solved"
     },
     {
       "title": "Sieve of Eratosthenes",
@@ -360,31 +289,18 @@
     },
     {
       "title": "Sorting algorithms/Quicksort",
+      "slug": "sorting-algorithms-quicksort",
       "state": "published"
-    },
-    {
-      "title": "Sphenic numbers",
-      "slug": "sphenic-numbers",
-      "state": "solved"
-    },
-    {
-      "title": "Taxicab numbers",
-      "slug": "taxicab-numbers",
-      "state": "solved"
-    },
-    {
-      "title": "Terminal control/Positional read",
-      "state": "rejected",
-      "reason": "needs-interaction"
     },
     {
       "title": "Ternary logic",
+      "slug": "ternary-logic",
       "state": "published"
     },
     {
-      "title": "Topswops",
-      "slug": "topswops",
-      "state": "solved"
+      "title": "Text processing/Max licenses in use",
+      "state": "rejected",
+      "reason": "needs-network"
     },
     {
       "title": "Towers of Hanoi",
@@ -397,12 +313,8 @@
     },
     {
       "title": "Van Eck sequence",
+      "slug": "van-eck-sequence",
       "state": "published"
-    },
-    {
-      "title": "Van der Corput sequence",
-      "slug": "van-der-corput-sequence",
-      "state": "solved"
     },
     {
       "title": "Variadic function",
@@ -416,6 +328,7 @@
     },
     {
       "title": "Zeckendorf number representation",
+      "slug": "zeckendorf-number-representation",
       "state": "published"
     }
   ]

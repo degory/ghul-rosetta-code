@@ -1,0 +1,28 @@
+not
+true    | false
+maybe   | maybe
+false   |  true
+
+and     |  true maybe false
+--------+------------------
+true    |  true maybe false
+maybe   | maybe maybe false
+false   | false false false
+
+or      |  true maybe false
+--------+------------------
+true    |  true  true  true
+maybe   |  true maybe maybe
+false   |  true maybe false
+
+implies |  true maybe false
+--------+------------------
+true    |  true maybe false
+maybe   |  true maybe maybe
+false   |  true  true  true
+
+equiv   |  true maybe false
+--------+------------------
+true    |  true maybe false
+maybe   | maybe maybe maybe
+false   | false maybe  true

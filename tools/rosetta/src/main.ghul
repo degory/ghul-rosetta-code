@@ -231,6 +231,17 @@ self_test() is
         spliced.index_of("ghul") > spliced.index_of("Ada") /\ spliced.index_of("ghul") < spliced.index_of("Gleam")
     );
 
+    // Section order on a real page is often not alphabetical, so a ghul section can sit after a
+    // header ghul sorts before. Deciding placement on the ordering walk alone stops at that
+    // header and inserts a second section beside the one already there.
+    let out_of_order =
+        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Go}}}}==\ngo\n\n=={{{{header|ghul}}}}==\nold\n";
+
+    check_that(
+        "a ghul section out of alphabetical order is replaced, not duplicated",
+        isa PLACEMENT.REPLACES(splice.placement(out_of_order, "ghul"))
+    );
+
     // The page replaced by the section alone: what a wrong placement would produce, and the
     // failure worth being certain about.
     check_that("wiping the page is refused", !splice.keeps_every_other_section(page, section, "ghul"));

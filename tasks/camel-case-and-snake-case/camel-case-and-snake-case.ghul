@@ -9,14 +9,16 @@ use System.Text.StringBuilder;
 class NAME(words: Collections.List[string] private) is
     to_camel_case() -> string =>
         _words
-        | .index()
-        | .map(((position, word)) => if position == 0 then _lower_first(word) else _upper_first(word) fi)
-        | .join("");
+            |> index()
+            |> map(
+                ((index, word)) =>
+                    if index == 0 then lower_first(word) else upper_first(word) fi)
+            |> join("");
 
     to_snake_case() -> string =>
         _words
-        | .map(word => word.to_lower())
-        | .join("_");
+            |> map(word => word.to_lower())
+            |> join("_");
 si
 
 // a name splits at the boundaries either convention marks: the separators the task
@@ -47,11 +49,11 @@ parse(text: string) -> NAME is
     return NAME(words);
 si
 
-_lower_first(word: string) -> string pure => "{char.to_lower(word[0])}{word[1..<0]}";
+lower_first(word: string) -> string => "{char.to_lower(word[0])}{word.substring(1)}";
 
-_upper_first(word: string) -> string pure => "{char.to_upper(word[0])}{word[1..<0]}";
+upper_first(word: string) -> string => "{char.to_upper(word[0])}{word.substring(1)}";
 
-_quoted(text: string) -> string pure => "\"{text}\"";
+quoted(text: string) -> string => "\"{text}\"";
 
 let tests = [
     "snakeCase",
@@ -60,7 +62,7 @@ let tests = [
     "variable10Case",
     "ɛrgo rE tHis",
     "hurry-up-joe!",
-    "c://my-docs/happy_Flag-Day/12.doc",
+    "c://my-docs/happy_ghūl-Day/12.doc",
     "  spaces  "
 ];
 
@@ -69,5 +71,5 @@ write_line("{"input".pad_right(37)} {"snake case".pad_right(37)} camel case");
 for test in tests do
     let name = parse(test);
 
-    write_line("{_quoted(test).pad_right(37)} {_quoted(name.to_snake_case()).pad_right(37)} {_quoted(name.to_camel_case())}");
+    write_line("{quoted(test).pad_right(37)} {quoted(name.to_snake_case()).pad_right(37)} {quoted(name.to_camel_case())}");
 od

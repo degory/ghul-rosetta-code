@@ -46,6 +46,32 @@ integration-tests/capture.sh integration-tests/binary-digits
 yourself it is what the task asks for - capturing is how a wrong answer becomes a permanent
 expectation.
 
+## showing a task more than one way
+
+Some tasks are worth showing twice - the built-in one-liner, and the same thing written out. Those
+are held as **parts**: numbered sub-projects of the task, each a whole program with its own test.
+
+```sh
+scripts/new-part.sh apply-a-callback-to-an-array 01-using-map
+```
+
+```
+tasks/apply-a-callback-to-an-array/
+    task.json
+    01-using-map/           a whole program, with its own .ghulproj
+    02-writing-apply/
+integration-tests/apply-a-callback-to-an-array-01-using-map/
+integration-tests/apply-a-callback-to-an-array-02-writing-apply/
+```
+
+Each part becomes one `===heading===` section of the entry, with its own source and its own output,
+in the order the numbers give. The heading comes from the directory name, so `01-using-map` is
+"Using map". A task with parts has no source of its own: move the existing one into a part and
+delete the task's `.ghulproj` and `ghul.json`, or the two projects collide over the entry point.
+
+Parts are for a task that genuinely reads better as two entries. A solution that simply prints
+several things is one part.
+
 ## Getting the markup to paste
 
 ```sh
@@ -96,6 +122,9 @@ implementations in fifty other languages.
   fluent methods, prefer functions to classes and expression bodies to blocks, and use the
   constructs the language next door has no word for. `AGENTS.md` has the detail.
 - Keep the output deterministic. No clocks, no random numbers, no paths.
+- Keep lines under 64 columns, and never past 76. A solution is read in a fixed-width block on
+  Rosetta Code and in a prose column about 77 characters wide on ghul.dev, so anything longer
+  scrolls out of sight. `scripts/check-width.sh` reports the offenders.
 - Rosetta Code's syntax highlighter has no ghūl lexer, so the code goes in a
   `<syntaxhighlight lang="ghul">` block, which it renders unhighlighted rather than rejecting.
   Follow it with the real captured output in a `{{out}}` block.
@@ -135,6 +164,8 @@ dotnet run --project tools/rosetta -- show solved       # ledger entries, all or
 dotnet run --project tools/rosetta -- set "Zig-zag matrix" rejected needs-gui
 dotnet run --project tools/rosetta -- publish --dry-run # where each entry would go, and the page it would leave
 dotnet run --project tools/rosetta -- publish --target "Rosetta Code:Sandbox"   # a real run, written somewhere harmless
+dotnet run --project tools/rosetta -- publish amb       # post one task, by slug
+dotnet run --project tools/rosetta -- publish --replace amb   # replace the ghul section already there
 dotnet run --project tools/rosetta -- publish           # post every solved task
 ```
 
@@ -143,9 +174,19 @@ what has a solution, and leaves alone anything only the ledger knows - a rejecti
 
 `publish` reads the markup `scripts/generate-wiki.sh --all` leaves in `wiki-out/`, so generate
 before publishing. It puts the section in case-insensitive alphabetical position among the
-page's other language headers, or replaces the ghul section already there, so re-publishing an
-improved solution is the same command. A dry run writes the whole proposed page to
-`wiki-out/<slug>.page` for reading before anything is sent.
+page's other language headers, or replaces the ghul section already there. Naming one or more
+slugs publishes only those; with none, every solved task goes. A dry run writes the whole
+proposed page to `wiki-out/<slug>.page` for reading before anything is sent.
+
+Re-publishing an improved solution needs `--replace`, and the refusal that makes it necessary is
+worth understanding before reaching for it. A replacement is refused unless the section on the
+wiki is the one this repository last published, because a section that has changed since may
+carry somebody else's correction, and replacing it silently throws their work away - which is
+what happened to an edit on Multiton the first time this ran. The check cannot tell that case
+from an ordinary local improvement, so it fires on both. What is on the wiki is written to
+`wiki-out/<slug>.live`: read it against `wiki-out/<slug>.wiki` and satisfy yourself the only
+differences are the ones made here, then re-run with `--replace`. A difference that came from
+the wiki belongs in the repository, not in the bin.
 
 `--target <page>` sends every write to one page instead of to the task pages. The rest of the
 run is unchanged - it signs in, fetches the real task page and splices against its real language
