@@ -2,15 +2,15 @@ use IO.Std.write_line;
 use Collections.Queue;
 use Ghul.Pipes;
 
-union Tree is
+union Tree[T] is
     EMPTY;
-    NODE(value: int, left: Tree, right: Tree);
+    NODE(value: T, left: Tree[T], right: Tree[T]);
 si
 
 use Tree.EMPTY;
 use Tree.NODE;
 
-preorder(tree: Tree) -> Pipe[int] is
+preorder[T](tree: Tree[T]) -> Pipe[T] is
     if let (value, left, right): NODE = tree then
         yield value;
 
@@ -19,7 +19,7 @@ preorder(tree: Tree) -> Pipe[int] is
     fi
 si
 
-inorder(tree: Tree) -> Pipe[int] is
+inorder[T](tree: Tree[T]) -> Pipe[T] is
     if let (value, left, right): NODE = tree then
         for v in inorder(left) do yield v; od
 
@@ -29,7 +29,7 @@ inorder(tree: Tree) -> Pipe[int] is
     fi
 si
 
-postorder(tree: Tree) -> Pipe[int] is
+postorder[T](tree: Tree[T]) -> Pipe[T] is
     if let (value, left, right): NODE = tree then
         for v in postorder(left) do yield v; od
         for v in postorder(right) do yield v; od
@@ -38,8 +38,8 @@ postorder(tree: Tree) -> Pipe[int] is
     fi
 si
 
-levelorder(tree: Tree) -> Pipe[int] is
-    let pending = Queue[Tree]();
+levelorder[T](tree: Tree[T]) -> Pipe[T] is
+    let pending = Queue[Tree[T]]();
 
     pending.enqueue(tree);
 
@@ -55,9 +55,9 @@ levelorder(tree: Tree) -> Pipe[int] is
     od
 si
 
-leaf(value: int) -> Tree => NODE(value, EMPTY, EMPTY);
+leaf[T](value: T) -> Tree[T] => NODE(value, EMPTY, EMPTY);
 
-show(label: string, values: Pipe[int]) =>
+show[T](label: string, values: Pipe[T]) =>
     write_line("{label,-12} {values |> join(" ")}");
 
 let tree =
