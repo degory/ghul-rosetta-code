@@ -1,0 +1,43 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Collections.List;
+use Ghul.Pipes;
+use System.Numerics.BigInteger;
+use System.Numerics.IAdditionOperators.`+;
+
+bell_triangle() -> Pipe[List[BigInteger]] is
+    let row mut = LIST[BigInteger]();
+
+    row.add(BigInteger.one);
+
+    while true do
+        yield row;
+
+        let next = LIST[BigInteger]();
+
+        next.add(row[row.count - 1]);
+
+        for j in 0..row.count do
+            next.add(next[j] + row[j]);
+        od
+
+        row = next;
+    od
+si
+
+let rows = bell_triangle() |> take(50) |> collect_list();
+
+write_line("first fifteen and fiftieth Bell numbers:");
+
+for i in 0..15 do
+    let n = i + 1;
+    write_line("{n,2}: {rows[i][0]}");
+od
+
+write_line("50: {rows[49][0]}");
+write_line("");
+write_line("first ten rows of Bell's triangle:");
+
+for i in 0..10 do
+    write_line("{rows[i] |> join(", ")}");
+od
