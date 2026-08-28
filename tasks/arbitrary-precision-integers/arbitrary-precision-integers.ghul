@@ -7,11 +7,9 @@ power[T: INumber[T]](base: T, exponent: int) -> T =>
     if exponent == 0 then
         T.one
     elif exponent % 2 == 0 then
-        val
-            let root = power(base, exponent / 2);
+        let root = power(base, exponent / 2);
 
-            root * root
-        lav
+        root * root
     else
         base * power(base, exponent - 1)
     fi;
