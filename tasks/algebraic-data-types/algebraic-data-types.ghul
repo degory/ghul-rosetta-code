@@ -13,8 +13,6 @@ si
 use Tree.EMPTY;
 use Tree.NODE;
 
-// The four ways a red node can end up with a red child, each rewritten to the same
-// red-over-two-blacks shape.
 balance(c: Color, l: Tree, v: int, r: Tree) -> Tree =>
     case (c, l, v, r)
     when (~BLACK, (~RED, (~RED, a, x, b): NODE, y, m): NODE, z, d) then
@@ -43,7 +41,6 @@ _insert(tree: Tree, element: int) -> Tree =>
         fi
     esac;
 
-// The root is always black, whatever the insertion left behind.
 insert(tree: Tree, element: int) -> Tree =>
     case _insert(tree, element)
     when (c, l, v, r): NODE then NODE(BLACK, l, v, r)
@@ -56,8 +53,6 @@ in_order(tree: Tree) -> string =>
     when (c, l, v, r): NODE then "{in_order(l)}{v} {in_order(r)}"
     esac;
 
-// A red-black tree is valid when no red node has a red child, and every path from the root to an
-// empty node passes the same number of black nodes. `black_height` returns -1 for an invalid tree.
 black_height(tree: Tree) -> int =>
     case tree
     when _: EMPTY then

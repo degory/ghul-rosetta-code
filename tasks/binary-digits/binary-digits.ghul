@@ -1,20 +1,7 @@
 use IO.Std.write_line;
 
-binary(value: int) -> string is
-    if value == 0 then
-        return "0";
-    fi
-
-    let digits = System.Text.StringBuilder();
-    let remaining mut = value;
-
-    while remaining > 0 do
-        digits.insert(0, remaining % 2);
-        remaining = remaining / 2;
-    od
-
-    return digits.to_string();
-si
+binary(value: int) -> string =>
+    if value < 2 then "{value}" else "{binary(value / 2)}{value % 2}" fi;
 
 for value in [5, 50, 9000] do
     write_line(binary(value));

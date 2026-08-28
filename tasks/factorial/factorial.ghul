@@ -1,7 +1,5 @@
 use IO.Std.write_line;
 
-// `rec` names the function literal from inside its own body, so a recursive local needs no
-// forward declaration and no name in the enclosing scope.
 let factorial = n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi;
 
 for n in [0, 1, 5, 10, 20] do

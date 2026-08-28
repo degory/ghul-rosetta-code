@@ -1,0 +1,17 @@
+use IO.Std.write_line;
+use Collections;
+use Ghul.Pipes;
+
+differences(xs: List[int]) -> List[int] =>
+    zip(xs[1..<0], xs[0..<1]) |> map(((next, current)) => next - current) |> collect_list();
+
+forward(order: int, xs: List[int]) -> List[int] =>
+    if order == 0 then xs
+    else forward(order - 1, differences(xs))
+    fi;
+
+let xs: List[int] = [90, 47, 58, 29, 22, 32, 55, 5, 55, 73];
+
+for order in 0..xs.count do
+    write_line("order {order}: {forward(order, xs) |> join(", ")}");
+od

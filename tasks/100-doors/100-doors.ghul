@@ -1,10 +1,7 @@
 use IO.Std.write_line;
-use Collections.LIST;
 use Ghul.Pipes;
 
-let doors = LIST();
-
-(0..100) |> each(_ => doors.add(false));
+let doors = (1::100) |> map(_ => false) |> collect_list();
 
 for pass in 1::100 do
     let door mut = pass;
@@ -15,8 +12,6 @@ for pass in 1::100 do
     od
 od
 
-let open_doors =
-    (1::100) 
-        |> filter(door => doors[door - 1]);
+let open_doors = (1::100) |> filter(door => doors[door - 1]);
 
 write_line("open doors: {$open_doors}");

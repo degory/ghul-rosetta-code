@@ -1,16 +1,14 @@
 use IO.Std.write_line;
+use Ghul.Pipes;
 use Collections.LIST;
 use System.Math;
 
-// a compose function
 >>[A, B, C](f: A -> B, g: B -> C) -> A -> C =>
     x => g(f(x));
 
-// some simple functions
 let cube = x => x * x * x;
 let cube_root = x => Math.cbrt(x);
 
-// store the functions in a list
 let functions = LIST();
 functions.add(Math.sin);
 functions.add(Math.cos);
@@ -21,11 +19,8 @@ inverses.add(Math.asin);
 inverses.add(Math.acos);
 inverses.add(cube_root);
 
-for i in 0..functions.count do
-    // compose each function with its inverse
-    let round_trip = inverses[i] >> functions[i];
+for (function, inverse) in functions |> zip(inverses) do
+    let round_trip = function >> inverse;
 
-    // we expect that round_trip(x) == x for all x
-    // in the domain of the function
     write_line("{round_trip(0.5D):F6}");
 od

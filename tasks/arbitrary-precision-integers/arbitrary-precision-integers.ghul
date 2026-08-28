@@ -1,15 +1,21 @@
 use IO.Std.write_line;
-use Ghul.Pipes;
 use System.Numerics.BigInteger;
+use System.Numerics.INumber;
+use System.Numerics.IMultiplyOperators.`*;
 
-power(base: int, exponent: int) -> int =>
-    (1::exponent) |> reduce(1, (accumulated, _) => accumulated * base);
+power[T: INumber[T]](base: T, exponent: int) -> T =>
+    if exponent == 0 then
+        T.one
+    elif exponent % 2 == 0 then
+        let root = power(base, exponent / 2);
 
-// 4 ** (3 ** 2) is 262144, which is an ordinary int. Only 5 raised to it needs more, and .NET's
-// BigInteger is what the task means by an in-built capability: nothing here implements arbitrary
-// precision, it only asks for it.
-let digits = BigInteger.pow(cast(5), power(4, power(3, 2))).to_string();
+        root * root
+    else
+        base * power(base, exponent - 1)
+    fi;
 
-write_line("first 20 digits: {digits.substring(0, 20)}");
-write_line("last 20 digits:  {digits.substring(digits.length - 20)}");
+let digits = power(cast BigInteger(5), power(4, power(3, 2))).to_string();
+
+write_line("first 20 digits: {digits[0..20]}");
+write_line("last 20 digits:  {digits[20..<<0]}");
 write_line("decimal digits:  {digits.length}");

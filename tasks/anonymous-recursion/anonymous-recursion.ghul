@@ -1,14 +1,8 @@
 use IO.Std.write_line;
 
-// The negative argument is checked once, on entry. `rec` is how a function literal refers to
-// itself, so the recursion that follows needs no helper function and no name at all: the literal
-// is applied where it is written.
 let fibonacci = n =>
-    if n < 0 then
-        throw System.ArgumentException("fibonacci is not defined for a negative argument")
-    else
-        (i rec => if i < 2 then i else rec(i - 1) + rec(i - 2) fi)(n)
-    fi;
+    assert n >= 0 else "fibonacci is not defined for a negative argument" in
+    (i rec => if i < 2 then i else rec(i - 1) + rec(i - 2) fi)(n);
 
 for n in 0::10 do
     write_line("fibonacci({n}) = {fibonacci(n)}");

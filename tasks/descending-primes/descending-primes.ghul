@@ -1,0 +1,45 @@
+use IO.Std.write_line;
+use Collections;
+use Ghul.Pipes;
+
+is_prime(n: int) -> bool =>
+    if n < 2 then false
+    elif n % 2 == 0 then n == 2
+    else
+        let d mut = 3;
+
+        while d * d <= n /\ n % d != 0 do
+            d = d + 2;
+        od
+
+        d * d > n
+    fi;
+
+descending(so_far: int, next_digit: int, found: LIST[int]) is
+    if so_far > 0 /\ is_prime(so_far) then
+        found.add(so_far);
+    fi
+
+    for digit in 0::next_digit do
+        descending(so_far * 10 + digit, digit - 1, found);
+    od
+si
+
+let found = LIST();
+
+descending(0, 9, found);
+
+let primes = found |> collect_list();
+
+primes.sort();
+
+for row in 0::(primes.count - 1) / 6 do
+    write_line(
+        (0::5)
+        |> filter(column => row * 6 + column < primes.count)
+        |> map(column => "{primes[row * 6 + column],12}")
+        |> join("")
+    );
+od
+
+write_line("{primes.count} primes with strictly descending digits");

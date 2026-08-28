@@ -17,8 +17,6 @@ pad(word: string, width: int, alignment: Alignment) -> string =>
         .pad_right(width)
     esac;
 
-// One space between columns is the minimum the task asks for. Trailing spaces are insignificant,
-// so a line is cut back to its last word.
 line(row: string[], widths: int[], alignment: Alignment) -> string =>
     (row
      |> index()
@@ -34,23 +32,27 @@ let text = [
     "justified,$right$justified,$or$center$justified$within$its$column."
 ];
 
-// A trailing dollar ends the line rather than introducing an empty final field.
 let rows =
     text
     |> map(line => line.trim_end('$').split(['$']))
     |> collect_array();
 
 let columns =
-    rows |> reduce(0, (widest, row) => if row.count > widest then row.count else widest fi);
+    rows
+    |> reduce(0, (widest, row) =>
+        if row.count > widest then row.count else widest fi);
 
-// A column is as wide as its longest word, over the rows long enough to have one.
 let widths =
     (0..columns)
     |> map(column =>
         rows
         |> filter(row => column < row.count)
         |> reduce(0, (widest, row) =>
-            if row[column].length > widest then row[column].length else widest fi))
+            if row[column].length > widest then
+                row[column].length
+            else
+                widest
+            fi))
     |> collect_array();
 
 for alignment in [Alignment.LEFT, Alignment.RIGHT, Alignment.CENTRE] do

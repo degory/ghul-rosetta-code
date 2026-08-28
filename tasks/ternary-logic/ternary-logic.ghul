@@ -1,0 +1,68 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+union Trit is
+    TRUE;
+    MAYBE;
+    FALSE;
+si
+
+use Trit.TRUE;
+use Trit.MAYBE;
+use Trit.FALSE;
+
+rank(t: Trit) -> int =>
+    case t
+    when _: FALSE then 0
+    when _: MAYBE then 1
+    when _: TRUE then 2
+    esac;
+
+of_rank(r: int) -> Trit =>
+    case r
+    when 0 then FALSE
+    when 1 then MAYBE
+    else TRUE
+    esac;
+
+!(t: Trit) -> Trit => of_rank(2 - rank(t));
+
+/\(a: Trit, b: Trit) -> Trit => if rank(a) < rank(b) then a else b fi;
+
+\/(a: Trit, b: Trit) -> Trit => if rank(a) > rank(b) then a else b fi;
+
+implies(a: Trit, b: Trit) -> Trit => !a \/ b;
+
+equivalent(a: Trit, b: Trit) -> Trit => implies(a, b) /\ implies(b, a);
+
+show(t: Trit) -> string =>
+    case t
+    when _: TRUE then "true"
+    when _: MAYBE then "maybe"
+    when _: FALSE then "false"
+    esac;
+
+trits: Trit[] => [TRUE, MAYBE, FALSE];
+
+table(name: string, operator: (Trit, Trit) -> Trit) is
+    write_line("");
+    write_line("{name,-8}|{trits |> map(t => "{show(t),6}") |> join("")}");
+    write_line("--------+------------------");
+
+    for a in trits do
+        let row = trits |> map(b => "{show(operator(a, b)),6}") |> join("");
+
+        write_line("{show(a),-8}|{row}");
+    od
+si
+
+write_line("not");
+
+for a in trits do
+    write_line("{show(a),-8}|{show(!a),6}");
+od
+
+table("and", (a, b) => a /\ b);
+table("or", (a, b) => a \/ b);
+table("implies", implies);
+table("equiv", equivalent);

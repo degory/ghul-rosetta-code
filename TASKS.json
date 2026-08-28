@@ -3,7 +3,12 @@
     {
       "title": "100 doors",
       "slug": "100-doors",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "100 prisoners",
+      "state": "rejected",
+      "reason": "nondeterministic"
     },
     {
       "title": "15 puzzle game",
@@ -26,22 +31,37 @@
       "reason": "needs-interaction"
     },
     {
+      "title": "ABC problem",
+      "slug": "abc-problem",
+      "state": "published"
+    },
+    {
       "title": "Abstract type",
       "slug": "abstract-type",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Accumulator factory",
       "slug": "accumulator-factory",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Achilles numbers",
+      "slug": "achilles-numbers",
+      "state": "published"
     },
     {
       "title": "Ackermann function",
       "slug": "ackermann-function",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Active Directory/Connect",
+      "state": "rejected",
+      "reason": "needs-network"
+    },
+    {
+      "title": "Active Directory/Search for a user",
       "state": "rejected",
       "reason": "needs-network"
     },
@@ -52,6 +72,11 @@
       "note": "the object\u0027s state is defined as depending on the clock"
     },
     {
+      "title": "Additive primes",
+      "slug": "additive-primes",
+      "state": "published"
+    },
+    {
       "title": "Algebraic data types",
       "slug": "algebraic-data-types",
       "state": "published"
@@ -59,12 +84,22 @@
     {
       "title": "Align columns",
       "slug": "align-columns",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Almost prime",
+      "slug": "almost-prime",
+      "state": "published"
+    },
+    {
+      "title": "Amb",
+      "slug": "amb",
+      "state": "published"
     },
     {
       "title": "Amicable pairs",
       "slug": "amicable-pairs",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Anagrams",
@@ -93,19 +128,29 @@
       "state": "published"
     },
     {
+      "title": "Anti-primes",
+      "slug": "anti-primes",
+      "state": "published"
+    },
+    {
       "title": "Apply a callback to an array",
       "slug": "apply-a-callback-to-an-array",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Arbitrary-precision integers (included)",
       "slug": "arbitrary-precision-integers",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Archimedean spiral",
+      "state": "rejected",
+      "reason": "needs-gui"
     },
     {
       "title": "Arithmetic evaluation",
       "slug": "arithmetic-evaluation",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Averages/Arithmetic mean",
@@ -115,7 +160,7 @@
     {
       "title": "Binary digits",
       "slug": "binary-digits",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Call a foreign-language function",
@@ -128,14 +173,30 @@
       "state": "published"
     },
     {
+      "title": "Church numerals",
+      "slug": "church-numerals",
+      "state": "published",
+      "reason": "ghul#757"
+    },
+    {
       "title": "Closures/Value capture",
       "slug": "closures-value-capture",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Cumulative standard deviation",
+      "slug": "cumulative-standard-deviation",
+      "state": "published"
+    },
+    {
+      "title": "Descending primes",
+      "slug": "descending-primes",
+      "state": "published"
     },
     {
       "title": "Factorial",
       "slug": "factorial",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Fibonacci sequence",
@@ -150,7 +211,17 @@
     {
       "title": "FizzBuzz",
       "slug": "fizzbuzz",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Forward difference",
+      "slug": "forward-difference",
+      "state": "published"
+    },
+    {
+      "title": "Gray code",
+      "slug": "gray-code",
+      "state": "published"
     },
     {
       "title": "Greatest common divisor",
@@ -160,7 +231,12 @@
     {
       "title": "Hailstone sequence",
       "slug": "hailstone-sequence",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Haversine formula",
+      "slug": "haversine-formula",
+      "state": "published"
     },
     {
       "title": "Hello world/Text",
@@ -168,14 +244,44 @@
       "state": "published"
     },
     {
+      "title": "Intersecting number wheels",
+      "slug": "intersecting-number-wheels",
+      "state": "published"
+    },
+    {
+      "title": "Josephus problem",
+      "slug": "josephus-problem",
+      "state": "published"
+    },
+    {
+      "title": "Left factorials",
+      "slug": "left-factorials",
+      "state": "published"
+    },
+    {
       "title": "Levenshtein distance",
       "slug": "levenshtein-distance",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Look-and-say sequence",
       "slug": "look-and-say-sequence",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Man or boy test",
+      "slug": "man-or-boy-test",
+      "state": "published"
+    },
+    {
+      "title": "Map range",
+      "slug": "map-range",
+      "state": "published"
+    },
+    {
+      "title": "Multiple distinct objects",
+      "slug": "multiple-distinct-objects",
+      "state": "published"
     },
     {
       "title": "Multiton",
@@ -185,7 +291,17 @@
     {
       "title": "Mutual recursion",
       "slug": "mutual-recursion",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Negative base numbers",
+      "slug": "negative-base-numbers",
+      "state": "published"
+    },
+    {
+      "title": "Numbers with equal rises and falls",
+      "slug": "numbers-with-equal-rises-and-falls",
+      "state": "published"
     },
     {
       "title": "Palindrome detection",
@@ -198,9 +314,44 @@
       "state": "published"
     },
     {
+      "title": "Population count",
+      "slug": "population-count",
+      "state": "published"
+    },
+    {
+      "title": "Power set",
+      "slug": "power-set",
+      "state": "published"
+    },
+    {
+      "title": "Prime decomposition",
+      "slug": "prime-decomposition",
+      "state": "published"
+    },
+    {
       "title": "Reverse a string",
       "slug": "reverse-a-string",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Roman numerals/Encode",
+      "slug": "roman-numerals-encode",
+      "state": "published"
+    },
+    {
+      "title": "Run-length encoding",
+      "slug": "run-length-encoding",
+      "state": "published"
+    },
+    {
+      "title": "Same fringe",
+      "slug": "same-fringe",
+      "state": "published"
+    },
+    {
+      "title": "Semiprime",
+      "slug": "semiprime",
+      "state": "published"
     },
     {
       "title": "Sieve of Eratosthenes",
@@ -210,15 +361,55 @@
     {
       "title": "Smith\u2013Waterman algorithm",
       "slug": "smith-waterman-algorithm",
-      "state": "solved"
+      "state": "published"
+    },
+    {
+      "title": "Sorting algorithms/Quicksort",
+      "slug": "sorting-algorithms-quicksort",
+      "state": "published"
+    },
+    {
+      "title": "Sphenic numbers",
+      "slug": "sphenic-numbers",
+      "state": "published"
+    },
+    {
+      "title": "Taxicab numbers",
+      "slug": "taxicab-numbers",
+      "state": "published"
+    },
+    {
+      "title": "Ternary logic",
+      "slug": "ternary-logic",
+      "state": "published"
+    },
+    {
+      "title": "Text processing/Max licenses in use",
+      "state": "rejected",
+      "reason": "needs-network"
+    },
+    {
+      "title": "Topswops",
+      "slug": "topswops",
+      "state": "published"
     },
     {
       "title": "Towers of Hanoi",
       "slug": "towers-of-hanoi",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "User:Degory/sandbox",
+      "state": "published"
+    },
+    {
+      "title": "Van Eck sequence",
+      "slug": "van-eck-sequence",
+      "state": "published"
+    },
+    {
+      "title": "Van der Corput sequence",
+      "slug": "van-der-corput-sequence",
       "state": "published"
     },
     {
@@ -229,6 +420,11 @@
     {
       "title": "Y combinator",
       "slug": "y-combinator",
+      "state": "published"
+    },
+    {
+      "title": "Zeckendorf number representation",
+      "slug": "zeckendorf-number-representation",
       "state": "published"
     }
   ]

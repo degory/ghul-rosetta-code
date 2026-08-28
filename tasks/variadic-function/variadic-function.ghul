@@ -2,9 +2,7 @@ use IO.Std.write_line;
 use Collections.LIST;
 use Ghul.Pipes;
 
-// ghūl has no variadic functions. A function that takes any number of values
-// takes an array, and the caller writes an array literal at the call site.
-print_all(values: object[]) is
+print_all[T](values: T[]) is
     for value in values do
         write_line("{value}");
     od
@@ -36,11 +34,8 @@ si
 
 print_all(["one", 2, 3.5]);
 
-// the element type of an array literal is inferred as the nearest type the
-// elements have in common, so a literal mixing cats and dogs is an Animal[]
 herd([CAT("felix"), DOG("rex")]);
 
-// the array can be built at run time instead
 let animals = LIST[Animal]();
 animals.add(CAT("tom"));
 animals.add(DOG("spot"));

@@ -2,8 +2,6 @@ use IO.Std.write_line;
 use Collections.LIST;
 use System.Math.min;
 
-// One row of the edit-distance matrix at a time: `previous` holds the row for the prefix of the
-// source one character shorter than the one being filled in.
 levenshtein(source: string, target: string) -> int is
     let previous mut = LIST();
 
@@ -17,10 +15,13 @@ levenshtein(source: string, target: string) -> int is
         current.add(i);
 
         for j in 1::target.length do
-            let substitution =
-                previous[j - 1] + if source[i - 1] == target[j - 1] then 0 else 1 fi;
+            let same = source[i - 1] == target[j - 1];
+            let substitution = previous[j - 1] + if same then 0 else 1 fi;
 
-            current.add(min(substitution, min(previous[j] + 1, current[j - 1] + 1)));
+            let insertion = previous[j] + 1;
+            let deletion = current[j - 1] + 1;
+
+            current.add(min(substitution, min(insertion, deletion)));
         od
 
         previous = current;

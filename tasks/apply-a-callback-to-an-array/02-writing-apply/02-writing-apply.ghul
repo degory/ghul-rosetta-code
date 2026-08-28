@@ -1,0 +1,18 @@
+use IO.Std.write_line;
+use Collections.List;
+use Collections.LIST;
+
+apply[T, U](values: T[], callback: T -> U pure) -> List[U] is
+    let applied = LIST[U]();
+
+    for value in values do
+        applied.add(callback(value));
+    od
+
+    return applied;
+si
+
+shout(word: string) -> string => "{word.to_upper()}!";
+
+write_line("{$([1, 2, 3, 4, 5] |> apply(x => x * x))}");
+write_line("{$(["frog", "newt", "toad"] |> apply(shout))}");

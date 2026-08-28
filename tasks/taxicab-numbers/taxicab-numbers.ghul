@@ -1,0 +1,80 @@
+use IO.Std.write_line;
+use Collections;
+use Ghul.Pipes;
+
+let pair_bound = 1200;
+
+let sums = LIST[long]();
+
+for a in 1..pair_bound do
+    let a_cubed = cast long(a) * cast long(a) * cast long(a);
+
+    for b in (a + 1)..pair_bound do
+        let b_cubed = cast long(b) * cast long(b) * cast long(b);
+
+        sums.add(a_cubed + b_cubed);
+    od
+od
+
+sums.sort();
+
+let taxis = LIST[long]();
+
+let i mut = 0;
+
+while i < sums.count - 1 do
+    if sums[i] == sums[i + 1] then
+        let value = sums[i];
+
+        taxis.add(value);
+
+        while i < sums.count /\ sums[i] == value do
+            i = i + 1;
+        od
+    else
+        i = i + 1;
+    fi
+od
+
+cube_root(v: long) -> long =>
+    val
+        let r = cast long(System.Math.floor(System.Math.cbrt(cast(v)) + 0.5D));
+
+        if r * r * r == v then r else 0L fi
+    lav;
+
+expressions(t: long) -> string =>
+    val
+        let parts = LIST[string]();
+        let a mut = 1L;
+
+        while a * a * a * 2L < t do
+            let b = cube_root(t - a * a * a);
+
+            if b > 0L then
+                parts.add("{a}^3 + {b}^3");
+            fi
+
+            a = a + 1L;
+        od
+
+        parts |> join(" = ")
+    lav;
+
+show(rank: int, taxis: List[long]) is
+    let t = taxis[rank - 1];
+
+    write_line("{rank}: {t} = {expressions(t)}");
+si
+
+write_line("the lowest 25 taxicab numbers:");
+
+for rank in 1::25 do
+    show(rank, taxis);
+od
+
+write_line("the 2000th taxicab number, and half a dozen more:");
+
+for rank in 2000::2006 do
+    show(rank, taxis);
+od
