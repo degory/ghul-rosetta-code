@@ -1,6 +1,5 @@
 use IO.Std.write_line;
 
-// Euclid's algorithm
 gcd(a: int, b: int) -> int => if b == 0 then a else gcd(b, a % b) fi;
 
 write_line("gcd(48, 18) = {gcd(48, 18)}");

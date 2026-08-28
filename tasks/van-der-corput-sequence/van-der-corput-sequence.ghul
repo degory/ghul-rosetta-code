@@ -2,9 +2,6 @@ use IO.Std.write_line;
 use Collections;
 use Ghul.Pipes;
 
-// the digits of n in the given base, read off least significant first, are the
-// digits of the term most significant first, so each one is divided by a
-// weight that shrinks as the number is consumed
 van_der_corput(n: int, base: int) -> double pure =>
     val
         let rest mut = n;

@@ -141,61 +141,33 @@ Neither is a reason to move a solution's working data into a global just so
 named functions can be written. Passing what a function needs as an argument is
 usually shorter than either, and always clearer.
 
-## Comments are published under someone else's name
+## Solutions carry no comments
 
-**No comment at all beats a bad one.** That is the starting position, not a
-last resort. A comment is worse than nothing when it is hard to read, when it
-reaches for odd or academic terminology, when it reads as showing off, or when
-it says what the line underneath already says. Most comments that get written
-here fail at least one of those, so the question is not "is this comment true?"
-but "does this earn the space it takes on the page?" - and usually the answer is
-no, because the code is short and the reader is looking at it.
+**The default is no comments at all.** Look at the Go entries on any task page:
+they carry none, and they are none the worse for it. A solution here is a short
+program a reader is already looking straight at, so a comment has to displace
+code that is right there in front of them to be worth its space, and almost
+none do.
 
-What survives that test is a fact the reader cannot get from the code in front
-of them and would be misled without. Everything else comes out.
+That is the rule, not a starting position to argue against. Do not explain what
+the task is, do not narrate the algorithm, do not name the technique, and do not
+justify why the code is shaped the way it is. If the code needs a sentence to be
+followed, the fix is usually to write the code more plainly.
 
-Everything here goes on a public wiki under the account of the person who posts
-it. They will be taken to have written it, and if a contributor disputes a claim
-on the talk page, they are the one who has to answer.
+The bar for the rare exception is high, because everything here goes on a public
+wiki under the account of the person who posts it. They will be taken to have
+written it, and if a contributor disputes a claim on the talk page, they are the
+one who has to answer. So a comment must be something they could defend,
+unprompted, by pointing at the code beneath it - never a claim about the field,
+its history, or what another language does, and never a term whose only job is
+to show the term is known.
 
-So the standard for a comment is not "true". It is **"the person posting this
-could explain it, unprompted, to someone who challenged it"**. A sentence that
-is correct but that they would have to go and research before defending is worse
-than no sentence, because it reads as expertise being claimed rather than
-exercised. Under-claim.
-
-That gives a few concrete rules:
-
-- **Say what the code does and why it is shaped that way.** Those are claims a
-  reader checks against the code sitting in front of them, and the author can
-  defend by pointing at it.
-- **Don't assert facts about a field** - its terminology, its history, who
-  invented what, what another language does - unless the task page itself says
-  so. Where it does, that is a citable source and using it is fine.
-- **Don't name a concept to show it has a name.** If the name does no work for a
-  reader who does not already know it, it is decoration. If it does real work,
-  it also has to be defensible.
-- **Never carry over a claim from a review, a paper or anywhere else that you
-  cannot verify from the code.** Borrowed authority is exactly what fails on a
-  talk page: the author cannot say where it came from.
-- **Prefer the plain word.** Where a plain description and a technical term both
-  work, the plain description is not a simplification, it is the better comment.
-  "It would call itself forever" beats "it diverges".
-
-Worked example. This was written for the Y combinator entry and is accurate:
-
-> Its field is the roll and unroll of that recursive type, not mutable state.
-
-and this says the part that matters, checkably:
-
-> The field is set once, by the constructor, and never changes.
-
-The first asks the reader to know what an iso-recursive type is, and asks the
-author to defend that framing. The second is verifiable by looking three lines
-down.
-
-Ask, before every comment: *if someone replies "why do you say that?", is the
-answer in the file?*
+Two failures are worth naming because they keep recurring. A comment that
+apologises for the language - explaining why the code is contorted, or what it
+would look like if the compiler could express the thing directly - means the
+entry should not be posted at all: park the task against the issue instead. And
+mathematical notation is not neutral: `a^b` reads as the xor operator, so write
+what the code actually spells.
 
 ## Adding a task
 

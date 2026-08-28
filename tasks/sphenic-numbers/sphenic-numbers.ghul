@@ -27,7 +27,6 @@ smallest_prime_factors(limit: int) -> List[int] is
         p = p + 1;
     od
 
-    // whatever the sieve never touched is prime, and is its own smallest factor
     let n mut = 2;
 
     while n < limit do
@@ -41,9 +40,6 @@ smallest_prime_factors(limit: int) -> List[int] is
     return factor;
 si
 
-// a sphenic number is the product of three distinct primes, so it has exactly
-// three prime factors and no two of them are the same; the smallest-factor
-// walk yields them smallest first, so equal neighbours mean a repeated prime
 is_sphenic(n: int, factor: List[int]) -> bool =>
     val
         let rest mut = n;
@@ -89,8 +85,6 @@ let below_1000 = sphenics |> filter(n => n < 1000) |> join(", ");
 
 write_line("sphenic numbers below 1000: {below_1000}");
 
-// every fourth consecutive integer is divisible by 4, so three sphenic numbers
-// in a row is the longest run there can be
 let triplets = LIST();
 
 let i mut = 0;

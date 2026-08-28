@@ -1,9 +1,6 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-// walks the decimal digits from the least significant end, comparing each with
-// the one above it; which end the walk starts from does not matter, since it
-// only swaps which differences count as rises and which as falls
 balanced(n: int) -> bool =>
     val
         let rest mut = n;

@@ -28,7 +28,6 @@ swaps(deck: int[]) -> int =>
         count
     lav;
 
-// walks every permutation of 1..n, keeping the largest round count seen
 topswops(n: int) -> int =>
     val
         let deck = LIST();

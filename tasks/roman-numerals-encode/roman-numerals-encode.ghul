@@ -1,9 +1,6 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-// Largest value first, and the four subtractive pairs sit in the table as
-// values of their own, so taking as many of each as fit needs no special
-// case for them.
 roman(n: int) -> string is
     let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
     let symbols = [

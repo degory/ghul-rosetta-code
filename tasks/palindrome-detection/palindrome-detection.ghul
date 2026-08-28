@@ -7,7 +7,6 @@ reverse(s: string) -> string =>
 
 is_palindrome(s: string) -> bool => s =~ reverse(s);
 
-// ignores non-letters and folds case
 is_inexact_palindrome(s: string) -> bool =>
     s 
         |> filter(char.is_letter)

@@ -7,9 +7,6 @@ use System.Numerics.IMultiplyOperators.`*;
 use System.Numerics.IDivisionOperators.`/;
 use System.Numerics.IModulusOperators.`%;
 
-// Trial division by 2 and then the odd numbers. Whatever is left once no
-// divisor below the square root remains is itself prime, which is what stops
-// the last factor of a large semiprime needing a search of its own.
 decompose(n: BigInteger) -> List[BigInteger] is
     let factors = LIST();
 
@@ -53,5 +50,4 @@ for n in [12L, 2L, 9L, 1024L, 1048576L, 4294967297L, 1234567890L] do
     show(cast(n));
 od
 
-// beyond what a machine word holds
 show(BigInteger.parse("12345678901234567890"));

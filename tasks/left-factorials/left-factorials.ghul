@@ -4,10 +4,6 @@ use System.Numerics.BigInteger;
 use System.Numerics.IAdditionOperators.`+;
 use System.Numerics.IMultiplyOperators.`*;
 
-// The stream carries (n, n!, !n) and yields !n. Each step multiplies the
-// running factorial up to the next n and adds the factorial it is leaving
-// behind to the running total, so !n = 0! + 1! + ... + (n-1)! holds at every
-// step and no factorial is computed twice.
 left_factorials() -> Ghul.Pipes.Pipe[BigInteger] =>
     stream(
         (n = 0, factorial = BigInteger.one, total = BigInteger.zero),

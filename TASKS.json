@@ -138,6 +138,10 @@
       "state": "published"
     },
     {
+      "title": "Arbitrary-precision integers (included)",
+      "state": "published"
+    },
+    {
       "title": "Archimedean spiral",
       "state": "rejected",
       "reason": "needs-gui"
@@ -168,8 +172,23 @@
       "state": "published"
     },
     {
+      "title": "Church numerals",
+      "state": "blocked",
+      "reason": "ghul#757"
+    },
+    {
       "title": "Closures/Value capture",
       "slug": "closures-value-capture",
+      "state": "published"
+    },
+    {
+      "title": "Cumulative standard deviation",
+      "slug": "cumulative-standard-deviation",
+      "state": "published"
+    },
+    {
+      "title": "Descending primes",
+      "slug": "descending-primes",
       "state": "published"
     },
     {
@@ -193,6 +212,16 @@
       "state": "published"
     },
     {
+      "title": "Forward difference",
+      "slug": "forward-difference",
+      "state": "published"
+    },
+    {
+      "title": "Gray code",
+      "slug": "gray-code",
+      "state": "published"
+    },
+    {
       "title": "Greatest common divisor",
       "slug": "greatest-common-divisor",
       "state": "published"
@@ -203,14 +232,29 @@
       "state": "published"
     },
     {
+      "title": "Haversine formula",
+      "slug": "haversine-formula",
+      "state": "published"
+    },
+    {
       "title": "Hello world/Text",
       "slug": "hello-world-text",
       "state": "published"
     },
     {
+      "title": "Intersecting number wheels",
+      "slug": "intersecting-number-wheels",
+      "state": "solved"
+    },
+    {
       "title": "Josephus problem",
       "slug": "josephus-problem",
       "state": "published"
+    },
+    {
+      "title": "Left factorials",
+      "slug": "left-factorials",
+      "state": "solved"
     },
     {
       "title": "Levenshtein distance",
@@ -228,6 +272,11 @@
       "state": "published"
     },
     {
+      "title": "Map range",
+      "slug": "map-range",
+      "state": "solved"
+    },
+    {
       "title": "Multiple distinct objects",
       "slug": "multiple-distinct-objects",
       "state": "published"
@@ -243,6 +292,16 @@
       "state": "published"
     },
     {
+      "title": "Negative base numbers",
+      "slug": "negative-base-numbers",
+      "state": "solved"
+    },
+    {
+      "title": "Numbers with equal rises and falls",
+      "slug": "numbers-with-equal-rises-and-falls",
+      "state": "solved"
+    },
+    {
       "title": "Palindrome detection",
       "slug": "palindrome-detection",
       "state": "published"
@@ -253,9 +312,19 @@
       "state": "published"
     },
     {
+      "title": "Population count",
+      "slug": "population-count",
+      "state": "solved"
+    },
+    {
       "title": "Power set",
       "slug": "power-set",
       "state": "published"
+    },
+    {
+      "title": "Prime decomposition",
+      "slug": "prime-decomposition",
+      "state": "solved"
     },
     {
       "title": "Reverse a string",
@@ -278,6 +347,11 @@
       "state": "published"
     },
     {
+      "title": "Semiprime",
+      "slug": "semiprime",
+      "state": "solved"
+    },
+    {
       "title": "Sieve of Eratosthenes",
       "slug": "sieve-of-eratosthenes",
       "state": "published"
@@ -293,6 +367,16 @@
       "state": "published"
     },
     {
+      "title": "Sphenic numbers",
+      "slug": "sphenic-numbers",
+      "state": "solved"
+    },
+    {
+      "title": "Taxicab numbers",
+      "slug": "taxicab-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Ternary logic",
       "slug": "ternary-logic",
       "state": "published"
@@ -301,6 +385,11 @@
       "title": "Text processing/Max licenses in use",
       "state": "rejected",
       "reason": "needs-network"
+    },
+    {
+      "title": "Topswops",
+      "slug": "topswops",
+      "state": "solved"
     },
     {
       "title": "Towers of Hanoi",
@@ -315,6 +404,11 @@
       "title": "Van Eck sequence",
       "slug": "van-eck-sequence",
       "state": "published"
+    },
+    {
+      "title": "Van der Corput sequence",
+      "slug": "van-der-corput-sequence",
+      "state": "solved"
     },
     {
       "title": "Variadic function",

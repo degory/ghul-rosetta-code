@@ -9,7 +9,6 @@ si
 use Tree.LEAF;
 use Tree.NODE;
 
-// A generator, so a leaves are produced lazily
 fringe(tree: Tree) -> Pipe[int] is
     if isa LEAF(tree) then
         yield tree.value;

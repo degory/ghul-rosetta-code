@@ -5,8 +5,6 @@ use System.Math.asin;
 use System.Math.sqrt;
 use System.Math.pi;
 
-// 6372.8 km is the radius the task recommends, an approximation of the
-// average great-circle radius.
 let earth_radius_km = 6372.8D;
 
 radians(degrees: double) -> double => degrees * pi / 180.0D;

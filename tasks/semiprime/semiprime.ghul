@@ -1,9 +1,6 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-// divides out factors smallest first, counting them, and stops as soon as
-// there are more than two: a semiprime has exactly two, so the whole
-// factorisation is never needed
 is_semiprime(n: int) -> bool =>
     val
         let rest mut = n;

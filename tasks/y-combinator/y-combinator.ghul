@@ -1,8 +1,5 @@
 use IO.Std.write_line;
 
-// The Y combinator needs to apply a function to itself. ghūl can't express the the type of a
-// function that takes itself as an argument. SELF_APPLY works around this by putting the function
-// in a generic class. What gets passed to `apply` is a SELF_APPLY rather than a bare function.
 class SELF_APPLY[A, B](_f: (SELF_APPLY[A, B]) -> (A -> B)) is
     apply(r: SELF_APPLY[A, B]) -> (A -> B) => _f(r);
 si
@@ -14,11 +11,8 @@ y[A, B](f: (A -> B) -> (A -> B)) -> (A -> B) =>
 let factorial = y(recurse => n => if n <= 1 then 1L else cast(n) * recurse(n - 1) fi);
 let fibonacci = y(recurse => n => if n < 2 then n else recurse(n - 1) + recurse(n - 2) fi);
 
-// `y` is generic, so we can build recursive functions of different types.
 let countdown = y(recurse => n => if n <= 0 then "liftoff" else "{n}, {recurse(n - 1)}" fi);
 
-// `y` takes a function of one argument, but we can pass it a tuple
-// (note type inference needs a hint here, so we annotate the tuple type)
 let gcd = y(recurse => ((a, b): (int, int)) => if b == 0 then a else recurse((b, a % b)) fi);
 
 for n in 0::10 do
@@ -28,5 +22,4 @@ od
 write_line("countdown(5) = {countdown(5)}");
 write_line("gcd(1071, 462) = {gcd((1071, 462))}");
 
-// ghūl has self-recursive function literals so the combinator isn't necessary in practice:
 let factorial_using_rec = n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi;

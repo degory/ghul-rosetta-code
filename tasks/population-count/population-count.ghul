@@ -16,8 +16,6 @@ popcount(n: long) -> int =>
 
 let powers_of_three = stream(1L, power => power || power * 3L);
 
-// the thirtieth power of three needs more digits than an int holds, so the
-// whole sequence is long
 write_line(
     "population counts of the first thirty powers of 3: {
         powers_of_three |> take(30) |> map(popcount) |> map(i => "{i}") |> join(", ")

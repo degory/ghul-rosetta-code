@@ -1,9 +1,6 @@
 use IO.Std.write_line;
 use System.Math.sqrt;
 
-// A stateful closure, which is the most natural of the forms the task lists
-// for this language: n, total and squares are captured by reference, so each
-// call carries the running sums of every value seen so far.
 let standard_deviation =
     let n mut = 0 in
     let total mut = 0.0D in

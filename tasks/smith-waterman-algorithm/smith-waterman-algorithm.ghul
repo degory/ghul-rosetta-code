@@ -2,7 +2,6 @@ use IO.Std.write_line;
 use Collections.LIST;
 use Ghul.Pipes;
 
-// +2 for a match, -1 for a mismatch, -2 for a gap, as the task sets out.
 score(a: char, b: char) -> int => if a == b then 2 else -1 fi;
 
 gap() -> int => -2;
@@ -10,10 +9,6 @@ gap() -> int => -2;
 highest(values: int[]) -> int =>
     values |> reduce(0, (best, v) => if v > best then v else best fi);
 
-// H(i, j) is the best score of an alignment ending at a[i] and b[j]. Zero
-// is one of the choices, which is what makes the alignment local: a prefix
-// that scores badly is abandoned rather than carried, so every cell starts
-// a fresh alignment if that beats extending one.
 matrix(a: string, b: string) -> LIST[LIST[int]] is
     let h = LIST[LIST[int]]();
 
@@ -42,8 +37,6 @@ matrix(a: string, b: string) -> LIST[LIST[int]] is
     return h;
 si
 
-// Where the best local alignment ends, which is
-// wherever the matrix is largest.
 best_cell(h: LIST[LIST[int]]) -> (row: int, column: int) is
     let row mut = 0;
     let column mut = 0;
@@ -60,9 +53,6 @@ best_cell(h: LIST[LIST[int]]) -> (row: int, column: int) is
     return (row = row, column = column);
 si
 
-// Walking back from that cell to the first zero, taking whichever move
-// produced each score. A diagonal step consumes a character from both
-// sequences, and the other two open a gap.
 trace(
     a: string,
     b: string,
@@ -121,8 +111,6 @@ show(a: string, b: string) is
     write_line("         {b_aligned}");
     write_line("path: {path}");
     write_line("");
-    // Seven spaces clears the row label and the
-    // column for the empty prefix.
     write_line("       {b |> map(c => "{c}".pad_left(3)) |> join("")}");
 
     for i in 0::a.length do

@@ -3,9 +3,6 @@ use Collections.LIST;
 use Ghul.Pipes;
 use System.Text.StringBuilder;
 
-// this task is about naming conventions, and ghūl has its own, which the compiler
-// warns about breaking: concrete classes are UPPER_SNAKE_CASE, methods and global
-// functions snake_case, and a leading underscore marks a name as non-public
 class NAME(words: Collections.List[string] private) is
     to_camel_case() -> string =>
         _words
@@ -21,8 +18,6 @@ class NAME(words: Collections.List[string] private) is
             |> join("_");
 si
 
-// a name splits at the boundaries either convention marks: the separators the task
-// allows, and the capital that starts each word after the first in camel case
 parse(text: string) -> NAME is
     let words = LIST[string]();
     let word = StringBuilder();
@@ -49,9 +44,9 @@ parse(text: string) -> NAME is
     return NAME(words);
 si
 
-lower_first(word: string) -> string => "{char.to_lower(word[0])}{word.substring(1)}";
+lower_first(word: string) -> string => "{char.to_lower(word[0])}{word[1..<0]}";
 
-upper_first(word: string) -> string => "{char.to_upper(word[0])}{word.substring(1)}";
+upper_first(word: string) -> string => "{char.to_upper(word[0])}{word[1..<0]}";
 
 quoted(text: string) -> string => "\"{text}\"";
 

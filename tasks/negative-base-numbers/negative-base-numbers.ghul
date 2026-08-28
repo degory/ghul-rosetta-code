@@ -3,9 +3,6 @@ use Ghul.Pipes;
 
 let digit_set = "0123456789abcdefghijklmnopqrstuvwxyz";
 
-// The remainder of a negative base can come out negative, and a digit cannot
-// be, so it is carried up into the next place by adding the base back on and
-// stepping the quotient to match.
 encode(n: int, base: int) -> string =>
     val
         let rest mut = n;

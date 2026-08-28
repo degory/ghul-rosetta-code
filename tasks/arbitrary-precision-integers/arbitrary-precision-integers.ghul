@@ -5,9 +5,6 @@ use System.Numerics.BigInteger;
 power(base: int, exponent: int) -> int =>
     (1::exponent) |> reduce(1, (accumulated, _) => accumulated * base);
 
-// 4 ** (3 ** 2) is 262144, which is an ordinary int. Only 5 raised to it needs more, and .NET's
-// BigInteger is what the task means by an in-built capability: nothing here implements arbitrary
-// precision, it only asks for it.
 let digits = BigInteger.pow(cast(5), power(4, power(3, 2))).to_string();
 
 write_line("first 20 digits: {digits[0..20]}");

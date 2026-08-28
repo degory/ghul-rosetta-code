@@ -2,8 +2,6 @@ use IO.Std.write_line;
 use Collections.LIST;
 use Ghul.Pipes;
 
-// Generates a hailstone sequence by applying the Collatz
-// rule until it reaches 1.
 hailstone(n: int) -> Pipe[int] is
     let current mut = n;
 
@@ -19,18 +17,14 @@ hailstone(n: int) -> Pipe[int] is
     od
 si
 
-// The Collatz sequence for 27: 112 elements, starting 27, 82, 41, 124 and
-// ending 8, 4, 2, 1.
 let sequence = hailstone(27) | .collect_list();
 write_line("length of hailstone(27): {sequence.count}");
-let first = sequence | .take(4) | .join(", ");
-let last = sequence | .skip(sequence.count - 4) | .join(", ");
+let first = sequence[0..4] |> join(", ");
+let last = sequence[4..<<0] |> join(", ");
 
 write_line("first four: {first}");
 write_line("last four: {last}");
 
-// The number under 100,000 with the longest sequence, and that sequence's
-// length.
 let longest mut = 0;
 let longest_length mut = 0;
 

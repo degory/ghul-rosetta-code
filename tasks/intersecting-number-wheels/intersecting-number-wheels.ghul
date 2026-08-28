@@ -24,8 +24,6 @@ class WHEEL_SET is
         od
     si
 
-    // Every wheel a name is followed through advances, so a wheel referred to
-    // twice has one position that both references share.
     next(name: char) -> int is
         let values = _values[name];
         let at = _position[name];

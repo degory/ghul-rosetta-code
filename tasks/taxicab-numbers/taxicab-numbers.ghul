@@ -2,9 +2,6 @@ use IO.Std.write_line;
 use Collections;
 use Ghul.Pipes;
 
-// the 2006th taxicab number is below twice the cube of 1188, so every pair of
-// cubes that can add up to any number the task asks for has both sides below
-// 1200
 let pair_bound = 1200;
 
 let sums = LIST[long]();
@@ -21,8 +18,6 @@ od
 
 sums.sort();
 
-// equal sums sit next to each other once sorted, so each run of two or more
-// equal values is one taxicab number
 let taxis = LIST[long]();
 
 let i mut = 0;
@@ -41,7 +36,6 @@ while i < sums.count - 1 do
     fi
 od
 
-// 0 when v is not a perfect cube
 cube_root(v: long) -> long =>
     val
         let r = cast long(System.Math.floor(System.Math.cbrt(cast(v)) + 0.5D));
