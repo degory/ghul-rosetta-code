@@ -1,19 +1,19 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-union NESTED is
+union Nested is
     ATOM(value: int);
-    LIST(items: NESTED[]);
+    LIST(items: Nested[]);
 si
 
-use NESTED.ATOM;
-use NESTED.LIST;
+use Nested.ATOM;
+use Nested.LIST;
 
-atom(value: int) -> NESTED => ATOM(value);
+atom(value: int) -> Nested => ATOM(value);
 
-list(items: NESTED[]) -> NESTED => LIST(items);
+list(items: Nested[]) -> Nested => LIST(items);
 
-flatten(node: NESTED) -> Pipe[int] is
+flatten(node: Nested) -> Pipe[int] is
     case node
     when (value): ATOM then
         yield value;
@@ -26,7 +26,7 @@ flatten(node: NESTED) -> Pipe[int] is
     esac
 si
 
-show(node: NESTED) -> string =>
+show(node: Nested) -> string =>
     case node
     when (value): ATOM then "{value}"
     when (items): LIST then "[{items |> map(show) |> join(", ")}]"

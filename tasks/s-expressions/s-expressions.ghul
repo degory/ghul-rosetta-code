@@ -1,19 +1,19 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-union SEXPR is
-    LIST(items: SEXPR[]);
+union SExpr is
+    LIST(items: SExpr[]);
     SYMBOL(name: string);
     STRING(text: string);
     INTEGER(value: int);
     REAL(value: double);
 si
 
-use SEXPR.LIST;
-use SEXPR.SYMBOL;
-use SEXPR.STRING;
-use SEXPR.INTEGER;
-use SEXPR.REAL;
+use SExpr.LIST;
+use SExpr.SYMBOL;
+use SExpr.STRING;
+use SExpr.INTEGER;
+use SExpr.REAL;
 
 delimits(c: char) -> bool =>
     c == '(' \/ c == ')' \/ c == '"' \/ c <= ' ';
@@ -28,7 +28,7 @@ skip_space(text: string, at: int) -> int is
     return i;
 si
 
-atom(token: string) -> SEXPR is
+atom(token: string) -> SExpr is
     let whole mut = 0;
 
     if int.try_parse(token, whole ref) then
@@ -44,11 +44,11 @@ atom(token: string) -> SEXPR is
     return SYMBOL(token);
 si
 
-read(text: string, at: int) -> (value: SEXPR, next: int) is
+read(text: string, at: int) -> (value: SExpr, next: int) is
     let start = skip_space(text, at);
 
     if text[start] == '(' then
-        let items = Collections.LIST[SEXPR]();
+        let items = Collections.LIST[SExpr]();
         let i mut = skip_space(text, start + 1);
 
         while text[i] != ')' do
@@ -81,7 +81,7 @@ read(text: string, at: int) -> (value: SEXPR, next: int) is
     return (value = atom(text[start..end]), next = end);
 si
 
-render(node: SEXPR) -> string =>
+render(node: SExpr) -> string =>
     case node
     when (items): LIST then "({items |> map(render) |> join(" ")})"
     when (name): SYMBOL then name

@@ -4,15 +4,15 @@ use Collections.List;
 use Collections.MAP;
 use Ghul.Pipes;
 
-union HUFFMAN(weight: int) is
+union Huffman(weight: int) is
     LEAF(symbol: char, ..);
-    NODE(left: HUFFMAN, right: HUFFMAN, ..);
+    NODE(left: Huffman, right: Huffman, ..);
 si
 
-use HUFFMAN.LEAF;
-use HUFFMAN.NODE;
+use Huffman.LEAF;
+use Huffman.NODE;
 
-take_lightest(pending: LIST[HUFFMAN]) -> HUFFMAN is
+take_lightest(pending: LIST[Huffman]) -> Huffman is
     let at mut = 0;
 
     for i in 1..pending.count do
@@ -28,8 +28,8 @@ take_lightest(pending: LIST[HUFFMAN]) -> HUFFMAN is
     return lightest;
 si
 
-huffman(leaves: List[HUFFMAN]) -> HUFFMAN is
-    let pending = LIST[HUFFMAN](leaves);
+build_tree(leaves: List[Huffman]) -> Huffman is
+    let pending = LIST[Huffman](leaves);
 
     while pending.count > 1 do
         let first = take_lightest(pending);
@@ -41,7 +41,7 @@ huffman(leaves: List[HUFFMAN]) -> HUFFMAN is
     return pending[0];
 si
 
-codes(node: HUFFMAN, prefix: string)
+codes(node: Huffman, prefix: string)
     -> Pipe[(symbol: char, weight: int, code: string)]
 is
     if let leaf: LEAF = node then
@@ -66,14 +66,14 @@ for c in text do
     weights[c] = seen + 1;
 od
 
-let leaves = LIST[HUFFMAN]();
+let leaves = LIST[Huffman]();
 
 for symbol in weights.keys |> sort() do
     leaves.add(LEAF(symbol, weights[symbol]));
 od
 
 let table =
-    codes(huffman(leaves), "")
+    codes(build_tree(leaves), "")
     |> sort((a, b) =>
         if a.weight != b.weight then
             b.weight - a.weight
