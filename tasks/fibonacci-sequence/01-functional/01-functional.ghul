@@ -1,0 +1,17 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+let fibonacci_sequence = stream(
+    (0, 1),
+    ((prev, current)) =>
+        prev || (current, prev + current)
+);
+
+let fib = n => fibonacci_sequence |> skip(n) |> first();
+
+fibonacci_sequence
+    |> take(10)
+    |> index()
+    |> each(((i, f)) => write_line("fib({i}) = {f}"));
+
+write_line("fib(30) = {fib(30)}");

@@ -1,4 +1,5 @@
 use IO.Std.write_line;
+use Ghul.Pipes;
 use Collections.LIST;
 use System.Math;
 
@@ -18,7 +19,7 @@ inverses.add(Math.asin);
 inverses.add(Math.acos);
 inverses.add(cube_root);
 
-for (function, inverse) in functions | .zip(inverses) do
+for (function, inverse) in functions |> zip(inverses) do
     let round_trip = function >> inverse;
 
     write_line("{round_trip(0.5D):F6}");

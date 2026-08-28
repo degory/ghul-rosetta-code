@@ -1,0 +1,20 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+fibonacci() -> Pipe[int] is
+    let prev mut = 0;
+    let current mut = 1;
+    do
+        yield prev;
+
+        (prev, current) = (current, prev + current);
+    od
+si
+
+let fib = n => fibonacci() |> skip(n) |> first();
+
+for (i, f) in fibonacci() |> take(10) |> index() do
+    write_line("fib({i}) = {f}");
+od
+
+write_line("fib(30) = {fib(30)}");
