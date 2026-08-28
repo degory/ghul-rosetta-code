@@ -1,7 +1,7 @@
 use IO.Std.write_line;
 
 swap[T](left: T ref, right: T ref) is
-    
+    (left!, right!) = (right!, left!)
     let held = left!;
 
     left! = right!;
