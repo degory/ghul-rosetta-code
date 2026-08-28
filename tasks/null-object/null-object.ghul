@@ -1,0 +1,19 @@
+use IO.Std.write_line;
+
+is_null(text: string?) -> bool => !text?;
+
+describe(text: string?) -> string =>
+    if let value = text then
+        "a string of {value.length} characters"
+    else
+        "null"
+    fi;
+
+let present: string? = "hello";
+let absent: string? = null;
+
+write_line("present is null: {is_null(present)}");
+write_line("absent is null:  {is_null(absent)}");
+write_line("present: {describe(present)}");
+write_line("absent:  {describe(absent)}");
+write_line("absent, with a fallback: {absent ?? "nothing there"}");

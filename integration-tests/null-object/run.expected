@@ -1,0 +1,5 @@
+present is null: False
+absent is null:  True
+present: a string of 5 characters
+absent:  null
+absent, with a fallback: nothing there
