@@ -1,11 +1,22 @@
 use IO.Std.write_line;
-use Ghul.Pipes;
 use System.Numerics.BigInteger;
+use System.Numerics.INumber;
+use System.Numerics.IMultiplyOperators.`*;
 
-power(base: int, exponent: int) -> int =>
-    (1::exponent) |> reduce(1, (accumulated, _) => accumulated * base);
+power[T: INumber[T]](base: T, exponent: int) -> T =>
+    if exponent == 0 then
+        T.one
+    elif exponent % 2 == 0 then
+        val
+            let root = power(base, exponent / 2);
 
-let digits = BigInteger.pow(cast(5), power(4, power(3, 2))).to_string();
+            root * root
+        lav
+    else
+        base * power(base, exponent - 1)
+    fi;
+
+let digits = power(cast BigInteger(5), power(4, power(3, 2))).to_string();
 
 write_line("first 20 digits: {digits[0..20]}");
 write_line("last 20 digits:  {digits[20..<<0]}");
