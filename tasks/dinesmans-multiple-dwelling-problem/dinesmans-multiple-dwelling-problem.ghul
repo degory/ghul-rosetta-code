@@ -1,0 +1,52 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Collections.List;
+use Ghul.Pipes;
+
+permutations(items: List[int]) -> Pipe[List[int]] is
+    if items.count == 0 then
+        yield LIST[int]();
+    else
+        for i in 0..items.count do
+            let rest = LIST[int](items);
+
+            rest.remove_at(i);
+
+            for tail in permutations(rest) do
+                let whole = LIST[int]();
+
+                whole.add(items[i]);
+
+                for value in tail do
+                    whole.add(value);
+                od
+
+                yield whole;
+            od
+        od
+    fi
+si
+
+adjacent(a: int, b: int) -> bool =>
+    if a > b then a - b else b - a fi == 1;
+
+let floors = LIST[int]([1, 2, 3, 4, 5]);
+
+permutations(floors)
+    |> map(p =>
+        (baker = p[0], cooper = p[1], fletcher = p[2],
+         miller = p[3], smith = p[4]))
+    |> filter(f => f.baker != 5)
+    |> filter(f => f.cooper != 1)
+    |> filter(f => f.fletcher != 1 /\ f.fletcher != 5)
+    |> filter(f => f.miller > f.cooper)
+    |> filter(f => !adjacent(f.smith, f.fletcher))
+    |> filter(f => !adjacent(f.fletcher, f.cooper))
+    |> each(f =>
+        val
+            write_line("Baker lives on floor {f.baker}");
+            write_line("Cooper lives on floor {f.cooper}");
+            write_line("Fletcher lives on floor {f.fletcher}");
+            write_line("Miller lives on floor {f.miller}");
+            write_line("Smith lives on floor {f.smith}")
+        lav);

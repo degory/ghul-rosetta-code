@@ -1,0 +1,58 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Collections.SET;
+use Ghul.Pipes;
+use System.Math;
+
+jaro(a: string, b: string) -> double is
+    if a.length == 0 \/ b.length == 0 then
+        return if a.length == b.length then 1.0D else 0.0D fi;
+    fi
+
+    let window = Math.max(a.length, b.length) / 2 - 1;
+    let taken = SET[int]();
+    let matched_a = LIST[char]();
+
+    for i in 0..a.length do
+        let first = Math.max(0, i - window);
+        let last = Math.min(i + window + 1, b.length);
+
+        for j in first..last do
+            if !taken.contains(j) /\ a[i] == b[j] then
+                taken.add(j);
+                matched_a.add(a[i]);
+                break;
+            fi
+        od
+    od
+
+    let m = matched_a.count;
+
+    if m == 0 then
+        return 0.0D;
+    fi
+
+    let matched_b =
+        (0..b.length)
+        |> filter(j => taken.contains(j))
+        |> map(j => b[j])
+        |> collect_list();
+
+    let transposed =
+        (0..m)
+        |> filter(i => matched_a[i] != matched_b[i])
+        |> count();
+
+    let matches = cast double(m);
+    let t = cast double(transposed) / 2.0D;
+
+    return (matches / cast double(a.length)
+          + matches / cast double(b.length)
+          + (matches - t) / matches) / 3.0D;
+si
+
+[("MARTHA", "MARHTA"),
+ ("DIXON", "DICKSONX"),
+ ("JELLYFISH", "SMELLYFISH")]
+    |> each(((a, b)) =>
+        write_line("{a} / {b}: {jaro(a, b):F6}"));

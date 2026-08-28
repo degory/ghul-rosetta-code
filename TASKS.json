@@ -158,6 +158,11 @@
       "state": "published"
     },
     {
+      "title": "Bell numbers",
+      "slug": "bell-numbers",
+      "state": "published"
+    },
+    {
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published"
@@ -191,6 +196,16 @@
     {
       "title": "Descending primes",
       "slug": "descending-primes",
+      "state": "published"
+    },
+    {
+      "title": "Dinesman\u0027s multiple-dwelling problem",
+      "slug": "dinesmans-multiple-dwelling-problem",
+      "state": "published"
+    },
+    {
+      "title": "Entropy",
+      "slug": "entropy",
       "state": "published"
     },
     {
@@ -249,8 +264,23 @@
       "state": "published"
     },
     {
+      "title": "Isqrt (integer square root) of X",
+      "slug": "isqrt-integer-square-root-of-x",
+      "state": "published"
+    },
+    {
+      "title": "Jaro similarity",
+      "slug": "jaro-similarity",
+      "state": "published"
+    },
+    {
       "title": "Josephus problem",
       "slug": "josephus-problem",
+      "state": "published"
+    },
+    {
+      "title": "Kolakoski sequence",
+      "slug": "kolakoski-sequence",
       "state": "published"
     },
     {
@@ -299,8 +329,18 @@
       "state": "published"
     },
     {
+      "title": "Nested function",
+      "slug": "nested-function",
+      "state": "published"
+    },
+    {
       "title": "Numbers with equal rises and falls",
       "slug": "numbers-with-equal-rises-and-falls",
+      "state": "published"
+    },
+    {
+      "title": "Ordered partitions",
+      "slug": "ordered-partitions",
       "state": "published"
     },
     {
@@ -326,6 +366,11 @@
     {
       "title": "Prime decomposition",
       "slug": "prime-decomposition",
+      "state": "published"
+    },
+    {
+      "title": "Quaternion",
+      "slug": "quaternion",
       "state": "published"
     },
     {
@@ -399,6 +444,11 @@
       "state": "published"
     },
     {
+      "title": "URL decoding",
+      "slug": "url-decoding",
+      "state": "solved"
+    },
+    {
       "title": "User:Degory/sandbox",
       "state": "published"
     },
@@ -415,6 +465,11 @@
     {
       "title": "Variadic function",
       "slug": "variadic-function",
+      "state": "published"
+    },
+    {
+      "title": "Water collected between towers",
+      "slug": "water-collected-between-towers",
       "state": "published"
     },
     {

@@ -1,0 +1,26 @@
+use IO.Std.write_line;
+use Collections.MAP;
+use Ghul.Pipes;
+use System.Math;
+
+entropy(text: string) -> double is
+    let counts = MAP[char, int]();
+
+    for c in text do
+        let seen mut = 0;
+
+        counts.try_get_value(c, seen ref);
+
+        counts[c] = seen + 1;
+    od
+
+    let total = cast double(text.length);
+
+    return counts.values
+        |> map(n => cast double(n) / total)
+        |> reduce(0.0D, (h, p) => h - p * Math.log2(p));
+si
+
+let x = "1223334444";
+
+write_line("{x}: {entropy(x)} bits/symbol");
