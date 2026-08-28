@@ -1,0 +1,71 @@
+use IO.Std.write_line;
+use Collections.Queue;
+use Ghul.Pipes;
+
+union TREE is
+    EMPTY;
+    NODE(value: int, left: TREE, right: TREE);
+si
+
+use TREE.EMPTY;
+use TREE.NODE;
+
+preorder(tree: TREE) -> Pipe[int] is
+    if let (value, left, right): NODE = tree then
+        yield value;
+
+        for v in preorder(left) do yield v; od
+        for v in preorder(right) do yield v; od
+    fi
+si
+
+inorder(tree: TREE) -> Pipe[int] is
+    if let (value, left, right): NODE = tree then
+        for v in inorder(left) do yield v; od
+
+        yield value;
+
+        for v in inorder(right) do yield v; od
+    fi
+si
+
+postorder(tree: TREE) -> Pipe[int] is
+    if let (value, left, right): NODE = tree then
+        for v in postorder(left) do yield v; od
+        for v in postorder(right) do yield v; od
+
+        yield value;
+    fi
+si
+
+levelorder(tree: TREE) -> Pipe[int] is
+    let pending = Queue[TREE]();
+
+    pending.enqueue(tree);
+
+    while pending.count > 0 do
+        let node = pending.dequeue();
+
+        if let (value, left, right): NODE = node then
+            yield value;
+
+            pending.enqueue(left);
+            pending.enqueue(right);
+        fi
+    od
+si
+
+leaf(value: int) -> TREE => NODE(value, EMPTY, EMPTY);
+
+show(label: string, values: Pipe[int]) =>
+    write_line("{label,-12} {values |> join(" ")}");
+
+let tree =
+    NODE(1,
+        NODE(2, NODE(4, leaf(7), EMPTY), leaf(5)),
+        NODE(3, NODE(6, leaf(8), leaf(9)), EMPTY));
+
+show("preorder:", preorder(tree));
+show("inorder:", inorder(tree));
+show("postorder:", postorder(tree));
+show("level-order:", levelorder(tree));
