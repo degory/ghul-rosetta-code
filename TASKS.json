@@ -52,7 +52,7 @@
       "title": "Achilles numbers",
       "slug": "achilles-numbers",
       "state": "published",
-      "published_hash": "efb637e03ea757b48d7f433c445911dbf0941ad33792e39e971209a74b29751c"
+      "published_hash": "f107acb21236f34e99853c3841b94093814340c43886126e2fba5d121c9a493f"
     },
     {
       "title": "Ackermann function",
@@ -159,13 +159,14 @@
     {
       "title": "Arithmetic evaluation",
       "slug": "arithmetic-evaluation",
-      "state": "published"
+      "state": "published",
+      "published_hash": "32a385915e80cf0d396baee5edffbe63e4fa71ee3aa854669973af5651d9f5c6"
     },
     {
       "title": "Averages/Arithmetic mean",
       "slug": "arithmetic-mean",
       "state": "published",
-      "published_hash": "5446ecf6e9179e59f7190323836a25ae8e50e57a3da9f80719ea2a632205db9b"
+      "published_hash": "0530eb8c21c72100746bc5152bd0dfe4ca6f203cc0103f05b12a7a6d51a1b08e"
     },
     {
       "title": "Balanced brackets",
@@ -376,7 +377,7 @@
       "title": "Jaro similarity",
       "slug": "jaro-similarity",
       "state": "published",
-      "published_hash": "7fe1f81c0ab80335c4626b74e3e858200c621cc2e2d18fb9761f65eb919a295d"
+      "published_hash": "d3593999b25f492482a0cc4125639f866d5311c7626f4ec4917ce48f1cb3b850"
     },
     {
       "title": "Jensen\u0027s Device",
@@ -423,7 +424,8 @@
     {
       "title": "Ludic numbers",
       "slug": "ludic-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4b61a13f77e79ef15fa1d6fdab54774e4b555b65dea1696f30c58a4985266d55"
     },
     {
       "title": "Lyndon word",
@@ -539,7 +541,8 @@
     {
       "title": "Quaternion",
       "slug": "quaternion",
-      "state": "published"
+      "state": "published",
+      "published_hash": "aa81fcbf9bd4c8db343529293ffb5c7b798c3029d54489c6592b07e540505d52"
     },
     {
       "title": "Queue/Definition",
@@ -576,7 +579,7 @@
       "title": "S-expressions",
       "slug": "s-expressions",
       "state": "published",
-      "published_hash": "09db2d66bbac18b4249ff2d4f13b7d94957d3ebefe7875435762d746900da448"
+      "published_hash": "b16a81afc81a6187307682603f5ddcfce8cb948e812f0dd8351ae0c3daef7707"
     },
     {
       "title": "Same fringe",
@@ -604,7 +607,7 @@
       "title": "Smith\u2013Waterman algorithm",
       "slug": "smith-waterman-algorithm",
       "state": "published",
-      "published_hash": "a6f2c3c6d4b4c8793ad945f240dc9a17e34f0b210bf48c553a8fd4eaf23aa585"
+      "published_hash": "dfce0512139c3cae7cec50c54233c27b918e89b7eedb9b488cb5d9db3d2ffc70"
     },
     {
       "title": "Sorting algorithms/Quicksort",
@@ -616,7 +619,7 @@
       "title": "Sphenic numbers",
       "slug": "sphenic-numbers",
       "state": "published",
-      "published_hash": "39cd3b8985ae1641c678d00923bcf0c58a34c58315c2d8e382ffacd03bd79b1c"
+      "published_hash": "ae114fdebea2f34b4bdb4a7ce6ad53a0e12d68fffdf43fb96c953d9d16c23da6"
     },
     {
       "title": "Stern-Brocot sequence",
