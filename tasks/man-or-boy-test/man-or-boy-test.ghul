@@ -1,4 +1,4 @@
-use IO.Std.write_line;
+use IO.Std.write_line
 
 a(
     k: int,
@@ -8,19 +8,19 @@ a(
     x4: () -> int,
     x5: () -> int
 ) -> int is
-    let counter mut = k;
+    let counter mut = k
 
     let b = () rec => (
-        counter = counter - 1;
+        counter = counter - 1
 
         a(counter, rec, x1, x2, x3, x4)
-    );
+    )
 
     return if counter <= 0 then x4() + x5() else b() fi;
 si
 
 for k in 0::10 do
-    let result = a(k, () => 1, () => -1, () => -1, () => 1, () => 0);
+    let result = a(k, () => 1, () => -1, () => -1, () => 1, () => 0)
 
     write_line("k = {k,2}: {result}");
 od

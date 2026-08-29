@@ -1,26 +1,26 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
-use Collections.LIST;
-use System.Math;
+use IO.Std.write_line
+use Ghul.Pipes
+use Collections.LIST
+use System.Math
 
 >>[A, B, C](f: A -> B, g: B -> C) -> A -> C =>
-    x => g(f(x));
+    x => g(f(x))
 
-let cube = x => x * x * x;
-let cube_root = x => Math.cbrt(x);
+let cube = x => x * x * x
+let cube_root = x => Math.cbrt(x)
 
-let functions = LIST();
-functions.add(Math.sin);
-functions.add(Math.cos);
-functions.add(cube);
+let functions = LIST()
+functions.add(Math.sin)
+functions.add(Math.cos)
+functions.add(cube)
 
-let inverses = LIST();
-inverses.add(Math.asin);
-inverses.add(Math.acos);
-inverses.add(cube_root);
+let inverses = LIST()
+inverses.add(Math.asin)
+inverses.add(Math.acos)
+inverses.add(cube_root)
 
 for (function, inverse) in functions |> zip(inverses) do
-    let round_trip = function >> inverse;
+    let round_trip = function >> inverse
 
     write_line("{round_trip(0.5D):F6}");
 od

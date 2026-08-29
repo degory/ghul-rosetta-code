@@ -1,19 +1,19 @@
-use IO.Std.write_line;
+use IO.Std.write_line
 
-let i mut = 0;
+let i mut = 0
 
 let sum = (low: int, high: int, term: () -> double) -> double => (
-    let total mut = 0.0D;
+    let total mut = 0.0D
 
-    i = low;
+    i = low
 
     while i <= high do
-        total = total + term();
+        total = total + term()
 
         i = i + 1;
     od
 
     total
-);
+)
 
 write_line("{sum(1, 100, () => 1.0D / cast double(i))}");

@@ -1,8 +1,8 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 reverse(text: string) -> string =>
-    text |> reduce("", (reversed, character) => "{character}{reversed}");
+    text |> reduce("", (reversed, character) => "{character}{reversed}")
 
-write_line(reverse("asdf"));
+write_line(reverse("asdf"))
 write_line(reverse("Hello, World!"));

@@ -1,25 +1,25 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 look_and_say(seed: string) -> Pipe[string] is
-    let current mut = seed;
+    let current mut = seed
 
     do
-        yield current;
+        yield current
 
-        let said = System.Text.StringBuilder();
-        let i mut = 0;
+        let said = System.Text.StringBuilder()
+        let i mut = 0
 
         while i < current.length do
-            let digit = current[i];
-            let run mut = 0;
+            let digit = current[i]
+            let run mut = 0
 
             while i < current.length /\ current[i] == digit do
-                run = run + 1;
+                run = run + 1
                 i = i + 1;
             od
 
-            said.append(run);
+            said.append(run)
             said.append(digit);
         od
 

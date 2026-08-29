@@ -1,51 +1,51 @@
-use IO.Std.write_line;
+use IO.Std.write_line
 
 union Number is
-    WHOLE(value: int);
+    WHOLE(value: int)
     FRACTIONAL(value: double);
 si
 
-use Number.WHOLE;
-use Number.FRACTIONAL;
+use Number.WHOLE
+use Number.FRACTIONAL
 
 widen(n: Number) -> double =>
     case n
     when (value): WHOLE then cast(value)
     when (value): FRACTIONAL then value
-    esac;
+    esac
 
 add(left: Number, right: Number) -> Number =>
     if let whole_left: WHOLE = left, whole_right: WHOLE = right then
         WHOLE(whole_left.value + whole_right.value)
     else
         FRACTIONAL(widen(left) + widen(right))
-    fi;
+    fi
 
 show(n: Number) -> string =>
     case n
     when (value): WHOLE then "{value}"
     when (value): FRACTIONAL then "{value}"
-    esac;
+    esac
 
 accumulator(initial: Number) -> Number -> Number is
-    let sum mut = initial;
+    let sum mut = initial
 
     return value => (
-        sum = add(sum, value);
+        sum = add(sum, value)
         sum
     );
 si
 
-let x = accumulator(WHOLE(1));
+let x = accumulator(WHOLE(1))
 
-x(WHOLE(5));
+x(WHOLE(5))
 
-accumulator(WHOLE(3));
+accumulator(WHOLE(3))
 
-write_line(show(x(FRACTIONAL(2.3D))));
+write_line(show(x(FRACTIONAL(2.3D))))
 
-let y = accumulator(WHOLE(10));
+let y = accumulator(WHOLE(10))
 
-y(WHOLE(5));
+y(WHOLE(5))
 
 write_line(show(y(WHOLE(5))));

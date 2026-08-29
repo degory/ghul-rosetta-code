@@ -1,8 +1,8 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 trait Shape is
-    area() -> double;
+    area() -> double
     name() -> string;
 si
 
@@ -11,24 +11,24 @@ trait Described is
 si
 
 class Polygon: Shape, Described abstract is
-    _sides: int;
+    _sides: int
 
     init(sides: int) is
         _sides = sides;
     si
 
-    area() -> double;
+    area() -> double
 
-    name() -> string => "{_sides}-sided polygon";
+    name() -> string => "{_sides}-sided polygon"
 
     describe() -> string => "{name()}, area {area():F2}";
 si
 
 class SQUARE: Polygon is
-    _side: double;
+    _side: double
 
     init(side: double) is
-        super.init(4);
+        super.init(4)
 
         _side = side;
     si
@@ -37,25 +37,25 @@ class SQUARE: Polygon is
 si
 
 class TRIANGLE: Polygon is
-    _base: double;
-    _height: double;
+    _base: double
+    _height: double
 
     init(base: double, height: double) is
-        super.init(3);
+        super.init(3)
 
-        _base = base;
+        _base = base
         _height = height;
     si
 
-    area() -> double => _base * _height / 2.0D;
+    area() -> double => _base * _height / 2.0D
 
     describe() -> string => "{super.describe()}, and it is a triangle";
 si
 
-let shapes: Shape[] = [SQUARE(3.0D), TRIANGLE(4.0D, 5.0D)];
+let shapes: Shape[] = [SQUARE(3.0D), TRIANGLE(4.0D, 5.0D)]
 
-shapes |> each(shape => write_line(shape.name()));
+shapes |> each(shape => write_line(shape.name()))
 
-let described: Described[] = [SQUARE(2.0D), TRIANGLE(6.0D, 1.0D)];
+let described: Described[] = [SQUARE(2.0D), TRIANGLE(6.0D, 1.0D)]
 
 described |> each(shape => write_line(shape.describe()));

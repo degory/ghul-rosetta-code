@@ -1,20 +1,20 @@
-use IO.Std.write_line;
-use Collections;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections
+use Ghul.Pipes
 
 sieve(limit: int) -> List[int] is
-    let composite = LIST();
+    let composite = LIST()
 
-    (0::limit) |> each(_ => composite.add(false));
+    (0::limit) |> each(_ => composite.add(false))
 
-    let prime mut = 2;
+    let prime mut = 2
 
     while prime * prime <= limit do
         if !composite[prime] then
-            let multiple mut = prime * prime;
+            let multiple mut = prime * prime
 
             while multiple <= limit do
-                composite[multiple] = true;
+                composite[multiple] = true
                 multiple = multiple + prime;
             od
         fi
@@ -22,9 +22,9 @@ sieve(limit: int) -> List[int] is
         prime = prime + 1;
     od
 
-    return 
-        (2::limit) 
-            |> filter(i => !composite[i]) 
+    return
+        (2::limit)
+            |> filter(i => !composite[i])
             |> collect();
 si
 

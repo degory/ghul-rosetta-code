@@ -1,27 +1,27 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
 undulating_value(first: int, second: int, length: int) -> long => (
-    let value mut = 0L;
+    let value mut = 0L
 
     for position in 0..length do
-        let digit = if position % 2 == 0 then first else second fi;
+        let digit = if position % 2 == 0 then first else second fi
         value = value * 10L + cast long(digit);
     od
 
     value
-);
+)
 
-let limit = 9007199254740992L;
+let limit = 9007199254740992L
 
-let values = LIST[long]();
+let values = LIST[long]()
 
 for length in 3..17 do
     for first in 1..10 do
         for second in 0..10 do
             if second != first then
-                let value = undulating_value(first, second, length);
+                let value = undulating_value(first, second, length)
 
                 if value < limit then
                     values.add(value);
@@ -31,12 +31,12 @@ for length in 3..17 do
     od
 od
 
-let three_digit = values |> filter(v => v < 1000L) |> collect_list();
+let three_digit = values |> filter(v => v < 1000L) |> collect_list()
 let four_digit = values
     |> filter(v => v >= 1000L /\ v < 10000L)
-    |> collect_list();
+    |> collect_list()
 
-write_line("three digit:");
+write_line("three digit:")
 
 for row in 0..9 do
     write_line(
@@ -47,7 +47,7 @@ for row in 0..9 do
             |> join(" "));
 od
 
-write_line("four digit:");
+write_line("four digit:")
 
 for row in 0..9 do
     write_line(
@@ -59,7 +59,7 @@ for row in 0..9 do
 od
 
 prime(value: long) -> bool => (
-    let divisor mut = 2L;
+    let divisor mut = 2L
 
     let factor_found = while divisor * divisor <= value do
         if value % divisor == 0L then
@@ -67,17 +67,17 @@ prime(value: long) -> bool => (
         fi
 
         divisor = divisor + 1L;
-    od;
+    od
 
     value >= 2L /\ !(factor_found ?? false)
-);
+)
 
-write_line("three digit primes:");
+write_line("three digit primes:")
 
 write_line(
-    three_digit |> filter(prime) |> map(v => "{v}") |> join(" "));
+    three_digit |> filter(prime) |> map(v => "{v}") |> join(" "))
 
-write_line("600th: {values[599]}");
+write_line("600th: {values[599]}")
 
 write_line(
     "{values.count} undulating numbers below 2^53, "

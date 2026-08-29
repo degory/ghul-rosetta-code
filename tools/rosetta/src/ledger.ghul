@@ -1,8 +1,8 @@
 namespace Rosetta is
-    use System.Text.Json.JsonSerializer;
-    use System.Text.Json.JsonSerializerOptions;
-    use System.Text.Json.Serialization.JsonIgnoreCondition;
-    use Collections;
+    use System.Text.Json.JsonSerializer
+    use System.Text.Json.JsonSerializerOptions
+    use System.Text.Json.Serialization.JsonIgnoreCondition
+    use Collections
 
     // One task's standing. `title` is the Rosetta Code page title and is the key: a slug is
     // derived from it and only exists once there is a solution to hold.
@@ -18,21 +18,21 @@ namespace Rosetta is
     // what tells an edit made here from an edit made there: if the section on the page still
     // hashes to this, nobody has touched it since, and replacing it loses nothing.
     class TASK_ENTRY is
-        title: string public;
-        slug: string? public;
-        state: string public;
-        reason: string? public;
-        note: string? public;
-        published_hash: string? public;
+        title: string public
+        slug: string? public
+        state: string public
+        reason: string? public
+        note: string? public
+        published_hash: string? public
 
         init() is
-            title = "";
+            title = ""
             state = "queued";
         si
     si
 
     class LEDGER_FILE is
-        tasks: LIST[TASK_ENTRY] public;
+        tasks: LIST[TASK_ENTRY] public
 
         init() is
             tasks = LIST[TASK_ENTRY]();
@@ -40,17 +40,17 @@ namespace Rosetta is
     si
 
     class LEDGER is
-        _path: string;
-        _by_title: MAP[string, TASK_ENTRY];
+        _path: string
+        _by_title: MAP[string, TASK_ENTRY]
 
-        _options: JsonSerializerOptions? static;
+        _options: JsonSerializerOptions? static
 
         options: JsonSerializerOptions static is
             if !_options? then
-                let o = JsonSerializerOptions();
+                let o = JsonSerializerOptions()
 
-                o.write_indented = true;
-                o.default_ignore_condition = JsonIgnoreCondition.WHEN_WRITING_NULL;
+                o.write_indented = true
+                o.default_ignore_condition = JsonIgnoreCondition.WHEN_WRITING_NULL
 
                 _options = o;
             fi
@@ -59,12 +59,12 @@ namespace Rosetta is
         si
 
         init(path: string) is
-            _path = path;
-            _by_title = MAP[string, TASK_ENTRY]();
+            _path = path
+            _by_title = MAP[string, TASK_ENTRY]()
 
             if IO.File.exists(path) then
-                let text = IO.File.read_all_text(path);
-                let file = JsonSerializer.deserialize[LEDGER_FILE](text, options);
+                let text = IO.File.read_all_text(path)
+                let file = JsonSerializer.deserialize[LEDGER_FILE](text, options)
 
                 if file? then
                     for entry in file.tasks do
@@ -74,12 +74,12 @@ namespace Rosetta is
             fi
         si
 
-        count: int => _by_title.count;
+        count: int => _by_title.count
 
-        has(title: string) -> bool => _by_title.contains_key(title);
+        has(title: string) -> bool => _by_title.contains_key(title)
 
         find(title: string) -> TASK_ENTRY? is
-            let found: TASK_ENTRY mut;
+            let found: TASK_ENTRY mut
 
             if _by_title.try_get_value(title, found ref) then
                 return found;
@@ -94,26 +94,26 @@ namespace Rosetta is
                 return existing;
             fi
 
-            let created = TASK_ENTRY();
+            let created = TASK_ENTRY()
 
-            created.title = title;
+            created.title = title
 
-            _by_title[title] = created;
+            _by_title[title] = created
 
             return created;
         si
 
         // Every entry, ordered by title, so the file's diff shows only what changed.
         entries() -> LIST[TASK_ENTRY] is
-            let all = LIST[TASK_ENTRY](_by_title.values);
+            let all = LIST[TASK_ENTRY](_by_title.values)
 
-            all.sort((a: TASK_ENTRY, b: TASK_ENTRY) -> int => string.compare_ordinal(a.title, b.title));
+            all.sort((a: TASK_ENTRY, b: TASK_ENTRY) -> int => string.compare_ordinal(a.title, b.title))
 
             return all;
         si
 
         in_state(state: string) -> LIST[TASK_ENTRY] is
-            let result = LIST[TASK_ENTRY]();
+            let result = LIST[TASK_ENTRY]()
 
             for e in entries() do
                 if e.state =~ state then
@@ -125,7 +125,7 @@ namespace Rosetta is
         si
 
         save() is
-            let file = LEDGER_FILE();
+            let file = LEDGER_FILE()
 
             for e in entries() do
                 file.tasks.add(e);

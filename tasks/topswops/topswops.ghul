@@ -1,23 +1,23 @@
-use IO.Std.write_line;
-use Collections;
+use IO.Std.write_line
+use Collections
 
 swaps(deck: int[]) -> int => (
-    let cards = LIST();
+    let cards = LIST()
 
     for card in deck do
         cards.add(card);
     od
 
-    let count mut = 0;
+    let count mut = 0
 
     while cards[0] != 1 do
-        let top_card = cards[0];
-        let last = top_card - 1;
+        let top_card = cards[0]
+        let last = top_card - 1
 
         for i in 0::(top_card - 1) / 2 do
-            let held = cards[i];
+            let held = cards[i]
 
-            cards[i] = cards[last - i];
+            cards[i] = cards[last - i]
             cards[last - i] = held;
         od
 
@@ -25,45 +25,45 @@ swaps(deck: int[]) -> int => (
     od
 
     count
-);
+)
 
 topswops(n: int) -> int => (
-    let deck = LIST();
+    let deck = LIST()
 
     for card in 1::n do
         deck.add(card);
     od
 
-    let best mut = 0;
+    let best mut = 0
 
     let search = (position: int) -> void rec is
         if position == n then
-            let rounds = swaps(deck.to_array());
+            let rounds = swaps(deck.to_array())
 
             if rounds > best then
                 best = rounds;
             fi
         else
             for i in position::(n - 1) do
-                let held = deck[position];
+                let held = deck[position]
 
-                deck[position] = deck[i];
-                deck[i] = held;
+                deck[position] = deck[i]
+                deck[i] = held
 
-                rec(position + 1);
+                rec(position + 1)
 
-                let put_back = deck[position];
+                let put_back = deck[position]
 
-                deck[position] = deck[i];
+                deck[position] = deck[i]
                 deck[i] = put_back;
             od
         fi
-    si;
+    si
 
-    search(0);
+    search(0)
 
     best
-);
+)
 
 for n in 1::10 do
     write_line("{n}: {topswops(n)}");

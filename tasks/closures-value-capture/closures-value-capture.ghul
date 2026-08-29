@@ -1,7 +1,7 @@
-use IO.Std.write_line;
-use Collections.LIST;
+use IO.Std.write_line
+use Collections.LIST
 
-let squares = LIST[() -> int]();
+let squares = LIST[() -> int]()
 
 for i in 0..10 do
     squares.add(() => i * i);

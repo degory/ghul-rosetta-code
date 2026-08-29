@@ -1,21 +1,21 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-let limit = 10000000;
+let limit = 10000000
 
-let composite = LIST[bool]();
+let composite = LIST[bool]()
 
-(0::limit) |> each(_ => composite.add(false));
+(0::limit) |> each(_ => composite.add(false))
 
-let root mut = 2;
+let root mut = 2
 
 while root * root <= limit do
     if !composite[root] then
-        let multiple mut = root * root;
+        let multiple mut = root * root
 
         while multiple <= limit do
-            composite[multiple] = true;
+            composite[multiple] = true
             multiple = multiple + root;
         od
     fi
@@ -24,38 +24,38 @@ while root * root <= limit do
 od
 
 digit_signature(value: int) -> string => (
-    let counts = LIST[int]();
+    let counts = LIST[int]()
 
     for _ in 0..10 do
         counts.add(0);
     od
 
-    let rest mut = value;
+    let rest mut = value
 
     while rest > 0 do
-        let digit = rest % 10;
-        counts[digit] = counts[digit] + 1;
+        let digit = rest % 10
+        counts[digit] = counts[digit] + 1
         rest = rest / 10;
     od
 
-    let signature mut = "";
+    let signature mut = ""
 
     for count in counts do
         signature = "{signature}{count}";
     od
 
     signature
-);
+)
 
-let pairs = LIST[string]();
-let up_to_million mut = 0;
-let up_to_ten_million mut = 0;
-let previous mut = 0;
-let previous_signature mut = "";
+let pairs = LIST[string]()
+let up_to_million mut = 0
+let up_to_ten_million mut = 0
+let previous mut = 0
+let previous_signature mut = ""
 
 for candidate in 2..(limit + 1) do
     if !composite[candidate] then
-        let signature = digit_signature(candidate);
+        let signature = digit_signature(candidate)
 
         if previous_signature =~ signature then
             if pairs.count < 30 then
@@ -69,16 +69,16 @@ for candidate in 2..(limit + 1) do
             up_to_ten_million = up_to_ten_million + 1;
         fi
 
-        previous = candidate;
+        previous = candidate
         previous_signature = signature;
     fi
 od
 
-write_line("first 30 Ormiston pairs:");
+write_line("first 30 Ormiston pairs:")
 
 for pair in pairs do
     write_line(pair);
 od
 
-write_line("{up_to_million} pairs up to 1000000");
+write_line("{up_to_million} pairs up to 1000000")
 write_line("{up_to_ten_million} pairs up to 10000000");

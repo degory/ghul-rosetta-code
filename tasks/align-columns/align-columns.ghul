@@ -1,9 +1,9 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 union Alignment is
-    LEFT;
-    RIGHT;
+    LEFT
+    RIGHT
     CENTRE;
 si
 
@@ -15,13 +15,13 @@ pad(word: string, width: int, alignment: Alignment) -> string =>
         word
         .pad_left(word.length + (width - word.length) / 2)
         .pad_right(width)
-    esac;
+    esac
 
 line(row: string[], widths: int[], alignment: Alignment) -> string =>
     (row
      |> index()
      |> map(((column, word)) => pad(word, widths[column], alignment))
-     |> join(" ")).trim_end();
+     |> join(" ")).trim_end()
 
 let text = [
     "Given$a$text$file$of$many$lines,$where$fields$within$a$line$",
@@ -30,17 +30,17 @@ let text = [
     "column$are$separated$by$at$least$one$space.",
     "Further,$allow$for$each$word$in$a$column$to$be$either$left$",
     "justified,$right$justified,$or$center$justified$within$its$column."
-];
+]
 
 let rows =
     text
     |> map(line => line.trim_end('$').split(['$']))
-    |> collect_array();
+    |> collect_array()
 
 let columns =
     rows
     |> reduce(0, (widest, row) =>
-        if row.count > widest then row.count else widest fi);
+        if row.count > widest then row.count else widest fi)
 
 let widths =
     (0..columns)
@@ -53,10 +53,10 @@ let widths =
             else
                 widest
             fi))
-    |> collect_array();
+    |> collect_array()
 
 for alignment in [Alignment.LEFT, Alignment.RIGHT, Alignment.CENTRE] do
-    rows |> each(row => write_line(line(row, widths, alignment)));
+    rows |> each(row => write_line(line(row, widths, alignment)))
 
     write_line("");
 od

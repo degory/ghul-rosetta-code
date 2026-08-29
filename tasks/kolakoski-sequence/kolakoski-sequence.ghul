@@ -1,27 +1,27 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Collections.List;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
 
 cycler(values: int[]) -> () -> int is
-    let at mut = 0;
+    let at mut = 0
 
     return () => (
-        let value = values[at];
-        at = (at + 1) % values.count;
+        let value = values[at]
+        at = (at + 1) % values.count
         value
     );
 si
 
 kolakoski(values: int[], length: int) -> List[int] is
-    let next = cycler(values);
-    let sequence = LIST[int]();
-    let at_run mut = 0;
+    let next = cycler(values)
+    let sequence = LIST[int]()
+    let at_run mut = 0
 
     while sequence.count < length do
-        let value = next();
+        let value = next()
 
-        sequence.add(value);
+        sequence.add(value)
 
         for _ in 1..sequence[at_run] do
             sequence.add(value);
@@ -34,16 +34,16 @@ kolakoski(values: int[], length: int) -> List[int] is
 si
 
 run_lengths(sequence: List[int]) -> List[int] is
-    let runs = LIST[int]();
-    let run mut = 0;
+    let runs = LIST[int]()
+    let run mut = 0
 
     for i in 0..sequence.count do
-        run = run + 1;
+        run = run + 1
 
-        let last = i + 1 == sequence.count;
+        let last = i + 1 == sequence.count
 
         if last \/ sequence[i + 1] != sequence[i] then
-            runs.add(run);
+            runs.add(run)
             run = 0;
         fi
     od
@@ -52,19 +52,19 @@ run_lengths(sequence: List[int]) -> List[int] is
 si
 
 self_describing(sequence: List[int]) -> bool => (
-    let runs = run_lengths(sequence);
+    let runs = run_lengths(sequence)
     (0..runs.count - 1) |> all(i => runs[i] == sequence[i])
-);
+)
 
 report(values: int[], length: int) is
-    let sequence = kolakoski(values, length);
+    let sequence = kolakoski(values, length)
 
-    write_line("from ({values |> join(", ")}), first {length}:");
-    write_line("  {sequence |> join(", ")}");
+    write_line("from ({values |> join(", ")}), first {length}:")
+    write_line("  {sequence |> join(", ")}")
     write_line("  self-describing: {self_describing(sequence)}");
 si
 
-report([1, 2], 20);
-report([2, 1], 20);
-report([1, 3, 1, 2], 30);
+report([1, 2], 20)
+report([2, 1], 20)
+report([1, 3, 1, 2], 30)
 report([1, 3, 2, 1], 30);

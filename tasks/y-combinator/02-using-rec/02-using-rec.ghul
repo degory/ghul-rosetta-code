@@ -1,15 +1,15 @@
-use IO.Std.write_line;
+use IO.Std.write_line
 
-let factorial = n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi;
+let factorial = n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi
 
-let fibonacci = n rec => if n < 2 then n else rec(n - 1) + rec(n - 2) fi;
+let fibonacci = n rec => if n < 2 then n else rec(n - 1) + rec(n - 2) fi
 
 let countdown =
-    n rec => if n <= 0 then "liftoff" else "{n}, {rec(n - 1)}" fi;
+    n rec => if n <= 0 then "liftoff" else "{n}, {rec(n - 1)}" fi
 
 let gcd =
     ((a, b): (int, int)) rec =>
-        if b == 0 then a else rec((b, a % b)) fi;
+        if b == 0 then a else rec((b, a % b)) fi
 
 for n in 0::10 do
     write_line(
@@ -17,5 +17,5 @@ for n in 0::10 do
         "fibonacci({n}) = {fibonacci(n)}");
 od
 
-write_line("countdown(5) = {countdown(5)}");
+write_line("countdown(5) = {countdown(5)}")
 write_line("gcd(1071, 462) = {gcd((1071, 462))}");

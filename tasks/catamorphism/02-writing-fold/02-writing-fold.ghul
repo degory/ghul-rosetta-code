@@ -1,9 +1,9 @@
-use IO.Std.write_line;
-use Collections.Iterable;
-use Collections.List;
+use IO.Std.write_line
+use Collections.Iterable
+use Collections.List
 
 fold_left[T, A](values: Iterable[T], seed: A, combine: (A, T) -> A) -> A is
-    let running mut = seed;
+    let running mut = seed
 
     for value in values do
         running = combine(running, value);
@@ -13,7 +13,7 @@ fold_left[T, A](values: Iterable[T], seed: A, combine: (A, T) -> A) -> A is
 si
 
 fold_right[T, A](values: List[T], seed: A, combine: (T, A) -> A) -> A is
-    let running mut = seed;
+    let running mut = seed
 
     for i in 0..values.count do
         running = combine(values[values.count - 1 - i], running);
@@ -22,15 +22,15 @@ fold_right[T, A](values: List[T], seed: A, combine: (T, A) -> A) -> A is
     return running;
 si
 
-let numbers = [1, 2, 3, 4, 5];
+let numbers = [1, 2, 3, 4, 5]
 
-let bracket_left = (running: string, value: int) => "({running} {value})";
-let bracket_right = (value: int, running: string) => "({value} {running})";
+let bracket_left = (running: string, value: int) => "({running} {value})"
+let bracket_right = (value: int, running: string) => "({value} {running})"
 
-let left_sum = fold_left(numbers, 0, (total, value) => total + value);
-let right_sum = fold_right(numbers, 0, (value, total) => value + total);
+let left_sum = fold_left(numbers, 0, (total, value) => total + value)
+let right_sum = fold_right(numbers, 0, (value, total) => value + total)
 
-write_line("left  sum:  {left_sum}");
-write_line("right sum:  {right_sum}");
-write_line("left  tree: {fold_left(numbers, "nil", bracket_left)}");
+write_line("left  sum:  {left_sum}")
+write_line("right sum:  {right_sum}")
+write_line("left  tree: {fold_left(numbers, "nil", bracket_left)}")
 write_line("right tree: {fold_right(numbers, "nil", bracket_right)}");

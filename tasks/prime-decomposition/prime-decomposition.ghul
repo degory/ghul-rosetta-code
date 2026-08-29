@@ -1,28 +1,28 @@
-use IO.Std.write_line;
-use Collections;
-use Ghul.Pipes;
-use System.Numerics.BigInteger;
-use System.Numerics.IAdditionOperators.`+;
-use System.Numerics.IMultiplyOperators.`*;
-use System.Numerics.IDivisionOperators.`/;
-use System.Numerics.IModulusOperators.`%;
+use IO.Std.write_line
+use Collections
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
 
 decompose(n: BigInteger) -> List[BigInteger] is
-    let factors = LIST();
+    let factors = LIST()
 
-    let two = cast BigInteger(2);
-    let rest mut = n;
+    let two = cast BigInteger(2)
+    let rest mut = n
 
     while rest % two =~ BigInteger.zero do
-        factors.add(two);
+        factors.add(two)
         rest = rest / two;
     od
 
-    let divisor mut = cast BigInteger(3);
+    let divisor mut = cast BigInteger(3)
 
     while divisor * divisor <= rest do
         if rest % divisor =~ BigInteger.zero then
-            factors.add(divisor);
+            factors.add(divisor)
             rest = rest / divisor;
         else
             divisor = divisor + two;
@@ -37,7 +37,7 @@ decompose(n: BigInteger) -> List[BigInteger] is
 si
 
 show(n: BigInteger) is
-    let rendered = LIST();
+    let rendered = LIST()
 
     for factor in decompose(n) do
         rendered.add("{factor}");

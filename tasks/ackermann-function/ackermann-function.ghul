@@ -1,5 +1,5 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 ackermann(m: int, n: int) -> int =>
     if m == 0 then
@@ -8,10 +8,10 @@ ackermann(m: int, n: int) -> int =>
         ackermann(m - 1, 1)
     else
         ackermann(m - 1, ackermann(m, n - 1))
-    fi;
+    fi
 
 for m in 0::3 do
-    let row = (0::5) |> map(n => "{ackermann(m, n)}") |> join(" ");
+    let row = (0::5) |> map(n => "{ackermann(m, n)}") |> join(" ")
 
     write_line("A({m}, n) = {row}");
 od

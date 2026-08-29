@@ -1,31 +1,31 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 union Expression is
-    NUMBER(value: int);
-    ADD(left: Expression, right: Expression);
-    SUBTRACT(left: Expression, right: Expression);
-    MULTIPLY(left: Expression, right: Expression);
+    NUMBER(value: int)
+    ADD(left: Expression, right: Expression)
+    SUBTRACT(left: Expression, right: Expression)
+    MULTIPLY(left: Expression, right: Expression)
     DIVIDE(left: Expression, right: Expression);
 si
 
-use Expression.NUMBER;
-use Expression.ADD;
-use Expression.SUBTRACT;
-use Expression.MULTIPLY;
-use Expression.DIVIDE;
+use Expression.NUMBER
+use Expression.ADD
+use Expression.SUBTRACT
+use Expression.MULTIPLY
+use Expression.DIVIDE
 
-struct PARSED(expression: Expression, next: int);
+struct PARSED(expression: Expression, next: int)
 
 skip_spaces(text: string, at: int) -> int =>
     if at < text.length /\ text[at] == ' ' then
         skip_spaces(text, at + 1)
     else
         at
-    fi;
+    fi
 
 parse_term(text: string, at: int) -> PARSED? is
-    let start = skip_spaces(text, at);
+    let start = skip_spaces(text, at)
 
     if start == text.length then
         return null;
@@ -33,7 +33,7 @@ parse_term(text: string, at: int) -> PARSED? is
 
     if text[start] == '(' then
         if let (expression, next) = parse_expression(text, start + 1) then
-            let close = skip_spaces(text, next);
+            let close = skip_spaces(text, next)
 
             if close < text.length /\ text[close] == ')' then
                 return PARSED(expression, close + 1);
@@ -43,7 +43,7 @@ parse_term(text: string, at: int) -> PARSED? is
         return null;
     fi
 
-    let end mut = start;
+    let end mut = start
 
     while end < text.length /\ char.is_digit(text[end]) do
         end = end + 1;
@@ -53,7 +53,7 @@ parse_term(text: string, at: int) -> PARSED? is
         return null;
     fi
 
-    let digits = text[start..end];
+    let digits = text[start..end]
 
     return PARSED(NUMBER(int.parse(digits)), end);
 si
@@ -64,7 +64,7 @@ operator_at(text: string, position: int, operators: string) -> int? =>
         here
     else
         null
-    fi;
+    fi
 
 build(operator: char, left: Expression, right: Expression) -> Expression =>
     case operator
@@ -73,7 +73,7 @@ build(operator: char, left: Expression, right: Expression) -> Expression =>
     when '*' then MULTIPLY(left, right)
     when '/' then DIVIDE(left, right)
     else throw System.Exception("not an operator: {operator}")
-    esac;
+    esac
 
 parse_run(
     text: string,
@@ -82,12 +82,12 @@ parse_run(
     operand: (string, int) -> PARSED?
 ) -> PARSED? is
     if let (left, next) = operand(text, at) then
-        let expression mut = left;
-        let position mut = next;
+        let expression mut = left
+        let position mut = next
 
         while let here = operator_at(text, position, operators) do
             if let (right, after) = operand(text, here + 1) then
-                expression = build(text[here], expression, right);
+                expression = build(text[here], expression, right)
                 position = after;
             else
                 return null;
@@ -101,10 +101,10 @@ parse_run(
 si
 
 parse_factor(text: string, at: int) -> PARSED? =>
-    parse_run(text, at, "*/", parse_term);
+    parse_run(text, at, "*/", parse_term)
 
 parse_expression(text: string, at: int) -> PARSED? =>
-    parse_run(text, at, "+-", parse_factor);
+    parse_run(text, at, "+-", parse_factor)
 
 parse(text: string) -> Expression? is
     if let (expression, next) = parse_expression(text, 0) /\
@@ -123,7 +123,7 @@ evaluate(expression: Expression) -> int =>
     when (left, right): SUBTRACT then evaluate(left) - evaluate(right)
     when (left, right): MULTIPLY then evaluate(left) * evaluate(right)
     when (left, right): DIVIDE then evaluate(left) / evaluate(right)
-    esac;
+    esac
 
 show(expression: Expression) -> string =>
     case expression
@@ -132,7 +132,7 @@ show(expression: Expression) -> string =>
     when (left, right): SUBTRACT then "(- {show(left)} {show(right)})"
     when (left, right): MULTIPLY then "(* {show(left)} {show(right)})"
     when (left, right): DIVIDE then "(/ {show(left)} {show(right)})"
-    esac;
+    esac
 
 for source in [
     "(1+3)*7",

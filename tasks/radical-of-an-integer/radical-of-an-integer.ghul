@@ -1,33 +1,33 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-let limit = 1000000;
+let limit = 1000000
 
-let radical = LIST[int]();
-let factor_counts = LIST[int]();
-let composite = LIST[bool]();
+let radical = LIST[int]()
+let factor_counts = LIST[int]()
+let composite = LIST[bool]()
 
 for _ in 0::limit do
-    radical.add(1);
-    factor_counts.add(0);
+    radical.add(1)
+    factor_counts.add(0)
     composite.add(false);
 od
 
 for prime in 2..(limit + 1) do
     if !composite[prime] then
-        let multiple mut = prime;
+        let multiple mut = prime
 
         while multiple <= limit do
-            radical[multiple] = radical[multiple] * prime;
-            factor_counts[multiple] = factor_counts[multiple] + 1;
-            composite[multiple] = true;
+            radical[multiple] = radical[multiple] * prime
+            factor_counts[multiple] = factor_counts[multiple] + 1
+            composite[multiple] = true
             multiple = multiple + prime;
         od
     fi
 od
 
-write_line("radicals of the first 50 positive integers:");
+write_line("radicals of the first 50 positive integers:")
 
 for row in 0..5 do
     write_line(
@@ -40,18 +40,18 @@ for n in [99999, 499999, 999999] do
     write_line("radical[{n}] = {radical[n]}");
 od
 
-let distribution = LIST[int]();
+let distribution = LIST[int]()
 
 for _ in 0..8 do
     distribution.add(0);
 od
 
 for n in 1..(limit + 1) do
-    let count = factor_counts[n];
+    let count = factor_counts[n]
     distribution[count] = distribution[count] + 1;
 od
 
-write_line("first 1000000 integers by distinct prime factors:");
+write_line("first 1000000 integers by distinct prime factors:")
 
 for count in 0..8 do
     if distribution[count] > 0 then
@@ -60,19 +60,19 @@ for count in 0..8 do
 od
 
 prime(n: int, factors: LIST[int], radicals: LIST[int]) -> bool =>
-    n >= 2 /\ factors[n] == 1 /\ radicals[n] == n;
+    n >= 2 /\ factors[n] == 1 /\ radicals[n] == n
 
 let primes = (2..(limit + 1))
     |> filter(n => prime(n, factor_counts, radical))
-    |> collect_list();
+    |> collect_list()
 
-let powers mut = 0;
+let powers mut = 0
 
 for base in primes do
-    let power mut = cast long(base) * cast long(base);
+    let power mut = cast long(base) * cast long(base)
 
     while power <= cast long(limit) do
-        powers = powers + 1;
+        powers = powers + 1
         power = power * cast long(base);
     od
 od

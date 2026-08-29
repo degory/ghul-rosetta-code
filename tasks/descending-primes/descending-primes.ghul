@@ -1,19 +1,19 @@
-use IO.Std.write_line;
-use Collections;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections
+use Ghul.Pipes
 
 is_prime(n: int) -> bool =>
     if n < 2 then false
     elif n % 2 == 0 then n == 2
     else
-        let divisor mut = 3;
+        let divisor mut = 3
 
         while divisor * divisor <= n /\ n % divisor != 0 do
             divisor = divisor + 2;
         od
 
         divisor * divisor > n
-    fi;
+    fi
 
 descending(so_far: int, next_digit: int, found: LIST[int]) is
     if so_far > 0 /\ is_prime(so_far) then
@@ -25,13 +25,13 @@ descending(so_far: int, next_digit: int, found: LIST[int]) is
     od
 si
 
-let found = LIST();
+let found = LIST()
 
-descending(0, 9, found);
+descending(0, 9, found)
 
-let primes = found |> collect_list();
+let primes = found |> collect_list()
 
-primes.sort();
+primes.sort()
 
 for row in 0::(primes.count - 1) / 6 do
     write_line(
