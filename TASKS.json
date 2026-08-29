@@ -169,7 +169,7 @@
     },
     {
       "title": "Balanced brackets",
-      "state": "blocked",
+      "state": "solved",
       "reason": "2252",
       "note": "recursive generator consumed inside a range/list loop drops iterations (ghul#2252); natural solution needs that shape"
     },

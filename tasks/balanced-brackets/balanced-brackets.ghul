@@ -1,0 +1,34 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+balanced(brackets: string) -> bool => (
+    let level mut = 0;
+
+    let matched = for bracket in brackets do
+        if bracket == ']' /\ level == 0 then break false fi;
+        level = level + (if bracket == '[' then 1 else -1 fi);
+    od;
+
+    matched ?? (level == 0)
+);
+
+arrangements(opens: int, closes: int) -> Pipe[string] is
+    if opens == 0 /\ closes == 0 then
+        yield "";
+    else
+        if opens > 0 then
+            yield in arrangements(opens - 1, closes)
+                |> map(rest => "[{rest}");
+        fi
+        if closes > 0 then
+            yield in arrangements(opens, closes - 1)
+                |> map(rest => "]{rest}");
+        fi
+    fi
+si
+
+for pairs in 0::3 do
+    for brackets in arrangements(pairs, pairs) do
+        write_line("{brackets,6}  {if balanced(brackets) then "OK" else "NOT OK" fi}");
+    od
+od
