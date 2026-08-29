@@ -46,9 +46,9 @@ jaro(left: string, right: string) -> double is
     let matches = cast double(match_count);
     let half_transpositions = cast double(transposed) / 2.0D;
 
-    return (matches / cast double(left.length)
-          + matches / cast double(right.length)
-          + (matches - half_transpositions) / matches) / 3.0D;
+    return (matches / cast double(left.length) +
+          matches / cast double(right.length) +
+          (matches - half_transpositions) / matches) / 3.0D;
 si
 
 [("MARTHA", "MARHTA"),
