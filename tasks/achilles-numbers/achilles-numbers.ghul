@@ -46,9 +46,9 @@ is_achilles(n: int) -> bool =>
 totient(n: int) -> int =>
     factorize(n)
     |> reduce(1, (total, factor) =>
-        total
-        * power(factor.prime, factor.exponent - 1)
-        * (factor.prime - 1));
+        total *
+        power(factor.prime, factor.exponent - 1) *
+        (factor.prime - 1));
 
 achilles_numbers() -> Pipe[int] is
     let n mut = 1;

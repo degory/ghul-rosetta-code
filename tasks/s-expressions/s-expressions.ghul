@@ -16,8 +16,8 @@ use SExpr.INTEGER;
 use SExpr.REAL;
 
 delimits(character: char) -> bool =>
-    character == '(' \/ character == ')'
-    \/ character == '"' \/ character <= ' ';
+    character == '(' \/ character == ')' \/
+    character == '"' \/ character <= ' ';
 
 skip_space(text: string, at: int) -> int is
     let i mut = at;

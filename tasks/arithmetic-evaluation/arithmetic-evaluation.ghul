@@ -107,8 +107,8 @@ parse_expression(text: string, at: int) -> PARSED? =>
     parse_run(text, at, "+-", parse_factor);
 
 parse(text: string) -> Expression? is
-    if let (expression, next) = parse_expression(text, 0)
-        /\ skip_spaces(text, next) == text.length
+    if let (expression, next) = parse_expression(text, 0) /\
+        skip_spaces(text, next) == text.length
     then
         return expression;
     fi

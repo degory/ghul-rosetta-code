@@ -29,8 +29,8 @@ matrix(first: string, second: string) -> LIST[LIST[int]] is
             scores[i][j] =
                 highest([
                     0,
-                    scores[i - 1][j - 1]
-                        + score(first[i - 1], second[j - 1]),
+                    scores[i - 1][j - 1] +
+                        score(first[i - 1], second[j - 1]),
                     scores[i - 1][j] + gap(),
                     scores[i][j - 1] + gap()
                 ]);
