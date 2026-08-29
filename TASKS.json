@@ -170,9 +170,10 @@
     {
       "title": "Balanced brackets",
       "slug": "balanced-brackets",
-      "state": "solved",
+      "state": "published",
       "reason": "2252",
-      "note": "recursive generator consumed inside a range/list loop drops iterations (ghul#2252); natural solution needs that shape"
+      "note": "recursive generator consumed inside a range/list loop drops iterations (ghul#2252); natural solution needs that shape",
+      "published_hash": "6abc8e5c17cff6b0002e82d4fcaa66599a86d7805de07143a437e365b086f188"
     },
     {
       "title": "Bell numbers",
@@ -182,7 +183,8 @@
     {
       "title": "Benford\u0027s law",
       "slug": "benfords-law",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "768699c8ed0609a4a797f9b1636fa887078d887bbeedaef8312e9c6c28abf099"
     },
     {
       "title": "Binary digits",
@@ -192,7 +194,8 @@
     {
       "title": "Calkin-Wilf sequence",
       "slug": "calkin-wilf-sequence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "294280c31ade6a81efa7b5d4e8f0b3b8afcca7fa0da727e832fc82d21b7c5d00"
     },
     {
       "title": "Call a foreign-language function",
@@ -232,7 +235,8 @@
     {
       "title": "Damm algorithm",
       "slug": "damm-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "797b1933fce0df510f84c3ed537109b1fae73dfb5b76db832ee20fabda5e0c88"
     },
     {
       "title": "Decorate-sort-undecorate idiom",
@@ -253,7 +257,8 @@
     {
       "title": "EKG sequence convergence",
       "slug": "ekg-sequence-convergence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b162774372b8e41c6892b311ac1f87c1fc3282541f7a20707d86afe5b01c326c"
     },
     {
       "title": "Entropy",
@@ -301,12 +306,14 @@
     {
       "title": "Fusc sequence",
       "slug": "fusc-sequence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "56655a35fd4ec61d49ee12f45f4ce524bfb58375f7f1f4d7e506e5e202fc85d5"
     },
     {
       "title": "Gapful numbers",
       "slug": "gapful-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7c301ec8cf7b4d29eb6c51feb1a0ae6f1e30ec2d4e8f46fdaaf4dc1e6677f421"
     },
     {
       "title": "Generic swap",
@@ -336,7 +343,8 @@
     {
       "title": "Hamming numbers",
       "slug": "hamming-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "426295888e256978fa6c90857488998ccc3eb34579e3176347eacd608869f4eb"
     },
     {
       "title": "Haversine formula",
@@ -370,7 +378,8 @@
     {
       "title": "Iterated digits squaring",
       "slug": "iterated-digits-squaring",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "181f7e80e2e82229a05e8fc76fc533faa2749ef5bdcceaf88c50b0ed7230a826"
     },
     {
       "title": "Jaro similarity",
@@ -391,12 +400,14 @@
     {
       "title": "Juggler sequence",
       "slug": "juggler-sequence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b93ec92e02863daf3730a1ca8c0ab1df1cf515474b6aaad732bf72fa47753788"
     },
     {
       "title": "Kaprekar numbers",
       "slug": "kaprekar-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "92a3266fc7b1587cd016fd3d44adcc4314362f5bc4004a7c58fe2761ab1c70e1"
     },
     {
       "title": "Kolakoski sequence",
@@ -423,7 +434,8 @@
     {
       "title": "Ludic numbers",
       "slug": "ludic-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3adbfac76bbc507013f8fbc3f72c03213fe08057b41dbcca405d6b9e93bf437f"
     },
     {
       "title": "Lyndon word",
@@ -475,7 +487,8 @@
     {
       "title": "Non-continuous subsequences",
       "slug": "non-continuous-subsequences",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a2bf8ee670057c889448d01eb6c5ee3cd930962d1ed685831cc72b90012a86ec"
     },
     {
       "title": "Null object",
@@ -501,7 +514,8 @@
     {
       "title": "Ormiston pairs",
       "slug": "ormiston-pairs",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9cdb20c886c96e9f62f8b34d88628f54c76bdcd0ccf7bf260535b12bf9787f5b"
     },
     {
       "title": "Palindrome detection",
@@ -517,7 +531,8 @@
     {
       "title": "Pernicious numbers",
       "slug": "pernicious-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c2ee28cddedcb92d540a03f0577ad73bcdd9e81471b57f38e869d4c3a8780901"
     },
     {
       "title": "Population count",
@@ -549,12 +564,14 @@
     {
       "title": "Quine",
       "slug": "quine",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "35116e069f82737389b74116a8ecf84428b70d2f0b37c946be94bf80e1d53b73"
     },
     {
       "title": "Radical of an integer",
       "slug": "radical-of-an-integer",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f9b7229d09f0dc82dc4f229d87ee8f5d200690bfaa94b8dfca215fd456060975"
     },
     {
       "title": "Reverse a string",
@@ -621,7 +638,8 @@
     {
       "title": "Stern-Brocot sequence",
       "slug": "stern-brocot-sequence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "09c301bd936c8246a01415f6f583c47d003c34937afd40bb91fc0da78c7fef24"
     },
     {
       "title": "Taxicab numbers",
@@ -660,7 +678,8 @@
     {
       "title": "Truncatable primes",
       "slug": "truncatable-primes",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a3f4fc5baf3dbb3d1a704d73eee8fb05dea0058288db3608ffba884054d3f841"
     },
     {
       "title": "URL decoding",
@@ -670,7 +689,8 @@
     {
       "title": "Undulating numbers",
       "slug": "undulating-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9d279fbb3198cf11dd479e3e9e1d1ce9f2e3badadc34c30e0a38a76da84d4d7d"
     },
     {
       "title": "User:Degory/sandbox",
