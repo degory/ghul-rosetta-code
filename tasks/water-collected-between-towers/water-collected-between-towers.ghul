@@ -13,17 +13,16 @@ running_maxima(heights: Iterable[int]) -> Pipe[int] is
     od
 si
 
-water(heights: int[]) -> int =>
-    val
-        let left = running_maxima(heights) |> collect_list();
-        let right =
-            running_maxima(heights |> reverse()) |> collect_list();
-        let last = heights.count - 1;
+water(heights: int[]) -> int => (
+    let left = running_maxima(heights) |> collect_list();
+    let right =
+        running_maxima(heights |> reverse()) |> collect_list();
+    let last = heights.count - 1;
 
-        (0..heights.count)
-        |> map(i => Math.min(left[i], right[last - i]) - heights[i])
-        |> reduce(0, (total, depth) => total + depth)
-    lav;
+    (0..heights.count)
+    |> map(i => Math.min(left[i], right[last - i]) - heights[i])
+    |> reduce(0, (total, depth) => total + depth)
+);
 
 let series: int[][] =
     [[1, 5, 3, 7, 2],

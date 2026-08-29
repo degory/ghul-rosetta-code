@@ -36,31 +36,29 @@ while i < sums.count - 1 do
     fi
 od
 
-cube_root(value: long) -> long =>
-    val
-        let cube_root_of = System.Math.cbrt(cast(value));
-        let root = cast long(System.Math.floor(cube_root_of + 0.5D));
+cube_root(value: long) -> long => (
+    let cube_root_of = System.Math.cbrt(cast(value));
+    let root = cast long(System.Math.floor(cube_root_of + 0.5D));
 
-        if root * root * root == value then root else 0L fi
-    lav;
+    if root * root * root == value then root else 0L fi
+);
 
-expressions(taxi: long) -> string =>
-    val
-        let parts = LIST[string]();
-        let a mut = 1L;
+expressions(taxi: long) -> string => (
+    let parts = LIST[string]();
+    let a mut = 1L;
 
-        while a * a * a * 2L < taxi do
-            let b = cube_root(taxi - a * a * a);
+    while a * a * a * 2L < taxi do
+        let b = cube_root(taxi - a * a * a);
 
-            if b > 0L then
-                parts.add("{a}^3 + {b}^3");
-            fi
+        if b > 0L then
+            parts.add("{a}^3 + {b}^3");
+        fi
 
-            a = a + 1L;
-        od
+        a = a + 1L;
+    od
 
-        parts |> join(" = ")
-    lav;
+    parts |> join(" = ")
+);
 
 show(rank: int, taxis: List[long]) is
     let taxi = taxis[rank - 1];

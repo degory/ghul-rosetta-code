@@ -10,12 +10,11 @@ a(
 ) -> int is
     let counter mut = k;
 
-    let b = () rec =>
-        val
-            counter = counter - 1;
+    let b = () rec => (
+        counter = counter - 1;
 
-            a(counter, rec, x1, x2, x3, x4)
-        lav;
+        a(counter, rec, x1, x2, x3, x4)
+    );
 
     return if counter <= 0 then x4() + x5() else b() fi;
 si

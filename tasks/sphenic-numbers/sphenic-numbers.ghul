@@ -40,42 +40,40 @@ smallest_prime_factors(limit: int) -> List[int] is
     return factor;
 si
 
-is_sphenic(n: int, factor: List[int]) -> bool =>
-    val
-        let rest mut = n;
-        let previous mut = 0;
-        let total mut = 0;
-        let distinct mut = 0;
+is_sphenic(n: int, factor: List[int]) -> bool => (
+    let rest mut = n;
+    let previous mut = 0;
+    let total mut = 0;
+    let distinct mut = 0;
 
-        while rest > 1 do
-            let prime = factor[rest];
+    while rest > 1 do
+        let prime = factor[rest];
 
-            total = total + 1;
+        total = total + 1;
 
-            if prime != previous then
-                distinct = distinct + 1;
-                previous = prime;
-            fi
+        if prime != previous then
+            distinct = distinct + 1;
+            previous = prime;
+        fi
 
-            rest = rest / prime;
-        od
+        rest = rest / prime;
+    od
 
-        total == 3 /\ distinct == 3
-    lav;
+    total == 3 /\ distinct == 3
+);
 
-prime_factors(n: int, factor: List[int]) -> List[string] =>
-    val
-        let rest mut = n;
-        let factors = LIST[string]();
+prime_factors(n: int, factor: List[int]) -> List[string] => (
+    let rest mut = n;
+    let factors = LIST[string]();
 
-        while rest > 1 do
-            let prime = factor[rest];
-            factors.add("{prime}");
-            rest = rest / prime;
-        od
+    while rest > 1 do
+        let prime = factor[rest];
+        factors.add("{prime}");
+        rest = rest / prime;
+    od
 
-        factors
-    lav;
+    factors
+);
 
 let factor = smallest_prime_factors(search_limit);
 

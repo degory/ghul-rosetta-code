@@ -1,18 +1,17 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-popcount(n: long) -> int =>
-    val
-        let bits mut = n;
-        let count mut = 0;
+popcount(n: long) -> int => (
+    let bits mut = n;
+    let count mut = 0;
 
-        while bits != 0L do
-            count = count + cast int(bits & 1L);
-            bits = bits >>> 1;
-        od;
+    while bits != 0L do
+        count = count + cast int(bits & 1L);
+        bits = bits >>> 1;
+    od;
 
-        count
-    lav;
+    count
+);
 
 let powers_of_three = stream(1L, power => power || power * 3L);
 

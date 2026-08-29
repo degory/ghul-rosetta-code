@@ -1,27 +1,26 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-is_semiprime(n: int) -> bool =>
-    val
-        let rest mut = n;
-        let count mut = 0;
-        let divisor mut = 2;
+is_semiprime(n: int) -> bool => (
+    let rest mut = n;
+    let count mut = 0;
+    let divisor mut = 2;
 
-        while divisor * divisor <= rest /\ count < 3 do
-            while rest % divisor == 0 do
-                rest = rest / divisor;
-                count = count + 1;
-            od
-
-            divisor = divisor + 1;
+    while divisor * divisor <= rest /\ count < 3 do
+        while rest % divisor == 0 do
+            rest = rest / divisor;
+            count = count + 1;
         od
 
-        if rest > 1 then
-            count = count + 1;
-        fi
+        divisor = divisor + 1;
+    od
 
-        count == 2
-    lav;
+    if rest > 1 then
+        count = count + 1;
+    fi
+
+    count == 2
+);
 
 let up_to_100 = (2::100) |> filter(is_semiprime) |> join(", ");
 

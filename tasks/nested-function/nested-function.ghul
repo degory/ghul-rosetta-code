@@ -5,11 +5,10 @@ use Ghul.Pipes;
 make_list(separator: string) -> string is
     let counter mut = 0;
 
-    let make_item = (item: string) =>
-        val
-            counter = counter + 1;
-            "{counter}{separator}{item}"
-        lav;
+    let make_item = (item: string) => (
+        counter = counter + 1;
+        "{counter}{separator}{item}"
+    );
 
     let items = LIST[string]();
 

@@ -2,21 +2,20 @@ use IO.Std.write_line;
 use Collections;
 use Ghul.Pipes;
 
-van_der_corput(n: int, base: int) -> double pure =>
-    val
-        let rest mut = n;
-        let weight mut = 1.0D / cast(base);
-        let term mut = 0.0D;
+van_der_corput(n: int, base: int) -> double pure => (
+    let rest mut = n;
+    let weight mut = 1.0D / cast(base);
+    let term mut = 0.0D;
 
-        while rest > 0 do
-            term = term + cast(rest % base) * weight;
+    while rest > 0 do
+        term = term + cast(rest % base) * weight;
 
-            rest = rest / base;
-            weight = weight / cast(base);
-        od
+        rest = rest / base;
+        weight = weight / cast(base);
+    od
 
-        term
-    lav;
+    term
+);
 
 let base_2 = (0::9) |> map(n => "{van_der_corput(n, 2)}") |> join(", ");
 

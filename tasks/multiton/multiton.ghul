@@ -53,12 +53,11 @@ let made mut = 0;
 
 let connections =
     MULTITON(
-        host =>
-            val
-                made = made + 1;
+        host => (
+            made = made + 1;
 
-                CONNECTION(host)
-            lav
+            CONNECTION(host)
+        )
     );
 
 let alpha = connections.get("alpha");
@@ -80,10 +79,9 @@ let keys = ["one", "two", "three"];
 Tasks.Parallel.`for(
     0,
     300,
-    i =>
-        val
-            let _ = connections.get(keys[i % keys.count]);
-        lav
+    i => (
+        let _ = connections.get(keys[i % keys.count]);
+    )
 );
 
 write_line(
