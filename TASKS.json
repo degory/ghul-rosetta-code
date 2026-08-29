@@ -168,6 +168,12 @@
       "published_hash": "5446ecf6e9179e59f7190323836a25ae8e50e57a3da9f80719ea2a632205db9b"
     },
     {
+      "title": "Balanced brackets",
+      "state": "blocked",
+      "reason": "2252",
+      "note": "recursive generator consumed inside a range/list loop drops iterations (ghul#2252); natural solution needs that shape"
+    },
+    {
       "title": "Bell numbers",
       "slug": "bell-numbers",
       "state": "published"
