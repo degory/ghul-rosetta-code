@@ -13,12 +13,17 @@ namespace Rosetta is
     //   published  on the wiki
     //   rejected   will not be attempted, `reason` says why, never revisited
     //   blocked    cannot be written yet, `reason` names the issue, revisited when it closes
+    //
+    // `published_hash` is the digest of the section this repository last put on the wiki. It is
+    // what tells an edit made here from an edit made there: if the section on the page still
+    // hashes to this, nobody has touched it since, and replacing it loses nothing.
     class TASK_ENTRY is
         title: string public;
         slug: string? public;
         state: string public;
         reason: string? public;
         note: string? public;
+        published_hash: string? public;
 
         init() is
             title = "";
