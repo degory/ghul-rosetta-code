@@ -1,0 +1,29 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+use Collections.LIST;
+use System.Numerics.BigInteger;
+use System.Numerics.IAdditionOperators.`+;
+use System.Math.log10;
+
+let leading_counts = (1::10) |> map(_ => 0) |> collect_list();
+
+let previous mut = BigInteger.zero;
+let current mut = BigInteger.one;
+
+for _ in 1::1000 do
+    let first = current.to_string()[0];
+    let digit = cast int(first) - cast int('0');
+    leading_counts[digit] = leading_counts[digit] + 1;
+
+    let next = previous + current;
+    previous = current;
+    current = next;
+od
+
+write_line("digit  actual   expected");
+
+for digit in 1::9 do
+    let actual = 100.0D * cast double(leading_counts[digit]) / 1000.0D;
+    let expected = 100.0D * log10(1.0D + 1.0D / cast double(digit));
+    write_line("{digit}    {actual,6:F2}%  {expected,6:F2}%");
+od

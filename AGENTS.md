@@ -102,6 +102,26 @@ it does not need is as bad as one that reaches for none of them; the point is
 that where ghūl has its own way of saying something, the entry should say it
 that way.
 
+## A suspected bug is not a reason to change the solution
+
+A solution producing unexpected output through a pipe chain is not evidence
+that the pipe machinery is broken. The first step is a minimal repro outside
+the solution. Most suspected bugs turn out to be the solution's own: an
+exclusive `..` range that counts one element short, an operator-precedence
+surprise, a misread of the task text.
+
+When a minimal repro reproduces the problem outside the solution, it is a
+compiler bug, and a Rosetta Code entry is not the place to work around one.
+Raise it in degory/ghul, mark the task blocked against the issue, and move
+on to the next task. Rewriting the solution as an imperative loop instead
+ships the workaround to the wiki, where it outlives the bug and teaches
+readers an idiom that does not exist.
+
+This is not a ban on imperative loops. A loop is the natural shape of some
+tasks and the right choice there. It is the wrong choice when a pipe chain
+is the natural shape and the only reason for the loop is a bug that has not
+been confirmed.
+
 ## Keep lines narrow
 
 A solution is read in a column, not in your editor: on Rosetta Code it sits in a fixed-width block,

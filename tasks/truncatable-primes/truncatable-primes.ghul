@@ -1,0 +1,78 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Ghul.Pipes;
+
+let limit = 1000000;
+
+let composite = LIST[bool]();
+
+for _ in 0::limit do
+    composite.add(false);
+od
+
+let root mut = 2;
+
+while root * root <= limit do
+    if !composite[root] then
+        let multiple mut = root * root;
+
+        while multiple <= limit do
+            composite[multiple] = true;
+            multiple = multiple + root;
+        od
+    fi
+
+    root = root + 1;
+od
+
+prime(text: string) -> bool => (
+    let value = int.parse(text);
+
+    value >= 2 /\ !composite[value]
+);
+
+left_truncatable(text: string) -> bool => (
+    let valid = for start in 0..text.length do
+        if !prime(text[start..<0]) then
+            break false;
+        fi
+    od;
+
+    valid ?? true
+);
+
+right_truncatable(text: string) -> bool => (
+    let valid = for end in 1::text.length do
+        if !prime(text[0..end]) then
+            break false;
+        fi
+    od;
+
+    valid ?? true
+);
+
+let primes = (2..(limit + 1))
+    |> filter(n => !composite[n])
+    |> collect_list();
+
+let largest_left mut = 0;
+let largest_right mut = 0;
+
+for candidate in primes do
+    let text = "{candidate}";
+
+    if !text.contains('0') then
+        if left_truncatable(text) then
+            largest_left = candidate;
+        fi
+
+        if right_truncatable(text) then
+            largest_right = candidate;
+        fi
+    fi
+od
+
+write_line("largest left-truncatable prime below 1000000: {largest_left}");
+write_line(
+    "largest right-truncatable prime below 1000000: "
+    "{largest_right}");

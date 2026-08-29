@@ -1,0 +1,33 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+prime(value: int) -> bool => (
+    let divisor mut = 2;
+
+    let factor_found = while divisor * divisor <= value do
+        if value % divisor == 0 then
+            break true;
+        fi
+
+        divisor = divisor + 1;
+    od;
+
+    value >= 2 /\ !(factor_found ?? false)
+);
+
+population_count(value: int) -> int =>
+    System.Convert.to_string(value, 2)
+        |> filter(bit => bit == '1')
+        |> count();
+
+pernicious(value: int) -> bool => prime(population_count(value));
+
+write_line("first 25:");
+
+write_line(
+    (1..200) |> filter(pernicious) |> take(25) |> join(", "));
+
+write_line("between 888888877 and 888888888:");
+
+write_line(
+    (888888877::888888888) |> filter(pernicious) |> join(", "));

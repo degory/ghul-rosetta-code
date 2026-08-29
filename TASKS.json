@@ -168,14 +168,31 @@
       "published_hash": "5446ecf6e9179e59f7190323836a25ae8e50e57a3da9f80719ea2a632205db9b"
     },
     {
+      "title": "Balanced brackets",
+      "slug": "balanced-brackets",
+      "state": "solved",
+      "reason": "2252",
+      "note": "recursive generator consumed inside a range/list loop drops iterations (ghul#2252); natural solution needs that shape"
+    },
+    {
       "title": "Bell numbers",
       "slug": "bell-numbers",
       "state": "published"
     },
     {
+      "title": "Benford\u0027s law",
+      "slug": "benfords-law",
+      "state": "solved"
+    },
+    {
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published"
+    },
+    {
+      "title": "Calkin-Wilf sequence",
+      "slug": "calkin-wilf-sequence",
+      "state": "solved"
     },
     {
       "title": "Call a foreign-language function",
@@ -213,6 +230,11 @@
       "published_hash": "0da3afb1e01d9741208ebf73180fdfadd7a78b4a4021e86357874b454287d616"
     },
     {
+      "title": "Damm algorithm",
+      "slug": "damm-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Decorate-sort-undecorate idiom",
       "state": "published"
     },
@@ -227,6 +249,11 @@
       "slug": "dinesmans-multiple-dwelling-problem",
       "state": "published",
       "published_hash": "d65ee0530c1446c83d4ecef1f51e223b0cb71d169ed58df3e2295290bdb82261"
+    },
+    {
+      "title": "EKG sequence convergence",
+      "slug": "ekg-sequence-convergence",
+      "state": "solved"
     },
     {
       "title": "Entropy",
@@ -272,6 +299,16 @@
       "published_hash": "c8a923adfe8244702aea5ad3a53074eded533c133a6818acf9ec16b55c119b0b"
     },
     {
+      "title": "Fusc sequence",
+      "slug": "fusc-sequence",
+      "state": "solved"
+    },
+    {
+      "title": "Gapful numbers",
+      "slug": "gapful-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Generic swap",
       "slug": "generic-swap",
       "state": "published"
@@ -295,6 +332,11 @@
       "slug": "hailstone-sequence",
       "state": "published",
       "published_hash": "ef018af7f083bfaa79acec2595fdab2cc4efc40fefb6ee6c99792d63231a091c"
+    },
+    {
+      "title": "Hamming numbers",
+      "slug": "hamming-numbers",
+      "state": "solved"
     },
     {
       "title": "Haversine formula",
@@ -326,6 +368,11 @@
       "published_hash": "f85226254b224d05616b903aa614e6a3310851b50dc54cca562fc7fafd56b3c3"
     },
     {
+      "title": "Iterated digits squaring",
+      "slug": "iterated-digits-squaring",
+      "state": "solved"
+    },
+    {
       "title": "Jaro similarity",
       "slug": "jaro-similarity",
       "state": "published",
@@ -340,6 +387,16 @@
       "title": "Josephus problem",
       "slug": "josephus-problem",
       "state": "published"
+    },
+    {
+      "title": "Juggler sequence",
+      "slug": "juggler-sequence",
+      "state": "solved"
+    },
+    {
+      "title": "Kaprekar numbers",
+      "slug": "kaprekar-numbers",
+      "state": "solved"
     },
     {
       "title": "Kolakoski sequence",
@@ -362,6 +419,11 @@
       "title": "Look-and-say sequence",
       "slug": "look-and-say-sequence",
       "state": "published"
+    },
+    {
+      "title": "Ludic numbers",
+      "slug": "ludic-numbers",
+      "state": "solved"
     },
     {
       "title": "Lyndon word",
@@ -411,6 +473,11 @@
       "state": "published"
     },
     {
+      "title": "Non-continuous subsequences",
+      "slug": "non-continuous-subsequences",
+      "state": "solved"
+    },
+    {
       "title": "Null object",
       "slug": "null-object",
       "state": "published"
@@ -432,6 +499,11 @@
       "published_hash": "d1e821e74362077657503ed2f8cd1aab4efa14ff82523a48ec6ea5b34938bd43"
     },
     {
+      "title": "Ormiston pairs",
+      "slug": "ormiston-pairs",
+      "state": "solved"
+    },
+    {
       "title": "Palindrome detection",
       "slug": "palindrome-detection",
       "state": "published",
@@ -441,6 +513,11 @@
       "title": "Pangram checker",
       "slug": "pangram-checker",
       "state": "published"
+    },
+    {
+      "title": "Pernicious numbers",
+      "slug": "pernicious-numbers",
+      "state": "solved"
     },
     {
       "title": "Population count",
@@ -468,6 +545,16 @@
       "title": "Queue/Definition",
       "slug": "queue-definition",
       "state": "published"
+    },
+    {
+      "title": "Quine",
+      "slug": "quine",
+      "state": "solved"
+    },
+    {
+      "title": "Radical of an integer",
+      "slug": "radical-of-an-integer",
+      "state": "solved"
     },
     {
       "title": "Reverse a string",
@@ -532,6 +619,11 @@
       "published_hash": "39cd3b8985ae1641c678d00923bcf0c58a34c58315c2d8e382ffacd03bd79b1c"
     },
     {
+      "title": "Stern-Brocot sequence",
+      "slug": "stern-brocot-sequence",
+      "state": "solved"
+    },
+    {
       "title": "Taxicab numbers",
       "slug": "taxicab-numbers",
       "state": "published",
@@ -566,8 +658,18 @@
       "published_hash": "c0b464e2ba2ccd63f19343dd1e1e315f52bc5fb2c0f31e5ea3f30716784d41ba"
     },
     {
+      "title": "Truncatable primes",
+      "slug": "truncatable-primes",
+      "state": "solved"
+    },
+    {
       "title": "URL decoding",
       "slug": "url-decoding",
+      "state": "solved"
+    },
+    {
+      "title": "Undulating numbers",
+      "slug": "undulating-numbers",
       "state": "solved"
     },
     {

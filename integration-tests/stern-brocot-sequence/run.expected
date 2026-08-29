@@ -1,0 +1,15 @@
+first 15 members:
+1, 1, 2, 1, 3, 2, 3, 1, 4, 3, 5, 2, 5, 3, 4
+first appearances:
+1 appears at index 1
+2 appears at index 3
+3 appears at index 5
+4 appears at index 9
+5 appears at index 11
+6 appears at index 33
+7 appears at index 19
+8 appears at index 21
+9 appears at index 35
+10 appears at index 39
+100 appears at index 1179
+consecutive members up to the 1000th are all coprime: true

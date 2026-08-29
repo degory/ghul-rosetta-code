@@ -1,0 +1,35 @@
+use IO.Std.write_line;
+use System.Math.sqrt;
+
+step(value: long) -> long =>
+    if (value % 2L) == 0L then
+        cast long(sqrt(cast double(value)))
+    else
+        cast long(cast double(value) * sqrt(cast double(value)))
+    fi;
+
+stats(start: long) -> (int, long, int) => (
+    let current mut = start;
+    let terms mut = 0;
+    let highest mut = start;
+    let at mut = 0;
+
+    while current != 1L do
+        current = step(current);
+        terms = terms + 1;
+
+        if current > highest then
+            highest = current;
+            at = terms;
+        fi
+    od
+
+    (terms, highest, at)
+);
+
+write_line("  n   l                h  i");
+
+for n in 20::39 do
+    let (terms, highest, at) = stats(cast long(n));
+    write_line("{n,3}  {terms,3}  {highest,17:N0}  {at}");
+od
