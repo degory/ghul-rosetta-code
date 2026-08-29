@@ -11,8 +11,7 @@ add[T](a: Church[T], b: Church[T]) -> Church[T] =>
 
 multiply[T](a: Church[T], b: Church[T]) -> Church[T] => f => a(b(f));
 
-exponentiate(a: Church[int], b: Church[(int) -> int]) -> Church[int] =>
-    b(a);
+exponentiate[T](a: Church[T], b: Church[(T) -> T]) -> Church[T] => b(a);
 
 to_church[T](n: int) -> Church[T] =>
     if n == 0 then zero[T] else successor(to_church[T](n - 1)) fi;

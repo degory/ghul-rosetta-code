@@ -34,6 +34,3 @@ od
 
 write_line("countdown(5) = {countdown(5)}");
 write_line("gcd(1071, 462) = {gcd((1071, 462))}");
-
-let factorial_using_rec =
-    n rec => if n <= 1 then 1L else cast(n) * rec(n - 1) fi;
