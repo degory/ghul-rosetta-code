@@ -13,13 +13,8 @@ fringe(tree: Tree) -> Pipe[int] is
     if isa LEAF(tree) then
         yield tree.value;
     elif isa NODE(tree) then
-        for leaf in fringe(tree.left) do
-            yield leaf;
-        od
-
-        for leaf in fringe(tree.right) do
-            yield leaf;
-        od
+        yield in fringe(tree.left);
+        yield in fringe(tree.right);
     fi
 si
 

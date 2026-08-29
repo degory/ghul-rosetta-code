@@ -49,8 +49,8 @@ is
 
         yield (symbol = leaf.symbol, weight = leaf.weight, code = code);
     elif let branch: NODE = node then
-        for entry in codes(branch.left, "{prefix}0") do yield entry; od
-        for entry in codes(branch.right, "{prefix}1") do yield entry; od
+        yield in codes(branch.left, "{prefix}0");
+        yield in codes(branch.right, "{prefix}1");
     fi
 si
 

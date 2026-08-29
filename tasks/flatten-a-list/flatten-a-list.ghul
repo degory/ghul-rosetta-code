@@ -19,9 +19,7 @@ flatten(node: Nested) -> Pipe[int] is
         yield value;
     when (items): LIST then
         for item in items do
-            for value in flatten(item) do
-                yield value;
-            od
+            yield in flatten(item);
         od
     esac
 si

@@ -21,9 +21,7 @@ combinations(items: List[int], k: int) -> Pipe[List[int]] is
             yield whole;
         od
 
-        for tail in combinations(rest, k) do
-            yield tail;
-        od
+        yield in combinations(rest, k);
     fi
 si
 
