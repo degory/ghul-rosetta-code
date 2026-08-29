@@ -179,9 +179,17 @@
       "state": "published"
     },
     {
+      "title": "Benford\u0027s law",
+      "state": "solved"
+    },
+    {
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published"
+    },
+    {
+      "title": "Calkin-Wilf sequence",
+      "state": "solved"
     },
     {
       "title": "Call a foreign-language function",
@@ -219,6 +227,10 @@
       "published_hash": "0da3afb1e01d9741208ebf73180fdfadd7a78b4a4021e86357874b454287d616"
     },
     {
+      "title": "Damm algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Decorate-sort-undecorate idiom",
       "state": "published"
     },
@@ -233,6 +245,10 @@
       "slug": "dinesmans-multiple-dwelling-problem",
       "state": "published",
       "published_hash": "d65ee0530c1446c83d4ecef1f51e223b0cb71d169ed58df3e2295290bdb82261"
+    },
+    {
+      "title": "EKG sequence convergence",
+      "state": "solved"
     },
     {
       "title": "Entropy",
@@ -278,6 +294,14 @@
       "published_hash": "c8a923adfe8244702aea5ad3a53074eded533c133a6818acf9ec16b55c119b0b"
     },
     {
+      "title": "Fusc sequence",
+      "state": "solved"
+    },
+    {
+      "title": "Gapful numbers",
+      "state": "solved"
+    },
+    {
       "title": "Generic swap",
       "slug": "generic-swap",
       "state": "published"
@@ -301,6 +325,10 @@
       "slug": "hailstone-sequence",
       "state": "published",
       "published_hash": "ef018af7f083bfaa79acec2595fdab2cc4efc40fefb6ee6c99792d63231a091c"
+    },
+    {
+      "title": "Hamming numbers",
+      "state": "solved"
     },
     {
       "title": "Haversine formula",
@@ -332,6 +360,10 @@
       "published_hash": "f85226254b224d05616b903aa614e6a3310851b50dc54cca562fc7fafd56b3c3"
     },
     {
+      "title": "Iterated digits squaring",
+      "state": "solved"
+    },
+    {
       "title": "Jaro similarity",
       "slug": "jaro-similarity",
       "state": "published",
@@ -346,6 +378,14 @@
       "title": "Josephus problem",
       "slug": "josephus-problem",
       "state": "published"
+    },
+    {
+      "title": "Juggler sequence",
+      "state": "solved"
+    },
+    {
+      "title": "Kaprekar numbers",
+      "state": "solved"
     },
     {
       "title": "Kolakoski sequence",
@@ -368,6 +408,10 @@
       "title": "Look-and-say sequence",
       "slug": "look-and-say-sequence",
       "state": "published"
+    },
+    {
+      "title": "Ludic numbers",
+      "state": "solved"
     },
     {
       "title": "Lyndon word",
@@ -417,6 +461,10 @@
       "state": "published"
     },
     {
+      "title": "Non-continuous subsequences",
+      "state": "solved"
+    },
+    {
       "title": "Null object",
       "slug": "null-object",
       "state": "published"
@@ -438,6 +486,10 @@
       "published_hash": "d1e821e74362077657503ed2f8cd1aab4efa14ff82523a48ec6ea5b34938bd43"
     },
     {
+      "title": "Ormiston pairs",
+      "state": "solved"
+    },
+    {
       "title": "Palindrome detection",
       "slug": "palindrome-detection",
       "state": "published",
@@ -447,6 +499,10 @@
       "title": "Pangram checker",
       "slug": "pangram-checker",
       "state": "published"
+    },
+    {
+      "title": "Pernicious numbers",
+      "state": "solved"
     },
     {
       "title": "Population count",
@@ -474,6 +530,14 @@
       "title": "Queue/Definition",
       "slug": "queue-definition",
       "state": "published"
+    },
+    {
+      "title": "Quine",
+      "state": "solved"
+    },
+    {
+      "title": "Radical of an integer",
+      "state": "solved"
     },
     {
       "title": "Reverse a string",
@@ -538,6 +602,10 @@
       "published_hash": "39cd3b8985ae1641c678d00923bcf0c58a34c58315c2d8e382ffacd03bd79b1c"
     },
     {
+      "title": "Stern-Brocot sequence",
+      "state": "solved"
+    },
+    {
       "title": "Taxicab numbers",
       "slug": "taxicab-numbers",
       "state": "published",
@@ -572,8 +640,16 @@
       "published_hash": "c0b464e2ba2ccd63f19343dd1e1e315f52bc5fb2c0f31e5ea3f30716784d41ba"
     },
     {
+      "title": "Truncatable primes",
+      "state": "solved"
+    },
+    {
       "title": "URL decoding",
       "slug": "url-decoding",
+      "state": "solved"
+    },
+    {
+      "title": "Undulating numbers",
       "state": "solved"
     },
     {
