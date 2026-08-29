@@ -39,17 +39,20 @@
     {
       "title": "Abstract type",
       "slug": "abstract-type",
-      "state": "published"
+      "state": "published",
+      "published_hash": "33a58d1cfaf506ec7a4d44eb8073223c0ab913e83010870e7010d4a07c1406a3"
     },
     {
       "title": "Accumulator factory",
       "slug": "accumulator-factory",
-      "state": "published"
+      "state": "published",
+      "published_hash": "bd26b2c1cc14f518a7b6c75c6e7489aa047c35291bd503ab415fb23d182c8b93"
     },
     {
       "title": "Achilles numbers",
       "slug": "achilles-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "efb637e03ea757b48d7f433c445911dbf0941ad33792e39e971209a74b29751c"
     },
     {
       "title": "Ackermann function",
@@ -75,7 +78,8 @@
     {
       "title": "Additive primes",
       "slug": "additive-primes",
-      "state": "published"
+      "state": "published",
+      "published_hash": "b9228163b5521adca312f6bccbb3c35186b17ebba9d30ba17fe20164a4396bd6"
     },
     {
       "title": "Algebraic data types",
@@ -90,7 +94,8 @@
     {
       "title": "Almost prime",
       "slug": "almost-prime",
-      "state": "published"
+      "state": "published",
+      "published_hash": "303f12b68858a92fa1e8ada8e414e79ac48738ea986ebab9e6b658bf6802fe79"
     },
     {
       "title": "Amb",
@@ -100,7 +105,8 @@
     {
       "title": "Amicable pairs",
       "slug": "amicable-pairs",
-      "state": "published"
+      "state": "published",
+      "published_hash": "f79bb4a4c657fa92ce0a04af77322965d749ab9fc57ddeee2833bfe78e06f272"
     },
     {
       "title": "Anagrams",
@@ -131,12 +137,14 @@
     {
       "title": "Anti-primes",
       "slug": "anti-primes",
-      "state": "published"
+      "state": "published",
+      "published_hash": "972b35c8b9a1942640e1070d2b519853fe61690e7ac8c7481e001e10bcb5b52f"
     },
     {
       "title": "Apply a callback to an array",
       "slug": "apply-a-callback-to-an-array",
-      "state": "published"
+      "state": "published",
+      "published_hash": "071654b52a40b7300e9bcc5329d2fba2c3b5692e800011978d69dd3cee8401e0"
     },
     {
       "title": "Arbitrary-precision integers (included)",
@@ -156,7 +164,8 @@
     {
       "title": "Averages/Arithmetic mean",
       "slug": "arithmetic-mean",
-      "state": "published"
+      "state": "published",
+      "published_hash": "5446ecf6e9179e59f7190323836a25ae8e50e57a3da9f80719ea2a632205db9b"
     },
     {
       "title": "Bell numbers",
@@ -176,18 +185,21 @@
     {
       "title": "Camel case and snake case",
       "slug": "camel-case-and-snake-case",
-      "state": "published"
+      "state": "published",
+      "published_hash": "a48f300499af0903c9646e2f262c504b1f85050b7a29b3531243c7316404ec81"
     },
     {
       "title": "Catamorphism",
       "slug": "catamorphism",
-      "state": "published"
+      "state": "published",
+      "published_hash": "e05400647592d579fdc32958a23eec504a2672c22a97b16a59d548c62214cca7"
     },
     {
       "title": "Church numerals",
       "slug": "church-numerals",
       "state": "published",
-      "reason": "ghul#757"
+      "reason": "ghul#757",
+      "published_hash": "b16c02eaaf7cc9e2b764546d9ad7099888ed417ea523e2407a87e68c614cab6f"
     },
     {
       "title": "Closures/Value capture",
@@ -197,7 +209,8 @@
     {
       "title": "Cumulative standard deviation",
       "slug": "cumulative-standard-deviation",
-      "state": "published"
+      "state": "published",
+      "published_hash": "0da3afb1e01d9741208ebf73180fdfadd7a78b4a4021e86357874b454287d616"
     },
     {
       "title": "Decorate-sort-undecorate idiom",
@@ -206,17 +219,20 @@
     {
       "title": "Descending primes",
       "slug": "descending-primes",
-      "state": "published"
+      "state": "published",
+      "published_hash": "6c929556b49a846acadc1f38c0498622f167b307f9592bac221722d6f5ef7deb"
     },
     {
       "title": "Dinesman\u0027s multiple-dwelling problem",
       "slug": "dinesmans-multiple-dwelling-problem",
-      "state": "published"
+      "state": "published",
+      "published_hash": "d65ee0530c1446c83d4ecef1f51e223b0cb71d169ed58df3e2295290bdb82261"
     },
     {
       "title": "Entropy",
       "slug": "entropy",
-      "state": "published"
+      "state": "published",
+      "published_hash": "522409c2c5541d3e9910d672e42e4f8224181929586660c7c73b9841c7350e96"
     },
     {
       "title": "Exponential digital sums",
@@ -230,7 +246,8 @@
     {
       "title": "Fibonacci sequence",
       "slug": "fibonacci-sequence",
-      "state": "published"
+      "state": "published",
+      "published_hash": "1b272e4a053952b31dfb0bf9ea60344457ad81c1c76a6ee8acfc612a2bc2a425"
     },
     {
       "title": "First-class functions",
@@ -245,12 +262,14 @@
     {
       "title": "Flatten a list",
       "slug": "flatten-a-list",
-      "state": "published"
+      "state": "published",
+      "published_hash": "c6d94b644cbecb31da24a66a13f097de3196f7f2af995158f503572b2eda5321"
     },
     {
       "title": "Forward difference",
       "slug": "forward-difference",
-      "state": "published"
+      "state": "published",
+      "published_hash": "c8a923adfe8244702aea5ad3a53074eded533c133a6818acf9ec16b55c119b0b"
     },
     {
       "title": "Generic swap",
@@ -274,12 +293,14 @@
     {
       "title": "Hailstone sequence",
       "slug": "hailstone-sequence",
-      "state": "published"
+      "state": "published",
+      "published_hash": "ef018af7f083bfaa79acec2595fdab2cc4efc40fefb6ee6c99792d63231a091c"
     },
     {
       "title": "Haversine formula",
       "slug": "haversine-formula",
-      "state": "published"
+      "state": "published",
+      "published_hash": "4682ee9e825ff28414e8f159c6ee4142e0fa98e457df9a1fa6de61f7e4975d8a"
     },
     {
       "title": "Hello world/Text",
@@ -289,22 +310,26 @@
     {
       "title": "Huffman coding",
       "slug": "huffman-coding",
-      "state": "published"
+      "state": "published",
+      "published_hash": "820341ef83374ae878c5cf2f5bcf11927b5e6f533faefdefdf149a096de076ac"
     },
     {
       "title": "Intersecting number wheels",
       "slug": "intersecting-number-wheels",
-      "state": "published"
+      "state": "published",
+      "published_hash": "f8d1d82b21c70f7e602ff5bf0b2faf104e0f8da82103d91cbe5bdfa4b613f1c7"
     },
     {
       "title": "Isqrt (integer square root) of X",
       "slug": "isqrt-integer-square-root-of-x",
-      "state": "published"
+      "state": "published",
+      "published_hash": "f85226254b224d05616b903aa614e6a3310851b50dc54cca562fc7fafd56b3c3"
     },
     {
       "title": "Jaro similarity",
       "slug": "jaro-similarity",
-      "state": "published"
+      "state": "published",
+      "published_hash": "7fe1f81c0ab80335c4626b74e3e858200c621cc2e2d18fb9761f65eb919a295d"
     },
     {
       "title": "Jensen\u0027s Device",
@@ -319,12 +344,14 @@
     {
       "title": "Kolakoski sequence",
       "slug": "kolakoski-sequence",
-      "state": "published"
+      "state": "published",
+      "published_hash": "27ca10b16190defcc5dfd9bb3fca169fdf174bd0084b35b1d6b0a498567cab67"
     },
     {
       "title": "Left factorials",
       "slug": "left-factorials",
-      "state": "published"
+      "state": "published",
+      "published_hash": "511390ff9b16adff7552db3407b1cef8b3d11dd89e9365414f8643a20ca486ff"
     },
     {
       "title": "Levenshtein distance",
@@ -348,7 +375,8 @@
     {
       "title": "Map range",
       "slug": "map-range",
-      "state": "published"
+      "state": "published",
+      "published_hash": "528e83772a74361fe18d0dfd4094f102ff6ff88475dd9e7e22766a4b7824cdf5"
     },
     {
       "title": "Monads/List monad",
@@ -357,7 +385,8 @@
     {
       "title": "Multiple distinct objects",
       "slug": "multiple-distinct-objects",
-      "state": "published"
+      "state": "published",
+      "published_hash": "8e718ff2a492e0687729381ec22228e9c6df6bc0f99b42d00c7f9d845d6e4e2e"
     },
     {
       "title": "Multiton",
@@ -367,12 +396,14 @@
     {
       "title": "Mutual recursion",
       "slug": "mutual-recursion",
-      "state": "published"
+      "state": "published",
+      "published_hash": "c0c52efb6208ba0b4653872d51a4c9636c9b1d92c41b9f2fa1a6a220a0dae059"
     },
     {
       "title": "Negative base numbers",
       "slug": "negative-base-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "7268a260d5952838722b4d8c61901ec8b55f99a54196f0838fcafdaba448587f"
     },
     {
       "title": "Nested function",
@@ -387,7 +418,8 @@
     {
       "title": "Numbers with equal rises and falls",
       "slug": "numbers-with-equal-rises-and-falls",
-      "state": "published"
+      "state": "published",
+      "published_hash": "65201f6aea1ee5a4d5bd42a804297607ec942b7892873dca4e0d5ea7969fd4d9"
     },
     {
       "title": "Odd and square numbers",
@@ -396,12 +428,14 @@
     {
       "title": "Ordered partitions",
       "slug": "ordered-partitions",
-      "state": "published"
+      "state": "published",
+      "published_hash": "d1e821e74362077657503ed2f8cd1aab4efa14ff82523a48ec6ea5b34938bd43"
     },
     {
       "title": "Palindrome detection",
       "slug": "palindrome-detection",
-      "state": "published"
+      "state": "published",
+      "published_hash": "ca1b94407ce31d63962398db1d8d6e9f1f48382d7f6c26432ca9d953c925f545"
     },
     {
       "title": "Pangram checker",
@@ -411,12 +445,14 @@
     {
       "title": "Population count",
       "slug": "population-count",
-      "state": "published"
+      "state": "published",
+      "published_hash": "249bd303f2b8d16e62571cdf9c8fc4c822321e77a894c971f7253e4c68d9888c"
     },
     {
       "title": "Power set",
       "slug": "power-set",
-      "state": "published"
+      "state": "published",
+      "published_hash": "ac2d3d63e02bfd46bd44cd3863b4fc559d02d9d9adec5b917370b322ce5dad37"
     },
     {
       "title": "Prime decomposition",
@@ -436,7 +472,8 @@
     {
       "title": "Reverse a string",
       "slug": "reverse-a-string",
-      "state": "published"
+      "state": "published",
+      "published_hash": "11e8777b203398f27f05e6a08b9d339718643c0e93fb4b658ea3a2f9f9e8e52a"
     },
     {
       "title": "Roman numerals/Encode",
@@ -451,17 +488,20 @@
     {
       "title": "S-expressions",
       "slug": "s-expressions",
-      "state": "published"
+      "state": "published",
+      "published_hash": "09db2d66bbac18b4249ff2d4f13b7d94957d3ebefe7875435762d746900da448"
     },
     {
       "title": "Same fringe",
       "slug": "same-fringe",
-      "state": "published"
+      "state": "published",
+      "published_hash": "d4ad90b3b2f7e17934209198ecd8a61d399ecb00ce2b80d3698d278ebf1e327d"
     },
     {
       "title": "Semiprime",
       "slug": "semiprime",
-      "state": "published"
+      "state": "published",
+      "published_hash": "6e8d0fb7fda9966d45a4255bae366984d83692137bda023dc8147dc0d426925d"
     },
     {
       "title": "Shortest common supersequence",
@@ -470,32 +510,38 @@
     {
       "title": "Sieve of Eratosthenes",
       "slug": "sieve-of-eratosthenes",
-      "state": "published"
+      "state": "published",
+      "published_hash": "d82ea06d3193d83cdec6769ba04ceac19450dd1d5fa04d99f951bdc9f65bb3fb"
     },
     {
       "title": "Smith\u2013Waterman algorithm",
       "slug": "smith-waterman-algorithm",
-      "state": "published"
+      "state": "published",
+      "published_hash": "a6f2c3c6d4b4c8793ad945f240dc9a17e34f0b210bf48c553a8fd4eaf23aa585"
     },
     {
       "title": "Sorting algorithms/Quicksort",
       "slug": "sorting-algorithms-quicksort",
-      "state": "published"
+      "state": "published",
+      "published_hash": "4dfeceab380bb8bcbed24b0438779f7082d713f918d44f9dd5b6e91aa8a0dc90"
     },
     {
       "title": "Sphenic numbers",
       "slug": "sphenic-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "39cd3b8985ae1641c678d00923bcf0c58a34c58315c2d8e382ffacd03bd79b1c"
     },
     {
       "title": "Taxicab numbers",
       "slug": "taxicab-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "5097966f87b18442ee79531f56cdb735eb10c5202fb6247e01bf6be420f5bb91"
     },
     {
       "title": "Ternary logic",
       "slug": "ternary-logic",
-      "state": "published"
+      "state": "published",
+      "published_hash": "9488a5ece5cef9023f19a587cdcaa997b5e7035797d836e7505d49ddb34b2f4a"
     },
     {
       "title": "Text processing/Max licenses in use",
@@ -505,7 +551,8 @@
     {
       "title": "Topswops",
       "slug": "topswops",
-      "state": "published"
+      "state": "published",
+      "published_hash": "18406c72d5abdfe7df39143a1088ac24299fcb3765f847a8c6366d65edb6bef0"
     },
     {
       "title": "Towers of Hanoi",
@@ -515,7 +562,8 @@
     {
       "title": "Tree traversal",
       "slug": "tree-traversal",
-      "state": "published"
+      "state": "published",
+      "published_hash": "c0b464e2ba2ccd63f19343dd1e1e315f52bc5fb2c0f31e5ea3f30716784d41ba"
     },
     {
       "title": "URL decoding",
@@ -534,7 +582,8 @@
     {
       "title": "Van der Corput sequence",
       "slug": "van-der-corput-sequence",
-      "state": "published"
+      "state": "published",
+      "published_hash": "83aec412ba59ef88cc2e5754dd12a56412ca39b08251f5604793acb5f387f814"
     },
     {
       "title": "Variadic fixed-point combinator",
@@ -548,12 +597,14 @@
     {
       "title": "Water collected between towers",
       "slug": "water-collected-between-towers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "8275467d741387a1d9bd8fb7de058572f0b1ef9f8e5519cec8d77b883302f82d"
     },
     {
       "title": "Y combinator",
       "slug": "y-combinator",
-      "state": "published"
+      "state": "published",
+      "published_hash": "2c048329e26696de1c077fd16c4787855adaa5521115dfe5cc8283dba729ef1a"
     },
     {
       "title": "Zeckendorf number representation",
