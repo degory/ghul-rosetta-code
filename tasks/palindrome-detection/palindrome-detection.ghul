@@ -1,30 +1,33 @@
-use wl = IO.Std.write_line;
+use IO.Std.write_line;
 use Ghul.Collections;
 use Ghul.Pipes;
 
-reverse(s: string) -> string =>
-    s |> reduce("", (acc, c) => "{c}{acc}");
+reverse(text: string) -> string =>
+    text |> reduce("", (reversed, character) => "{character}{reversed}");
 
-is_palindrome(s: string) -> bool => s =~ reverse(s);
+is_palindrome(text: string) -> bool => text =~ reverse(text);
 
-is_inexact_palindrome(s: string) -> bool =>
-    s 
+is_inexact_palindrome(text: string) -> bool =>
+    text
         |> filter(char.is_letter)
         |> map(char.to_lower)
-        |> reduce("", (acc, c) => "{acc}{c}")
+        |> reduce("", (letters, character) => "{letters}{character}")
         |> is_palindrome();
 
-test(maybe_palindrome: string, palindrome_check: string -> bool) -> string =>
+test(
+    maybe_palindrome: string,
+    palindrome_check: string -> bool
+) -> string =>
     if palindrome_check(maybe_palindrome) then
         "\"{maybe_palindrome}\" is a palindrome"
     else
         "\"{maybe_palindrome}\" is not a palindrome"
     fi;
 
-wl(test("racecar", is_palindrome));
-wl(test("hello", is_palindrome));
-wl(test("rotor", is_palindrome));
+write_line(test("racecar", is_palindrome));
+write_line(test("hello", is_palindrome));
+write_line(test("rotor", is_palindrome));
 
-wl(test("A man, a plan, a canal: Panama", is_inexact_palindrome));
-wl(test("race car", is_inexact_palindrome));
-wl(test("hello world", is_inexact_palindrome));
+write_line(test("A man, a plan, a canal: Panama", is_inexact_palindrome));
+write_line(test("race car", is_inexact_palindrome));
+write_line(test("hello world", is_inexact_palindrome));

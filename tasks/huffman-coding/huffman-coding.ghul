@@ -49,8 +49,8 @@ is
 
         yield (symbol = leaf.symbol, weight = leaf.weight, code = code);
     elif let branch: NODE = node then
-        for entry in codes(branch.left, "{prefix}0") do yield entry; od
-        for entry in codes(branch.right, "{prefix}1") do yield entry; od
+        yield in codes(branch.left, "{prefix}0");
+        yield in codes(branch.right, "{prefix}1");
     fi
 si
 
@@ -58,12 +58,12 @@ let text = "this is an example for huffman encoding";
 
 let weights = MAP[char, int]();
 
-for c in text do
+for character in text do
     let seen mut = 0;
 
-    weights.try_get_value(c, seen ref);
+    weights.try_get_value(character, seen ref);
 
-    weights[c] = seen + 1;
+    weights[character] = seen + 1;
 od
 
 let leaves = LIST[Huffman]();
@@ -74,11 +74,11 @@ od
 
 let table =
     codes(build_tree(leaves), "")
-    |> sort((a, b) =>
-        if a.weight != b.weight then
-            b.weight - a.weight
+    |> sort((left, right) =>
+        if left.weight != right.weight then
+            right.weight - left.weight
         else
-            cast int(a.symbol) - cast int(b.symbol)
+            cast int(left.symbol) - cast int(right.symbol)
         fi)
     |> collect_list();
 

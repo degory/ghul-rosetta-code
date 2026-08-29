@@ -5,8 +5,8 @@ let limit = 20000;
 
 sum_of_proper_divisors(n: int) -> int =>
     (1::(n / 2))
-        |> filter(d => n % d == 0)
-        |> reduce(0, (total, d) => total + d);
+        |> filter(divisor => n % divisor == 0)
+        |> reduce(0, (total, divisor) => total + divisor);
 
 (1::limit)
     |> map(n => (n, partner = sum_of_proper_divisors(n)))

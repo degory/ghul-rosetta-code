@@ -26,6 +26,40 @@ it is run. So:
   explaining what the task is, or narrating the algorithm line by line, is noise.
 - Output must be deterministic: no clocks, no random numbers, no local paths.
 
+## The style guide applies here
+
+[`STYLE.md`](https://github.com/degory/ghul-style/blob/main/STYLE.md) in
+[degory/ghul-style](https://github.com/degory/ghul-style) holds the terminology, tone and
+code-style rules for everything in the ghūl ecosystem that a person reads. It was written for
+`ghul-examples` and `ghul-dev`, and it governs the solutions here too: they are posted to a public
+wiki, and they are carried on ghul.dev as runnable examples, so a reader meets them in the same
+places they meet everything else that guide covers.
+
+Read it before writing a solution or editing this repository's prose. What it asks for most often:
+
+- **Ordinary domain words for identifiers.** `running_totals`, `smallest_factor`, `left`, `right`.
+  Not abbreviations, and not an alias that shortens a name the reader already knows - `use wl =
+  IO.Std.write_line` saves eight characters and costs every reader the lookup. A single letter is
+  right only where the task itself uses it, or where it is the notation the problem is stated in.
+- **Its vocabulary rules**, in the repository's prose and in a solution's identifiers alike:
+  *anonymous function* rather than *lambda*, *local variable* rather than *binding* for what `let`
+  defines. Each rule is about a sense rather than a spelling, and the guide says how to tell.
+- **Its register** for `README.md` and for anything else here a person reads: plain declarative
+  sentences, the mechanism as the subject, no em-dashes.
+
+Three of its sections do not apply, because this repository's own rules are stricter or its
+programs are shaped differently:
+
+- **Code comments.** The guide says when to comment and how; "Solutions carry no comments" below
+  says not to, and that wins. The guide's comment rules apply to this file, `README.md`, and the
+  tooling under `tools/` and `scripts/`.
+- **`entry()` first, with the work in named subroutines.** That is the shape of a tour file in
+  `ghul-examples`. A solution here is a program with top-level statements.
+- **Its "imitate these" and "flag these" lists.** Both name files in other repositories.
+
+`AGENTS.md` is written for agents rather than for users, which the guide exempts from its register
+rules; the vocabulary rules still apply to it.
+
 ## Write ghūl, not C# with odd syntax
 
 Most of these pages carry a C# entry, and the two languages are close enough

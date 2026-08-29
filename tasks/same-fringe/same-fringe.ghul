@@ -13,19 +13,14 @@ fringe(tree: Tree) -> Pipe[int] is
     if isa LEAF(tree) then
         yield tree.value;
     elif isa NODE(tree) then
-        for leaf in fringe(tree.left) do
-            yield leaf;
-        od
-
-        for leaf in fringe(tree.right) do
-            yield leaf;
-        od
+        yield in fringe(tree.left);
+        yield in fringe(tree.right);
     fi
 si
 
-compare(a: Tree, b: Tree) -> (same: bool, leaves: int) is
-    let left = fringe(a).iterator;
-    let right = fringe(b).iterator;
+compare(first: Tree, second: Tree) -> (same: bool, leaves: int) is
+    let left = fringe(first).iterator;
+    let right = fringe(second).iterator;
 
     let leaves mut = 0;
 
@@ -61,15 +56,18 @@ let differs_last = NODE(LEAF(1), NODE(LEAF(2), LEAF(4)));
 let differs_first = NODE(NODE(LEAF(9), LEAF(2)), LEAF(3));
 let shorter = NODE(LEAF(1), LEAF(2));
 
-for (a, b) in [
+for (first, second) in [
     (leaning_left, leaning_right),
     (leaning_left, differs_last),
     (leaning_left, differs_first),
     (leaning_left, shorter)
 ] do
-    let (same, leaves) = compare(a, b);
+    let (same, leaves) = compare(first, second);
+
+    let verdict = if same then "same fringe" else "different" fi;
+    let counted = if leaves == 1 then "leaf" else "leaves" fi;
 
     write_line(
-        "{show(a)} and {show(b)}: {if same then "same fringe" else "different" fi}, {leaves} {if leaves == 1 then "leaf" else "leaves" fi} compared"
-    );
+        "{show(first)} and {show(second)}: {verdict}, "
+        "{leaves} {counted} compared");
 od

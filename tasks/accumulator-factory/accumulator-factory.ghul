@@ -15,8 +15,8 @@ widen(n: Number) -> double =>
     esac;
 
 add(left: Number, right: Number) -> Number =>
-    if let l: WHOLE = left, r: WHOLE = right then
-        WHOLE(l.value + r.value)
+    if let whole_left: WHOLE = left, whole_right: WHOLE = right then
+        WHOLE(whole_left.value + whole_right.value)
     else
         FRACTIONAL(widen(left) + widen(right))
     fi;
@@ -30,9 +30,9 @@ show(n: Number) -> string =>
 accumulator(initial: Number) -> Number -> Number is
     let sum mut = initial;
 
-    return i =>
+    return value =>
         val
-            sum = add(sum, i);
+            sum = add(sum, value);
             sum
         lav;
 si

@@ -2,7 +2,7 @@ use IO.Std.write_line;
 use Ghul.Pipes;
 
 smallest_factor(n: int) -> int =>
-    (2::n) |> find_or_throw(d => n % d == 0);
+    (2::n) |> find_or_throw(divisor => n % divisor == 0);
 
 prime_factor_count(n: int) -> int =>
     if n == 1 then 0 else 1 + prime_factor_count(n / smallest_factor(n)) fi;

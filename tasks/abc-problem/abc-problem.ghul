@@ -5,17 +5,17 @@ use Ghul.Pipes;
 without(blocks: List[string], at: int) -> List[string] =>
     blocks
     |> index()
-    |> filter(b => b.index != at)
-    |> map(b => b.value)
+    |> filter(block => block.index != at)
+    |> map(block => block.value)
     |> collect();
 
 can_spell(word: string, blocks: List[string]) -> bool =>
     word.length == 0 \/
     (blocks
         |> index()
-        |> filter(b => b.value.contains(word[0]))
-        |> any(b =>
-            can_spell(word.substring(1), blocks |> without(b.index))));
+        |> filter(block => block.value.contains(word[0]))
+        |> any(block =>
+            can_spell(word.substring(1), blocks |> without(block.index))));
 
 let blocks = [
     "BO", "XK", "DQ", "CP", "NA", "GT", "RE", "TG", "QD", "FS",

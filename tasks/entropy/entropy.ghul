@@ -6,21 +6,22 @@ use System.Math;
 entropy(text: string) -> double is
     let counts = MAP[char, int]();
 
-    for c in text do
+    for character in text do
         let seen mut = 0;
 
-        counts.try_get_value(c, seen ref);
+        counts.try_get_value(character, seen ref);
 
-        counts[c] = seen + 1;
+        counts[character] = seen + 1;
     od
 
     let total = cast double(text.length);
 
     return counts.values
-        |> map(n => cast double(n) / total)
-        |> reduce(0.0D, (h, p) => h - p * Math.log2(p));
+        |> map(count => cast double(count) / total)
+        |> reduce(0.0D, (bits, probability) =>
+            bits - probability * Math.log2(probability));
 si
 
-let x = "1223334444";
+let text = "1223334444";
 
-write_line("{x}: {entropy(x)} bits/symbol");
+write_line("{text}: {entropy(text)} bits/symbol");

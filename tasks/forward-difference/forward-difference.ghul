@@ -3,7 +3,9 @@ use Collections;
 use Ghul.Pipes;
 
 differences(xs: List[int]) -> List[int] =>
-    zip(xs[1..<0], xs[0..<1]) |> map(((next, current)) => next - current) |> collect_list();
+    zip(xs[1..<0], xs[0..<1])
+    |> map(((next, current)) => next - current)
+    |> collect_list();
 
 forward(order: int, xs: List[int]) -> List[int] =>
     if order == 0 then xs

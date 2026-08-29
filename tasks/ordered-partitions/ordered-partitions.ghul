@@ -21,9 +21,7 @@ combinations(items: List[int], k: int) -> Pipe[List[int]] is
             yield whole;
         od
 
-        for tail in combinations(rest, k) do
-            yield tail;
-        od
+        yield in combinations(rest, k);
     fi
 si
 
@@ -53,14 +51,14 @@ braces(block: List[int]) -> string =>
     "{{" "{block |> join(", ")}" "}}";
 
 show(sizes: int[]) is
-    let total = sizes |> reduce(0, (a, b) => a + b);
+    let total = sizes |> reduce(0, (running, size) => running + size);
     let items = (1::total) |> collect_list();
 
     write_line("partitions({sizes |> join(", ")}):");
 
     partitions(items, sizes |> collect_list())
-        |> each(p =>
-            write_line("  ({p |> map(braces) |> join(", ")})"));
+        |> each(partition =>
+            write_line("  ({partition |> map(braces) |> join(", ")})"));
 si
 
 show([2, 0, 2]);

@@ -3,8 +3,12 @@ use Ghul.Pipes;
 
 let numbers = [1, 2, 3, 4, 5];
 
-let largest = (a: int, b: int) => if a > b then a else b fi;
+let largest =
+    (left: int, right: int) => if left > right then left else right fi;
 
-write_line("sum:     {numbers |> reduce(0, (a, b) => a + b)}");
-write_line("product: {numbers |> reduce(1, (a, b) => a * b)}");
+let sum = numbers |> reduce(0, (total, value) => total + value);
+let product = numbers |> reduce(1, (total, value) => total * value);
+
+write_line("sum:     {sum}");
+write_line("product: {product}");
 write_line("largest: {numbers |> reduce(numbers[0], largest)}");

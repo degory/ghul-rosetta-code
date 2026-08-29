@@ -2,20 +2,20 @@ use IO.Std.write_line;
 use System.Math.sqrt;
 
 let standard_deviation =
-    let n mut = 0 in
+    let count mut = 0 in
     let total mut = 0.0D in
     let squares mut = 0.0D in
 
-    (x: double) -> double => val
-        n = n + 1;
-        total = total + x;
-        squares = squares + x * x;
+    (sample: double) -> double => val
+        count = count + 1;
+        total = total + sample;
+        squares = squares + sample * sample;
 
-        let mean = total / cast double(n);
+        let mean = total / cast double(count);
 
-        sqrt(squares / cast double(n) - mean * mean)
+        sqrt(squares / cast double(count) - mean * mean)
     lav;
 
-for x in [2.0D, 4.0D, 4.0D, 4.0D, 5.0D, 5.0D, 7.0D, 9.0D] do
-    write_line("after {x}: {standard_deviation(x)}");
+for sample in [2.0D, 4.0D, 4.0D, 4.0D, 5.0D, 5.0D, 7.0D, 9.0D] do
+    write_line("after {sample}: {standard_deviation(sample)}");
 od

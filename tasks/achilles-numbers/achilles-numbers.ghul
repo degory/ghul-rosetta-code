@@ -40,13 +40,15 @@ power(base: int, exponent: int) -> int =>
 is_achilles(n: int) -> bool =>
     let factors = factorize(n) in
         factors.count > 0 /\
-        (factors |> all(f => f.exponent >= 2)) /\
-        (factors |> map(f => f.exponent) |> reduce(0, gcd)) == 1;
+        (factors |> all(factor => factor.exponent >= 2)) /\
+        (factors |> map(factor => factor.exponent) |> reduce(0, gcd)) == 1;
 
 totient(n: int) -> int =>
     factorize(n)
-    |> reduce(1, (t, f) =>
-        t * power(f.prime, f.exponent - 1) * (f.prime - 1));
+    |> reduce(1, (total, factor) =>
+        total
+        * power(factor.prime, factor.exponent - 1)
+        * (factor.prime - 1));
 
 achilles_numbers() -> Pipe[int] is
     let n mut = 1;
