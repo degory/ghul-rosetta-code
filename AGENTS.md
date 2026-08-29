@@ -78,8 +78,19 @@ So, in rough order of how often it comes up:
   A task solved with a class holding two fields and one method, where three
   functions would do, is a transliteration of somebody else's entry.
 - **Prefer an expression body.** `=>` over `is` ... `si` wherever the body is an
-  expression, including where that expression is an `if`, a `case`, or a
-  `val` ... `lav` block.
+  expression, including where that expression is an `if`, a `case`, or a block.
+  Write a block expression parenthesised rather than with `val` ... `lav`: the
+  two mean the same thing, and the parentheses are the spelling a reader from
+  any language recognises as an expression. Where the block is the body of a
+  `=>` or the right-hand side of an `=`, keep the opening paren on the same line
+  as that token where practical:
+
+```ghul
+let total = (let acc mut = 0;
+             for x in xs do acc = acc + x od;
+             acc);
+```
+
 - **Reach for what has no equivalent in the language next door.** `let x = e in`
   and `assert c else "..." in` as expressions, `if let` and `while let` in place
   of a test followed by a cast, unions with `case` pattern matching in place of
