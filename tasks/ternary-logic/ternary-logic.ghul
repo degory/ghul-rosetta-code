@@ -11,32 +11,35 @@ use Trit.TRUE;
 use Trit.MAYBE;
 use Trit.FALSE;
 
-rank(t: Trit) -> int =>
-    case t
+rank(trit: Trit) -> int =>
+    case trit
     when _: FALSE then 0
     when _: MAYBE then 1
     when _: TRUE then 2
     esac;
 
-of_rank(r: int) -> Trit =>
-    case r
+of_rank(rank_value: int) -> Trit =>
+    case rank_value
     when 0 then FALSE
     when 1 then MAYBE
     else TRUE
     esac;
 
-!(t: Trit) -> Trit => of_rank(2 - rank(t));
+!(trit: Trit) -> Trit => of_rank(2 - rank(trit));
 
-/\(a: Trit, b: Trit) -> Trit => if rank(a) < rank(b) then a else b fi;
+/\(left: Trit, right: Trit) -> Trit =>
+    if rank(left) < rank(right) then left else right fi;
 
-\/(a: Trit, b: Trit) -> Trit => if rank(a) > rank(b) then a else b fi;
+\/(left: Trit, right: Trit) -> Trit =>
+    if rank(left) > rank(right) then left else right fi;
 
-implies(a: Trit, b: Trit) -> Trit => !a \/ b;
+implies(left: Trit, right: Trit) -> Trit => !left \/ right;
 
-equivalent(a: Trit, b: Trit) -> Trit => implies(a, b) /\ implies(b, a);
+equivalent(left: Trit, right: Trit) -> Trit =>
+    implies(left, right) /\ implies(right, left);
 
-show(t: Trit) -> string =>
-    case t
+show(trit: Trit) -> string =>
+    case trit
     when _: TRUE then "true"
     when _: MAYBE then "maybe"
     when _: FALSE then "false"
@@ -46,23 +49,28 @@ trits: Trit[] => [TRUE, MAYBE, FALSE];
 
 table(name: string, operator: (Trit, Trit) -> Trit) is
     write_line("");
-    write_line("{name,-8}|{trits |> map(t => "{show(t),6}") |> join("")}");
+    let heading = trits |> map(trit => "{show(trit),6}") |> join("");
+
+    write_line("{name,-8}|{heading}");
     write_line("--------+------------------");
 
-    for a in trits do
-        let row = trits |> map(b => "{show(operator(a, b)),6}") |> join("");
+    for left in trits do
+        let row =
+            trits
+            |> map(right => "{show(operator(left, right)),6}")
+            |> join("");
 
-        write_line("{show(a),-8}|{row}");
+        write_line("{show(left),-8}|{row}");
     od
 si
 
 write_line("not");
 
-for a in trits do
-    write_line("{show(a),-8}|{show(!a),6}");
+for left in trits do
+    write_line("{show(left),-8}|{show(!left),6}");
 od
 
-table("and", (a, b) => a /\ b);
-table("or", (a, b) => a \/ b);
+table("and", (left, right) => left /\ right);
+table("or", (left, right) => left \/ right);
 table("implies", implies);
 table("equiv", equivalent);

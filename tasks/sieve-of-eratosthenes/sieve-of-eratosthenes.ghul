@@ -7,19 +7,19 @@ sieve(limit: int) -> List[int] is
 
     (0::limit) |> each(_ => composite.add(false));
 
-    let p mut = 2;
+    let prime mut = 2;
 
-    while p * p <= limit do
-        if !composite[p] then
-            let multiple mut = p * p;
+    while prime * prime <= limit do
+        if !composite[prime] then
+            let multiple mut = prime * prime;
 
             while multiple <= limit do
                 composite[multiple] = true;
-                multiple = multiple + p;
+                multiple = multiple + prime;
             od
         fi
 
-        p = p + 1;
+        prime = prime + 1;
     od
 
     return 
@@ -28,6 +28,6 @@ sieve(limit: int) -> List[int] is
             |> collect();
 si
 
-for p in sieve(100) do
-    write_line("{p}");
+for prime in sieve(100) do
+    write_line("{prime}");
 od

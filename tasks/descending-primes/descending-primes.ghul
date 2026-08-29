@@ -6,13 +6,13 @@ is_prime(n: int) -> bool =>
     if n < 2 then false
     elif n % 2 == 0 then n == 2
     else
-        let d mut = 3;
+        let divisor mut = 3;
 
-        while d * d <= n /\ n % d != 0 do
-            d = d + 2;
+        while divisor * divisor <= n /\ n % divisor != 0 do
+            divisor = divisor + 2;
         od
 
-        d * d > n
+        divisor * divisor > n
     fi;
 
 descending(so_far: int, next_digit: int, found: LIST[int]) is

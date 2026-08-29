@@ -17,7 +17,7 @@ hailstone(n: int) -> Pipe[int] is
     od
 si
 
-let sequence = hailstone(27) | .collect_list();
+let sequence = hailstone(27) |> collect_list();
 write_line("length of hailstone(27): {sequence.count}");
 let first = sequence[0..4] |> join(", ");
 let last = sequence[4..<<0] |> join(", ");
@@ -29,7 +29,7 @@ let longest mut = 0;
 let longest_length mut = 0;
 
 for n in 1..100_000 do
-    let length = hailstone(n) | .count();
+    let length = hailstone(n) |> count();
 
     if length > longest_length then
         longest = n;

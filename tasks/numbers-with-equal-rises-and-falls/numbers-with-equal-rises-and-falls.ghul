@@ -30,8 +30,11 @@ let first_200 = sequence() |> take(200) |> collect_list();
 
 for row in 0::19 do
     write_line(
-        (0::9) |> map(column => "{first_200[row * 10 + column],5}") |> join("")
-    );
+        (0::9)
+        |> map(column => "{first_200[row * 10 + column],5}")
+        |> join(""));
 od
 
-write_line("the 10000000th is {sequence() |> skip(10000000 - 1) |> first()}");
+let ten_millionth = sequence() |> skip(10000000 - 1) |> first();
+
+write_line("the 10000000th is {ten_millionth}");

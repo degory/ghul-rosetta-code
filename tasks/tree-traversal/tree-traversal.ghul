@@ -14,25 +14,25 @@ preorder[T](tree: Tree[T]) -> Pipe[T] is
     if let (value, left, right): NODE = tree then
         yield value;
 
-        for v in preorder(left) do yield v; od
-        for v in preorder(right) do yield v; od
+        for value in preorder(left) do yield value; od
+        for value in preorder(right) do yield value; od
     fi
 si
 
 inorder[T](tree: Tree[T]) -> Pipe[T] is
     if let (value, left, right): NODE = tree then
-        for v in inorder(left) do yield v; od
+        for value in inorder(left) do yield value; od
 
         yield value;
 
-        for v in inorder(right) do yield v; od
+        for value in inorder(right) do yield value; od
     fi
 si
 
 postorder[T](tree: Tree[T]) -> Pipe[T] is
     if let (value, left, right): NODE = tree then
-        for v in postorder(left) do yield v; od
-        for v in postorder(right) do yield v; od
+        for value in postorder(left) do yield value; od
+        for value in postorder(right) do yield value; od
 
         yield value;
     fi

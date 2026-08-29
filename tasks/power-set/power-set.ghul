@@ -32,7 +32,7 @@ si
 braced[T](values: Iterable[T]) -> string => "{{{values |> join(", ")}}}";
 
 show[T](sets: LIST[LIST[T]]) -> string =>
-    braced(sets |> map(s => braced(s)));
+    braced(sets |> map(subset => braced(subset)));
 
 write_line(show(power_set(LIST[int]())));
 write_line(show(power_set([1, 2, 3] |> collect())));

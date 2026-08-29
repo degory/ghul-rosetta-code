@@ -5,15 +5,15 @@ is_semiprime(n: int) -> bool =>
     val
         let rest mut = n;
         let count mut = 0;
-        let d mut = 2;
+        let divisor mut = 2;
 
-        while d * d <= rest /\ count < 3 do
-            while rest % d == 0 do
-                rest = rest / d;
+        while divisor * divisor <= rest /\ count < 3 do
+            while rest % divisor == 0 do
+                rest = rest / divisor;
                 count = count + 1;
             od
 
-            d = d + 1;
+            divisor = divisor + 1;
         od
 
         if rest > 1 then
@@ -23,8 +23,11 @@ is_semiprime(n: int) -> bool =>
         count == 2
     lav;
 
-write_line("semiprimes up to 100: {(2::100) |> filter(is_semiprime) |> join(", ")}");
+let up_to_100 = (2::100) |> filter(is_semiprime) |> join(", ");
+
+write_line("semiprimes up to 100: {up_to_100}");
 
 for n in [1679, 1234, 5, 9, 2093] do
-    write_line("{n} is {if is_semiprime(n) then "" else "not " fi}semiprime");
+    write_line(
+        "{n} is {if is_semiprime(n) then "" else "not " fi}semiprime");
 od

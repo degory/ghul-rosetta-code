@@ -27,26 +27,26 @@ permutations(items: List[int]) -> Pipe[List[int]] is
     fi
 si
 
-adjacent(a: int, b: int) -> bool =>
-    if a > b then a - b else b - a fi == 1;
+adjacent(left: int, right: int) -> bool =>
+    if left > right then left - right else right - left fi == 1;
 
 let floors = LIST[int]([1, 2, 3, 4, 5]);
 
 permutations(floors)
-    |> map(p =>
-        (baker = p[0], cooper = p[1], fletcher = p[2],
-         miller = p[3], smith = p[4]))
-    |> filter(f => f.baker != 5)
-    |> filter(f => f.cooper != 1)
-    |> filter(f => f.fletcher != 1 /\ f.fletcher != 5)
-    |> filter(f => f.miller > f.cooper)
-    |> filter(f => !adjacent(f.smith, f.fletcher))
-    |> filter(f => !adjacent(f.fletcher, f.cooper))
-    |> each(f =>
+    |> map(order =>
+        (baker = order[0], cooper = order[1], fletcher = order[2],
+         miller = order[3], smith = order[4]))
+    |> filter(floors => floors.baker != 5)
+    |> filter(floors => floors.cooper != 1)
+    |> filter(floors => floors.fletcher != 1 /\ floors.fletcher != 5)
+    |> filter(floors => floors.miller > floors.cooper)
+    |> filter(floors => !adjacent(floors.smith, floors.fletcher))
+    |> filter(floors => !adjacent(floors.fletcher, floors.cooper))
+    |> each(floors =>
         val
-            write_line("Baker lives on floor {f.baker}");
-            write_line("Cooper lives on floor {f.cooper}");
-            write_line("Fletcher lives on floor {f.fletcher}");
-            write_line("Miller lives on floor {f.miller}");
-            write_line("Smith lives on floor {f.smith}")
+            write_line("Baker lives on floor {floors.baker}");
+            write_line("Cooper lives on floor {floors.cooper}");
+            write_line("Fletcher lives on floor {floors.fletcher}");
+            write_line("Miller lives on floor {floors.miller}");
+            write_line("Smith lives on floor {floors.smith}")
         lav);

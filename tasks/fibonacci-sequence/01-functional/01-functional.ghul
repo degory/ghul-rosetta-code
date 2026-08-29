@@ -3,8 +3,8 @@ use Ghul.Pipes;
 
 let fibonacci_sequence = stream(
     (0, 1),
-    ((prev, current)) =>
-        prev || (current, prev + current)
+    ((previous, current)) =>
+        previous || (current, previous + current)
 );
 
 let fib = n => fibonacci_sequence |> skip(n) |> first();
@@ -12,6 +12,7 @@ let fib = n => fibonacci_sequence |> skip(n) |> first();
 fibonacci_sequence
     |> take(10)
     |> index()
-    |> each(((i, f)) => write_line("fib({i}) = {f}"));
+    |> each(((position, value)) =>
+        write_line("fib({position}) = {value}"));
 
 write_line("fib(30) = {fib(30)}");

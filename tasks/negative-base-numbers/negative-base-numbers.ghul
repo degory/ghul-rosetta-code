@@ -25,10 +25,14 @@ encode(n: int, base: int) -> string =>
     lav;
 
 decode(encoded: string, base: int) -> int =>
-    encoded |> reduce(0, (value, digit) => value * base + digit_set.index_of(digit));
+    encoded
+    |> reduce(0, (value, digit) =>
+        value * base + digit_set.index_of(digit));
 
 for (n, base) in [(10, -2), (146, -3), (15, -10)] do
     let encoded = encode(n, base);
 
-    write_line("{n} in base {base} is {encoded}, and back again is {decode(encoded, base)}");
+    write_line(
+        "{n} in base {base} is {encoded}, "
+        "and back again is {decode(encoded, base)}");
 od

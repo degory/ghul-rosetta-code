@@ -17,18 +17,18 @@ si
 kolakoski(values: int[], length: int) -> List[int] is
     let next = cycler(values);
     let sequence = LIST[int]();
-    let k mut = 0;
+    let at_run mut = 0;
 
     while sequence.count < length do
         let value = next();
 
         sequence.add(value);
 
-        for _ in 1..sequence[k] do
+        for _ in 1..sequence[at_run] do
             sequence.add(value);
         od
 
-        k = k + 1;
+        at_run = at_run + 1;
     od
 
     return sequence[0..length];
