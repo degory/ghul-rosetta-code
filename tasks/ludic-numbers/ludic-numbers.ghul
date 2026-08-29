@@ -36,7 +36,9 @@ write_line(
 
 let set = SET[int](ludic);
 let triplets = ludic
-    |> filter(x => x + 6 < 1000 /\ set.contains(x + 2) /\ set.contains(x + 6))
+    |> filter(x => x + 6 < 1000
+            /\ set.contains(x + 2)
+            /\ set.contains(x + 6))
     |> map(x => "({x}, {x + 2}, {x + 6})")
     |> join("  ");
 
