@@ -42,11 +42,10 @@ permutations(floors)
     |> filter(floors => floors.miller > floors.cooper)
     |> filter(floors => !adjacent(floors.smith, floors.fletcher))
     |> filter(floors => !adjacent(floors.fletcher, floors.cooper))
-    |> each(floors =>
-        val
-            write_line("Baker lives on floor {floors.baker}");
-            write_line("Cooper lives on floor {floors.cooper}");
-            write_line("Fletcher lives on floor {floors.fletcher}");
-            write_line("Miller lives on floor {floors.miller}");
-            write_line("Smith lives on floor {floors.smith}")
-        lav);
+    |> each(floors => (
+        write_line("Baker lives on floor {floors.baker}");
+        write_line("Cooper lives on floor {floors.cooper}");
+        write_line("Fletcher lives on floor {floors.fletcher}");
+        write_line("Miller lives on floor {floors.miller}");
+        write_line("Smith lives on floor {floors.smith}")
+    ));

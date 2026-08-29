@@ -6,7 +6,7 @@ let standard_deviation =
     let total mut = 0.0D in
     let squares mut = 0.0D in
 
-    (sample: double) -> double => val
+    (sample: double) -> double => (
         count = count + 1;
         total = total + sample;
         squares = squares + sample * sample;
@@ -14,7 +14,7 @@ let standard_deviation =
         let mean = total / cast double(count);
 
         sqrt(squares / cast double(count) - mean * mean)
-    lav;
+    );
 
 for sample in [2.0D, 4.0D, 4.0D, 4.0D, 5.0D, 5.0D, 7.0D, 9.0D] do
     write_line("after {sample}: {standard_deviation(sample)}");

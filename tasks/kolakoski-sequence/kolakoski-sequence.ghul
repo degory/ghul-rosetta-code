@@ -6,12 +6,11 @@ use Ghul.Pipes;
 cycler(values: int[]) -> () -> int is
     let at mut = 0;
 
-    return () =>
-        val
-            let value = values[at];
-            at = (at + 1) % values.count;
-            value
-        lav;
+    return () => (
+        let value = values[at];
+        at = (at + 1) % values.count;
+        value
+    );
 si
 
 kolakoski(values: int[], length: int) -> List[int] is
@@ -52,11 +51,10 @@ run_lengths(sequence: List[int]) -> List[int] is
     return runs;
 si
 
-self_describing(sequence: List[int]) -> bool =>
-    val
-        let runs = run_lengths(sequence);
-        (0..runs.count - 1) |> all(i => runs[i] == sequence[i])
-    lav;
+self_describing(sequence: List[int]) -> bool => (
+    let runs = run_lengths(sequence);
+    (0..runs.count - 1) |> all(i => runs[i] == sequence[i])
+);
 
 report(values: int[], length: int) is
     let sequence = kolakoski(values, length);

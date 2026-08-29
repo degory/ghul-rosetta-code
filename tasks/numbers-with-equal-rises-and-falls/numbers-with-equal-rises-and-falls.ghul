@@ -1,26 +1,25 @@
 use IO.Std.write_line;
 use Ghul.Pipes;
 
-balanced(n: int) -> bool =>
-    val
-        let rest mut = n;
-        let balance mut = 0;
+balanced(n: int) -> bool => (
+    let rest mut = n;
+    let balance mut = 0;
 
-        while rest >= 10 do
-            let lower = rest % 10;
-            let upper = rest / 10 % 10;
+    while rest >= 10 do
+        let lower = rest % 10;
+        let upper = rest / 10 % 10;
 
-            if upper < lower then
-                balance = balance + 1;
-            elif upper > lower then
-                balance = balance - 1;
-            fi
+        if upper < lower then
+            balance = balance + 1;
+        elif upper > lower then
+            balance = balance - 1;
+        fi
 
-            rest = rest / 10;
-        od
+        rest = rest / 10;
+    od
 
-        balance == 0
-    lav;
+    balance == 0
+);
 
 sequence() -> Pipe[int] => stream(1, n => n || n + 1) |> filter(balanced);
 

@@ -30,11 +30,10 @@ show(n: Number) -> string =>
 accumulator(initial: Number) -> Number -> Number is
     let sum mut = initial;
 
-    return value =>
-        val
-            sum = add(sum, value);
-            sum
-        lav;
+    return value => (
+        sum = add(sum, value);
+        sum
+    );
 si
 
 let x = accumulator(WHOLE(1));
