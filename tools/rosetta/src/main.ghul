@@ -13,11 +13,12 @@ use Rosetta;
 //   rosetta check [--api <url>]      sign in and report the account, changing nothing
 //   rosetta publish [--dry-run] [--replace] [--target <page>] [--api <url>] [slug ...]
 //   rosetta publish --rehearse <page> [--api <url>] <slug>
+//   rosetta adopt <slug> ...          record the live section as ours, when it matches wiki-out/
 //
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
 usage() is
-    error.write_line("usage: rosetta <sync|candidates|show|set|check|self-test|publish> [arguments]");
+    error.write_line("usage: rosetta <sync|candidates|show|set|check|self-test|publish|adopt> [arguments]");
 si
 
 // The repository root, found by walking up from the working directory. Every path the tool
@@ -283,6 +284,98 @@ check(api: string?) is
     fi
 si
 
+// The digest of a published section, which is what lets a later run tell a wiki edit from one
+// made here. Any stable hash would do; this one is short enough to sit in the ledger and read.
+digest(section: string) -> string =>
+    System.Convert.to_hex_string(
+        System.Security.Cryptography.SHA256.hash_data(
+            System.Text.Encoding.utf8.get_bytes(section))).to_lower();
+
+// Records the section that is live on the wiki as the one this repository published, so a later
+// `publish` can replace it.
+//
+// It is only recorded when the live section is exactly the markup in wiki-out/<slug>.wiki, which
+// means generating that markup from the revision that was published rather than from the working
+// tree. That is the whole safety of it: adopting whatever happens to be on the page would bless a
+// stranger's edit and let the next publish throw it away, which is the thing the hash exists to
+// prevent.
+adopt(root: string, slugs: LIST[string]) is
+    if slugs.count == 0 then
+        error.write_line("usage: rosetta adopt <slug> ...");
+
+        return;
+    fi
+
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
+    let splice = SECTION_SPLICE();
+    let wiki = WIKI(SITE.api);
+
+    let refused mut = 0;
+
+    for entry in ledger.entries() do
+        let slug = entry.slug;
+
+        if !slug? \/ !slugs.contains(slug) then
+            continue;
+        fi
+
+        let markup = IO.Path.combine(root, "wiki-out", "{slug}.wiki");
+
+        if !IO.File.exists(markup) then
+            error.write_line("{entry.title}: no markup at wiki-out/{slug}.wiki - generate it from the revision that was published");
+
+            refused = refused + 1;
+
+            continue;
+        fi
+
+        let page = wiki.page_wikitext(entry.title);
+
+        if !page? then
+            error.write_line("{entry.title}: no such page on the wiki");
+
+            refused = refused + 1;
+
+            continue;
+        fi
+
+        let placement = splice.placement(page, SITE.language);
+
+        if let replaced: PLACEMENT.REPLACES = placement then
+            let live = page.substring(replaced.start, replaced.end - replaced.start).trim();
+            let expected = IO.File.read_all_text(markup).trim();
+
+            if !string.equals(live, expected) then
+                error.write_line("{entry.title}: the live section is not the markup in wiki-out/{slug}.wiki, so nothing was recorded");
+
+                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live);
+
+                error.write_line("  what is on the wiki is in wiki-out/{slug}.live");
+
+                refused = refused + 1;
+
+                continue;
+            fi
+
+            entry.published_hash = digest(live);
+
+            ledger.save();
+
+            write_line("{entry.title}: recorded");
+        else
+            error.write_line("{entry.title}: there is no ghul section on the page to adopt");
+
+            refused = refused + 1;
+        fi
+    od
+
+    if refused > 0 then
+        error.write_line("{refused} were not recorded");
+
+        System.Environment.exit_code = 1;
+    fi
+si
+
 // `target` redirects every write to one page, so the whole path - sign in, fetch the real task
 // page, splice, save - can be run against a sandbox. The only thing it leaves untested is which
 // page the text is sent to.
@@ -419,14 +512,27 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
         // simplification, a fix to something wrong. Replacing it then destroys their work
         // silently, which is what happened to an edit on Multiton the first time this ran.
         //
-        // So a replacement is only made when the section already there is the one this would
-        // have published last time. Anything else stops, and the difference is for a person to
-        // read: their change may belong in the repository rather than being thrown away.
+        // So a replacement is only made when the section on the page is still the one this
+        // repository put there, which is what `published_hash` records. Comparing against what
+        // is about to be sent instead would refuse every update, since an update is a change by
+        // definition.
         if let replaced: PLACEMENT.REPLACES = placement /\ !replace then
             let live = page.substring(replaced.start, replaced.end - replaced.start).trim();
 
-            if !string.equals(live, section.trim()) then
-                error.write_line("{entry.title}: the ghul section on the wiki is not the one here, so nothing was sent - read the difference before replacing it");
+            if !entry.published_hash? then
+                error.write_line("{entry.title}: nothing is recorded about what was last published here, so an edit made on the wiki cannot be told from ours - nothing was sent");
+
+                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live);
+
+                error.write_line("  what is on the wiki is in wiki-out/{slug}.live; read it, and if it is ours, `rosetta adopt {slug}` records it");
+
+                refused = refused + 1;
+
+                continue;
+            fi
+
+            if digest(live) !~ entry.published_hash then
+                error.write_line("{entry.title}: the ghul section on the wiki is not the one published from here, so nothing was sent - read the difference before replacing it");
 
                 IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live);
 
@@ -477,6 +583,7 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
                 wiki.edit(entry.title, spliced, "Add a ghūl solution");
 
                 entry.state = "published";
+                entry.published_hash = digest(section.trim());
 
                 ledger.save();
 
@@ -532,6 +639,8 @@ else
         fi
     when "self-test" then
         self_test();
+    when "adopt" then
+        adopt(root, arguments);
     when "check" then
         check(if arguments.count > 1 /\ arguments[0] =~ "--api" then arguments[1] else null fi);
     when "publish" then
