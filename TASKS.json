@@ -169,6 +169,7 @@
     },
     {
       "title": "Balanced brackets",
+      "slug": "balanced-brackets",
       "state": "solved",
       "reason": "2252",
       "note": "recursive generator consumed inside a range/list loop drops iterations (ghul#2252); natural solution needs that shape"
@@ -180,6 +181,7 @@
     },
     {
       "title": "Benford\u0027s law",
+      "slug": "benfords-law",
       "state": "solved"
     },
     {
@@ -189,6 +191,7 @@
     },
     {
       "title": "Calkin-Wilf sequence",
+      "slug": "calkin-wilf-sequence",
       "state": "solved"
     },
     {
@@ -228,6 +231,7 @@
     },
     {
       "title": "Damm algorithm",
+      "slug": "damm-algorithm",
       "state": "solved"
     },
     {
@@ -248,6 +252,7 @@
     },
     {
       "title": "EKG sequence convergence",
+      "slug": "ekg-sequence-convergence",
       "state": "solved"
     },
     {
@@ -295,10 +300,12 @@
     },
     {
       "title": "Fusc sequence",
+      "slug": "fusc-sequence",
       "state": "solved"
     },
     {
       "title": "Gapful numbers",
+      "slug": "gapful-numbers",
       "state": "solved"
     },
     {
@@ -328,6 +335,7 @@
     },
     {
       "title": "Hamming numbers",
+      "slug": "hamming-numbers",
       "state": "solved"
     },
     {
@@ -361,6 +369,7 @@
     },
     {
       "title": "Iterated digits squaring",
+      "slug": "iterated-digits-squaring",
       "state": "solved"
     },
     {
@@ -381,10 +390,12 @@
     },
     {
       "title": "Juggler sequence",
+      "slug": "juggler-sequence",
       "state": "solved"
     },
     {
       "title": "Kaprekar numbers",
+      "slug": "kaprekar-numbers",
       "state": "solved"
     },
     {
@@ -411,6 +422,7 @@
     },
     {
       "title": "Ludic numbers",
+      "slug": "ludic-numbers",
       "state": "solved"
     },
     {
@@ -462,6 +474,7 @@
     },
     {
       "title": "Non-continuous subsequences",
+      "slug": "non-continuous-subsequences",
       "state": "solved"
     },
     {
@@ -487,6 +500,7 @@
     },
     {
       "title": "Ormiston pairs",
+      "slug": "ormiston-pairs",
       "state": "solved"
     },
     {
@@ -502,6 +516,7 @@
     },
     {
       "title": "Pernicious numbers",
+      "slug": "pernicious-numbers",
       "state": "solved"
     },
     {
@@ -533,10 +548,12 @@
     },
     {
       "title": "Quine",
+      "slug": "quine",
       "state": "solved"
     },
     {
       "title": "Radical of an integer",
+      "slug": "radical-of-an-integer",
       "state": "solved"
     },
     {
@@ -603,6 +620,7 @@
     },
     {
       "title": "Stern-Brocot sequence",
+      "slug": "stern-brocot-sequence",
       "state": "solved"
     },
     {
@@ -641,6 +659,7 @@
     },
     {
       "title": "Truncatable primes",
+      "slug": "truncatable-primes",
       "state": "solved"
     },
     {
@@ -650,6 +669,7 @@
     },
     {
       "title": "Undulating numbers",
+      "slug": "undulating-numbers",
       "state": "solved"
     },
     {
