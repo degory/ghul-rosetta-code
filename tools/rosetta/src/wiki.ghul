@@ -1,8 +1,8 @@
 namespace Rosetta is
-    use System.Net.Http;
-    use System.Text.Json.JsonDocument;
-    use System.Text.Json.JsonElement;
-    use Collections;
+    use System.Net.Http
+    use System.Text.Json.JsonDocument
+    use System.Text.Json.JsonElement
+    use Collections
 
     // A read and write client for the Rosetta Code MediaWiki API.
     //
@@ -10,13 +10,13 @@ namespace Rosetta is
     // The account name is `user@botname` and the password is the one that page issues once and
     // does not show again. Every edit appears in the page history under the underlying account.
     class WIKI is
-        _client: HttpClient;
-        _api: string;
-        _csrf_token: string?;
+        _client: HttpClient
+        _api: string
+        _csrf_token: string?
 
         init(api: string) is
-            _api = api;
-            _client = HttpClient();
+            _api = api
+            _client = HttpClient()
 
             _client.default_request_headers.add(
                 "User-Agent",
@@ -25,21 +25,21 @@ namespace Rosetta is
         si
 
         _get(query: string) -> JsonDocument is
-            let body = _client.get_string_async("{_api}?{query}&format=json&formatversion=2").result;
+            let body = _client.get_string_async("{_api}?{query}&format=json&formatversion=2").result
 
             return JsonDocument.parse(body, _);
         si
 
         _post(fields: MAP[string, string]) -> JsonDocument is
-            let form = LIST[KeyValuePair[string, string]]();
+            let form = LIST[KeyValuePair[string, string]]()
 
             for pair in fields do
                 form.add(pair);
             od
 
-            let content = FormUrlEncodedContent(form);
-            let response = _client.post_async(_api, content).result;
-            let body = response.content.read_as_string_async().result;
+            let content = FormUrlEncodedContent(form)
+            let response = _client.post_async(_api, content).result
+            let body = response.content.read_as_string_async().result
 
             return JsonDocument.parse(body, _);
         si
@@ -47,8 +47,8 @@ namespace Rosetta is
         // Every page in a category, following the continuation the API returns when the
         // membership is larger than one request can carry.
         category_members(category: string) -> LIST[string] is
-            let titles = LIST[string]();
-            let continue_from mut = "";
+            let titles = LIST[string]()
+            let continue_from mut = ""
 
             do
                 let cursor_argument =
@@ -56,15 +56,15 @@ namespace Rosetta is
                         "&cmcontinue={System.Uri.escape_data_string(continue_from)}"
                     else
                         ""
-                    fi;
+                    fi
 
                 let query =
                     "action=query&list=categorymembers&cmtype=page&cmlimit=500"
                     "&cmtitle={System.Uri.escape_data_string(category)}"
-                    "{cursor_argument}";
+                    "{cursor_argument}"
 
-                let document = _get(query);
-                let root = document.root_element;
+                let document = _get(query)
+                let root = document.root_element
 
                 for member in root.get_property("query").get_property("categorymembers").enumerate_array() do
                     if let title = member.get_property("title").get_string() then
@@ -72,13 +72,13 @@ namespace Rosetta is
                     fi
                 od
 
-                let next: JsonElement mut;
+                let next: JsonElement mut
 
                 if !root.try_get_property("continue", next ref) then
                     break;
                 fi
 
-                let cursor: JsonElement mut;
+                let cursor: JsonElement mut
 
                 if !next.try_get_property("cmcontinue", cursor ref) then
                     break;
@@ -93,9 +93,9 @@ namespace Rosetta is
         // The raw wikitext of a page, or absent when the page does not exist.
         page_wikitext(title: string) -> string? is
             let document =
-                _get("action=parse&prop=wikitext&page={System.Uri.escape_data_string(title)}");
+                _get("action=parse&prop=wikitext&page={System.Uri.escape_data_string(title)}")
 
-            let parse: JsonElement mut;
+            let parse: JsonElement mut
 
             if !document.root_element.try_get_property("parse", parse ref) then
                 return null;
@@ -105,7 +105,7 @@ namespace Rosetta is
         si
 
         _token(kind: string) -> string is
-            let document = _get("action=query&meta=tokens&type={kind}");
+            let document = _get("action=query&meta=tokens&type={kind}")
 
             return document.root_element
                 .get_property("query")
@@ -116,29 +116,29 @@ namespace Rosetta is
 
         // Signs in with a bot password and holds the edit token the session needs.
         log_in(user: string, password: string) is
-            let login_token = _token("login");
+            let login_token = _token("login")
 
-            let fields = MAP[string, string]();
+            let fields = MAP[string, string]()
 
-            fields["action"] = "login";
-            fields["lgname"] = user;
-            fields["lgpassword"] = password;
-            fields["lgtoken"] = login_token;
-            fields["format"] = "json";
-            fields["formatversion"] = "2";
+            fields["action"] = "login"
+            fields["lgname"] = user
+            fields["lgpassword"] = password
+            fields["lgtoken"] = login_token
+            fields["format"] = "json"
+            fields["formatversion"] = "2"
 
-            let result = _post(fields).root_element.get_property("login");
-            let status = result.get_property("result").get_string() ?? "";
+            let result = _post(fields).root_element.get_property("login")
+            let status = result.get_property("result").get_string() ?? ""
 
             if status !~ "Success" then
-                let reason: JsonElement mut;
+                let reason: JsonElement mut
 
                 let detail =
                     if result.try_get_property("reason", reason ref) then
                         reason.to_string()
                     else
                         status
-                    fi;
+                    fi
 
                 throw System.Exception("could not sign in to the wiki: {detail}");
             fi
@@ -153,9 +153,9 @@ namespace Rosetta is
                 _get("action=query&meta=userinfo&uiprop=rights")
                     .root_element
                     .get_property("query")
-                    .get_property("userinfo");
+                    .get_property("userinfo")
 
-            let can_edit mut = false;
+            let can_edit mut = false
 
             for right in user.get_property("rights").enumerate_array() do
                 if right.get_string() =~ "edit" then
@@ -170,22 +170,22 @@ namespace Rosetta is
         // against the text it is being offered. This is the one check that is not the splice
         // marking its own work: MediaWiki computes it, from the revision actually stored.
         lines_removed(title: string, text: string) -> int is
-            let fields = MAP[string, string]();
+            let fields = MAP[string, string]()
 
-            fields["action"] = "compare";
-            fields["fromtitle"] = title;
-            fields["toslots"] = "main";
-            fields["totext-main"] = text;
-            fields["prop"] = "diff";
-            fields["format"] = "json";
-            fields["formatversion"] = "2";
+            fields["action"] = "compare"
+            fields["fromtitle"] = title
+            fields["toslots"] = "main"
+            fields["totext-main"] = text
+            fields["prop"] = "diff"
+            fields["format"] = "json"
+            fields["formatversion"] = "2"
 
             let body =
                 _post(fields)
                     .root_element
                     .get_property("compare")
                     .get_property("body")
-                    .get_string() ?? "";
+                    .get_string() ?? ""
 
             return
                 System.Text.RegularExpressions.Regex.matches(body, "diff-deletedline").count;
@@ -193,30 +193,30 @@ namespace Rosetta is
 
         // Replaces a page's whole text. `log_in` must have run first.
         edit(title: string, text: string, summary: string) is
-            assert _csrf_token? else "log_in has not run, so there is no edit token";
+            assert _csrf_token? else "log_in has not run, so there is no edit token"
 
-            let token = _csrf_token;
+            let token = _csrf_token
 
-            let fields = MAP[string, string]();
+            let fields = MAP[string, string]()
 
-            fields["action"] = "edit";
-            fields["title"] = title;
-            fields["text"] = text;
-            fields["summary"] = summary;
-            fields["token"] = token;
-            fields["format"] = "json";
-            fields["formatversion"] = "2";
+            fields["action"] = "edit"
+            fields["title"] = title
+            fields["text"] = text
+            fields["summary"] = summary
+            fields["token"] = token
+            fields["format"] = "json"
+            fields["formatversion"] = "2"
 
-            let result = _post(fields);
-            let root = result.root_element;
-            let error: JsonElement mut;
+            let result = _post(fields)
+            let root = result.root_element
+            let error: JsonElement mut
 
             if root.try_get_property("error", error ref) then
                 throw System.Exception("the wiki refused the edit: {error.to_string()}");
             fi
 
-            let outcome = root.get_property("edit");
-            let status = outcome.get_property("result").get_string() ?? "";
+            let outcome = root.get_property("edit")
+            let status = outcome.get_property("result").get_string() ?? ""
 
             // Whatever else the wiki says about a refusal is in the rest of the object - which
             // captcha it wants, which filter matched - and none of it is guessable from the

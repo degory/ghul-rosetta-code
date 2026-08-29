@@ -1,21 +1,21 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Collections.List;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
 
 permutations(items: List[int]) -> Pipe[List[int]] is
     if items.count == 0 then
         yield LIST[int]();
     else
         for i in 0..items.count do
-            let rest = LIST[int](items);
+            let rest = LIST[int](items)
 
-            rest.remove_at(i);
+            rest.remove_at(i)
 
             for tail in permutations(rest) do
-                let whole = LIST[int]();
+                let whole = LIST[int]()
 
-                whole.add(items[i]);
+                whole.add(items[i])
 
                 for value in tail do
                     whole.add(value);
@@ -28,9 +28,9 @@ permutations(items: List[int]) -> Pipe[List[int]] is
 si
 
 adjacent(left: int, right: int) -> bool =>
-    if left > right then left - right else right - left fi == 1;
+    if left > right then left - right else right - left fi == 1
 
-let floors = LIST[int]([1, 2, 3, 4, 5]);
+let floors = LIST[int]([1, 2, 3, 4, 5])
 
 permutations(floors)
     |> map(order =>
@@ -43,9 +43,9 @@ permutations(floors)
     |> filter(floors => !adjacent(floors.smith, floors.fletcher))
     |> filter(floors => !adjacent(floors.fletcher, floors.cooper))
     |> each(floors => (
-        write_line("Baker lives on floor {floors.baker}");
-        write_line("Cooper lives on floor {floors.cooper}");
-        write_line("Fletcher lives on floor {floors.fletcher}");
-        write_line("Miller lives on floor {floors.miller}");
+        write_line("Baker lives on floor {floors.baker}")
+        write_line("Cooper lives on floor {floors.cooper}")
+        write_line("Fletcher lives on floor {floors.fletcher}")
+        write_line("Miller lives on floor {floors.miller}")
         write_line("Smith lives on floor {floors.smith}")
     ));

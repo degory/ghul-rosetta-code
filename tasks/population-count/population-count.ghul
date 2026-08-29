@@ -1,33 +1,33 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 popcount(n: long) -> int => (
-    let bits mut = n;
-    let count mut = 0;
+    let bits mut = n
+    let count mut = 0
 
     while bits != 0L do
-        count = count + cast int(bits & 1L);
+        count = count + cast int(bits & 1L)
         bits = bits >>> 1;
-    od;
+    od
 
     count
-);
+)
 
-let powers_of_three = stream(1L, power => power || power * 3L);
+let powers_of_three = stream(1L, power => power || power * 3L)
 
 let counts =
-    powers_of_three |> take(30) |> map(popcount) |> join(", ");
+    powers_of_three |> take(30) |> map(popcount) |> join(", ")
 
-write_line("population counts of the first thirty powers of 3: {counts}");
+write_line("population counts of the first thirty powers of 3: {counts}")
 
-let naturals = stream(0L, n => n || n + 1L);
+let naturals = stream(0L, n => n || n + 1L)
 
 let evil =
-    naturals |> filter(n => popcount(n) % 2 == 0) |> take(30) |> join(", ");
+    naturals |> filter(n => popcount(n) % 2 == 0) |> take(30) |> join(", ")
 
-write_line("the first thirty evil numbers: {evil}");
+write_line("the first thirty evil numbers: {evil}")
 
 let odious =
-    naturals |> filter(n => popcount(n) % 2 == 1) |> take(30) |> join(", ");
+    naturals |> filter(n => popcount(n) % 2 == 1) |> take(30) |> join(", ")
 
 write_line("the first thirty odious numbers: {odious}");

@@ -1,7 +1,7 @@
-use IO.Std.write_line;
-use IO.Std.error;
-use Collections;
-use Rosetta;
+use IO.Std.write_line
+use IO.Std.error
+use Collections
+use Rosetta
 
 // The ghūl solutions' side of Rosetta Code: what has been done, what is worth doing, and getting
 // a finished solution onto the wiki.
@@ -24,14 +24,14 @@ si
 // The repository root, found by walking up from the working directory. Every path the tool
 // touches hangs off it, so it can be run from anywhere inside the checkout.
 find_root() -> string is
-    let directory mut = IO.Directory.get_current_directory();
+    let directory mut = IO.Directory.get_current_directory()
 
     while directory.length > 0 do
         if IO.File.exists(IO.Path.combine(directory, "rosetta-code.ghulproj")) then
             return directory;
         fi
 
-        let parent = IO.Directory.get_parent(directory);
+        let parent = IO.Directory.get_parent(directory)
 
         if !parent? then
             break;
@@ -45,18 +45,18 @@ si
 
 // The slug and title of every task with a solution here, read from its task.json.
 local_tasks(root: string) -> MAP[string, string] is
-    let by_title = MAP[string, string]();
-    let tasks = IO.Path.combine(root, "tasks");
+    let by_title = MAP[string, string]()
+    let tasks = IO.Path.combine(root, "tasks")
 
     if !IO.Directory.exists(tasks) then
         return by_title;
     fi
 
     for directory in IO.Directory.get_directories(tasks) do
-        let descriptor = IO.Path.combine(directory, "task.json");
+        let descriptor = IO.Path.combine(directory, "task.json")
 
         if IO.File.exists(descriptor) then
-            let document = System.Text.Json.JsonDocument.parse(IO.File.read_all_text(descriptor), _);
+            let document = System.Text.Json.JsonDocument.parse(IO.File.read_all_text(descriptor), _)
 
             if let title = document.root_element.get_property("task").get_string() then
                 by_title[title] = IO.Path.get_file_name(directory) ?? "";
@@ -71,43 +71,43 @@ si
 // what is published, and tasks/ says what has a solution. Anything the ledger knows that neither
 // of them can see - a rejection and its reason, a task blocked on a compiler fix - is left alone.
 sync(root: string) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
-    let wiki = WIKI(SITE.api);
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let wiki = WIKI(SITE.api)
 
-    let published = wiki.category_members(SITE.category);
-    let local = local_tasks(root);
+    let published = wiki.category_members(SITE.category)
+    let local = local_tasks(root)
 
     for title in published do
-        let entry = ledger.entry(title);
+        let entry = ledger.entry(title)
 
         entry.state = "published";
     od
 
     for pair in local do
-        let entry = ledger.entry(pair.key);
+        let entry = ledger.entry(pair.key)
 
-        entry.slug = pair.value;
+        entry.slug = pair.value
 
         if entry.state !~ "published" /\ entry.state !~ "blocked" then
             entry.state = "solved";
         fi
     od
 
-    ledger.save();
+    ledger.save()
 
     // task.json carries a status too, and it is what scripts/generate-wiki.sh reads. The ledger
     // is the authority; this is the copy of it that lives beside each solution.
     for pair in local do
         if let entry = ledger.find(pair.key) then
-            let descriptor = IO.Path.combine(root, "tasks", pair.value, "task.json");
-            let text = IO.File.read_all_text(descriptor);
+            let descriptor = IO.Path.combine(root, "tasks", pair.value, "task.json")
+            let text = IO.File.read_all_text(descriptor)
 
             let updated =
                 System.Text.RegularExpressions.Regex.replace(
                     text,
                     "\"status\"[ \\t]*:[ \\t]*\"[^\"]*\"",
                     "\"status\": \"{entry.state}\""
-                );
+                )
 
             if updated !~ text then
                 IO.File.write_all_text(descriptor, updated);
@@ -121,10 +121,10 @@ si
 // Tasks the ledger says nothing about. Everything else has either been done or been decided
 // against, and neither needs looking at again.
 candidates(root: string, count: int) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
-    let wiki = WIKI(SITE.api);
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let wiki = WIKI(SITE.api)
 
-    let shown mut = 0;
+    let shown mut = 0
 
     for title in wiki.category_members(SITE.task_category) do
         if shown >= count then
@@ -132,7 +132,7 @@ candidates(root: string, count: int) is
         fi
 
         if !ledger.has(title) then
-            write_line(title);
+            write_line(title)
 
             shown = shown + 1;
         fi
@@ -140,27 +140,27 @@ candidates(root: string, count: int) is
 si
 
 show(root: string, state: string?) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
 
     let entries =
         if let wanted = state then
             ledger.in_state(wanted)
         else
             ledger.entries()
-        fi;
+        fi
 
     for entry in entries do
-        let reason = if let r = entry.reason then " ({r})" else "" fi;
+        let reason = if let r = entry.reason then " ({r})" else "" fi
 
         write_line("{entry.state}\t{entry.title}{reason}");
     od
 si
 
 set(root: string, title: string, state: string, reason: string?, note: string?) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
-    let entry = ledger.entry(title);
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let entry = ledger.entry(title)
 
-    entry.state = state;
+    entry.state = state
 
     if reason? then
         entry.reason = reason;
@@ -170,7 +170,7 @@ set(root: string, title: string, state: string, reason: string?, note: string?) 
         entry.note = note;
     fi
 
-    ledger.save();
+    ledger.save()
 
     write_line("{entry.title}: {entry.state}");
 si
@@ -183,7 +183,7 @@ credentials() -> (user: string, password: string) is
             System.Environment.get_folder_path(System.Environment_SpecialFolder.USER_PROFILE),
             "secrets",
             "rosetta-code-bot"
-        );
+        )
 
     if !IO.File.exists(path) then
         throw System.Exception(
@@ -192,7 +192,7 @@ credentials() -> (user: string, password: string) is
         );
     fi
 
-    let lines = IO.File.read_all_lines(path);
+    let lines = IO.File.read_all_lines(path)
 
     if lines.count < 2 then
         throw System.Exception("{path} should hold the bot user on one line and the password on the next");
@@ -204,15 +204,15 @@ si
 // Feeds the guards the damage they exist to stop. A guard that has never been seen to refuse
 // anything is only believed to work.
 self_test() is
-    let splice = SECTION_SPLICE();
+    let splice = SECTION_SPLICE()
 
     // A brace is written twice to get one, so each header below is =={{header|NAME}}==
     let page =
-        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Gleam}}}}==\ngleam\n\n=={{{{header|Go}}}}==\ngo\n";
+        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Gleam}}}}==\ngleam\n\n=={{{{header|Go}}}}==\ngo\n"
 
-    let section = "=={{{{header|ghul}}}}==\nghul\n";
+    let section = "=={{{{header|ghul}}}}==\nghul\n"
 
-    let failures mut = 0;
+    let failures mut = 0
 
     let check_that = (expectation: string, held: bool) =>
         val
@@ -221,48 +221,48 @@ self_test() is
             fi
 
             write_line("{if held then "  ok  " else "  FAIL" fi}  {expectation}")
-        lav;
+        lav
 
-    let spliced = splice.splice(page, "ghul", section);
+    let spliced = splice.splice(page, "ghul", section)
 
-    check_that("a good splice keeps every section", splice.keeps_every_other_section(page, spliced, "ghul"));
-    check_that("a good splice stays confined", splice.is_confined(page, spliced, splice.placement(page, "ghul")));
+    check_that("a good splice keeps every section", splice.keeps_every_other_section(page, spliced, "ghul"))
+    check_that("a good splice stays confined", splice.is_confined(page, spliced, splice.placement(page, "ghul")))
     check_that(
         "a good splice puts ghul between Ada and Gleam",
         spliced.index_of("ghul") > spliced.index_of("Ada") /\ spliced.index_of("ghul") < spliced.index_of("Gleam")
-    );
+    )
 
     // Section order on a real page is often not alphabetical, so a ghul section can sit after a
     // header ghul sorts before. Deciding placement on the ordering walk alone stops at that
     // header and inserts a second section beside the one already there.
     let out_of_order =
-        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Go}}}}==\ngo\n\n=={{{{header|ghul}}}}==\nold\n";
+        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Go}}}}==\ngo\n\n=={{{{header|ghul}}}}==\nold\n"
 
     check_that(
         "a ghul section out of alphabetical order is replaced, not duplicated",
         isa PLACEMENT.REPLACES(splice.placement(out_of_order, "ghul"))
-    );
+    )
 
     // The page replaced by the section alone: what a wrong placement would produce, and the
     // failure worth being certain about.
-    check_that("wiping the page is refused", !splice.keeps_every_other_section(page, section, "ghul"));
+    check_that("wiping the page is refused", !splice.keeps_every_other_section(page, section, "ghul"))
 
     // A splice that dropped one section on the way through.
-    let lost = splice.splice(page.replace("=={{{{header|Gleam}}}}==\ngleam\n\n", ""), "ghul", section);
+    let lost = splice.splice(page.replace("=={{{{header|Gleam}}}}==\ngleam\n\n", ""), "ghul", section)
 
-    check_that("losing one section is refused", !splice.keeps_every_other_section(page, lost, "ghul"));
+    check_that("losing one section is refused", !splice.keeps_every_other_section(page, lost, "ghul"))
 
     // A section that never made it in.
-    check_that("leaving ghul out is refused", !splice.keeps_every_other_section(page, page, "ghul"));
+    check_that("leaving ghul out is refused", !splice.keeps_every_other_section(page, page, "ghul"))
 
     // A placement claiming the whole page, which is what the confinement check cannot see.
     check_that(
         "wiping the page passes the confinement check, which is why it is not the only one",
         splice.is_confined(page, section, PLACEMENT.REPLACES(0, page.length))
-    );
+    )
 
     if failures > 0 then
-        error.write_line("{failures} checks failed");
+        error.write_line("{failures} checks failed")
 
         System.Environment.exit_code = 1;
     fi
@@ -270,14 +270,14 @@ si
 
 // Signs in and reports the account, without changing anything.
 check(api: string?) is
-    let wiki = WIKI(api ?? SITE.api);
-    let account = credentials();
+    let wiki = WIKI(api ?? SITE.api)
+    let account = credentials()
 
-    wiki.log_in(account.user, account.password);
+    wiki.log_in(account.user, account.password)
 
-    let signed_in = wiki.account();
+    let signed_in = wiki.account()
 
-    write_line("signed in as {signed_in.name}");
+    write_line("signed in as {signed_in.name}")
 
     if !signed_in.can_edit then
         error.write_line("this account cannot edit: check the credential's grants");
@@ -289,7 +289,7 @@ si
 digest(section: string) -> string =>
     System.Convert.to_hex_string(
         System.Security.Cryptography.SHA256.hash_data(
-            System.Text.Encoding.utf8.get_bytes(section))).to_lower();
+            System.Text.Encoding.utf8.get_bytes(section))).to_lower()
 
 // Records the section that is live on the wiki as the one this repository published, so a later
 // `publish` can replace it.
@@ -301,76 +301,76 @@ digest(section: string) -> string =>
 // prevent.
 adopt(root: string, slugs: LIST[string]) is
     if slugs.count == 0 then
-        error.write_line("usage: rosetta adopt <slug> ...");
+        error.write_line("usage: rosetta adopt <slug> ...")
 
         return;
     fi
 
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
-    let splice = SECTION_SPLICE();
-    let wiki = WIKI(SITE.api);
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let splice = SECTION_SPLICE()
+    let wiki = WIKI(SITE.api)
 
-    let refused mut = 0;
+    let refused mut = 0
 
     for entry in ledger.entries() do
-        let slug = entry.slug;
+        let slug = entry.slug
 
         if !slug? \/ !slugs.contains(slug) then
             continue;
         fi
 
-        let markup = IO.Path.combine(root, "wiki-out", "{slug}.wiki");
+        let markup = IO.Path.combine(root, "wiki-out", "{slug}.wiki")
 
         if !IO.File.exists(markup) then
-            error.write_line("{entry.title}: no markup at wiki-out/{slug}.wiki - generate it from the revision that was published");
+            error.write_line("{entry.title}: no markup at wiki-out/{slug}.wiki - generate it from the revision that was published")
 
-            refused = refused + 1;
+            refused = refused + 1
 
             continue;
         fi
 
-        let page = wiki.page_wikitext(entry.title);
+        let page = wiki.page_wikitext(entry.title)
 
         if !page? then
-            error.write_line("{entry.title}: no such page on the wiki");
+            error.write_line("{entry.title}: no such page on the wiki")
 
-            refused = refused + 1;
+            refused = refused + 1
 
             continue;
         fi
 
-        let placement = splice.placement(page, SITE.language);
+        let placement = splice.placement(page, SITE.language)
 
         if let replaced: PLACEMENT.REPLACES = placement then
-            let live = page.substring(replaced.start, replaced.end - replaced.start).trim();
-            let expected = IO.File.read_all_text(markup).trim();
+            let live = page.substring(replaced.start, replaced.end - replaced.start).trim()
+            let expected = IO.File.read_all_text(markup).trim()
 
             if !string.equals(live, expected) then
-                error.write_line("{entry.title}: the live section is not the markup in wiki-out/{slug}.wiki, so nothing was recorded");
+                error.write_line("{entry.title}: the live section is not the markup in wiki-out/{slug}.wiki, so nothing was recorded")
 
-                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live);
+                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live)
 
-                error.write_line("  what is on the wiki is in wiki-out/{slug}.live");
+                error.write_line("  what is on the wiki is in wiki-out/{slug}.live")
 
-                refused = refused + 1;
+                refused = refused + 1
 
                 continue;
             fi
 
-            entry.published_hash = digest(live);
+            entry.published_hash = digest(live)
 
-            ledger.save();
+            ledger.save()
 
             write_line("{entry.title}: recorded");
         else
-            error.write_line("{entry.title}: there is no ghul section on the page to adopt");
+            error.write_line("{entry.title}: there is no ghul section on the page to adopt")
 
             refused = refused + 1;
         fi
     od
 
     if refused > 0 then
-        error.write_line("{refused} were not recorded");
+        error.write_line("{refused} were not recorded")
 
         System.Environment.exit_code = 1;
     fi
@@ -383,15 +383,15 @@ si
 // whatever that page already holds, and the result written back. Running it twice replaces the
 // section rather than adding a second one, which is the same path a corrected solution takes.
 publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?, rehearse: bool, replace: bool) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"));
-    let splice = SECTION_SPLICE();
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let splice = SECTION_SPLICE()
 
     // Reading always comes from Rosetta Code: the point of a run against another wiki is to
     // splice the real task page and write the result somewhere harmless.
-    let wiki = WIKI(SITE.api);
-    let destination = if api? then WIKI(api) else wiki fi;
+    let wiki = WIKI(SITE.api)
+    let destination = if api? then WIKI(api) else wiki fi
 
-    let wanted = LIST[TASK_ENTRY]();
+    let wanted = LIST[TASK_ENTRY]()
 
     if slugs.count > 0 then
         for entry in ledger.entries() do
@@ -406,104 +406,104 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
     fi
 
     if wanted.count == 0 then
-        error.write_line("nothing to publish");
+        error.write_line("nothing to publish")
 
         return;
     fi
 
     if !dry_run then
-        let account = credentials();
+        let account = credentials()
 
         destination.log_in(account.user, account.password);
     fi
 
-    let refused mut = 0;
+    let refused mut = 0
 
     for entry in wanted do
-        let slug = entry.slug;
+        let slug = entry.slug
 
         if !slug? then
-            error.write_line("{entry.title}: no solution here to publish");
+            error.write_line("{entry.title}: no solution here to publish")
 
             continue;
         fi
 
-        let markup = IO.Path.combine(root, "wiki-out", "{slug}.wiki");
+        let markup = IO.Path.combine(root, "wiki-out", "{slug}.wiki")
 
         if !IO.File.exists(markup) then
-            error.write_line("{entry.title}: no markup at wiki-out/{slug}.wiki - generate it first");
+            error.write_line("{entry.title}: no markup at wiki-out/{slug}.wiki - generate it first")
 
             continue;
         fi
 
-        let section = IO.File.read_all_text(markup);
+        let section = IO.File.read_all_text(markup)
 
-        let source = if rehearse then target ?? entry.title else entry.title fi;
+        let source = if rehearse then target ?? entry.title else entry.title fi
 
         let page =
             if rehearse then
                 destination.page_wikitext(source)
             else
                 wiki.page_wikitext(source)
-            fi;
+            fi
 
         if !page? then
-            error.write_line("{entry.title}: no such page on the wiki");
+            error.write_line("{entry.title}: no such page on the wiki")
 
             continue;
         fi
 
-        let placement = splice.placement(page, SITE.language);
+        let placement = splice.placement(page, SITE.language)
 
         let where =
             case placement
             when _: PLACEMENT.REPLACES then "replacing the ghul section already there"
             when before: PLACEMENT.INSERTED_BEFORE then "ahead of {before.language}"
             when _: PLACEMENT.APPENDED then "at the end of the page"
-            esac;
+            esac
 
         // A new external link is what makes the wiki demand a captcha, and a captcha is the one
         // refusal this cannot work around: there is nobody to answer it. No solution needs a URL
         // in it, so the answer is to leave the link out rather than to handle the refusal.
         if System.Text.RegularExpressions.Regex.is_match(section, "https?://") then
-            error.write_line("{entry.title}: the section contains an external link, which the wiki will answer with a captcha - take the link out");
+            error.write_line("{entry.title}: the section contains an external link, which the wiki will answer with a captcha - take the link out")
 
-            refused = refused + 1;
+            refused = refused + 1
 
             continue;
         fi
 
-        let spliced = splice.splice(page, SITE.language, section);
+        let spliced = splice.splice(page, SITE.language, section)
 
         if !splice.keeps_every_other_section(page, spliced, SITE.language) then
-            error.write_line("{entry.title}: the spliced page has lost a language section, so nothing was sent");
+            error.write_line("{entry.title}: the spliced page has lost a language section, so nothing was sent")
 
-            refused = refused + 1;
+            refused = refused + 1
 
             continue;
         fi
 
         if !splice.is_confined(page, spliced, placement) then
-            error.write_line("{entry.title}: the splice would change the page outside the ghul section, so nothing was sent");
+            error.write_line("{entry.title}: the splice would change the page outside the ghul section, so nothing was sent")
 
-            refused = refused + 1;
+            refused = refused + 1
 
             continue;
         fi
 
         if dry_run then
             // Both sides are written, so the edit can be read as a diff before it is an edit.
-            IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.current"), page);
+            IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.current"), page)
 
-            IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.page"), spliced);
+            IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.page"), spliced)
 
-            write_line("{entry.title}: would go {where}; diff wiki-out/{slug}.current wiki-out/{slug}.page");
+            write_line("{entry.title}: would go {where}; diff wiki-out/{slug}.current wiki-out/{slug}.page")
 
             continue;
         fi
 
         if api? /\ !target? then
-            error.write_line("--api needs --target: refusing to write a task page on another wiki");
+            error.write_line("--api needs --target: refusing to write a task page on another wiki")
 
             return;
         fi
@@ -517,28 +517,28 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
         // is about to be sent instead would refuse every update, since an update is a change by
         // definition.
         if let replaced: PLACEMENT.REPLACES = placement /\ !replace then
-            let live = page.substring(replaced.start, replaced.end - replaced.start).trim();
+            let live = page.substring(replaced.start, replaced.end - replaced.start).trim()
 
             if !entry.published_hash? then
-                error.write_line("{entry.title}: nothing is recorded about what was last published here, so an edit made on the wiki cannot be told from ours - nothing was sent");
+                error.write_line("{entry.title}: nothing is recorded about what was last published here, so an edit made on the wiki cannot be told from ours - nothing was sent")
 
-                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live);
+                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live)
 
-                error.write_line("  what is on the wiki is in wiki-out/{slug}.live; read it, and if it is ours, `rosetta adopt {slug}` records it");
+                error.write_line("  what is on the wiki is in wiki-out/{slug}.live; read it, and if it is ours, `rosetta adopt {slug}` records it")
 
-                refused = refused + 1;
+                refused = refused + 1
 
                 continue;
             fi
 
             if digest(live) !~ entry.published_hash then
-                error.write_line("{entry.title}: the ghul section on the wiki is not the one published from here, so nothing was sent - read the difference before replacing it");
+                error.write_line("{entry.title}: the ghul section on the wiki is not the one published from here, so nothing was sent - read the difference before replacing it")
 
-                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live);
+                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live)
 
-                error.write_line("  what is on the wiki is in wiki-out/{slug}.live; what would replace it is wiki-out/{slug}.wiki");
+                error.write_line("  what is on the wiki is in wiki-out/{slug}.live; what would replace it is wiki-out/{slug}.wiki")
 
-                refused = refused + 1;
+                refused = refused + 1
 
                 continue;
             fi
@@ -554,19 +554,19 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
                 page.substring(replaced.start, replaced.end - replaced.start).split(['\n']).count
             else
                 0
-            esac;
+            esac
 
         let removals =
             if rehearse then
                 destination.lines_removed(source, spliced)
             else
                 wiki.lines_removed(source, spliced)
-            fi;
+            fi
 
         if removals > allowed_removals then
-            error.write_line("{entry.title}: the wiki's own diff says this would remove {removals} lines, so nothing was sent");
+            error.write_line("{entry.title}: the wiki's own diff says this would remove {removals} lines, so nothing was sent")
 
-            refused = refused + 1;
+            refused = refused + 1
 
             continue;
         fi
@@ -576,21 +576,21 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
         // against the task it happened to and the rest of the batch carries on.
         try
             if let sandbox = target then
-                destination.edit(sandbox, spliced, "Testing a ghūl solution's placement on {entry.title}");
+                destination.edit(sandbox, spliced, "Testing a ghūl solution's placement on {entry.title}")
 
                 write_line("{entry.title}: written to {sandbox}, would have gone {where}");
             else
-                wiki.edit(entry.title, spliced, "Add a ghūl solution");
+                wiki.edit(entry.title, spliced, "Add a ghūl solution")
 
-                entry.state = "published";
-                entry.published_hash = digest(section.trim());
+                entry.state = "published"
+                entry.published_hash = digest(section.trim())
 
-                ledger.save();
+                ledger.save()
 
                 write_line("{entry.title}: published, {where}");
             fi
         catch refusal: System.Exception
-            refused = refused + 1;
+            refused = refused + 1
 
             error.write_line("{entry.title}: {refusal.message}");
         yrt
@@ -600,23 +600,23 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
     od
 
     if refused > 0 then
-        error.write_line("{refused} of {wanted.count} were refused");
+        error.write_line("{refused} of {wanted.count} were refused")
 
         System.Environment.exit_code = 1;
     fi
 si
 
-let arguments = LIST[string](System.Environment.get_command_line_args());
+let arguments = LIST[string](System.Environment.get_command_line_args())
 
-arguments.remove_at(0);
+arguments.remove_at(0)
 
 if arguments.count == 0 then
     usage();
 else
-    let root = find_root();
-    let command = arguments[0];
+    let root = find_root()
+    let command = arguments[0]
 
-    arguments.remove_at(0);
+    arguments.remove_at(0)
 
     case command
     when "sync" then
@@ -644,24 +644,24 @@ else
     when "check" then
         check(if arguments.count > 1 /\ arguments[0] =~ "--api" then arguments[1] else null fi);
     when "publish" then
-        let dry_run = arguments.contains("--dry-run");
-        let target: string? mut = null;
-        let api: string? mut = null;
-        let rehearse mut = false;
-        let replace = arguments.contains("--replace");
-        let slugs = LIST[string]();
-        let awaiting mut = "";
+        let dry_run = arguments.contains("--dry-run")
+        let target: string? mut = null
+        let api: string? mut = null
+        let rehearse mut = false
+        let replace = arguments.contains("--replace")
+        let slugs = LIST[string]()
+        let awaiting mut = ""
 
         for argument in arguments do
             if awaiting =~ "--target" then
-                target = argument;
+                target = argument
                 awaiting = "";
             elif awaiting =~ "--api" then
-                api = argument;
+                api = argument
                 awaiting = "";
             elif awaiting =~ "--rehearse" then
-                target = argument;
-                rehearse = true;
+                target = argument
+                rehearse = true
                 awaiting = "";
             elif argument =~ "--target" \/ argument =~ "--api" \/ argument =~ "--rehearse" then
                 awaiting = argument;

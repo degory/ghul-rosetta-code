@@ -1,12 +1,12 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
-female(n: int) -> int => if n == 0 then 1 else n - male(female(n - 1)) fi;
+female(n: int) -> int => if n == 0 then 1 else n - male(female(n - 1)) fi
 
-male(n: int) -> int => if n == 0 then 0 else n - female(male(n - 1)) fi;
+male(n: int) -> int => if n == 0 then 0 else n - female(male(n - 1)) fi
 
 show(name: string, function: (int) -> int pure) =>
-    write_line("{name} {(0..20) |> map(function) |> join(" ")}");
+    write_line("{name} {(0..20) |> map(function) |> join(" ")}")
 
-show("F:", female);
+show("F:", female)
 show("M:", male);

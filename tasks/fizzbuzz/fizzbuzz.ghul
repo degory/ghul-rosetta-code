@@ -1,4 +1,4 @@
-use IO.Std.write_line;
+use IO.Std.write_line
 
 for i in 1::100 do
     write_line(

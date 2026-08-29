@@ -1,13 +1,13 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 balanced(n: int) -> bool => (
-    let rest mut = n;
-    let balance mut = 0;
+    let rest mut = n
+    let balance mut = 0
 
     while rest >= 10 do
-        let lower = rest % 10;
-        let upper = rest / 10 % 10;
+        let lower = rest % 10
+        let upper = rest / 10 % 10
 
         if upper < lower then
             balance = balance + 1;
@@ -19,13 +19,13 @@ balanced(n: int) -> bool => (
     od
 
     balance == 0
-);
+)
 
-sequence() -> Pipe[int] => stream(1, n => n || n + 1) |> filter(balanced);
+sequence() -> Pipe[int] => stream(1, n => n || n + 1) |> filter(balanced)
 
-write_line("the first 200 numbers with equal rises and falls:");
+write_line("the first 200 numbers with equal rises and falls:")
 
-let first_200 = sequence() |> take(200) |> collect_list();
+let first_200 = sequence() |> take(200) |> collect_list()
 
 for row in 0::19 do
     write_line(
@@ -34,6 +34,6 @@ for row in 0::19 do
         |> join(""));
 od
 
-let ten_millionth = sequence() |> skip(10000000 - 1) |> first();
+let ten_millionth = sequence() |> skip(10000000 - 1) |> first()
 
 write_line("the 10000000th is {ten_millionth}");

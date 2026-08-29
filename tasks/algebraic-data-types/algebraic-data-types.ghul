@@ -1,17 +1,17 @@
-use IO.Std.write_line;
+use IO.Std.write_line
 
 enum Color is RED, BLACK, si
 
-use Color.RED;
-use Color.BLACK;
+use Color.RED
+use Color.BLACK
 
 union Tree is
-    EMPTY;
+    EMPTY
     NODE(color: Color, left: Tree, value: int, right: Tree);
 si
 
-use Tree.EMPTY;
-use Tree.NODE;
+use Tree.EMPTY
+use Tree.NODE
 
 balance(c: Color, l: Tree, v: int, r: Tree) -> Tree =>
     case (c, l, v, r)
@@ -25,7 +25,7 @@ balance(c: Color, l: Tree, v: int, r: Tree) -> Tree =>
         NODE(RED, NODE(BLACK, a, x, b), y, NODE(BLACK, m, z, d))
     else
         NODE(c, l, v, r)
-    esac;
+    esac
 
 _insert(tree: Tree, element: int) -> Tree =>
     case tree
@@ -39,27 +39,27 @@ _insert(tree: Tree, element: int) -> Tree =>
         else
             tree
         fi
-    esac;
+    esac
 
 insert(tree: Tree, element: int) -> Tree =>
     case _insert(tree, element)
     when (c, l, v, r): NODE then NODE(BLACK, l, v, r)
     else EMPTY
-    esac;
+    esac
 
 in_order(tree: Tree) -> string =>
     case tree
     when _: EMPTY then ""
     when (c, l, v, r): NODE then "{in_order(l)}{v} {in_order(r)}"
-    esac;
+    esac
 
 black_height(tree: Tree) -> int =>
     case tree
     when _: EMPTY then
         1
     when (c, l, v, r): NODE then
-        let left = black_height(l);
-        let right = black_height(r);
+        let left = black_height(l)
+        let right = black_height(r)
 
         if left < 0 \/ right < 0 \/ left != right then
             -1
@@ -68,19 +68,19 @@ black_height(tree: Tree) -> int =>
         else
             left + if c == BLACK then 1 else 0 fi
         fi
-    esac;
+    esac
 
 is_red(tree: Tree) -> bool =>
     case tree
     when _: EMPTY then false
     when (c, l, v, r): NODE then c == RED
-    esac;
+    esac
 
-let tree: Tree mut = EMPTY;
+let tree: Tree mut = EMPTY
 
 for element in [11, 2, 14, 1, 7, 15, 5, 8, 4] do
     tree = insert(tree, element);
 od
 
-write_line("in order: {in_order(tree)}");
+write_line("in order: {in_order(tree)}")
 write_line("black height: {black_height(tree)}");

@@ -1,48 +1,48 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
 next_term(numerator: int, denominator: int) -> (int, int) =>
     (denominator,
-     denominator * (2 * (numerator / denominator) + 1) - numerator);
+     denominator * (2 * (numerator / denominator) + 1) - numerator)
 
-let current mut = (1, 1);
-let terms = LIST[string]();
+let current mut = (1, 1)
+let terms = LIST[string]()
 
 for _ in 1::20 do
-    terms.add("{current.`0}/{current.`1}");
+    terms.add("{current.`0}/{current.`1}")
     current = next_term(current.`0, current.`1);
 od
 
-write_line(terms |> join(" "));
+write_line(terms |> join(" "))
 
 continued_fraction(numerator: int, denominator: int) -> LIST[int] is
-    let left mut = numerator;
-    let right mut = denominator;
-    let terms = LIST[int]();
+    let left mut = numerator
+    let right mut = denominator
+    let terms = LIST[int]()
 
     while right > 0 do
-        terms.add(left / right);
-        let remainder = left % right;
-        left = right;
+        terms.add(left / right)
+        let remainder = left % right
+        left = right
         right = remainder;
     od
 
     if terms.count % 2 == 0 then
-        terms[terms.count - 1] = terms[terms.count - 1] - 1;
+        terms[terms.count - 1] = terms[terms.count - 1] - 1
         terms.add(1);
     fi
 
     terms
 si
 
-let fraction = continued_fraction(83116, 51639);
+let fraction = continued_fraction(83116, 51639)
 
-let bits mut = "";
-let one mut = true;
+let bits mut = ""
+let one mut = true
 
 for step in 0::(fraction.count - 1) do
-    let run = fraction[fraction.count - 1 - step];
+    let run = fraction[fraction.count - 1 - step]
 
     for _ in 1::run do
         bits = "{bits}{if one then "1" else "0" fi}";

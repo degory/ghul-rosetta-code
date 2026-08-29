@@ -1,20 +1,20 @@
-use IO.Std.write_line;
-use Collections.MAP;
-use Ghul.Pipes;
-use System.Math;
+use IO.Std.write_line
+use Collections.MAP
+use Ghul.Pipes
+use System.Math
 
 entropy(text: string) -> double is
-    let counts = MAP[char, int]();
+    let counts = MAP[char, int]()
 
     for character in text do
-        let seen mut = 0;
+        let seen mut = 0
 
-        counts.try_get_value(character, seen ref);
+        counts.try_get_value(character, seen ref)
 
         counts[character] = seen + 1;
     od
 
-    let total = cast double(text.length);
+    let total = cast double(text.length)
 
     return counts.values
         |> map(count => cast double(count) / total)
@@ -22,6 +22,6 @@ entropy(text: string) -> double is
             bits - probability * Math.log2(probability));
 si
 
-let text = "1223334444";
+let text = "1223334444"
 
 write_line("{text}: {entropy(text)} bits/symbol");

@@ -1,19 +1,19 @@
-use IO.Std.write_line;
-use Collections;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections
+use Ghul.Pipes
 
-let search_limit = 1000000;
+let search_limit = 1000000
 
 smallest_prime_factors(limit: int) -> List[int] is
-    let factor = LIST();
+    let factor = LIST()
 
-    (0..limit) |> each(_ => factor.add(0));
+    (0..limit) |> each(_ => factor.add(0))
 
-    let prime mut = 2;
+    let prime mut = 2
 
     while prime * prime < limit do
         if factor[prime] == 0 then
-            let multiple mut = prime * prime;
+            let multiple mut = prime * prime
 
             while multiple < limit do
                 if factor[multiple] == 0 then
@@ -27,7 +27,7 @@ smallest_prime_factors(limit: int) -> List[int] is
         prime = prime + 1;
     od
 
-    let n mut = 2;
+    let n mut = 2
 
     while n < limit do
         if factor[n] == 0 then
@@ -41,18 +41,18 @@ smallest_prime_factors(limit: int) -> List[int] is
 si
 
 is_sphenic(n: int, factor: List[int]) -> bool => (
-    let rest mut = n;
-    let previous mut = 0;
-    let total mut = 0;
-    let distinct mut = 0;
+    let rest mut = n
+    let previous mut = 0
+    let total mut = 0
+    let distinct mut = 0
 
     while rest > 1 do
-        let prime = factor[rest];
+        let prime = factor[rest]
 
-        total = total + 1;
+        total = total + 1
 
         if prime != previous then
-            distinct = distinct + 1;
+            distinct = distinct + 1
             previous = prime;
         fi
 
@@ -60,35 +60,35 @@ is_sphenic(n: int, factor: List[int]) -> bool => (
     od
 
     total == 3 /\ distinct == 3
-);
+)
 
 prime_factors(n: int, factor: List[int]) -> List[string] => (
-    let rest mut = n;
-    let factors = LIST[string]();
+    let rest mut = n
+    let factors = LIST[string]()
 
     while rest > 1 do
-        let prime = factor[rest];
-        factors.add("{prime}");
+        let prime = factor[rest]
+        factors.add("{prime}")
         rest = rest / prime;
     od
 
     factors
-);
+)
 
-let factor = smallest_prime_factors(search_limit);
+let factor = smallest_prime_factors(search_limit)
 
 let sphenics =
     (2..search_limit)
     |> filter(n => is_sphenic(n, factor))
-    |> collect_list();
+    |> collect_list()
 
-let below_1000 = sphenics |> filter(n => n < 1000) |> join(", ");
+let below_1000 = sphenics |> filter(n => n < 1000) |> join(", ")
 
-write_line("sphenic numbers below 1000: {below_1000}");
+write_line("sphenic numbers below 1000: {below_1000}")
 
-let triplets = LIST();
+let triplets = LIST()
 
-let i mut = 0;
+let i mut = 0
 
 while i + 2 < sphenics.count do
     if sphenics[i + 1] == sphenics[i] + 1 /\
@@ -100,7 +100,7 @@ while i + 2 < sphenics.count do
     i = i + 1;
 od
 
-write_line("sphenic triplets below 10000:");
+write_line("sphenic triplets below 10000:")
 
 for first in triplets do
     if first + 2 < 10000 then
@@ -108,18 +108,18 @@ for first in triplets do
     fi
 od
 
-write_line("sphenic numbers below {search_limit}: {sphenics.count}");
-write_line("sphenic triplets below {search_limit}: {triplets.count}");
+write_line("sphenic numbers below {search_limit}: {sphenics.count}")
+write_line("sphenic triplets below {search_limit}: {triplets.count}")
 
-let sphenic_200000th = sphenics[200000 - 1];
+let sphenic_200000th = sphenics[200000 - 1]
 
 write_line(
     "the 200000th sphenic number is {sphenic_200000th} = {
         prime_factors(sphenic_200000th, factor) |> join(" x ")
     }"
-);
+)
 
-let triplet_5000th = triplets[5000 - 1];
+let triplet_5000th = triplets[5000 - 1]
 
 write_line(
     "the 5000th sphenic triplet is "

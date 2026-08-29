@@ -1,17 +1,17 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 fibonacci() -> Pipe[int] is
-    let previous mut = 0;
-    let current mut = 1;
+    let previous mut = 0
+    let current mut = 1
     do
-        yield previous;
+        yield previous
 
         (previous, current) = (current, previous + current);
     od
 si
 
-let fib = n => fibonacci() |> skip(n) |> first();
+let fib = n => fibonacci() |> skip(n) |> first()
 
 for (position, value) in fibonacci() |> take(10) |> index() do
     write_line("fib({position}) = {value}");

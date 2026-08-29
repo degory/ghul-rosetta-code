@@ -1,18 +1,18 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 divisor_count(n: int) -> int =>
-    (1::n) |> filter(divisor => n % divisor == 0) |> count();
+    (1::n) |> filter(divisor => n % divisor == 0) |> count()
 
 anti_primes() -> Pipe[int] is
-    let most mut = 0;
-    let n mut = 1;
+    let most mut = 0
+    let n mut = 1
 
     do
-        let divisors = divisor_count(n);
+        let divisors = divisor_count(n)
 
         if divisors > most then
-            most = divisors;
+            most = divisors
 
             yield n;
         fi

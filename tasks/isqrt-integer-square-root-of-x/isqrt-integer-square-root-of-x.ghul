@@ -1,34 +1,34 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
-use System.Globalization.CultureInfo;
-use System.Numerics.BigInteger;
-use System.Numerics.IAdditionOperators.`+;
-use System.Numerics.ISubtractionOperators.`-;
-use System.Numerics.IMultiplyOperators.`*;
-use System.Numerics.IDivisionOperators.`/;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Globalization.CultureInfo
+use System.Numerics.BigInteger
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
 
 isqrt(x: BigInteger) -> BigInteger is
-    let two = cast BigInteger(2);
-    let four = cast BigInteger(4);
-    let q mut = BigInteger.one;
+    let two = cast BigInteger(2)
+    let four = cast BigInteger(4)
+    let q mut = BigInteger.one
 
     while q <= x do
         q = q * four;
     od
 
-    let z mut = x;
-    let root mut = BigInteger.zero;
+    let z mut = x
+    let root mut = BigInteger.zero
 
     while q > BigInteger.one do
-        q = q / four;
+        q = q / four
 
-        let remainder = z - root - q;
+        let remainder = z - root - q
 
-        root = root / two;
+        root = root / two
 
         if remainder >= BigInteger.zero then
-            z = remainder;
+            z = remainder
             root = root + q;
         fi
     od
@@ -37,22 +37,22 @@ isqrt(x: BigInteger) -> BigInteger is
 si
 
 grouped(value: BigInteger) -> string =>
-    value.to_string("N0", CultureInfo.invariant_culture);
+    value.to_string("N0", CultureInfo.invariant_culture)
 
-write_line("isqrt of 0 through 65:");
+write_line("isqrt of 0 through 65:")
 
-let roots = LIST[string]();
+let roots = LIST[string]()
 
 for n in 0::65 do
     roots.add("{isqrt(cast BigInteger(n))}");
 od
 
-write_line(roots |> join(" "));
+write_line(roots |> join(" "))
 
-write_line("");
-write_line("isqrt of the odd powers of 7 from 7^1 to 7^73:");
+write_line("")
+write_line("isqrt of the odd powers of 7 from 7^1 to 7^73:")
 
-let seven = cast BigInteger(7);
+let seven = cast BigInteger(7)
 
 (1::73)
     |> filter(power => power % 2 == 1)

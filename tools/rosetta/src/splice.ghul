@@ -1,12 +1,12 @@
 namespace Rosetta is
-    use System.Text.RegularExpressions.Regex;
-    use System.Text.RegularExpressions.Match;
-    use Collections;
+    use System.Text.RegularExpressions.Regex
+    use System.Text.RegularExpressions.Match
+    use Collections
 
     // Where a language's section belongs in a task page, and what is already there.
     union PLACEMENT is
-        REPLACES(start: int, end: int);
-        INSERTED_BEFORE(start: int, language: string);
+        REPLACES(start: int, end: int)
+        INSERTED_BEFORE(start: int, language: string)
         APPENDED(start: int);
     si
 
@@ -17,9 +17,9 @@ namespace Rosetta is
     // deeper belongs to the section above it, so only level-two headers are read here.
     // Where the ghūl solutions live on the wiki, and what they are called there.
     class SITE is
-        api: string static => "https://rosettacode.org/w/api.php";
-        language: string static => "ghul";
-        category: string static => "Category:Ghul";
+        api: string static => "https://rosettacode.org/w/api.php"
+        language: string static => "ghul"
+        category: string static => "Category:Ghul"
         task_category: string static => "Category:Programming Tasks";
     si
 
@@ -31,11 +31,11 @@ namespace Rosetta is
         //
         //     (?m)^==[ \t]*\{\{header\|([^}|]+)\}\}[ \t]*==[ \t]*$
         _PATTERN: string static =>
-            "(?m)^==[ \\t]*\\{{\\{{header\\|([^}}|]+)\\}}\\}}[ \\t]*==[ \\t]*$";
+            "(?m)^==[ \\t]*\\{{\\{{header\\|([^}}|]+)\\}}\\}}[ \\t]*==[ \\t]*$"
 
         _headers(page: string) -> LIST[Match] is
-            let found = LIST[Match]();
-            let matches = Regex.matches(page, _PATTERN);
+            let found = LIST[Match]()
+            let matches = Regex.matches(page, _PATTERN)
 
             for i in 0..matches.count do
                 found.add(matches[i]);
@@ -44,10 +44,10 @@ namespace Rosetta is
             return found;
         si
 
-        _name(m: Match) -> string => m.groups[1].value.trim();
+        _name(m: Match) -> string => m.groups[1].value.trim()
 
         _before(left: string, right: string) -> bool =>
-            string.compare(left, right, System.StringComparison.ORDINAL_IGNORE_CASE) < 0;
+            string.compare(left, right, System.StringComparison.ORDINAL_IGNORE_CASE) < 0
 
         // Where `language`'s section goes, without changing anything.
         //
@@ -57,10 +57,10 @@ namespace Rosetta is
         // header the ordering walk would stop at, so deciding on the walk
         // alone inserts a second section beside the one already there.
         placement(page: string, language: string) -> PLACEMENT is
-            let headers = _headers(page);
+            let headers = _headers(page)
 
             for i in 0..headers.count do
-                let header = headers[i];
+                let header = headers[i]
 
                 if string.equals(_name(header), language, System.StringComparison.ORDINAL_IGNORE_CASE) then
                     let end =
@@ -68,7 +68,7 @@ namespace Rosetta is
                             headers[i + 1].index
                         else
                             page.length
-                        fi;
+                        fi
 
                     return PLACEMENT.REPLACES(header.index, end);
                 fi
@@ -93,7 +93,7 @@ namespace Rosetta is
         // there afterwards, and ghul has to be one of them. Nothing a wrong placement can say
         // makes a lost section look present.
         keeps_every_other_section(page: string, spliced: string, language: string) -> bool is
-            let after = LIST[string]();
+            let after = LIST[string]()
 
             for header in _headers(spliced) do
                 after.add(_name(header).to_lower());
@@ -104,7 +104,7 @@ namespace Rosetta is
             fi
 
             for header in _headers(page) do
-                let name = _name(header).to_lower();
+                let name = _name(header).to_lower()
 
                 if !string.equals(name, language.to_lower()) /\ !after.contains(name) then
                     return false;
@@ -124,14 +124,14 @@ namespace Rosetta is
                 when replaced: PLACEMENT.REPLACES then replaced.start
                 when inserted: PLACEMENT.INSERTED_BEFORE then inserted.start
                 when appended: PLACEMENT.APPENDED then appended.start
-                esac;
+                esac
 
             let tail =
                 case placement
                 when replaced: PLACEMENT.REPLACES then replaced.end
                 when _: PLACEMENT.INSERTED_BEFORE then head
                 when appended: PLACEMENT.APPENDED then appended.start
-                esac;
+                esac
 
             if head > spliced.length \/ tail > page.length then
                 return false;
@@ -141,7 +141,7 @@ namespace Rosetta is
                 return false;
             fi
 
-            let remaining = page.length - tail;
+            let remaining = page.length - tail
 
             if remaining > spliced.length then
                 return false;
@@ -159,7 +159,7 @@ namespace Rosetta is
         // sections already there. `section` is the whole section, heading included.
         splice(page: string, language: string, section: string) -> string =>
             val
-                let body = "{section.trim_end()}\n\n";
+                let body = "{section.trim_end()}\n\n"
 
                 case placement(page, language)
                 when replaced: PLACEMENT.REPLACES then

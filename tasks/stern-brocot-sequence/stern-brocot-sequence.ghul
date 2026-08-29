@@ -1,46 +1,46 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-let sequence = LIST[int]([1, 1]);
-let considered mut = 1;
+let sequence = LIST[int]([1, 1])
+let considered mut = 1
 
 while sequence.count < 1200 do
-    sequence.add(sequence[considered] + sequence[considered - 1]);
-    sequence.add(sequence[considered]);
+    sequence.add(sequence[considered] + sequence[considered - 1])
+    sequence.add(sequence[considered])
     considered = considered + 1;
 od
 
-write_line("first 15 members:");
-write_line(sequence |> take(15) |> join(", "));
+write_line("first 15 members:")
+write_line(sequence |> take(15) |> join(", "))
 
-write_line("first appearances:");
+write_line("first appearances:")
 
 for value in 1::10 do
     write_line("{value} appears at index {sequence.index_of(value) + 1}");
 od
 
 write_line(
-    "100 appears at index {sequence.index_of(100) + 1}");
+    "100 appears at index {sequence.index_of(100) + 1}")
 
 gcd(left: int, right: int) -> int => (
-    let a mut = left;
-    let b mut = right;
+    let a mut = left
+    let b mut = right
 
     while b > 0 do
-        let remainder = a % b;
-        a = b;
+        let remainder = a % b
+        a = b
         b = remainder;
     od
 
     a
-);
+)
 
 let all_coprime = for index in 0..999 do
     if gcd(sequence[index], sequence[index + 1]) != 1 then
         break false;
     fi
-od;
+od
 
 write_line(
     "consecutive members up to the 1000th are all coprime: "

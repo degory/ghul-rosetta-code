@@ -1,17 +1,17 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 union Nested is
-    ATOM(value: int);
+    ATOM(value: int)
     LIST(items: Nested[]);
 si
 
-use Nested.ATOM;
-use Nested.LIST;
+use Nested.ATOM
+use Nested.LIST
 
-atom(value: int) -> Nested => ATOM(value);
+atom(value: int) -> Nested => ATOM(value)
 
-list(items: Nested[]) -> Nested => LIST(items);
+list(items: Nested[]) -> Nested => LIST(items)
 
 flatten(node: Nested) -> Pipe[int] is
     case node
@@ -28,7 +28,7 @@ show(node: Nested) -> string =>
     case node
     when (value): ATOM then "{value}"
     when (items): LIST then "[{items |> map(show) |> join(", ")}]"
-    esac;
+    esac
 
 let input =
     list([
@@ -40,7 +40,7 @@ let input =
         atom(7),
         atom(8),
         list([])
-    ]);
+    ])
 
-write_line(show(input));
+write_line(show(input))
 write_line("[{flatten(input) |> join(", ")}]");

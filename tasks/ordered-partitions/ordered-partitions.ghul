@@ -1,18 +1,18 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Collections.List;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
 
 combinations(items: List[int], k: int) -> Pipe[List[int]] is
     if k == 0 then
         yield LIST[int]();
     elif items.count >= k then
-        let rest = items[1..<0];
+        let rest = items[1..<0]
 
         for tail in combinations(rest, k - 1) do
-            let whole = LIST[int]();
+            let whole = LIST[int]()
 
-            whole.add(items[0]);
+            whole.add(items[0])
 
             for value in tail do
                 whole.add(value);
@@ -30,12 +30,12 @@ partitions(items: List[int], sizes: List[int]) -> Pipe[List[List[int]]] is
         yield LIST[List[int]]();
     else
         for block in combinations(items, sizes[0]) do
-            let remaining = items |> except(block) |> collect_list();
+            let remaining = items |> except(block) |> collect_list()
 
             for tail in partitions(remaining, sizes[1..<0]) do
-                let whole = LIST[List[int]]();
+                let whole = LIST[List[int]]()
 
-                whole.add(block);
+                whole.add(block)
 
                 for rest in tail do
                     whole.add(rest);
@@ -48,13 +48,13 @@ partitions(items: List[int], sizes: List[int]) -> Pipe[List[List[int]]] is
 si
 
 braces(block: List[int]) -> string =>
-    "{{" "{block |> join(", ")}" "}}";
+    "{{" "{block |> join(", ")}" "}}"
 
 show(sizes: int[]) is
-    let total = sizes |> reduce(0, (running, size) => running + size);
-    let items = (1::total) |> collect_list();
+    let total = sizes |> reduce(0, (running, size) => running + size)
+    let items = (1::total) |> collect_list()
 
-    write_line("partitions({sizes |> join(", ")}):");
+    write_line("partitions({sizes |> join(", ")}):")
 
     partitions(items, sizes |> collect_list())
         |> each(partition =>

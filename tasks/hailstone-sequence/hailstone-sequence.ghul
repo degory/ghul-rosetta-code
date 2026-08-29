@@ -1,12 +1,12 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
 hailstone(n: int) -> Pipe[int] is
-    let current mut = n;
+    let current mut = n
 
     while true do
-        yield current;
+        yield current
 
         if current == 1 then
             return;
@@ -17,22 +17,22 @@ hailstone(n: int) -> Pipe[int] is
     od
 si
 
-let sequence = hailstone(27) |> collect_list();
-write_line("length of hailstone(27): {sequence.count}");
-let first = sequence[0..4] |> join(", ");
-let last = sequence[4..<<0] |> join(", ");
+let sequence = hailstone(27) |> collect_list()
+write_line("length of hailstone(27): {sequence.count}")
+let first = sequence[0..4] |> join(", ")
+let last = sequence[4..<<0] |> join(", ")
 
-write_line("first four: {first}");
-write_line("last four: {last}");
+write_line("first four: {first}")
+write_line("last four: {last}")
 
-let longest mut = 0;
-let longest_length mut = 0;
+let longest mut = 0
+let longest_length mut = 0
 
 for n in 1..100_000 do
-    let length = hailstone(n) |> count();
+    let length = hailstone(n) |> count()
 
     if length > longest_length then
-        longest = n;
+        longest = n
         longest_length = length;
     fi
 od

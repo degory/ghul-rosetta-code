@@ -1,25 +1,25 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use System.Math.min;
+use IO.Std.write_line
+use Collections.LIST
+use System.Math.min
 
 levenshtein(source: string, target: string) -> int is
-    let previous mut = LIST();
+    let previous mut = LIST()
 
     for j in 0::target.length do
         previous.add(j);
     od
 
     for i in 1::source.length do
-        let current = LIST();
+        let current = LIST()
 
-        current.add(i);
+        current.add(i)
 
         for j in 1::target.length do
-            let same = source[i - 1] == target[j - 1];
-            let substitution = previous[j - 1] + if same then 0 else 1 fi;
+            let same = source[i - 1] == target[j - 1]
+            let substitution = previous[j - 1] + if same then 0 else 1 fi
 
-            let insertion = previous[j] + 1;
-            let deletion = current[j - 1] + 1;
+            let insertion = previous[j] + 1
+            let deletion = current[j - 1] + 1
 
             current.add(min(substitution, min(insertion, deletion)));
         od
@@ -30,5 +30,5 @@ levenshtein(source: string, target: string) -> int is
     return previous[target.length];
 si
 
-write_line("{levenshtein("kitten", "sitting")}");
+write_line("{levenshtein("kitten", "sitting")}")
 write_line("{levenshtein("rosettacode", "raisethysword")}");

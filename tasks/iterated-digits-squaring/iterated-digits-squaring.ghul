@@ -1,39 +1,39 @@
-use IO.Std.write_line;
-use Collections.LIST;
+use IO.Std.write_line
+use Collections.LIST
 
 digit_square_sum(value: int) -> int => (
-    let rest mut = value;
-    let total mut = 0;
+    let rest mut = value
+    let total mut = 0
 
     while rest > 0 do
-        let digit = rest % 10;
-        total = total + digit * digit;
+        let digit = rest % 10
+        total = total + digit * digit
         rest = rest / 10;
     od
 
     total
-);
+)
 
 reaches_89(value: int) -> bool => (
-    let current mut = value;
+    let current mut = value
 
     while current != 1 /\ current != 89 do
         current = digit_square_sum(current);
     od
 
     current == 89
-);
+)
 
-let limit = 100000000;
-let max_after_one_step = 648;
+let limit = 100000000
+let max_after_one_step = 648
 
-let memo = LIST[bool]([false]);
+let memo = LIST[bool]([false])
 
 for value in 1::max_after_one_step do
     memo.add(reaches_89(value));
 od
 
-let chains mut = 0;
+let chains mut = 0
 
 for value in 1..limit do
     if memo[digit_square_sum(value)] then

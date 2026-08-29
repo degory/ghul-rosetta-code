@@ -1,21 +1,21 @@
-use IO.Std.write_line;
-use System.Numerics.BigInteger;
-use System.Numerics.INumber;
-use System.Numerics.IMultiplyOperators.`*;
+use IO.Std.write_line
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IMultiplyOperators.`*
 
 power[T: INumber[T]](base: T, exponent: int) -> T =>
     if exponent == 0 then
         T.one
     elif exponent % 2 == 0 then
-        let root = power(base, exponent / 2);
+        let root = power(base, exponent / 2)
 
         root * root
     else
         base * power(base, exponent - 1)
-    fi;
+    fi
 
-let digits = power(cast BigInteger(5), power(4, power(3, 2))).to_string();
+let digits = power(cast BigInteger(5), power(4, power(3, 2))).to_string()
 
-write_line("first 20 digits: {digits[0..20]}");
-write_line("last 20 digits:  {digits[20..<<0]}");
+write_line("first 20 digits: {digits[0..20]}")
+write_line("last 20 digits:  {digits[20..<<0]}")
 write_line("decimal digits:  {digits.length}");

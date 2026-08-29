@@ -1,6 +1,6 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
 print_all[T](values: T[]) is
     for value in values do
@@ -9,19 +9,19 @@ print_all[T](values: T[]) is
 si
 
 class Animal(name: string) abstract is
-    speak() -> string;
+    speak() -> string
 
     to_string() -> string => "{name} says {speak()}";
 si
 
 class CAT(name: string): Animal is
-    super(name);
+    super(name)
 
     speak() -> string => "meow";
 si
 
 class DOG(name: string): Animal is
-    super(name);
+    super(name)
 
     speak() -> string => "woof";
 si
@@ -32,12 +32,12 @@ herd(animals: Animal[]) is
     od
 si
 
-print_all(["one", 2, 3.5]);
+print_all(["one", 2, 3.5])
 
-herd([CAT("felix"), DOG("rex")]);
+herd([CAT("felix"), DOG("rex")])
 
-let animals = LIST[Animal]();
-animals.add(CAT("tom"));
-animals.add(DOG("spot"));
+let animals = LIST[Animal]()
+animals.add(CAT("tom"))
+animals.add(DOG("spot"))
 
 herd(animals |> collect_array());

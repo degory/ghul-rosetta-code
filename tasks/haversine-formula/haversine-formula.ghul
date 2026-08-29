@@ -1,15 +1,15 @@
-use IO.Std.write_line;
-use System.Math.sin;
-use System.Math.cos;
-use System.Math.asin;
-use System.Math.sqrt;
-use System.Math.pi;
+use IO.Std.write_line
+use System.Math.sin
+use System.Math.cos
+use System.Math.asin
+use System.Math.sqrt
+use System.Math.pi
 
-let earth_radius_km = 6372.8D;
+let earth_radius_km = 6372.8D
 
-radians(degrees: double) -> double => degrees * pi / 180.0D;
+radians(degrees: double) -> double => degrees * pi / 180.0D
 
-haversine(theta: double) -> double => sin(theta / 2.0D) * sin(theta / 2.0D);
+haversine(theta: double) -> double => sin(theta / 2.0D) * sin(theta / 2.0D)
 
 great_circle_distance(
     (latitude_1, longitude_1): (double, double),
@@ -21,12 +21,12 @@ great_circle_distance(
             cos(radians(latitude_1)) * cos(radians(latitude_2)) *
             haversine(radians(longitude_2 - longitude_1))
         in
-            2.0D * radius * asin(sqrt(chord));
+            2.0D * radius * asin(sqrt(chord))
 
-let nashville = (36.12D, -86.67D);
-let los_angeles = (33.94D, -118.40D);
+let nashville = (36.12D, -86.67D)
+let los_angeles = (33.94D, -118.40D)
 
 let distance =
-    great_circle_distance(nashville, los_angeles, earth_radius_km);
+    great_circle_distance(nashville, los_angeles, earth_radius_km)
 
 write_line("BNA to LAX: {distance:F6} km");

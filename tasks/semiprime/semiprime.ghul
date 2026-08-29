@@ -1,14 +1,14 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 is_semiprime(n: int) -> bool => (
-    let rest mut = n;
-    let count mut = 0;
-    let divisor mut = 2;
+    let rest mut = n
+    let count mut = 0
+    let divisor mut = 2
 
     while divisor * divisor <= rest /\ count < 3 do
         while rest % divisor == 0 do
-            rest = rest / divisor;
+            rest = rest / divisor
             count = count + 1;
         od
 
@@ -20,11 +20,11 @@ is_semiprime(n: int) -> bool => (
     fi
 
     count == 2
-);
+)
 
-let up_to_100 = (2::100) |> filter(is_semiprime) |> join(", ");
+let up_to_100 = (2::100) |> filter(is_semiprime) |> join(", ")
 
-write_line("semiprimes up to 100: {up_to_100}");
+write_line("semiprimes up to 100: {up_to_100}")
 
 for n in [1679, 1234, 5, 9, 2093] do
     write_line(

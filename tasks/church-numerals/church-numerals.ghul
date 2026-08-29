@@ -1,36 +1,36 @@
-use IO.Std.write_line;
+use IO.Std.write_line
 
-use Church[T] = ((T) -> T) -> (T) -> T;
+use Church[T] = ((T) -> T) -> (T) -> T
 
-zero[T](f: (T) -> T) -> (T) -> T => x => x;
+zero[T](f: (T) -> T) -> (T) -> T => x => x
 
-successor[T](n: Church[T]) -> Church[T] => f => x => f(n(f)(x));
+successor[T](n: Church[T]) -> Church[T] => f => x => f(n(f)(x))
 
 add[T](a: Church[T], b: Church[T]) -> Church[T] =>
-    f => x => a(f)(b(f)(x));
+    f => x => a(f)(b(f)(x))
 
-multiply[T](a: Church[T], b: Church[T]) -> Church[T] => f => a(b(f));
+multiply[T](a: Church[T], b: Church[T]) -> Church[T] => f => a(b(f))
 
-exponentiate[T](a: Church[T], b: Church[(T) -> T]) -> Church[T] => b(a);
+exponentiate[T](a: Church[T], b: Church[(T) -> T]) -> Church[T] => b(a)
 
 to_church[T](n: int) -> Church[T] =>
-    if n == 0 then zero[T] else successor(to_church[T](n - 1)) fi;
+    if n == 0 then zero[T] else successor(to_church[T](n - 1)) fi
 
-to_int(n: Church[int]) -> int => n(x => x + 1)(0);
+to_int(n: Church[int]) -> int => n(x => x + 1)(0)
 
-let three = successor(successor(successor(zero[int])));
-let four = successor(three);
+let three = successor(successor(successor(zero[int])))
+let four = successor(three)
 
-write_line("three is {to_int(three)}");
-write_line("four is {to_int(four)}");
-write_line("three plus four is {to_int(add(three, four))}");
-write_line("three times four is {to_int(multiply(three, four))}");
-let three_as_exponent = to_church[(int) -> int](3);
-let four_as_exponent = to_church[(int) -> int](4);
+write_line("three is {to_int(three)}")
+write_line("four is {to_int(four)}")
+write_line("three plus four is {to_int(add(three, four))}")
+write_line("three times four is {to_int(multiply(three, four))}")
+let three_as_exponent = to_church[(int) -> int](3)
+let four_as_exponent = to_church[(int) -> int](4)
 
 write_line(
     "four to the power three is "
-    "{to_int(exponentiate(four, three_as_exponent))}");
+    "{to_int(exponentiate(four, three_as_exponent))}")
 
 write_line(
     "three to the power four is "

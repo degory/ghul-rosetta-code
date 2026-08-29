@@ -1,19 +1,19 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Collections.List;
-use Collections.MAP;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Collections.MAP
+use Ghul.Pipes
 
 union Huffman(weight: int) is
-    LEAF(symbol: char, ..);
+    LEAF(symbol: char, ..)
     NODE(left: Huffman, right: Huffman, ..);
 si
 
-use Huffman.LEAF;
-use Huffman.NODE;
+use Huffman.LEAF
+use Huffman.NODE
 
 take_lightest(pending: LIST[Huffman]) -> Huffman is
-    let at mut = 0;
+    let at mut = 0
 
     for i in 1..pending.count do
         if pending[i].weight < pending[at].weight then
@@ -21,19 +21,19 @@ take_lightest(pending: LIST[Huffman]) -> Huffman is
         fi
     od
 
-    let lightest = pending[at];
+    let lightest = pending[at]
 
-    pending.remove_at(at);
+    pending.remove_at(at)
 
     return lightest;
 si
 
 build_tree(leaves: List[Huffman]) -> Huffman is
-    let pending = LIST[Huffman](leaves);
+    let pending = LIST[Huffman](leaves)
 
     while pending.count > 1 do
-        let first = take_lightest(pending);
-        let second = take_lightest(pending);
+        let first = take_lightest(pending)
+        let second = take_lightest(pending)
 
         pending.add(NODE(first, second, first.weight + second.weight));
     od
@@ -45,28 +45,28 @@ codes(node: Huffman, prefix: string)
     -> Pipe[(symbol: char, weight: int, code: string)]
 is
     if let leaf: LEAF = node then
-        let code = if prefix.length == 0 then "0" else prefix fi;
+        let code = if prefix.length == 0 then "0" else prefix fi
 
         yield (symbol = leaf.symbol, weight = leaf.weight, code = code);
     elif let branch: NODE = node then
-        yield in codes(branch.left, "{prefix}0");
+        yield in codes(branch.left, "{prefix}0")
         yield in codes(branch.right, "{prefix}1");
     fi
 si
 
-let text = "this is an example for huffman encoding";
+let text = "this is an example for huffman encoding"
 
-let weights = MAP[char, int]();
+let weights = MAP[char, int]()
 
 for character in text do
-    let seen mut = 0;
+    let seen mut = 0
 
-    weights.try_get_value(character, seen ref);
+    weights.try_get_value(character, seen ref)
 
     weights[character] = seen + 1;
 od
 
-let leaves = LIST[Huffman]();
+let leaves = LIST[Huffman]()
 
 for symbol in weights.keys |> sort() do
     leaves.add(LEAF(symbol, weights[symbol]));
@@ -80,12 +80,12 @@ let table =
         else
             cast int(left.symbol) - cast int(right.symbol)
         fi)
-    |> collect_list();
+    |> collect_list()
 
-write_line("symbol  weight  code");
+write_line("symbol  weight  code")
 
 for entry in table do
-    let symbol = "'{entry.symbol}'";
+    let symbol = "'{entry.symbol}'"
 
     write_line("{symbol,-6}  {entry.weight,6}  {entry.code}");
 od

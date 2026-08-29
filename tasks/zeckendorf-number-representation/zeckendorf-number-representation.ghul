@@ -1,31 +1,31 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 fibonacci_up_to(limit: int) -> Pipe[int] is
-    let smaller mut = 1;
-    let larger mut = 2;
+    let smaller mut = 1
+    let larger mut = 2
 
     do
-        yield smaller;
+        yield smaller
 
         if larger > limit then
             break;
         fi
 
-        let next = smaller + larger;
+        let next = smaller + larger
 
-        smaller = larger;
+        smaller = larger
         larger = next;
     od
 si
 
 zeckendorf(n: int) -> string is
-    let digits = System.Text.StringBuilder();
-    let remaining mut = n;
+    let digits = System.Text.StringBuilder()
+    let remaining mut = n
 
     for value in fibonacci_up_to(n) |> reverse() do
         if value <= remaining then
-            digits.append('1');
+            digits.append('1')
 
             remaining = remaining - value;
         elif digits.length > 0 then

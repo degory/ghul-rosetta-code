@@ -1,8 +1,8 @@
-use IO.Std.write_line;
-use Collections.Iterable;
-use Collections.List;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.Iterable
+use Collections.List
+use Collections.LIST
+use Ghul.Pipes
 
 amb[T](
     sets: List[Iterable[T]],
@@ -14,10 +14,10 @@ amb[T](
         for choice in sets[0] do
             for rest in amb(sets |> skip(1) |> collect(), accepts) do
                 if rest.count == 0 \/ accepts(choice, rest[0]) then
-                    let sequence = LIST[T]();
+                    let sequence = LIST[T]()
 
-                    sequence.add(choice);
-                    sequence.add_range(rest);
+                    sequence.add(choice)
+                    sequence.add_range(rest)
 
                     yield sequence;
                 fi
@@ -31,10 +31,10 @@ let sets: List[Iterable[string]] = [
     ["frog", "elephant", "thing"],
     ["walked", "treaded", "grows"],
     ["slowly", "quickly"]
-];
+]
 
 let joins =
-    (left: string, right: string) => left[left.length - 1] == right[0];
+    (left: string, right: string) => left[left.length - 1] == right[0]
 
 for sentence in amb(sets, joins) do
     write_line(sentence |> join(" "));

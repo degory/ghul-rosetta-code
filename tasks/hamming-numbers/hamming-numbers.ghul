@@ -1,36 +1,36 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
-use System.Numerics.BigInteger;
-use System.Numerics.IAdditionOperators.`+;
-use System.Numerics.IMultiplyOperators.`*;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.IMultiplyOperators.`*
 
-let two = BigInteger(2);
-let three = BigInteger(3);
-let five = BigInteger(5);
+let two = BigInteger(2)
+let three = BigInteger(3)
+let five = BigInteger(5)
 
-let hamming = LIST[BigInteger]([BigInteger.one]);
-let next_two mut = 0;
-let next_three mut = 0;
-let next_five mut = 0;
+let hamming = LIST[BigInteger]([BigInteger.one])
+let next_two mut = 0
+let next_three mut = 0
+let next_five mut = 0
 
 while hamming.count < 1000000 do
-    let by_two = two * hamming[next_two];
-    let by_three = three * hamming[next_three];
-    let by_five = five * hamming[next_five];
+    let by_two = two * hamming[next_two]
+    let by_three = three * hamming[next_three]
+    let by_five = five * hamming[next_five]
 
     let best = if BigInteger.compare(by_two, by_three) < 0
-               then by_two else by_three fi;
+               then by_two else by_three fi
     let next = if BigInteger.compare(by_five, best) < 0
-               then by_five else best fi;
+               then by_five else best fi
 
-    hamming.add(next);
+    hamming.add(next)
 
     if by_two =~ next then next_two = next_two + 1; fi
     if by_three =~ next then next_three = next_three + 1; fi
     if by_five =~ next then next_five = next_five + 1; fi
 od
 
-write_line(hamming |> take(20) |> join(" "));
-write_line("1691st: {hamming[1690]}");
+write_line(hamming |> take(20) |> join(" "))
+write_line("1691st: {hamming[1690]}")
 write_line("1000000th: {hamming[999999]}");

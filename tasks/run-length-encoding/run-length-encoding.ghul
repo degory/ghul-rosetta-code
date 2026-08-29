@@ -1,18 +1,18 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 encode(text: string) -> string is
-    let runs = System.Text.StringBuilder();
-    let at mut = 0;
+    let runs = System.Text.StringBuilder()
+    let at mut = 0
 
     while at < text.length do
-        let start = at;
+        let start = at
 
         while at < text.length /\ text[at] == text[start] do
             at = at + 1;
         od
 
-        runs.append(at - start);
+        runs.append(at - start)
         runs.append(text[start]);
     od
 
@@ -20,19 +20,19 @@ encode(text: string) -> string is
 si
 
 decode(encoded: string) -> string is
-    let text = System.Text.StringBuilder();
-    let at mut = 0;
+    let text = System.Text.StringBuilder()
+    let at mut = 0
 
     while at < encoded.length do
-        let start = at;
+        let start = at
 
         while char.is_digit(encoded[at]) do
             at = at + 1;
         od
 
-        let count = int.parse(encoded.substring(start, at - start));
+        let count = int.parse(encoded.substring(start, at - start))
 
-        text.append(encoded[at], count);
+        text.append(encoded[at], count)
 
         at = at + 1;
     od
@@ -42,10 +42,10 @@ si
 
 let input =
     "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWW"
-    "WWWWWWWWWWWWBWWWWWWWWWWWWWW";
-let encoded = encode(input);
+    "WWWWWWWWWWWWBWWWWWWWWWWWWWW"
+let encoded = encode(input)
 
-write_line("input:   {input}");
-write_line("encoded: {encoded}");
-write_line("decoded: {decode(encoded)}");
+write_line("input:   {input}")
+write_line("encoded: {encoded}")
+write_line("decoded: {decode(encoded)}")
 write_line("round trip restores the input: {decode(encoded) =~ input}");
