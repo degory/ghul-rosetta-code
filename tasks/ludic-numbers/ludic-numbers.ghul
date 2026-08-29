@@ -1,0 +1,43 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Collections.SET;
+use Ghul.Pipes;
+
+let remaining mut = (2..25000) |> collect_list();
+let ludic = LIST[int]();
+
+while ludic.count < 2005 do
+    let next_ludic = remaining[0];
+    ludic.add(next_ludic);
+    remaining.remove_at(0);
+
+    let position mut = 0;
+    let kept = LIST[int]();
+
+    for candidate in remaining do
+        position = position + 1;
+
+        if position % next_ludic != 0 then
+            kept.add(candidate);
+        fi
+    od
+
+    remaining = kept;
+od
+
+write_line(
+    "first 25: {ludic |> take(25) |> join(" ")}");
+
+let up_to_1000 = ludic |> filter(n => n <= 1000) |> count();
+
+write_line("{up_to_1000} ludic numbers <= 1000");
+write_line(
+    "2000th..2005th: {ludic |> skip(1999) |> take(6) |> join(" ")}");
+
+let set = SET[int](ludic);
+let triplets = ludic
+    |> filter(x => x + 6 < 1000 /\ set.contains(x + 2) /\ set.contains(x + 6))
+    |> map(x => "({x}, {x + 2}, {x + 6})")
+    |> join("  ");
+
+write_line("triplets: {triplets}");
