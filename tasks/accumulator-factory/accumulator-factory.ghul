@@ -1,33 +1,33 @@
 use IO.Std.write_line;
 
-union NUMBER is
+union Number is
     WHOLE(value: int);
     FRACTIONAL(value: double);
 si
 
-use NUMBER.WHOLE;
-use NUMBER.FRACTIONAL;
+use Number.WHOLE;
+use Number.FRACTIONAL;
 
-widen(n: NUMBER) -> double =>
+widen(n: Number) -> double =>
     case n
     when (value): WHOLE then cast(value)
     when (value): FRACTIONAL then value
     esac;
 
-add(left: NUMBER, right: NUMBER) -> NUMBER =>
+add(left: Number, right: Number) -> Number =>
     if let l: WHOLE = left, r: WHOLE = right then
         WHOLE(l.value + r.value)
     else
         FRACTIONAL(widen(left) + widen(right))
     fi;
 
-show(n: NUMBER) -> string =>
+show(n: Number) -> string =>
     case n
     when (value): WHOLE then "{value}"
     when (value): FRACTIONAL then "{value}"
     esac;
 
-accumulator(initial: NUMBER) -> NUMBER -> NUMBER is
+accumulator(initial: Number) -> Number -> Number is
     let sum mut = initial;
 
     return i =>

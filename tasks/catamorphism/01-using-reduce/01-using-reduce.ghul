@@ -1,0 +1,10 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+let numbers = [1, 2, 3, 4, 5];
+
+let largest = (a: int, b: int) => if a > b then a else b fi;
+
+write_line("sum:     {numbers |> reduce(0, (a, b) => a + b)}");
+write_line("product: {numbers |> reduce(1, (a, b) => a * b)}");
+write_line("largest: {numbers |> reduce(numbers[0], largest)}");

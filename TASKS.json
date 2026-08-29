@@ -178,6 +178,11 @@
       "state": "published"
     },
     {
+      "title": "Catamorphism",
+      "slug": "catamorphism",
+      "state": "published"
+    },
+    {
       "title": "Church numerals",
       "slug": "church-numerals",
       "state": "published",
@@ -229,8 +234,18 @@
       "state": "published"
     },
     {
+      "title": "Flatten a list",
+      "slug": "flatten-a-list",
+      "state": "published"
+    },
+    {
       "title": "Forward difference",
       "slug": "forward-difference",
+      "state": "published"
+    },
+    {
+      "title": "Generic swap",
+      "slug": "generic-swap",
       "state": "published"
     },
     {
@@ -259,6 +274,11 @@
       "state": "published"
     },
     {
+      "title": "Huffman coding",
+      "slug": "huffman-coding",
+      "state": "published"
+    },
+    {
       "title": "Intersecting number wheels",
       "slug": "intersecting-number-wheels",
       "state": "published"
@@ -271,6 +291,11 @@
     {
       "title": "Jaro similarity",
       "slug": "jaro-similarity",
+      "state": "published"
+    },
+    {
+      "title": "Jensen\u0027s Device",
+      "slug": "jensens-device",
       "state": "published"
     },
     {
@@ -334,6 +359,11 @@
       "state": "published"
     },
     {
+      "title": "Null object",
+      "slug": "null-object",
+      "state": "published"
+    },
+    {
       "title": "Numbers with equal rises and falls",
       "slug": "numbers-with-equal-rises-and-falls",
       "state": "published"
@@ -374,6 +404,11 @@
       "state": "published"
     },
     {
+      "title": "Queue/Definition",
+      "slug": "queue-definition",
+      "state": "published"
+    },
+    {
       "title": "Reverse a string",
       "slug": "reverse-a-string",
       "state": "published"
@@ -386,6 +421,11 @@
     {
       "title": "Run-length encoding",
       "slug": "run-length-encoding",
+      "state": "published"
+    },
+    {
+      "title": "S-expressions",
+      "slug": "s-expressions",
       "state": "published"
     },
     {
@@ -441,6 +481,11 @@
     {
       "title": "Towers of Hanoi",
       "slug": "towers-of-hanoi",
+      "state": "published"
+    },
+    {
+      "title": "Tree traversal",
+      "slug": "tree-traversal",
       "state": "published"
     },
     {

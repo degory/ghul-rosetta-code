@@ -1,0 +1,50 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use System.InvalidOperationException;
+
+class QUEUE[T] is
+    _items: LIST[T];
+
+    init() is
+        _items = LIST[T]();
+    si
+
+    is_empty: bool => _items.count == 0;
+
+    push(value: T) is
+        _items.add(value);
+    si
+
+    pop() -> T is
+        assert !is_empty else
+            InvalidOperationException("the queue is empty");
+
+        let value = _items[0];
+
+        _items.remove_at(0);
+
+        return value;
+    si
+si
+
+let queue = QUEUE[string]();
+
+write_line("empty: {queue.is_empty}");
+
+queue.push("first");
+queue.push("second");
+queue.push("third");
+
+write_line("empty: {queue.is_empty}");
+
+while !queue.is_empty do
+    write_line("pop:   {queue.pop()}");
+od
+
+write_line("empty: {queue.is_empty}");
+
+try
+    queue.pop();
+catch e: InvalidOperationException
+    write_line("pop:   {e.message}");
+yrt

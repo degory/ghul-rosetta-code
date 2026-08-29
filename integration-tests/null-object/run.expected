@@ -1,0 +1,11 @@
+text is null:      False
+nothing is null:   True
+number is null:    False
+no_number is null: True
+
+text:      "hello"
+nothing:   null
+number:    42
+no_number: null
+
+nothing, with a fallback: none
