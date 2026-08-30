@@ -58,4 +58,4 @@ write_line("q * r       = {q * r}")
 write_line("r * q       = {r * q}")
 write_line("q1 * q2     = {q1 * q2}")
 write_line("q2 * q1     = {q2 * q1}")
-write_line("q1 * q2 =~ q2 * q1: {q1 * q2 =~ q2 * q1}");
+write_line("q1 * q2 =~ q2 * q1: {q1 * q2 =~ q2 * q1}")

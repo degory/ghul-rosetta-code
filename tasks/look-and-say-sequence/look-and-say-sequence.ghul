@@ -27,4 +27,4 @@ look_and_say(seed: string) -> Pipe[string] is
     od
 si
 
-look_and_say("1") |> take(10) |> each(term => write_line(term));
+look_and_say("1") |> take(10) |> each(term => write_line(term))

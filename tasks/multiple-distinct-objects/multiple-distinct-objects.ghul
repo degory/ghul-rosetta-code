@@ -18,4 +18,4 @@ let same = (0..n) |> map(_ => shared) |> collect_list()
 same[0].value = 42
 
 write_line(
-    "shared:   {same |> map(box => "{box.value}") |> join(" ")}");
+    "shared:   {same |> map(box => "{box.value}") |> join(" ")}")

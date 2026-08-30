@@ -37,4 +37,4 @@ for n in 1..100_000 do
     fi
 od
 
-write_line("longest under 100,000: {longest} (length {longest_length})");
+write_line("longest under 100,000: {longest} (length {longest_length})")

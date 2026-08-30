@@ -50,4 +50,4 @@ for index in 0::(two.count - 1) do
 od
 
 write_line(
-    "EKG(2) and EKG(5) converge at term {last_difference + 1}");
+    "EKG(2) and EKG(5) converge at term {last_difference + 1}")

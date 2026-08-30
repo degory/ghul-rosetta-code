@@ -18,4 +18,4 @@ let digits = power(cast BigInteger(5), power(4, power(3, 2))).to_string()
 
 write_line("first 20 digits: {digits[0..20]}")
 write_line("last 20 digits:  {digits[20..<<0]}")
-write_line("decimal digits:  {digits.length}");
+write_line("decimal digits:  {digits.length}")

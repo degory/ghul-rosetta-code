@@ -58,4 +58,4 @@ let seven = cast BigInteger(7)
     |> filter(power => power % 2 == 1)
     |> each(power =>
         write_line(
-            "7^{power,-2} {grouped(isqrt(BigInteger.pow(seven, power)))}"));
+            "7^{power,-2} {grouped(isqrt(BigInteger.pow(seven, power)))}"))

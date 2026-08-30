@@ -1,4 +1,4 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-write_line("{$([1, 2, 3, 4, 5] |> map(value => value * value))}");
+write_line("{$([1, 2, 3, 4, 5] |> map(value => value * value))}")

@@ -21,4 +21,4 @@ show(n: int, k: int) is
 si
 
 show(5, 2)
-show(7, 3);
+show(7, 3)

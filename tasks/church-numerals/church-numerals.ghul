@@ -34,4 +34,4 @@ write_line(
 
 write_line(
     "three to the power four is "
-    "{to_int(exponentiate(three, four_as_exponent))}");
+    "{to_int(exponentiate(three, four_as_exponent))}")

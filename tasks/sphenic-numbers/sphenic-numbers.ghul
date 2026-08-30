@@ -123,4 +123,4 @@ let triplet_5000th = triplets[5000 - 1]
 
 write_line(
     "the 5000th sphenic triplet is "
-    "({triplet_5000th}, {triplet_5000th + 1}, {triplet_5000th + 2})");
+    "({triplet_5000th}, {triplet_5000th + 1}, {triplet_5000th + 2})")

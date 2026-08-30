@@ -15,4 +15,4 @@ si
 shout(word: string) -> string => "{word.to_upper()}!"
 
 write_line("{$([1, 2, 3, 4, 5] |> apply(value => value * value))}")
-write_line("{$(["frog", "newt", "toad"] |> apply(shout))}");
+write_line("{$(["frog", "newt", "toad"] |> apply(shout))}")

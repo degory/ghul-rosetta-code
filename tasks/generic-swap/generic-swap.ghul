@@ -23,4 +23,4 @@ let q mut = (2, "two")
 
 swap(p ref, q ref)
 
-write_line("tuples:  {p} {q}");
+write_line("tuples:  {p} {q}")
