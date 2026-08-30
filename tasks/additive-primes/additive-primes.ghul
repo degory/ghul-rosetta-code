@@ -16,7 +16,7 @@ let additive =
     |> collect_list()
 
 for row in additive |> chunk(10) do
-    write_line(row |> map(n => "{n,4}") |> join(""));
+    write_line(row |> map(n => "{n,4}") |> join(""))
 od
 
 write_line("")

@@ -6,7 +6,7 @@ balanced(brackets: string) -> bool => (
 
     let matched = for bracket in brackets do
         if bracket == ']' /\ level == 0 then break false fi
-        level = level + (if bracket == '[' then 1 else -1 fi);
+        level = level + (if bracket == '[' then 1 else -1 fi)
     od
 
     matched ?? (level == 0)
@@ -14,15 +14,15 @@ balanced(brackets: string) -> bool => (
 
 arrangements(opens: int, closes: int) -> Pipe[string] is
     if opens == 0 /\ closes == 0 then
-        yield "";
+        yield ""
     else
         if opens > 0 then
             yield in arrangements(opens - 1, closes)
-                |> map(rest => "[{rest}");
+                |> map(rest => "[{rest}")
         fi
         if closes > 0 then
             yield in arrangements(opens, closes - 1)
-                |> map(rest => "]{rest}");
+                |> map(rest => "]{rest}")
         fi
     fi
 si
@@ -30,6 +30,6 @@ si
 for pairs in 0::3 do
     for brackets in arrangements(pairs, pairs) do
         let verdict = if balanced(brackets) then "OK" else "NOT OK" fi
-        write_line("{brackets,6}  {verdict}");
+        write_line("{brackets,6}  {verdict}")
     od
 od

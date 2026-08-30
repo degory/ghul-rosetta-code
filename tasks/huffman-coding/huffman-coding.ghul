@@ -6,7 +6,7 @@ use Ghul.Pipes
 
 union Huffman(weight: int) is
     LEAF(symbol: char, ..)
-    NODE(left: Huffman, right: Huffman, ..);
+    NODE(left: Huffman, right: Huffman, ..)
 si
 
 use Huffman.LEAF
@@ -17,7 +17,7 @@ take_lightest(pending: LIST[Huffman]) -> Huffman is
 
     for i in 1..pending.count do
         if pending[i].weight < pending[at].weight then
-            at = i;
+            at = i
         fi
     od
 
@@ -25,7 +25,7 @@ take_lightest(pending: LIST[Huffman]) -> Huffman is
 
     pending.remove_at(at)
 
-    return lightest;
+    return lightest
 si
 
 build_tree(leaves: List[Huffman]) -> Huffman is
@@ -35,10 +35,10 @@ build_tree(leaves: List[Huffman]) -> Huffman is
         let first = take_lightest(pending)
         let second = take_lightest(pending)
 
-        pending.add(NODE(first, second, first.weight + second.weight));
+        pending.add(NODE(first, second, first.weight + second.weight))
     od
 
-    return pending[0];
+    return pending[0]
 si
 
 codes(node: Huffman, prefix: string)
@@ -47,10 +47,10 @@ is
     if let leaf: LEAF = node then
         let code = if prefix.length == 0 then "0" else prefix fi
 
-        yield (symbol = leaf.symbol, weight = leaf.weight, code = code);
+        yield (symbol = leaf.symbol, weight = leaf.weight, code = code)
     elif let branch: NODE = node then
         yield in codes(branch.left, "{prefix}0")
-        yield in codes(branch.right, "{prefix}1");
+        yield in codes(branch.right, "{prefix}1")
     fi
 si
 
@@ -63,13 +63,13 @@ for character in text do
 
     weights.try_get_value(character, seen ref)
 
-    weights[character] = seen + 1;
+    weights[character] = seen + 1
 od
 
 let leaves = LIST[Huffman]()
 
 for symbol in weights.keys |> sort() do
-    leaves.add(LEAF(symbol, weights[symbol]));
+    leaves.add(LEAF(symbol, weights[symbol]))
 od
 
 let table =
@@ -87,5 +87,5 @@ write_line("symbol  weight  code")
 for entry in table do
     let symbol = "'{entry.symbol}'"
 
-    write_line("{symbol,-6}  {entry.weight,6}  {entry.code}");
+    write_line("{symbol,-6}  {entry.weight,6}  {entry.code}")
 od

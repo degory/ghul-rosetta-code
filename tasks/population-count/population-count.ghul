@@ -7,7 +7,7 @@ popcount(n: long) -> int => (
 
     while bits != 0L do
         count = count + cast int(bits & 1L)
-        bits = bits >>> 1;
+        bits = bits >>> 1
     od
 
     count

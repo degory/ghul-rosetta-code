@@ -4,7 +4,7 @@ use Ghul.Pipes
 union Alignment is
     LEFT
     RIGHT
-    CENTRE;
+    CENTRE
 si
 
 pad(word: string, width: int, alignment: Alignment) -> string =>
@@ -58,5 +58,5 @@ let widths =
 for alignment in [Alignment.LEFT, Alignment.RIGHT, Alignment.CENTRE] do
     rows |> each(row => write_line(line(row, widths, alignment)))
 
-    write_line("");
+    write_line("")
 od

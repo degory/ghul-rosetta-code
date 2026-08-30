@@ -5,7 +5,7 @@ swaps(deck: int[]) -> int => (
     let cards = LIST()
 
     for card in deck do
-        cards.add(card);
+        cards.add(card)
     od
 
     let count mut = 0
@@ -18,10 +18,10 @@ swaps(deck: int[]) -> int => (
             let held = cards[i]
 
             cards[i] = cards[last - i]
-            cards[last - i] = held;
+            cards[last - i] = held
         od
 
-        count = count + 1;
+        count = count + 1
     od
 
     count
@@ -31,7 +31,7 @@ topswops(n: int) -> int => (
     let deck = LIST()
 
     for card in 1::n do
-        deck.add(card);
+        deck.add(card)
     od
 
     let best mut = 0
@@ -41,7 +41,7 @@ topswops(n: int) -> int => (
             let rounds = swaps(deck.to_array())
 
             if rounds > best then
-                best = rounds;
+                best = rounds
             fi
         else
             for i in position::(n - 1) do
@@ -55,7 +55,7 @@ topswops(n: int) -> int => (
                 let put_back = deck[position]
 
                 deck[position] = deck[i]
-                deck[i] = put_back;
+                deck[i] = put_back
             od
         fi
     si
@@ -66,5 +66,5 @@ topswops(n: int) -> int => (
 )
 
 for n in 1::10 do
-    write_line("{n}: {topswops(n)}");
+    write_line("{n}: {topswops(n)}")
 od

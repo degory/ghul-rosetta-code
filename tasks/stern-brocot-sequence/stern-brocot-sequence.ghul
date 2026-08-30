@@ -8,7 +8,7 @@ let considered mut = 1
 while sequence.count < 1200 do
     sequence.add(sequence[considered] + sequence[considered - 1])
     sequence.add(sequence[considered])
-    considered = considered + 1;
+    considered = considered + 1
 od
 
 write_line("first 15 members:")
@@ -17,7 +17,7 @@ write_line(sequence |> take(15) |> join(", "))
 write_line("first appearances:")
 
 for value in 1::10 do
-    write_line("{value} appears at index {sequence.index_of(value) + 1}");
+    write_line("{value} appears at index {sequence.index_of(value) + 1}")
 od
 
 write_line(
@@ -30,7 +30,7 @@ gcd(left: int, right: int) -> int => (
     while b > 0 do
         let remainder = a % b
         a = b
-        b = remainder;
+        b = remainder
     od
 
     a
@@ -38,7 +38,7 @@ gcd(left: int, right: int) -> int => (
 
 let all_coprime = for index in 0..999 do
     if gcd(sequence[index], sequence[index + 1]) != 1 then
-        break false;
+        break false
     fi
 od
 

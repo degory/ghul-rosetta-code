@@ -18,10 +18,10 @@ matrix(first: string, second: string) -> LIST[LIST[int]] is
         let row = LIST[int]()
 
         for j in 0::second.length do
-            row.add(0);
+            row.add(0)
         od
 
-        scores.add(row);
+        scores.add(row)
     od
 
     for i in 1::first.length do
@@ -33,11 +33,11 @@ matrix(first: string, second: string) -> LIST[LIST[int]] is
                         score(first[i - 1], second[j - 1]),
                     scores[i - 1][j] + gap(),
                     scores[i][j - 1] + gap()
-                ]);
+                ])
         od
     od
 
-    return scores;
+    return scores
 si
 
 best_cell(scores: LIST[LIST[int]]) -> (row: int, column: int) is
@@ -48,12 +48,12 @@ best_cell(scores: LIST[LIST[int]]) -> (row: int, column: int) is
         for j in 0..scores[i].count do
             if scores[i][j] > scores[row][column] then
                 row = i
-                column = j;
+                column = j
             fi
         od
     od
 
-    return (row = row, column = column);
+    return (row = row, column = column)
 si
 
 trace(
@@ -81,17 +81,17 @@ trace(
             bottom.add(second[j - 1])
 
             i = i - 1
-            j = j - 1;
+            j = j - 1
         elif scores[i][j] == scores[i - 1][j] + gap() then
             top.add(first[i - 1])
             bottom.add('-')
 
-            i = i - 1;
+            i = i - 1
         else
             top.add('-')
             bottom.add(second[j - 1])
 
-            j = j - 1;
+            j = j - 1
         fi
     od
 
@@ -103,7 +103,7 @@ trace(
         a_aligned = string(top.to_array()),
         b_aligned = string(bottom.to_array()),
         path = cells |> join(" ")
-    );
+    )
 si
 
 show(first: string, second: string) is
@@ -128,7 +128,7 @@ show(first: string, second: string) is
         let row =
             scores[i] |> map(value => "{value}".pad_left(3)) |> join("")
 
-        write_line("  {label} {row}");
+        write_line("  {label} {row}")
     od
 si
 

@@ -12,10 +12,10 @@ gapful_from(start: int, wanted: int) -> LIST[int] is
             "{digits[0]}{digits[digits.length - 1]}")
 
         if candidate % first_last == 0 then
-            found.add(candidate);
+            found.add(candidate)
         fi
 
-        candidate = candidate + 1;
+        candidate = candidate + 1
     od
 
     found

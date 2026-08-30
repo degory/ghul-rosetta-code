@@ -4,7 +4,7 @@ use Ghul.Pipes
 union Trit is
     TRUE
     MAYBE
-    FALSE;
+    FALSE
 si
 
 use Trit.TRUE
@@ -60,14 +60,14 @@ table(name: string, operator: (Trit, Trit) -> Trit) is
             |> map(right => "{show(operator(left, right)),6}")
             |> join("")
 
-        write_line("{show(left),-8}|{row}");
+        write_line("{show(left),-8}|{row}")
     od
 si
 
 write_line("not")
 
 for left in trits do
-    write_line("{show(left),-8}|{show(!left),6}");
+    write_line("{show(left),-8}|{show(!left),6}")
 od
 
 table("and", (left, right) => left /\ right)

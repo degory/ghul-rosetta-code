@@ -10,14 +10,14 @@ killings(n: int, k: int) -> Pipe[int] is
 
         yield standing[at]
 
-        standing.remove_at(at);
+        standing.remove_at(at)
     od
 si
 
 show(n: int, k: int) is
     let killed = killings(n, k) |> collect_list()
 
-    write_line("n = {n}, k = {k}: killed {killed |> join(", ")}");
+    write_line("n = {n}, k = {k}: killed {killed |> join(", ")}")
 si
 
 show(5, 2)

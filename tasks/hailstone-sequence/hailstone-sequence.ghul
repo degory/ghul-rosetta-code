@@ -9,11 +9,11 @@ hailstone(n: int) -> Pipe[int] is
         yield current
 
         if current == 1 then
-            return;
+            return
         fi
 
         current =
-            if current % 2 == 0 then current / 2 else 3 * current + 1 fi;
+            if current % 2 == 0 then current / 2 else 3 * current + 1 fi
     od
 si
 
@@ -33,7 +33,7 @@ for n in 1..100_000 do
 
     if length > longest_length then
         longest = n
-        longest_length = length;
+        longest_length = length
     fi
 od
 

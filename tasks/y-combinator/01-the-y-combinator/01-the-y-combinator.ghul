@@ -1,7 +1,7 @@
 use IO.Std.write_line
 
 class SELF_APPLY[A, B](_f: (SELF_APPLY[A, B]) -> (A -> B)) is
-    apply(r: SELF_APPLY[A, B]) -> (A -> B) => _f(r);
+    apply(r: SELF_APPLY[A, B]) -> (A -> B) => _f(r)
 si
 
 y[A, B](f: (A -> B) -> (A -> B)) -> (A -> B) =>
@@ -29,7 +29,7 @@ let gcd =
 for n in 0::10 do
     write_line(
         "factorial({n}) = {factorial(n)}, "
-        "fibonacci({n}) = {fibonacci(n)}");
+        "fibonacci({n}) = {fibonacci(n)}")
 od
 
 write_line("countdown(5) = {countdown(5)}")

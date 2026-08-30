@@ -10,7 +10,7 @@ shares_factor(left_value: int, right_value: int) -> bool => (
     while right > 0 do
         let remainder = left % right
         left = right
-        right = remainder;
+        right = remainder
     od
 
     left > 1
@@ -25,11 +25,11 @@ ekg(start: int, count: int) -> LIST[int] is
 
         while used.contains(candidate) \/
                 !shares_factor(candidate, terms[terms.count - 1]) do
-            candidate = candidate + 1;
+            candidate = candidate + 1
         od
 
         terms.add(candidate)
-        used.add(candidate);
+        used.add(candidate)
     od
 
     terms
@@ -45,7 +45,7 @@ let last_difference mut = 0
 
 for index in 0::(two.count - 1) do
     if two[index] != five[index] then
-        last_difference = index + 1;
+        last_difference = index + 1
     fi
 od
 

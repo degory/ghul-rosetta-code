@@ -10,12 +10,12 @@ balanced(n: int) -> bool => (
         let upper = rest / 10 % 10
 
         if upper < lower then
-            balance = balance + 1;
+            balance = balance + 1
         elif upper > lower then
-            balance = balance - 1;
+            balance = balance - 1
         fi
 
-        rest = rest / 10;
+        rest = rest / 10
     od
 
     balance == 0
@@ -31,7 +31,7 @@ for row in 0::19 do
     write_line(
         (0::9)
         |> map(column => "{first_200[row * 10 + column],5}")
-        |> join(""));
+        |> join(""))
 od
 
 let ten_millionth = sequence() |> skip(10000000 - 1) |> first()

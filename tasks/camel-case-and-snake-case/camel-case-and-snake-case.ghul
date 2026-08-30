@@ -19,7 +19,7 @@ class NAME(words: Collections.List[string] private) is
     to_snake_case() -> string =>
         _words
             |> map(word => word.to_lower())
-            |> join("_");
+            |> join("_")
 si
 
 parse(text: string) -> NAME is
@@ -30,22 +30,22 @@ parse(text: string) -> NAME is
         if character == '_' \/ character == '-' \/ character == ' ' then
             if word.length > 0 then
                 words.add(word.to_string())
-                word.clear();
+                word.clear()
             fi
         elif char.is_upper(character) /\ word.length > 0 then
             words.add(word.to_string())
             word.clear()
-            word.append(character);
+            word.append(character)
         else
-            word.append(character);
+            word.append(character)
         fi
     od
 
     if word.length > 0 then
-        words.add(word.to_string());
+        words.add(word.to_string())
     fi
 
-    return NAME(words);
+    return NAME(words)
 si
 
 lower_first(word: string) -> string =>
@@ -79,5 +79,5 @@ for test in tests do
     write_line(
         "{quoted(test).pad_right(column)} "
         "{quoted(name.to_snake_case()).pad_right(column)} "
-        "{quoted(name.to_camel_case())}");
+        "{quoted(name.to_camel_case())}")
 od

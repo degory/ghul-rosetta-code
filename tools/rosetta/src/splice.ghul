@@ -7,7 +7,7 @@ namespace Rosetta is
     union PLACEMENT is
         REPLACES(start: int, end: int)
         INSERTED_BEFORE(start: int, language: string)
-        APPENDED(start: int);
+        APPENDED(start: int)
     si
 
     // Puts a language's section into a task page's wikitext.
@@ -20,7 +20,7 @@ namespace Rosetta is
         api: string static => "https://rosettacode.org/w/api.php"
         language: string static => "ghul"
         category: string static => "Category:Ghul"
-        task_category: string static => "Category:Programming Tasks";
+        task_category: string static => "Category:Programming Tasks"
     si
 
     class SECTION_SPLICE is
@@ -38,10 +38,10 @@ namespace Rosetta is
             let matches = Regex.matches(page, _PATTERN)
 
             for i in 0..matches.count do
-                found.add(matches[i]);
+                found.add(matches[i])
             od
 
-            return found;
+            return found
         si
 
         _name(m: Match) -> string => m.groups[1].value.trim()
@@ -70,18 +70,18 @@ namespace Rosetta is
                             page.length
                         fi
 
-                    return PLACEMENT.REPLACES(header.index, end);
+                    return PLACEMENT.REPLACES(header.index, end)
                 fi
             od
 
             for i in 0..headers.count do
                 if _before(language, _name(headers[i])) then
                     return PLACEMENT.INSERTED_BEFORE(
-                        headers[i].index, _name(headers[i]));
+                        headers[i].index, _name(headers[i]))
                 fi
             od
 
-            return PLACEMENT.APPENDED(page.length);
+            return PLACEMENT.APPENDED(page.length)
         si
 
         // The check that matters, and the reason it does not consult the placement: a splice
@@ -96,22 +96,22 @@ namespace Rosetta is
             let after = LIST[string]()
 
             for header in _headers(spliced) do
-                after.add(_name(header).to_lower());
+                after.add(_name(header).to_lower())
             od
 
             if !after.contains(language.to_lower()) then
-                return false;
+                return false
             fi
 
             for header in _headers(page) do
                 let name = _name(header).to_lower()
 
                 if !string.equals(name, language.to_lower()) /\ !after.contains(name) then
-                    return false;
+                    return false
                 fi
             od
 
-            return true;
+            return true
         si
 
         // What a splice is allowed to disturb: everything before where the section goes has to
@@ -134,17 +134,17 @@ namespace Rosetta is
                 esac
 
             if head > spliced.length \/ tail > page.length then
-                return false;
+                return false
             fi
 
             if !string.equals(page.substring(0, head), spliced.substring(0, head)) then
-                return false;
+                return false
             fi
 
             let remaining = page.length - tail
 
             if remaining > spliced.length then
-                return false;
+                return false
             fi
 
             // The tail is compared with its trailing whitespace off, because appending trims the
@@ -152,7 +152,7 @@ namespace Rosetta is
             return string.equals(
                 page.substring(tail).trim_end(),
                 spliced.substring(spliced.length - remaining).trim_end()
-            );
+            )
         si
 
         // The page with `section` in place of, or in alphabetical position among, the language
@@ -169,6 +169,6 @@ namespace Rosetta is
                 when _: PLACEMENT.APPENDED then
                     "{page.trim_end()}\n\n{body.trim_end()}\n"
                 esac
-            lav;
+            lav
     si
 si

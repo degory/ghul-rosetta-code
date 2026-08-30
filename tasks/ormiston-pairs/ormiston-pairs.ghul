@@ -16,18 +16,18 @@ while root * root <= limit do
 
         while multiple <= limit do
             composite[multiple] = true
-            multiple = multiple + root;
+            multiple = multiple + root
         od
     fi
 
-    root = root + 1;
+    root = root + 1
 od
 
 digit_signature(value: int) -> string => (
     let counts = LIST[int]()
 
     for _ in 0..10 do
-        counts.add(0);
+        counts.add(0)
     od
 
     let rest mut = value
@@ -35,13 +35,13 @@ digit_signature(value: int) -> string => (
     while rest > 0 do
         let digit = rest % 10
         counts[digit] = counts[digit] + 1
-        rest = rest / 10;
+        rest = rest / 10
     od
 
     let signature mut = ""
 
     for count in counts do
-        signature = "{signature}{count}";
+        signature = "{signature}{count}"
     od
 
     signature
@@ -59,25 +59,25 @@ for candidate in 2..(limit + 1) do
 
         if previous_signature =~ signature then
             if pairs.count < 30 then
-                pairs.add("({previous}, {candidate})");
+                pairs.add("({previous}, {candidate})")
             fi
 
             if candidate <= 1000000 then
-                up_to_million = up_to_million + 1;
+                up_to_million = up_to_million + 1
             fi
 
-            up_to_ten_million = up_to_ten_million + 1;
+            up_to_ten_million = up_to_ten_million + 1
         fi
 
         previous = candidate
-        previous_signature = signature;
+        previous_signature = signature
     fi
 od
 
 write_line("first 30 Ormiston pairs:")
 
 for pair in pairs do
-    write_line(pair);
+    write_line(pair)
 od
 
 write_line("{up_to_million} pairs up to 1000000")

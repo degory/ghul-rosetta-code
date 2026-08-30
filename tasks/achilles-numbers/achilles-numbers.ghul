@@ -14,21 +14,21 @@ factorize(n: int) -> List[(prime: int, exponent: int)] is
 
         while remaining % prime == 0 do
             remaining = remaining / prime
-            exponent = exponent + 1;
+            exponent = exponent + 1
         od
 
         if exponent > 0 then
-            factors.add((prime, exponent));
+            factors.add((prime, exponent))
         fi
 
-        prime = prime + 1;
+        prime = prime + 1
     od
 
     if remaining > 1 then
-        factors.add((remaining, 1));
+        factors.add((remaining, 1))
     fi
 
-    return factors;
+    return factors
 si
 
 gcd(a: int, b: int) -> int =>
@@ -55,10 +55,10 @@ achilles_numbers() -> Pipe[int] is
 
     do
         if is_achilles(n) then
-            yield n;
+            yield n
         fi
 
-        n = n + 1;
+        n = n + 1
     od
 si
 
@@ -66,10 +66,10 @@ show(heading: string, numbers: Iterable[int]) is
     write_line(heading)
 
     for row in numbers |> chunk(10) do
-        write_line(row |> map(n => "{n,7}") |> join(""));
+        write_line(row |> map(n => "{n,7}") |> join(""))
     od
 
-    write_line("");
+    write_line("")
 si
 
 show("first 50 Achilles numbers:", achilles_numbers() |> take(50))
@@ -85,5 +85,5 @@ for digits in 2::5 do
         |> filter(is_achilles)
         |> count()
 
-    write_line("Achilles numbers with {digits} digits: {total}");
+    write_line("Achilles numbers with {digits} digits: {total}")
 od

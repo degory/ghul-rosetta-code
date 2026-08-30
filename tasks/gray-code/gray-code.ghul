@@ -8,7 +8,7 @@ decode(gray: int) -> int => (
     let n mut = gray
 
     for shift in 1..5 do
-        n = n ^ (gray >>> shift);
+        n = n ^ (gray >>> shift)
     od
 
     n
@@ -19,5 +19,5 @@ write_line("binary  gray   decoded")
 for n in 0::31 do
     let gray = encode(n)
 
-    write_line("{bits(n)}   {bits(gray)}   {decode(gray)}");
+    write_line("{bits(n)}   {bits(gray)}   {decode(gray)}")
 od

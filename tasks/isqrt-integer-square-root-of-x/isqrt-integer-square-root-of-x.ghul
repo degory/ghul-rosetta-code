@@ -14,7 +14,7 @@ isqrt(x: BigInteger) -> BigInteger is
     let q mut = BigInteger.one
 
     while q <= x do
-        q = q * four;
+        q = q * four
     od
 
     let z mut = x
@@ -29,11 +29,11 @@ isqrt(x: BigInteger) -> BigInteger is
 
         if remainder >= BigInteger.zero then
             z = remainder
-            root = root + q;
+            root = root + q
         fi
     od
 
-    return root;
+    return root
 si
 
 grouped(value: BigInteger) -> string =>
@@ -44,7 +44,7 @@ write_line("isqrt of 0 through 65:")
 let roots = LIST[string]()
 
 for n in 0::65 do
-    roots.add("{isqrt(cast BigInteger(n))}");
+    roots.add("{isqrt(cast BigInteger(n))}")
 od
 
 write_line(roots |> join(" "))

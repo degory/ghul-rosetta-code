@@ -17,7 +17,7 @@ for _ in 1::1000 do
 
     let next = previous + current
     previous = current
-    current = next;
+    current = next
 od
 
 write_line("digit  actual   expected")
@@ -25,5 +25,5 @@ write_line("digit  actual   expected")
 for digit in 1::9 do
     let actual = 100.0D * cast double(leading_counts[digit]) / 1000.0D
     let expected = 100.0D * log10(1.0D + 1.0D / cast double(digit))
-    write_line("{digit}    {actual,6:F2}%  {expected,6:F2}%");
+    write_line("{digit}    {actual,6:F2}%  {expected,6:F2}%")
 od

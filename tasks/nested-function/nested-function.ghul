@@ -13,10 +13,10 @@ make_list(separator: string) -> string is
     let items = LIST[string]()
 
     for item in ["first", "second", "third"] do
-        items.add(make_item(item));
+        items.add(make_item(item))
     od
 
-    return items |> join("\n");
+    return items |> join("\n")
 si
 
 write_line(make_list(". "));

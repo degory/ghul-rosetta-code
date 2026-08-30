@@ -10,7 +10,7 @@ let sum = (low: int, high: int, term: () -> double) -> double => (
     while i <= high do
         total = total + term()
 
-        i = i + 1;
+        i = i + 1
     od
 
     total

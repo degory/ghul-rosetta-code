@@ -6,10 +6,10 @@ apply[T, U](values: T[], callback: T -> U pure) -> List[U] is
     let applied = LIST[U]()
 
     for value in values do
-        applied.add(callback(value));
+        applied.add(callback(value))
     od
 
-    return applied;
+    return applied
 si
 
 shout(word: string) -> string => "{word.to_upper()}!"

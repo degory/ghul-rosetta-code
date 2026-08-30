@@ -9,14 +9,14 @@ encode(text: string) -> string is
         let start = at
 
         while at < text.length /\ text[at] == text[start] do
-            at = at + 1;
+            at = at + 1
         od
 
         runs.append(at - start)
-        runs.append(text[start]);
+        runs.append(text[start])
     od
 
-    return runs.to_string();
+    return runs.to_string()
 si
 
 decode(encoded: string) -> string is
@@ -27,17 +27,17 @@ decode(encoded: string) -> string is
         let start = at
 
         while char.is_digit(encoded[at]) do
-            at = at + 1;
+            at = at + 1
         od
 
         let count = int.parse(encoded.substring(start, at - start))
 
         text.append(encoded[at], count)
 
-        at = at + 1;
+        at = at + 1
     od
 
-    return text.to_string();
+    return text.to_string()
 si
 
 let input =

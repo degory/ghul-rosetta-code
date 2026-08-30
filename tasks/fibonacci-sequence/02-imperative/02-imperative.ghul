@@ -7,14 +7,14 @@ fibonacci() -> Pipe[int] is
     do
         yield previous
 
-        (previous, current) = (current, previous + current);
+        (previous, current) = (current, previous + current)
     od
 si
 
 let fib = n => fibonacci() |> skip(n) |> first()
 
 for (position, value) in fibonacci() |> take(10) |> index() do
-    write_line("fib({position}) = {value}");
+    write_line("fib({position}) = {value}")
 od
 
 write_line("fib(30) = {fib(30)}");

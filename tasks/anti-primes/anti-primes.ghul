@@ -14,10 +14,10 @@ anti_primes() -> Pipe[int] is
         if divisors > most then
             most = divisors
 
-            yield n;
+            yield n
         fi
 
-        n = n + 1;
+        n = n + 1
     od
 si
 

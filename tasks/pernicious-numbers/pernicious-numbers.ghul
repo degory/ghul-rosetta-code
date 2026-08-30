@@ -6,10 +6,10 @@ prime(value: int) -> bool => (
 
     let factor_found = while divisor * divisor <= value do
         if value % divisor == 0 then
-            break true;
+            break true
         fi
 
-        divisor = divisor + 1;
+        divisor = divisor + 1
     od
 
     value >= 2 /\ !(factor_found ?? false)

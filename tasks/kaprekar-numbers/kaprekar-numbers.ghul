@@ -9,10 +9,10 @@ kaprekar(n: int) -> bool => (
         let right = square % power
 
         if right > 0L /\ square / power + right == cast long(n) then
-            break true;
+            break true
         fi
 
-        power = power * 10L;
+        power = power * 10L
     od
 
     matched ?? false

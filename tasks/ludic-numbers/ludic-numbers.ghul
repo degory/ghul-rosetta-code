@@ -18,11 +18,11 @@ while ludic.count < 2005 do
         position = position + 1
 
         if position % next_ludic != 0 then
-            kept.add(candidate);
+            kept.add(candidate)
         fi
     od
 
-    remaining = kept;
+    remaining = kept
 od
 
 write_line(

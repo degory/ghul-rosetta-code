@@ -8,7 +8,7 @@ digit_square_sum(value: int) -> int => (
     while rest > 0 do
         let digit = rest % 10
         total = total + digit * digit
-        rest = rest / 10;
+        rest = rest / 10
     od
 
     total
@@ -18,7 +18,7 @@ reaches_89(value: int) -> bool => (
     let current mut = value
 
     while current != 1 /\ current != 89 do
-        current = digit_square_sum(current);
+        current = digit_square_sum(current)
     od
 
     current == 89
@@ -30,14 +30,14 @@ let max_after_one_step = 648
 let memo = LIST[bool]([false])
 
 for value in 1::max_after_one_step do
-    memo.add(reaches_89(value));
+    memo.add(reaches_89(value))
 od
 
 let chains mut = 0
 
 for value in 1..limit do
     if memo[digit_square_sum(value)] then
-        chains = chains + 1;
+        chains = chains + 1
     fi
 od
 

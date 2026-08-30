@@ -3,7 +3,7 @@ use Ghul.Pipes
 
 union Tree is
     LEAF(value: int)
-    NODE(left: Tree, right: Tree);
+    NODE(left: Tree, right: Tree)
 si
 
 use Tree.LEAF
@@ -11,10 +11,10 @@ use Tree.NODE
 
 fringe(tree: Tree) -> Pipe[int] is
     if isa LEAF(tree) then
-        yield tree.value;
+        yield tree.value
     elif isa NODE(tree) then
         yield in fringe(tree.left)
-        yield in fringe(tree.right);
+        yield in fringe(tree.right)
     fi
 si
 
@@ -29,17 +29,17 @@ compare(first: Tree, second: Tree) -> (same: bool, leaves: int) is
         let more_right = right.move_next()
 
         if more_left != more_right then
-            return (false, leaves);
+            return (false, leaves)
         fi
 
         if !more_left then
-            return (true, leaves);
+            return (true, leaves)
         fi
 
         leaves = leaves + 1
 
         if left.current != right.current then
-            return (false, leaves);
+            return (false, leaves)
         fi
     od
 si
@@ -69,5 +69,5 @@ for (first, second) in [
 
     write_line(
         "{show(first)} and {show(second)}: {verdict}, "
-        "{leaves} {counted} compared");
+        "{leaves} {counted} compared")
 od

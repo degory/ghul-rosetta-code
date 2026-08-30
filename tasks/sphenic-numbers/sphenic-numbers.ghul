@@ -17,27 +17,27 @@ smallest_prime_factors(limit: int) -> List[int] is
 
             while multiple < limit do
                 if factor[multiple] == 0 then
-                    factor[multiple] = prime;
+                    factor[multiple] = prime
                 fi
 
-                multiple = multiple + prime;
+                multiple = multiple + prime
             od
         fi
 
-        prime = prime + 1;
+        prime = prime + 1
     od
 
     let n mut = 2
 
     while n < limit do
         if factor[n] == 0 then
-            factor[n] = n;
+            factor[n] = n
         fi
 
-        n = n + 1;
+        n = n + 1
     od
 
-    return factor;
+    return factor
 si
 
 is_sphenic(n: int, factor: List[int]) -> bool => (
@@ -53,10 +53,10 @@ is_sphenic(n: int, factor: List[int]) -> bool => (
 
         if prime != previous then
             distinct = distinct + 1
-            previous = prime;
+            previous = prime
         fi
 
-        rest = rest / prime;
+        rest = rest / prime
     od
 
     total == 3 /\ distinct == 3
@@ -69,7 +69,7 @@ prime_factors(n: int, factor: List[int]) -> List[string] => (
     while rest > 1 do
         let prime = factor[rest]
         factors.add("{prime}")
-        rest = rest / prime;
+        rest = rest / prime
     od
 
     factors
@@ -94,17 +94,17 @@ while i + 2 < sphenics.count do
     if sphenics[i + 1] == sphenics[i] + 1 /\
         sphenics[i + 2] == sphenics[i] + 2
     then
-        triplets.add(sphenics[i]);
+        triplets.add(sphenics[i])
     fi
 
-    i = i + 1;
+    i = i + 1
 od
 
 write_line("sphenic triplets below 10000:")
 
 for first in triplets do
     if first + 2 < 10000 then
-        write_line("({first}, {first + 1}, {first + 2})");
+        write_line("({first}, {first + 1}, {first + 2})")
     fi
 od
 

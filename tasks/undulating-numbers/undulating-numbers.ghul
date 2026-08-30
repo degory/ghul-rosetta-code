@@ -7,7 +7,7 @@ undulating_value(first: int, second: int, length: int) -> long => (
 
     for position in 0..length do
         let digit = if position % 2 == 0 then first else second fi
-        value = value * 10L + cast long(digit);
+        value = value * 10L + cast long(digit)
     od
 
     value
@@ -24,7 +24,7 @@ for length in 3..17 do
                 let value = undulating_value(first, second, length)
 
                 if value < limit then
-                    values.add(value);
+                    values.add(value)
                 fi
             fi
         od
@@ -44,7 +44,7 @@ for row in 0..9 do
             |> skip(row * 9)
             |> take(9)
             |> map(v => "{v}")
-            |> join(" "));
+            |> join(" "))
 od
 
 write_line("four digit:")
@@ -55,7 +55,7 @@ for row in 0..9 do
             |> skip(row * 9)
             |> take(9)
             |> map(v => "{v}")
-            |> join(" "));
+            |> join(" "))
 od
 
 prime(value: long) -> bool => (
@@ -63,10 +63,10 @@ prime(value: long) -> bool => (
 
     let factor_found = while divisor * divisor <= value do
         if value % divisor == 0L then
-            break true;
+            break true
         fi
 
-        divisor = divisor + 1L;
+        divisor = divisor + 1L
     od
 
     value >= 2L /\ !(factor_found ?? false)
