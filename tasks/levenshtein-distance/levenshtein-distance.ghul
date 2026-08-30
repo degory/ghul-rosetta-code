@@ -6,7 +6,7 @@ levenshtein(source: string, target: string) -> int is
     let previous mut = LIST()
 
     for j in 0::target.length do
-        previous.add(j);
+        previous.add(j)
     od
 
     for i in 1::source.length do
@@ -21,13 +21,13 @@ levenshtein(source: string, target: string) -> int is
             let insertion = previous[j] + 1
             let deletion = current[j - 1] + 1
 
-            current.add(min(substitution, min(insertion, deletion)));
+            current.add(min(substitution, min(insertion, deletion)))
         od
 
-        previous = current;
+        previous = current
     od
 
-    return previous[target.length];
+    return previous[target.length]
 si
 
 write_line("{levenshtein("kitten", "sitting")}")

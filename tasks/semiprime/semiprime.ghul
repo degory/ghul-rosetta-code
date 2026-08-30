@@ -9,14 +9,14 @@ is_semiprime(n: int) -> bool => (
     while divisor * divisor <= rest /\ count < 3 do
         while rest % divisor == 0 do
             rest = rest / divisor
-            count = count + 1;
+            count = count + 1
         od
 
-        divisor = divisor + 1;
+        divisor = divisor + 1
     od
 
     if rest > 1 then
-        count = count + 1;
+        count = count + 1
     fi
 
     count == 2
@@ -28,5 +28,5 @@ write_line("semiprimes up to 100: {up_to_100}")
 
 for n in [1679, 1234, 5, 9, 2093] do
     write_line(
-        "{n} is {if is_semiprime(n) then "" else "not " fi}semiprime");
+        "{n} is {if is_semiprime(n) then "" else "not " fi}semiprime")
 od

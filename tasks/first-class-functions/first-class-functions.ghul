@@ -22,5 +22,5 @@ inverses.add(cube_root)
 for (function, inverse) in functions |> zip(inverses) do
     let round_trip = function >> inverse
 
-    write_line("{round_trip(0.5D):F6}");
+    write_line("{round_trip(0.5D):F6}")
 od

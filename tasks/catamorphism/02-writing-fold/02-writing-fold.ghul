@@ -6,20 +6,20 @@ fold_left[T, A](values: Iterable[T], seed: A, combine: (A, T) -> A) -> A is
     let running mut = seed
 
     for value in values do
-        running = combine(running, value);
+        running = combine(running, value)
     od
 
-    return running;
+    return running
 si
 
 fold_right[T, A](values: List[T], seed: A, combine: (T, A) -> A) -> A is
     let running mut = seed
 
     for i in 0..values.count do
-        running = combine(values[values.count - 1 - i], running);
+        running = combine(values[values.count - 1 - i], running)
     od
 
-    return running;
+    return running
 si
 
 let numbers = [1, 2, 3, 4, 5]

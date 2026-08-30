@@ -4,7 +4,7 @@ use Collections.LIST
 let squares = LIST[() -> int]()
 
 for i in 0..10 do
-    squares.add(() => i * i);
+    squares.add(() => i * i)
 od
 
 write_line("{squares[3]()}");

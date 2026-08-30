@@ -2,7 +2,7 @@ use IO.Std.write_line
 
 union Number is
     WHOLE(value: int)
-    FRACTIONAL(value: double);
+    FRACTIONAL(value: double)
 si
 
 use Number.WHOLE
@@ -33,7 +33,7 @@ accumulator(initial: Number) -> Number -> Number is
     return value => (
         sum = add(sum, value)
         sum
-    );
+    )
 si
 
 let x = accumulator(WHOLE(1))

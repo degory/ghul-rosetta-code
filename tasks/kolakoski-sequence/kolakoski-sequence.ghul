@@ -10,7 +10,7 @@ cycler(values: int[]) -> () -> int is
         let value = values[at]
         at = (at + 1) % values.count
         value
-    );
+    )
 si
 
 kolakoski(values: int[], length: int) -> List[int] is
@@ -24,13 +24,13 @@ kolakoski(values: int[], length: int) -> List[int] is
         sequence.add(value)
 
         for _ in 1..sequence[at_run] do
-            sequence.add(value);
+            sequence.add(value)
         od
 
-        at_run = at_run + 1;
+        at_run = at_run + 1
     od
 
-    return sequence[0..length];
+    return sequence[0..length]
 si
 
 run_lengths(sequence: List[int]) -> List[int] is
@@ -44,11 +44,11 @@ run_lengths(sequence: List[int]) -> List[int] is
 
         if last \/ sequence[i + 1] != sequence[i] then
             runs.add(run)
-            run = 0;
+            run = 0
         fi
     od
 
-    return runs;
+    return runs
 si
 
 self_describing(sequence: List[int]) -> bool => (
@@ -61,7 +61,7 @@ report(values: int[], length: int) is
 
     write_line("from ({values |> join(", ")}), first {length}:")
     write_line("  {sequence |> join(", ")}")
-    write_line("  self-describing: {self_describing(sequence)}");
+    write_line("  self-describing: {self_describing(sequence)}")
 si
 
 report([1, 2], 20)

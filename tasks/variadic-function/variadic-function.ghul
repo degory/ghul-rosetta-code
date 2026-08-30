@@ -4,31 +4,31 @@ use Ghul.Pipes
 
 print_all[T](values: T[]) is
     for value in values do
-        write_line("{value}");
+        write_line("{value}")
     od
 si
 
 class Animal(name: string) abstract is
     speak() -> string
 
-    to_string() -> string => "{name} says {speak()}";
+    to_string() -> string => "{name} says {speak()}"
 si
 
 class CAT(name: string): Animal is
     super(name)
 
-    speak() -> string => "meow";
+    speak() -> string => "meow"
 si
 
 class DOG(name: string): Animal is
     super(name)
 
-    speak() -> string => "woof";
+    speak() -> string => "woof"
 si
 
 herd(animals: Animal[]) is
     for animal in animals do
-        write_line("{animal}");
+        write_line("{animal}")
     od
 si
 

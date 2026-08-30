@@ -5,7 +5,7 @@ use Ghul.Pipes
 
 combinations(items: List[int], k: int) -> Pipe[List[int]] is
     if k == 0 then
-        yield LIST[int]();
+        yield LIST[int]()
     elif items.count >= k then
         let rest = items[1..<0]
 
@@ -15,19 +15,19 @@ combinations(items: List[int], k: int) -> Pipe[List[int]] is
             whole.add(items[0])
 
             for value in tail do
-                whole.add(value);
+                whole.add(value)
             od
 
-            yield whole;
+            yield whole
         od
 
-        yield in combinations(rest, k);
+        yield in combinations(rest, k)
     fi
 si
 
 partitions(items: List[int], sizes: List[int]) -> Pipe[List[List[int]]] is
     if sizes.count == 0 then
-        yield LIST[List[int]]();
+        yield LIST[List[int]]()
     else
         for block in combinations(items, sizes[0]) do
             let remaining = items |> except(block) |> collect_list()
@@ -38,10 +38,10 @@ partitions(items: List[int], sizes: List[int]) -> Pipe[List[List[int]]] is
                 whole.add(block)
 
                 for rest in tail do
-                    whole.add(rest);
+                    whole.add(rest)
                 od
 
-                yield whole;
+                yield whole
             od
         od
     fi
@@ -58,7 +58,7 @@ show(sizes: int[]) is
 
     partitions(items, sizes |> collect_list())
         |> each(partition =>
-            write_line("  ({partition |> map(braces) |> join(", ")})"));
+            write_line("  ({partition |> map(braces) |> join(", ")})"))
 si
 
 show([2, 0, 2]);

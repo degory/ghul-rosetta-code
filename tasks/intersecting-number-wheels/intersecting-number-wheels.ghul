@@ -4,7 +4,7 @@ use Ghul.Pipes
 
 union Value is
     NUMBER(digit: int)
-    WHEEL(name: char);
+    WHEEL(name: char)
 si
 
 use Value.NUMBER
@@ -20,7 +20,7 @@ class WHEEL_SET is
 
         for (name, values) in wheels do
             _values[name] = values
-            _position[name] = 0;
+            _position[name] = 0
         od
     si
 
@@ -32,9 +32,9 @@ class WHEEL_SET is
 
         case values[at]
         when number: NUMBER then
-            return number.digit;
+            return number.digit
         when wheel: WHEEL then
-            return next(wheel.name);
+            return next(wheel.name)
         esac
     si
 si
@@ -49,16 +49,16 @@ show(wheels: (name: char, values: Value[])[]) is
     let wheel_set = WHEEL_SET(wheels)
 
     for (name, values) in wheels do
-        write_line("{name}: {values |> map(describe) |> join(" ")}");
+        write_line("{name}: {values |> map(describe) |> join(" ")}")
     od
 
     let generated = LIST()
 
     for _ in 1::20 do
-        generated.add("{wheel_set.next(wheels[0].name)}");
+        generated.add("{wheel_set.next(wheels[0].name)}")
     od
 
-    write_line("  {generated |> join(" ")}");
+    write_line("  {generated |> join(" ")}")
 si
 
 let simple: (name: char, values: Value[])[] =
@@ -81,5 +81,5 @@ let multiply_connected: (name: char, values: Value[])[] = [
 ]
 
 for group in [simple, two_wheels, shared, multiply_connected] do
-    show(group);
+    show(group)
 od

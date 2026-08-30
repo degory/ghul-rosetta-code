@@ -6,7 +6,7 @@ use System.Math
 
 jaro(left: string, right: string) -> double is
     if left.length == 0 \/ right.length == 0 then
-        return if left.length == right.length then 1.0D else 0.0D fi;
+        return if left.length == right.length then 1.0D else 0.0D fi
     fi
 
     let window = Math.max(left.length, right.length) / 2 - 1
@@ -21,7 +21,7 @@ jaro(left: string, right: string) -> double is
             if !taken.contains(j) /\ left[i] == right[j] then
                 taken.add(j)
                 matched_left.add(left[i])
-                break;
+                break
             fi
         od
     od
@@ -29,7 +29,7 @@ jaro(left: string, right: string) -> double is
     let match_count = matched_left.count
 
     if match_count == 0 then
-        return 0.0D;
+        return 0.0D
     fi
 
     let matched_right =
@@ -48,7 +48,7 @@ jaro(left: string, right: string) -> double is
 
     return (matches / cast double(left.length) +
           matches / cast double(right.length) +
-          (matches - half_transpositions) / matches) / 3.0D;
+          (matches - half_transpositions) / matches) / 3.0D
 si
 
 [("MARTHA", "MARHTA"),

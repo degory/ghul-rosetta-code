@@ -9,13 +9,13 @@ fibonacci_up_to(limit: int) -> Pipe[int] is
         yield smaller
 
         if larger > limit then
-            break;
+            break
         fi
 
         let next = smaller + larger
 
         smaller = larger
-        larger = next;
+        larger = next
     od
 si
 
@@ -27,15 +27,15 @@ zeckendorf(n: int) -> string is
         if value <= remaining then
             digits.append('1')
 
-            remaining = remaining - value;
+            remaining = remaining - value
         elif digits.length > 0 then
-            digits.append('0');
+            digits.append('0')
         fi
     od
 
-    return if digits.length == 0 then "0" else digits.to_string() fi;
+    return if digits.length == 0 then "0" else digits.to_string() fi
 si
 
 for n in 0::20 do
-    write_line("{n,2}: {zeckendorf(n)}");
+    write_line("{n,2}: {zeckendorf(n)}")
 od

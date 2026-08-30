@@ -12,15 +12,15 @@ almost_primes(k: int) -> Pipe[int] is
 
     do
         if prime_factor_count(n) == k then
-            yield n;
+            yield n
         fi
 
-        n = n + 1;
+        n = n + 1
     od
 si
 
 for k in 1::5 do
     let first_ten = almost_primes(k) |> take(10) |> map(n => "{n,5}")
 
-    write_line("k = {k}:{first_ten |> join("")}");
+    write_line("k = {k}:{first_ten |> join("")}")
 od

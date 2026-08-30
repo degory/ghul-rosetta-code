@@ -3,7 +3,7 @@ use Ghul.Pipes
 
 union Nested is
     ATOM(value: int)
-    LIST(items: Nested[]);
+    LIST(items: Nested[])
 si
 
 use Nested.ATOM
@@ -16,10 +16,10 @@ list(items: Nested[]) -> Nested => LIST(items)
 flatten(node: Nested) -> Pipe[int] is
     case node
     when (value): ATOM then
-        yield value;
+        yield value
     when (items): LIST then
         for item in items do
-            yield in flatten(item);
+            yield in flatten(item)
         od
     esac
 si

@@ -20,7 +20,7 @@ stats(start: long) -> (int, long, int) => (
 
         if current > highest then
             highest = current
-            at = terms;
+            at = terms
         fi
     od
 
@@ -31,5 +31,5 @@ write_line("  n   l                h  i")
 
 for n in 20::39 do
     let (terms, highest, at) = stats(cast long(n))
-    write_line("{n,3}  {terms,3}  {highest,17:N0}  {at}");
+    write_line("{n,3}  {terms,3}  {highest,17:N0}  {at}")
 od

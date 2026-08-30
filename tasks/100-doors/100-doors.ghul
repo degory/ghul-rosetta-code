@@ -8,7 +8,7 @@ for pass in 1::100 do
 
     while door <= 100 do
         doors[door - 1] = !doors[door - 1]
-        door = door + pass;
+        door = door + pass
     od
 od
 

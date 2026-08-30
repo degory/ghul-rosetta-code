@@ -11,7 +11,7 @@ van_der_corput(n: int, base: int) -> double pure => (
         term = term + cast(rest % base) * weight
 
         rest = rest / base
-        weight = weight / cast(base);
+        weight = weight / cast(base)
     od
 
     term
@@ -25,8 +25,8 @@ for base in 3::5 do
     let terms = LIST()
 
     for n in 0::9 do
-        terms.add("{van_der_corput(n, base):F4}");
+        terms.add("{van_der_corput(n, base):F4}")
     od
 
-    write_line("base {base}: {terms |> join(", ")}");
+    write_line("base {base}: {terms |> join(", ")}")
 od

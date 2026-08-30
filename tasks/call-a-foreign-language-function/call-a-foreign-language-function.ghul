@@ -24,12 +24,12 @@ bind(
         let func = System.Type.get_type("System.Func`2")!
 
         return stub.create_delegate(
-            func.make_generic_type([pointer, result]));
+            func.make_generic_type([pointer, result]))
     fi
 
     let action = System.Type.get_type("System.Action`1")!
 
-    return stub.create_delegate(action.make_generic_type([pointer]));
+    return stub.create_delegate(action.make_generic_type([pointer]))
 si
 
 let libc = NativeLibrary.load("libc.so.6")

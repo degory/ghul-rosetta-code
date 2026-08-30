@@ -9,7 +9,7 @@ running_maxima(heights: Iterable[int]) -> Pipe[int] is
     for height in heights do
         highest = Math.max(highest, height)
 
-        yield highest;
+        yield highest
     od
 si
 

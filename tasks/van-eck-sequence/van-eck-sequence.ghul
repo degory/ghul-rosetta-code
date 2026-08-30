@@ -22,7 +22,7 @@ van_eck() -> Pipe[int] is
         last_seen[term] = position
 
         term = next
-        position = position + 1;
+        position = position + 1
     od
 si
 

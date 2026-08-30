@@ -15,13 +15,13 @@ roman(n: int) -> string is
         while remaining >= values[i] do
             numeral.append(symbols[i])
 
-            remaining = remaining - values[i];
+            remaining = remaining - values[i]
         od
     od
 
-    return numeral.to_string();
+    return numeral.to_string()
 si
 
 for n in [1990, 2008, 1666, 4, 9, 3999] do
-    write_line("{n,4} = {roman(n)}");
+    write_line("{n,4} = {roman(n)}")
 od

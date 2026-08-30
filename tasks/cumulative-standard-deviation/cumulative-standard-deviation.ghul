@@ -17,5 +17,5 @@ let standard_deviation =
     )
 
 for sample in [2.0D, 4.0D, 4.0D, 4.0D, 5.0D, 5.0D, 7.0D, 9.0D] do
-    write_line("after {sample}: {standard_deviation(sample)}");
+    write_line("after {sample}: {standard_deviation(sample)}")
 od

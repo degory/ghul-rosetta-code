@@ -27,7 +27,7 @@ namespace Rosetta is
 
         init() is
             title = ""
-            state = "queued";
+            state = "queued"
         si
     si
 
@@ -35,7 +35,7 @@ namespace Rosetta is
         tasks: LIST[TASK_ENTRY] public
 
         init() is
-            tasks = LIST[TASK_ENTRY]();
+            tasks = LIST[TASK_ENTRY]()
         si
     si
 
@@ -52,10 +52,10 @@ namespace Rosetta is
                 o.write_indented = true
                 o.default_ignore_condition = JsonIgnoreCondition.WHEN_WRITING_NULL
 
-                _options = o;
+                _options = o
             fi
 
-            return _options;
+            return _options
         si
 
         init(path: string) is
@@ -68,7 +68,7 @@ namespace Rosetta is
 
                 if file? then
                     for entry in file.tasks do
-                        _by_title[entry.title] = entry;
+                        _by_title[entry.title] = entry
                     od
                 fi
             fi
@@ -82,16 +82,16 @@ namespace Rosetta is
             let found: TASK_ENTRY mut
 
             if _by_title.try_get_value(title, found ref) then
-                return found;
+                return found
             fi
 
-            return null;
+            return null
         si
 
         // The entry for `title`, created in the queued state if it is not already there.
         entry(title: string) -> TASK_ENTRY is
             if let existing = find(title) then
-                return existing;
+                return existing
             fi
 
             let created = TASK_ENTRY()
@@ -100,7 +100,7 @@ namespace Rosetta is
 
             _by_title[title] = created
 
-            return created;
+            return created
         si
 
         // Every entry, ordered by title, so the file's diff shows only what changed.
@@ -109,7 +109,7 @@ namespace Rosetta is
 
             all.sort((a: TASK_ENTRY, b: TASK_ENTRY) -> int => string.compare_ordinal(a.title, b.title))
 
-            return all;
+            return all
         si
 
         in_state(state: string) -> LIST[TASK_ENTRY] is
@@ -117,21 +117,21 @@ namespace Rosetta is
 
             for e in entries() do
                 if e.state =~ state then
-                    result.add(e);
+                    result.add(e)
                 fi
             od
 
-            return result;
+            return result
         si
 
         save() is
             let file = LEDGER_FILE()
 
             for e in entries() do
-                file.tasks.add(e);
+                file.tasks.add(e)
             od
 
-            IO.File.write_all_text(_path, "{JsonSerializer.serialize[LEDGER_FILE](file, options)}\n");
+            IO.File.write_all_text(_path, "{JsonSerializer.serialize[LEDGER_FILE](file, options)}\n")
         si
     si
 si

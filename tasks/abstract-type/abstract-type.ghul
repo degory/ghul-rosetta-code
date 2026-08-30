@@ -3,25 +3,25 @@ use Ghul.Pipes
 
 trait Shape is
     area() -> double
-    name() -> string;
+    name() -> string
 si
 
 trait Described is
-    describe() -> string => "a shape";
+    describe() -> string => "a shape"
 si
 
 class Polygon: Shape, Described abstract is
     _sides: int
 
     init(sides: int) is
-        _sides = sides;
+        _sides = sides
     si
 
     area() -> double
 
     name() -> string => "{_sides}-sided polygon"
 
-    describe() -> string => "{name()}, area {area():F2}";
+    describe() -> string => "{name()}, area {area():F2}"
 si
 
 class SQUARE: Polygon is
@@ -30,10 +30,10 @@ class SQUARE: Polygon is
     init(side: double) is
         super.init(4)
 
-        _side = side;
+        _side = side
     si
 
-    area() -> double => _side * _side;
+    area() -> double => _side * _side
 si
 
 class TRIANGLE: Polygon is
@@ -44,12 +44,12 @@ class TRIANGLE: Polygon is
         super.init(3)
 
         _base = base
-        _height = height;
+        _height = height
     si
 
     area() -> double => _base * _height / 2.0D
 
-    describe() -> string => "{super.describe()}, and it is a triangle";
+    describe() -> string => "{super.describe()}, and it is a triangle"
 si
 
 let shapes: Shape[] = [SQUARE(3.0D), TRIANGLE(4.0D, 5.0D)]

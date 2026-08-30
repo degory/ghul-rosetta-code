@@ -11,7 +11,7 @@ let composite = LIST[bool]()
 for _ in 0::limit do
     radical.add(1)
     factor_counts.add(0)
-    composite.add(false);
+    composite.add(false)
 od
 
 for prime in 2..(limit + 1) do
@@ -22,7 +22,7 @@ for prime in 2..(limit + 1) do
             radical[multiple] = radical[multiple] * prime
             factor_counts[multiple] = factor_counts[multiple] + 1
             composite[multiple] = true
-            multiple = multiple + prime;
+            multiple = multiple + prime
         od
     fi
 od
@@ -33,29 +33,29 @@ for row in 0..5 do
     write_line(
         (row * 10 + 1..row * 10 + 11)
             |> map(n => "{radical[n],3}")
-            |> join(" "));
+            |> join(" "))
 od
 
 for n in [99999, 499999, 999999] do
-    write_line("radical[{n}] = {radical[n]}");
+    write_line("radical[{n}] = {radical[n]}")
 od
 
 let distribution = LIST[int]()
 
 for _ in 0..8 do
-    distribution.add(0);
+    distribution.add(0)
 od
 
 for n in 1..(limit + 1) do
     let count = factor_counts[n]
-    distribution[count] = distribution[count] + 1;
+    distribution[count] = distribution[count] + 1
 od
 
 write_line("first 1000000 integers by distinct prime factors:")
 
 for count in 0..8 do
     if distribution[count] > 0 then
-        write_line("{count}: {distribution[count]:N0}");
+        write_line("{count}: {distribution[count]:N0}")
     fi
 od
 
@@ -73,7 +73,7 @@ for base in primes do
 
     while power <= cast long(limit) do
         powers = powers + 1
-        power = power * cast long(base);
+        power = power * cast long(base)
     od
 od
 

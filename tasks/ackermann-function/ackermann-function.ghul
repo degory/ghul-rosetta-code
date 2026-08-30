@@ -13,5 +13,5 @@ ackermann(m: int, n: int) -> int =>
 for m in 0::3 do
     let row = (0::5) |> map(n => "{ackermann(m, n)}") |> join(" ")
 
-    write_line("A({m}, n) = {row}");
+    write_line("A({m}, n) = {row}")
 od

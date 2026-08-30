@@ -21,27 +21,27 @@ namespace Rosetta is
             _client.default_request_headers.add(
                 "User-Agent",
                 "ghul-rosetta/1.0 (https://github.com/degory/ghul-rosetta-code)"
-            );
+            )
         si
 
         _get(query: string) -> JsonDocument is
             let body = _client.get_string_async("{_api}?{query}&format=json&formatversion=2").result
 
-            return JsonDocument.parse(body, _);
+            return JsonDocument.parse(body, _)
         si
 
         _post(fields: MAP[string, string]) -> JsonDocument is
             let form = LIST[KeyValuePair[string, string]]()
 
             for pair in fields do
-                form.add(pair);
+                form.add(pair)
             od
 
             let content = FormUrlEncodedContent(form)
             let response = _client.post_async(_api, content).result
             let body = response.content.read_as_string_async().result
 
-            return JsonDocument.parse(body, _);
+            return JsonDocument.parse(body, _)
         si
 
         // Every page in a category, following the continuation the API returns when the
@@ -68,26 +68,26 @@ namespace Rosetta is
 
                 for member in root.get_property("query").get_property("categorymembers").enumerate_array() do
                     if let title = member.get_property("title").get_string() then
-                        titles.add(title);
+                        titles.add(title)
                     fi
                 od
 
                 let next: JsonElement mut
 
                 if !root.try_get_property("continue", next ref) then
-                    break;
+                    break
                 fi
 
                 let cursor: JsonElement mut
 
                 if !next.try_get_property("cmcontinue", cursor ref) then
-                    break;
+                    break
                 fi
 
-                continue_from = cursor.get_string() ?? "";
+                continue_from = cursor.get_string() ?? ""
             od
 
-            return titles;
+            return titles
         si
 
         // The raw wikitext of a page, or absent when the page does not exist.
@@ -98,10 +98,10 @@ namespace Rosetta is
             let parse: JsonElement mut
 
             if !document.root_element.try_get_property("parse", parse ref) then
-                return null;
+                return null
             fi
 
-            return parse.get_property("wikitext").get_string();
+            return parse.get_property("wikitext").get_string()
         si
 
         _token(kind: string) -> string is
@@ -111,7 +111,7 @@ namespace Rosetta is
                 .get_property("query")
                 .get_property("tokens")
                 .get_property("{kind}token")
-                .get_string() ?? "";
+                .get_string() ?? ""
         si
 
         // Signs in with a bot password and holds the edit token the session needs.
@@ -140,10 +140,10 @@ namespace Rosetta is
                         status
                     fi
 
-                throw System.Exception("could not sign in to the wiki: {detail}");
+                throw System.Exception("could not sign in to the wiki: {detail}")
             fi
 
-            _csrf_token = _token("csrf");
+            _csrf_token = _token("csrf")
         si
 
         // The account the session is acting as, and whether it may edit. Anonymous requests get
@@ -159,11 +159,11 @@ namespace Rosetta is
 
             for right in user.get_property("rights").enumerate_array() do
                 if right.get_string() =~ "edit" then
-                    can_edit = true;
+                    can_edit = true
                 fi
             od
 
-            return (name = user.get_property("name").get_string() ?? "", can_edit = can_edit);
+            return (name = user.get_property("name").get_string() ?? "", can_edit = can_edit)
         si
 
         // How many lines an edit would remove, according to the wiki's own diff of the live page
@@ -188,7 +188,7 @@ namespace Rosetta is
                     .get_string() ?? ""
 
             return
-                System.Text.RegularExpressions.Regex.matches(body, "diff-deletedline").count;
+                System.Text.RegularExpressions.Regex.matches(body, "diff-deletedline").count
         si
 
         // Replaces a page's whole text. `log_in` must have run first.
@@ -212,7 +212,7 @@ namespace Rosetta is
             let error: JsonElement mut
 
             if root.try_get_property("error", error ref) then
-                throw System.Exception("the wiki refused the edit: {error.to_string()}");
+                throw System.Exception("the wiki refused the edit: {error.to_string()}")
             fi
 
             let outcome = root.get_property("edit")
@@ -222,7 +222,7 @@ namespace Rosetta is
             // captcha it wants, which filter matched - and none of it is guessable from the
             // one-word result, so the whole thing is reported.
             if status !~ "Success" then
-                throw System.Exception("the wiki did not apply the edit: {outcome.to_string()}");
+                throw System.Exception("the wiki did not apply the edit: {outcome.to_string()}")
             fi
         si
     si

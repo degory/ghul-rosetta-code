@@ -5,7 +5,7 @@ use Ghul.Pipes
 
 permutations(items: List[int]) -> Pipe[List[int]] is
     if items.count == 0 then
-        yield LIST[int]();
+        yield LIST[int]()
     else
         for i in 0..items.count do
             let rest = LIST[int](items)
@@ -18,10 +18,10 @@ permutations(items: List[int]) -> Pipe[List[int]] is
                 whole.add(items[i])
 
                 for value in tail do
-                    whole.add(value);
+                    whole.add(value)
                 od
 
-                yield whole;
+                yield whole
             od
         od
     fi

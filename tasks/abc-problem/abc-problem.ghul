@@ -25,5 +25,5 @@ let blocks = [
 let can_make_word = (word: string) => can_spell(word.to_upper(), blocks)
 
 for word in ["A", "BARK", "BOOK", "TREAT", "COMMON", "SQUAD", "CONFUSE"] do
-    write_line("can_make_word(\"{word}\") = {can_make_word(word)}");
+    write_line("can_make_word(\"{word}\") = {can_make_word(word)}")
 od

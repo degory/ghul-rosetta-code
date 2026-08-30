@@ -14,10 +14,10 @@ encode(n: int, base: int) -> string => (
 
         if remainder < 0 then
             remainder = remainder - base
-            rest = rest + 1;
+            rest = rest + 1
         fi
 
-        digits = "{digit_set[remainder]}{digits}";
+        digits = "{digit_set[remainder]}{digits}"
     od
 
     if digits.length == 0 then "0" else digits fi
@@ -33,5 +33,5 @@ for (n, base) in [(10, -2), (146, -3), (15, -10)] do
 
     write_line(
         "{n} in base {base} is {encoded}, "
-        "and back again is {decode(encoded, base)}");
+        "and back again is {decode(encoded, base)}")
 od

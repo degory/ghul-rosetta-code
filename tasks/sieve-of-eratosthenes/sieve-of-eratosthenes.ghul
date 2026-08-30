@@ -15,19 +15,19 @@ sieve(limit: int) -> List[int] is
 
             while multiple <= limit do
                 composite[multiple] = true
-                multiple = multiple + prime;
+                multiple = multiple + prime
             od
         fi
 
-        prime = prime + 1;
+        prime = prime + 1
     od
 
     return
         (2::limit)
             |> filter(i => !composite[i])
-            |> collect();
+            |> collect()
 si
 
 for prime in sieve(100) do
-    write_line("{prime}");
+    write_line("{prime}")
 od

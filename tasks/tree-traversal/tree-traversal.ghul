@@ -4,7 +4,7 @@ use Ghul.Pipes
 
 union Tree[T] is
     EMPTY
-    NODE(value: T, left: Tree[T], right: Tree[T]);
+    NODE(value: T, left: Tree[T], right: Tree[T])
 si
 
 use Tree.EMPTY
@@ -15,7 +15,7 @@ preorder[T](tree: Tree[T]) -> Pipe[T] is
         yield value
 
         yield in preorder(left)
-        yield in preorder(right);
+        yield in preorder(right)
     fi
 si
 
@@ -25,7 +25,7 @@ inorder[T](tree: Tree[T]) -> Pipe[T] is
 
         yield value
 
-        yield in inorder(right);
+        yield in inorder(right)
     fi
 si
 
@@ -34,7 +34,7 @@ postorder[T](tree: Tree[T]) -> Pipe[T] is
         yield in postorder(left)
         yield in postorder(right)
 
-        yield value;
+        yield value
     fi
 si
 
@@ -50,7 +50,7 @@ levelorder[T](tree: Tree[T]) -> Pipe[T] is
             yield value
 
             pending.enqueue(left)
-            pending.enqueue(right);
+            pending.enqueue(right)
         fi
     od
 si
