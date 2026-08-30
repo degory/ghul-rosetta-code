@@ -15,4 +15,4 @@ fibonacci_sequence
     |> each(((position, value)) =>
         write_line("fib({position}) = {value}"))
 
-write_line("fib(30) = {fib(30)}");
+write_line("fib(30) = {fib(30)}")

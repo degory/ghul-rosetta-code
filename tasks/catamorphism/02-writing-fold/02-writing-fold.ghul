@@ -33,4 +33,4 @@ let right_sum = fold_right(numbers, 0, (value, total) => value + total)
 write_line("left  sum:  {left_sum}")
 write_line("right sum:  {right_sum}")
 write_line("left  tree: {fold_left(numbers, "nil", bracket_left)}")
-write_line("right tree: {fold_right(numbers, "nil", bracket_right)}");
+write_line("right tree: {fold_right(numbers, "nil", bracket_right)}")

@@ -29,4 +29,4 @@ let los_angeles = (33.94D, -118.40D)
 let distance =
     great_circle_distance(nashville, los_angeles, earth_radius_km)
 
-write_line("BNA to LAX: {distance:F6} km");
+write_line("BNA to LAX: {distance:F6} km")

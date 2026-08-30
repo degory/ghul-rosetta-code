@@ -16,4 +16,4 @@ let sum = (low: int, high: int, term: () -> double) -> double => (
     total
 )
 
-write_line("{sum(1, 100, () => 1.0D / cast double(i))}");
+write_line("{sum(1, 100, () => 1.0D / cast double(i))}")

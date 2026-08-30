@@ -50,4 +50,4 @@ for step in 0::(fraction.count - 1) do
     one = !one
 od
 
-write_line("83116/51639 is term {System.Convert.to_int64(bits, 2)}");
+write_line("83116/51639 is term {System.Convert.to_int64(bits, 2)}")

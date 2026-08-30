@@ -25,4 +25,4 @@ write_line("nothing:   {describe(nothing)}")
 write_line("number:    {describe(number)}")
 write_line("no_number: {describe(no_number)}")
 write_line("")
-write_line("nothing, with a fallback: {nothing ?? "none"}");
+write_line("nothing, with a fallback: {nothing ?? "none"}")

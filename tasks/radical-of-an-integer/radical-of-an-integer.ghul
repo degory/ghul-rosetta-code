@@ -80,4 +80,4 @@ od
 write_line(
     "{primes.count:N0} primes plus {powers} prime powers "
     "= {primes.count + powers:N0}, matching the one-factor "
-    "count {distribution[1]:N0}");
+    "count {distribution[1]:N0}")

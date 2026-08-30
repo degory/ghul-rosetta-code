@@ -11,4 +11,4 @@ let product = numbers |> reduce(1, (total, value) => total * value)
 
 write_line("sum:     {sum}")
 write_line("product: {product}")
-write_line("largest: {numbers |> reduce(numbers[0], largest)}");
+write_line("largest: {numbers |> reduce(numbers[0], largest)}")

@@ -28,4 +28,4 @@ si
 
 write_line("first ten:      {van_eck() |> take(10) |> join(" ")}")
 write_line(
-    "terms 991-1000: {van_eck() |> skip(990) |> take(10) |> join(" ")}");
+    "terms 991-1000: {van_eck() |> skip(990) |> take(10) |> join(" ")}")

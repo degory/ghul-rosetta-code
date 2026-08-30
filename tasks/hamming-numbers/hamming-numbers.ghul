@@ -33,4 +33,4 @@ od
 
 write_line(hamming |> take(20) |> join(" "))
 write_line("1691st: {hamming[1690]}")
-write_line("1000000th: {hamming[999999]}");
+write_line("1000000th: {hamming[999999]}")

@@ -86,4 +86,4 @@ Tasks.Parallel.`for(
 
 write_line(
     "300 more requests over {keys.count} keys, in parallel: "
-    "{made} made in total, {connections.count} held");
+    "{made} made in total, {connections.count} held")

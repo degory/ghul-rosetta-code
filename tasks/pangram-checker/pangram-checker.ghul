@@ -9,4 +9,4 @@ is_pangram(sentence: string) -> bool =>
         |> count() == 26
 
 write_line("{is_pangram("The quick brown fox jumps over the lazy dog")}")
-write_line("{is_pangram("Hello, World!")}");
+write_line("{is_pangram("Hello, World!")}")

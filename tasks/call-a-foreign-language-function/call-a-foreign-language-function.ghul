@@ -44,4 +44,4 @@ let copy = strdup(source)
 write_line(Marshal.ptr_to_string_ansi(copy))
 
 free(copy)
-Marshal.free_h_global(source);
+Marshal.free_h_global(source)

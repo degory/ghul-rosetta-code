@@ -81,4 +81,4 @@ for pair in pairs do
 od
 
 write_line("{up_to_million} pairs up to 1000000")
-write_line("{up_to_ten_million} pairs up to 10000000");
+write_line("{up_to_ten_million} pairs up to 10000000")
