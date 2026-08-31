@@ -1,0 +1,58 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+use System.Numerics.BigInteger;
+use System.Numerics.IAdditionOperators.`+;
+use System.Numerics.ISubtractionOperators.`-;
+use System.Numerics.IMultiplyOperators.`*;
+use System.Numerics.IModulusOperators.`%;
+
+let two = BigInteger(2);
+
+jacobsthal_from(first: BigInteger, second: BigInteger) -> Pipe[BigInteger] is
+    let previous mut = first;
+    let current mut = second;
+
+    do
+        yield previous;
+        let next = current + previous * two;
+        previous = current;
+        current = next;
+    od
+si
+
+jacobsthal() -> Pipe[BigInteger] => jacobsthal_from(BigInteger(0), BigInteger(1));
+
+jacobsthal_lucas() -> Pipe[BigInteger] => jacobsthal_from(two, BigInteger(1));
+
+jacobsthal_oblongs() -> Pipe[BigInteger] is
+    let previous mut = BigInteger(0);
+    let current mut = BigInteger(1);
+
+    do
+        yield previous * current;
+        let next = current + previous * two;
+        previous = current;
+        current = next;
+    od
+si
+
+is_prime(n: BigInteger) -> bool =>
+    n > BigInteger(1) /\
+        stream(two, d => d || d + BigInteger(1))
+            |> take_while(d => d * d <= n)
+            |> all(d => n % d !~ BigInteger(0));
+
+show(label: string, values: Pipe[BigInteger], count: int) is
+    write_line("{label}:");
+    let rows = values |> take(count) |> chunk(10) |> collect_list();
+
+    rows |> each(row =>
+        write_line(row |> map((v: BigInteger) => "{v,16}") |> join(" ")));
+si
+
+show("first 30 Jacobsthal numbers", jacobsthal(), 30);
+show("first 30 Jacobsthal-Lucas numbers", jacobsthal_lucas(), 30);
+show("first 20 Jacobsthal oblong numbers", jacobsthal_oblongs(), 20);
+show("first 10 Jacobsthal primes",
+    jacobsthal() |> filter(is_prime),
+    10);
