@@ -1,0 +1,26 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+use System.DateTime;
+use System.DayOfWeek;
+
+last_friday(year: int, month: int) -> DateTime is
+    let candidate mut = DateTime(year, month,
+        DateTime.days_in_month(year, month));
+
+    while candidate.day_of_week !~ DayOfWeek.FRIDAY do
+        candidate = candidate.add_days(-1.0D);
+    od
+
+    candidate
+si
+
+last_fridays(year: int) -> Pipe[DateTime] is
+    for month in 1::12 do
+        yield last_friday(year, month);
+    od
+si
+
+let year = 2012;
+
+last_fridays(year)
+    |> each(friday => write_line("{friday:yyyy-MM-dd}"));
