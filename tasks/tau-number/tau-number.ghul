@@ -1,0 +1,31 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+
+divisor_count(n: int) -> int is
+    let count mut = 0;
+    let divisor mut = 1;
+
+    while divisor * divisor <= n do
+        if n % divisor == 0 then
+            count = count + 2;
+        fi
+
+        if divisor * divisor == n then
+            count = count - 1;
+        fi
+
+        divisor = divisor + 1;
+    od
+
+    count
+si
+
+is_tau(n: int) -> bool => n % divisor_count(n) == 0;
+
+let first_hundred = stream(1, n => n || n + 1)
+    |> filter(is_tau)
+    |> take(100)
+    |> collect_list();
+
+first_hundred |> chunk(10)
+    |> each(row => write_line(row |> map((n: int) => "{n,6}") |> join("")));
