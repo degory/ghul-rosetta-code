@@ -95,6 +95,21 @@ Because an alias is transparent, it cannot be defined in terms of itself — dir
 
 An alias is scoped like any other `use`: it belongs to the namespace block it is written in, and a block elsewhere that wants the same shorthand declares it again. Consumers are unaffected either way, since a signature written with an alias is a signature written in the type it names.
 
+## statement terminators
+
+Statements and simple declarations end with `;`, but the terminator can be left off at the end of a line: wherever the grammar could accept a `;` and the next token opens a new line, the boundary is inferred. End of file ends a line too, so the last construct in a file needs no terminator either. Two statements on one line still need the `;` between them.
+
+Two warnings police the choice of style, and both are off by default — either style compiles silently. `--warn missing-semicolon` reports every inferred boundary, for a project that wants its terminators written out; `--warn redundant-semicolon` reports a written `;` the line break would infer anyway — every end-of-line terminator except a `;` separating two string literals (see below), since nothing else reads the terminator for meaning: a body's tail is judged by its type, and a trailing `|` closes as a pipe-wrap when the next line does not carry the chain on. Once enabled with `--warn`, a slug responds to `--warn-as-error` and the other severity flags like any other.
+
+A handful of rules keep multi-line expressions unambiguous, and they codify the conventional wrapping style rather than restricting it:
+
+- A line that opens with `.`, `|`, or `|>` continues the expression above it — member chains, pipes and thread-first chains hang exactly as they always have. That is also what decides a trailing `|`: a line break after one closes it as the postfix pipe-wrap (`xs |` is `pipe(xs)`) unless the next line carries the chain on, so `xs |` followed by `.map(f)` is one chain while `xs |` followed by a new statement is a wrap.
+- A line that opens with `(`, `[`, an operator, or `rec` starts something new — a destructure assignment `(a, b) = …`, the next declaration, a prefix `!`, a recursive self-reference call `rec(n - 1)` — and never glues to the line above as a call, an index, an infix operand, or a rec-lambda marker. Wrapped operator expressions put the operator at the end of the line (`a +` then the newline, not the newline then `+ a`), and a rec-lambda's `rec` stays on the line with its formal parameters.
+- A bare `return` at the end of a line is a void return when the next line opens with a closing keyword (`fi`, `si`, `od`, …), and otherwise takes the next line's expression as its value. The two readings never compete: a statement written directly after a `return` in the same block would be unreachable, so a following line that starts an expression can only sensibly be the return's value, and a `return` that ends its branch is followed by the closing keyword, which keeps it void.
+- In a parenthesised group, a top-level `,` commits the tuple reading and an inferred boundary commits the block reading, exactly as a written `;` does. An operator-headed line after a compound statement keeps the expression reading, as it does with terminators written; give the block reading a `;` after the closing keyword.
+
+Statement terminators carry no meaning beyond the boundary: in particular, whether a body's final statement ends with `;` never changes what the body returns — the tail is judged by its type (see functions below). The one boundary only a written `;` can make is between two string literals, which otherwise chain into a single literal across the line break (see the string-literal section below).
+
 ## variables
 
 See <https://ghul.dev/definitions.html#variables>.
@@ -209,7 +224,13 @@ An interpolated expression can carry an alignment and a format specifier, as in 
 let padded = "[{value,12:F3}]";     // [    1500.000]
 ```
 
-Adjacent string literals concatenate, so a long string can be split across lines — plain and interpolated literals mix freely.
+Adjacent string literals concatenate, so a long string can be split across lines — plain and interpolated literals mix freely. Comments count as the whitespace they sit in, so a commented fragment chains like an uncommented one; only a `;` separates two otherwise-adjacent literals. That `;` is the one statement terminator that carries meaning — where a statement ends on a string literal and the next begins with one, it keeps them from chaining into a single literal, so `redundant-semicolon` never reports it:
+
+```ghul
+let band = "top";
+"{band} band"        // a new statement — without the `;` the two
+                     // literals chain, and band is not defined yet
+```
 
 Inside the braces you are in *expression* context, so a nested string literal is written normally — `"{format("hello")}"` needs no escaping of its inner quotes. To write a literal brace, double it: `"{{"` and `"}}"`. The escapes are `\t`, `\n`, `\r` and `\\`, plus a run of octal digits for an arbitrary character code — so an escape character is `"\33"`. Any other character after a `\` stands for itself, which is what makes `\"` a quote.
 
@@ -298,7 +319,7 @@ si
 
 A named function's signature is fully explicit: every argument has a written type, and so does the return — written after `->`, or the `->` left off to make the function `void`. The compiler infers no part of a named function's or method's signature.
 
-A block body produces its value with an explicit `return`, or by ending on a bare expression: a final statement that reaches the body's closing keyword without a terminating `;` is the function's return value on the fall-through path. An expression qualifies, and so do an `if`/`case` expression and a `val ... lav` block. The trailing `;` decides between the two readings, so a tail whose type does not match the declared return type is an error at the tail; writing the semicolon turns it back into an ordinary statement whose value is discarded. An asynchronous function accepts a bare-`T` value as its tail exactly where it accepts `return T`. A guard `if` without `else` delivers nothing on its fall-through path and cannot stand as a tail; appending the `;` there restores the statement reading, which falls off the end and draws a `definite-return` warning instead. Loops, `let`, assignments and `assert` never provide a tail value, and neither do labelled statements or `try` blocks (until `try` has an expression form). Reaching the end of a non-void function any other way returns the default value of the return type and draws a `definite-return` warning. Void bodies tolerate any tail: whatever is left standing at the end of a void method is discarded, whether or not it was terminated with a semicolon. Generators are exempt from all of this: their fall-through signals end of stream.
+A block body produces its value with an explicit `return`, or by ending on an expression: the final statement of a non-void body is the function's return value on the fall-through path whenever its type is assignable to the declared return type, terminated with `;` or not — the tail is judged by its type, never by its terminator. An expression qualifies, and so do an `if`/`case` expression and a parenthesised block. A tail of an incompatible non-void type is an error at the tail; to genuinely discard such a value, write `let _ = expr`. A void tail — an effect-only call, or an `if`/`case` whose arms diverge or do only effects — is the statement it is: the body falls off the end, returns the default value of the return type, and draws a `definite-return` warning. An asynchronous function accepts a bare-`T` value as its tail exactly where it accepts `return T`. Loops, `let`, assignments and `assert` never provide a tail value, and neither do labelled statements or `try` blocks (until `try` has an expression form). Void bodies tolerate any tail: whatever is left standing at the end of a void method is discarded. Generators are exempt from all of this: their fall-through signals end of stream.
 
 Functions are declared at namespace scope — there are no nested function definitions — and may be overloaded on their argument types. There are no default argument values. Execution of a program begins at a function named `entry`, or — in a file with no namespace — at the bare statements written at its file root, which are collected in source order into that entry point. An `entry` function takes either no parameters or a single `string[]` of the command-line arguments, and returns either nothing or an `int` exit status. It should not be asynchronous: an async `entry` returns a task rather than one of those, which draws a warning and leaves the program without an entry point — to run asynchronous work, read `.result` on the returned task. The name can be changed with `--entry <name>`, and an `@entry` pragma marks any function as the entry point regardless of name.
 
@@ -320,7 +341,7 @@ let apply_twice = (f: int -> int, i) => f(f(i));
 let factorial = n rec => if n == 0 then 1 else n * rec(n - 1) fi;
 ```
 
-A block-bodied function literal that declares its return type ends on a tail exactly as a named function does: a final statement written without its `;` is the value the literal returns on fall-through. A literal that leaves its return type to be inferred does not, and its last statement stays an ordinary statement, so such a literal returns through `return` alone.
+A block-bodied function literal that declares its return type ends on a tail exactly as a named function does: a final statement whose type is assignable to the declared return type is the value the literal returns on fall-through, terminated or not. A literal that leaves its return type to be inferred does not read a tail, and its last statement stays an ordinary statement, so such a literal returns through `return` alone.
 
 A function literal's parameter can be a destructure pattern too, written in its own parentheses inside the parameter list — the outer parentheses are the parameter list, the inner ones the pattern. It is one parameter, unpacked into the names the body uses, exactly as for a named function:
 
@@ -1113,7 +1134,7 @@ let hit: (int, int)? =
 
 A valued break with no consuming loop anywhere around it is a compile error, the same as returning a value from a void function.
 
-Labels belong to the statement forms: a loop carrying a `label:` prefix cannot also sit in expression position. For long-range exits out of deeply nested control flow, `val ... lav` with its targeted returns remains available.
+Labels belong to the statement forms: a loop carrying a `label:` prefix cannot also sit in expression position. For long-range exits out of deeply nested control flow, a parenthesised block with its targeted returns remains available.
 
 A `while` condition narrows the loop body the same way an `if` condition narrows its then-arm. `while xs? /\ i < xs.count do xs[i] …` reads `xs` at its non-optional type inside the body, and `while isa CAT(a) do a.purr() od` calls a `CAT`-only member without an inner cast.
 
@@ -1186,69 +1207,64 @@ A failing guard falls through to the next arm, exactly as if the pattern itself 
 
 An arm's narrowing works like `if let`'s: an ascribed `when v: T` narrows the scrutinee to `T` inside the arm body, and a guard's own test — a `?` presence test or an `isa` — narrows within the body too. Arm narrowing is local; nothing an arm proves reaches a sibling arm or the code after the `case`.
 
-### val ... lav
+### block expressions
 
-`val ... lav` is a block expression: a sequence of statements whose value is the value of the last statement. Use it in any position that accepts an expression — a `let` initializer, function argument, `=>` body, etc.
-
-```ghul
-let x = val let y = 5; y * 2 lav;          // x = 10
-let z = val let a = 3; let b = 4; a + b lav;  // z = 7
-let n = val write_line("setup"); 42 lav;   // n = 42
-```
-
-The same block can be written in parentheses: `(statement; statement; value)` is the parenthesised spelling of `val statement; statement; value lav`, and the two are interchangeable everywhere. A parenthesised group commits to the block reading at the first top-level `;` — or immediately, on a token that can only open a statement (`let`, `try`, `return`, ...) — and stays a tuple, a parenthesised expression, or a lambda's formal parameters otherwise. So `(a = f(x), b = g(y))` constructs a named tuple while `(a = f(x); b = g(y); a + b)` runs two assignments and yields the sum; the `,`/`;` is the whole difference, and the elements themselves can be any expression in both. A statement whose expression form already exists keeps it: `(let x = 5 in x * 2)` is the `let ... in` expression, unchanged, while `(let x = 5; x * 2)` is a block with a `let` statement and a tail.
+A parenthesised block `(statement; ...; value)` runs a sequence of statements and evaluates to the value of the last one. Use it in any position that accepts an expression — a `let` initializer, function argument, `=>` body, etc.
 
 ```ghul
 let x = (let y = 5; y * 2);                 // x = 10
+let z = (let a = 3; let b = 4; a + b);      // z = 7
 let n = (write_line("setup"); 42);          // n = 42
 
 let box = BOX();
 let m = (box.v = 7; box.v * 2);             // assignment statement, then the value
 ```
 
+A parenthesised group commits to the block reading at the first top-level `;` — or immediately, on a token that can only open a statement (`let`, `try`, `return`, ...) — and stays a tuple, a parenthesised expression, or a lambda's formal parameters otherwise. A compound statement (`if`, `case`, `for`, `while`, `do`) opening the group commits the block reading the same way when what follows cannot continue its expression: `(for x in xs do f(x) od 0)` is a block whose tail is `0`, no `;` needed. An operator-headed tail is the one exception: any operator can also open an expression as a unary prefix, so the group keeps the expression reading there and the compound statement is the operator's left operand (`(if c then 2 else 5 fi - 1)` is 1 when `c` is true); write `;` after the closing keyword for the block reading (`(if c then 2 else 5 fi; -1)`). So `(a = f(x), b = g(y))` constructs a named tuple while `(a = f(x); b = g(y); a + b)` runs two assignments and yields the sum; the `,`/`;` is the whole difference, and the elements themselves can be any expression in both. A statement whose expression form already exists keeps it: `(let x = 5 in x * 2)` is the `let ... in` expression, unchanged, while `(let x = 5; x * 2)` is a block with a `let` statement and a tail.
+
 A common use is loop-as-expression — fold an iterable into a value with the loop body updating a `mut` accumulator and the tail expression handing back the result:
 
 ```ghul
-let sum_1_to_5 = val
+let sum_1_to_5 = (
     let acc mut = 0;
     for i in 1..6 do
         acc = acc + i;
     od;
     acc
-lav;
+);
 ```
 
 If the last statement does not provide a value (a `let`, `for`, `while`, `assert`, ...), the block is void. Void blocks are accepted in any context that tolerates void — an expression-statement, the `=>` body of a void-returning function. A value-required position (typed `let` initializer, function argument, `=>` body of a value-returning function) requires the last statement to be value-producing, *unless* every reachable path through the body diverges (via `return`, `throw`, or a divergent inner `if`/`case`/`try`) — then the trailing statement is unreachable and the block's value comes from the divergence sites instead.
 
-`return E` inside a `val ... lav` block in expression position exits the **block**, not the enclosing function. The block's value is the least-upper-bound of every `return E` inside it and the tail expression (if any), so an early return can short-circuit out of the block with a value while a different path falls through to the tail. A `null` among those contributions joins as optionality rather than as a type of its own: the other contributors' LUB widens to its optional carrier (`val let s = f(); return s; null lav` over a `string` return is `string?`), an all-null block settles at the type the surrounding context expects when there is one, and draws an error (`all val-block contributions are null`) when there is not. Nesting follows the innermost rule — a `return` inside an inner `val` exits only that inner block, leaving the outer block's walk to continue.
+`return E` inside a block in expression position exits the **block**, not the enclosing function. The block's value is the least-upper-bound of every `return E` inside it and the tail expression (if any), so an early return can short-circuit out of the block with a value while a different path falls through to the tail. A `null` among those contributions joins as optionality rather than as a type of its own: the other contributors' LUB widens to its optional carrier (`(let s = f(); return s; null)` over a `string` return is `string?`), an all-null block settles at the type the surrounding context expects when there is one, and draws an error (`all val-block contributions are null`) when there is not. Nesting follows the innermost rule — a `return` inside an inner block exits only that inner block, leaving the outer block's walk to continue.
 
-A `val ... lav` is fine as the *entire* body of an expression-bodied function/method/lambda (the `=> body`). The innermost-block rule still applies — `return` inside targets the val-block — but the val-block's value flows back out as the function's expression-body value, so observable behaviour matches `is ... si`. `try` / `catch` / `finally` composes the same way as in any function body, including `return` from inside a `try` (the finally fires before the value is delivered), and a body whose every reachable path returns needs no separate value-providing tail:
+A block is fine as the *entire* body of an expression-bodied function/method/lambda (the `=> body`). The innermost-block rule still applies — `return` inside targets the block — but the block's value flows back out as the function's expression-body value, so observable behaviour matches `is ... si`. `try` / `catch` / `finally` composes the same way as in any function body, including `return` from inside a `try` (the finally fires before the value is delivered), and a body whose every reachable path returns needs no separate value-providing tail:
 
 ```ghul
-sign_label(n: int) -> string =>
-    val
-        if n < 0 then
-            return "neg";
-        fi
-        if n == 0 then
-            return "zero";
-        fi
-        "pos"
-    lav;
+sign_label(n: int) -> string => (
+    if n < 0 then
+        return "neg";
+    fi;
+    if n == 0 then
+        return "zero";
+    fi;
+    "pos"
+);
 
-divide_or_default(n: int, d: int) -> int =>
-    val
-        try
-            return n / d;
-        catch e: System.DivideByZeroException
-            return 0;
-        finally
-            log("done");
-        yrt
-    lav;
+divide_or_default(n: int, d: int) -> int => (
+    try
+        return n / d;
+    catch e: System.DivideByZeroException
+        return 0;
+    finally
+        log("done");
+    yrt
+);
 ```
 
-Bare `return;` (no value) is accepted in a void val-block — same rule as `return;` in a void function — and acts as an early exit. In a value-required val-block it is an error.
+Bare `return;` (no value) is accepted in a void block — same rule as `return;` in a void function — and acts as an early exit. In a value-required block it is an error.
+
+`val ... lav` is the historical spelling of the same construct — `val statement; ...; value lav` and `(statement; ...; value)` are interchangeable everywhere — and is headed for removal; write the parenthesised form.
 
 ### exceptions
 
@@ -1347,6 +1363,8 @@ si
 
 `E`'s element type has to be assignable to the generator's, and a value that cannot be iterated is rejected the same way a `for` over it would be.
 
+A bare `return` ends the stream early, exactly as falling off the end of the body does. It carries no value: the declared `Pipe[T]` describes the stream the generator produces, not something a `return` inside it hands back.
+
 A generator's return type has to be `Pipe[T]` — `yield` in a function declared otherwise is an error. A function cannot be both a generator and asynchronous. And as with `await`, `yield` is not yet supported inside a `catch` or `finally` handler.
 
 ## collections and pipes
@@ -1393,6 +1411,8 @@ let e = 5 |> $();                // the same call, written out
 ```
 
 The operator and the `|>` have to be separated by a space. A run of operator characters scans as a single token, so `5 |>$` is one operator named `|>$` rather than two.
+
+A `|>` at the end of a line carries the chain onto the next one, which is how a long chain is wrapped. Only a name continues it that way, so a line beginning with anything else leaves the `|>` without a right side and is reported as one — the next statement is never read as the call.
 
 ## generics
 
@@ -1467,7 +1487,7 @@ build[T: Named class init](name: string) -> T;
 build[T: Named /\ Sized class init](name: string) -> T;   // two bounds plus kinds
 ```
 
-The CLR kind constraints on an imported generic (`where T : class`, `struct`, `new()`) are enforced too, at the point a type argument is resolved. Type arguments can be given explicitly (`print_something[int](1234)`) but are usually inferred — from the call arguments of a function or method, from the constructor arguments of a generic class, struct, or variant, and from the enclosing context (return type, let-init type, assignment LHS, or the argument slot the call itself fills) when the arguments alone don't pin every slot:
+The CLR kind constraints on an imported generic (`where T : class`, `struct`, `new()`) are enforced too, at the point a type argument is resolved. Type arguments can be given explicitly (`print_something[int](1234)`) but are usually inferred — from the call arguments of a function or method, from the constructor arguments of a generic class, struct, or variant, from the enclosing context (return type, let-init type, assignment LHS, or the argument slot the call itself fills) when the arguments alone don't pin every slot, and — for a generic function referred to as a value — from the function type of the slot it goes into:
 
 ```ghul
 print_something(1234);                       // T inferred as int
@@ -1480,14 +1500,19 @@ takes_int(zero_of(1));                       // zero_of[T](n: int) -> T:
 
 When neither the arguments nor any later use pins a type argument, the construction is an error (`cannot infer type here`) — give the type argument explicitly (`BOX[int]()`).
 
-A generic function or method named with its type arguments but no argument list is a *value* at that instantiation, the same way a non-generic name in value position is. It converts wherever a function type or a named delegate is expected, and where the name is overloaded the expected type picks the member:
+A generic function or method named with no argument list is a *value*, the same way a non-generic name in value position is. Written with its type arguments it is the value at that instantiation; written bare, the type arguments are inferred from the function type of the slot it goes into — from the parameter positions, and from the return slot for a variable that appears only there. It converts wherever a function type or a named delegate is expected, and where the name is overloaded the expected type picks the member:
 
 ```ghul
 identity[T](x: T) -> T => x;
 
-let f = identity[int];              // (int) -> int
-let g: (string) -> string = identity[string];
+zero_of[T](ignored: int) -> T => _[T];
+
+let f = identity[int];                    // (int) -> int, explicit
+let g: (string) -> string = identity;     // inferred from the slot
+let h: (int) -> string = zero_of;         // T pinned by the return slot
 ```
+
+With no slot type in scope there is nothing to infer from, and the bare name is an error (`cannot infer type here`) — give the type arguments explicitly.
 
 ## type inference
 
