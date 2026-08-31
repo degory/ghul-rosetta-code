@@ -1,19 +1,19 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 reciprocal_factorials() -> Pipe[decimal] is
-    let term mut = 1m;
-    let n mut = 1;
+    let term mut = 1m
+    let n mut = 1
 
     do
-        yield term;
-        term = term / cast decimal(n);
-        n = n + 1;
+        yield term
+        term = term / cast decimal(n)
+        n = n + 1
     od
 si
 
 let e = reciprocal_factorials()
     |> take(30)
-    |> reduce(0m, (sum, term) => sum + term);
+    |> reduce(0m, (sum, term) => sum + term)
 
-write_line("e = {e}");
+write_line("e = {e}")

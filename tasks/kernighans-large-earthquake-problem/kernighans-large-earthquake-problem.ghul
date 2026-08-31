@@ -1,6 +1,6 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
-use System.StringSplitOptions;
+use IO.Std.write_line
+use Ghul.Pipes
+use System.StringSplitOptions
 
 let events = [
     "8/27/1883    Krakatoa            8.8",
@@ -15,12 +15,12 @@ let events = [
     "1/12/2010    Haiti               7.0",
     "8/23/2011    Virginia            5.8",
     "10/17/1989   LomaPrieta          6.9"
-];
+]
 
 magnitude(line: string) -> double =>
     double.parse(
-        line.split([' '], StringSplitOptions.REMOVE_EMPTY_ENTRIES)[2]);
+        line.split([' '], StringSplitOptions.REMOVE_EMPTY_ENTRIES)[2])
 
 events
     |> filter(line => magnitude(line) > 6.0D)
-    |> each(line => write_line(line));
+    |> each(line => write_line(line))

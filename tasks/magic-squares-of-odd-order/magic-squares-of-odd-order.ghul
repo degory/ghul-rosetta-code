@@ -1,35 +1,35 @@
-use IO.Std.write_line;
-use Collections.LIST;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
 magic_square(n: int) -> LIST[int] is
     let cells =
-        stream(0, v => v || v + 1) |> take(n * n) |> map(_ => 0) |> collect_list();
+        stream(0, v => v || v + 1) |> take(n * n) |> map(_ => 0) |> collect_list()
 
-    let row mut = 0;
-    let column mut = n / 2;
+    let row mut = 0
+    let column mut = n / 2
 
     for value in 1::(n * n) do
-        cells[row * n + column] = value;
+        cells[row * n + column] = value
 
-        let next_row mut = (row + n - 1) % n;
-        let next_column mut = (column + 1) % n;
+        let next_row mut = (row + n - 1) % n
+        let next_column mut = (column + 1) % n
 
         if cells[next_row * n + next_column] == 0 then
-            row = next_row;
-            column = next_column;
+            row = next_row
+            column = next_column
         else
-            row = (row + 1) % n;
+            row = (row + 1) % n
         fi
     od
 
     cells
 si
 
-let n = 5;
-let square = magic_square(n);
-let magic_number = n * (n * n + 1) / 2;
+let n = 5
+let square = magic_square(n)
+let magic_number = n * (n * n + 1) / 2
 
-write_line("5 by 5 magic square, magic number {magic_number}:");
+write_line("5 by 5 magic square, magic number {magic_number}:")
 square |> chunk(n)
-    |> each(row => write_line(row |> map((value: int) => "{value,3}") |> join("")));
+    |> each(row => write_line(row |> map((value: int) => "{value,3}") |> join("")))

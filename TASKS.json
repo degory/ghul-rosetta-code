@@ -185,6 +185,7 @@
     },
     {
       "title": "Balanced ternary",
+      "slug": "balanced-ternary",
       "state": "solved"
     },
     {
@@ -207,6 +208,7 @@
     },
     {
       "title": "Calculating the value of e",
+      "slug": "calculating-the-value-of-e",
       "state": "solved"
     },
     {
@@ -260,6 +262,7 @@
     },
     {
       "title": "Day of the week",
+      "slug": "day-of-the-week",
       "state": "solved"
     },
     {
@@ -286,6 +289,7 @@
     },
     {
       "title": "Eban numbers",
+      "slug": "eban-numbers",
       "state": "solved"
     },
     {
@@ -306,6 +310,7 @@
     },
     {
       "title": "Factorions",
+      "slug": "factorions",
       "state": "solved"
     },
     {
@@ -386,6 +391,7 @@
     },
     {
       "title": "Happy numbers",
+      "slug": "happy-numbers",
       "state": "solved"
     },
     {
@@ -426,6 +432,7 @@
     },
     {
       "title": "Jacobsthal numbers",
+      "slug": "jacobsthal-numbers",
       "state": "solved"
     },
     {
@@ -460,6 +467,7 @@
     },
     {
       "title": "Kernighans large earthquake problem",
+      "slug": "kernighans-large-earthquake-problem",
       "state": "solved"
     },
     {
@@ -470,6 +478,7 @@
     },
     {
       "title": "Last Friday of each month",
+      "slug": "last-friday-of-each-month",
       "state": "solved"
     },
     {
@@ -502,6 +511,7 @@
     },
     {
       "title": "Magic squares of odd order",
+      "slug": "magic-squares-of-odd-order",
       "state": "solved"
     },
     {
@@ -540,6 +550,7 @@
     },
     {
       "title": "N-queens problem",
+      "slug": "n-queens-problem",
       "state": "solved"
     },
     {
@@ -574,6 +585,7 @@
     },
     {
       "title": "O\u0027Halloran numbers",
+      "slug": "o-halloran-numbers",
       "state": "solved"
     },
     {
@@ -594,6 +606,7 @@
     },
     {
       "title": "Padovan sequence",
+      "slug": "padovan-sequence",
       "state": "solved"
     },
     {
@@ -646,6 +659,7 @@
     },
     {
       "title": "Quickselect algorithm",
+      "slug": "quickselect-algorithm",
       "state": "solved"
     },
     {
@@ -662,6 +676,7 @@
     },
     {
       "title": "Range extraction",
+      "slug": "range-extraction",
       "state": "solved"
     },
     {
@@ -690,6 +705,7 @@
     },
     {
       "title": "Sailors, coconuts and a monkey problem",
+      "slug": "sailors-coconuts-and-a-monkey-problem",
       "state": "solved"
     },
     {
@@ -740,6 +756,7 @@
     },
     {
       "title": "Tau number",
+      "slug": "tau-number",
       "state": "solved"
     },
     {
@@ -800,6 +817,7 @@
     },
     {
       "title": "Vampire number",
+      "slug": "vampire-number",
       "state": "solved"
     },
     {
@@ -838,6 +856,7 @@
     },
     {
       "title": "Yellowstone sequence",
+      "slug": "yellowstone-sequence",
       "state": "solved"
     },
     {
@@ -848,6 +867,7 @@
     },
     {
       "title": "Zig-zag matrix",
+      "slug": "zig-zag-matrix",
       "state": "solved"
     }
   ]

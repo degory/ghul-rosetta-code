@@ -1,43 +1,43 @@
-use IO.Std.write_line;
-use Ghul.Pipes;
+use IO.Std.write_line
+use Ghul.Pipes
 
 eban_group(group: int) -> bool =>
-    (let (tens, units) = (group / 10, group % 10);
+    (let (tens, units) = (group / 10, group % 10)
     let eban_units = units == 0 \/ units == 2 \/
-        units == 4 \/ units == 6;
+        units == 4 \/ units == 6
     let eban_tens = tens == 0 \/ tens == 3 \/ tens == 4 \/
-        tens == 5 \/ tens == 6;
+        tens == 5 \/ tens == 6
     group == 0 \/
-        group < 100 /\ eban_units /\ eban_tens);
+        group < 100 /\ eban_units /\ eban_tens)
 
 groups(n: int) -> Pipe[int] is
-    let remaining mut = n;
+    let remaining mut = n
 
     while remaining > 0 do
-        yield remaining % 1000;
-        remaining = remaining / 1000;
+        yield remaining % 1000
+        remaining = remaining / 1000
     od
 si
 
-is_eban(n: int) -> bool => groups(n) |> all(eban_group);
+is_eban(n: int) -> bool => groups(n) |> all(eban_group)
 
 eban_up_to(limit: int) -> Pipe[int] =>
-    stream(1, n => n || n + 1) |> take(limit) |> filter(is_eban);
+    stream(1, n => n || n + 1) |> take(limit) |> filter(is_eban)
 
-let up_to_1000 = eban_up_to(1000) |> collect();
-write_line("eban numbers up to and including 1000:");
-write_line(up_to_1000 |> join(" "));
-write_line("count: {up_to_1000.count}");
+let up_to_1000 = eban_up_to(1000) |> collect()
+write_line("eban numbers up to and including 1000:")
+write_line(up_to_1000 |> join(" "))
+write_line("count: {up_to_1000.count}")
 
 let in_1000_to_4000 = stream(1000, n => n || n + 1)
     |> take(3001)
     |> filter(is_eban)
-    |> collect();
-write_line("eban numbers between 1000 and 4000 inclusive:");
-write_line(in_1000_to_4000 |> join(" "));
-write_line("count: {in_1000_to_4000.count}");
+    |> collect()
+write_line("eban numbers between 1000 and 4000 inclusive:")
+write_line(in_1000_to_4000 |> join(" "))
+write_line("count: {in_1000_to_4000.count}")
 
 for limit in [10000, 100000, 1000000, 10000000] do
     write_line(
-        "count of eban numbers up to {limit}: {eban_up_to(limit) |> count()}");
+        "count of eban numbers up to {limit}: {eban_up_to(limit) |> count()}")
 od
