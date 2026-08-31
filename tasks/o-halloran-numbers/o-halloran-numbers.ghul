@@ -1,0 +1,31 @@
+use IO.Std.write_line;
+use Collections.SET;
+use Ghul.Pipes;
+
+cuboid_areas() -> SET[int] is
+    let areas = SET[int]();
+
+    for length in 1::12 do
+        for width in length::16 do
+            for height in width::166 do
+                let area = 2 * (length * width +
+                    height * (length + width));
+
+                if area >= 1000 then break fi;
+                areas.add(area);
+            od
+        od
+    od
+
+    areas
+si
+
+let areas = cuboid_areas();
+
+let o_halloran = (7::999)
+    |> filter(n => n % 2 == 0 /\ areas.contains(n) == false)
+    |> collect_list();
+
+write_line("even values below 1000 that are no cuboid's surface area:");
+write_line(o_halloran |> join(" "));
+write_line("count: {o_halloran.count}");
