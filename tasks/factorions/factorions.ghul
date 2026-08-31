@@ -1,0 +1,31 @@
+use IO.Std.write_line;
+use Ghul.Pipes;
+use Collections.LIST;
+
+let factorial = n rec => if n <= 1 then 1 else n * rec(n - 1) fi;
+
+digits(n: int, base_value: int) -> Pipe[int] is
+    let remaining mut = n;
+
+    while remaining > 0 do
+        yield remaining % base_value;
+        remaining = remaining / base_value;
+    od
+si
+
+digit_factorial_sum(n: int, base_value: int) -> int =>
+    digits(n, base_value)
+        |> map(factorial)
+        |> reduce(0, (sum, f) => sum + f);
+
+factorions(base_value: int) -> LIST[int] =>
+    stream(1, n => n || n + 1)
+        |> take(1499999)
+        |> filter(n => digit_factorial_sum(n, base_value) == n)
+        |> collect_list();
+
+for base_value in [9, 10, 11, 12] do
+    let found = factorions(base_value);
+    write_line(
+        "base {base_value}: {found |> join(" ")} ({found.count} factorions)");
+od
