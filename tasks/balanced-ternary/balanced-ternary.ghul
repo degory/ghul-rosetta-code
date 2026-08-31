@@ -145,4 +145,4 @@ write_line("b = {b.to_big()}")
 write_line("c = {c.to_big()}")
 
 let result = a * (b - c)
-write_line("a * (b - c) = {result.to_string()} = {result.to_big()}")
+write_line("a * (b - c) = {result} = {result.to_big()}")
