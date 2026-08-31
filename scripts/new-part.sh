@@ -62,9 +62,9 @@ cat >"$DIR/ghul.json" <<'EOF'
 EOF
 
 cat >"$DIR/$PART.ghul" <<'EOF'
-use IO.Std.write_line;
+use IO.Std.write_line
 
-write_line("not written yet");
+write_line("not written yet")
 EOF
 
 mkdir -p "$TEST"

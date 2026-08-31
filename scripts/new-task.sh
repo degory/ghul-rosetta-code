@@ -61,9 +61,9 @@ cat >"$TASK/task.json" <<EOF
 EOF
 
 cat >"$TASK/$SLUG.ghul" <<'EOF'
-use IO.Std.write_line;
+use IO.Std.write_line
 
-write_line("not written yet");
+write_line("not written yet")
 EOF
 
 mkdir -p "$TEST"

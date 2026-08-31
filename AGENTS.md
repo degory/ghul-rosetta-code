@@ -86,9 +86,9 @@ So, in rough order of how often it comes up:
   as that token where practical:
 
 ```ghul
-let total = (let acc mut = 0;
-             for x in xs do acc = acc + x od;
-             acc);
+let total = (let acc mut = 0
+             for x in xs do acc = acc + x od
+             acc)
 ```
 
 - **Reach for what has no equivalent in the language next door.** `let x = e in`
@@ -122,6 +122,32 @@ tasks and the right choice there. It is the wrong choice when a pipe chain
 is the natural shape and the only reason for the loop is a bug that has not
 been confirmed.
 
+## Solutions carry no statement terminators
+
+A statement's terminator can be left off at the end of a line, and here it always is. The line
+break is the terminator, and the root project compiles the solutions with
+`--warn redundant-semicolon` - a warning locally, an error on CI - so a stray `;` does not creep
+back in.
+
+```ghul
+use IO.Std.write_line
+
+binary(value: int) -> string =>
+    if value < 2 then "{value}" else "{binary(value / 2)}{value % 2}" fi
+
+for value in [5, 50, 9000] do
+    write_line(binary(value))
+od
+```
+
+Two statements on one line still need the `;` between them, and so does a statement that ends on a
+string literal followed by one that begins with one - without it the two literals chain into a
+single literal across the line break. Both are rare enough in a solution that meeting one is a
+reason to look at the line again. `GHUL.md`'s "statement terminators" section has the rules that
+keep a wrapped expression unambiguous; the ones that come up here are that a continuation line
+opens with `.`, `|` or `|>`, and that a wrapped operator expression carries the operator at the end
+of the line rather than the start of the next.
+
 ## Keep lines narrow
 
 A solution is read in a column, not in your editor: on Rosetta Code it sits in a fixed-width block,
@@ -137,17 +163,21 @@ it, 99% of their lines at 68 columns or less. The usual 80 and 100 are already t
 scripts/check-width.sh            # every line over the limits, worst first
 ```
 
-The compiler's formatter can do the wrapping where an expression is simply long, though it targets
-100 columns and cannot yet be told otherwise (degory/ghul#2191), so it will not get a line under 76
-on its own:
+The compiler's formatter can do the wrapping where an expression is simply long. `--format-width`
+gives it the column to wrap at, since it targets 100 by default, and `--format-in-place` rewrites
+the file rather than printing to standard output:
 
 ```sh
-dotnet ghul-compiler --format tasks/<slug>/<slug>.ghul
+dotnet ghul-compiler --format --format-width 76 tasks/<slug>/<slug>.ghul
 ```
 
-It writes to standard output rather than rewriting the file, so redirect it somewhere and compare
-before replacing anything - the formatter is faithful but it is not the author, and a solution's
-line breaks are often deliberate.
+Both flags need `--format` alongside them; on its own, `--format-width` sets a width for a run that
+then does not format anything.
+
+**Its output carries statement terminators**, which this repository's sources do not
+(degory/ghul#2298), so it cannot be used unattended here: strip them from what it produces before
+keeping it. Read the result in any case - the formatter is faithful but it is not the author, and a
+solution's line breaks are often deliberate.
 
 Where a line is long because of what it says rather than how it is laid out, break it up: a local
 variable for a sub-expression usually reads better than a continuation, and a long string of
@@ -165,14 +195,14 @@ get around it, and which one to reach for depends on the shape of the solution.
 `let`:
 
 ```ghul
-rows: string[];
+rows: string[]
 
 widest() -> int =>
-    rows |> reduce(0, (w, r) => if r.length > w then r.length else w fi);
+    rows |> reduce(0, (w, r) => if r.length > w then r.length else w fi)
 
-rows = ["one", "three", "seventeen"];
+rows = ["one", "three", "seventeen"]
 
-write_line("{widest()}");
+write_line("{widest()}")
 ```
 
 It cannot carry an initializer, so it is declared in one place and assigned in
@@ -185,10 +215,10 @@ Keep the assignment near the top of the statements for that reason.
 same way any closure captures its enclosing scope:
 
 ```ghul
-let rows = ["one", "three", "seventeen"];
+let rows = ["one", "three", "seventeen"]
 
 let widest = (of_at_least: int) -> int =>
-    rows |> filter(r => r.length >= of_at_least) |> reduce(0, ...);
+    rows |> filter(r => r.length >= of_at_least) |> reduce(0, ...)
 ```
 
 Nothing is declared apart from where it is given a value, and nothing is
@@ -282,12 +312,16 @@ side. A solution that prints several results is one part, not several.
 
 ## Test requirements
 
-Both must pass before opening a pull request.
+The integration tests must pass before opening a pull request. They are what CI runs, and they
+build each task as they go.
 
 | Step | How to run | Typical duration |
 |------|-----------|------------------|
-| Build | `dotnet build` | seconds |
 | Integration tests | `dotnet ghul-test --use-dotnet-build integration-tests` | seconds to minutes |
+
+There is no repository-wide `dotnet build` to run: the root project does not compile, for the
+reason given under "The root project" below. Build a single task with
+`dotnet run --project tasks/<slug>`.
 
 - One test folder per task, with the task's source symlinked in. Preserve the symlinks.
 - Tests assert the program's output. There are deliberately no IL snapshots - a test folder with
