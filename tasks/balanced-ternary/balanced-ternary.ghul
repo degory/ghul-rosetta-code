@@ -1,0 +1,132 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Ghul.Pipes;
+use System.Numerics.BigInteger;
+use System.Numerics.IAdditionOperators.`+;
+use System.Numerics.ISubtractionOperators.`-;
+use System.Numerics.IMultiplyOperators.`*;
+use System.Numerics.IDivisionOperators.`/;
+use System.Numerics.IModulusOperators.`%;
+use System.Text.StringBuilder;
+
+digit_value(c: char) -> int =>
+    case c
+    when '+' then 1
+    when '-' then -1
+    else 0
+    esac;
+
+digit_char(v: int) -> char =>
+    if v == 1 then '+' elif v == -1 then '-' else '0' fi;
+
+to_big(s: string) -> BigInteger is
+    let value mut = BigInteger(0);
+    let three = BigInteger(3);
+
+    for c in s do
+        value = value * three + BigInteger(digit_value(c));
+    od
+
+    value
+si
+
+from_big(n: BigInteger) -> string is
+    let three = BigInteger(3);
+    let digits = LIST[char]();
+    let remaining mut = n;
+    let more mut = true;
+
+    while more do
+        let r mut = cast int(remaining % three);
+        if r < 0 then r = r + 3 fi;
+        if r == 2 then r = -1 fi;
+
+        digits.add(digit_char(r));
+        remaining = (remaining - BigInteger(r)) / three;
+        more = remaining !~ BigInteger(0);
+    od
+
+    digits.reverse();
+    digits |> map(c => "{c}") |> join("")
+si
+
+negate(s: string) -> string is
+    let flipped = StringBuilder();
+
+    for c in s do
+        flipped.append(digit_char(-digit_value(c)));
+    od
+
+    flipped.to_string()
+si
+
+add(a: string, b: string) -> string is
+    let digits = LIST[char]();
+    let carry mut = 0;
+    let i mut = a.length - 1;
+    let j mut = b.length - 1;
+
+    while i >= 0 \/ j >= 0 \/ carry != 0 do
+        let sum mut = carry;
+
+        if i >= 0 then
+            sum = sum + digit_value(a[i]);
+            i = i - 1;
+        fi
+
+        if j >= 0 then
+            sum = sum + digit_value(b[j]);
+            j = j - 1;
+        fi
+
+        let d mut = sum % 3;
+        if d < 0 then d = d + 3 fi;
+        if d == 2 then d = -1 fi;
+        carry = (sum - d) / 3;
+        digits.add(digit_char(d));
+    od
+
+    while digits.count > 1 /\ digits[digits.count - 1] == '0' do
+        digits.remove_at(digits.count - 1);
+    od
+
+    digits.reverse();
+    digits |> map(c => "{c}") |> join("")
+si
+
+shift(s: string, places: int) -> string is
+    let shifted = StringBuilder(s);
+
+    for _ in 1::places do
+        shifted.append('0');
+    od
+
+    shifted.to_string()
+si
+
+multiply(a: string, b: string) -> string is
+    let product mut = "0";
+
+    for i in 0..a.length do
+        let d = digit_value(a[a.length - 1 - i]);
+
+        if d != 0 then
+            let term = shift(b, i);
+            let signed = if d == 1 then term else negate(term) fi;
+            product = add(product, signed);
+        fi
+    od
+
+    product
+si
+
+let a = "+-0++0+";
+let b = from_big(BigInteger(-436));
+let c = "+-++-";
+
+write_line("a = {to_big(a)}");
+write_line("b = {to_big(b)}");
+write_line("c = {to_big(c)}");
+
+let d = multiply(a, add(b, negate(c)));
+write_line("a * (b - c) = {d} = {to_big(d)}");
