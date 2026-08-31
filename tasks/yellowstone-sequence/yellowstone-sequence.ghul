@@ -1,0 +1,32 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Collections.SET;
+use Collections.List;
+use Ghul.Pipes;
+
+gcd(a: int, b: int) -> int => if b == 0 then a else gcd(b, a % b) fi;
+
+yellowstone(count: int) -> LIST[int] is
+    let terms = LIST[int]([1, 2, 3]);
+    let used = SET[int]([1, 2, 3]);
+
+    while terms.count < count do
+        let previous = terms[terms.count - 1];
+        let before_previous = terms[terms.count - 2];
+        let candidate mut = 1;
+
+        while used.contains(candidate) \/
+                gcd(candidate, previous) != 1 \/
+                gcd(candidate, before_previous) == 1 do
+            candidate = candidate + 1;
+        od
+
+        terms.add(candidate);
+        used.add(candidate);
+    od
+
+    terms
+si
+
+write_line("first 30 Yellowstone numbers:");
+write_line(yellowstone(30) |> map((t: int) => "{t}") |> join(" "));
