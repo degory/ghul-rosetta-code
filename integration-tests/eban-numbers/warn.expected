@@ -1,0 +1,2 @@
+eban-numbers.ghul(25,57,25,64): warning impure-function-argument: argument must be a pure function [test.ghulproj]
+eban-numbers.ghul(34,15,34,22): warning impure-function-argument: argument must be a pure function [test.ghulproj]

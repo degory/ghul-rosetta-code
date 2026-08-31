@@ -184,6 +184,11 @@
       "published_hash": "1d9f12b9745adc053502d57d13d61f9160bc9f41cdc46d7598fe07578fd4d100"
     },
     {
+      "title": "Balanced ternary",
+      "slug": "balanced-ternary",
+      "state": "solved"
+    },
+    {
       "title": "Bell numbers",
       "slug": "bell-numbers",
       "state": "published",
@@ -200,6 +205,11 @@
       "slug": "binary-digits",
       "state": "published",
       "published_hash": "ad1be95db922b74eaf253320cc6fbd2e4d08d897de658f2b9471a65f67e035fc"
+    },
+    {
+      "title": "Calculating the value of e",
+      "slug": "calculating-the-value-of-e",
+      "state": "solved"
     },
     {
       "title": "Calkin-Wilf sequence",
@@ -251,6 +261,11 @@
       "published_hash": "34e773b57c64f57eb756f23cb9fe0e6e89acdb8ee62be9c428de3b5d264de5b0"
     },
     {
+      "title": "Day of the week",
+      "slug": "day-of-the-week",
+      "state": "solved"
+    },
+    {
       "title": "Decorate-sort-undecorate idiom",
       "state": "published"
     },
@@ -273,6 +288,11 @@
       "published_hash": "cd049694a5b6cc5ffe54813c8e7cc35f027899bad5be61e49e34deb9f9c84f2b"
     },
     {
+      "title": "Eban numbers",
+      "slug": "eban-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Entropy",
       "slug": "entropy",
       "state": "published",
@@ -287,6 +307,11 @@
       "slug": "factorial",
       "state": "published",
       "published_hash": "4402e3aa424f2950f711281cca443756ddf98a63d8b42eb4f76b028d5b1ff0c1"
+    },
+    {
+      "title": "Factorions",
+      "slug": "factorions",
+      "state": "solved"
     },
     {
       "title": "Fibonacci sequence",
@@ -365,6 +390,11 @@
       "published_hash": "c78e9b7d55843e356ded9a4d4d091ad91bd5b838549775e73b046f04d11306f1"
     },
     {
+      "title": "Happy numbers",
+      "slug": "happy-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Haversine formula",
       "slug": "haversine-formula",
       "state": "published",
@@ -401,6 +431,11 @@
       "published_hash": "b9c2f80963e78660525aa7b0218411d8e7a255d80933c90d3a72b2c441bfd7fc"
     },
     {
+      "title": "Jacobsthal numbers",
+      "slug": "jacobsthal-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Jaro similarity",
       "slug": "jaro-similarity",
       "state": "published",
@@ -431,10 +466,20 @@
       "published_hash": "bacb2093a5063a0b2f1ebd92879cd3ab78755042fe8b2bc697c6a90a55245a06"
     },
     {
+      "title": "Kernighans large earthquake problem",
+      "slug": "kernighans-large-earthquake-problem",
+      "state": "solved"
+    },
+    {
       "title": "Kolakoski sequence",
       "slug": "kolakoski-sequence",
       "state": "published",
       "published_hash": "8bf95e8f89aad4be24c529637ed11d2d252c0a0db62b071e4faded2db730a223"
+    },
+    {
+      "title": "Last Friday of each month",
+      "slug": "last-friday-of-each-month",
+      "state": "solved"
     },
     {
       "title": "Left factorials",
@@ -463,6 +508,11 @@
     {
       "title": "Lyndon word",
       "state": "published"
+    },
+    {
+      "title": "Magic squares of odd order",
+      "slug": "magic-squares-of-odd-order",
+      "state": "solved"
     },
     {
       "title": "Man or boy test",
@@ -499,6 +549,11 @@
       "published_hash": "828d7468d57ff952c098a510d88efdf0664a5cd9ed881f66588868dbb04950bc"
     },
     {
+      "title": "N-queens problem",
+      "slug": "n-queens-problem",
+      "state": "solved"
+    },
+    {
       "title": "Negative base numbers",
       "slug": "negative-base-numbers",
       "state": "published",
@@ -529,6 +584,11 @@
       "published_hash": "a36279d95419c804730313dc206d3532fcb73b32f12b05676bb6c1bff6eda984"
     },
     {
+      "title": "O\u0027Halloran numbers",
+      "slug": "o-halloran-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Odd and square numbers",
       "state": "published"
     },
@@ -543,6 +603,11 @@
       "slug": "ormiston-pairs",
       "state": "published",
       "published_hash": "5a9824d091c1ed39ee983da92c73090674aeeae0cf9899baeca9c0e19fb3d5a6"
+    },
+    {
+      "title": "Padovan sequence",
+      "slug": "padovan-sequence",
+      "state": "solved"
     },
     {
       "title": "Palindrome detection",
@@ -593,6 +658,11 @@
       "published_hash": "24ae0b1525b478c4b96457c117e370db45d449d80f27ccced3b08e87567adb1c"
     },
     {
+      "title": "Quickselect algorithm",
+      "slug": "quickselect-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Quine",
       "slug": "quine",
       "state": "published",
@@ -603,6 +673,11 @@
       "slug": "radical-of-an-integer",
       "state": "published",
       "published_hash": "8f27eea8b6e5b0e26b226b1b8bcbc32c03660bce418980b6896d78d5e2bb9fef"
+    },
+    {
+      "title": "Range extraction",
+      "slug": "range-extraction",
+      "state": "solved"
     },
     {
       "title": "Reverse a string",
@@ -627,6 +702,11 @@
       "slug": "s-expressions",
       "state": "published",
       "published_hash": "e96c9c24e8e9aa28df8f69d2ba4b75862e02762431c853116d875478d8e09b5d"
+    },
+    {
+      "title": "Sailors, coconuts and a monkey problem",
+      "slug": "sailors-coconuts-and-a-monkey-problem",
+      "state": "solved"
     },
     {
       "title": "Same fringe",
@@ -673,6 +753,11 @@
       "slug": "stern-brocot-sequence",
       "state": "published",
       "published_hash": "a15d76a545ced860a3764ce4e83c222e83ffade011a49a82bc0e8a15c7688b4e"
+    },
+    {
+      "title": "Tau number",
+      "slug": "tau-number",
+      "state": "solved"
     },
     {
       "title": "Taxicab numbers",
@@ -731,6 +816,11 @@
       "state": "published"
     },
     {
+      "title": "Vampire number",
+      "slug": "vampire-number",
+      "state": "solved"
+    },
+    {
       "title": "Van Eck sequence",
       "slug": "van-eck-sequence",
       "state": "published",
@@ -765,10 +855,20 @@
       "published_hash": "49c6d0ec744ef55fb1e51c7ccde04abf4a456e3baa955433a1417cfe644edc52"
     },
     {
+      "title": "Yellowstone sequence",
+      "slug": "yellowstone-sequence",
+      "state": "solved"
+    },
+    {
       "title": "Zeckendorf number representation",
       "slug": "zeckendorf-number-representation",
       "state": "published",
       "published_hash": "88da9af62d2d0cb27739f711a5223287b7edad30fda2837abdbe81b077d2c5f2"
+    },
+    {
+      "title": "Zig-zag matrix",
+      "slug": "zig-zag-matrix",
+      "state": "solved"
     }
   ]
 }

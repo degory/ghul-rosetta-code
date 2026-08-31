@@ -1,0 +1,28 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+quickselect(values: List[int], k: int) -> int is
+    let pivot = values[values.count / 2]
+
+    let lowers = values |> filter(v => v < pivot) |> collect_list()
+    let pivots = values |> filter(v => v == pivot) |> collect_list()
+
+    if k < lowers.count then
+        quickselect(lowers, k)
+    elif k < lowers.count + pivots.count then
+        pivot
+    else
+        quickselect(
+            values |> filter(v => v > pivot) |> collect_list(),
+            k - lowers.count - pivots.count)
+    fi
+si
+
+let values = [9, 8, 7, 6, 5, 0, 1, 2, 3, 4]
+
+for k in 0..values.count do
+    write_line(
+        "largest {k + 1}: {quickselect(values, values.count - 1 - k)}")
+od

@@ -1,0 +1,49 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+zigzag(n: int) -> LIST[LIST[int]] is
+    let cells = LIST[LIST[int]]()
+
+    for _ in 0..n do
+        cells.add(stream(0, v => v || v + 1)
+            |> take(n)
+            |> map(_ => 0)
+            |> collect_list())
+    od
+
+    let row mut = 0
+    let column mut = 0
+
+    for value in 0..(n * n) do
+        cells[row][column] = value
+
+        if (row + column) % 2 == 0 then
+            if column == n - 1 then
+                row = row + 1
+            elif row == 0 then
+                column = column + 1
+            else
+                row = row - 1
+                column = column + 1
+            fi
+        else
+            if row == n - 1 then
+                column = column + 1
+            elif column == 0 then
+                row = row + 1
+            else
+                row = row + 1
+                column = column - 1
+            fi
+        fi
+    od
+
+    cells
+si
+
+let n = 5
+
+zigzag(n) |> each(row =>
+    write_line(row |> map((value: int) => "{value,2}") |> join(" ")))

@@ -1,0 +1,30 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+satisfies_tale(total: int, sailors: int) -> bool is
+    let pile mut = total
+
+    for _ in 1::sailors do
+        if pile % sailors != 1 then return false fi
+        pile = pile - 1 - (pile - 1) / sailors
+    od
+
+    pile % sailors == 0
+si
+
+hidden_piles(total: int, sailors: int) -> Pipe[int] is
+    let pile mut = total
+
+    for _ in 1::sailors do
+        yield (pile - 1) / sailors
+        pile = pile - 1 - (pile - 1) / sailors
+    od
+si
+
+for sailors in [5, 6] do
+    if let total = stream(sailors, c => c || c + 1)
+        |> find(c => satisfies_tale(c, sailors)) then
+        write_line("{sailors} sailors: smallest pile is {total} coconuts")
+        write_line("  piles hidden at night: {hidden_piles(total, sailors) |> join(", ")}")
+    fi
+od

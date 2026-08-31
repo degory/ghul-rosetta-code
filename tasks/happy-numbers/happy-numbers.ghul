@@ -1,0 +1,26 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use Collections.LIST
+
+digit_square_sum(n: int) -> int =>
+    if n == 0 then 0 else n % 10 * (n % 10) + digit_square_sum(n / 10) fi
+
+is_happy(n: int) -> bool is
+    let seen = LIST[int]()
+    let remaining mut = n
+
+    while !seen.contains(remaining) do
+        if remaining == 1 then return true fi
+        seen.add(remaining)
+        remaining = digit_square_sum(remaining)
+    od
+
+    false
+si
+
+let first_eight = stream(1, n => n || n + 1)
+    |> filter(is_happy)
+    |> take(8)
+    |> collect_list()
+
+write_line("first happy numbers: {first_eight |> join(" ")}")
