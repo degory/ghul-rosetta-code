@@ -1,0 +1,40 @@
+use IO.Std.write_line;
+use Collections.LIST;
+use Collections.List;
+use Ghul.Pipes;
+
+safe(queens: List[int], row: int, column: int) -> bool =>
+    queens |> index()
+        |> all(((placed_row, placed_column)) =>
+            placed_column != column /\
+                placed_row - placed_column != row - column /\
+                placed_row + placed_column != row + column);
+
+placements(n: int, queens: List[int]) -> Pipe[LIST[int]] is
+    if queens.count == n then
+        yield queens;
+    else
+        for column in 0..n do
+            if safe(queens, queens.count, column) then
+                let extended = LIST[int](queens);
+                extended.add(column);
+                yield in placements(n, extended);
+            fi
+        od
+    fi
+si
+
+for n in 1::8 do
+    write_line("{n} by {n}: {placements(n, LIST[int]()) |> count()} solutions");
+od
+
+write_line("an 8 queens solution:");
+
+if let first_solution = placements(8, LIST[int]()) |> first() then
+    first_solution |> index()
+    |> each(((row, column)) =>
+        write_line(
+            (0..8)
+                |> map(c => if c == column then "Q" else "." fi)
+                |> join(" ")));
+fi
