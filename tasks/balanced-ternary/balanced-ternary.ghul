@@ -1,5 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
+use System.Text.StringBuilder
 use Ghul.Pipes
 use System.Numerics.BigInteger
 use System.Numerics.IAdditionOperators.`+
@@ -7,7 +8,16 @@ use System.Numerics.ISubtractionOperators.`-
 use System.Numerics.IMultiplyOperators.`*
 use System.Numerics.IDivisionOperators.`/
 use System.Numerics.IModulusOperators.`%
-use System.Text.StringBuilder
+
+struct BT pure is
+    digits: string
+
+    init(digits: string) is
+        self.digits = digits
+    si
+
+    to_string() -> string => digits
+si
 
 digit_value(c: char) -> int =>
     case c
@@ -19,130 +29,117 @@ digit_value(c: char) -> int =>
 digit_char(v: int) -> char =>
     if v == 1 then '+' elif v == -1 then '-' else '0' fi
 
-class BT is
-    _digits: string
+balanced(n: BigInteger) -> BT is
+    let three = BigInteger(3)
+    let chars = LIST[char]()
+    let remaining mut = n
+    let more mut = true
 
-    init(digits: string) is
-        _digits = digits
-    si
+    while more do
+        let r mut = cast int(remaining % three)
+        if r < 0 then r = r + 3 fi
+        if r == 2 then r = -1 fi
 
-    from_string(s: string) -> BT static is
-        BT(s)
-    si
+        chars.add(digit_char(r))
+        remaining = (remaining - BigInteger(r)) / three
+        more = remaining !~ BigInteger(0)
+    od
 
-    from_big(n: BigInteger) -> BT static is
-        let three = BigInteger(3)
-        let chars = LIST[char]()
-        let remaining mut = n
-        let more mut = true
-
-        while more do
-            let r mut = cast int(remaining % three)
-            if r < 0 then r = r + 3 fi
-            if r == 2 then r = -1 fi
-
-            chars.add(digit_char(r))
-            remaining = (remaining - BigInteger(r)) / three
-            more = remaining !~ BigInteger(0)
-        od
-
-        chars.reverse()
-        BT(chars |> map(c => "{c}") |> join(""))
-    si
-
-    to_big() -> BigInteger is
-        let value mut = BigInteger(0)
-        let three = BigInteger(3)
-
-        for c in _digits do
-            value = value * three + BigInteger(digit_value(c))
-        od
-
-        value
-    si
-
-    to_string() -> string is
-        _digits
-    si
-
-    negate() -> BT is
-        let flipped = StringBuilder()
-
-        for c in _digits do
-            flipped.append(digit_char(-digit_value(c)))
-        od
-
-        BT(flipped.to_string())
-    si
-
-    +(other: BT) -> BT is
-        let chars = LIST[char]()
-        let carry mut = 0
-        let i mut = _digits.length - 1
-        let j mut = other._digits.length - 1
-
-        while i >= 0 \/ j >= 0 \/ carry != 0 do
-            let sum mut = carry
-
-            if i >= 0 then
-                sum = sum + digit_value(_digits[i])
-                i = i - 1
-            fi
-
-            if j >= 0 then
-                sum = sum + digit_value(other._digits[j])
-                j = j - 1
-            fi
-
-            let d mut = sum % 3
-            if d < 0 then d = d + 3 fi
-            if d == 2 then d = -1 fi
-            carry = (sum - d) / 3
-            chars.add(digit_char(d))
-        od
-
-        while chars.count > 1 /\ chars[chars.count - 1] == '0' do
-            chars.remove_at(chars.count - 1)
-        od
-
-        chars.reverse()
-        BT(chars |> map(c => "{c}") |> join(""))
-    si
-
-    -(other: BT) -> BT is
-        self + other.negate()
-    si
-
-    *(other: BT) -> BT is
-        let product mut = BT("0")
-
-        for i in 0.._digits.length do
-            let d = digit_value(_digits[_digits.length - 1 - i])
-
-            if d != 0 then
-                let shifted = StringBuilder(other._digits)
-
-                for _ in 1::i do
-                    shifted.append('0')
-                od
-
-                let term = BT(shifted.to_string())
-                product = product +
-                    (if d == 1 then term else term.negate() fi)
-            fi
-        od
-
-        product
-    si
+    chars.reverse()
+    BT(chars |> map(c => "{c}") |> join(""))
 si
 
-let a = BT.from_string("+-0++0+")
-let b = BT.from_big(BigInteger(-436))
-let c = BT.from_string("+-++-")
+value(a: BT) -> BigInteger is
+    let three = BigInteger(3)
+    let total mut = BigInteger(0)
 
-write_line("a = {a.to_big()}")
-write_line("b = {b.to_big()}")
-write_line("c = {c.to_big()}")
+    for c in a.digits do
+        total = total * three + BigInteger(digit_value(c))
+    od
+
+    total
+si
+
+-(a: BT) -> BT is
+    let flipped = StringBuilder()
+
+    for c in a.digits do
+        flipped.append(digit_char(-digit_value(c)))
+    od
+
+    BT(flipped.to_string())
+si
+
++(a: BT, b: BT) -> BT is
+    let chars = LIST[char]()
+    let carry mut = 0
+    let i mut = a.digits.length - 1
+    let j mut = b.digits.length - 1
+
+    while i >= 0 \/ j >= 0 \/ carry != 0 do
+        let sum mut = carry
+
+        if i >= 0 then
+            sum = sum + digit_value(a.digits[i])
+            i = i - 1
+        fi
+
+        if j >= 0 then
+            sum = sum + digit_value(b.digits[j])
+            j = j - 1
+        fi
+
+        let d mut = sum % 3
+        if d < 0 then d = d + 3 fi
+        if d == 2 then d = -1 fi
+
+        carry = (sum - d) / 3
+        chars.add(digit_char(d))
+    od
+
+    while chars.count > 1 /\ chars[chars.count - 1] == '0' do
+        chars.remove_at(chars.count - 1)
+    od
+
+    chars.reverse()
+    BT(chars |> map(c => "{c}") |> join(""))
+si
+
+-(a: BT, b: BT) -> BT => a + -b
+
+<<(a: BT, places: int) -> BT is
+    let zeroes = StringBuilder()
+
+    for _ in 1::places do
+        zeroes.append('0')
+    od
+
+    BT("{a.digits}{zeroes}")
+si
+
+*(a: BT, b: BT) -> BT is
+    let product mut = BT("0")
+
+    for i in 0..a.digits.length do
+        let d = digit_value(a.digits[a.digits.length - 1 - i])
+
+        if d != 0 then
+            let term = b << i
+
+            product = product + if d == 1 then term else -term fi
+        fi
+    od
+
+    product
+si
+
+let a = BT("+-0++0+")
+let b = balanced(BigInteger(-436))
+let c = BT("+-++-")
+
+write_line("a = {value(a)}")
+write_line("b = {value(b)}")
+write_line("c = {value(c)}")
 
 let result = a * (b - c)
-write_line("a * (b - c) = {result} = {result.to_big()}")
+write_line("a * (b - c) = {result} = {value(result)}")
