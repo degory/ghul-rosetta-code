@@ -76,8 +76,14 @@ several things is one part.
 
 ```sh
 scripts/generate-wiki.sh --all           # writes wiki-out/<slug>.wiki for every working task
+scripts/generate-wiki.sh --solved        # the same, for the tasks not yet on the wiki
+scripts/generate-wiki.sh --out amb quine # the same, for the tasks named
 scripts/generate-wiki.sh y-combinator    # one task, to stdout
 ```
+
+Generating builds and runs each task, so `--all` costs a couple of minutes on a full repository.
+A publish run posts either the slugs it is given or every solved task, so `--solved` and `--out`
+generate exactly what it will read and leave the rest of `wiki-out/` alone.
 
 Each file is the complete section: the `{{header|ghul}}` heading, the source in a
 `<syntaxhighlight>` block, and the program's output in a `{{out}}` block. The source is read from
@@ -86,7 +92,7 @@ away with nothing to update in between. Where that output differs from the test'
 the entry is still emitted and the difference is reported on stderr - the test needs recapturing,
 which is worth knowing but is not a reason to withhold the markup.
 
-`--all` prints the task's wiki URL beside each file. The single-task form prints the URL to stderr,
+The bulk forms print the task's wiki URL beside each file. The single-task form prints the URL to stderr,
 so stdout stays exactly what goes on the page and can be piped:
 
 ```sh
@@ -172,8 +178,8 @@ dotnet run --project tools/rosetta -- publish           # post every solved task
 `sync` treats the wiki as the authority on what is published and `tasks/` as the authority on
 what has a solution, and leaves alone anything only the ledger knows - a rejection, a block.
 
-`publish` reads the markup `scripts/generate-wiki.sh --all` leaves in `wiki-out/`, so generate
-before publishing. It puts the section in case-insensitive alphabetical position among the
+`publish` reads the markup `scripts/generate-wiki.sh` leaves in `wiki-out/`, so generate before
+publishing - `--solved` before a bare `publish`, `--out <slug>...` before publishing those slugs. It puts the section in case-insensitive alphabetical position among the
 page's other language headers, or replaces the ghul section already there. Naming one or more
 slugs publishes only those; with none, every solved task goes. A dry run writes the whole
 proposed page to `wiki-out/<slug>.page` for reading before anything is sent.
