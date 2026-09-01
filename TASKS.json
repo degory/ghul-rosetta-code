@@ -210,7 +210,8 @@
     {
       "title": "Brace expansion",
       "slug": "brace-expansion",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "31d4b7780bd29fc87e64f43245043578889580af5b8d57baaae38925ab69d143"
     },
     {
       "title": "Calculating the value of e",
@@ -239,7 +240,8 @@
     {
       "title": "Cartesian product of two or more lists",
       "slug": "cartesian-product-of-two-or-more-lists",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "eeb99a3362824fe4c32866da6c4ee4643158c240a5b6498d1b7808c351a3c6b7"
     },
     {
       "title": "Catamorphism",
@@ -297,7 +299,8 @@
     {
       "title": "Doomsday rule",
       "slug": "doomsday-rule",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "df775e87e97f607fb4d6040619f9c9e6ee4c7947d761bf3948e215b455b2286c"
     },
     {
       "title": "EKG sequence convergence",
@@ -314,7 +317,8 @@
     {
       "title": "Elementary cellular automaton",
       "slug": "elementary-cellular-automaton",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9a20b0de4cf1fb9a9cf2012f0fc41dc975f284464f76a35cd7934013801b6c11"
     },
     {
       "title": "Entropy",
@@ -371,7 +375,8 @@
     {
       "title": "Four is magic",
       "slug": "four-is-magic",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "414b3eb43831eaa59801a3f1f6369c033e81e6c33dc0726b6d7ea581720578d7"
     },
     {
       "title": "Fusc sequence",
@@ -388,7 +393,8 @@
     {
       "title": "Generator/Exponential",
       "slug": "generator-exponential",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4e0daa8ecc87addb474aaf23c777f9be85aa61539cd40b7d77cef1ade3a4ce5d"
     },
     {
       "title": "Generic swap",
@@ -445,7 +451,8 @@
     {
       "title": "Hofstadter Q sequence",
       "slug": "hofstadter-q-sequence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b370908d611b002e125f3232b79bd1c31de0d649979180da11b39966b8c7db44"
     },
     {
       "title": "Huffman coding",
@@ -474,7 +481,8 @@
     {
       "title": "Jacobi symbol",
       "slug": "jacobi-symbol",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8c303ea391b8027c92c7128417929b2895294edee4cd4c1770ba5eb9ed4737c1"
     },
     {
       "title": "Jacobsthal numbers",
@@ -521,7 +529,8 @@
     {
       "title": "Knapsack problem/0-1",
       "slug": "knapsack-problem-0-1",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5c922831ac1ed4c48b3678df4a51ba2087da81a7fdb34c11ded37e2b542c960d"
     },
     {
       "title": "Kolakoski sequence",
@@ -532,7 +541,8 @@
     {
       "title": "LZW compression",
       "slug": "lzw-compression",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "39458b17f472937ce288e4c3275f29b91ae84507d028788cfcbfbf49637dc1cc"
     },
     {
       "title": "Last Friday of each month",
@@ -593,7 +603,8 @@
     {
       "title": "Move-to-front algorithm",
       "slug": "move-to-front-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "32e816986d9edf645c3e25748ffd2f0195b7c06eb3f8a895e89d062808e2aaea"
     },
     {
       "title": "Multiple distinct objects",
@@ -646,7 +657,8 @@
     {
       "title": "Number names",
       "slug": "number-names",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e4e654f1c06ddf234ca343b4c199389783838d1739e9c238a4eb449ee576f7ff"
     },
     {
       "title": "Numbers with equal rises and falls",
@@ -697,7 +709,8 @@
     {
       "title": "Parsing/Shunting-yard algorithm",
       "slug": "parsing-shunting-yard-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c7ca81f26b2458be33b8ab24af879e7ac7f19390eb93cdd5654663072a296ccf"
     },
     {
       "title": "Pernicious numbers",
@@ -756,7 +769,8 @@
     {
       "title": "Range consolidation",
       "slug": "range-consolidation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a6824cdb9d1b0c668c988bf66f60d0570b5ddf307111f3ee548328ba354ac74a"
     },
     {
       "title": "Range extraction",
@@ -843,7 +857,8 @@
     {
       "title": "Sum to 100",
       "slug": "sum-to-100",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1fbb3fdd5d065f3a018939c1aef1d62af692d3a5a4c11df25b67919961c96ba2"
     },
     {
       "title": "Tau number",
@@ -871,7 +886,8 @@
     {
       "title": "Topological sort",
       "slug": "topological-sort",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "19d0f2035fb95e9d65a08d67cd8adf0662de723cab9abc36e9f6a94835e3f968"
     },
     {
       "title": "Topswops",
@@ -905,7 +921,8 @@
     {
       "title": "UTF-8 encode and decode",
       "slug": "utf-8-encode-and-decode",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5a8c1bb4993644dc1253f71e4628fed3c03ce2d21e7d1deefad49d1e92fc9559"
     },
     {
       "title": "Undulating numbers",
@@ -948,7 +965,8 @@
     {
       "title": "Vigen\u00E8re cipher",
       "slug": "vigenere-cipher",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4974316e2557f77f4bb5317c3935e946046839cfe97cb1fa9f7832964c60a49d"
     },
     {
       "title": "Water collected between towers",
@@ -959,7 +977,8 @@
     {
       "title": "Word wrap",
       "slug": "word-wrap",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a05f057ed0575b267f53ec0a5d1eac9c5b9e3a3061d2aecf1c3ef6495ec8be40"
     },
     {
       "title": "Y combinator",
@@ -988,7 +1007,8 @@
     {
       "title": "Zumkeller numbers",
       "slug": "zumkeller-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2f482f63b8f5b075b90437bcbf307178dc2eb58147d71328f5e1af3fbeb73469"
     }
   ]
 }
