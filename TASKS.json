@@ -214,6 +214,11 @@
       "published_hash": "31d4b7780bd29fc87e64f43245043578889580af5b8d57baaae38925ab69d143"
     },
     {
+      "title": "Burrows\u2013Wheeler transform",
+      "slug": "burrows-wheeler-transform",
+      "state": "solved"
+    },
+    {
       "title": "Calculating the value of e",
       "slug": "calculating-the-value-of-e",
       "state": "published",
@@ -248,6 +253,11 @@
       "slug": "catamorphism",
       "state": "published",
       "published_hash": "2c5e92dd24c14d25f3a3d19732712a0b2dcb8cd4305311a73b3571636deb4cc6"
+    },
+    {
+      "title": "Cheryl\u0027s birthday",
+      "slug": "cheryls-birthday",
+      "state": "solved"
     },
     {
       "title": "Church numerals",
@@ -291,6 +301,11 @@
       "published_hash": "31c38a05daa76929127e3401427bacb077cd623aaedb88a7653fc1655cf6c8d8"
     },
     {
+      "title": "Dijkstra\u0027s algorithm",
+      "slug": "dijkstras-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Dinesman\u0027s multiple-dwelling problem",
       "slug": "dinesmans-multiple-dwelling-problem",
       "state": "published",
@@ -313,6 +328,11 @@
       "slug": "eban-numbers",
       "state": "published",
       "published_hash": "dbb98f8a0ae044d8a5e11fcbb00b048c8d6475a401fd1295f246abef562d17e6"
+    },
+    {
+      "title": "Egyptian division",
+      "slug": "egyptian-division",
+      "state": "solved"
     },
     {
       "title": "Elementary cellular automaton",
@@ -347,6 +367,11 @@
       "slug": "fibonacci-sequence",
       "state": "published",
       "published_hash": "f0411a677735bc3ecc6ff0d0e5be98c9b927632e0f6a5ccaf70e4fd25b2831d7"
+    },
+    {
+      "title": "Fibonacci word",
+      "slug": "fibonacci-word",
+      "state": "solved"
     },
     {
       "title": "First-class functions",
@@ -449,6 +474,11 @@
       "published_hash": "19a68280af00887e3dcc1b929ea30ddd52028a982a810b110547989a1328be81"
     },
     {
+      "title": "Hofstadter Figure-Figure sequences",
+      "slug": "hofstadter-figure-figure-sequences",
+      "state": "solved"
+    },
+    {
       "title": "Hofstadter Q sequence",
       "slug": "hofstadter-q-sequence",
       "state": "published",
@@ -465,6 +495,11 @@
       "slug": "intersecting-number-wheels",
       "state": "published",
       "published_hash": "f70ff03b6c2ec5831b6090c55d42c3b49bbd363daa9ec7cba857ebb7f5dc5091"
+    },
+    {
+      "title": "Inventory sequence",
+      "slug": "inventory-sequence",
+      "state": "solved"
     },
     {
       "title": "Isqrt (integer square root) of X",
@@ -501,6 +536,11 @@
       "slug": "jensens-device",
       "state": "published",
       "published_hash": "4007f1b940288dfe132c775fd36ac8aa0baea98afe16f2e1c33887fa84273bdf"
+    },
+    {
+      "title": "Jordan-P\u00F3lya numbers",
+      "slug": "jordan-polya-numbers",
+      "state": "solved"
     },
     {
       "title": "Josephus problem",
@@ -563,6 +603,11 @@
       "published_hash": "f865b4df232a7a8f94c7352170597b998038765b2155f115e2f476f22a6ad56f"
     },
     {
+      "title": "Longest common subsequence",
+      "slug": "longest-common-subsequence",
+      "state": "solved"
+    },
+    {
       "title": "Look-and-say sequence",
       "slug": "look-and-say-sequence",
       "state": "published",
@@ -595,6 +640,11 @@
       "slug": "map-range",
       "state": "published",
       "published_hash": "6ad8e0a7620fded2cbc65ed9d74d9fd876231956d16e7466f8b1d0892ef2081d"
+    },
+    {
+      "title": "Mian-Chowla sequence",
+      "slug": "mian-chowla-sequence",
+      "state": "solved"
     },
     {
       "title": "Monads/List monad",
@@ -643,6 +693,11 @@
       "published_hash": "d5e2c1f36a639dd50c29f9857525f815cfd8563de09cb918514e4f4eb0af6307"
     },
     {
+      "title": "Next highest int from digits",
+      "slug": "next-highest-int-from-digits",
+      "state": "solved"
+    },
+    {
       "title": "Non-continuous subsequences",
       "slug": "non-continuous-subsequences",
       "state": "published",
@@ -677,6 +732,11 @@
       "state": "published"
     },
     {
+      "title": "Order disjoint list items",
+      "slug": "order-disjoint-list-items",
+      "state": "solved"
+    },
+    {
       "title": "Ordered partitions",
       "slug": "ordered-partitions",
       "state": "published",
@@ -705,6 +765,11 @@
       "slug": "pangram-checker",
       "state": "published",
       "published_hash": "2173344e020318d5d6ee0c1ccbc352c106b4e051a6986801e4a4cde23239b225"
+    },
+    {
+      "title": "Parsing/RPN calculator algorithm",
+      "slug": "parsing-rpn-calculator-algorithm",
+      "state": "solved"
     },
     {
       "title": "Parsing/Shunting-yard algorithm",
@@ -771,6 +836,11 @@
       "slug": "range-consolidation",
       "state": "published",
       "published_hash": "a6824cdb9d1b0c668c988bf66f60d0570b5ddf307111f3ee548328ba354ac74a"
+    },
+    {
+      "title": "Range expansion",
+      "slug": "range-expansion",
+      "state": "solved"
     },
     {
       "title": "Range extraction",
@@ -849,6 +919,11 @@
       "published_hash": "3e9ddf3eaba02e2e66343c4666c9b98c9e4def443195bf203fbfac1829062f9f"
     },
     {
+      "title": "Spiral matrix",
+      "slug": "spiral-matrix",
+      "state": "solved"
+    },
+    {
       "title": "Stern-Brocot sequence",
       "slug": "stern-brocot-sequence",
       "state": "published",
@@ -902,6 +977,11 @@
       "published_hash": "58a9badc1eb0a06ae79377f10aaf77e5cc012dfd6ebeab2c627b6e4894b5cbd6"
     },
     {
+      "title": "Tree from nesting levels",
+      "slug": "tree-from-nesting-levels",
+      "state": "solved"
+    },
+    {
       "title": "Tree traversal",
       "slug": "tree-traversal",
       "state": "published",
@@ -916,6 +996,11 @@
     {
       "title": "URL decoding",
       "slug": "url-decoding",
+      "state": "solved"
+    },
+    {
+      "title": "URL encoding",
+      "slug": "url-encoding",
       "state": "solved"
     },
     {
@@ -953,6 +1038,11 @@
       "published_hash": "e217ed1ac914f9ac32609dcfb052216cff14dad2ba168a3e85d0de70ecd7b679"
     },
     {
+      "title": "Variable-length quantity",
+      "slug": "variable-length-quantity",
+      "state": "solved"
+    },
+    {
       "title": "Variadic fixed-point combinator",
       "state": "published"
     },
@@ -975,6 +1065,11 @@
       "published_hash": "b300d7da3b07f813bbd33c3c745afa5668385b00fb1b3a4c790d4cd1b2951043"
     },
     {
+      "title": "Weird numbers",
+      "slug": "weird-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Word wrap",
       "slug": "word-wrap",
       "state": "published",
@@ -991,6 +1086,11 @@
       "slug": "yellowstone-sequence",
       "state": "published",
       "published_hash": "86ca6666dca22de8ed4061b606db9740599579cd222c92bd82910b5249348e94"
+    },
+    {
+      "title": "Yin and yang",
+      "slug": "yin-and-yang",
+      "state": "solved"
     },
     {
       "title": "Zeckendorf number representation",
