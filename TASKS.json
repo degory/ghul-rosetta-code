@@ -216,7 +216,8 @@
     {
       "title": "Burrows\u2013Wheeler transform",
       "slug": "burrows-wheeler-transform",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ab5b0f64eecbf1d35a71c5ac6209d37423f3837c4977f344b8dbcc7c1298fbff"
     },
     {
       "title": "Calculating the value of e",
@@ -257,7 +258,8 @@
     {
       "title": "Cheryl\u0027s birthday",
       "slug": "cheryls-birthday",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5a815f028fb62d897d46c24434f7fe1d77c87e480dbcfdd5ea46ccdff61b3e9e"
     },
     {
       "title": "Church numerals",
@@ -303,7 +305,8 @@
     {
       "title": "Dijkstra\u0027s algorithm",
       "slug": "dijkstras-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "edacf9fa33c6f41088185e8ec17c65f3ce51f85230cf0dd94d0a4da8fb43ac65"
     },
     {
       "title": "Dinesman\u0027s multiple-dwelling problem",
@@ -332,7 +335,8 @@
     {
       "title": "Egyptian division",
       "slug": "egyptian-division",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f55622b16eb7fe6a93ffe8f517b8ee01678c2710abf11b1099dc88e118c834d6"
     },
     {
       "title": "Elementary cellular automaton",
@@ -371,7 +375,8 @@
     {
       "title": "Fibonacci word",
       "slug": "fibonacci-word",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4af426971906b5a098e14a725975db3b49ca80537cb4a6bc01b235622596c00b"
     },
     {
       "title": "First-class functions",
@@ -476,7 +481,8 @@
     {
       "title": "Hofstadter Figure-Figure sequences",
       "slug": "hofstadter-figure-figure-sequences",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d02aa86304aaeee3cf61083e04c767d7c8fc9556f785e8fd4203a4abe946c7ea"
     },
     {
       "title": "Hofstadter Q sequence",
@@ -499,7 +505,8 @@
     {
       "title": "Inventory sequence",
       "slug": "inventory-sequence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2c6417915ed0f39d07e5e6fa0241be33d5f064f3e998e71a24184ed400c0bbca"
     },
     {
       "title": "Isqrt (integer square root) of X",
@@ -540,7 +547,8 @@
     {
       "title": "Jordan-P\u00F3lya numbers",
       "slug": "jordan-polya-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "323e4e4cb5ff6a421b9f84d5c6046e883f0ccbf415115b1ebaac77875648b0e4"
     },
     {
       "title": "Josephus problem",
@@ -605,7 +613,8 @@
     {
       "title": "Longest common subsequence",
       "slug": "longest-common-subsequence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b2f508247e07c05f76fc23adacf81c4188394193e55aba8a17745d4dbe34c984"
     },
     {
       "title": "Look-and-say sequence",
@@ -644,7 +653,8 @@
     {
       "title": "Mian-Chowla sequence",
       "slug": "mian-chowla-sequence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "86a40cb25edc861723c5e805ecb55cd8ed1a66de98313d78614e51f4cd4be1e4"
     },
     {
       "title": "Monads/List monad",
@@ -695,7 +705,8 @@
     {
       "title": "Next highest int from digits",
       "slug": "next-highest-int-from-digits",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "cd53aadba2c7527d4453a624b34057170d26916c93f0397dfe0e583cc28be778"
     },
     {
       "title": "Non-continuous subsequences",
@@ -734,7 +745,8 @@
     {
       "title": "Order disjoint list items",
       "slug": "order-disjoint-list-items",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a33d86a8a297a99753c14a60d728c961c08903587b5cbbd8e555365cde722746"
     },
     {
       "title": "Ordered partitions",
@@ -769,7 +781,8 @@
     {
       "title": "Parsing/RPN calculator algorithm",
       "slug": "parsing-rpn-calculator-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d42a2681fe6b9f717183fc59cb23ce4f41155c005870dd7618baaf9fd82ac8a9"
     },
     {
       "title": "Parsing/Shunting-yard algorithm",
@@ -840,7 +853,8 @@
     {
       "title": "Range expansion",
       "slug": "range-expansion",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "61b6bc65c3d9109f8ffd068ff4a2be6e694160895fa9d111ff4fcd86afce5913"
     },
     {
       "title": "Range extraction",
@@ -921,7 +935,8 @@
     {
       "title": "Spiral matrix",
       "slug": "spiral-matrix",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ef378baa4b60815f0502b16813b7600616be1087d6930b7435909385140c4720"
     },
     {
       "title": "Stern-Brocot sequence",
@@ -979,7 +994,8 @@
     {
       "title": "Tree from nesting levels",
       "slug": "tree-from-nesting-levels",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "53d7398155fc24152c209163f649833138bb702f6847c60f6c0af9b5e994df1f"
     },
     {
       "title": "Tree traversal",
@@ -1040,7 +1056,8 @@
     {
       "title": "Variable-length quantity",
       "slug": "variable-length-quantity",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5dc0eed6d203f6883bc2a839e640ff6b8e7278339a83f98807c7e326aa8dfba5"
     },
     {
       "title": "Variadic fixed-point combinator",
@@ -1067,7 +1084,8 @@
     {
       "title": "Weird numbers",
       "slug": "weird-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8609925f92c9ffaa9d592c5c10bde005fb18cad40f5fc87dbe63b4256d3ca370"
     },
     {
       "title": "Word wrap",
@@ -1090,7 +1108,8 @@
     {
       "title": "Yin and yang",
       "slug": "yin-and-yang",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b985d4abb4a2c94a99429367cfc6eec41557478f4e3c5fe7ace18b7aee7786bd"
     },
     {
       "title": "Zeckendorf number representation",
