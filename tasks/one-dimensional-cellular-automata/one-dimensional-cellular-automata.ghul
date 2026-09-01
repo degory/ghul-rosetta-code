@@ -1,0 +1,21 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+alive(cells: string, index: int) -> bool pure =>
+    index >= 0 /\ index < cells.length /\ cells[index] == '#'
+
+live_neighbourhood(cells: string, index: int) -> int pure =>
+    ((index - 1)::(index + 1))
+        |> filter(at => alive(cells, at))
+        |> count()
+
+next_generation(cells: string) -> string =>
+    (0..cells.length)
+        |> map(index =>
+            if live_neighbourhood(cells, index) == 2 then "#" else "_" fi)
+        |> join("")
+
+stream("_###_##_#_#_#_#__#__",
+        generation => generation || next_generation(generation))
+    |> take(10)
+    |> each(generation => write_line(generation))

@@ -1,0 +1,41 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+use PIECE = (text: string, separator: string, at: int)
+
+starts_with(text: string, position: int, separator: string) -> bool pure =>
+    position + separator.length <= text.length /\
+        text[position..position + separator.length] =~ separator
+
+multisplit(text: string, separators: string[]) -> Pipe[PIECE] is
+    let start mut = 0
+    let position mut = 0
+
+    while position < text.length do
+        if let separator = separators
+            |> find(candidate => starts_with(text, position, candidate))
+        then
+            yield (text = text[start..position],
+                   separator = separator, at = position)
+
+            position = position + separator.length
+            start = position
+        else
+            position = position + 1
+        fi
+    od
+
+    yield (text = text[start..text.length], separator = "", at = -1)
+si
+
+let pieces = multisplit("a!===b=!=c", ["==", "!=", "="])
+    |> collect_list()
+
+write_line(pieces
+    |> map(piece => "\"{piece.text}\"")
+    |> join(", "))
+
+pieces
+    |> filter(piece => piece.separator.length > 0)
+    |> each(piece =>
+        write_line("matched {piece.separator} at {piece.at}"))

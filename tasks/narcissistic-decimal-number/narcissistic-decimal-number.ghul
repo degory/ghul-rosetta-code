@@ -1,0 +1,34 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+power(value: int, exponent: int) -> int pure =>
+    if exponent == 0 then
+        1
+    else
+        value * power(value, exponent - 1)
+    fi
+
+digit_powers(number: int, width: int) -> int pure =>
+    if number == 0 then
+        0
+    else
+        power(number % 10, width) + digit_powers(number / 10, width)
+    fi
+
+digit_count(number: int) -> int pure =>
+    if number < 10 then
+        1
+    else
+        1 + digit_count(number / 10)
+    fi
+
+is_narcissistic(number: int) -> bool pure =>
+    digit_powers(number, digit_count(number)) == number
+
+let narcissistic = stream(0, number => number || number + 1)
+    |> filter(is_narcissistic)
+    |> take(25)
+    |> map(number => "{number}")
+    |> join(" ")
+
+write_line(narcissistic)
