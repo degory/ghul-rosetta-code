@@ -20,7 +20,7 @@ kaprekar(n: int) -> bool => (
 
 let below_ten_thousand = (1::9999)
     |> filter(n => n == 1 \/ kaprekar(n))
-    |> collect_list()
+    |> collect()
 
 write_line("Kaprekar numbers below 10000:")
 write_line(below_ten_thousand |> join(", "))

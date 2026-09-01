@@ -42,14 +42,14 @@ fangs(n: long) -> Pipe[(long, long)] is
 si
 
 fang_text(n: long) -> string is
-    let pairs = fangs(n) |> collect_list()
+    let pairs = fangs(n) |> collect()
 
     if pairs.count == 0 then
         "{n}: not a vampire number"
     else
         let texts = pairs
             |> map(((a, b)) => "{a} x {b}")
-            |> collect_list()
+            |> collect()
         "{n}: {texts |> join(", ")}"
     fi
 si

@@ -30,7 +30,7 @@ partitions(items: List[int], sizes: List[int]) -> Pipe[List[List[int]]] is
         yield LIST[List[int]]()
     else
         for block in combinations(items, sizes[0]) do
-            let remaining = items |> except(block) |> collect_list()
+            let remaining = items |> except(block) |> collect()
 
             for tail in partitions(remaining, sizes[1..<0]) do
                 let whole = LIST[List[int]]()
@@ -52,11 +52,11 @@ braces(block: List[int]) -> string =>
 
 show(sizes: int[]) is
     let total = sizes |> reduce(0, (running, size) => running + size)
-    let items = (1::total) |> collect_list()
+    let items = (1::total) |> collect()
 
     write_line("partitions({sizes |> join(", ")}):")
 
-    partitions(items, sizes |> collect_list())
+    partitions(items, sizes |> collect())
         |> each(partition =>
             write_line("  ({partition |> map(braces) |> join(", ")})"))
 si

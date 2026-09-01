@@ -25,7 +25,7 @@ is_tau(n: int) -> bool => n % divisor_count(n) == 0
 let first_hundred = stream(1, n => n || n + 1)
     |> filter(is_tau)
     |> take(100)
-    |> collect_list()
+    |> collect()
 
 first_hundred |> chunk(10)
     |> each(row => write_line(row |> map((n: int) => "{n,6}") |> join("")))

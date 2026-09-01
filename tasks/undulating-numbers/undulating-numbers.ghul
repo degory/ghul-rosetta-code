@@ -31,10 +31,10 @@ for length in 3..17 do
     od
 od
 
-let three_digit = values |> filter(v => v < 1000L) |> collect_list()
+let three_digit = values |> filter(v => v < 1000L) |> collect()
 let four_digit = values
     |> filter(v => v >= 1000L /\ v < 10000L)
-    |> collect_list()
+    |> collect()
 
 write_line("three digit:")
 

@@ -80,7 +80,7 @@ let table =
         else
             cast int(left.symbol) - cast int(right.symbol)
         fi)
-    |> collect_list()
+    |> collect()
 
 write_line("symbol  weight  code")
 
