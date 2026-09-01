@@ -1,0 +1,19 @@
+use IO.Std.write_line
+use Collections.SET
+use Ghul.Pipes
+
+only_in(left: SET[string], right: SET[string]) -> Pipe[string] =>
+    left |> filter(name => !right.contains(name))
+
+show(label: string, names: Pipe[string]) is
+    let listed = names |> join(", ")
+
+    write_line("{label}: {listed}")
+si
+
+let a = SET[string](["John", "Serena", "Bob", "Mary", "Serena"])
+let b = SET[string](["Jim", "Mary", "John", "Jim", "Bob"])
+
+show("only in A", only_in(a, b))
+show("only in B", only_in(b, a))
+show("symmetric difference", only_in(a, b) |> cat(only_in(b, a)))
