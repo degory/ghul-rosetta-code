@@ -1,0 +1,63 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+use POSITION = (x: int, y: int)
+
+is_prime(number: int) -> bool pure =>
+    number > 1 /\ ((2..number)
+        |> take_while(divisor => divisor * divisor <= number)
+        |> all(divisor => number % divisor != 0))
+
+spiral() -> Pipe[POSITION] is
+    let x mut = 0
+    let y mut = 0
+    let run mut = 1
+
+    yield (x = x, y = y)
+
+    do
+        for step in 0..run do
+            x = x + 1
+
+            yield (x = x, y = y)
+        od
+
+        for step in 0..run do
+            y = y - 1
+
+            yield (x = x, y = y)
+        od
+
+        run = run + 1
+
+        for step in 0..run do
+            x = x - 1
+
+            yield (x = x, y = y)
+        od
+
+        for step in 0..run do
+            y = y + 1
+
+            yield (x = x, y = y)
+        od
+
+        run = run + 1
+    od
+si
+
+let size = 21
+let centre = size / 2
+
+let grid = (0..size)
+    |> map(row => (0..size) |> map(column => " ") |> collect_list())
+    |> collect_list()
+
+for placed in spiral() |> index() |> take(size * size) do
+    if is_prime(placed.index + 1) then
+        grid[centre + placed.value.y][centre + placed.value.x] = "*"
+    fi
+od
+
+grid |> each((row: LIST[string]) => write_line(row |> join("")))
