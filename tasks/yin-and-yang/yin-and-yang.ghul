@@ -1,3 +1,37 @@
 use IO.Std.write_line
+use Ghul.Pipes
 
-write_line("not written yet")
+within(x: double, y: double, centre: double, radius: double) -> bool pure =>
+    x * x + (y - centre) * (y - centre) <= radius * radius
+
+symbol(x: double, y: double, radius: double) -> string pure =>
+    if !within(x, y, 0.0D, radius) then
+        " "
+    elif within(x, y, -radius / 2.0D, radius / 6.0D) then
+        "#"
+    elif within(x, y, radius / 2.0D, radius / 6.0D) then
+        "."
+    elif within(x, y, -radius / 2.0D, radius / 2.0D) then
+        "."
+    elif within(x, y, radius / 2.0D, radius / 2.0D) then
+        "#"
+    elif x < 0.0D then
+        "."
+    else
+        "#"
+    fi
+
+taijitu(radius: int) -> Pipe[string] is
+    for row in -radius::radius do
+        yield ((-2 * radius)::(2 * radius))
+            |> map((column: int) =>
+                symbol(cast double(column) / 2.0D, cast double(row),
+                    cast double(radius)))
+            |> join("")
+    od
+si
+
+[4, 8]
+    |> each((radius: int) =>
+        (taijitu(radius) |> each(line => write_line(line))
+         write_line("")))
