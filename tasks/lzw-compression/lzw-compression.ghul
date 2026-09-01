@@ -1,0 +1,77 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Collections.MAP
+use Ghul.Pipes
+use System.Text.StringBuilder
+
+let alphabet_size = 256
+
+compress(text: string) -> List[int] is
+    let codes = MAP[string, int]()
+
+    for code in 0..alphabet_size do
+        codes["{cast char(code)}"] = code
+    od
+
+    let compressed = LIST[int]()
+    let current mut = ""
+
+    for character in text do
+        let extended = "{current}{character}"
+
+        if codes.contains_key(extended) then
+            current = extended
+        else
+            compressed.add(codes[current])
+            codes[extended] = codes.count
+            current = "{character}"
+        fi
+    od
+
+    if current.length > 0 then
+        compressed.add(codes[current])
+    fi
+
+    return compressed
+si
+
+decompress(compressed: List[int]) -> string is
+    if compressed.count == 0 then
+        return ""
+    fi
+
+    let words = LIST[string]()
+
+    for code in 0..alphabet_size do
+        words.add("{cast char(code)}")
+    od
+
+    let text = StringBuilder()
+    let previous mut = words[compressed[0]]
+
+    text.append(previous)
+
+    for code in compressed |> skip(1) do
+        let word =
+            if code < words.count then
+                words[code]
+            else
+                "{previous}{previous[0]}"
+            fi
+
+        text.append(word)
+        words.add("{previous}{word[0]}")
+
+        previous = word
+    od
+
+    return text.to_string()
+si
+
+let original = "TOBEORNOTTOBEORTOBEORNOT"
+let compressed = compress(original)
+
+write_line(original)
+write_line(compressed |> join(" "))
+write_line(decompress(compressed))
