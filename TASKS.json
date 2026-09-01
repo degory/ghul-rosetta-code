@@ -209,6 +209,7 @@
     },
     {
       "title": "Brace expansion",
+      "slug": "brace-expansion",
       "state": "solved"
     },
     {
@@ -237,6 +238,7 @@
     },
     {
       "title": "Cartesian product of two or more lists",
+      "slug": "cartesian-product-of-two-or-more-lists",
       "state": "solved"
     },
     {
@@ -294,6 +296,7 @@
     },
     {
       "title": "Doomsday rule",
+      "slug": "doomsday-rule",
       "state": "solved"
     },
     {
@@ -310,6 +313,7 @@
     },
     {
       "title": "Elementary cellular automaton",
+      "slug": "elementary-cellular-automaton",
       "state": "solved"
     },
     {
@@ -366,6 +370,7 @@
     },
     {
       "title": "Four is magic",
+      "slug": "four-is-magic",
       "state": "solved"
     },
     {
@@ -382,6 +387,7 @@
     },
     {
       "title": "Generator/Exponential",
+      "slug": "generator-exponential",
       "state": "solved"
     },
     {
@@ -438,6 +444,7 @@
     },
     {
       "title": "Hofstadter Q sequence",
+      "slug": "hofstadter-q-sequence",
       "state": "solved"
     },
     {
@@ -466,6 +473,7 @@
     },
     {
       "title": "Jacobi symbol",
+      "slug": "jacobi-symbol",
       "state": "solved"
     },
     {
@@ -512,6 +520,7 @@
     },
     {
       "title": "Knapsack problem/0-1",
+      "slug": "knapsack-problem-0-1",
       "state": "solved"
     },
     {
@@ -522,6 +531,7 @@
     },
     {
       "title": "LZW compression",
+      "slug": "lzw-compression",
       "state": "solved"
     },
     {
@@ -582,6 +592,7 @@
     },
     {
       "title": "Move-to-front algorithm",
+      "slug": "move-to-front-algorithm",
       "state": "solved"
     },
     {
@@ -634,6 +645,7 @@
     },
     {
       "title": "Number names",
+      "slug": "number-names",
       "state": "solved"
     },
     {
@@ -684,6 +696,7 @@
     },
     {
       "title": "Parsing/Shunting-yard algorithm",
+      "slug": "parsing-shunting-yard-algorithm",
       "state": "solved"
     },
     {
@@ -742,6 +755,7 @@
     },
     {
       "title": "Range consolidation",
+      "slug": "range-consolidation",
       "state": "solved"
     },
     {
@@ -828,6 +842,7 @@
     },
     {
       "title": "Sum to 100",
+      "slug": "sum-to-100",
       "state": "solved"
     },
     {
@@ -855,6 +870,7 @@
     },
     {
       "title": "Topological sort",
+      "slug": "topological-sort",
       "state": "solved"
     },
     {
@@ -888,6 +904,7 @@
     },
     {
       "title": "UTF-8 encode and decode",
+      "slug": "utf-8-encode-and-decode",
       "state": "solved"
     },
     {
@@ -930,6 +947,7 @@
     },
     {
       "title": "Vigen\u00E8re cipher",
+      "slug": "vigenere-cipher",
       "state": "solved"
     },
     {
@@ -940,6 +958,7 @@
     },
     {
       "title": "Word wrap",
+      "slug": "word-wrap",
       "state": "solved"
     },
     {
@@ -968,6 +987,7 @@
     },
     {
       "title": "Zumkeller numbers",
+      "slug": "zumkeller-numbers",
       "state": "solved"
     }
   ]
