@@ -1,0 +1,101 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+union Token(text: string) is
+    NUMBER(..)
+    OPERATOR(..)
+    OPEN(..)
+    CLOSE(..)
+si
+
+scan(line: string) -> Pipe[Token] is
+    for word in line.split([' ']) do
+        case word
+        when "(" then yield Token.OPEN(word)
+        when ")" then yield Token.CLOSE(word)
+        when "^", "*", "/", "+", "-" then yield Token.OPERATOR(word)
+        else yield Token.NUMBER(word)
+        esac
+    od
+si
+
+precedence(symbol: string) -> int =>
+    case symbol
+    when "^" then 4
+    when "*", "/" then 3
+    else 2
+    esac
+
+binds_tighter(top: string, incoming: string) -> bool =>
+    precedence(top) > precedence(incoming) \/
+    (precedence(top) == precedence(incoming) /\ incoming !~ "^")
+
+show(tokens: List[Token]) -> string =>
+    tokens |> map(token => token.text) |> join(" ")
+
+row(token: string, action: string, operators: string, output: string)
+    -> string
+=>
+    "{token,-7}{action,-38}{operators,-14}{output}"
+
+let line = "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3"
+
+let operators = LIST[Token]()
+let output = LIST[Token]()
+
+write_line(row("token", "action", "stack", "output"))
+
+for token in scan(line) do
+    let action mut = ""
+
+    if let number: Token.NUMBER = token then
+        output.add(number)
+
+        action = "add to output"
+    elif let operator: Token.OPERATOR = token then
+        while
+            operators.count > 0 /\
+            isa Token.OPERATOR(operators[operators.count - 1]) /\
+            binds_tighter(operators[operators.count - 1].text, operator.text)
+        do
+            output.add(operators[operators.count - 1])
+            operators.remove_at(operators.count - 1)
+
+            action = "pop to output, push operator"
+        od
+
+        operators.add(operator)
+
+        if action.length == 0 then
+            action = "push operator"
+        fi
+    elif isa Token.OPEN(token) then
+        operators.add(token)
+
+        action = "push open parenthesis"
+    else
+        while !isa Token.OPEN(operators[operators.count - 1]) do
+            output.add(operators[operators.count - 1])
+            operators.remove_at(operators.count - 1)
+        od
+
+        operators.remove_at(operators.count - 1)
+
+        action = "pop to output until open parenthesis"
+    fi
+
+    write_line(row(token.text, action, show(operators), show(output)))
+od
+
+while operators.count > 0 do
+    output.add(operators[operators.count - 1])
+    operators.remove_at(operators.count - 1)
+
+    write_line(
+        row("", "pop remaining to output", show(operators), show(output)))
+od
+
+write_line("")
+write_line(show(output))
