@@ -1,3 +1,48 @@
 use IO.Std.write_line
+use Collections.MAP
+use Ghul.Pipes
 
-write_line("not written yet")
+inventory() -> Pipe[int] is
+    let counts = MAP[int, int]()
+
+    while true do
+        let value mut = 0
+
+        while true do
+            let seen mut = 0
+            counts.try_get_value(value, seen ref)
+
+            yield seen
+
+            let of_that_count mut = 0
+            counts.try_get_value(seen, of_that_count ref)
+            counts[seen] = of_that_count + 1
+
+            if seen == 0 then
+                break
+            fi
+
+            value = value + 1
+        od
+    od
+si
+
+first_at_least(threshold: int) -> INDEXED_VALUE[int] pure =>
+    inventory()
+        |> index()
+        |> find_or_throw(entry => entry.value >= threshold)
+
+inventory()
+    |> take(100)
+    |> chunk(10)
+    |> each(row =>
+        write_line(row |> map((n: int) => "{n,5}") |> join("")))
+
+write_line("")
+
+(1::10)
+    |> each((n: int) =>
+        (let threshold = n * 1000
+         let found = first_at_least(threshold)
+         write_line("first at least {threshold,6}: {found.value,6}"
+             " at index {found.index,7}")))
