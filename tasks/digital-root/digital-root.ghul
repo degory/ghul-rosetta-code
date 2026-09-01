@@ -1,0 +1,27 @@
+use IO.Std.write_line
+
+use ROOT = (persistence: int, digital_root: long)
+
+digit_sum(value: long) -> long pure =>
+    if value < 10L then
+        value
+    else
+        value % 10L + digit_sum(value / 10L)
+    fi
+
+root(value: long) -> ROOT pure =>
+    if value < 10L then
+        (persistence = 0, digital_root = value)
+    else
+        let inner = root(digit_sum(value))
+
+        (persistence = inner.persistence + 1,
+         digital_root = inner.digital_root)
+    fi
+
+for number in [627615L, 39390L, 588225L, 393900588225L] do
+    let result = root(number)
+
+    write_line("{number} has additive persistence {result.persistence}"
+        " and digital root {result.digital_root}")
+od
