@@ -24,4 +24,5 @@ row(number: int) -> string =>
 let size = power_of_two(4)
 
 (0..size)
-    |> each(number => write_line("{indent(size - 1 - number)}{row(number)}"))
+    |> each(number =>
+        write_line("{indent(size - 1 - number)}{row(number)}"))
