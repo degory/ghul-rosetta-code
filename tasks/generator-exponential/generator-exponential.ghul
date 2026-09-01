@@ -1,0 +1,48 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+power(base: long, exponent: int) -> long is
+    let value mut = 1L
+
+    for _ in 0..exponent do
+        value = value * base
+    od
+
+    return value
+si
+
+powers(exponent: int) -> Pipe[long] is
+    let base mut = 0L
+
+    do
+        yield power(base, exponent)
+
+        base = base + 1L
+    od
+si
+
+next_power(powers: Pipe[long]) -> long is
+    assert powers.move_next() else "the powers never run out"
+
+    return powers.current
+si
+
+without(values: Pipe[long], excluded: Pipe[long]) -> Pipe[long] is
+    let skipped mut = next_power(excluded)
+
+    for value in values do
+        while skipped < value do
+            skipped = next_power(excluded)
+        od
+
+        if skipped != value then
+            yield value
+        fi
+    od
+si
+
+let squares_that_are_not_cubes = without(powers(2), powers(3))
+    |> skip(20)
+    |> take(10)
+
+write_line(squares_that_are_not_cubes |> join(" "))
