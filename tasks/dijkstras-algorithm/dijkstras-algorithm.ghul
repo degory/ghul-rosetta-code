@@ -65,4 +65,5 @@ write_line("")
 
 ["e", "f"]
     |> each(node =>
-        write_line("a to {node}: {route(best, node)}, cost {best[node].cost}"))
+        write_line("a to {node}: {route(best, node)},"
+            " cost {best[node].cost}"))
