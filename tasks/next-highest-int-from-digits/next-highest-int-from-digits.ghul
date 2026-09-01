@@ -6,20 +6,20 @@ next_highest(number: string) -> string =>
         |> reverse()
         |> find(i => number[i] < number[i + 1])
     then
-        (let tail = number[pivot + 1..<0]
+        let tail = number[pivot + 1..<0]
 
-         let successor = tail
-             |> filter(digit => digit > number[pivot])
-             |> sort()
-             |> first_or_throw()
+        let successor = tail
+            |> filter(digit => digit > number[pivot])
+            |> sort()
+            |> first_or_throw()
 
-         let remaining = tail.remove(tail.index_of(successor), 1)
+        let remaining = tail.remove(tail.index_of(successor), 1)
 
-         let ordered = "{remaining}{number[pivot]}"
-             |> sort()
-             |> join("")
+        let ordered = "{remaining}{number[pivot]}"
+            |> sort()
+            |> join("")
 
-         "{number[0..pivot]}{successor}{ordered}")
+        "{number[0..pivot]}{successor}{ordered}"
     else
         "0"
     fi

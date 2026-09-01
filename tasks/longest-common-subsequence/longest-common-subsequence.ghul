@@ -11,23 +11,23 @@ longest_common_subsequence(left: string, right: string) -> string is
         elif known.contains_key((i, j)) then
             known[(i, j)]
         else
-            (let answer =
-                 if left[i] == right[j] then
-                     "{left[i]}{rec(i + 1, j + 1)}"
-                 else
-                     (let dropping_left = rec(i + 1, j)
-                      let dropping_right = rec(i, j + 1)
+            let answer =
+                if left[i] == right[j] then
+                    "{left[i]}{rec(i + 1, j + 1)}"
+                else
+                    let dropping_left = rec(i + 1, j)
+                    let dropping_right = rec(i, j + 1)
 
-                      if dropping_left.length >= dropping_right.length then
-                          dropping_left
-                      else
-                          dropping_right
-                      fi)
-                 fi
+                    if dropping_left.length >= dropping_right.length then
+                        dropping_left
+                    else
+                        dropping_right
+                    fi
+                fi
 
-             known[(i, j)] = answer
+            known[(i, j)] = answer
 
-             answer)
+            answer
         fi
 
     longest(0, 0)
