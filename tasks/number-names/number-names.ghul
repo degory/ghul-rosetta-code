@@ -1,0 +1,92 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let small = [
+    "zero", "one", "two", "three", "four", "five", "six", "seven",
+    "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+    "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+]
+
+let tens = [
+    "twenty", "thirty", "forty", "fifty",
+    "sixty", "seventy", "eighty", "ninety"
+]
+
+let scales = [
+    "thousand", "million", "billion",
+    "trillion", "quadrillion", "quintillion"
+]
+
+below_hundred(value: int) -> string =>
+    if value < 20 then
+        small[value]
+    elif value % 10 == 0 then
+        tens[value / 10 - 2]
+    else
+        "{tens[value / 10 - 2]}-{small[value % 10]}"
+    fi
+
+below_thousand(value: int) -> string =>
+    if value < 100 then
+        below_hundred(value)
+    elif value % 100 == 0 then
+        "{small[value / 100]} hundred"
+    else
+        "{small[value / 100]} hundred and {below_hundred(value % 100)}"
+    fi
+
+groups(value: long) -> LIST[int] is
+    let parts = LIST[int]()
+    let rest mut = value
+
+    while rest > 0L do
+        parts.add(cast int(rest % 1000L))
+
+        rest = rest / 1000L
+    od
+
+    return parts
+si
+
+cardinal(value: long) -> string is
+    if value < 0L then
+        return "negative {cardinal(-value)}"
+    elif value == 0L then
+        return small[0]
+    fi
+
+    let parts = groups(value)
+    let named = LIST[string]()
+
+    let at mut = parts.count - 1
+
+    while at >= 0 do
+        if parts[at] != 0 then
+            let name = below_thousand(parts[at])
+
+            named.add(if at == 0 then name else "{name} {scales[at - 1]}" fi)
+        fi
+
+        at = at - 1
+    od
+
+    if named.count > 1 /\ parts[0] != 0 /\ parts[0] < 100 then
+        let last = named[named.count - 1]
+        let leading = named |> take(named.count - 1) |> join(" ")
+
+        return "{leading} and {last}"
+    fi
+
+    return named |> join(" ")
+si
+
+let samples = [
+    0L, 1L, 12L, 20L, 21L, 99L, 100L, 101L, 120L, 123L, 999L,
+    1000L, 1001L, 1010L, 1100L, 12345L, 100000L, 1000000L,
+    1000001L, 123456789L, -1234L, 9223372036854775807L
+]
+
+for sample in samples do
+    write_line("{sample,22}  {cardinal(sample)}")
+od
