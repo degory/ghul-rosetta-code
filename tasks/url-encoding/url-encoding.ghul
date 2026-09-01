@@ -1,0 +1,22 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use System.Text.Encoding
+
+percent_encoded(octet: ubyte) -> string pure =>
+    (let character = cast char(octet)
+
+     if char.is_ascii_letter_or_digit(character) then
+         "{character}"
+     else
+         "%{octet:X2}"
+     fi)
+
+url_encode(text: string) -> string =>
+    Encoding.utf8.get_bytes(text)
+        |> map(percent_encoded)
+        |> join("")
+
+["http://foo bar/",
+ "google.com/search?q=`Abdu'l-Bahá",
+ "%25"]
+    |> each(text => write_line("{text} -> {url_encode(text)}"))

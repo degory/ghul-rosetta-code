@@ -1,0 +1,77 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let biggest_factorial = 18
+
+factorial(n: int) -> long =>
+    (2::n) |> reduce(1L, (product: long, i: int) => product * cast long(i))
+
+multiples(value: long, largest: int, limit: long) -> Pipe[long] is
+    yield value
+
+    for i in 2::largest do
+        if value <= limit / factorial(i) then
+            yield in multiples(value * factorial(i), i, limit)
+        fi
+    od
+si
+
+decompose(value: long, largest: int) -> LIST[int]? is
+    if value == 1L then
+        return LIST[int]()
+    fi
+
+    for i in reverse(2::largest) do
+        if value % factorial(i) == 0L then
+            if let rest = decompose(value / factorial(i), i) then
+                rest.insert(0, i)
+
+                return rest
+            fi
+        fi
+    od
+
+    return null
+si
+
+as_factorials(value: long) -> string =>
+    if let factors = decompose(value, biggest_factorial) then
+        factors
+            |> distinct()
+            |> map((i: int) =>
+                (let times = factors |> filter(f => f == i) |> count()
+                 if times == 1 then "{i}!" else "{i}!^{times}" fi))
+            |> join(" x ")
+    else
+        "not a product of factorials"
+    fi
+
+let limit = 1L << 53
+
+let numbers = multiples(1L, biggest_factorial, limit)
+    |> distinct()
+    |> sort()
+    |> collect()
+
+write_line("the first 50 Jordan-Polya numbers:")
+
+numbers
+    |> take(50)
+    |> chunk(10)
+    |> each(row =>
+        write_line(row |> map((n: long) => "{n,7}") |> join("")))
+
+let below_a_hundred_million = numbers
+    |> take_while(n => n < 100000000L)
+    |> reduce(1L, (largest: long, n: long) => n)
+
+write_line("")
+write_line("largest below 100 million: {below_a_hundred_million}"
+    " = {as_factorials(below_a_hundred_million)}")
+write_line("")
+
+[800, 1050, 1800, 2800, 3800]
+    |> each((n: int) =>
+        (let value = numbers[n - 1]
+         write_line("{n,5}: {value,17} = {as_factorials(value)}")))

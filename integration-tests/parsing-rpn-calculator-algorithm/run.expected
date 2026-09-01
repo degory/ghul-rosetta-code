@@ -1,0 +1,16 @@
+token  action        stack
+    3  push          3
+    4  push          3 4
+    2  push          3 4 2
+    *  apply *       3 8
+    1  push          3 8 1
+    5  push          3 8 1 5
+    -  apply -       3 8 -4
+    2  push          3 8 -4 2
+    3  push          3 8 -4 2 3
+    ^  apply ^       3 8 -4 8
+    ^  apply ^       3 8 65536
+    /  apply /       3 0.0001220703125
+    +  apply +       3.0001220703125
+
+result: 3.0001220703125

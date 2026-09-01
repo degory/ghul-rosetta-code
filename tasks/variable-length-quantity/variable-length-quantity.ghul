@@ -1,0 +1,31 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+to_octets(value: long) -> LIST[ubyte] is
+    let octets = LIST[ubyte]([cast ubyte(value & 0x7FL)])
+    let rest mut = value >> 7
+
+    while rest > 0L do
+        octets.insert(0, cast ubyte((rest & 0x7FL) | 0x80L))
+        rest = rest >> 7
+    od
+
+    octets
+si
+
+from_octets(octets: List[ubyte]) -> long =>
+    octets
+        |> reduce(0L, (value: long, octet: ubyte) =>
+            (value << 7) | cast long(cast int(octet) & 0x7F))
+
+as_hex(octet: ubyte) -> string pure => "{octet:X2}"
+
+[0x200000L, 0x1FFFFFL]
+    |> each((value: long) =>
+        (let octets = to_octets(value)
+         let shown = octets |> map(as_hex) |> join(" ")
+
+         write_line("{value,8} = 0x{value:X6} -> {shown}"
+             " -> {from_octets(octets)}")))

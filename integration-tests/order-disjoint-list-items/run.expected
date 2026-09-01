@@ -1,0 +1,28 @@
+M: the cat sat on the mat
+N: mat cat
+result: the mat sat on the cat
+
+M: the cat sat on the mat
+N: cat mat
+result: the cat sat on the mat
+
+M: A B C A B C A B C
+N: C A C A
+result: C B A C B A A B C
+
+M: A B C A B D A B E
+N: E A D A
+result: E B C A B D A B A
+
+M: A B
+N: B
+result: A B
+
+M: A B
+N: B A
+result: B A
+
+M: A B B A
+N: B A
+result: B A B A
+

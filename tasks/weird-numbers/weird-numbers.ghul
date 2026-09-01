@@ -1,0 +1,48 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+proper_divisors(n: int) -> LIST[int] pure is
+    let divisors = LIST[int]([1])
+    let candidate mut = 2
+
+    while candidate * candidate <= n do
+        if n % candidate == 0 then
+            divisors.add(candidate)
+
+            if candidate != n / candidate then
+                divisors.add(n / candidate)
+            fi
+        fi
+
+        candidate = candidate + 1
+    od
+
+    divisors
+si
+
+sums_to(divisors: List[int], from: int, target: int) -> bool pure =>
+    if target == 0 then
+        true
+    elif from >= divisors.count then
+        false
+    elif divisors[from] > target then
+        sums_to(divisors, from + 1, target)
+    else
+        sums_to(divisors, from + 1, target - divisors[from]) \/
+            sums_to(divisors, from + 1, target)
+    fi
+
+weird(n: int) -> bool pure =>
+    (let divisors = proper_divisors(n) |> sort_descending() |> collect()
+
+     divisors |> reduce(0, (total: int, d: int) => total + d) > n /\
+         !sums_to(divisors, 0, n))
+
+stream(2, n => n || n + 1)
+    |> filter(weird)
+    |> take(25)
+    |> chunk(5)
+    |> each(row =>
+        write_line(row |> map((n: int) => "{n,7}") |> join("")))

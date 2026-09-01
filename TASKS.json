@@ -214,6 +214,12 @@
       "published_hash": "31d4b7780bd29fc87e64f43245043578889580af5b8d57baaae38925ab69d143"
     },
     {
+      "title": "Burrows\u2013Wheeler transform",
+      "slug": "burrows-wheeler-transform",
+      "state": "published",
+      "published_hash": "ab5b0f64eecbf1d35a71c5ac6209d37423f3837c4977f344b8dbcc7c1298fbff"
+    },
+    {
       "title": "Calculating the value of e",
       "slug": "calculating-the-value-of-e",
       "state": "published",
@@ -248,6 +254,12 @@
       "slug": "catamorphism",
       "state": "published",
       "published_hash": "2c5e92dd24c14d25f3a3d19732712a0b2dcb8cd4305311a73b3571636deb4cc6"
+    },
+    {
+      "title": "Cheryl\u0027s birthday",
+      "slug": "cheryls-birthday",
+      "state": "published",
+      "published_hash": "5a815f028fb62d897d46c24434f7fe1d77c87e480dbcfdd5ea46ccdff61b3e9e"
     },
     {
       "title": "Church numerals",
@@ -291,6 +303,12 @@
       "published_hash": "31c38a05daa76929127e3401427bacb077cd623aaedb88a7653fc1655cf6c8d8"
     },
     {
+      "title": "Dijkstra\u0027s algorithm",
+      "slug": "dijkstras-algorithm",
+      "state": "published",
+      "published_hash": "edacf9fa33c6f41088185e8ec17c65f3ce51f85230cf0dd94d0a4da8fb43ac65"
+    },
+    {
       "title": "Dinesman\u0027s multiple-dwelling problem",
       "slug": "dinesmans-multiple-dwelling-problem",
       "state": "published",
@@ -313,6 +331,12 @@
       "slug": "eban-numbers",
       "state": "published",
       "published_hash": "dbb98f8a0ae044d8a5e11fcbb00b048c8d6475a401fd1295f246abef562d17e6"
+    },
+    {
+      "title": "Egyptian division",
+      "slug": "egyptian-division",
+      "state": "published",
+      "published_hash": "f55622b16eb7fe6a93ffe8f517b8ee01678c2710abf11b1099dc88e118c834d6"
     },
     {
       "title": "Elementary cellular automaton",
@@ -347,6 +371,12 @@
       "slug": "fibonacci-sequence",
       "state": "published",
       "published_hash": "f0411a677735bc3ecc6ff0d0e5be98c9b927632e0f6a5ccaf70e4fd25b2831d7"
+    },
+    {
+      "title": "Fibonacci word",
+      "slug": "fibonacci-word",
+      "state": "published",
+      "published_hash": "4af426971906b5a098e14a725975db3b49ca80537cb4a6bc01b235622596c00b"
     },
     {
       "title": "First-class functions",
@@ -449,6 +479,12 @@
       "published_hash": "19a68280af00887e3dcc1b929ea30ddd52028a982a810b110547989a1328be81"
     },
     {
+      "title": "Hofstadter Figure-Figure sequences",
+      "slug": "hofstadter-figure-figure-sequences",
+      "state": "published",
+      "published_hash": "d02aa86304aaeee3cf61083e04c767d7c8fc9556f785e8fd4203a4abe946c7ea"
+    },
+    {
       "title": "Hofstadter Q sequence",
       "slug": "hofstadter-q-sequence",
       "state": "published",
@@ -465,6 +501,12 @@
       "slug": "intersecting-number-wheels",
       "state": "published",
       "published_hash": "f70ff03b6c2ec5831b6090c55d42c3b49bbd363daa9ec7cba857ebb7f5dc5091"
+    },
+    {
+      "title": "Inventory sequence",
+      "slug": "inventory-sequence",
+      "state": "published",
+      "published_hash": "2c6417915ed0f39d07e5e6fa0241be33d5f064f3e998e71a24184ed400c0bbca"
     },
     {
       "title": "Isqrt (integer square root) of X",
@@ -501,6 +543,12 @@
       "slug": "jensens-device",
       "state": "published",
       "published_hash": "4007f1b940288dfe132c775fd36ac8aa0baea98afe16f2e1c33887fa84273bdf"
+    },
+    {
+      "title": "Jordan-P\u00F3lya numbers",
+      "slug": "jordan-polya-numbers",
+      "state": "published",
+      "published_hash": "323e4e4cb5ff6a421b9f84d5c6046e883f0ccbf415115b1ebaac77875648b0e4"
     },
     {
       "title": "Josephus problem",
@@ -563,6 +611,12 @@
       "published_hash": "f865b4df232a7a8f94c7352170597b998038765b2155f115e2f476f22a6ad56f"
     },
     {
+      "title": "Longest common subsequence",
+      "slug": "longest-common-subsequence",
+      "state": "published",
+      "published_hash": "b2f508247e07c05f76fc23adacf81c4188394193e55aba8a17745d4dbe34c984"
+    },
+    {
       "title": "Look-and-say sequence",
       "slug": "look-and-say-sequence",
       "state": "published",
@@ -595,6 +649,12 @@
       "slug": "map-range",
       "state": "published",
       "published_hash": "6ad8e0a7620fded2cbc65ed9d74d9fd876231956d16e7466f8b1d0892ef2081d"
+    },
+    {
+      "title": "Mian-Chowla sequence",
+      "slug": "mian-chowla-sequence",
+      "state": "published",
+      "published_hash": "86a40cb25edc861723c5e805ecb55cd8ed1a66de98313d78614e51f4cd4be1e4"
     },
     {
       "title": "Monads/List monad",
@@ -643,6 +703,12 @@
       "published_hash": "d5e2c1f36a639dd50c29f9857525f815cfd8563de09cb918514e4f4eb0af6307"
     },
     {
+      "title": "Next highest int from digits",
+      "slug": "next-highest-int-from-digits",
+      "state": "published",
+      "published_hash": "cd53aadba2c7527d4453a624b34057170d26916c93f0397dfe0e583cc28be778"
+    },
+    {
       "title": "Non-continuous subsequences",
       "slug": "non-continuous-subsequences",
       "state": "published",
@@ -677,6 +743,12 @@
       "state": "published"
     },
     {
+      "title": "Order disjoint list items",
+      "slug": "order-disjoint-list-items",
+      "state": "published",
+      "published_hash": "a33d86a8a297a99753c14a60d728c961c08903587b5cbbd8e555365cde722746"
+    },
+    {
       "title": "Ordered partitions",
       "slug": "ordered-partitions",
       "state": "published",
@@ -705,6 +777,12 @@
       "slug": "pangram-checker",
       "state": "published",
       "published_hash": "2173344e020318d5d6ee0c1ccbc352c106b4e051a6986801e4a4cde23239b225"
+    },
+    {
+      "title": "Parsing/RPN calculator algorithm",
+      "slug": "parsing-rpn-calculator-algorithm",
+      "state": "published",
+      "published_hash": "d42a2681fe6b9f717183fc59cb23ce4f41155c005870dd7618baaf9fd82ac8a9"
     },
     {
       "title": "Parsing/Shunting-yard algorithm",
@@ -771,6 +849,12 @@
       "slug": "range-consolidation",
       "state": "published",
       "published_hash": "a6824cdb9d1b0c668c988bf66f60d0570b5ddf307111f3ee548328ba354ac74a"
+    },
+    {
+      "title": "Range expansion",
+      "slug": "range-expansion",
+      "state": "published",
+      "published_hash": "61b6bc65c3d9109f8ffd068ff4a2be6e694160895fa9d111ff4fcd86afce5913"
     },
     {
       "title": "Range extraction",
@@ -849,6 +933,12 @@
       "published_hash": "3e9ddf3eaba02e2e66343c4666c9b98c9e4def443195bf203fbfac1829062f9f"
     },
     {
+      "title": "Spiral matrix",
+      "slug": "spiral-matrix",
+      "state": "published",
+      "published_hash": "ef378baa4b60815f0502b16813b7600616be1087d6930b7435909385140c4720"
+    },
+    {
       "title": "Stern-Brocot sequence",
       "slug": "stern-brocot-sequence",
       "state": "published",
@@ -902,6 +992,12 @@
       "published_hash": "58a9badc1eb0a06ae79377f10aaf77e5cc012dfd6ebeab2c627b6e4894b5cbd6"
     },
     {
+      "title": "Tree from nesting levels",
+      "slug": "tree-from-nesting-levels",
+      "state": "published",
+      "published_hash": "53d7398155fc24152c209163f649833138bb702f6847c60f6c0af9b5e994df1f"
+    },
+    {
       "title": "Tree traversal",
       "slug": "tree-traversal",
       "state": "published",
@@ -916,6 +1012,11 @@
     {
       "title": "URL decoding",
       "slug": "url-decoding",
+      "state": "solved"
+    },
+    {
+      "title": "URL encoding",
+      "slug": "url-encoding",
       "state": "solved"
     },
     {
@@ -953,6 +1054,12 @@
       "published_hash": "e217ed1ac914f9ac32609dcfb052216cff14dad2ba168a3e85d0de70ecd7b679"
     },
     {
+      "title": "Variable-length quantity",
+      "slug": "variable-length-quantity",
+      "state": "published",
+      "published_hash": "5dc0eed6d203f6883bc2a839e640ff6b8e7278339a83f98807c7e326aa8dfba5"
+    },
+    {
       "title": "Variadic fixed-point combinator",
       "state": "published"
     },
@@ -975,6 +1082,12 @@
       "published_hash": "b300d7da3b07f813bbd33c3c745afa5668385b00fb1b3a4c790d4cd1b2951043"
     },
     {
+      "title": "Weird numbers",
+      "slug": "weird-numbers",
+      "state": "published",
+      "published_hash": "8609925f92c9ffaa9d592c5c10bde005fb18cad40f5fc87dbe63b4256d3ca370"
+    },
+    {
       "title": "Word wrap",
       "slug": "word-wrap",
       "state": "published",
@@ -991,6 +1104,12 @@
       "slug": "yellowstone-sequence",
       "state": "published",
       "published_hash": "86ca6666dca22de8ed4061b606db9740599579cd222c92bd82910b5249348e94"
+    },
+    {
+      "title": "Yin and yang",
+      "slug": "yin-and-yang",
+      "state": "published",
+      "published_hash": "b985d4abb4a2c94a99429367cfc6eec41557478f4e3c5fe7ace18b7aee7786bd"
     },
     {
       "title": "Zeckendorf number representation",

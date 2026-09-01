@@ -1,0 +1,9 @@
+shortest path tree from a:
+    a -> b
+    a -> c
+    c -> d
+    d -> e
+    c -> f
+
+a to e: a -> c -> d -> e, cost 26
+a to f: a -> c -> f, cost 11

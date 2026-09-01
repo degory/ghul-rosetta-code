@@ -1,0 +1,46 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Math
+
+apply(operator: string, left: double, right: double) -> double =>
+    case operator
+    when "+" then left + right
+    when "-" then left - right
+    when "*" then left * right
+    when "/" then left / right
+    when "^" then Math.pow(left, right)
+    else throw System.Exception("unknown operator {operator}")
+    esac
+
+let expression = "3 4 2 * 1 5 - 2 3 ^ ^ / +"
+
+let stack = LIST[double]()
+
+let pop = () -> double =>
+    (let top = stack[stack.count - 1]
+     stack.remove_at(stack.count - 1)
+     top)
+
+let show = (token: string, action: string) =>
+    write_line("{token,5}  {action,-12}  {stack |> join(" ")}")
+
+write_line("token  action        stack")
+
+for token in expression.split([' ']) do
+    if char.is_digit(token[0]) then
+        stack.add(double.parse(token))
+
+        show(token, "push")
+    else
+        let right = pop()
+        let left = pop()
+
+        stack.add(apply(token, left, right))
+
+        show(token, "apply {token}")
+    fi
+od
+
+write_line("")
+write_line("result: {stack |> only()}")

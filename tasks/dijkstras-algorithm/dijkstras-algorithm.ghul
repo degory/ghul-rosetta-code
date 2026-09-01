@@ -1,0 +1,69 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.MAP
+use Ghul.Pipes
+
+use EDGE = (start: string, finish: string, cost: int)
+use REACHED = (cost: int, previous: string)
+
+shortest_paths(edges: EDGE[], nodes: string[], source: string)
+    -> MAP[string, REACHED] is
+    let best = MAP[string, REACHED]()
+    let unvisited = LIST[string](nodes)
+
+    best[source] = (cost = 0, previous = "")
+
+    while let nearest = unvisited
+        |> filter(node => best.contains_key(node))
+        |> min_by(node => best[node].cost)
+    do
+        unvisited.remove(nearest)
+
+        for edge in edges |> filter(edge => edge.start =~ nearest) do
+            let through = best[nearest].cost + edge.cost
+
+            if !best.contains_key(edge.finish) \/
+                through < best[edge.finish].cost then
+                best[edge.finish] = (cost = through, previous = nearest)
+            fi
+        od
+    od
+
+    best
+si
+
+route(best: MAP[string, REACHED], node: string) -> string =>
+    if best[node].previous.length == 0 then
+        node
+    else
+        "{route(best, best[node].previous)} -> {node}"
+    fi
+
+let edges = [
+    (start = "a", finish = "b", cost = 7),
+    (start = "a", finish = "c", cost = 9),
+    (start = "a", finish = "f", cost = 14),
+    (start = "b", finish = "c", cost = 10),
+    (start = "b", finish = "d", cost = 15),
+    (start = "c", finish = "d", cost = 11),
+    (start = "c", finish = "f", cost = 2),
+    (start = "d", finish = "e", cost = 6),
+    (start = "e", finish = "f", cost = 9)]
+
+let nodes = ["a", "b", "c", "d", "e", "f"]
+
+let best = shortest_paths(edges, nodes, "a")
+
+write_line("shortest path tree from a:")
+
+nodes
+    |> filter(node => best.contains_key(node) /\ node !~ "a")
+    |> each(node =>
+        write_line("    {best[node].previous} -> {node}"))
+
+write_line("")
+
+["e", "f"]
+    |> each(node =>
+        write_line("a to {node}: {route(best, node)},"
+            " cost {best[node].cost}"))
