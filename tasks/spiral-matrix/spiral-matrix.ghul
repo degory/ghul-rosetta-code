@@ -1,3 +1,43 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-write_line("not written yet")
+let headings = [(down = 0, across = 1), (down = 1, across = 0),
+                (down = 0, across = -1), (down = -1, across = 0)]
+
+spiral(size: int) -> LIST[LIST[int]] is
+    let grid = LIST[LIST[int]]()
+
+    for _ in 0..size do
+        grid.add(LIST[int]((0..size) |> map((column: int) => -1)))
+    od
+
+    let free = (row: int, column: int) -> bool =>
+        row >= 0 /\ row < size /\ column >= 0 /\ column < size /\
+            grid[row][column] < 0
+
+    let row mut = 0
+    let column mut = 0
+    let heading mut = 0
+
+    for n in 0..size * size do
+        grid[row][column] = n
+
+        let ahead = headings[heading]
+
+        if !free(row + ahead.down, column + ahead.across) then
+            heading = (heading + 1) % 4
+        fi
+
+        let step = headings[heading]
+
+        row = row + step.down
+        column = column + step.across
+    od
+
+    grid
+si
+
+spiral(5)
+    |> each(row =>
+        write_line(row |> map((n: int) => "{n,3}") |> join("")))
