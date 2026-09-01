@@ -1,0 +1,75 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+encode(code_point: int) -> List[int] is
+    let octets = LIST[int](4)
+
+    if code_point < 0x80 then
+        octets.add(code_point)
+    elif code_point < 0x800 then
+        octets.add(0xC0 | (code_point >> 6))
+        octets.add(0x80 | (code_point & 0x3F))
+    elif code_point < 0x10000 then
+        octets.add(0xE0 | (code_point >> 12))
+        octets.add(0x80 | ((code_point >> 6) & 0x3F))
+        octets.add(0x80 | (code_point & 0x3F))
+    else
+        octets.add(0xF0 | (code_point >> 18))
+        octets.add(0x80 | ((code_point >> 12) & 0x3F))
+        octets.add(0x80 | ((code_point >> 6) & 0x3F))
+        octets.add(0x80 | (code_point & 0x3F))
+    fi
+
+    return octets
+si
+
+decode(octets: List[int]) -> int is
+    let leader = octets[0]
+
+    let code_point mut =
+        case octets.count
+        when 1 then leader
+        when 2 then leader & 0x1F
+        when 3 then leader & 0x0F
+        else leader & 0x07
+        esac
+
+    for continuation in octets |> skip(1) do
+        code_point = (code_point << 6) | (continuation & 0x3F)
+    od
+
+    return code_point
+si
+
+hex(octet: int) -> string pure => "{octet:X2}"
+
+row(character: string, name: string, code_point: string, octets: string)
+    -> string
+=>
+    "{character,-11}{name,-38}{code_point,-11}{octets}"
+
+let characters = [
+    (code_point = 65, name = "LATIN CAPITAL LETTER A"),
+    (code_point = 246, name = "LATIN SMALL LETTER O WITH DIAERESIS"),
+    (code_point = 1046, name = "CYRILLIC CAPITAL LETTER ZHE"),
+    (code_point = 8364, name = "EURO SIGN"),
+    (code_point = 119070, name = "MUSICAL SYMBOL G CLEF")
+]
+
+write_line(row("character", "name", "unicode", "utf-8"))
+
+for character in characters do
+    let octets = encode(character.code_point)
+    let decoded = decode(octets)
+
+    assert decoded == character.code_point else "the round trip must agree"
+
+    write_line(
+        row(
+            char.convert_from_utf32(decoded),
+            character.name,
+            "U+{decoded:X4}",
+            octets |> map(hex) |> join(" ")))
+od
