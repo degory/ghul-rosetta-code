@@ -13,6 +13,7 @@ bin/
 
 **/*.diff
 **/*.out
+**/*.trim
 **/failed
 **/*.grep
 **/*.sort
