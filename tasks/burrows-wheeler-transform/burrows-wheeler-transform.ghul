@@ -1,0 +1,55 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let start_of_text = 2c
+let end_of_text = 3c
+
+ordinal_order(left: string, right: string) -> int pure =>
+    string.compare_ordinal(left, right)
+
+rotations(text: string) -> Pipe[string] =>
+    (0..text.length)
+        |> map((i: int) => "{text[i..<0]}{text[0..i]}")
+
+last_character(text: string) -> string =>
+    "{text[text.length - 1]}"
+
+transform(text: string) -> string =>
+    rotations("{start_of_text}{text}{end_of_text}")
+        |> sort(ordinal_order)
+        |> map(last_character)
+        |> join("")
+
+invert(transformed: string) -> string is
+    let width = transformed.length
+    let table mut = (0..width) |> map((i: int) => "") |> collect()
+
+    for _ in 0..width do
+        table = table
+            |> index()
+            |> map(row => "{transformed[row.index]}{row.value}")
+            |> sort(ordinal_order)
+            |> collect()
+    od
+
+    let framed = table
+        |> filter(row => row[row.length - 1] == end_of_text)
+        |> only()
+
+    framed[1..width - 1]
+si
+
+visible(text: string) -> string =>
+    text.replace(start_of_text, '^').replace(end_of_text, '|')
+
+["banana",
+ "appellee",
+ "dogwood",
+ "TO BE OR NOT TO BE OR WANT TO BE OR NOT?",
+ "SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES"]
+    |> each(text =>
+        (let transformed = transform(text)
+         write_line("Original text:                {text}")
+         write_line("After transformation:         {visible(transformed)}")
+         write_line("After inverse transformation: {invert(transformed)}")
+         write_line("")))

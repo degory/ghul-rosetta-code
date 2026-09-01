@@ -1,0 +1,20 @@
+Original text:                banana
+After transformation:         |annb^aa
+After inverse transformation: banana
+
+Original text:                appellee
+After transformation:         |e^elplepa
+After inverse transformation: appellee
+
+Original text:                dogwood
+After transformation:         |do^oodwg
+After inverse transformation: dogwood
+
+Original text:                TO BE OR NOT TO BE OR WANT TO BE OR NOT?
+After transformation:         |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^   
+After inverse transformation: TO BE OR NOT TO BE OR WANT TO BE OR NOT?
+
+Original text:                SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
+After transformation:         |STEXYDST.E.IXXIIXXSSMPPS.B..EE.^.USFXDIIOIIIT
+After inverse transformation: SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
+
