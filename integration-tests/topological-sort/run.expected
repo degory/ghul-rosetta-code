@@ -1,0 +1,6 @@
+as given:
+    compile order: ieee std synopsys dware gtech ramlib std_cell_lib dw01 dw02 dw05 dw06 dw07 des_system_lib dw03 dw04
+
+with dw04 added to the dependencies of dw01:
+    compile order: ieee std synopsys dware gtech ramlib std_cell_lib dw02 dw05 dw06 dw07
+    unorderable:   des_system_lib dw01 dw03 dw04
