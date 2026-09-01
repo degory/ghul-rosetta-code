@@ -1,0 +1,91 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let small = [
+    "zero", "one", "two", "three", "four", "five", "six", "seven",
+    "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+    "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+]
+
+let tens = [
+    "twenty", "thirty", "forty", "fifty",
+    "sixty", "seventy", "eighty", "ninety"
+]
+
+let scales = [
+    "thousand", "million", "billion",
+    "trillion", "quadrillion", "quintillion"
+]
+
+cardinal(value: long) -> string is
+    if value < 0L then
+        return "negative {cardinal(-value)}"
+    elif value < 20L then
+        return small[cast int(value)]
+    elif value < 100L then
+        let name = tens[cast int(value / 10L) - 2]
+
+        return
+            if value % 10L == 0L then
+                name
+            else
+                "{name}-{small[cast int(value % 10L)]}"
+            fi
+    elif value < 1000L then
+        let name = "{small[cast int(value / 100L)]} hundred"
+
+        return
+            if value % 100L == 0L then
+                name
+            else
+                "{name} {cardinal(value % 100L)}"
+            fi
+    fi
+
+    let unit mut = 1000L
+    let scale mut = 0
+
+    while value / unit >= 1000L do
+        unit = unit * 1000L
+        scale = scale + 1
+    od
+
+    let name = "{cardinal(value / unit)} {scales[scale]}"
+
+    return
+        if value % unit == 0L then
+            name
+        else
+            "{name} {cardinal(value % unit)}"
+        fi
+si
+
+magic(value: long) -> string is
+    let phrases = LIST[string]()
+    let name mut = cardinal(value)
+
+    while name !~ "four" do
+        let counted = cardinal(cast long(name.length))
+
+        phrases.add("{name} is {counted}")
+
+        name = counted
+    od
+
+    phrases.add("four is magic")
+
+    let sentence = phrases |> join(", ")
+
+    return "{sentence[0..1].to_upper_invariant()}{sentence[1..<0]}."
+si
+
+let samples = [
+    0L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+    -7L, 20L, 100L, 130L, 151L, 12345L, 20140L,
+    999999L, 1000000L, 1234567890L, 9007199254740992L
+]
+
+for sample in samples do
+    write_line(magic(sample))
+od

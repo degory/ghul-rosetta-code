@@ -1,0 +1,104 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+use ITEM = (name: string, weight: int, value: int)
+
+best_value(items: List[ITEM], limit: int) -> List[List[int]] is
+    let table = LIST[LIST[int]](items.count + 1)
+
+    for _ in 0::items.count do
+        let row = LIST[int](limit + 1)
+
+        for _ in 0::limit do
+            row.add(0)
+        od
+
+        table.add(row)
+    od
+
+    for at in 0..items.count do
+        let item = items[at]
+
+        for capacity in 0::limit do
+            let without = table[at][capacity]
+
+            table[at + 1][capacity] =
+                if item.weight > capacity then
+                    without
+                else
+                    let taken = table[at][capacity - item.weight] + item.value
+
+                    if taken > without then taken else without fi
+                fi
+        od
+    od
+
+    return table
+si
+
+packed(items: List[ITEM], limit: int) -> List[ITEM] is
+    let table = best_value(items, limit)
+    let chosen = LIST[ITEM]()
+
+    let at mut = items.count
+    let capacity mut = limit
+
+    while at > 0 do
+        if table[at][capacity] != table[at - 1][capacity] then
+            let item = items[at - 1]
+
+            chosen.add(item)
+
+            capacity = capacity - item.weight
+        fi
+
+        at = at - 1
+    od
+
+    chosen.reverse()
+
+    return chosen
+si
+
+row(name: string, weight: string, value: string) -> string =>
+    "{name,-24}{weight,8}{value,7}"
+
+let items = [
+    (name = "map", weight = 9, value = 150),
+    (name = "compass", weight = 13, value = 35),
+    (name = "water", weight = 153, value = 200),
+    (name = "sandwich", weight = 50, value = 160),
+    (name = "glucose", weight = 15, value = 60),
+    (name = "tin", weight = 68, value = 45),
+    (name = "banana", weight = 27, value = 60),
+    (name = "apple", weight = 39, value = 40),
+    (name = "cheese", weight = 23, value = 30),
+    (name = "beer", weight = 52, value = 10),
+    (name = "suntan cream", weight = 11, value = 70),
+    (name = "camera", weight = 32, value = 30),
+    (name = "T-shirt", weight = 24, value = 15),
+    (name = "trousers", weight = 48, value = 10),
+    (name = "umbrella", weight = 73, value = 40),
+    (name = "waterproof trousers", weight = 42, value = 70),
+    (name = "waterproof overclothes", weight = 43, value = 75),
+    (name = "note-case", weight = 22, value = 80),
+    (name = "sunglasses", weight = 7, value = 20),
+    (name = "towel", weight = 18, value = 12),
+    (name = "socks", weight = 4, value = 50),
+    (name = "book", weight = 30, value = 10)
+]
+
+let taken = packed(items, 400)
+
+write_line(row("item", "weight", "value"))
+
+for item in taken do
+    write_line(row(item.name, "{item.weight}", "{item.value}"))
+od
+
+let weight = taken |> map(item => item.weight) |> reduce(0, (a, b) => a + b)
+let value = taken |> map(item => item.value) |> reduce(0, (a, b) => a + b)
+
+write_line(row("total", "{weight}", "{value}"))

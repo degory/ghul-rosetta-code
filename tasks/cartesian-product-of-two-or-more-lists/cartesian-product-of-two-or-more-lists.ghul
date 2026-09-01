@@ -1,0 +1,71 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.Iterable
+use Collections.List
+use Ghul.Pipes
+
+pairs(left: List[int], right: List[int])
+    -> Pipe[(first: int, second: int)]
+is
+    for first in left do
+        for second in right do
+            yield (first, second)
+        od
+    od
+si
+
+tuples(lists: List[List[int]], at: int) -> Pipe[List[int]] is
+    if at == lists.count then
+        yield LIST[int]()
+    else
+        for head in lists[at] do
+            for tail in tuples(lists, at + 1) do
+                let row = LIST[int](tail.count + 1)
+
+                row.add(head)
+
+                for value in tail do
+                    row.add(value)
+                od
+
+                yield row
+            od
+        od
+    fi
+si
+
+show(values: Iterable[string]) -> string => "{{{values |> join(", ")}}}"
+
+show_numbers(values: List[int]) -> string =>
+    show(values |> map(value => "{value}"))
+
+show_tuple(values: List[int]) -> string =>
+    "({values |> join(", ")})"
+
+show_binary(left: List[int], right: List[int]) is
+    let product = pairs(left, right)
+        |> map(pair => "({pair.first}, {pair.second})")
+
+    write_line(
+        "{show_numbers(left)} × {show_numbers(right)} = {show(product)}")
+si
+
+show_nary(lists: List[List[int]]) is
+    let heading = lists |> map(show_numbers) |> join(" × ")
+    let product = tuples(lists, 0) |> map(show_tuple)
+
+    write_line("{heading} = {show(product)}")
+si
+
+show_binary([1, 2], [3, 4])
+show_binary([3, 4], [1, 2])
+show_binary([1, 2], [])
+show_binary([], [1, 2])
+
+write_line("")
+
+let empty: int[] = []
+
+show_nary([[1776, 1789], [7, 12], [4, 14, 23], [0, 1]])
+show_nary([[1, 2, 3], [30], [500, 100]])
+show_nary([[1, 2, 3], empty, [500, 100]])

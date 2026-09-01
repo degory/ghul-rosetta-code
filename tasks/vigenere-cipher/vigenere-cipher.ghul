@@ -1,0 +1,47 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use System.Text.StringBuilder
+
+is_alphabetic(character: char) -> bool =>
+    (character >= 'A' /\ character <= 'Z') \/
+    (character >= 'a' /\ character <= 'z')
+
+prepared(text: string) -> string =>
+    text
+        |> filter(is_alphabetic)
+        |> map(character => char.to_upper_invariant(character))
+        |> join("")
+
+shifted(text: string, key: string, direction: int) -> string is
+    let letters = prepared(text)
+    let word = prepared(key)
+    let result = StringBuilder()
+
+    for at in 0..letters.length do
+        let letter = cast int(letters[at]) - cast int('A')
+        let shift = cast int(word[at % word.length]) - cast int('A')
+        let moved = ((letter + direction * shift) % 26 + 26) % 26
+
+        result.append(cast char(moved + cast int('A')))
+    od
+
+    return result.to_string()
+si
+
+encrypt(text: string, key: string) -> string => shifted(text, key, 1)
+
+decrypt(text: string, key: string) -> string => shifted(text, key, -1)
+
+let key = "Vigenere Cipher"
+
+let plain_text =
+    "Beware the Jabberwock, my son! The jaws that bite, "
+    "the claws that catch!"
+
+let encrypted = encrypt(plain_text, key)
+let decrypted = decrypt(encrypted, key)
+
+write_line("key:       {key}")
+write_line("plaintext: {plain_text}")
+write_line("encrypted: {encrypted}")
+write_line("decrypted: {decrypted}")

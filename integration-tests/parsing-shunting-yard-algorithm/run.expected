@@ -1,0 +1,22 @@
+token  action                                stack         output
+3      add to output                                       3
++      push operator                         +             3
+4      add to output                         +             3 4
+*      push operator                         + *           3 4
+2      add to output                         + *           3 4 2
+/      pop to output, push operator          + /           3 4 2 *
+(      push open parenthesis                 + / (         3 4 2 *
+1      add to output                         + / (         3 4 2 * 1
+-      push operator                         + / ( -       3 4 2 * 1
+5      add to output                         + / ( -       3 4 2 * 1 5
+)      pop to output until open parenthesis  + /           3 4 2 * 1 5 -
+^      push operator                         + / ^         3 4 2 * 1 5 -
+2      add to output                         + / ^         3 4 2 * 1 5 - 2
+^      push operator                         + / ^ ^       3 4 2 * 1 5 - 2
+3      add to output                         + / ^ ^       3 4 2 * 1 5 - 2 3
+       pop remaining to output               + / ^         3 4 2 * 1 5 - 2 3 ^
+       pop remaining to output               + /           3 4 2 * 1 5 - 2 3 ^ ^
+       pop remaining to output               +             3 4 2 * 1 5 - 2 3 ^ ^ /
+       pop remaining to output                             3 4 2 * 1 5 - 2 3 ^ ^ / +
+
+3 4 2 * 1 5 - 2 3 ^ ^ / +

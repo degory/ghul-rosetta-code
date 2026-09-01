@@ -1,0 +1,89 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+divisors(n: int) -> List[int] pure is
+    let found = LIST[int]()
+    let factor mut = 1
+
+    while factor * factor <= n do
+        if n % factor == 0 then
+            found.add(factor)
+
+            if factor != n / factor then
+                found.add(n / factor)
+            fi
+        fi
+
+        factor = factor + 1
+    od
+
+    return found
+si
+
+is_zumkeller(n: int) -> bool pure is
+    let parts = divisors(n)
+    let total = parts |> reduce(0, (running, part) => running + part)
+
+    if total % 2 != 0 \/ total < 2 * n then
+        return false
+    fi
+
+    let half = total / 2
+    let reachable = LIST[bool](half + 1)
+
+    for _ in 0::half do
+        reachable.add(false)
+    od
+
+    reachable[0] = true
+
+    for part in parts do
+        let at mut = half
+
+        while at >= part do
+            if reachable[at - part] then
+                reachable[at] = true
+            fi
+
+            at = at - 1
+        od
+    od
+
+    return reachable[half]
+si
+
+column(n: int, width: int) -> string pure => "{n}".pad_left(width)
+
+show(heading: string, numbers: Pipe[int], per_line: int, width: int) is
+    write_line(heading)
+
+    for row in numbers |> chunk(per_line) do
+        write_line("    {row |> map(n => column(n, width)) |> join("")}")
+    od
+
+    write_line("")
+si
+
+let counting = stream(1, n => n || n + 1)
+
+show(
+    "first 220 Zumkeller numbers:",
+    counting |> filter(is_zumkeller) |> take(220),
+    10,
+    6)
+
+show(
+    "first 40 odd Zumkeller numbers:",
+    counting |> filter(n => n % 2 == 1 /\ is_zumkeller(n)) |> take(40),
+    10,
+    8)
+
+show(
+    "first 40 odd Zumkeller numbers not ending in five:",
+    counting
+        |> filter(n => n % 2 == 1 /\ n % 5 != 0 /\ is_zumkeller(n))
+        |> take(40),
+    10,
+    9)

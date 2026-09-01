@@ -1,0 +1,65 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+use RANGE = (low: double, high: double)
+
+normalised(bounds: RANGE) -> RANGE =>
+    if bounds.low <= bounds.high then
+        bounds
+    else
+        (low = bounds.high, high = bounds.low)
+    fi
+
+by_lower_bound(left: RANGE, right: RANGE) -> int =>
+    if left.low < right.low then
+        -1
+    elif left.low > right.low then
+        1
+    else
+        0
+    fi
+
+consolidate(ranges: List[RANGE]) -> List[RANGE] is
+    let sorted = ranges |> map(normalised) |> sort(by_lower_bound) |> collect()
+    let merged = LIST[RANGE]()
+
+    for bounds in sorted do
+        if merged.count > 0 /\ bounds.low <= merged[merged.count - 1].high then
+            let last = merged[merged.count - 1]
+
+            if bounds.high > last.high then
+                merged[merged.count - 1] = (low = last.low, high = bounds.high)
+            fi
+        else
+            merged.add(bounds)
+        fi
+    od
+
+    return merged
+si
+
+show(ranges: List[RANGE]) -> string =>
+    ranges
+        |> map(bounds => "[{bounds.low}, {bounds.high}]")
+        |> join(", ")
+
+let inputs = [
+    [(low = 1.1D, high = 2.2D)],
+    [(low = 6.1D, high = 7.2D), (low = 7.2D, high = 8.3D)],
+    [(low = 4.0D, high = 3.0D), (low = 2.0D, high = 1.0D)],
+    [
+        (low = 4.0D, high = 3.0D), (low = 2.0D, high = 1.0D),
+        (low = -1.0D, high = -2.0D), (low = 3.9D, high = 10.0D)
+    ],
+    [
+        (low = 1.0D, high = 3.0D), (low = -6.0D, high = -1.0D),
+        (low = -4.0D, high = -5.0D), (low = 8.0D, high = 2.0D),
+        (low = -6.0D, high = -6.0D)
+    ]
+]
+
+for input in inputs do
+    write_line("{show(input)} -> {show(consolidate(input))}")
+od

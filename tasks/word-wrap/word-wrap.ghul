@@ -1,0 +1,39 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use System.Text.StringBuilder
+
+wrapped(text: string, width: int) -> Pipe[string] is
+    let line = StringBuilder()
+
+    for word in text.split([' ']) |> filter(word => word.length > 0) do
+        if line.length > 0 /\ line.length + 1 + word.length > width then
+            yield line.to_string()
+
+            line.clear()
+        fi
+
+        if line.length > 0 then
+            line.append(' ')
+        fi
+
+        line.append(word)
+    od
+
+    if line.length > 0 then
+        yield line.to_string()
+    fi
+si
+
+let paragraph =
+    "In olden times when wishing still helped one, there lived a king "
+    "whose daughters were all beautiful, but the youngest was so beautiful "
+    "that the sun itself, which has seen so much, was astonished whenever "
+    "it shone in her face."
+
+for width in [40, 62] do
+    write_line("wrapped at {width}:")
+
+    wrapped(paragraph, width) |> each(line => write_line(line))
+
+    write_line("")
+od

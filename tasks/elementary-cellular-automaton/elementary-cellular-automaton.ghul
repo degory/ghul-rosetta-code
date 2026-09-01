@@ -1,0 +1,41 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+neighbourhood(cells: List[bool], at: int) -> int is
+    let left = cells[(at + cells.count - 1) % cells.count]
+    let right = cells[(at + 1) % cells.count]
+
+    return
+        (if left then 4 else 0 fi) +
+        (if cells[at] then 2 else 0 fi) +
+        (if right then 1 else 0 fi)
+si
+
+step(rule: int, cells: List[bool]) -> List[bool] is
+    let next = LIST[bool](cells.count)
+
+    for at in 0..cells.count do
+        next.add((rule >> neighbourhood(cells, at)) & 1 == 1)
+    od
+
+    return next
+si
+
+show(cells: List[bool]) -> string =>
+    cells |> map(cell => if cell then "#" else "." fi) |> join("")
+
+let width = 31
+
+let single_cell = (0..width) |> map(at => at == width / 2) |> collect()
+
+for rule in [90, 30, 110] do
+    write_line("rule {rule}")
+
+    stream(single_cell, cells => cells || step(rule, cells))
+        |> take(16)
+        |> each(cells => write_line(show(cells)))
+
+    write_line("")
+od

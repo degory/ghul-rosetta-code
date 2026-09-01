@@ -1,0 +1,140 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+use System.Text.StringBuilder
+
+union Alternation is
+    LITERAL(text: string)
+    SEQUENCE(items: List[Alternation])
+    BRANCHES(branches: List[Alternation])
+si
+
+use Alternation.LITERAL
+use Alternation.SEQUENCE
+use Alternation.BRANCHES
+
+take_pending(pending: StringBuilder, items: LIST[Alternation]) is
+    if pending.length > 0 then
+        items.add(LITERAL(pending.to_string()))
+        pending.clear()
+    fi
+si
+
+parse(text: string, start: int, nested: bool)
+    -> (tree: Alternation, next: int)
+is
+    let branches = LIST[Alternation]()
+    let pending = StringBuilder()
+
+    let items mut = LIST[Alternation]()
+    let position mut = start
+    let commas mut = 0
+    let closed mut = false
+
+    while position < text.length do
+        let character = text[position]
+
+        if character == '\\' /\ position + 1 < text.length then
+            pending.append(character)
+            pending.append(text[position + 1])
+
+            position = position + 2
+        elif character == '{' then
+            take_pending(pending, items)
+
+            let (tree, next) = parse(text, position + 1, true)
+
+            items.add(tree)
+
+            position = next
+        elif character == ',' /\ nested then
+            take_pending(pending, items)
+            branches.add(SEQUENCE(items))
+
+            items = LIST[Alternation]()
+            commas = commas + 1
+            position = position + 1
+        elif character == '}' /\ nested then
+            closed = true
+            position = position + 1
+
+            break
+        else
+            pending.append(character)
+
+            position = position + 1
+        fi
+    od
+
+    take_pending(pending, items)
+    branches.add(SEQUENCE(items))
+
+    if commas > 0 /\ closed then
+        return (tree = BRANCHES(branches), next = position)
+    elif !nested then
+        return (tree = branches[0], next = position)
+    fi
+
+    let unpaired = LIST[Alternation]()
+
+    unpaired.add(LITERAL("{{"))
+
+    for at in 0..branches.count do
+        if at > 0 then
+            unpaired.add(LITERAL(","))
+        fi
+
+        unpaired.add(branches[at])
+    od
+
+    if closed then
+        unpaired.add(LITERAL("}}"))
+    fi
+
+    return (tree = SEQUENCE(unpaired), next = position)
+si
+
+expand_from(items: List[Alternation], at: int) -> Pipe[string] is
+    if at == items.count then
+        yield ""
+    else
+        for head in expand(items[at]) do
+            for tail in expand_from(items, at + 1) do
+                yield "{head}{tail}"
+            od
+        od
+    fi
+si
+
+expand(tree: Alternation) -> Pipe[string] is
+    if let leaf: LITERAL = tree then
+        yield leaf.text
+    elif let sequence: SEQUENCE = tree then
+        yield in expand_from(sequence.items, 0)
+    elif let alternation: BRANCHES = tree then
+        for branch in alternation.branches do
+            yield in expand(branch)
+        od
+    fi
+si
+
+expansions(text: string) -> Pipe[string] =>
+    expand(parse(text, 0, false).tree)
+
+let inputs = [
+    "~/{{Downloads,Pictures}}/*.{{jpg,gif,png}}",
+    "It{{{{em,alic}}iz,erat}}e{{d,}}, please.",
+    "{{,{{,gotta have{{ ,\\, again\\, }}}}more }}cowbell!",
+    "{{}}}} some }}{{,{{\\\\{{ edge, edge}} \\,}}{{ cases, {{here}} \\\\\\\\\\}}"
+]
+
+for input in inputs do
+    write_line(input)
+
+    for expansion in expansions(input) do
+        write_line("    {expansion}")
+    od
+
+    write_line("")
+od

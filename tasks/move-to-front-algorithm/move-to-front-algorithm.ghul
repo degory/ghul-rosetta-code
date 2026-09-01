@@ -1,0 +1,64 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+use System.Text.StringBuilder
+
+symbol_table() -> LIST[char] is
+    let symbols = LIST[char](26)
+
+    for code in cast int('a')::cast int('z') do
+        symbols.add(cast char(code))
+    od
+
+    return symbols
+si
+
+move_to_front(symbols: LIST[char], at: int) is
+    let symbol = symbols[at]
+
+    symbols.remove_at(at)
+    symbols.insert(0, symbol)
+si
+
+encode(text: string) -> List[int] is
+    let symbols = symbol_table()
+    let indices = LIST[int](text.length)
+
+    for symbol in text do
+        let at = symbols.index_of(symbol)
+
+        indices.add(at)
+        move_to_front(symbols, at)
+    od
+
+    return indices
+si
+
+decode(indices: List[int]) -> string is
+    let symbols = symbol_table()
+    let text = StringBuilder()
+
+    for at in indices do
+        text.append(symbols[at])
+        move_to_front(symbols, at)
+    od
+
+    return text.to_string()
+si
+
+for original in ["broood", "bananaaa", "hiphophiphop"] do
+    let encoded = encode(original)
+    let decoded = decode(encoded)
+
+    let indices = encoded |> join(" ")
+
+    let verdict =
+        if decoded =~ original then
+            "decodes to the original"
+        else
+            "does not decode to the original"
+        fi
+
+    write_line("{original,-14}{indices,-30}{verdict}")
+od
