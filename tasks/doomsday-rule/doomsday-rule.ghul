@@ -1,0 +1,53 @@
+use IO.Std.write_line
+
+let day_names = [
+    "Sunday", "Monday", "Tuesday", "Wednesday",
+    "Thursday", "Friday", "Saturday"
+]
+
+let month_names = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+]
+
+is_leap_year(year: int) -> bool =>
+    year % 4 == 0 /\ (year % 100 != 0 \/ year % 400 == 0)
+
+anchor_day(year: int, month: int) -> int =>
+    case month
+    when 1 then if is_leap_year(year) then 4 else 3 fi
+    when 2 then if is_leap_year(year) then 29 else 28 fi
+    when 3 then 7
+    when 4 then 4
+    when 5 then 9
+    when 6 then 6
+    when 7 then 11
+    when 8 then 8
+    when 9 then 5
+    when 10 then 10
+    when 11 then 7
+    else 12
+    esac
+
+doomsday(year: int) -> int =>
+    (2 + 5 * (year % 4) + 4 * (year % 100) + 6 * (year % 400)) % 7
+
+day_of_week(year: int, month: int, day: int) -> int =>
+    (((doomsday(year) + day - anchor_day(year, month)) % 7) + 7) % 7
+
+let dates = [
+    (year = 1800, month = 1, day = 6),
+    (year = 1875, month = 3, day = 29),
+    (year = 1915, month = 12, day = 7),
+    (year = 1970, month = 12, day = 23),
+    (year = 2043, month = 5, day = 14),
+    (year = 2077, month = 2, day = 12),
+    (year = 2101, month = 4, day = 2)
+]
+
+for date in dates do
+    let name = day_names[day_of_week(date.year, date.month, date.day)]
+    let month = month_names[date.month - 1]
+
+    write_line("{month} {date.day}, {date.year} is a {name}")
+od
