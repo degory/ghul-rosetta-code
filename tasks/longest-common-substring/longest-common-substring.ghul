@@ -1,0 +1,22 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+substrings(text: string) -> Pipe[string] is
+    for start in 0..text.length do
+        for finish in (start + 1)::text.length do
+            yield text[start..finish]
+        od
+    od
+si
+
+longest_common(left: string, right: string) -> string =>
+    substrings(left)
+        |> filter(candidate => right.index_of(candidate) >= 0)
+        |> reduce("", (best, candidate) =>
+            if candidate.length > best.length then
+                candidate
+            else
+                best
+            fi)
+
+write_line(longest_common("thisisatest", "testing123testing"))
