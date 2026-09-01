@@ -1,0 +1,45 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+jacobi(a: int, n: int) -> int is
+    assert n > 0 /\ n % 2 == 1 else "n must be positive and odd"
+
+    let numerator mut = ((a % n) + n) % n
+    let denominator mut = n
+    let symbol mut = 1
+
+    while numerator != 0 do
+        while numerator % 2 == 0 do
+            numerator = numerator / 2
+
+            let eighth = denominator % 8
+
+            if eighth == 3 \/ eighth == 5 then
+                symbol = -symbol
+            fi
+        od
+
+        let previous = denominator
+
+        denominator = numerator
+        numerator = previous
+
+        if numerator % 4 == 3 /\ denominator % 4 == 3 then
+            symbol = -symbol
+        fi
+
+        numerator = numerator % denominator
+    od
+
+    return if denominator == 1 then symbol else 0 fi
+si
+
+let columns = 0::20
+
+write_line("n\\a{columns |> map(a => "{a,3}") |> join("")}")
+
+for n in (1::19) |> filter(n => n % 2 == 1) do
+    let row = columns |> map(a => "{jacobi(a, n),3}") |> join("")
+
+    write_line("{n,3}{row}")
+od
