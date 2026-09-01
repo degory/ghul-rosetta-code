@@ -1,0 +1,93 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.MAP
+use Ghul.Pipes
+use System.Text.StringBuilder
+
+let joined = 2
+let minus = 1
+
+expressions() -> Pipe[(value: int, text: string)] is
+    for code in 0..19683 do
+        let operators = LIST[int](9)
+        let rest mut = code
+
+        for _ in 0..9 do
+            operators.add(rest % 3)
+
+            rest = rest / 3
+        od
+
+        if operators[0] == joined then
+            continue
+        fi
+
+        let text = StringBuilder()
+
+        let total mut = 0
+        let term mut = 0
+        let sign mut = 1
+
+        for at in 0..9 do
+            let digit = at + 1
+
+            if operators[at] == joined then
+                term = term * 10 + digit
+            else
+                total = total + sign * term
+                sign = if operators[at] == minus then -1 else 1 fi
+                term = digit
+
+                if at == 0 then
+                    if operators[at] == minus then
+                        text.append("-")
+                    fi
+                else
+                    text.append(if operators[at] == minus then " - " else " + " fi)
+                fi
+            fi
+
+            text.append(digit)
+        od
+
+        yield (value = total + sign * term, text = text.to_string())
+    od
+si
+
+let all = expressions() |> collect()
+
+write_line("expressions summing to 100:")
+
+all
+    |> filter(expression => expression.value == 100)
+    |> sort((left, right) => left.text <> right.text)
+    |> each(expression => write_line("    {expression.text}"))
+
+let counts = MAP[int, int]()
+
+for expression in all do
+    let seen mut = 0
+
+    counts.try_get_value(expression.value, seen ref)
+
+    counts[expression.value] = seen + 1
+od
+
+let most = counts.keys |> max_by(value => counts[value])
+
+assert most? else "some sum has the most expressions"
+
+write_line("")
+write_line("{most} has the most expressions, {counts[most]} of them")
+
+let unreachable = stream(1, sum => sum || sum + 1)
+    |> filter(sum => !counts.contains_key(sum))
+    |> first()
+
+assert unreachable? else "some positive sum has no expression"
+
+write_line("{unreachable} is the lowest positive sum with no expression")
+
+let highest = counts.keys |> sort((left, right) => right - left) |> take(10)
+
+write_line("ten highest sums: {highest |> join(", ")}")
