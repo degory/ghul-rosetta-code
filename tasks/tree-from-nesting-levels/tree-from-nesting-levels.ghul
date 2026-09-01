@@ -1,3 +1,50 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-write_line("not written yet")
+union Tree is
+    LEAF(value: int);
+    NEST(children: LIST[Tree]);
+si
+
+nest(levels: int[]) -> Tree is
+    let root = LIST[Tree]()
+    let open = LIST[LIST[Tree]]([root])
+
+    for level in levels do
+        while open.count < level do
+            let deeper = LIST[Tree]()
+
+            open[open.count - 1].add(Tree.NEST(deeper))
+            open.add(deeper)
+        od
+
+        while open.count > level do
+            open.remove_at(open.count - 1)
+        od
+
+        open[open.count - 1].add(Tree.LEAF(level))
+    od
+
+    Tree.NEST(root)
+si
+
+render(tree: Tree) -> string pure =>
+    case tree
+    when leaf: Tree.LEAF then
+        "{leaf.value}"
+    when nest: Tree.NEST then
+        "[{nest.children |> map(render) |> join(", ")}]"
+    esac
+
+let inputs: int[][] = [
+    [],
+    [1, 2, 4],
+    [3, 1, 3, 1],
+    [1, 2, 3, 1],
+    [3, 2, 1, 3],
+    [3, 3, 3, 1, 1, 3, 3, 3]]
+
+inputs
+    |> each((levels: int[]) =>
+        write_line("{levels |> join(", "),24} -> {render(nest(levels))}"))
