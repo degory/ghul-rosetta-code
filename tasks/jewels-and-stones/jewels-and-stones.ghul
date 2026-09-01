@@ -1,0 +1,15 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+count_jewels(stones: string, jewels: string) -> int =>
+    stones
+        |> filter((stone: char) => jewels.index_of(stone) >= 0)
+        |> count()
+
+for pair in [(stones = "aAAbbbb", jewels = "aA"),
+             (stones = "ZZ", jewels = "z"),
+             (stones = "AbCdEfGh", jewels = "aEiOu")] do
+    let found = count_jewels(pair.stones, pair.jewels)
+
+    write_line("{pair.stones} contains {found} of {pair.jewels}")
+od
