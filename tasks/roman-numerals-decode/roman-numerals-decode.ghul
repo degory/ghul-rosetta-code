@@ -1,0 +1,30 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+value(letter: char) -> int pure =>
+    case letter
+    when 'M' then 1000
+    when 'D' then 500
+    when 'C' then 100
+    when 'L' then 50
+    when 'X' then 10
+    when 'V' then 5
+    else 1
+    esac
+
+signed_value(numeral: string, index: int) -> int pure =>
+    if index + 1 < numeral.length /\
+        value(numeral[index]) < value(numeral[index + 1]) then
+        -value(numeral[index])
+    else
+        value(numeral[index])
+    fi
+
+decode(numeral: string) -> int =>
+    (0..numeral.length)
+        |> map(index => signed_value(numeral, index))
+        |> reduce(0, (total, part) => total + part)
+
+for numeral in ["MCMXC", "MMVIII", "MDCLXVI"] do
+    write_line("{numeral} = {decode(numeral)}")
+od

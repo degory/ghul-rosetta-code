@@ -1,0 +1,5 @@
+"a", "", "b", "", "c"
+matched != at 1
+matched == at 3
+matched = at 6
+matched != at 7

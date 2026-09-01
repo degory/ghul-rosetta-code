@@ -1,0 +1,23 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+power(value: int, exponent: int) -> int pure =>
+    if exponent == 0 then
+        1
+    else
+        value * power(value, exponent - 1)
+    fi
+
+digit_powers(number: int) -> int pure =>
+    "{number}"
+        |> map((character: char) =>
+            cast int(character) - cast int('0'))
+        |> filter(digit => digit > 0)
+        |> reduce(0, (total, digit) => total + power(digit, digit))
+
+let munchausen = (1::5000)
+    |> filter(number => digit_powers(number) == number)
+    |> map(number => "{number}")
+    |> join(" ")
+
+write_line("Munchausen numbers up to 5000: {munchausen}")

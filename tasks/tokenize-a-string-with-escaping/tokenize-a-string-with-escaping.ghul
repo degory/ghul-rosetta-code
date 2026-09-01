@@ -1,0 +1,27 @@
+use IO.Std.write_line
+use System.Text.StringBuilder
+use Ghul.Pipes
+
+tokenize(text: string, separator: char, escape: char) -> Pipe[string] is
+    let token = StringBuilder()
+    let escaped mut = false
+
+    for character in text do
+        if escaped then
+            token.append(character)
+            escaped = false
+        elif character == escape then
+            escaped = true
+        elif character == separator then
+            yield token.to_string()
+            token.clear()
+        else
+            token.append(character)
+        fi
+    od
+
+    yield token.to_string()
+si
+
+tokenize("one^|uno||three^^^^|four^^^|^cuatro|", '|', '^')
+    |> each(token => write_line("\"{token}\""))

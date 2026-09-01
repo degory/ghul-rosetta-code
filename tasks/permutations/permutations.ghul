@@ -1,0 +1,29 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+permutations(items: LIST[int]) -> Pipe[LIST[int]] is
+    if items.count == 0 then
+        yield LIST[int]()
+    else
+        for index in 0..items.count do
+            let rest = LIST[int](items)
+
+            rest.remove_at(index)
+
+            for tail in permutations(rest) do
+                let whole = LIST[int]()
+
+                whole.add(items[index])
+                whole.add_range(tail)
+
+                yield whole
+            od
+        od
+    fi
+si
+
+permutations(LIST[int]([1, 2, 3]))
+    |> each((permutation: LIST[int]) => write_line(permutation
+        |> map(value => "{value}")
+        |> join(" ")))

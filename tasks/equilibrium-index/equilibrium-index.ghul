@@ -1,0 +1,23 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+equilibrium_indices(values: int[]) -> Pipe[int] is
+    let total = values |> reduce(0, (sum, value) => sum + value)
+    let below mut = 0
+
+    for index in 0..values.count do
+        if below * 2 + values[index] == total then
+            yield index
+        fi
+
+        below = below + values[index]
+    od
+si
+
+let sequence = [-7, 1, 5, 2, -4, 3, 0]
+
+let indices = equilibrium_indices(sequence)
+    |> map(index => "{index}")
+    |> join(" ")
+
+write_line("equilibrium indices: {indices}")

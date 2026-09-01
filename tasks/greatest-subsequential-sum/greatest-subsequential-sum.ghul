@@ -1,0 +1,40 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+use RUN = (start: int, finish: int, total: int)
+
+greatest_run(values: int[]) -> RUN is
+    let best mut = (start = 0, finish = 0, total = 0)
+    let running mut = best
+
+    for index in 0..values.count do
+        let extended = running.total + values[index]
+
+        running =
+            if extended > 0 then
+                (start = running.start, finish = index + 1,
+                 total = extended)
+            else
+                (start = index + 1, finish = index + 1, total = 0)
+            fi
+
+        if running.total > best.total then
+            best = running
+        fi
+    od
+
+    best
+si
+
+list(values: int[]) -> string =>
+    values |> map(value => "{value}") |> join(", ")
+
+let values = [-1, -2, 3, 5, 6, -2, -1, 4, -4, 2, -1]
+let best = greatest_run(values)
+
+let greatest = (best.start..best.finish)
+    |> map(index => "{values[index]}")
+    |> join(", ")
+
+write_line("sequence: [{list(values)}]")
+write_line("greatest subsequence: [{greatest}], sum {best.total}")

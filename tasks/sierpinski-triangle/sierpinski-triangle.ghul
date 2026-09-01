@@ -1,0 +1,28 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+power_of_two(exponent: int) -> int pure =>
+    if exponent == 0 then
+        1
+    else
+        2 * power_of_two(exponent - 1)
+    fi
+
+indent(width: int) -> string pure =>
+    if width <= 0 then
+        ""
+    else
+        " {indent(width - 1)}"
+    fi
+
+row(number: int) -> string =>
+    (0::number)
+        |> map(column =>
+            if (number & column) == column then "*" else " " fi)
+        |> join(" ")
+
+let size = power_of_two(4)
+
+(0..size)
+    |> each(number =>
+        write_line("{indent(size - 1 - number)}{row(number)}"))

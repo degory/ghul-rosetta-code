@@ -1,0 +1,41 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+same_digits(number: int, base: int) -> bool pure is
+    let first = number % base
+    let remaining mut = number / base
+
+    while remaining > 0 do
+        if remaining % base != first then
+            return false
+        fi
+
+        remaining = remaining / base
+    od
+
+    true
+si
+
+is_brazilian(number: int) -> bool pure =>
+    (2..number - 1) |> any(base => same_digits(number, base))
+
+is_prime(number: int) -> bool pure =>
+    number > 1 /\ ((2..number)
+        |> take_while(divisor => divisor * divisor <= number)
+        |> all(divisor => number % divisor != 0))
+
+from_one() -> Pipe[int] pure => stream(1, number => number || number + 1)
+
+show(description: string, candidates: Pipe[int]) is
+    write_line("first 20 {description}Brazilian numbers:")
+
+    write_line(candidates
+        |> filter(is_brazilian)
+        |> take(20)
+        |> map(number => "{number}")
+        |> join(" "))
+si
+
+show("", from_one())
+show("odd ", from_one() |> filter(number => number % 2 == 1))
+show("prime ", from_one() |> filter(is_prime))

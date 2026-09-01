@@ -1,0 +1,17 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+joined_larger_first(left: int, right: int) -> int pure =>
+    string.compare_ordinal("{right}{left}", "{left}{right}")
+
+largest(numbers: int[]) -> string =>
+    numbers
+        |> sort(joined_larger_first)
+        |> map(number => "{number}")
+        |> join("")
+
+for numbers in [[1, 34, 3, 98, 9, 76, 45, 4], [54, 546, 548, 60]] do
+    let listed = numbers |> map(number => "{number}") |> join(", ")
+
+    write_line("{{{listed}}} gives {largest(numbers)}")
+od

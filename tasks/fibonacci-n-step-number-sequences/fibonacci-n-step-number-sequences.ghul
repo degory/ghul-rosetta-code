@@ -1,0 +1,34 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+n_step(initial: int[]) -> Pipe[int] is
+    let window = LIST[int](initial)
+
+    for value in initial do
+        yield value
+    od
+
+    do
+        let next = window |> reduce(0, (sum, value) => sum + value)
+
+        yield next
+
+        window.remove_at(0)
+        window.add(next)
+    od
+si
+
+show(name: string, initial: int[]) is
+    let series = n_step(initial)
+        |> take(10)
+        |> map(value => "{value}")
+        |> join(" ")
+
+    write_line("{name}: {series}")
+si
+
+show("fibonacci", [1, 1])
+show("tribonacci", [1, 1, 2])
+show("tetranacci", [1, 1, 2, 4])
+show("lucas", [2, 1])

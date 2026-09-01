@@ -1,0 +1,23 @@
+use IO.Std.write_line
+use Collections.Queue
+use Ghul.Pipes
+
+let queue = Queue[string]()
+
+report_empty(pending: Queue[string]) is
+    let state = if pending.count == 0 then "yes" else "no" fi
+
+    write_line("empty: {state}")
+si
+
+["first", "second", "third"] |> each(item => queue.enqueue(item))
+
+report_empty(queue)
+
+write_line("front: {queue.peek()}")
+
+while queue.count > 0 do
+    write_line("dequeued {queue.dequeue()}")
+od
+
+report_empty(queue)
