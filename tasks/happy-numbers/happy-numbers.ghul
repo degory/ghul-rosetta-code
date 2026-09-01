@@ -21,6 +21,6 @@ si
 let first_eight = stream(1, n => n || n + 1)
     |> filter(is_happy)
     |> take(8)
-    |> collect_list()
+    |> collect()
 
 write_line("first happy numbers: {first_eight |> join(" ")}")

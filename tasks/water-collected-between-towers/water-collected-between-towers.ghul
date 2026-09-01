@@ -14,9 +14,9 @@ running_maxima(heights: Iterable[int]) -> Pipe[int] is
 si
 
 water(heights: int[]) -> int => (
-    let left = running_maxima(heights) |> collect_list()
+    let left = running_maxima(heights) |> collect()
     let right =
-        running_maxima(heights |> reverse()) |> collect_list()
+        running_maxima(heights |> reverse()) |> collect()
     let last = heights.count - 1
 
     (0..heights.count)

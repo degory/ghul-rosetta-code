@@ -64,7 +64,7 @@ prime(n: int, factors: LIST[int], radicals: LIST[int]) -> bool =>
 
 let primes = (2..(limit + 1))
     |> filter(n => prime(n, factor_counts, radical))
-    |> collect_list()
+    |> collect()
 
 let powers mut = 0
 

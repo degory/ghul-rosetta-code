@@ -80,7 +80,7 @@ let factor = smallest_prime_factors(search_limit)
 let sphenics =
     (2..search_limit)
     |> filter(n => is_sphenic(n, factor))
-    |> collect_list()
+    |> collect()
 
 let below_1000 = sphenics |> filter(n => n < 1000) |> join(", ")
 

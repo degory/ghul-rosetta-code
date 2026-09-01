@@ -1,16 +1,16 @@
 use IO.Std.write_line
-use Collections.LIST
+use Collections.List
 use Ghul.Pipes
 
 let elements = [1, 2, 3, 4]
 
-selected(mask: int) -> LIST[int] =>
+selected(mask: int) -> List[int] =>
     (0..elements.count)
         |> filter(index => (mask & (1 << index)) != 0)
         |> map(index => elements[index])
-        |> collect_list()
+        |> collect()
 
-continuous(chosen: LIST[int]) -> bool =>
+continuous(chosen: List[int]) -> bool =>
     chosen[chosen.count - 1] - chosen[0] + 1 == chosen.count
 
 (1..(1 << elements.count))

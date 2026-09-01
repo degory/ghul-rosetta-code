@@ -17,7 +17,7 @@ hailstone(n: int) -> Pipe[int] is
     od
 si
 
-let sequence = hailstone(27) |> collect_list()
+let sequence = hailstone(27) |> collect()
 write_line("length of hailstone(27): {sequence.count}")
 let first = sequence[0..4] |> join(", ")
 let last = sequence[4..<<0] |> join(", ")

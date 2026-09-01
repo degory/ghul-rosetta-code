@@ -25,7 +25,7 @@ bell_triangle() -> Pipe[List[BigInteger]] is
     od
 si
 
-let rows = bell_triangle() |> take(50) |> collect_list()
+let rows = bell_triangle() |> take(50) |> collect()
 
 write_line("first fifteen and fiftieth Bell numbers:")
 
