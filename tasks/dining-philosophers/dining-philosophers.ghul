@@ -1,0 +1,77 @@
+// Each philosopher takes the lower-numbered of its two forks
+// first, so no cycle of philosophers can each hold one fork and
+// wait for the next: the table cannot deadlock.
+
+use IO.Std.write_line
+use System.Runtime.CompilerServices.ICriticalNotifyCompletion
+
+struct SUSPEND: ICriticalNotifyCompletion is
+    _ready: Collections.Queue[() -> void]
+
+    init(ready: Collections.Queue[() -> void]) is
+        _ready = ready
+    si
+
+    get_awaiter() -> SUSPEND => self
+    is_completed: bool => false
+
+    get_result() is
+    si
+
+    on_completed(resume: () -> void) is
+        _ready.enqueue(resume)
+    si
+
+    unsafe_on_completed(resume: () -> void) is
+        _ready.enqueue(resume)
+    si
+si
+
+let philosophers =
+    ["Aristotle", "Kant", "Spinoza", "Marx", "Russell"]
+
+let ready = Collections.Queue[() -> void]()
+let forks = Collections.LIST[bool]()
+
+let take = (fork: int) is
+    while forks[fork] do
+        await SUSPEND(ready)
+    od
+
+    forks[fork] = true
+si
+
+let dine = (name: string, seat: int) is
+    let left = seat
+    let right = (seat + 1) % philosophers.count
+    let lower = if left < right then left else right fi
+    let higher = if left < right then right else left fi
+
+    for _ in 1::2 do
+        write_line("{name} is thinking")
+        await SUSPEND(ready)
+
+        await take(lower)
+        await take(higher)
+
+        write_line("{name} eats with forks {lower} and {higher}")
+        await SUSPEND(ready)
+
+        forks[lower] = false
+        forks[higher] = false
+
+        write_line("{name} puts the forks down")
+    od
+si
+
+for seat in 0..philosophers.count do
+    forks.add(false)
+od
+
+for seat in 0..philosophers.count do
+    dine(philosophers[seat], seat)
+od
+
+while ready.count > 0 do
+    ready.dequeue()()
+od
