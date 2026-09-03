@@ -1,0 +1,98 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+let bases = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+
+passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
+    if base % value =~ BigInteger.zero then
+        return true
+    fi
+
+    let odd mut = value - BigInteger.one
+    let rounds mut = 0
+
+    while odd % cast BigInteger(2) =~ BigInteger.zero do
+        odd = odd / cast BigInteger(2)
+        rounds = rounds + 1
+    od
+
+    let residue mut = BigInteger.mod_pow(base, odd, value)
+
+    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+        return true
+    fi
+
+    for _ in 1..rounds do
+        residue = residue * residue % value
+        if residue =~ value - BigInteger.one then
+            return true
+        fi
+    od
+
+    return false
+si
+
+is_prime(value: BigInteger) -> bool =>
+    value > BigInteger.one /\
+    bases |> all(base => passes_miller_rabin(value, cast BigInteger(base)))
+
+pollard_rho(value: BigInteger, budget: int) -> BigInteger? is
+    let slow mut = cast BigInteger(2)
+    let fast mut = cast BigInteger(2)
+    let divisor mut = BigInteger.one
+
+    for _ in 0..budget do
+        slow = (slow * slow + BigInteger.one) % value
+        fast = (fast * fast + BigInteger.one) % value
+        fast = (fast * fast + BigInteger.one) % value
+        divisor = BigInteger.greatest_common_divisor(slow - fast, value)
+
+        if divisor !~ BigInteger.one then
+            return if divisor =~ value then null else divisor fi
+        fi
+    od
+
+    return null
+si
+
+factors(value: BigInteger) -> Pipe[BigInteger] is
+    if is_prime(value) then
+        yield value
+    elif let divisor = pollard_rho(value, 1_000_000) then
+        yield in factors(divisor)
+        yield in factors(value / divisor)
+    else
+        yield value
+    fi
+si
+
+fermat(index: int) -> BigInteger =>
+    BigInteger.pow(cast BigInteger(2), 1 << index) + BigInteger.one
+
+write_line("the first ten Fermat numbers:")
+
+for index in 0..10 do
+    write_line("F{index} = {fermat(index)}")
+od
+
+write_line("")
+write_line("prime factors:")
+
+for index in 0..8 do
+    let value = fermat(index)
+    let found = factors(value) |> collect_list()
+    let shown = found |> map(f => "{f}") |> join(" * ")
+    let note = if is_prime(value) then " (prime)"
+               elif found.count == 1 then " (no factor found)"
+               else "" fi
+
+    write_line("F{index} = {shown}{note}")
+od
