@@ -69,6 +69,6 @@ for _ in 1::7 do
 
     let first = brilliant[position]
 
-    write_line("first >= {magnitude,10}: {first,10}, position {position + 1}")
+    write_line("first >= {magnitude,10}: {first,10} at {position + 1}")
     magnitude = magnitude * 10L
 od
