@@ -1,0 +1,77 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+
+power[T: INumber[T]](base: T, exponent: int) -> T =>
+    if exponent == 0 then
+        T.one
+    elif exponent % 2 == 0 then
+        let root = power(base, exponent / 2)
+
+        root * root
+    else
+        base * power(base, exponent - 1)
+    fi
+
+engel(numerator: BigInteger, denominator: BigInteger) -> Pipe[BigInteger] is
+    let current mut = numerator
+
+    while current > BigInteger.zero do
+        let term = (denominator + current - BigInteger.one) / current
+
+        yield term
+        current = term * current - denominator
+    od
+si
+
+from_engel(terms: Collections.List[BigInteger])
+        -> (numerator: BigInteger, denominator: BigInteger) is
+    let numerator mut = BigInteger.zero
+    let denominator mut = BigInteger.one
+
+    for term in terms do
+        numerator = numerator * term + BigInteger.one
+        denominator = denominator * term
+    od
+
+    return (numerator, denominator)
+si
+
+show(name: string, fractional: string) is
+    let numerator = BigInteger.parse(fractional)
+    let denominator = power(cast BigInteger(10), fractional.length)
+    let terms = numerator |> engel(denominator) |> collect_list()
+    let (rebuilt, scale) = from_engel(terms)
+    let verified = if rebuilt * denominator =~ numerator * scale
+        then "round trips" else "DOES NOT ROUND TRIP" fi
+    let shown = LIST[string]()
+
+    for term in terms |> take(30) do
+        shown.add("{term}")
+    od
+
+    write_line("{name}: {terms.count} terms, {verified}")
+    write_line("  {shown |> join(" ")}")
+si
+
+show("pi - 3", "14159265358979")
+show("e - 2", "71828182845904")
+show("sqrt(2) - 1", "414213562373095")
+
+show("pi - 3, 208 digits",
+     "1415926535897932384626433832795028841971693993751058209749445923"
+     "0781640628620899862803482534211706798214808651328230664709384460"
+     "95505822317253594081284811174502841027019385211")
+show("e - 2, 100 digits",
+     "7182818284590452353602874713526624977572470936999595749669676277"
+     "2407663035354759457138217852516642743")
+show("sqrt(2) - 1, 182 digits",
+     "4142135623730950488016887242096980785696718753769480731766797379"
+     "9073247846210703885038753432764157273501384623091229702492483605"
+     "58507372126441214970999358314132226659275055927558")

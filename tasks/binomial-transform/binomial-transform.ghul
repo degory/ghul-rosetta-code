@@ -1,0 +1,63 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+from_array(values: int[]) -> Collections.List[int] is
+    let result = LIST[int]()
+
+    for value in values do
+        result.add(value)
+    od
+
+    return result
+si
+
+text_of(values: Collections.List[int]) -> string is
+    let texts = LIST[string]()
+
+    for value in values do
+        texts.add("{value}")
+    od
+
+    return texts |> join(" ")
+si
+
+binomial_transform(values: Collections.List[int], forward: bool)
+        -> Collections.List[int] is
+    let result = LIST[int]()
+
+    for n in 0..values.count do
+        let total mut = 0
+        let coefficient mut = 1
+
+        for k in 0::n do
+            let sign = if forward \/ (n - k) % 2 == 0 then 1 else -1 fi
+
+            total = total + sign * coefficient * values[k]
+            coefficient = coefficient * (n - k) / (k + 1)
+        od
+
+        result.add(total)
+    od
+
+    return result
+si
+
+show(name: string, values: int[]) is
+    let original = from_array(values)
+    let forward = binomial_transform(original, true)
+    let inverse = binomial_transform(original, false)
+    let round_trip = binomial_transform(forward, false)
+
+    write_line("{name}:")
+    write_line("  original:   {text_of(original)}")
+    write_line("  forward:    {text_of(forward)}")
+    write_line("  inverse:    {text_of(inverse)}")
+    write_line("  round trip: {text_of(round_trip)}")
+si
+
+show("Catalan", [1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796,
+                 58786, 208012, 742900, 2674440])
+show("prime flip flop", [0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0])
+show("Fibonacci", [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377])
+show("Padovan", [1, 0, 0, 1, 0, 1, 1, 1, 2, 2, 3, 4, 5, 7, 9])

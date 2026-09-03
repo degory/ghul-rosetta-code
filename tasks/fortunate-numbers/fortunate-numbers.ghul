@@ -1,0 +1,103 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+let bases = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+
+passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
+    if base % value =~ BigInteger.zero then
+        return true
+    fi
+
+    let odd mut = value - BigInteger.one
+    let rounds mut = 0
+
+    while odd % cast BigInteger(2) =~ BigInteger.zero do
+        odd = odd / cast BigInteger(2)
+        rounds = rounds + 1
+    od
+
+    let residue mut = BigInteger.mod_pow(base, odd, value)
+
+    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+        return true
+    fi
+
+    for _ in 1..rounds do
+        residue = residue * residue % value
+        if residue =~ value - BigInteger.one then
+            return true
+        fi
+    od
+
+    return false
+si
+
+is_probable_prime(value: BigInteger) -> bool =>
+    bases |> all(base => passes_miller_rabin(value, cast BigInteger(base)))
+
+is_prime(value: int) -> bool is
+    let divisor mut = 2
+
+    while divisor * divisor <= value /\ value % divisor != 0 do
+        divisor = divisor + 1
+    od
+
+    return divisor * divisor > value
+si
+
+fortunate(count: int) -> Pipe[int] is
+    let primorial mut = BigInteger.one
+    let candidate mut = 1
+    let found mut = 0
+
+    while found < count do
+        candidate = candidate + 1
+
+        if is_prime(candidate) then
+            primorial = primorial * cast BigInteger(candidate)
+
+            let m mut = 3
+
+            while !is_probable_prime(primorial + cast BigInteger(m)) do
+                m = m + 2
+            od
+
+            yield m
+            found = found + 1
+        fi
+    od
+si
+
+let seen = fortunate(75) |> collect_list()
+
+seen.sort()
+
+let unique = LIST[int]()
+let previous mut = 0
+
+for value in seen do
+    if value != previous then
+        unique.add(value)
+    fi
+    previous = value
+od
+
+write_line("first 50 fortunate numbers:")
+
+for row in 0..5 do
+    let cells = LIST[string]()
+
+    for column in 0..10 do
+        cells.add("{unique[row * 10 + column],3}")
+    od
+
+    write_line(cells |> join(" "))
+od

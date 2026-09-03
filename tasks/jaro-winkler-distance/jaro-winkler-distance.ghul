@@ -1,0 +1,96 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let dictionary = [
+    "accommodate", "believe", "commitment", "definite", "existence",
+    "government", "height", "knowledge", "maintenance", "occurrence",
+    "pastime", "privilege", "publicly", "receive", "recommend",
+    "relevant", "rhythm", "separate", "success", "tomorrow",
+    "twelfth", "until", "weird", "which", "writing"
+]
+
+let misspelled = [
+    "accomodate", "definately", "goverment", "occured", "publically",
+    "recieve", "seperate", "untill", "wich"
+]
+
+jaro_similarity(left: string, right: string) -> double is
+    if left.length == 0 /\ right.length == 0 then
+        return 1.0D
+    fi
+
+    let window = (System.Math.max(left.length, right.length) / 2) - 1
+    let left_match = LIST[bool]()
+    let right_match = LIST[bool]()
+    for _ in left do left_match.add(false) od
+    for _ in right do right_match.add(false) od
+
+    let matches mut = 0
+
+    for i in 0..left.length do
+        let low = System.Math.max(0, i - window)
+        let high = System.Math.min(i + window + 1, right.length)
+
+        for j in low..high do
+            if !right_match[j] /\ left[i] == right[j] then
+                left_match[i] = true
+                right_match[j] = true
+                matches = matches + 1
+                break
+            fi
+        od
+    od
+
+    let mismatches mut = 0
+    let next mut = 0
+
+    for i in 0..left.length do
+        if left_match[i] then
+            while !right_match[next] do next = next + 1 od
+            if left[i] != right[next] then mismatches = mismatches + 1 fi
+            next = next + 1
+        fi
+    od
+
+    if matches == 0 then
+        return 0.0D
+    fi
+
+    let m = cast double(matches)
+    let matched = (m - cast double(mismatches) / 2.0D) / m
+    let left_rate = m / cast double(left.length)
+    let right_rate = m / cast double(right.length)
+
+    return (left_rate + right_rate + matched) / 3.0D
+si
+
+jaro_winkler_distance(left: string, right: string) -> double is
+    let similarity = jaro_similarity(left, right)
+
+    let prefix mut = 0
+    let shorter = System.Math.min(left.length, right.length)
+    let limit = System.Math.min(4, shorter)
+
+    while prefix < limit /\ left[prefix] == right[prefix] do
+        prefix = prefix + 1
+    od
+
+    let boost = cast double(prefix) * 0.1D * (1.0D - similarity)
+
+    return 1.0D - (similarity + boost)
+si
+
+for word in misspelled do
+    let candidates = LIST[(string, double)]()
+
+    for candidate in dictionary do
+        candidates.add((candidate, jaro_winkler_distance(word, candidate)))
+    od
+
+    candidates.sort((a, b) => System.Math.sign(a.`1 - b.`1))
+
+    for (candidate, distance) in candidates |> take(2) do
+        write_line("{word} -> {candidate} {distance:F4}")
+    od
+od
