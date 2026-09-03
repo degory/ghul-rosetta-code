@@ -1,0 +1,159 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let small = [
+    "zero", "one", "two", "three", "four", "five", "six", "seven",
+    "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+    "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+]
+
+let tens = [
+    "twenty", "thirty", "forty", "fifty",
+    "sixty", "seventy", "eighty", "ninety"
+]
+
+let scales = ["thousand", "million", "billion"]
+
+let irregular_ordinals = [
+    ("one", "first"), ("two", "second"), ("three", "third"),
+    ("five", "fifth"), ("eight", "eighth"), ("nine", "ninth"),
+    ("twelve", "twelfth")
+]
+
+below_hundred(value: int) -> string =>
+    if value < 20 then
+        small[value]
+    elif value % 10 == 0 then
+        tens[value / 10 - 2]
+    else
+        "{tens[value / 10 - 2]}-{small[value % 10]}"
+    fi
+
+below_thousand(value: int) -> string =>
+    if value < 100 then
+        below_hundred(value)
+    elif value % 100 == 0 then
+        "{small[value / 100]} hundred"
+    else
+        "{small[value / 100]} hundred {below_hundred(value % 100)}"
+    fi
+
+cardinal(value: int) -> string is
+    if value == 0 then
+        return small[0]
+    fi
+
+    let named = LIST[string]()
+    let rest mut = value
+    let scale mut = 0
+
+    while rest > 0 do
+        let part = rest % 1000
+
+        if part > 0 then
+            let name = below_thousand(part)
+
+            let scaled =
+                if scale == 0 then name else "{name} {scales[scale - 1]}" fi
+
+            named.insert(0, scaled)
+        fi
+
+        rest = rest / 1000
+        scale = scale + 1
+    od
+
+    return named |> join(" ")
+si
+
+ordinal(value: int) -> string is
+    let words = cardinal(value)
+    let cut =
+        System.Math.max(words.last_index_of(' '), words.last_index_of('-'))
+    let head = words[0..cut + 1]
+    let last = words[cut + 1..<0]
+
+    for (plain, special) in irregular_ordinals do
+        if last =~ plain then
+            return "{head}{special}"
+        fi
+    od
+
+    return if last.ends_with("y") then "{head}{last[0..<1]}ieth"
+           else "{words}th" fi
+si
+
+letters(word: string) -> int =>
+    word |> filter(c => char.is_letter(c)) |> count()
+
+let words = LIST[string]()
+
+let opening =
+    "Four is the number of letters in the first word of this sentence,"
+
+for word in opening.split([' ']) do
+    words.add(word)
+od
+
+let described mut = 0
+
+sentence_words() -> Pipe[string] is
+    let cursor mut = 0
+
+    while true do
+        while words.count <= cursor do
+            described = described + 1
+
+            for word in cardinal(letters(words[described])).split([' ']) do
+                words.add(word)
+            od
+
+            words.add("in")
+            words.add("the")
+
+            for word in "{ordinal(described + 1)},".split([' ']) do
+                words.add(word)
+            od
+        od
+
+        yield words[cursor]
+        cursor = cursor + 1
+    od
+si
+
+sentence_length(word_count: int) -> int is
+    let characters = words
+        |> take(word_count)
+        |> map(w => w.length)
+        |> reduce(0, (a, b) => a + b)
+
+    return characters + word_count - 1
+si
+
+write_line("the lengths of the first 201 words:")
+
+let first_201 = sentence_words()
+    |> take(201)
+    |> map(letters)
+    |> collect_list()
+
+for row in 0..9 do
+    let cells = first_201
+        |> skip(row * 25)
+        |> take(25)
+        |> map(n => "{n,3}")
+        |> join("")
+
+    write_line("{row * 25 + 1,4}:{cells}")
+od
+
+write_line("sentence length so far: {sentence_length(201)}")
+
+for target in [1_000, 10_000, 100_000, 1_000_000, 10_000_000] do
+    let word = (sentence_words() |> skip(target - 1) |> first())!
+    let length = sentence_length(target)
+
+    write_line("word {target,8} is \"{word}\" with {letters(word)} letters")
+    write_line("    sentence length so far: {length}")
+od
