@@ -1,0 +1,24 @@
+use IO.Std.write_line
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+
+let values = [5, 3, 8, 0, 1, 9, 2, 7]
+
+// Each value waits its own number of turns before printing itself.
+// The waits are scheduler turns rather than seconds, so the order
+// they come out in is the order of the values however small the
+// gaps between them are.
+emit(value: int) -> COROUTINE is
+    for _ in 1::value do
+        await pause()
+    od
+
+    write_line("{value}")
+si
+
+for value in values do
+    emit(value)
+od
+
+run()

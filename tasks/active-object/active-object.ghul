@@ -1,0 +1,80 @@
+use IO.Std.write_line
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+use System.Math.pi
+use System.Math.sin
+
+// The clock the object's state depends on is the scheduler's: every
+// turn is one step of simulated time. That is what makes the
+// integral reproducible, where a wall clock would leave it at the
+// mercy of the operating system's time slicing.
+let step = 0.001D
+let frequency = 0.5D
+
+class INTEGRATOR is
+    _input: (double) -> double
+    _output: double
+    _previous: double
+    _time: double
+    _running: bool
+
+    init() is
+        _input = t => 0.0D
+        _running = true
+    si
+
+    // The encapsulated task. It wakes on its own and adds one
+    // trapezium to the running total, whatever the outside world is
+    // doing to the input meanwhile.
+    integrate() -> COROUTINE is
+        while _running do
+            await pause()
+
+            let now = _time + step
+            let sample = _input(now)
+
+            _output = _output + (sample + _previous) * step / 2.0D
+            _previous = sample
+            _time = now
+        od
+    si
+
+    input(k: (double) -> double) is
+        _input = k
+        _previous = k(_time)
+    si
+
+    output: double => _output
+
+    stop() is
+        _running = false
+    si
+si
+
+let integrator = INTEGRATOR()
+
+wait(seconds: double) -> COROUTINE is
+    for _ in 1::cast int(seconds / step) do
+        await pause()
+    od
+si
+
+drive() -> COROUTINE is
+    integrator.input(t => sin(2.0D * pi * frequency * t))
+
+    await wait(2.0D)
+
+    integrator.input(t => 0.0D)
+
+    await wait(0.5D)
+
+    write_line("output {integrator.output:F6}")
+
+    integrator.stop()
+si
+
+integrator.integrate()
+drive()
+
+run()

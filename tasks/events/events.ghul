@@ -1,0 +1,83 @@
+use IO.Std.write_line
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.SEMAPHORE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+
+// A manual-reset event: signalling releases everything waiting and
+// leaves the event open, so a later wait passes straight through
+// until it is reset.
+class EVENT is
+    _signalled: bool
+    _waiting: int
+    _gate: SEMAPHORE
+
+    init() is
+        _gate = SEMAPHORE(0)
+    si
+
+    wait() -> COROUTINE is
+        if !_signalled then
+            _waiting = _waiting + 1
+
+            await _gate.acquire()
+        fi
+    si
+
+    signal() is
+        _signalled = true
+
+        for _ in 1::_waiting do
+            _gate.release()
+        od
+
+        _waiting = 0
+    si
+
+    reset() is
+        _signalled = false
+    si
+si
+
+let event = EVENT()
+let delay = 3
+
+waiter(name: string) -> COROUTINE is
+    write_line("{name} waits")
+
+    await event.wait()
+
+    write_line("{name} released")
+si
+
+signaller() -> COROUTINE is
+    for _ in 1::delay do
+        await pause()
+    od
+
+    write_line("signalled")
+
+    event.signal()
+si
+
+waiter("first")
+waiter("second")
+signaller()
+
+run()
+
+waiter("third")
+
+run()
+
+event.reset()
+
+waiter("fourth")
+
+run()
+
+write_line("fourth is still waiting")
+
+event.signal()
+
+run()

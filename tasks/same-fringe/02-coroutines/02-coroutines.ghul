@@ -1,0 +1,116 @@
+use IO.Std.write_line
+use Ghul.Coroutines.CHANNEL
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.run
+
+union Tree is
+    LEAF(value: int)
+    NODE(left: Tree, right: Tree)
+si
+
+use Tree.LEAF
+use Tree.NODE
+
+use Comparison = COROUTINE[(same: bool, leaves: int)]
+
+// A walker hands over one leaf per request and then parks, so
+// neither tree is traversed further than the comparison needs.
+class WALKER is
+    _tree: Tree
+    _wanted: CHANNEL[bool]
+    _leaves: CHANNEL[int?]
+
+    init(tree: Tree) is
+        _tree = tree
+        _wanted = CHANNEL[bool]()
+        _leaves = CHANNEL[int?]()
+    si
+
+    next() -> COROUTINE[int?] is
+        _wanted.send(true)
+
+        return await _leaves.receive()
+    si
+
+    walk() -> COROUTINE is
+        await _emit(_tree)
+
+        let _ = await _wanted.receive()
+
+        _leaves.send(null)
+    si
+
+    _emit(tree: Tree) -> COROUTINE is
+        if isa LEAF(tree) then
+            let _ = await _wanted.receive()
+
+            _leaves.send(tree.value)
+        elif isa NODE(tree) then
+            await _emit(tree.left)
+            await _emit(tree.right)
+        fi
+    si
+si
+
+compare(first: Tree, second: Tree) -> Comparison is
+    let left = WALKER(first)
+    let right = WALKER(second)
+
+    left.walk()
+    right.walk()
+
+    let leaves mut = 0
+
+    do
+        let a = await left.next()
+        let b = await right.next()
+
+        if a? != b? then
+            return (false, leaves)
+        fi
+
+        if !a? then
+            return (true, leaves)
+        fi
+
+        leaves = leaves + 1
+
+        if a !~ b then
+            return (false, leaves)
+        fi
+    od
+si
+
+show(tree: Tree) -> string =>
+    case tree
+    when (value): LEAF then "{value}"
+    when (left, right): NODE then "({show(left)} {show(right)})"
+    esac
+
+let leaning_left = NODE(NODE(LEAF(1), LEAF(2)), LEAF(3))
+let leaning_right = NODE(LEAF(1), NODE(LEAF(2), LEAF(3)))
+let differs_last = NODE(LEAF(1), NODE(LEAF(2), LEAF(4)))
+let differs_first = NODE(NODE(LEAF(9), LEAF(2)), LEAF(3))
+let shorter = NODE(LEAF(1), LEAF(2))
+
+report() -> COROUTINE is
+    for (first, second) in [
+        (leaning_left, leaning_right),
+        (leaning_left, differs_last),
+        (leaning_left, differs_first),
+        (leaning_left, shorter)
+    ] do
+        let (same, leaves) = await compare(first, second)
+
+        let verdict = if same then "same fringe" else "different" fi
+        let counted = if leaves == 1 then "leaf" else "leaves" fi
+
+        write_line(
+            "{show(first)} and {show(second)}: {verdict}, "
+            "{leaves} {counted} compared")
+    od
+si
+
+report()
+
+run()

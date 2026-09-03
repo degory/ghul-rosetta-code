@@ -73,9 +73,9 @@
     },
     {
       "title": "Active object",
-      "state": "rejected",
-      "reason": "nondeterministic",
-      "note": "the object\u0027s state is defined as depending on the clock"
+      "slug": "active-object",
+      "state": "solved",
+      "note": "a cooperative scheduler gives it a reproducible clock, so the nondeterminism rejection no longer holds"
     },
     {
       "title": "Additive primes",
@@ -168,6 +168,10 @@
       "slug": "arithmetic-evaluation",
       "state": "published",
       "published_hash": "fe73e618f372bf6f0ad63caff8f43b6bba12c871a66ffc2ed22df7aff155f51c"
+    },
+    {
+      "title": "Atomic updates",
+      "state": "solved"
     },
     {
       "title": "Averages/Arithmetic mean",
@@ -268,6 +272,10 @@
       "published_hash": "2c5e92dd24c14d25f3a3d19732712a0b2dcb8cd4305311a73b3571636deb4cc6"
     },
     {
+      "title": "Checkpoint synchronization",
+      "state": "solved"
+    },
+    {
       "title": "Cheryl\u0027s birthday",
       "slug": "cheryls-birthday",
       "state": "published",
@@ -285,6 +293,10 @@
       "slug": "closures-value-capture",
       "state": "published",
       "published_hash": "5ec362a68ed9a200eabea86f9e9b960cfaf8689ee8a2935291667340eff8c5d6"
+    },
+    {
+      "title": "Concurrent computing",
+      "state": "solved"
     },
     {
       "title": "Cumulative standard deviation",
@@ -385,6 +397,10 @@
       "slug": "ethiopian-multiplication",
       "state": "published",
       "published_hash": "1a4522573413c30430fad7d8b6f6507183a49814982d6ee17fa1c75813afb9bb"
+    },
+    {
+      "title": "Events",
+      "state": "solved"
     },
     {
       "title": "Exponential digital sums",
@@ -741,6 +757,10 @@
       "published_hash": "6ad8e0a7620fded2cbc65ed9d74d9fd876231956d16e7466f8b1d0892ef2081d"
     },
     {
+      "title": "Metered concurrency",
+      "state": "solved"
+    },
+    {
       "title": "Mian-Chowla sequence",
       "slug": "mian-chowla-sequence",
       "state": "published",
@@ -779,6 +799,10 @@
       "slug": "munchausen-numbers",
       "state": "published",
       "published_hash": "df64cea937796eaa72fcd093efa6a912a3728ecca5dc638fe9d6937b981bc767"
+    },
+    {
+      "title": "Mutex",
+      "state": "solved"
     },
     {
       "title": "Mutual recursion",
@@ -989,6 +1013,10 @@
       "published_hash": "e3e91c3540eccaada954f48dc1d9934e73a8cf76530372885ef3c1a42cfbf29a"
     },
     {
+      "title": "Rendezvous",
+      "state": "solved"
+    },
+    {
       "title": "Rep-string",
       "slug": "rep-string",
       "state": "published",
@@ -1071,6 +1099,10 @@
       "published_hash": "affad06a9e2173bc00cc39c70cc239d571f1719965673b46830250f341ed1e6b"
     },
     {
+      "title": "Sorting algorithms/Sleep sort",
+      "state": "solved"
+    },
+    {
       "title": "Sphenic numbers",
       "slug": "sphenic-numbers",
       "state": "published",
@@ -1099,6 +1131,10 @@
       "slug": "symmetric-difference",
       "state": "published",
       "published_hash": "5c4422ea322c2baa95224d65c29bdec86cc01ca14fd4fc4351108c401c4fb3b2"
+    },
+    {
+      "title": "Synchronous concurrency",
+      "state": "solved"
     },
     {
       "title": "Tau number",

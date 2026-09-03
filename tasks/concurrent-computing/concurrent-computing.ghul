@@ -1,0 +1,23 @@
+use IO.Std.write_line
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+
+// Each word waits a different number of turns before printing, so
+// the order is the scheduler's rather than the source's. The seed
+// only makes it the same arbitrary order on every run.
+let random = System.Random(42)
+
+say(word: string) -> COROUTINE is
+    for _ in 1::random.next(1, 5) do
+        await pause()
+    od
+
+    write_line(word)
+si
+
+for word in ["Enjoy", "Rosetta", "Code"] do
+    say(word)
+od
+
+run()

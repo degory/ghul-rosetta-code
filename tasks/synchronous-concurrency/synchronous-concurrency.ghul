@@ -1,0 +1,59 @@
+use IO.Std.write_line
+use Ghul.Coroutines.CHANNEL
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+
+union Request is
+    PRINT(line: string)
+    COUNT
+si
+
+use Request.COUNT
+use Request.PRINT
+
+// The task reads a file named input.txt. The program writes one
+// first, so the entry runs wherever it is pasted.
+let path = "input.txt"
+
+IO.File.write_all_lines(path, ["Enjoy", "Rosetta", "Code"])
+
+let requests = CHANNEL[Request]()
+let replies = CHANNEL[int]()
+
+printer() -> COROUTINE is
+    let printed mut = 0
+
+    do
+        let request = await requests.receive()
+
+        if isa PRINT(request) then
+            write_line(request.line)
+            printed = printed + 1
+        else
+            replies.send(printed)
+            break
+        fi
+    od
+si
+
+// Pausing after each send hands the line to the printer before the
+// next is read, so the two run in step rather than the reader
+// filling the channel and the printer draining it afterwards.
+reader() -> COROUTINE is
+    for line in IO.File.read_lines(path) do
+        requests.send(PRINT(line))
+        await pause()
+    od
+
+    requests.send(COUNT)
+
+    let printed = await replies.receive()
+
+    write_line("{printed} lines printed")
+si
+
+printer()
+reader()
+
+run()

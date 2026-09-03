@@ -1,0 +1,68 @@
+use IO.Std.write_line
+use Ghul.Coroutines.CHANNEL
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+
+use Numbers = CHANNEL[int?]
+
+let limit = 100
+
+// The counting source. A null closes the chain, so every filter
+// knows when to stop.
+count_up(out: Numbers) -> COROUTINE is
+    for n in 2::limit do
+        out.send(n)
+
+        await pause()
+    od
+
+    out.send(null)
+si
+
+// One link of the chain: everything its own prime does not divide
+// goes on to the next link.
+drop_multiples(prime: int, into: Numbers, out: Numbers) -> COROUTINE is
+    do
+        let value = await into.receive()
+
+        if let n = value then
+            if n % prime != 0 then
+                out.send(n)
+            fi
+        else
+            out.send(null)
+
+            break
+        fi
+    od
+si
+
+// Whatever reaches the end of the chain is divisible by none of the
+// primes already found, so it is the next prime. A link that drops
+// its multiples is added for it, and the chain grows by one.
+sieve() -> COROUTINE is
+    let head mut = Numbers()
+
+    count_up(head)
+
+    do
+        let value = await head.receive()
+
+        if let prime = value then
+            write_line("{prime}")
+
+            let rest = Numbers()
+
+            drop_multiples(prime, head, rest)
+
+            head = rest
+        else
+            break
+        fi
+    od
+si
+
+sieve()
+
+run()

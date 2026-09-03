@@ -1,0 +1,64 @@
+use IO.Std.write_line
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.SEMAPHORE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+use Ghul.Pipes.join
+use Collections.LIST
+
+let names = ["Ann", "Bill", "Cid"]
+let turns = [1, 3, 2]
+let cycles = 3
+
+let gate = SEMAPHORE(0)
+let finished = LIST[string]()
+
+let arrived mut = 0
+
+release_others() is
+    for _ in 1..names.count do
+        gate.release()
+    od
+si
+
+// The worker that completes the set assembles the parts and then
+// releases one permit for each of the others. Resetting the count
+// before releasing is what keeps a quick worker from arriving at
+// the next checkpoint and being counted into this one.
+checkpoint() -> COROUTINE is
+    arrived = arrived + 1
+
+    if arrived < names.count then
+        await gate.acquire()
+    else
+        arrived = 0
+
+        write_line("assembled {finished |> join(", ")}")
+
+        finished.clear()
+
+        release_others()
+    fi
+si
+
+worker(seat: int) -> COROUTINE is
+    let name = names[seat]
+
+    for cycle in 1::cycles do
+        for _ in 1::turns[seat] do
+            await pause()
+        od
+
+        write_line("{name} finished part {cycle}")
+
+        finished.add("{name}'s part {cycle}")
+
+        await checkpoint()
+    od
+si
+
+for seat in 0..names.count do
+    worker(seat)
+od
+
+run()

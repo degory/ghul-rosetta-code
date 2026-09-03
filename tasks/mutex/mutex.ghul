@@ -1,0 +1,42 @@
+use IO.Std.write_line
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.MUTEX
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+
+let names = ["Alice", "Bob", "Carol"]
+
+let console = MUTEX()
+
+// The pause between the two lines gives every other coroutine a
+// turn, so an unguarded visit is written into the middle of the
+// others. Holding the mutex across it is what makes the pair
+// indivisible.
+visit(name: string) -> COROUTINE is
+    write_line("{name} enters")
+    await pause()
+    write_line("{name} leaves")
+si
+
+guarded(name: string) -> COROUTINE is
+    await console.acquire()
+    await visit(name)
+    console.release()
+si
+
+write_line("without the mutex")
+
+for name in names do
+    visit(name)
+od
+
+run()
+
+write_line("")
+write_line("with the mutex")
+
+for name in names do
+    guarded(name)
+od
+
+run()

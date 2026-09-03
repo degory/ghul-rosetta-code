@@ -1,0 +1,35 @@
+use IO.Std.write_line
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.SEMAPHORE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+
+let permits = 3
+let workers = 5
+let holding_turns = 2
+
+let semaphore = SEMAPHORE(permits)
+
+holding() -> int => permits - semaphore.available
+
+// The scheduler runs the workers on one thread, so a run of turns
+// spent parked stands in for the two seconds the task asks for.
+worker(id: int) -> COROUTINE is
+    await semaphore.acquire()
+
+    write_line("worker {id} acquired, {holding()} holding")
+
+    for _ in 1::holding_turns do
+        await pause()
+    od
+
+    semaphore.release()
+
+    write_line("worker {id} released, {holding()} holding")
+si
+
+for id in 1::workers do
+    worker(id)
+od
+
+run()
