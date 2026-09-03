@@ -183,7 +183,8 @@
     },
     {
       "title": "Autogram checker",
-      "state": "queued"
+      "slug": "autogram-checker",
+      "state": "solved"
     },
     {
       "title": "Averages/Arithmetic mean",
@@ -235,7 +236,8 @@
     },
     {
       "title": "Blum integer",
-      "state": "queued"
+      "slug": "blum-integer",
+      "state": "solved"
     },
     {
       "title": "Boustrophedon transform",
@@ -314,7 +316,8 @@
     },
     {
       "title": "Check Machin-like formulas",
-      "state": "queued"
+      "slug": "check-machin-like-formulas",
+      "state": "solved"
     },
     {
       "title": "Checkpoint synchronization",
@@ -324,7 +327,8 @@
     },
     {
       "title": "Chernick\u0027s Carmichael numbers",
-      "state": "queued"
+      "slug": "chernicks-carmichael-numbers",
+      "state": "solved"
     },
     {
       "title": "Cheryl\u0027s birthday",
@@ -377,7 +381,8 @@
     },
     {
       "title": "Consecutive primes with ascending or descending differences",
-      "state": "queued"
+      "slug": "consecutive-primes-with-ascending-or-descending-differences",
+      "state": "solved"
     },
     {
       "title": "Constrained genericity",
@@ -398,7 +403,8 @@
     },
     {
       "title": "Curzon numbers",
-      "state": "queued"
+      "slug": "curzon-numbers",
+      "state": "solved"
     },
     {
       "title": "Cycles of a permutation",
@@ -406,7 +412,8 @@
     },
     {
       "title": "Cyclops numbers",
-      "state": "queued"
+      "slug": "cyclops-numbers",
+      "state": "solved"
     },
     {
       "title": "Damm algorithm",
@@ -422,7 +429,8 @@
     },
     {
       "title": "Deconvolution/1D",
-      "state": "queued"
+      "slug": "deconvolution-1d",
+      "state": "solved"
     },
     {
       "title": "Decorate-sort-undecorate idiom",
@@ -495,7 +503,8 @@
     },
     {
       "title": "Elementary cellular automaton/Infinite length",
-      "state": "queued"
+      "slug": "elementary-cellular-automaton-infinite-length",
+      "state": "solved"
     },
     {
       "title": "Engel expansion",
@@ -517,7 +526,8 @@
     },
     {
       "title": "Erd\u0151s-Nicolas numbers",
-      "state": "queued"
+      "slug": "erdos-nicolas-numbers",
+      "state": "solved"
     },
     {
       "title": "Erd\u0151s\u2013Woods numbers",
@@ -525,7 +535,8 @@
     },
     {
       "title": "Esthetic numbers",
-      "state": "queued"
+      "slug": "esthetic-numbers",
+      "state": "solved"
     },
     {
       "title": "Ethiopian multiplication",
@@ -553,7 +564,8 @@
     },
     {
       "title": "Execute Computer/Zero",
-      "state": "queued"
+      "slug": "execute-computer-zero",
+      "state": "solved"
     },
     {
       "title": "Exponential digital sums",
@@ -572,7 +584,8 @@
     },
     {
       "title": "Factorial base numbers indexing permutations of a collection",
-      "state": "queued"
+      "slug": "factorial-base-numbers-indexing-permutations-of-a-collection",
+      "state": "solved"
     },
     {
       "title": "Factorions",
@@ -633,7 +646,8 @@
     },
     {
       "title": "Formal power series",
-      "state": "queued"
+      "slug": "formal-power-series",
+      "state": "solved"
     },
     {
       "title": "Fortunate numbers",
@@ -655,7 +669,8 @@
     },
     {
       "title": "Four is the number of letters in the ...",
-      "state": "queued"
+      "slug": "four-is-the-number-of-letters-in-the",
+      "state": "solved"
     },
     {
       "title": "French Republican calendar",
@@ -711,7 +726,8 @@
     },
     {
       "title": "Goldbach\u0027s comet",
-      "state": "queued"
+      "slug": "goldbachs-comet",
+      "state": "solved"
     },
     {
       "title": "Gosper\u0027s hack",
@@ -731,7 +747,8 @@
     },
     {
       "title": "Greatest prime dividing the n-th cubefree number",
-      "state": "queued"
+      "slug": "greatest-prime-dividing-the-n-th-cubefree-number",
+      "state": "solved"
     },
     {
       "title": "Greatest subsequential sum",
@@ -741,7 +758,8 @@
     },
     {
       "title": "Greedy algorithm for Egyptian fractions",
-      "state": "queued"
+      "slug": "greedy-algorithm-for-egyptian-fractions",
+      "state": "solved"
     },
     {
       "title": "HTTPS/Authenticated",
@@ -803,7 +821,8 @@
     },
     {
       "title": "Home primes",
-      "state": "queued"
+      "slug": "home-primes",
+      "state": "solved"
     },
     {
       "title": "Horner\u0027s rule for polynomial evaluation",
@@ -835,7 +854,8 @@
     },
     {
       "title": "Iccanobif primes",
-      "state": "queued"
+      "slug": "iccanobif-primes",
+      "state": "solved"
     },
     {
       "title": "Imaginary base numbers",
@@ -845,7 +865,8 @@
     },
     {
       "title": "Index finite lists of positive integers",
-      "state": "queued"
+      "slug": "index-finite-lists-of-positive-integers",
+      "state": "solved"
     },
     {
       "title": "Intersecting number wheels",
@@ -961,7 +982,8 @@
     },
     {
       "title": "Knuth\u0027s power tree",
-      "state": "queued"
+      "slug": "knuths-power-tree",
+      "state": "solved"
     },
     {
       "title": "Kolakoski sequence",
