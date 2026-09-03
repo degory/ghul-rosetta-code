@@ -1,0 +1,121 @@
+use IO.Std.write
+use IO.Std.write_line
+use Ghul.Coroutines.CHANNEL
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+
+class OUT_OF_INK: System.Exception is
+    init() is
+        super.init("out of ink")
+    si
+si
+
+union Reply is
+    PRINTED
+    NO_INK
+si
+
+use Reply.NO_INK
+use Reply.PRINTED
+
+class REQUEST(line: string, replies: CHANNEL[Reply]);
+
+class PRINTER is
+    _name: string
+    _ink: int
+    _reserve: PRINTER?
+    _requests: CHANNEL[REQUEST]
+
+    init(name: string, ink: int, reserve: PRINTER?) is
+        _name = name
+        _ink = ink
+        _reserve = reserve
+        _requests = CHANNEL[REQUEST]()
+    si
+
+    // The caller's half of the rendezvous: hand the line to the
+    // monitor and stay parked until it has finished with it.
+    submit(line: string) -> COROUTINE[Reply] is
+        let replies = CHANNEL[Reply]()
+
+        _requests.send(REQUEST(line, replies))
+
+        return await replies.receive()
+    si
+
+    print(line: string) -> COROUTINE is
+        let reply = await submit(line)
+
+        if isa NO_INK(reply) then
+            throw OUT_OF_INK()
+        fi
+    si
+
+    // The monitor. It serves one request at a time, so although a
+    // line is written a character at a time and every character
+    // gives the other writer a turn, no line comes out inside
+    // another. A printer with no ink left requeues the rendezvous
+    // to its reserve and answers with whatever that answers.
+    serve() -> COROUTINE is
+        do
+            let request = await _requests.receive()
+
+            if _ink > 0 then
+                _ink = _ink - 1
+
+                write("{_name}: ")
+
+                for character in request.line do
+                    write("{character}")
+
+                    await pause()
+                od
+
+                write_line("")
+
+                request.replies.send(PRINTED)
+            elif let reserve = _reserve then
+                request.replies.send(await reserve.submit(request.line))
+            else
+                request.replies.send(NO_INK)
+            fi
+        od
+    si
+si
+
+let reserve = PRINTER("reserve", 5, null)
+let main = PRINTER("main", 5, reserve)
+
+writer(name: string, lines: string[]) -> COROUTINE is
+    try
+        for line in lines do
+            await main.print(line)
+        od
+    catch exhausted: OUT_OF_INK
+        write_line("{name} stopped: {exhausted.message}")
+    yrt
+si
+
+main.serve()
+reserve.serve()
+
+writer("Humpty Dumpty", [
+    "Humpty Dumpty sat on a wall",
+    "Humpty Dumpty had a great fall",
+    "All the king's horses",
+    "And all the king's men",
+    "Couldn't put Humpty",
+    "Together again"
+])
+
+writer("Mother Goose", [
+    "Old Mother Goose",
+    "When she wanted to wander",
+    "Would ride through the air",
+    "On a very fine gander",
+    "Jack's mother came in",
+    "And caught the goose soon"
+])
+
+run()
