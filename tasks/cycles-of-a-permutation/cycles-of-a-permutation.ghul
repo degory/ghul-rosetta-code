@@ -132,7 +132,9 @@ let thu_to_fri = permutation_between(days[3].`1, days[4].`1)
 write_line("")
 write_line("Wed->Thu applied to Wed: {apply(wed_to_thu, days[2].`1)}")
 write_line("Thu->Wed (inverse):      {show_cycles(inverse(wed_to_thu))}")
-write_line("Thu->Wed applied to Thu: {apply(inverse(wed_to_thu), days[3].`1)}")
+let thu_to_wed = inverse(wed_to_thu)
+
+write_line("Thu->Wed applied to Thu: {apply(thu_to_wed, days[3].`1)}")
 
 let wed_to_fri = compose(wed_to_thu, thu_to_fri)
 
