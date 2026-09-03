@@ -74,8 +74,9 @@
     {
       "title": "Active object",
       "slug": "active-object",
-      "state": "solved",
-      "note": "a cooperative scheduler gives it a reproducible clock, so the nondeterminism rejection no longer holds"
+      "state": "published",
+      "note": "a cooperative scheduler gives it a reproducible clock, so the nondeterminism rejection no longer holds",
+      "published_hash": "9120cc8429c85a08e9f6e87efbc920284faffb2103e223872bdbaab619beef9d"
     },
     {
       "title": "Additive primes",
@@ -171,7 +172,9 @@
     },
     {
       "title": "Atomic updates",
-      "state": "solved"
+      "slug": "atomic-updates",
+      "state": "published",
+      "published_hash": "e7d1aa1963da5b9772f5f1156c888a212db62c0cbd8b29fdea24af07a31eae24"
     },
     {
       "title": "Averages/Arithmetic mean",
@@ -273,7 +276,9 @@
     },
     {
       "title": "Checkpoint synchronization",
-      "state": "solved"
+      "slug": "checkpoint-synchronization",
+      "state": "published",
+      "published_hash": "355e43c33f2986c116f1850b297829aad8989e1d51281b8be2806edb18515c46"
     },
     {
       "title": "Cheryl\u0027s birthday",
@@ -296,7 +301,9 @@
     },
     {
       "title": "Concurrent computing",
-      "state": "solved"
+      "slug": "concurrent-computing",
+      "state": "published",
+      "published_hash": "f64c29ebfa5744a1ef30f93dc94609a9a87cb7eede259f4de53ba3ffed5f5dc6"
     },
     {
       "title": "Cumulative standard deviation",
@@ -400,7 +407,9 @@
     },
     {
       "title": "Events",
-      "state": "solved"
+      "slug": "events",
+      "state": "published",
+      "published_hash": "4749b35ca75e0db091525f47f5b24eeaeab1c873de3fe2ea4e3138c6de81656a"
     },
     {
       "title": "Exponential digital sums",
@@ -758,7 +767,9 @@
     },
     {
       "title": "Metered concurrency",
-      "state": "solved"
+      "slug": "metered-concurrency",
+      "state": "published",
+      "published_hash": "80a2c3c66052340504f5b738c4f6f4615bb518a33ecba8c5848e6cfd37a0c06e"
     },
     {
       "title": "Mian-Chowla sequence",
@@ -802,7 +813,9 @@
     },
     {
       "title": "Mutex",
-      "state": "solved"
+      "slug": "mutex",
+      "state": "published",
+      "published_hash": "551aeeebf75471e276e2a30a3f698c1c54a92fccdb16cf9adc9c8438e83f77ce"
     },
     {
       "title": "Mutual recursion",
@@ -1014,7 +1027,9 @@
     },
     {
       "title": "Rendezvous",
-      "state": "solved"
+      "slug": "rendezvous",
+      "state": "published",
+      "published_hash": "2cbe8b148a881f11794bb75a78a7a55b1e455326768020b065e266f4156e055e"
     },
     {
       "title": "Rep-string",
@@ -1062,7 +1077,7 @@
       "title": "Same fringe",
       "slug": "same-fringe",
       "state": "published",
-      "published_hash": "5f58bc51fed1a0cbadcc5ca9208d4b8443e78bd41c4b97e979134b01753f3980"
+      "published_hash": "5df9496cc056c5b1fd7b49dd1d4a10c832f855cabde70d5c890a63775162df02"
     },
     {
       "title": "Semiprime",
@@ -1084,7 +1099,7 @@
       "title": "Sieve of Eratosthenes",
       "slug": "sieve-of-eratosthenes",
       "state": "published",
-      "published_hash": "c40bca394b347b7b3122de6808474adf4b41fee1810a1ab750072dc67e907bba"
+      "published_hash": "608f675dc2ca8ad8bb33597f914934523eb6fffcde8877e38856f71b8ae4060e"
     },
     {
       "title": "Smith\u2013Waterman algorithm",
@@ -1100,7 +1115,9 @@
     },
     {
       "title": "Sorting algorithms/Sleep sort",
-      "state": "solved"
+      "slug": "sorting-algorithms-sleep-sort",
+      "state": "published",
+      "published_hash": "6cffce450dd89916bb0ac2ef3a5880b0026ffb0aa7bfb9ceec03417cad8f9e77"
     },
     {
       "title": "Sphenic numbers",
@@ -1134,7 +1151,9 @@
     },
     {
       "title": "Synchronous concurrency",
-      "state": "solved"
+      "slug": "synchronous-concurrency",
+      "state": "published",
+      "published_hash": "734d5edd038dcff8618571f653cc45f07bf61f5b531e32cc04efd0eba1a6c0a5"
     },
     {
       "title": "Tau number",
