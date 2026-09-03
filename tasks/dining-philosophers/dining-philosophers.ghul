@@ -3,75 +3,54 @@
 // wait for the next: the table cannot deadlock.
 
 use IO.Std.write_line
-use System.Runtime.CompilerServices.ICriticalNotifyCompletion
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.SCHEDULER
 
-struct SUSPEND: ICriticalNotifyCompletion is
-    _ready: Collections.Queue[() -> void]
+forks: Collections.LIST[bool]
 
-    init(ready: Collections.Queue[() -> void]) is
-        _ready = ready
-    si
-
-    get_awaiter() -> SUSPEND => self
-    is_completed: bool => false
-
-    get_result() is
-    si
-
-    on_completed(resume: () -> void) is
-        _ready.enqueue(resume)
-    si
-
-    unsafe_on_completed(resume: () -> void) is
-        _ready.enqueue(resume)
-    si
-si
-
-let philosophers =
-    ["Aristotle", "Kant", "Spinoza", "Marx", "Russell"]
-
-let ready = Collections.Queue[() -> void]()
-let forks = Collections.LIST[bool]()
-
-let take = (fork: int) is
-    while forks[fork] do
-        await SUSPEND(ready)
-    od
-
-    forks[fork] = true
-si
-
-let dine = (name: string, seat: int) is
+dine(scheduler: SCHEDULER, name: string, seat: int) -> COROUTINE is
     let left = seat
-    let right = (seat + 1) % philosophers.count
+    let right = (seat + 1) % forks.count
     let lower = if left < right then left else right fi
     let higher = if left < right then right else left fi
 
     for _ in 1::2 do
         write_line("{name} is thinking")
-        await SUSPEND(ready)
+        await scheduler.pause()
 
-        await take(lower)
-        await take(higher)
+        for fork in [lower, higher] do
+            while forks[fork] do
+                await scheduler.pause()
+            od
+
+            forks[fork] = true
+        od
 
         write_line("{name} eats with forks {lower} and {higher}")
-        await SUSPEND(ready)
+        await scheduler.pause()
 
         forks[lower] = false
         forks[higher] = false
 
         write_line("{name} puts the forks down")
     od
+
+    return
 si
+
+let philosophers =
+    ["Aristotle", "Kant", "Spinoza", "Marx", "Russell"]
+
+forks = Collections.LIST[bool]()
 
 for seat in 0..philosophers.count do
     forks.add(false)
 od
 
+let scheduler = SCHEDULER()
+
 for seat in 0..philosophers.count do
-    dine(philosophers[seat], seat)
+    scheduler.spawn(s => dine(s, philosophers[seat], seat))
 od
 
-while ready.count > 0 do
-    ready.dequeue()()
-od
+scheduler.run()
