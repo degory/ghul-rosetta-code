@@ -1,0 +1,54 @@
+// Each philosopher takes the lower-numbered of its two forks
+// first, so no cycle of philosophers can each hold one fork and
+// wait for the next: the table cannot deadlock.
+
+use IO.Std.write_line
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.MUTEX
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+use Ghul.Pipes.collect_list
+use Ghul.Pipes.map
+
+let philosophers =
+    ["Aristotle", "Kant", "Spinoza", "Marx", "Russell"]
+
+let meals = 2
+let random = System.Random(42)
+
+let forks = philosophers |> map(_ => MUTEX()) |> collect_list()
+
+wait(turns: int) -> COROUTINE is
+    for _ in 0..turns do
+        await pause()
+    od
+si
+
+dine(name: string, seat: int) -> COROUTINE is
+    let left = seat
+    let right = (seat + 1) % forks.count
+    let lower = if left < right then left else right fi
+    let higher = if left < right then right else left fi
+
+    for _ in 1::meals do
+        write_line("{name} is thinking")
+        await wait(random.next(1, 4))
+
+        await forks[lower].acquire()
+        await forks[higher].acquire()
+
+        write_line("{name} eats with forks {lower} and {higher}")
+        await wait(random.next(1, 4))
+
+        forks[higher].release()
+        forks[lower].release()
+
+        write_line("{name} puts the forks down")
+    od
+si
+
+for seat in 0..philosophers.count do
+    dine(philosophers[seat], seat)
+od
+
+run()

@@ -186,55 +186,28 @@ output is better built than written out.
 ## Reaching shared state from a function
 
 A solution with no `namespace` runs its top-level statements as the entry point,
-and a `let` written there is a local **of that entry point**. A named function
-declared in the same file cannot see it, and says `symbol not found` - which
-reads as though the name were misspelled rather than out of scope. Two patterns
-get around it, and which one to reach for depends on the shape of the solution.
-
-**A global variable**, written at the top level as a name and a type with no
-`let`:
-
-```ghul
-rows: string[]
-
-widest() -> int =>
-    rows |> reduce(0, (w, r) => if r.length > w then r.length else w fi)
-
-rows = ["one", "three", "seventeen"]
-
-write_line("{widest()}")
-```
-
-It cannot carry an initializer, so it is declared in one place and assigned in
-another, in the top-level statements. Definitions hoist above the statements, so
-until the assignment runs the variable holds the default for its type - and a
-function that reads it before then gets `null` or zero rather than a diagnostic.
-Keep the assignment near the top of the statements for that reason.
-
-**A function literal in a `let`**, which captures the other top-level locals the
-same way any closure captures its enclosing scope:
+and a `let` written there is visible to the named functions declared in the same
+file as well as to the statements after it. A function can be written above or
+below the `let` it reads, since it runs only when called; the statements run in
+order, so one placed above the `let` cannot read it.
 
 ```ghul
 let rows = ["one", "three", "seventeen"]
 
-let widest = (of_at_least: int) -> int =>
-    rows |> filter(r => r.length >= of_at_least) |> reduce(0, ...)
+widest() -> int =>
+    rows |> reduce(0, (w, r) => if r.length > w then r.length else w fi)
+
+write_line("{widest()}")
 ```
 
-Nothing is declared apart from where it is given a value, and nothing is
-readable before it holds something. A literal takes explicit argument and return
-types when they help - write them where the literal is long enough that the
-reader would otherwise have to work its signature out, or where inference does
-not get there on its own.
+A bare `let` cannot be reassigned anywhere; a `let ... mut` can be reassigned
+from later statements and from functions alike. Prefer the bare form and mutate
+what it holds - a list, a map - rather than reassigning it, so nothing in the
+file is written from two places.
 
-Prefer the literal. The global is the answer when the state is genuinely shared
-across several functions, or when a named recursive function needs it; reaching
-for it because a `let` did not resolve is how a solution ends up with a mutable
-top-level variable it never needed.
-
-Neither is a reason to move a solution's working data into a global just so
+Neither is a reason to move a solution's working data to the top level just so
 named functions can be written. Passing what a function needs as an argument is
-usually shorter than either, and always clearer.
+usually shorter, and always clearer.
 
 ## Solutions carry no comments
 
