@@ -78,8 +78,10 @@ si
 
 show_path(43)
 
+let two = cast BigInteger(2)
+
 for exponent in 0..18 do
-    write_line("2^{exponent,2} = {exponentiate(cast BigInteger(2), exponent)}")
+    write_line("2^{exponent,2} = {exponentiate(two, exponent)}")
 od
 
 write_line("3^191 = {exponentiate(cast BigInteger(3), 191)}")
