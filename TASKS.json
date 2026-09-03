@@ -233,7 +233,8 @@
     },
     {
       "title": "Bioinformatics/Global alignment",
-      "state": "queued"
+      "slug": "bioinformatics-global-alignment",
+      "state": "solved"
     },
     {
       "title": "Blum integer",
@@ -261,7 +262,8 @@
     },
     {
       "title": "Brilliant numbers",
-      "state": "queued"
+      "slug": "brilliant-numbers",
+      "state": "solved"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -375,7 +377,8 @@
     },
     {
       "title": "Compiler/AST interpreter",
-      "state": "queued"
+      "slug": "compiler-ast-interpreter",
+      "state": "solved"
     },
     {
       "title": "Concurrent computing",
@@ -414,7 +417,8 @@
     },
     {
       "title": "Cycles of a permutation",
-      "state": "queued"
+      "slug": "cycles-of-a-permutation",
+      "state": "solved"
     },
     {
       "title": "Cyclops numbers",
@@ -614,7 +618,8 @@
     },
     {
       "title": "Fermat numbers",
-      "state": "queued"
+      "slug": "fermat-numbers",
+      "state": "solved"
     },
     {
       "title": "Fibonacci n-step number sequences",
@@ -689,11 +694,13 @@
     },
     {
       "title": "French Republican calendar",
-      "state": "queued"
+      "slug": "french-republican-calendar",
+      "state": "solved"
     },
     {
       "title": "Functional coverage tree",
-      "state": "queued"
+      "slug": "functional-coverage-tree",
+      "state": "solved"
     },
     {
       "title": "Fusc sequence",
