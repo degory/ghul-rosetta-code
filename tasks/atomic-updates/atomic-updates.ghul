@@ -1,0 +1,87 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Coroutines.COROUTINE
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
+use Ghul.Pipes.join
+use Ghul.Pipes.map
+use Ghul.Pipes.reduce
+
+class BUCKETS is
+    _values: LIST[int]
+
+    init(values: int[]) is
+        _values = LIST[int](values)
+    si
+
+    count: int => _values.count
+
+    values: List[int] => _values
+
+    total: int => _values |> reduce(0, (running, v) => running + v)
+
+    get(index: int) -> int => _values[index]
+
+    // The transfer is where the total could be lost. It reads and
+    // writes two buckets with no await between them, and the
+    // scheduler only changes coroutine at an await, so no other
+    // coroutine can see the pair half done. Under a preemptive
+    // scheduler this is where the lock would go.
+    transfer(from: int, to: int, amount: int) is
+        let moved =
+            if amount < 0 then 0
+            elif amount > _values[from] then _values[from]
+            else amount
+            fi
+
+        _values[from] = _values[from] - moved
+        _values[to] = _values[to] + moved
+    si
+si
+
+let random = System.Random(42)
+let buckets = BUCKETS([10, 20, 30, 40, 50])
+let rounds = 6
+
+pick() -> int => random.next(0, buckets.count)
+
+equalise() -> COROUTINE is
+    for _ in 1::rounds do
+        let a = pick()
+        let b = pick()
+
+        let (larger, smaller) =
+            if buckets.get(a) > buckets.get(b) then (a, b) else (b, a) fi
+
+        buckets.transfer(
+            larger, smaller,
+            (buckets.get(larger) - buckets.get(smaller)) / 2)
+
+        await pause()
+    od
+si
+
+redistribute() -> COROUTINE is
+    for _ in 1::rounds do
+        buckets.transfer(pick(), pick(), random.next(0, 60))
+
+        await pause()
+    od
+si
+
+display() -> COROUTINE is
+    for _ in 1::rounds do
+        let shown = buckets.values |> map(v => "{v}") |> join(" ")
+
+        write_line("{shown}  total {buckets.total}")
+
+        await pause()
+    od
+si
+
+equalise()
+redistribute()
+display()
+
+run()
