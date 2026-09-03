@@ -55,7 +55,7 @@ to_gregorian(republican: string) -> DateTime is
         if month >= 0 then
             month * 30 + int.parse(words[0]) - 1
         else
-            let name = republican[0..republican.length - year_text.length - 1]
+            let name = republican[0..<year_text.length + 1]
 
             360 + System.Array.index_of(sansculottides, name)
         fi
