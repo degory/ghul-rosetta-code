@@ -1,0 +1,114 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let sieve_limit = 10_000_000
+let composite = LIST[bool](sieve_limit)
+
+for _ in 0..sieve_limit do
+    composite.add(false)
+od
+
+for candidate in 2..sieve_limit do
+    if !composite[candidate] /\ candidate <= sieve_limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple < sieve_limit do
+            composite[multiple] = true
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+is_prime(value: long) -> bool is
+    if value < cast long(sieve_limit) then
+        return value >= 2L /\ !composite[cast int(value)]
+    fi
+
+    let divisor mut = 2L
+
+    while divisor * divisor <= value do
+        if value % divisor == 0L then
+            return false
+        fi
+        divisor = divisor + 1L
+    od
+
+    return true
+si
+
+zero_free(digits: int) -> Pipe[long] is
+    if digits == 0 then
+        yield 0L
+        return
+    fi
+
+    for shorter in zero_free(digits - 1) do
+        for digit in 1::9 do
+            yield shorter * 10L + cast long(digit)
+        od
+    od
+si
+
+cyclops() -> Pipe[long] is
+    let half mut = 0
+
+    while true do
+        let scale = (0..half) |> reduce(1L, (acc, _) => acc * 10L)
+
+        for left in zero_free(half) do
+            for right in zero_free(half) do
+                yield (left * 10L + 0L) * scale + right
+            od
+        od
+
+        half = half + 1
+    od
+si
+
+blinded(value: long) -> long is
+    let text = "{value}"
+    let middle = text.length / 2
+
+    return long.parse("{text[0..middle]}{text[middle + 1..<0]}")
+si
+
+is_palindrome(value: long) -> bool is
+    let text = "{value}"
+
+    return (0..text.length / 2)
+        |> all(i => text[i] == text[text.length - 1 - i])
+si
+
+report(name: string, numbers: () -> Pipe[long]) is
+    write_line("first 50 {name}:")
+
+    let first_50 = numbers() |> take(50) |> collect_list()
+
+    for row in 0..5 do
+        let cells = (0..10)
+            |> map(column => "{first_50[row * 10 + column],10}")
+
+        write_line(cells |> join(""))
+    od
+
+    let beyond = numbers()
+        |> index()
+        |> find(((position, value)) => value > 10_000_000L)
+
+    if let (position, value) = beyond then
+        write_line("first over ten million: {value}")
+        write_line("  at position {position + 1}")
+    fi
+
+    write_line("")
+si
+
+report("cyclops numbers", () => cyclops())
+report("prime cyclops numbers", () => cyclops() |> filter(is_prime))
+report("blind prime cyclops numbers",
+       () => cyclops()
+           |> filter(is_prime)
+           |> filter(c => is_prime(blinded(c))))
+report("palindromic prime cyclops numbers",
+       () => cyclops() |> filter(is_palindrome) |> filter(is_prime))
