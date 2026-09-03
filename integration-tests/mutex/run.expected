@@ -1,0 +1,15 @@
+without the mutex
+Alice enters
+Bob enters
+Carol enters
+Alice leaves
+Bob leaves
+Carol leaves
+
+with the mutex
+Alice enters
+Alice leaves
+Bob enters
+Bob leaves
+Carol enters
+Carol leaves
