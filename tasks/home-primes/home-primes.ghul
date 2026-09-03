@@ -1,0 +1,141 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+let small_primes = [
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+    53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+]
+
+passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
+    if base % value =~ BigInteger.zero then
+        return true
+    fi
+
+    let odd mut = value - BigInteger.one
+    let rounds mut = 0
+
+    while odd % cast BigInteger(2) =~ BigInteger.zero do
+        odd = odd / cast BigInteger(2)
+        rounds = rounds + 1
+    od
+
+    let residue mut = BigInteger.mod_pow(base, odd, value)
+
+    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+        return true
+    fi
+
+    for _ in 1..rounds do
+        residue = residue * residue % value
+        if residue =~ value - BigInteger.one then
+            return true
+        fi
+    od
+
+    return false
+si
+
+is_prime(value: BigInteger) -> bool =>
+    value > BigInteger.one /\
+    small_primes
+        |> all(small => passes_miller_rabin(value, cast BigInteger(small)))
+
+pollard_rho(value: BigInteger) -> BigInteger is
+    let offset mut = BigInteger.one
+    let divisor mut = BigInteger.one
+
+    while divisor =~ BigInteger.one \/ divisor =~ value do
+        let slow mut = cast BigInteger(2)
+        let fast mut = cast BigInteger(2)
+        divisor = BigInteger.one
+
+        while divisor =~ BigInteger.one do
+            slow = (slow * slow + offset) % value
+            fast = (fast * fast + offset) % value
+            fast = (fast * fast + offset) % value
+            divisor = BigInteger.greatest_common_divisor(slow - fast, value)
+        od
+
+        offset = offset + BigInteger.one
+    od
+
+    return divisor
+si
+
+prime_factors(value: BigInteger) -> Pipe[BigInteger] is
+    let remaining mut = value
+
+    for small in small_primes do
+        let divisor = cast BigInteger(small)
+
+        while remaining % divisor =~ BigInteger.zero do
+            yield divisor
+            remaining = remaining / divisor
+        od
+    od
+
+    if remaining =~ BigInteger.one then
+        return
+    elif is_prime(remaining) then
+        yield remaining
+    else
+        let divisor = pollard_rho(remaining)
+        let factors = LIST[BigInteger]()
+
+        factors.add_range(prime_factors(divisor))
+        factors.add_range(prime_factors(remaining / divisor))
+        factors.sort()
+
+        yield in factors
+    fi
+si
+
+home_prime_chain(start: BigInteger) -> Pipe[BigInteger] is
+    let current mut = start
+
+    while !is_prime(current) do
+        yield current
+
+        let digits = LIST[string]()
+
+        for factor in prime_factors(current) do
+            digits.add("{factor}")
+        od
+
+        current = BigInteger.parse(digits |> join(""))
+    od
+
+    yield current
+si
+
+show(start: int) is
+    let chain = home_prime_chain(cast BigInteger(start)) |> collect_list()
+    let steps = chain.count - 1
+    let stages = LIST[string]()
+
+    for index in 0..steps do
+        stages.add("HP{chain[index]}({steps - index})")
+    od
+
+    if steps == 0 then
+        stages.add("HP{chain[0]}")
+    fi
+
+    stages.add("{chain[steps]}")
+
+    write_line(stages |> join(" = "))
+si
+
+for start in 2::20 do
+    show(start)
+od
+
+show(65)
