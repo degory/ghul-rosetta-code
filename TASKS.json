@@ -73,9 +73,9 @@
     },
     {
       "title": "Active object",
-      "state": "rejected",
-      "reason": "nondeterministic",
-      "note": "the object\u0027s state is defined as depending on the clock"
+      "slug": "active-object",
+      "state": "solved",
+      "note": "a cooperative scheduler gives it a reproducible clock, so the nondeterminism rejection no longer holds"
     },
     {
       "title": "Additive primes",
