@@ -1,0 +1,74 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+primes_below(limit: int) -> Pipe[int] is
+    let composite = LIST[bool](limit)
+
+    for _ in 0..limit do
+        composite.add(false)
+    od
+
+    for candidate in 2..limit do
+        if !composite[candidate] then
+            yield candidate
+
+            let multiple mut = candidate * 2
+
+            while multiple < limit do
+                composite[multiple] = true
+                multiple = multiple + candidate
+            od
+        fi
+    od
+si
+
+brilliant_numbers(max_digits: int) -> LIST[long] is
+    let found = LIST[long]()
+    let limit = (0..max_digits) |> reduce(1, (acc, _) => acc * 10)
+    let primes = primes_below(limit) |> collect_list()
+    let start mut = 0
+
+    for digits in 1::max_digits do
+        let low = (1..digits) |> reduce(1, (acc, _) => acc * 10)
+        let group = primes
+            |> skip(start)
+            |> take_while(p => p < low * 10)
+            |> collect_list()
+
+        for (i, p) in group |> index() do
+            for q in group |> skip(i) do
+                found.add(cast long(p) * cast long(q))
+            od
+        od
+
+        start = start + group.count
+    od
+
+    found.sort()
+
+    return found
+si
+
+let brilliant = brilliant_numbers(4)
+
+write_line("the first 100 brilliant numbers:")
+
+for row in 0..10 do
+    let cells = (0..10) |> map(column => "{brilliant[row * 10 + column],5}")
+
+    write_line(cells |> join(""))
+od
+
+write_line("")
+
+let magnitude mut = 10L
+
+for _ in 1::7 do
+    let position = brilliant |> take_while(b => b < magnitude) |> count()
+
+    let first = brilliant[position]
+
+    write_line("first >= {magnitude,10}: {first,10} at position {position + 1}")
+    magnitude = magnitude * 10L
+od
