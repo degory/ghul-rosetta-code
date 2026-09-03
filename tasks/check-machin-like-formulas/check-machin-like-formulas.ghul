@@ -87,7 +87,8 @@ let formulas = [
 ]
 
 for terms in formulas do
-    let verdict = if tangent_is_one(terms) then "correct" else "INCORRECT" fi
+    let verdict =
+        if tangent_is_one(terms) then "correct" else "INCORRECT" fi
 
     let joined = terms |> map(describe) |> join(" ")
     let sum = joined.trim_start(['+', ' '])
