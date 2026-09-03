@@ -74,4 +74,6 @@ write_line("the first 10 iccanobif primes:")
 write_line(iccanobif |> take(10) |> map(p => "{p}") |> join(" "))
 write_line("")
 write_line("digit counts of the next 5:")
-write_line(iccanobif |> skip(10) |> map(p => "{p.to_string().length}") |> join(" "))
+let digit_counts = iccanobif |> skip(10) |> map(p => "{p.to_string().length}")
+
+write_line(digit_counts |> join(" "))
