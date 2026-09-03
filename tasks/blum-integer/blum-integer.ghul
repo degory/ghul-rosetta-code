@@ -1,0 +1,55 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let limit = 8_900_000
+let smallest_factor = LIST[int](limit + 1)
+
+for _ in 0::limit do
+    smallest_factor.add(0)
+od
+
+for candidate in 2::limit do
+    if smallest_factor[candidate] == 0 then
+        let multiple mut = candidate
+
+        while multiple <= limit do
+            if smallest_factor[multiple] == 0 then
+                smallest_factor[multiple] = candidate
+            fi
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+is_blum(value: int) -> bool is
+    let p = smallest_factor[value]
+    let q = value / p
+
+    return p != q /\ p % 4 == 3 /\ q % 4 == 3 /\ smallest_factor[q] == q
+si
+
+let blum = (2::limit) |> filter(is_blum) |> take(400_000) |> collect_list()
+
+write_line("the first 50 Blum integers:")
+
+for row in 0..5 do
+    let cells = (0..10) |> map(column => "{blum[row * 10 + column],4}")
+
+    write_line(cells |> join(""))
+od
+
+write_line("")
+
+for position in [26_828, 100_000, 200_000, 300_000, 400_000] do
+    write_line("the {position,7}th Blum integer: {blum[position - 1]}")
+od
+
+write_line("")
+write_line("distribution of the final digit over the first 400,000:")
+
+for digit in [1, 3, 7, 9] do
+    let share = cast double(blum |> filter(b => b % 10 == digit) |> count())
+
+    write_line("  {digit}: {share / 4000.0D:F3}%")
+od

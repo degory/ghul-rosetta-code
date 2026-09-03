@@ -1,0 +1,18 @@
+the first 50 Blum integers:
+  21  33  57  69  77  93 129 133 141 161
+ 177 201 209 213 217 237 249 253 301 309
+ 321 329 341 381 393 413 417 437 453 469
+ 473 489 497 501 517 537 553 573 581 589
+ 597 633 649 669 681 713 717 721 737 749
+
+the   26828th Blum integer: 524273
+the  100000th Blum integer: 2075217
+the  200000th Blum integer: 4275533
+the  300000th Blum integer: 6521629
+the  400000th Blum integer: 8802377
+
+distribution of the final digit over the first 400,000:
+  1: 25.001%
+  3: 25.017%
+  7: 24.997%
+  9: 24.985%
