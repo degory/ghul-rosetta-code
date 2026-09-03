@@ -10,10 +10,10 @@ the first 100 brilliant numbers:
  1081 1121 1139 1147 1157 1159 1189 1207 1219 1241
  1247 1261 1271 1273 1333 1343 1349 1357 1363 1369
 
-first >=         10:         10 at position 4
-first >=        100:        121 at position 11
-first >=       1000:       1003 at position 74
-first >=      10000:      10201 at position 242
-first >=     100000:     100013 at position 2505
-first >=    1000000:    1018081 at position 10538
-first >=   10000000:   10000043 at position 124364
+first >=         10:         10, position 4
+first >=        100:        121, position 11
+first >=       1000:       1003, position 74
+first >=      10000:      10201, position 242
+first >=     100000:     100013, position 2505
+first >=    1000000:    1018081, position 10538
+first >=   10000000:   10000043, position 124364
