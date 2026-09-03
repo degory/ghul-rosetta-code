@@ -234,6 +234,10 @@
       "state": "queued"
     },
     {
+      "title": "Blum integer",
+      "state": "queued"
+    },
+    {
       "title": "Boustrophedon transform",
       "slug": "boustrophedon-transform",
       "state": "published",
@@ -250,6 +254,10 @@
       "slug": "brazilian-numbers",
       "state": "published",
       "published_hash": "957ba74923fb61e40fa52bdce9bc4db121f959d49507c4baa96da2915124b8fe"
+    },
+    {
+      "title": "Brilliant numbers",
+      "state": "queued"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -315,6 +323,10 @@
       "published_hash": "355e43c33f2986c116f1850b297829aad8989e1d51281b8be2806edb18515c46"
     },
     {
+      "title": "Chernick\u0027s Carmichael numbers",
+      "state": "queued"
+    },
+    {
       "title": "Cheryl\u0027s birthday",
       "slug": "cheryls-birthday",
       "state": "published",
@@ -364,6 +376,10 @@
       "published_hash": "f64c29ebfa5744a1ef30f93dc94609a9a87cb7eede259f4de53ba3ffed5f5dc6"
     },
     {
+      "title": "Consecutive primes with ascending or descending differences",
+      "state": "queued"
+    },
+    {
       "title": "Constrained genericity",
       "slug": "constrained-genericity",
       "state": "published",
@@ -381,7 +397,15 @@
       "published_hash": "bf2864499a2947721a9485b2c5e7e33cdf8ebd2ea1991e43091cd0c7f14b1175"
     },
     {
+      "title": "Curzon numbers",
+      "state": "queued"
+    },
+    {
       "title": "Cycles of a permutation",
+      "state": "queued"
+    },
+    {
+      "title": "Cyclops numbers",
       "state": "queued"
     },
     {
@@ -500,6 +524,10 @@
       "state": "queued"
     },
     {
+      "title": "Esthetic numbers",
+      "state": "queued"
+    },
+    {
       "title": "Ethiopian multiplication",
       "slug": "ethiopian-multiplication",
       "state": "published",
@@ -557,6 +585,10 @@
       "slug": "factorize-string-into-lyndon-words",
       "state": "published",
       "published_hash": "f93bd35b1687c008d801fc02e7b84de5f0aaf0e4914b65d1c696e397657aa458"
+    },
+    {
+      "title": "Fermat numbers",
+      "state": "queued"
     },
     {
       "title": "Fibonacci n-step number sequences",
@@ -800,6 +832,10 @@
       "slug": "isbn13-check-digit",
       "state": "published",
       "published_hash": "7ab634b0d472c633413a91e417714b0d8f669cdb3df38f29bcd4105bada9b913"
+    },
+    {
+      "title": "Iccanobif primes",
+      "state": "queued"
     },
     {
       "title": "Imaginary base numbers",
