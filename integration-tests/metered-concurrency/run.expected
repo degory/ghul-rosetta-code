@@ -1,0 +1,10 @@
+worker 1 acquired, 1 holding
+worker 2 acquired, 2 holding
+worker 3 acquired, 3 holding
+worker 1 released, 3 holding
+worker 2 released, 3 holding
+worker 3 released, 2 holding
+worker 4 acquired, 2 holding
+worker 5 acquired, 2 holding
+worker 4 released, 1 holding
+worker 5 released, 0 holding
