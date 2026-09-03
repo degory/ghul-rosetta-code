@@ -7,15 +7,22 @@ use Ghul.Coroutines.COROUTINE
 use Ghul.Coroutines.MUTEX
 use Ghul.Coroutines.pause
 use Ghul.Coroutines.run
+use Ghul.Pipes.collect_list
+use Ghul.Pipes.map
 
 let philosophers =
     ["Aristotle", "Kant", "Spinoza", "Marx", "Russell"]
 
-let forks = Collections.LIST[MUTEX]()
+let meals = 2
+let random = System.Random(42)
 
-for _ in philosophers do
-    forks.add(MUTEX())
-od
+let forks = philosophers |> map(_ => MUTEX()) |> collect_list()
+
+wait(turns: int) -> COROUTINE is
+    for _ in 0..turns do
+        await pause()
+    od
+si
 
 dine(name: string, seat: int) -> COROUTINE is
     let left = seat
@@ -23,15 +30,15 @@ dine(name: string, seat: int) -> COROUTINE is
     let lower = if left < right then left else right fi
     let higher = if left < right then right else left fi
 
-    for _ in 1::2 do
+    for _ in 1::meals do
         write_line("{name} is thinking")
-        await pause()
+        await wait(random.next(1, 4))
 
         await forks[lower].acquire()
         await forks[higher].acquire()
 
         write_line("{name} eats with forks {lower} and {higher}")
-        await pause()
+        await wait(random.next(1, 4))
 
         forks[higher].release()
         forks[lower].release()
