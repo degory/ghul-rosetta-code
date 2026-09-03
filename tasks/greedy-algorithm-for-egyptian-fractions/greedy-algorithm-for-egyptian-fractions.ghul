@@ -1,0 +1,90 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+egyptian(numerator: BigInteger, denominator: BigInteger)
+        -> Pipe[BigInteger] is
+    let top mut = numerator
+    let bottom mut = denominator
+
+    while top > BigInteger.zero do
+        let unit = (bottom + top - BigInteger.one) / top
+
+        yield unit
+
+        top = top * unit - bottom
+        bottom = bottom * unit
+    od
+si
+
+describe(numerator: int, denominator: int) -> string is
+    let whole = numerator / denominator
+    let terms = LIST[string]()
+
+    if whole > 0 then
+        terms.add("[{whole}]")
+    fi
+
+    let rest = egyptian(
+        cast BigInteger(numerator % denominator),
+        cast BigInteger(denominator))
+
+    for unit in rest do
+        terms.add("1/{unit}")
+    od
+
+    return "{numerator}/{denominator} = {terms |> join(" + ")}"
+si
+
+for (numerator, denominator) in [(43, 48), (5, 121), (2014, 59)] do
+    write_line(describe(numerator, denominator))
+od
+
+report(limit: int) is
+    let most_terms mut = (numerator = 0, denominator = 1, terms = 0)
+    let widest mut =
+        (numerator = 0, denominator = 1, unit = BigInteger.zero)
+
+    for denominator in 2::limit do
+        for numerator in 1..denominator do
+            let count mut = 0
+            let last mut = BigInteger.zero
+
+            let units = egyptian(
+                cast BigInteger(numerator), cast BigInteger(denominator))
+
+            for unit in units do
+                count = count + 1
+                last = unit
+            od
+
+            if count > most_terms.terms then
+                most_terms = (numerator, denominator, count)
+            fi
+
+            if last > widest.unit then
+                widest = (numerator, denominator, last)
+            fi
+        od
+    od
+
+    write_line("")
+    let (numerator, denominator, terms) = most_terms
+
+    write_line("for proper fractions with terms up to {limit}:")
+    write_line("  most terms: {numerator}/{denominator} with {terms} terms")
+    let (top, bottom, unit) = widest
+
+    write_line("  largest denominator: {top}/{bottom}")
+    write_line("    with {unit.to_string().length} digits: {unit}")
+si
+
+report(99)
+report(999)

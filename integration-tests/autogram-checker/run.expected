@@ -1,0 +1,16 @@
+1. This sentence employs two a's, two c's, ... punctuation ignored
+   autogram: yes
+2. This sentence employs two a's, two c's, ... punctuation ignored
+   autogram: yes
+3. Only the fool would take trouble to veri... punctuation counted
+   autogram: yes
+4. This pangram contains four as, one b, tw... punctuation ignored
+   autogram: yes
+5. This sentence contains one hundred and n... punctuation ignored
+   autogram: yes
+6. Thirteen e's, five f's, two g's, five h'... punctuation ignored
+   autogram: yes
+7. Fifteen e's, seven f's, four g's, six h'... punctuation counted
+   autogram: no
+8. Sixteen e's, five f's, three g's, six h'... punctuation ignored
+   autogram: no
