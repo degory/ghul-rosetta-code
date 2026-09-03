@@ -1,0 +1,50 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let limit = 130_000
+let largest_prime_factor = LIST[int](limit + 1)
+let is_cubefree = LIST[bool](limit + 1)
+
+for _ in 0::limit do
+    largest_prime_factor.add(1)
+    is_cubefree.add(true)
+od
+
+for candidate in 2::limit do
+    if largest_prime_factor[candidate] == 1 then
+        let multiple mut = candidate
+
+        while multiple <= limit do
+            largest_prime_factor[multiple] = candidate
+            multiple = multiple + candidate
+        od
+
+        if candidate <= limit / candidate / candidate then
+            let cube = candidate * candidate * candidate
+            let cube_multiple mut = cube
+
+            while cube_multiple <= limit do
+                is_cubefree[cube_multiple] = false
+                cube_multiple = cube_multiple + cube
+            od
+        fi
+    fi
+od
+
+let sequence = (1::limit)
+    |> filter(n => is_cubefree[n])
+    |> map(n => largest_prime_factor[n])
+    |> collect_list()
+
+write_line("first 100 terms:")
+
+for row in 0..10 do
+    let cells = (0..10) |> map(column => "{sequence[row * 10 + column],4}")
+
+    write_line(cells |> join(""))
+od
+
+for n in [1_000, 10_000, 100_000] do
+    write_line("term {n,7}: {sequence[n - 1]}")
+od
