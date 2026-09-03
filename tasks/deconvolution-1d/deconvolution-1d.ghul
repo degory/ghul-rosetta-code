@@ -1,0 +1,33 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+deconvolve(g: int[], f: int[]) -> LIST[int] is
+    let h = LIST[int]()
+
+    for n in 0..g.count - f.count + 1 do
+        let overlap mut = 0
+        let lower = System.Math.max(0, n - f.count + 1)
+
+        for i in lower..n do
+            overlap = overlap + f[n - i] * h[i]
+        od
+
+        h.add((g[n] - overlap) / f[0])
+    od
+
+    return h
+si
+
+let h = [-8, -9, -3, -1, -6, 7]
+let f = [-3, -6, -1, 8, -6, 3, -1, -9, -9, 3, -2, 5, 2, -2, -7, -1]
+let g = [24, 75, 71, -34, 3, 22, -45, 23, 245, 25, 52, 25, -67, -96, 96, 31,
+         55, 36, 29, -43, -7]
+
+show(name: string, values: Collections.List[int]) =>
+    write_line("{name} = [{values |> map(v => "{v}") |> join(", ")}]")
+
+show("h", h)
+show("deconv(g, f)", deconvolve(g, f))
+show("f", f)
+show("deconv(g, h)", deconvolve(g, h))

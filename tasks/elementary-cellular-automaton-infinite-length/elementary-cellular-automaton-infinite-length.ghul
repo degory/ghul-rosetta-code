@@ -1,0 +1,41 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+flip(cell: char) -> char => if cell == '#' then '.' else '#' fi
+
+step(cells: string, rule: int) -> string is
+    let left = flip(cells[0])
+    let right = flip(cells[cells.length - 1])
+    let padded = "{left}{left}{cells}{right}{right}"
+    let next = LIST[char]()
+
+    for i in 1..padded.length - 1 do
+        let pattern = (0..3)
+            |> map(offset => if padded[i - 1 + offset] == '#' then 1 else 0 fi)
+            |> reduce(0, (bits, bit) => bits * 2 + bit)
+
+        next.add(if (rule >> pattern) & 1 == 1 then '#' else '.' fi)
+    od
+
+    return string(next.to_array())
+si
+
+generations(start: string, rule: int) -> Pipe[string] is
+    let cells mut = start
+
+    while true do
+        yield cells
+        cells = step(cells, rule)
+    od
+si
+
+for rule in [90, 30] do
+    write_line("rule {rule}:")
+
+    for (age, cells) in generations("#", rule) |> take(25) |> index() do
+        let margin = string(' ', 25 - age)
+
+        write_line("{margin}{cells}")
+    od
+od
