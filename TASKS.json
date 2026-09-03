@@ -216,7 +216,8 @@
     {
       "title": "Brazilian numbers",
       "slug": "brazilian-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "957ba74923fb61e40fa52bdce9bc4db121f959d49507c4baa96da2915124b8fe"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -251,7 +252,8 @@
     {
       "title": "Cantor set",
       "slug": "cantor-set",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "aaae3cf12566463a6240a32d24a358087c68e53b7868efe9bfc7e010437c5bf9"
     },
     {
       "title": "Cartesian product of two or more lists",
@@ -315,7 +317,8 @@
     {
       "title": "Digital root",
       "slug": "digital-root",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e0c623c05f5a4ab3d236ccaf0cf7293fecdbd591c4a5ac545e367a300b91f38a"
     },
     {
       "title": "Dijkstra\u0027s algorithm",
@@ -373,12 +376,14 @@
     {
       "title": "Equilibrium index",
       "slug": "equilibrium-index",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "10d8cd09336c2fa611aa1c07ccac3c214c8f73a35f945b10ddc176fe8e661694"
     },
     {
       "title": "Ethiopian multiplication",
       "slug": "ethiopian-multiplication",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1a4522573413c30430fad7d8b6f6507183a49814982d6ee17fa1c75813afb9bb"
     },
     {
       "title": "Exponential digital sums",
@@ -399,7 +404,8 @@
     {
       "title": "Fibonacci n-step number sequences",
       "slug": "fibonacci-n-step-number-sequences",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a0d3b27954b6d0dada5d37bd97bd53dd5b43c7558e42f562305f9d87c0a6ea47"
     },
     {
       "title": "Fibonacci sequence",
@@ -486,7 +492,8 @@
     {
       "title": "Greatest subsequential sum",
       "slug": "greatest-subsequential-sum",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ca423f19536694f00877798057e6b5227679badb49538fde012f1e61c91ba3cb"
     },
     {
       "title": "Hailstone sequence",
@@ -509,7 +516,8 @@
     {
       "title": "Harshad or Niven series",
       "slug": "harshad-or-niven-series",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c657c3c7c1cd631bc6f13041cec707d9e69fa46f9efa4e89f4fa7242190f7b64"
     },
     {
       "title": "Haversine formula",
@@ -538,7 +546,8 @@
     {
       "title": "Horner\u0027s rule for polynomial evaluation",
       "slug": "horners-rule-for-polynomial-evaluation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "dce83aa971cf03d5ef2004601c5fbe4fee3aaffcf8dbadba3fbded87598a2cba"
     },
     {
       "title": "Huffman coding",
@@ -549,7 +558,8 @@
     {
       "title": "ISBN13 check digit",
       "slug": "isbn13-check-digit",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7ab634b0d472c633413a91e417714b0d8f669cdb3df38f29bcd4105bada9b913"
     },
     {
       "title": "Intersecting number wheels",
@@ -602,7 +612,8 @@
     {
       "title": "Jewels and stones",
       "slug": "jewels-and-stones",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3b846f8772325b28443e77083f081e30d1b95eb381e1cdca69eb7fdbe166c0a1"
     },
     {
       "title": "Jordan-P\u00F3lya numbers",
@@ -649,7 +660,8 @@
     {
       "title": "Kronecker product",
       "slug": "kronecker-product",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "42463ed4b70f40b1e89f0823103fcf1328679690b9bad06bc00a26438f84d2aa"
     },
     {
       "title": "LZW compression",
@@ -660,7 +672,8 @@
     {
       "title": "Largest int from concatenated ints",
       "slug": "largest-int-from-concatenated-ints",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8b4b2d9cbc417a0f8684f76aa4a685253f4c054e24b49270fc374ff4c3cb5b4f"
     },
     {
       "title": "Last Friday of each month",
@@ -689,7 +702,8 @@
     {
       "title": "Longest common substring",
       "slug": "longest-common-substring",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "750944d0cc0d0be3c1b91f02e3e3f6784ce19542332dedc47a052918c3a5e914"
     },
     {
       "title": "Look-and-say sequence",
@@ -750,7 +764,8 @@
     {
       "title": "Multisplit",
       "slug": "multisplit",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "32198a0f74891ee7286afc632a81303c5d96aa9d99efd17e583d445e0094d370"
     },
     {
       "title": "Multiton",
@@ -761,7 +776,8 @@
     {
       "title": "Munchausen numbers",
       "slug": "munchausen-numbers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "df64cea937796eaa72fcd093efa6a912a3728ecca5dc638fe9d6937b981bc767"
     },
     {
       "title": "Mutual recursion",
@@ -778,7 +794,8 @@
     {
       "title": "Narcissistic decimal number",
       "slug": "narcissistic-decimal-number",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "17201cbb5c1b50f8ff954fde54046e8e966df355a8547500b1df57bbbf712ef8"
     },
     {
       "title": "Negative base numbers",
@@ -835,7 +852,8 @@
     {
       "title": "One-dimensional cellular automata",
       "slug": "one-dimensional-cellular-automata",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2d50be0688507027d7cb2b29c37422fbf3096096124419566eef354e5c42e299"
     },
     {
       "title": "Order disjoint list items",
@@ -888,7 +906,8 @@
     {
       "title": "Permutations",
       "slug": "permutations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "621943ee4dff4a6206c5a22d2c30183a9715df45275aadf2bc0cf3dd369ed882"
     },
     {
       "title": "Pernicious numbers",
@@ -929,7 +948,8 @@
     {
       "title": "Queue/Usage",
       "slug": "queue-usage",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9dff2dad2b47b0db27906be53e7b21ef54dc8633f0f0be9b0ef2580ceecafc2d"
     },
     {
       "title": "Quickselect algorithm",
@@ -970,7 +990,8 @@
     {
       "title": "Rep-string",
       "slug": "rep-string",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f7820aaca79cafa48b62db39b6f8102981b807d3fad3c215188e0c874fa4c7aa"
     },
     {
       "title": "Reverse a string",
@@ -981,7 +1002,8 @@
     {
       "title": "Roman numerals/Decode",
       "slug": "roman-numerals-decode",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bb0be114df808dcb493465815bf2eb63dfaf852dcb7cdd185333d860eacda984"
     },
     {
       "title": "Roman numerals/Encode",
@@ -1026,7 +1048,8 @@
     {
       "title": "Sierpinski triangle",
       "slug": "sierpinski-triangle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "183e8facdece9f378a00fbc44fc82905d7bbb38290ea3c153480503d7acbafc6"
     },
     {
       "title": "Sieve of Eratosthenes",
@@ -1073,7 +1096,8 @@
     {
       "title": "Symmetric difference",
       "slug": "symmetric-difference",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5c4422ea322c2baa95224d65c29bdec86cc01ca14fd4fc4351108c401c4fb3b2"
     },
     {
       "title": "Tau number",
@@ -1101,12 +1125,14 @@
     {
       "title": "Thue-Morse",
       "slug": "thue-morse",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5503332b9cee6123eac0a6d039ae4330989f691339de208035d913741901df29"
     },
     {
       "title": "Tokenize a string with escaping",
       "slug": "tokenize-a-string-with-escaping",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0f917fcbe757c6192a0b79eb2d9561ae17df8ccbf8c7721dbb86fab0a8bd9628"
     },
     {
       "title": "Topological sort",
@@ -1163,7 +1189,8 @@
     {
       "title": "Ulam spiral (for primes)",
       "slug": "ulam-spiral-for-primes",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0d55c0f91c3857c347f30fe9b09905b82543c40e2f46f022a937c16dff7663f1"
     },
     {
       "title": "Undulating numbers",
@@ -1212,7 +1239,8 @@
     {
       "title": "Vector products",
       "slug": "vector-products",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ca4f078ebdd3d716bd16c57f4c70892bc6d78b25ceac37b2e717b7a7746998b2"
     },
     {
       "title": "Vigen\u00E8re cipher",
@@ -1223,7 +1251,8 @@
     {
       "title": "Walsh matrix",
       "slug": "walsh-matrix",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "14b2ecca8c04f96e3217caf757a6af1bfefb1d445749d15a23f0163a22543519"
     },
     {
       "title": "Water collected between towers",
@@ -1264,7 +1293,8 @@
     {
       "title": "Zebra puzzle",
       "slug": "zebra-puzzle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1050d4a71d8ba0f6b26ba419e4b76c27ea28dcb9f162db6b19701d888dbe991a"
     },
     {
       "title": "Zeckendorf number representation",
