@@ -4,11 +4,20 @@
 
 use IO.Std.write_line
 use Ghul.Coroutines.COROUTINE
-use Ghul.Coroutines.SCHEDULER
+use Ghul.Coroutines.MUTEX
+use Ghul.Coroutines.pause
+use Ghul.Coroutines.run
 
-forks: Collections.LIST[bool]
+let philosophers =
+    ["Aristotle", "Kant", "Spinoza", "Marx", "Russell"]
 
-dine(scheduler: SCHEDULER, name: string, seat: int) -> COROUTINE is
+let forks = Collections.LIST[MUTEX]()
+
+for _ in philosophers do
+    forks.add(MUTEX())
+od
+
+dine(name: string, seat: int) -> COROUTINE is
     let left = seat
     let right = (seat + 1) % forks.count
     let lower = if left < right then left else right fi
@@ -16,41 +25,23 @@ dine(scheduler: SCHEDULER, name: string, seat: int) -> COROUTINE is
 
     for _ in 1::2 do
         write_line("{name} is thinking")
-        await scheduler.pause()
+        await pause()
 
-        for fork in [lower, higher] do
-            while forks[fork] do
-                await scheduler.pause()
-            od
-
-            forks[fork] = true
-        od
+        await forks[lower].acquire()
+        await forks[higher].acquire()
 
         write_line("{name} eats with forks {lower} and {higher}")
-        await scheduler.pause()
+        await pause()
 
-        forks[lower] = false
-        forks[higher] = false
+        forks[higher].release()
+        forks[lower].release()
 
         write_line("{name} puts the forks down")
     od
-
-    return
 si
 
-let philosophers =
-    ["Aristotle", "Kant", "Spinoza", "Marx", "Russell"]
-
-forks = Collections.LIST[bool]()
-
 for seat in 0..philosophers.count do
-    forks.add(false)
+    dine(philosophers[seat], seat)
 od
 
-let scheduler = SCHEDULER()
-
-for seat in 0..philosophers.count do
-    scheduler.spawn(s => dine(s, philosophers[seat], seat))
-od
-
-scheduler.run()
+run()
