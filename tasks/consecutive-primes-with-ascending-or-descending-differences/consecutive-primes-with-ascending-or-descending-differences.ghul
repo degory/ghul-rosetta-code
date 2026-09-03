@@ -1,0 +1,53 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+primes_below(limit: int) -> Pipe[int] is
+    let composite = LIST[bool](limit)
+
+    for _ in 0..limit do
+        composite.add(false)
+    od
+
+    for candidate in 2..limit do
+        if !composite[candidate] then
+            yield candidate
+
+            let multiple mut = candidate * 2
+
+            while multiple < limit do
+                composite[multiple] = true
+                multiple = multiple + candidate
+            od
+        fi
+    od
+si
+
+longest_run(primes: Collections.List[int], keeps_going: (int, int) -> bool)
+        -> Collections.List[int] is
+    let best mut = (start = 0, length = 1)
+    let start mut = 0
+
+    for index in 2..primes.count do
+        let previous_gap = primes[index - 1] - primes[index - 2]
+        let gap = primes[index] - primes[index - 1]
+
+        if !keeps_going(previous_gap, gap) then
+            start = index - 1
+        fi
+
+        if index - start + 1 > best.length then
+            best = (start, index - start + 1)
+        fi
+    od
+
+    return primes[best.start..best.start + best.length]
+si
+
+let primes = primes_below(1_000_000) |> collect_list()
+
+show(name: string, run: Collections.List[int]) =>
+    write_line("{name}: {run |> map(p => "{p}") |> join(" ")}")
+
+show("ascending", longest_run(primes, (before, after) => before < after))
+show("descending", longest_run(primes, (before, after) => before > after))
