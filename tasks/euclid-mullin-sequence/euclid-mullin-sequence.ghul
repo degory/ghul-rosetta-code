@@ -1,0 +1,114 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+let small_primes = [
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+    53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+]
+
+passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
+    if base % value =~ BigInteger.zero then
+        return true
+    fi
+
+    let odd mut = value - BigInteger.one
+    let rounds mut = 0
+
+    while odd % cast BigInteger(2) =~ BigInteger.zero do
+        odd = odd / cast BigInteger(2)
+        rounds = rounds + 1
+    od
+
+    let residue mut = BigInteger.mod_pow(base, odd, value)
+
+    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+        return true
+    fi
+
+    for _ in 1..rounds do
+        residue = residue * residue % value
+        if residue =~ value - BigInteger.one then
+            return true
+        fi
+    od
+
+    return false
+si
+
+is_probable_prime(value: BigInteger) -> bool =>
+    small_primes
+        |> all(small => passes_miller_rabin(value, cast BigInteger(small)))
+
+pollard_rho(value: BigInteger) -> BigInteger is
+    let offset mut = BigInteger.one
+    let divisor mut = BigInteger.one
+
+    while divisor =~ BigInteger.one \/ divisor =~ value do
+        let slow mut = cast BigInteger(2)
+        let fast mut = cast BigInteger(2)
+
+        while divisor =~ BigInteger.one do
+            slow = (slow * slow + offset) % value
+            fast = (fast * fast + offset) % value
+            fast = (fast * fast + offset) % value
+            divisor = BigInteger.greatest_common_divisor(slow - fast, value)
+        od
+
+        offset = offset + BigInteger.one
+    od
+
+    return divisor
+si
+
+least_prime_factor(value: BigInteger) -> BigInteger is
+    for small in small_primes do
+        if value % cast BigInteger(small) =~ BigInteger.zero then
+            return cast BigInteger(small)
+        fi
+    od
+
+    if is_probable_prime(value) then
+        return value
+    fi
+
+    let divisor = pollard_rho(value)
+    let smaller = least_prime_factor(divisor)
+    let larger = least_prime_factor(value / divisor)
+
+    return if smaller < larger then smaller else larger fi
+si
+
+euclid_mullin(count: int) -> Pipe[BigInteger] is
+    let product mut = cast BigInteger(2)
+
+    yield product
+
+    for _ in 2::count do
+        let factor = least_prime_factor(product + BigInteger.one)
+
+        yield factor
+        product = product * factor
+    od
+si
+
+let sequence = euclid_mullin(16) |> collect_list()
+
+render(terms: Collections.List[BigInteger]) -> string is
+    let texts = LIST[string]()
+
+    for term in terms do
+        texts.add("{term}")
+    od
+
+    return texts |> join(" ")
+si
+
+write_line("first 16: {render(sequence)}")

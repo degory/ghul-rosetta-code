@@ -1,0 +1,39 @@
+use IO.Std.write_line
+use Collections.LIST
+
+trait Eatable is
+    eat() -> string
+si
+
+trait Fruit: Eatable is
+    color() -> string
+si
+
+class FOOD_BOX[T: Eatable](items: LIST[T]) is
+    count() -> int => items.count
+si
+
+class BANANA: Fruit is
+    init() is si
+    eat() -> string => "banana"
+    color() -> string => "yellow"
+si
+
+class PEAR: Fruit is
+    init() is si
+    eat() -> string => "pear"
+    color() -> string => "green"
+si
+
+let fruits = LIST[Fruit]()
+
+fruits.add(BANANA())
+fruits.add(PEAR())
+
+let box = FOOD_BOX(fruits)
+
+write_line("the box holds {box.count()} eatable items")
+
+for fruit in box.items do
+    write_line("a {fruit.color()} {fruit.eat()}")
+od

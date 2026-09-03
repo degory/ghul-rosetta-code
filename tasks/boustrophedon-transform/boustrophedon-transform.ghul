@@ -1,0 +1,99 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+factorial(value: int) -> BigInteger is
+    let product mut = BigInteger.one
+
+    for factor in 2::value do
+        product = product * cast BigInteger(factor)
+    od
+
+    return product
+si
+
+nth_prime(index: int) -> int is
+    let found mut = 0
+    let candidate mut = 1
+
+    while found <= index do
+        candidate = candidate + 1
+        let divisor mut = 2
+
+        while divisor * divisor <= candidate /\ candidate % divisor != 0 do
+            divisor = divisor + 1
+        od
+
+        if divisor * divisor > candidate then
+            found = found + 1
+        fi
+    od
+
+    return candidate
+si
+
+fibonacci(index: int) -> BigInteger is
+    let previous mut = BigInteger.zero
+    let current mut = BigInteger.one
+
+    for _ in 0..index do
+        let following = previous + current
+        previous = current
+        current = following
+    od
+
+    return current
+si
+
+boustrophedon(term: (int) -> BigInteger, count: int) -> Pipe[BigInteger] is
+    let row mut = LIST[BigInteger]()
+    row.add(term(0))
+
+    yield row[0]
+
+    for index in 1..count do
+        let following = LIST[BigInteger]()
+        following.add(term(index))
+
+        for step in 1::index do
+            following.add(following[step - 1] + row[index - step])
+        od
+
+        row = following
+        yield row[index]
+    od
+si
+
+report(name: string, term: (int) -> BigInteger) is
+    let transformed = boustrophedon(term, 15) |> collect_list()
+    let texts = LIST[string]()
+
+    for value in transformed do
+        texts.add("{value}")
+    od
+
+    let stretched = boustrophedon(term, 1_000) |> collect_list()
+    let digits = stretched[999].to_string()
+
+    write_line("{name}:")
+    write_line("  first 15: {texts |> join(" ")}")
+    write_line("  1000th: {digits[0..20]}...{digits[20..<<0]}")
+    write_line("          ({digits.length} digits)")
+si
+
+report("unit", index =>
+    if index == 0 then BigInteger.one else BigInteger.zero fi)
+report("ones", _ => BigInteger.one)
+report("alternating", index => (
+    if index % 2 == 0 then BigInteger.one
+    else BigInteger.zero - BigInteger.one fi))
+report("primes", index => cast BigInteger(nth_prime(index)))
+report("fibonacci", index => fibonacci(index))
+report("factorials", index => factorial(index))

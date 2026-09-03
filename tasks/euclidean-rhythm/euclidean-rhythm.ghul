@@ -1,0 +1,38 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+repeat(form: string, times: int) -> Pipe[string] is
+    for _ in 1::times do
+        yield form
+    od
+si
+
+euclid(pulses: int, steps: int) -> string is
+    let first mut = "1"
+    let first_count mut = pulses
+    let second mut = "0"
+    let second_count mut = steps - pulses
+
+    while second_count > 1 do
+        let fewer = System.Math.min(first_count, second_count)
+        let leftover =
+            if first_count > second_count then first else second fi
+        let leftover_count = first_count + second_count - 2 * fewer
+
+        first = "{first}{second}"
+        first_count = fewer
+        second = leftover
+        second_count = leftover_count
+    od
+
+    let left = repeat(first, first_count) |> join("")
+    let right = repeat(second, second_count) |> join("")
+
+    return "{left}{right}"
+si
+
+let pairs = [(2, 5), (3, 7), (4, 9), (5, 12), (5, 13), (7, 16)]
+
+for (pulses, steps) in pairs do
+    write_line("E({pulses},{steps}) = {euclid(pulses, steps)}")
+od

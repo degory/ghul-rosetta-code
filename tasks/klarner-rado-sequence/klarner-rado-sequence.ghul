@@ -1,0 +1,52 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+klarner_rado(count: int) -> Collections.List[int] is
+    let sequence = LIST[int]()
+    sequence.add(1)
+
+    let twos mut = 0
+    let threes mut = 0
+
+    while sequence.count < count do
+        let from_two = 2 * sequence[twos] + 1
+        let from_three = 3 * sequence[threes] + 1
+
+        if from_two < from_three then
+            sequence.add(from_two)
+            twos = twos + 1
+        elif from_three < from_two then
+            sequence.add(from_three)
+            threes = threes + 1
+        else
+            sequence.add(from_two)
+            twos = twos + 1
+            threes = threes + 1
+        fi
+    od
+
+    return sequence
+si
+
+let sequence = klarner_rado(1_000_000)
+
+write_line("first 100 elements:")
+
+for row in 0..10 do
+    let cells = LIST[string]()
+
+    for column in 0..10 do
+        cells.add("{sequence[row * 10 + column],6}")
+    od
+
+    write_line(cells |> join(""))
+od
+
+let ranks = [
+    (1_000, 999), (10_000, 9_999), (100_000, 99_999), (1_000_000, 999_999)
+]
+
+for (rank, index) in ranks do
+    write_line("element {rank,9}: {sequence[index]}")
+od

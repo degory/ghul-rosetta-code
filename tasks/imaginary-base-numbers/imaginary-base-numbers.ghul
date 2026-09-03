@@ -1,0 +1,63 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use Collections.LIST
+
+to_quater_imaginary(value: int) -> string is
+    let digits = LIST[int]()
+    let remaining mut = value
+
+    while remaining != 0 do
+        let digit = ((remaining % 4) + 4) % 4
+        digits.add(digit)
+        remaining = (digit - remaining) / 4
+    od
+
+    let places = LIST[int]()
+    let index mut = digits.count - 1
+
+    while index >= 0 do
+        places.add(digits[index])
+        if index > 0 then
+            places.add(0)
+        fi
+        index = index - 1
+    od
+
+    if places.count == 0 then
+        places.add(0)
+    fi
+
+    return places |> map(place => "{place}") |> join("")
+si
+
+from_quater_imaginary(text: string) -> (real: int, imaginary: int) is
+    let real mut = 0
+    let imaginary mut = 0
+    let power_real mut = 1
+    let power_imaginary mut = 0
+    let index mut = text.length - 1
+
+    while index >= 0 do
+        let digit = cast int(text[index]) - cast int('0')
+
+        real = real + digit * power_real
+        imaginary = imaginary + digit * power_imaginary
+        let next_real = -2 * power_imaginary
+        power_imaginary = 2 * power_real
+        power_real = next_real
+        index = index - 1
+    od
+
+    return (real, imaginary)
+si
+
+for value in 1..16 do
+    write_line("{value,3} -> {to_quater_imaginary(value)}")
+od
+
+for value in [-100, -10, -1, 0, 35, 100] do
+    let text = to_quater_imaginary(value)
+    let (real, imaginary) = from_quater_imaginary(text)
+
+    write_line("{value} -> {text} -> {real} + {imaginary}i")
+od
