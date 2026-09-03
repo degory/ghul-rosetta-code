@@ -1,0 +1,97 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+overlap(left: string, right: string) -> int is
+    let longest = System.Math.min(left.length, right.length)
+    let size mut = longest
+
+    while size > 0 /\ !left.ends_with(right[0..size]) do
+        size = size - 1
+    od
+
+    return size
+si
+
+shortest_superstring(sequences: string[]) -> string is
+    let pieces = LIST[string]()
+
+    for sequence in sequences do
+        if !(pieces |> any(p => p.contains(sequence))) then
+            pieces.remove_all(p => sequence.contains(p))
+            pieces.add(sequence)
+        fi
+    od
+
+    while pieces.count > 1 do
+        let best mut = (left = 0, right = 1, shared = -1)
+
+        for i in 0..pieces.count do
+            for j in 0..pieces.count do
+                if i != j then
+                    let shared = overlap(pieces[i], pieces[j])
+
+                    if shared > best.shared then
+                        best = (i, j, shared)
+                    fi
+                fi
+            od
+        od
+
+        let tail = pieces[best.right][best.shared..<0]
+        let merged = "{pieces[best.left]}{tail}"
+
+        pieces[best.left] = merged
+        pieces.remove_at(best.right)
+    od
+
+    return pieces[0]
+si
+
+report(sequences: string[]) is
+    let result = shortest_superstring(sequences)
+
+    write_line("shortest common superstring: {result}")
+    write_line("  {result.length} bases")
+
+    for base in ['A', 'C', 'G', 'T', 'U'] do
+        let count = result |> filter(c => c == base) |> count()
+
+        if count > 0 then
+            write_line("  {base}: {count}")
+        fi
+    od
+
+    write_line("")
+si
+
+report(["TA", "AAG", "TA", "GAA", "TA"])
+report(["CATTAGGG", "ATTAG", "GGG", "TA"])
+report(["AAGAUGGA", "GGAGCGCAUC", "AUCGCAAUAAGGA"])
+report([
+    "ATGAAATGGATGTTCTGAGTTGGTCAGTCCCAATGTGCGGGGTTTCTTTTAGTACGTCGG"
+    "GAGTGGTATTAT",
+    "GGTCGATTCTGAGGACAAAGGTCAAGATGGAGCGCATCGAACGCAATAAGGATCATTTGA"
+    "TGGGACGTTTCGTCGACAAAGT",
+    "CTATGTTCTTATGAAATGGATGTTCTGAGTTGGTCAGTCCCAATGTGCGGGGTTTCTTTT"
+    "AGTACGTCGGGAGTGGTATTATA",
+    "TGCTTTCCAATTATGTAAGCGTTCCGAGACGGGGTGGTCGATTCTGAGGACAAAGGTCAA"
+    "GATGGAGCGCATC",
+    "AACGCAATAAGGATCATTTGATGGGACGTTTCGTCGACAAAGTCTTGTTTCGAGAGTAAC"
+    "GGCTACCGTCTT",
+    "GCGCATCGAACGCAATAAGGATCATTTGATGGGACGTTTCGTCGACAAAGTCTTGTTTCG"
+    "AGAGTAACGGCTACCGTC",
+    "CGTTTCGTCGACAAAGTCTTGTTTCGAGAGTAACGGCTACCGTCTTCGATTCTGCTTATA"
+    "ACACTATGTTCT",
+    "TGCTTTCCAATTATGTAAGCGTTCCGAGACGGGGTGGTCGATTCTGAGGACAAAGGTCAA"
+    "GATGGAGCGCATC",
+    "CGTAAAAAATTACAACGTCCTTTGGCTATCTCTTAAACTCCTGCTAAATGCTCGTGC",
+    "GATGGAGCGCATCGAACGCAATAAGGATCATTTGATGGGACGTTTCGTCGACAAAGTCTT"
+    "GTTTCGAGAGTAACGGCTACCGTCTTCGATT",
+    "TTTCCAATTATGTAAGCGTTCCGAGACGGGGTGGTCGATTCTGAGGACAAAGGTCAAGAT"
+    "GGAGCGCATC",
+    "CTATGTTCTTATGAAATGGATGTTCTGAGTTGGTCAGTCCCAATGTGCGGGGTTTCTTTT"
+    "AGTACGTCGGGAGTGGTATTATA",
+    "TCTCTTAAACTCCTGCTAAATGCTCGTGCTTTCCAATTATGTAAGCGTTCCGAGACGGGG"
+    "TGGTCGATTCTGAGGACAAAGGTCAAGA"
+])
