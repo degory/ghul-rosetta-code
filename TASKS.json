@@ -233,7 +233,9 @@
     },
     {
       "title": "Bioinformatics/Global alignment",
-      "state": "queued"
+      "slug": "bioinformatics-global-alignment",
+      "state": "published",
+      "published_hash": "7d41c5157b844a88daf070d3155282f012dd3a8b2e3b38b9289718fa6a6b2f00"
     },
     {
       "title": "Blum integer",
@@ -261,7 +263,9 @@
     },
     {
       "title": "Brilliant numbers",
-      "state": "queued"
+      "slug": "brilliant-numbers",
+      "state": "published",
+      "published_hash": "21d1bf0b82ef164a8ad31687ec4dec015367877dc029597664fbd1ddd94dba88"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -375,7 +379,9 @@
     },
     {
       "title": "Compiler/AST interpreter",
-      "state": "queued"
+      "slug": "compiler-ast-interpreter",
+      "state": "published",
+      "published_hash": "cc30d416d2d946c7ed21e77b5cf8f1288c54b5ef905ba35f5a5f6ae594840547"
     },
     {
       "title": "Concurrent computing",
@@ -414,7 +420,9 @@
     },
     {
       "title": "Cycles of a permutation",
-      "state": "queued"
+      "slug": "cycles-of-a-permutation",
+      "state": "published",
+      "published_hash": "f63acee71a115055f5828ac04ff3f57c9417f268e2baa48474b20b48d7d32f8b"
     },
     {
       "title": "Cyclops numbers",
@@ -614,7 +622,9 @@
     },
     {
       "title": "Fermat numbers",
-      "state": "queued"
+      "slug": "fermat-numbers",
+      "state": "published",
+      "published_hash": "ba1b0e26ea1d92ea21983f68bbeb6c9ff22d27eefc136d0596717a3fcd630177"
     },
     {
       "title": "Fibonacci n-step number sequences",
@@ -689,11 +699,15 @@
     },
     {
       "title": "French Republican calendar",
-      "state": "queued"
+      "slug": "french-republican-calendar",
+      "state": "published",
+      "published_hash": "f1fd586bed45717f74484228d733210e18264849984ae02b1de07e4610b96e64"
     },
     {
       "title": "Functional coverage tree",
-      "state": "queued"
+      "slug": "functional-coverage-tree",
+      "state": "published",
+      "published_hash": "ca2795d07384474b3eda23f7cc069d8361616435bd45eaa152557024d77cb71b"
     },
     {
       "title": "Fusc sequence",

@@ -1,0 +1,127 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+class NODE(name: string, weight: double, own_coverage: double?) is
+    children: LIST[NODE]
+
+    init(..) is
+        children = LIST[NODE]()
+    si
+
+    coverage: double =>
+        if let given = own_coverage then
+            given
+        elif children.count == 0 then
+            0.0D
+        else
+            let weighted = children
+                |> map(child => child.weight * child.coverage)
+                |> reduce(0.0D, (a, b) => a + b)
+            let total = children
+                |> map(child => child.weight)
+                |> reduce(0.0D, (a, b) => a + b)
+
+            weighted / total
+        fi
+
+    rows(depth: int) -> Pipe[string] is
+        let label = "{string(' ', depth * 4)}{name}"
+        let shown_weight = if weight =~ 1.0D then "" else "{weight}" fi
+        let shown_coverage =
+            if let given = own_coverage then "{given}" else "" fi
+
+        let columns = "{label,-32}|{shown_weight,-8}|{shown_coverage,-10}|"
+
+        yield "{columns}{coverage,8:F4}"
+
+        for child in children do
+            yield in child.rows(depth + 1)
+        od
+    si
+si
+
+let table = [
+    "cleaning                        |        |          |",
+    "    house1                      |40      |          |",
+    "        bedrooms                |        |0.25      |",
+    "        bathrooms               |        |          |",
+    "            bathroom1           |        |0.5       |",
+    "            bathroom2           |        |          |",
+    "            outside_lavatory    |        |1         |",
+    "        attic                   |        |0.75      |",
+    "        kitchen                 |        |0.1       |",
+    "        living_rooms            |        |          |",
+    "            lounge              |        |          |",
+    "            dining_room         |        |          |",
+    "            conservatory        |        |          |",
+    "            playroom            |        |1         |",
+    "        basement                |        |          |",
+    "        garage                  |        |          |",
+    "        garden                  |        |0.8       |",
+    "    house2                      |60      |          |",
+    "        upstairs                |        |          |",
+    "            bedrooms            |        |          |",
+    "                suite_1         |        |          |",
+    "                suite_2         |        |          |",
+    "                bedroom_3       |        |          |",
+    "                bedroom_4       |        |          |",
+    "            bathroom            |        |          |",
+    "            toilet              |        |          |",
+    "            attics              |        |0.6       |",
+    "        groundfloor             |        |          |",
+    "            kitchen             |        |          |",
+    "            living_rooms        |        |          |",
+    "                lounge          |        |          |",
+    "                dining_room     |        |          |",
+    "                conservatory    |        |          |",
+    "                playroom        |        |          |",
+    "            wet_room_&_toilet   |        |          |",
+    "            garage              |        |          |",
+    "            garden              |        |0.9       |",
+    "            hot_tub_suite       |        |1         |",
+    "        basement                |        |          |",
+    "            cellars             |        |1         |",
+    "            wine_cellar         |        |1         |",
+    "            cinema              |        |0.75      |"
+]
+
+parse(line: string) -> (depth: int, node: NODE) is
+    let cells = line.split(['|'])
+    let name = cells[0].trim()
+    let depth = (cells[0].length - cells[0].trim_start().length) / 4
+    let weight_text = cells[1].trim()
+    let coverage_text = cells[2].trim()
+    let weight = if weight_text.length > 0 then double.parse(weight_text)
+                 else 1.0D fi
+    let coverage: double? =
+        if coverage_text.length > 0 then double.parse(coverage_text)
+        else null fi
+
+    return (depth, NODE(name, weight, coverage))
+si
+
+let ancestors = LIST[NODE]()
+let root: NODE? mut = null
+
+for line in table do
+    let (depth, node) = parse(line)
+
+    while ancestors.count > depth do
+        ancestors.remove_at(ancestors.count - 1)
+    od
+
+    if depth == 0 then
+        root = node
+    else
+        ancestors[depth - 1].children.add(node)
+    fi
+
+    ancestors.add(node)
+od
+
+write_line("NAME_HIERARCHY                  |WEIGHT  |COVERAGE  | OVERALL")
+
+for row in root!.rows(0) do
+    write_line(row)
+od
