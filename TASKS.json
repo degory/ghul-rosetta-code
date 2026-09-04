@@ -183,7 +183,9 @@
     },
     {
       "title": "Autogram checker",
-      "state": "queued"
+      "slug": "autogram-checker",
+      "state": "published",
+      "published_hash": "340f086e2ea7bcb42eebf572145159bac98e187b7301bc82f751d30aca352bbf"
     },
     {
       "title": "Averages/Arithmetic mean",
@@ -234,6 +236,12 @@
       "state": "queued"
     },
     {
+      "title": "Blum integer",
+      "slug": "blum-integer",
+      "state": "published",
+      "published_hash": "4b15d5886c036957cc7ccc0162f9c22fdbea32ecbb94cefd3ea0ca198f60f9f0"
+    },
+    {
       "title": "Boustrophedon transform",
       "slug": "boustrophedon-transform",
       "state": "published",
@@ -250,6 +258,10 @@
       "slug": "brazilian-numbers",
       "state": "published",
       "published_hash": "957ba74923fb61e40fa52bdce9bc4db121f959d49507c4baa96da2915124b8fe"
+    },
+    {
+      "title": "Brilliant numbers",
+      "state": "queued"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -306,13 +318,21 @@
     },
     {
       "title": "Check Machin-like formulas",
-      "state": "queued"
+      "slug": "check-machin-like-formulas",
+      "state": "published",
+      "published_hash": "333f59a4090d70cb78588cee8060a123cd7985eea55483919651354f3b73d721"
     },
     {
       "title": "Checkpoint synchronization",
       "slug": "checkpoint-synchronization",
       "state": "published",
       "published_hash": "355e43c33f2986c116f1850b297829aad8989e1d51281b8be2806edb18515c46"
+    },
+    {
+      "title": "Chernick\u0027s Carmichael numbers",
+      "slug": "chernicks-carmichael-numbers",
+      "state": "published",
+      "published_hash": "6fe80756942a4dbed02d2460a9b7784f23f1499b497604c42290432cf65d9f2b"
     },
     {
       "title": "Cheryl\u0027s birthday",
@@ -364,6 +384,12 @@
       "published_hash": "f64c29ebfa5744a1ef30f93dc94609a9a87cb7eede259f4de53ba3ffed5f5dc6"
     },
     {
+      "title": "Consecutive primes with ascending or descending differences",
+      "slug": "consecutive-primes-with-ascending-or-descending-differences",
+      "state": "published",
+      "published_hash": "1bafacf6d9425d3689c2e2e0b383860063911fe98f3b1ecae99c1bf08933ff1f"
+    },
+    {
       "title": "Constrained genericity",
       "slug": "constrained-genericity",
       "state": "published",
@@ -381,8 +407,20 @@
       "published_hash": "bf2864499a2947721a9485b2c5e7e33cdf8ebd2ea1991e43091cd0c7f14b1175"
     },
     {
+      "title": "Curzon numbers",
+      "slug": "curzon-numbers",
+      "state": "published",
+      "published_hash": "9cd458a62c0988c28104bf44595dc01aecb87a6879e23f3309fb08d8f86141d4"
+    },
+    {
       "title": "Cycles of a permutation",
       "state": "queued"
+    },
+    {
+      "title": "Cyclops numbers",
+      "slug": "cyclops-numbers",
+      "state": "published",
+      "published_hash": "ae5366ccb3333b5b370a889f928b2ab9cbc1bb4a7a0b9dfb5f58ee1b8efd263f"
     },
     {
       "title": "Damm algorithm",
@@ -398,7 +436,9 @@
     },
     {
       "title": "Deconvolution/1D",
-      "state": "queued"
+      "slug": "deconvolution-1d",
+      "state": "published",
+      "published_hash": "a4e7a3374ae3e5adb245b7ff54eb3bf981eab6f1f389c54627f3c19cf4991d7a"
     },
     {
       "title": "Decorate-sort-undecorate idiom",
@@ -471,7 +511,9 @@
     },
     {
       "title": "Elementary cellular automaton/Infinite length",
-      "state": "queued"
+      "slug": "elementary-cellular-automaton-infinite-length",
+      "state": "published",
+      "published_hash": "8cc107086fa5c906304c0a982aa8ca26032d958a48263cd371b3c675b4a4a745"
     },
     {
       "title": "Engel expansion",
@@ -493,11 +535,19 @@
     },
     {
       "title": "Erd\u0151s-Nicolas numbers",
-      "state": "queued"
+      "slug": "erdos-nicolas-numbers",
+      "state": "published",
+      "published_hash": "c1ee841c157e963bdf223d99004cae2e58a6b7627002bda632c68f70446cc9d5"
     },
     {
       "title": "Erd\u0151s\u2013Woods numbers",
       "state": "queued"
+    },
+    {
+      "title": "Esthetic numbers",
+      "slug": "esthetic-numbers",
+      "state": "published",
+      "published_hash": "df6b90d69563d551970c3fe489c1ee6688ad2991e25ada81f59eb11622285bbf"
     },
     {
       "title": "Ethiopian multiplication",
@@ -525,7 +575,9 @@
     },
     {
       "title": "Execute Computer/Zero",
-      "state": "queued"
+      "slug": "execute-computer-zero",
+      "state": "published",
+      "published_hash": "c275574d5be175dfe9b54754f6d190b7bdb43de1cdf6d40ab27cc64543658a26"
     },
     {
       "title": "Exponential digital sums",
@@ -544,7 +596,9 @@
     },
     {
       "title": "Factorial base numbers indexing permutations of a collection",
-      "state": "queued"
+      "slug": "factorial-base-numbers-indexing-permutations-of-a-collection",
+      "state": "published",
+      "published_hash": "f05e60281b09a4c059a96adae49aa7a4c426c15b1cc9bd17230f5574bc54f538"
     },
     {
       "title": "Factorions",
@@ -557,6 +611,10 @@
       "slug": "factorize-string-into-lyndon-words",
       "state": "published",
       "published_hash": "f93bd35b1687c008d801fc02e7b84de5f0aaf0e4914b65d1c696e397657aa458"
+    },
+    {
+      "title": "Fermat numbers",
+      "state": "queued"
     },
     {
       "title": "Fibonacci n-step number sequences",
@@ -601,7 +659,9 @@
     },
     {
       "title": "Formal power series",
-      "state": "queued"
+      "slug": "formal-power-series",
+      "state": "published",
+      "published_hash": "8c6fc419bfc3a6e11a00377448816e42485e49c40b6abc17f19fd0ca2f1eb0b9"
     },
     {
       "title": "Fortunate numbers",
@@ -623,7 +683,9 @@
     },
     {
       "title": "Four is the number of letters in the ...",
-      "state": "queued"
+      "slug": "four-is-the-number-of-letters-in-the",
+      "state": "published",
+      "published_hash": "80004714139e3b0b61239fbd299c2cb39ef097380af4ef2dc72dbbb7c790ac63"
     },
     {
       "title": "French Republican calendar",
@@ -679,7 +741,9 @@
     },
     {
       "title": "Goldbach\u0027s comet",
-      "state": "queued"
+      "slug": "goldbachs-comet",
+      "state": "published",
+      "published_hash": "c1f7d5964db678b90489c1d6798eb719b4a035f9cc30f20ec8344835eb3df365"
     },
     {
       "title": "Gosper\u0027s hack",
@@ -699,7 +763,9 @@
     },
     {
       "title": "Greatest prime dividing the n-th cubefree number",
-      "state": "queued"
+      "slug": "greatest-prime-dividing-the-n-th-cubefree-number",
+      "state": "published",
+      "published_hash": "540742165a746b9bc92fe0608d7ddaeae9ad6c3491d95ad9337aaa2715b0dde0"
     },
     {
       "title": "Greatest subsequential sum",
@@ -709,7 +775,9 @@
     },
     {
       "title": "Greedy algorithm for Egyptian fractions",
-      "state": "queued"
+      "slug": "greedy-algorithm-for-egyptian-fractions",
+      "state": "published",
+      "published_hash": "1c70ad3f925292796232f188bdec5104521980961f314533da49a5bdf2dd06c1"
     },
     {
       "title": "HTTPS/Authenticated",
@@ -771,7 +839,9 @@
     },
     {
       "title": "Home primes",
-      "state": "queued"
+      "slug": "home-primes",
+      "state": "published",
+      "published_hash": "f5c2255cf07959a1a9e634a0ec762bff1ff9cbd4b17668cdfcca4e72f58a67d1"
     },
     {
       "title": "Horner\u0027s rule for polynomial evaluation",
@@ -802,6 +872,12 @@
       "published_hash": "7ab634b0d472c633413a91e417714b0d8f669cdb3df38f29bcd4105bada9b913"
     },
     {
+      "title": "Iccanobif primes",
+      "slug": "iccanobif-primes",
+      "state": "published",
+      "published_hash": "266b11d47f53f1655955a19eee9c9e3686227bde42902df7c39f8eefddd04919"
+    },
+    {
       "title": "Imaginary base numbers",
       "slug": "imaginary-base-numbers",
       "state": "published",
@@ -809,7 +885,9 @@
     },
     {
       "title": "Index finite lists of positive integers",
-      "state": "queued"
+      "slug": "index-finite-lists-of-positive-integers",
+      "state": "published",
+      "published_hash": "b7b6c90ee70a1f51114653fbd9b71e857b2d89a06f8b4d2b11f7050296a1ddc7"
     },
     {
       "title": "Intersecting number wheels",
@@ -925,7 +1003,9 @@
     },
     {
       "title": "Knuth\u0027s power tree",
-      "state": "queued"
+      "slug": "knuths-power-tree",
+      "state": "published",
+      "published_hash": "feffa2a422d54f1f451ef0be0918a6987cf423a2a7f5baf2d1a96943539d0ac0"
     },
     {
       "title": "Kolakoski sequence",

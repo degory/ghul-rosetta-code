@@ -1,0 +1,88 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.MAP
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use Ghul.Pipes
+use System.Numerics.IMultiplyOperators.`*
+
+let parent = MAP[int, int]()
+let added = MAP[int, int]()
+let queue = LIST[int]()
+let cursor mut = 0
+
+queue.add(1)
+
+path_to(target: int) -> Collections.List[int] is
+    let steps = LIST[int]()
+    let current mut = target
+
+    while current != 1 do
+        steps.add(current)
+        current = parent[current]
+    od
+
+    steps.add(1)
+    steps.reverse()
+
+    return steps
+si
+
+build_until(target: int) is
+    while target != 1 /\ !parent.contains_key(target) do
+        let node = queue[cursor]
+        cursor = cursor + 1
+
+        for step in path_to(node) do
+            let child = node + step
+
+            if child != 1 /\ !parent.contains_key(child) then
+                parent.add(child, node)
+                added.add(child, step)
+                queue.add(child)
+            fi
+        od
+    od
+si
+
+exponentiate[T: INumber[T]](base: T, exponent: int) -> T is
+    if exponent == 0 then
+        return T.one
+    fi
+
+    build_until(exponent)
+
+    let computed = MAP[int, T]()
+    computed.add(1, base)
+    let steps = path_to(exponent)
+
+    for index in 1..steps.count do
+        let step = steps[index]
+
+        computed.add(step, computed[parent[step]] * computed[added[step]])
+    od
+
+    return computed[exponent]
+si
+
+show_path(target: int) is
+    build_until(target)
+    let texts = LIST[string]()
+
+    for step in path_to(target) do
+        texts.add("{step}")
+    od
+
+    write_line("path to {target}: {texts |> join(" ")}")
+si
+
+show_path(43)
+
+let two = cast BigInteger(2)
+
+for exponent in 0..18 do
+    write_line("2^{exponent,2} = {exponentiate(two, exponent)}")
+od
+
+write_line("3^191 = {exponentiate(cast BigInteger(3), 191)}")
+write_line("1.1^81 = {exponentiate(1.1D, 81)}")

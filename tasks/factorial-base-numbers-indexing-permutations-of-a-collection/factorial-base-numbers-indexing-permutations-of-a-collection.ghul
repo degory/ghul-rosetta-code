@@ -1,0 +1,94 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+permute[T](digits: Collections.List[int], items: Collections.List[T])
+        -> LIST[T] is
+    let result = LIST[T](items)
+
+    for (place, digit) in digits |> index() do
+        if digit > 0 then
+            let moved = result[place + digit]
+
+            result.remove_at(place + digit)
+            result.insert(place, moved)
+        fi
+    od
+
+    return result
+si
+
+factorial_base_numbers(places: int) -> Pipe[LIST[int]] is
+    let digits = LIST[int]()
+
+    for _ in 0..places do
+        digits.add(0)
+    od
+
+    while true do
+        yield LIST[int](digits)
+
+        let place mut = places - 1
+
+        while place >= 0 /\ digits[place] == places - place do
+            digits[place] = 0
+            place = place - 1
+        od
+
+        if place < 0 then
+            return
+        fi
+
+        digits[place] = digits[place] + 1
+    od
+si
+
+parse_digits(text: string) -> LIST[int] =>
+    text.split(['.']) |> map(part => int.parse(part)) |> collect_list()
+
+show[T](digits: Collections.List[int], items: Collections.List[T]) is
+    let number = digits |> map(d => "{d}") |> join(".")
+    let arrangement =
+        permute(digits, items) |> map(i => "{i}") |> join("")
+
+    write_line("{number} -> {arrangement}")
+si
+
+for digits in factorial_base_numbers(3) do
+    show(digits, [0, 1, 2, 3])
+od
+
+write_line("")
+let permutations_of_eleven = factorial_base_numbers(10) |> count()
+
+write_line("permutations of 11 digits: {permutations_of_eleven}")
+write_line("")
+
+let shoe = LIST[string]()
+
+for suit in ["♠", "♥", "♦", "♣"] do
+    let ranks = [
+        "A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"
+    ]
+
+    for rank in ranks do
+        shoe.add("{rank}{suit}")
+    od
+od
+
+let prepared = [
+    "39.49.7.47.29.30.2.12.10.3.29.37.33.17.12.31.29.34.17.25.2."
+    "4.25.4.1.14.20.6.21.18.1.1.1.4.0.5.15.12.4.3.10.10.9.1.6.5."
+    "5.3.0.0.0",
+    "51.48.16.22.3.0.19.34.29.1.36.30.12.32.12.29.30.26.14.21.8."
+    "12.1.3.10.4.7.17.6.21.8.12.15.15.13.15.7.3.12.11.9.5.5.6.6."
+    "3.4.0.3.2.1",
+    "50.0.48.0.46.0.44.0.42.0.40.0.38.0.36.0.34.0.32.0.30.0.28.0."
+    "26.0.24.0.22.0.20.0.18.0.16.0.14.0.12.0.10.0.8.0.6.0.4.0.2."
+    "0.0"
+]
+
+for text in prepared do
+    show(parse_digits(text), shoe)
+    write_line("")
+od

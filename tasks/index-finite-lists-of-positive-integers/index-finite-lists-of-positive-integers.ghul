@@ -1,0 +1,61 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+let ten = cast BigInteger(10)
+let eleven = cast BigInteger(11)
+
+rank(values: Collections.List[BigInteger]) -> BigInteger is
+    let result mut = BigInteger.one
+
+    for value in values do
+        result = result * eleven + ten
+
+        for digit in value.to_string() do
+            result = result * eleven + cast BigInteger(digit - '0')
+        od
+    od
+
+    return result
+si
+
+unrank(index: BigInteger) -> LIST[BigInteger] is
+    let digits = LIST[string]()
+    let remaining mut = index
+
+    while remaining > BigInteger.one do
+        let digit = cast int(remaining % eleven)
+
+        digits.add(if digit == 10 then " " else "{digit}" fi)
+        remaining = remaining / eleven
+    od
+
+    digits.reverse()
+
+    let values = LIST[BigInteger]()
+
+    for text in (digits |> join("")).split([' ']) do
+        if text.length > 0 then
+            values.add(BigInteger.parse(text))
+        fi
+    od
+
+    return values
+si
+
+let sample = [1, 2, 3, 10, 100, 987654321, 1]
+    |> map(v => cast BigInteger(v))
+    |> collect_list()
+
+let index = rank(sample)
+let restored = unrank(index)
+
+write_line("list:     {sample |> map(v => "{v}") |> join(" ")}")
+write_line("rank:     {index}")
+write_line("unranked: {restored |> map(v => "{v}") |> join(" ")}")

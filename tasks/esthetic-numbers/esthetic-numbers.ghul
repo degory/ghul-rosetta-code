@@ -1,0 +1,73 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.Queue
+use Ghul.Pipes
+
+let digit_symbols = "0123456789abcdef"
+
+render(value: long, base: int) -> string is
+    let digits = LIST[char]()
+    let remaining mut = value
+
+    while remaining > 0L do
+        let digit = cast int(remaining % cast long(base))
+
+        digits.insert(0, digit_symbols[digit])
+        remaining = remaining / cast long(base)
+    od
+
+    return string(digits.to_array())
+si
+
+esthetic(base: int) -> Pipe[long] is
+    let pending = Queue[(value: long, last: int)]()
+
+    for digit in 1..base do
+        pending.enqueue((cast long(digit), digit))
+    od
+
+    while true do
+        let (value, last) = pending.dequeue()
+
+        yield value
+
+        for next in [last - 1, last + 1] do
+            if next >= 0 /\ next < base then
+                let extended = value * cast long(base) + cast long(next)
+
+                pending.enqueue((extended, next))
+            fi
+        od
+    od
+si
+
+for base in 2::16 do
+    let shown = esthetic(base)
+        |> skip(base * 4 - 1)
+        |> take(base * 2 + 1)
+        |> map(value => render(value, base))
+        |> join(" ")
+
+    write_line("base {base,2}, esthetic numbers {base * 4} to {base * 6}:")
+    write_line("  {shown}")
+od
+
+show_range(low: long, high: long) is
+    let matching = esthetic(10)
+        |> filter(value => value >= low)
+        |> take_while(value => value <= high)
+        |> map(value => "{value}")
+        |> collect_list()
+
+    write_line("")
+    write_line("base 10 esthetic numbers between {low} and {high}:")
+
+    for row in 0..(matching.count + 9) / 10 do
+        let cells = matching |> skip(row * 10) |> take(10) |> join(" ")
+
+        write_line("  {cells}")
+    od
+si
+
+show_range(1_000L, 9_999L)
+show_range(100_000_000L, 130_000_000L)

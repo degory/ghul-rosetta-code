@@ -1,0 +1,45 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+erdos_nicolas(limit: int) -> Pipe[(value: int, k: int)] is
+    let running_sum = LIST[int](limit + 1)
+    let divisors_used = LIST[int](limit + 1)
+    let divisors_at_hit = LIST[int](limit + 1)
+    let has_later_divisor = LIST[bool](limit + 1)
+
+    for _ in 0::limit do
+        running_sum.add(0)
+        divisors_used.add(0)
+        divisors_at_hit.add(0)
+        has_later_divisor.add(false)
+    od
+
+    for divisor in 1::limit / 2 do
+        let multiple mut = divisor * 2
+
+        while multiple <= limit do
+            if divisors_at_hit[multiple] > 0 then
+                has_later_divisor[multiple] = true
+            elif running_sum[multiple] < multiple then
+                running_sum[multiple] = running_sum[multiple] + divisor
+                divisors_used[multiple] = divisors_used[multiple] + 1
+
+                if running_sum[multiple] == multiple then
+                    divisors_at_hit[multiple] = divisors_used[multiple]
+                fi
+            fi
+            multiple = multiple + divisor
+        od
+    od
+
+    for value in 2::limit do
+        if divisors_at_hit[value] > 1 /\ has_later_divisor[value] then
+            yield (value, divisors_at_hit[value])
+        fi
+    od
+si
+
+for (value, k) in erdos_nicolas(1_600_000) do
+    write_line("{value,8} equals the sum of its first {k,2} divisors")
+od

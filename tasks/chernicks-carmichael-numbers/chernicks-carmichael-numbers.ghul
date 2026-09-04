@@ -1,0 +1,77 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+let bases = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+
+passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
+    if base % value =~ BigInteger.zero then
+        return true
+    fi
+
+    let odd mut = value - BigInteger.one
+    let rounds mut = 0
+
+    while odd % cast BigInteger(2) =~ BigInteger.zero do
+        odd = odd / cast BigInteger(2)
+        rounds = rounds + 1
+    od
+
+    let residue mut = BigInteger.mod_pow(base, odd, value)
+
+    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+        return true
+    fi
+
+    for _ in 1..rounds do
+        residue = residue * residue % value
+        if residue =~ value - BigInteger.one then
+            return true
+        fi
+    od
+
+    return false
+si
+
+is_prime(value: BigInteger) -> bool =>
+    value > BigInteger.one /\
+    bases |> all(base => passes_miller_rabin(value, cast BigInteger(base)))
+
+chernick_factors(n: int, m: long) -> Pipe[BigInteger] is
+    yield cast BigInteger(6L * m + 1L)
+    yield cast BigInteger(12L * m + 1L)
+
+    for k in 1::n - 2 do
+        yield cast BigInteger((1L << k) * 9L * m + 1L)
+    od
+si
+
+smallest_chernick(n: int) -> (m: long, factors: LIST[BigInteger]) is
+    let step = if n > 4 then 1L << (n - 4) else 1L fi
+    let m mut = step
+
+    while true do
+        let factors = chernick_factors(n, m) |> collect_list()
+
+        if factors |> all(is_prime) then
+            return (m, factors)
+        fi
+
+        m = m + step
+    od
+si
+
+for n in 3::9 do
+    let (m, factors) = smallest_chernick(n)
+    let product = factors |> reduce(BigInteger.one, (a, b) => a * b)
+
+    write_line("a({n}) = U({n}, {m}) = {product}")
+    write_line("     = {factors |> map(f => "{f}") |> join(" * ")}")
+od

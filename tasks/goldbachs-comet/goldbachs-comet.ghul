@@ -1,0 +1,40 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let limit = 1_000_000
+let is_prime = LIST[bool](limit + 1)
+
+for _ in 0::limit do
+    is_prime.add(true)
+od
+
+is_prime[0] = false
+is_prime[1] = false
+
+for candidate in 2::limit do
+    if is_prime[candidate] /\ candidate <= limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple <= limit do
+            is_prime[multiple] = false
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+goldbach(even: int) -> int =>
+    (2::even / 2)
+        |> filter(p => is_prime[p] /\ is_prime[even - p])
+        |> count()
+
+write_line("the first 100 G numbers:")
+
+for row in 0..10 do
+    let cells = (0..10)
+        |> map(column => "{goldbach(4 + 2 * (row * 10 + column)),3}")
+
+    write_line(cells |> join(" "))
+od
+
+write_line("G(1000000) = {goldbach(limit)}")

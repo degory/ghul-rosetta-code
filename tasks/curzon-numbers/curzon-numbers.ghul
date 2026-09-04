@@ -1,0 +1,44 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.IModulusOperators.`%
+
+is_curzon(base: int, n: int) -> bool is
+    let divisor = cast BigInteger(base * n + 1)
+    let big_base = cast BigInteger(base)
+    let power = BigInteger.mod_pow(big_base, cast BigInteger(n), divisor)
+
+    return (power + BigInteger.one) % divisor =~ BigInteger.zero
+si
+
+curzon_numbers(base: int) -> Pipe[int] is
+    let n mut = 1
+
+    while true do
+        if is_curzon(base, n) then
+            yield n
+        fi
+        n = n + 1
+    od
+si
+
+for base in [2, 4, 6, 8, 10] do
+    write_line("generalized Curzon numbers with base {base}:")
+
+    let first_50 = curzon_numbers(base) |> take(50) |> collect_list()
+
+    for row in 0..5 do
+        let cells = (0..10)
+            |> map(column => "{first_50[row * 10 + column],5}")
+
+        write_line(cells |> join(""))
+    od
+
+    let thousandth = (curzon_numbers(base) |> skip(999) |> first())!
+
+    write_line("the one thousandth: {thousandth}")
+    write_line("")
+od

@@ -1,0 +1,97 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+
+struct GAUSSIAN(real: BigInteger, imaginary: BigInteger) is
+    *(other: GAUSSIAN) -> GAUSSIAN => GAUSSIAN(
+        real * other.real - imaginary * other.imaginary,
+        real * other.imaginary + imaginary * other.real)
+
+    conjugate: GAUSSIAN => GAUSSIAN(real, BigInteger.zero - imaginary)
+si
+
+struct TERM(multiplier: int, numerator: int, denominator: int);
+
+tangent_is_one(terms: TERM[]) -> bool is
+    let product mut = GAUSSIAN(BigInteger.one, BigInteger.zero)
+
+    for term in terms do
+        let angle = GAUSSIAN(
+            cast BigInteger(term.denominator),
+            cast BigInteger(term.numerator))
+        let factor =
+            if term.multiplier < 0 then angle.conjugate else angle fi
+
+        for _ in 0..System.Math.abs(term.multiplier) do
+            product = product * factor
+        od
+    od
+
+    return product.real =~ product.imaginary
+si
+
+describe(term: TERM) -> string is
+    let sign = if term.multiplier < 0 then "-" else "+" fi
+    let scale = System.Math.abs(term.multiplier)
+    let angle = "arctan({term.numerator}/{term.denominator})"
+    let scaled = if scale == 1 then angle else "{scale}*{angle}" fi
+
+    return "{sign} {scaled}"
+si
+
+let formulas = [
+    [TERM(1, 1, 2), TERM(1, 1, 3)],
+    [TERM(2, 1, 3), TERM(1, 1, 7)],
+    [TERM(4, 1, 5), TERM(-1, 1, 239)],
+    [TERM(5, 1, 7), TERM(2, 3, 79)],
+    [TERM(5, 29, 278), TERM(7, 3, 79)],
+    [TERM(1, 1, 2), TERM(1, 1, 5), TERM(1, 1, 8)],
+    [TERM(4, 1, 5), TERM(-1, 1, 70), TERM(1, 1, 99)],
+    [TERM(5, 1, 7), TERM(4, 1, 53), TERM(2, 1, 4443)],
+    [TERM(6, 1, 8), TERM(2, 1, 57), TERM(1, 1, 239)],
+    [TERM(8, 1, 10), TERM(-1, 1, 239), TERM(-4, 1, 515)],
+    [TERM(12, 1, 18), TERM(8, 1, 57), TERM(-5, 1, 239)],
+    [TERM(16, 1, 21), TERM(3, 1, 239), TERM(4, 3, 1042)],
+    [
+        TERM(22, 1, 28),
+        TERM(2, 1, 443),
+        TERM(-5, 1, 1393),
+        TERM(-10, 1, 11018)
+    ],
+    [TERM(22, 1, 38), TERM(17, 7, 601), TERM(10, 7, 8149)],
+    [
+        TERM(44, 1, 57),
+        TERM(7, 1, 239),
+        TERM(-12, 1, 682),
+        TERM(24, 1, 12943)
+    ],
+    [
+        TERM(88, 1, 172),
+        TERM(51, 1, 239),
+        TERM(32, 1, 682),
+        TERM(44, 1, 5357),
+        TERM(68, 1, 12943)
+    ],
+    [
+        TERM(88, 1, 172),
+        TERM(51, 1, 239),
+        TERM(32, 1, 682),
+        TERM(44, 1, 5357),
+        TERM(68, 1, 12944)
+    ]
+]
+
+for terms in formulas do
+    let verdict =
+        if tangent_is_one(terms) then "correct" else "INCORRECT" fi
+
+    let joined = terms |> map(describe) |> join(" ")
+    let sum = joined.trim_start(['+', ' '])
+
+    write_line("{verdict,9}: pi/4 = {sum}")
+od

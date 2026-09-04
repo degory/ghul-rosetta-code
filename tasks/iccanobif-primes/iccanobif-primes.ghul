@@ -1,0 +1,77 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+use System.Numerics.ISubtractionOperators.`-
+use System.Numerics.IMultiplyOperators.`*
+use System.Numerics.IDivisionOperators.`/
+use System.Numerics.IModulusOperators.`%
+
+let bases = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+
+passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
+    if base % value =~ BigInteger.zero then
+        return true
+    fi
+
+    let odd mut = value - BigInteger.one
+    let rounds mut = 0
+
+    while odd % cast BigInteger(2) =~ BigInteger.zero do
+        odd = odd / cast BigInteger(2)
+        rounds = rounds + 1
+    od
+
+    let residue mut = BigInteger.mod_pow(base, odd, value)
+
+    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+        return true
+    fi
+
+    for _ in 1..rounds do
+        residue = residue * residue % value
+        if residue =~ value - BigInteger.one then
+            return true
+        fi
+    od
+
+    return false
+si
+
+is_prime(value: BigInteger) -> bool =>
+    value > BigInteger.one /\
+    bases |> all(base => passes_miller_rabin(value, cast BigInteger(base)))
+
+fibonacci() -> Pipe[BigInteger] is
+    let previous mut = BigInteger.zero
+    let current mut = BigInteger.one
+
+    while true do
+        yield current
+        let following = previous + current
+        previous = current
+        current = following
+    od
+si
+
+reversed(value: BigInteger) -> BigInteger is
+    let digits = value.to_string().to_char_array()
+
+    System.Array.reverse(digits)
+
+    return BigInteger.parse(string(digits))
+si
+
+let iccanobif = fibonacci()
+    |> map(reversed)
+    |> filter(is_prime)
+    |> take(15)
+    |> collect_list()
+
+write_line("the first 10 iccanobif primes:")
+write_line(iccanobif |> take(10) |> map(p => "{p}") |> join(" "))
+write_line("")
+write_line("digit counts of the next 5:")
+write_line(iccanobif |> skip(10) |> map(p => "{"{p}".length}") |> join(" "))
