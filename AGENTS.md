@@ -247,8 +247,8 @@ Then write the solution, run it, and capture the output:
 
 ```sh
 dotnet run --project tasks/<slug>
-dotnet ghul-test --use-dotnet-build integration-tests/<slug>
-integration-tests/capture.sh integration-tests/<slug>
+dotnet ghul-test --use-dotnet-build tasks/<slug>
+scripts/capture.sh tasks/<slug>
 ```
 
 Read the produced output before capturing it. `capture.sh` turns whatever the program printed into
@@ -290,13 +290,14 @@ build each task as they go.
 
 | Step | How to run | Typical duration |
 |------|-----------|------------------|
-| Integration tests | `dotnet ghul-test --use-dotnet-build integration-tests` | seconds to minutes |
+| Integration tests | `dotnet ghul-test --use-dotnet-build tasks` | seconds to minutes |
 
 There is no repository-wide `dotnet build` to run: the root project does not compile, for the
 reason given under "The root project" below. Build a single task with
 `dotnet run --project tasks/<slug>`.
 
-- One test folder per task, with the task's source symlinked in. Preserve the symlinks.
+- Each task directory is its own test case: the `ghulflags` and `*.expected` files sit beside
+  the source. `scripts/new-task.sh` and `scripts/new-part.sh` scaffold them.
 - Tests assert the program's output. There are deliberately no IL snapshots - a test folder with
   no `il.expected` has its IL ignored, and `capture.sh` will not create one.
 - A failing test is your change. This repository's tests are pinned to output that was read and

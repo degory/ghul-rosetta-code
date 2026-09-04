@@ -54,7 +54,9 @@ run_task() {
     local DIR=$1
     local NAME=$2
 
-    local BUILT="$DIR/bin/Debug/net10.0/$NAME"
+    # binary, not $NAME: every project builds to that assembly name, which is what
+    # the test runner looks for.
+    local BUILT="$DIR/bin/Debug/net10.0/binary"
 
     if [ ! -x "$BUILT" ] || [ ! "$BUILT" -nt "$DIR/$NAME.ghul" ] ; then
         dotnet build "$DIR" --nologo -v quiet >/dev/null 2>&1 || return 1
@@ -93,10 +95,9 @@ part_heading() {
 emit_body() {
     local DIR=$1
     local NAME=$2
-    local TEST=$ROOT/integration-tests/$3
 
     local SOURCE="$DIR/$NAME.ghul"
-    local EXPECTED="$TEST/run.expected"
+    local EXPECTED="$DIR/run.expected"
 
     if [ ! -f "$SOURCE" ] ; then
         echo "no source: $SOURCE" >&2
@@ -106,12 +107,12 @@ emit_body() {
     local OUTPUT
 
     if ! OUTPUT=$(run_task "$DIR" "$NAME") ; then
-        echo "$3: does not build or run" >&2
+        echo "$DIR: does not build or run" >&2
         return 1
     fi
 
     if [ -f "$EXPECTED" ] && [ "$OUTPUT" != "$(cat "$EXPECTED")" ] ; then
-        echo "$3: output differs from integration-tests/$3/run.expected - recapture the test" >&2
+        echo "$DIR: output differs from run.expected - recapture the test" >&2
     fi
 
     printf '%s' "<syntaxhighlight lang=\"ghul\">"
@@ -136,7 +137,7 @@ emit() {
     echo "=={{header|ghul}}=="
 
     if [ -z "$PARTS" ] ; then
-        emit_body "$ROOT/tasks/$SLUG" "$SLUG" "$SLUG"
+        emit_body "$ROOT/tasks/$SLUG" "$SLUG"
         return
     fi
 
@@ -150,7 +151,7 @@ emit() {
 
         echo "===$(part_heading "$PART")==="
 
-        emit_body "$ROOT/tasks/$SLUG/$PART" "$PART" "$SLUG-$PART" || return 1
+        emit_body "$ROOT/tasks/$SLUG/$PART" "$PART" || return 1
     done
 }
 
@@ -161,14 +162,14 @@ working() {
     PARTS=$(task_parts "$SLUG")
 
     if [ -z "$PARTS" ] ; then
-        [ ! -f "$ROOT/integration-tests/$SLUG/disabled" ]
+        [ ! -f "$ROOT/tasks/$SLUG/disabled" ]
         return
     fi
 
     local PART
 
     for PART in $PARTS ; do
-        [ -f "$ROOT/integration-tests/$SLUG-$PART/disabled" ] && return 1
+        [ -f "$ROOT/tasks/$SLUG/$PART/disabled" ] && return 1
     done
 
     return 0

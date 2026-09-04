@@ -13,8 +13,9 @@ nobody re-reads.
   is `hello-world-text`.
 - `tasks/<slug>/task.json` - the task's title, its wiki URL, and a copy of its state from the
   ledger.
-- `integration-tests/<slug>/` - the matching test. The task's source is symlinked in, and
-  `run.expected` holds the output the program must produce.
+- `tasks/<slug>/run.expected` - the test expectation: the output the program must produce. The
+  project is the test case - `ghulflags` and the `*.expected` files sit beside the source, and
+  `dotnet ghul-test --use-dotnet-build tasks/<slug>` runs it in place.
 - `rosetta-code.ghulproj` and `root/entry.ghul` - a stub that names every task's source so the
   editor loads them all in one analysis session. It is not buildable: each task is a program in
   its own right, so compiling them together reports duplicate entry points. That only affects a
@@ -38,8 +39,8 @@ prints:
 
 ```sh
 dotnet run --project tasks/binary-digits
-dotnet ghul-test --use-dotnet-build integration-tests/binary-digits
-integration-tests/capture.sh integration-tests/binary-digits
+dotnet ghul-test --use-dotnet-build tasks/binary-digits
+scripts/capture.sh tasks/binary-digits
 ```
 
 `capture.sh` promotes the produced output to `run.expected`. Read the output first and satisfy
@@ -60,8 +61,6 @@ tasks/apply-a-callback-to-an-array/
     task.json
     01-using-map/           a whole program, with its own .ghulproj
     02-writing-apply/
-integration-tests/apply-a-callback-to-an-array-01-using-map/
-integration-tests/apply-a-callback-to-an-array-02-writing-apply/
 ```
 
 Each part becomes one `===heading===` section of the entry, with its own source and its own output,
@@ -109,7 +108,7 @@ position among the language headers: `ghul` sorts after `Genie` and before `Go`.
 Run everything with:
 
 ```sh
-dotnet ghul-test --use-dotnet-build integration-tests
+dotnet ghul-test --use-dotnet-build tasks
 ```
 
 The tests assert the program's output only. There are deliberately no IL snapshots: a test folder

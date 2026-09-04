@@ -24,4 +24,4 @@ jobs:
     # Each task is built by its own test project. The root rosetta-code.ghulproj is an
     # editor-only stub and is deliberately not built here.
     - name: Run Integration Tests
-      run: dotnet ghul-test --use-dotnet-build integration-tests
+      run: dotnet ghul-test --use-dotnet-build tasks
