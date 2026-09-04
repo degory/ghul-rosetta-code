@@ -1,0 +1,4 @@
+jacobsthal-numbers.ghul(42,27,42,42): warning impure-function-argument: argument must be a pure function [jacobsthal-numbers.ghulproj]
+jacobsthal-numbers.ghul(43,20,43,47): warning impure-function-argument: argument must be a pure function [jacobsthal-numbers.ghulproj]
+jacobsthal-numbers.ghul(50,31,50,59): warning impure-function-argument: argument must be a pure function [jacobsthal-numbers.ghulproj]
+jacobsthal-numbers.ghul(57,28,57,36): warning impure-function-argument: argument must be a pure function [jacobsthal-numbers.ghulproj]

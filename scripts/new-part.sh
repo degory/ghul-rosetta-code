@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add a part to a task, for the tasks worth showing more than one way. Each part is a whole
-# program with its own project and its own test, and becomes one `===heading===` section of the
+# program with its own project and test, and becomes one `===heading===` section of the
 # entry, in the order the leading number gives.
 #
 #   scripts/new-part.sh <slug> <NN-name>
@@ -28,7 +28,6 @@ fi
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 TASK=$ROOT/tasks/$SLUG
 DIR=$TASK/$PART
-TEST=$ROOT/integration-tests/$SLUG-$PART
 
 if [ ! -d "$TASK" ] ; then
     echo "no such task: tasks/$SLUG"
@@ -42,42 +41,43 @@ fi
 
 mkdir -p "$DIR"
 
-cat >"$DIR/$PART.ghulproj" <<'EOF'
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
+PROJECT='  <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
+
+    <AssemblyName>binary</AssemblyName>
+    <GhulCompiler>dotnet ghul-compiler --test-run</GhulCompiler>
   </PropertyGroup>
 
   <ItemGroup>
     <GhulSources Include="**/*.ghul" />
-  </ItemGroup>
-</Project>
-EOF
+  </ItemGroup>'
 
-cat >"$DIR/ghul.json" <<'EOF'
+{
+    echo '<Project Sdk="Microsoft.NET.Sdk">'
+    echo "$PROJECT"
+    echo '</Project>'
+} >"$DIR/$PART.ghulproj"
+
+cat >"$DIR/ghul.json" <<'EOJ'
 {
     "restore_tools": true
 }
-EOF
+EOJ
 
-cat >"$DIR/$PART.ghul" <<'EOF'
+cat >"$DIR/$PART.ghul" <<'EOJ'
 use IO.Std.write_line
 
 write_line("not written yet")
-EOF
-
-mkdir -p "$TEST"
-cp "$ROOT/integration-tests/template/test.ghulproj" "$TEST/test.ghulproj"
-ln -s "../../tasks/$SLUG/$PART/$PART.ghul" "$TEST/$PART.ghul"
+EOJ
 
 for f in ghulflags err.expected warn.expected run.expected ; do
-    : >"$TEST/$f"
+    : >"$DIR/$f"
 done
 
-echo "created tasks/$SLUG/$PART and integration-tests/$SLUG-$PART"
+echo "created tasks/$SLUG/$PART"
 echo
 echo "write the part, then:"
 echo "    dotnet run --project tasks/$SLUG/$PART"
-echo "    dotnet ghul-test --use-dotnet-build integration-tests/$SLUG-$PART"
-echo "    integration-tests/capture.sh integration-tests/$SLUG-$PART"
+echo "    dotnet ghul-test --use-dotnet-build tasks/$SLUG/$PART"
+echo "    scripts/capture.sh tasks/$SLUG/$PART"

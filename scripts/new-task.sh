@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Scaffold a task: its runnable project under tasks/, and the matching test folder under
-# integration-tests/ with the source symlinked in.
+# Scaffold a task: a runnable, testable project under tasks/. The test files
+# (ghulflags, expected outputs) live in the same directory - the project is the
+# test case.
 #
 #   scripts/new-task.sh <slug> "<Rosetta task title>"
 #
@@ -20,7 +21,6 @@ fi
 
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 TASK=$ROOT/tasks/$SLUG
-TEST=$ROOT/integration-tests/$SLUG
 
 if [ -e "$TASK" ] ; then
     echo "task already exists: tasks/$SLUG"
@@ -33,50 +33,51 @@ URL_TITLE=${TITLE// /_}
 
 mkdir -p "$TASK"
 
-cat >"$TASK/$SLUG.ghulproj" <<'EOF'
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
+PROJECT='  <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
+
+    <AssemblyName>binary</AssemblyName>
+    <GhulCompiler>dotnet ghul-compiler --test-run</GhulCompiler>
   </PropertyGroup>
 
   <ItemGroup>
     <GhulSources Include="**/*.ghul" />
-  </ItemGroup>
-</Project>
-EOF
+  </ItemGroup>'
 
-cat >"$TASK/ghul.json" <<'EOF'
+{
+    echo '<Project Sdk="Microsoft.NET.Sdk">'
+    echo "$PROJECT"
+    echo '</Project>'
+} >"$TASK/$SLUG.ghulproj"
+
+cat >"$TASK/ghul.json" <<'EOJ'
 {
     "restore_tools": true
 }
-EOF
+EOJ
 
-cat >"$TASK/task.json" <<EOF
+cat >"$TASK/task.json" <<EOJ
 {
     "task": "$TITLE",
     "url": "https://rosettacode.org/wiki/$URL_TITLE",
     "status": "queued"
 }
-EOF
+EOJ
 
-cat >"$TASK/$SLUG.ghul" <<'EOF'
+cat >"$TASK/$SLUG.ghul" <<'EOJ'
 use IO.Std.write_line
 
 write_line("not written yet")
-EOF
-
-mkdir -p "$TEST"
-cp "$ROOT/integration-tests/template/test.ghulproj" "$TEST/test.ghulproj"
-ln -s "../../tasks/$SLUG/$SLUG.ghul" "$TEST/$SLUG.ghul"
+EOJ
 
 for f in ghulflags err.expected warn.expected run.expected ; do
-    : >"$TEST/$f"
+    : >"$TASK/$f"
 done
 
-echo "created tasks/$SLUG and integration-tests/$SLUG"
+echo "created tasks/$SLUG"
 echo
 echo "write the solution, then:"
 echo "    dotnet run --project tasks/$SLUG"
-echo "    dotnet ghul-test --use-dotnet-build integration-tests/$SLUG"
-echo "    integration-tests/capture.sh integration-tests/$SLUG"
+echo "    dotnet ghul-test --use-dotnet-build tasks/$SLUG"
+echo "    scripts/capture.sh tasks/$SLUG"
