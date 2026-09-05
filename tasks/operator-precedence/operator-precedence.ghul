@@ -1,18 +1,17 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-// Precedence and associativity belong to the way an operator
-// is spelled. The parser reads the first character and nothing
-// else: it never asks what the operator means, where it was
-// declared, or whether it has been declared at all. So one
-// table covers every operator the language will ever have,
-// including the ones a program invents for itself.
+// Precedence and associativity are read off the way an operator
+// is spelled, almost always from its first character alone. The
+// parser never asks what the operator means, where it was
+// declared, or whether it has been declared at all, so one table
+// covers every operator the language will ever have, including
+// the ones a program invents for itself.
 //
 // The user-N rows are the levels held for those. An operator
-// whose spelling is not recognised lands at user-5, and
-// `@precedence` moves one to any other user-N row. A named row
-// is shared with the operators already spelled that way rather
-// than occupied by a new one.
+// whose spelling matches no row lands at user-5, and
+// `@precedence` moves one to any other user-N row. The named
+// rows take only the spellings listed against them.
 
 row(level: string, ops: string, assoc: string) -> string =>
     "  {level,-16}{ops,-30}{assoc}";
