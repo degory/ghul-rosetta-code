@@ -1,10 +1,6 @@
 use IO.Std.write_line
 use Ghul.Pipes
 use System.Numerics.BigInteger
-use System.Numerics.IAdditionOperators.`+
-use System.Numerics.ISubtractionOperators.`-
-use System.Numerics.IMultiplyOperators.`*
-use System.Numerics.IModulusOperators.`%
 
 let two = BigInteger(2)
 

@@ -3,10 +3,6 @@ use Collections.LIST
 use Ghul.Pipes
 use System.Globalization.CultureInfo
 use System.Numerics.BigInteger
-use System.Numerics.IAdditionOperators.`+
-use System.Numerics.ISubtractionOperators.`-
-use System.Numerics.IMultiplyOperators.`*
-use System.Numerics.IDivisionOperators.`/
 
 isqrt(x: BigInteger) -> BigInteger is
     let two = cast BigInteger(2)
