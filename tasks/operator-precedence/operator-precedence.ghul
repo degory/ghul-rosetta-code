@@ -1,0 +1,134 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+// Precedence and associativity belong to the way an operator
+// is spelled. The parser reads the first character and nothing
+// else: it never asks what the operator means, where it was
+// declared, or whether it has been declared at all. So one
+// table covers every operator the language will ever have,
+// including the ones a program invents for itself.
+//
+// The user-N rows are the levels held for those. An operator
+// whose spelling is not recognised lands at user-5, and
+// `@precedence` moves one to any other user-N row. A named row
+// is shared with the operators already spelled that way rather
+// than occupied by a new one.
+
+row(level: string, ops: string, assoc: string) -> string =>
+    "  {level,-16}{ops,-30}{assoc}";
+
+levels() -> Pipe[string] is
+    yield row("primary", "f(x)  a[i]  (e)  T(x)", "left")
+    yield row("postfix", ".  ?.  ?  !  |>", "left")
+    yield row("prefix", "!  -  any spelling", "right")
+    yield row("user-8", "", "left")
+    yield row("multiplication", "*  /  %", "left")
+    yield row("user-7", "", "left")
+    yield row("addition", "+  -", "left")
+    yield row("user-6", "", "left")
+    yield row("bitwise", "&  |  ^", "left")
+    yield row("user-5", "an unrecognised spelling", "left")
+    yield row("shift", "<<  >>  >>>", "left")
+    yield row("user-4", "", "left")
+    yield row("range", "..  ::  ..<  ::<", "left")
+    yield row("user-3", "", "left")
+    yield row(
+        "relational", "==  !=  =~  !~  <  <=  >  >=", "left")
+    yield row("user-2", "", "left")
+    yield row("boolean", "/\\  \\/", "left")
+    yield row("user-1", "??", "right")
+si
+
+// A value that prints the shape of the expression that built
+// it, so the grouping the parser chose is what the program
+// prints.
+class E is
+    text: string;
+
+    init(text: string) is self.text = text; si
+
+    to_string() -> string => text;
+
+    // A static member takes both operands as arguments.
+    ***(a: E, b: E) -> E static => joined("***", a, b);
+
+    // An instance member takes the left operand as receiver.
+    <+>(other: E) -> E => joined("<+>", self, other);
+si
+
+joined(op: string, a: E, b: E) -> E => E("({a} {op} {b})");
+
+// A global function. None of these three forms reaches the
+// parser, so all three take their level from how they are
+// written.
++++(a: E, b: E) -> E => joined("+++", a, b);
+
+// A leading `?` is the one spelling that groups rightwards.
+?+(a: E, b: E) -> E => joined("?+", a, b);
+
+<*>(a: E, b: E) -> E => joined("<*>", a, b);
+
+grouping(a: E, b: E, c: E) -> Pipe[string] is
+    yield "  a +++ b *** c   {a +++ b *** c}"
+    yield "  a <+> b +++ c   {a <+> b +++ c}"
+    yield "  a +++ b +++ c   {a +++ b +++ c}"
+    yield "  a ?+ b ?+ c     {a ?+ b ?+ c}"
+    yield "  a <*> b *** c   {a <*> b *** c}"
+si
+
+// `@precedence` moves an operator for the one definition it
+// is written on, so the same expression groups differently.
+@precedence("<*>", "user-8")
+lifted(a: E, b: E, c: E) -> string =>
+    "  a <*> b *** c   {a <*> b *** c}";
+
+class BOX is
+    value: int public;
+
+    init(value: int) is self.value = value; si
+si
+
+// For a class the value copied is the reference, so the callee
+// writes to the caller's object but cannot replace it. A `ref`
+// argument is the one that carries the caller's own variable.
+set_field(b: BOX) is b.value = 99; si
+reassign(b: BOX mut) is b = BOX(99); si
+write_through(n: int ref) is n! = 99; si
+
+entry() is
+    write_line("precedence, highest first")
+    write_line("")
+
+    levels() |> each(l => write_line(l))
+
+    write_line("")
+    write_line("the grouping the parser chose")
+    write_line("")
+
+    let a = E("a")
+    let b = E("b")
+    let c = E("c")
+
+    grouping(a, b, c) |> each(l => write_line(l))
+
+    write_line("")
+    write_line("the same expression, under @precedence")
+    write_line("")
+    write_line(lifted(a, b, c))
+
+    write_line("")
+    write_line("arguments are passed by value")
+    write_line("")
+
+    let one = BOX(1)
+    let two = BOX(1)
+    let n mut = 1
+
+    set_field(one)
+    reassign(two)
+    write_through(n ref)
+
+    write_line("  callee wrote a field         {one.value}")
+    write_line("  callee reassigned the value  {two.value}")
+    write_line("  callee wrote through a ref   {n}")
+si
