@@ -205,19 +205,19 @@
       "title": "Balanced ternary",
       "slug": "balanced-ternary",
       "state": "published",
-      "published_hash": "2b0c216fa818bb432fa6ead037efc6e345e756e1e30cccc758a9c753d93537a4"
+      "published_hash": "00e50509a2b7eb239c32649df0b80fe8ae79e6bf3020740c355c1df5ceec6df7"
     },
     {
       "title": "Bell numbers",
       "slug": "bell-numbers",
       "state": "published",
-      "published_hash": "e386137967866e30985bbd015ebb964dfec76663ace816f274f8d0bd93132595"
+      "published_hash": "beb427c997b78e3a47b3168e6456ee2bf9813c65bc9e3d14072fa0c7d906164a"
     },
     {
       "title": "Benford\u0027s law",
       "slug": "benfords-law",
       "state": "published",
-      "published_hash": "306376837c3b8bf947d80d8737352b17fd098fc42bfe41d297f47235dd86171c"
+      "published_hash": "1738a01d8cc9b333d1c867e485c4d9ec293eb118cc02bdfd2e49f19c7a5740ad"
     },
     {
       "title": "Binary digits",
@@ -247,7 +247,7 @@
       "title": "Boustrophedon transform",
       "slug": "boustrophedon-transform",
       "state": "published",
-      "published_hash": "f973c15274116984a45a76d9d5e00e99dc15eff0ac0f8f22116b8c2ed7ac07cc"
+      "published_hash": "109e86e09781468b5980b8927d451e21f106d4e9d6ad5799081de90b8083291e"
     },
     {
       "title": "Brace expansion",
@@ -324,7 +324,7 @@
       "title": "Check Machin-like formulas",
       "slug": "check-machin-like-formulas",
       "state": "published",
-      "published_hash": "333f59a4090d70cb78588cee8060a123cd7985eea55483919651354f3b73d721"
+      "published_hash": "492000fd2b884e5047baff103403d016708fe34be5040aa4ce9e5711023e23dc"
     },
     {
       "title": "Checkpoint synchronization",
@@ -336,7 +336,7 @@
       "title": "Chernick\u0027s Carmichael numbers",
       "slug": "chernicks-carmichael-numbers",
       "state": "published",
-      "published_hash": "6fe80756942a4dbed02d2460a9b7784f23f1499b497604c42290432cf65d9f2b"
+      "published_hash": "f3a57f41fb730b8a7295475128e5dabea8bc1299679f549c57992e2142d9510c"
     },
     {
       "title": "Cheryl\u0027s birthday",
@@ -416,7 +416,7 @@
       "title": "Curzon numbers",
       "slug": "curzon-numbers",
       "state": "published",
-      "published_hash": "9cd458a62c0988c28104bf44595dc01aecb87a6879e23f3309fb08d8f86141d4"
+      "published_hash": "27782920be17ef28cfecda09358a08c34f714dbbb330be6b756905ed82945730"
     },
     {
       "title": "Cycles of a permutation",
@@ -527,7 +527,7 @@
       "title": "Engel expansion",
       "slug": "engel-expansion",
       "state": "published",
-      "published_hash": "d91ae79b77c97ceef046a767a3910eb9212fdc5731cd5dfb6e1ff18cb10a00c2"
+      "published_hash": "1964f6407be491c1d36aed25c9d8a070fba6c3178cc4b856623394fc79f2ee61"
     },
     {
       "title": "Entropy",
@@ -567,7 +567,7 @@
       "title": "Euclid-Mullin sequence",
       "slug": "euclid-mullin-sequence",
       "state": "published",
-      "published_hash": "c7ff9ad6d6d98c6c74e2d6b3d3646f06aa3dd79c81897e765489b2f9e9d12971"
+      "published_hash": "b8fbd296613e69df7b3086b674a413f6344f62d76910df9926572a94d774f8ea"
     },
     {
       "title": "Euclidean rhythm",
@@ -624,7 +624,7 @@
       "title": "Fermat numbers",
       "slug": "fermat-numbers",
       "state": "published",
-      "published_hash": "ba1b0e26ea1d92ea21983f68bbeb6c9ff22d27eefc136d0596717a3fcd630177"
+      "published_hash": "b860ffbce20934fd33182eb0ce7dd94e5aa3e5b04a318462f10cb41c43a589ae"
     },
     {
       "title": "Fibonacci n-step number sequences",
@@ -671,13 +671,13 @@
       "title": "Formal power series",
       "slug": "formal-power-series",
       "state": "published",
-      "published_hash": "8c6fc419bfc3a6e11a00377448816e42485e49c40b6abc17f19fd0ca2f1eb0b9"
+      "published_hash": "9ed972a15a3e821bddede6ba264b2e0a5c714f0943638665af8e9c5ad1d9807f"
     },
     {
       "title": "Fortunate numbers",
       "slug": "fortunate-numbers",
       "state": "published",
-      "published_hash": "f513faca92c41f358a3c785506a38beef73fee7b57e75e7502686771b5820160"
+      "published_hash": "c92c30057c6f2fd83cde1cdb3437d7aba9821068d53e701e1e2b6318645e69f2"
     },
     {
       "title": "Forward difference",
@@ -791,7 +791,7 @@
       "title": "Greedy algorithm for Egyptian fractions",
       "slug": "greedy-algorithm-for-egyptian-fractions",
       "state": "published",
-      "published_hash": "1c70ad3f925292796232f188bdec5104521980961f314533da49a5bdf2dd06c1"
+      "published_hash": "187071f23e767e5688c50e2b3c731c9780d75ce75d68270261a3a09a1e295d46"
     },
     {
       "title": "HTTPS/Authenticated",
@@ -813,7 +813,7 @@
       "title": "Hamming numbers",
       "slug": "hamming-numbers",
       "state": "published",
-      "published_hash": "c78e9b7d55843e356ded9a4d4d091ad91bd5b838549775e73b046f04d11306f1"
+      "published_hash": "d33def42e4f0b8941fd049e1736e9f755ed80e5882644c1af0772085d04266fb"
     },
     {
       "title": "Happy numbers",
@@ -855,7 +855,7 @@
       "title": "Home primes",
       "slug": "home-primes",
       "state": "published",
-      "published_hash": "f5c2255cf07959a1a9e634a0ec762bff1ff9cbd4b17668cdfcca4e72f58a67d1"
+      "published_hash": "c4e921780afbb0a7c7b4799c73fae430bb3e4ebb7b8e7ee576112da0199e4101"
     },
     {
       "title": "Horner\u0027s rule for polynomial evaluation",
@@ -889,7 +889,7 @@
       "title": "Iccanobif primes",
       "slug": "iccanobif-primes",
       "state": "published",
-      "published_hash": "266b11d47f53f1655955a19eee9c9e3686227bde42902df7c39f8eefddd04919"
+      "published_hash": "e82c5a76006a271717df62be0ad13a332d6432c5d66a0c282b767412c9efedfb"
     },
     {
       "title": "Imaginary base numbers",
@@ -901,7 +901,7 @@
       "title": "Index finite lists of positive integers",
       "slug": "index-finite-lists-of-positive-integers",
       "state": "published",
-      "published_hash": "b7b6c90ee70a1f51114653fbd9b71e857b2d89a06f8b4d2b11f7050296a1ddc7"
+      "published_hash": "1a1e6962d45099b1d4ec71d750ab1bbf13e4b6b67b3a7b6f70ebd3237e26caa9"
     },
     {
       "title": "Intersecting number wheels",
@@ -919,7 +919,7 @@
       "title": "Isqrt (integer square root) of X",
       "slug": "isqrt-integer-square-root-of-x",
       "state": "published",
-      "published_hash": "abe220e78e8d7dfa97cc8261e596e5c554ca1577f09d64678ceee844be987a25"
+      "published_hash": "54403ba6088c9449b991b8f72c669ddf6abcece6abf173bb47ba9b93ec429828"
     },
     {
       "title": "Iterated digits squaring",
@@ -937,7 +937,7 @@
       "title": "Jacobsthal numbers",
       "slug": "jacobsthal-numbers",
       "state": "published",
-      "published_hash": "b1ade5bd578e8618496dfca350e119b6d0bb64c6c84737835f263dcfbb8e2dba"
+      "published_hash": "3ec4b154710d44bb7204022a8b86cc8a8fdb5b93db1659d9ebaddce9206529e9"
     },
     {
       "title": "Jaro similarity",
@@ -1055,7 +1055,7 @@
       "title": "Left factorials",
       "slug": "left-factorials",
       "state": "published",
-      "published_hash": "2e9c7db4d67b38acac3af8e3a3b9fe07eb46dd9a1a0b78f2c84091985a9ef90d"
+      "published_hash": "b293e99d952de96f781dbefc8cd115c737d4712ade9284677530aa87784c76b4"
     },
     {
       "title": "Levenshtein distance",
@@ -1240,7 +1240,8 @@
     {
       "title": "Operator precedence",
       "slug": "operator-precedence",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7e36626d83e894afbf318b1c032494595cb81ba53f7276d512b28c40ddbf3509"
     },
     {
       "title": "Order disjoint list items",
@@ -1318,7 +1319,7 @@
       "title": "Prime decomposition",
       "slug": "prime-decomposition",
       "state": "published",
-      "published_hash": "4b98dd2dc148938ec49126b62b71ae042a07432d3e2372a3119ee517ba38cc1d"
+      "published_hash": "b70425db44ce9e13c15ca3a397a3edc649af4d1a014b807b1cf4489d20147b6c"
     },
     {
       "title": "Quaternion",

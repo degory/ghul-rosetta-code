@@ -57,9 +57,9 @@ si
 
 joined(op: string, a: E, b: E) -> E => E("({a} {op} {b})");
 
-// A global function. None of these three forms reaches the
-// parser, so all three take their level from how they are
-// written.
+// A global function. Grouping is settled while the file is
+// parsed, before any of these is resolved, so which of the three
+// forms an operator is declared in cannot affect its level.
 +++(a: E, b: E) -> E => joined("+++", a, b);
 
 // A leading `?` is the one spelling that groups rightwards.
