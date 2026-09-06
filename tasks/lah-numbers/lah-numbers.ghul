@@ -1,22 +1,21 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-factorial(value: int) -> BigInteger is
-    let product mut = BigInteger.one
+factorial(value: int) -> bigint is
+    let product mut = bigint.one
 
     for factor in 2::value do
-        product = product * BigInteger(factor)
+        product = product * bigint(factor)
     od
 
     product
 si
 
-lah(n: int, k: int) -> BigInteger =>
+lah(n: int, k: int) -> bigint =>
     if k == 1 then factorial(n)
-    elif k == n then BigInteger.one
-    elif k > n \/ k < 1 \/ n < 1 then BigInteger.zero
+    elif k == n then bigint.one
+    elif k > n \/ k < 1 \/ n < 1 then bigint.zero
     else factorial(n) * factorial(n - 1) /
          (factorial(k) * factorial(k - 1)) / factorial(n - k)
     fi
@@ -46,7 +45,7 @@ od
 
 let largest =
     (1::100) |> map(k => lah(100, k))
-            |> reduce(BigInteger.zero,
+            |> reduce(bigint.zero,
                       (best, v) => if v > best then v else best fi)
 
 write_line("")

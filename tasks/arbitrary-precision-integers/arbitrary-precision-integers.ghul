@@ -1,5 +1,4 @@
 use IO.Std.write_line
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 use System.Numerics.IMultiplyOperators.`*
 
@@ -14,7 +13,7 @@ power[T: INumber[T]](base: T, exponent: int) -> T =>
         base * power(base, exponent - 1)
     fi
 
-let digits = power(cast BigInteger(5), power(4, power(3, 2))).to_string()
+let digits = power(5n, power(4, power(3, 2))).to_string()
 
 write_line("first 20 digits: {digits[0..20]}")
 write_line("last 20 digits:  {digits[20..<<0]}")

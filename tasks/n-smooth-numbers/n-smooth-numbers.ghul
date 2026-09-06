@@ -1,7 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
 is_prime(value: int) -> bool is
     if value < 2 then return false fi
@@ -16,13 +15,13 @@ is_prime(value: int) -> bool is
     true
 si
 
-smooth(bound: int, count: int) -> LIST[BigInteger] is
+smooth(bound: int, count: int) -> LIST[bigint] is
     let factors = (2::bound) |> filter(is_prime)
-                             |> map(p => BigInteger(p))
+                             |> map(p => bigint(p))
                              |> collect_list()
 
-    let found = LIST[BigInteger]()
-    found.add(BigInteger.one)
+    let found = LIST[bigint]()
+    found.add(bigint.one)
 
     let next_index = LIST[int]()
 

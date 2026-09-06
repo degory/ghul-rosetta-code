@@ -1,13 +1,12 @@
 use IO.Std.write_line
 use Ghul.Pipes
 use Collections.LIST
-use System.Numerics.BigInteger
 use System.Math.log10
 
 let leading_counts = (1::10) |> map(_ => 0) |> collect_list()
 
-let previous mut = BigInteger.zero
-let current mut = BigInteger.one
+let previous mut = bigint.zero
+let current mut = bigint.one
 
 for _ in 1::1000 do
     let first = current.to_string()[0]

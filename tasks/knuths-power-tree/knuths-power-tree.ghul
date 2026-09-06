@@ -1,7 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
 use Collections.MAP
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 use Ghul.Pipes
 use System.Numerics.IMultiplyOperators.`*
@@ -78,11 +77,11 @@ si
 
 show_path(43)
 
-let two = cast BigInteger(2)
+let two = 2n
 
 for exponent in 0..18 do
     write_line("2^{exponent,2} = {exponentiate(two, exponent)}")
 od
 
-write_line("3^191 = {exponentiate(cast BigInteger(3), 191)}")
+write_line("3^191 = {exponentiate(3n, 191)}")
 write_line("1.1^81 = {exponentiate(1.1D, 81)}")

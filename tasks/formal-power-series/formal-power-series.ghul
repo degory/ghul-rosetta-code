@@ -1,10 +1,9 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 
-struct RATIONAL(numerator: BigInteger, denominator: BigInteger) is
+struct RATIONAL(numerator: bigint, denominator: bigint) is
     +(other: RATIONAL) -> RATIONAL => reduced(
         numerator * other.denominator + other.numerator * denominator,
         denominator * other.denominator)
@@ -20,20 +19,20 @@ struct RATIONAL(numerator: BigInteger, denominator: BigInteger) is
         numerator * other.denominator, denominator * other.numerator)
 
     to_string() -> string =>
-        if denominator =~ BigInteger.one then "{numerator}"
+        if denominator =~ bigint.one then "{numerator}"
         else "{numerator}/{denominator}" fi
 si
 
-reduced(numerator: BigInteger, denominator: BigInteger) -> RATIONAL is
-    let divisor = BigInteger.greatest_common_divisor(numerator, denominator)
-    let sign = if denominator < BigInteger.zero then -1 else 1 fi
-    let scale = divisor * cast BigInteger(sign)
+reduced(numerator: bigint, denominator: bigint) -> RATIONAL is
+    let divisor = bigint.greatest_common_divisor(numerator, denominator)
+    let sign = if denominator < bigint.zero then -1 else 1 fi
+    let scale = divisor * cast bigint(sign)
 
     return RATIONAL(numerator / scale, denominator / scale)
 si
 
 whole(value: int) -> RATIONAL =>
-    RATIONAL(cast BigInteger(value), BigInteger.one)
+    RATIONAL(cast bigint(value), bigint.one)
 
 class SERIES(term: (int) -> RATIONAL) is
     _known: LIST[RATIONAL]

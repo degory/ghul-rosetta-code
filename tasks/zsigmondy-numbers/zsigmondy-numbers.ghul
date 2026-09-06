@@ -1,22 +1,21 @@
 use IO.Std.write_line
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-difference(exponent: int, a: int, b: int) -> BigInteger =>
-    BigInteger.pow(BigInteger(a), exponent) -
-    BigInteger.pow(BigInteger(b), exponent)
+difference(exponent: int, a: int, b: int) -> bigint =>
+    bigint.pow(bigint(a), exponent) -
+    bigint.pow(bigint(b), exponent)
 
-zsigmondy(exponent: int, a: int, b: int) -> BigInteger is
+zsigmondy(exponent: int, a: int, b: int) -> bigint is
     let greatest mut = difference(exponent, a, b)
 
     for lesser in 1..exponent do
         let smaller = difference(lesser, a, b)
         let common mut =
-            BigInteger.greatest_common_divisor(greatest, smaller)
+            bigint.greatest_common_divisor(greatest, smaller)
 
-        while common > BigInteger.one do
+        while common > bigint.one do
             greatest = greatest / common
-            common = BigInteger.greatest_common_divisor(greatest, smaller)
+            common = bigint.greatest_common_divisor(greatest, smaller)
         od
     od
 

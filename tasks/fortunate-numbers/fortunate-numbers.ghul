@@ -1,33 +1,32 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 
 let bases = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
 
-passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
-    if base % value =~ BigInteger.zero then
+passes_miller_rabin(value: bigint, base: bigint) -> bool pure is
+    if base % value =~ bigint.zero then
         return true
     fi
 
-    let odd mut = value - BigInteger.one
+    let odd mut = value - bigint.one
     let rounds mut = 0
 
-    while odd % cast BigInteger(2) =~ BigInteger.zero do
-        odd = odd / cast BigInteger(2)
+    while odd % 2n =~ bigint.zero do
+        odd = odd / 2n
         rounds = rounds + 1
     od
 
-    let residue mut = BigInteger.mod_pow(base, odd, value)
+    let residue mut = bigint.mod_pow(base, odd, value)
 
-    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+    if residue =~ bigint.one \/ residue =~ value - bigint.one then
         return true
     fi
 
     for _ in 1..rounds do
         residue = residue * residue % value
-        if residue =~ value - BigInteger.one then
+        if residue =~ value - bigint.one then
             return true
         fi
     od
@@ -35,8 +34,8 @@ passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
     return false
 si
 
-is_probable_prime(value: BigInteger) -> bool =>
-    bases |> all(base => passes_miller_rabin(value, cast BigInteger(base)))
+is_probable_prime(value: bigint) -> bool =>
+    bases |> all(base => passes_miller_rabin(value, cast bigint(base)))
 
 is_prime(value: int) -> bool is
     let divisor mut = 2
@@ -49,7 +48,7 @@ is_prime(value: int) -> bool is
 si
 
 fortunate(count: int) -> Pipe[int] is
-    let primorial mut = BigInteger.one
+    let primorial mut = bigint.one
     let candidate mut = 1
     let found mut = 0
 
@@ -57,11 +56,11 @@ fortunate(count: int) -> Pipe[int] is
         candidate = candidate + 1
 
         if is_prime(candidate) then
-            primorial = primorial * cast BigInteger(candidate)
+            primorial = primorial * cast bigint(candidate)
 
             let m mut = 3
 
-            while !is_probable_prime(primorial + cast BigInteger(m)) do
+            while !is_probable_prime(primorial + cast bigint(m)) do
                 m = m + 2
             od
 

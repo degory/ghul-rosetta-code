@@ -1,18 +1,17 @@
 use IO.Std.write_line
-use System.Numerics.BigInteger
 
-sudan(order: int, left: BigInteger, right: BigInteger) -> BigInteger =>
+sudan(order: int, left: bigint, right: bigint) -> bigint =>
     if order == 0 then left + right
     elif right.is_zero then left
     else (
-        let step = sudan(order, left, right - BigInteger.one)
+        let step = sudan(order, left, right - bigint.one)
 
         sudan(order - 1, step, step + right)
     )
     fi
 
 show(order: int, left: int, right: int) is
-    let value = sudan(order, BigInteger(left), BigInteger(right))
+    let value = sudan(order, bigint(left), bigint(right))
 
     write_line("F({order}, {left}, {right}) = {value}")
 si
