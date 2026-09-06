@@ -17,10 +17,9 @@ nobody re-reads.
   project is the test case - `ghulflags` and the `*.expected` files sit beside the source, and
   `dotnet ghul-test --use-dotnet-build tasks/<slug>` runs it in place.
 - `rosetta-code.ghulproj` and `root/entry.ghul` - a stub that names every task's source so the
-  editor loads them all in one analysis session. It is not buildable: each task is a program in
-  its own right, so compiling them together reports duplicate entry points. That only affects a
-  root build, which nothing needs - analysis mode does not run code generation, so the editor is
-  unaffected. Build and run tasks individually.
+  editor loads them all in one analysis session. It builds as a library, which type-checks every
+  solution in one pass, but it produces none of the programs: each task is a program in its own
+  right and carries its own top-level statements. Build and run tasks individually.
 - `TASKS.json` - the ledger: every task that has been done, queued, rejected or blocked, and why.
 - `scripts/new-task.sh` - scaffolds a task and its test.
 - `tools/rosetta/` - the ledger and the wiki client.
@@ -159,7 +158,11 @@ Each `task.json` carries a copy of its own task's state, because that is what
 
 ## the rosetta tool
 
-`tools/rosetta` is the ledger and the wiki client.
+`tools/rosetta` is the ledger and the wiki client. Publishing signs in with a
+[Special:BotPasswords](https://rosettacode.org/wiki/Special:BotPasswords) credential granted
+**Edit existing pages** and nothing else, read from `~/secrets/rosetta-code-bot` or from wherever
+`ROSETTA_CREDENTIALS` points. Edits appear in page history under the account the credential
+belongs to, not as a bot of their own.
 
 ```sh
 dotnet run --project tools/rosetta -- self-test         # feed the guards the damage they exist to stop
@@ -226,18 +229,6 @@ link out rather than to handle the refusal.
 The target has to be a page that already exists, because the credential is granted editing and
 not creation. `Rosetta Code:Sandbox` does; a `User:<name>/sandbox` subpage keeps the noise off a
 shared page but has to be created by hand once.
-
-### credentials
-
-Publishing signs in with a credential from
-[Special:BotPasswords](https://rosettacode.org/wiki/Special:BotPasswords) on an account that can
-already edit, granted **Edit existing pages** and nothing else. Write it to
-`~/secrets/rosetta-code-bot`, the user on the first line and the password on the second, and
-`chmod 600` it. Set `ROSETTA_CREDENTIALS` to use a different path.
-
-The password that page issues is shown once. Edits appear in page history under the underlying
-account, not as a separate bot: this is a way to drive an account's own edits, not an identity of
-its own.
 
 ## licensing
 

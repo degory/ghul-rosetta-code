@@ -69,10 +69,11 @@ it.
 
 So, in rough order of how often it comes up:
 
-- **Thread with `|>` and the global pipe functions**, not `|` and the fluent
-  methods. `xs |> map(f) |> filter(p) |> join(", ")` over
-  `xs | .map(f) | .filter(p) | .join(", ")`. Both compile and mean the same
-  thing; the first is the one that reads as this language rather than as LINQ.
+- **Thread with `|>` and the global pipe functions.** They are global
+  functions and `Pipe[T]` declares none of its own, so a chain of them either
+  threads or nests, and here it threads:
+  `xs |> map(f) |> filter(p) |> join(", ")`, never
+  `join(filter(map(xs, f), p), ", ")`.
 - **Prefer functions to classes.** A class earns its place when the task is
   itself about objects, or when it is plainly clearer than the alternative.
   A task solved with a class holding two fields and one method, where three
@@ -161,9 +162,10 @@ been confirmed.
 ## Solutions carry no statement terminators
 
 A statement's terminator can be left off at the end of a line, and here it always is. The line
-break is the terminator, and the root project compiles the solutions with
-`--warn redundant-semicolon` - a warning locally, an error on CI - so a stray `;` does not creep
-back in.
+break is the terminator. `rosetta-code.ghulproj` compiles every solution with
+`--warn redundant-semicolon`, so a root `dotnet build` reports a stray `;` wherever it is. Nothing
+else does - CI builds each task through its own project, and those do not carry the flag - so run
+that build before opening a pull request.
 
 ```ghul
 use IO.Std.write_line
@@ -181,7 +183,7 @@ string literal followed by one that begins with one - without it the two literal
 single literal across the line break. Both are rare enough in a solution that meeting one is a
 reason to look at the line again. `GHUL.md`'s "statement terminators" section has the rules that
 keep a wrapped expression unambiguous; the ones that come up here are that a continuation line
-opens with `.`, `|` or `|>`, and that a wrapped operator expression carries the operator at the end
+opens with `.` or `|>`, and that a wrapped operator expression carries the operator at the end
 of the line rather than the start of the next.
 
 ## Keep lines narrow
@@ -328,9 +330,9 @@ build each task as they go.
 |------|-----------|------------------|
 | Integration tests | `dotnet ghul-test --use-dotnet-build tasks` | seconds to minutes |
 
-There is no repository-wide `dotnet build` to run: the root project does not compile, for the
-reason given under "The root project" below. Build a single task with
-`dotnet run --project tasks/<slug>`.
+A root `dotnet build` type-checks every solution in one pass and is the only thing that reports a
+stray statement terminator, so it is worth running, but it produces none of the programs - see
+"The root project" below. Build and run a single task with `dotnet run --project tasks/<slug>`.
 
 - Each task directory is its own test case: the `ghulflags` and `*.expected` files sit beside
   the source. `scripts/new-task.sh` and `scripts/new-part.sh` scaffold them.
@@ -345,14 +347,16 @@ reason given under "The root project" below. Build a single task with
 `rosetta-code.ghulproj`, with `root/entry.ghul`, names every task's source so the ghūl VS Code
 extension loads them in one analysis session.
 
-**It is not buildable, and that is expected.** Each task is a whole program, so compiling them
-together reports `duplicate entrypoint` and the build dies with an error that names no file. Only
-a root build is affected: analysis mode does not run code generation, so the editor is fine, and
-CI builds each task through its own test project.
+**It builds, and it produces none of the programs.** Every task carries its own top-level
+statements, so an aggregate of them all has no single entry point to run: the project takes
+`OutputType` `Library` and an `--entry root_entry` stub, and suppresses the
+`top-level-statements-not-run` warning each task would otherwise draw. What the build is good for
+is type-checking every solution at once and reporting stray statement terminators. CI does not run
+it - each task is built by its own test project.
 
-Don't try to fix it by wrapping solutions in an `entry()` function. A task's source should read
-the way it will read on the wiki, and top-level statements are the reason a ghūl entry there needs
-no wrapper at all.
+Don't try to make the tasks build together as programs by wrapping solutions in an `entry()`
+function. A task's source should read the way it will read on the wiki, and top-level statements
+are the reason a ghūl entry there needs no wrapper at all.
 
 ## Keeping GHUL.md in sync
 
