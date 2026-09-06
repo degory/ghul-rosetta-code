@@ -1,3 +1,37 @@
 use IO.Std.write_line
+use Ghul.Pipes
+use System.Numerics.BigInteger
 
-write_line("not written yet")
+riordan(count: int) -> Pipe[BigInteger] is
+    let previous mut = BigInteger.one
+    let current mut = BigInteger.zero
+
+    yield previous
+
+    for index in 1..count do
+        yield current
+
+        let following =
+            BigInteger(index) *
+            (BigInteger(2) * current + BigInteger(3) * previous) /
+            BigInteger(index + 2)
+
+        previous = current
+        current = following
+    od
+si
+
+let first = riordan(32) |> collect_list()
+
+for row in 0..8 do
+    let line = first[row * 4..row * 4 + 4] |> map(term => "{term,14}")
+
+    write_line(line |> join(""))
+od
+
+digits(index: int) -> int =>
+    (riordan(index + 1) |> collect_list())[index].to_string().length
+
+write_line("")
+write_line("the 1,000th Riordan number has {digits(1_000)} digits")
+write_line("the 10,000th has {digits(10_000)} digits")
