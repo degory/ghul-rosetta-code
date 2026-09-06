@@ -1,3 +1,67 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-write_line("not written yet")
+digits(value: int, base: int) -> LIST[int] is
+    let result = LIST[int]()
+    let remaining mut = value
+
+    while remaining > 0 do
+        result.add(remaining % base)
+        remaining = remaining / base
+    od
+
+    result
+si
+
+prime_factor_sum(value: int) -> int is
+    let total mut = 0
+    let remaining mut = value
+    let factor mut = 2
+
+    while factor * factor <= remaining do
+        while remaining % factor == 0 do
+            total = total + factor
+            remaining = remaining / factor
+        od
+
+        factor = factor + 1
+    od
+
+    if remaining > 1 then total + remaining else total fi
+si
+
+is_rhonda(value: int, base: int) -> bool =>
+    digits(value, base) |> reduce(1, (product, d) => product * d) ==
+    base * prime_factor_sum(value)
+
+rhondas(base: int) -> Pipe[int] is
+    let candidate mut = 1
+
+    do
+        candidate = candidate + 1
+
+        if is_rhonda(candidate, base) then
+            yield candidate
+        fi
+    od
+si
+
+is_prime(value: int) -> bool is
+    let divisor mut = 2
+
+    while divisor * divisor <= value do
+        if value % divisor == 0 then return false fi
+        divisor = divisor + 1
+    od
+
+    value > 1
+si
+
+write_line("the first ten Rhonda numbers, shown in base ten:")
+
+for base in (2::36) |> filter(b => !is_prime(b)) do
+    let found = rhondas(base) |> take(10) |> map(term => "{term,8}")
+
+    write_line("base {base,2}:{found |> join("")}")
+od
