@@ -8,10 +8,11 @@ use Ghul.Pipes
 // covers every operator the language will ever have, including
 // the ones a program invents for itself.
 //
-// The user-N rows are the levels held for those. An operator
-// whose spelling matches no row lands at user-5, and
-// `@precedence` moves one to any other user-N row. The named
-// rows take only the spellings listed against them.
+// An operator the program declares is placed the same way: `+++`
+// takes the addition row from its `+`, `<*>` the relational row
+// from its `<`. A first character no row claims lands at user-5,
+// and the user-N rows exist so that `@precedence` has somewhere
+// between the built-in levels to put an operator.
 
 row(level: string, ops: string, assoc: string) -> string =>
     "  {level,-16}{ops,-30}{assoc}";
@@ -38,9 +39,9 @@ levels() -> Pipe[string] is
     yield row("user-1", "??", "right")
 si
 
-// A value that prints the shape of the expression that built
-// it, so the grouping the parser chose is what the program
-// prints.
+// A value whose string form is the expression that built it, fully
+// parenthesised. Printing a result therefore shows the grouping the
+// parser chose.
 class E is
     text: string;
 
@@ -57,9 +58,10 @@ si
 
 joined(op: string, a: E, b: E) -> E => E("({a} {op} {b})");
 
-// A global function. Grouping is settled while the file is
-// parsed, before any of these is resolved, so which of the three
-// forms an operator is declared in cannot affect its level.
+// The third way to declare an operator: a global function. The
+// parser groups an expression before any operator in it is looked
+// up, so where and how an operator is declared has no bearing on
+// its precedence.
 +++(a: E, b: E) -> E => joined("+++", a, b);
 
 // A leading `?` is the one spelling that groups rightwards.
