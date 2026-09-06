@@ -1,0 +1,109 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let top = 100_000
+
+// A composite with three or more prime factors has a smallest one no
+// larger than its cube root, so its aliquot sum is at least the
+// number raised to two thirds. The only shapes that escape that
+// bound are a prime, a prime squared, and a product of two distinct
+// primes, and those are marked directly rather than sieved for.
+let sieved = cast int(System.Math.pow(cast double(top), 1.5D))
+
+let aliquot = LIST[int]()
+
+for _ in 0::sieved do
+    aliquot.add(0)
+od
+
+for divisor in 1::sieved / 2 do
+    let multiple mut = divisor * 2
+
+    while multiple <= sieved do
+        aliquot[multiple] = aliquot[multiple] + divisor
+        multiple = multiple + divisor
+    od
+od
+
+let touched = LIST[bool]()
+
+for _ in 0::top do
+    touched.add(false)
+od
+
+for value in 2::sieved do
+    let sum = aliquot[value]
+
+    if sum <= top then
+        touched[sum] = true
+    fi
+od
+
+let composite = LIST[bool]()
+
+for _ in 0::top do
+    composite.add(false)
+od
+
+let factor mut = 2
+
+while factor * factor <= top do
+    if !composite[factor] then
+        let multiple mut = factor * factor
+
+        while multiple <= top do
+            composite[multiple] = true
+            multiple = multiple + factor
+        od
+    fi
+
+    factor = factor + 1
+od
+
+let primes = (2::top) |> filter(p => !composite[p]) |> collect_list()
+
+for prime in primes do
+    if prime + 1 <= top then
+        touched[prime + 1] = true
+    fi
+od
+
+for first in 0..primes.count do
+    if primes[first] * 2 + 1 > top then break fi
+
+    for second in first + 1..primes.count do
+        let sum = primes[first] + primes[second] + 1
+
+        if sum > top then break fi
+
+        touched[sum] = true
+    od
+od
+
+let untouchable = (1::top) |> filter(value => !touched[value])
+                           |> collect_list()
+
+write_line("the untouchable numbers up to 2000:")
+
+let small = untouchable |> filter(value => value <= 2_000)
+                        |> map(value => "{value,6}")
+                        |> collect_list()
+
+for row in 0..(small.count + 9) / 10 do
+    let last = System.Math.min(row * 10 + 10, small.count)
+
+    write_line(small[row * 10..last] |> join(""))
+od
+
+write_line("")
+write_line("there are {small.count} of them")
+write_line("")
+write_line("how many untouchable numbers there are up to:")
+
+for power in 1::5 do
+    let bound = cast int(System.Math.pow(10.0D, cast double(power)))
+    let found = untouchable |> filter(value => value <= bound) |> count()
+
+    write_line("  {bound,7}: {found}")
+od
