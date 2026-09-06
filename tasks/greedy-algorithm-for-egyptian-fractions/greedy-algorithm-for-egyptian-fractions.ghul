@@ -1,16 +1,15 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 
-egyptian(numerator: BigInteger, denominator: BigInteger)
-        -> Pipe[BigInteger] is
+egyptian(numerator: bigint, denominator: bigint)
+        -> Pipe[bigint] is
     let top mut = numerator
     let bottom mut = denominator
 
-    while top > BigInteger.zero do
-        let unit = (bottom + top - BigInteger.one) / top
+    while top > bigint.zero do
+        let unit = (bottom + top - bigint.one) / top
 
         yield unit
 
@@ -28,8 +27,8 @@ describe(numerator: int, denominator: int) -> string is
     fi
 
     let rest = egyptian(
-        cast BigInteger(numerator % denominator),
-        cast BigInteger(denominator))
+        cast bigint(numerator % denominator),
+        cast bigint(denominator))
 
     for unit in rest do
         terms.add("1/{unit}")
@@ -45,15 +44,15 @@ od
 report(limit: int) is
     let most_terms mut = (numerator = 0, denominator = 1, terms = 0)
     let widest mut =
-        (numerator = 0, denominator = 1, unit = BigInteger.zero)
+        (numerator = 0, denominator = 1, unit = bigint.zero)
 
     for denominator in 2::limit do
         for numerator in 1..denominator do
             let count mut = 0
-            let last mut = BigInteger.zero
+            let last mut = bigint.zero
 
             let units = egyptian(
-                cast BigInteger(numerator), cast BigInteger(denominator))
+                cast bigint(numerator), cast bigint(denominator))
 
             for unit in units do
                 count = count + 1

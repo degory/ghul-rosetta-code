@@ -1,13 +1,12 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-derivative(value: BigInteger) -> BigInteger is
-    if value.sign < 0 then return BigInteger.zero - derivative(-value) fi
-    if value < BigInteger(2) then return BigInteger.zero fi
+derivative(value: bigint) -> bigint is
+    if value.sign < 0 then return bigint.zero - derivative(-value) fi
+    if value < 2n then return bigint.zero fi
 
-    let two = BigInteger(2)
+    let two = 2n
     let factor mut = two
 
     while factor * factor <= value do
@@ -17,15 +16,15 @@ derivative(value: BigInteger) -> BigInteger is
             return derivative(rest) * factor + rest
         fi
 
-        factor = factor + BigInteger.one
+        factor = factor + bigint.one
     od
 
-    BigInteger.one
+    bigint.one
 si
 
 write_line("the arithmetic derivative of -99 through 100:")
 
-let values = (-99::100) |> map(n => "{derivative(BigInteger(n)),5}")
+let values = (-99::100) |> map(n => "{derivative(bigint(n)),5}")
                         |> collect_list()
 
 for row in 0..20 do
@@ -35,11 +34,11 @@ od
 write_line("")
 write_line("the arithmetic derivative of ten to the power m, over seven:")
 
-let ten = BigInteger(10)
-let seven = BigInteger(7)
+let ten = 10n
+let seven = 7n
 
 for m in 1::20 do
-    let quotient = derivative(BigInteger.pow(ten, m)) / seven
+    let quotient = derivative(bigint.pow(ten, m)) / seven
 
     write_line("  m = {m,2}: {quotient}")
 od

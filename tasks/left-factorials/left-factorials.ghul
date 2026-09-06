@@ -1,10 +1,9 @@
 use IO.Std.write_line
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-left_factorials() -> Ghul.Pipes.Pipe[BigInteger] =>
+left_factorials() -> Ghul.Pipes.Pipe[bigint] =>
     stream(
-        (n = 0, factorial = BigInteger.one, total = BigInteger.zero),
+        (n = 0, factorial = bigint.one, total = bigint.zero),
         ((n, factorial, total)) =>
             total || (n + 1, factorial * cast(n + 1), total + factorial)
     )

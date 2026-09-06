@@ -2,28 +2,27 @@ use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
 use System.Globalization.CultureInfo
-use System.Numerics.BigInteger
 
-isqrt(x: BigInteger) -> BigInteger is
-    let two = cast BigInteger(2)
-    let four = cast BigInteger(4)
-    let q mut = BigInteger.one
+isqrt(x: bigint) -> bigint is
+    let two = 2n
+    let four = 4n
+    let q mut = bigint.one
 
     while q <= x do
         q = q * four
     od
 
     let z mut = x
-    let root mut = BigInteger.zero
+    let root mut = bigint.zero
 
-    while q > BigInteger.one do
+    while q > bigint.one do
         q = q / four
 
         let remainder = z - root - q
 
         root = root / two
 
-        if remainder >= BigInteger.zero then
+        if remainder >= bigint.zero then
             z = remainder
             root = root + q
         fi
@@ -32,7 +31,7 @@ isqrt(x: BigInteger) -> BigInteger is
     return root
 si
 
-grouped(value: BigInteger) -> string =>
+grouped(value: bigint) -> string =>
     value.to_string("N0", CultureInfo.invariant_culture)
 
 write_line("isqrt of 0 through 65:")
@@ -40,7 +39,7 @@ write_line("isqrt of 0 through 65:")
 let roots = LIST[string]()
 
 for n in 0::65 do
-    roots.add("{isqrt(cast BigInteger(n))}")
+    roots.add("{isqrt(cast bigint(n))}")
 od
 
 write_line(roots |> join(" "))
@@ -48,10 +47,10 @@ write_line(roots |> join(" "))
 write_line("")
 write_line("isqrt of the odd powers of 7 from 7^1 to 7^73:")
 
-let seven = cast BigInteger(7)
+let seven = 7n
 
 (1::73)
     |> filter(power => power % 2 == 1)
     |> each(power =>
         write_line(
-            "7^{power,-2} {grouped(isqrt(BigInteger.pow(seven, power)))}"))
+            "7^{power,-2} {grouped(isqrt(bigint.pow(seven, power)))}"))

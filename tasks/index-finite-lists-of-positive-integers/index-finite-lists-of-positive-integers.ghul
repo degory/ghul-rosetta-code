@@ -1,31 +1,30 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 
-let ten = cast BigInteger(10)
-let eleven = cast BigInteger(11)
+let ten = 10n
+let eleven = 11n
 
-rank(values: Collections.List[BigInteger]) -> BigInteger is
-    let result mut = BigInteger.one
+rank(values: Collections.List[bigint]) -> bigint is
+    let result mut = bigint.one
 
     for value in values do
         result = result * eleven + ten
 
         for digit in value.to_string() do
-            result = result * eleven + cast BigInteger(digit - '0')
+            result = result * eleven + cast bigint(digit - '0')
         od
     od
 
     return result
 si
 
-unrank(index: BigInteger) -> LIST[BigInteger] is
+unrank(index: bigint) -> LIST[bigint] is
     let digits = LIST[string]()
     let remaining mut = index
 
-    while remaining > BigInteger.one do
+    while remaining > bigint.one do
         let digit = cast int(remaining % eleven)
 
         digits.add(if digit == 10 then " " else "{digit}" fi)
@@ -34,11 +33,11 @@ unrank(index: BigInteger) -> LIST[BigInteger] is
 
     digits.reverse()
 
-    let values = LIST[BigInteger]()
+    let values = LIST[bigint]()
 
     for text in (digits |> join("")).split([' ']) do
         if text.length > 0 then
-            values.add(BigInteger.parse(text))
+            values.add(bigint.parse(text))
         fi
     od
 
@@ -46,7 +45,7 @@ unrank(index: BigInteger) -> LIST[BigInteger] is
 si
 
 let sample = [1, 2, 3, 10, 100, 987654321, 1]
-    |> map(v => cast BigInteger(v))
+    |> map(v => cast bigint(v))
     |> collect_list()
 
 let index = rank(sample)

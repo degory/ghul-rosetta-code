@@ -1,14 +1,13 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 
-factorial(value: int) -> BigInteger is
-    let product mut = BigInteger.one
+factorial(value: int) -> bigint is
+    let product mut = bigint.one
 
     for factor in 2::value do
-        product = product * cast BigInteger(factor)
+        product = product * cast bigint(factor)
     od
 
     return product
@@ -34,9 +33,9 @@ nth_prime(index: int) -> int is
     return candidate
 si
 
-fibonacci(index: int) -> BigInteger is
-    let previous mut = BigInteger.zero
-    let current mut = BigInteger.one
+fibonacci(index: int) -> bigint is
+    let previous mut = bigint.zero
+    let current mut = bigint.one
 
     for _ in 0..index do
         let following = previous + current
@@ -47,14 +46,14 @@ fibonacci(index: int) -> BigInteger is
     return current
 si
 
-boustrophedon(term: (int) -> BigInteger, count: int) -> Pipe[BigInteger] is
-    let row mut = LIST[BigInteger]()
+boustrophedon(term: (int) -> bigint, count: int) -> Pipe[bigint] is
+    let row mut = LIST[bigint]()
     row.add(term(0))
 
     yield row[0]
 
     for index in 1..count do
-        let following = LIST[BigInteger]()
+        let following = LIST[bigint]()
         following.add(term(index))
 
         for step in 1::index do
@@ -66,7 +65,7 @@ boustrophedon(term: (int) -> BigInteger, count: int) -> Pipe[BigInteger] is
     od
 si
 
-report(name: string, term: (int) -> BigInteger) is
+report(name: string, term: (int) -> bigint) is
     let transformed = boustrophedon(term, 15) |> collect_list()
     let texts = LIST[string]()
 
@@ -84,11 +83,11 @@ report(name: string, term: (int) -> BigInteger) is
 si
 
 report("unit", index =>
-    if index == 0 then BigInteger.one else BigInteger.zero fi)
-report("ones", _ => BigInteger.one)
+    if index == 0 then bigint.one else bigint.zero fi)
+report("ones", _ => bigint.one)
 report("alternating", index => (
-    if index % 2 == 0 then BigInteger.one
-    else BigInteger.zero - BigInteger.one fi))
-report("primes", index => cast BigInteger(nth_prime(index)))
+    if index % 2 == 0 then bigint.one
+    else bigint.zero - bigint.one fi))
+report("primes", index => cast bigint(nth_prime(index)))
 report("fibonacci", index => fibonacci(index))
 report("factorials", index => factorial(index))

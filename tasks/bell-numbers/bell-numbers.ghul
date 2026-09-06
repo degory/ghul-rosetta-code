@@ -2,17 +2,16 @@ use IO.Std.write_line
 use Collections.LIST
 use Collections.List
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-bell_triangle() -> Pipe[List[BigInteger]] is
-    let row mut = LIST[BigInteger]()
+bell_triangle() -> Pipe[List[bigint]] is
+    let row mut = LIST[bigint]()
 
-    row.add(BigInteger.one)
+    row.add(bigint.one)
 
     while true do
         yield row
 
-        let next = LIST[BigInteger]()
+        let next = LIST[bigint]()
 
         next.add(row[row.count - 1])
 

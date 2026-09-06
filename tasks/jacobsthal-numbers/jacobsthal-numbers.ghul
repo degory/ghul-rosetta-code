@@ -1,10 +1,9 @@
 use IO.Std.write_line
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-let two = BigInteger(2)
+let two = 2n
 
-jacobsthal_from(first: BigInteger, second: BigInteger) -> Pipe[BigInteger] is
+jacobsthal_from(first: bigint, second: bigint) -> Pipe[bigint] is
     let previous mut = first
     let current mut = second
 
@@ -16,13 +15,13 @@ jacobsthal_from(first: BigInteger, second: BigInteger) -> Pipe[BigInteger] is
     od
 si
 
-jacobsthal() -> Pipe[BigInteger] => jacobsthal_from(BigInteger(0), BigInteger(1))
+jacobsthal() -> Pipe[bigint] => jacobsthal_from(0n, 1n)
 
-jacobsthal_lucas() -> Pipe[BigInteger] => jacobsthal_from(two, BigInteger(1))
+jacobsthal_lucas() -> Pipe[bigint] => jacobsthal_from(two, 1n)
 
-jacobsthal_oblongs() -> Pipe[BigInteger] is
-    let previous mut = BigInteger(0)
-    let current mut = BigInteger(1)
+jacobsthal_oblongs() -> Pipe[bigint] is
+    let previous mut = 0n
+    let current mut = 1n
 
     do
         yield previous * current
@@ -32,18 +31,18 @@ jacobsthal_oblongs() -> Pipe[BigInteger] is
     od
 si
 
-is_prime(n: BigInteger) -> bool =>
-    n > BigInteger(1) /\
-        stream(two, d => d || d + BigInteger(1))
+is_prime(n: bigint) -> bool =>
+    n > 1n /\
+        stream(two, d => d || d + 1n)
             |> take_while(d => d * d <= n)
-            |> all(d => n % d !~ BigInteger(0))
+            |> all(d => n % d !~ 0n)
 
-show(label: string, values: Pipe[BigInteger], count: int) is
+show(label: string, values: Pipe[bigint], count: int) is
     write_line("{label}:")
     let rows = values |> take(count) |> chunk(10) |> collect()
 
     rows |> each(row =>
-        write_line(row |> map((v: BigInteger) => "{v,16}") |> join(" ")))
+        write_line(row |> map((v: bigint) => "{v,16}") |> join(" ")))
 si
 
 show("first 30 Jacobsthal numbers", jacobsthal(), 30)
