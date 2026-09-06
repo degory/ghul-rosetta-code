@@ -52,11 +52,11 @@ class PRINTER is
         fi
     si
 
-    // The monitor. It serves one request at a time, so although a
-    // line is written a character at a time and every character
-    // gives the other writer a turn, no line comes out inside
-    // another. A printer with no ink left requeues the rendezvous
-    // to its reserve and answers with whatever that answers.
+    // The monitor. It serves each request to completion before taking
+    // the next: printing yields after every character, which gives the
+    // other writer a turn, but the two writers' lines never interleave.
+    // A printer that is out of ink forwards the request to its reserve
+    // and relays the reserve's reply.
     serve() -> COROUTINE is
         do
             let request = await _requests.receive()

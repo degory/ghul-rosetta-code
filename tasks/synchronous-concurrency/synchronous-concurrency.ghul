@@ -12,8 +12,8 @@ si
 use Request.COUNT
 use Request.PRINT
 
-// The task reads a file named input.txt. The program writes one
-// first, so the entry runs wherever it is pasted.
+// The task reads its input from a file. The program writes that file
+// first, so it runs as-is with nothing to set up.
 let path = "input.txt"
 
 IO.File.write_all_lines(path, ["Enjoy", "Rosetta", "Code"])

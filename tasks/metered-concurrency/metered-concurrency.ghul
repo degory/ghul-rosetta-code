@@ -6,14 +6,15 @@ use Ghul.Coroutines.run
 
 let permits = 3
 let workers = 5
+// The task has each worker hold its permit for two seconds. Every
+// coroutine here runs cooperatively on one thread, so the hold is
+// measured in scheduler turns instead.
 let holding_turns = 2
 
 let semaphore = SEMAPHORE(permits)
 
 holding() -> int => permits - semaphore.available
 
-// The scheduler runs the workers on one thread, so a run of turns
-// spent parked stands in for the two seconds the task asks for.
 worker(id: int) -> COROUTINE is
     await semaphore.acquire()
 

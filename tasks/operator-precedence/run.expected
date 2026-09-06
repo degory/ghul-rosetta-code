@@ -33,6 +33,6 @@ the same expression, under @precedence
 
 arguments are passed by value
 
-  callee wrote a field         99
-  callee reassigned the value  1
-  callee wrote through a ref   99
+  callee assigned to an int          1
+  callee assigned through an int ref 99
+  callee set a field of a class      99

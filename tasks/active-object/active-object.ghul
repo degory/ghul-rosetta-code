@@ -5,10 +5,9 @@ use Ghul.Coroutines.run
 use System.Math.pi
 use System.Math.sin
 
-// The clock the object's state depends on is the scheduler's: every
-// turn is one step of simulated time. That is what makes the
-// integral reproducible, where a wall clock would leave it at the
-// mercy of the operating system's time slicing.
+// Time is simulated: each scheduler turn advances t by one step, and
+// nothing reads a real clock. The integral therefore comes out the
+// same on every run.
 let step = 0.001D
 let frequency = 0.5D
 
@@ -24,9 +23,9 @@ class INTEGRATOR is
         _running = true
     si
 
-    // The encapsulated task. It wakes on its own and adds one
-    // trapezium to the running total, whatever the outside world is
-    // doing to the input meanwhile.
+    // The active object's own thread of control. It advances the
+    // integral by one trapezium each turn, regardless of what the
+    // caller is doing to the input in the meantime.
     integrate() -> COROUTINE is
         while _running do
             await pause()

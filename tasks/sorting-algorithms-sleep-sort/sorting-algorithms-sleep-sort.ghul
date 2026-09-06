@@ -5,10 +5,10 @@ use Ghul.Coroutines.run
 
 let values = [5, 3, 8, 0, 1, 9, 2, 7]
 
-// Each value waits its own number of turns before printing itself.
-// The waits are scheduler turns rather than seconds, so the order
-// they come out in is the order of the values however small the
-// gaps between them are.
+// Each value waits its own number of scheduler turns before printing
+// itself. Because the waits are turns rather than real time, values
+// that differ by one still wake in order; with real sleeps, a gap
+// that small would be a race.
 emit(value: int) -> COROUTINE is
     for _ in 1::value do
         await pause()

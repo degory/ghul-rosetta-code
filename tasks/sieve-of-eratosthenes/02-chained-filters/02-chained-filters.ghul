@@ -20,8 +20,8 @@ count_up(out: Numbers) -> COROUTINE is
     out.send(null)
 si
 
-// One link of the chain: everything its own prime does not divide
-// goes on to the next link.
+// One filter in the chain. It passes along every number its prime
+// does not divide.
 drop_multiples(prime: int, into: Numbers, out: Numbers) -> COROUTINE is
     do
         let value = await into.receive()
