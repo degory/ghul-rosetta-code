@@ -1,0 +1,121 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let top = 1_000_000_000
+let segment_size = 1 << 20
+
+base_primes(bound: int) -> LIST[int] is
+    let composite = LIST[bool]()
+
+    for _ in 0::bound do
+        composite.add(false)
+    od
+
+    let factor mut = 2
+
+    while factor * factor <= bound do
+        if !composite[factor] then
+            let multiple mut = factor * factor
+
+            while multiple <= bound do
+                composite[multiple] = true
+                multiple = multiple + factor
+            od
+        fi
+
+        factor = factor + 1
+    od
+
+    (2::bound) |> filter(value => !composite[value]) |> collect_list()
+si
+
+primes_below(bound: int) -> Pipe[int] is
+    let root_bound = cast int(System.Math.sqrt(cast double(bound))) + 1
+    let roots = base_primes(root_bound)
+    let block = LIST[bool]()
+
+    for _ in 0..segment_size do
+        block.add(false)
+    od
+
+    let low mut = 2
+
+    while low < bound do
+        let high = System.Math.min(low + segment_size, bound)
+
+        for index in 0..segment_size do
+            block[index] = false
+        od
+
+        for root in roots do
+            if root * root >= high then break fi
+
+            let start = (low + root - 1) / root * root
+            let first mut = System.Math.max(root * root, start)
+
+            while first < high do
+                block[first - low] = true
+                first = first + root
+            od
+        od
+
+        for value in low..high do
+            if !block[value - low] then
+                yield value
+            fi
+        od
+
+        low = high
+    od
+si
+
+signature(value: int) -> long is
+    let counts mut = 0L
+    let remaining mut = value
+
+    while remaining > 0 do
+        counts = counts + (1L << (4 * (remaining % 10)))
+        remaining = remaining / 10
+    od
+
+    counts
+si
+
+let smallest = LIST[int]()
+let triples mut = 0
+
+let two_back mut = 0
+let one_back mut = 0
+let two_back_signature mut = 0L
+let one_back_signature mut = 0L
+
+for prime in primes_below(top) do
+    let mark = signature(prime)
+
+    if two_back > 0 /\ one_back_signature == mark /\
+       two_back_signature == mark
+    then
+        triples = triples + 1
+
+        if smallest.count < 25 then
+            smallest.add(two_back)
+        fi
+    fi
+
+    two_back = one_back
+    two_back_signature = one_back_signature
+    one_back = prime
+    one_back_signature = mark
+od
+
+write_line("the smallest member of the first 25 Ormiston triples:")
+
+for row in 0..5 do
+    let cells = smallest[row * 5..row * 5 + 5] |> map(v => "{v,12:N0}")
+
+    write_line(cells |> join(""))
+od
+
+write_line("")
+write_line("there are {triples:N0} Ormiston triples below one billion")
