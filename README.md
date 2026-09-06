@@ -122,9 +122,9 @@ implementations in fifty other languages.
   is the main thing that irritates reviewers there.
 - Keep the program self-contained and free of scaffolding a reader has to skip past.
 - Prefer the idiomatic ghūl over the shortest ghūl, and over a transliteration of the page's C#
-  entry: thread with `|>` and the global pipe functions rather than the
-  fluent methods, prefer functions to classes and expression bodies to blocks, and use the
-  constructs the language next door has no word for. `AGENTS.md` has the detail.
+  entry: thread the global pipe functions with `|>` rather than nesting them, prefer functions to
+  classes and expression bodies to blocks, and use the constructs the language next door has no
+  word for. `AGENTS.md` has the detail.
 - Keep the output deterministic. No clocks, no random numbers, no paths.
 - Keep lines under 64 columns, and never past 76. A solution is read in a fixed-width block on
   Rosetta Code and in a prose column about 77 characters wide on ghul.dev, so anything longer
