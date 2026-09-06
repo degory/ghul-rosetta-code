@@ -1,3 +1,71 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-write_line("not written yet")
+let limit = 1_000_000
+let composite = LIST[bool]()
+
+for _ in 0::limit do
+    composite.add(false)
+od
+
+let factor mut = 2
+
+while factor * factor <= limit do
+    if !composite[factor] then
+        let multiple mut = factor * factor
+
+        while multiple <= limit do
+            composite[multiple] = true
+            multiple = multiple + factor
+        od
+    fi
+
+    factor = factor + 1
+od
+
+is_prime(value: int) -> bool => value > 1 /\ !composite[value]
+
+is_magnanimous(value: int) -> bool is
+    let digits = "{value}"
+
+    for split in 1..digits.length do
+        let left = System.Convert.to_int32(digits[0..split])
+        let right = System.Convert.to_int32(digits[split..<0])
+
+        if !is_prime(left + right) then return false fi
+    od
+
+    true
+si
+
+magnanimous() -> Pipe[int] is
+    let candidate mut = 0
+
+    do
+        if is_magnanimous(candidate) then
+            yield candidate
+        fi
+
+        candidate = candidate + 1
+    od
+si
+
+let terms = magnanimous() |> take(400) |> collect_list()
+
+write_line("the first 45 magnanimous numbers:")
+
+for row in 0::4 do
+    let last = if row == 4 then 45 else row * 10 + 10 fi
+    let cells = terms[row * 10..last] |> map(term => "{term,6}")
+
+    write_line("  {cells |> join("")}")
+od
+
+write_line("")
+write_line("the 241st to 250th:")
+write_line("  {terms[240..250] |> map(t => "{t,8}") |> join("")}")
+
+write_line("")
+write_line("the 391st to 400th:")
+write_line("  {terms[390..400] |> map(t => "{t,8}") |> join("")}")
