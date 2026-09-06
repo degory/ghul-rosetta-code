@@ -1,3 +1,36 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-write_line("not written yet")
+mobius(value: int) -> int is
+    let remaining mut = value
+    let factors mut = 0
+    let factor mut = 2
+
+    while factor * factor <= remaining do
+        if remaining % factor == 0 then
+            remaining = remaining / factor
+            factors = factors + 1
+
+            if remaining % factor == 0 then return 0 fi
+        fi
+
+        factor = factor + 1
+    od
+
+    if remaining > 1 then
+        factors = factors + 1
+    fi
+
+    if factors % 2 == 0 then 1 else -1 fi
+si
+
+write_line("the Mobius function for 1 to 99:")
+
+for row in 0..10 do
+    let start = if row == 0 then 1 else row * 10 fi
+    let indent = if row == 0 then "   " else "" fi
+    let cells = (start::row * 10 + 9) |> map(n => "{mobius(n),3}")
+
+    write_line("{row * 10,4}:{indent}{cells |> join("")}")
+od
