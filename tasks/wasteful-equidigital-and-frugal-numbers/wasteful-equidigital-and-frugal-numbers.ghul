@@ -109,7 +109,8 @@ report(base: int, kind: Kind, name: string) is
     write_line("  first fifty:")
 
     for row in 0..5 do
-        let cells = first_fifty[row * 10..row * 10 + 10] |> map(v => "{v,7}")
+        let cells = first_fifty[row * 10..row * 10 + 10]
+                        |> map(v => "{v,7}")
 
         write_line("   {cells |> join("")}")
     od
