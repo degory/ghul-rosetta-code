@@ -3,8 +3,8 @@ use Collections.LIST
 use Ghul.Pipes
 
 union Tree is
-    LEAF(value: int);
-    NEST(children: LIST[Tree]);
+    LEAF(value: int)
+    NEST(children: LIST[Tree])
 si
 
 nest(levels: int[]) -> Tree is

@@ -19,7 +19,7 @@ si
 use Reply.NO_INK
 use Reply.PRINTED
 
-class REQUEST(line: string, replies: CHANNEL[Reply]);
+class REQUEST(line: string, replies: CHANNEL[Reply])
 
 class PRINTER is
     _name: string

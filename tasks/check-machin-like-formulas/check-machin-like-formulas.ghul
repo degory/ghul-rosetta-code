@@ -9,7 +9,7 @@ struct GAUSSIAN(real: bigint, imaginary: bigint) is
     conjugate: GAUSSIAN => GAUSSIAN(real, 0n - imaginary)
 si
 
-struct TERM(multiplier: int, numerator: int, denominator: int);
+struct TERM(multiplier: int, numerator: int, denominator: int)
 
 tangent_is_one(terms: TERM[]) -> bool is
     let product mut = GAUSSIAN(1n, 0n)

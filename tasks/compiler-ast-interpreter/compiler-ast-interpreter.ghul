@@ -3,9 +3,9 @@ use Collections.LIST
 use Collections.MAP
 
 union Node is
-    EMPTY;
-    LEAF(kind: string, value: string);
-    BRANCH(kind: string, left: Node, right: Node);
+    EMPTY
+    LEAF(kind: string, value: string)
+    BRANCH(kind: string, left: Node, right: Node)
 si
 
 load(lines: LIST[string], cursor: LIST[int]) -> Node is
@@ -42,30 +42,30 @@ interpret(node: Node) -> int =>
     when (~"Identifier", name): Node.LEAF then globals[name]
     when (kind, left, right): Node.BRANCH then
         case kind
-        when "Assign" then (
+        when "Assign" then
             if let (_, name): Node.LEAF = left then
                 globals[name] = interpret(right)
             fi
-            0)
-        when "If" then (
+            0
+        when "If" then
             if let (_, consequent, alternative): Node.BRANCH = right then
                 interpret(if interpret(left) != 0 then consequent
                           else alternative fi)
             fi
-            0)
-        when "While" then (
+            0
+        when "While" then
             while interpret(left) != 0 do
                 interpret(right)
             od
-            0)
-        when "Sequence" then (interpret(left); interpret(right); 0)
-        when "Prtc" then (Std.write(cast char(interpret(left))); 0)
-        when "Prti" then (Std.write("{interpret(left)}"); 0)
-        when "Prts" then (
+            0
+        when "Sequence" then interpret(left); interpret(right); 0
+        when "Prtc" then Std.write(cast char(interpret(left))); 0
+        when "Prti" then Std.write("{interpret(left)}"); 0
+        when "Prts" then
             if let (_, text): Node.LEAF = left then
                 Std.write(unquote(text))
             fi
-            0)
+            0
         when "Negate" then -interpret(left)
         when "Not" then truth(interpret(left) == 0)
         when "And" then truth(interpret(left) != 0 /\ interpret(right) != 0)
