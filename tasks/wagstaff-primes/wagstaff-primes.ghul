@@ -1,3 +1,82 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
 
-write_line("not written yet")
+let one = BigInteger.one
+let two = BigInteger(2)
+
+is_odd_prime(value: int) -> bool is
+    if value < 3 \/ value % 2 == 0 then return false fi
+
+    let divisor mut = 3
+
+    while divisor * divisor <= value do
+        if value % divisor == 0 then return false fi
+        divisor = divisor + 2
+    od
+
+    true
+si
+
+probably_prime(value: BigInteger) -> bool is
+    for small in [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37] do
+        let witness = BigInteger(small)
+
+        if value =~ witness then return true fi
+        if (value % witness).is_zero then return false fi
+    od
+
+    let odd_part mut = value - one
+    let power mut = 0
+
+    while (odd_part % two).is_zero do
+        odd_part = odd_part / two
+        power = power + 1
+    od
+
+    for small in [2, 3, 5, 7] do
+        let residue mut =
+            BigInteger.mod_pow(BigInteger(small), odd_part, value)
+        let witnessed mut = residue =~ one \/ residue =~ value - one
+
+        for _ in 1..power do
+            if witnessed then break fi
+
+            residue = residue * residue % value
+            witnessed = residue =~ value - one
+        od
+
+        if !witnessed then return false fi
+    od
+
+    true
+si
+
+wagstaff(top: int) -> Pipe[(exponent: int, value: BigInteger)] is
+    for exponent in 3::top do
+        if is_odd_prime(exponent) then
+            let value =
+                (BigInteger.pow(two, exponent) + one) / BigInteger(3)
+
+            if probably_prime(value) then
+                yield (exponent = exponent, value = value)
+            fi
+        fi
+    od
+si
+
+let found = wagstaff(2_000) |> collect_list()
+
+write_line("the first ten Wagstaff primes:")
+
+for step in 0..10 do
+    write_line("  p = {found[step].exponent,2}: {found[step].value}")
+od
+
+write_line("")
+write_line("exponents of the Wagstaff primes after those:")
+
+let rest = found[10..found.count] |> map(entry => "{entry.exponent}")
+
+write_line("  {rest |> join(" ")}")
