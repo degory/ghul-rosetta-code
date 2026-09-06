@@ -1,0 +1,127 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+union Kind is
+    WASTEFUL
+    EQUIDIGITAL
+    FRUGAL
+si
+
+use Kind.EQUIDIGITAL
+use Kind.FRUGAL
+use Kind.WASTEFUL
+
+let limit = 20_000_000
+let counted = 1_000_000
+let smallest_factor = LIST[int]()
+
+for value in 0::limit do
+    smallest_factor.add(if value % 2 == 0 then 2 else value fi)
+od
+
+let odd mut = 3
+
+while odd * odd <= limit do
+    if smallest_factor[odd] == odd then
+        let multiple mut = odd * odd
+
+        while multiple <= limit do
+            if smallest_factor[multiple] == multiple then
+                smallest_factor[multiple] = odd
+            fi
+
+            multiple = multiple + 2 * odd
+        od
+    fi
+
+    odd = odd + 2
+od
+
+length_in(value: int, base: int) -> int is
+    let digits mut = 0
+    let remaining mut = value
+
+    while remaining > 0 do
+        digits = digits + 1
+        remaining = remaining / base
+    od
+
+    digits
+si
+
+factor_length(value: int, base: int) -> int is
+    let total mut = 0
+    let remaining mut = value
+
+    while remaining > 1 do
+        let factor = smallest_factor[remaining]
+        let power mut = 0
+
+        while remaining % factor == 0 do
+            remaining = remaining / factor
+            power = power + 1
+        od
+
+        total = total + length_in(factor, base)
+
+        if power > 1 then
+            total = total + length_in(power, base)
+        fi
+    od
+
+    total
+si
+
+classify(value: int, base: int) -> Kind =>
+    if value == 1 then EQUIDIGITAL
+    else (
+        let own = length_in(value, base)
+        let factors = factor_length(value, base)
+
+        if own < factors then WASTEFUL
+        elif own == factors then EQUIDIGITAL
+        else FRUGAL
+        fi
+    )
+    fi
+
+report(base: int, kind: Kind, name: string) is
+    let matching = (1::limit) |> filter(n => classify(n, base) =~ kind)
+    let first_fifty = LIST[int]()
+    let ten_thousandth mut = 0
+    let found mut = 0
+    let below mut = 0
+
+    for value in matching do
+        found = found + 1
+
+        if value <= counted then below = below + 1 fi
+        if found <= 50 then first_fifty.add(value) fi
+
+        if found == 10_000 then
+            ten_thousandth = value
+            if value > counted then break fi
+        fi
+    od
+
+    write_line("base {base} {name} numbers")
+    write_line("  first fifty:")
+
+    for row in 0..5 do
+        let cells = first_fifty[row * 10..row * 10 + 10]
+                        |> map(v => "{v,7}")
+
+        write_line("   {cells |> join("")}")
+    od
+
+    write_line("  the 10,000th is {ten_thousandth}")
+    write_line("  {below} of them are below 1,000,000")
+    write_line("")
+si
+
+for base in [10, 11] do
+    report(base, WASTEFUL, "wasteful")
+    report(base, EQUIDIGITAL, "equidigital")
+    report(base, FRUGAL, "frugal")
+od

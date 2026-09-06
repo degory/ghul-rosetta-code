@@ -1,0 +1,74 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+
+is_prime(value: int) -> bool is
+    if value < 2 then return false fi
+
+    let divisor mut = 2
+
+    while divisor * divisor <= value do
+        if value % divisor == 0 then return false fi
+        divisor = divisor + 1
+    od
+
+    true
+si
+
+smooth(bound: int, count: int) -> LIST[BigInteger] is
+    let factors = (2::bound) |> filter(is_prime)
+                             |> map(p => BigInteger(p))
+                             |> collect_list()
+
+    let found = LIST[BigInteger]()
+    found.add(BigInteger.one)
+
+    let next_index = LIST[int]()
+
+    for _ in factors do
+        next_index.add(0)
+    od
+
+    while found.count < count do
+        let smallest mut = found[next_index[0]] * factors[0]
+
+        for which in 1..factors.count do
+            let candidate = found[next_index[which]] * factors[which]
+
+            if candidate < smallest then
+                smallest = candidate
+            fi
+        od
+
+        for which in 0..factors.count do
+            if found[next_index[which]] * factors[which] =~ smallest then
+                next_index[which] = next_index[which] + 1
+            fi
+        od
+
+        found.add(smallest)
+    od
+
+    found
+si
+
+let bounds = (2::29) |> filter(is_prime) |> collect_list()
+
+write_line("the first 25 n-smooth numbers:")
+
+for bound in bounds do
+    let terms = smooth(bound, 25) |> map(value => "{value}") |> join(" ")
+
+    write_line("  {bound,2}: {terms}")
+od
+
+write_line("")
+write_line("the 3000th to 3002nd n-smooth numbers:")
+
+for bound in bounds |> filter(b => b >= 3) do
+    let found = smooth(bound, 3_002)
+    let terms = found[2_999..3_002] |> map(value => "{value}") |> join(" ")
+
+    write_line("  {bound,2}: {terms}")
+od

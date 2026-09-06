@@ -1,0 +1,32 @@
+use IO.Std.write_line
+use System.Numerics.BigInteger
+
+sudan(order: int, left: BigInteger, right: BigInteger) -> BigInteger =>
+    if order == 0 then left + right
+    elif right.is_zero then left
+    else (
+        let step = sudan(order, left, right - BigInteger.one)
+
+        sudan(order - 1, step, step + right)
+    )
+    fi
+
+show(order: int, left: int, right: int) is
+    let value = sudan(order, BigInteger(left), BigInteger(right))
+
+    write_line("F({order}, {left}, {right}) = {value}")
+si
+
+for right in 0::3 do
+    show(0, 3, right)
+od
+
+for right in 0::3 do
+    show(1, 3, right)
+od
+
+for right in 0::2 do
+    show(2, 1, right)
+od
+
+show(3, 1, 1)

@@ -1,3 +1,6 @@
+// Each value waits its own number of scheduler turns rather than any
+// real time, so values one apart still wake in order.
+
 use IO.Std.write_line
 use Ghul.Coroutines.COROUTINE
 use Ghul.Coroutines.pause
@@ -5,10 +8,6 @@ use Ghul.Coroutines.run
 
 let values = [5, 3, 8, 0, 1, 9, 2, 7]
 
-// Each value waits its own number of scheduler turns before printing
-// itself. Because the waits are turns rather than real time, values
-// that differ by one still wake in order; with real sleeps, a gap
-// that small would be a race.
 emit(value: int) -> COROUTINE is
     for _ in 1::value do
         await pause()

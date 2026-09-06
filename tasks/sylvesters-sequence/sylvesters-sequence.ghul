@@ -1,0 +1,38 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use System.Numerics.BigInteger
+
+sylvester(count: int) -> Pipe[BigInteger] is
+    let term mut = BigInteger(2)
+
+    for _ in 1::count do
+        yield term
+        term = term * term - term + BigInteger.one
+    od
+si
+
+gcd(a: BigInteger, b: BigInteger) -> BigInteger =>
+    if b.is_zero then a else gcd(b, a % b) fi
+
+let terms = sylvester(10) |> collect_list()
+
+write_line("first ten terms:")
+
+for term in terms do
+    write_line("  {term}")
+od
+
+let numerator mut = BigInteger.zero
+let denominator mut = BigInteger.one
+
+for term in terms do
+    numerator = numerator * term + denominator
+    denominator = denominator * term
+od
+
+let common = gcd(numerator, denominator)
+
+write_line("")
+write_line("sum of the reciprocals of the first ten:")
+write_line("  numerator   {numerator / common}")
+write_line("  denominator {denominator / common}")

@@ -1,3 +1,6 @@
+// Time is simulated: each scheduler turn advances the clock by one
+// step, and nothing reads a real one.
+
 use IO.Std.write_line
 use Ghul.Coroutines.COROUTINE
 use Ghul.Coroutines.pause
@@ -5,9 +8,6 @@ use Ghul.Coroutines.run
 use System.Math.pi
 use System.Math.sin
 
-// Time is simulated: each scheduler turn advances t by one step, and
-// nothing reads a real clock. The integral therefore comes out the
-// same on every run.
 let step = 0.001D
 let frequency = 0.5D
 
@@ -23,9 +23,6 @@ class INTEGRATOR is
         _running = true
     si
 
-    // The active object's own thread of control. It advances the
-    // integral by one trapezium each turn, regardless of what the
-    // caller is doing to the input in the meantime.
     integrate() -> COROUTINE is
         while _running do
             await pause()

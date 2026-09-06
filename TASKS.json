@@ -170,6 +170,11 @@
       "reason": "needs-gui"
     },
     {
+      "title": "Arithmetic derivative",
+      "slug": "arithmetic-derivative",
+      "state": "solved"
+    },
+    {
       "title": "Arithmetic evaluation",
       "slug": "arithmetic-evaluation",
       "state": "published",
@@ -220,6 +225,11 @@
       "published_hash": "1738a01d8cc9b333d1c867e485c4d9ec293eb118cc02bdfd2e49f19c7a5740ad"
     },
     {
+      "title": "Bernoulli\u0027s triangle",
+      "slug": "bernoullis-triangle",
+      "state": "solved"
+    },
+    {
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published",
@@ -248,6 +258,11 @@
       "slug": "boustrophedon-transform",
       "state": "published",
       "published_hash": "109e86e09781468b5980b8927d451e21f106d4e9d6ad5799081de90b8083291e"
+    },
+    {
+      "title": "Box the compass",
+      "slug": "box-the-compass",
+      "state": "solved"
     },
     {
       "title": "Brace expansion",
@@ -368,9 +383,19 @@
       "published_hash": "5ec362a68ed9a200eabea86f9e9b960cfaf8689ee8a2935291667340eff8c5d6"
     },
     {
+      "title": "Colorful numbers",
+      "slug": "colorful-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Colour pinstripe/Printer",
       "state": "rejected",
       "reason": "needs-gui"
+    },
+    {
+      "title": "Comma quibbling",
+      "slug": "comma-quibbling",
+      "state": "solved"
     },
     {
       "title": "Compare sorting algorithms\u0027 performance",
@@ -405,6 +430,11 @@
       "title": "Create a file on magnetic tape",
       "state": "rejected",
       "reason": "needs-native-lib"
+    },
+    {
+      "title": "Cuban primes",
+      "slug": "cuban-primes",
+      "state": "solved"
     },
     {
       "title": "Cumulative standard deviation",
@@ -483,6 +513,11 @@
       "published_hash": "8b9a31f5ba99b3f1af6e19f6862f30be5dad1a7bad01e48b2770d0b2cbd288bc"
     },
     {
+      "title": "Diversity prediction theorem",
+      "slug": "diversity-prediction-theorem",
+      "state": "solved"
+    },
+    {
       "title": "Doomsday rule",
       "slug": "doomsday-rule",
       "state": "published",
@@ -492,6 +527,11 @@
       "title": "Draw a rotating cube",
       "state": "rejected",
       "reason": "needs-gui"
+    },
+    {
+      "title": "Duffinian numbers",
+      "slug": "duffinian-numbers",
+      "state": "solved"
     },
     {
       "title": "EKG sequence convergence",
@@ -536,6 +576,11 @@
       "published_hash": "b74261fde02f740ac0e352c6313e5d10e471ea4730380001ad75048e0d2bcd8f"
     },
     {
+      "title": "Equal prime and composite sums",
+      "slug": "equal-prime-and-composite-sums",
+      "state": "solved"
+    },
+    {
       "title": "Equilibrium index",
       "slug": "equilibrium-index",
       "state": "published",
@@ -546,6 +591,11 @@
       "slug": "erdos-nicolas-numbers",
       "state": "published",
       "published_hash": "c1ee841c157e963bdf223d99004cae2e58a6b7627002bda632c68f70446cc9d5"
+    },
+    {
+      "title": "Erd\u0151s-primes",
+      "slug": "erdos-primes",
+      "state": "solved"
     },
     {
       "title": "Erd\u0151s\u2013Woods numbers",
@@ -619,6 +669,11 @@
       "slug": "factorize-string-into-lyndon-words",
       "state": "published",
       "published_hash": "f93bd35b1687c008d801fc02e7b84de5f0aaf0e4914b65d1c696e397657aa458"
+    },
+    {
+      "title": "Farey sequence",
+      "slug": "farey-sequence",
+      "state": "solved"
     },
     {
       "title": "Fermat numbers",
@@ -749,6 +804,11 @@
       "published_hash": "51cbee43dafc07b57782f13b6521bc629ec6567c75c0e31a1991be946d0ab422"
     },
     {
+      "title": "Giuga numbers",
+      "slug": "giuga-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Go Fish",
       "state": "rejected",
       "reason": "needs-interaction"
@@ -758,6 +818,11 @@
       "slug": "goldbachs-comet",
       "state": "published",
       "published_hash": "c1f7d5964db678b90489c1d6798eb719b4a035f9cc30f20ec8344835eb3df365"
+    },
+    {
+      "title": "Golden ratio/Convergence",
+      "slug": "golden-ratio-convergence",
+      "state": "solved"
     },
     {
       "title": "Gosper\u0027s hack",
@@ -858,6 +923,11 @@
       "published_hash": "c4e921780afbb0a7c7b4799c73fae430bb3e4ebb7b8e7ee576112da0199e4101"
     },
     {
+      "title": "Honaker primes",
+      "slug": "honaker-primes",
+      "state": "solved"
+    },
+    {
       "title": "Horner\u0027s rule for polynomial evaluation",
       "slug": "horners-rule-for-polynomial-evaluation",
       "state": "published",
@@ -868,6 +938,11 @@
       "slug": "huffman-coding",
       "state": "published",
       "published_hash": "ce31546540f5c8cdb34a27ab12150dbcfc3795fe2875ecf320359b3c4c1b5808"
+    },
+    {
+      "title": "Humble numbers",
+      "slug": "humble-numbers",
+      "state": "solved"
     },
     {
       "title": "Hunt the Wumpus",
@@ -890,6 +965,11 @@
       "slug": "iccanobif-primes",
       "state": "published",
       "published_hash": "e82c5a76006a271717df62be0ad13a332d6432c5d66a0c282b767412c9efedfb"
+    },
+    {
+      "title": "Idoneal numbers",
+      "slug": "idoneal-numbers",
+      "state": "solved"
     },
     {
       "title": "Imaginary base numbers",
@@ -970,6 +1050,11 @@
       "published_hash": "323e4e4cb5ff6a421b9f84d5c6046e883f0ccbf415115b1ebaac77875648b0e4"
     },
     {
+      "title": "JortSort",
+      "slug": "jortsort",
+      "state": "solved"
+    },
+    {
       "title": "Josephus problem",
       "slug": "josephus-problem",
       "state": "published",
@@ -1040,6 +1125,11 @@
       "published_hash": "39458b17f472937ce288e4c3275f29b91ae84507d028788cfcbfbf49637dc1cc"
     },
     {
+      "title": "Lah numbers",
+      "slug": "lah-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Largest int from concatenated ints",
       "slug": "largest-int-from-concatenated-ints",
       "state": "published",
@@ -1056,6 +1146,11 @@
       "slug": "left-factorials",
       "state": "published",
       "published_hash": "b293e99d952de96f781dbefc8cd115c737d4712ade9284677530aa87784c76b4"
+    },
+    {
+      "title": "Leonardo numbers",
+      "slug": "leonardo-numbers",
+      "state": "solved"
     },
     {
       "title": "Levenshtein distance",
@@ -1098,6 +1193,11 @@
       "published_hash": "cbe4c4ccadaff24c56bd19d73463cafb6b52e060540283be9b68fd39ed78cfd1"
     },
     {
+      "title": "Magnanimous numbers",
+      "slug": "magnanimous-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Man or boy test",
       "slug": "man-or-boy-test",
       "state": "published",
@@ -1108,6 +1208,11 @@
       "slug": "map-range",
       "state": "published",
       "published_hash": "6ad8e0a7620fded2cbc65ed9d74d9fd876231956d16e7466f8b1d0892ef2081d"
+    },
+    {
+      "title": "Mertens function",
+      "slug": "mertens-function",
+      "state": "solved"
     },
     {
       "title": "Metered concurrency",
@@ -1124,6 +1229,11 @@
     {
       "title": "Monads/List monad",
       "state": "published"
+    },
+    {
+      "title": "Motzkin numbers",
+      "slug": "motzkin-numbers",
+      "state": "solved"
     },
     {
       "title": "Move-to-front algorithm",
@@ -1168,10 +1278,20 @@
       "published_hash": "828d7468d57ff952c098a510d88efdf0664a5cd9ed881f66588868dbb04950bc"
     },
     {
+      "title": "M\u00F6bius function",
+      "slug": "mobius-function",
+      "state": "solved"
+    },
+    {
       "title": "N-queens problem",
       "slug": "n-queens-problem",
       "state": "published",
       "published_hash": "3409465540d89e0a5b587efe8090d8512f31453ac2269ee031d94fed109b7059"
+    },
+    {
+      "title": "N-smooth numbers",
+      "slug": "n-smooth-numbers",
+      "state": "solved"
     },
     {
       "title": "Narcissistic decimal number",
@@ -1232,6 +1352,11 @@
       "state": "published"
     },
     {
+      "title": "Odd word problem",
+      "slug": "odd-word-problem",
+      "state": "solved"
+    },
+    {
       "title": "One-dimensional cellular automata",
       "slug": "one-dimensional-cellular-automata",
       "state": "published",
@@ -1260,6 +1385,21 @@
       "slug": "ormiston-pairs",
       "state": "published",
       "published_hash": "5a9824d091c1ed39ee983da92c73090674aeeae0cf9899baeca9c0e19fb3d5a6"
+    },
+    {
+      "title": "Ormiston triples",
+      "slug": "ormiston-triples",
+      "state": "solved"
+    },
+    {
+      "title": "Own digits power sum",
+      "slug": "own-digits-power-sum",
+      "state": "solved"
+    },
+    {
+      "title": "Padovan n-step number sequences",
+      "slug": "padovan-n-step-number-sequences",
+      "state": "solved"
     },
     {
       "title": "Padovan sequence",
@@ -1292,6 +1432,11 @@
       "published_hash": "c7ca81f26b2458be33b8ab24af879e7ac7f19390eb93cdd5654663072a296ccf"
     },
     {
+      "title": "Perfect totient numbers",
+      "slug": "perfect-totient-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Permutations",
       "slug": "permutations",
       "state": "published",
@@ -1304,6 +1449,11 @@
       "published_hash": "373014e9143266b4544eaf8eb61c8d09ed01f0965cfc0a1ca89503cfbbac5036"
     },
     {
+      "title": "Pisano period",
+      "slug": "pisano-period",
+      "state": "solved"
+    },
+    {
       "title": "Population count",
       "slug": "population-count",
       "state": "published",
@@ -1314,6 +1464,11 @@
       "slug": "power-set",
       "state": "published",
       "published_hash": "9c63acfcaab7932a388b47c6919ec37b4f90a3c8c87d90e33a614856bccf349f"
+    },
+    {
+      "title": "Price fraction",
+      "slug": "price-fraction",
+      "state": "solved"
     },
     {
       "title": "Prime decomposition",
@@ -1376,6 +1531,11 @@
       "published_hash": "e3e91c3540eccaada954f48dc1d9934e73a8cf76530372885ef3c1a42cfbf29a"
     },
     {
+      "title": "Recam\u00E1n\u0027s sequence",
+      "slug": "recamans-sequence",
+      "state": "solved"
+    },
+    {
       "title": "Rendezvous",
       "slug": "rendezvous",
       "state": "published",
@@ -1392,6 +1552,16 @@
       "slug": "reverse-a-string",
       "state": "published",
       "published_hash": "1b65359d4cc31f5013f1c52a1660a60ff48b167ed8db0c007b0c33448a1416c7"
+    },
+    {
+      "title": "Rhonda numbers",
+      "slug": "rhonda-numbers",
+      "state": "solved"
+    },
+    {
+      "title": "Riordan numbers",
+      "slug": "riordan-numbers",
+      "state": "solved"
     },
     {
       "title": "Roman numerals/Decode",
@@ -1436,6 +1606,11 @@
       "published_hash": "64930fc593f3e065c43c4ea1a15fc00af5a0ec537dd170c9a15f100c68a994aa"
     },
     {
+      "title": "Set consolidation",
+      "slug": "set-consolidation",
+      "state": "solved"
+    },
+    {
       "title": "Shortest common supersequence",
       "state": "published"
     },
@@ -1452,10 +1627,20 @@
       "published_hash": "3a5a1413583ce045cc94678fb162413d244ee686963832b88a9ae95e63e49b93"
     },
     {
+      "title": "Sisyphus sequence",
+      "slug": "sisyphus-sequence",
+      "state": "solved"
+    },
+    {
       "title": "Smith\u2013Waterman algorithm",
       "slug": "smith-waterman-algorithm",
       "state": "published",
       "published_hash": "69d3ba08dcc0326ebffe9fb1c00683de185a69343647d947842755a60a604cb6"
+    },
+    {
+      "title": "Sorensen\u2013Dice coefficient",
+      "state": "rejected",
+      "reason": "needs-network"
     },
     {
       "title": "Sorting algorithms/Quicksort",
@@ -1488,10 +1673,30 @@
       "published_hash": "a15d76a545ced860a3764ce4e83c222e83ffade011a49a82bc0e8a15c7688b4e"
     },
     {
+      "title": "Stirling numbers of the second kind",
+      "slug": "stirling-numbers-of-the-second-kind",
+      "state": "solved"
+    },
+    {
+      "title": "Successive prime differences",
+      "slug": "successive-prime-differences",
+      "state": "solved"
+    },
+    {
+      "title": "Sudan function",
+      "slug": "sudan-function",
+      "state": "solved"
+    },
+    {
       "title": "Sum to 100",
       "slug": "sum-to-100",
       "state": "published",
       "published_hash": "1fbb3fdd5d065f3a018939c1aef1d62af692d3a5a4c11df25b67919961c96ba2"
+    },
+    {
+      "title": "Sylvester\u0027s sequence",
+      "slug": "sylvesters-sequence",
+      "state": "solved"
     },
     {
       "title": "Symmetric difference",
@@ -1504,6 +1709,11 @@
       "slug": "synchronous-concurrency",
       "state": "published",
       "published_hash": "ac8b5e22eb38105d69cba2791ba3c07d93a62a14f5377435dde095c9c717265b"
+    },
+    {
+      "title": "Tau function",
+      "slug": "tau-function",
+      "state": "solved"
     },
     {
       "title": "Tau number",
@@ -1571,10 +1781,20 @@
       "published_hash": "d4a08c8a5525575847a538016bc80d6aec4f82d0b2f8594744b8aa3c5c556deb"
     },
     {
+      "title": "Tropical algebra overloading",
+      "slug": "tropical-algebra-overloading",
+      "state": "solved"
+    },
+    {
       "title": "Truncatable primes",
       "slug": "truncatable-primes",
       "state": "published",
       "published_hash": "12f8261513ea508a41984e69f5356e7bce9d57decff0e8593edac9276abb4f2c"
+    },
+    {
+      "title": "Twin primes whose sum is square number",
+      "slug": "twin-primes-whose-sum-is-square-number",
+      "state": "solved"
     },
     {
       "title": "URL decoding",
@@ -1603,6 +1823,21 @@
       "slug": "undulating-numbers",
       "state": "published",
       "published_hash": "aee9bf61c21cde8ac89aec32f7107670f16bc2b20e772d74ea42044fe451960d"
+    },
+    {
+      "title": "Unprimeable numbers",
+      "slug": "unprimeable-numbers",
+      "state": "solved"
+    },
+    {
+      "title": "Untouchable numbers",
+      "slug": "untouchable-numbers",
+      "state": "solved"
+    },
+    {
+      "title": "Upside-down numbers",
+      "slug": "upside-down-numbers",
+      "state": "solved"
     },
     {
       "title": "User:Degory/sandbox",
@@ -1643,6 +1878,11 @@
       "published_hash": "612fe37ccf36bbe5206b86d2a948583185766db203550d745264e4ef6e7f7dea"
     },
     {
+      "title": "Vector",
+      "slug": "vector",
+      "state": "solved"
+    },
+    {
       "title": "Vector products",
       "slug": "vector-products",
       "state": "published",
@@ -1655,10 +1895,20 @@
       "published_hash": "4974316e2557f77f4bb5317c3935e946046839cfe97cb1fa9f7832964c60a49d"
     },
     {
+      "title": "Wagstaff primes",
+      "slug": "wagstaff-primes",
+      "state": "solved"
+    },
+    {
       "title": "Walsh matrix",
       "slug": "walsh-matrix",
       "state": "published",
       "published_hash": "14b2ecca8c04f96e3217caf757a6af1bfefb1d445749d15a23f0163a22543519"
+    },
+    {
+      "title": "Wasteful, equidigital and frugal numbers",
+      "slug": "wasteful-equidigital-and-frugal-numbers",
+      "state": "solved"
     },
     {
       "title": "Water collected between towers",
@@ -1671,6 +1921,11 @@
       "slug": "weird-numbers",
       "state": "published",
       "published_hash": "8609925f92c9ffaa9d592c5c10bde005fb18cad40f5fc87dbe63b4256d3ca370"
+    },
+    {
+      "title": "Wolstenholme numbers",
+      "slug": "wolstenholme-numbers",
+      "state": "solved"
     },
     {
       "title": "Word wrap",
@@ -1713,6 +1968,11 @@
       "slug": "zig-zag-matrix",
       "state": "published",
       "published_hash": "676f44b6bb3af73eb272357a5b294cca2ce6b9c84160916ee52327cfb6fecce0"
+    },
+    {
+      "title": "Zsigmondy numbers",
+      "slug": "zsigmondy-numbers",
+      "state": "solved"
     },
     {
       "title": "Zumkeller numbers",

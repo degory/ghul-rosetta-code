@@ -1,0 +1,71 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let limit = 1_000_000
+let composite = LIST[bool]()
+
+for _ in 0::limit do
+    composite.add(false)
+od
+
+let factor mut = 2
+
+while factor * factor <= limit do
+    if !composite[factor] then
+        let multiple mut = factor * factor
+
+        while multiple <= limit do
+            composite[multiple] = true
+            multiple = multiple + factor
+        od
+    fi
+
+    factor = factor + 1
+od
+
+let primes = (2::limit) |> filter(p => !composite[p]) |> collect_list()
+
+groups(differences: int[]) -> Pipe[LIST[int]] is
+    for start in 0..primes.count - differences.count do
+        let matched mut = true
+
+        for step in 0..differences.count do
+            if primes[start + step + 1] - primes[start + step] !=
+               differences[step]
+            then
+                matched = false
+                break
+            fi
+        od
+
+        if matched then
+            yield LIST[int](primes[start..start + differences.count + 1])
+        fi
+    od
+si
+
+render(group: LIST[int]) -> string =>
+    "({group |> map(p => "{p}") |> join(", ")})"
+
+report(differences: int[]) is
+    let found = groups(differences) |> collect_list()
+    let shown = differences |> map(d => "{d}") |> join(", ")
+
+    write_line("differences of {shown}:")
+
+    if found.count == 0 then
+        write_line("  none below {limit}")
+    else
+        write_line("  {found.count} groups, "
+                   "first {render(found[0])}, "
+                   "last {render(found[found.count - 1])}")
+    fi
+si
+
+report([2])
+report([1])
+report([2, 2])
+report([2, 4])
+report([4, 2])
+report([6, 4, 2])

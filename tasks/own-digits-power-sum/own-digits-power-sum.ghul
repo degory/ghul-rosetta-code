@@ -1,0 +1,81 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+power(base: int, exponent: int) -> long is
+    let result mut = 1L
+
+    for _ in 1::exponent do
+        result = result * cast long(base)
+    od
+
+    result
+si
+
+digit_counts(value: long) -> LIST[int] is
+    let counts = LIST[int]()
+
+    for _ in 0::9 do
+        counts.add(0)
+    od
+
+    let remaining mut = value
+
+    while remaining > 0L do
+        let digit = cast int(remaining % 10L)
+
+        counts[digit] = counts[digit] + 1
+        remaining = remaining / 10L
+    od
+
+    counts
+si
+
+multisets(width: int, lowest: int, chosen: LIST[int]) -> Pipe[LIST[int]] is
+    if chosen.count == width then
+        yield chosen
+    else
+        for digit in lowest::9 do
+            let extended = LIST[int](chosen)
+
+            extended.add(digit)
+
+            yield in multisets(width, digit, extended)
+        od
+    fi
+si
+
+own_sums(width: int) -> Pipe[long] is
+    for combination in multisets(width, 0, LIST[int]()) do
+        let total mut = 0L
+
+        for digit in combination do
+            total = total + power(digit, width)
+        od
+
+        if "{total}".length == width then
+            let wanted = digit_counts(total)
+            let held = LIST[int]()
+
+            for _ in 0::9 do
+                held.add(0)
+            od
+
+            for digit in combination do
+                held[digit] = held[digit] + 1
+            od
+
+            if (0::9) |> all(digit => held[digit] == wanted[digit]) then
+                yield total
+            fi
+        fi
+    od
+si
+
+for width in 3::9 do
+    let found = own_sums(width) |> collect_list()
+
+    found.sort()
+
+    write_line("{width} digits: {found |> map(v => "{v}") |> join(" ")}")
+od

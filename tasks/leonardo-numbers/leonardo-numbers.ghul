@@ -1,0 +1,26 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+leonardo(first: int, second: int, add: int) -> Pipe[int] is
+    let previous mut = first
+    let current mut = second
+
+    do
+        yield previous
+
+        let following = previous + current + add
+
+        previous = current
+        current = following
+    od
+si
+
+show(first: int, second: int, add: int) is
+    let terms = leonardo(first, second, add) |> take(25) |> map(t => "{t}")
+
+    write_line("L(0)={first} L(1)={second} add={add}")
+    write_line("  {terms |> join(" ")}")
+si
+
+show(1, 1, 1)
+show(0, 1, 0)

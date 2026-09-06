@@ -1,0 +1,64 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+primes() -> Pipe[int] is
+    let found = LIST[int]()
+    let candidate mut = 1
+
+    do
+        candidate = candidate + 1
+
+        let divisible mut = false
+
+        for divisor in found do
+            if divisor * divisor > candidate then break fi
+
+            if candidate % divisor == 0 then
+                divisible = true
+                break
+            fi
+        od
+
+        if !divisible then
+            found.add(candidate)
+            yield candidate
+        fi
+    od
+si
+
+digit_sum(value: int) -> int =>
+    if value < 10 then value else value % 10 + digit_sum(value / 10) fi
+
+honakers() -> Pipe[(position: int, prime: int)] is
+    let position mut = 0
+
+    for prime in primes() do
+        position = position + 1
+
+        if digit_sum(position) == digit_sum(prime) then
+            yield (position = position, prime = prime)
+        fi
+    od
+si
+
+write_line("the first fifty Honaker primes:")
+
+let first_fifty = honakers() |> take(50) |> collect_list()
+
+for row in 0..10 do
+    let cells =
+        first_fifty[row * 5..row * 5 + 5]
+            |> map(h => "{h.position,7}:{h.prime,8}")
+
+    write_line(cells |> join(""))
+od
+
+let ten_thousandth =
+    for entry in honakers() |> index() do
+        if entry.index == 9_999 then break entry.value fi
+    od
+
+write_line("")
+write_line("the ten thousandth is at position {ten_thousandth!.position}, "
+           "and is {ten_thousandth!.prime}")

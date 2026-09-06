@@ -1,6 +1,5 @@
-// Each philosopher takes the lower-numbered of its two forks
-// first, so no cycle of philosophers can each hold one fork and
-// wait for the next: the table cannot deadlock.
+// Each philosopher takes the lower-numbered of its two forks first, so
+// the table cannot deadlock.
 
 use IO.Std.write_line
 use Ghul.Coroutines.COROUTINE

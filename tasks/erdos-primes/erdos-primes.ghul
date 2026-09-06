@@ -1,0 +1,62 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let limit = 1_000_000
+let composite = LIST[bool]()
+
+for _ in 0::limit do
+    composite.add(false)
+od
+
+let factor mut = 2
+
+while factor * factor <= limit do
+    if !composite[factor] then
+        let multiple mut = factor * factor
+
+        while multiple <= limit do
+            composite[multiple] = true
+            multiple = multiple + factor
+        od
+    fi
+
+    factor = factor + 1
+od
+
+is_prime(value: int) -> bool => value > 1 /\ !composite[value]
+
+let factorials = LIST[int]()
+let next mut = 1
+let step mut = 1
+
+while next <= limit do
+    factorials.add(next)
+    step = step + 1
+    next = next * step
+od
+
+is_erdos(prime: int) -> bool =>
+    factorials |> filter(f => f < prime)
+               |> all(f => !is_prime(prime - f))
+
+let erdos = (2::limit) |> filter(is_prime)
+                       |> filter(is_erdos)
+                       |> collect_list()
+
+let below_2500 = erdos |> filter(p => p < 2_500) |> collect_list()
+
+write_line("the Erdos primes below 2500:")
+
+for row in 0..(below_2500.count + 9) / 10 do
+    let last = System.Math.min(row * 10 + 10, below_2500.count)
+    let cells = below_2500[row * 10..last] |> map(p => "{p,6}")
+
+    write_line(cells |> join(""))
+od
+
+write_line("")
+write_line("there are {below_2500.count} of them")
+write_line("")
+write_line("Erdos prime {erdos.count} is {erdos[erdos.count - 1]}, "
+           "the highest below a million")

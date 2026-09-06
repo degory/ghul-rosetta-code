@@ -1,0 +1,56 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+distinct_prime_factors(value: int) -> LIST[long] is
+    let factors = LIST[long]()
+    let remaining mut = value
+    let factor mut = 2
+
+    while factor * factor <= remaining do
+        if remaining % factor == 0 then
+            factors.add(cast long(factor))
+
+            while remaining % factor == 0 do
+                remaining = remaining / factor
+            od
+        fi
+
+        factor = factor + 1
+    od
+
+    if remaining > 1 then
+        factors.add(cast long(remaining))
+    fi
+
+    factors
+si
+
+is_giuga(value: int) -> bool is
+    let factors = distinct_prime_factors(value)
+
+    if factors.count < 2 then return false fi
+
+    let total = cast long(value)
+
+    factors |> all(factor => (total / factor - 1L) % factor == 0L)
+si
+
+giugas() -> Pipe[int] is
+    let candidate mut = 1
+
+    do
+        candidate = candidate + 1
+
+        if is_giuga(candidate) then
+            yield candidate
+        fi
+    od
+si
+
+write_line("the first four Giuga numbers:")
+
+for value in giugas() |> take(4) do
+    write_line("  {value}")
+od
+

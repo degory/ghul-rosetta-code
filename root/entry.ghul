@@ -4,4 +4,4 @@
 // Build and run tasks individually, from their own folders under tasks/.
 
 root_entry() =>
-    IO.Std.write_line("Run each task on its own, for example: dotnet run --project tasks/hello-world-text");
+    IO.Std.write_line("Run each task on its own, for example: dotnet run --project tasks/hello-world-text")

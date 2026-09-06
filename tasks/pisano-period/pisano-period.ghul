@@ -1,0 +1,100 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+pisano_prime(prime: int, power: int) -> int is
+    let period mut = 0
+    let previous mut = 0
+    let current mut = 1
+
+    while !(previous == 0 /\ current == 1 /\ period > 0) do
+        let following = (previous + current) % prime
+
+        previous = current
+        current = following
+        period = period + 1
+    od
+
+    let scale mut = period
+
+    for _ in 2::power do
+        scale = scale * prime
+    od
+
+    scale
+si
+
+gcd(a: int, b: int) -> int => if b == 0 then a else gcd(b, a % b) fi
+
+lcm(a: int, b: int) -> int => a / gcd(a, b) * b
+
+pisano(value: int) -> int is
+    let period mut = 1
+    let remaining mut = value
+    let factor mut = 2
+
+    while factor * factor <= remaining do
+        let power mut = 0
+
+        while remaining % factor == 0 do
+            remaining = remaining / factor
+            power = power + 1
+        od
+
+        if power > 0 then
+            period = lcm(period, pisano_prime(factor, power))
+        fi
+
+        factor = factor + 1
+    od
+
+    if remaining > 1 then
+        period = lcm(period, pisano_prime(remaining, 1))
+    fi
+
+    period
+si
+
+is_prime(value: int) -> bool is
+    if value < 2 then return false fi
+
+    let divisor mut = 2
+
+    while divisor * divisor <= value do
+        if value % divisor == 0 then return false fi
+        divisor = divisor + 1
+    od
+
+    true
+si
+
+in_rows(entries: Collections.Iterable[string], per_row: int) is
+    let row = LIST[string]()
+
+    for entry in entries do
+        row.add(entry)
+
+        if row.count == per_row then
+            write_line(row |> join(""))
+            row.clear()
+        fi
+    od
+
+    if row.count > 0 then
+        write_line(row |> join(""))
+    fi
+si
+
+let primes_below_15 = (2..15) |> filter(is_prime) |> collect_list()
+let primes_below_180 = (2..180) |> filter(is_prime) |> collect_list()
+
+write_line("pisano_prime(p, 2) for every prime below 15:")
+in_rows(primes_below_15 |> map(p => "{p,4}:{pisano_prime(p, 2),8}"), 4)
+
+write_line("")
+write_line("pisano_prime(p, 1) for every prime below 180:")
+in_rows(primes_below_180 |> map(p => "{p,4}:{pisano_prime(p, 1),5}"), 6)
+
+write_line("")
+write_line("pisano(m) for m from 1 to 180:")
+in_rows((1::180) |> map(m => "{m,4}:{pisano(m),5}"), 6)

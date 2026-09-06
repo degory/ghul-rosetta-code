@@ -1,0 +1,45 @@
+use IO.Std.write_line
+use System.Math.atan2
+use System.Math.cos
+use System.Math.sin
+use System.Math.sqrt
+
+struct VECTOR(x: double, y: double) is
+    +(other: VECTOR) -> VECTOR => VECTOR(x + other.x, y + other.y)
+
+    -(other: VECTOR) -> VECTOR => VECTOR(x - other.x, y - other.y)
+
+    *(scale: double) -> VECTOR => VECTOR(x * scale, y * scale)
+
+    /(scale: double) -> VECTOR => VECTOR(x / scale, y / scale)
+
+    length: double => sqrt(x * x + y * y)
+
+    bearing: double => atan2(y, x)
+
+    to_string() -> string => "({x:F3}, {y:F3})"
+si
+
+from_polar(angle: double, length: double) -> VECTOR =>
+    VECTOR(cos(angle) * length, sin(angle) * length)
+
+between(from: VECTOR, to: VECTOR) -> VECTOR => to - from
+
+let a = VECTOR(5.0D, 7.0D)
+let b = VECTOR(2.0D, 3.0D)
+
+write_line("a           {a}")
+write_line("b           {b}")
+write_line("a + b       {a + b}")
+write_line("a - b       {a - b}")
+write_line("a * 11      {a * 11.0D}")
+write_line("a / 2       {a / 2.0D}")
+
+let start = VECTOR(1.0D, 1.0D)
+let finish = VECTOR(4.0D, 5.0D)
+let span = between(start, finish)
+
+write_line("")
+write_line("from {start} to {finish} is {span}")
+write_line("  of length {span.length:F3} at {span.bearing:F3} radians")
+write_line("  rebuilt from those: {from_polar(span.bearing, span.length)}")

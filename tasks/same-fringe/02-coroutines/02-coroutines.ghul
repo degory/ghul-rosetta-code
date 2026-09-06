@@ -13,8 +13,6 @@ use Tree.NODE
 
 use Comparison = COROUTINE[(same: bool, leaves: int)]
 
-// A walker hands over one leaf per request and then parks, so
-// neither tree is traversed further than the comparison needs.
 class WALKER is
     _tree: Tree
     _wanted: CHANNEL[bool]

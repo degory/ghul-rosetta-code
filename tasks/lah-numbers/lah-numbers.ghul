@@ -1,0 +1,54 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+
+factorial(value: int) -> BigInteger is
+    let product mut = BigInteger.one
+
+    for factor in 2::value do
+        product = product * BigInteger(factor)
+    od
+
+    product
+si
+
+lah(n: int, k: int) -> BigInteger =>
+    if k == 1 then factorial(n)
+    elif k == n then BigInteger.one
+    elif k > n \/ k < 1 \/ n < 1 then BigInteger.zero
+    else factorial(n) * factorial(n - 1) /
+         (factorial(k) * factorial(k - 1)) / factorial(n - k)
+    fi
+
+write_line("unsigned Lah numbers, L(n, k):")
+write_line("")
+
+let heading = LIST[string]()
+heading.add("{"n/k",3}")
+
+for k in 1::12 do
+    heading.add("{k,12}")
+od
+
+write_line(heading |> join(""))
+
+for n in 1::12 do
+    let row = LIST[string]()
+    row.add("{n,3}")
+
+    for k in 1::n do
+        row.add("{lah(n, k),12}")
+    od
+
+    write_line(row |> join(""))
+od
+
+let largest =
+    (1::100) |> map(k => lah(100, k))
+            |> reduce(BigInteger.zero,
+                      (best, v) => if v > best then v else best fi)
+
+write_line("")
+write_line("the largest L(100, k):")
+write_line("  {largest}")

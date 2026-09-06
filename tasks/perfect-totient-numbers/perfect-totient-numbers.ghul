@@ -1,0 +1,57 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+totient(value: int) -> int is
+    let remaining mut = value
+    let count mut = value
+    let factor mut = 2
+
+    while factor * factor <= remaining do
+        if remaining % factor == 0 then
+            while remaining % factor == 0 do
+                remaining = remaining / factor
+            od
+
+            count = count - count / factor
+        fi
+
+        factor = factor + 1
+    od
+
+    if remaining > 1 then
+        count = count - count / remaining
+    fi
+
+    count
+si
+
+totient_sum(value: int) -> int is
+    let total mut = 0
+    let current mut = value
+
+    while current > 1 do
+        current = totient(current)
+        total = total + current
+    od
+
+    total
+si
+
+perfect_totients(count: int) -> Pipe[int] is
+    let candidate mut = 1
+    let found mut = 0
+
+    while found < count do
+        candidate = candidate + 1
+
+        if totient_sum(candidate) == candidate then
+            found = found + 1
+            yield candidate
+        fi
+    od
+si
+
+let terms = perfect_totients(20) |> map(term => "{term}")
+
+write_line("the first twenty perfect totient numbers:")
+write_line(terms |> join(" "))

@@ -1,0 +1,27 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+bernoulli(rows: int) -> Pipe[LIST[int]] is
+    let row mut = LIST[int]()
+    row.add(1)
+
+    for number in 0..rows do
+        yield row
+
+        let following = LIST[int]()
+        following.add(1)
+
+        for column in 1::row.count - 1 do
+            following.add(row[column - 1] + row[column])
+        od
+
+        following.add(row[row.count - 1] * 2)
+
+        row = following
+    od
+si
+
+for row in bernoulli(15) do
+    write_line(row |> map(value => "{value,7}") |> join(""))
+od

@@ -1,0 +1,79 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let limit = 10_000_000
+let composite = LIST[bool]()
+
+for _ in 0::limit do
+    composite.add(false)
+od
+
+let factor mut = 2
+
+while factor * factor <= limit do
+    if !composite[factor] then
+        let multiple mut = factor * factor
+
+        while multiple <= limit do
+            composite[multiple] = true
+            multiple = multiple + factor
+        od
+    fi
+
+    factor = factor + 1
+od
+
+is_prime(value: int) -> bool => value > 1 /\ !composite[value]
+
+is_unprimeable(value: int) -> bool is
+    if is_prime(value) then return false fi
+
+    let place mut = 1
+
+    while place <= value do
+        let kept = value - value / place % 10 * place
+
+        for digit in 0::9 do
+            if is_prime(kept + digit * place) then return false fi
+        od
+
+        place = place * 10
+    od
+
+    true
+si
+
+unprimeables() -> Pipe[int] is
+    let candidate mut = 99
+
+    do
+        candidate = candidate + 1
+
+        if is_unprimeable(candidate) then
+            yield candidate
+        fi
+    od
+si
+
+let terms = unprimeables() |> take(600) |> collect_list()
+
+write_line("the first 35 unprimeable numbers:")
+write_line("  {terms[0..35] |> map(t => "{t}") |> join(" ")}")
+
+write_line("")
+write_line("the 600th unprimeable number is {terms[599]:N0}")
+
+write_line("")
+write_line("the lowest unprimeable number ending in each digit:")
+
+for last in 0::9 do
+    let found =
+        for candidate in unprimeables() do
+            if candidate % 10 == last then break candidate fi
+        od
+
+    let lowest = found!
+
+    write_line("  {last}: {lowest:N0}")
+od

@@ -1,0 +1,56 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.SET
+use Ghul.Pipes
+
+consolidate(input: LIST[SET[string]]) -> LIST[SET[string]] is
+    let result = LIST[SET[string]]()
+
+    for candidate in input do
+        let merged = SET[string](candidate)
+        let kept = LIST[SET[string]]()
+
+        for existing in result do
+            if existing |> any(item => merged.contains(item)) then
+                merged.union_with(existing)
+            else
+                kept.add(existing)
+            fi
+        od
+
+        kept.add(merged)
+        result.clear()
+        result.add_range(kept)
+    od
+
+    result
+si
+
+render(sets: LIST[SET[string]]) -> string is
+    let parts = LIST[string]()
+
+    for one in sets do
+        let items = one |> collect_list()
+        items.sort()
+
+        parts.add("\{{items |> join(", ")}\}")
+    od
+
+    parts |> join(" ")
+si
+
+show(groups: string[][]) is
+    let sets = LIST[SET[string]]()
+
+    for group in groups do
+        sets.add(SET[string](group))
+    od
+
+    write_line("{render(sets)}")
+    write_line("  consolidates to {render(consolidate(sets))}")
+si
+
+show([["A", "B"], ["C", "D"]])
+show([["A", "B"], ["B", "D"]])
+show([["A", "B"], ["C", "D"], ["D", "B"]])
+show([["H", "I", "K"], ["A", "B"], ["C", "D"], ["D", "B"], ["F", "G", "H"]])

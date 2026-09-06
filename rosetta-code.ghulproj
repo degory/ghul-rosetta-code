@@ -16,6 +16,14 @@
     <GhulSources Include="tasks/**/*.ghul" />
     <GhulSources Include="root/**/*.ghul" />
 
+    <!-- Every task is a whole program, so in this aggregate all but one
+         file's top-level statements are unreachable, and the analysis
+         session would otherwise report one warning per task. The pipe
+         combinators take pure functions, which a call to write_line or
+         a string interpolation is not. -->
+    <GhulOptions Include="--suppress top-level-statements-not-run" />
+    <GhulOptions Include="--suppress impure-function-argument" />
+
     <!-- Terminator-free sources; error on CI so stray `;` cannot creep
          back in, warning locally. -->
     <GhulOptions Include="--warn redundant-semicolon" />

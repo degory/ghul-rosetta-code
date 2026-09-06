@@ -1,0 +1,21 @@
+use IO.Std.write_line
+use System.Math.abs
+use System.Math.sqrt
+
+let target = (1.0D + sqrt(5.0D)) / 2.0D
+
+let ratio mut = 1.0D
+let iterations mut = 0
+
+let converged mut = false
+
+while !converged do
+    let following = 1.0D + 1.0D / ratio
+
+    converged = abs(following - ratio) <= 1.0e-5D
+    ratio = following
+    iterations = iterations + 1
+od
+
+write_line("phi is {ratio:F12} after {iterations} iterations")
+write_line("the error against (1 + sqrt 5) / 2 is {ratio - target:E6}")

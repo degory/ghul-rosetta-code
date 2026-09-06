@@ -1,0 +1,8 @@
+{A, B} {C, D}
+  consolidates to {A, B} {C, D}
+{A, B} {B, D}
+  consolidates to {A, B, D}
+{A, B} {C, D} {B, D}
+  consolidates to {A, B, C, D}
+{H, I, K} {A, B} {C, D} {B, D} {F, G, H}
+  consolidates to {A, B, C, D} {F, G, H, I, K}
