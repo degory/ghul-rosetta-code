@@ -1,0 +1,34 @@
+use IO.Std.write_line
+use System.Numerics.INumber
+use System.Numerics.IAdditionOperators.`+
+
+accumulator[T: INumber[T]](initial: T) -> T -> T is
+    let sum mut = initial
+
+    return value => (
+        sum = sum + value
+        sum
+    )
+si
+
+let x = accumulator(1)
+
+x(5)
+
+accumulator(3)
+
+write_line(x(2))
+
+let y = accumulator(1.0D)
+
+y(5.0D)
+
+accumulator(3.0D)
+
+write_line(y(2.3D))
+
+let z = accumulator(System.Int128.one)
+
+z(System.Int128.parse("123456789012345678901234567890"))
+
+write_line(z(System.Int128.one))
