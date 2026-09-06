@@ -8,12 +8,29 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  # Every task is its own project, so the suite is a few hundred separate
+  # builds and grows with each batch of solutions. `--shard` divides it
+  # between runners, striped by discovery order so no shard collects a
+  # whole directory of like-cost tests. Each shard reports its share of the
+  # discovered tests, so the log shows none was dropped.
+  #
+  # This job is not the required status check - `build` below is, and its
+  # name is what branch protection lists. Changing the shard count is
+  # therefore a change to this file alone.
+  task_shards:
+    name: Task shard
+
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/dotnet/sdk:10.0
 
-    timeout-minutes: 10
+    timeout-minutes: 15
+
+    strategy:
+      # One shard failing says nothing about the others.
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     steps:
     - uses: actions/checkout@v7
@@ -24,4 +41,28 @@ jobs:
     # Each task is built by its own test project. The root rosetta-code.ghulproj is an
     # editor-only stub and is deliberately not built here.
     - name: Run Integration Tests
-      run: dotnet ghul-test --use-dotnet-build tasks
+      run: dotnet ghul-test --use-dotnet-build --shard ${{ matrix.shard }}/10 tasks
+
+
+  # The required status check. A shard's own job carries the matrix leg in
+  # its name, so the name changes whenever the shard count does; this job's
+  # does not, which keeps the shard count out of branch protection.
+  #
+  # `always()` is load-bearing: a skipped job satisfies a required check, so
+  # without it anything that skipped the shards would show green here.
+  build:
+    needs: [task_shards]
+
+    if: always()
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 5
+
+    steps:
+    - name: Check every shard passed
+      env:
+        RESULT: ${{ needs.task_shards.result }}
+      run: |
+        echo "shards: $RESULT"
+        [ "$RESULT" = success ]
