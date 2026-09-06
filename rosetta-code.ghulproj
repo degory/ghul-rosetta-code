@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!-- This project exists only so the ghūl VS Code extension loads every task's source in one
-       analysis session, and can find the reference assemblies. It is deliberately not buildable:
-       each task is a program in its own right, so compiling them together reports duplicate entry
-       points. Build and run each task from its own folder under tasks/. -->
+       analysis session, and can find the reference assemblies. Every task file carries its own
+       top-level statements, so this project's build reports one per file, which no build here
+       is meant to run: suppressed below rather than fixed, since running one task from among
+       hundreds is not what this project is for. Build and run each task from its own folder
+       under tasks/. -->
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -18,5 +20,6 @@
          back in, warning locally. -->
     <GhulOptions Include="--warn redundant-semicolon" />
     <GhulOptions Include="--warn-as-error redundant-semicolon" Condition="'$(CI)' != ''" />
+    <GhulOptions Include="--suppress top-level-statements-not-run" />
   </ItemGroup>
 </Project>
