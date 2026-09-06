@@ -1,0 +1,36 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+farey(order: int) -> Pipe[(numerator: int, denominator: int)] is
+    let low mut = (0, 1)
+    let high mut = (1, order)
+
+    yield (numerator = low.`0, denominator = low.`1)
+
+    while high.`0 <= high.`1 do
+        yield (numerator = high.`0, denominator = high.`1)
+
+        let step = (low.`1 + order) / high.`1
+
+        let following =
+            (step * high.`0 - low.`0, step * high.`1 - low.`1)
+
+        low = high
+        high = following
+    od
+si
+
+for order in 1::11 do
+    let terms = farey(order) |> map(f => "{f.numerator}/{f.denominator}")
+
+    write_line("F{order,-3}{terms |> join(" ")}")
+od
+
+write_line("")
+write_line("the number of fractions in each of these sequences:")
+
+for order in 1::10 do
+    let size = farey(order * 100) |> count()
+
+    write_line("  F{order * 100,5} has {size} fractions")
+od
