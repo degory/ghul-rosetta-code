@@ -1,3 +1,76 @@
 use IO.Std.write_line
+use Collections.LIST
+use Collections.SET
+use Ghul.Pipes
 
-write_line("not written yet")
+is_colorful(value: int) -> bool is
+    if value < 10 then return true fi
+
+    let digits = LIST[int]()
+    let remaining mut = value
+
+    while remaining > 0 do
+        let digit = remaining % 10
+
+        if digit < 2 then return false fi
+
+        digits.add(digit)
+        remaining = remaining / 10
+    od
+
+    let seen = SET[int]()
+
+    for start in 0..digits.count do
+        let product mut = 1
+
+        for step in start..digits.count do
+            product = product * digits[step]
+
+            if !seen.add(product) then return false fi
+        od
+    od
+
+    true
+si
+
+arrangements(prefix: int, available: LIST[int]) -> Pipe[int] is
+    for chosen in available do
+        let value = prefix * 10 + chosen
+        let rest = LIST[int](available)
+
+        rest.remove(chosen)
+
+        if prefix > 0 then
+            yield value
+        fi
+
+        yield in arrangements(value, rest)
+    od
+si
+
+let digits = LIST[int]((2::9) |> collect_list())
+
+let candidates = (0::9) |> cat(arrangements(0, digits))
+let colorful = candidates |> filter(is_colorful) |> collect_list()
+
+colorful.sort()
+
+let small = colorful |> filter(v => v < 100) |> map(v => "{v}")
+
+write_line("the colorful numbers below 100:")
+write_line("  {small |> join(" ")}")
+
+write_line("")
+write_line("the largest colorful number is {colorful[colorful.count - 1]}")
+
+write_line("")
+write_line("how many colorful numbers each order of magnitude holds:")
+
+for width in 1::8 do
+    let below = colorful |> filter(v => "{v}".length == width) |> count()
+
+    write_line("  {width} digit: {below}")
+od
+
+write_line("")
+write_line("there are {colorful.count} colorful numbers in all")
