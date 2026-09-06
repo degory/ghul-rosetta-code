@@ -81,7 +81,7 @@
       "slug": "active-object",
       "state": "published",
       "note": "a cooperative scheduler gives it a reproducible clock, so the nondeterminism rejection no longer holds",
-      "published_hash": "9120cc8429c85a08e9f6e87efbc920284faffb2103e223872bdbaab619beef9d"
+      "published_hash": "9322c9966600c94e6e8edfe19d973a19f15cb2b50f2e07b8107f3b97a251fc7b"
     },
     {
       "title": "Additive primes",
@@ -1113,7 +1113,7 @@
       "title": "Metered concurrency",
       "slug": "metered-concurrency",
       "state": "published",
-      "published_hash": "80a2c3c66052340504f5b738c4f6f4615bb518a33ecba8c5848e6cfd37a0c06e"
+      "published_hash": "b888c195a1d59d5f91d75fc278ae976e0729cede3a7acfeb870e5b62c56e6b88"
     },
     {
       "title": "Mian-Chowla sequence",
@@ -1159,7 +1159,7 @@
       "title": "Mutex",
       "slug": "mutex",
       "state": "published",
-      "published_hash": "551aeeebf75471e276e2a30a3f698c1c54a92fccdb16cf9adc9c8438e83f77ce"
+      "published_hash": "0db837ab7a78f78daac4fe1d87c0396b84d980c76f8182e5206053ce89c90c0a"
     },
     {
       "title": "Mutual recursion",
@@ -1241,7 +1241,7 @@
       "title": "Operator precedence",
       "slug": "operator-precedence",
       "state": "published",
-      "published_hash": "161b6d110945f347d163659662dedfe78a1abbe718bce6d7b49c83f5bdf8d9ac"
+      "published_hash": "7a92f0a1583ee5f5bffa1c8eb658bda02012e6b48ef8525a0efb367e66b8a4fc"
     },
     {
       "title": "Order disjoint list items",
@@ -1379,7 +1379,7 @@
       "title": "Rendezvous",
       "slug": "rendezvous",
       "state": "published",
-      "published_hash": "2cbe8b148a881f11794bb75a78a7a55b1e455326768020b065e266f4156e055e"
+      "published_hash": "dec36688aa8153eb7b481b1c976df0cbeafc6c07cd9f024cecf5e0f5c54c28cf"
     },
     {
       "title": "Rep-string",
@@ -1449,7 +1449,7 @@
       "title": "Sieve of Eratosthenes",
       "slug": "sieve-of-eratosthenes",
       "state": "published",
-      "published_hash": "608f675dc2ca8ad8bb33597f914934523eb6fffcde8877e38856f71b8ae4060e"
+      "published_hash": "3a5a1413583ce045cc94678fb162413d244ee686963832b88a9ae95e63e49b93"
     },
     {
       "title": "Smith\u2013Waterman algorithm",
@@ -1467,7 +1467,7 @@
       "title": "Sorting algorithms/Sleep sort",
       "slug": "sorting-algorithms-sleep-sort",
       "state": "published",
-      "published_hash": "6cffce450dd89916bb0ac2ef3a5880b0026ffb0aa7bfb9ceec03417cad8f9e77"
+      "published_hash": "6ca40ab3ab27b4213fd0a74147bda1fc135a2f599e10acfd3692bef559653fe2"
     },
     {
       "title": "Sphenic numbers",
@@ -1503,7 +1503,7 @@
       "title": "Synchronous concurrency",
       "slug": "synchronous-concurrency",
       "state": "published",
-      "published_hash": "734d5edd038dcff8618571f653cc45f07bf61f5b531e32cc04efd0eba1a6c0a5"
+      "published_hash": "ac8b5e22eb38105d69cba2791ba3c07d93a62a14f5377435dde095c9c717265b"
     },
     {
       "title": "Tau number",
