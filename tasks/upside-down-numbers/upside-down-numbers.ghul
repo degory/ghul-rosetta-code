@@ -1,3 +1,62 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-write_line("not written yet")
+count_of_length(length: int) -> int is
+    let total mut = 1
+
+    for _ in 1::length / 2 do
+        total = total * 9
+    od
+
+    total
+si
+
+upside_down(index: int) -> string is
+    let length mut = 1
+    let rank mut = index - 1
+
+    while rank >= count_of_length(length) do
+        rank = rank - count_of_length(length)
+        length = length + 1
+    od
+
+    let half = LIST[int]()
+
+    for _ in 1::length / 2 do
+        half.add(rank % 9 + 1)
+        rank = rank / 9
+    od
+
+    half.reverse()
+
+    let text = LIST[string]()
+
+    for digit in half do
+        text.add("{digit}")
+    od
+
+    if length % 2 == 1 then
+        text.add("5")
+    fi
+
+    for step in 1::half.count do
+        text.add("{10 - half[half.count - step]}")
+    od
+
+    text |> join("")
+si
+
+let first_fifty = (1::50) |> map(upside_down) |> collect_list()
+
+write_line("the first fifty upside-down numbers:")
+
+for row in 0..5 do
+    write_line("  {first_fifty[row * 10..row * 10 + 10] |> join(" ")}")
+od
+
+write_line("")
+
+for milestone in [500, 5_000, 50_000, 500_000, 5_000_000] do
+    write_line("number {milestone,9} is {upside_down(milestone)}")
+od
