@@ -1,0 +1,56 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+
+row_of(n: int) -> LIST[BigInteger] is
+    let row mut = LIST[BigInteger]()
+    row.add(BigInteger.one)
+
+    for step in 1::n do
+        let following = LIST[BigInteger]()
+        following.add(BigInteger.zero)
+
+        for k in 1::step do
+            let above = if k < row.count then row[k] else BigInteger.zero fi
+
+            following.add(BigInteger(k) * above + row[k - 1])
+        od
+
+        row = following
+    od
+
+    row
+si
+
+write_line("Stirling numbers of the second kind, S2(n, k):")
+write_line("")
+
+let heading = LIST[string]()
+heading.add("{"n/k",3}")
+
+for k in 0::12 do
+    heading.add("{k,10}")
+od
+
+write_line(heading |> join(""))
+
+for n in 0::12 do
+    let row = row_of(n)
+    let cells = LIST[string]()
+    cells.add("{n,3}")
+
+    for value in row do
+        cells.add("{value,10}")
+    od
+
+    write_line(cells |> join(""))
+od
+
+let largest =
+    row_of(100) |> reduce(BigInteger.zero,
+                          (best, v) => if v > best then v else best fi)
+
+write_line("")
+write_line("the largest S2(100, k):")
+write_line("  {largest}")
