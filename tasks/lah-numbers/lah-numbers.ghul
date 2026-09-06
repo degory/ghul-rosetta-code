@@ -45,8 +45,9 @@ for n in 1::12 do
 od
 
 let largest =
-    1::100 |> map(k => lah(100, k)) |> reduce(BigInteger.zero,
-        (best, value) => if value > best then value else best fi)
+    (1::100) |> map(k => lah(100, k))
+            |> reduce(BigInteger.zero,
+                      (best, v) => if v > best then v else best fi)
 
 write_line("")
 write_line("the largest L(100, k):")
