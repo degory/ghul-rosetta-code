@@ -1,3 +1,33 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
 
-write_line("not written yet")
+padovan(step: int, count: int) -> LIST[int] is
+    let terms mut = LIST[int]()
+
+    if step == 2 then
+        terms.add(1)
+        terms.add(1)
+        terms.add(1)
+    else
+        terms = LIST[int](padovan(step - 1, count)[0::step])
+    fi
+
+    while terms.count < count do
+        let total mut = 0
+
+        for back in 2::step + 1 do
+            total = total + terms[terms.count - back]
+        od
+
+        terms.add(total)
+    od
+
+    terms
+si
+
+for step in 2::8 do
+    let terms = padovan(step, 15) |> map(term => "{term,4}")
+
+    write_line("{step}:{terms |> join("")}")
+od
