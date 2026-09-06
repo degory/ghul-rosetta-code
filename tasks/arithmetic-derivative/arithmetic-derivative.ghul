@@ -1,0 +1,45 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+
+derivative(value: BigInteger) -> BigInteger is
+    if value.sign < 0 then return BigInteger.zero - derivative(-value) fi
+    if value < BigInteger(2) then return BigInteger.zero fi
+
+    let two = BigInteger(2)
+    let factor mut = two
+
+    while factor * factor <= value do
+        if (value % factor).is_zero then
+            let rest = value / factor
+
+            return derivative(rest) * factor + rest
+        fi
+
+        factor = factor + BigInteger.one
+    od
+
+    BigInteger.one
+si
+
+write_line("the arithmetic derivative of -99 through 100:")
+
+let values = (-99::100) |> map(n => "{derivative(BigInteger(n)),5}")
+                        |> collect_list()
+
+for row in 0..20 do
+    write_line(values[row * 10..row * 10 + 10] |> join(""))
+od
+
+write_line("")
+write_line("the arithmetic derivative of ten to the power m, over seven:")
+
+let ten = BigInteger(10)
+let seven = BigInteger(7)
+
+for m in 1::20 do
+    let quotient = derivative(BigInteger.pow(ten, m)) / seven
+
+    write_line("  m = {m,2}: {quotient}")
+od
