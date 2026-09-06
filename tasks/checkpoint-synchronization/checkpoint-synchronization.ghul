@@ -21,10 +21,6 @@ release_others() is
     od
 si
 
-// The worker that completes the set assembles the parts and then
-// releases one permit for each of the others. Resetting the count
-// before releasing is what keeps a quick worker from arriving at
-// the next checkpoint and being counted into this one.
 checkpoint() -> COROUTINE is
     arrived = arrived + 1
 

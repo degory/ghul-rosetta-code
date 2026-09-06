@@ -34,8 +34,6 @@ class PRINTER is
         _requests = CHANNEL[REQUEST]()
     si
 
-    // The caller's half of the rendezvous: hand the line to the
-    // monitor and stay parked until it has finished with it.
     submit(line: string) -> COROUTINE[Reply] is
         let replies = CHANNEL[Reply]()
 
@@ -52,11 +50,6 @@ class PRINTER is
         fi
     si
 
-    // The monitor. It serves each request to completion before taking
-    // the next: printing yields after every character, which gives the
-    // other writer a turn, but the two writers' lines never interleave.
-    // A printer that is out of ink forwards the request to its reserve
-    // and relays the reserve's reply.
     serve() -> COROUTINE is
         do
             let request = await _requests.receive()

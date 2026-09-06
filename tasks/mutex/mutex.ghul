@@ -8,10 +8,6 @@ let names = ["Alice", "Bob", "Carol"]
 
 let console = MUTEX()
 
-// The pause between the two lines yields to the other coroutines, so
-// without the mutex the "enters" and "leaves" lines of different
-// visitors interleave. Holding the mutex across the pause keeps each
-// pair together.
 visit(name: string) -> COROUTINE is
     write_line("{name} enters")
     await pause()

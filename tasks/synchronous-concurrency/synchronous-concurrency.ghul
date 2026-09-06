@@ -12,8 +12,6 @@ si
 use Request.COUNT
 use Request.PRINT
 
-// The task reads its input from a file. The program writes that file
-// first, so it runs as-is with nothing to set up.
 let path = "input.txt"
 
 IO.File.write_all_lines(path, ["Enjoy", "Rosetta", "Code"])
@@ -37,9 +35,6 @@ printer() -> COROUTINE is
     od
 si
 
-// Pausing after each send hands the line to the printer before the
-// next is read, so the two run in step rather than the reader
-// filling the channel and the printer draining it afterwards.
 reader() -> COROUTINE is
     for line in IO.File.read_lines(path) do
         requests.send(PRINT(line))

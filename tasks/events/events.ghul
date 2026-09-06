@@ -4,9 +4,6 @@ use Ghul.Coroutines.SEMAPHORE
 use Ghul.Coroutines.pause
 use Ghul.Coroutines.run
 
-// A manual-reset event: signalling releases everything waiting and
-// leaves the event open, so a later wait passes straight through
-// until it is reset.
 class EVENT is
     _signalled: bool
     _waiting: int
