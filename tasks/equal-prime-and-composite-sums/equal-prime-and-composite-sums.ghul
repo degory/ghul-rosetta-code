@@ -46,7 +46,8 @@ si
 take_prime()
 take_composite()
 
-write_line("sums that are both the first n primes and the first m composites:")
+write_line("sums that are both the first n primes "
+           "and the first m composites:")
 
 let wanted = 6
 let found mut = 0
