@@ -2,10 +2,6 @@ use IO.Std.write_line
 use Collections
 use Ghul.Pipes
 use System.Numerics.BigInteger
-use System.Numerics.IAdditionOperators.`+
-use System.Numerics.IMultiplyOperators.`*
-use System.Numerics.IDivisionOperators.`/
-use System.Numerics.IModulusOperators.`%
 
 decompose(n: BigInteger) -> List[BigInteger] is
     let factors = LIST()

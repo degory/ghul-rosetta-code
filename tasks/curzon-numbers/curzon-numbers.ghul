@@ -3,8 +3,6 @@ use Collections.LIST
 use Ghul.Pipes
 use System.Numerics.BigInteger
 use System.Numerics.INumber
-use System.Numerics.IAdditionOperators.`+
-use System.Numerics.IModulusOperators.`%
 
 is_curzon(base: int, n: int) -> bool is
     let divisor = cast BigInteger(base * n + 1)

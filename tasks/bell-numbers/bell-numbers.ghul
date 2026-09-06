@@ -3,7 +3,6 @@ use Collections.LIST
 use Collections.List
 use Ghul.Pipes
 use System.Numerics.BigInteger
-use System.Numerics.IAdditionOperators.`+
 
 bell_triangle() -> Pipe[List[BigInteger]] is
     let row mut = LIST[BigInteger]()

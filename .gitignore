@@ -28,3 +28,6 @@ wiki-out/
 
 # written by the Synchronous concurrency solution when it runs
 input.txt
+
+# build symbols
+**/*.pdb

@@ -1,0 +1,38 @@
+precedence, highest first
+
+  primary         f(x)  a[i]  (e)  T(x)         left
+  postfix         .  ?.  ?  !  |>               left
+  prefix          !  -  any spelling            right
+  user-8                                        left
+  multiplication  *  /  %                       left
+  user-7                                        left
+  addition        +  -                          left
+  user-6                                        left
+  bitwise         &  |  ^                       left
+  user-5          an unrecognised spelling      left
+  shift           <<  >>  >>>                   left
+  user-4                                        left
+  range           ..  ::  ..<  ::<              left
+  user-3                                        left
+  relational      ==  !=  =~  !~  <  <=  >  >=  left
+  user-2                                        left
+  boolean         /\  \/                        left
+  user-1          ??                            right
+
+the grouping the parser chose
+
+  a +++ b *** c   (a +++ (b *** c))
+  a <+> b +++ c   (a <+> (b +++ c))
+  a +++ b +++ c   ((a +++ b) +++ c)
+  a ?+ b ?+ c     (a ?+ (b ?+ c))
+  a <*> b *** c   (a <*> (b *** c))
+
+the same expression, under @precedence
+
+  a <*> b *** c   ((a <*> b) *** c)
+
+arguments are passed by value
+
+  callee wrote a field         99
+  callee reassigned the value  1
+  callee wrote through a ref   99
