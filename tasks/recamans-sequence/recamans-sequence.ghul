@@ -1,0 +1,57 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.SET
+use Ghul.Pipes
+
+recaman() -> Pipe[int] is
+    let seen = SET[int]()
+    let term mut = 0
+    let index mut = 0
+
+    do
+        yield term
+        seen.add(term)
+
+        index = index + 1
+
+        let back = term - index
+
+        term = if back > 0 /\ !seen.contains(back) then back
+               else term + index
+               fi
+    od
+si
+
+let first_fifteen = recaman() |> take(15) |> map(term => "{term}")
+
+write_line("first fifteen terms:")
+write_line("  {first_fifteen |> join(" ")}")
+
+let seen = SET[int]()
+let duplicate mut = 0
+let wanted = SET[int]()
+let position mut = 0
+let all_reached mut = 0
+
+for term in recaman() do
+    if duplicate == 0 /\ !seen.add(term) then
+        duplicate = term
+    fi
+
+    if term <= 1_000 then
+        wanted.add(term)
+    fi
+
+    if all_reached == 0 /\ wanted.count == 1_001 then
+        all_reached = position
+    fi
+
+    if duplicate != 0 /\ all_reached != 0 then
+        break
+    fi
+
+    position = position + 1
+od
+
+write_line("the first duplicated term is {duplicate}")
+write_line("every integer from 0 to 1000 has appeared by term {all_reached}")
