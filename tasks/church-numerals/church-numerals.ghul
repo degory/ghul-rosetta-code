@@ -14,7 +14,7 @@ multiply[T](a: Church[T], b: Church[T]) -> Church[T] => f => a(b(f))
 exponentiate[T](a: Church[T], b: Church[(T) -> T]) -> Church[T] => b(a)
 
 to_church[T](n: int) -> Church[T] =>
-    if n == 0 then zero[T] else successor(to_church[T](n - 1)) fi
+    if n == 0 then zero else successor(to_church(n - 1)) fi
 
 to_int(n: Church[int]) -> int => n(x => x + 1)(0)
 

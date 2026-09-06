@@ -8,13 +8,13 @@ use System.Text.StringBuilder
 let alphabet_size = 256
 
 compress(text: string) -> List[int] is
-    let codes = MAP[string, int]()
+    let codes = MAP()
 
     for code in 0..alphabet_size do
         codes["{cast char(code)}"] = code
     od
 
-    let compressed = LIST[int]()
+    let compressed = LIST()
     let current mut = ""
 
     for character in text do
@@ -41,7 +41,7 @@ decompress(compressed: List[int]) -> string is
         return ""
     fi
 
-    let words = LIST[string]()
+    let words = LIST()
 
     for code in 0..alphabet_size do
         words.add("{cast char(code)}")

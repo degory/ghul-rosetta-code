@@ -1,32 +1,31 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.INumber
 
 let bases = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
 
 passes_miller_rabin(value: bigint, base: bigint) -> bool pure is
-    if base % value =~ bigint.zero then
+    if base % value =~ 0n then
         return true
     fi
 
-    let odd mut = value - bigint.one
+    let odd mut = value - 1n
     let rounds mut = 0
 
-    while odd % 2n =~ bigint.zero do
+    while odd % 2n =~ 0n do
         odd = odd / 2n
         rounds = rounds + 1
     od
 
     let residue mut = bigint.mod_pow(base, odd, value)
 
-    if residue =~ bigint.one \/ residue =~ value - bigint.one then
+    if residue =~ 1n \/ residue =~ value - 1n then
         return true
     fi
 
     for _ in 1..rounds do
         residue = residue * residue % value
-        if residue =~ value - bigint.one then
+        if residue =~ value - 1n then
             return true
         fi
     od
@@ -35,15 +34,15 @@ passes_miller_rabin(value: bigint, base: bigint) -> bool pure is
 si
 
 is_prime(value: bigint) -> bool =>
-    value > bigint.one /\
-    bases |> all(base => passes_miller_rabin(value, cast bigint(base)))
+    value > 1n /\
+    bases |> all(base => passes_miller_rabin(value, cast(base)))
 
 chernick_factors(n: int, m: long) -> Pipe[bigint] is
-    yield cast bigint(6L * m + 1L)
-    yield cast bigint(12L * m + 1L)
+    yield cast(6L * m + 1L)
+    yield cast(12L * m + 1L)
 
     for k in 1::n - 2 do
-        yield cast bigint((1L << k) * 9L * m + 1L)
+        yield cast((1L << k) * 9L * m + 1L)
     od
 si
 
@@ -51,7 +50,7 @@ smallest_chernick(n: int) -> (m: long, factors: LIST[bigint]) is
     let step = if n > 4 then 1L << (n - 4) else 1L fi
     let m mut = step
 
-    while true do
+    do
         let factors = chernick_factors(n, m) |> collect_list()
 
         if factors |> all(is_prime) then
@@ -64,7 +63,7 @@ si
 
 for n in 3::9 do
     let (m, factors) = smallest_chernick(n)
-    let product = factors |> reduce(bigint.one, (a, b) => a * b)
+    let product = factors |> reduce(1n, (a, b) => a * b)
 
     write_line("a({n}) = U({n}, {m}) = {product}")
     write_line("     = {factors |> map(f => "{f}") |> join(" * ")}")

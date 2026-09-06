@@ -64,7 +64,7 @@ is_sphenic(n: int, factor: List[int]) -> bool => (
 
 prime_factors(n: int, factor: List[int]) -> List[string] => (
     let rest mut = n
-    let factors = LIST[string]()
+    let factors = LIST()
 
     while rest > 1 do
         let prime = factor[rest]

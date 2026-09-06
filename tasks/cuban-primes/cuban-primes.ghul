@@ -2,10 +2,10 @@ use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
 
-let small_primes = LIST[int]()
+let small_primes = LIST()
 let sieve_limit = 1_000
 
-let marked = LIST[bool]()
+let marked = LIST()
 
 for _ in 0::sieve_limit do
     marked.add(false)
@@ -33,7 +33,7 @@ probably_prime(value: long) -> bool is
     od
 
     let subject = bigint(value)
-    let one = bigint.one
+    let one = 1n
     let two = 2n
 
     let odd_part mut = subject - one

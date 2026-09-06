@@ -20,10 +20,10 @@ smooth(bound: int, count: int) -> LIST[bigint] is
                              |> map(p => bigint(p))
                              |> collect_list()
 
-    let found = LIST[bigint]()
-    found.add(bigint.one)
+    let found = LIST()
+    found.add(1n)
 
-    let next_index = LIST[int]()
+    let next_index = LIST()
 
     for _ in factors do
         next_index.add(0)

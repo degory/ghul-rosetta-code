@@ -11,9 +11,9 @@ let standard_deviation =
         total = total + sample
         squares = squares + sample * sample
 
-        let mean = total / cast double(count)
+        let mean = total / cast(count)
 
-        sqrt(squares / cast double(count) - mean * mean)
+        sqrt(squares / cast(count) - mean * mean)
     )
 
 for sample in [2.0D, 4.0D, 4.0D, 4.0D, 5.0D, 5.0D, 7.0D, 9.0D] do

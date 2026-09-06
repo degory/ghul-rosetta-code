@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 n_step(initial: int[]) -> Pipe[int] is
-    let window = LIST[int](initial)
+    let window = LIST(initial)
 
     for value in initial do
         yield value

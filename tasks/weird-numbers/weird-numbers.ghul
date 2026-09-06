@@ -4,7 +4,7 @@ use Collections.List
 use Ghul.Pipes
 
 proper_divisors(n: int) -> LIST[int] pure is
-    let divisors = LIST[int]([1])
+    let divisors = LIST([1])
     let candidate mut = 2
 
     while candidate * candidate <= n do

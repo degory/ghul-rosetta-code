@@ -5,7 +5,7 @@ square(value: double) -> double => value * value
 
 mean(values: double[]) -> double =>
     (values |> reduce(0.0D, (total, v) => total + v)) /
-    cast double(values.count)
+    cast(values.count)
 
 report(truth: double, estimates: double[]) is
     let collective = mean(estimates)

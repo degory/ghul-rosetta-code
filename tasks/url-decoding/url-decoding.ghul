@@ -5,7 +5,7 @@ use System.Convert
 use System.Text.Encoding
 
 url_decode(text: string) -> string is
-    let bytes = LIST[ubyte]()
+    let bytes = LIST()
     let i mut = 0
 
     while i < text.length do

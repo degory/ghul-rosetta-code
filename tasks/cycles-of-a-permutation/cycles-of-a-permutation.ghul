@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 permutation_between(before: string, after: string) -> LIST[int] is
-    let one_line = LIST[int]()
+    let one_line = LIST()
 
     for letter in after do
         one_line.add(before.index_of(letter) + 1)
@@ -16,7 +16,7 @@ apply(one_line: Collections.List[int], text: string) -> string =>
     string(one_line |> map(source => text[source - 1]) |> collect_array())
 
 inverse(one_line: Collections.List[int]) -> LIST[int] is
-    let result = LIST[int](one_line)
+    let result = LIST(one_line)
 
     for (target, source) in one_line |> index() do
         result[source - 1] = target + 1
@@ -31,8 +31,8 @@ compose(first: Collections.List[int], second: Collections.List[int])
 
 cycles(one_line: Collections.List[int]) -> LIST[LIST[int]] is
     let destination = inverse(one_line)
-    let found = LIST[LIST[int]]()
-    let seen = LIST[bool]()
+    let found = LIST()
+    let seen = LIST()
 
     for _ in one_line do
         seen.add(false)
@@ -40,7 +40,7 @@ cycles(one_line: Collections.List[int]) -> LIST[LIST[int]] is
 
     for start in 0..one_line.count do
         if !seen[start] then
-            let cycle = LIST[int]()
+            let cycle = LIST()
             let position mut = start
 
             while !seen[position] do
@@ -60,7 +60,7 @@ si
 
 one_line(cycle_notation: Collections.List[LIST[int]], size: int)
         -> LIST[int] is
-    let result = LIST[int]()
+    let result = LIST()
 
     for position in 1::size do
         result.add(position)
@@ -91,7 +91,7 @@ signature(one_line: Collections.List[int]) -> int is
 si
 
 show_one_line(one_line: Collections.List[int]) -> string is
-    let trimmed = LIST[int](one_line)
+    let trimmed = LIST(one_line)
 
     while trimmed.count > 0 /\
           trimmed[trimmed.count - 1] == trimmed.count do

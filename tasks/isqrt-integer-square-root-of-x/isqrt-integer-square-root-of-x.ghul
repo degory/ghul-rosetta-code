@@ -6,23 +6,23 @@ use System.Globalization.CultureInfo
 isqrt(x: bigint) -> bigint is
     let two = 2n
     let four = 4n
-    let q mut = bigint.one
+    let q mut = 1n
 
     while q <= x do
         q = q * four
     od
 
     let z mut = x
-    let root mut = bigint.zero
+    let root mut = 0n
 
-    while q > bigint.one do
+    while q > 1n do
         q = q / four
 
         let remainder = z - root - q
 
         root = root / two
 
-        if remainder >= bigint.zero then
+        if remainder >= 0n then
             z = remainder
             root = root + q
         fi
@@ -36,10 +36,10 @@ grouped(value: bigint) -> string =>
 
 write_line("isqrt of 0 through 65:")
 
-let roots = LIST[string]()
+let roots = LIST()
 
 for n in 0::65 do
-    roots.add("{isqrt(cast bigint(n))}")
+    roots.add("{isqrt(cast(n))}")
 od
 
 write_line(roots |> join(" "))

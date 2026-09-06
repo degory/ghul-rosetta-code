@@ -23,7 +23,7 @@ class NAME(words: Collections.List[string] private) is
 si
 
 parse(text: string) -> NAME is
-    let words = LIST[string]()
+    let words = LIST()
     let word = StringBuilder()
 
     for character in text.trim() do

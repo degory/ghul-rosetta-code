@@ -22,7 +22,7 @@ shifted(text: string, key: string, direction: int) -> string is
         let shift = cast int(word[at % word.length]) - cast int('A')
         let moved = ((letter + direction * shift) % 26 + 26) % 26
 
-        result.append(cast char(moved + cast int('A')))
+        result.append(cast char(moved + cast('A')))
     od
 
     return result.to_string()

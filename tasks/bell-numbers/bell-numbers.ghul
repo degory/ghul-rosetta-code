@@ -4,14 +4,14 @@ use Collections.List
 use Ghul.Pipes
 
 bell_triangle() -> Pipe[List[bigint]] is
-    let row mut = LIST[bigint]()
+    let row mut = LIST()
 
-    row.add(bigint.one)
+    row.add(1n)
 
     while true do
         yield row
 
-        let next = LIST[bigint]()
+        let next = LIST()
 
         next.add(row[row.count - 1])
 

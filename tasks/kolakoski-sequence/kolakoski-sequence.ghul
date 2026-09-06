@@ -15,7 +15,7 @@ si
 
 kolakoski(values: int[], length: int) -> List[int] is
     let next = cycler(values)
-    let sequence = LIST[int]()
+    let sequence = LIST()
     let at_run mut = 0
 
     while sequence.count < length do
@@ -34,7 +34,7 @@ kolakoski(values: int[], length: int) -> List[int] is
 si
 
 run_lengths(sequence: List[int]) -> List[int] is
-    let runs = LIST[int]()
+    let runs = LIST()
     let run mut = 0
 
     for i in 0..sequence.count do

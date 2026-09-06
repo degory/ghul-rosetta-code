@@ -1,9 +1,8 @@
 use IO.Std.write_line
-use Collections.LIST
 use Collections.MAP
 use Ghul.Pipes
 
-let number_words = MAP[string, int]()
+let number_words = MAP()
 
 let units = [
     "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
@@ -26,7 +25,7 @@ number_words.add("single", 1)
 number_words.add("a", 0)
 number_words.add("and", 0)
 
-let punctuation_names = MAP[string, char]()
+let punctuation_names = MAP()
 
 punctuation_names.add("comma", ',')
 punctuation_names.add("apostrophe", '\'')
@@ -36,7 +35,7 @@ count_of[K](counts: MAP[K, int], key: K) -> int =>
     if counts.contains_key(key) then counts[key] else 0 fi
 
 actual_counts(sentence: string, with_punctuation: bool) -> MAP[char, int] is
-    let counts = MAP[char, int]()
+    let counts = MAP()
 
     for character in sentence.to_lower() do
         let counted =
@@ -72,7 +71,7 @@ claimed_item(word: string) -> char? is
 si
 
 claimed_counts(sentence: string) -> MAP[char, int] is
-    let claims = MAP[char, int]()
+    let claims = MAP()
     let pending mut = 0
 
     for word in sentence.to_lower().replace("-", " ").split([' ']) do

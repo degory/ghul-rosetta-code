@@ -6,7 +6,7 @@ sylvester(count: int) -> Pipe[bigint] is
 
     for _ in 1::count do
         yield term
-        term = term * term - term + bigint.one
+        term = term * term - term + 1n
     od
 si
 
@@ -21,8 +21,8 @@ for term in terms do
     write_line("  {term}")
 od
 
-let numerator mut = bigint.zero
-let denominator mut = bigint.one
+let numerator mut = 0n
+let denominator mut = 1n
 
 for term in terms do
     numerator = numerator * term + denominator

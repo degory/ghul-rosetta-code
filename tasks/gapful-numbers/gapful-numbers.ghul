@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 gapful_from(start: int, wanted: int) -> LIST[int] is
-    let found = LIST[int]()
+    let found = LIST()
     let candidate mut = start
 
     while found.count < wanted do

@@ -3,15 +3,15 @@ use Collections.LIST
 use Ghul.Pipes
 
 row_of(n: int) -> LIST[bigint] is
-    let row mut = LIST[bigint]()
-    row.add(bigint.one)
+    let row mut = LIST()
+    row.add(1n)
 
     for step in 1::n do
-        let following = LIST[bigint]()
-        following.add(bigint.zero)
+        let following = LIST()
+        following.add(0n)
 
         for k in 1::step do
-            let above = if k < row.count then row[k] else bigint.zero fi
+            let above = if k < row.count then row[k] else 0n fi
 
             following.add(bigint(k) * above + row[k - 1])
         od
@@ -25,7 +25,7 @@ si
 write_line("Stirling numbers of the second kind, S2(n, k):")
 write_line("")
 
-let heading = LIST[string]()
+let heading = LIST()
 heading.add("{"n/k",3}")
 
 for k in 0::12 do
@@ -36,7 +36,7 @@ write_line(heading |> join(""))
 
 for n in 0::12 do
     let row = row_of(n)
-    let cells = LIST[string]()
+    let cells = LIST()
     cells.add("{n,3}")
 
     for value in row do
@@ -47,7 +47,7 @@ for n in 0::12 do
 od
 
 let largest =
-    row_of(100) |> reduce(bigint.zero,
+    row_of(100) |> reduce(0n,
                           (best, v) => if v > best then v else best fi)
 
 write_line("")

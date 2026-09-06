@@ -6,7 +6,7 @@ popcount(n: long) -> int => (
     let count mut = 0
 
     while bits != 0L do
-        count = count + cast int(bits & 1L)
+        count = count + cast(bits & 1L)
         bits = bits >>> 1
     od
 

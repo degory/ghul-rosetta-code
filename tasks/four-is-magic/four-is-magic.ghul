@@ -22,18 +22,18 @@ cardinal(value: long) -> string is
     if value < 0L then
         return "negative {cardinal(-value)}"
     elif value < 20L then
-        return small[cast int(value)]
+        return small[cast(value)]
     elif value < 100L then
-        let name = tens[cast int(value / 10L) - 2]
+        let name = tens[cast(value / 10L) - 2]
 
         return
             if value % 10L == 0L then
                 name
             else
-                "{name}-{small[cast int(value % 10L)]}"
+                "{name}-{small[cast(value % 10L)]}"
             fi
     elif value < 1000L then
-        let name = "{small[cast int(value / 100L)]} hundred"
+        let name = "{small[cast(value / 100L)]} hundred"
 
         return
             if value % 100L == 0L then
@@ -62,11 +62,11 @@ cardinal(value: long) -> string is
 si
 
 magic(value: long) -> string is
-    let phrases = LIST[string]()
+    let phrases = LIST()
     let name mut = cardinal(value)
 
     while name !~ "four" do
-        let counted = cardinal(cast long(name.length))
+        let counted = cardinal(cast(name.length))
 
         phrases.add("{name} is {counted}")
 

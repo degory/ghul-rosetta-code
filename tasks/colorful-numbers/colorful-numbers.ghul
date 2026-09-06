@@ -6,7 +6,7 @@ use Ghul.Pipes
 is_colorful(value: int) -> bool is
     if value < 10 then return true fi
 
-    let digits = LIST[int]()
+    let digits = LIST()
     let remaining mut = value
 
     while remaining > 0 do
@@ -18,7 +18,7 @@ is_colorful(value: int) -> bool is
         remaining = remaining / 10
     od
 
-    let seen = SET[int]()
+    let seen = SET()
 
     for start in 0..digits.count do
         let product mut = 1
@@ -36,7 +36,7 @@ si
 arrangements(prefix: int, available: LIST[int]) -> Pipe[int] is
     for chosen in available do
         let value = prefix * 10 + chosen
-        let rest = LIST[int](available)
+        let rest = LIST(available)
 
         rest.remove(chosen)
 
@@ -48,7 +48,7 @@ arrangements(prefix: int, available: LIST[int]) -> Pipe[int] is
     od
 si
 
-let digits = LIST[int]((2::9) |> collect_list())
+let digits = LIST((2::9) |> collect_list())
 
 let candidates = (0::9) |> cat(arrangements(0, digits))
 let colorful = candidates |> filter(is_colorful) |> collect_list()

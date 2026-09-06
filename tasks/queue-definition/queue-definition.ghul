@@ -6,7 +6,7 @@ class QUEUE[T] is
     _items: LIST[T]
 
     init() is
-        _items = LIST[T]()
+        _items = LIST()
     si
 
     is_empty: bool => _items.count == 0
@@ -27,7 +27,7 @@ class QUEUE[T] is
     si
 si
 
-let queue = QUEUE[string]()
+let queue = QUEUE()
 
 write_line("empty: {queue.is_empty}")
 

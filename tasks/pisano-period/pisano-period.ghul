@@ -69,7 +69,7 @@ is_prime(value: int) -> bool is
 si
 
 in_rows(entries: Collections.Iterable[string], per_row: int) is
-    let row = LIST[string]()
+    let row = LIST()
 
     for entry in entries do
         row.add(entry)

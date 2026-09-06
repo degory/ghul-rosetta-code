@@ -4,7 +4,7 @@ use Ghul.Pipes
 use System.Math
 
 entropy(text: string) -> double is
-    let counts = MAP[char, int]()
+    let counts = MAP()
 
     for character in text do
         let seen mut = 0
@@ -17,7 +17,7 @@ entropy(text: string) -> double is
     let total = cast double(text.length)
 
     return counts.values
-        |> map(count => cast double(count) / total)
+        |> map(count => cast(count) / total)
         |> reduce(0.0D, (bits, probability) =>
             bits - probability * Math.log2(probability))
 si

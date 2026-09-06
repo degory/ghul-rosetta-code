@@ -18,7 +18,7 @@ od
 
 sums.sort()
 
-let taxis = LIST[long]()
+let taxis = LIST()
 
 let i mut = 0
 
@@ -44,7 +44,7 @@ cube_root(value: long) -> long => (
 )
 
 expressions(taxi: long) -> string => (
-    let parts = LIST[string]()
+    let parts = LIST()
     let a mut = 1L
 
     while a * a * a * 2L < taxi do

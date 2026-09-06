@@ -2,7 +2,7 @@ use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
 
-let sequence = LIST[int]([1, 1])
+let sequence = LIST([1, 1])
 let considered mut = 1
 
 while sequence.count < 1200 do

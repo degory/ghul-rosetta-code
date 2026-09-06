@@ -1,7 +1,6 @@
 use IO.Std
 use Collections.LIST
 use Collections.MAP
-use Ghul.Pipes
 
 union Node is
     EMPTY;
@@ -93,7 +92,7 @@ interpret(node: Node) -> int =>
     else 0
     esac
 
-let ast = LIST[string]([
+let ast = LIST([
     "Sequence", "Sequence", "Sequence", "Sequence", "Sequence", ";",
     "Assign", "Identifier count", "Integer 1",
     "Assign", "Identifier n", "Integer 1",
@@ -127,4 +126,4 @@ let ast = LIST[string]([
     "Prts", "String \"\\n\"", ";"
 ])
 
-interpret(load(ast, LIST[int]([0])))
+interpret(load(ast, LIST([0])))

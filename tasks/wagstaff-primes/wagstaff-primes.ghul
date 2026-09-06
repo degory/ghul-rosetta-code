@@ -1,8 +1,7 @@
 use IO.Std.write_line
-use Collections.LIST
 use Ghul.Pipes
 
-let one = bigint.one
+let one = 1n
 let two = 2n
 
 is_odd_prime(value: int) -> bool is

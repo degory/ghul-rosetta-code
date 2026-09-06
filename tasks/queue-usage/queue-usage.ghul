@@ -2,7 +2,7 @@ use IO.Std.write_line
 use Collections.Queue
 use Ghul.Pipes
 
-let queue = Queue[string]()
+let queue = Queue()
 
 report_empty(pending: Queue[string]) is
     let state = if pending.count == 0 then "yes" else "no" fi

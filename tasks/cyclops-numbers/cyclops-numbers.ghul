@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 let sieve_limit = 10_000_000
-let composite = LIST[bool](sieve_limit)
+let composite = LIST(sieve_limit)
 
 for _ in 0..sieve_limit do
     composite.add(false)
@@ -21,8 +21,8 @@ for candidate in 2..sieve_limit do
 od
 
 is_prime(value: long) -> bool is
-    if value < cast long(sieve_limit) then
-        return value >= 2L /\ !composite[cast int(value)]
+    if value < cast(sieve_limit) then
+        return value >= 2L /\ !composite[cast(value)]
     fi
 
     let divisor mut = 2L
@@ -45,7 +45,7 @@ zero_free(digits: int) -> Pipe[long] is
 
     for shorter in zero_free(digits - 1) do
         for digit in 1::9 do
-            yield shorter * 10L + cast long(digit)
+            yield shorter * 10L + cast(digit)
         od
     od
 si

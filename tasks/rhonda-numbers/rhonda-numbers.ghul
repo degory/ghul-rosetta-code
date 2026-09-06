@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 digits(value: int, base: int) -> LIST[int] is
-    let result = LIST[int]()
+    let result = LIST()
     let remaining mut = value
 
     while remaining > 0 do

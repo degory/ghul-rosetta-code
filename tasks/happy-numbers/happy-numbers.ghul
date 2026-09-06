@@ -6,7 +6,7 @@ digit_square_sum(n: int) -> int =>
     if n == 0 then 0 else n % 10 * (n % 10) + digit_square_sum(n / 10) fi
 
 is_happy(n: int) -> bool is
-    let seen = LIST[int]()
+    let seen = LIST()
     let remaining mut = n
 
     while !seen.contains(remaining) do

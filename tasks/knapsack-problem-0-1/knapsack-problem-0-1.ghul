@@ -6,10 +6,10 @@ use Ghul.Pipes
 use ITEM = (name: string, weight: int, value: int)
 
 best_value(items: List[ITEM], limit: int) -> List[List[int]] is
-    let table = LIST[LIST[int]](items.count + 1)
+    let table = LIST(items.count + 1)
 
     for _ in 0::items.count do
-        let row = LIST[int](limit + 1)
+        let row = LIST(limit + 1)
 
         for _ in 0::limit do
             row.add(0)
@@ -40,7 +40,7 @@ si
 
 packed(items: List[ITEM], limit: int) -> List[ITEM] is
     let table = best_value(items, limit)
-    let chosen = LIST[ITEM]()
+    let chosen = LIST()
 
     let at mut = items.count
     let capacity mut = limit

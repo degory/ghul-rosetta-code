@@ -2,8 +2,8 @@ use IO.Std.write_line
 use Ghul.Pipes
 
 riordan(count: int) -> Pipe[bigint] is
-    let previous mut = bigint.one
-    let current mut = bigint.zero
+    let previous mut = 1n
+    let current mut = 0n
 
     yield previous
 
@@ -11,9 +11,9 @@ riordan(count: int) -> Pipe[bigint] is
         yield current
 
         let following =
-            bigint(index) *
+            cast(index) *
             (2n * current + 3n * previous) /
-            bigint(index + 2)
+            cast(index + 2)
 
         previous = current
         current = following

@@ -10,8 +10,8 @@ jaro(left: string, right: string) -> double is
     fi
 
     let window = Math.max(left.length, right.length) / 2 - 1
-    let taken = SET[int]()
-    let matched_left = LIST[char]()
+    let taken = SET()
+    let matched_left = LIST()
 
     for i in 0..left.length do
         let first = Math.max(0, i - window)
@@ -44,10 +44,10 @@ jaro(left: string, right: string) -> double is
         |> count()
 
     let matches = cast double(match_count)
-    let half_transpositions = cast double(transposed) / 2.0D
+    let half_transpositions = cast(transposed) / 2.0D
 
-    return (matches / cast double(left.length) +
-          matches / cast double(right.length) +
+    return (matches / cast(left.length) +
+          matches / cast(right.length) +
           (matches - half_transpositions) / matches) / 3.0D
 si
 

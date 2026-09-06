@@ -5,7 +5,7 @@ use Collections.Iterable
 use Ghul.Pipes
 
 factorize(n: int) -> List[(prime: int, exponent: int)] is
-    let factors = LIST[(prime: int, exponent: int)]()
+    let factors = LIST()
     let remaining mut = n
     let prime mut = 2
 

@@ -3,14 +3,14 @@ use Collections.LIST
 use Ghul.Pipes
 
 padovan(step: int, count: int) -> LIST[int] is
-    let terms mut = LIST[int]()
+    let terms mut = LIST()
 
     if step == 2 then
         terms.add(1)
         terms.add(1)
         terms.add(1)
     else
-        terms = LIST[int](padovan(step - 1, count)[0::step])
+        terms = LIST(padovan(step - 1, count)[0::step])
     fi
 
     while terms.count < count do

@@ -3,7 +3,7 @@ use Collections.SET
 use Ghul.Pipes
 
 cuboid_areas() -> SET[int] is
-    let areas = SET[int]()
+    let areas = SET()
 
     for length in 1::12 do
         for width in length::16 do

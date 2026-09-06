@@ -4,7 +4,7 @@ use Ghul.Pipes
 
 permute[T](digits: Collections.List[int], items: Collections.List[T])
         -> LIST[T] is
-    let result = LIST[T](items)
+    let result = LIST(items)
 
     for (place, digit) in digits |> index() do
         if digit > 0 then
@@ -19,14 +19,14 @@ permute[T](digits: Collections.List[int], items: Collections.List[T])
 si
 
 factorial_base_numbers(places: int) -> Pipe[LIST[int]] is
-    let digits = LIST[int]()
+    let digits = LIST()
 
     for _ in 0..places do
         digits.add(0)
     od
 
     while true do
-        yield LIST[int](digits)
+        yield LIST(digits)
 
         let place mut = places - 1
 
@@ -64,7 +64,7 @@ let permutations_of_eleven = factorial_base_numbers(10) |> count()
 write_line("permutations of 11 digits: {permutations_of_eleven}")
 write_line("")
 
-let shoe = LIST[string]()
+let shoe = LIST()
 
 for suit in ["♠", "♥", "♦", "♣"] do
     let ranks = [

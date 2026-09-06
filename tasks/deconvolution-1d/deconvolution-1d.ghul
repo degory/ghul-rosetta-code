@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 deconvolve(g: int[], f: int[]) -> LIST[int] is
-    let h = LIST[int]()
+    let h = LIST()
 
     for n in 0..g.count - f.count + 1 do
         let overlap mut = 0

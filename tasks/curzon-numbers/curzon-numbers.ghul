@@ -1,14 +1,12 @@
 use IO.Std.write_line
-use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.INumber
 
 is_curzon(base: int, n: int) -> bool is
-    let divisor = cast bigint(base * n + 1)
-    let big_base = cast bigint(base)
-    let power = bigint.mod_pow(big_base, cast bigint(n), divisor)
+    let divisor = bigint(base * n + 1)
+    let big_base = bigint(base)
+    let power = bigint.mod_pow(big_base, bigint(n), divisor)
 
-    return (power + bigint.one) % divisor =~ bigint.zero
+    return (power + 1n) % divisor =~ 0n
 si
 
 curzon_numbers(base: int) -> Pipe[int] is

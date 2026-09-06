@@ -1,10 +1,9 @@
 use IO.Std.write_line
 use Collections.LIST
-use Collections.List
 use Ghul.Pipes
 
 zigzag(n: int) -> LIST[LIST[int]] is
-    let cells = LIST[LIST[int]]()
+    let cells = LIST()
 
     for _ in 0..n do
         cells.add(stream(0, v => v || v + 1)

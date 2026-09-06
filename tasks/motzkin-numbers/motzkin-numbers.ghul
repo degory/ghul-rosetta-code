@@ -1,11 +1,11 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-let one = bigint.one
+let one = 1n
 let two = 2n
 
 motzkin(count: int) -> Pipe[bigint] is
-    let previous mut = bigint.zero
+    let previous mut = 0n
     let current mut = one
 
     for index in 0..count do

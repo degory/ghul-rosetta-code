@@ -12,10 +12,10 @@ highest(values: int[]) -> int =>
     |> reduce(0, (best, value) => if value > best then value else best fi)
 
 matrix(first: string, second: string) -> LIST[LIST[int]] is
-    let scores = LIST[LIST[int]]()
+    let scores = LIST()
 
     for i in 0::first.length do
-        let row = LIST[int]()
+        let row = LIST()
 
         for j in 0::second.length do
             row.add(0)
@@ -66,9 +66,9 @@ trace(
     let i mut = row
     let j mut = column
 
-    let top = LIST[char]()
-    let bottom = LIST[char]()
-    let cells = LIST[string]()
+    let top = LIST()
+    let bottom = LIST()
+    let cells = LIST()
 
     while i > 0 /\ j > 0 /\ scores[i][j] > 0 do
         cells.add("({i},{j})")

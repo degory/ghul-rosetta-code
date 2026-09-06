@@ -1,12 +1,11 @@
 use IO.Std.write_line
-use Collections.LIST
 use Ghul.Pipes
 
-let one = bigint.one
+let one = 1n
 let two = 2n
 
 wolstenholme(count: int) -> Pipe[bigint] is
-    let numerator mut = bigint.zero
+    let numerator mut = 0n
     let denominator mut = one
 
     for k in 1::count do

@@ -3,7 +3,7 @@ use Collections.MAP
 use Ghul.Pipes
 
 inventory() -> Pipe[int] is
-    let counts = MAP[int, int]()
+    let counts = MAP()
 
     while true do
         let value mut = 0

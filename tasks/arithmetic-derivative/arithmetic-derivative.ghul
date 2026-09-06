@@ -1,10 +1,9 @@
 use IO.Std.write_line
-use Collections.LIST
 use Ghul.Pipes
 
 derivative(value: bigint) -> bigint is
-    if value.sign < 0 then return bigint.zero - derivative(-value) fi
-    if value < 2n then return bigint.zero fi
+    if value.sign < 0 then return 0n - derivative(-value) fi
+    if value < 2n then return 0n fi
 
     let two = 2n
     let factor mut = two
@@ -16,10 +15,10 @@ derivative(value: bigint) -> bigint is
             return derivative(rest) * factor + rest
         fi
 
-        factor = factor + bigint.one
+        factor = factor + 1n
     od
 
-    bigint.one
+    1n
 si
 
 write_line("the arithmetic derivative of -99 through 100:")

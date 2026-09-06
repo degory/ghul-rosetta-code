@@ -15,7 +15,7 @@ class BUCKETS is
     _values: LIST[int]
 
     init(values: int[]) is
-        _values = LIST[int](values)
+        _values = LIST(values)
     si
 
     count: int => _values.count

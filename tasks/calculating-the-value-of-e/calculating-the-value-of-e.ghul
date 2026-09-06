@@ -7,7 +7,7 @@ reciprocal_factorials() -> Pipe[decimal] is
 
     do
         yield term
-        term = term / cast decimal(n)
+        term = term / cast(n)
         n = n + 1
     od
 si

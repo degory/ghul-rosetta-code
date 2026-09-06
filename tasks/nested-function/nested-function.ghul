@@ -10,7 +10,7 @@ make_list(separator: string) -> string is
         "{counter}{separator}{item}"
     )
 
-    let items = LIST[string]()
+    let items = LIST()
 
     for item in ["first", "second", "third"] do
         items.add(make_item(item))

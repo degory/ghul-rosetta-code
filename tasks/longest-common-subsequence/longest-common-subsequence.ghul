@@ -3,7 +3,7 @@ use Collections.MAP
 use Ghul.Pipes
 
 longest_common_subsequence(left: string, right: string) -> string is
-    let known = MAP[(i: int, j: int), string]()
+    let known = MAP()
 
     let longest = (i: int, j: int) -> string rec =>
         if i == left.length \/ j == right.length then

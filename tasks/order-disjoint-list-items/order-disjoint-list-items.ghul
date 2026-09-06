@@ -4,7 +4,7 @@ use Collections.MAP
 use Ghul.Pipes
 
 reorder(items: string[], order: string[]) -> string[] is
-    let wanted = MAP[string, int]()
+    let wanted = MAP()
 
     for item in order do
         let already mut = 0
@@ -13,7 +13,7 @@ reorder(items: string[], order: string[]) -> string[] is
         wanted[item] = already + 1
     od
 
-    let places = LIST[int]()
+    let places = LIST()
 
     for entry in items |> index() do
         let outstanding mut = 0
@@ -27,7 +27,7 @@ reorder(items: string[], order: string[]) -> string[] is
         fi
     od
 
-    let reordered = LIST[string](items)
+    let reordered = LIST(items)
 
     for place in places |> index() do
         reordered[place.value] = order[place.index]

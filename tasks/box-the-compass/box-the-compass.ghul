@@ -14,11 +14,11 @@ let points =
      "Northwest by north", "North-northwest", "North by west"]
 
 box(heading: double) -> int =>
-    cast int(heading / 11.25D + 0.5D) % 32
+    cast(heading / 11.25D + 0.5D) % 32
 
 let headings =
     (0::32) |> map(index => (
-        let base = cast double(index) * 11.25D
+        let base = cast(index) * 11.25D
 
         case index % 3
         when 1 then base + 5.62D

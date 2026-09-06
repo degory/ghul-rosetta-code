@@ -57,7 +57,7 @@ cardinal(value: long) -> string is
     fi
 
     let parts = groups(value)
-    let named = LIST[string]()
+    let named = LIST()
 
     let at mut = parts.count - 1
 

@@ -1,5 +1,4 @@
 use IO.Std.write_line
-use Collections.LIST
 use Ghul.Pipes
 
 hailstone(n: int) -> Pipe[int] is

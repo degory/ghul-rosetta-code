@@ -4,11 +4,11 @@ use Collections.List
 use Ghul.Pipes
 
 to_octets(value: long) -> LIST[ubyte] is
-    let octets = LIST[ubyte]([cast ubyte(value & 0x7FL)])
+    let octets = LIST([cast ubyte(value & 0x7FL)])
     let rest mut = value >> 7
 
     while rest > 0L do
-        octets.insert(0, cast ubyte((rest & 0x7FL) | 0x80L))
+        octets.insert(0, cast((rest & 0x7FL) | 0x80L))
         rest = rest >> 7
     od
 
@@ -18,7 +18,7 @@ si
 from_octets(octets: List[ubyte]) -> long =>
     octets
         |> reduce(0L, (value: long, octet: ubyte) =>
-            (value << 7) | cast long(cast int(octet) & 0x7F))
+            (value << 7) | cast(cast(octet) & 0x7F))
 
 as_hex(octet: ubyte) -> string pure => "{octet:X2}"
 

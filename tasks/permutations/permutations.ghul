@@ -4,15 +4,15 @@ use Ghul.Pipes
 
 permutations(items: LIST[int]) -> Pipe[LIST[int]] is
     if items.count == 0 then
-        yield LIST[int]()
+        yield LIST()
     else
         for index in 0..items.count do
-            let rest = LIST[int](items)
+            let rest = LIST(items)
 
             rest.remove_at(index)
 
             for tail in permutations(rest) do
-                let whole = LIST[int]()
+                let whole = LIST()
 
                 whole.add(items[index])
                 whole.add_range(tail)
@@ -23,7 +23,7 @@ permutations(items: LIST[int]) -> Pipe[LIST[int]] is
     fi
 si
 
-permutations(LIST[int]([1, 2, 3]))
+permutations(LIST([1, 2, 3]))
     |> each((permutation: LIST[int]) => write_line(permutation
         |> map(value => "{value}")
         |> join(" ")))

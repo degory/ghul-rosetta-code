@@ -4,9 +4,9 @@ use Ghul.Pipes
 
 let limit = 1000000
 
-let radical = LIST[int]()
-let factor_counts = LIST[int]()
-let composite = LIST[bool]()
+let radical = LIST()
+let factor_counts = LIST()
+let composite = LIST()
 
 for _ in 0::limit do
     radical.add(1)
@@ -40,7 +40,7 @@ for n in [99999, 499999, 999999] do
     write_line("radical[{n}] = {radical[n]}")
 od
 
-let distribution = LIST[int]()
+let distribution = LIST()
 
 for _ in 0..8 do
     distribution.add(0)
@@ -69,11 +69,11 @@ let primes = (2..(limit + 1))
 let powers mut = 0
 
 for base in primes do
-    let power mut = cast long(base) * cast long(base)
+    let power mut = cast long(base) * cast(base)
 
-    while power <= cast long(limit) do
+    while power <= cast(limit) do
         powers = powers + 1
-        power = power * cast long(base)
+        power = power * cast(base)
     od
 od
 

@@ -3,8 +3,8 @@ use Collections.LIST
 use Ghul.Pipes
 
 let limit = 130_000
-let largest_prime_factor = LIST[int](limit + 1)
-let is_cubefree = LIST[bool](limit + 1)
+let largest_prime_factor = LIST(limit + 1)
+let is_cubefree = LIST(limit + 1)
 
 for _ in 0::limit do
     largest_prime_factor.add(1)

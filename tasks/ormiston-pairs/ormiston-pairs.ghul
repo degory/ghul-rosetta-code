@@ -4,7 +4,7 @@ use Ghul.Pipes
 
 let limit = 10000000
 
-let composite = LIST[bool]()
+let composite = LIST()
 
 (0::limit) |> each(_ => composite.add(false))
 
@@ -24,7 +24,7 @@ while root * root <= limit do
 od
 
 digit_signature(value: int) -> string => (
-    let counts = LIST[int]()
+    let counts = LIST()
 
     for _ in 0..10 do
         counts.add(0)
@@ -47,7 +47,7 @@ digit_signature(value: int) -> string => (
     signature
 )
 
-let pairs = LIST[string]()
+let pairs = LIST()
 let up_to_million mut = 0
 let up_to_ten_million mut = 0
 let previous mut = 0

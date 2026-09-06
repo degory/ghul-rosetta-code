@@ -1,14 +1,13 @@
 use IO.Std.write_line
 use Collections.LIST
 use Collections.SET
-use Collections.List
 use Ghul.Pipes
 
 gcd(a: int, b: int) -> int => if b == 0 then a else gcd(b, a % b) fi
 
 yellowstone(count: int) -> LIST[int] is
-    let terms = LIST[int]([1, 2, 3])
-    let used = SET[int]([1, 2, 3])
+    let terms = LIST([1, 2, 3])
+    let used = SET([1, 2, 3])
 
     while terms.count < count do
         let previous = terms[terms.count - 1]

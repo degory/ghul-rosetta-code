@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 from_array(values: int[]) -> Collections.List[int] is
-    let result = LIST[int]()
+    let result = LIST()
 
     for value in values do
         result.add(value)
@@ -13,7 +13,7 @@ from_array(values: int[]) -> Collections.List[int] is
 si
 
 text_of(values: Collections.List[int]) -> string is
-    let texts = LIST[string]()
+    let texts = LIST()
 
     for value in values do
         texts.add("{value}")
@@ -24,7 +24,7 @@ si
 
 binomial_transform(values: Collections.List[int], forward: bool)
         -> Collections.List[int] is
-    let result = LIST[int]()
+    let result = LIST()
 
     for n in 0..values.count do
         let total mut = 0

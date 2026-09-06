@@ -4,22 +4,22 @@ use Collections.List
 use Ghul.Pipes
 
 runs(values: List[int]) -> LIST[LIST[int]] is
-    let groups = LIST[LIST[int]]()
-    let current = LIST[int]()
+    let groups = LIST()
+    let current = LIST()
 
     for value in values do
         if current.count == 0 \/
                 current[current.count - 1] == value - 1 then
             current.add(value)
         else
-            groups.add(LIST[int](current))
+            groups.add(LIST(current))
             current.clear()
             current.add(value)
         fi
     od
 
     if current.count > 0 then
-        groups.add(LIST[int](current))
+        groups.add(LIST(current))
     fi
 
     groups

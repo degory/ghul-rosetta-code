@@ -44,7 +44,7 @@ cardinal(value: int) -> string is
         return small[0]
     fi
 
-    let named = LIST[string]()
+    let named = LIST()
     let rest mut = value
     let scale mut = 0
 
@@ -87,7 +87,7 @@ si
 letters(word: string) -> int =>
     word |> filter(c => char.is_letter(c)) |> count()
 
-let words = LIST[string]()
+let words = LIST()
 
 let opening =
     "Four is the number of letters in the first word of this sentence,"

@@ -6,14 +6,14 @@ power(base: int, exponent: int) -> long is
     let result mut = 1L
 
     for _ in 1::exponent do
-        result = result * cast long(base)
+        result = result * cast(base)
     od
 
     result
 si
 
 digit_counts(value: long) -> LIST[int] is
-    let counts = LIST[int]()
+    let counts = LIST()
 
     for _ in 0::9 do
         counts.add(0)
@@ -36,7 +36,7 @@ multisets(width: int, lowest: int, chosen: LIST[int]) -> Pipe[LIST[int]] is
         yield chosen
     else
         for digit in lowest::9 do
-            let extended = LIST[int](chosen)
+            let extended = LIST(chosen)
 
             extended.add(digit)
 
@@ -46,7 +46,7 @@ multisets(width: int, lowest: int, chosen: LIST[int]) -> Pipe[LIST[int]] is
 si
 
 own_sums(width: int) -> Pipe[long] is
-    for combination in multisets(width, 0, LIST[int]()) do
+    for combination in multisets(width, 0, LIST()) do
         let total mut = 0L
 
         for digit in combination do
@@ -55,7 +55,7 @@ own_sums(width: int) -> Pipe[long] is
 
         if "{total}".length == width then
             let wanted = digit_counts(total)
-            let held = LIST[int]()
+            let held = LIST()
 
             for _ in 0::9 do
                 held.add(0)

@@ -6,7 +6,7 @@ class NODE(name: string, weight: double, own_coverage: double?) is
     children: LIST[NODE]
 
     init(..) is
-        children = LIST[NODE]()
+        children = LIST()
     si
 
     coverage: double =>
@@ -94,14 +94,14 @@ parse(line: string) -> (depth: int, node: NODE) is
     let coverage_text = cells[2].trim()
     let weight = if weight_text.length > 0 then double.parse(weight_text)
                  else 1.0D fi
-    let coverage: double? =
+    let coverage =
         if coverage_text.length > 0 then double.parse(coverage_text)
         else null fi
 
     return (depth, NODE(name, weight, coverage))
 si
 
-let ancestors = LIST[NODE]()
+let ancestors = LIST()
 let root: NODE? mut = null
 
 for line in table do

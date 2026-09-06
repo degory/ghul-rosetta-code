@@ -3,9 +3,9 @@ use System.Math.sqrt
 
 step(value: long) -> long =>
     if (value % 2L) == 0L then
-        cast long(sqrt(cast double(value)))
+        cast long(sqrt(cast(value)))
     else
-        cast long(cast double(value) * sqrt(cast double(value)))
+        cast long(cast(value) * sqrt(cast(value)))
     fi
 
 stats(start: long) -> (int, long, int) => (
@@ -30,6 +30,6 @@ stats(start: long) -> (int, long, int) => (
 write_line("  n   l                h  i")
 
 for n in 20::39 do
-    let (terms, highest, at) = stats(cast long(n))
+    let (terms, highest, at) = stats(cast(n))
     write_line("{n,3}  {terms,3}  {highest,17:N0}  {at}")
 od

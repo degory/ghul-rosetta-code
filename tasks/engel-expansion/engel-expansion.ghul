@@ -18,8 +18,8 @@ power[T: INumber[T]](base: T, exponent: int) -> T =>
 engel(numerator: bigint, denominator: bigint) -> Pipe[bigint] is
     let current mut = numerator
 
-    while current > bigint.zero do
-        let term = (denominator + current - bigint.one) / current
+    while current > 0n do
+        let term = (denominator + current - 1n) / current
 
         yield term
         current = term * current - denominator
@@ -28,11 +28,11 @@ si
 
 from_engel(terms: Collections.List[bigint])
         -> (numerator: bigint, denominator: bigint) is
-    let numerator mut = bigint.zero
-    let denominator mut = bigint.one
+    let numerator mut = 0n
+    let denominator mut = 1n
 
     for term in terms do
-        numerator = numerator * term + bigint.one
+        numerator = numerator * term + 1n
         denominator = denominator * term
     od
 
@@ -46,7 +46,7 @@ show(name: string, fractional: string) is
     let (rebuilt, scale) = from_engel(terms)
     let verified = if rebuilt * denominator =~ numerator * scale
         then "round trips" else "DOES NOT ROUND TRIP" fi
-    let shown = LIST[string]()
+    let shown = LIST()
 
     for term in terms |> take(30) do
         shown.add("{term}")

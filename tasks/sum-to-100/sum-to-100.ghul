@@ -9,7 +9,7 @@ let minus = 1
 
 expressions() -> Pipe[(value: int, text: string)] is
     for code in 0..19683 do
-        let operators = LIST[int](9)
+        let operators = LIST(9)
         let rest mut = code
 
         for _ in 0..9 do
@@ -63,7 +63,7 @@ all
     |> sort((left, right) => left.text <> right.text)
     |> each(expression => write_line("    {expression.text}"))
 
-let counts = MAP[int, int]()
+let counts = MAP()
 
 for expression in all do
     let seen mut = 0

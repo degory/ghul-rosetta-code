@@ -31,7 +31,7 @@ class PRINTER is
         _name = name
         _ink = ink
         _reserve = reserve
-        _requests = CHANNEL[REQUEST]()
+        _requests = CHANNEL()
     si
 
     submit(line: string) -> COROUTINE[Reply] is

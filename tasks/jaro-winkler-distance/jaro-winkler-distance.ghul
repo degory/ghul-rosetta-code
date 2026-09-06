@@ -21,8 +21,8 @@ jaro_similarity(left: string, right: string) -> double is
     fi
 
     let window = (System.Math.max(left.length, right.length) / 2) - 1
-    let left_match = LIST[bool]()
-    let right_match = LIST[bool]()
+    let left_match = LIST()
+    let right_match = LIST()
     for _ in left do left_match.add(false) od
     for _ in right do right_match.add(false) od
 
@@ -58,9 +58,9 @@ jaro_similarity(left: string, right: string) -> double is
     fi
 
     let m = cast double(matches)
-    let matched = (m - cast double(mismatches) / 2.0D) / m
-    let left_rate = m / cast double(left.length)
-    let right_rate = m / cast double(right.length)
+    let matched = (m - cast(mismatches) / 2.0D) / m
+    let left_rate = m / cast(left.length)
+    let right_rate = m / cast(right.length)
 
     return (left_rate + right_rate + matched) / 3.0D
 si
@@ -76,13 +76,13 @@ jaro_winkler_distance(left: string, right: string) -> double is
         prefix = prefix + 1
     od
 
-    let boost = cast double(prefix) * 0.1D * (1.0D - similarity)
+    let boost = cast(prefix) * 0.1D * (1.0D - similarity)
 
     return 1.0D - (similarity + boost)
 si
 
 for word in misspelled do
-    let candidates = LIST[(string, double)]()
+    let candidates = LIST()
 
     for candidate in dictionary do
         candidates.add((candidate, jaro_winkler_distance(word, candidate)))
