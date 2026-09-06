@@ -1,0 +1,7 @@
+sums that are both the first n primes and the first m composites:
+  n =      3 m =      2 sum = 10
+  n =     33 m =     51 sum = 1988
+  n =     80 m =    147 sum = 14697
+  n =    175 m =    361 sum = 83292
+  n =    660 m =   1582 sum = 1503397
+  n =   2143 m =   5699 sum = 18859052
