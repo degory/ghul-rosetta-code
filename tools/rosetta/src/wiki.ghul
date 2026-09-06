@@ -206,24 +206,49 @@ namespace Rosetta is
             fields["token"] = token
             fields["format"] = "json"
             fields["formatversion"] = "2"
+            // Asks the wiki to refuse the edit rather than add to a replication backlog it is
+            // already struggling with.
+            fields["maxlag"] = "5"
 
-            let result = _post(fields)
-            let root = result.root_element
-            let error: JsonElement mut
+            let retried mut = false
 
-            if root.try_get_property("error", error ref) then
-                throw System.Exception("the wiki refused the edit: {error.to_string()}")
-            fi
+            do
+                let root = _post(fields).root_element
+                let failure: JsonElement mut
 
-            let outcome = root.get_property("edit")
-            let status = outcome.get_property("result").get_string() ?? ""
+                if root.try_get_property("error", failure ref) then
+                    let code_element: JsonElement mut
+                    let code mut = ""
 
-            // Whatever else the wiki says about a refusal is in the rest of the object - which
-            // captcha it wants, which filter matched - and none of it is guessable from the
-            // one-word result, so the whole thing is reported.
-            if status !~ "Success" then
-                throw System.Exception("the wiki did not apply the edit: {outcome.to_string()}")
-            fi
+                    if failure.try_get_property("code", code_element ref) then
+                        code = code_element.get_string() ?? ""
+                    fi
+
+                    // These two say to come back later rather than that the edit was wrong, so
+                    // the page gets one more chance before the batch gives up on it.
+                    if !retried /\ (code =~ "maxlag" \/ code =~ "ratelimited") then
+                        retried = true
+
+                        System.Threading.Thread.sleep(30000)
+
+                        continue
+                    fi
+
+                    throw System.Exception("the wiki refused the edit: {failure.to_string()}")
+                fi
+
+                let outcome = root.get_property("edit")
+                let status = outcome.get_property("result").get_string() ?? ""
+
+                // Whatever else the wiki says about a refusal is in the rest of the object - which
+                // captcha it wants, which filter matched - and none of it is guessable from the
+                // one-word result, so the whole thing is reported.
+                if status !~ "Success" then
+                    throw System.Exception("the wiki did not apply the edit: {outcome.to_string()}")
+                fi
+
+                break
+            od
         si
     si
 si
