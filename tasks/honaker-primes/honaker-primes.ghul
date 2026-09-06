@@ -61,4 +61,4 @@ let ten_thousandth =
 
 write_line("")
 write_line("the ten thousandth is at position {ten_thousandth!.position}, "
-           "and is {ten_thousandth!.prime}")
+           "and is {ten_thousandth.prime}")

@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 factorial(value: int) -> bigint is
-    let product mut = bigint.one
+    let product mut = 1n
 
     for factor in 2::value do
         product = product * bigint(factor)
@@ -14,8 +14,8 @@ si
 
 lah(n: int, k: int) -> bigint =>
     if k == 1 then factorial(n)
-    elif k == n then bigint.one
-    elif k > n \/ k < 1 \/ n < 1 then bigint.zero
+    elif k == n then 1n
+    elif k > n \/ k < 1 \/ n < 1 then 0n
     else factorial(n) * factorial(n - 1) /
          (factorial(k) * factorial(k - 1)) / factorial(n - k)
     fi
@@ -23,7 +23,7 @@ lah(n: int, k: int) -> bigint =>
 write_line("unsigned Lah numbers, L(n, k):")
 write_line("")
 
-let heading = LIST[string]()
+let heading = LIST()
 heading.add("{"n/k",3}")
 
 for k in 1::12 do
@@ -33,7 +33,7 @@ od
 write_line(heading |> join(""))
 
 for n in 1::12 do
-    let row = LIST[string]()
+    let row = LIST()
     row.add("{n,3}")
 
     for k in 1::n do
@@ -45,7 +45,7 @@ od
 
 let largest =
     (1::100) |> map(k => lah(100, k))
-            |> reduce(bigint.zero,
+            |> reduce(0n,
                       (best, v) => if v > best then v else best fi)
 
 write_line("")

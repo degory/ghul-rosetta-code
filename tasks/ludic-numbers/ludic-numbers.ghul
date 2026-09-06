@@ -4,7 +4,7 @@ use Collections.SET
 use Ghul.Pipes
 
 let remaining mut = (2..25000) |> collect_list()
-let ludic = LIST[int]()
+let ludic = LIST()
 
 while ludic.count < 2005 do
     let next_ludic = remaining[0]
@@ -12,7 +12,7 @@ while ludic.count < 2005 do
     remaining.remove_at(0)
 
     let position mut = 0
-    let kept = LIST[int]()
+    let kept = LIST()
 
     for candidate in remaining do
         position = position + 1
@@ -34,7 +34,7 @@ write_line("{up_to_1000} ludic numbers <= 1000")
 write_line(
     "2000th..2005th: {ludic |> skip(1999) |> take(6) |> join(" ")}")
 
-let set = SET[int](ludic)
+let set = SET(ludic)
 let triplets = ludic
     |> filter(x => x + 6 < 1000 /\
             set.contains(x + 2) /\

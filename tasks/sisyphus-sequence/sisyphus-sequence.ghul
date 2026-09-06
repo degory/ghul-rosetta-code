@@ -50,8 +50,8 @@ si
 let sequence = sisyphus()
 let milestones = [1_000, 10_000, 100_000, 1_000_000]
 
-let first_hundred = LIST[string]()
-let reports = LIST[string]()
+let first_hundred = LIST()
+let reports = LIST()
 
 let position mut = 0
 

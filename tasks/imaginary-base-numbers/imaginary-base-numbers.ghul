@@ -3,7 +3,7 @@ use Ghul.Pipes
 use Collections.LIST
 
 to_quater_imaginary(value: int) -> string is
-    let digits = LIST[int]()
+    let digits = LIST()
     let remaining mut = value
 
     while remaining != 0 do
@@ -12,7 +12,7 @@ to_quater_imaginary(value: int) -> string is
         remaining = (digit - remaining) / 4
     od
 
-    let places = LIST[int]()
+    let places = LIST()
     let index mut = digits.count - 1
 
     while index >= 0 do

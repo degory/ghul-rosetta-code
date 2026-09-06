@@ -3,10 +3,10 @@ use Collections.LIST
 use Ghul.Pipes
 
 humble() -> Pipe[long] is
-    let found = LIST[long]()
+    let found = LIST()
     found.add(1L)
 
-    let next_index = LIST[int]()
+    let next_index = LIST()
     let factors = [2L, 3L, 5L, 7L]
 
     for _ in factors do
@@ -45,7 +45,7 @@ for row in 0..5 do
     write_line(first_fifty[row * 10..row * 10 + 10] |> join(""))
 od
 
-let widths = LIST[int]()
+let widths = LIST()
 
 for _ in 1::20 do
     widths.add(0)

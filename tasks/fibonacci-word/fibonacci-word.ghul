@@ -20,7 +20,7 @@ words() -> Pipe[string] is
 si
 
 entropy(word: string) -> double is
-    let counts = MAP[char, int]()
+    let counts = MAP()
 
     for character in word do
         let seen mut = 0
@@ -33,7 +33,7 @@ entropy(word: string) -> double is
     let total = cast double(word.length)
 
     counts.values
-        |> map(count => cast double(count) / total)
+        |> map(count => cast(count) / total)
         |> reduce(0.0D, (bits, probability) =>
             bits - probability * Math.log2(probability))
 si

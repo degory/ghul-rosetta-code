@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 let limit = 1_000_000
-let composite = LIST[bool]()
+let composite = LIST()
 
 for _ in 0::limit do
     composite.add(false)
@@ -26,7 +26,7 @@ od
 
 is_prime(value: int) -> bool => value > 1 /\ !composite[value]
 
-let factorials = LIST[int]()
+let factorials = LIST()
 let next mut = 1
 let step mut = 1
 

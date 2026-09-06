@@ -36,7 +36,7 @@ print_all(["one", 2, 3.5])
 
 herd([CAT("felix"), DOG("rex")])
 
-let animals = LIST[Animal]()
+let animals = LIST()
 animals.add(CAT("tom"))
 animals.add(DOG("spot"))
 

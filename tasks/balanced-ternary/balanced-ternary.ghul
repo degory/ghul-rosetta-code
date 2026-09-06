@@ -25,7 +25,7 @@ digit_char(v: int) -> char =>
 
 balanced(n: bigint) -> BT is
     let three = 3n
-    let chars = LIST[char]()
+    let chars = LIST()
     let remaining mut = n
     let more mut = true
 
@@ -65,7 +65,7 @@ si
 si
 
 +(a: BT, b: BT) -> BT is
-    let chars = LIST[char]()
+    let chars = LIST()
     let carry mut = 0
     let i mut = a.digits.length - 1
     let j mut = b.digits.length - 1

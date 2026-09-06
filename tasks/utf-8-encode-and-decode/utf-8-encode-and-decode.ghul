@@ -4,7 +4,7 @@ use Collections.List
 use Ghul.Pipes
 
 encode(code_point: int) -> List[int] is
-    let octets = LIST[int](4)
+    let octets = LIST(4)
 
     if code_point < 0x80 then
         octets.add(code_point)

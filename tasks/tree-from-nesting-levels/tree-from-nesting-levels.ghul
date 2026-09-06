@@ -3,17 +3,17 @@ use Collections.LIST
 use Ghul.Pipes
 
 union Tree is
-    LEAF(value: int);
-    NEST(children: LIST[Tree]);
+    LEAF(value: int)
+    NEST(children: LIST[Tree])
 si
 
 nest(levels: int[]) -> Tree is
-    let root = LIST[Tree]()
-    let open = LIST[LIST[Tree]]([root])
+    let root = LIST()
+    let open = LIST([root])
 
     for level in levels do
         while open.count < level do
-            let deeper = LIST[Tree]()
+            let deeper = LIST()
 
             open[open.count - 1].add(Tree.NEST(deeper))
             open.add(deeper)
@@ -37,7 +37,7 @@ render(tree: Tree) -> string pure =>
         "[{nest.children |> map(render) |> join(", ")}]"
     esac
 
-let inputs: int[][] = [
+let inputs = [
     [],
     [1, 2, 4],
     [3, 1, 3, 1],

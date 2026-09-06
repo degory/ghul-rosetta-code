@@ -16,11 +16,11 @@ si
 
 tuples(lists: List[List[int]], at: int) -> Pipe[List[int]] is
     if at == lists.count then
-        yield LIST[int]()
+        yield LIST()
     else
         for head in lists[at] do
             for tail in tuples(lists, at + 1) do
-                let row = LIST[int](tail.count + 1)
+                let row = LIST(tail.count + 1)
 
                 row.add(head)
 

@@ -8,15 +8,15 @@ use SOLUTION = (colour: LIST[string], nation: LIST[string],
 
 permutations(items: LIST[string]) -> Pipe[LIST[string]] is
     if items.count == 0 then
-        yield LIST[string]()
+        yield LIST()
     else
         for index in 0..items.count do
-            let rest = LIST[string](items)
+            let rest = LIST(items)
 
             rest.remove_at(index)
 
             for tail in permutations(rest) do
-                let whole = LIST[string]()
+                let whole = LIST()
 
                 whole.add(items[index])
                 whole.add_range(tail)
@@ -28,7 +28,7 @@ permutations(items: LIST[string]) -> Pipe[LIST[string]] is
 si
 
 arrangements(items: string[]) -> Pipe[LIST[string]] is
-    yield in permutations(LIST[string](items))
+    yield in permutations(LIST(items))
 si
 
 house_of(row: LIST[string], value: string) -> int pure =>

@@ -4,14 +4,14 @@ use Collections.MAP
 use Ghul.Pipes
 
 let opcodes =
-    LIST[string](["NOP", "LDA", "STA", "ADD", "SUB", "BRZ", "JMP", "STP"])
+    LIST(["NOP", "LDA", "STA", "ADD", "SUB", "BRZ", "JMP", "STP"])
 
 assemble(source: string) -> LIST[int] is
     let lines = source.trim_end().split(['\n'])
         |> map(line => line.split([';'])[0].trim())
         |> collect_list()
 
-    let labels = MAP[string, int]()
+    let labels = MAP()
 
     for (address, line) in lines |> index() do
         if line.contains(':') then
@@ -19,7 +19,7 @@ assemble(source: string) -> LIST[int] is
         fi
     od
 
-    let memory = LIST[int]()
+    let memory = LIST()
 
     for line in lines do
         let body =

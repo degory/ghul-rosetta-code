@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 let limit = 1_000_000
-let composite = LIST[bool]()
+let composite = LIST()
 
 for _ in 0::limit do
     composite.add(false)

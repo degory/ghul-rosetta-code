@@ -3,10 +3,10 @@ use Collections.LIST
 use Ghul.Pipes
 
 erdos_nicolas(limit: int) -> Pipe[(value: int, k: int)] is
-    let running_sum = LIST[int](limit + 1)
-    let divisors_used = LIST[int](limit + 1)
-    let divisors_at_hit = LIST[int](limit + 1)
-    let has_later_divisor = LIST[bool](limit + 1)
+    let running_sum = LIST(limit + 1)
+    let divisors_used = LIST(limit + 1)
+    let divisors_at_hit = LIST(limit + 1)
+    let has_later_divisor = LIST(limit + 1)
 
     for _ in 0::limit do
         running_sum.add(0)

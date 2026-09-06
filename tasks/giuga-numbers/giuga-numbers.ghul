@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 distinct_prime_factors(value: int) -> LIST[long] is
-    let factors = LIST[long]()
+    let factors = LIST()
     let remaining mut = value
     let factor mut = 2
 

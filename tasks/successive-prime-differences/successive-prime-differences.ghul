@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 let limit = 1_000_000
-let composite = LIST[bool]()
+let composite = LIST()
 
 for _ in 0::limit do
     composite.add(false)
@@ -40,7 +40,7 @@ groups(differences: int[]) -> Pipe[LIST[int]] is
         od
 
         if matched then
-            yield LIST[int](primes[start..start + differences.count + 1])
+            yield LIST(primes[start..start + differences.count + 1])
         fi
     od
 si

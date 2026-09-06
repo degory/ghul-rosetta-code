@@ -14,7 +14,7 @@ neighbourhood(cells: List[bool], at: int) -> int is
 si
 
 step(rule: int, cells: List[bool]) -> List[bool] is
-    let next = LIST[bool](cells.count)
+    let next = LIST(cells.count)
 
     for at in 0..cells.count do
         next.add((rule >> neighbourhood(cells, at)) & 1 == 1)

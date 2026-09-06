@@ -19,7 +19,7 @@ let scaling = 1.0453567932525329623D
 
 floor_padovan(n: int) -> int =>
     cast int(Math.floor(
-        Math.pow(plastic, cast double(n - 1)) / scaling + 0.5D))
+        Math.pow(plastic, cast(n - 1)) / scaling + 0.5D))
 
 l_system() -> Pipe[string] is
     let current mut = "A"

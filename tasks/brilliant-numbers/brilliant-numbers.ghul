@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 primes_below(limit: int) -> Pipe[int] is
-    let composite = LIST[bool](limit)
+    let composite = LIST(limit)
 
     for _ in 0..limit do
         composite.add(false)
@@ -24,7 +24,7 @@ primes_below(limit: int) -> Pipe[int] is
 si
 
 brilliant_numbers(max_digits: int) -> LIST[long] is
-    let found = LIST[long]()
+    let found = LIST()
     let limit = (0..max_digits) |> reduce(1, (acc, _) => acc * 10)
     let primes = primes_below(limit) |> collect_list()
     let start mut = 0

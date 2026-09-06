@@ -24,10 +24,10 @@ si
 parse(text: string, start: int, nested: bool)
     -> (tree: Alternation, next: int)
 is
-    let branches = LIST[Alternation]()
+    let branches = LIST()
     let pending = StringBuilder()
 
-    let items mut = LIST[Alternation]()
+    let items mut = LIST()
     let position mut = start
     let commas mut = 0
     let closed mut = false
@@ -52,7 +52,7 @@ is
             take_pending(pending, items)
             branches.add(SEQUENCE(items))
 
-            items = LIST[Alternation]()
+            items = LIST()
             commas = commas + 1
             position = position + 1
         elif character == '}' /\ nested then

@@ -3,13 +3,13 @@ use Collections.LIST
 use Ghul.Pipes
 
 bernoulli(rows: int) -> Pipe[LIST[int]] is
-    let row mut = LIST[int]()
+    let row mut = LIST()
     row.add(1)
 
     for number in 0..rows do
         yield row
 
-        let following = LIST[int]()
+        let following = LIST()
         following.add(1)
 
         for column in 1::row.count - 1 do

@@ -3,7 +3,7 @@ use Collections.MAP
 use Ghul.Pipes
 
 van_eck() -> Pipe[int] is
-    let last_seen = MAP[int, int]()
+    let last_seen = MAP()
 
     let term mut = 0
     let position mut = 0

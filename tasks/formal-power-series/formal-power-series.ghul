@@ -1,7 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.INumber
 
 struct RATIONAL(numerator: bigint, denominator: bigint) is
     +(other: RATIONAL) -> RATIONAL => reduced(
@@ -19,26 +18,26 @@ struct RATIONAL(numerator: bigint, denominator: bigint) is
         numerator * other.denominator, denominator * other.numerator)
 
     to_string() -> string =>
-        if denominator =~ bigint.one then "{numerator}"
+        if denominator =~ 1n then "{numerator}"
         else "{numerator}/{denominator}" fi
 si
 
 reduced(numerator: bigint, denominator: bigint) -> RATIONAL is
     let divisor = bigint.greatest_common_divisor(numerator, denominator)
-    let sign = if denominator < bigint.zero then -1 else 1 fi
-    let scale = divisor * cast bigint(sign)
+    let sign = if denominator < 0n then -1 else 1 fi
+    let scale = divisor * cast(sign)
 
     return RATIONAL(numerator / scale, denominator / scale)
 si
 
 whole(value: int) -> RATIONAL =>
-    RATIONAL(cast bigint(value), bigint.one)
+    RATIONAL(cast(value), 1n)
 
 class SERIES(term: (int) -> RATIONAL) is
     _known: LIST[RATIONAL]
 
     init(..) is
-        _known = LIST[RATIONAL]()
+        _known = LIST()
     si
 
     at(index: int) -> RATIONAL is
@@ -59,7 +58,7 @@ class SERIES(term: (int) -> RATIONAL) is
             |> reduce(whole(0), (sum, term) => sum + term))
 
     /(other: SERIES) -> SERIES is
-        let quotient: SERIES mut = SERIES(_ => whole(0))
+        let quotient mut = SERIES(_ => whole(0))
 
         quotient = SERIES(n => (
             let carried = (1::n)
@@ -86,8 +85,8 @@ si
 constant(value: int) -> SERIES =>
     SERIES(n => if n == 0 then whole(value) else whole(0) fi)
 
-let sine: SERIES mut = constant(0)
-let cosine: SERIES mut = constant(0)
+let sine mut = constant(0)
+let cosine mut = constant(0)
 
 sine = SERIES(n => cosine.integrate().at(n))
 cosine = SERIES(n => (constant(1) - sine.integrate()).at(n))

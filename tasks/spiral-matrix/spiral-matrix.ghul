@@ -6,10 +6,10 @@ let headings = [(down = 0, across = 1), (down = 1, across = 0),
                 (down = 0, across = -1), (down = -1, across = 0)]
 
 spiral(size: int) -> LIST[LIST[int]] is
-    let grid = LIST[LIST[int]]()
+    let grid = LIST()
 
     for _ in 0..size do
-        grid.add(LIST[int]((0..size) |> map((column: int) => -1)))
+        grid.add(LIST((0..size) |> map((column: int) => -1)))
     od
 
     let free = (row: int, column: int) -> bool =>

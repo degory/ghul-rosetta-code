@@ -7,7 +7,7 @@ undulating_value(first: int, second: int, length: int) -> long => (
 
     for position in 0..length do
         let digit = if position % 2 == 0 then first else second fi
-        value = value * 10L + cast long(digit)
+        value = value * 10L + cast(digit)
     od
 
     value
@@ -15,7 +15,7 @@ undulating_value(first: int, second: int, length: int) -> long => (
 
 let limit = 9007199254740992L
 
-let values = LIST[long]()
+let values = LIST()
 
 for length in 3..17 do
     for first in 1..10 do

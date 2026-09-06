@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 jort_sort[T: Ghul.Comparable[T]](values: T[]) -> bool is
-    let sorted = LIST[T](values)
+    let sorted = LIST(values)
 
     sorted.sort()
 

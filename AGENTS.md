@@ -102,6 +102,42 @@ it does not need is as bad as one that reaches for none of them; the point is
 that where ghūl has its own way of saying something, the entry should say it
 that way.
 
+## Write a type once
+
+The compiler infers a local variable's type from its initializer and from how the variable is
+used later in the same body, and a constructor's type arguments from its arguments, from the slot
+the value goes into, and from later use. So most types in a solution need not be written, and a
+type that is written where inference already has it is noise a reader has to check.
+
+```ghul
+let seen = SET()
+seen.add(first)               // seen is SET[int]
+
+let counts = MAP()
+counts[word] = counts[word] + 1
+
+let total = cast(count) * 2n     // the 2n operand pins the cast
+```
+
+Where a type does have to be written, write it once, at the site that needs it:
+
+- On the constructor (`LIST[int]()`) rather than on the local, when nothing later pins the
+  element type - a list that is only printed, say. A local declared at an interface type
+  (`let rows: List[int] = LIST()`) is the exception: the annotation is the point, so it stays and
+  the constructor's arguments go.
+- On the cast (`cast bigint(n)`) where no slot pins the target, rather than moving it to a `let`
+  annotation. Where a slot does pin it - a typed initializer, an assignment, a return, an operand,
+  an argument to a function with one applicable overload - `cast(n)` is enough.
+- A `bigint` value from an integer literal is the literal with an `n` suffix (`1n`, `1000000n`),
+  never `cast bigint(1)` or `bigint.one`. From an integer expression it is `cast(value)` where the
+  slot pins it, and otherwise the constructor `bigint(value)`; a solution should use one of those
+  two throughout rather than both.
+
+Removing a type is the aim, moving it is not: a `LIST()` that only compiles once the local gains an
+annotation has not gained anything, and the original spelling stays. Keep one solution consistent
+with itself - `LIST[int]()` on one line and `LIST()` a few lines down, for no reason a reader can
+see, is worse than either alone.
+
 ## A suspected bug is not a reason to change the solution
 
 A solution producing unexpected output through a pipe chain is not evidence

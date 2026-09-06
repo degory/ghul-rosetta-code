@@ -8,7 +8,7 @@ step(cells: string, rule: int) -> string is
     let left = flip(cells[0])
     let right = flip(cells[cells.length - 1])
     let padded = "{left}{left}{cells}{right}{right}"
-    let next = LIST[char]()
+    let next = LIST()
 
     for i in 1..padded.length - 1 do
         let pattern = (0..3)

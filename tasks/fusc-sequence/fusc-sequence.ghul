@@ -4,7 +4,7 @@ use Ghul.Pipes
 
 let limit = 1000000
 
-let fusc = LIST[int]([0, 1])
+let fusc = LIST([0, 1])
 
 while fusc.count <= limit do
     let n = fusc.count

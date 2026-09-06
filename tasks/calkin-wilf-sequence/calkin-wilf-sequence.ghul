@@ -7,7 +7,7 @@ next_term(numerator: int, denominator: int) -> (int, int) =>
      denominator * (2 * (numerator / denominator) + 1) - numerator)
 
 let current mut = (1, 1)
-let terms = LIST[string]()
+let terms = LIST()
 
 for _ in 1::20 do
     terms.add("{current.`0}/{current.`1}")
@@ -19,7 +19,7 @@ write_line(terms |> join(" "))
 continued_fraction(numerator: int, denominator: int) -> LIST[int] is
     let left mut = numerator
     let right mut = denominator
-    let terms = LIST[int]()
+    let terms = LIST()
 
     while right > 0 do
         terms.add(left / right)

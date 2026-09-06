@@ -8,11 +8,11 @@ use Ghul.Pipes
 use ROW = (library: string, dependencies: string)
 
 dependency_graph(rows: List[ROW]) -> MAP[string, SET[string]] is
-    let graph = MAP[string, SET[string]]()
+    let graph = MAP()
 
     for row in rows do
         if !graph.contains_key(row.library) then
-            graph[row.library] = SET[string]()
+            graph[row.library] = SET()
         fi
 
         for name in row.dependencies.split([' ']) do
@@ -21,7 +21,7 @@ dependency_graph(rows: List[ROW]) -> MAP[string, SET[string]] is
             fi
 
             if !graph.contains_key(name) then
-                graph[name] = SET[string]()
+                graph[name] = SET()
             fi
 
             graph[row.library].add(name)
@@ -37,10 +37,10 @@ is
     let pending = MAP[string, SET[string]]()
 
     for name in graph.keys do
-        pending[name] = SET[string](graph[name])
+        pending[name] = SET(graph[name])
     od
 
-    let ordered = LIST[string]()
+    let ordered = LIST()
 
     do
         let ready = pending.keys

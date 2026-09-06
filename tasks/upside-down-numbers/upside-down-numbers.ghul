@@ -21,7 +21,7 @@ upside_down(index: int) -> string is
         length = length + 1
     od
 
-    let half = LIST[int]()
+    let half = LIST()
 
     for _ in 1::length / 2 do
         half.add(rank % 9 + 1)
@@ -30,7 +30,7 @@ upside_down(index: int) -> string is
 
     half.reverse()
 
-    let text = LIST[string]()
+    let text = LIST()
 
     for digit in half do
         text.add("{digit}")

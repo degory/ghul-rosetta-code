@@ -1,10 +1,9 @@
 use IO.Std.write_line
-use Collections.LIST
 use Collections.SET
 use Ghul.Pipes
 
 recaman() -> Pipe[int] is
-    let seen = SET[int]()
+    let seen = SET()
     let term mut = 0
     let index mut = 0
 
@@ -27,9 +26,9 @@ let first_fifteen = recaman() |> take(15) |> map(term => "{term}")
 write_line("first fifteen terms:")
 write_line("  {first_fifteen |> join(" ")}")
 
-let seen = SET[int]()
+let seen = SET()
 let duplicate mut = 0
-let wanted = SET[int]()
+let wanted = SET()
 let position mut = 0
 let all_reached mut = 0
 

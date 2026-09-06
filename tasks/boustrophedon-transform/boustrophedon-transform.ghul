@@ -1,13 +1,12 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.INumber
 
 factorial(value: int) -> bigint is
-    let product mut = bigint.one
+    let product mut = 1n
 
     for factor in 2::value do
-        product = product * cast bigint(factor)
+        product = product * cast(factor)
     od
 
     return product
@@ -34,8 +33,8 @@ nth_prime(index: int) -> int is
 si
 
 fibonacci(index: int) -> bigint is
-    let previous mut = bigint.zero
-    let current mut = bigint.one
+    let previous mut = 0n
+    let current mut = 1n
 
     for _ in 0..index do
         let following = previous + current
@@ -47,13 +46,13 @@ fibonacci(index: int) -> bigint is
 si
 
 boustrophedon(term: (int) -> bigint, count: int) -> Pipe[bigint] is
-    let row mut = LIST[bigint]()
+    let row mut = LIST()
     row.add(term(0))
 
     yield row[0]
 
     for index in 1..count do
-        let following = LIST[bigint]()
+        let following = LIST()
         following.add(term(index))
 
         for step in 1::index do
@@ -67,7 +66,7 @@ si
 
 report(name: string, term: (int) -> bigint) is
     let transformed = boustrophedon(term, 15) |> collect_list()
-    let texts = LIST[string]()
+    let texts = LIST()
 
     for value in transformed do
         texts.add("{value}")
@@ -83,11 +82,11 @@ report(name: string, term: (int) -> bigint) is
 si
 
 report("unit", index =>
-    if index == 0 then bigint.one else bigint.zero fi)
-report("ones", _ => bigint.one)
+    if index == 0 then 1n else 0n fi)
+report("ones", _ => 1n)
 report("alternating", index => (
-    if index % 2 == 0 then bigint.one
-    else bigint.zero - bigint.one fi))
+    if index % 2 == 0 then 1n
+    else 0n - 1n fi))
 report("primes", index => cast bigint(nth_prime(index)))
 report("fibonacci", index => fibonacci(index))
 report("factorials", index => factorial(index))

@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 let limit = 8_900_000
-let smallest_factor = LIST[int](limit + 1)
+let smallest_factor = LIST(limit + 1)
 
 for _ in 0::limit do
     smallest_factor.add(0)

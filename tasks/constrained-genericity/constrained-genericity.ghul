@@ -25,7 +25,7 @@ class PEAR: Fruit is
     color() -> string => "green"
 si
 
-let fruits = LIST[Fruit]()
+let fruits = LIST()
 
 fruits.add(BANANA())
 fruits.add(PEAR())

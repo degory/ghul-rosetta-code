@@ -10,7 +10,7 @@ struct TROPICAL(value: double) is
 
     ^(power: int) -> TROPICAL =>
         assert power > 0 else "exponent must be positive" in
-        TROPICAL(value * cast double(power))
+        TROPICAL(value * cast(power))
 
     to_string() -> string =>
         if double.is_negative_infinity(value) then "-Inf"

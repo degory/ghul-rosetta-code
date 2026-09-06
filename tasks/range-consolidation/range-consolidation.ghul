@@ -23,7 +23,7 @@ by_lower_bound(left: RANGE, right: RANGE) -> int =>
 
 consolidate(ranges: List[RANGE]) -> List[RANGE] is
     let sorted = ranges |> map(normalised) |> sort(by_lower_bound) |> collect()
-    let merged = LIST[RANGE]()
+    let merged = LIST()
 
     for bounds in sorted do
         if merged.count > 0 /\ bounds.low <= merged[merged.count - 1].high then

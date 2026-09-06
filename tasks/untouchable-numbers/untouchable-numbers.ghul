@@ -9,9 +9,9 @@ let top = 100_000
 // number raised to two thirds. The only shapes that escape that
 // bound are a prime, a prime squared, and a product of two distinct
 // primes, and those are marked directly rather than sieved for.
-let sieved = cast int(System.Math.pow(cast double(top), 1.5D))
+let sieved = cast int(System.Math.pow(cast(top), 1.5D))
 
-let aliquot = LIST[int]()
+let aliquot = LIST()
 
 for _ in 0::sieved do
     aliquot.add(0)
@@ -26,7 +26,7 @@ for divisor in 1::sieved / 2 do
     od
 od
 
-let touched = LIST[bool]()
+let touched = LIST()
 
 for _ in 0::top do
     touched.add(false)
@@ -40,7 +40,7 @@ for value in 2::sieved do
     fi
 od
 
-let composite = LIST[bool]()
+let composite = LIST()
 
 for _ in 0::top do
     composite.add(false)
@@ -102,7 +102,7 @@ write_line("")
 write_line("how many untouchable numbers there are up to:")
 
 for power in 1::5 do
-    let bound = cast int(System.Math.pow(10.0D, cast double(power)))
+    let bound = cast int(System.Math.pow(10.0D, cast(power)))
     let found = untouchable |> filter(value => value <= bound) |> count()
 
     write_line("  {bound,7}: {found}")

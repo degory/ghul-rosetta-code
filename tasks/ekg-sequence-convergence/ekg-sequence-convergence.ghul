@@ -17,8 +17,8 @@ shares_factor(left_value: int, right_value: int) -> bool => (
 )
 
 ekg(start: int, count: int) -> LIST[int] is
-    let terms = LIST[int]([1, start])
-    let used = SET[int]([1, start])
+    let terms = LIST([1, start])
+    let used = SET([1, start])
 
     while terms.count < count do
         let candidate mut = 2

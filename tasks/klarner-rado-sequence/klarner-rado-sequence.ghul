@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 klarner_rado(count: int) -> Collections.List[int] is
-    let sequence = LIST[int]()
+    let sequence = LIST()
     sequence.add(1)
 
     let twos mut = 0
@@ -34,7 +34,7 @@ let sequence = klarner_rado(1_000_000)
 write_line("first 100 elements:")
 
 for row in 0..10 do
-    let cells = LIST[string]()
+    let cells = LIST()
 
     for column in 0..10 do
         cells.add("{sequence[row * 10 + column],6}")

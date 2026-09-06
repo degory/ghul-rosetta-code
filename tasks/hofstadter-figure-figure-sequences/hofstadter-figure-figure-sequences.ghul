@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 r_sequence() -> Pipe[int] is
-    let skipped = LIST[int]()
+    let skipped = LIST()
     let value mut = 1
     let n mut = 1
 

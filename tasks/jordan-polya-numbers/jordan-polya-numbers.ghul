@@ -19,7 +19,7 @@ si
 
 decompose(value: long, largest: int) -> LIST[int]? is
     if value == 1L then
-        return LIST[int]()
+        return LIST()
     fi
 
     for i in reverse(2::largest) do

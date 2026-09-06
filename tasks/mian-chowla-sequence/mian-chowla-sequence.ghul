@@ -4,8 +4,8 @@ use Collections.SET
 use Ghul.Pipes
 
 mian_chowla() -> Pipe[int] is
-    let terms = LIST[int]()
-    let sums = SET[int]()
+    let terms = LIST()
+    let sums = SET()
     let candidate mut = 1
 
     while true do

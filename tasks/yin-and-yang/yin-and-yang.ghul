@@ -25,8 +25,8 @@ taijitu(radius: int) -> Pipe[string] is
     for row in -radius::radius do
         yield ((-2 * radius)::(2 * radius))
             |> map((column: int) =>
-                symbol(cast double(column) / 2.0D, cast double(row),
-                    cast double(radius)))
+                symbol(cast(column) / 2.0D, cast(row),
+                    cast(radius)))
             |> join("")
     od
 si

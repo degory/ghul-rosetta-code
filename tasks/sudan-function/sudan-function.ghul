@@ -4,14 +4,14 @@ sudan(order: int, left: bigint, right: bigint) -> bigint =>
     if order == 0 then left + right
     elif right.is_zero then left
     else (
-        let step = sudan(order, left, right - bigint.one)
+        let step = sudan(order, left, right - 1n)
 
         sudan(order - 1, step, step + right)
     )
     fi
 
 show(order: int, left: int, right: int) is
-    let value = sudan(order, bigint(left), bigint(right))
+    let value = sudan(order, cast(left), cast(right))
 
     write_line("F({order}, {left}, {right}) = {value}")
 si

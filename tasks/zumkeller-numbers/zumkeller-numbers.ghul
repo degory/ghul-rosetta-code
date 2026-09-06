@@ -4,7 +4,7 @@ use Collections.List
 use Ghul.Pipes
 
 divisors(n: int) -> List[int] pure is
-    let found = LIST[int]()
+    let found = LIST()
     let factor mut = 1
 
     while factor * factor <= n do
@@ -31,7 +31,7 @@ is_zumkeller(n: int) -> bool pure is
     fi
 
     let half = total / 2
-    let reachable = LIST[bool](half + 1)
+    let reachable = LIST(half + 1)
 
     for _ in 0::half do
         reachable.add(false)

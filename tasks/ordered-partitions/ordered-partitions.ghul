@@ -5,12 +5,12 @@ use Ghul.Pipes
 
 combinations(items: List[int], k: int) -> Pipe[List[int]] is
     if k == 0 then
-        yield LIST[int]()
+        yield LIST()
     elif items.count >= k then
         let rest = items[1..<0]
 
         for tail in combinations(rest, k - 1) do
-            let whole = LIST[int]()
+            let whole = LIST()
 
             whole.add(items[0])
 
@@ -27,13 +27,13 @@ si
 
 partitions(items: List[int], sizes: List[int]) -> Pipe[List[List[int]]] is
     if sizes.count == 0 then
-        yield LIST[List[int]]()
+        yield LIST()
     else
         for block in combinations(items, sizes[0]) do
             let remaining = items |> except(block) |> collect()
 
             for tail in partitions(remaining, sizes[1..<0]) do
-                let whole = LIST[List[int]]()
+                let whole = LIST()
 
                 whole.add(block)
 

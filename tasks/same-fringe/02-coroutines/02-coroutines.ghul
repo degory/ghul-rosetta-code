@@ -20,8 +20,8 @@ class WALKER is
 
     init(tree: Tree) is
         _tree = tree
-        _wanted = CHANNEL[bool]()
-        _leaves = CHANNEL[int?]()
+        _wanted = CHANNEL()
+        _leaves = CHANNEL()
     si
 
     next() -> COROUTINE[int?] is

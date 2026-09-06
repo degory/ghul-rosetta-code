@@ -13,7 +13,7 @@ zsigmondy(exponent: int, a: int, b: int) -> bigint is
         let common mut =
             bigint.greatest_common_divisor(greatest, smaller)
 
-        while common > bigint.one do
+        while common > 1n do
             greatest = greatest / common
             common = bigint.greatest_common_divisor(greatest, smaller)
         od

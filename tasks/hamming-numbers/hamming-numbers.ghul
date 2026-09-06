@@ -6,7 +6,7 @@ let two = 2n
 let three = 3n
 let five = 5n
 
-let hamming = LIST[bigint]([bigint.one])
+let hamming = LIST([1n])
 let next_two mut = 0
 let next_three mut = 0
 let next_five mut = 0

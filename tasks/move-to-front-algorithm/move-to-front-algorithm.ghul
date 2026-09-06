@@ -5,7 +5,7 @@ use Ghul.Pipes
 use System.Text.StringBuilder
 
 symbol_table() -> LIST[char] is
-    let symbols = LIST[char](26)
+    let symbols = LIST(26)
 
     for code in cast int('a')::cast int('z') do
         symbols.add(cast char(code))
@@ -23,7 +23,7 @@ si
 
 encode(text: string) -> List[int] is
     let symbols = symbol_table()
-    let indices = LIST[int](text.length)
+    let indices = LIST(text.length)
 
     for symbol in text do
         let at = symbols.index_of(symbol)

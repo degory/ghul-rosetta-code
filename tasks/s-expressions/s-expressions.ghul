@@ -49,7 +49,7 @@ read(text: string, at: int) -> (value: SExpr, next: int) is
     let start = skip_space(text, at)
 
     if text[start] == '(' then
-        let items = Collections.LIST[SExpr]()
+        let items = Collections.LIST()
         let i mut = skip_space(text, start + 1)
 
         while text[i] != ')' do

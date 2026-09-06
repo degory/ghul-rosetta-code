@@ -6,14 +6,14 @@ use Ghul.Pipes
 let digit_symbols = "0123456789abcdef"
 
 render(value: long, base: int) -> string is
-    let digits = LIST[char]()
+    let digits = LIST()
     let remaining mut = value
 
     while remaining > 0L do
-        let digit = cast int(remaining % cast long(base))
+        let digit = cast int(remaining % cast(base))
 
         digits.insert(0, digit_symbols[digit])
-        remaining = remaining / cast long(base)
+        remaining = remaining / cast(base)
     od
 
     return string(digits.to_array())
@@ -33,7 +33,7 @@ esthetic(base: int) -> Pipe[long] is
 
         for next in [last - 1, last + 1] do
             if next >= 0 /\ next < base then
-                let extended = value * cast long(base) + cast long(next)
+                let extended = value * cast(base) + cast(next)
 
                 pending.enqueue((extended, next))
             fi

@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 let limit = 1_000_000
-let is_prime = LIST[bool](limit + 1)
+let is_prime = LIST(limit + 1)
 
 for _ in 0::limit do
     is_prime.add(true)

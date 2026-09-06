@@ -3,7 +3,7 @@ use Collections.LIST
 use Ghul.Pipes
 
 primes_below(limit: int) -> Pipe[int] is
-    let composite = LIST[bool](limit)
+    let composite = LIST(limit)
 
     for _ in 0..limit do
         composite.add(false)

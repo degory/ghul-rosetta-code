@@ -14,7 +14,7 @@ use Kind.WASTEFUL
 
 let limit = 20_000_000
 let counted = 1_000_000
-let smallest_factor = LIST[int]()
+let smallest_factor = LIST()
 
 for value in 0::limit do
     smallest_factor.add(if value % 2 == 0 then 2 else value fi)

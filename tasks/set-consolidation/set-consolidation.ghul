@@ -7,8 +7,8 @@ consolidate(input: LIST[SET[string]]) -> LIST[SET[string]] is
     let result = LIST[SET[string]]()
 
     for candidate in input do
-        let merged = SET[string](candidate)
-        let kept = LIST[SET[string]]()
+        let merged = SET(candidate)
+        let kept = LIST()
 
         for existing in result do
             if existing |> any(item => merged.contains(item)) then
@@ -27,7 +27,7 @@ consolidate(input: LIST[SET[string]]) -> LIST[SET[string]] is
 si
 
 render(sets: LIST[SET[string]]) -> string is
-    let parts = LIST[string]()
+    let parts = LIST()
 
     for one in sets do
         let items = one |> collect_list()
@@ -40,10 +40,10 @@ render(sets: LIST[SET[string]]) -> string is
 si
 
 show(groups: string[][]) is
-    let sets = LIST[SET[string]]()
+    let sets = LIST()
 
     for group in groups do
-        sets.add(SET[string](group))
+        sets.add(SET(group))
     od
 
     write_line("{render(sets)}")

@@ -27,7 +27,7 @@ reaches_89(value: int) -> bool => (
 let limit = 100000000
 let max_after_one_step = 648
 
-let memo = LIST[bool]([false])
+let memo = LIST([false])
 
 for value in 1::max_after_one_step do
     memo.add(reaches_89(value))

@@ -12,7 +12,7 @@ use Ghul.Pipes
 // spelling, not for one specific overload.
 
 row(level: string, ops: string, assoc: string) -> string =>
-    "  {level,-16}{ops,-30}{assoc}";
+    "  {level,-16}{ops,-30}{assoc}"
 
 levels() -> Pipe[string] is
     yield row("primary", "f(x)  a[i]  (e)  T(x)", "left")
@@ -41,30 +41,30 @@ si
 // `to_string()` shows the parentheses placed according to the
 // order `***` and `<+>` actually bind in.
 class E is
-    text: string;
+    text: string
 
     init(text: string) is self.text = text; si
 
-    to_string() -> string => text;
+    to_string() -> string => text
 
     // A static operator member takes both operands as
     // arguments.
-    ***(a: E, b: E) -> E static => joined("***", a, b);
+    ***(a: E, b: E) -> E static => joined("***", a, b)
 
     // An instance operator member takes the left operand as
     // receiver.
-    <+>(other: E) -> E => joined("<+>", self, other);
+    <+>(other: E) -> E => joined("<+>", self, other)
 si
 
-joined(op: string, a: E, b: E) -> E => E("({a} {op} {b})");
+joined(op: string, a: E, b: E) -> E => E("({a} {op} {b})")
 
 // A global operator.
-+++(a: E, b: E) -> E => joined("+++", a, b);
++++(a: E, b: E) -> E => joined("+++", a, b)
 
 // A leading `?` groups rightwards.
-?+(a: E, b: E) -> E => joined("?+", a, b);
+?+(a: E, b: E) -> E => joined("?+", a, b)
 
-<*>(a: E, b: E) -> E => joined("<*>", a, b);
+<*>(a: E, b: E) -> E => joined("<*>", a, b)
 
 grouping(a: E, b: E, c: E) -> Pipe[string] is
     yield "  a +++ b *** c   {a +++ b *** c}"
@@ -78,10 +78,10 @@ si
 // of one operator spelling within its scope.
 @precedence("<*>", "user-8")
 lifted(a: E, b: E, c: E) -> string =>
-    "  a <*> b *** c   {a <*> b *** c}";
+    "  a <*> b *** c   {a <*> b *** c}"
 
 class BOX is
-    value: int public;
+    value: int public
 
     init(value: int) is self.value = value; si
 si
