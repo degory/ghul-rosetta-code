@@ -1,3 +1,96 @@
 use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
 
-write_line("not written yet")
+let small_primes = LIST[int]()
+let sieve_limit = 1_000
+
+let marked = LIST[bool]()
+
+for _ in 0::sieve_limit do
+    marked.add(false)
+od
+
+for candidate in 2::sieve_limit do
+    if !marked[candidate] then
+        small_primes.add(candidate)
+
+        let multiple mut = candidate * candidate
+
+        while multiple <= sieve_limit do
+            marked[multiple] = true
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+probably_prime(value: long) -> bool is
+    for small in small_primes do
+        let divisor = cast long(small)
+
+        if value == divisor then return true fi
+        if value % divisor == 0L then return false fi
+    od
+
+    let subject = BigInteger(value)
+    let one = BigInteger.one
+    let two = BigInteger(2)
+
+    let odd_part mut = subject - one
+    let power mut = 0
+
+    while (odd_part % two).is_zero do
+        odd_part = odd_part / two
+        power = power + 1
+    od
+
+    for base in [2, 3, 5, 7, 11, 13] do
+        let residue mut =
+            BigInteger.mod_pow(BigInteger(base), odd_part, subject)
+        let witnessed mut = residue =~ one \/ residue =~ subject - one
+
+        for _ in 1..power do
+            if witnessed then break fi
+
+            residue = residue * residue % subject
+            witnessed = residue =~ subject - one
+        od
+
+        if !witnessed then return false fi
+    od
+
+    true
+si
+
+cubans() -> Pipe[long] is
+    let n mut = 0L
+
+    do
+        n = n + 1L
+
+        let candidate = 3L * n * n + 3L * n + 1L
+
+        if probably_prime(candidate) then
+            yield candidate
+        fi
+    od
+si
+
+write_line("the first 200 cuban primes:")
+
+let first = cubans() |> take(200) |> map(p => "{p,12:N0}") |> collect_list()
+
+for row in 0..25 do
+    write_line(first[row * 8..row * 8 + 8] |> join(""))
+od
+
+let hundred_thousandth =
+    for entry in cubans() |> index() do
+        if entry.index == 99_999 then break entry.value fi
+    od
+
+let largest = hundred_thousandth!
+
+write_line("")
+write_line("the 100,000th cuban prime is {largest:N0}")
