@@ -1,7 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 
 let small_primes = [
@@ -9,28 +8,28 @@ let small_primes = [
     53, 59, 61, 67, 71, 73, 79, 83, 89, 97
 ]
 
-passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
-    if base % value =~ BigInteger.zero then
+passes_miller_rabin(value: bigint, base: bigint) -> bool pure is
+    if base % value =~ bigint.zero then
         return true
     fi
 
-    let odd mut = value - BigInteger.one
+    let odd mut = value - bigint.one
     let rounds mut = 0
 
-    while odd % cast BigInteger(2) =~ BigInteger.zero do
-        odd = odd / cast BigInteger(2)
+    while odd % 2n =~ bigint.zero do
+        odd = odd / 2n
         rounds = rounds + 1
     od
 
-    let residue mut = BigInteger.mod_pow(base, odd, value)
+    let residue mut = bigint.mod_pow(base, odd, value)
 
-    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+    if residue =~ bigint.one \/ residue =~ value - bigint.one then
         return true
     fi
 
     for _ in 1..rounds do
         residue = residue * residue % value
-        if residue =~ value - BigInteger.one then
+        if residue =~ value - bigint.one then
             return true
         fi
     od
@@ -38,52 +37,52 @@ passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
     return false
 si
 
-is_prime(value: BigInteger) -> bool =>
-    value > BigInteger.one /\
+is_prime(value: bigint) -> bool =>
+    value > bigint.one /\
     small_primes
-        |> all(small => passes_miller_rabin(value, cast BigInteger(small)))
+        |> all(small => passes_miller_rabin(value, cast bigint(small)))
 
-pollard_rho(value: BigInteger) -> BigInteger is
-    let offset mut = BigInteger.one
-    let divisor mut = BigInteger.one
+pollard_rho(value: bigint) -> bigint is
+    let offset mut = bigint.one
+    let divisor mut = bigint.one
 
-    while divisor =~ BigInteger.one \/ divisor =~ value do
-        let slow mut = cast BigInteger(2)
-        let fast mut = cast BigInteger(2)
-        divisor = BigInteger.one
+    while divisor =~ bigint.one \/ divisor =~ value do
+        let slow mut = 2n
+        let fast mut = 2n
+        divisor = bigint.one
 
-        while divisor =~ BigInteger.one do
+        while divisor =~ bigint.one do
             slow = (slow * slow + offset) % value
             fast = (fast * fast + offset) % value
             fast = (fast * fast + offset) % value
-            divisor = BigInteger.greatest_common_divisor(slow - fast, value)
+            divisor = bigint.greatest_common_divisor(slow - fast, value)
         od
 
-        offset = offset + BigInteger.one
+        offset = offset + bigint.one
     od
 
     return divisor
 si
 
-prime_factors(value: BigInteger) -> Pipe[BigInteger] is
+prime_factors(value: bigint) -> Pipe[bigint] is
     let remaining mut = value
 
     for small in small_primes do
-        let divisor = cast BigInteger(small)
+        let divisor = cast bigint(small)
 
-        while remaining % divisor =~ BigInteger.zero do
+        while remaining % divisor =~ bigint.zero do
             yield divisor
             remaining = remaining / divisor
         od
     od
 
-    if remaining =~ BigInteger.one then
+    if remaining =~ bigint.one then
         return
     elif is_prime(remaining) then
         yield remaining
     else
         let divisor = pollard_rho(remaining)
-        let factors = LIST[BigInteger]()
+        let factors = LIST[bigint]()
 
         factors.add_range(prime_factors(divisor))
         factors.add_range(prime_factors(remaining / divisor))
@@ -93,7 +92,7 @@ prime_factors(value: BigInteger) -> Pipe[BigInteger] is
     fi
 si
 
-home_prime_chain(start: BigInteger) -> Pipe[BigInteger] is
+home_prime_chain(start: bigint) -> Pipe[bigint] is
     let current mut = start
 
     while !is_prime(current) do
@@ -105,14 +104,14 @@ home_prime_chain(start: BigInteger) -> Pipe[BigInteger] is
             digits.add("{factor}")
         od
 
-        current = BigInteger.parse(digits |> join(""))
+        current = bigint.parse(digits |> join(""))
     od
 
     yield current
 si
 
 show(start: int) is
-    let chain = home_prime_chain(cast BigInteger(start)) |> collect_list()
+    let chain = home_prime_chain(cast bigint(start)) |> collect_list()
     let steps = chain.count - 1
     let stages = LIST[string]()
 

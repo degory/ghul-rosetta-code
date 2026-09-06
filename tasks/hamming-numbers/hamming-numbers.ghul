@@ -1,13 +1,12 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-let two = BigInteger(2)
-let three = BigInteger(3)
-let five = BigInteger(5)
+let two = 2n
+let three = 3n
+let five = 5n
 
-let hamming = LIST[BigInteger]([BigInteger.one])
+let hamming = LIST[bigint]([bigint.one])
 let next_two mut = 0
 let next_three mut = 0
 let next_five mut = 0
@@ -17,9 +16,9 @@ while hamming.count < 1000000 do
     let by_three = three * hamming[next_three]
     let by_five = five * hamming[next_five]
 
-    let best = if BigInteger.compare(by_two, by_three) < 0
+    let best = if bigint.compare(by_two, by_three) < 0
                then by_two else by_three fi
-    let next = if BigInteger.compare(by_five, best) < 0
+    let next = if bigint.compare(by_five, best) < 0
                then by_five else best fi
 
     hamming.add(next)

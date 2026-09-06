@@ -1,33 +1,32 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 
 let bases = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
 
-passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
-    if base % value =~ BigInteger.zero then
+passes_miller_rabin(value: bigint, base: bigint) -> bool pure is
+    if base % value =~ bigint.zero then
         return true
     fi
 
-    let odd mut = value - BigInteger.one
+    let odd mut = value - bigint.one
     let rounds mut = 0
 
-    while odd % cast BigInteger(2) =~ BigInteger.zero do
-        odd = odd / cast BigInteger(2)
+    while odd % 2n =~ bigint.zero do
+        odd = odd / 2n
         rounds = rounds + 1
     od
 
-    let residue mut = BigInteger.mod_pow(base, odd, value)
+    let residue mut = bigint.mod_pow(base, odd, value)
 
-    if residue =~ BigInteger.one \/ residue =~ value - BigInteger.one then
+    if residue =~ bigint.one \/ residue =~ value - bigint.one then
         return true
     fi
 
     for _ in 1..rounds do
         residue = residue * residue % value
-        if residue =~ value - BigInteger.one then
+        if residue =~ value - bigint.one then
             return true
         fi
     od
@@ -35,22 +34,22 @@ passes_miller_rabin(value: BigInteger, base: BigInteger) -> bool pure is
     return false
 si
 
-is_prime(value: BigInteger) -> bool =>
-    value > BigInteger.one /\
-    bases |> all(base => passes_miller_rabin(value, cast BigInteger(base)))
+is_prime(value: bigint) -> bool =>
+    value > bigint.one /\
+    bases |> all(base => passes_miller_rabin(value, cast bigint(base)))
 
-pollard_rho(value: BigInteger, budget: int) -> BigInteger? is
-    let slow mut = cast BigInteger(2)
-    let fast mut = cast BigInteger(2)
-    let divisor mut = BigInteger.one
+pollard_rho(value: bigint, budget: int) -> bigint? is
+    let slow mut = 2n
+    let fast mut = 2n
+    let divisor mut = bigint.one
 
     for _ in 0..budget do
-        slow = (slow * slow + BigInteger.one) % value
-        fast = (fast * fast + BigInteger.one) % value
-        fast = (fast * fast + BigInteger.one) % value
-        divisor = BigInteger.greatest_common_divisor(slow - fast, value)
+        slow = (slow * slow + bigint.one) % value
+        fast = (fast * fast + bigint.one) % value
+        fast = (fast * fast + bigint.one) % value
+        divisor = bigint.greatest_common_divisor(slow - fast, value)
 
-        if divisor !~ BigInteger.one then
+        if divisor !~ bigint.one then
             return if divisor =~ value then null else divisor fi
         fi
     od
@@ -58,7 +57,7 @@ pollard_rho(value: BigInteger, budget: int) -> BigInteger? is
     return null
 si
 
-factors(value: BigInteger) -> Pipe[BigInteger] is
+factors(value: bigint) -> Pipe[bigint] is
     if is_prime(value) then
         yield value
     elif let divisor = pollard_rho(value, 1_000_000) then
@@ -69,8 +68,8 @@ factors(value: BigInteger) -> Pipe[BigInteger] is
     fi
 si
 
-fermat(index: int) -> BigInteger =>
-    BigInteger.pow(cast BigInteger(2), 1 << index) + BigInteger.one
+fermat(index: int) -> bigint =>
+    bigint.pow(2n, 1 << index) + bigint.one
 
 write_line("the first ten Fermat numbers:")
 

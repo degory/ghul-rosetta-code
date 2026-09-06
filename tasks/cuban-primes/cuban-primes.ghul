@@ -1,7 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
 let small_primes = LIST[int]()
 let sieve_limit = 1_000
@@ -33,9 +32,9 @@ probably_prime(value: long) -> bool is
         if value % divisor == 0L then return false fi
     od
 
-    let subject = BigInteger(value)
-    let one = BigInteger.one
-    let two = BigInteger(2)
+    let subject = bigint(value)
+    let one = bigint.one
+    let two = 2n
 
     let odd_part mut = subject - one
     let power mut = 0
@@ -47,7 +46,7 @@ probably_prime(value: long) -> bool is
 
     for base in [2, 3, 5, 7, 11, 13] do
         let residue mut =
-            BigInteger.mod_pow(BigInteger(base), odd_part, subject)
+            bigint.mod_pow(bigint(base), odd_part, subject)
         let witnessed mut = residue =~ one \/ residue =~ subject - one
 
         for _ in 1..power do

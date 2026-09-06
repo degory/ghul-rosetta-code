@@ -1,17 +1,16 @@
 use IO.Std.write_line
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-sylvester(count: int) -> Pipe[BigInteger] is
-    let term mut = BigInteger(2)
+sylvester(count: int) -> Pipe[bigint] is
+    let term mut = 2n
 
     for _ in 1::count do
         yield term
-        term = term * term - term + BigInteger.one
+        term = term * term - term + bigint.one
     od
 si
 
-gcd(a: BigInteger, b: BigInteger) -> BigInteger =>
+gcd(a: bigint, b: bigint) -> bigint =>
     if b.is_zero then a else gcd(b, a % b) fi
 
 let terms = sylvester(10) |> collect_list()
@@ -22,8 +21,8 @@ for term in terms do
     write_line("  {term}")
 od
 
-let numerator mut = BigInteger.zero
-let denominator mut = BigInteger.one
+let numerator mut = bigint.zero
+let denominator mut = bigint.one
 
 for term in terms do
     numerator = numerator * term + denominator

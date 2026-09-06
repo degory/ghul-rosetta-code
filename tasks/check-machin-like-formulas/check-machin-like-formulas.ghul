@@ -1,26 +1,25 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 
-struct GAUSSIAN(real: BigInteger, imaginary: BigInteger) is
+struct GAUSSIAN(real: bigint, imaginary: bigint) is
     *(other: GAUSSIAN) -> GAUSSIAN => GAUSSIAN(
         real * other.real - imaginary * other.imaginary,
         real * other.imaginary + imaginary * other.real)
 
-    conjugate: GAUSSIAN => GAUSSIAN(real, BigInteger.zero - imaginary)
+    conjugate: GAUSSIAN => GAUSSIAN(real, bigint.zero - imaginary)
 si
 
 struct TERM(multiplier: int, numerator: int, denominator: int);
 
 tangent_is_one(terms: TERM[]) -> bool is
-    let product mut = GAUSSIAN(BigInteger.one, BigInteger.zero)
+    let product mut = GAUSSIAN(bigint.one, bigint.zero)
 
     for term in terms do
         let angle = GAUSSIAN(
-            cast BigInteger(term.denominator),
-            cast BigInteger(term.numerator))
+            cast bigint(term.denominator),
+            cast bigint(term.numerator))
         let factor =
             if term.multiplier < 0 then angle.conjugate else angle fi
 

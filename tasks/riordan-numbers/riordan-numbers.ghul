@@ -1,10 +1,9 @@
 use IO.Std.write_line
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-riordan(count: int) -> Pipe[BigInteger] is
-    let previous mut = BigInteger.one
-    let current mut = BigInteger.zero
+riordan(count: int) -> Pipe[bigint] is
+    let previous mut = bigint.one
+    let current mut = bigint.zero
 
     yield previous
 
@@ -12,9 +11,9 @@ riordan(count: int) -> Pipe[BigInteger] is
         yield current
 
         let following =
-            BigInteger(index) *
-            (BigInteger(2) * current + BigInteger(3) * previous) /
-            BigInteger(index + 2)
+            bigint(index) *
+            (2n * current + 3n * previous) /
+            bigint(index + 2)
 
         previous = current
         current = following

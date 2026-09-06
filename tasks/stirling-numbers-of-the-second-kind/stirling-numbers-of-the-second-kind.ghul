@@ -1,20 +1,19 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 
-row_of(n: int) -> LIST[BigInteger] is
-    let row mut = LIST[BigInteger]()
-    row.add(BigInteger.one)
+row_of(n: int) -> LIST[bigint] is
+    let row mut = LIST[bigint]()
+    row.add(bigint.one)
 
     for step in 1::n do
-        let following = LIST[BigInteger]()
-        following.add(BigInteger.zero)
+        let following = LIST[bigint]()
+        following.add(bigint.zero)
 
         for k in 1::step do
-            let above = if k < row.count then row[k] else BigInteger.zero fi
+            let above = if k < row.count then row[k] else bigint.zero fi
 
-            following.add(BigInteger(k) * above + row[k - 1])
+            following.add(bigint(k) * above + row[k - 1])
         od
 
         row = following
@@ -48,7 +47,7 @@ for n in 0::12 do
 od
 
 let largest =
-    row_of(100) |> reduce(BigInteger.zero,
+    row_of(100) |> reduce(bigint.zero,
                           (best, v) => if v > best then v else best fi)
 
 write_line("")

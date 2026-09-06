@@ -1,7 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
 use Ghul.Pipes
-use System.Numerics.BigInteger
 use System.Numerics.INumber
 use System.Numerics.IMultiplyOperators.`*
 
@@ -16,24 +15,24 @@ power[T: INumber[T]](base: T, exponent: int) -> T =>
         base * power(base, exponent - 1)
     fi
 
-engel(numerator: BigInteger, denominator: BigInteger) -> Pipe[BigInteger] is
+engel(numerator: bigint, denominator: bigint) -> Pipe[bigint] is
     let current mut = numerator
 
-    while current > BigInteger.zero do
-        let term = (denominator + current - BigInteger.one) / current
+    while current > bigint.zero do
+        let term = (denominator + current - bigint.one) / current
 
         yield term
         current = term * current - denominator
     od
 si
 
-from_engel(terms: Collections.List[BigInteger])
-        -> (numerator: BigInteger, denominator: BigInteger) is
-    let numerator mut = BigInteger.zero
-    let denominator mut = BigInteger.one
+from_engel(terms: Collections.List[bigint])
+        -> (numerator: bigint, denominator: bigint) is
+    let numerator mut = bigint.zero
+    let denominator mut = bigint.one
 
     for term in terms do
-        numerator = numerator * term + BigInteger.one
+        numerator = numerator * term + bigint.one
         denominator = denominator * term
     od
 
@@ -41,8 +40,8 @@ from_engel(terms: Collections.List[BigInteger])
 si
 
 show(name: string, fractional: string) is
-    let numerator = BigInteger.parse(fractional)
-    let denominator = power(cast BigInteger(10), fractional.length)
+    let numerator = bigint.parse(fractional)
+    let denominator = power(10n, fractional.length)
     let terms = numerator |> engel(denominator) |> collect_list()
     let (rebuilt, scale) = from_engel(terms)
     let verified = if rebuilt * denominator =~ numerator * scale
