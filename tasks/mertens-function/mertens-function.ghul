@@ -1,3 +1,57 @@
 use IO.Std.write_line
+use Ghul.Pipes
 
-write_line("not written yet")
+mobius(value: int) -> int is
+    let remaining mut = value
+    let factors mut = 0
+    let factor mut = 2
+
+    while factor * factor <= remaining do
+        if remaining % factor == 0 then
+            remaining = remaining / factor
+            factors = factors + 1
+
+            if remaining % factor == 0 then return 0 fi
+        fi
+
+        factor = factor + 1
+    od
+
+    if remaining > 1 then
+        factors = factors + 1
+    fi
+
+    if factors % 2 == 0 then 1 else -1 fi
+si
+
+mertens(limit: int) -> int =>
+    (1::limit) |> map(mobius) |> reduce(0, (total, m) => total + m)
+
+write_line("the Mertens function for 1 to 99:")
+
+for row in 0..10 do
+    let start = if row == 0 then 1 else row * 10 fi
+    let indent = if row == 0 then "   " else "" fi
+    let cells = (start::row * 10 + 9) |> map(n => "{mertens(n),3}")
+
+    write_line("{row * 10,4}:{indent}{cells |> join("")}")
+od
+
+let values = (1::1_000) |> map(mertens) |> collect_list()
+
+let zeroes = values |> filter(m => m == 0) |> count()
+
+let crossings mut = 0
+let previous mut = 0
+
+for value in values do
+    if value == 0 /\ previous != 0 then
+        crossings = crossings + 1
+    fi
+
+    previous = value
+od
+
+write_line("")
+write_line("M(1) to M(1000) is zero {zeroes} times")
+write_line("and crosses zero {crossings} times")
