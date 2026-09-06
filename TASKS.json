@@ -1458,6 +1458,11 @@
       "published_hash": "69d3ba08dcc0326ebffe9fb1c00683de185a69343647d947842755a60a604cb6"
     },
     {
+      "title": "Sorensen\u2013Dice coefficient",
+      "state": "rejected",
+      "reason": "needs-network"
+    },
+    {
       "title": "Sorting algorithms/Quicksort",
       "slug": "sorting-algorithms-quicksort",
       "state": "published",

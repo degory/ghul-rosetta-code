@@ -1,0 +1,102 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use System.Numerics.BigInteger
+
+let one = BigInteger.one
+let two = BigInteger(2)
+
+wolstenholme(count: int) -> Pipe[BigInteger] is
+    let numerator mut = BigInteger.zero
+    let denominator mut = one
+
+    for k in 1::count do
+        let square = BigInteger(k) * BigInteger(k)
+
+        numerator = numerator * square + denominator
+        denominator = denominator * square
+
+        let common =
+            BigInteger.greatest_common_divisor(numerator, denominator)
+
+        numerator = numerator / common
+        denominator = denominator / common
+
+        yield numerator
+    od
+si
+
+let witnesses = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+
+passes(witness: BigInteger, odd_part: BigInteger, power: int,
+       value: BigInteger) -> bool is
+    let residue mut = BigInteger.mod_pow(witness, odd_part, value)
+
+    if residue =~ one \/ residue =~ value - one then return true fi
+
+    for _ in 1..power do
+        residue = residue * residue % value
+
+        if residue =~ value - one then return true fi
+    od
+
+    false
+si
+
+is_prime(value: BigInteger) -> bool is
+    for small in witnesses do
+        let witness = BigInteger(small)
+
+        if value =~ witness then return true fi
+        if (value % witness).is_zero then return false fi
+    od
+
+    if value < two then return false fi
+
+    let odd_part mut = value - one
+    let power mut = 0
+
+    while (odd_part % two).is_zero do
+        odd_part = odd_part / two
+        power = power + 1
+    od
+
+    for small in witnesses do
+        if !passes(BigInteger(small), odd_part, power, value) then
+            return false
+        fi
+    od
+
+    true
+si
+
+write_line("the first twenty Wolstenholme numbers:")
+
+for term in wolstenholme(20) do
+    write_line("  {term}")
+od
+
+write_line("")
+write_line("the first four prime Wolstenholme numbers:")
+
+let primes = wolstenholme(20) |> filter(is_prime) |> take(4)
+
+for term in primes do
+    write_line("  {term}")
+od
+
+write_line("")
+write_line("digit counts:")
+
+let wanted = [500, 1_000, 2_500, 5_000, 10_000]
+let position mut = 0
+
+for term in wolstenholme(10_000) do
+    position = position + 1
+
+    if wanted |> any(w => w == position) then
+        let digits = term.to_string().length
+
+        write_line("  term {position,5} has {digits} digits")
+    fi
+od
