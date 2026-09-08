@@ -1,0 +1,15 @@
+the Polybius square:
+
+   A D F G V X
+A  8 Q G H L Y
+D  T 9 0 S 3 E
+F  J 1 I F W X
+G  R 6 K B D C
+V  U 2 7 5 O Z
+X  M V N A 4 P
+
+the key: BUCHAREST
+
+plaintext:  ATTACKAT1200AM
+ciphertext: DGDXXVADFDXAXAXFADFGFGGDXGGD
+decrypted:  ATTACKAT1200AM
