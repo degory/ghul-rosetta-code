@@ -54,5 +54,5 @@ si
 [("MARTHA", "MARHTA"),
  ("DIXON", "DICKSONX"),
  ("JELLYFISH", "SMELLYFISH")]
-    |> each(((left, right)) =>
+    |> each((left, right) =>
         write_line("{left} / {right}: {jaro(left, right):F6}"))

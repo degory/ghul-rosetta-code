@@ -20,7 +20,7 @@ pad(word: string, width: int, alignment: Alignment) -> string =>
 line(row: string[], widths: int[], alignment: Alignment) -> string =>
     (row
      |> index()
-     |> map(((column, word)) => pad(word, widths[column], alignment))
+     |> map((column, word) => pad(word, widths[column], alignment))
      |> join(" ")).trim_end()
 
 let text = [

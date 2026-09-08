@@ -10,6 +10,6 @@ sum_of_proper_divisors(n: int) -> int =>
 
 (1::limit)
     |> map(n => (n, partner = sum_of_proper_divisors(n)))
-    |> filter(((n, partner)) =>
+    |> filter((n, partner) =>
         partner > n /\ sum_of_proper_divisors(partner) == n)
-    |> each(((n, partner)) => write_line("{n} and {partner}"))
+    |> each((n, partner) => write_line("{n} and {partner}"))
