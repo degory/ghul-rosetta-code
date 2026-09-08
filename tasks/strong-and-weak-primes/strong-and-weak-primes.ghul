@@ -1,0 +1,50 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let sieve_limit = 10_000_100
+let composite = LIST(sieve_limit)
+
+for _ in 0::sieve_limit do
+    composite.add(false)
+od
+
+for candidate in 2::sieve_limit do
+    if !composite[candidate] /\ candidate <= sieve_limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple <= sieve_limit do
+            composite[multiple] = true
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+neighbourhoods() -> Pipe[LIST[int]] =>
+    (2::sieve_limit)
+        |> filter(candidate => !composite[candidate])
+        |> windows(3)
+
+strong() -> Pipe[int] =>
+    neighbourhoods()
+        |> filter(around => around[1] * 2 > around[0] + around[2])
+        |> map(around => around[1])
+
+weak() -> Pipe[int] =>
+    neighbourhoods()
+        |> filter(around => around[1] * 2 < around[0] + around[2])
+        |> map(around => around[1])
+
+report(name: string, found: () -> Pipe[int], wanted: int) is
+    write_line("first {wanted} {name} primes:")
+    write_line("  {found() |> take(wanted) |> join(" ")}")
+
+    for bound in [1_000_000, 10_000_000] do
+        let total = found() |> take_while(prime => prime < bound) |> count()
+
+        write_line("  {name} primes below {bound}: {total}")
+    od
+si
+
+report("strong", strong, 36)
+report("weak", weak, 37)
