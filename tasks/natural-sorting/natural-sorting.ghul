@@ -1,0 +1,177 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use System.Globalization.CharUnicodeInfo
+use System.Globalization.UnicodeCategory
+use System.Text.NormalizationForm
+use Ghul.Pipes
+
+use TRANSFORM = (string) -> string pure
+
+plain_whitespace(text: string) -> string pure =>
+    text
+        |> map(letter =>
+            if char.is_white_space(letter) then ' ' else letter fi)
+        |> join("")
+
+single_spaces(text: string) -> string pure is
+    let kept = LIST[char]()
+
+    for letter in text do
+        let after_space = kept.count > 0 /\ kept[kept.count - 1] == ' '
+
+        if letter != ' ' \/ !after_space then
+            kept.add(letter)
+        fi
+    od
+
+    let joined = kept |> join("")
+
+    joined.trim()
+si
+
+folded_case(text: string) -> string pure => text.to_lower()
+
+replaced_letters(text: string) -> string pure =>
+    text
+        .replace("\u00DF", "ss")
+        .replace("\u017F", "s")
+        .replace("\u0292", "s")
+
+split_ligatures(text: string) -> string pure =>
+    text
+        .replace("\u0133", "ij")
+        .replace("\u00E6", "ae")
+        .replace("\u0153", "oe")
+        .replace("\uFB01", "fi")
+        .replace("\uFB02", "fl")
+
+bare_letters(text: string) -> string pure =>
+    text.normalize(NormalizationForm.FORM_D)
+        |> filter(letter =>
+            CharUnicodeInfo.get_unicode_category(letter) !=
+                UnicodeCategory.NON_SPACING_MARK)
+        |> join("")
+
+without_leading_article(text: string) -> string pure =>
+    if text.starts_with("the ") then text[4..<0] else text fi
+
+let transforms =
+    [plain_whitespace, single_spaces, folded_case, replaced_letters,
+     split_ligatures, bare_letters, without_leading_article]
+
+key(text: string) -> string pure =>
+    transforms |> reduce(text, (running, step) => step(running))
+
+runs(text: string) -> Pipe[string] is
+    let held = LIST[char]()
+
+    for letter in text do
+        let broke =
+            held.count > 0 /\
+                char.is_digit(held[held.count - 1]) != char.is_digit(letter)
+
+        if broke then
+            yield held |> join("")
+
+            held.clear()
+        fi
+
+        held.add(letter)
+    od
+
+    if held.count > 0 then
+        yield held |> join("")
+    fi
+si
+
+is_number(part: string) -> bool pure =>
+    part.length > 0 /\ (part |> all(letter => char.is_digit(letter)))
+
+without_leading_zeros(part: string) -> string pure =>
+    let trimmed = part.trim_start('0') in
+    if trimmed.length == 0 then "0" else trimmed fi
+
+compare_parts(left: string, right: string) -> int pure =>
+    if is_number(left) /\ is_number(right) then
+        let a = without_leading_zeros(left) in
+        let b = without_leading_zeros(right) in
+        if a.length != b.length then
+            a.length <> b.length
+        else
+            string.compare_ordinal(a, b)
+        fi
+    else
+        string.compare_ordinal(left, right)
+    fi
+
+naturally(left: string, right: string) -> int pure is
+    let first = runs(key(left)) |> collect()
+    let second = runs(key(right)) |> collect()
+    let shared = if first.count < second.count then first.count
+                 else second.count fi
+
+    for index in 0..shared do
+        let outcome = compare_parts(first[index], second[index])
+
+        if outcome != 0 then return outcome fi
+    od
+
+    first.count <> second.count
+si
+
+visible(text: string) -> string =>
+    text
+        .replace("\t", "\\t").replace("\n", "\\n").replace("\r", "\\r")
+        .replace("\u000B", "\\v").replace("\u000C", "\\f")
+
+demonstrate(feature: string, samples: List[string]) is
+    write_line("{feature}:")
+    write_line("  given:")
+
+    samples |> each(text => write_line("    \"{visible(text)}\""))
+
+    write_line("  naturally:")
+
+    samples
+        |> sort(naturally)
+        |> each(text => write_line("    \"{visible(text)}\""))
+
+    write_line()
+si
+
+demonstrate("ignoring leading spaces",
+    ["ignore leading spaces: 2-2", " ignore leading spaces: 2-1",
+     "  ignore leading spaces: 2+0", "   ignore leading spaces: 2+1"])
+
+demonstrate("ignoring multiple adjacent spaces",
+    ["ignore m.a.s spaces: 2-2", "ignore m.a.s  spaces: 2-1",
+     "ignore m.a.s   spaces: 2+0", "ignore m.a.s    spaces: 2+1"])
+
+demonstrate("equivalent whitespace characters",
+    ["Equiv. spaces: 3-3", "Equiv.\rspaces: 3-2", "Equiv.\u000Cspaces: 3-1",
+     "Equiv.\u000Bspaces: 3+0", "Equiv.\nspaces: 3+1",
+     "Equiv.\tspaces: 3+2"])
+
+demonstrate("case independent",
+    ["cASE INDEPENDENT: 3-2", "caSE INDEPENDENT: 3-1",
+     "casE INDEPENDENT: 3+0", "case INDEPENDENT: 3+1"])
+
+demonstrate("numeric fields as numbers",
+    ["foo100bar99baz0.txt", "foo100bar10baz0.txt",
+     "foo1000bar99baz10.txt", "foo1000bar99baz9.txt"])
+
+demonstrate("title sorts",
+    ["The Wind in the Willows", "The 40th step more", "The 39 steps",
+     "Wanda"])
+
+demonstrate("equivalent accented characters",
+    ["Equiv. \u00FD accents: 2-2", "Equiv. \u00DD accents: 2-1",
+     "Equiv. y accents: 2+0", "Equiv. Y accents: 2+1"])
+
+demonstrate("separated ligatures",
+    ["\u0132 ligatured ij", "no ligature"])
+
+demonstrate("character replacements",
+    ["Start with an \u0292: 2-2", "Start with an \u017F: 2-1",
+     "Start with an \u00DF: 2+0", "Start with an s: 2+1"])
