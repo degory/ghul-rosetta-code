@@ -1,0 +1,36 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let prime_digits = [2, 3, 5, 7]
+
+is_prime(value: int) -> bool pure =>
+    value > 1 /\ ((2..value)
+        |> take_while(divisor => divisor * divisor <= value)
+        |> all(divisor => value % divisor != 0))
+
+prime_digit_numbers() -> Pipe[int] is
+    let level mut = prime_digits |> collect()
+
+    do
+        yield in level
+
+        level =
+            level
+                |> flat_map(value =>
+                    prime_digits |> map(digit => value * 10 + digit))
+                |> collect()
+    od
+si
+
+smarandache() -> Pipe[int] => prime_digit_numbers() |> filter(is_prime)
+
+write_line("the first 25 Smarandache prime-digital primes:")
+
+smarandache()
+    |> take(25)
+    |> chunk(5)
+    |> each(row =>
+        write_line(row |> map(value => "{value,7}") |> join("")))
+
+write_line()
+write_line("the hundredth: {smarandache() |> skip(99) |> first_or_throw()}")
