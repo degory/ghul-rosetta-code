@@ -1,0 +1,40 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+primes() -> Pipe[int] is
+    let found = LIST[int]()
+    let candidate mut = 2
+
+    do
+        let divisors =
+            found |> take_while(prime => prime * prime <= candidate)
+
+        if divisors |> all(prime => candidate % prime != 0) then
+            found.add(candidate)
+
+            yield candidate
+        fi
+
+        candidate = candidate + 1
+    od
+si
+
+between(low: int, high: int) -> Pipe[int] =>
+    primes()
+        |> skip_while(prime => prime < low)
+        |> take_while(prime => prime <= high)
+
+write_line("the first twenty primes:")
+write_line("  {primes() |> take(20) |> join(" ")}")
+
+write_line("the primes between 100 and 150:")
+write_line("  {between(100, 150) |> join(" ")}")
+
+let band = between(7_700, 8_000) |> count()
+
+write_line("primes between 7,700 and 8,000: {band}")
+
+let ten_thousandth = primes() |> skip(9_999) |> first_or_throw()
+
+write_line("the 10,000th prime: {ten_thousandth}")

@@ -1,0 +1,19 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+fairshare(base: int) -> Pipe[int] =>
+    from(0) |> map(count => digit_sum(count, base) % base)
+
+digit_sum(value: int, base: int) -> int pure =>
+    if value == 0 then
+        0
+    else
+        value % base + digit_sum(value / base, base)
+    fi
+
+write_line("the first 25 terms of the fairshare sequence:")
+
+[2, 3, 5, 11]
+    |> each(people =>
+        write_line("  {people,3} people: "
+                   "{fairshare(people) |> take(25) |> join(" ")}"))

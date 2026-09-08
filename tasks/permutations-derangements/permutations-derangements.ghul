@@ -1,0 +1,56 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+extend(prefix: LIST[int], size: int) -> Pipe[List[int]] is
+    if prefix.count == size then
+        yield prefix |> collect()
+    else
+        for candidate in 0..size do
+            if candidate != prefix.count /\
+                !(prefix |> any(taken => taken == candidate)) then
+                prefix.add(candidate)
+
+                yield in extend(prefix, size)
+
+                prefix.remove_at(prefix.count - 1)
+            fi
+        od
+    fi
+si
+
+derangements(size: int) -> Pipe[List[int]] => extend(LIST[int](), size)
+
+subfactorials() -> Pipe[bigint] is
+    let previous mut = 1n
+    let current mut = 0n
+    let index mut = 0
+
+    do
+        yield previous
+
+        let following = bigint(index + 1) * (current + previous)
+
+        previous = current
+        current = following
+        index = index + 1
+    od
+si
+
+write_line("the derangements of four items:")
+
+derangements(4)
+    |> each(one => write_line("  {one |> join(" ")}"))
+
+write_line()
+write_line(" n   counted   subfactorial")
+
+(0::9)
+    |> zip(subfactorials())
+    |> each((size, calculated) =>
+        write_line("{size,2}{derangements(size) |> count(),10}"
+                   "{calculated,15}"))
+
+write_line()
+write_line("!20 = {subfactorials() |> skip(20) |> first_or_throw():N0}")

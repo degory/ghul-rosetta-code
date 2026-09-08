@@ -1,0 +1,97 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+struct RATIONAL is
+    numerator: bigint
+    denominator: bigint
+
+    init(numerator: bigint, denominator: bigint) is
+        let common =
+            bigint.greatest_common_divisor(numerator, denominator)
+        let sign = if denominator < 0n then -1n else 1n fi
+
+        self.numerator = sign * numerator / common
+        self.denominator = sign * denominator / common
+    si
+
+    +(other: RATIONAL) -> RATIONAL =>
+        RATIONAL(
+            numerator * other.denominator + other.numerator * denominator,
+            denominator * other.denominator)
+
+    *(other: RATIONAL) -> RATIONAL =>
+        RATIONAL(numerator * other.numerator,
+                 denominator * other.denominator)
+
+    to_string() -> string =>
+        if denominator =~ 1n then
+            "{numerator}"
+        else
+            "{numerator}/{denominator}"
+        fi
+si
+
+whole(value: bigint) -> RATIONAL => RATIONAL(value, 1n)
+
+binomial(upper: int, lower: int) -> bigint =>
+    (1::lower)
+        |> reduce(1n, (running, step) =>
+            running * bigint(upper - lower + step) / bigint(step))
+
+bernoullis(count: int) -> List[RATIONAL] is
+    let values = LIST[RATIONAL]()
+
+    for index in 0::count do
+        if index == 0 then
+            values.add(whole(1n))
+        else
+            let total =
+                (0..index)
+                    |> reduce(whole(0n), (running, step) =>
+                        running +
+                            whole(binomial(index + 1, step)) * values[step])
+
+            values.add(whole(-1n) * total * RATIONAL(1n, bigint(index + 1)))
+        fi
+    od
+
+    values[1] = RATIONAL(1n, 2n)
+
+    values
+si
+
+let bernoulli = bernoullis(20)
+
+faulhaber_row(power: int) -> List[RATIONAL] =>
+    (1::power + 1)
+        |> map(exponent => (
+            let index = power + 1 - exponent
+
+            RATIONAL(binomial(power + 1, index), bigint(power + 1)) *
+                bernoulli[index]
+        ))
+        |> collect()
+
+write_line("the first ten rows of Faulhaber's triangle:")
+
+(0..10)
+    |> each(power => (
+        let cells = faulhaber_row(power) |> map(cell => "{cell,8}")
+
+        write_line("  {cells |> join("")}")
+    ))
+
+let row = faulhaber_row(17)
+
+let total =
+    row
+        |> index()
+        |> reduce(whole(0n), (running, cell) =>
+            running +
+                cell.value * whole(bigint.pow(1000n, cell.index + 1)))
+
+write_line()
+write_line("using row 18, the sum of k^17 for k = 1 to 1000:")
+write_line("  {total}")

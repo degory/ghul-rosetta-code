@@ -126,6 +126,11 @@
       "note": "the word list is fetched from a URL the task names"
     },
     {
+      "title": "Anaprimes",
+      "slug": "anaprimes",
+      "state": "solved"
+    },
+    {
       "title": "Animate a pendulum",
       "state": "rejected",
       "reason": "needs-gui"
@@ -479,6 +484,11 @@
       "published_hash": "83df7f995087129262276357f0ec4d24a666b158c833f466f618b971b7f26b2a"
     },
     {
+      "title": "Deceptive numbers",
+      "slug": "deceptive-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Deconvolution/1D",
       "slug": "deconvolution-1d",
       "state": "published",
@@ -519,6 +529,11 @@
       "slug": "dining-philosophers",
       "state": "published",
       "published_hash": "4a2d2f60ea81b118848ba354e6990b4c562fbcd2ae5fc6d13be1ca5c19996d06"
+    },
+    {
+      "title": "Display an outline as a nested table",
+      "slug": "display-an-outline-as-a-nested-table",
+      "state": "solved"
     },
     {
       "title": "Diversity prediction theorem",
@@ -656,6 +671,11 @@
       "published_hash": "0cd9d220240b62163a6152113eddfe3774793788b9343aa5c45a40dc212a3c51"
     },
     {
+      "title": "Extensible prime generator",
+      "slug": "extensible-prime-generator",
+      "state": "solved"
+    },
+    {
       "title": "FTP",
       "state": "rejected",
       "reason": "needs-network"
@@ -685,10 +705,20 @@
       "published_hash": "f93bd35b1687c008d801fc02e7b84de5f0aaf0e4914b65d1c696e397657aa458"
     },
     {
+      "title": "Fairshare between two and more",
+      "slug": "fairshare-between-two-and-more",
+      "state": "solved"
+    },
+    {
       "title": "Farey sequence",
       "slug": "farey-sequence",
       "state": "published",
       "published_hash": "b8b74bf9a89bd345ef38f3caf943d366912562c5923c30c96997cfcae93c7a0c"
+    },
+    {
+      "title": "Faulhaber\u0027s triangle",
+      "slug": "faulhabers-triangle",
+      "state": "solved"
     },
     {
       "title": "Fermat numbers",
@@ -724,6 +754,11 @@
       "slug": "first-class-functions",
       "state": "published",
       "published_hash": "7926c3706b8e07a326b17fa38aac816fea70ac5bf1e1d48df0c2361e2d3a8981"
+    },
+    {
+      "title": "First-class functions/Use numbers analogously",
+      "slug": "first-class-functions-use-numbers-analogously",
+      "state": "solved"
     },
     {
       "title": "FizzBuzz",
@@ -1000,6 +1035,11 @@
       "published_hash": "705e09011317d998ec03c5a08346f2045fa67e54d29c6478077e329d58d94232"
     },
     {
+      "title": "Increasing gaps between consecutive Niven numbers",
+      "slug": "increasing-gaps-between-consecutive-niven-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Index finite lists of positive integers",
       "slug": "index-finite-lists-of-positive-integers",
       "state": "published",
@@ -1028,6 +1068,11 @@
       "slug": "iterated-digits-squaring",
       "state": "published",
       "published_hash": "9ef2924d6e7107f2ce599941b9e5f5dd9e3a1500df06d7e2a3c8996668865f6f"
+    },
+    {
+      "title": "JSON pointer",
+      "slug": "json-pointer",
+      "state": "solved"
     },
     {
       "title": "Jacobi symbol",
@@ -1184,6 +1229,11 @@
       "published_hash": "141f936e6d5acb0f069e11f498cf86612e069a6504da22b82e359247520514a7"
     },
     {
+      "title": "Long primes",
+      "slug": "long-primes",
+      "state": "solved"
+    },
+    {
       "title": "Longest common subsequence",
       "slug": "longest-common-subsequence",
       "state": "published",
@@ -1200,6 +1250,11 @@
       "slug": "look-and-say-sequence",
       "state": "published",
       "published_hash": "cec14431ff7f40148023fd91bc29409623fdb115d5f4e3dab787a225cafdb21c"
+    },
+    {
+      "title": "Lucky and even lucky numbers",
+      "slug": "lucky-and-even-lucky-numbers",
+      "state": "solved"
     },
     {
       "title": "Ludic numbers",
@@ -1238,6 +1293,11 @@
       "published_hash": "3c092d2dae30b1c0e596d4c66c3bebabb17c1b994ae305bd1ffe0850366ccb3c"
     },
     {
+      "title": "Merge and aggregate datasets",
+      "slug": "merge-and-aggregate-datasets",
+      "state": "solved"
+    },
+    {
       "title": "Mertens function",
       "slug": "mertens-function",
       "state": "published",
@@ -1254,6 +1314,11 @@
       "slug": "mian-chowla-sequence",
       "state": "published",
       "published_hash": "a9b6497d3441446810cad0de7711f78f8141bfe47dd4436da6cc2c08024eb9fe"
+    },
+    {
+      "title": "Minimal steps down to 1",
+      "slug": "minimal-steps-down-to-1",
+      "state": "solved"
     },
     {
       "title": "Monads/List monad",
@@ -1346,6 +1411,11 @@
       "published_hash": "17201cbb5c1b50f8ff954fde54046e8e966df355a8547500b1df57bbbf712ef8"
     },
     {
+      "title": "Natural sorting",
+      "slug": "natural-sorting",
+      "state": "solved"
+    },
+    {
       "title": "Negative base numbers",
       "slug": "negative-base-numbers",
       "state": "published",
@@ -1356,6 +1426,11 @@
       "slug": "nested-function",
       "state": "published",
       "published_hash": "9072e2f548bce19d786930fb72746f132166ab550ff5f345851254269d29f3ae"
+    },
+    {
+      "title": "Nested templated data",
+      "slug": "nested-templated-data",
+      "state": "solved"
     },
     {
       "title": "Next highest int from digits",
@@ -1386,6 +1461,11 @@
       "slug": "numbers-with-equal-rises-and-falls",
       "state": "published",
       "published_hash": "6fa3e5adabb5deaf262e6e7a5e192e314d6159062405300692e4a24b01be251c"
+    },
+    {
+      "title": "Numerical and alphabetical suffixes",
+      "slug": "numerical-and-alphabetical-suffixes",
+      "state": "solved"
     },
     {
       "title": "O\u0027Halloran numbers",
@@ -1460,6 +1540,11 @@
       "published_hash": "57fc145ee7c4746f4dae28d23981edf346de049fde34b9c9cf58e85238805468"
     },
     {
+      "title": "Pairs with common factors",
+      "slug": "pairs-with-common-factors",
+      "state": "solved"
+    },
+    {
       "title": "Palindrome detection",
       "slug": "palindrome-detection",
       "state": "published",
@@ -1478,10 +1563,20 @@
       "published_hash": "85635a32a85331236f0fcb3706f22ec88f4141deb825e2145ce31cc9bb184d93"
     },
     {
+      "title": "Parsing/RPN to infix conversion",
+      "slug": "parsing-rpn-to-infix-conversion",
+      "state": "solved"
+    },
+    {
       "title": "Parsing/Shunting-yard algorithm",
       "slug": "parsing-shunting-yard-algorithm",
       "state": "published",
       "published_hash": "c7ca81f26b2458be33b8ab24af879e7ac7f19390eb93cdd5654663072a296ccf"
+    },
+    {
+      "title": "Pell numbers",
+      "slug": "pell-numbers",
+      "state": "solved"
     },
     {
       "title": "Perfect totient numbers",
@@ -1496,16 +1591,36 @@
       "published_hash": "9e166b753740481ab28d31fa30a8c03ab12e86b2d64790e7ee162efe9a3455fb"
     },
     {
+      "title": "Permutations by swapping",
+      "slug": "permutations-by-swapping",
+      "state": "solved"
+    },
+    {
+      "title": "Permutations/Derangements",
+      "slug": "permutations-derangements",
+      "state": "solved"
+    },
+    {
       "title": "Pernicious numbers",
       "slug": "pernicious-numbers",
       "state": "published",
       "published_hash": "9096e8565100700b2f5bf1ec93bd635401d2785f4f9a7c5755e96951d7a22b0c"
     },
     {
+      "title": "Pierpont primes",
+      "slug": "pierpont-primes",
+      "state": "solved"
+    },
+    {
       "title": "Pisano period",
       "slug": "pisano-period",
       "state": "published",
       "published_hash": "24f916e20500e0fd812468302d5589a15f20ff1e20c1a77678a8c7747e645108"
+    },
+    {
+      "title": "Polynomial long division",
+      "slug": "polynomial-long-division",
+      "state": "solved"
     },
     {
       "title": "Population count",
@@ -1530,6 +1645,16 @@
       "slug": "prime-decomposition",
       "state": "published",
       "published_hash": "581cd9185f89a664b084ec587d62c9f4748c674464a0cd2d52c253c7fb81d434"
+    },
+    {
+      "title": "Prime triangle",
+      "slug": "prime-triangle",
+      "state": "solved"
+    },
+    {
+      "title": "Primorial numbers",
+      "slug": "primorial-numbers",
+      "state": "solved"
     },
     {
       "title": "Quaternion",
@@ -1586,6 +1711,11 @@
       "published_hash": "30f651f80e3b75b6e60d2150f04d95108f19755346920f0cd3433104e6e79f89"
     },
     {
+      "title": "Ranking methods",
+      "slug": "ranking-methods",
+      "state": "solved"
+    },
+    {
       "title": "Recaman\u0027s sequence",
       "slug": "recamans-sequence",
       "state": "published",
@@ -1640,10 +1770,20 @@
       "published_hash": "b86ae550b3ad1dca447cd6f1fdde8f0b9b83fe218c052fef06cfd73c5c8713ae"
     },
     {
+      "title": "Ruth-Aaron numbers",
+      "slug": "ruth-aaron-numbers",
+      "state": "solved"
+    },
+    {
       "title": "S-expressions",
       "slug": "s-expressions",
       "state": "published",
       "published_hash": "6df8e354850e463d856c361db4d92c58e59f6dc33e2761d4428e73563a44cafa"
+    },
+    {
+      "title": "Safe primes and unsafe primes",
+      "slug": "safe-primes-and-unsafe-primes",
+      "state": "solved"
     },
     {
       "title": "Sailors, coconuts and a monkey problem",
@@ -1658,6 +1798,11 @@
       "published_hash": "74b26394a8409bf7239173439f0d2fda7db8b97515f4de055fd2114d93335399"
     },
     {
+      "title": "Self numbers",
+      "slug": "self-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Semiprime",
       "slug": "semiprime",
       "state": "published",
@@ -1668,6 +1813,16 @@
       "slug": "set-consolidation",
       "state": "published",
       "published_hash": "3bc0cdcab9244b20c91db53806a815e462ef8875e526d1819c72072bd57c72fc"
+    },
+    {
+      "title": "Set of real numbers",
+      "slug": "set-of-real-numbers",
+      "state": "solved"
+    },
+    {
+      "title": "Sexy primes",
+      "slug": "sexy-primes",
+      "state": "solved"
     },
     {
       "title": "Shortest common supersequence",
@@ -1694,15 +1849,30 @@
       "published_hash": "b9b8f0177cfca66fe2dce42b686c218fa5c85f5b790e0ea85e0c0a203af015c1"
     },
     {
+      "title": "Smarandache prime-digital sequence",
+      "slug": "smarandache-prime-digital-sequence",
+      "state": "solved"
+    },
+    {
       "title": "Smith\u2013Waterman algorithm",
       "slug": "smith-waterman-algorithm",
       "state": "published",
       "published_hash": "a977b351bd90630401bbaccc60316246a646e198a3804da971731b0cacea3cd0"
     },
     {
+      "title": "Solve the no connection puzzle",
+      "slug": "solve-the-no-connection-puzzle",
+      "state": "solved"
+    },
+    {
       "title": "Sorensen\u2013Dice coefficient",
       "state": "rejected",
       "reason": "needs-network"
+    },
+    {
+      "title": "Sort an outline at every level",
+      "slug": "sort-an-outline-at-every-level",
+      "state": "solved"
     },
     {
       "title": "Sorting algorithms/Quicksort",
@@ -1715,6 +1885,11 @@
       "slug": "sorting-algorithms-sleep-sort",
       "state": "published",
       "published_hash": "17f8d8eb087e4865b332434dd0090aec12368569c2abd4da2acac684d0ecf91f"
+    },
+    {
+      "title": "Spelling of ordinal numbers",
+      "slug": "spelling-of-ordinal-numbers",
+      "state": "solved"
     },
     {
       "title": "Sphenic numbers",
@@ -1735,10 +1910,25 @@
       "published_hash": "77a220705a1b5d64bafc5ffd9db9099cdd1650d70ee4fe1df38fc12d8cb5e2dd"
     },
     {
+      "title": "Stirling numbers of the first kind",
+      "slug": "stirling-numbers-of-the-first-kind",
+      "state": "solved"
+    },
+    {
       "title": "Stirling numbers of the second kind",
       "slug": "stirling-numbers-of-the-second-kind",
       "state": "published",
       "published_hash": "8b8645a7ddd7fc9a5fa2edd8bed6dd53fa7fea833b2b081262e939654b93c335"
+    },
+    {
+      "title": "Stream merge",
+      "slug": "stream-merge",
+      "state": "solved"
+    },
+    {
+      "title": "Strong and weak primes",
+      "slug": "strong-and-weak-primes",
+      "state": "solved"
     },
     {
       "title": "Successive prime differences",
@@ -1757,6 +1947,16 @@
       "slug": "sum-to-100",
       "state": "published",
       "published_hash": "620d995ae15d56dba8438122b2737006e06921d4250451a1f86152d1aca15902"
+    },
+    {
+      "title": "Summarize primes",
+      "slug": "summarize-primes",
+      "state": "solved"
+    },
+    {
+      "title": "Super-Poulet numbers",
+      "slug": "super-poulet-numbers",
+      "state": "solved"
     },
     {
       "title": "Sylvester\u0027s sequence",
@@ -1806,6 +2006,11 @@
       "reason": "needs-network"
     },
     {
+      "title": "The sieve of Sundaram",
+      "slug": "the-sieve-of-sundaram",
+      "state": "solved"
+    },
+    {
       "title": "Thue-Morse",
       "slug": "thue-morse",
       "state": "published",
@@ -1836,6 +2041,11 @@
       "published_hash": "b8bbd0dd5b377bca6084a942a084f2f6a92171b08c04325633fb708fc701d18e"
     },
     {
+      "title": "Tree datastructures",
+      "slug": "tree-datastructures",
+      "state": "solved"
+    },
+    {
       "title": "Tree from nesting levels",
       "slug": "tree-from-nesting-levels",
       "state": "published",
@@ -1848,6 +2058,11 @@
       "published_hash": "b3009a560a3bdec485e89ac900880b4b1582093ddcd2c39e830c6c6fac9b3665"
     },
     {
+      "title": "Triangular numbers",
+      "slug": "triangular-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Tropical algebra overloading",
       "slug": "tropical-algebra-overloading",
       "state": "published",
@@ -1858,6 +2073,21 @@
       "slug": "truncatable-primes",
       "state": "published",
       "published_hash": "e923529d3e0412e4fedbe6bdc05e182fd8531e82a87b15351bde6ebd8d7adc9a"
+    },
+    {
+      "title": "Truth table",
+      "slug": "truth-table",
+      "state": "solved"
+    },
+    {
+      "title": "Twelve statements",
+      "slug": "twelve-statements",
+      "state": "solved"
+    },
+    {
+      "title": "Twin primes",
+      "slug": "twin-primes",
+      "state": "solved"
     },
     {
       "title": "Twin primes whose sum is square number",
@@ -1970,6 +2200,11 @@
       "published_hash": "a2b190d924cdeb82d23d83ed74b008a669cf50a467d61754e6d68c97b5d090e6"
     },
     {
+      "title": "Visualize a tree",
+      "slug": "visualize-a-tree",
+      "state": "solved"
+    },
+    {
       "title": "Wagstaff primes",
       "slug": "wagstaff-primes",
       "state": "published",
@@ -1998,6 +2233,11 @@
       "slug": "weird-numbers",
       "state": "published",
       "published_hash": "c0d872a5800aa51bc8e33eab9877259d47270db3b8bd8f0a56084aecdf243c7d"
+    },
+    {
+      "title": "Wieferich primes",
+      "slug": "wieferich-primes",
+      "state": "solved"
     },
     {
       "title": "Wolstenholme numbers",
@@ -2034,6 +2274,11 @@
       "slug": "zebra-puzzle",
       "state": "published",
       "published_hash": "93b0a8fdd130a903edfbf76a6dfb476c2ce80802b77cb71c57fecc5d0764f227"
+    },
+    {
+      "title": "Zeckendorf arithmetic",
+      "slug": "zeckendorf-arithmetic",
+      "state": "solved"
     },
     {
       "title": "Zeckendorf number representation",

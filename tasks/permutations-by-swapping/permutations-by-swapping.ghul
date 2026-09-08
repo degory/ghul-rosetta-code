@@ -1,0 +1,60 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+use STEP = (order: List[int], sign: int)
+
+swap(values: LIST[int], left: int, right: int) is
+    let held = values[left]
+
+    values[left] = values[right]
+    values[right] = held
+si
+
+permutations(size: int) -> Pipe[STEP] is
+    let values = (1::size) |> collect_list()
+    let facing = (1::size) |> map(_ => -1) |> collect_list()
+    let sign mut = 1
+
+    do
+        yield (order = values |> collect(), sign = sign)
+
+        let mobile mut = 0
+        let position mut = -1
+
+        for index in 0..size do
+            let target = index + facing[index]
+
+            if target >= 0 /\ target < size /\
+                values[index] > values[target] /\
+                values[index] > mobile then
+                mobile = values[index]
+                position = index
+            fi
+        od
+
+        if position < 0 then break fi
+
+        swap(values, position, position + facing[position])
+        swap(facing, position, position + facing[position])
+
+        for index in 0..size do
+            if values[index] > mobile then
+                facing[index] = -facing[index]
+            fi
+        od
+
+        sign = -sign
+    od
+si
+
+[3, 4] |> each(size => (
+    write_line("permutations of {size} items, by adjacent swaps:")
+
+    permutations(size)
+        |> each(step =>
+            write_line("  {step.order |> join(" ")}  sign {step.sign,2}"))
+
+    write_line()
+))

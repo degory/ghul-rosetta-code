@@ -1,0 +1,29 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use Collections.LIST
+
+multiplier(a: double, b: double) -> (double) -> double pure =>
+    m => a * b * m
+
+let x = 2.0D
+let xi = 0.5D
+let y = 4.0D
+let yi = 0.25D
+let z = x + y
+let zi = 1.0D / (x + y)
+
+let numbers = LIST()
+numbers.add(x)
+numbers.add(y)
+numbers.add(z)
+
+let inverses = LIST()
+inverses.add(xi)
+inverses.add(yi)
+inverses.add(zi)
+
+for (number, inverse) in numbers |> zip(inverses) do
+    let unity = multiplier(number, inverse)
+
+    write_line("{number} * {inverse} * 1 = {unity(1.0D):F6}")
+od

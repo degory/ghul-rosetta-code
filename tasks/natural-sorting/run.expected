@@ -1,0 +1,108 @@
+ignoring leading spaces:
+  given:
+    "ignore leading spaces: 2-2"
+    " ignore leading spaces: 2-1"
+    "  ignore leading spaces: 2+0"
+    "   ignore leading spaces: 2+1"
+  naturally:
+    "  ignore leading spaces: 2+0"
+    "   ignore leading spaces: 2+1"
+    " ignore leading spaces: 2-1"
+    "ignore leading spaces: 2-2"
+
+ignoring multiple adjacent spaces:
+  given:
+    "ignore m.a.s spaces: 2-2"
+    "ignore m.a.s  spaces: 2-1"
+    "ignore m.a.s   spaces: 2+0"
+    "ignore m.a.s    spaces: 2+1"
+  naturally:
+    "ignore m.a.s   spaces: 2+0"
+    "ignore m.a.s    spaces: 2+1"
+    "ignore m.a.s  spaces: 2-1"
+    "ignore m.a.s spaces: 2-2"
+
+equivalent whitespace characters:
+  given:
+    "Equiv. spaces: 3-3"
+    "Equiv.\rspaces: 3-2"
+    "Equiv.\fspaces: 3-1"
+    "Equiv.\vspaces: 3+0"
+    "Equiv.\nspaces: 3+1"
+    "Equiv.\tspaces: 3+2"
+  naturally:
+    "Equiv.\vspaces: 3+0"
+    "Equiv.\nspaces: 3+1"
+    "Equiv.\tspaces: 3+2"
+    "Equiv.\fspaces: 3-1"
+    "Equiv.\rspaces: 3-2"
+    "Equiv. spaces: 3-3"
+
+case independent:
+  given:
+    "cASE INDEPENDENT: 3-2"
+    "caSE INDEPENDENT: 3-1"
+    "casE INDEPENDENT: 3+0"
+    "case INDEPENDENT: 3+1"
+  naturally:
+    "casE INDEPENDENT: 3+0"
+    "case INDEPENDENT: 3+1"
+    "caSE INDEPENDENT: 3-1"
+    "cASE INDEPENDENT: 3-2"
+
+numeric fields as numbers:
+  given:
+    "foo100bar99baz0.txt"
+    "foo100bar10baz0.txt"
+    "foo1000bar99baz10.txt"
+    "foo1000bar99baz9.txt"
+  naturally:
+    "foo100bar10baz0.txt"
+    "foo100bar99baz0.txt"
+    "foo1000bar99baz9.txt"
+    "foo1000bar99baz10.txt"
+
+title sorts:
+  given:
+    "The Wind in the Willows"
+    "The 40th step more"
+    "The 39 steps"
+    "Wanda"
+  naturally:
+    "The 39 steps"
+    "The 40th step more"
+    "Wanda"
+    "The Wind in the Willows"
+
+equivalent accented characters:
+  given:
+    "Equiv. ý accents: 2-2"
+    "Equiv. Ý accents: 2-1"
+    "Equiv. y accents: 2+0"
+    "Equiv. Y accents: 2+1"
+  naturally:
+    "Equiv. y accents: 2+0"
+    "Equiv. Y accents: 2+1"
+    "Equiv. Ý accents: 2-1"
+    "Equiv. ý accents: 2-2"
+
+separated ligatures:
+  given:
+    "Ĳ ligatured ij"
+    "no ligature"
+  naturally:
+    "Ĳ ligatured ij"
+    "no ligature"
+
+character replacements:
+  given:
+    "Start with an ʒ: 2-2"
+    "Start with an ſ: 2-1"
+    "Start with an ß: 2+0"
+    "Start with an s: 2+1"
+  naturally:
+    "Start with an s: 2+1"
+    "Start with an ſ: 2-1"
+    "Start with an ʒ: 2-2"
+    "Start with an ß: 2+0"
+

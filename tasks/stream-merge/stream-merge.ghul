@@ -1,0 +1,76 @@
+use IO.Std.write_line
+use Collections.Iterable
+use Collections.LIST
+use Collections.List
+use Ghul.Comparable
+use Ghul.Pipes
+
+merge_two[T: Comparable[T]](left: Iterable[T],
+                            right: Iterable[T]) -> Pipe[T]
+is
+    let ahead = left.iterator
+    let behind = right.iterator
+    let more_ahead mut = ahead.move_next()
+    let more_behind mut = behind.move_next()
+
+    while more_ahead /\ more_behind do
+        if ahead.current <= behind.current then
+            yield ahead.current
+
+            more_ahead = ahead.move_next()
+        else
+            yield behind.current
+
+            more_behind = behind.move_next()
+        fi
+    od
+
+    while more_ahead do
+        yield ahead.current
+
+        more_ahead = ahead.move_next()
+    od
+
+    while more_behind do
+        yield behind.current
+
+        more_behind = behind.move_next()
+    od
+si
+
+merge_all[T: Comparable[T]](streams: List[Iterable[T]]) -> Pipe[T] =>
+    case streams.count
+    when 0 then pipe(LIST[T]())
+    when 1 then pipe(streams[0])
+    else
+        let middle = streams.count / 2 in
+        merge_two(merge_all(streams[0..middle]),
+                  merge_all(streams[middle..<0]))
+    esac
+
+counting(start: int, step: int, count: int) -> Pipe[int] is
+    for term in 0..count do
+        yield start + term * step
+    od
+si
+
+let pair = merge_two(counting(0, 3, 4), counting(1, 3, 4))
+
+write_line("two streams:")
+write_line("  {pair |> join(" ")}")
+
+let streams =
+    [counting(0, 3, 4), counting(1, 3, 4), counting(2, 3, 4)] |> collect()
+
+write_line("three streams:")
+write_line("  {merge_all(streams) |> join(" ")}")
+
+write_line("nothing to merge:")
+write_line("  [{merge_all(LIST[Iterable[int]]()) |> join(" ")}]")
+
+let words =
+    [pipe(["apple", "cherry", "grape"]), pipe(["banana", "date"])]
+        |> collect()
+
+write_line("two streams of words:")
+write_line("  {merge_all(words) |> join(" ")}")

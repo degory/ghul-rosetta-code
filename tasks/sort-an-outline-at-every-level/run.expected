@@ -1,0 +1,58 @@
+four spaces, ascending:
+  alpha
+      epsilon
+      iota
+      theta
+  zeta
+      beta
+      delta
+      gamma
+          kappa
+          lambda
+          mu
+
+four spaces, descending:
+  zeta
+      gamma
+          mu
+          lambda
+          kappa
+      delta
+      beta
+  alpha
+      theta
+      iota
+      epsilon
+
+tabs, ascending:
+  alpha
+  	epsilon
+  	iota
+  	theta
+  zeta
+  	beta
+  	delta
+  	gamma
+  		kappa
+  		lambda
+  		mu
+
+tabs, descending:
+  zeta
+  	gamma
+  		mu
+  		lambda
+  		kappa
+  	delta
+  	beta
+  alpha
+  	theta
+  	iota
+  	epsilon
+
+mixed indent characters:
+  inconsistent: indentation mixes tabs and spaces
+
+mixed indent widths:
+  inconsistent: an indent of 3 is not a multiple of the unit of 4
+

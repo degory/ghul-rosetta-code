@@ -1,0 +1,77 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+union Expression is
+    NUMBER(text: string)
+    OPERATION(symbol: string, left: Expression, right: Expression)
+si
+
+let operators = ["^", "*", "/", "+", "-"]
+
+precedence(symbol: string) -> int =>
+    case symbol
+    when "^" then 4
+    when "*", "/" then 3
+    else 2
+    esac
+
+right_associative(symbol: string) -> bool => symbol =~ "^"
+
+needs_parentheses(child: Expression, parent: string,
+                  on_right: bool) -> bool
+=>
+    case child
+    when value: Expression.NUMBER then false
+    when inner: Expression.OPERATION then (
+        let mine = precedence(inner.symbol)
+        let theirs = precedence(parent)
+
+        mine < theirs \/
+            (mine == theirs /\ on_right != right_associative(parent))
+    )
+    esac
+
+render(node: Expression) -> string =>
+    case node
+    when value: Expression.NUMBER then value.text
+    when operation: Expression.OPERATION then
+        "{part(operation.left, operation.symbol, false)} "
+        "{operation.symbol} "
+        "{part(operation.right, operation.symbol, true)}"
+    esac
+
+part(child: Expression, parent: string, on_right: bool) -> string =>
+    if needs_parentheses(child, parent, on_right) then
+        "( {render(child)} )"
+    else
+        render(child)
+    fi
+
+convert(source: string) is
+    let stack = LIST[Expression]()
+
+    write_line("input: {source}")
+    write_line("  {"token",-6}stack")
+
+    for token in source.split([' ']) do
+        if operators |> any(symbol => symbol =~ token) then
+            let right = stack[stack.count - 1]
+            let left = stack[stack.count - 2]
+
+            stack.remove_at(stack.count - 1)
+            stack.remove_at(stack.count - 1)
+
+            stack.add(Expression.OPERATION(token, left, right))
+        else
+            stack.add(Expression.NUMBER(token))
+        fi
+
+        write_line("  {token,-6}{stack |> map(render) |> join(" ; ")}")
+    od
+
+    write_line("  infix: {render(stack[0])}")
+    write_line()
+si
+
+["3 4 2 * 1 5 - 2 3 ^ ^ / +", "1 2 + 3 4 + ^ 5 6 + ^"] |> each(convert)

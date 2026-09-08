@@ -1,0 +1,27 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+is_prime(value: int) -> bool pure =>
+    value > 1 /\ ((2..value)
+        |> take_while(divisor => divisor * divisor <= value)
+        |> all(divisor => value % divisor != 0))
+
+divides_repunit(value: int) -> bool pure =>
+    let remainder =
+        (1..value)
+            |> reduce(0, (running, _) => (running * 10 + 1) % value) in
+    remainder == 0
+
+let deceptive =
+    from(7)
+        |> filter(candidate => candidate % 2 != 0 /\ candidate % 5 != 0)
+        |> filter(candidate => !is_prime(candidate))
+        |> filter(divides_repunit)
+
+write_line("the first 25 deceptive numbers:")
+
+deceptive
+    |> take(25)
+    |> chunk(5)
+    |> each(row =>
+        write_line(row |> map(value => "{value,7}") |> join("")))

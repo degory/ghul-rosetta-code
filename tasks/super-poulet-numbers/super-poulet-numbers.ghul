@@ -1,0 +1,65 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+mod_pow(base: long, exponent: long, modulus: long) -> long pure is
+    let result mut = 1L
+    let factor mut = base % modulus
+    let remaining mut = exponent
+
+    while remaining > 0L do
+        if remaining % 2L == 1L then
+            result = result * factor % modulus
+        fi
+
+        factor = factor * factor % modulus
+        remaining = remaining / 2L
+    od
+
+    result
+si
+
+is_prime(value: int) -> bool pure =>
+    value > 1 /\ ((2..value)
+        |> take_while(divisor => divisor * divisor <= value)
+        |> all(divisor => value % divisor != 0))
+
+divisors(value: int) -> Pipe[int] is
+    for candidate in 1::value do
+        if candidate * candidate > value then break fi
+
+        if value % candidate == 0 then
+            yield candidate
+
+            if value / candidate != candidate then
+                yield value / candidate
+            fi
+        fi
+    od
+si
+
+splits_repeated_doubling(value: int) -> bool pure =>
+    let wide = cast long(value) in
+    mod_pow(2L, wide, wide) == 2L % wide
+
+is_super_poulet(value: int) -> bool =>
+    splits_repeated_doubling(value) /\
+        !is_prime(value) /\
+        (divisors(value) |> all(splits_repeated_doubling))
+
+let found =
+    from(3, 2)
+        |> filter(is_super_poulet)
+        |> take_while(value => value < 10_100_000)
+        |> collect()
+
+write_line("the first 20 super-Poulet numbers:")
+write_line("  {found |> take(20) |> join(" ")}")
+write_line()
+
+[1_000_000, 10_000_000]
+    |> each(bound => (
+        let passed = found |> take_while(value => value <= bound) |> count()
+
+        write_line("super-Poulet number {passed + 1} is the first over "
+                   "{bound:N0}: {found[passed]:N0}")
+    ))

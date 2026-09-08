@@ -1,0 +1,43 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let limit = 1_000_000
+let totient = LIST(limit + 1)
+
+(0::limit) |> each(value => totient.add(value))
+
+for prime in 2::limit do
+    if totient[prime] == prime then
+        let multiple mut = prime
+
+        while multiple <= limit do
+            totient[multiple] = totient[multiple] / prime * (prime - 1)
+            multiple = multiple + prime
+        od
+    fi
+od
+
+sharing_a_factor() -> Pipe[long] is
+    let coprime_total mut = 0L
+
+    for count in 1::limit do
+        coprime_total = coprime_total + cast long(totient[count])
+
+        yield cast long(count) * cast(count - 1) / 2L + 1L - coprime_total
+    od
+si
+
+let terms = sharing_a_factor() |> collect()
+
+write_line("the first 100 terms:")
+
+terms
+    |> take(100)
+    |> chunk(10)
+    |> each(row => write_line(row |> map(term => "{term,5}") |> join("")))
+
+write_line()
+
+[1_000, 10_000, 100_000, 1_000_000]
+    |> each(count => write_line("a({count,9:N0}) = {terms[count - 1]:N0}"))

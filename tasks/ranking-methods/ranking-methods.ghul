@@ -1,0 +1,80 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+use ENTRY = (score: int, name: string)
+use RANKER = (int, int, int, int) -> string pure
+
+let competitors =
+    [(score = 44, name = "Solomon"),
+     (score = 42, name = "Jason"),
+     (score = 42, name = "Errol"),
+     (score = 41, name = "Garry"),
+     (score = 41, name = "Bernard"),
+     (score = 41, name = "Barry"),
+     (score = 39, name = "Stephen")]
+
+ties(entries: List[ENTRY]) -> Pipe[List[ENTRY]] is
+    let tied = LIST[ENTRY]()
+
+    for entry in entries do
+        if tied.count > 0 /\ tied[0].score != entry.score then
+            yield tied |> collect()
+
+            tied.clear()
+        fi
+
+        tied.add(entry)
+    od
+
+    if tied.count > 0 then
+        yield tied |> collect()
+    fi
+si
+
+ranked(rank: RANKER) -> Pipe[string] is
+    let ahead mut = 0
+    let place mut = 0
+
+    for tied in ties(competitors) do
+        place = place + 1
+
+        for member in 0..tied.count do
+            yield "{rank(ahead, tied.count, member, place),5}  "
+                  "{tied[member].score} {tied[member].name}"
+        od
+
+        ahead = ahead + tied.count
+    od
+si
+
+standard(ahead: int, size: int, member: int, place: int) -> string pure =>
+    "{ahead + 1}"
+
+modified(ahead: int, size: int, member: int, place: int) -> string pure =>
+    "{ahead + size}"
+
+dense(ahead: int, size: int, member: int, place: int) -> string pure =>
+    "{place}"
+
+ordinal(ahead: int, size: int, member: int, place: int) -> string pure =>
+    "{ahead + member + 1}"
+
+fractional(ahead: int, size: int, member: int, place: int) -> string pure =>
+    "{cast double(ahead + ahead + size + 1) / 2.0D:F1}"
+
+let methods =
+    [(name = "standard", rank = standard),
+     (name = "modified", rank = modified),
+     (name = "dense", rank = dense),
+     (name = "ordinal", rank = ordinal),
+     (name = "fractional", rank = fractional)]
+
+methods |> each(method => (
+    write_line("{method.name} ranking:")
+
+    ranked(method.rank) |> each(line => write_line("  {line}"))
+
+    write_line()
+))

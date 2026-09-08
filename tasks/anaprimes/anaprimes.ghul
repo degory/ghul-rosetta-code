@@ -1,0 +1,48 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let sieve_limit = 10_000_000
+let composite = LIST(sieve_limit)
+
+for _ in 0..sieve_limit do
+    composite.add(false)
+od
+
+for candidate in 2..sieve_limit do
+    if !composite[candidate] /\ candidate <= sieve_limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple < sieve_limit do
+            composite[multiple] = true
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+digit_signature(value: int) -> string => "{value}" |> sort() |> join("")
+
+report(bound: int) is
+    let groups =
+        (2..bound)
+            |> filter(candidate => !composite[candidate])
+            |> group_by(digit_signature)
+
+    let largest = groups.values |> map(members => members.count) |> max()
+
+    if let size = largest then
+        let winner =
+            groups.values
+                |> filter(members => members.count == size)
+                |> min_by(members => members[0])
+
+        if let group = winner then
+            write_line("  below {bound,10:N0}: {size,4} anaprimes, "
+                       "from {group[0]:N0} to {group[size - 1]:N0}")
+        fi
+    fi
+si
+
+write_line("largest anagram group of primes:")
+
+[1_000, 10_000, 100_000, 1_000_000, 10_000_000] |> each(report)

@@ -1,0 +1,18 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+is_prime(value: int) -> bool pure =>
+    value > 1 /\ ((2..value)
+        |> take_while(divisor => divisor * divisor <= value)
+        |> all(divisor => value % divisor != 0))
+
+is_wieferich(prime: int) -> bool pure =>
+    let square = bigint(prime) * bigint(prime) in
+    bigint.mod_pow(2n, bigint(prime - 1), square) =~ 1n
+
+write_line("Wieferich primes less than 5000:")
+
+write_line((2..5000)
+    |> filter(is_prime)
+    |> filter(is_wieferich)
+    |> join(" "))

@@ -1,0 +1,86 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use System.Math
+use Ghul.Pipes
+
+use DIVISION = (quotient: List[double], remainder: List[double])
+
+degree(poly: List[double]) -> int =>
+    let highest =
+        (0::poly.count - 1)
+            |> reverse()
+            |> find(power => poly[power] != 0.0D) in
+    highest ?? -1
+
+divide(numerator: List[double], denominator: List[double]) -> DIVISION is
+    let divisor_degree = degree(denominator)
+    let remainder = numerator |> collect_list()
+    let quotient = LIST[double]()
+
+    for _ in 0::degree(numerator) - divisor_degree do
+        quotient.add(0.0D)
+    od
+
+    while degree(remainder) >= divisor_degree /\ degree(remainder) >= 0 do
+        let shift = degree(remainder) - divisor_degree
+        let factor =
+            remainder[degree(remainder)] / denominator[divisor_degree]
+
+        quotient[shift] = factor
+
+        for power in 0::divisor_degree do
+            remainder[shift + power] =
+                remainder[shift + power] - factor * denominator[power]
+        od
+    od
+
+    (quotient = quotient, remainder = remainder)
+si
+
+term(size: double, power: int) -> string =>
+    let head = if size == 1.0D /\ power > 0 then "" else "{size:G}" fi in
+    case power
+    when 0 then head
+    when 1 then "{head}x"
+    else "{head}x^{power}"
+    esac
+
+render(poly: List[double]) -> string is
+    let top = degree(poly)
+
+    if top < 0 then return "0" fi
+
+    let parts = LIST[string]()
+
+    for power in (0::top) |> reverse() do
+        let size = Math.abs(poly[power])
+
+        if poly[power] != 0.0D then
+            let sign =
+                if poly[power] < 0.0D then
+                    if parts.count == 0 then "-" else "- " fi
+                else
+                    if parts.count == 0 then "" else "+ " fi
+                fi
+
+            parts.add("{sign}{term(size, power)}")
+        fi
+    od
+
+    parts |> join(" ")
+si
+
+show(numerator: List[double], denominator: List[double]) is
+    let split = divide(numerator, denominator)
+
+    write_line("  ({render(numerator)}) / ({render(denominator)})")
+    write_line("    quotient:  {render(split.quotient)}")
+    write_line("    remainder: {render(split.remainder)}")
+si
+
+write_line("polynomial long division:")
+
+show([-42.0D, 0.0D, -12.0D, 1.0D], [-3.0D, 1.0D])
+show([-1.0D, 0.0D, 0.0D, 0.0D, 1.0D], [-1.0D, 0.0D, 1.0D])
+show([2.0D, 3.0D], [1.0D, 0.0D, 1.0D])

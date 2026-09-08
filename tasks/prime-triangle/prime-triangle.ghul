@@ -1,0 +1,64 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+is_prime(value: int) -> bool pure =>
+    value > 1 /\ ((2..value)
+        |> take_while(divisor => divisor * divisor <= value)
+        |> all(divisor => value % divisor != 0))
+
+let prime_sum = (0::41) |> map(is_prime) |> collect()
+
+extend(chosen: LIST[int], taken: LIST[bool],
+       size: int) -> Pipe[List[int]]
+is
+    if chosen.count == size then
+        yield chosen |> collect()
+    else
+        let final = chosen.count == size - 1
+
+        for candidate in 2::size do
+            if (!final \/ candidate == size) /\ !taken[candidate] /\
+                prime_sum[chosen[chosen.count - 1] + candidate] then
+                taken[candidate] = true
+
+                chosen.add(candidate)
+
+                yield in extend(chosen, taken, size)
+
+                chosen.remove_at(chosen.count - 1)
+
+                taken[candidate] = false
+            fi
+        od
+    fi
+si
+
+arrangements(size: int) -> Pipe[List[int]] =>
+    extend([1] |> collect_list(),
+           (0::size) |> map(_ => false) |> collect_list(),
+           size)
+
+let totals = LIST[int]()
+
+for size in 2::20 do
+    let shown mut = false
+    let total mut = 0
+
+    for arrangement in arrangements(size) do
+        if !shown then
+            write_line(arrangement |> map(value => "{value,3}") |> join(""))
+
+            shown = true
+        fi
+
+        total = total + 1
+    od
+
+    totals.add(total)
+od
+
+write_line()
+write_line("arrangements for each size:")
+write_line("  {totals |> join(" ")}")

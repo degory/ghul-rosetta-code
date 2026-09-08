@@ -1,0 +1,115 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let factor_limit = 10_000
+let composite = LIST(factor_limit)
+
+(0..factor_limit) |> each(_ => composite.add(false))
+
+for candidate in 2..factor_limit do
+    if !composite[candidate] /\ candidate <= factor_limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple < factor_limit do
+            composite[multiple] = true
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+let small_primes =
+    (2..factor_limit) |> filter(value => !composite[value]) |> collect()
+
+let segment_size = 1_000_000
+
+prime_divisor_sums(with_multiplicity: bool)
+    -> Pipe[(number: int, sum: int)]
+is
+    let low mut = 2
+
+    do
+        let high = low + segment_size
+        let remaining = LIST(segment_size)
+        let sums = LIST(segment_size)
+
+        for offset in 0..segment_size do
+            remaining.add(low + offset)
+            sums.add(0)
+        od
+
+        for prime in small_primes do
+            if prime * prime >= high then break fi
+
+            let shortfall = low % prime
+            let first =
+                if shortfall == 0 then low else low + prime - shortfall fi
+
+            let multiple mut = first
+
+            while multiple < high do
+                let offset = multiple - low
+
+                if remaining[offset] % prime == 0 then
+                    sums[offset] = sums[offset] + prime
+                    remaining[offset] = remaining[offset] / prime
+
+                    while remaining[offset] % prime == 0 do
+                        if with_multiplicity then
+                            sums[offset] = sums[offset] + prime
+                        fi
+
+                        remaining[offset] = remaining[offset] / prime
+                    od
+                fi
+
+                multiple = multiple + prime
+            od
+        od
+
+        for offset in 0..segment_size do
+            let leftover = remaining[offset]
+            let extra = if leftover > 1 then leftover else 0 fi
+
+            yield (number = low + offset, sum = sums[offset] + extra)
+        od
+
+        low = high
+    od
+si
+
+runs(with_multiplicity: bool, size: int) -> Pipe[int] is
+    let recent = LIST[int]()
+
+    for entry in prime_divisor_sums(with_multiplicity) do
+        recent.add(entry.sum)
+
+        if recent.count > size then recent.remove_at(0) fi
+
+        let alike mut = recent.count == size
+
+        for index in 1..recent.count do
+            if recent[index] != recent[0] then alike = false fi
+        od
+
+        if alike then yield entry.number - size + 1 fi
+    od
+si
+
+let kinds = [(name = "factors", with_multiplicity = true),
+             (name = "divisors", with_multiplicity = false)]
+
+kinds |> each(kind => (
+    let pairs = runs(kind.with_multiplicity, 2) |> take(30)
+
+    write_line("first 30 Ruth-Aaron numbers ({kind.name}):")
+    write_line("  {pairs |> join(" ")}")
+))
+
+write_line()
+
+kinds |> each(kind => (
+    let triple = runs(kind.with_multiplicity, 3) |> first_or_throw()
+
+    write_line("first Ruth-Aaron triple ({kind.name}): {triple}")
+))

@@ -1,0 +1,128 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+use CELL = (text: string, width: int, colour: string)
+
+class NODE(text: string, children: LIST[NODE])
+
+let outline =
+    ["Display an outline as a nested table.",
+     "    Parse the outline to a tree,",
+     "        measuring the indent of each line,",
+     "        translating the indentation to a nested structure,",
+     "        and padding the tree to even depth.",
+     "    count the leaves descending from each node,",
+     "        defining the width of a leaf as 1,",
+     "        and the width of a parent node as a sum.",
+     "            (The sum of the widths of its children)",
+     "    and write out a table with 'colspan' values",
+     "        either as a wiki table,",
+     "        or as HTML."]
+
+let root_colour = "#ffffe6"
+let palette = ["#ffebd2", "#f0fff0", "#e6ffff"]
+
+margin(line: string) -> int =>
+    line |> take_while(letter => letter == ' ') |> count()
+
+parse(lines: List[string]) -> NODE is
+    let unit = lines |> map(margin) |> filter(width => width > 0) |> min()
+    let step = unit ?? 1
+    let root = NODE(lines[0].trim(), LIST[NODE]())
+    let ancestors = LIST[NODE]()
+
+    ancestors.add(root)
+
+    for line in lines |> skip(1) do
+        let level = margin(line) / step
+        let node = NODE(line.trim(), LIST[NODE]())
+
+        while ancestors.count > level do
+            ancestors.remove_at(ancestors.count - 1)
+        od
+
+        ancestors[ancestors.count - 1].children.add(node)
+        ancestors.add(node)
+    od
+
+    root
+si
+
+deepest(node: NODE) -> int =>
+    if node.children.count == 0 then
+        0
+    else
+        (node.children |> map(deepest) |> max() ?? 0) + 1
+    fi
+
+pad(node: NODE, level: int, bottom: int) is
+    if level < bottom /\ node.children.count == 0 then
+        node.children.add(NODE("", LIST[NODE]()))
+    fi
+
+    for child in node.children do
+        pad(child, level + 1, bottom)
+    od
+si
+
+width(node: NODE) -> int =>
+    if node.children.count == 0 then
+        1
+    else
+        node.children
+            |> map(width)
+            |> reduce(0, (running, part) => running + part)
+    fi
+
+gather(node: NODE, level: int, colour: string,
+       rows: LIST[LIST[CELL]])
+is
+    rows[level].add(
+        (text = node.text, width = width(node), colour = colour))
+
+    for entry in node.children |> index() do
+        let shade =
+            if level == 0 then
+                palette[entry.index % palette.count]
+            else
+                colour
+            fi
+
+        gather(entry.value, level + 1, shade, rows)
+    od
+si
+
+let tree = parse(outline)
+let bottom = deepest(tree)
+
+pad(tree, 0, bottom)
+
+let rows = LIST[LIST[CELL]]()
+
+for _ in 0::bottom do
+    rows.add(LIST[CELL]())
+od
+
+gather(tree, 0, root_colour, rows)
+
+write_line("{{| class=\"wikitable\" style=\"text-align: center;\"")
+
+for row in rows do
+    write_line("|-")
+
+    for cell in row do
+        if cell.text.length == 0 then
+            write_line("|  | ")
+        elif cell.width > 1 then
+            write_line("| style=\"background: {cell.colour}; \" "
+                       "colspan={cell.width} | {cell.text}")
+        else
+            write_line("| style=\"background: {cell.colour}; \" | "
+                       "{cell.text}")
+        fi
+    od
+od
+
+write_line("|}}")

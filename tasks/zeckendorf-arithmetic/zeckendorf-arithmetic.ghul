@@ -1,0 +1,260 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+let width = 48
+
+blank() -> LIST[int] is
+    let digits = LIST[int]()
+
+    for _ in 0..width do
+        digits.add(0)
+    od
+
+    digits
+si
+
+copy(value: List[int]) -> LIST[int] is
+    let digits = blank()
+
+    for index in 0..width do
+        digits[index] = value[index]
+    od
+
+    digits
+si
+
+read(text: string) -> LIST[int] is
+    let digits = blank()
+
+    for entry in text |> reverse() |> index() do
+        digits[entry.index] = if entry.value == '1' then 1 else 0 fi
+    od
+
+    digits
+si
+
+highest(value: List[int]) -> int =>
+    let found =
+        (0..width) |> reverse() |> find(index => value[index] != 0) in
+    found ?? -1
+
+show(value: List[int]) -> string =>
+    let top = highest(value) in
+    if top < 0 then
+        "0"
+    else
+        (0::top) |> reverse() |> map(index => "{value[index]}") |> join("")
+    fi
+
+is_zero(value: List[int]) -> bool =>
+    (0..width) |> all(index => value[index] == 0)
+
+compare(left: List[int], right: List[int]) -> int is
+    for index in (0..width) |> reverse() do
+        if left[index] != right[index] then
+            return if left[index] > right[index] then 1 else -1 fi
+        fi
+    od
+
+    0
+si
+
+normalise(digits: LIST[int]) is
+    let settled mut = false
+
+    while !settled do
+        settled = true
+
+        for index in 0..width - 2 do
+            if digits[index] >= 1 /\ digits[index + 1] >= 1 then
+                digits[index] = digits[index] - 1
+                digits[index + 1] = digits[index + 1] - 1
+                digits[index + 2] = digits[index + 2] + 1
+
+                settled = false
+            fi
+        od
+
+        if digits[0] >= 2 then
+            digits[0] = digits[0] - 2
+            digits[1] = digits[1] + 1
+
+            settled = false
+        fi
+
+        if digits[1] >= 2 then
+            digits[1] = digits[1] - 2
+            digits[2] = digits[2] + 1
+            digits[0] = digits[0] + 1
+
+            settled = false
+        fi
+
+        for index in 2..width - 1 do
+            if digits[index] >= 2 then
+                digits[index] = digits[index] - 2
+                digits[index + 1] = digits[index + 1] + 1
+                digits[index - 2] = digits[index - 2] + 1
+
+                settled = false
+            fi
+        od
+    od
+si
+
+add(left: List[int], right: List[int]) -> LIST[int] is
+    let total = blank()
+
+    for index in 0..width do
+        total[index] = left[index] + right[index]
+    od
+
+    normalise(total)
+
+    total
+si
+
+decrement(value: List[int]) -> LIST[int] is
+    let result = copy(value)
+    let lowest = (0..width) |> find(index => result[index] == 1)
+
+    if let at = lowest then
+        result[at] = 0
+
+        let index mut = at - 1
+
+        while index >= 0 do
+            result[index] = 1
+            index = index - 2
+        od
+    fi
+
+    result
+si
+
+subtract(left: List[int], right: List[int]) -> LIST[int] is
+    let result mut = copy(left)
+    let remaining mut = copy(right)
+
+    while !is_zero(remaining) do
+        result = decrement(result)
+        remaining = decrement(remaining)
+    od
+
+    result
+si
+
+fibonacci_multiples(value: List[int], upto: List[int]) -> LIST[LIST[int]] is
+    let table = LIST[LIST[int]]()
+
+    table.add(copy(value))
+    table.add(add(value, value))
+
+    while compare(table[table.count - 1], upto) <= 0 do
+        table.add(add(table[table.count - 1], table[table.count - 2]))
+    od
+
+    table
+si
+
+multiply(left: List[int], right: List[int]) -> LIST[int] is
+    let top = highest(right)
+
+    if top < 0 then
+        return blank()
+    fi
+
+    let table = LIST[LIST[int]]()
+
+    table.add(copy(left))
+    table.add(add(left, left))
+
+    while table.count <= top do
+        table.add(add(table[table.count - 1], table[table.count - 2]))
+    od
+
+    let total mut = blank()
+
+    for index in 0::top do
+        if right[index] == 1 then
+            total = add(total, table[index])
+        fi
+    od
+
+    total
+si
+
+use DIVISION = (quotient: LIST[int], remainder: LIST[int])
+
+divide(left: List[int], right: List[int]) -> DIVISION is
+    let table = fibonacci_multiples(right, left)
+    let quotient = blank()
+    let remainder mut = copy(left)
+
+    for index in (0..table.count) |> reverse() do
+        if compare(table[index], remainder) <= 0 then
+            remainder = subtract(remainder, table[index])
+            quotient[index] = quotient[index] + 1
+        fi
+    od
+
+    normalise(quotient)
+
+    (quotient = quotient, remainder = remainder)
+si
+
+let one = read("1")
+
+write_line("counting:")
+
+let counter mut = blank()
+
+for _ in 1::12 do
+    counter = add(counter, one)
+
+    write_line("  {show(counter)}")
+od
+
+write_line()
+write_line("addition:")
+
+[("1", "1"), ("10", "10"), ("100", "100"), ("1000", "1000"),
+ ("10100", "1001")]
+    |> each((left, right) => (
+        let sum = add(read(left), read(right))
+
+        write_line("  {left} + {right} = {show(sum)}")
+    ))
+
+write_line()
+write_line("subtraction:")
+
+[("10100", "1000"), ("100100", "1000"), ("1000100", "101")]
+    |> each((left, right) => (
+        let difference = subtract(read(left), read(right))
+
+        write_line("  {left} - {right} = {show(difference)}")
+    ))
+
+write_line()
+write_line("multiplication:")
+
+[("101", "1001"), ("1000", "1000"), ("10", "10101")]
+    |> each((left, right) => (
+        let product = multiply(read(left), read(right))
+
+        write_line("  {left} * {right} = {show(product)}")
+    ))
+
+write_line()
+write_line("division:")
+
+[("1000101", "101"), ("1000100", "101"), ("101010", "10")]
+    |> each((left, right) => (
+        let split = divide(read(left), read(right))
+
+        write_line("  {left} / {right} = {show(split.quotient)} "
+                   "remainder {show(split.remainder)}")
+    ))
