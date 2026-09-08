@@ -1,8 +1,9 @@
 use IO.Std.write_line
 use Ghul.Pipes
+use Collections.LIST
 
-multiplier(left: double, right: double) -> (double) -> double pure =>
-    value => left * right * value
+multiplier(a: double, b: double) -> (double) -> double pure =>
+    m => a * b * m
 
 let x = 2.0D
 let xi = 0.5D
@@ -11,13 +12,18 @@ let yi = 0.25D
 let z = x + y
 let zi = 1.0D / (x + y)
 
-let numbers = [x, y, z]
-let inverses = [xi, yi, zi]
+let numbers = LIST()
+numbers.add(x)
+numbers.add(y)
+numbers.add(z)
 
-write_line("number  inverse  multiplier(number, inverse)(1.0)")
+let inverses = LIST()
+inverses.add(xi)
+inverses.add(yi)
+inverses.add(zi)
 
-numbers
-    |> zip(inverses)
-    |> each((number, inverse) =>
-        write_line("{number,6:F1}{inverse,9:F4}"
-                   "{multiplier(number, inverse)(1.0D),33:F1}"))
+for (number, inverse) in numbers |> zip(inverses) do
+    let unity = multiplier(number, inverse)
+
+    write_line("{number} * {inverse} * 1 = {unity(1.0D):F6}")
+od
