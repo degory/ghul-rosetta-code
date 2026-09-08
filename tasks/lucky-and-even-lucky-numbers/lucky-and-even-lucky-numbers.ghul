@@ -1,0 +1,156 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+union Request is
+    NTH(index: int, even: bool);
+    BY_INDEX(first: int, last: int, even: bool);
+    BY_VALUE(low: int, high: int, even: bool);
+si
+
+union Parsed is
+    UNDERSTOOD(request: Request) default;
+    REJECTED(message: string);
+si
+
+sieve(even: bool, limit: int) -> List[int] is
+    let start = if even then 2 else 1 fi
+    let survivors mut =
+        from(start, 2) |> take_while(value => value <= limit) |> collect()
+
+    let position mut = 1
+
+    while position < survivors.count /\
+        survivors[position] <= survivors.count do
+        let spacing = survivors[position]
+
+        survivors =
+            survivors
+                |> index()
+                |> filter(entry => (entry.index + 1) % spacing != 0)
+                |> map(entry => entry.value)
+                |> collect()
+
+        position = position + 1
+    od
+
+    survivors
+si
+
+let lucky_numbers = sieve(false, 150_000)
+let even_lucky_numbers = sieve(true, 150_000)
+
+series(even: bool) -> List[int] =>
+    if even then even_lucky_numbers else lucky_numbers fi
+
+as_number(text: string) -> int? is
+    let negative = text.length > 0 /\ text[0] == '-'
+    let digits = if negative then text[1..<0] else text fi
+
+    if digits.length == 0 \/
+        !(digits |> all(digit => digit >= '0' /\ digit <= '9')) then
+        return null
+    fi
+
+    let value = int.parse(digits)
+
+    return if negative then -value else value fi
+si
+
+as_kind(text: string) -> bool? =>
+    case text.to_lower()
+    when "lucky" then false
+    when "evenlucky" then true
+    else null
+    esac
+
+parse(arguments: List[string]) -> Parsed is
+    if arguments.count == 0 then
+        return Parsed.REJECTED(
+            "no arguments: expected j [k] [lucky|evenLucky]")
+    fi
+
+    if arguments.count > 3 then
+        return Parsed.REJECTED("too many arguments")
+    fi
+
+    let trailing = arguments[arguments.count - 1]
+    let even mut = false
+    let counts mut = arguments
+
+    if !as_number(trailing)? then
+        if let kind = as_kind(trailing) then
+            even = kind
+            counts = arguments[0..arguments.count - 1]
+        else
+            return Parsed.REJECTED(
+                "\"{trailing}\" is not lucky or evenLucky")
+        fi
+    fi
+
+    if counts.count == 0 then
+        return Parsed.REJECTED("no index given")
+    fi
+
+    if counts.count > 2 then
+        return Parsed.REJECTED("expected at most two numbers")
+    fi
+
+    let bad = counts |> find(text => !as_number(text)?)
+
+    if let wrong = bad then
+        return Parsed.REJECTED("\"{wrong}\" is not a number")
+    fi
+
+    let first = as_number(counts[0])!
+
+    if first < 1 then
+        return Parsed.REJECTED("the first index must be at least one")
+    fi
+
+    if counts.count == 1 then
+        return Parsed.UNDERSTOOD(Request.NTH(first, even))
+    fi
+
+    let second = as_number(counts[1])!
+
+    if second < 0 then
+        return Parsed.UNDERSTOOD(Request.BY_VALUE(first, -second, even))
+    fi
+
+    Parsed.UNDERSTOOD(Request.BY_INDEX(first, second, even))
+si
+
+evaluate(request: Request) -> List[int] =>
+    case request
+    when one: Request.NTH then
+        [series(one.even)[one.index - 1]]
+    when indexed: Request.BY_INDEX then
+        series(indexed.even)
+            |> skip(indexed.first - 1)
+            |> take(indexed.last - indexed.first + 1)
+            |> collect()
+    when valued: Request.BY_VALUE then
+        series(valued.even)
+            |> filter(value => value >= valued.low /\ value <= valued.high)
+            |> collect()
+    esac
+
+run(arguments: List[string]) is
+    write_line("lucky {arguments |> join(" ")}".trim_end())
+
+    let outcome = parse(arguments)
+
+    if outcome? then
+        write_line("  {evaluate(outcome.request) |> join(" ")}")
+    else
+        write_line("  error: {outcome.message}")
+    fi
+si
+
+[["1", "20"], ["1", "20", "evenLucky"],
+ ["6000", "-6100"], ["6000", "-6100", "EVENLUCKY"],
+ ["10000"], ["10000", "evenlucky"],
+ LIST[string](), ["1", "2", "3", "4"], ["fish"], ["1", "10", "unlucky"]]
+    |> each(run)
