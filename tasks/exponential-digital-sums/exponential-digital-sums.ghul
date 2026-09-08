@@ -1,0 +1,44 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+digit_sum(digits: string) -> int =>
+    digits |> reduce(0, (sum, c) => sum + cast int(c) - cast int('0'))
+
+exponents(n: int, highest: int) -> Pipe[int] is
+    let value = bigint(n)
+    let power mut = value
+
+    for e in 2::highest do
+        power = power * value
+
+        if digit_sum("{power}") == n then
+            yield e
+        fi
+    od
+si
+
+report(wanted: int, least_ways: int, highest: int) is
+    let found mut = 0
+    let n mut = 1
+
+    while found < wanted do
+        n = n + 1
+
+        let ways = exponents(n, highest) |> collect_list()
+
+        if ways.count >= least_ways then
+            found = found + 1
+
+            write_line(ways |> map(e => "{n}^{e}") |> join(", "))
+        fi
+    od
+si
+
+write_line("first twenty:")
+
+report(20, 1, 100)
+
+write_line()
+write_line("first ten in three or more ways:")
+
+report(10, 3, 500)

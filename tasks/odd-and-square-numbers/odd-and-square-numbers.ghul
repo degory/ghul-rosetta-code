@@ -1,0 +1,11 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let squares = stream(1, n => n * n || n + 1)
+
+write_line(
+    squares
+        |> skip_while(square => square < 100)
+        |> take_while(square => square < 1000)
+        |> filter(square => square % 2 == 1)
+        |> join(", "))

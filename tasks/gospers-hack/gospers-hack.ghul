@@ -1,0 +1,26 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use System.Convert.to_string
+
+successors(from: int) -> Pipe[int] is
+    let n mut = from
+
+    do
+        let low = n & -n
+        let ripple = n + low
+
+        n = ripple | (((n ^ ripple) >>> 2) / low)
+
+        yield n
+    od
+si
+
+for start in [1, 3, 7, 15] do
+    write_line("from {start}:")
+
+    for value in successors(start) |> take(10) do
+        write_line("{value,8}  {to_string(value, 2),14}")
+    od
+
+    write_line()
+od

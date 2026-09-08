@@ -1,0 +1,27 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+lyndon_words(alphabet: string, n: int) -> Pipe[string] is
+    let last = alphabet.length - 1
+    let word = LIST([-1])
+
+    while word.count > 0 do
+        word[word.count - 1] = word[word.count - 1] + 1
+
+        yield word |> map(i => alphabet[i]) |> join("")
+
+        let period = word.count
+
+        while word.count < n do
+            word.add(word[word.count - period])
+        od
+
+        while word.count > 0 /\ word[word.count - 1] == last do
+            word.remove_at(word.count - 1)
+        od
+    od
+si
+
+write_line(lyndon_words("01", 5) |> join(", "))
+write_line(lyndon_words("012", 3) |> join(", "))
