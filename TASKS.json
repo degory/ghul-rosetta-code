@@ -40,7 +40,8 @@
     },
     {
       "title": "ADFGVX cipher",
-      "state": "queued",
+      "slug": "adfgvx-cipher",
+      "state": "solved",
       "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key"
     },
     {
@@ -1872,7 +1873,8 @@
     },
     {
       "title": "Sorensen\u2013Dice coefficient",
-      "state": "queued",
+      "slug": "sorensen-dice-coefficient",
+      "state": "solved",
       "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched"
     },
     {
