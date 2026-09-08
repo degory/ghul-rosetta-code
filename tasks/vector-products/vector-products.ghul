@@ -2,10 +2,10 @@ use IO.Std.write_line
 
 use VECTOR = (x: int, y: int, z: int)
 
-*(a: VECTOR, b: VECTOR) -> int pure =>
+*(a: VECTOR, b: VECTOR) -> int =>
     a.x * b.x + a.y * b.y + a.z * b.z
 
-><(a: VECTOR, b: VECTOR) -> VECTOR pure =>
+><(a: VECTOR, b: VECTOR) -> VECTOR =>
     (x = a.y * b.z - a.z * b.y,
      y = a.z * b.x - a.x * b.z,
      z = a.x * b.y - a.y * b.x)

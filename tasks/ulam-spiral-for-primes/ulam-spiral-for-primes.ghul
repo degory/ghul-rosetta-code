@@ -4,7 +4,7 @@ use Ghul.Pipes
 
 use POSITION = (x: int, y: int)
 
-is_prime(number: int) -> bool pure =>
+is_prime(number: int) -> bool =>
     number > 1 /\ ((2..number)
         |> take_while(divisor => divisor * divisor <= number)
         |> all(divisor => number % divisor != 0))

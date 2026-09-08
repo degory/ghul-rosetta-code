@@ -3,7 +3,7 @@ use Collections.Iterable
 use Ghul.Pipes
 
 decorate_sort_undecorate[T, K: Ghul.Comparable[K]]
-    (items: Iterable[T], key: (T) -> K pure) -> Pipe[T]
+    (items: Iterable[T], key: (T) -> K) -> Pipe[T]
 is
     let decorated =
         items |> map(item => (item, key = key(item))) |> collect_list()

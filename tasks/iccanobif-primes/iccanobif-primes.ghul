@@ -3,7 +3,7 @@ use Ghul.Pipes
 
 let bases = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
 
-passes_miller_rabin(value: bigint, base: bigint) -> bool pure is
+passes_miller_rabin(value: bigint, base: bigint) -> bool is
     if base % value =~ 0n then
         return true
     fi

@@ -2,7 +2,7 @@ use IO.Std.write_line
 use System.Math
 use Ghul.Pipes
 
-use RealSet = (double) -> bool pure
+use RealSet = (double) -> bool
 
 open_range(low: double, high: double) -> RealSet =>
     value => low < value /\ value < high

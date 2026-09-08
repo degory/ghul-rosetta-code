@@ -3,7 +3,7 @@ use Collections.LIST
 use Collections.List
 use Ghul.Pipes
 
-divisors(n: int) -> List[int] pure is
+divisors(n: int) -> List[int] is
     let found = LIST()
     let factor mut = 1
 
@@ -22,7 +22,7 @@ divisors(n: int) -> List[int] pure is
     return found
 si
 
-is_zumkeller(n: int) -> bool pure is
+is_zumkeller(n: int) -> bool is
     let parts = divisors(n)
     let total = parts |> reduce(0, (running, part) => running + part)
 
@@ -54,7 +54,7 @@ is_zumkeller(n: int) -> bool pure is
     return reachable[half]
 si
 
-column(n: int, width: int) -> string pure => "{n}".pad_left(width)
+column(n: int, width: int) -> string => "{n}".pad_left(width)
 
 show(heading: string, numbers: Pipe[int], per_line: int, width: int) is
     write_line(heading)

@@ -31,15 +31,15 @@ arrangements(items: string[]) -> Pipe[LIST[string]] is
     yield in permutations(LIST(items))
 si
 
-house_of(row: LIST[string], value: string) -> int pure =>
+house_of(row: LIST[string], value: string) -> int =>
     row.index_of(value)
 
 together(left: LIST[string], left_value: string,
-         right: LIST[string], right_value: string) -> bool pure =>
+         right: LIST[string], right_value: string) -> bool =>
     house_of(left, left_value) == house_of(right, right_value)
 
 next_to(left: LIST[string], left_value: string,
-        right: LIST[string], right_value: string) -> bool pure =>
+        right: LIST[string], right_value: string) -> bool =>
     (let gap = house_of(left, left_value) - house_of(right, right_value)
      gap == 1 \/ gap == -1)
 
@@ -97,7 +97,7 @@ solutions() -> Pipe[SOLUTION] is
     od
 si
 
-pad(text: string, width: int) -> string pure =>
+pad(text: string, width: int) -> string =>
     if text.length >= width then
         text
     else

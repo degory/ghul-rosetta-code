@@ -36,7 +36,7 @@ multifactorial(value: bigint, step: int) -> bigint is
     product
 si
 
-expand(source: string) -> string pure is
+expand(source: string) -> string is
     let text = source
     let cursor mut = 0
     let negative = text[0] == '-'

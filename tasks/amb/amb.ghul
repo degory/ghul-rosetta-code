@@ -6,7 +6,7 @@ use Ghul.Pipes
 
 amb[T](
     sets: List[Iterable[T]],
-    accepts: (T, T) -> bool pure
+    accepts: (T, T) -> bool
 ) -> Pipe[LIST[T]] is
     if sets.count == 0 then
         yield LIST[T]()

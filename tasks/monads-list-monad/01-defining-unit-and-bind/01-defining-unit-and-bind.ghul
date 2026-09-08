@@ -5,7 +5,7 @@ use System.Convert.to_string
 
 unit[T](value: T) -> Iterable[T] => [value]
 
->>=[T, U](values: Iterable[T], f: (T) -> Iterable[U] pure)
+>>=[T, U](values: Iterable[T], f: (T) -> Iterable[U])
     -> Iterable[U]
 =>
     values |> flat_map(f)

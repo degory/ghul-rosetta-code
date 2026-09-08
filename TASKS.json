@@ -8,7 +8,8 @@
     },
     {
       "title": "100 prisoners",
-      "state": "queued",
+      "slug": "100-prisoners",
+      "state": "solved",
       "note": "reopened, was rejected/nondeterministic: a seeded generator makes the simulation reproducible, and the ~31% answer is the point"
     },
     {
@@ -121,7 +122,8 @@
     },
     {
       "title": "Anagrams",
-      "state": "queued",
+      "slug": "anagrams",
+      "state": "solved",
       "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched"
     },
     {
@@ -838,7 +840,8 @@
     },
     {
       "title": "Generate random chess position",
-      "state": "queued",
+      "slug": "generate-random-chess-position",
+      "state": "solved",
       "note": "reopened, was rejected/nondeterministic: assert the generated position is a legal FEN rather than pinning one string"
     },
     {

@@ -144,6 +144,19 @@ annotation has not gained anything, and the original spelling stays. Keep one so
 with itself - `LIST[int]()` on one line and `LIST()` a few lines down, for no reason a reader can
 see, is worse than either alone.
 
+## Solutions are not marked `pure`
+
+The pipe combinators take pure functions, and most of what a solution passes them is not provably
+one, so `map` and `reduce` draw `impure-function-argument`. The fix is not to mark the solution's
+helpers `pure`. That warning is advice - the call it sits on is judged on its own callee either
+way - and a `pure` written only to silence it puts a keyword on a public wiki page that says
+nothing about the task, in a repository that does not apply it anywhere else. It is suppressed in
+`Directory.Build.props`, for every task and for the aggregate project alike.
+
+`impure-function-value` is a different warning and is not suppressed: it fires where a function
+that might store is put into a slot declared pure, and something downstream is then entitled to
+trust it. If one appears, fix the code.
+
 ## A suspected bug is not a reason to change the solution
 
 A solution producing unexpected output through a pipe chain is not evidence

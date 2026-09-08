@@ -4,7 +4,7 @@ use Ghul.Pipes
 let start_of_text = 2c
 let end_of_text = 3c
 
-ordinal_order(left: string, right: string) -> int pure =>
+ordinal_order(left: string, right: string) -> int =>
     string.compare_ordinal(left, right)
 
 rotations(text: string) -> Pipe[string] =>

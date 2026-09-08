@@ -1,7 +1,7 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-digit_value(digit: char) -> int pure => cast int(digit) - cast int('0')
+digit_value(digit: char) -> int => cast int(digit) - cast int('0')
 
 checksum(code: string) -> int =>
     code

@@ -4,7 +4,7 @@ use Collections.List
 use Ghul.Pipes
 
 use ENTRY = (score: int, name: string)
-use RANKER = (int, int, int, int) -> string pure
+use RANKER = (int, int, int, int) -> string
 
 let competitors =
     [(score = 44, name = "Solomon"),
@@ -49,19 +49,19 @@ ranked(rank: RANKER) -> Pipe[string] is
     od
 si
 
-standard(ahead: int, size: int, member: int, place: int) -> string pure =>
+standard(ahead: int, size: int, member: int, place: int) -> string =>
     "{ahead + 1}"
 
-modified(ahead: int, size: int, member: int, place: int) -> string pure =>
+modified(ahead: int, size: int, member: int, place: int) -> string =>
     "{ahead + size}"
 
-dense(ahead: int, size: int, member: int, place: int) -> string pure =>
+dense(ahead: int, size: int, member: int, place: int) -> string =>
     "{place}"
 
-ordinal(ahead: int, size: int, member: int, place: int) -> string pure =>
+ordinal(ahead: int, size: int, member: int, place: int) -> string =>
     "{ahead + member + 1}"
 
-fractional(ahead: int, size: int, member: int, place: int) -> string pure =>
+fractional(ahead: int, size: int, member: int, place: int) -> string =>
     "{cast double(ahead + ahead + size + 1) / 2.0D:F1}"
 
 let methods =

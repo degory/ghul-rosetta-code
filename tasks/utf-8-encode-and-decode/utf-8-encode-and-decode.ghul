@@ -43,7 +43,7 @@ decode(octets: List[int]) -> int is
     return code_point
 si
 
-hex(octet: int) -> string pure => "{octet:X2}"
+hex(octet: int) -> string => "{octet:X2}"
 
 row(character: string, name: string, code_point: string, octets: string)
     -> string

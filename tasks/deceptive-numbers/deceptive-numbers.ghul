@@ -1,12 +1,12 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-is_prime(value: int) -> bool pure =>
+is_prime(value: int) -> bool =>
     value > 1 /\ ((2..value)
         |> take_while(divisor => divisor * divisor <= value)
         |> all(divisor => value % divisor != 0))
 
-divides_repunit(value: int) -> bool pure =>
+divides_repunit(value: int) -> bool =>
     let remainder =
         (1..value)
             |> reduce(0, (running, _) => (running * 10 + 1) % value) in

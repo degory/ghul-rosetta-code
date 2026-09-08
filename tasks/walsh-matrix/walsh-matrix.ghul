@@ -1,7 +1,7 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-bits_set(value: int) -> int pure =>
+bits_set(value: int) -> int =>
     if value == 0 then
         0
     else

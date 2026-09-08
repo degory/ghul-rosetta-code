@@ -2,7 +2,7 @@ use IO.Std.write_line
 use Ghul.Pipes
 use Collections.LIST
 
-multiplier(a: double, b: double) -> (double) -> double pure =>
+multiplier(a: double, b: double) -> (double) -> double =>
     m => a * b * m
 
 let x = 2.0D
