@@ -8,7 +8,7 @@ class NAME(words: Collections.List[string] private) is
         _words
             |> index()
             |> map(
-                ((index, word)) =>
+                (index, word) =>
                     if index == 0 then
                         lower_first(word)
                     else

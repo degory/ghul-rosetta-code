@@ -47,7 +47,7 @@ fang_text(n: long) -> string is
         "{n}: not a vampire number"
     else
         let texts = pairs
-            |> map(((a, b)) => "{a} x {b}")
+            |> map((a, b) => "{a} x {b}")
             |> collect()
         "{n}: {texts |> join(", ")}"
     fi
