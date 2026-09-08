@@ -1,0 +1,43 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+sundaram(limit: int) -> Pipe[int] is
+    let marked = LIST(limit + 1)
+
+    for _ in 0::limit do
+        marked.add(false)
+    od
+
+    for step in 1::limit do
+        if step + step + 2 * step * step > limit then break fi
+
+        let other mut = step
+
+        while step + other + 2 * step * other <= limit do
+            marked[step + other + 2 * step * other] = true
+            other = other + 1
+        od
+    od
+
+    for value in 1::limit do
+        if !marked[value] then
+            yield 2 * value + 1
+        fi
+    od
+si
+
+let limit = 7_800_000
+
+write_line("the first 100 odd primes from the sieve of Sundaram:")
+
+sundaram(limit)
+    |> take(100)
+    |> chunk(10)
+    |> each(row => write_line(row |> map(p => "{p,5}") |> join("")))
+
+write_line()
+
+let millionth = sundaram(limit) |> skip(999_999) |> first_or_throw()
+
+write_line("the millionth: {millionth:N0}")
