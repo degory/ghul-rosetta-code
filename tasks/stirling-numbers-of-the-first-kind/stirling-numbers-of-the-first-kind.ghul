@@ -1,0 +1,42 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+rows() -> Pipe[List[bigint]] is
+    let row mut = [1n] |> collect()
+
+    do
+        yield row
+
+        let previous = row
+        let width = previous.count
+
+        row =
+            (0::width)
+                |> map(column => (
+                    let left =
+                        if column > 0 then previous[column - 1] else 0n fi
+                    let below =
+                        if column < width then previous[column] else 0n fi
+
+                    left + bigint(width - 1) * below
+                ))
+                |> collect()
+    od
+si
+
+write_line("unsigned Stirling numbers of the first kind, S1(n, k):")
+
+rows()
+    |> take(13)
+    |> each(row => write_line(row |> map(v => "{v,11}") |> join("")))
+
+write_line()
+
+let hundredth = rows() |> skip(100) |> first_or_throw()
+
+let largest = hundredth |> max()
+
+write_line("the largest S1(100, k):")
+write_line("  {largest!}")
