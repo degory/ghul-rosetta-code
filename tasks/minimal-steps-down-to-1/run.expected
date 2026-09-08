@@ -1,0 +1,36 @@
+divisors 2 and 3, subtractor 1:
+    1: 0 steps
+    2: 1 steps  /2=>1
+    3: 1 steps  /3=>1
+    4: 2 steps  /2=>2 /2=>1
+    5: 3 steps  -1=>4 /2=>2 /2=>1
+    6: 2 steps  /2=>3 /3=>1
+    7: 3 steps  -1=>6 /2=>3 /3=>1
+    8: 3 steps  /2=>4 /2=>2 /2=>1
+    9: 2 steps  /3=>3 /3=>1
+   10: 3 steps  -1=>9 /3=>3 /3=>1
+  1 to 2,000: maximum of 14 steps, reached 16 times:
+    863 1079 1295 1439 1511 1583 1607 1619 1691 1727 1823 1871 1895 1907 1919 1943
+  1 to 20,000: maximum of 20 steps, reached 5 times:
+    12959 15551 17279 18143 19439
+  1 to 50,000: maximum of 22 steps, reached 3 times:
+    25919 31103 38879
+
+divisors 2 and 3, subtractor 2:
+    1: 0 steps
+    2: 1 steps  /2=>1
+    3: 1 steps  /3=>1
+    4: 2 steps  /2=>2 /2=>1
+    5: 2 steps  -2=>3 /3=>1
+    6: 2 steps  /2=>3 /3=>1
+    7: 3 steps  -2=>5 -2=>3 /3=>1
+    8: 3 steps  /2=>4 /2=>2 /2=>1
+    9: 2 steps  /3=>3 /3=>1
+   10: 3 steps  /2=>5 -2=>3 /3=>1
+  1 to 2,000: maximum of 17 steps, reached 1 times:
+    1699
+  1 to 20,000: maximum of 24 steps, reached 1 times:
+    19681
+  1 to 50,000: maximum of 26 steps, reached 1 times:
+    45925
+

@@ -1,0 +1,91 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+use MOVE = (next: int, label: string)
+use STEP = (steps: int, next: int, label: string)
+
+moves(value: int, divisors: List[int],
+      subtractors: List[int]) -> Pipe[MOVE]
+is
+    for divisor in divisors do
+        if value % divisor == 0 then
+            yield (next = value / divisor, label = "/{divisor}")
+        fi
+    od
+
+    for subtractor in subtractors do
+        if value > subtractor then
+            yield (next = value - subtractor, label = "-{subtractor}")
+        fi
+    od
+si
+
+solve(divisors: List[int], subtractors: List[int],
+      limit: int) -> List[STEP]
+is
+    let table = LIST[STEP]()
+
+    table.add((steps = 0, next = 0, label = ""))
+    table.add((steps = 0, next = 0, label = ""))
+
+    for value in 2::limit do
+        let cheapest =
+            moves(value, divisors, subtractors)
+                |> min_by(move => table[move.next].steps)
+
+        if let best = cheapest then
+            table.add((steps = table[best.next].steps + 1,
+                       next = best.next, label = best.label))
+        fi
+    od
+
+    table
+si
+
+route(table: List[STEP], value: int) -> string is
+    let legs = LIST[string]()
+    let current mut = value
+
+    while current > 1 do
+        let leg = table[current]
+
+        legs.add("{leg.label}=>{leg.next}")
+
+        current = leg.next
+    od
+
+    legs |> join(" ")
+si
+
+deepest_in(table: List[STEP], limit: int) is
+    let deepest = (1::limit) |> map(value => table[value].steps) |> max()
+
+    if let most = deepest then
+        let hardest =
+            (1::limit)
+                |> filter(value => table[value].steps == most)
+                |> collect()
+
+        write_line("  1 to {limit:N0}: maximum of {most} steps, "
+                   "reached {hardest.count} times:")
+        write_line("    {hardest |> join(" ")}")
+    fi
+
+si
+
+[1, 2] |> each(subtractor => (
+    let table = solve([2, 3], [subtractor], 50_000)
+
+    write_line("divisors 2 and 3, subtractor {subtractor}:")
+
+    for value in 1::10 do
+        write_line("  {value,3}: {table[value].steps} steps  "
+                   "{route(table, value)}".trim_end())
+    od
+
+    [2_000, 20_000, 50_000] |> each(limit => deepest_in(table, limit))
+
+    write_line()
+))
