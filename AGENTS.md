@@ -311,6 +311,30 @@ The reasons are a fixed set - `needs-gui`, `needs-network`, `needs-interaction`,
 `nondeterministic`, `needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
 comes back: it names a compiler or runtime issue and is retried when that closes.
 
+## Publishing, and the record of it
+
+```sh
+scripts/publish.sh <slug>...      # or --solved, for everything not yet on the wiki
+```
+
+That one command generates the markup, makes the edits, commits the digests the run wrote into
+`TASKS.json`, pushes, and opens the pull request. Do not run `rosetta publish` directly, and do not
+publish and leave the record to be committed afterwards.
+
+The digest is the whole reason. `publish` writes each page's new digest into the ledger as it goes,
+and a later run compares the live section against it to tell an edit somebody else made from one of
+ours: a section whose digest is not the recorded one is refused rather than overwritten. A record
+that never reaches `main` therefore does not merely go missing. It leaves every page it covers
+unpublishable, and the refusal that follows months later reads as though a stranger had edited a
+hundred pages at once.
+
+The pull request needs nothing from anybody. `.github/workflows/ledger.yml` approves a change that
+touches only `TASKS.json` and `tasks/*/task.json`, and auto-merge lands it when the shards pass.
+That path test is the whole distinction between what lands unread and what does not, so a
+ledger-only pull request must carry nothing else - not a compiler pin, not a recaptured
+expectation, not a solution. Raise those separately.
+
+
 ## Showing a task more than one way
 
 A task worth showing two ways - the library call, and the same thing written out - is held as
