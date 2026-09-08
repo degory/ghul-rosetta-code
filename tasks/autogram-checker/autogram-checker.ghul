@@ -95,7 +95,7 @@ is_autogram(sentence: string, with_punctuation: bool) -> bool is
     let claimed = claimed_counts(sentence)
 
     return actual.count == claimed.count /\
-        actual |> all(((character, count)) =>
+        actual |> all((character, count) =>
             count_of(claimed, character) == count)
 si
 
