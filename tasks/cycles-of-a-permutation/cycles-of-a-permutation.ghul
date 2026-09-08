@@ -107,10 +107,10 @@ show_cycles(one_line: Collections.List[int]) -> string =>
         |> join(" ")
 
 let days = [
-    ("Mon", "HANDYCOILSERUPT"), ("Tue", "SPOILUNDERYACHT"),
-    ("Wed", "DRAINSTYLEPOUCH"), ("Thu", "DITCHSYRUPALONE"),
-    ("Fri", "SOAPYTHIRDUNCLE"), ("Sat", "SHINEPARTYCLOUD"),
-    ("Sun", "RADIOLUNCHTYPES")
+    (name = "Mon", letters = "HANDYCOILSERUPT"), (name = "Tue", letters = "SPOILUNDERYACHT"),
+    (name = "Wed", letters = "DRAINSTYLEPOUCH"), (name = "Thu", letters = "DITCHSYRUPALONE"),
+    (name = "Fri", letters = "SOAPYTHIRDUNCLE"), (name = "Sat", letters = "SHINEPARTYCLOUD"),
+    (name = "Sun", letters = "RADIOLUNCHTYPES")
 ]
 
 write_line("permutations from each day to the next:")
@@ -126,21 +126,21 @@ for (index, (name, letters)) in days |> index() do
     write_line("    order and signature: {order_and_sign}")
 od
 
-let wed_to_thu = permutation_between(days[2].`1, days[3].`1)
-let thu_to_fri = permutation_between(days[3].`1, days[4].`1)
+let wed_to_thu = permutation_between(days[2].letters, days[3].letters)
+let thu_to_fri = permutation_between(days[3].letters, days[4].letters)
 
 write_line("")
-write_line("Wed->Thu applied to Wed: {apply(wed_to_thu, days[2].`1)}")
+write_line("Wed->Thu applied to Wed: {apply(wed_to_thu, days[2].letters)}")
 write_line("Thu->Wed (inverse):      {show_cycles(inverse(wed_to_thu))}")
 let thu_to_wed = inverse(wed_to_thu)
 
-write_line("Thu->Wed applied to Thu: {apply(thu_to_wed, days[3].`1)}")
+write_line("Thu->Wed applied to Thu: {apply(thu_to_wed, days[3].letters)}")
 
 let wed_to_fri = compose(wed_to_thu, thu_to_fri)
 
 write_line("Thu->Fri.Wed->Thu = Wed->Fri:")
 write_line("  {show_cycles(wed_to_fri)}")
-write_line("Wed->Fri applied to Wed: {apply(wed_to_fri, days[2].`1)}")
+write_line("Wed->Fri applied to Wed: {apply(wed_to_fri, days[2].letters)}")
 
 let rebuilt = one_line(cycles(wed_to_fri), 15)
 

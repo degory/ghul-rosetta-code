@@ -2,18 +2,21 @@ use IO.Std.write_line
 use Ghul.Pipes
 
 farey(order: int) -> Pipe[(numerator: int, denominator: int)] is
-    let low mut = (0, 1)
-    let high mut = (1, order)
+    let low mut = (numerator = 0, denominator = 1)
+    let high mut = (numerator = 1, denominator = order)
 
-    yield (numerator = low.`0, denominator = low.`1)
+    yield low
 
-    while high.`0 <= high.`1 do
-        yield (numerator = high.`0, denominator = high.`1)
+    while high.numerator <= high.denominator do
+        yield high
 
-        let step = (low.`1 + order) / high.`1
+        let step = (low.denominator + order) / high.denominator
 
         let following =
-            (step * high.`0 - low.`0, step * high.`1 - low.`1)
+            (
+                numerator = step * high.numerator - low.numerator,
+                denominator = step * high.denominator - low.denominator
+            )
 
         low = high
         high = following

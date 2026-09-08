@@ -10,8 +10,11 @@ let current mut = (1, 1)
 let terms = LIST()
 
 for _ in 1::20 do
-    terms.add("{current.`0}/{current.`1}")
-    current = next_term(current.`0, current.`1)
+    let (numerator, denominator) = current
+
+    terms.add("{numerator}/{denominator}")
+
+    current = next_term(numerator, denominator)
 od
 
 write_line(terms |> join(" "))

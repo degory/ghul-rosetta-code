@@ -6,9 +6,11 @@ padovan() -> Pipe[int] is
     let window mut = (1, 1, 1)
 
     do
-        yield window.`0
-        let next = window.`0 + window.`1
-        window = (window.`1, window.`2, next)
+        let (first, second, third) = window
+
+        yield first
+
+        window = (second, third, first + second)
     od
 si
 
@@ -42,7 +44,7 @@ write_line(padovan() |> take(20) |> map(p => "{p}") |> join(" "))
 
 let by_recurrence = padovan() |> take(64) |> collect()
 let agree = by_recurrence |> index()
-    |> all(((n, p)) => p == floor_padovan(n))
+    |> all((n, p) => p == floor_padovan(n))
 write_line("recurrence and floor functions agree to term 63: {agree}")
 
 write_line("first 10 L-system strings:")
@@ -50,6 +52,6 @@ l_system() |> take(10) |> each(s => write_line(s))
 
 let strings = l_system() |> take(32) |> collect()
 let lengths_match = strings |> index()
-    |> all(((n, s)) => s.length == by_recurrence[n])
+    |> all((n, s) => s.length == by_recurrence[n])
 write_line(
     "L-system string lengths are the Padovan sequence to term 31: {lengths_match}")

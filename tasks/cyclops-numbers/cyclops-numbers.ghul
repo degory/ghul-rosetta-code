@@ -94,7 +94,7 @@ report(name: string, numbers: () -> Pipe[long]) is
 
     let beyond = numbers()
         |> index()
-        |> find(((position, value)) => value > 10_000_000L)
+        |> find((position, value) => value > 10_000_000L)
 
     if let (position, value) = beyond then
         write_line("first over ten million: {value}")
