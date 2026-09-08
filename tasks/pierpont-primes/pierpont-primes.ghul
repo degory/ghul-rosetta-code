@@ -5,7 +5,7 @@ use Ghul.Pipes
 let witnesses = [2n, 3n, 5n, 7n, 11n, 13n, 17n, 19n, 23n, 29n, 31n, 37n]
 
 passes(witness: bigint, odd_part: bigint, power: int,
-       value: bigint) -> bool pure is
+       value: bigint) -> bool is
     let residue mut = bigint.mod_pow(witness, odd_part, value)
 
     if residue =~ 1n \/ residue =~ value - 1n then return true fi
@@ -19,7 +19,7 @@ passes(witness: bigint, odd_part: bigint, power: int,
     false
 si
 
-is_prime(value: bigint) -> bool pure is
+is_prime(value: bigint) -> bool is
     if value < 2n then return false fi
 
     for witness in witnesses do

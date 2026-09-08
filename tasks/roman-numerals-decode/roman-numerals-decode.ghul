@@ -1,7 +1,7 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-value(letter: char) -> int pure =>
+value(letter: char) -> int =>
     case letter
     when 'M' then 1000
     when 'D' then 500
@@ -12,7 +12,7 @@ value(letter: char) -> int pure =>
     else 1
     esac
 
-signed_value(numeral: string, index: int) -> int pure =>
+signed_value(numeral: string, index: int) -> int =>
     if index + 1 < numeral.length /\
         value(numeral[index]) < value(numeral[index + 1]) then
         -value(numeral[index])

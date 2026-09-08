@@ -4,7 +4,7 @@ use Ghul.Pipes
 fairshare(base: int) -> Pipe[int] =>
     from(0) |> map(count => digit_sum(count, base) % base)
 
-digit_sum(value: int, base: int) -> int pure =>
+digit_sum(value: int, base: int) -> int =>
     if value == 0 then
         0
     else

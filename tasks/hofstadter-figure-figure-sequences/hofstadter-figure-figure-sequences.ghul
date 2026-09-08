@@ -38,10 +38,10 @@ s_sequence() -> Pipe[int] is
     od
 si
 
-ffr(n: int) -> int pure =>
+ffr(n: int) -> int =>
     r_sequence() |> skip(n - 1) |> first_or_throw()
 
-ffs(n: int) -> int pure =>
+ffs(n: int) -> int =>
     s_sequence() |> skip(n - 1) |> first_or_throw()
 
 write_line("first ten of R: {(1::10) |> map(ffr) |> join(", ")}")

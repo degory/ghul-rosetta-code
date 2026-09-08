@@ -3,7 +3,7 @@ use Collections.LIST
 use Collections.List
 use Ghul.Pipes
 
-is_prime(value: int) -> bool pure =>
+is_prime(value: int) -> bool =>
     value > 1 /\ ((2..value)
         |> take_while(divisor => divisor * divisor <= value)
         |> all(divisor => value % divisor != 0))

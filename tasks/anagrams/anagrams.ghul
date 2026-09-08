@@ -3,7 +3,7 @@ use Collections.LIST
 use Collections.MAP
 use Ghul.Pipes
 
-sorted_letters(word: string) -> string pure =>
+sorted_letters(word: string) -> string =>
     (let letters = word.to_char_array()
      System.Array.sort(letters)
      string(letters))

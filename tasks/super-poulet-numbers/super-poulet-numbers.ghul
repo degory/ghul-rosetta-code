@@ -1,7 +1,7 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-mod_pow(base: long, exponent: long, modulus: long) -> long pure is
+mod_pow(base: long, exponent: long, modulus: long) -> long is
     let result mut = 1L
     let factor mut = base % modulus
     let remaining mut = exponent
@@ -18,7 +18,7 @@ mod_pow(base: long, exponent: long, modulus: long) -> long pure is
     result
 si
 
-is_prime(value: int) -> bool pure =>
+is_prime(value: int) -> bool =>
     value > 1 /\ ((2..value)
         |> take_while(divisor => divisor * divisor <= value)
         |> all(divisor => value % divisor != 0))
@@ -37,7 +37,7 @@ divisors(value: int) -> Pipe[int] is
     od
 si
 
-splits_repeated_doubling(value: int) -> bool pure =>
+splits_repeated_doubling(value: int) -> bool =>
     let wide = cast long(value) in
     mod_pow(2L, wide, wide) == 2L % wide
 

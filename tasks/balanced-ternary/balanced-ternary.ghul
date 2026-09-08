@@ -3,7 +3,7 @@ use Collections.LIST
 use System.Text.StringBuilder
 use Ghul.Pipes
 
-struct BT pure is
+struct BT is
     digits: string
 
     init(digits: string) is

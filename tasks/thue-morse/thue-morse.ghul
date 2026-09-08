@@ -1,7 +1,7 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-complement(text: string) -> string pure =>
+complement(text: string) -> string =>
     text
         |> map((digit: char) => if digit == '0' then "1" else "0" fi)
         |> join("")

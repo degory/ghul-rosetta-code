@@ -22,10 +22,10 @@ is_prime(value: int) -> bool => value >= 2 /\ !composite[value]
 
 is_safe(prime: int) -> bool => is_prime((prime - 1) / 2)
 
-selected(wanted: (int) -> bool pure) -> Pipe[int] =>
+selected(wanted: (int) -> bool) -> Pipe[int] =>
     (2..sieve_limit) |> filter(is_prime) |> filter(wanted)
 
-report(name: string, wanted: (int) -> bool pure, first: int) is
+report(name: string, wanted: (int) -> bool, first: int) is
     write_line("first {first} {name} primes:")
     write_line("  {selected(wanted) |> take(first) |> join(" ")}")
 

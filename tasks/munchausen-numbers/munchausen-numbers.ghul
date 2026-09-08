@@ -1,14 +1,14 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-power(value: int, exponent: int) -> int pure =>
+power(value: int, exponent: int) -> int =>
     if exponent == 0 then
         1
     else
         value * power(value, exponent - 1)
     fi
 
-digit_powers(number: int) -> int pure =>
+digit_powers(number: int) -> int =>
     "{number}"
         |> map((character: char) =>
             cast int(character) - cast int('0'))

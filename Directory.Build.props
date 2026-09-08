@@ -8,5 +8,12 @@
     <PackageReference Include="ghul.runtime" />
 
     <GhulOptions Include="--warn-as-error null-deref" />
+
+    <!-- The pipe combinators take pure functions, and a call to write_line or
+         a string interpolation is not one. The warning is advice: the call it
+         sits on is judged on its own callee either way. Marking a solution's
+         helpers pure to silence it puts a keyword on the wiki that says
+         nothing about the task, so it is off everywhere here. -->
+    <GhulOptions Include="--suppress impure-function-argument" />
   </ItemGroup>
 </Project>

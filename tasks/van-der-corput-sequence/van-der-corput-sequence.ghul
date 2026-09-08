@@ -2,7 +2,7 @@ use IO.Std.write_line
 use Collections
 use Ghul.Pipes
 
-van_der_corput(n: int, base: int) -> double pure => (
+van_der_corput(n: int, base: int) -> double => (
     let rest mut = n
     let weight mut = 1.0D / cast(base)
     let term mut = 0.0D

@@ -18,11 +18,8 @@
 
     <!-- Every task is a whole program, so in this aggregate none of the
          files' top-level statements is the entry point, and the analysis
-         session would otherwise report one warning per task. The pipe
-         combinators take pure functions, which a call to write_line or
-         a string interpolation is not. -->
+         session would otherwise report one warning per task. -->
     <GhulOptions Include="--suppress top-level-statements-not-run" />
-    <GhulOptions Include="--suppress impure-function-argument" />
 
     <!-- Terminator-free sources. A build of this project is the only
          thing that reports a stray `;`: CI builds each task through its

@@ -7,7 +7,7 @@ let small_primes = [
     53, 59, 61, 67, 71, 73, 79, 83, 89, 97
 ]
 
-passes_miller_rabin(value: bigint, base: bigint) -> bool pure is
+passes_miller_rabin(value: bigint, base: bigint) -> bool is
     if base % value =~ 0n then
         return true
     fi

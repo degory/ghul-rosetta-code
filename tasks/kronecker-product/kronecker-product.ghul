@@ -10,7 +10,7 @@ kronecker(left: int[][], right: int[][]) -> int[][] =>
             |> collect_array())
         |> collect_array()
 
-pad(text: string, width: int) -> string pure =>
+pad(text: string, width: int) -> string =>
     if text.length >= width then
         text
     else

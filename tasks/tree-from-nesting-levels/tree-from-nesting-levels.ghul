@@ -29,7 +29,7 @@ nest(levels: int[]) -> Tree is
     Tree.NEST(root)
 si
 
-render(tree: Tree) -> string pure =>
+render(tree: Tree) -> string =>
     case tree
     when leaf: Tree.LEAF then
         "{leaf.value}"

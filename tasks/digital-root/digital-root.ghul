@@ -2,14 +2,14 @@ use IO.Std.write_line
 
 use ROOT = (persistence: int, digital_root: long)
 
-digit_sum(value: long) -> long pure =>
+digit_sum(value: long) -> long =>
     if value < 10L then
         value
     else
         value % 10L + digit_sum(value / 10L)
     fi
 
-root(value: long) -> ROOT pure =>
+root(value: long) -> ROOT =>
     if value < 10L then
         (persistence = 0, digital_root = value)
     else

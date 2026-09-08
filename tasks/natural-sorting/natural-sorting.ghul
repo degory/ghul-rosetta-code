@@ -6,15 +6,15 @@ use System.Globalization.UnicodeCategory
 use System.Text.NormalizationForm
 use Ghul.Pipes
 
-use TRANSFORM = (string) -> string pure
+use TRANSFORM = (string) -> string
 
-plain_whitespace(text: string) -> string pure =>
+plain_whitespace(text: string) -> string =>
     text
         |> map(letter =>
             if char.is_white_space(letter) then ' ' else letter fi)
         |> join("")
 
-single_spaces(text: string) -> string pure is
+single_spaces(text: string) -> string is
     let kept = LIST[char]()
 
     for letter in text do
@@ -30,15 +30,15 @@ single_spaces(text: string) -> string pure is
     joined.trim()
 si
 
-folded_case(text: string) -> string pure => text.to_lower()
+folded_case(text: string) -> string => text.to_lower()
 
-replaced_letters(text: string) -> string pure =>
+replaced_letters(text: string) -> string =>
     text
         .replace("\u00DF", "ss")
         .replace("\u017F", "s")
         .replace("\u0292", "s")
 
-split_ligatures(text: string) -> string pure =>
+split_ligatures(text: string) -> string =>
     text
         .replace("\u0133", "ij")
         .replace("\u00E6", "ae")
@@ -46,21 +46,21 @@ split_ligatures(text: string) -> string pure =>
         .replace("\uFB01", "fi")
         .replace("\uFB02", "fl")
 
-bare_letters(text: string) -> string pure =>
+bare_letters(text: string) -> string =>
     text.normalize(NormalizationForm.FORM_D)
         |> filter(letter =>
             CharUnicodeInfo.get_unicode_category(letter) !=
                 UnicodeCategory.NON_SPACING_MARK)
         |> join("")
 
-without_leading_article(text: string) -> string pure =>
+without_leading_article(text: string) -> string =>
     if text.starts_with("the ") then text[4..<0] else text fi
 
 let transforms =
     [plain_whitespace, single_spaces, folded_case, replaced_letters,
      split_ligatures, bare_letters, without_leading_article]
 
-key(text: string) -> string pure =>
+key(text: string) -> string =>
     transforms |> reduce(text, (running, step) => step(running))
 
 runs(text: string) -> Pipe[string] is
@@ -85,14 +85,14 @@ runs(text: string) -> Pipe[string] is
     fi
 si
 
-is_number(part: string) -> bool pure =>
+is_number(part: string) -> bool =>
     part.length > 0 /\ (part |> all(letter => char.is_digit(letter)))
 
-without_leading_zeros(part: string) -> string pure =>
+without_leading_zeros(part: string) -> string =>
     let trimmed = part.trim_start('0') in
     if trimmed.length == 0 then "0" else trimmed fi
 
-compare_parts(left: string, right: string) -> int pure =>
+compare_parts(left: string, right: string) -> int =>
     if is_number(left) /\ is_number(right) then
         let a = without_leading_zeros(left) in
         let b = without_leading_zeros(right) in
@@ -105,7 +105,7 @@ compare_parts(left: string, right: string) -> int pure =>
         string.compare_ordinal(left, right)
     fi
 
-naturally(left: string, right: string) -> int pure is
+naturally(left: string, right: string) -> int is
     let first = runs(key(left)) |> collect()
     let second = runs(key(right)) |> collect()
     let shared = if first.count < second.count then first.count

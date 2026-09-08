@@ -3,7 +3,7 @@ use Collections.LIST
 use Collections.List
 use Ghul.Pipes
 
-proper_divisors(n: int) -> LIST[int] pure is
+proper_divisors(n: int) -> LIST[int] is
     let divisors = LIST([1])
     let candidate mut = 2
 
@@ -22,7 +22,7 @@ proper_divisors(n: int) -> LIST[int] pure is
     divisors
 si
 
-sums_to(divisors: List[int], from: int, target: int) -> bool pure =>
+sums_to(divisors: List[int], from: int, target: int) -> bool =>
     if target == 0 then
         true
     elif from >= divisors.count then
@@ -34,7 +34,7 @@ sums_to(divisors: List[int], from: int, target: int) -> bool pure =>
             sums_to(divisors, from + 1, target)
     fi
 
-weird(n: int) -> bool pure =>
+weird(n: int) -> bool =>
     (let divisors = proper_divisors(n) |> sort_descending() |> collect()
 
      divisors |> reduce(0, (total: int, d: int) => total + d) > n /\

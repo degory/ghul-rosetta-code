@@ -1,14 +1,14 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-power_of_two(exponent: int) -> int pure =>
+power_of_two(exponent: int) -> int =>
     if exponent == 0 then
         1
     else
         2 * power_of_two(exponent - 1)
     fi
 
-indent(width: int) -> string pure =>
+indent(width: int) -> string =>
     if width <= 0 then
         ""
     else

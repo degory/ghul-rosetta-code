@@ -2,7 +2,7 @@ use IO.Std.write_line
 use Collections.List
 use Collections.LIST
 
-apply[T, U](values: T[], callback: T -> U pure) -> List[U] is
+apply[T, U](values: T[], callback: T -> U) -> List[U] is
     let applied = LIST[U]()
 
     for value in values do

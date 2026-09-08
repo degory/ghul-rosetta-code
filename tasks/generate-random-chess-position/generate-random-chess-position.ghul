@@ -45,7 +45,7 @@ position() -> LIST[char] =>
 
      board)
 
-rank_to_fen(squares: List[char]) -> string pure =>
+rank_to_fen(squares: List[char]) -> string =>
     (let text = StringBuilder()
      let empty mut = 0
 
