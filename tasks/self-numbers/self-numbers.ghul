@@ -6,9 +6,7 @@ let limit = 1_030_000_000
 let words = limit / 64 + 1
 let generated = LIST[ulong](words + 1)
 
-for _ in 0::words do
-    generated.add(0ul)
-od
+(0::words) |> each(_ => generated.add(0ul))
 
 mark(value: int) is
     let word = value >> 6
