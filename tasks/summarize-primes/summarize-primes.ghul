@@ -1,0 +1,38 @@
+use IO.Std.write_line
+use Collections.Iterable
+use Ghul.Pipes
+
+is_prime(value: int) -> bool pure =>
+    value > 1 /\ ((2..value)
+        |> take_while(divisor => divisor * divisor <= value)
+        |> all(divisor => value % divisor != 0))
+
+running_sums(values: Iterable[int])
+    -> Pipe[(length: int, last: int, sum: int)]
+is
+    let length mut = 0
+    let total mut = 0
+
+    for value in values do
+        length = length + 1
+        total = total + value
+
+        yield (length = length, last = value, sum = total)
+    od
+si
+
+let summaries =
+    (2..1000)
+        |> filter(is_prime)
+        |> running_sums()
+        |> filter(summary => is_prime(summary.sum))
+        |> collect()
+
+write_line("length    last     sum")
+
+summaries
+    |> each(summary =>
+        write_line("{summary.length,6}{summary.last,8}{summary.sum,8}"))
+
+write_line()
+write_line("{summaries.count} such sequences below 1000")
