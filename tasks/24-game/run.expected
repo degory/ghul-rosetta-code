@@ -1,0 +1,12 @@
+make 24 from 9 4 2 2
+use + - * / and brackets, each digit once, q to quit
+expression: 12+12
+digits cannot be run together into longer numbers
+expression: 9+4+2+3
+use each of 9 4 2 2 exactly once
+expression: 9*(2+2+4
+a bracket is not closed
+expression: 9+4+2+2
+that comes to 17, not 24
+expression: 9*2+4+2
+that is 24, well done
