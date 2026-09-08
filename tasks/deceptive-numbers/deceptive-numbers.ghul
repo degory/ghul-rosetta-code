@@ -6,15 +6,11 @@ is_prime(value: int) -> bool pure =>
         |> take_while(divisor => divisor * divisor <= value)
         |> all(divisor => value % divisor != 0))
 
-divides_repunit(value: int) -> bool pure is
-    let remainder mut = 0
-
-    for _ in 1..value do
-        remainder = (remainder * 10 + 1) % value
-    od
-
+divides_repunit(value: int) -> bool pure =>
+    let remainder =
+        (1..value)
+            |> reduce(0, (running, _) => (running * 10 + 1) % value) in
     remainder == 0
-si
 
 let deceptive =
     from(7)
