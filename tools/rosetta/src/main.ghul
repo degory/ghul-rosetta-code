@@ -228,6 +228,14 @@ si
 
 // Feeds the guards the damage they exist to stop. A guard that has never been seen to refuse
 // anything is only believed to work.
+// The page history is read by people looking for what changed, so an edit that rewrites the
+// section already there says so rather than claiming to have added one.
+edit_summary(placement: PLACEMENT) -> string =>
+    case placement
+    when _: PLACEMENT.REPLACES then "Update the ghūl solution"
+    else "Add a ghūl solution"
+    esac
+
 self_test() is
     let splice = SECTION_SPLICE()
 
@@ -266,6 +274,16 @@ self_test() is
     check_that(
         "a ghul section out of alphabetical order is replaced, not duplicated",
         isa PLACEMENT.REPLACES(splice.placement(out_of_order, "ghul"))
+    )
+
+    check_that(
+        "replacing a section is summarised as an update",
+        edit_summary(splice.placement(out_of_order, "ghul")) =~ "Update the ghūl solution"
+    )
+
+    check_that(
+        "adding a section is summarised as an addition",
+        edit_summary(splice.placement(page, "ghul")) =~ "Add a ghūl solution"
     )
 
     // The page replaced by the section alone: what a wrong placement would produce, and the
@@ -590,11 +608,15 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
         // against the task it happened to and the rest of the batch carries on.
         try
             if let sandbox = target then
-                destination.edit(sandbox, spliced, "Testing a ghūl solution's placement on {entry.title}")
+                destination.edit(
+                    sandbox,
+                    spliced,
+                    "Testing a ghūl solution's placement on {entry.title}"
+                )
 
                 write_line("{entry.title}: written to {sandbox}, would have gone {where}")
             else
-                wiki.edit(entry.title, spliced, "Add a ghūl solution")
+                wiki.edit(entry.title, spliced, edit_summary(placement))
 
                 entry.state = "published"
                 entry.published_hash = digest(section.trim())
