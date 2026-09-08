@@ -1,0 +1,45 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let sieve_limit = 10_000_000
+let composite = LIST(sieve_limit)
+
+for _ in 0..sieve_limit do
+    composite.add(false)
+od
+
+for candidate in 2..sieve_limit do
+    if !composite[candidate] /\ candidate <= sieve_limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple < sieve_limit do
+            composite[multiple] = true
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+is_prime(value: int) -> bool => value >= 2 /\ !composite[value]
+
+is_safe(prime: int) -> bool => is_prime((prime - 1) / 2)
+
+selected(wanted: (int) -> bool pure) -> Pipe[int] =>
+    (2..sieve_limit) |> filter(is_prime) |> filter(wanted)
+
+report(name: string, wanted: (int) -> bool pure, first: int) is
+    write_line("first {first} {name} primes:")
+    write_line("  {selected(wanted) |> take(first) |> join(" ")}")
+
+    for bound in [1_000_000, 10_000_000] do
+        let total =
+            selected(wanted)
+                |> take_while(prime => prime < bound)
+                |> count()
+
+        write_line("  {name} primes below {bound:N0}: {total:N0}")
+    od
+si
+
+report("safe", is_safe, 35)
+report("unsafe", prime => !is_safe(prime), 40)
