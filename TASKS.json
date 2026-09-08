@@ -1018,7 +1018,8 @@
     {
       "title": "I\u0027m a software engineer, get me out of here",
       "state": "queued",
-      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
+      "reason": "",
+      "note": "not interactive at all: Dijkstra and Floyd-Warshall over a fixed map, reading no input. The needs-interaction rejection and the run.session reopen were both wrong about it"
     },
     {
       "title": "ISBN13 check digit",
