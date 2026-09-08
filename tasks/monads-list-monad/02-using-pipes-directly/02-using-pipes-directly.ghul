@@ -1,0 +1,17 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use System.Convert.to_string
+
+divisors(n: int) -> Pipe[int] =>
+    pipe(1::n) |> filter(d => n % d == 0)
+
+spellings(n: int) -> Pipe[string] =>
+    pipe(["{n}", "0b{to_string(n, 2)}"])
+
+write_line(pipe([6]) |> flat_map(divisors) |> join(", "))
+
+write_line(
+    pipe([6])
+        |> flat_map(divisors)
+        |> flat_map(spellings)
+        |> join(", "))
