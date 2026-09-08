@@ -24,7 +24,12 @@ it is run. So:
   natural way to express the task, use it - that is the reason for the entry existing.
 - Comment only where a reader who does not know ghūl would otherwise misread the code. A comment
   explaining what the task is, or narrating the algorithm line by line, is noise.
-- Output must be deterministic: no clocks, no random numbers, no local paths.
+- The test has to be deterministic, which is not the same as the task being deterministic. A task
+  built on randomness seeds its generator, or asserts the invariant the task is about - a cipher
+  round-tripping, a generated position being legal - and prints that. A task whose input is a
+  remote file ships the file here instead of fetching it: a fetched input makes the build depend
+  on somebody else's uptime, and silently pins a wrong answer when the file changes.
+- No clocks and no local paths, which have no reproducible form at all.
 
 ## The style guide applies here
 
@@ -310,6 +315,17 @@ dotnet run --project tools/rosetta -- set "Animate a pendulum" rejected needs-gu
 The reasons are a fixed set - `needs-gui`, `needs-network`, `needs-interaction`,
 `nondeterministic`, `needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
 comes back: it names a compiler or runtime issue and is retried when that closes.
+
+A rejection can also be reversed, when what made the task impossible stops being true. That is
+`reopen`, and it takes the reason for the reversal rather than being a bare undo:
+
+```sh
+dotnet run --project tools/rosetta -- reopen "100 prisoners" "seeded, and the ~31% answer is the point"
+```
+
+The verdict being overturned is written into the entry's note, so a later run reads why the old
+reason no longer holds instead of re-reaching it. Reopening without saying what changed just
+sets the task up to be rejected again.
 
 ## Publishing, and the record of it
 
