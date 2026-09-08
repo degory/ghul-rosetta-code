@@ -1,0 +1,44 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let sieve_limit = 10_000_000
+let composite = LIST(sieve_limit)
+
+for _ in 0..sieve_limit do
+    composite.add(false)
+od
+
+for candidate in 2..sieve_limit do
+    if !composite[candidate] /\ candidate <= sieve_limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple < sieve_limit do
+            composite[multiple] = true
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+twin_pairs(bound: int) -> int =>
+    (2..bound)
+        |> filter(candidate => !composite[candidate])
+        |> windows(2)
+        |> filter(pair => pair[1] - pair[0] == 2)
+        |> count()
+
+powers_of_ten() -> Pipe[int] is
+    let value mut = 10
+
+    do
+        yield value
+
+        value = value * 10
+    od
+si
+
+write_line("       under   twin prime pairs")
+
+powers_of_ten()
+    |> take(7)
+    |> each(bound => write_line("{bound,12}{twin_pairs(bound),19}"))
