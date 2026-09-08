@@ -5,7 +5,7 @@ use Ghul.Pipes
 
 class NODE(name: string, children: List[NODE])
 
-leaf(name: string) -> NODE => NODE(name, LIST[NODE]())
+leaf(name: string) -> NODE => NODE(name, LIST())
 
 indented(node: NODE, depth: int) -> Pipe[string] is
     yield "{repeat(" ", depth * 4) |> join("")}{node.name}"

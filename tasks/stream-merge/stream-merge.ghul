@@ -14,7 +14,7 @@ is
     let more_behind mut = behind.move_next()
 
     while more_ahead /\ more_behind do
-        if (ahead.current <> behind.current) <= 0 then
+        if ahead.current <= behind.current then
             yield ahead.current
 
             more_ahead = ahead.move_next()
