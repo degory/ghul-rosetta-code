@@ -1,16 +1,28 @@
-nest format:
-  RosettaCode(rocks(code, comparison, wiki), mocks(trolling))
+nest form:
+RosettaCode
+    rocks
+        code
+        comparison
+        wiki
+    mocks
+        trolling
 
-indent format:
-  0 RosettaCode
-  1 rocks
-  2 code
-  2 comparison
-  2 wiki
-  1 mocks
-  2 trolling
+indent form:
+0 RosettaCode
+1 rocks
+2 code
+2 comparison
+2 wiki
+1 mocks
+2 trolling
 
-nest format, rebuilt from the indent form:
-  RosettaCode(rocks(code, comparison, wiki), mocks(trolling))
+nest form, rebuilt from the indent form:
+RosettaCode
+    rocks
+        code
+        comparison
+        wiki
+    mocks
+        trolling
 
 round trip preserved the tree: True

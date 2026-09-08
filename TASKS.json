@@ -128,7 +128,7 @@
     {
       "title": "Anaprimes",
       "slug": "anaprimes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Animate a pendulum",
@@ -486,7 +486,7 @@
     {
       "title": "Deceptive numbers",
       "slug": "deceptive-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Deconvolution/1D",
@@ -533,7 +533,7 @@
     {
       "title": "Display an outline as a nested table",
       "slug": "display-an-outline-as-a-nested-table",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Diversity prediction theorem",
@@ -673,7 +673,7 @@
     {
       "title": "Extensible prime generator",
       "slug": "extensible-prime-generator",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "FTP",
@@ -707,7 +707,7 @@
     {
       "title": "Fairshare between two and more",
       "slug": "fairshare-between-two-and-more",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Farey sequence",
@@ -718,7 +718,7 @@
     {
       "title": "Faulhaber\u0027s triangle",
       "slug": "faulhabers-triangle",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Fermat numbers",
@@ -758,7 +758,7 @@
     {
       "title": "First-class functions/Use numbers analogously",
       "slug": "first-class-functions-use-numbers-analogously",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "FizzBuzz",
@@ -1037,7 +1037,7 @@
     {
       "title": "Increasing gaps between consecutive Niven numbers",
       "slug": "increasing-gaps-between-consecutive-niven-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Index finite lists of positive integers",
@@ -1072,7 +1072,8 @@
     {
       "title": "JSON pointer",
       "slug": "json-pointer",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fe14bf45a1f4a6799d0f5fa7c9007a6813524e512dc0e194fd646f802c6f15c8"
     },
     {
       "title": "Jacobi symbol",
@@ -1231,7 +1232,7 @@
     {
       "title": "Long primes",
       "slug": "long-primes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Longest common subsequence",
@@ -1254,7 +1255,7 @@
     {
       "title": "Lucky and even lucky numbers",
       "slug": "lucky-and-even-lucky-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Ludic numbers",
@@ -1295,7 +1296,7 @@
     {
       "title": "Merge and aggregate datasets",
       "slug": "merge-and-aggregate-datasets",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Mertens function",
@@ -1318,7 +1319,7 @@
     {
       "title": "Minimal steps down to 1",
       "slug": "minimal-steps-down-to-1",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Monads/List monad",
@@ -1413,7 +1414,7 @@
     {
       "title": "Natural sorting",
       "slug": "natural-sorting",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Negative base numbers",
@@ -1430,7 +1431,7 @@
     {
       "title": "Nested templated data",
       "slug": "nested-templated-data",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Next highest int from digits",
@@ -1465,7 +1466,7 @@
     {
       "title": "Numerical and alphabetical suffixes",
       "slug": "numerical-and-alphabetical-suffixes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "O\u0027Halloran numbers",
@@ -1542,7 +1543,7 @@
     {
       "title": "Pairs with common factors",
       "slug": "pairs-with-common-factors",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Palindrome detection",
@@ -1565,7 +1566,7 @@
     {
       "title": "Parsing/RPN to infix conversion",
       "slug": "parsing-rpn-to-infix-conversion",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Parsing/Shunting-yard algorithm",
@@ -1576,7 +1577,7 @@
     {
       "title": "Pell numbers",
       "slug": "pell-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Perfect totient numbers",
@@ -1593,12 +1594,12 @@
     {
       "title": "Permutations by swapping",
       "slug": "permutations-by-swapping",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Permutations/Derangements",
       "slug": "permutations-derangements",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Pernicious numbers",
@@ -1609,7 +1610,7 @@
     {
       "title": "Pierpont primes",
       "slug": "pierpont-primes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Pisano period",
@@ -1620,7 +1621,7 @@
     {
       "title": "Polynomial long division",
       "slug": "polynomial-long-division",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Population count",
@@ -1649,12 +1650,12 @@
     {
       "title": "Prime triangle",
       "slug": "prime-triangle",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Primorial numbers",
       "slug": "primorial-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Quaternion",
@@ -1713,7 +1714,7 @@
     {
       "title": "Ranking methods",
       "slug": "ranking-methods",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Recaman\u0027s sequence",
@@ -1772,7 +1773,7 @@
     {
       "title": "Ruth-Aaron numbers",
       "slug": "ruth-aaron-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "S-expressions",
@@ -1783,7 +1784,7 @@
     {
       "title": "Safe primes and unsafe primes",
       "slug": "safe-primes-and-unsafe-primes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Sailors, coconuts and a monkey problem",
@@ -1800,7 +1801,7 @@
     {
       "title": "Self numbers",
       "slug": "self-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Semiprime",
@@ -1817,12 +1818,12 @@
     {
       "title": "Set of real numbers",
       "slug": "set-of-real-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Sexy primes",
       "slug": "sexy-primes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Shortest common supersequence",
@@ -1851,7 +1852,7 @@
     {
       "title": "Smarandache prime-digital sequence",
       "slug": "smarandache-prime-digital-sequence",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Smith\u2013Waterman algorithm",
@@ -1862,7 +1863,7 @@
     {
       "title": "Solve the no connection puzzle",
       "slug": "solve-the-no-connection-puzzle",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Sorensen\u2013Dice coefficient",
@@ -1872,7 +1873,7 @@
     {
       "title": "Sort an outline at every level",
       "slug": "sort-an-outline-at-every-level",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Sorting algorithms/Quicksort",
@@ -1889,7 +1890,7 @@
     {
       "title": "Spelling of ordinal numbers",
       "slug": "spelling-of-ordinal-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Sphenic numbers",
@@ -1912,7 +1913,7 @@
     {
       "title": "Stirling numbers of the first kind",
       "slug": "stirling-numbers-of-the-first-kind",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Stirling numbers of the second kind",
@@ -1923,12 +1924,12 @@
     {
       "title": "Stream merge",
       "slug": "stream-merge",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Strong and weak primes",
       "slug": "strong-and-weak-primes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Successive prime differences",
@@ -1951,12 +1952,12 @@
     {
       "title": "Summarize primes",
       "slug": "summarize-primes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Super-Poulet numbers",
       "slug": "super-poulet-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Sylvester\u0027s sequence",
@@ -2008,7 +2009,7 @@
     {
       "title": "The sieve of Sundaram",
       "slug": "the-sieve-of-sundaram",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Thue-Morse",
@@ -2043,7 +2044,7 @@
     {
       "title": "Tree datastructures",
       "slug": "tree-datastructures",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Tree from nesting levels",
@@ -2060,7 +2061,7 @@
     {
       "title": "Triangular numbers",
       "slug": "triangular-numbers",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Tropical algebra overloading",
@@ -2077,17 +2078,17 @@
     {
       "title": "Truth table",
       "slug": "truth-table",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Twelve statements",
       "slug": "twelve-statements",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Twin primes",
       "slug": "twin-primes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Twin primes whose sum is square number",
@@ -2202,7 +2203,7 @@
     {
       "title": "Visualize a tree",
       "slug": "visualize-a-tree",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Wagstaff primes",
@@ -2237,7 +2238,7 @@
     {
       "title": "Wieferich primes",
       "slug": "wieferich-primes",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Wolstenholme numbers",
@@ -2278,7 +2279,7 @@
     {
       "title": "Zeckendorf arithmetic",
       "slug": "zeckendorf-arithmetic",
-      "state": "solved"
+      "state": "published"
     },
     {
       "title": "Zeckendorf number representation",
