@@ -1,0 +1,69 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use System.Math
+use Ghul.Pipes
+
+let connections =
+    [(from = 0, to = 2), (from = 0, to = 3), (from = 0, to = 4),
+     (from = 1, to = 3), (from = 1, to = 4), (from = 1, to = 5),
+     (from = 2, to = 3), (from = 2, to = 6),
+     (from = 3, to = 4), (from = 3, to = 6), (from = 3, to = 7),
+     (from = 4, to = 5), (from = 4, to = 6), (from = 4, to = 7),
+     (from = 5, to = 7)]
+
+permutations(values: List[int]) -> Pipe[List[int]] is
+    if values.count == 0 then
+        yield LIST[int]()
+    else
+        for chosen in 0..values.count do
+            let rest =
+                values
+                    |> index()
+                    |> filter(entry => entry.index != chosen)
+                    |> map(entry => entry.value)
+                    |> collect()
+
+            for tail in permutations(rest) do
+                let whole = LIST[int]()
+
+                whole.add(values[chosen])
+
+                for value in tail do
+                    whole.add(value)
+                od
+
+                yield whole
+            od
+        od
+    fi
+si
+
+peaceful(pegs: List[int]) -> bool =>
+    connections
+        |> all(line => Math.abs(pegs[line.from] - pegs[line.to]) > 1)
+
+draw(pegs: List[int]) is
+    write_line("      {pegs[0]}   {pegs[1]}")
+    write_line("     /|\\ /|\\")
+    write_line("    / | X | \\")
+    write_line("   /  |/ \\|  \\")
+    write_line("  {pegs[2]}---{pegs[3]}---{pegs[4]}---{pegs[5]}")
+    write_line("   \\  |\\ /|  /")
+    write_line("    \\ | X | /")
+    write_line("     \\|/ \\|/")
+    write_line("      {pegs[6]}   {pegs[7]}")
+si
+
+let pegs = (1::8) |> collect()
+
+if let solution = permutations(pegs) |> find(peaceful) then
+    write_line("one solution:")
+
+    draw(solution)
+fi
+
+let total = permutations(pegs) |> filter(peaceful) |> count()
+
+write_line()
+write_line("solutions in all: {total}")
