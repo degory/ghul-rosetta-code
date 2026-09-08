@@ -1,0 +1,17 @@
+use IO.Std.write_line
+use Collections.Iterable
+use Ghul.Pipes
+
+schwartzian[T, K: Ghul.Comparable[K]]
+    (items: Iterable[T], key: (T) -> K pure) -> Pipe[T]
+=>
+    items
+        |> map(item => (item, key = key(item)))
+        |> sort_by(pair => pair.key)
+        |> map(pair => pair.item)
+
+let words =
+    ["Rosetta", "Code", "is", "a", "programming", "chrestomathy", "site"]
+
+write_line(words |> schwartzian(w => w.length) |> join(", "))
+write_line(words |> schwartzian(w => w[0]) |> join(", "))
