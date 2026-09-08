@@ -14,22 +14,26 @@
     },
     {
       "title": "15 puzzle game",
-      "state": "queued",
+      "slug": "15-puzzle-game",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "2048",
-      "state": "queued",
+      "slug": "2048",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "21 game",
-      "state": "queued",
+      "slug": "21-game",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "24 game",
-      "state": "queued",
+      "slug": "24-game",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
@@ -865,7 +869,8 @@
     },
     {
       "title": "Go Fish",
-      "state": "queued",
+      "slug": "go-fish",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
@@ -1006,7 +1011,8 @@
     },
     {
       "title": "Hunt the Wumpus",
-      "state": "queued",
+      "slug": "hunt-the-wumpus",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
