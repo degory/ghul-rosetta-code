@@ -1,0 +1,40 @@
+hunt the wumpus: m to move, s to shoot, then a room
+
+you are in room 14
+you feel a cold wind from a nearby cavern
+tunnels lead to 4, 13, 15
+your move: x
+say m or s and a room, as in m 4
+
+you are in room 14
+you feel a cold wind from a nearby cavern
+tunnels lead to 4, 13, 15
+your move: m 7
+no tunnel leads there
+
+you are in room 14
+you feel a cold wind from a nearby cavern
+tunnels lead to 4, 13, 15
+your move: m 15
+
+you are in room 15
+tunnels lead to 6, 14, 16
+your move: m 16
+
+you are in room 16
+you smell something terrible nearby
+tunnels lead to 15, 17, 20
+your move: s 17
+your arrow clatters away into the dark
+
+you are in room 16
+tunnels lead to 15, 17, 20
+your move: m 20
+
+you are in room 20
+you feel a cold wind from a nearby cavern
+you smell something terrible nearby
+tunnels lead to 13, 16, 19
+your move: s 19
+
+your arrow finds the wumpus, you win
