@@ -9,12 +9,16 @@ class NODE(name: string, children: List[NODE])
 
 leaf(name: string) -> NODE => NODE(name, LIST[NODE]())
 
-render_nest(node: NODE) -> string =>
-    if node.children.count == 0 then
-        node.name
-    else
-        "{node.name}({node.children |> map(render_nest) |> join(", ")})"
-    fi
+render_nest(node: NODE, depth: int) -> Pipe[string] is
+    yield "{repeat("    ", depth) |> join("")}{node.name}"
+
+    for child in node.children do
+        yield in render_nest(child, depth + 1)
+    od
+si
+
+render_indent(lines: List[LINE]) -> Pipe[string] =>
+    lines |> map(line => "{line.depth} {line.name}")
 
 to_indent(node: NODE, depth: int) -> Pipe[LINE] is
     yield (depth = depth, name = node.name)
@@ -45,22 +49,26 @@ let start =
          [NODE("rocks", [leaf("code"), leaf("comparison"), leaf("wiki")]),
           NODE("mocks", [leaf("trolling")])])
 
-write_line("nest format:")
-write_line("  {render_nest(start)}")
-write_line()
+write_line("nest form:")
+
+render_nest(start, 0) |> each(line => write_line(line))
 
 let indented = to_indent(start, 0) |> collect()
 
-write_line("indent format:")
-
-indented |> each(line => write_line("  {line.depth} {line.name}"))
-
 write_line()
+write_line("indent form:")
+
+render_indent(indented) |> each(line => write_line(line))
 
 let (rebuilt, _) = to_nest(indented, 0)
 
-write_line("nest format, rebuilt from the indent form:")
-write_line("  {render_nest(rebuilt)}")
 write_line()
-write_line("round trip preserved the tree: "
-           "{render_nest(start) =~ render_nest(rebuilt)}")
+write_line("nest form, rebuilt from the indent form:")
+
+render_nest(rebuilt, 0) |> each(line => write_line(line))
+
+let before = render_nest(start, 0) |> join("\n")
+let after = render_nest(rebuilt, 0) |> join("\n")
+
+write_line()
+write_line("round trip preserved the tree: {before =~ after}")
