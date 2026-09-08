@@ -5,14 +5,14 @@ use Ghul.Pipes
 use MEMBER = (key: string, value: Json)
 
 union Json is
-    TEXT(value: string);
-    ARRAY(items: List[Json]);
-    OBJECT(members: List[MEMBER]);
+    TEXT(value: string)
+    ARRAY(items: List[Json])
+    OBJECT(members: List[MEMBER])
 si
 
 union Resolved is
-    FOUND(value: Json) default;
-    FAILED(reason: string);
+    FOUND(value: Json) default
+    FAILED(reason: string)
 si
 
 text(value: string) -> Json => Json.TEXT(value)
