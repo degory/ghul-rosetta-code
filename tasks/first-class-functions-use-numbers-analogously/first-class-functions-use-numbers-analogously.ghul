@@ -1,0 +1,23 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+multiplier(left: double, right: double) -> (double) -> double pure =>
+    value => left * right * value
+
+let x = 2.0D
+let xi = 0.5D
+let y = 4.0D
+let yi = 0.25D
+let z = x + y
+let zi = 1.0D / (x + y)
+
+let numbers = [x, y, z]
+let inverses = [xi, yi, zi]
+
+write_line("number  inverse  multiplier(number, inverse)(1.0)")
+
+numbers
+    |> zip(inverses)
+    |> each((number, inverse) =>
+        write_line("{number,6:F1}{inverse,9:F4}"
+                   "{multiplier(number, inverse)(1.0D),33:F1}"))
