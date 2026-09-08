@@ -5,7 +5,7 @@ use Ghul.Pipes
 
 safe(queens: List[int], row: int, column: int) -> bool =>
     queens |> index()
-        |> all(((placed_row, placed_column)) =>
+        |> all((placed_row, placed_column) =>
             placed_column != column /\
                 placed_row - placed_column != row - column /\
                 placed_row + placed_column != row + column)
