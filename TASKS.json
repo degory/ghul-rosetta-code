@@ -1412,7 +1412,8 @@
     },
     {
       "title": "Natural sorting",
-      "state": "queued"
+      "slug": "natural-sorting",
+      "state": "solved"
     },
     {
       "title": "Negative base numbers",
@@ -1463,7 +1464,8 @@
     },
     {
       "title": "Numerical and alphabetical suffixes",
-      "state": "queued"
+      "slug": "numerical-and-alphabetical-suffixes",
+      "state": "solved"
     },
     {
       "title": "O\u0027Halloran numbers",
@@ -2275,7 +2277,8 @@
     },
     {
       "title": "Zeckendorf arithmetic",
-      "state": "queued"
+      "slug": "zeckendorf-arithmetic",
+      "state": "solved"
     },
     {
       "title": "Zeckendorf number representation",
