@@ -1,0 +1,136 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+class NODE(text: string, children: LIST[NODE]);
+
+union Outcome is
+    SORTED(lines: List[string]) default;
+    INCONSISTENT(reason: string);
+si
+
+indent_of(line: string) -> string =>
+    line
+        |> take_while(letter => letter == ' ' \/ letter == '\t')
+        |> join("")
+
+build(lines: List[string], unit: int) -> NODE is
+    let root = NODE("", LIST[NODE]())
+    let ancestors = LIST[NODE]()
+
+    ancestors.add(root)
+
+    for line in lines do
+        let level = indent_of(line).length / unit + 1
+        let node = NODE(line.trim(), LIST[NODE]())
+
+        while ancestors.count > level do
+            ancestors.remove_at(ancestors.count - 1)
+        od
+
+        ancestors[ancestors.count - 1].children.add(node)
+        ancestors.add(node)
+    od
+
+    root
+si
+
+sort_tree(node: NODE, descending: bool) is
+    let ordered =
+        if descending then
+            node.children |> sort_by_descending(child => child.text)
+        else
+            node.children |> sort_by(child => child.text)
+        fi
+
+    let ranked = ordered |> collect()
+
+    node.children.clear()
+
+    for child in ranked do
+        node.children.add(child)
+
+        sort_tree(child, descending)
+    od
+si
+
+flatten(node: NODE, level: int, pad: string) -> Pipe[string] is
+    if level >= 0 then
+        yield "{repeat(pad, level) |> join("")}{node.text}"
+    fi
+
+    for child in node.children do
+        yield in flatten(child, level + 1, pad)
+    od
+si
+
+arrange(outline: List[string], descending: bool) -> Outcome is
+    let indents = outline |> map(indent_of) |> collect()
+    let leading = indents |> find(indent => indent.length > 0)
+
+    if !leading? then
+        return Outcome.SORTED(outline)
+    fi
+
+    let unit = leading
+    let marker = unit[0]
+
+    for indent in indents do
+        if indent |> any(letter => letter != marker) then
+            return Outcome.INCONSISTENT("indentation mixes tabs and spaces")
+        fi
+
+        if indent.length % unit.length != 0 then
+            return Outcome.INCONSISTENT(
+                "an indent of {indent.length} is not a multiple "
+                "of the unit of {unit.length}")
+        fi
+    od
+
+    let root = build(outline, unit.length)
+
+    sort_tree(root, descending)
+
+    Outcome.SORTED(flatten(root, -1, unit) |> collect())
+si
+
+show(title: string, outline: List[string], descending: bool) is
+    write_line("{title}:")
+
+    let outcome = arrange(outline, descending)
+
+    if outcome? then
+        outcome.lines |> each(line => write_line("  {line}"))
+    else
+        write_line("  inconsistent: {outcome.reason}")
+    fi
+
+    write_line()
+si
+
+let spaced =
+    ["zeta", "    beta", "    gamma", "        lambda", "        kappa",
+     "        mu", "    delta", "alpha", "    theta", "    iota",
+     "    epsilon"]
+
+let tabbed =
+    ["zeta", "\tgamma", "\t\tmu", "\t\tlambda", "\t\tkappa", "\tdelta",
+     "\tbeta", "alpha", "\ttheta", "\tiota", "\tepsilon"]
+
+let mixed_characters =
+    ["alpha", "    epsilon", "\tiota", "    theta", "zeta", "    beta",
+     "    delta", "    gamma", "    \tkappa", "        lambda",
+     "        mu"]
+
+let mixed_widths =
+    ["zeta", "    beta", "   gamma", "        lambda", "         kappa",
+     "        mu", "    delta", "alpha", "    theta", "    iota",
+     "    epsilon"]
+
+show("four spaces, ascending", spaced, false)
+show("four spaces, descending", spaced, true)
+show("tabs, ascending", tabbed, false)
+show("tabs, descending", tabbed, true)
+show("mixed indent characters", mixed_characters, false)
+show("mixed indent widths", mixed_widths, false)
