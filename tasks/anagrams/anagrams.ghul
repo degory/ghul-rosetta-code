@@ -1,0 +1,29 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.MAP
+use Ghul.Pipes
+
+sorted_letters(word: string) -> string pure =>
+    (let letters = word.to_char_array()
+     System.Array.sort(letters)
+     string(letters))
+
+let sets = MAP[string, LIST[string]]()
+
+for word in IO.File.read_all_lines("unixdict.txt") do
+    let key = sorted_letters(word)
+
+    if !sets.contains_key(key) then
+        sets[key] = LIST()
+    fi
+
+    sets[key].add(word)
+od
+
+let largest =
+    sets.values
+        |> reduce(0, (n, words) => System.Math.max(n, words.count))
+
+sets.values
+    |> filter(words => words.count == largest)
+    |> each(words => write_line(words |> join(" ")))
