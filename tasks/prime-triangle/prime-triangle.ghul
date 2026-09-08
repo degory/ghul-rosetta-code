@@ -8,7 +8,11 @@ is_prime(value: int) -> bool pure =>
         |> take_while(divisor => divisor * divisor <= value)
         |> all(divisor => value % divisor != 0))
 
-extend(chosen: LIST[int], taken: LIST[bool], size: int) -> Pipe[List[int]] is
+let prime_sum = (0::41) |> map(is_prime) |> collect()
+
+extend(chosen: LIST[int], taken: LIST[bool],
+       size: int) -> Pipe[List[int]]
+is
     if chosen.count == size then
         yield chosen |> collect()
     else
@@ -16,7 +20,7 @@ extend(chosen: LIST[int], taken: LIST[bool], size: int) -> Pipe[List[int]] is
 
         for candidate in 2::size do
             if (!final \/ candidate == size) /\ !taken[candidate] /\
-                is_prime(chosen[chosen.count - 1] + candidate) then
+                prime_sum[chosen[chosen.count - 1] + candidate] then
                 taken[candidate] = true
 
                 chosen.add(candidate)
