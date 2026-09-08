@@ -221,10 +221,13 @@ more than the ghul section being replaced - nothing at all, for an insertion. Th
 check the splice does not mark its own homework on, and it is the one to keep if the others ever
 look redundant.
 
-A section containing an external link is refused before it is sent. Rosetta Code answers an edit
-that adds a new external link with an hCaptcha, and a captcha is the one refusal this cannot get
-past - there is nobody to answer it. No solution needs a URL in it, so the fix is to take the
-link out rather than to handle the refusal.
+A solution may contain an external link where the task's own data calls for one, as `JSON pointer`
+does. Rosetta Code answers an edit that adds a new external link with an hCaptcha when an
+unregistered editor makes it, and the account this signs in as is past that threshold, so such an
+edit goes through. If one is ever refused, the refusal names the captcha and the rest of the run
+continues; `publish --dry-run <slug>` then writes the whole page the splice assembled to
+`wiki-out/<slug>.page`, alongside what is live in `wiki-out/<slug>.current`, so the two can be
+diffed and the assembled page pasted by hand rather than the section placed by eye.
 
 The target has to be a page that already exists, because the credential is granted editing and
 not creation. `Rosetta Code:Sandbox` does; a `User:<name>/sandbox` subpage keeps the noise off a
