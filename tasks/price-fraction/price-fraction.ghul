@@ -10,8 +10,8 @@ let bands =
 
 rescale(price: double) -> double =>
     assert price >= 0.0D /\ price < 1.01D else "price out of range" in
-    (for band in bands do
-         if price < band.`0 then break band.`1 fi
+    (for (upper_bound, fraction) in bands do
+         if price < upper_bound then break fraction fi
      od)!
 
 let shown =

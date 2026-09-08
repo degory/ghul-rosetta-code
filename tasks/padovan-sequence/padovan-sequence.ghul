@@ -6,9 +6,11 @@ padovan() -> Pipe[int] is
     let window mut = (1, 1, 1)
 
     do
-        yield window.`0
-        let next = window.`0 + window.`1
-        window = (window.`1, window.`2, next)
+        let (first, second, third) = window
+
+        yield first
+
+        window = (second, third, first + second)
     od
 si
 

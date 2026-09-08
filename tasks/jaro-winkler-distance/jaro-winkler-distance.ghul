@@ -88,7 +88,7 @@ for word in misspelled do
         candidates.add((candidate, jaro_winkler_distance(word, candidate)))
     od
 
-    candidates.sort((a, b) => System.Math.sign(a.`1 - b.`1))
+    candidates.sort(((_, a), (_, b)) => System.Math.sign(a - b))
 
     for (candidate, distance) in candidates |> take(2) do
         write_line("{word} -> {candidate} {distance:F4}")
