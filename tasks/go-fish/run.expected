@@ -1,0 +1,136 @@
+go fish: ask me for a rank you hold, or quit to give up
+
+your hand: 2 3 4 5 6 8 9 J Q
+ask me for: X
+there is no such rank
+
+your hand: 2 3 4 5 6 8 9 J Q
+ask me for: 7
+you must hold a 7 to ask for one
+
+your hand: 2 3 4 5 6 8 9 J Q
+ask me for: 2
+I hand over 2 2s
+
+your hand: 2 2 2 3 4 5 6 8 9 J Q
+ask me for: 3
+go fish
+you draw a 8
+
+I ask you for 6s
+you hand over a 6
+
+I ask you for 6s
+I go fish
+
+your hand: 2 2 2 3 4 5 8 8 9 J Q
+ask me for: 4
+I hand over a 4
+
+your hand: 2 2 2 3 4 4 5 8 8 9 J Q
+ask me for: 5
+I hand over a 5
+
+your hand: 2 2 2 3 4 4 5 5 8 8 9 J Q
+ask me for: 8
+go fish
+you draw a K
+
+I ask you for As
+I go fish
+
+your hand: 2 2 2 3 4 4 5 5 8 8 9 J Q K
+ask me for: 9
+go fish
+you draw a 4
+
+I ask you for 7s
+I go fish
+
+your hand: 2 2 2 3 4 4 4 5 5 8 8 9 J Q K
+ask me for: J
+I hand over a J
+
+your hand: 2 2 2 3 4 4 4 5 5 8 8 9 J J Q K
+ask me for: 2
+go fish
+you draw a J
+
+I ask you for 10s
+I go fish
+
+your hand: 2 2 2 3 4 4 4 5 5 8 8 9 J J J Q K
+ask me for: 4
+go fish
+you draw a 9
+
+I ask you for 5s
+you hand over 2 5s
+
+I ask you for 5s
+I go fish
+
+your hand: 2 2 2 3 4 4 4 8 8 9 9 J J J Q K
+ask me for: Q
+I hand over a Q
+
+your hand: 2 2 2 3 4 4 4 8 8 9 9 J J J Q Q K
+ask me for: J
+go fish
+you draw a Q
+
+I ask you for Ks
+you hand over a K
+
+I ask you for Ks
+I go fish
+
+your hand: 2 2 2 3 4 4 4 8 8 9 9 J J J Q Q Q
+ask me for: 9
+go fish
+you draw a 7
+
+I ask you for 2s
+you hand over 3 2s
+I lay down a book of 2s
+
+I ask you for 5s
+I go fish
+
+your hand: 3 4 4 4 7 8 8 9 9 J J J Q Q Q
+ask me for: 8
+go fish
+you draw a Q
+you lay down a book of Qs
+
+I ask you for 5s
+I go fish
+I lay down a book of 5s
+
+your hand: 3 4 4 4 7 8 8 9 9 J J J
+ask me for: 2
+you must hold a 2 to ask for one
+
+your hand: 3 4 4 4 7 8 8 9 9 J J J
+ask me for: 4
+go fish
+you draw a 8
+
+I ask you for 6s
+I go fish
+
+your hand: 3 4 4 4 7 8 8 8 9 9 J J J
+ask me for: J
+go fish
+you draw a 8
+you lay down a book of 8s
+
+I ask you for 6s
+I go fish
+
+your hand: 3 4 4 4 7 9 9 J J J
+ask me for: quit
+giving up
+
+you 2 books, I 2 books
+a draw

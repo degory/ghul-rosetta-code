@@ -1,0 +1,228 @@
+use IO.Std
+use Collections.LIST
+use Ghul.Pipes
+
+let ranks =
+    ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+        |> collect_list()
+
+let random = System.Random(20260908)
+
+let deck = LIST[int]()
+
+let you = LIST[int]()
+let me = LIST[int]()
+
+let your_books = LIST[int]()
+let my_books = LIST[int]()
+
+// What your asks and my failed ones have told me about your hand.
+let you_hold = LIST[int]()
+let you_lack = LIST[int]()
+
+held(hand: LIST[int], rank: int) -> int =>
+    hand |> filter(card => card == rank) |> count()
+
+name_of(rank: int) -> string => ranks[rank]
+
+cards(count: int, rank: int) -> string =>
+    if count == 1 then
+        "a {name_of(rank)}"
+    else
+        "{count} {name_of(rank)}s"
+    fi
+
+sorted_hand(hand: LIST[int]) -> string =>
+    (let held = hand |> collect_array()
+
+     System.Array.sort(held)
+
+     held |> map(card => name_of(card)) |> join(" "))
+
+draw() -> int? =>
+    if deck.count == 0 then
+        null
+    else
+        (let card = deck[deck.count - 1]
+
+         deck.remove_at(deck.count - 1)
+
+         card)
+    fi
+
+hand_over(from_hand: LIST[int], to_hand: LIST[int], rank: int) -> int =>
+    (let moved = held(from_hand, rank)
+
+     for _ in 0..moved do
+         from_hand.remove(rank)
+         to_hand.add(rank)
+     od
+
+     moved)
+
+lay_down_books(hand: LIST[int], books: LIST[int], owner: string) is
+    for rank in 0..ranks.count do
+        if held(hand, rank) == 4 then
+            hand_over(hand, LIST[int](), rank)
+
+            books.add(rank)
+
+            Std.write_line("{owner} lay down a book of {name_of(rank)}s")
+        fi
+    od
+si
+
+top_up(hand: LIST[int]) is
+    if hand.count == 0 then
+        if let card = draw() then
+            hand.add(card)
+        fi
+    fi
+si
+
+// Ask for what you have shown me you hold, else for something I have
+// not already found you to be out of, and among those the rank I hold
+// most of.
+my_choice() -> int =>
+    (let mine =
+        (0..ranks.count)
+            |> filter(rank => held(me, rank) > 0)
+            |> collect_list()
+
+     let known =
+         mine |> filter(rank => you_hold.contains(rank)) |> collect_list()
+
+     let untried =
+         mine |> filter(rank => !you_lack.contains(rank)) |> collect_list()
+
+     let pool =
+         if known.count > 0 then known
+         elif untried.count > 0 then untried
+         else mine fi
+
+     pool
+         |> reduce(-1, (best, rank) =>
+             if best < 0 \/ held(me, rank) > held(me, best) then
+                 rank
+             else
+                 best
+             fi))
+
+for rank in 0..ranks.count do
+    for _ in 0..4 do
+        deck.add(rank)
+    od
+od
+
+for at in 0..deck.count do
+    let other = at + random.next(deck.count - at)
+    let swap = deck[at]
+
+    deck[at] = deck[other]
+    deck[other] = swap
+od
+
+for _ in 0..9 do
+    if let card = draw() then you.add(card) fi
+    if let card = draw() then me.add(card) fi
+od
+
+Std.write_line(
+    "go fish: ask me for a rank you hold, or quit to give up"
+)
+
+let your_turn mut = true
+
+while your_books.count + my_books.count < ranks.count do
+    lay_down_books(you, your_books, "you")
+    lay_down_books(me, my_books, "I")
+
+    top_up(you)
+    top_up(me)
+
+    if you.count == 0 /\ me.count == 0 /\ deck.count == 0 then
+        break
+    fi
+
+    if your_turn then
+        Std.write_line()
+        Std.write_line("your hand: {sorted_hand(you)}")
+        Std.write("ask me for: ")
+
+        let typed = Std.read_line()
+
+        if !typed? \/ typed.trim().to_lower() =~ "quit" then
+            Std.write_line("giving up")
+            break
+        fi
+
+        let wanted = ranks.index_of(typed.trim().to_upper())
+
+        if wanted < 0 then
+            Std.write_line("there is no such rank")
+        elif held(you, wanted) == 0 then
+            Std.write_line(
+                "you must hold a {name_of(wanted)} to ask for one"
+            )
+        else
+            you_lack.remove(wanted)
+
+            if !you_hold.contains(wanted) then
+                you_hold.add(wanted)
+            fi
+
+            let moved = hand_over(me, you, wanted)
+
+            if moved > 0 then
+                Std.write_line("I hand over {cards(moved, wanted)}")
+            else
+                Std.write_line("go fish")
+
+                if let card = draw() then
+                    you.add(card)
+
+                    Std.write_line("you draw a {name_of(card)}")
+                fi
+
+                your_turn = false
+            fi
+        fi
+    else
+        let wanted = my_choice()
+
+        if wanted < 0 then
+            your_turn = true
+        else
+            Std.write_line()
+            Std.write_line("I ask you for {name_of(wanted)}s")
+
+            let moved = hand_over(you, me, wanted)
+
+            if moved > 0 then
+                you_hold.remove(wanted)
+
+                Std.write_line("you hand over {cards(moved, wanted)}")
+            else
+                you_hold.remove(wanted)
+
+                if !you_lack.contains(wanted) then
+                    you_lack.add(wanted)
+                fi
+
+                Std.write_line("I go fish")
+
+                if let card = draw() then me.add(card) fi
+
+                your_turn = true
+            fi
+        fi
+    fi
+od
+
+Std.write_line()
+Std.write_line("you {your_books.count} books, I {my_books.count} books")
+Std.write_line(
+    if your_books.count > my_books.count then "you win"
+    elif my_books.count > your_books.count then "I win"
+    else "a draw" fi
+)
