@@ -3,10 +3,10 @@ use IO.Std.write_line
 let minus_infinity = double.negative_infinity
 
 struct TROPICAL(value: double) is
-    +(other: TROPICAL) -> TROPICAL =>
+    ⊕(other: TROPICAL) -> TROPICAL =>
         TROPICAL(if value > other.value then value else other.value fi)
 
-    *(other: TROPICAL) -> TROPICAL => TROPICAL(value + other.value)
+    ⊗(other: TROPICAL) -> TROPICAL => TROPICAL(value + other.value)
 
     ^(power: int) -> TROPICAL =>
         assert power > 0 else "exponent must be positive" in
@@ -24,16 +24,16 @@ let one = TROPICAL(0.0D)
 show(text: string, result: TROPICAL) =>
     write_line("{text} is {result}")
 
-show("2 (x) -2", TROPICAL(2.0D) * TROPICAL(-2.0D))
-show("-0.001 (+) -Inf", TROPICAL(-0.001D) + zero)
-show("0 (x) -Inf", one * zero)
-show("1.5 (+) -1", TROPICAL(1.5D) + TROPICAL(-1.0D))
-show("-0.5 (x) 0", TROPICAL(-0.5D) * one)
+show("2 ⊗ -2", TROPICAL(2.0D) ⊗ TROPICAL(-2.0D))
+show("-0.001 ⊕ -Inf", TROPICAL(-0.001D) ⊕ zero)
+show("0 ⊗ -Inf", one ⊗ zero)
+show("1.5 ⊕ -1", TROPICAL(1.5D) ⊕ TROPICAL(-1.0D))
+show("-0.5 ⊗ 0", TROPICAL(-0.5D) ⊗ one)
 show("5 ^ 7", TROPICAL(5.0D) ^ 7)
 
 let a = TROPICAL(5.0D)
 let b = TROPICAL(8.0D)
 let c = TROPICAL(7.0D)
 
-show("5 (x) (8 (+) 7)", a * (b + c))
-show("5 (x) 8 (+) 5 (x) 7", a * b + a * c)
+show("5 ⊗ (8 ⊕ 7)", a ⊗ (b ⊕ c))
+show("5 ⊗ 8 ⊕ 5 ⊗ 7", a ⊗ b ⊕ a ⊗ c)
