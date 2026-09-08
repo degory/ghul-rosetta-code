@@ -1,0 +1,66 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+use LINE = (depth: int, name: string)
+
+class NODE(name: string, children: List[NODE]);
+
+leaf(name: string) -> NODE => NODE(name, LIST[NODE]())
+
+render_nest(node: NODE) -> string =>
+    if node.children.count == 0 then
+        node.name
+    else
+        "{node.name}({node.children |> map(render_nest) |> join(", ")})"
+    fi
+
+to_indent(node: NODE, depth: int) -> Pipe[LINE] is
+    yield (depth = depth, name = node.name)
+
+    for child in node.children do
+        yield in to_indent(child, depth + 1)
+    od
+si
+
+to_nest(lines: List[LINE], position: int) -> (node: NODE, next: int) is
+    let head = lines[position]
+    let children = LIST[NODE]()
+    let cursor mut = position + 1
+
+    while cursor < lines.count /\ lines[cursor].depth > head.depth do
+        let (child, following) = to_nest(lines, cursor)
+
+        children.add(child)
+
+        cursor = following
+    od
+
+    (node = NODE(head.name, children), next = cursor)
+si
+
+let start =
+    NODE("RosettaCode",
+         [NODE("rocks", [leaf("code"), leaf("comparison"), leaf("wiki")]),
+          NODE("mocks", [leaf("trolling")])])
+
+write_line("nest format:")
+write_line("  {render_nest(start)}")
+write_line()
+
+let indented = to_indent(start, 0) |> collect()
+
+write_line("indent format:")
+
+indented |> each(line => write_line("  {line.depth} {line.name}"))
+
+write_line()
+
+let (rebuilt, _) = to_nest(indented, 0)
+
+write_line("nest format, rebuilt from the indent form:")
+write_line("  {render_nest(rebuilt)}")
+write_line()
+write_line("round trip preserved the tree: "
+           "{render_nest(start) =~ render_nest(rebuilt)}")

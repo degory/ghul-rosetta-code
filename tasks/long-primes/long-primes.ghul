@@ -6,15 +6,14 @@ is_prime(value: int) -> bool pure =>
         |> take_while(divisor => divisor * divisor <= value)
         |> all(divisor => value % divisor != 0))
 
-reciprocal_period(prime: int) -> int? pure is
-    let remainder mut = 1
+reciprocal_period(prime: int) -> int? pure =>
+    let remainder mut = 1 in
 
-    return for length in 1::prime do
+    for length in 1::prime do
         remainder = remainder * 10 % prime
 
         if remainder == 1 then break length fi
     od
-si
 
 is_long(prime: int) -> bool pure =>
     reciprocal_period(prime) =~ prime - 1
