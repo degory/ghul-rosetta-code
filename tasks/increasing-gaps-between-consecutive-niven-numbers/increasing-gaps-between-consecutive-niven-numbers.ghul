@@ -1,0 +1,42 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+niven_numbers() -> Pipe[int] is
+    let digit_sum mut = 1
+
+    for value in 1::int.max_value do
+        if value % digit_sum == 0 then
+            yield value
+        fi
+
+        let trailing mut = value
+        let change mut = 1
+
+        while trailing % 10 == 9 do
+            change = change - 9
+            trailing = trailing / 10
+        od
+
+        digit_sum = digit_sum + change
+    od
+si
+
+write_line("gap    index of gap    starting Niven")
+
+let previous mut = 0
+let previous_index mut = 0
+let widest mut = 0
+let index mut = 0
+
+for niven in niven_numbers() |> take(10_000_001) do
+    index = index + 1
+
+    if previous_index > 0 /\ niven - previous > widest then
+        widest = niven - previous
+
+        write_line("{widest,3}{previous_index,16:N0}{previous,18:N0}")
+    fi
+
+    previous = niven
+    previous_index = index
+od
