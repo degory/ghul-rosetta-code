@@ -486,7 +486,9 @@
     },
     {
       "title": "Decorate-sort-undecorate idiom",
-      "state": "published"
+      "slug": "decorate-sort-undecorate-idiom",
+      "state": "published",
+      "published_hash": "ceaa6742941eb7a0ae862a6a6f5b9598bb0274a74262109ad53416d2496f973e"
     },
     {
       "title": "Descending primes",
@@ -649,7 +651,9 @@
     },
     {
       "title": "Exponential digital sums",
-      "state": "published"
+      "slug": "exponential-digital-sums",
+      "state": "published",
+      "published_hash": "40e2508c0a03c37b9ab5714400ccbe6a47c590f26c89f405639080512fdf97fe"
     },
     {
       "title": "FTP",
@@ -839,7 +843,9 @@
     },
     {
       "title": "Gosper\u0027s hack",
-      "state": "published"
+      "slug": "gospers-hack",
+      "state": "published",
+      "published_hash": "7dfb78eca06779f436960170bc2c36ca0e295490c6617d8efb34fc0f3571540b"
     },
     {
       "title": "Gray code",
@@ -1203,7 +1209,9 @@
     },
     {
       "title": "Lyndon word",
-      "state": "published"
+      "slug": "lyndon-word",
+      "state": "published",
+      "published_hash": "2e08027b780a4c012c88a244b4053c4b7ec4cc46639cf9893faa93cbd05d209d"
     },
     {
       "title": "Magic squares of odd order",
@@ -1249,7 +1257,21 @@
     },
     {
       "title": "Monads/List monad",
-      "state": "published"
+      "slug": "monads-list-monad",
+      "state": "published",
+      "published_hash": "17da338f19e65e1a3766df5b6afe6b8c9deb68eaba3885408796849adbc49820"
+    },
+    {
+      "title": "Monads/Maybe monad",
+      "slug": "maybe-monad",
+      "state": "published",
+      "published_hash": "879e3d954c232f6b3adbc624733893ce2af293e83ffa095f4fb743e3573511f6"
+    },
+    {
+      "title": "Monads/Writer monad",
+      "slug": "writer-monad",
+      "state": "published",
+      "published_hash": "525a660ed7e4032b46ee917ee81c15d211515aa814291f70782b6dbc74d440be"
     },
     {
       "title": "Motzkin numbers",
@@ -1373,7 +1395,9 @@
     },
     {
       "title": "Odd and square numbers",
-      "state": "published"
+      "slug": "odd-and-square-numbers",
+      "state": "published",
+      "published_hash": "9509d06923996d665fa8b8ff26419b279448e7f1c5b18d69d355096cfa68b62d"
     },
     {
       "title": "Odd word problem",
@@ -1647,7 +1671,9 @@
     },
     {
       "title": "Shortest common supersequence",
-      "state": "published"
+      "slug": "shortest-common-supersequence",
+      "state": "published",
+      "published_hash": "17bd17048dcfc3aae4434dc77c537da25ba74cdd7c304d681d2403e2d28f48f2"
     },
     {
       "title": "Sierpinski triangle",
@@ -1915,7 +1941,9 @@
     },
     {
       "title": "Variadic fixed-point combinator",
-      "state": "published"
+      "slug": "variadic-fixed-point-combinator",
+      "state": "published",
+      "published_hash": "db8e9337cb1895905c461a3b6bc1ea3d2e059f03609ea51184922cebb87f4257"
     },
     {
       "title": "Variadic function",
