@@ -1,0 +1,10 @@
+polynomial long division:
+  (x^3 - 12x^2 - 42) / (x - 3)
+    quotient:  x^2 - 9x - 27
+    remainder: -123
+  (x^4 - 1) / (x^2 - 1)
+    quotient:  x^2 + 1
+    remainder: 0
+  (3x + 2) / (x^2 + 1)
+    quotient:  0
+    remainder: 3x + 2
