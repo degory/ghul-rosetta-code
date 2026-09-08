@@ -5,7 +5,7 @@ use Ghul.Pipes
 
 use LINE = (depth: int, name: string)
 
-class NODE(name: string, children: List[NODE]);
+class NODE(name: string, children: List[NODE])
 
 leaf(name: string) -> NODE => NODE(name, LIST[NODE]())
 

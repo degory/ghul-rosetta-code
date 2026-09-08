@@ -3,8 +3,8 @@ use Collections.LIST
 use Ghul.Pipes
 
 union Expression is
-    NUMBER(text: string);
-    OPERATION(symbol: string, left: Expression, right: Expression);
+    NUMBER(text: string)
+    OPERATION(symbol: string, left: Expression, right: Expression)
 si
 
 let operators = ["^", "*", "/", "+", "-"]

@@ -4,8 +4,8 @@ use Collections.List
 use Ghul.Pipes
 
 struct RATIONAL is
-    numerator: bigint;
-    denominator: bigint;
+    numerator: bigint
+    denominator: bigint
 
     init(numerator: bigint, denominator: bigint) is
         let common =

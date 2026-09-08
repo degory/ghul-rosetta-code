@@ -5,7 +5,7 @@ use Ghul.Pipes
 
 use CELL = (text: string, width: int, colour: string)
 
-class NODE(text: string, children: LIST[NODE]);
+class NODE(text: string, children: LIST[NODE])
 
 let outline =
     ["Display an outline as a nested table.",

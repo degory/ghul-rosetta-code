@@ -3,11 +3,11 @@ use Collections.LIST
 use Collections.List
 use Ghul.Pipes
 
-class NODE(text: string, children: LIST[NODE]);
+class NODE(text: string, children: LIST[NODE])
 
 union Outcome is
-    SORTED(lines: List[string]) default;
-    INCONSISTENT(reason: string);
+    SORTED(lines: List[string]) default
+    INCONSISTENT(reason: string)
 si
 
 indent_of(line: string) -> string =>

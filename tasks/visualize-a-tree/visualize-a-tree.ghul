@@ -3,7 +3,7 @@ use Collections.LIST
 use Collections.List
 use Ghul.Pipes
 
-class NODE(name: string, children: List[NODE]);
+class NODE(name: string, children: List[NODE])
 
 leaf(name: string) -> NODE => NODE(name, LIST[NODE]())
 
