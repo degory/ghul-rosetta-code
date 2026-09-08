@@ -1,0 +1,125 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let witnesses = [2n, 3n, 5n, 7n, 11n, 13n, 17n, 19n, 23n, 29n, 31n, 37n]
+
+passes(witness: bigint, odd_part: bigint, power: int,
+       value: bigint) -> bool pure is
+    let residue mut = bigint.mod_pow(witness, odd_part, value)
+
+    if residue =~ 1n \/ residue =~ value - 1n then return true fi
+
+    for _ in 1..power do
+        residue = residue * residue % value
+
+        if residue =~ value - 1n then return true fi
+    od
+
+    false
+si
+
+is_prime(value: bigint) -> bool pure is
+    if value < 2n then return false fi
+
+    for witness in witnesses do
+        if value =~ witness then return true fi
+        if value % witness =~ 0n then return false fi
+    od
+
+    let odd_part mut = value - 1n
+    let power mut = 0
+
+    while odd_part % 2n =~ 0n do
+        odd_part = odd_part / 2n
+        power = power + 1
+    od
+
+    witnesses |> all(witness => passes(witness, odd_part, power, value))
+si
+
+pell_recurrence(first: bigint, second: bigint) -> Pipe[bigint] is
+    let previous mut = first
+    let current mut = second
+
+    do
+        yield previous
+
+        let following = current * 2n + previous
+
+        previous = current
+        current = following
+    od
+si
+
+pells() -> Pipe[bigint] => pell_recurrence(0n, 1n)
+
+pell_lucas() -> Pipe[bigint] => pell_recurrence(2n, 2n)
+
+approximations() -> Pipe[(numerator: bigint, denominator: bigint)] =>
+    pells()
+        |> windows(2)
+        |> map(pair =>
+            (numerator = pair[0] + pair[1], denominator = pair[1]))
+
+pell_primes() -> Pipe[(index: int, value: bigint)] =>
+    pells()
+        |> index()
+        |> filter(entry => is_prime(entry.value))
+        |> map(entry => (index = entry.index, value = entry.value))
+
+newman_shanks_williams() -> Pipe[bigint] =>
+    pells() |> chunk(2) |> map(pair => pair[0] + pair[1])
+
+use TRIANGLE = (short: bigint, long: bigint, hypotenuse: bigint)
+
+near_isosceles_triples() -> Pipe[TRIANGLE] is
+    let running mut = 0n
+    let position mut = 0
+
+    for value in pells() do
+        if position % 2 == 1 /\ position > 1 then
+            yield (short = running, long = running + 1n, hypotenuse = value)
+        fi
+
+        running = running + value
+        position = position + 1
+    od
+si
+
+write_line("the first 10 Pell numbers:")
+write_line("  {pells() |> take(10) |> join(" ")}")
+
+write_line()
+write_line("the first 10 Pell-Lucas numbers:")
+write_line("  {pell_lucas() |> take(10) |> join(" ")}")
+
+write_line()
+write_line("the first 10 approximations to the square root of two:")
+
+approximations()
+    |> take(10)
+    |> each(ratio => (
+        let value =
+            cast double(ratio.numerator) / cast double(ratio.denominator)
+
+        write_line("  {ratio.numerator}/{ratio.denominator} = {value:F15}")
+    ))
+
+write_line()
+write_line("the first 10 Pell primes, with their indices:")
+
+pell_primes()
+    |> take(10)
+    |> each(prime => write_line("  {prime.index,4}: {prime.value}"))
+
+write_line()
+write_line("the first 10 Newman-Shanks-Williams numbers:")
+write_line("  {newman_shanks_williams() |> take(10) |> join(" ")}")
+
+write_line()
+write_line("the first 10 near isosceles right triangles:")
+
+near_isosceles_triples()
+    |> take(10)
+    |> each(triple =>
+        write_line("  {triple.short}, {triple.long}, {triple.hypotenuse}"))
