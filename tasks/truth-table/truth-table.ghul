@@ -1,0 +1,124 @@
+use IO.Std.write_line
+use Collections.MAP
+use Collections.List
+use Ghul.Pipes
+
+union Expression is
+    VARIABLE(name: string);
+    NOT(operand: Expression);
+    BINARY(symbol: char, left: Expression, right: Expression);
+si
+
+use PARSE = (value: Expression, next: int)
+use SUBPARSER = (string, int) -> PARSE
+
+skip(text: string, at: int) -> int =>
+    if at < text.length /\ text[at] == ' ' then
+        skip(text, at + 1)
+    else
+        at
+    fi
+
+parse_atom(text: string, at: int) -> PARSE is
+    let start = skip(text, at)
+
+    if text[start] == '(' then
+        let inner = parse_or(text, start + 1)
+
+        return (value = inner.value, next = skip(text, inner.next) + 1)
+    fi
+
+    if text[start] == '!' then
+        let operand = parse_atom(text, start + 1)
+
+        return (value = Expression.NOT(operand.value), next = operand.next)
+    fi
+
+    (value = Expression.VARIABLE("{text[start]}"), next = start + 1)
+si
+
+parse_binary(text: string, at: int, symbol: char,
+             below: SUBPARSER) -> PARSE
+is
+    let node mut = below(text, at)
+
+    do
+        let cursor = skip(text, node.next)
+
+        if cursor >= text.length \/ text[cursor] != symbol then break fi
+
+        let right = below(text, cursor + 1)
+
+        node = (value = Expression.BINARY(symbol, node.value, right.value),
+                next = right.next)
+    od
+
+    node
+si
+
+parse_and(text: string, at: int) -> PARSE =>
+    parse_binary(text, at, '&', parse_atom)
+
+parse_xor(text: string, at: int) -> PARSE =>
+    parse_binary(text, at, '^', parse_and)
+
+parse_or(text: string, at: int) -> PARSE =>
+    parse_binary(text, at, '|', parse_xor)
+
+names(expression: Expression) -> Pipe[string] is
+    case expression
+    when leaf: Expression.VARIABLE then
+        yield leaf.name
+    when negation: Expression.NOT then
+        yield in names(negation.operand)
+    when pair: Expression.BINARY then
+        yield in names(pair.left)
+        yield in names(pair.right)
+    esac
+si
+
+evaluate(expression: Expression, values: MAP[string, bool]) -> bool =>
+    case expression
+    when leaf: Expression.VARIABLE then
+        values[leaf.name]
+    when negation: Expression.NOT then
+        !evaluate(negation.operand, values)
+    when pair: Expression.BINARY then
+        let left = evaluate(pair.left, values) in
+        let right = evaluate(pair.right, values) in
+        case pair.symbol
+        when '&' then left /\ right
+        when '|' then left \/ right
+        else left != right
+        esac
+    esac
+
+digit(value: bool) -> string => if value then "1" else "0" fi
+
+table(source: string) is
+    let expression = parse_or(source, 0).value
+    let variables = names(expression) |> distinct() |> collect()
+
+    write_line("{source}")
+    write_line("  {variables |> join(" ")} | result")
+
+    for row in 0..(1 << variables.count) do
+        let values = MAP[string, bool]()
+
+        for column in 0..variables.count do
+            let bit = variables.count - 1 - column
+
+            values[variables[column]] = (row >> bit) & 1 == 1
+        od
+
+        let inputs = variables |> map(name => digit(values[name]))
+
+        write_line("  {inputs |> join(" ")} | "
+                   "{digit(evaluate(expression, values))}")
+    od
+
+    write_line()
+si
+
+["A & B", "A ^ B ^ C", "A & (B | C)", "!A | B", "(A | B) & (C | D)"]
+    |> each(table)
