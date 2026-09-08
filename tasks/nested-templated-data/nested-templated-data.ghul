@@ -1,0 +1,75 @@
+use IO.Std.write_line
+use Collections.List
+use Ghul.Pipes
+
+union Template is
+    INDEX(position: int);
+    GROUP(items: List[Template]);
+si
+
+union Filled is
+    PAYLOAD(text: string);
+    GROUP(items: List[Filled]);
+si
+
+at(position: int) -> Template => Template.INDEX(position)
+
+group(items: List[Template]) -> Template => Template.GROUP(items)
+
+fill(template: Template, payloads: List[string]) -> Filled =>
+    case template
+    when leaf: Template.INDEX then
+        if leaf.position < payloads.count then
+            Filled.PAYLOAD(payloads[leaf.position])
+        else
+            Filled.PAYLOAD("<no payload for {leaf.position}>")
+        fi
+    when nested: Template.GROUP then
+        Filled.GROUP(
+            nested.items |> map(item => fill(item, payloads)) |> collect())
+    esac
+
+render(filled: Filled) -> string =>
+    case filled
+    when leaf: Filled.PAYLOAD then "'{leaf.text}'"
+    when nested: Filled.GROUP then
+        "[{nested.items |> map(render) |> join(", ")}]"
+    esac
+
+positions(template: Template) -> Pipe[int] is
+    case template
+    when leaf: Template.INDEX then
+        yield leaf.position
+    when nested: Template.GROUP then
+        for item in nested.items do
+            yield in positions(item)
+        od
+    esac
+si
+
+let template =
+    group([group([group([at(1), at(2)]),
+                  group([at(3), at(4), at(1)]),
+                  at(5)])])
+
+let payloads = (0::6) |> map(index => "Payload#{index}") |> collect()
+
+write_line("filled template:")
+write_line("  {render(fill(template, payloads))}")
+
+let used = positions(template) |> collect_set()
+
+let unused =
+    (0..payloads.count)
+        |> filter(index => !used.contains(index))
+        |> map(index => payloads[index])
+
+write_line()
+write_line("payloads never used:")
+write_line("  {unused |> join(", ")}")
+
+let short_template = group([at(0), at(9)])
+
+write_line()
+write_line("a template naming an index with no payload:")
+write_line("  {render(fill(short_template, payloads))}")

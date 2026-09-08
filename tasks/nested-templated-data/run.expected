@@ -1,0 +1,8 @@
+filled template:
+  [[['Payload#1', 'Payload#2'], ['Payload#3', 'Payload#4', 'Payload#1'], 'Payload#5']]
+
+payloads never used:
+  Payload#0, Payload#6
+
+a template naming an index with no payload:
+  ['Payload#0', '<no payload for 9>']
