@@ -62,6 +62,16 @@ The synthesised entry point is a file-private definition like any other, so more
 
 Every file whose top-level statements are left unselected is told so, as a `top-level-statements-not-run` warning at its first statement — the statements do not run, so a `let` among them never initializes. Suppress it project-wide with `--suppress top-level-statements-not-run`, or take it as a hint with `--warn-as-hint`, in a project where several script files under one build is the intended shape. Where several files carry top-level statements and nothing names an entry point, none is chosen, every one of them warns, and an executable build reports that it has no entry point.
 
+An ordinary pragma wraps the one definition or statement written after it, which gives it nowhere to reach a warning reported at a top-level statement — there is no wrapping definition to attach to. `@@pragma(...)`, doubled at, is a **file-level** pragma: written before everything else in the file, one or more of them cover the whole file rather than one definition. `@@suppress("slug")` reaches every diagnostic in the file, top-level statements included; `@@precedence(...)` sets an operator's precedence for the rest of the file's parse, with no restore at the end the way the per-definition `@precedence` has. A `@@` pragma anywhere but the very start of the file — after a `use`, a definition, or a top-level statement — is an error:
+
+```ghul
+@@suppress("top-level-statements-not-run")
+
+use IO.Std.write_line;
+
+write_line("hello");
+```
+
 The `use` statement brings names into scope so they can be referred to without qualification. Applied to a namespace it imports every public symbol; applied to a single symbol it imports just that one:
 
 ```ghul
@@ -234,7 +244,7 @@ let b = 1.0D + cast double(1);   // ok, explicit cast
 let o: object = "hello";         // ok, string is an object
 ```
 
-The target type can be left out when the surrounding expression already determines it. `cast(v)` converts `v` to whatever type the position it sits in calls for — a typed `let` initializer, an assignment, a `return` or `=>` body, an argument, an operator's other formal, an index:
+The target type can be left out when the surrounding expression already determines it. `cast(v)` converts `v` to whatever type the position it sits in calls for — a typed `let` initializer, an assignment, a `return` or `=>` body, an argument, an operator's other formal, an index, or the callee of a call:
 
 ```ghul
 let total = cast(count) + average;   // count converts to double
@@ -244,6 +254,21 @@ values[cast(index)];                 // to whatever the indexer takes
 ```
 
 The type comes from the declaration the expression resolves against rather than from any other operand, so a `cast(v)` in an argument or operand position takes the type of the formal it lands on. That means resolution has to reach exactly one candidate: `cast(v)` is refused where the position supplies no type at all, and where more than one overload or operator would accept it. `cast(a) + cast(b)` is an error rather than a guess, as is a call whose overloads differ only in the parameter the `cast(v)` fills. Hover over the `cast` keyword shows the type it resolved to.
+
+A cast that is called supplies its own: the arguments give the parameter types and the surrounding context gives the return, so the target is the function type the call describes.
+
+```ghul
+let handler: object = read_handler();
+
+let result: int = cast(handler)(4);    // handler converts to int -> int
+```
+
+A parenthesised target reads two ways, and which is meant depends on what the name in it turns out to be. `cast (T)(v)` converts `v` to `T` where `T` names a type, and casts the value `T` and calls the result where it does not. A target that can only be a type — a tuple, a function type — is never read the second way, since a value of it could not be called.
+
+```ghul
+let widened = cast (double)(count);    // a type: count converts to double
+let called = cast (handler)(count);    // a value: handler is cast, then called
+```
 
 A **string literal** may interpolate expressions: `{` opens an expression and `}` closes it, and the expression's value is converted to a string in place. There is no `+` operator on `string`, so interpolation is how strings are joined:
 
@@ -445,7 +470,39 @@ class PERSON is
 si
 ```
 
-A class can extend at most one superclass and implement any number of traits. `self` refers to the current instance. An instance is created with a constructor expression — the type name applied like a function — which selects the matching `init` overload (`PERSON("alice", 30)`). A class with no declared superclass extends `object`. `==` on a class is always reference identity and stays that way; to give a type structural equality, define `=~`, which maps to .NET's `Equals`. See [equality](#equality).
+A class can extend at most one superclass and implement any number of traits. `self` refers to the current instance. An instance is created with a constructor expression — the type name applied like a function — which selects the matching `init` overload (`PERSON("alice", 30)`). A class with no declared superclass extends `object`. `==` on a class is always reference identity and stays that way; to give a type structural equality, define `=~`, or ask for one with `@equality()`. See [equality](#equality).
+
+An `@equality()` pragma before a class asks the compiler to write its `=~` and matching `get_hash_code`, comparing the members that hold the class's state — each auto-property and `field`, in turn, through its own type's equality. A property with a body is derived from that state rather than part of it, and a static member belongs to the type, so neither takes part. Members that are not public take part like any other: the pragma is the author asking for the comparison, so what the members are visible to says nothing about whether they distinguish two values.
+
+Two values compare equal only when they have the same runtime type, so a base and a subclass are never equal in either direction, and the relation stays symmetric however it is written.
+
+```ghul
+@equality()
+class Shape abstract is
+    area() -> int;
+si
+
+@equality()
+class CIRCLE: Shape is
+    radius: int;
+
+    init(radius: int) is
+        self.radius = radius;
+    si
+
+    area() -> int => radius * radius * 3;
+si
+```
+
+The pragma applies to the class it is written on and to no other, so each class in a hierarchy asks for its own. An abstract class with no state of its own can ask too, which is what lets a comparison written against the base type resolve — `a =~ b` over two `Shape` variables dispatches to whichever subclass the values actually are, and each subclass compares what it adds on top of its base's.
+
+A synthesized operator serves only the class it was written for: it admits operands of exactly that runtime type and reads only that class's members. So a subclass of a class that has one must supply its own, either by asking with `@equality()` or by declaring `=~` and `get_hash_code`, and a subclass that does neither is an error. That holds however little the subclass adds: the rule is uniform, so that every class in a hierarchy states its own position rather than its obligation depending on whether it happens to declare a field. A subclass whose base declares equality by hand is unaffected — what the author wrote is the author's to answer for.
+
+The synthesized pair settles how .NET itself compares the value, through the `Equals` bridge, so a class that asks becomes a dictionary key that finds an equal value rather than only the same object. A class relied on to compare by identity in a `MAP` or a `SET` simply does not ask.
+
+Asking for equality on a class that already declares `=~`, `<>`, `get_hash_code` or an `equals` over `object` is an error, since the request contradicts what is written. So is asking on an `open` class: enforcing the rule above needs every subclass in view, and an `open` class can be extended from another assembly.
+
+A class without the pragma is unaffected: it has no `=~` at all, and comparing two of its values by `==` asks about identity as it always did. Structs and unions need no pragma, and are given equality wherever they declare none — a struct is a value, so two structs holding equal members already are the same value, and a union is compared by which variant it holds and what that variant carries.
 
 A member whose type says it always holds a value has to be given one. A constructor that leaves one or more such members unassigned on some path out draws a single `field-definite-assignment` warning on the constructor's own name, naming every member it misses, since the object it produces holds null in a slot that cannot be written null anywhere else. Each missed member also carries a related location pointing at its declaration — on the property, not the hidden backing field, when the member is an auto-property — which a capable editor renders as a jump-to link. A constructor is credited with what it assigns itself, and with what the methods it cannot avoid calling on `self` assign in turn — a call reached on only one branch of an `if`, a call on another object, and a call to a method a subclass could override all credit nothing, because none of them is bound to happen. Members of optional type and of value type are not checked: neither has a null to be caught holding. Suppress via `@suppress("field-definite-assignment")` per file, with `--suppress field-definite-assignment` project-wide, or on the constructor itself.
 
@@ -519,7 +576,27 @@ struct POINT is
 si
 ```
 
-A struct gets no equality operator of its own — define `=~` explicitly if the type needs one; until you do, neither operator is available on it. `==` and `!=` are rejected on every struct operand — a tuple, an imported `System.DateTime`, one of your own — because the single comparison they lower to reads the value's bytes rather than its fields. `=~` is what compares a struct by value, wherever the type defines it. See [equality](#equality).
+`==` and `!=` are rejected on every struct operand — a tuple, an imported `System.DateTime`, one of your own — because the single comparison they lower to reads the value's bytes rather than its fields. `=~` is what compares a struct by value.
+
+A struct that declares no equality of its own is given a `=~` and a matching `get_hash_code`, comparing the members that hold its state: each auto-property and `field`, in turn, through its own type's equality. A property with a body is derived from that state rather than part of it, and a static member belongs to the type, so neither takes part.
+
+```ghul
+struct PAIR is
+    a: int;
+    b: string;
+
+    init(a: int, b: string) is
+        self.a = a;
+        self.b = b;
+    si
+si
+
+PAIR(1, "x") =~ PAIR(1, "x")      // true
+```
+
+Two conditions. Declaring any half of the pair opts the type out of both: `=~`, `<>`, `get_hash_code`, or an `equals` over `object`. The decision reads the type's own members and nothing else, so a global `=~` declared for the struct does not opt it out: the struct is synthesized all the same, and the member operator is what answers where both exist. Equality that differs from the memberwise answer is declared on the type itself, which opts out of synthesis. A hand-written `=~` is the author's own answer, and a hand-written hash beside a synthesized operator could disagree with it, which is the pair the two are held to. And every member holding state must be public: private state is an implementation detail whose part in equality only its author knows, and comparing the public members alone would answer equal for two values a private member distinguishes. A struct with any non-public state is left as it was, with no `=~` at all until one is written for it. `protected` counts as non-public here.
+
+A synthesized `=~` also settles how .NET itself compares the value, through the same `Equals` bridge a declared operator gets, so a struct is a working dictionary key. The hash reads what the comparison reads: a member compared element by element contributes its count, since two equal sequences are different objects, and a member whose comparison is finer than the hash it answers contributes nothing, so that equal values never hash differently. See [equality](#equality).
 
 A bare member declaration like `x: double;` is an auto-**property**, not a field, and a struct's property getter hands back a *copy*. That matters when a struct is held in a heap object: mutating it through the property mutates the copy and the write is lost, so the compiler rejects a store through one. Declare a real field with the `field` modifier where a struct member is to be mutated in place:
 
@@ -705,9 +782,9 @@ Exhaustiveness also reaches through a destructure. A scrutinee that destructures
 
 A `case` whose scrutinee cannot be covered this way, and which has no `else` arm, fires `case-needs-else`: a warning on the statement form, where it just falls through; a warning on an expression form whose expected type has a default (value type or `T?`); and an error otherwise. A destructurable scrutinee left short of its combinations reports the same way, naming the combinations that are still open.
 
-Unions compare by structural equality through the `=~` operator — two union values are `=~` when they hold the same variant with memberwise-equal fields. Each field compares through the field type's own `=~` where the type defines one, and through the runtime's default equality comparer otherwise — reference identity for a class without `=~`, field-by-field for a struct or tuple. A field of bare type-parameter type compares through the runtime's comparer for that type, which reaches whatever equality the type argument provides.
+Unions compare by structural equality through the `=~` operator — two union values are `=~` when they hold the same variant with memberwise-equal fields. Each field compares the way `=~` compares two values of its type anywhere else: through the field type's own `=~` where it defines one, through its `<>` read against zero where it defines only that, element by element for an array or a list, and through the runtime's default equality comparer otherwise — a class that overrides `equals` compares through it, one that neither declares nor is given an operator compares by reference, and a struct or tuple field-by-field. A field of bare type-parameter type compares through the runtime's comparer for that type, which reaches whatever equality the type argument provides.
 
-A field whose type is declared in ghūl source, could declare `=~` and does not, draws a `synthesized-equality-fallback` warning on the field's declaration: the union's structural equality compares that field with the default equality comparer rather than an operator. Types that cannot declare an operator — imported types, tuples, arrays, collections, function types — fall back without a warning. Suppress via `@suppress("synthesized-equality-fallback")` per declaration or per file, or with `--suppress synthesized-equality-fallback` project-wide.
+A field whose type is declared in ghūl source, could declare `=~` and does not, draws a `synthesized-equality-fallback` warning on the field's declaration: the union's structural equality compares that field with the default equality comparer rather than an operator. Types that cannot declare an operator — imported types, tuples, sets, maps, function types — fall back without a warning; an array or a list does not fall back at all, since it compares element by element. Suppress via `@suppress("synthesized-equality-fallback")` per declaration or per file, or with `--suppress synthesized-equality-fallback` project-wide.
 
 A union with exactly one variant carrying fields of *its own* behaves as an option type: `u?` tests whether that variant is present and `u!` unwraps its value. Fields inherited from a union primary-constructor header don't count towards this, so a variant that carries only spliced shared fields is still a unit variant for the purpose of the rule. A union with several field-carrying variants can mark one with a trailing `default` to nominate it as the variant `?` and `!` act on:
 
@@ -832,6 +909,44 @@ si
 
 Methods are functions declared inside a class, struct, or trait; they have an implicit `self`. A constructor is a method named `init`. Methods are public unless their name starts with `_`, which makes them non-public under the `--underscore-access` policy — by default visible only to the declaring class. The compiler enforces that gate.
 
+## operators
+
+See <https://ghul.dev/definitions.html#functions>.
+
+An operator is a run of operator characters, scanned as a single token. The ASCII operator characters are `! $ % ^ & * - + = | : @ ~ # \ < > . ? /`, and so is any non-ASCII character Unicode classifies as a symbol, which puts `×`, `÷`, `∪`, `⊕` and `≠` on exactly the same footing as `*` and `+`. An operator can therefore be spelled with the notation it stands for rather than with an ASCII approximation of it.
+
+A function whose name is an operator is used as one. Declared as a member it takes its left operand as `self` and the right as its argument; declared at namespace scope it takes both as arguments, which is how an operator is given to a type you did not write:
+
+```ghul
+struct N(v: int) is
+    ⊕(other: N) -> N => N(v + other.v);
+si
+
+⊗(a: N, b: N) -> N => N(a.v * b.v);
+```
+
+Precedence comes from the operator's first character rather than from anything written on the declaration, so an operator that reads as arithmetic binds as arithmetic. From tightest to loosest:
+
+| level | characters |
+|-------|------------|
+| multiplication | `*` `/` `%` `×` `÷` `✕` `⊗` `⊘` `⊙` `⋅` `∗` |
+| addition | `+` `-` `⊕` `⊖` `±` `∓` |
+| bitwise | `&` `\|` `¦` `^` `∩` `∪` `⊻` `⊼` `⊽` |
+| shift | `<` or `>` doubled |
+| range | `..` `::` |
+| relational | `=` `!` `~` `<` `>` `≠` `≤` `≥` `≈` `≉` `≡` `≢` `∈` `∉` `∋` `⊂` `⊃` `⊆` `⊇` |
+| boolean | `∧` `∨`, and `/\` and `\/` |
+
+An operator opening with `?` sits looser than all of those, and everything the table does not name sits between shift and bitwise. Associativity is left, except for an operator opening with `?`, which is right so that a chain of them stays open to the one after it.
+
+Where the first character does not say what is meant, a `@precedence` pragma places the operator explicitly. It takes the operator and a level: one of the eight `user-1` to `user-8`, which interleave with the levels above, or one of those levels by name. The pragma written before a definition covers that definition; the file-level `@@precedence` covers the rest of the file.
+
+```ghul
+@@precedence("∘", "user-8")
+
+∘(f: (int) -> int, g: (int) -> int) -> (int) -> int => x => f(g(x));
+```
+
 ## equality
 
 ghūl has two equality operators, and they ask different questions.
@@ -863,12 +978,16 @@ Every other operand is a compile error pointing at `=~`. On a struct — a tuple
 - any type that declares `=~` as a member — a class, struct or trait of your own, and any imported .NET type implementing `IEquatable[T]`, which is how `System.DateTime` and `System.Version` get one
 - any type a global `=~` is declared for: `=~(a: T, b: T) -> bool` at namespace scope gives `T` the operator without reopening the type, which is the way to give one to a type you did not write, or to a tuple
 - a union, through the operator synthesized for it — see [unions](#unions)
+- a struct whose state is entirely public and that declares no equality of its own, through the one synthesized for it: member by member, each member through its own type's equality — see [structs](#structs)
+- a class carrying an `@equality()` pragma, through the one synthesized for it: member by member and then its base's, each member through its own type's equality — see [classes](#classes)
 - a tuple, element by element, each element through its own type's equality, however deep it nests
+- an array, a `List[T]` or a `LIST[T]`, by count and then element by element, each element through its own type's equality - so `[[1, 2], [3]] =~ [[1, 2], [3]]` holds, and two lists of a type declaring `=~` compare through it. An element of a class that declares neither `=~` nor `<>` compares by reference here, although the same comparison written directly on two such values is an error: a list of them still has a sensible equality, where the two values alone have none to offer
+- a type that declares `<>` and no `=~`: an ordering defines equality with it, so `a =~ b` is `a <> b == 0`
 - a bare type parameter, through the runtime's comparer for whatever it is instantiated at
 
 Where more than one of those could answer, the nearest declaration wins: a member operator first, then a global one, and the element-wise or comparer-based comparison only where nothing is declared.
 
-It is not defined everywhere. A class or struct that declares no `=~` of its own does not get one — the operator does not resolve, rather than falling back to identity — and neither `object` nor an array has one. Writing `=~` where nothing defines it is a compile error naming the operand types.
+It is not defined everywhere. A class that neither declares equality nor asks for one with `@equality()` does not get one — the operator does not resolve, rather than falling back to identity — and neither does `object`. Nor does a struct that holds any non-public state, or that declares `get_hash_code` or an `equals` over `object` without an operator to go with it: either leaves the struct as it was, with no `=~` until one is written for it. Writing `=~` where nothing defines it is a compile error naming the operand types. A `SET` is not compared element by element, since its equality is order-insensitive: `set_equals` answers that. A pipe is not compared at all, since reading one consumes it.
 
 Defining `=~` on a type means defining `get_hash_code` alongside it: the two are a pair, and .NET's collections consult the hash first. [.NET interop](#net-interop) covers the `Ghul.Equatable[T]` contract, the `Equals` bridge, and why the hash cannot be generated for you.
 
@@ -892,7 +1011,7 @@ if name? then
 fi
 ```
 
-Optionals cover reference and value types alike. There are three lowerings — a plain nullable reference, `Nullable[T]` for a value type, and `MAYBE[T]` for an unconstrained type parameter, so `T?` is spellable even where `T` could be either kind. Which one backs a given `T?` is an implementation detail: all three behave the same way and interconvert. A non-optional `T` is assignable to a `T?` without ceremony; the other direction is a hard rejection. To use a `T?` where a non-optional `T` is expected, the caller must narrow first — `if x?` / `if let` flow-narrow inside the guarded region, `x!` asserts present (throws if absent), and `x ?? _` falls back to a non-optional value. Reading a member, iterating (`for x in xs`), or indexing (`xs[i]`) through an optional receiver the flow analysis has not proven present — an un-narrowed local or member path, a call result — is an error, with the same standing as passing a `T?` where a `T` is required: it is the same fact about the same static type, so there is no slug to suppress and no severity to lower. Narrowing first (`if xs?` / `if let`), `x?.y`, `x.has_value`, and `x!` are the ways through. Applying `!` to a value that was never optional is an error (`cannot unwrap this`) — there is nothing to unwrap. Where flow analysis has already proven a value present — inside an `if x?` / `if let` region — a further `!`, `?`, or `?.` on it draws a redundancy warning (`redundant-unwrap`, `redundant-presence-test`, or `redundant-coalesce`); the fix is to drop the operator. Suppress via `@suppress("<code>")` per declaration or per file, or with `--suppress <code>` project-wide. `--warn-as-error`, `--warn-as-info` and `--warn-as-hint` reclassify a slug's severity the same way. A `?` or `?.` applied to a never-optional *value type* is an error too — a struct can never be null, so the test has nothing to check. On a never-optional *reference* a `?` presence test is redundant by its static type and draws a `presence-test-non-optional` warning, since the type already guarantees presence — though not inside an `assert` condition, where the test is taken as deliberate; a `?.` stays legal, reading as a defensive null test for the case where null can still arrive despite the static type, for example from reflected .NET APIs. Comparing one against `null` is not another spelling of that test: `null` is a value of optional types alone, so `x == null` and `x != null` on a never-optional operand are errors rather than warnings, and the way to write the defensive test is `x?` or `x?.y`. Types that provide `has_value` and `value` properties are treated as optional-shaped: `?` consults those properties on any such type, while `!` does so only on a struct.
+Optionals cover reference and value types alike. There are three lowerings — a plain nullable reference, `Nullable[T]` for a value type, and `MAYBE[T]` for an unconstrained type parameter, so `T?` is spellable even where `T` could be either kind. Which one backs a given `T?` is an implementation detail: all three behave the same way, and a value of any of them is accepted wherever another is expected — assigned, passed, returned — with the conversion made at that boundary. The one place the three are distinct is as a type argument of another type: `LIST[T?]` over an unconstrained `T` is `LIST[MAYBE[T]]` and not `LIST[string?]` for any `T`, and a function type is a generic type too, so a `(int) -> string?` value is not a `(T) -> U?` for any `U`. There is no boundary inside a type argument to convert at, so a call that pins `U` from a *stored* function value of fixed type that way does not resolve; a function whose own return is `U?` over a type parameter has the same carrier and is accepted. A function referred to *by name* is accepted whichever carrier its own signature uses: it has no value yet, so where the two shapes describe the same call and differ only in an optional position's carrier, the reference is wrapped in a literal that presents the slot's own shape, and the coercion happens at that literal's boundary. `bind(unit(8), halve)` resolves for a `halve` returning `int?`, and so does the same reference passed the other way, into a slot whose carrier is the reference one. A shape differing anywhere but the carrier is still rejected. A function literal that leaves its return type to be inferred is not fixed: written into a `(T) -> U?` slot, its return settles as the slot's carrier over whatever the body produces, so `bind(4, n => n + 1)` and `xs |> find_map(x => lookup(x))` both resolve, with a `string?` or a bare `int` from the body converted at the literal's own return. A non-optional `T` is assignable to a `T?` without ceremony; the other direction is a hard rejection. To use a `T?` where a non-optional `T` is expected, the caller must narrow first — `if x?` / `if let` flow-narrow inside the guarded region, `x!` asserts present (throws if absent), and `x ?? _` falls back to a non-optional value. Reading a member, iterating (`for x in xs`), or indexing (`xs[i]`) through an optional receiver the flow analysis has not proven present — an un-narrowed local or member path, a call result — is an error, with the same standing as passing a `T?` where a `T` is required: it is the same fact about the same static type, so there is no slug to suppress and no severity to lower. Narrowing first (`if xs?` / `if let`), `x?.y`, `x.has_value`, and `x!` are the ways through. Applying `!` to a value that was never optional is an error (`cannot unwrap this`) — there is nothing to unwrap. Where flow analysis has already proven a value present — inside an `if x?` / `if let` region — a further `!`, `?`, or `?.` on it draws a redundancy warning (`redundant-unwrap`, `redundant-presence-test`, or `redundant-coalesce`); the fix is to drop the operator. Suppress via `@suppress("<code>")` per declaration or per file, or with `--suppress <code>` project-wide. `--warn-as-error`, `--warn-as-info` and `--warn-as-hint` reclassify a slug's severity the same way. A `?` or `?.` applied to a never-optional *value type* is an error too — a struct can never be null, so the test has nothing to check. On a never-optional *reference* a `?` presence test is redundant by its static type and draws a `presence-test-non-optional` warning, since the type already guarantees presence — though not inside an `assert` condition, where the test is taken as deliberate; a `?.` stays legal, reading as a defensive null test for the case where null can still arrive despite the static type, for example from reflected .NET APIs. Comparing one against `null` is not another spelling of that test: `null` is a value of optional types alone, so `x == null` and `x != null` on a never-optional operand are errors rather than warnings, and the way to write the defensive test is `x?` or `x?.y`. Types that provide `has_value` and `value` properties are treated as optional-shaped: `?` consults those properties on any such type, while `!` does so only on a struct.
 
 An operator declared on a type takes its left operand as `self`, which always holds a value, so no such operator accepts a left operand that may be absent: `a - b` over an un-narrowed `a: T?` does not resolve, exactly as passing that `a` to a non-optional parameter does not. Narrow the operand first, or reach the operator through `a!`. `=~` and `!~` are the exception, and not by declaration: their null checks are written around the call, so an absent left operand is answered rather than dereferenced, whatever the operator itself declares. Any other operator that means to answer for an absent left operand is declared globally with an optional first parameter, where the operand really is an argument rather than a receiver.
 
@@ -1416,7 +1535,7 @@ compute() -> Tasks.TASK[int] is
 si
 ```
 
-The source reads top-to-bottom even though execution suspends at each `await`. `await e;` on its own is the value-less form — it waits for the task to complete and discards any result. A function declared `-> Tasks.TASK[T]` may `return` a bare `T`; the compiler delivers the value to the completed task, wrapping it as `Tasks.TASK.from_result(...)` where the body lowers without a suspension.
+The source reads top-to-bottom even though execution suspends at each `await`. `await e;` on its own is the value-less form — it waits for the task to complete and discards any result. A function declared `-> Tasks.TASK[T]` may `return` a bare `T`; the compiler delivers the value to the completed task, wrapping it as `Tasks.TASK.from_result(...)` where the body lowers without a suspension. It may also `return` a task, or anything else awaitable, whose result is a `T`. Where the body does not await, that task is what the caller receives. Where it does, the caller already holds the function's own task and a returned one can only complete it, so the return is taken as the task's awaited result - `return t` and `return await t` are the same program there. A void body accepts a task that awaits to nothing the same way.
 
 The operand of `await` need not be a task. Anything following .NET's awaiter pattern is accepted: a type with a parameterless `get_awaiter()` whose result has a `bool` property `is_completed`, a parameterless `get_result()`, and implements `System.Runtime.CompilerServices.INotifyCompletion` (or `ICriticalNotifyCompletion`). The `await` expression takes the type `get_result` returns, void included. `Tasks.ValueTask[T]`, `Tasks.TASK.yield()` and `task.configure_await(false)` all qualify, and so does a type written in ghūl - a struct awaitable that hands its continuation to a scheduler is how cooperative multitasking is built without allocating a task per suspension:
 
@@ -1640,6 +1759,52 @@ takes_int(zero_of(1));                       // zero_of[T](n: int) -> T:
 
 When neither the arguments nor any later use pins a type argument, the construction is an error (`cannot infer type here`) — give the type argument explicitly (`BOX[int]()`).
 
+A type parameter written with a trailing `..` is an **argument pack**: it stands for the arguments of a call, held as a positional tuple. The `..` is that parameter's bound — it says what `T` ranges over — so a type bound cannot be written alongside it.
+
+A formal argument then writes `..` on its own type to say which of the pack's readings it wants. `f: T.. -> U` takes the arguments spread out, as a function of as many parameters as the call supplies; `v: T..` takes them as the call's own remaining arguments; a plain `T` is the tuple. So a function taking a function and the values to call it with declares one of each, and callers write the call out rather than assembling the tuple by hand:
+
+```ghul
+apply[T.., U](f: T.. -> U, v: T..) -> U => f(v);
+
+concat(a: string, b: string) -> string => "{a}{b}";
+
+apply((a, b) => "{a}{b}", "x", "y");     // T is (string, string)
+apply(concat, "x", "y");                 // the same, by name
+apply(concat, ("x", "y"));               // the tuple, written out
+apply(double, 123);                      // T is int, as for any parameter
+```
+
+A spread formal has to be the last one, since it leaves nothing for the arguments after it. One argument is the value itself rather than a one-element tuple, which is what makes `apply(double, 123)` read the way it does; two or more are the tuple they are spread into. Writing the tuple out goes into the same formal, so both spellings are available and the written-out one is what a caller reaches for when it already holds the tuple.
+
+Nothing about the parameter itself changes: `T` binds to whatever the call supplies, `f(v)` passes one value, and a consumer in another language sees a method taking a tuple. What the marker on `f` licenses is a **function of two or more parameters written where that formal expects one**. A function literal there is read as destructuring the tuple, and a function named there is wrapped so that it is. A one-parameter function needs no adaptation and is passed as it stands.
+
+`[T..]` is accepted on a class, struct, trait and union type parameter as well as a function or method one, and each formal opts in for itself — so a type declaring `EVENT[T..]` marks its handler formal and its value formal for the readings each wants:
+
+```ghul
+class EVENT[T..] is
+    subscribe(handler: T.. -> void) is ... si
+    raise(v: T..) is ... si
+si
+
+let e = EVENT[(int, string)]();
+
+e.subscribe((n, s) => write_line("{n} {s}"));
+e.raise(7, "seven");
+```
+
+The marker can sit on the parameter of any function type along the formal's return spine, not only the outermost. `f: X -> T.. -> U` asks for a function the caller's own lambda returns, which is how a higher-order function takes an N-ary one:
+
+```ghul
+run[T.., U](make: (int) -> T.. -> U, v: T) -> U => make(10)(v);
+
+run(n => (a, b) => a + b + n, (1, 2));   // 13
+```
+
+The marker reads only as a formal's own type, or as the parameter of a function type on that type's return spine. Written anywhere else — inside a bigger type, reached through a parameter rather than a return, or on a type parameter that no `[T..]` declares — it is an error. The tuple limit is the pack's limit too: past seven arguments there is no tuple to bind to, and the call is reported as it stands. A pack is not `params`: a homogeneous variable-length list is a different thing.
+
+What each formal asks for survives into the assembly, so a pack declared in one assembly reads the same way from another.
+
+
 A generic function or method named with no argument list is a *value*, the same way a non-generic name in value position is. Written with its type arguments it is the value at that instantiation; written bare, the type arguments are inferred from the function type of the slot it goes into — from the parameter positions, and from the return slot for a variable that appears only there. It converts wherever a function type or a named delegate is expected, and where the name is overloaded the expected type picks the member:
 
 ```ghul
@@ -1710,7 +1875,7 @@ Defining `=~` also settles how .NET itself compares the type, provided `get_hash
 
 Both halves are needed because .NET requires values that compare equal to hash equal, and a hash-based collection consults the hash first. A type that defines neither is consistent as it stands, comparing and hashing by identity, so defining only `=~` is reported as `equality-without-hash` and leaves the type alone rather than breaking that pair. The hash is not generated for you: an operator is free to ignore some of the fields it reads, and a memberwise hash would then disagree with it.
 
-`a =~ b` on a bare, unconstrained type parameter compiles by going through `EqualityComparer[T].Default.Equals`, the same route .NET collections use for a generic instantiation. That reaches the `Equals(object)` bridge above, so the comparison follows whatever the actual type argument does: a type declaring `=~` and `get_hash_code` answers through its own operator, a class declaring neither compares by reference, and a struct, enum, or scalar gets the runtime's ordinary value equality for that type. A bound that itself declares `=~` (`[T: Named]` where `Named` declares the operator) resolves the bound's operator directly and never reaches the comparer.
+`a =~ b` on a bare, unconstrained type parameter compiles by going through `EqualityComparer[T].Default.Equals`, the same route .NET collections use for a generic instantiation. That reaches the `Equals(object)` bridge above, so the comparison follows whatever the actual type argument does: a type declaring `=~` and `get_hash_code` answers through its own operator, a class with neither declared nor synthesized compares by reference, and a struct, enum, or scalar gets the runtime's ordinary value equality for that type. A bound that itself declares `=~` (`[T: Named]` where `Named` declares the operator) resolves the bound's operator directly and never reaches the comparer.
 
 A tuple takes the same route. `EqualityComparer[T].Default` for a `ValueTuple` is the tuple's own element-wise equality, so each element is compared by the default comparer for *its* type — and so, by the same chain, through a user-written `=~` where the element type declares one.
 
@@ -1729,7 +1894,7 @@ Both are the same call, and both are a plain method call rather than another spe
 
 A static property or field takes `snake_case` however constant-like it reads, since only enum members become `MACRO_CASE` — `CancellationToken.None` is `System.Threading.CancellationToken.none`.
 
-A type's own **operators** are reached by writing the operator. A public static operator method a .NET type declares — `op_Addition` and the rest, on `bigint`, `System.DateTime`, `System.TimeSpan` and any other type that has them — is a candidate wherever a value of that type is either operand, and both operand types contribute, so `step * 2.0D` and `2.0D * step` find the same operator on `TimeSpan`. The same goes for a static operator declared on a ghūl class or struct: `+(a: VECTOR, b: VECTOR) -> VECTOR static` applies to `v + w` from anywhere `VECTOR` is visible, not only inside its own body. The arithmetic, bitwise, shift and unary operators are reached this way; comparison and equality come from `<>` and `=~` as elsewhere, so a reflected `op_LessThan` or `op_Equality` is not. The scalar types are the exception: their operators are the language's own, so `decimal`'s reflected `op_Addition` is not a second candidate beside the built-in `+`.
+A type's own **operators** are reached by writing the operator. A public static operator method a .NET type declares — `op_Addition` and the rest, on `bigint`, `System.DateTime`, `System.TimeSpan` and any other type that has them — is a candidate wherever a value of that type is either operand, and both operand types contribute, so `step * 2.0D` and `2.0D * step` find the same operator on `TimeSpan`. The same goes for a static operator declared on a ghūl class or struct: `+(a: VECTOR, b: VECTOR) -> VECTOR static` applies to `v + w` from anywhere `VECTOR` is visible, not only inside its own body. An operator none of whose operands is the declaring type is reached by importing it under its own name — ``use Lib.VECTOR_OPS.`*;`` — the same route the generic-math interface operators take. The arithmetic, bitwise, shift and unary operators are reached this way; comparison and equality come from `<>` and `=~` as elsewhere, so a reflected `op_LessThan` or `op_Equality` is not. The scalar types are the exception: their operators are the language's own, so `decimal`'s reflected `op_Addition` is not a second candidate beside the built-in `+`.
 
 An **indexer** is the one member reached only through its own syntax. .NET does not fix its name — the property carries whatever its declaring language chose, and the type nominates the real one, so `System.String` and `System.Text.StringBuilder` both call theirs `Chars` — but the name never has to be written: `[` and `]` find it whatever it is.
 

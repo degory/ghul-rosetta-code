@@ -1,6 +1,3 @@
-@@precedence("⊕", "user-6")
-@@precedence("⊗", "user-7")
-
 use IO.Std.write_line
 
 let minus_infinity = double.negative_infinity
