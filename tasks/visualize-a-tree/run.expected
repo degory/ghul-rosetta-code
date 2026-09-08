@@ -1,0 +1,30 @@
+indented:
+  kingdom
+      animal
+          vertebrate
+              bird
+              mammal
+          invertebrate
+              mollusc
+      plant
+          moss
+          fern
+          conifer
+      fungus
+
+nested:
+  kingdom(animal(vertebrate(bird mammal) invertebrate(mollusc)) plant(moss fern conifer) fungus)
+
+drawn:
+  kingdom
+  ├─ animal
+  │  ├─ vertebrate
+  │  │  ├─ bird
+  │  │  └─ mammal
+  │  └─ invertebrate
+  │     └─ mollusc
+  ├─ plant
+  │  ├─ moss
+  │  ├─ fern
+  │  └─ conifer
+  └─ fungus

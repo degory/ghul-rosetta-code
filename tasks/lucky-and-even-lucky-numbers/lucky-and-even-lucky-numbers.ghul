@@ -4,14 +4,14 @@ use Collections.List
 use Ghul.Pipes
 
 union Request is
-    NTH(index: int, even: bool);
-    BY_INDEX(first: int, last: int, even: bool);
-    BY_VALUE(low: int, high: int, even: bool);
+    NTH(index: int, even: bool)
+    BY_INDEX(first: int, last: int, even: bool)
+    BY_VALUE(low: int, high: int, even: bool)
 si
 
 union Parsed is
-    UNDERSTOOD(request: Request) default;
-    REJECTED(message: string);
+    UNDERSTOOD(request: Request) default
+    REJECTED(message: string)
 si
 
 sieve(even: bool, limit: int) -> List[int] is
