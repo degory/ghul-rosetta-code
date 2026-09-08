@@ -1,0 +1,81 @@
+name: Ledger
+
+# A publish run's record of what it put on the wiki is a fact rather than a
+# proposal: the hash it writes is the digest of the section the wiki now
+# serves, so reviewing it means reading a page of hexadecimal against a page
+# that has already changed. Left to be reviewed by hand it was not reviewed at
+# all - ten solutions and a hundred and sixty-seven records sat on branches
+# that were never pushed - so a pull request touching only the ledger is
+# approved and merged here.
+#
+# Everything else still needs a person, a solution above all. The path test
+# below is the whole of that distinction, so widening it widens what lands
+# unread.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [ main ]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  ledger_only:
+    name: Land a ledger-only change
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 5
+
+    # Only for what this repository's own agent raises. A fork can open a pull
+    # request touching nothing but the ledger as easily as we can, and this job
+    # would otherwise approve it.
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      (github.actor == 'ghul-coder[bot]' || github.actor == 'degory') &&
+      github.event.pull_request.draft == false
+
+    steps:
+    - name: Decide whether the change is ledger-only
+      id: scope
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR: ${{ github.event.pull_request.number }}
+        REPO: ${{ github.repository }}
+      run: |
+        set -eu
+
+        gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[].filename' > files.txt
+
+        echo "changed:"
+        sed 's/^/  /' files.txt
+
+        # TASKS.json is the ledger, and a task.json carries the same task's
+        # state. Anything else - a solution, a test expectation, the tooling,
+        # this file - is out of scope and the job stops here.
+        if [ ! -s files.txt ] ; then
+            echo "ledger_only=false" >> "$GITHUB_OUTPUT"
+        elif grep -qvE '^(TASKS\.json|tasks/[^/]+/task\.json)$' files.txt ; then
+            echo "ledger_only=false" >> "$GITHUB_OUTPUT"
+        else
+            echo "ledger_only=true" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Approve and enable auto-merge
+      if: steps.scope.outputs.ledger_only == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR: ${{ github.event.pull_request.number }}
+        REPO: ${{ github.repository }}
+      run: |
+        set -eu
+
+        gh api -X POST "repos/$REPO/pulls/$PR/reviews" \
+            -f event=APPROVE \
+            -f body='Ledger only: this records what is already on the wiki.'
+
+        # Auto-merge rather than a merge outright, so the task shards gate this
+        # exactly as they gate everything else.
+        gh pr merge "$PR" --repo "$REPO" --auto --squash
