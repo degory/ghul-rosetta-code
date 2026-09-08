@@ -1,0 +1,20 @@
+use IO.Std.write_line
+use Collections.Iterable
+use Ghul.Pipes
+use System.Convert.to_string
+
+unit[T](value: T) -> Iterable[T] => [value]
+
+>>=[T, U](values: Iterable[T], f: (T) -> Iterable[U] pure)
+    -> Iterable[U]
+=>
+    values |> flat_map(f)
+
+divisors(n: int) -> Iterable[int] =>
+    (1::n) |> filter(d => n % d == 0)
+
+spellings(n: int) -> Iterable[string] =>
+    ["{n}", "0b{to_string(n, 2)}"]
+
+write_line((unit(6) >>= divisors) |> join(", "))
+write_line((unit(6) >>= divisors >>= spellings) |> join(", "))
