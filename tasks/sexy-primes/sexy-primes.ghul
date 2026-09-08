@@ -1,0 +1,62 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Collections.Iterable
+use Ghul.Pipes
+
+let limit = 1_000_035
+let composite = LIST(limit + 6)
+
+for _ in 0::limit + 6 do
+    composite.add(false)
+od
+
+for candidate in 2::limit + 6 do
+    if !composite[candidate] /\ candidate <= (limit + 6) / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple <= limit + 6 do
+            composite[multiple] = true
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+is_prime(value: int) -> bool => value >= 2 /\ !composite[value]
+
+primes() -> Pipe[int] => (2..limit) |> filter(is_prime)
+
+group_from(first: int, size: int) -> List[int] =>
+    (0..size) |> map(step => first + step * 6) |> collect()
+
+sexy_groups(size: int) -> Pipe[List[int]] =>
+    primes()
+        |> map(first => group_from(first, size))
+        |> filter(members =>
+            members[size - 1] < limit /\ (members |> all(is_prime)))
+
+show(values: Iterable[List[int]]) -> string =>
+    values |> map(members => "({members |> join(" ")})") |> join(" ")
+
+last[T](values: List[T], wanted: int) -> Pipe[T] =>
+    let extra = values.count - wanted in
+    values |> skip(if extra > 0 then extra else 0 fi)
+
+let kinds =
+    [(size = 2, name = "pairs"), (size = 3, name = "triplets"),
+     (size = 4, name = "quadruplets"), (size = 5, name = "quintuplets")]
+
+kinds |> each(kind => (
+    let found = sexy_groups(kind.size) |> collect()
+
+    write_line("sexy prime {kind.name} below {limit}: {found.count}")
+    write_line("  last: {show(last(found, 5))}")
+))
+
+let unsexy =
+    primes()
+        |> filter(prime => !is_prime(prime - 6) /\ !is_prime(prime + 6))
+        |> collect()
+
+write_line("unsexy primes below {limit}: {unsexy.count}")
+write_line("  last: {last(unsexy, 10) |> join(" ")}")
