@@ -8,28 +8,28 @@
     },
     {
       "title": "100 prisoners",
-      "state": "rejected",
-      "reason": "nondeterministic"
+      "state": "queued",
+      "note": "reopened, was rejected/nondeterministic: a seeded generator makes the simulation reproducible, and the ~31% answer is the point"
     },
     {
       "title": "15 puzzle game",
-      "state": "rejected",
-      "reason": "needs-interaction"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "2048",
-      "state": "rejected",
-      "reason": "needs-interaction"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "21 game",
-      "state": "rejected",
-      "reason": "needs-interaction"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "24 game",
-      "state": "rejected",
-      "reason": "needs-interaction"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "ABC problem",
@@ -39,8 +39,8 @@
     },
     {
       "title": "ADFGVX cipher",
-      "state": "rejected",
-      "reason": "nondeterministic"
+      "state": "queued",
+      "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key"
     },
     {
       "title": "Abstract type",
@@ -121,9 +121,8 @@
     },
     {
       "title": "Anagrams",
-      "state": "rejected",
-      "reason": "needs-network",
-      "note": "the word list is fetched from a URL the task names"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched"
     },
     {
       "title": "Anaprimes",
@@ -382,7 +381,8 @@
     {
       "title": "Clipboard manager/display",
       "state": "rejected",
-      "reason": "needs-interaction"
+      "reason": "needs-gui",
+      "note": "the system clipboard, not standard input"
     },
     {
       "title": "Closures/Value capture",
@@ -838,8 +838,8 @@
     },
     {
       "title": "Generate random chess position",
-      "state": "rejected",
-      "reason": "nondeterministic"
+      "state": "queued",
+      "note": "reopened, was rejected/nondeterministic: assert the generated position is a legal FEN rather than pinning one string"
     },
     {
       "title": "Generator/Exponential",
@@ -861,8 +861,8 @@
     },
     {
       "title": "Go Fish",
-      "state": "rejected",
-      "reason": "needs-interaction"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "Goldbach\u0027s comet",
@@ -1002,13 +1002,13 @@
     },
     {
       "title": "Hunt the Wumpus",
-      "state": "rejected",
-      "reason": "needs-interaction"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "I\u0027m a software engineer, get me out of here",
-      "state": "rejected",
-      "reason": "needs-interaction"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "ISBN13 check digit",
@@ -1132,7 +1132,8 @@
     {
       "title": "Joystick position",
       "state": "rejected",
-      "reason": "needs-interaction"
+      "reason": "needs-native-lib",
+      "note": "joystick hardware, not standard input"
     },
     {
       "title": "Juggler sequence",
@@ -1155,7 +1156,8 @@
     {
       "title": "Keyboard macros",
       "state": "rejected",
-      "reason": "needs-interaction"
+      "reason": "needs-interaction",
+      "note": "the environment\u0027s key bindings, not standard input"
     },
     {
       "title": "Klarner-Rado sequence",
@@ -1867,8 +1869,8 @@
     },
     {
       "title": "Sorensen\u2013Dice coefficient",
-      "state": "rejected",
-      "reason": "needs-network"
+      "state": "queued",
+      "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched"
     },
     {
       "title": "Sort an outline at every level",

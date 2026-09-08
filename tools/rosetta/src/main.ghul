@@ -7,9 +7,11 @@ use Rosetta
 // a finished solution onto the wiki.
 //
 //   rosetta sync                     reconcile TASKS.json with the wiki and with tasks/
-//   rosetta candidates [count]       tasks nothing has been decided about yet
+//   rosetta candidates [count] [--category <Category:X>]
+//                                    tasks nothing has been decided about yet
 //   rosetta show [state]             ledger entries, all of them or one state's
 //   rosetta set <title> <state> [reason] [note]
+//   rosetta reopen <title> <note>    put a rejected task back in play, recording why
 //   rosetta check [--api <url>]      sign in and report the account, changing nothing
 //   rosetta publish [--dry-run] [--replace] [--target <page>] [--api <url>] [slug ...]
 //   rosetta publish --rehearse <page> [--api <url>] <slug>
@@ -18,7 +20,7 @@ use Rosetta
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
 usage() is
-    error.write_line("usage: rosetta <sync|candidates|show|set|check|self-test|publish|adopt> [arguments]")
+    error.write_line("usage: rosetta <sync|candidates|show|set|reopen|check|self-test|publish|adopt> [arguments]")
 si
 
 // The repository root, found by walking up from the working directory. Every path the tool
@@ -120,13 +122,13 @@ si
 
 // Tasks the ledger says nothing about. Everything else has either been done or been decided
 // against, and neither needs looking at again.
-candidates(root: string, count: int) is
+candidates(root: string, count: int, category: string?) is
     let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
     let wiki = WIKI(SITE.api)
 
     let shown mut = 0
 
-    for title in wiki.category_members(SITE.task_category) do
+    for title in wiki.category_members(category ?? SITE.task_category) do
         if shown >= count then
             break
         fi
@@ -173,6 +175,29 @@ set(root: string, title: string, state: string, reason: string?, note: string?) 
     ledger.save()
 
     write_line("{entry.title}: {entry.state}")
+si
+
+// Puts a task that was decided against back among the candidates. The verdict being reversed is
+// written into the note rather than dropped: without it the next run has nothing to read and
+// re-reaches the conclusion the rejection recorded.
+reopen(root: string, title: string, why: string) is
+    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let entry = ledger.entry(title)
+
+    let was =
+        if let reason = entry.reason then
+            "{entry.state}/{reason}"
+        else
+            entry.state
+        fi
+
+    entry.state = "queued"
+    entry.reason = null
+    entry.note = "reopened, was {was}: {why}"
+
+    ledger.save()
+
+    write_line("{entry.title}: {entry.state} ({entry.note})")
 si
 
 // user and password for Special:BotPasswords, one per line, from a file outside the checkout.
@@ -611,7 +636,26 @@ else
     when "sync" then
         sync(root)
     when "candidates" then
-        candidates(root, if arguments.count > 0 then int.parse(arguments[0]) else 20 fi)
+        let category: string? mut = null
+        let count mut = 20
+        let awaiting mut = false
+
+        for argument in arguments do
+            if awaiting then
+                category = argument
+                awaiting = false
+            elif argument =~ "--category" then
+                awaiting = true
+            else
+                count = int.parse(argument)
+            fi
+        od
+
+        if awaiting then
+            error.write_line("--category needs a category name")
+        else
+            candidates(root, count, category)
+        fi
     when "show" then
         show(root, if arguments.count > 0 then arguments[0] else null fi)
     when "set" then
@@ -625,6 +669,12 @@ else
                 if arguments.count > 2 then arguments[2] else null fi,
                 if arguments.count > 3 then arguments[3] else null fi
             )
+        fi
+    when "reopen" then
+        if arguments.count < 2 then
+            error.write_line("usage: rosetta reopen <title> <note>")
+        else
+            reopen(root, arguments[0], arguments[1])
         fi
     when "self-test" then
         self_test()

@@ -125,7 +125,11 @@ implementations in fifty other languages.
   entry: thread the global pipe functions with `|>` rather than nesting them, prefer functions to
   classes and expression bodies to blocks, and use the constructs the language next door has no
   word for. `AGENTS.md` has the detail.
-- Keep the output deterministic. No clocks, no random numbers, no paths.
+- Keep the test deterministic, which the task itself need not be. Seed a generator, or assert the
+  property the task is about and print that. Ship a task's input file rather than fetching it.
+  No clocks and no local paths.
+- A program that reads from standard input is driven by a `run.in` beside the test, and its
+  transcript is the expectation. That is how an interactive task is tested here.
 - Keep lines under 64 columns, and never past 76. A solution is read in a fixed-width block on
   Rosetta Code and in a prose column about 77 characters wide on ghul.dev, so anything longer
   scrolls out of sight. `scripts/check-width.sh` reports the offenders.
@@ -149,6 +153,10 @@ Rosetta Code title.
 A rejection is a decision, not a note to self, so it carries one of a fixed set of reasons:
 `needs-gui`, `needs-network`, `needs-interaction`, `nondeterministic`, `needs-native-lib`,
 `output-unbounded`, `task-unclear`. The point of writing it down is that the same task is never assessed twice.
+
+`rosetta reopen <title> <why>` reverses one, for when what made the task impossible stops being
+true. It records the verdict it overturned in the entry's note, so the reversal is readable rather
+than looking like a task nobody ever decided about.
 
 Only tasks that have been judged are in the file. The 1300-odd others are whatever
 `Category:Programming Tasks` holds that the ledger does not mention.
