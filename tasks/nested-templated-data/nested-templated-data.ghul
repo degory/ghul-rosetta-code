@@ -3,13 +3,13 @@ use Collections.List
 use Ghul.Pipes
 
 union Template is
-    INDEX(position: int);
-    GROUP(items: List[Template]);
+    INDEX(position: int)
+    GROUP(items: List[Template])
 si
 
 union Filled is
-    PAYLOAD(text: string);
-    GROUP(items: List[Filled]);
+    PAYLOAD(text: string)
+    GROUP(items: List[Filled])
 si
 
 at(position: int) -> Template => Template.INDEX(position)
