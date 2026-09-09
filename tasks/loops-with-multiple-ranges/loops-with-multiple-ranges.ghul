@@ -1,0 +1,47 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+stepped(start: int, stop: int, step: int) -> Pipe[int] is
+    let value mut = start
+
+    while (step > 0 /\ value <= stop) \/ (step < 0 /\ value >= stop) do
+        yield value
+
+        value = value + step
+    od
+si
+
+let x = 5
+let y = -5
+let z = -2
+let one = 1
+let three = 3
+let seven = 7
+
+let ranges = [
+    stepped(-three, 27, three),
+    stepped(-seven, seven, x),
+    stepped(555, 550 - y, one),
+    stepped(22, -28, -three),
+    stepped(1927, 1939, one),
+    stepped(x, y, z),
+    stepped(161051, 161051 + one, one)
+]
+
+let sum mut = 0
+
+let product mut = 1
+
+for range in ranges do
+    for j in range do
+        sum = sum + System.Math.abs(j)
+
+        if System.Math.abs(product) < 134217728 /\ j != 0 then
+            product = product * j
+        fi
+    od
+od
+
+write_line(" sum= {sum:N0}")
+write_line("prod= {product:N0}")
