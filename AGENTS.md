@@ -265,6 +265,39 @@ Neither is a reason to move a solution's working data to the top level just so
 named functions can be written. Passing what a function needs as an argument is
 usually shorter, and always clearer.
 
+The case that tempts a top-level `let ... mut` hardest is a helper that has to
+carry state from one call to the next - a cursor into a buffer, a running total
+- because ghūl has no nested function definitions and there is nowhere obvious
+to put it. There is: a function literal in a local variable. A `let ... mut` is
+captured by reference, so the helper reads and writes the enclosing function's
+own state directly.
+
+```ghul
+read_ppm(path: string) -> BITMAP is
+    let raw = IO.File.read_all_bytes(path)
+
+    let at mut = 0
+
+    let token = () -> string is
+        let from = at
+
+        while at < raw.count /\ !space(raw[at]) do
+            at = at + 1
+        od
+
+        return text(raw, from, at)
+    si
+
+    assert token() =~ "P6" else "not a binary PPM"
+
+    ...
+si
+```
+
+The cursor stays where it belongs, and nothing outside `read_ppm` can reach it.
+A helper that needs no state of its own is a global function taking what it
+reads as an argument, as `space` is here.
+
 ## Solutions carry no comments
 
 **The default is no comments at all.** Look at the Go entries on any task page:

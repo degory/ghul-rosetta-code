@@ -31,41 +31,37 @@ class BITMAP is
          (red = bytes[at], green = bytes[at + 1], blue = bytes[at + 2]))
 si
 
-let raw: ubyte[] mut = []
-let read_at mut = 0
-
 space(value: ubyte) -> bool =>
     value == 32ub \/ value == 9ub \/ value == 10ub \/ value == 13ub
 
-token() -> string is
-    while read_at < raw.count /\
-        (space(raw[read_at]) \/ raw[read_at] == 35ub)
-    do
-        if raw[read_at] == 35ub then
-            while read_at < raw.count /\ raw[read_at] != 10ub do
-                read_at = read_at + 1
-            od
-        else
-            read_at = read_at + 1
-        fi
-    od
-
-    let from = read_at
-
-    while read_at < raw.count /\ !space(raw[read_at]) do
-        read_at = read_at + 1
-    od
-
-    return string(
-        (from..read_at)
-            |> map(index => cast char(raw[index]))
-            |> collect_array()
-    )
-si
-
 read_ppm(path: string) -> BITMAP is
-    raw = IO.File.read_all_bytes(path)
-    read_at = 0
+    let raw = IO.File.read_all_bytes(path)
+
+    let at mut = 0
+
+    let token = () -> string is
+        while at < raw.count /\ (space(raw[at]) \/ raw[at] == 35ub) do
+            if raw[at] == 35ub then
+                while at < raw.count /\ raw[at] != 10ub do
+                    at = at + 1
+                od
+            else
+                at = at + 1
+            fi
+        od
+
+        let from = at
+
+        while at < raw.count /\ !space(raw[at]) do
+            at = at + 1
+        od
+
+        return string(
+            (from..at)
+                |> map(index => cast char(raw[index]))
+                |> collect_array()
+        )
+    si
 
     assert token() =~ "P6" else "not a binary PPM"
 
@@ -74,12 +70,12 @@ read_ppm(path: string) -> BITMAP is
 
     let _ = token()
 
-    read_at = read_at + 1
+    at = at + 1
 
     let image = BITMAP(width, height)
 
-    for at in 0..width * height * 3 do
-        image.bytes[at] = raw[read_at + at]
+    for index in 0..width * height * 3 do
+        image.bytes[index] = raw[at + index]
     od
 
     return image
