@@ -1,0 +1,42 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+s_of_n_creator(n: int, source: System.Random) -> (int) -> List[int] is
+    let sample = LIST[int]()
+
+    let seen mut = 0
+
+    return item is
+        seen = seen + 1
+
+        if sample.count < n then
+            sample.add(item)
+        elif source.next(seen) < n then
+            sample[source.next(n)] = item
+        fi
+
+        return sample
+    si
+si
+
+let source = System.Random(20260909)
+
+let counts = (0..10) |> map(_ => 0) |> collect_list()
+
+for _ in 0..100000 do
+    let s_of_n = s_of_n_creator(3, source)
+
+    for digit in 0..9 do
+        let _ = s_of_n(digit)
+    od
+
+    for digit in s_of_n(9) do
+        counts[digit] = counts[digit] + 1
+    od
+od
+
+for digit in 0..10 do
+    write_line("{digit}: {counts[digit],6}")
+od
