@@ -177,7 +177,8 @@
     },
     {
       "title": "Archimedean spiral",
-      "state": "queued",
+      "slug": "archimedean-spiral",
+      "state": "solved",
       "note": "reopened, was rejected/needs-gui: renders to a PNG written by the repository\u0027s own encoder, so it needs no drawing library"
     },
     {
