@@ -47,7 +47,7 @@
       "state": "solved"
     },
     {
-      "title": "A+B",
+      "title": "A\u002BB",
       "slug": "a-b",
       "state": "published",
       "published_hash": "d354f6e15b4b64bff769461369ba205c5a1e01cb3b302728f73ddd7aa704fae0"
@@ -91,6 +91,11 @@
       "slug": "abstract-type",
       "state": "published",
       "published_hash": "c36886c1a3420432277732b684043f0ded259e86e1d4c5def3a8cf4a94c03c6a"
+    },
+    {
+      "title": "Abundant, deficient and perfect number classifications",
+      "slug": "abundant-deficient-and-perfect-number-classifications",
+      "state": "solved"
     },
     {
       "title": "Accumulator factory",
@@ -218,7 +223,7 @@
       "title": "Archimedean spiral",
       "slug": "archimedean-spiral",
       "state": "published",
-      "note": "reopened, was rejected/needs-gui: renders to a PNG written by the repository's own encoder, so it needs no drawing library",
+      "note": "reopened, was rejected/needs-gui: renders to a PNG written by the repository\u0027s own encoder, so it needs no drawing library",
       "published_hash": "7718661c10e509dcb44989d682a0e89da505a460d0a6dd1ae4a302e13aa2b432",
       "image_hashes": {
         "Ghul-archimedean-spiral-spiral.png": "e1dc2a0fcdb64bc747c9b8974c5ed33a9c8338d7"
@@ -245,6 +250,11 @@
     {
       "title": "Arithmetic-geometric mean",
       "slug": "arithmetic-geometric-mean",
+      "state": "solved"
+    },
+    {
+      "title": "Arithmetic/Complex",
+      "slug": "arithmetic-complex",
       "state": "solved"
     },
     {
@@ -346,13 +356,13 @@
       "published_hash": "34a8d18cd971bbdece05ffeed6a5c1041701b09abead785a558f7ff28b2ce22e"
     },
     {
-      "title": "Benford's law",
+      "title": "Benford\u0027s law",
       "slug": "benfords-law",
       "state": "published",
       "published_hash": "19e266ffd390ccfb176ec28e6ac60a8ada8254441bde5f3545c52cc234dc0064"
     },
     {
-      "title": "Bernoulli's triangle",
+      "title": "Bernoulli\u0027s triangle",
       "slug": "bernoullis-triangle",
       "state": "published",
       "published_hash": "e45b4511a7353c905314301e3477a71f0bcb0616883a6dcbe9b427a063df229b"
@@ -393,7 +403,7 @@
       "published_hash": "a49e75d1f082d313f9df1ac861663c3cbc0fa8938138ec0159765ae318ea84a9"
     },
     {
-      "title": "Bitmap/Bresenham's line algorithm",
+      "title": "Bitmap/Bresenham\u0027s line algorithm",
       "slug": "bitmap-bresenhams-line-algorithm",
       "state": "published",
       "published_hash": "65fa6a934d9afc9ec82fbf971b386e855901ee223d3ddda98318425cbef092bd",
@@ -402,7 +412,7 @@
       }
     },
     {
-      "title": "Bitmap/Bézier curves/Cubic",
+      "title": "Bitmap/B\u00E9zier curves/Cubic",
       "slug": "bitmap-bezier-curves-cubic",
       "state": "published",
       "published_hash": "2e7df8da71f9b3fb446157c1fdf0f2669862a8954246a32f55026e1c9a5016c2",
@@ -411,7 +421,7 @@
       }
     },
     {
-      "title": "Bitmap/Bézier curves/Quadratic",
+      "title": "Bitmap/B\u00E9zier curves/Quadratic",
       "slug": "bitmap-bezier-curves-quadratic",
       "state": "published",
       "published_hash": "76bfe1e1799a84b8ad82e68fea6a51d92b749c1c8cc740e569280cd44c2911bf",
@@ -528,7 +538,12 @@
       }
     },
     {
-      "title": "Burrows–Wheeler transform",
+      "title": "Bulls and cows",
+      "slug": "bulls-and-cows",
+      "state": "solved"
+    },
+    {
+      "title": "Burrows\u2013Wheeler transform",
       "slug": "burrows-wheeler-transform",
       "state": "published",
       "published_hash": "ab5b0f64eecbf1d35a71c5ac6209d37423f3837c4977f344b8dbcc7c1298fbff"
@@ -626,13 +641,13 @@
       "published_hash": "f8e14084460ad7c9d7035b9646046223042ef787ac17a67db4468a51d6f46ee0"
     },
     {
-      "title": "Chernick's Carmichael numbers",
+      "title": "Chernick\u0027s Carmichael numbers",
       "slug": "chernicks-carmichael-numbers",
       "state": "published",
       "published_hash": "e35ee9a07f78eb03612c224d62cc28d30277efc0ebe64982231efebd3898269f"
     },
     {
-      "title": "Cheryl's birthday",
+      "title": "Cheryl\u0027s birthday",
       "slug": "cheryls-birthday",
       "state": "published",
       "published_hash": "5a815f028fb62d897d46c24434f7fe1d77c87e480dbcfdd5ea46ccdff61b3e9e"
@@ -729,7 +744,7 @@
       "published_hash": "81702dc2841b98036fa1013fe7e8e6c3507b3d56fcd940b714a9fbaceb8e51eb"
     },
     {
-      "title": "Compare sorting algorithms' performance",
+      "title": "Compare sorting algorithms\u0027 performance",
       "state": "rejected",
       "reason": "nondeterministic"
     },
@@ -773,6 +788,11 @@
       "slug": "constrained-genericity",
       "state": "published",
       "published_hash": "23ea12d49f78bee0543a7d59f6ed07cc0bf082ce96fea43a7676eecb8148d4ed"
+    },
+    {
+      "title": "Conway\u0027s Game of Life",
+      "slug": "conways-game-of-life",
+      "state": "solved"
     },
     {
       "title": "Copy a string",
@@ -904,13 +924,13 @@
       "published_hash": "e0c623c05f5a4ab3d236ccaf0cf7293fecdbd591c4a5ac545e367a300b91f38a"
     },
     {
-      "title": "Dijkstra's algorithm",
+      "title": "Dijkstra\u0027s algorithm",
       "slug": "dijkstras-algorithm",
       "state": "published",
       "published_hash": "e1dbc588112168bb6326c9f4fb2556d59bf959b963ba5ae20194c8d5b630f435"
     },
     {
-      "title": "Dinesman's multiple-dwelling problem",
+      "title": "Dinesman\u0027s multiple-dwelling problem",
       "slug": "dinesmans-multiple-dwelling-problem",
       "state": "published",
       "published_hash": "b6f7d2269a17e4674277920cfd5dd60c1f40ab1c7ec4d2278529a8a5725aa932"
@@ -1041,19 +1061,19 @@
       "published_hash": "10d8cd09336c2fa611aa1c07ccac3c214c8f73a35f945b10ddc176fe8e661694"
     },
     {
-      "title": "Erdős-Nicolas numbers",
+      "title": "Erd\u0151s-Nicolas numbers",
       "slug": "erdos-nicolas-numbers",
       "state": "published",
       "published_hash": "017afe1a6c67eccd9151995b2b7cfef0a005f4c7a0f11eb6d97d0413a699cb92"
     },
     {
-      "title": "Erdős-primes",
+      "title": "Erd\u0151s-primes",
       "slug": "erdos-primes",
       "state": "published",
       "published_hash": "a27705e3590eeadddc7b5dc1db266fcaf07f77cb87c1c2f4e2d3015b43d0b589"
     },
     {
-      "title": "Erdős–Woods numbers",
+      "title": "Erd\u0151s\u2013Woods numbers",
       "state": "queued"
     },
     {
@@ -1096,6 +1116,11 @@
       "slug": "events",
       "state": "published",
       "published_hash": "59bc59b4e01c2577ed1cda4c3e1a6dee8d1340247db7d71cd4e84c5c03b70437"
+    },
+    {
+      "title": "Execute Brain****",
+      "slug": "execute-brain",
+      "state": "solved"
     },
     {
       "title": "Execute Computer/Zero",
@@ -1166,7 +1191,7 @@
       "published_hash": "b8b74bf9a89bd345ef38f3caf943d366912562c5923c30c96997cfcae93c7a0c"
     },
     {
-      "title": "Faulhaber's triangle",
+      "title": "Faulhaber\u0027s triangle",
       "slug": "faulhabers-triangle",
       "state": "published"
     },
@@ -1260,7 +1285,7 @@
       "published_hash": "7e69fe8a59c0f6b8b66cc42f7cf507d6ac9af91f251510e35d4769fb1eda62f1"
     },
     {
-      "title": "Floyd's triangle",
+      "title": "Floyd\u0027s triangle",
       "slug": "floyds-triangle",
       "state": "solved"
     },
@@ -1392,7 +1417,7 @@
       "published_hash": "2b5d14b1fbdf5ed9da5fdeff2f46d27c5794e371802daf55c4825526d2f87673"
     },
     {
-      "title": "Goldbach's comet",
+      "title": "Goldbach\u0027s comet",
       "slug": "goldbachs-comet",
       "state": "published",
       "published_hash": "33e7cb14656922a44c7dcc6db5212a52e8b0564634af60295dcb220aca077269"
@@ -1404,7 +1429,7 @@
       "published_hash": "9926fc1eac7333754b802a213a452604271dd6cfc16392d3dbb768a8756d93b6"
     },
     {
-      "title": "Gosper's hack",
+      "title": "Gosper\u0027s hack",
       "slug": "gospers-hack",
       "state": "published",
       "published_hash": "6ee94b6ce25ca62066db0e4d9e797e56f7042188f74527ad52e293e4786b7ead"
@@ -1454,6 +1479,16 @@
       "slug": "greedy-algorithm-for-egyptian-fractions",
       "state": "published",
       "published_hash": "11ceec1dfab941d3225ca9bd8c99942589f1dc8fdbb424abc54228434d804992"
+    },
+    {
+      "title": "Guess the number",
+      "slug": "guess-the-number",
+      "state": "solved"
+    },
+    {
+      "title": "Guess the number/With feedback",
+      "slug": "guess-the-number-with-feedback",
+      "state": "solved"
     },
     {
       "title": "HTTP",
@@ -1570,7 +1605,7 @@
       "published_hash": "ee836ab88940f8a1791eb6667a82d33400406202c009e21d0b63e997e5355dd9"
     },
     {
-      "title": "Horner's rule for polynomial evaluation",
+      "title": "Horner\u0027s rule for polynomial evaluation",
       "slug": "horners-rule-for-polynomial-evaluation",
       "state": "published",
       "published_hash": "dce83aa971cf03d5ef2004601c5fbe4fee3aaffcf8dbadba3fbded87598a2cba"
@@ -1600,7 +1635,7 @@
       "published_hash": "e88519ca92e5d28b268fd038ef6800f946c8b66522fc40c62bc4f6124bd1daee"
     },
     {
-      "title": "I'm a software engineer, get me out of here",
+      "title": "I\u0027m a software engineer, get me out of here",
       "state": "queued",
       "reason": "",
       "note": "not interactive at all: Dijkstra and Floyd-Warshall over a fixed map, reading no input. The needs-interaction rejection and the run.session reopen were both wrong about it"
@@ -1751,7 +1786,7 @@
       "published_hash": "786474c4a43a9d17d66fa25ebe0e33347366394d058dede14ee5ed60c8660dc3"
     },
     {
-      "title": "Jensen's Device",
+      "title": "Jensen\u0027s Device",
       "slug": "jensens-device",
       "state": "published",
       "published_hash": "adcdfc1c4badbcd7bc8e88bbd762acd19fdbafe3dad724065b87054e3d36f7ea"
@@ -1763,7 +1798,7 @@
       "published_hash": "3b846f8772325b28443e77083f081e30d1b95eb381e1cdca69eb7fdbe166c0a1"
     },
     {
-      "title": "Jordan-Pólya numbers",
+      "title": "Jordan-P\u00F3lya numbers",
       "slug": "jordan-polya-numbers",
       "state": "published",
       "published_hash": "546775a50d4082ad5dd94c0b682e1e4d51270f37c8619e6bae611031ae754067"
@@ -1838,7 +1873,7 @@
       "title": "Keyboard macros",
       "state": "rejected",
       "reason": "needs-interaction",
-      "note": "the environment's key bindings, not standard input"
+      "note": "the environment\u0027s key bindings, not standard input"
     },
     {
       "title": "Klarner-Rado sequence",
@@ -1853,13 +1888,13 @@
       "published_hash": "f5b532a7755d9adbf459c4671e7b811f2a2a7b518f3490e49f5b230827912ecd"
     },
     {
-      "title": "Knuth's algorithm S",
+      "title": "Knuth\u0027s algorithm S",
       "slug": "knuth-s-algorithm-s",
       "state": "published",
       "published_hash": "48a2169324343b6b3b65e255d0715ce8cc85399eae0b4398506bc469e56a1689"
     },
     {
-      "title": "Knuth's power tree",
+      "title": "Knuth\u0027s power tree",
       "slug": "knuths-power-tree",
       "state": "published",
       "published_hash": "4e1dbd66a28a61eb83055fd97386782782cbf4c511429eba6feabf6e58a1a58b"
@@ -2188,7 +2223,12 @@
       "published_hash": "525a660ed7e4032b46ee917ee81c15d211515aa814291f70782b6dbc74d440be"
     },
     {
-      "title": "Moser's circle problem",
+      "title": "Monty Hall problem",
+      "slug": "monty-hall-problem",
+      "state": "solved"
+    },
+    {
+      "title": "Moser\u0027s circle problem",
       "slug": "moser-s-circle-problem",
       "state": "published",
       "published_hash": "ea638a37f5a6901b7aa70d3501f30cf8f74f57b76700caafcfb4f7b21c32161a"
@@ -2262,10 +2302,15 @@
       "published_hash": "13fe3cdd4473ddfbf093ef4848e4728152da6956b30828bda1fac2bd7fc41780"
     },
     {
-      "title": "Möbius function",
+      "title": "M\u00F6bius function",
       "slug": "mobius-function",
       "state": "published",
       "published_hash": "a1ce0ca4c571ed8f8160543a3b3f6764ffbc138bd7456279114fcb69398080ea"
+    },
+    {
+      "title": "N\u0027th",
+      "slug": "n-th",
+      "state": "solved"
     },
     {
       "title": "N-queens problem",
@@ -2349,7 +2394,7 @@
       "state": "published"
     },
     {
-      "title": "O'Halloran numbers",
+      "title": "O\u0027Halloran numbers",
       "slug": "o-halloran-numbers",
       "state": "published",
       "published_hash": "79efbb38392490b6b7334766548d7665838b1003db19e0d825a9eea9619c5dc5"
@@ -2467,7 +2512,7 @@
       "published_hash": "c7ca81f26b2458be33b8ab24af879e7ac7f19390eb93cdd5654663072a296ccf"
     },
     {
-      "title": "Pascal's triangle",
+      "title": "Pascal\u0027s triangle",
       "slug": "pascals-triangle",
       "state": "solved"
     },
@@ -2726,7 +2771,7 @@
       "published_hash": "9666cdae81dabd82267602a9c27f7f0ce2938180638485aa0f085ede68f34d7a"
     },
     {
-      "title": "Recaman's sequence",
+      "title": "Recaman\u0027s sequence",
       "slug": "recamans-sequence",
       "state": "published",
       "published_hash": "5d63798157b477b447af8c05e49668c03a738827c751c2c15daa9dc0aab0b2f2"
@@ -2991,7 +3036,7 @@
       "state": "published"
     },
     {
-      "title": "Smith–Waterman algorithm",
+      "title": "Smith\u2013Waterman algorithm",
       "slug": "smith-waterman-algorithm",
       "state": "published",
       "published_hash": "a977b351bd90630401bbaccc60316246a646e198a3804da971731b0cacea3cd0"
@@ -3002,7 +3047,7 @@
       "state": "published"
     },
     {
-      "title": "Sorensen–Dice coefficient",
+      "title": "Sorensen\u2013Dice coefficient",
       "slug": "sorensen-dice-coefficient",
       "state": "published",
       "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched",
@@ -3037,6 +3082,11 @@
     {
       "title": "Sorting algorithms/Insertion sort",
       "slug": "sorting-algorithms-insertion-sort",
+      "state": "solved"
+    },
+    {
+      "title": "Sorting algorithms/Merge sort",
+      "slug": "sorting-algorithms-merge-sort",
       "state": "solved"
     },
     {
@@ -3275,7 +3325,7 @@
       "state": "published"
     },
     {
-      "title": "Sylvester's sequence",
+      "title": "Sylvester\u0027s sequence",
       "slug": "sylvesters-sequence",
       "state": "published",
       "published_hash": "bff0e6430f83d8fa2017b5d36fa34223aff48871c9e53a28dc7f5af7bc914f75"
@@ -3338,6 +3388,11 @@
       "reason": "needs-network"
     },
     {
+      "title": "The Twelve Days of Christmas",
+      "slug": "the-twelve-days-of-christmas",
+      "state": "solved"
+    },
+    {
       "title": "The sieve of Sundaram",
       "slug": "the-sieve-of-sundaram",
       "state": "published"
@@ -3384,7 +3439,7 @@
       "published_hash": "b8bbd0dd5b377bca6084a942a084f2f6a92171b08c04325633fb708fc701d18e"
     },
     {
-      "title": "Trabb Pardo–Knuth algorithm",
+      "title": "Trabb Pardo\u2013Knuth algorithm",
       "slug": "trabb-pardo-knuth-algorithm",
       "state": "published",
       "published_hash": "6b749f61a5990bebc51e57eecb637b0c684a2e9403176b08a5ebf7ac5d872996"
@@ -3456,7 +3511,7 @@
       "published_hash": "21a088bb92110656576e8bb36a9f539d24ed2028ac9fcead3c4bee598b5dec0c"
     },
     {
-      "title": "Two's complement",
+      "title": "Two\u0027s complement",
       "slug": "two-s-complement",
       "state": "published",
       "published_hash": "780ca1bb6cb3322324829426a76003f870872d2fb41aabbdd3ab5158f2850689"
@@ -3580,7 +3635,7 @@
       "published_hash": "ca4f078ebdd3d716bd16c57f4c70892bc6d78b25ceac37b2e717b7a7746998b2"
     },
     {
-      "title": "Vigenère cipher",
+      "title": "Vigen\u00E8re cipher",
       "slug": "vigenere-cipher",
       "state": "published",
       "published_hash": "a2b190d924cdeb82d23d83ed74b008a669cf50a467d61754e6d68c97b5d090e6"
@@ -3653,13 +3708,13 @@
       "published_hash": "a05f057ed0575b267f53ec0a5d1eac9c5b9e3a3061d2aecf1c3ef6495ec8be40"
     },
     {
-      "title": "Words containing \"the\" substring",
+      "title": "Words containing \u0022the\u0022 substring",
       "slug": "words-containing-the-substring",
       "state": "published",
       "published_hash": "c459659cf7103b3c09d2cebfa8b41f0ee1a896cba31d6599f0c7e247e1420ae4"
     },
     {
-      "title": "Xiaolin Wu's line algorithm",
+      "title": "Xiaolin Wu\u0027s line algorithm",
       "slug": "xiaolin-wus-line-algorithm",
       "state": "published",
       "published_hash": "5596d11ab5119e0678ec1a0e1399bbf55fedb2e03c832cd1e6d4fc207b868040",
