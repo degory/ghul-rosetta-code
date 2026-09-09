@@ -268,12 +268,20 @@
     {
       "title": "Bitmap/Bresenham\u0027s line algorithm",
       "slug": "bitmap-bresenhams-line-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "65fa6a934d9afc9ec82fbf971b386e855901ee223d3ddda98318425cbef092bd",
+      "image_hashes": {
+        "Ghul-bitmap-bresenhams-line-algorithm-bresenham.png": "51c28f2ffbc47751ed3e39c7d83394f8d26c4acc"
+      }
     },
     {
       "title": "Bitmap/Midpoint circle algorithm",
       "slug": "bitmap-midpoint-circle-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "39a75fb8863d89285adacbb04fa822fdad09e132901ce066e64c43ea7f2d3843",
+      "image_hashes": {
+        "Ghul-bitmap-midpoint-circle-algorithm-circles.png": "99f03730268150475639c03f8def763f2af4e8da"
+      }
     },
     {
       "title": "Blum integer",
@@ -572,7 +580,11 @@
     {
       "title": "Dragon curve",
       "slug": "dragon-curve",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1ba6f8433586fd2ec13cbfd67b796b59c76b64e0637071aa2e8aab723addb459",
+      "image_hashes": {
+        "Ghul-dragon-curve-dragon.png": "86fed155019e0a6dbb22b4839c4946e5e28ef3fe"
+      }
     },
     {
       "title": "Draw a rotating cube",
@@ -832,7 +844,11 @@
     {
       "title": "Fractal tree",
       "slug": "fractal-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "772091289b46a87b10319cf38a129feb41ee5bfe68cf1f26b02543ba17163354",
+      "image_hashes": {
+        "Ghul-fractal-tree-tree.png": "f8a1bd6acb63f7fd54f5c2f96bdcd15a81129693"
+      }
     },
     {
       "title": "French Republican calendar",
@@ -995,7 +1011,11 @@
     {
       "title": "Hilbert curve",
       "slug": "hilbert-curve",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "69add9bb3b5a5230014759843be24f156ff908bf6c1cf0fd4360b72ad0c4d3c9",
+      "image_hashes": {
+        "Ghul-hilbert-curve-hilbert.png": "f40c1b91a56f3ab57e18cee62f948a326f7c7309"
+      }
     },
     {
       "title": "Hofstadter Figure-Figure sequences",
@@ -1185,7 +1205,11 @@
     {
       "title": "Julia set",
       "slug": "julia-set",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "86e316b6796807df4765993f133e4d557c499d79a4ce56c84dc41dc76f545ad0",
+      "image_hashes": {
+        "Ghul-julia-set-julia.png": "2bdc38d0b770fce9d985a93db0c85d8583064aa9"
+      }
     },
     {
       "title": "Kaprekar numbers",
@@ -1338,7 +1362,11 @@
     {
       "title": "Mandelbrot set",
       "slug": "mandelbrot-set",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "37a346810350097308f980bacec48922cdf00cd5bd4391db814050e1ed69e7ae",
+      "image_hashes": {
+        "Ghul-mandelbrot-set-mandelbrot.png": "6fecffefe08ec681ac3c04902eb0c3247f8bcd0c"
+      }
     },
     {
       "title": "Map range",
@@ -1713,7 +1741,11 @@
     {
       "title": "Pythagoras tree",
       "slug": "pythagoras-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5bc7aefeb5cf1ba6f82bc943c33b46a1b290c95e8a6e5e763217e47c911261c0",
+      "image_hashes": {
+        "Ghul-pythagoras-tree-pythagoras.png": "c3597aa1b5406c50cb82c22335efe21e14c5cdf1"
+      }
     },
     {
       "title": "Quaternion",
@@ -1892,7 +1924,11 @@
     {
       "title": "Sierpinski arrowhead curve",
       "slug": "sierpinski-arrowhead-curve",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "15db67b0ee6f2168e82ea58f99f059a86496b31431e4425a841c287fe00379ac",
+      "image_hashes": {
+        "Ghul-sierpinski-arrowhead-curve-arrowhead.png": "408f3f5a7b43deee3d78535a8985471835513850"
+      }
     },
     {
       "title": "Sierpinski triangle",
@@ -2319,7 +2355,11 @@
     {
       "title": "Xiaolin Wu\u0027s line algorithm",
       "slug": "xiaolin-wus-line-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5596d11ab5119e0678ec1a0e1399bbf55fedb2e03c832cd1e6d4fc207b868040",
+      "image_hashes": {
+        "Ghul-xiaolin-wus-line-algorithm-wu.png": "a1751f31b89035c73efa870fe586dd87454de6c2"
+      }
     },
     {
       "title": "Y combinator",
