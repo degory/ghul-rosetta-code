@@ -178,8 +178,12 @@
     {
       "title": "Archimedean spiral",
       "slug": "archimedean-spiral",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-gui: renders to a PNG written by the repository\u0027s own encoder, so it needs no drawing library"
+      "state": "published",
+      "note": "reopened, was rejected/needs-gui: renders to a PNG written by the repository\u0027s own encoder, so it needs no drawing library",
+      "published_hash": "ac1354c3787c6a5199341816bdb6c1a8d8a2973fa5f18a6593041ee29eb15799",
+      "image_hashes": {
+        "Ghul-archimedean-spiral-spiral.png": "9dd040c2ec18ec65042d6383d052124695aadba5"
+      }
     },
     {
       "title": "Arithmetic derivative",
