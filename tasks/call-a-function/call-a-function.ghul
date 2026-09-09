@@ -1,0 +1,32 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+greeting() -> string => "no arguments"
+
+add(left: int, right: int) -> int => left + right
+
+announce(what: string) is
+    write_line("statement context: {what}")
+si
+
+write_line(greeting())
+write_line("fixed arguments: {add(2, 3)}")
+
+announce("the return value is discarded")
+
+let operation = add
+
+write_line("first class: {operation(4, 5)}")
+write_line("threaded first argument: {6 |> add(7)}")
+
+let add_ten = (value: int) => add(10, value)
+
+write_line("partial application: {add_ten(1)}")
+
+let parsed mut = 0
+
+if int.try_parse("42", parsed ref) then
+    write_line("written through a ref argument: {parsed}")
+fi
+
+write_line("there are no optional, named or variadic arguments")

@@ -1,0 +1,8 @@
+no arguments
+fixed arguments: 5
+statement context: the return value is discarded
+first class: 9
+threaded first argument: 13
+partial application: 11
+written through a ref argument: 42
+there are no optional, named or variadic arguments

@@ -1,0 +1,4 @@
+the literals are true and false
+printing them gives True and False
+a condition takes a bool and nothing else
+an optional bool needs a fallback to be a condition
