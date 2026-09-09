@@ -1,0 +1,25 @@
+use IO.Std.write_line
+use Collections.List
+use Ghul.Pipes
+
+bead_sort(values: List[int]) -> List[int] is
+    let tallest = values |> reduce(0, (most, value) =>
+        if value > most then value else most fi)
+
+    let beads =
+        (0..tallest)
+        |> map(level => values |> filter(value => value > level) |> count())
+        |> collect_list()
+
+    return
+        (0..values.count)
+        |> map(row => beads |> filter(count => count > row) |> count())
+        |> reverse()
+        |> collect_list()
+si
+
+for values in [[5, 3, 1, 7, 4, 1, 1, 20], [2, 1], [8]] do
+    write_line(
+        "{values |> join(" ")} -> {bead_sort(values) |> join(" ")}"
+    )
+od
