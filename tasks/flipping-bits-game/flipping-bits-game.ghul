@@ -27,7 +27,11 @@ same(left: LIST[int], right: LIST[int]) -> bool =>
 
 show(caption: string, board: LIST[int]) is
     write_line(caption)
-    write_line("   {(0..size) |> map(c => "{cast char(cast int('a') + c)}") |> join(" ")}")
+
+    let letters =
+        (0..size) |> map(c => "{cast char(cast int('a') + c)}")
+
+    write_line("   {letters |> join(" ")}")
 
     for row in 0..size do
         let cells =

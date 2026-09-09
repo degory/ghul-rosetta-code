@@ -8,7 +8,8 @@ choose(n: int, k: int) -> int =>
     if k > n then
         0
     else
-        (1..k + 1) |> reduce(1, (total, step) => total * (n - k + step) / step)
+        (1..k + 1)
+        |> reduce(1, (total, step) => total * (n - k + step) / step)
     fi
 
 binomials(n: int) -> int => choose(n, 4) + choose(n, 2) + 1

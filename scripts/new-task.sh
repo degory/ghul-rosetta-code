@@ -31,6 +31,10 @@ fi
 # subtask like Hello world/Text, is left as it stands.
 URL_TITLE=${TITLE// /_}
 
+# A title can contain a quotation mark, which task.json holds as JSON.
+JSON_TITLE=${TITLE//\"/\\\"}
+JSON_URL_TITLE=${URL_TITLE//\"/\\\"}
+
 mkdir -p "$TASK"
 
 PROJECT='  <PropertyGroup>
@@ -59,8 +63,8 @@ EOJ
 
 cat >"$TASK/task.json" <<EOJ
 {
-    "task": "$TITLE",
-    "url": "https://rosettacode.org/wiki/$URL_TITLE",
+    "task": "$JSON_TITLE",
+    "url": "https://rosettacode.org/wiki/$JSON_URL_TITLE",
     "status": "queued"
 }
 EOJ
