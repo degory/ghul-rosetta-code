@@ -14,22 +14,26 @@
     },
     {
       "title": "15 puzzle game",
-      "state": "queued",
+      "slug": "15-puzzle-game",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "2048",
-      "state": "queued",
+      "slug": "2048",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "21 game",
-      "state": "queued",
+      "slug": "21-game",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "24 game",
-      "state": "queued",
+      "slug": "24-game",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
@@ -865,7 +869,8 @@
     },
     {
       "title": "Go Fish",
-      "state": "queued",
+      "slug": "go-fish",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
@@ -1006,13 +1011,15 @@
     },
     {
       "title": "Hunt the Wumpus",
-      "state": "queued",
+      "slug": "hunt-the-wumpus",
+      "state": "solved",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
     },
     {
       "title": "I\u0027m a software engineer, get me out of here",
       "state": "queued",
-      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
+      "reason": "",
+      "note": "not interactive at all: Dijkstra and Floyd-Warshall over a fixed map, reading no input. The needs-interaction rejection and the run.session reopen were both wrong about it"
     },
     {
       "title": "ISBN13 check digit",

@@ -1,0 +1,37 @@
+w a s d move the tiles, q gives up
+
+    .    .    2    .
+    .    .    .    .
+    .    .    .    .
+    .    .    .    2
+
+move: a
+    2    .    .    .
+    2    .    .    .
+    .    .    .    .
+    2    .    .    .
+
+move: a
+that move changes nothing
+move: s
+    .    .    .    .
+    .    .    2    .
+    2    .    .    .
+    4    .    .    .
+
+move: d
+    .    .    .    .
+    .    .    .    2
+    .    2    .    2
+    .    .    .    4
+
+move: w
+    .    2    .    4
+    .    .    .    4
+    .    .    .    .
+    4    .    .    .
+
+move: x
+move with w a s d, or q to give up
+move: q
+giving up

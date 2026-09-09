@@ -1,0 +1,91 @@
+use IO.Std
+use Collections.LIST
+use Ghul.Pipes
+
+let side = 4
+let squares = side * side
+
+let random = System.Random(20260908)
+
+let board =
+    (1::squares) |> map(tile => tile % squares) |> collect_list()
+
+blank() -> int => board.index_of(0)
+
+neighbours(square: int) -> LIST[int] =>
+    (let found = LIST[int]()
+     let row = square / side
+     let column = square % side
+
+     if row > 0 then found.add(square - side) fi
+     if row < side - 1 then found.add(square + side) fi
+     if column > 0 then found.add(square - 1) fi
+     if column < side - 1 then found.add(square + 1) fi
+
+     found)
+
+slide(square: int) is
+    let empty = blank()
+
+    board[empty] = board[square]
+    board[square] = 0
+si
+
+show() is
+    for row in 0..side do
+        let line =
+            board[row * side .. row * side + side]
+                |> map(tile =>
+                    if tile == 0 then "  ." else "{tile,3}" fi)
+                |> join("")
+
+        Std.write_line(line)
+    od
+
+    Std.write_line()
+si
+
+solved() -> bool =>
+    (0..squares)
+        |> all(square => board[square] == (square + 1) % squares)
+
+// Shuffling by playing legal moves leaves the puzzle solvable,
+// which half of all tile arrangements are not.
+for _ in 0..12 do
+    let choices = neighbours(blank())
+
+    slide(choices[random.next(choices.count)])
+od
+
+Std.write_line("slide a tile next to the space by typing its number")
+Std.write_line("q gives up")
+Std.write_line()
+
+show()
+
+while !solved() do
+    Std.write("tile: ")
+
+    let typed = Std.read_line()
+
+    if !typed? \/ typed.trim().to_lower() =~ "q" then
+        Std.write_line("giving up")
+        break
+    fi
+
+    let wanted = board.index_of(int.parse(typed.trim()))
+
+    if wanted < 0 then
+        Std.write_line("there is no such tile")
+    elif !neighbours(blank()).contains(wanted) then
+        Std.write_line("that tile is not next to the space")
+    else
+        slide(wanted)
+
+        show()
+    fi
+od
+
+if solved() then
+    Std.write_line("solved")
+fi

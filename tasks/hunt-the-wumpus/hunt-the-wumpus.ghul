@@ -1,0 +1,133 @@
+use IO.Std
+use Collections.LIST
+use Ghul.Pipes
+
+// The rooms of a dodecahedron: twenty of them, each
+// joined to three others.
+let caves = [
+    [2, 5, 8],    [1, 3, 10],   [2, 4, 12],   [3, 5, 14],
+    [1, 4, 6],    [5, 7, 15],   [6, 8, 17],   [1, 7, 9],
+    [8, 10, 18],  [2, 9, 11],   [10, 12, 19], [3, 11, 13],
+    [12, 14, 20], [4, 13, 15],  [6, 14, 16],  [15, 17, 20],
+    [7, 16, 18],  [9, 17, 19],  [11, 18, 20], [13, 16, 19]
+]
+
+let random = System.Random(20260908)
+
+let taken = LIST[int]()
+
+fresh_room() -> int =>
+    (let chosen mut = random.next(caves.count) + 1
+
+     while taken.contains(chosen) do
+         chosen = random.next(caves.count) + 1
+     od
+
+     taken.add(chosen)
+
+     chosen)
+
+let wumpus mut = fresh_room()
+let bats = [fresh_room(), fresh_room()] |> collect_list()
+let pits = [fresh_room(), fresh_room()] |> collect_list()
+
+let player mut = fresh_room()
+
+let arrows mut = 5
+
+tunnels(room: int) -> LIST[int] => caves[room - 1] |> collect_list()
+
+deadly(room: int) -> bool =>
+    room == wumpus \/ bats.contains(room) \/ pits.contains(room)
+
+sense() is
+    for near in tunnels(player) do
+        if near == wumpus then
+            Std.write_line("you smell something terrible nearby")
+        elif bats.contains(near) then
+            Std.write_line("you hear a rustling")
+        elif pits.contains(near) then
+            Std.write_line("you feel a cold wind from a nearby cavern")
+        fi
+    od
+si
+
+// Waking, the wumpus wanders into one of the rooms next to its own.
+disturb_wumpus() is
+    if random.next(4) < 3 then
+        let ways = tunnels(wumpus)
+
+        wumpus = ways[random.next(ways.count)]
+    fi
+si
+
+let outcome mut = ""
+
+enter(room: int) is
+    player = room
+
+    if player == wumpus then
+        outcome = "the wumpus eats you"
+    elif pits.contains(player) then
+        outcome = "you fall into a bottomless pit"
+    elif bats.contains(player) then
+        Std.write_line("a giant bat carries you off")
+
+        let empty =
+            (1::caves.count)
+                |> filter(room => !deadly(room))
+                |> collect_list()
+
+        enter(empty[random.next(empty.count)])
+    fi
+si
+
+Std.write_line("hunt the wumpus: m to move, s to shoot, then a room")
+
+while outcome.length == 0 do
+    Std.write_line()
+    Std.write_line("you are in room {player}")
+
+    sense()
+
+    Std.write_line("tunnels lead to {tunnels(player) |> join(", ")}")
+    Std.write("your move: ")
+
+    let typed = Std.read_line()
+
+    if !typed? then
+        break
+    fi
+
+    let words = typed.trim().to_lower().split([' '])
+
+    if words.count != 2 \/ !"ms".contains(words[0]) then
+        Std.write_line(
+            "say m or s and a room, as in m {tunnels(player)[0]}"
+        )
+    elif !tunnels(player).contains(int.parse(words[1])) then
+        Std.write_line("no tunnel leads there")
+    elif words[0] =~ "m" then
+        enter(int.parse(words[1]))
+    else
+        arrows = arrows - 1
+
+        if int.parse(words[1]) == wumpus then
+            outcome = "your arrow finds the wumpus, you win"
+        else
+            Std.write_line("your arrow clatters away into the dark")
+
+            disturb_wumpus()
+
+            if wumpus == player then
+                outcome = "the wumpus blunders into you and eats you"
+            elif arrows == 0 then
+                outcome =
+                    "you loose your last arrow, and are defenceless"
+            fi
+        fi
+    fi
+od
+
+Std.write_line()
+Std.write_line(outcome)

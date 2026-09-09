@@ -1,0 +1,149 @@
+use IO.Std
+use Collections.LIST
+use Ghul.Pipes
+
+let side = 4
+let squares = side * side
+let win = 2048
+
+let directions = "wasd"
+
+let random = System.Random(20260908)
+
+let board = (0..squares) |> map(_ => 0) |> collect_list()
+
+// The board indices of each row or column, ordered along the
+// direction of travel, so one collapse serves all four moves.
+lines_for(direction: char) -> LIST[LIST[int]] =>
+    (let lines = LIST[LIST[int]]()
+
+     for major in 0..side do
+         let line = LIST[int]()
+
+         for minor in 0..side do
+             line.add(
+                 if direction == 'a' \/ direction == 'd' then
+                     major * side + minor
+                 else
+                     minor * side + major
+                 fi
+             )
+         od
+
+         if direction == 'd' \/ direction == 's' then
+             line.reverse()
+         fi
+
+         lines.add(line)
+     od
+
+     lines)
+
+// A tile made by a merge takes no further part in the same
+// move, so the scan steps over both tiles it consumed.
+collapse(values: LIST[int]) -> LIST[int] =>
+    (let packed = values |> filter(value => value != 0) |> collect_list()
+     let result = LIST[int]()
+     let at mut = 0
+
+     while at < packed.count do
+         if
+             at + 1 < packed.count /\
+             packed[at] == packed[at + 1]
+         then
+             result.add(packed[at] * 2)
+             at = at + 2
+         else
+             result.add(packed[at])
+             at = at + 1
+         fi
+     od
+
+     while result.count < side do
+         result.add(0)
+     od
+
+     result)
+
+slide(target: LIST[int], direction: char) -> bool =>
+    (let before = target |> collect_list()
+
+     for line in lines_for(direction) do
+         let moved =
+             collapse(line |> map(at => target[at]) |> collect_list())
+
+         for at in 0..side do
+             target[line[at]] = moved[at]
+         od
+     od
+
+     (0..squares) |> any(at => target[at] != before[at]))
+
+spawn() is
+    let empty =
+        (0..squares) |> filter(at => board[at] == 0) |> collect_list()
+
+    if empty.count > 0 then
+        board[empty[random.next(empty.count)]] =
+            if random.next(10) == 0 then 4 else 2 fi
+    fi
+si
+
+stuck() -> bool =>
+    !(directions
+        |> any(direction =>
+            slide(board |> collect_list(), direction)))
+
+show() is
+    for row in 0..side do
+        Std.write_line(
+            board[row * side .. row * side + side]
+                |> map(tile =>
+                    if tile == 0 then "    ." else "{tile,5}" fi)
+                |> join("")
+        )
+    od
+
+    Std.write_line()
+si
+
+spawn()
+spawn()
+
+Std.write_line("w a s d move the tiles, q gives up")
+Std.write_line()
+
+show()
+
+while true do
+    if board |> any(tile => tile >= win) then
+        Std.write_line("{win} reached, you win")
+        break
+    fi
+
+    if stuck() then
+        Std.write_line("no move changes anything, you lose")
+        break
+    fi
+
+    Std.write("move: ")
+
+    let typed = Std.read_line()
+
+    if !typed? \/ typed.trim().to_lower() =~ "q" then
+        Std.write_line("giving up")
+        break
+    fi
+
+    let entered = typed.trim().to_lower()
+
+    if entered.length != 1 \/ !directions.contains(entered) then
+        Std.write_line("move with w a s d, or q to give up")
+    elif !slide(board, entered[0]) then
+        Std.write_line("that move changes nothing")
+    else
+        spawn()
+
+        show()
+    fi
+od
