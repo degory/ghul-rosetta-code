@@ -1,0 +1,8 @@
+input: -7 3
+sum: -4
+difference: -10
+product: -21
+quotient: -2, truncated towards zero
+remainder: -1, signed like the first operand
+exponentiation: -343, from the library
+divmod: -2 remainder -1
