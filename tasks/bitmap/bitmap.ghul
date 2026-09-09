@@ -1,0 +1,53 @@
+use Collections.LIST
+use Ghul.Pipes
+use IO.Std.write_line
+
+use COLOUR = (red: ubyte, green: ubyte, blue: ubyte)
+
+class BITMAP is
+    width: int
+    height: int
+
+    _pixels: LIST[ubyte]
+
+    init(width: int, height: int) is
+        self.width = width
+        self.height = height
+
+        _pixels =
+            (0..width * height * 3) |> map(_ => 0ub) |> collect_list()
+    si
+
+    fill(colour: COLOUR) is
+        for at in 0..width * height do
+            _write(at, colour)
+        od
+    si
+
+    set_pixel(x: int, y: int, colour: COLOUR) is
+        _write(y * width + x, colour)
+    si
+
+    pixel(x: int, y: int) -> COLOUR =>
+        (let at = (y * width + x) * 3
+
+         (red = _pixels[at],
+          green = _pixels[at + 1],
+          blue = _pixels[at + 2]))
+
+    _write(at: int, colour: COLOUR) is
+        _pixels[at * 3] = colour.red
+        _pixels[at * 3 + 1] = colour.green
+        _pixels[at * 3 + 2] = colour.blue
+    si
+si
+
+let image = BITMAP(4, 3)
+
+image.fill((red = 20ub, green = 40ub, blue = 60ub))
+
+image.set_pixel(1, 1, (red = 255ub, green = 0ub, blue = 0ub))
+
+write_line("{image.width} by {image.height}")
+write_line("filled: {image.pixel(0, 0)}")
+write_line("set:    {image.pixel(1, 1)}")
