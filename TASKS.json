@@ -44,7 +44,8 @@
     {
       "title": "A\u002BB",
       "slug": "a-b",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d354f6e15b4b64bff769461369ba205c5a1e01cb3b302728f73ddd7aa704fae0"
     },
     {
       "title": "ABC problem",
@@ -221,7 +222,8 @@
     {
       "title": "Argument destructuring",
       "slug": "argument-destructuring",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1dedd29163c8984cc34050b3540d65311a8235485187fb87b95a5dd6aa523981"
     },
     {
       "title": "Arithmetic derivative",
@@ -238,22 +240,26 @@
     {
       "title": "Arithmetic/Integer",
       "slug": "arithmetic-integer",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "34a93bff7f22b3f211f9d82a3870d83a2b22580c5d948b9676a5a0cc4451d343"
     },
     {
       "title": "Array concatenation",
       "slug": "array-concatenation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b4c26b94e28469c7e8d5c8d9679cc26827072b8844fec882fa2b3e3dc92d9ba3"
     },
     {
       "title": "Array length",
       "slug": "array-length",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2983b53ccae89bf6f80ccc9fb772f4ca1cc8054812f069c18a87337ccbab3540"
     },
     {
       "title": "Arrays",
       "slug": "arrays",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1baa8dabded2239a4fba75acbf8e2b200152f322a67a8666e7a88f5e6573371d"
     },
     {
       "title": "Assertions",
@@ -429,7 +435,8 @@
     {
       "title": "Boolean values",
       "slug": "boolean-values",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ef5df52a1245e344ae60bddd2b63971adf1e32d2b0fb4cd675023fce09585d94"
     },
     {
       "title": "Boustrophedon transform",
@@ -497,7 +504,8 @@
     {
       "title": "Call a function",
       "slug": "call-a-function",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3a304a9606f14584b7d7e38c6f35520621fe92adaa31724681b7fb33af250085"
     },
     {
       "title": "Camel case and snake case",
@@ -526,7 +534,8 @@
     {
       "title": "Character codes",
       "slug": "character-codes",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "90455c6d34153e6c65758152e5bf0b5478ae68eadb7eaaac21d3accaa6624473"
     },
     {
       "title": "Chat server",
@@ -542,7 +551,8 @@
     {
       "title": "Check that file exists",
       "slug": "check-that-file-exists",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7b35e27515cc1c14b048afc8b73272bf24f1cab3cde9902a07d1a53093fbbc11"
     },
     {
       "title": "Checkpoint synchronization",
@@ -630,7 +640,8 @@
     {
       "title": "Compare length of two strings",
       "slug": "compare-length-of-two-strings",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "81702dc2841b98036fa1013fe7e8e6c3507b3d56fcd940b714a9fbaceb8e51eb"
     },
     {
       "title": "Compare sorting algorithms\u0027 performance",
@@ -652,12 +663,14 @@
     {
       "title": "Conditional structures",
       "slug": "conditional-structures",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6b8cd43ea71398c590a148059bdeb6f44717a6c6bf721533c3939bced6adceff"
     },
     {
       "title": "Conjugate a Latin verb",
       "slug": "conjugate-a-latin-verb",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c2ba3d4b5f5a568e1c029fbdd37899f72085394177be289b627181656b7e0e68"
     },
     {
       "title": "Consecutive primes with ascending or descending differences",
@@ -674,7 +687,8 @@
     {
       "title": "Copy a string",
       "slug": "copy-a-string",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2bcdea8057df2a108a0a4608dab3c9cf8aa457858dd212e1d34568b713c1152b"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -758,12 +772,14 @@
     {
       "title": "Detect division by zero",
       "slug": "detect-division-by-zero",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7a5c6fb4dc0a117d6d82e551a8b285312462ea96353418d6508e496d654a8a78"
     },
     {
       "title": "Determine if a string is numeric",
       "slug": "determine-if-a-string-is-numeric",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "268082b7df250f8c210f64a392db2cda838d1d3d30ee0fdfb380ab5b0e097723"
     },
     {
       "title": "Determine sentence type",
@@ -870,12 +886,14 @@
     {
       "title": "Empty program",
       "slug": "empty-program",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "78a1e4936f13fd066d3fc92d226667e8f43c4972f9186fe06d0d2f25611432b5"
     },
     {
       "title": "Empty string",
       "slug": "empty-string",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "182b4591bc9c3273ea454124118f385e110a602dca481b8d4de3644cf45921cd"
     },
     {
       "title": "Engel expansion",
@@ -892,7 +910,8 @@
     {
       "title": "Environment variables",
       "slug": "environment-variables",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5e3b32a7d29e043030f0f1f249d090f6e88f82a9297d06beab7a08300cec365e"
     },
     {
       "title": "Equal prime and composite sums",
@@ -949,7 +968,8 @@
     {
       "title": "Even or odd",
       "slug": "even-or-odd",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4bbf2612d51921dc0b4b75d026f3de755188bb7140aeca2e77604a8d9d5bb133"
     },
     {
       "title": "Events",
@@ -1061,7 +1081,8 @@
     {
       "title": "File input/output",
       "slug": "file-input-output",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "02196036b9d5aba1ad71abead92fbce9a9d59f4d74e434adafbb141baca9756d"
     },
     {
       "title": "File size distribution",
@@ -1076,7 +1097,8 @@
     {
       "title": "Find square difference",
       "slug": "find-square-difference",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a43bbe0ad65260ea79afa862f48d5e1ff71beddfa5a257803978d51a35b6dcf2"
     },
     {
       "title": "First-class functions",
@@ -1116,7 +1138,8 @@
     {
       "title": "Formatted numeric output",
       "slug": "formatted-numeric-output",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e5aad91032077382dea177c3ac57ef5d03223a4b9e3b7963e40ae120e374f316"
     },
     {
       "title": "Fortunate numbers",
@@ -1160,7 +1183,8 @@
     {
       "title": "Function definition",
       "slug": "function-definition",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "cd4df9fb9acba44a113a3e43a4564f9f472d35034dba15b3870a091dfaa65719"
     },
     {
       "title": "Functional coverage tree",
@@ -1265,7 +1289,8 @@
     {
       "title": "Greatest element of a list",
       "slug": "greatest-element-of-a-list",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b42d16f203364cc8afbd5eed54c7dccd53ea30346019f587521a3d9a0d408ba6"
     },
     {
       "title": "Greatest prime dividing the n-th cubefree number",
@@ -1444,7 +1469,8 @@
     {
       "title": "Increment a numerical string",
       "slug": "increment-a-numerical-string",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e28e7067654da9e0c7bf8f0ef0f9c0e53a1c89fcc221f4a232651426693bae68"
     },
     {
       "title": "Index finite lists of positive integers",
@@ -1455,12 +1481,14 @@
     {
       "title": "Input loop",
       "slug": "input-loop",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bad1b77e8ac515d8864321b0bb5b7c97823f1de6276f6b1985b1466c2c53d9e4"
     },
     {
       "title": "Integer comparison",
       "slug": "integer-comparison",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3b877387ee49323f0bbff3d9f1c44ff3e9615cab44f2b21228bfdce6f606922c"
     },
     {
       "title": "Intersecting number wheels",
@@ -1489,7 +1517,8 @@
     {
       "title": "Iterators",
       "slug": "iterators",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4aff0a2a401d8eae8391f2e126e18dd84f99e1bcbf8506c435a53f2ee87080b0"
     },
     {
       "title": "JSON pointer",
@@ -1575,7 +1604,8 @@
     {
       "title": "Jump anywhere",
       "slug": "jump-anywhere",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "90aa31ec86b622e723d2192b187b9f3909c12034961a111d28c64e2b023b9bab"
     },
     {
       "title": "Kaprekar numbers",
@@ -1710,12 +1740,14 @@
     {
       "title": "Literals/Integer",
       "slug": "literals-integer",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b9a49c99bb873ed3e7621a55c14a368072ca92fb403c2f646c2c81d5f01ffea2"
     },
     {
       "title": "Logical operations",
       "slug": "logical-operations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "98d4a6c468aa1a3d1f4989ea1607ceed9db01b27bce60931b7db098cc6de0d4a"
     },
     {
       "title": "Long primes",
@@ -1743,32 +1775,38 @@
     {
       "title": "Loops/Break",
       "slug": "loops-break",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b50f57146a5e84ca98e0dffdcbd0e490d43004d7e1cd0b6fa0fa60d7e3e97035"
     },
     {
       "title": "Loops/Do-while",
       "slug": "loops-do-while",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "cebb914f7ee7e143475bd59b3fa7827a14dac53403ec6e3336084fc8fbd6cc73"
     },
     {
       "title": "Loops/Downward for",
       "slug": "loops-downward-for",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6fea9968dbdbce6dbf3144b2001b0f2750b7d6f581b545c91d82c59fb1a27532"
     },
     {
       "title": "Loops/For",
       "slug": "loops-for",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0fd003f5d1af84d45e4045daa25a3758ee026527eae8929d5518365b674e443e"
     },
     {
       "title": "Loops/For with a specified step",
       "slug": "loops-for-with-a-specified-step",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "cfdcc4bc75f25b1836307c7ca7f433196f173a3c7dae02fbfea7a629cbf09b5b"
     },
     {
       "title": "Loops/Increment loop index within loop body",
       "slug": "loops-increment-loop-index-within-loop-body",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4ae9d163ab24354ea444af96fbfd37d06ac620a9cf94e3d8704ba0f1ef946c2d"
     },
     {
       "title": "Loops/Infinite",
@@ -1778,17 +1816,20 @@
     {
       "title": "Loops/N plus one half",
       "slug": "loops-n-plus-one-half",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "df130eba714a425efeee1190329aef7418d833f8ededc5f9ea6698ed1d90bb04"
     },
     {
       "title": "Loops/While",
       "slug": "loops-while",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a13fed8ecd13e7a8d36991463c24c4bcd9fda241dd83db72a3b812dedc20862a"
     },
     {
       "title": "Loops/With multiple ranges",
       "slug": "loops-with-multiple-ranges",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "07c9bd953d385502b71a5a0b64bb13dbfcb3b02ec41fc75675b1ce2339a5d8c8"
     },
     {
       "title": "Lucky and even lucky numbers",
@@ -1913,7 +1954,8 @@
     {
       "title": "Multiplication tables",
       "slug": "multiplication-tables",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1f294ce5221007f494892ca2019676641519d68b3b480c27246d54648af6b2fa"
     },
     {
       "title": "Multisplit",
@@ -2020,7 +2062,8 @@
     {
       "title": "Nth root",
       "slug": "nth-root",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "78b91b4be155c9b6e4bb332dfe89d36548202f005a0a0b9482d877f7591e7090"
     },
     {
       "title": "Null object",
@@ -2282,7 +2325,8 @@
     {
       "title": "Program termination",
       "slug": "program-termination",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "23b1fe4d0e9b1a74399c245a6ef52faf499e599a54a193ae048ee539b5cb8c2c"
     },
     {
       "title": "Pseudo-random numbers/Middle-square method",
@@ -2341,7 +2385,8 @@
     {
       "title": "RPG attributes generator",
       "slug": "rpg-attributes-generator",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "29c4be3edf66e3370b3b262feae03bbbbb5edcc3f21c36ed216d620627914c99"
     },
     {
       "title": "Radical of an integer",
@@ -2386,12 +2431,14 @@
     {
       "title": "Read a file line by line",
       "slug": "read-a-file-line-by-line",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "82fe7409f74aab00ae576b34add6af4861de79d7bb4ca5b4f8fb5d3482d9de09"
     },
     {
       "title": "Real constants and functions",
       "slug": "real-constants-and-functions",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9666cdae81dabd82267602a9c27f7f0ce2938180638485aa0f085ede68f34d7a"
     },
     {
       "title": "Recaman\u0027s sequence",
@@ -2478,7 +2525,8 @@
     {
       "title": "Selectively replace multiple instances of a character within a string",
       "slug": "selectively-replace-multiple-instances-of-a-character-within-a-string",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "01d5dbcc2b051f3bbd0653b6d7eb3d6b5dabb2445ce520a9a888a534ce08a3eb"
     },
     {
       "title": "Self numbers",
@@ -2516,7 +2564,8 @@
     {
       "title": "Shape-Machine",
       "slug": "shape-machine",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e4fec14a746c96cc1bbe9638b05533eb41d032e9153ce3b16dd6d561c5975c01"
     },
     {
       "title": "Shortest common supersequence",
@@ -2581,12 +2630,14 @@
     {
       "title": "Sieve of Pritchard",
       "slug": "sieve-of-pritchard",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4441e4c768915b1dd0eba11a3dc91106c00521dc2c4f30661c3bc4dd73f13c67"
     },
     {
       "title": "Sign of an integer (signum)",
       "slug": "sign-of-an-integer-signum",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5859c4e8c64c46b8b8d7b12d62d2670e4cbec9d20ed6248abd800ce9fd492aad"
     },
     {
       "title": "Simple turtle graphics",
@@ -2716,7 +2767,8 @@
     {
       "title": "Split a character string based on change of character",
       "slug": "split-a-character-string-based-on-change-of-character",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "438e7c4b4cd6b1c295a22e61ddd2d1a2fa3570b8a6f03d2f563d1f42b574a339"
     },
     {
       "title": "Start from a main routine",
@@ -2749,7 +2801,8 @@
     {
       "title": "String append",
       "slug": "string-append",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8b3e7168db503754fb1d505de5e05d5dea8b8e78e5fbef8d474a4b5508defd49"
     },
     {
       "title": "String comparison",
@@ -2760,22 +2813,26 @@
     {
       "title": "String concatenation",
       "slug": "string-concatenation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "42b482e5822e891d3e9ea4364bd5ed8c3f10c5c2325d74db852beab1a6182b47"
     },
     {
       "title": "String interpolation (included)",
       "slug": "string-interpolation-included",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "edb33b3e526407a898a5b1b719e398ac18d936a375ba3dd1b69dc21ad0bfb90a"
     },
     {
       "title": "String matching",
       "slug": "string-matching",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ded0ea196ccb8d2d9e1c433e7ed74477e4da36ed9d7d076b0049cf4c851c5d54"
     },
     {
       "title": "String prepend",
       "slug": "string-prepend",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3533216fd2fd9d083be07156ce7a2f562bc9fc49383089e42f952a6c102657b4"
     },
     {
       "title": "Strong and weak primes",
@@ -2785,7 +2842,8 @@
     {
       "title": "Substring",
       "slug": "substring",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "04200424164c61fddae03731e6f90fe0bdb3574d978c0d372fbcd565b2cf6d10"
     },
     {
       "title": "Successive prime differences",
@@ -2893,7 +2951,8 @@
     {
       "title": "Tokenize a string",
       "slug": "tokenize-a-string",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3c54618d113d4562b57832758a56df333e09940192fc2227ba2dd801163e71f9"
     },
     {
       "title": "Tokenize a string with escaping",
@@ -2928,7 +2987,8 @@
     {
       "title": "Transliterate English text using the Greek alphabet",
       "slug": "transliterate-english-text-using-the-greek-alphabet",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bc5196506ef65da81d07e27f452366217594f95986f7dee0adbe48fb8a53117f"
     },
     {
       "title": "Tree datastructures",
@@ -3042,7 +3102,8 @@
     {
       "title": "User input/Text",
       "slug": "user-input-text",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7f5fb0c4beb36262f14748027ecce3c5ec5ec70b5f1c596947776f7ec9ec5304"
     },
     {
       "title": "User:Degory/sandbox",
@@ -3081,7 +3142,8 @@
     {
       "title": "Variables",
       "slug": "variables",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "932fb1aa1b46df26c50fdfeb21629be29965df5e907cbcce753b991ed576213e"
     },
     {
       "title": "Variadic fixed-point combinator",
@@ -3233,7 +3295,8 @@
     {
       "title": "Zero to the zero power",
       "slug": "zero-to-the-zero-power",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "13468d34c526d2d3bb6622525cf97c840c52ff6c8dbe6ef06f20e143bf615970"
     },
     {
       "title": "Zig-zag matrix",
