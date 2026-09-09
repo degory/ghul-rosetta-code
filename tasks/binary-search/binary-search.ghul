@@ -7,7 +7,7 @@ search[T: Ghul.Comparable[T]](values: T[], sought: T) -> int? is
     while low <= high do
         let middle = low + (high - low) / 2
 
-        if values[middle] == sought then
+        if values[middle] =~ sought then
             return middle
         elif values[middle] < sought then
             low = middle + 1
