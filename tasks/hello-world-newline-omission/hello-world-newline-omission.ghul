@@ -1,0 +1,3 @@
+use IO.Std.write
+
+write("Goodbye, World!")

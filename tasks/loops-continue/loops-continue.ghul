@@ -1,0 +1,13 @@
+use IO.Std.write
+use IO.Std.write_line
+
+for n in 1::10 do
+    write("{n}")
+
+    if n % 5 == 0 then
+        write_line()
+        continue
+    fi
+
+    write(", ")
+od

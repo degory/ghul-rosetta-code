@@ -1,0 +1,17 @@
+use IO.Std.write_line
+
+digit_sum(value: int, base: int) -> int is
+    let remaining mut = value
+    let total mut = 0
+
+    while remaining > 0 do
+        total = total + remaining % base
+        remaining = remaining / base
+    od
+
+    total
+si
+
+for (value, base) in [(1, 10), (1234, 10), (0xFE, 16), (0xF0E, 16)] do
+    write_line("{value} in base {base}: {digit_sum(value, base)}")
+od

@@ -1,0 +1,22 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+ordinal(n: int) -> string is
+    let suffix =
+        if n % 100 >= 11 /\ n % 100 <= 13 then
+            "th"
+        else
+            case n % 10
+            when 1 then "st"
+            when 2 then "nd"
+            when 3 then "rd"
+            else "th"
+            esac
+        fi
+
+    return "{n}{suffix}"
+si
+
+for range in [0::25, 250::265, 1000::1025] do
+    write_line(range |> map(ordinal) |> join(" "))
+od

@@ -1,0 +1,19 @@
+use IO.Std.write_line
+
+// Police, sanitation and fire each take a different number from 1 to 7, the
+// police number is even, and the three sum to 12.
+
+write_line("police sanitation fire")
+
+for police in [2, 4, 6] do
+    for sanitation in 1::7 do
+        let fire = 12 - police - sanitation
+
+        if
+            fire >= 1 /\ fire <= 7 /\
+            sanitation != police /\ fire != police /\ fire != sanitation
+        then
+            write_line("{police,6} {sanitation,10} {fire,4}")
+        fi
+    od
+od

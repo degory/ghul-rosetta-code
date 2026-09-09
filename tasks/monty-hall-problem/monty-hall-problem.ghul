@@ -1,0 +1,40 @@
+use IO.Std.write_line
+
+// Seeded, so the run reproduces - the point is the two-thirds, not the
+// particular sequence of doors.
+let random = System.Random(2026)
+
+let rounds = 100000
+
+let stay_wins mut = 0
+let switch_wins mut = 0
+
+for _ in 1::rounds do
+    let car = random.next(3)
+    let chosen = random.next(3)
+
+    // Monty opens a door that is neither the player's nor the car's.
+    let opened mut = random.next(3)
+
+    while opened == chosen \/ opened == car do
+        opened = random.next(3)
+    od
+
+    // The one door left is the only other door the player could switch to.
+    let switched = 3 - chosen - opened
+
+    if chosen == car then
+        stay_wins = stay_wins + 1
+    fi
+
+    if switched == car then
+        switch_wins = switch_wins + 1
+    fi
+od
+
+percentage(wins: int) -> string =>
+    "{cast double(wins) * 100.0 / cast double(rounds),5:F2}%"
+
+write_line("over {rounds} games")
+write_line("  staying  wins {percentage(stay_wins)}")
+write_line("  switching wins {percentage(switch_wins)}")

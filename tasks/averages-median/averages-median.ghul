@@ -1,0 +1,20 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+median(values: Collections.Iterable[double]) -> double is
+    let ordered = values |> sort() |> collect()
+
+    assert ordered.count > 0 else "the median of no values is not defined"
+
+    let middle = ordered.count / 2
+
+    return
+        if ordered.count % 2 == 1 then
+            ordered[middle]
+        else
+            (ordered[middle - 1] + ordered[middle]) / 2.0
+        fi
+si
+
+write_line("{median([4.1, 5.6, 7.2, 1.7, 9.3, 4.4, 3.2])}")
+write_line("{median([4.1, 7.2, 1.7, 9.3, 4.4, 3.2])}")

@@ -1,0 +1,8 @@
+use IO.Std.write_line
+
+let subject = "   \t some padded text \t  "
+
+write_line("original: [{subject}]")
+write_line("leading:  [{subject.trim_start()}]")
+write_line("trailing: [{subject.trim_end()}]")
+write_line("both:     [{subject.trim()}]")

@@ -1,0 +1,74 @@
+use IO.Std.read_line
+use IO.Std.write
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+// Seeded, so the transcript below reproduces. The guesses come from
+// standard input, which is not echoed, so the program prints each one.
+let random = System.Random(3)
+
+let digits = LIST()
+
+while digits.count < 4 do
+    let digit = random.next(1, 10)
+
+    if !digits.contains(digit) then
+        digits.add(digit)
+    fi
+od
+
+let secret = digits |> map(d => "{d}") |> join("")
+
+is_well_formed(guess: string) -> bool =>
+    guess.length == 4 /\
+    guess |> all(c => c >= '1' /\ c <= '9') /\
+    (guess |> distinct() |> count()) == 4
+
+score(guess: string) -> (bulls: int, cows: int) is
+    let bulls mut = 0
+    let cows mut = 0
+
+    for at in 0..4 do
+        if guess[at] == secret[at] then
+            bulls = bulls + 1
+        elif secret.index_of(guess[at]) >= 0 then
+            cows = cows + 1
+        fi
+    od
+
+    return (bulls = bulls, cows = cows)
+si
+
+write_line("I have four different digits from 1 to 9.")
+
+do
+    write("Your guess: ")
+
+    let line = read_line()
+
+    if !line? then
+        write_line()
+        write_line("No more guesses. It was {secret}.")
+
+        break
+    fi
+
+    write_line(line)
+
+    if !is_well_formed(line) then
+        write_line("A guess is four different digits from 1 to 9.")
+
+        continue
+    fi
+
+    let (bulls, cows) = score(line)
+
+    if bulls == 4 then
+        write_line("You win!")
+
+        break
+    fi
+
+    write_line("{bulls} bulls, {cows} cows")
+od

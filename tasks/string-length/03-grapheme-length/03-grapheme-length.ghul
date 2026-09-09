@@ -1,0 +1,10 @@
+use IO.Std.write_line
+use System.Globalization.StringInfo
+
+let subjects = ["møøse", "𝔘𝔫𝔦𝔠𝔬𝔡𝔢", "J̲o̲s̲é̲"]
+
+for subject in subjects do
+    let graphemes = StringInfo(subject)
+
+    write_line("{subject}: {graphemes.length_in_text_elements} graphemes")
+od

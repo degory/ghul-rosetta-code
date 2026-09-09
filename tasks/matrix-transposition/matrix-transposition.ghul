@@ -1,0 +1,36 @@
+use IO.Std.write_line
+use Collections
+use Ghul.Pipes
+
+transpose(matrix: List[List[int]]) -> List[List[int]] is
+    let columns = LIST()
+
+    for column in 0..matrix[0].count do
+        let row = LIST()
+
+        for source in matrix do
+            row.add(source[column])
+        od
+
+        columns.add(row)
+    od
+
+    columns
+si
+
+show(caption: string, matrix: List[List[int]]) is
+    write_line(caption)
+
+    for row in matrix do
+        write_line("  {row |> join(" ")}")
+    od
+si
+
+let matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12]
+]
+
+show("original", matrix)
+show("transposed", transpose(matrix))

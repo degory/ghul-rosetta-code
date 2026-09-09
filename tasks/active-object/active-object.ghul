@@ -51,7 +51,7 @@ si
 let integrator = INTEGRATOR()
 
 wait(seconds: double) -> COROUTINE is
-    for _ in 1::cast(seconds / step) do
+    for _ in 1::cast int(seconds / step) do
         await pause()
     od
 si

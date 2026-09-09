@@ -1,0 +1,22 @@
+use IO.Std.write_line
+
+let name = "world"
+
+// Every string literal in ghul interpolates, so there is no separate quote
+// that expands variables and none that suppresses it. There are no verbatim
+// strings and no here-documents; adjacent literals chain instead, which is
+// how a long one is written across several lines.
+
+write_line("a plain string literal")
+write_line("interpolated: hello, {name}")
+write_line("escaped: a tab[\t], a quote[\"], a backslash[\\]")
+write_line("braces are doubled: {{ and }}")
+write_line("unicode by code point: \u20AC and \uD83D\uDE00")
+write_line(
+    "adjacent literals chain, "
+    "so this is one string "
+    "written over three lines")
+
+let letter = 'g'
+
+write_line("a character literal: {letter}")

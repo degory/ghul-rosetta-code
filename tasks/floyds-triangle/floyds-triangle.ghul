@@ -1,0 +1,27 @@
+use IO.Std.write
+use IO.Std.write_line
+
+floyd(rows: int) is
+    let last_row_first = rows * (rows - 1) / 2 + 1
+    let value mut = 1
+
+    for row in 1::rows do
+        for column in 1::row do
+            if column > 1 then
+                write(" ")
+            fi
+
+            let width = "{last_row_first + column - 1}".length
+
+            write("{value}".pad_left(width))
+
+            value = value + 1
+        od
+
+        write_line()
+    od
+si
+
+floyd(5)
+write_line()
+floyd(14)

@@ -1,0 +1,23 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+insertion_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    for i in 1..values.count do
+        let sought = values[i]
+        let j mut = i - 1
+
+        while j >= 0 /\ values[j] > sought do
+            values[j + 1] = values[j]
+            j = j - 1
+        od
+
+        values[j + 1] = sought
+    od
+si
+
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
+
+insertion_sort(numbers)
+
+write_line(numbers |> join(", "))

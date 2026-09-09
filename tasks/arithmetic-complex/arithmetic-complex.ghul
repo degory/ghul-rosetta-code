@@ -1,0 +1,22 @@
+use IO.Std.write_line
+use System.Math
+use System.Numerics.Complex
+
+show(name: string, value: Complex) is
+    let sign = if value.imaginary < 0.0 then "-" else "+" fi
+
+    let size = Math.abs(value.imaginary)
+
+    write_line("{name,-10} {value.real} {sign} {size}i")
+si
+
+let a = Complex(1.0, 1.0)
+let b = Complex(3.14159, 1.25)
+
+show("a", a)
+show("b", b)
+show("a + b", a + b)
+show("a * b", a * b)
+show("negation", -a)
+show("inverse", Complex.one / a)
+show("conjugate", Complex.conjugate(a))

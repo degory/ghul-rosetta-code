@@ -1,0 +1,15 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let make_list = (separator: string) -> string is
+    let counter mut = 0
+
+    make_item(item: string) -> string is
+        counter = counter + 1
+        "{counter}{separator}{item}"
+    si
+
+    return ["first", "second", "third"] |> map(make_item) |> join("\n")
+si
+
+write_line(make_list(". "))

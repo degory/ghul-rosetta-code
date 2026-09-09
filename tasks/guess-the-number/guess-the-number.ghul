@@ -1,0 +1,42 @@
+use IO.Std.read_line
+use IO.Std.write
+use IO.Std.write_line
+
+// Seeded, so the transcript below reproduces. The guesses come from
+// standard input, which is not echoed, so the program prints each one.
+let random = System.Random(7)
+
+let target = random.next(1, 11)
+
+write_line("I am thinking of a number between 1 and 10.")
+
+do
+    write("Your guess: ")
+
+    let line = read_line()
+
+    if !line? then
+        write_line()
+        write_line("No more guesses.")
+
+        break
+    fi
+
+    write_line(line)
+
+    let guess mut = 0
+
+    if !int.try_parse(line, guess ref) then
+        write_line("That is not a number.")
+
+        continue
+    fi
+
+    if guess == target then
+        write_line("Well guessed!")
+
+        break
+    fi
+
+    write_line("Not that one.")
+od

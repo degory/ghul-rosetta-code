@@ -1,0 +1,17 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+is_perfect(n: int) -> bool is
+    if n < 2 then
+        return false
+    fi
+
+    let divisors =
+        (1::n / 2)
+            |> filter(d => n % d == 0)
+            |> reduce(0, (running, d) => running + d)
+
+    return divisors == n
+si
+
+write_line((1::10000) |> filter(is_perfect) |> join(", "))

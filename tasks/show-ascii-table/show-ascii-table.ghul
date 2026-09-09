@@ -1,0 +1,27 @@
+use IO.Std.write
+use IO.Std.write_line
+
+name(code: int) -> string =>
+    case code
+    when 32 then "Spc"
+    when 127 then "Del"
+    else "{cast char(code)}"
+    esac
+
+let columns = 6
+
+for row in 0..16 do
+    for column in 0..columns do
+        if column > 0 then
+            write("  ")
+        fi
+
+        let code = 32 + column * 16 + row
+        let last = column == columns - 1
+        let shown = if last then name(code) else "{name(code),-3}" fi
+
+        write("{code,3} : {shown}")
+    od
+
+    write_line()
+od

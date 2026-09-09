@@ -1,0 +1,7 @@
+use IO.Std.write_line
+
+let subject = "knights"
+
+write_line("first character removed: {subject[1..<0]}")
+write_line("last character removed:  {subject[0..<1]}")
+write_line("both removed:            {subject[1..<1]}")

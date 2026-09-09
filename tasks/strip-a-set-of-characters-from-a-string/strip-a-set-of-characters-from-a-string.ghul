@@ -1,0 +1,7 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+strip(text: string, unwanted: string) -> string =>
+    string(text |> filter(c => unwanted.index_of(c) < 0) |> collect_array())
+
+write_line(strip("She was a soul stripper. She took my heart!", "aei"))

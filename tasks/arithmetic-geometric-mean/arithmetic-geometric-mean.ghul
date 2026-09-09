@@ -1,0 +1,18 @@
+use IO.Std.write_line
+use System.Math
+
+agm(a0: double, g0: double) -> double is
+    let a mut = a0
+    let g mut = g0
+
+    while Math.abs(a - g) > 1.0e-15 * Math.abs(a) do
+        let next_a = (a + g) / 2.0
+
+        g = Math.sqrt(a * g)
+        a = next_a
+    od
+
+    a
+si
+
+write_line("{agm(1.0, 1.0 / Math.sqrt(2.0))}")

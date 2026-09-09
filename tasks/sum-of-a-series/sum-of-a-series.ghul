@@ -1,0 +1,9 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+s(n: int) -> double =>
+    (1::n)
+        |> map(k => 1.0 / cast double(k * k))
+        |> reduce(0.0, (running, term) => running + term)
+
+write_line("S(1000) = {s(1000)}")
