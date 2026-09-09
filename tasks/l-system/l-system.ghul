@@ -1,0 +1,89 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.MAP
+use Ghul.Pipes
+use Raster.IMAGE
+use Raster.TURTLE
+
+expand(axiom: string, rules: MAP[char, string], steps: int) -> string is
+    let current mut = axiom
+
+    for _ in 0..steps do
+        current =
+            current
+            |> map(symbol =>
+                if rules.contains_key(symbol) then
+                    rules[symbol]
+                else
+                    "{symbol}"
+                fi)
+            |> join("")
+    od
+
+    return current
+si
+
+interpret(program: string, operations: MAP[char, () -> void]) is
+    for symbol in program do
+        if operations.contains_key(symbol) then
+            operations[symbol]()
+        fi
+    od
+si
+
+let rabbits = MAP[char, string]()
+
+rabbits['I'] = "M"
+rabbits['M'] = "MI"
+
+let generation mut = "I"
+
+write_line("0 {generation}")
+
+for step in 1..6 do
+    generation = expand(generation, rabbits, 1)
+
+    write_line("{step} {generation}")
+od
+
+let plant = MAP[char, string]()
+
+plant['X'] = "F+[[X]-X]-F[-FX]+X"
+plant['F'] = "FF"
+
+let image = IMAGE(500, 500)
+
+image.view(-200.0D, -10.0D, 150.0D, 340.0D)
+image.colour(40ub, 120ub, 40ub)
+image.stroke(1.0D)
+
+let pen = TURTLE(image)
+
+pen.move_to(0.0D, 0.0D)
+pen.face(90.0D)
+
+let saved = LIST[(x: double, y: double, heading: double)]()
+
+let drawing = MAP[char, () -> void]()
+
+drawing['F'] = () => pen.forward(2.0D)
+drawing['+'] = () => pen.turn(-25.0D)
+drawing['-'] = () => pen.turn(25.0D)
+
+drawing['['] = () =>
+    saved.add((x = pen.x, y = pen.y, heading = pen.heading))
+
+drawing[']'] = () is
+    let top = saved[saved.count - 1]
+
+    saved.remove_at(saved.count - 1)
+
+    pen.move_to(top.x, top.y)
+    pen.face(top.heading)
+si
+
+interpret(expand("X", plant, 6), drawing)
+
+image.write("plant.png")
+
+image.show("plant.png")
