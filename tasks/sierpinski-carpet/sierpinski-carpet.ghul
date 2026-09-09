@@ -1,0 +1,31 @@
+use Ghul.Pipes
+use IO.Std.write_line
+
+let order = 3
+
+filled(x: int, y: int) -> bool =>
+    (let across mut = x
+     let down mut = y
+
+     let solid mut = true
+
+     while across > 0 \/ down > 0 do
+         if across % 3 == 1 /\ down % 3 == 1 then
+             solid = false
+         fi
+
+         across = across / 3
+         down = down / 3
+     od
+
+     solid)
+
+let size = (0..order) |> reduce(1, (total, _) => total * 3)
+
+for down in 0..size do
+    write_line(
+        (0..size)
+            |> map(across => if filled(across, down) then "#" else " " fi)
+            |> join("")
+    )
+od

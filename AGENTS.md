@@ -79,10 +79,13 @@ So, in rough order of how often it comes up:
   threads or nests, and here it threads:
   `xs |> map(f) |> filter(p) |> join(", ")`, never
   `join(filter(map(xs, f), p), ", ")`.
-- **Prefer functions to classes.** A class earns its place when the task is
-  itself about objects, or when it is plainly clearer than the alternative.
-  A task solved with a class holding two fields and one method, where three
-  functions would do, is a transliteration of somebody else's entry.
+- **Lean towards functions, but use the right tool.** A class earns its place
+  when the task is itself about objects, when state and the operations on it
+  belong together - a bitmap and its pixels, a parser and its cursor - or when
+  it is otherwise plainly clearer than the alternative. What the lean is
+  against is the class that carries no weight: two fields and one method where
+  three functions would do is a transliteration of somebody else's entry, not
+  encapsulation.
 - **Prefer an expression body.** `=>` over `is` ... `si` wherever the body is an
   expression, including where that expression is an `if`, a `case`, or a block.
   Write a block expression parenthesised rather than with `val` ... `lav`: the
@@ -261,9 +264,53 @@ from later statements and from functions alike. Prefer the bare form and mutate
 what it holds - a list, a map - rather than reassigning it, so nothing in the
 file is written from two places.
 
-Neither is a reason to move a solution's working data to the top level just so
-named functions can be written. Passing what a function needs as an argument is
-usually shorter, and always clearer.
+A top-level `let ... mut` is the right shape when the state genuinely belongs
+to the program: a counter the whole run advances, a seed the next draw reads.
+These are short, often imperative programs, and a global that the program is
+about is not a smell.
+
+What to avoid is hoisting one function's working data up there so that a named
+function can reach it without being passed anything. Passing what a function
+needs as an argument is usually shorter, and always clearer.
+
+The case that tempts hardest is a helper that has to carry state from one call
+to the next - a cursor into a buffer - because ghūl has no nested function
+definitions and there is nowhere obvious to put it. There is: a function
+literal in a local variable. A `let ... mut` is captured by reference, so the
+helper reads and writes the enclosing function's own state directly.
+
+```ghul
+read_ppm(path: string) -> BITMAP is
+    let raw = IO.File.read_all_bytes(path)
+
+    let at mut = 0
+
+    let token = () -> string is
+        let from = at
+
+        while at < raw.count /\ !space(raw[at]) do
+            at = at + 1
+        od
+
+        return string(
+            (from..at)
+                |> map(index => cast char(raw[index]))
+                |> collect_array()
+        )
+    si
+
+    assert token() =~ "P6" else "not a binary PPM"
+si
+```
+
+The cursor stays where it belongs, and nothing outside `read_ppm` can reach it.
+A helper that needs no state of its own is a global function taking what it
+reads as an argument, as `space` is here.
+
+Where the state and the operations on it are the subject rather than a detail
+of one function - a bitmap that is filled, written and read back - a class says
+so more plainly than either, and is the right answer. The preference for
+functions is a lean, not a rule; see "Lean towards functions" above.
 
 ## Solutions carry no comments
 

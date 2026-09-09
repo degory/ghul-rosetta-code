@@ -1,0 +1,142 @@
+use Collections.LIST
+use Ghul.Pipes
+use IO.Std.write_line
+
+use COLOUR = (red: ubyte, green: ubyte, blue: ubyte)
+
+class BITMAP is
+    width: int
+    height: int
+
+    bytes: LIST[ubyte]
+
+    init(width: int, height: int) is
+        self.width = width
+        self.height = height
+
+        bytes = (0..width * height * 3) |> map(_ => 0ub) |> collect_list()
+    si
+
+    set_pixel(x: int, y: int, colour: COLOUR) is
+        let at = (y * width + x) * 3
+
+        bytes[at] = colour.red
+        bytes[at + 1] = colour.green
+        bytes[at + 2] = colour.blue
+    si
+
+    pixel(x: int, y: int) -> COLOUR =>
+        (let at = (y * width + x) * 3
+
+         (red = bytes[at], green = bytes[at + 1], blue = bytes[at + 2]))
+si
+
+space(value: ubyte) -> bool =>
+    value == 32ub \/ value == 9ub \/ value == 10ub \/ value == 13ub
+
+read_ppm(path: string) -> BITMAP is
+    let raw = IO.File.read_all_bytes(path)
+
+    let at mut = 0
+
+    let token = () -> string is
+        while at < raw.count /\ (space(raw[at]) \/ raw[at] == 35ub) do
+            if raw[at] == 35ub then
+                while at < raw.count /\ raw[at] != 10ub do
+                    at = at + 1
+                od
+            else
+                at = at + 1
+            fi
+        od
+
+        let from = at
+
+        while at < raw.count /\ !space(raw[at]) do
+            at = at + 1
+        od
+
+        return string(
+            (from..at)
+                |> map(index => cast char(raw[index]))
+                |> collect_array()
+        )
+    si
+
+    assert token() =~ "P6" else "not a binary PPM"
+
+    let width = int.parse(token())
+    let height = int.parse(token())
+
+    let _ = token()
+
+    at = at + 1
+
+    let image = BITMAP(width, height)
+
+    for index in 0..width * height * 3 do
+        image.bytes[index] = raw[at + index]
+    od
+
+    return image
+si
+
+write_ppm(image: BITMAP, path: string) is
+    let file = IO.File.create(path)
+
+    let header =
+        System.Text.Encoding.ascii.get_bytes(
+            "P6\n{image.width} {image.height}\n255\n"
+        )
+
+    file.write(header, 0, header.count)
+
+    let pixels = image.bytes |> collect_array()
+
+    file.write(pixels, 0, pixels.count)
+
+    file.dispose()
+si
+
+to_grey(image: BITMAP) -> BITMAP is
+    let grey = BITMAP(image.width, image.height)
+
+    for at in 0..image.width * image.height do
+        let level =
+            cast ubyte(
+                0.2126D * cast double(image.bytes[at * 3]) +
+                0.7152D * cast double(image.bytes[at * 3 + 1]) +
+                0.0722D * cast double(image.bytes[at * 3 + 2]) + 0.5D
+            )
+
+        grey.bytes[at * 3] = level
+        grey.bytes[at * 3 + 1] = level
+        grey.bytes[at * 3 + 2] = level
+    od
+
+    return grey
+si
+
+let source = BITMAP(120, 90)
+
+for y in 0..source.height do
+    for x in 0..source.width do
+        source.set_pixel(
+            x, y,
+            (red = cast ubyte(255 * x / source.width),
+             green = cast ubyte(255 * y / source.height),
+             blue = 200ub)
+        )
+    od
+od
+
+write_ppm(source, "colour.ppm")
+
+let read = read_ppm("colour.ppm")
+
+write_line("read back {read.width} by {read.height}")
+write_line("at 60, 45: {read.pixel(60, 45)}")
+
+write_ppm(to_grey(read), "grey.ppm")
+
+write_line("as grey:   {to_grey(read).pixel(60, 45)}")

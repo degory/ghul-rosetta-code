@@ -299,6 +299,18 @@
       }
     },
     {
+      "title": "Bitmap/PPM conversion through a pipe",
+      "state": "rejected",
+      "reason": "needs-native-lib",
+      "note": "the task is the delegation itself, to cjpeg or convert, which is a binary the build would have to find"
+    },
+    {
+      "title": "Bitmap/Read an image through a pipe",
+      "state": "rejected",
+      "reason": "needs-native-lib",
+      "note": "same delegation as the conversion task, in the other direction"
+    },
+    {
       "title": "Blum integer",
       "slug": "blum-integer",
       "state": "published",
@@ -1118,6 +1130,12 @@
       "slug": "idoneal-numbers",
       "state": "published",
       "published_hash": "8cad14e19aaa595ae1e8805afd963ccb1d27ee81ba5724f89f456abe67e3afa6"
+    },
+    {
+      "title": "Image noise",
+      "state": "rejected",
+      "reason": "nondeterministic",
+      "note": "the answer is a frame rate, which is what the machine happened to manage"
     },
     {
       "title": "Imaginary base numbers",
