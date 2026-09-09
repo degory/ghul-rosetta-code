@@ -1,0 +1,58 @@
+use Collections.List
+use Ghul.Pipes
+use Raster.IMAGE
+
+use MATRIX = List[List[int]]
+
+kronecker(left: MATRIX, right: MATRIX) -> MATRIX =>
+    (0..left.count * right.count)
+        |> map(row =>
+            (0..left[0].count * right[0].count)
+                |> map(column =>
+                    left[row / right.count][column / right[0].count] *
+                    right[row % right.count][column % right[0].count])
+                |> collect_list())
+        |> collect_list()
+
+power(seed: MATRIX, order: int) -> MATRIX =>
+    (let result mut = seed
+
+     for _ in 1..order do
+         result = kronecker(result, seed)
+     od
+
+     result)
+
+plot(cells: MATRIX, path: string) is
+    let scale = 4
+
+    let image =
+        IMAGE(cells[0].count * scale, cells.count * scale)
+
+    for row in 0..cells.count do
+        for column in 0..cells[row].count do
+            if cells[row][column] == 0 then
+                continue
+            fi
+
+            for down in 0..scale do
+                for across in 0..scale do
+                    image.set_pixel(
+                        column * scale + across, row * scale + down,
+                        40ub, 40ub, 160ub
+                    )
+                od
+            od
+        od
+    od
+
+    image.write(path)
+
+    image.show(path)
+si
+
+let vicsek = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
+let saltire = [[1, 0, 1], [0, 1, 0], [1, 0, 1]]
+
+plot(power(vicsek, 4), "vicsek.png")
+plot(power(saltire, 4), "saltire.png")
