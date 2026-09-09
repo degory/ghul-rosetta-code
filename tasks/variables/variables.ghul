@@ -1,0 +1,31 @@
+use IO.Std.write_line
+
+count: int;
+
+show() is
+    write_line("the namespace variable is {count}")
+si
+
+let immutable = 42
+
+let counter mut = 0
+
+let annotated: double = 1.5
+
+let deferred: string mut
+
+deferred = "assigned later"
+
+counter = counter + 1
+
+count = 7
+
+write_line("{immutable}, {counter}, {annotated}, {deferred}")
+
+show()
+
+if immutable > 0 then
+    let inner = "visible only inside this block"
+
+    write_line(inner)
+fi

@@ -1,0 +1,12 @@
+use IO.Std.write_line
+use IO.Std.read_line
+
+let lines mut = 0
+
+while let line = read_line() do
+    lines = lines + 1
+
+    write_line("{lines}: {line}")
+od
+
+write_line("the stream ran out after {lines} lines")

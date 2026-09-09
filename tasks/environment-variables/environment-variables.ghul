@@ -1,0 +1,14 @@
+use IO.Std.write_line
+use System.Environment
+
+Environment.set_environment_variable("ROSETTA_GREETING", "hello")
+
+let name = "ROSETTA_GREETING"
+
+if let greeting = Environment.get_environment_variable(name) then
+    write_line("{name} is {greeting}")
+fi
+
+let path = Environment.get_environment_variable("PATH")
+
+write_line("PATH is set: {path?}")

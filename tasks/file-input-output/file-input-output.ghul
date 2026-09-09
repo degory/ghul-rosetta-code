@@ -1,0 +1,8 @@
+use IO.Std
+use IO.File
+
+let contents = File.read_all_text("input.txt")
+
+File.write_all_text("output.txt", contents)
+
+Std.write(File.read_all_text("output.txt"))

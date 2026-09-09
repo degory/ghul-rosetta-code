@@ -1,0 +1,10 @@
+use IO.Std.write_line
+use IO.Std.read_line
+
+if let text = read_line() then
+    write_line("string: {text}")
+fi
+
+if let number = read_line() then
+    write_line("integer: {int.parse(number)}")
+fi
