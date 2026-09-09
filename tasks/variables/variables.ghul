@@ -1,6 +1,6 @@
 use IO.Std.write_line
 
-count: int;
+count: int
 
 show() is
     write_line("the namespace variable is {count}")

@@ -11,8 +11,8 @@ enum Suit is
 si
 
 union Shape is
-    CIRCLE(radius: int);
-    SQUARE(side: int);
+    CIRCLE(radius: int)
+    SQUARE(side: int)
 si
 
 describe(value: int) -> string is
