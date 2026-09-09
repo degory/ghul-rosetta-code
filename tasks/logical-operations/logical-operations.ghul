@@ -1,0 +1,11 @@
+use IO.Std.write_line
+
+report(left: bool, right: bool) is
+    write_line("{left} and {right}: {left /\ right}")
+    write_line("{left} or {right}: {left \/ right}")
+    write_line("not {left}: {!left}")
+    write_line("{left} xor {right}: {left != right}")
+si
+
+report(true, false)
+report(true, true)

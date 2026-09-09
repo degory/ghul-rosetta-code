@@ -1,0 +1,23 @@
+use IO.Std.write_line
+use Collections.Iterable
+use Collections.LIST
+use Collections.SET
+use Ghul.Pipes
+
+squares(count: int) -> Pipe[int] is
+    for value in 1::count do
+        yield value * value
+    od
+si
+
+show(caption: string, values: Iterable[int]) is
+    let shown = values |> map(value => "{value}") |> join(" ")
+
+    write_line("{caption}: {shown}")
+si
+
+show("array", [3, 1, 2])
+show("list", LIST([3, 1, 2]))
+show("set", SET([3, 1, 2]))
+show("range", 1::4)
+show("generator", squares(4))

@@ -1,0 +1,15 @@
+use IO.Std.write_line
+use IO.File
+use IO.StreamReader
+
+let reader = StreamReader("input.txt")
+
+let numbered mut = 0
+
+while let line = reader.read_line() do
+    numbered = numbered + 1
+
+    write_line("{numbered}: {line}")
+od
+
+reader.dispose()

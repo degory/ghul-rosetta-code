@@ -1,0 +1,6 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+for count in (0::10) |> reverse() do
+    write_line("{count}")
+od

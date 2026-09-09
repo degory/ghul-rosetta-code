@@ -1,0 +1,12 @@
+break out of both loops: 5
+rows with no gap: 3 1 4, 2 6 5
+unwound five frames: bottom reached
+  generator: started
+main: pulled one
+  generator: resumed
+main: pulled two
+  generator: finished
+  coroutine: before the pause
+main: the coroutine suspended and control returned here
+  coroutine: resumed from the scheduler
+main: the coroutine finished: True

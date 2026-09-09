@@ -1,0 +1,27 @@
+use IO.Std.write_line
+use IO.Std.read_line
+use System.StringSplitOptions
+
+if let entered = read_line() then
+    write_line("input: {entered}")
+
+    let fields =
+        entered.split([' '], StringSplitOptions.REMOVE_EMPTY_ENTRIES)
+
+    let a = int.parse(fields[0])
+    let b = int.parse(fields[1])
+
+    write_line("sum: {a + b}")
+    write_line("difference: {a - b}")
+    write_line("product: {a * b}")
+    write_line("quotient: {a / b}, truncated towards zero")
+    write_line("remainder: {a % b}, signed like the first operand")
+
+    let power = System.Math.pow(cast(a), cast(b))
+
+    write_line("exponentiation: {power}, from the library")
+
+    let (quotient, remainder) = System.Math.div_rem(a, b)
+
+    write_line("divmod: {quotient} remainder {remainder}")
+fi

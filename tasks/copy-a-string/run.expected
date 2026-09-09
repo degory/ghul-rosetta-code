@@ -1,0 +1,5 @@
+reference is another name for the same string
+original == reference: True
+copy holds the same characters in a new string
+original == copy: False
+original =~ copy: True

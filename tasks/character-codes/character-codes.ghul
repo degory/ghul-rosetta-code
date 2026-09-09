@@ -1,0 +1,6 @@
+use IO.Std.write_line
+
+write_line("{cast int('a')}")
+write_line("{cast char(97)}")
+write_line("{cast int('€')}")
+write_line("{cast char(8364)}")

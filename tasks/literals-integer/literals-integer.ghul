@@ -1,0 +1,10 @@
+use IO.Std.write_line
+
+write_line("decimal: {727}")
+write_line("hexadecimal: {0x2D7}")
+write_line("grouped: {1_000_000}")
+write_line("long: {727L}")
+write_line("byte: {27b}")
+write_line("unsigned byte: {200ub}")
+write_line("big integer: {727n}")
+write_line("character code: {0x20AC`c}")

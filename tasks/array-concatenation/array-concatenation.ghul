@@ -1,0 +1,14 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let first = [1, 2, 3]
+let second = [4, 5, 6]
+
+write_line("{$(first |> cat(second) |> collect_array())}")
+
+let grown = LIST(first)
+
+grown.add_range(second)
+
+write_line("{$grown}")

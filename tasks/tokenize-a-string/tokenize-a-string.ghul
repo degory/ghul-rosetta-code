@@ -1,0 +1,6 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let words = "Hello,How,Are,You,Today".split([','])
+
+write_line(words |> join("."))

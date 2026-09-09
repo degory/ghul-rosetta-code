@@ -1,0 +1,15 @@
+use IO.Std.write_line
+
+let source = System.Random(20260909)
+
+do
+    let first = source.next(20)
+
+    write_line("{first}")
+
+    if first == 10 then
+        break
+    fi
+
+    write_line("{source.next(20)}")
+od

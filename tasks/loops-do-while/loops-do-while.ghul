@@ -1,0 +1,13 @@
+use IO.Std.write_line
+
+let value mut = 0
+
+do
+    value = value + 1
+
+    write_line("{value}")
+
+    if value % 6 == 0 then
+        break
+    fi
+od

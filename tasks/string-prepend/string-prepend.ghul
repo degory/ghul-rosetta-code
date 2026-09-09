@@ -1,0 +1,14 @@
+use IO.Std.write_line
+use System.Text.StringBuilder
+
+let text mut = "world"
+
+text = "hello, {text}"
+
+write_line(text)
+
+let built = StringBuilder("world")
+
+built.insert(0, "hello, ")
+
+write_line("{built}")

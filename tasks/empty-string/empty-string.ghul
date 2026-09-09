@@ -1,0 +1,10 @@
+use IO.Std.write_line
+
+let empty = ""
+
+let filled = "text"
+
+write_line("empty is empty: {empty.length == 0}")
+write_line("filled is empty: {filled.length == 0}")
+write_line("filled is not empty: {filled.length > 0}")
+write_line("null or empty: {string.is_null_or_empty(empty)}")

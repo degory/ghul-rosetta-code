@@ -1,0 +1,19 @@
+use IO.Std.write_line
+
+let yes = true
+let no = false
+
+write_line("the literals are true and false")
+write_line("printing them gives {yes} and {no}")
+
+if yes then
+    write_line("a condition takes a bool and nothing else")
+fi
+
+let unknown: bool? = null
+
+if unknown ?? false then
+    write_line("an absent bool counted as true")
+else
+    write_line("an optional bool needs a fallback to be a condition")
+fi

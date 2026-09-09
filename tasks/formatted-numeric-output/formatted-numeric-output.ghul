@@ -1,0 +1,4 @@
+use IO.Std.write_line
+
+write_line("{7.125:00000.000}")
+write_line("{7.125,9:0.000}")

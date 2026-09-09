@@ -1,0 +1,33 @@
+use IO.Std.write_line
+use Collections.MAP
+use System.Text.StringBuilder
+
+let replacements = MAP()
+
+replacements[('a', 1)] = 'A'
+replacements[('a', 2)] = 'B'
+replacements[('a', 4)] = 'C'
+replacements[('a', 5)] = 'D'
+replacements[('b', 1)] = 'E'
+replacements[('r', 2)] = 'F'
+
+let seen = MAP()
+
+let built = StringBuilder()
+
+for letter in "abracadabra" do
+    let so_far =
+        if seen.contains_key(letter) then seen[letter] + 1 else 1 fi
+
+    seen[letter] = so_far
+
+    let key = (letter, so_far)
+
+    if replacements.contains_key(key) then
+        built.append(replacements[key])
+    else
+        built.append(letter)
+    fi
+od
+
+write_line("{built}")

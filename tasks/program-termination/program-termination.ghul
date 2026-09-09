@@ -1,0 +1,10 @@
+use IO.Std.write_line
+use System.Environment
+
+write_line("about to stop")
+
+if Environment.processor_count > 0 then
+    Environment.exit(0)
+fi
+
+write_line("this line is never reached")

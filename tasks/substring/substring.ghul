@@ -1,0 +1,31 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let text = "the quick 🦊 brown fox"
+
+let points =
+    text.enumerate_runes() |> map(point => "{point}") |> collect_array()
+
+slice(from: int, length: int) -> string =>
+    points[from..from + length] |> join("")
+
+starts_at(wanted: string) -> int is
+    let target =
+        wanted.enumerate_runes()
+            |> map(point => "{point}")
+            |> collect_array()
+
+    for at in 0..points.count - target.count + 1 do
+        if slice(at, target.count) =~ wanted then
+            return at
+        fi
+    od
+
+    return -1
+si
+
+write_line(slice(4, 5))
+write_line(slice(4, points.count - 4))
+write_line(slice(0, points.count - 1))
+write_line(slice(starts_at("b"), 5))
+write_line(slice(starts_at("fox"), 3))

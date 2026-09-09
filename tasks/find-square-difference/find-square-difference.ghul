@@ -1,0 +1,13 @@
+use IO.Std.write_line
+
+let found: int? =
+    for n in 1::100000 do
+        if n * n - (n - 1) * (n - 1) > 1000 then break n fi
+    od
+
+if let n = found then
+    let square = n * n
+    let previous = (n - 1) * (n - 1)
+
+    write_line("{n}: {square} - {previous} = {square - previous}")
+fi

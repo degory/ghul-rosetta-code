@@ -1,0 +1,8 @@
+use IO.Std.write_line
+
+let greeting = "hello"
+
+let sentence = "{greeting}, world"
+
+write_line(greeting)
+write_line(sentence)
