@@ -1,0 +1,54 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+top(pile: LIST[int]) -> int => pile[pile.count - 1]
+
+patience_sort(values: List[int]) -> Pipe[int] is
+    let piles = LIST[LIST[int]]()
+
+    for value in values do
+        let placed mut = false
+
+        for pile in piles do
+            if !placed /\ top(pile) >= value then
+                pile.add(value)
+                placed = true
+            fi
+        od
+
+        if !placed then
+            let fresh = LIST[int]()
+
+            fresh.add(value)
+            piles.add(fresh)
+        fi
+    od
+
+    while piles.count > 0 do
+        let smallest mut = 0
+
+        for at in 1..piles.count do
+            if top(piles[at]) < top(piles[smallest]) then
+                smallest = at
+            fi
+        od
+
+        let pile = piles[smallest]
+
+        yield top(pile)
+
+        pile.remove_at(pile.count - 1)
+
+        if pile.count == 0 then
+            piles.remove_at(smallest)
+        fi
+    od
+si
+
+for values in [[5, 3, 1, 7, 4, 1, 1, 20], [2, 1], [8]] do
+    write_line(
+        "{values |> join(" ")} -> {values |> patience_sort() |> join(" ")}"
+    )
+od
