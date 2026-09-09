@@ -1,6 +1,7 @@
 use IO.Std.write_line
 use IO.Std.error
 use Collections
+use Ghul.Pipes
 use Rosetta
 
 // The ghūl solutions' side of Rosetta Code: what has been done, what is worth doing, and getting
@@ -802,7 +803,9 @@ else
         let api: string? mut = null
         let rehearse mut = false
         let replace = arguments.contains("--replace")
+        let solved = arguments.contains("--solved")
         let slugs = LIST[string]()
+        let unknown = LIST[string]()
         let awaiting mut = ""
 
         for argument in arguments do
@@ -818,13 +821,28 @@ else
                 awaiting = ""
             elif argument =~ "--target" \/ argument =~ "--api" \/ argument =~ "--rehearse" then
                 awaiting = argument
-            elif argument !~ "--dry-run" /\ argument !~ "--replace" then
+            elif
+                argument =~ "--dry-run" \/ argument =~ "--replace" \/
+                argument =~ "--solved"
+            then
+                // Already read above.
+            elif argument.starts_with("--") then
+                // An unrecognised flag taken as a slug matches no task, so the
+                // run publishes nothing and says only that there was nothing to
+                // publish. Refuse it instead.
+                unknown.add(argument)
+            else
                 slugs.add(argument)
             fi
         od
 
         if awaiting.length > 0 then
             error.write_line("{awaiting} needs a value")
+        elif unknown.count > 0 then
+            error.write_line("unknown option: {unknown |> join(", ")}")
+        elif slugs.count == 0 /\ !solved then
+            error.write_line(
+                "publish needs one or more slugs, or --solved for every solved task")
         else
             publish(root, slugs, dry_run, target, api, rehearse, replace)
         fi
