@@ -1,8 +1,6 @@
 use IO.Std.write_line
 use System.Math
-use Ghul.Pipes.map
-use Ghul.Pipes.reduce
-use Ghul.Pipes.collect_array
+use Ghul.Pipes
 
 arithmetic(values: double[]) -> double is
     let total = values |> reduce(0.0, (running, v) => running + v)

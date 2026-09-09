@@ -1,7 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.filter
-use Ghul.Pipes.reduce
-use Ghul.Pipes.join
+use Ghul.Pipes
 
 is_perfect(n: int) -> bool is
     if n < 2 then

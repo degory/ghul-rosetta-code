@@ -1,0 +1,82 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+use Grid = LIST[LIST[bool]]
+
+live_neighbours(grid: Grid, row: int, column: int) -> int is
+    let count mut = 0
+
+    for dr in -1::1 do
+        for dc in -1::1 do
+            if dr == 0 /\ dc == 0 then
+                continue
+            fi
+
+            let r = row + dr
+            let c = column + dc
+
+            if
+                r >= 0 /\ r < grid.count /\
+                c >= 0 /\ c < grid[0].count /\
+                grid[r][c]
+            then
+                count = count + 1
+            fi
+        od
+    od
+
+    count
+si
+
+step(grid: Grid) -> Grid is
+    let next = LIST()
+
+    for row in 0..grid.count do
+        let out = LIST()
+
+        for column in 0..grid[0].count do
+            let neighbours = live_neighbours(grid, row, column)
+
+            out.add(
+                if grid[row][column] then
+                    neighbours == 2 \/ neighbours == 3
+                else
+                    neighbours == 3
+                fi)
+        od
+
+        next.add(out)
+    od
+
+    next
+si
+
+show(generation: int, grid: Grid) is
+    write_line("generation {generation}")
+
+    for row in grid do
+        write_line(row |> map(alive => if alive then "#" else "." fi) |> join(""))
+    od
+
+    write_line()
+si
+
+parse(rows: string[]) -> Grid is
+    let grid = LIST()
+
+    for row in rows do
+        grid.add(row |> map(c => c == '#') |> collect_list())
+    od
+
+    grid
+si
+
+// A blinker, which oscillates with period two.
+let blinker mut = parse([".....", ".....", ".###.", ".....", "....."])
+
+for generation in 0::4 do
+    show(generation, blinker)
+
+    blinker = step(blinker)
+od

@@ -1,0 +1,47 @@
+use IO.Std.write_line
+use Collections.List
+use Collections.LIST
+use Ghul.Pipes
+
+merge_sort[T: Ghul.Comparable[T]](values: List[T]) -> List[T] is
+    if values.count <= 1 then
+        return values
+    fi
+
+    let middle = values.count / 2
+
+    return merge(
+        merge_sort(values[0..middle]),
+        merge_sort(values[middle..<0]))
+si
+
+merge[T: Ghul.Comparable[T]](left: List[T], right: List[T]) -> List[T] is
+    let merged = LIST()
+    let l mut = 0
+    let r mut = 0
+
+    while l < left.count /\ r < right.count do
+        if left[l] <= right[r] then
+            merged.add(left[l])
+            l = l + 1
+        else
+            merged.add(right[r])
+            r = r + 1
+        fi
+    od
+
+    while l < left.count do
+        merged.add(left[l])
+        l = l + 1
+    od
+
+    while r < right.count do
+        merged.add(right[r])
+        r = r + 1
+    od
+
+    return merged
+si
+
+write_line(merge_sort([5, 3, 8, 1, 9, 2, 7]) |> join(", "))
+write_line(merge_sort(["pear", "apple", "quince", "banana"]) |> join(", "))

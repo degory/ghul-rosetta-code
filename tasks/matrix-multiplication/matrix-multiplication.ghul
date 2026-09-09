@@ -1,16 +1,15 @@
 use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes.join
-
-use Matrix = LIST[LIST[int]]
+use Collections
+use Ghul.Pipes
+use Matrix = List[List[int]]
 
 multiply(left: Matrix, right: Matrix) -> Matrix is
     assert left[0].count == right.count else "shapes do not conform"
 
-    let product = LIST[LIST[int]]()
+    let product = LIST()
 
     for row in left do
-        let out = LIST[int]()
+        let out = LIST()
 
         for column in 0..right[0].count do
             let total mut = 0
@@ -28,8 +27,8 @@ multiply(left: Matrix, right: Matrix) -> Matrix is
     product
 si
 
-let a = LIST([LIST([1, 2]), LIST([3, 4]), LIST([5, 6])])
-let b = LIST([LIST([1, 2, 3]), LIST([4, 5, 6])])
+let a = [[1, 2], [3, 4], [5, 6]]
+let b = [[1, 2, 3], [4, 5, 6]]
 
 for row in multiply(a, b) do
     write_line(row |> join(" "))

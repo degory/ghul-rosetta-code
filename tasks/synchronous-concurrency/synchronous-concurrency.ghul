@@ -52,3 +52,5 @@ printer()
 reader()
 
 run()
+
+IO.File.delete(path)

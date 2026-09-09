@@ -1,6 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.index
-use Ghul.Pipes.find
+use Ghul.Pipes
 
 let haystack =
     ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"]

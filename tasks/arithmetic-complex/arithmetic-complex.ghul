@@ -1,0 +1,16 @@
+use IO.Std.write_line
+use System.Numerics.COMPLEX
+
+show(name: string, value: COMPLEX) =>
+    write_line("{name,-14} {value.real} {if value.imaginary < 0.0 then "-" else "+" fi} {System.Math.abs(value.imaginary)}i")
+
+let a = COMPLEX(1.0, 1.0)
+let b = COMPLEX(3.14159, 1.25)
+
+show("a", a)
+show("b", b)
+show("a + b", a + b)
+show("a * b", a * b)
+show("negation", -a)
+show("inverse", COMPLEX.one / a)
+show("conjugate", COMPLEX.conjugate(a))

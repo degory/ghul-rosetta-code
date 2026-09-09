@@ -2,8 +2,8 @@ use IO.Std.write_line
 use System.Math
 
 union Middle is
-    DIGITS(value: string) default;
-    REFUSED(reason: string);
+    DIGITS(value: string) default
+    REFUSED(reason: string)
 si
 
 middle_three(value: int) -> Middle is

@@ -1,6 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.zip
-use Ghul.Pipes.reduce
+use Ghul.Pipes
 
 dot(left: int[], right: int[]) -> int is
     assert left.count == right.count else "vectors must be the same length"

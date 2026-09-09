@@ -1,12 +1,12 @@
 use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes.join
+use Collections
+use Ghul.Pipes
 
-transpose(matrix: LIST[LIST[int]]) -> LIST[LIST[int]] is
-    let columns = LIST[LIST[int]]()
+transpose(matrix: List[List[int]]) -> List[List[int]] is
+    let columns = LIST()
 
     for column in 0..matrix[0].count do
-        let row = LIST[int]()
+        let row = LIST()
 
         for source in matrix do
             row.add(source[column])
@@ -18,7 +18,7 @@ transpose(matrix: LIST[LIST[int]]) -> LIST[LIST[int]] is
     columns
 si
 
-show(caption: string, matrix: LIST[LIST[int]]) is
+show(caption: string, matrix: List[List[int]]) is
     write_line(caption)
 
     for row in matrix do
@@ -26,11 +26,11 @@ show(caption: string, matrix: LIST[LIST[int]]) is
     od
 si
 
-let matrix = LIST([
-    LIST([1, 2, 3, 4]),
-    LIST([5, 6, 7, 8]),
-    LIST([9, 10, 11, 12])
-])
+let matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12]
+]
 
 show("original", matrix)
 show("transposed", transpose(matrix))

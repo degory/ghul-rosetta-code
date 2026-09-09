@@ -1,6 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.filter
-use Ghul.Pipes.join
+use Ghul.Pipes
 
 factors(n: int) -> Ghul.Pipes.Pipe[int] =>
     (1::n) |> filter(d => n % d == 0)

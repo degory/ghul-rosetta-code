@@ -1,7 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
-use Ghul.Pipes.collect_list
-use Ghul.Pipes.join
+use Ghul.Pipes
 
 bubble_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
     let sorted mut = false
@@ -22,13 +21,13 @@ bubble_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
     od
 si
 
-let numbers = [5, 3, 8, 1, 9, 2, 7] |> collect_list()
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
 
 bubble_sort(numbers)
 
 write_line(numbers |> join(", "))
 
-let words = ["pear", "apple", "quince", "banana"] |> collect_list()
+let words = LIST(["pear", "apple", "quince", "banana"])
 
 bubble_sort(words)
 

@@ -3,10 +3,10 @@ use IO.Std.write_line
 use Collections.LIST
 
 grid(size: int, random: System.Random) -> LIST[LIST[int]] is
-    let rows = LIST[LIST[int]]()
+    let rows = LIST()
 
     for _ in 1::size do
-        let row = LIST[int]()
+        let row = LIST()
 
         for _ in 1::size do
             row.add(random.next(1, 21))

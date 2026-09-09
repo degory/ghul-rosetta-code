@@ -1,7 +1,6 @@
 use IO.Std.write_line
 use Collections.LIST
-use Ghul.Pipes.Pipe
-use Ghul.Pipes.join
+use Ghul.Pipes
 
 choose(m: int, n: int, from: int, chosen: LIST[int]) -> Pipe[LIST[int]] is
     if chosen.count == m then

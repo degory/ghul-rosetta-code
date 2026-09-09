@@ -1,6 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.zip
-use Ghul.Pipes.each
+use Ghul.Pipes
 
 let letters = ['a', 'b', 'c']
 let capitals = ['A', 'B', 'C']

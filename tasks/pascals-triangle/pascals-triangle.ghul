@@ -1,8 +1,8 @@
 use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes.join
+use Collections
+use Ghul.Pipes
 
-rows(count: int) -> Ghul.Pipes.Pipe[LIST[int]] is
+rows(count: int) -> Ghul.Pipes.Pipe[List[int]] is
     let row mut = LIST([1])
 
     for _ in 1::count do

@@ -1,0 +1,67 @@
+use IO.Std.write
+use IO.Std.write_line
+use Collections.LIST
+
+run(program: string, input: string) is
+    let cells = LIST()
+
+    for _ in 0..30000 do
+        cells.add(0)
+    od
+
+    // Jump targets, so a loop does not rescan the source to find its partner.
+    let partner = LIST()
+
+    for _ in 0..program.length do
+        partner.add(0)
+    od
+
+    let open = LIST()
+
+    for at in 0..program.length do
+        if program[at] == '[' then
+            open.add(at)
+        elif program[at] == ']' then
+            let start = open[open.count - 1]
+
+            open.remove_at(open.count - 1)
+
+            partner[start] = at
+            partner[at] = start
+        fi
+    od
+
+    let cell mut = 0
+    let at mut = 0
+    let read mut = 0
+
+    while at < program.length do
+        case program[at]
+        when '>' then cell = cell + 1
+        when '<' then cell = cell - 1
+        when '+' then cells[cell] = (cells[cell] + 1) % 256
+        when '-' then cells[cell] = (cells[cell] + 255) % 256
+        when '.' then write(cast char(cells[cell]))
+        when ',' then
+            cells[cell] = if read < input.length then cast int(input[read]) else 0 fi
+            read = read + 1
+        when '[' then
+            if cells[cell] == 0 then
+                at = partner[at]
+            fi
+        when ']' then
+            if cells[cell] != 0 then
+                at = partner[at]
+            fi
+        esac
+
+        at = at + 1
+    od
+si
+
+run(
+    "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++"
+    "..+++.>>.<-.<.+++.------.--------.>>+.>++.",
+    "")
+
+write_line()

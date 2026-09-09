@@ -1,6 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.reverse
-use Ghul.Pipes.join
+use Ghul.Pipes
 
 let text =
     "---------- Ice and Fire ------------\n"

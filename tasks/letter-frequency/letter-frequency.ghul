@@ -1,7 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.filter
-use Ghul.Pipes.group_by
-use Ghul.Pipes.sort_by
+use Ghul.Pipes
 
 let text =
     "Now is the time for all good men to come to the aid of their country"

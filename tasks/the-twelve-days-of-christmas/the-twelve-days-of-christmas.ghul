@@ -1,0 +1,33 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let ordinals = [
+    "first", "second", "third", "fourth", "fifth", "sixth",
+    "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"
+]
+
+let gifts = [
+    "A partridge in a pear tree.",
+    "Two turtle doves and",
+    "Three french hens,",
+    "Four calling birds,",
+    "Five golden rings,",
+    "Six geese a-laying,",
+    "Seven swans a-swimming,",
+    "Eight maids a-milking,",
+    "Nine ladies dancing,",
+    "Ten lords a-leaping,",
+    "Eleven pipers piping,",
+    "Twelve drummers drumming,"
+]
+
+for day in 0..12 do
+    write_line("On the {ordinals[day]} day of Christmas")
+    write_line("My true love gave to me:")
+
+    for gift in day..<<0 do
+        write_line(gifts[gift])
+    od
+
+    write_line()
+od
