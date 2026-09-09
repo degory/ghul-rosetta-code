@@ -1,0 +1,11 @@
+use IO.Std
+
+for value in 1::10 do
+    Std.write("{value}")
+
+    if value == 10 then
+        Std.write_line("")
+    else
+        Std.write(", ")
+    fi
+od

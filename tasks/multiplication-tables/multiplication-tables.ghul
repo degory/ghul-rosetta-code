@@ -1,0 +1,17 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let heading = (1::12) |> map(column => "{column,4}") |> join("")
+
+write_line("  x{heading}")
+write_line("")
+
+for row in 1::12 do
+    let cells =
+        (1::12)
+            |> map(column =>
+                if column < row then "    " else "{row * column,4}" fi)
+            |> join("")
+
+    write_line("{row,3}{cells}")
+od
