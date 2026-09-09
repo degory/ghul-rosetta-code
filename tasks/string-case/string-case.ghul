@@ -2,7 +2,8 @@ use IO.Std.write_line
 use System.Globalization.CultureInfo
 
 let subject = "alphaBETA"
+let invariant = CultureInfo.invariant_culture
 
-write_line("upper:      {subject.to_upper_invariant()}")
-write_line("lower:      {subject.to_lower_invariant()}")
-write_line("title:      {CultureInfo.invariant_culture.text_info.to_title_case(subject)}")
+write_line("upper: {subject.to_upper_invariant()}")
+write_line("lower: {subject.to_lower_invariant()}")
+write_line("title: {invariant.text_info.to_title_case(subject)}")

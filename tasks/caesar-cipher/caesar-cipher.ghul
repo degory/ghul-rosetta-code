@@ -13,7 +13,9 @@ rotate(text: string, key: int) -> string is
         if first < 0 then
             shifted.append(letter)
         else
-            shifted.append(cast char(first + (cast int(letter) - first + key) % 26))
+            let rotated = (cast int(letter) - first + key) % 26
+
+            shifted.append(cast char(first + rotated))
         fi
     od
 
