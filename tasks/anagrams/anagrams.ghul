@@ -4,9 +4,7 @@ use Collections.MAP
 use Ghul.Pipes
 
 sorted_letters(word: string) -> string =>
-    (let letters = word.to_char_array()
-     System.Array.sort(letters)
-     string(letters))
+    string(word |> sort() |> collect_array())
 
 let sets = MAP[string, LIST[string]]()
 

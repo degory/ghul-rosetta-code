@@ -136,7 +136,7 @@
       "slug": "anagrams",
       "state": "published",
       "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched",
-      "published_hash": "04cbdce0202001bdea0f0dc4e4cae323793360d5f11c03b9b8caf4cef09b5cb1"
+      "published_hash": "719c2f52adbe8a64cb78d665679bf2a918fe961a45cb6ef96190e6a14f53c2b9"
     },
     {
       "title": "Anaprimes",
@@ -860,9 +860,9 @@
       "title": "Fibonacci word/fractal",
       "slug": "fibonacci-word-fractal",
       "state": "published",
-      "published_hash": "53914ed500741d1bc3eb1932c07526d222f2055d26d19b9fcd5d8ff7cc64522c",
+      "published_hash": "bc056cacf997653786564a2d1c65640fbbde45a3f186348bd6f07f60a46e4fa4",
       "image_hashes": {
-        "Ghul-fibonacci-word-fractal-fibonacci.png": "94bf56e5d097b1e824ccac736f8f8748cca812e2"
+        "Ghul-fibonacci-word-fractal-fibonacci.png": "94e8fd984ce3314b32e6f9bf85c18cf73c31e24e"
       }
     },
     {
