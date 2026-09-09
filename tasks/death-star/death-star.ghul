@@ -4,12 +4,12 @@ use Raster.IMAGE
 use VECTOR = (x: double, y: double, z: double)
 
 let size = 400
-let extent = 22.0D
+let extent = 22.0
 
-let big = (centre = (x = 0.0D, y = 0.0D, z = 0.0D), radius = 20.0D)
-let small = (centre = (x = 10.0D, y = 10.0D, z = 18.0D), radius = 14.0D)
+let big = (centre = (x = 0.0, y = 0.0, z = 0.0), radius = 20.0)
+let small = (centre = (x = 10.0, y = 10.0, z = 18.0), radius = 14.0)
 
-let light = (x = -0.5D, y = 0.6D, z = 1.0D)
+let light = (x = -0.5, y = 0.6, z = 1.0)
 
 normalized(v: VECTOR) -> VECTOR is
     let length = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
@@ -27,8 +27,8 @@ depths(
     let dy = y - centre.y
     let squared = radius * radius - dx * dx - dy * dy
 
-    if squared < 0.0D then
-        return (hit = false, near = 0.0D, far = 0.0D)
+    if squared < 0.0 then
+        return (hit = false, near = 0.0, far = 0.0)
     fi
 
     let half = Math.sqrt(squared)
@@ -44,15 +44,15 @@ shade(normal: VECTOR) -> ubyte is
         normal.y * direction.y +
         normal.z * direction.z
 
-    if lit < 0.0D then
+    if lit < 0.0 then
         return 20ub
     fi
 
-    return cast ubyte(20.0D + 235.0D * Math.pow(lit, 1.6D))
+    return cast ubyte(20.0 + 235.0 * Math.pow(lit, 1.6))
 si
 
 axis(index: int) -> double =>
-    extent * (2.0D * cast double(index) / cast double(size) - 1.0D)
+    extent * (2.0 * cast double(index) / cast double(size) - 1.0)
 
 let image = IMAGE(size, size)
 

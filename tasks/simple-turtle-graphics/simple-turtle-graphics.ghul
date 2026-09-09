@@ -14,18 +14,18 @@ house(size: double) is
 
     for _ in 0..4 do
         pen.forward(size)
-        pen.turn(90.0D)
+        pen.turn(90.0)
     od
 
     pen.pen_up()
-    pen.turn(90.0D)
+    pen.turn(90.0)
     pen.forward(size)
-    pen.turn(-90.0D)
+    pen.turn(-90.0)
     pen.pen_down()
 
-    pen.turn(60.0D)
+    pen.turn(60.0)
     pen.forward(size)
-    pen.turn(-120.0D)
+    pen.turn(-120.0)
     pen.forward(size)
 
     pen.move_to(x, y)
@@ -38,7 +38,7 @@ bar_chart(values: List[double], size: double) is
     let heading = pen.heading
 
     let tallest =
-        values |> reduce(0.0D, (most, value) =>
+        values |> reduce(0.0, (most, value) =>
             if value > most then value else most fi)
 
     let width = size / cast double(values.count)
@@ -46,35 +46,35 @@ bar_chart(values: List[double], size: double) is
     for value in values do
         let height = size * value / tallest
 
-        pen.turn(90.0D)
+        pen.turn(90.0)
         pen.forward(height)
-        pen.turn(-90.0D)
+        pen.turn(-90.0)
         pen.forward(width)
-        pen.turn(-90.0D)
+        pen.turn(-90.0)
         pen.forward(height)
-        pen.turn(90.0D)
+        pen.turn(90.0)
     od
 
     pen.move_to(x, y)
     pen.face(heading)
 si
 
-image.view(0.0D, 0.0D, 640.0D, 360.0D)
+image.view(0.0, 0.0, 640.0, 360.0)
 
 image.colour(140ub, 60ub, 40ub)
-image.stroke(3.0D)
+image.stroke(3.0)
 
-pen.move_to(70.0D, 30.0D)
-pen.face(0.0D)
+pen.move_to(70.0, 30.0)
+pen.face(0.0)
 
-house(160.0D)
+house(160.0)
 
 image.colour(40ub, 90ub, 160ub)
 
-pen.move_to(370.0D, 30.0D)
-pen.face(0.0D)
+pen.move_to(370.0, 30.0)
+pen.face(0.0)
 
-bar_chart([3.0D, 7.0D, 1.0D, 5.0D, 9.0D, 4.0D] |> collect_list(), 220.0D)
+bar_chart([3.0, 7.0, 1.0, 5.0, 9.0, 4.0] |> collect_list(), 220.0)
 
 image.write("turtle.png")
 

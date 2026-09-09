@@ -5,14 +5,14 @@ let width = 480
 let height = 360
 
 plasma(x: double, y: double) -> double =>
-    (Math.sin(x / 16.0D) +
-     Math.sin(y / 8.0D) +
-     Math.sin((x + y) / 16.0D) +
-     Math.sin(Math.sqrt(x * x + y * y) / 8.0D) +
-     4.0D) / 8.0D
+    (Math.sin(x / 16.0) +
+     Math.sin(y / 8.0) +
+     Math.sin((x + y) / 16.0) +
+     Math.sin(Math.sqrt(x * x + y * y) / 8.0) +
+     4.0) / 8.0
 
 channel(value: double, phase: double) -> ubyte =>
-    cast ubyte(127.5D + 127.4D * Math.sin(Math.pi * (value * 5.0D + phase)))
+    cast ubyte(127.5 + 127.4 * Math.sin(Math.pi * (value * 5.0 + phase)))
 
 let image = IMAGE(width, height)
 
@@ -22,9 +22,9 @@ for y in 0..height do
 
         image.set_pixel(
             x, y,
-            channel(value, 0.0D),
-            channel(value, 2.0D / 3.0D),
-            channel(value, 4.0D / 3.0D)
+            channel(value, 0.0),
+            channel(value, 2.0 / 3.0),
+            channel(value, 4.0 / 3.0)
         )
     od
 od

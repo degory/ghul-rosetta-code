@@ -16,6 +16,7 @@ range("ulong", ulong.min_value, ulong.max_value)
 range("single", single.min_value, single.max_value)
 range("double", double.min_value, double.max_value)
 range("decimal", decimal.min_value, decimal.max_value)
+range("bigint", "unbounded", "unbounded")
 
 write_line("")
 
@@ -25,4 +26,4 @@ let wide = 170141183460469231731687303715884105727n
 
 write_line("a short holds {small}")
 write_line("an L suffix makes a long: {large}")
-write_line("a bigint has no width at all: {wide}")
+write_line("an n suffix makes a bigint: {wide}")

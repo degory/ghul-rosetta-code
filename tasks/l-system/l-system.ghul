@@ -53,22 +53,22 @@ plant['F'] = "FF"
 
 let image = IMAGE(500, 500)
 
-image.view(-200.0D, -10.0D, 150.0D, 340.0D)
+image.view(-200.0, -10.0, 150.0, 340.0)
 image.colour(40ub, 120ub, 40ub)
-image.stroke(1.0D)
+image.stroke(1.0)
 
 let pen = TURTLE(image)
 
-pen.move_to(0.0D, 0.0D)
-pen.face(90.0D)
+pen.move_to(0.0, 0.0)
+pen.face(90.0)
 
 let saved = LIST[(x: double, y: double, heading: double)]()
 
 let drawing = MAP[char, () -> void]()
 
-drawing['F'] = () => pen.forward(2.0D)
-drawing['+'] = () => pen.turn(-25.0D)
-drawing['-'] = () => pen.turn(25.0D)
+drawing['F'] = () => pen.forward(2.0)
+drawing['+'] = () => pen.turn(-25.0)
+drawing['-'] = () => pen.turn(25.0)
 
 drawing['['] = () =>
     saved.add((x = pen.x, y = pen.y, heading = pen.heading))

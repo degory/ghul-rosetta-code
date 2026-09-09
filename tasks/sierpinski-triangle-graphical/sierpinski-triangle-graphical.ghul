@@ -5,14 +5,14 @@ use Raster.IMAGE
 use POINT = (x: double, y: double)
 
 midpoint(a: POINT, b: POINT) -> POINT =>
-    (x = (a.x + b.x) / 2.0D, y = (a.y + b.y) / 2.0D)
+    (x = (a.x + b.x) / 2.0, y = (a.y + b.y) / 2.0)
 
 triangle(a: POINT, b: POINT, c: POINT) -> List[POINT] =>
     [a, b, c] |> collect_list()
 
 let image = IMAGE(512, 456)
 
-image.view(0.0D, 0.0D, 1.0D, 0.89D)
+image.view(0.0, 0.0, 1.0, 0.89)
 image.colour(30ub, 90ub, 160ub)
 
 draw(a: POINT, b: POINT, c: POINT, order: int) is
@@ -27,9 +27,9 @@ draw(a: POINT, b: POINT, c: POINT, order: int) is
 si
 
 draw(
-    (x = 0.5D, y = 0.87D),
-    (x = 0.0D, y = 0.01D),
-    (x = 1.0D, y = 0.01D),
+    (x = 0.5, y = 0.87),
+    (x = 0.0, y = 0.01),
+    (x = 1.0, y = 0.01),
     6
 )
 
