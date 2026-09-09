@@ -1686,6 +1686,11 @@
       "state": "solved"
     },
     {
+      "title": "Loops/Infinite",
+      "state": "rejected",
+      "reason": "output-unbounded"
+    },
+    {
       "title": "Loops/While",
       "slug": "loops-while",
       "state": "solved"
