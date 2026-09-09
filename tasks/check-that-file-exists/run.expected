@@ -1,0 +1,5 @@
+input.txt: file True, directory False
+docs: file False, directory True
+`Abdu'l-Bahá.txt: file True, directory False
+/input.txt: file False, directory False
+/docs: file False, directory False
