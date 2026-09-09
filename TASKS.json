@@ -266,6 +266,16 @@
       "published_hash": "7d41c5157b844a88daf070d3155282f012dd3a8b2e3b38b9289718fa6a6b2f00"
     },
     {
+      "title": "Bitmap/Bresenham\u0027s line algorithm",
+      "slug": "bitmap-bresenhams-line-algorithm",
+      "state": "solved"
+    },
+    {
+      "title": "Bitmap/Midpoint circle algorithm",
+      "slug": "bitmap-midpoint-circle-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Blum integer",
       "slug": "blum-integer",
       "state": "published",
@@ -560,6 +570,11 @@
       "published_hash": "df775e87e97f607fb4d6040619f9c9e6ee4c7947d761bf3948e215b455b2286c"
     },
     {
+      "title": "Dragon curve",
+      "slug": "dragon-curve",
+      "state": "solved"
+    },
+    {
       "title": "Draw a rotating cube",
       "state": "rejected",
       "reason": "needs-gui"
@@ -815,6 +830,11 @@
       "published_hash": "c10f80d2d9f42ab72aa2ecfbf4e401fdd3ea1c0c56468f720d53490afb920fa8"
     },
     {
+      "title": "Fractal tree",
+      "slug": "fractal-tree",
+      "state": "solved"
+    },
+    {
       "title": "French Republican calendar",
       "slug": "french-republican-calendar",
       "state": "published",
@@ -971,6 +991,11 @@
       "slug": "hello-world-text",
       "state": "published",
       "published_hash": "49067ca560ac35123cb880979a268cdf45073a7ea86cc9e69189620d0943fa47"
+    },
+    {
+      "title": "Hilbert curve",
+      "slug": "hilbert-curve",
+      "state": "solved"
     },
     {
       "title": "Hofstadter Figure-Figure sequences",
@@ -1158,6 +1183,11 @@
       "published_hash": "3ae458925d50804f617586cc1c30f8322b04f519f0a3b589091cd205bbd0dee1"
     },
     {
+      "title": "Julia set",
+      "slug": "julia-set",
+      "state": "solved"
+    },
+    {
       "title": "Kaprekar numbers",
       "slug": "kaprekar-numbers",
       "state": "published",
@@ -1304,6 +1334,11 @@
       "slug": "man-or-boy-test",
       "state": "published",
       "published_hash": "0a22f282f1f511291fb073ccc68e9508cc0fa8324493dbac33c8d7f7a8a560ed"
+    },
+    {
+      "title": "Mandelbrot set",
+      "slug": "mandelbrot-set",
+      "state": "solved"
     },
     {
       "title": "Map range",
@@ -1676,6 +1711,11 @@
       "state": "published"
     },
     {
+      "title": "Pythagoras tree",
+      "slug": "pythagoras-tree",
+      "state": "solved"
+    },
+    {
       "title": "Quaternion",
       "slug": "quaternion",
       "state": "published",
@@ -1848,6 +1888,11 @@
       "slug": "shortest-common-supersequence",
       "state": "published",
       "published_hash": "3fbae38a2fd9a3c09d858da99e0533501ceec65cf285f87fb589cd725d8cf8c0"
+    },
+    {
+      "title": "Sierpinski arrowhead curve",
+      "slug": "sierpinski-arrowhead-curve",
+      "state": "solved"
     },
     {
       "title": "Sierpinski triangle",
@@ -2270,6 +2315,11 @@
       "slug": "word-wrap",
       "state": "published",
       "published_hash": "a05f057ed0575b267f53ec0a5d1eac9c5b9e3a3061d2aecf1c3ef6495ec8be40"
+    },
+    {
+      "title": "Xiaolin Wu\u0027s line algorithm",
+      "slug": "xiaolin-wus-line-algorithm",
+      "state": "solved"
     },
     {
       "title": "Y combinator",

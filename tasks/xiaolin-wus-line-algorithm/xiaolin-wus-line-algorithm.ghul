@@ -1,0 +1,89 @@
+use System.Math
+use Raster.IMAGE
+
+let image = IMAGE(400, 300)
+
+image.colour(0ub, 0ub, 0ub)
+
+fraction(value: double) -> double => value - Math.floor(value)
+
+rest(value: double) -> double => 1.0D - fraction(value)
+
+mark(x: int, y: int, steep: bool, weight: double) is
+    if steep then
+        image.blend(y, x, weight)
+    else
+        image.blend(x, y, weight)
+    fi
+si
+
+endpoint(
+    x: double, y: double,
+    gradient: double, gap: double,
+    steep: bool
+) -> (column: int, height: double) is
+    let ends_at = Math.round(x)
+    let height = y + gradient * (ends_at - x)
+
+    let column = cast int(ends_at)
+    let base = cast int(Math.floor(height))
+
+    mark(column, base, steep, rest(height) * gap)
+    mark(column, base + 1, steep, fraction(height) * gap)
+
+    return (column = column, height = height)
+si
+
+line(from_x: double, from_y: double, to_x: double, to_y: double) is
+    let steep =
+        Math.abs(to_y - from_y) > Math.abs(to_x - from_x)
+
+    let ax mut = if steep then from_y else from_x fi
+    let ay mut = if steep then from_x else from_y fi
+    let bx mut = if steep then to_y else to_x fi
+    let by mut = if steep then to_x else to_y fi
+
+    if ax > bx then
+        let held_x = ax
+        let held_y = ay
+
+        ax = bx
+        ay = by
+        bx = held_x
+        by = held_y
+    fi
+
+    let gradient =
+        if bx == ax then 1.0D else (by - ay) / (bx - ax) fi
+
+    let first =
+        endpoint(ax, ay, gradient, rest(ax + 0.5D), steep)
+    let last =
+        endpoint(bx, by, gradient, fraction(bx + 0.5D), steep)
+
+    let height mut = first.height + gradient
+
+    for column in first.column + 1..last.column do
+        let base = cast int(Math.floor(height))
+
+        mark(column, base, steep, rest(height))
+        mark(column, base + 1, steep, fraction(height))
+
+        height = height + gradient
+    od
+si
+
+for spoke in 0..13 do
+    let angle =
+        Math.pi * (cast double(spoke) / 12.0D - 0.5D)
+
+    line(
+        10.0D, 150.0D,
+        10.0D + 380.0D * Math.cos(angle),
+        150.0D - 140.0D * Math.sin(angle)
+    )
+od
+
+image.write("wu.png")
+
+image.show("wu.png")

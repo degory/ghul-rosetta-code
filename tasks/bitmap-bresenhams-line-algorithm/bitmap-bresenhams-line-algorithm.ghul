@@ -1,0 +1,50 @@
+use System.Math
+use Raster.IMAGE
+
+let image = IMAGE(400, 400)
+
+line(from_x: int, from_y: int, to_x: int, to_y: int) is
+    let across = Math.abs(to_x - from_x)
+    let up = Math.abs(to_y - from_y)
+
+    let step_x = if from_x < to_x then 1 else -1 fi
+    let step_y = if from_y < to_y then 1 else -1 fi
+
+    let x mut = from_x
+    let y mut = from_y
+    let error mut = across - up
+
+    do
+        image.set_pixel(x, y, 0ub, 0ub, 160ub)
+
+        if x == to_x /\ y == to_y then
+            break
+        fi
+
+        let doubled = error * 2
+
+        if doubled > -up then
+            error = error - up
+            x = x + step_x
+        fi
+
+        if doubled < across then
+            error = error + across
+            y = y + step_y
+        fi
+    od
+si
+
+for spoke in 0..24 do
+    let angle = 2.0D * Math.pi * cast double(spoke) / 24.0D
+
+    line(
+        200, 200,
+        200 + cast int(180.0D * Math.cos(angle)),
+        200 + cast int(180.0D * Math.sin(angle))
+    )
+od
+
+image.write("bresenham.png")
+
+image.show("bresenham.png")

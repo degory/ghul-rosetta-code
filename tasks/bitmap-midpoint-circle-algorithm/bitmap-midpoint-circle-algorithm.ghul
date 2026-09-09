@@ -1,0 +1,41 @@
+use Raster.IMAGE
+
+let image = IMAGE(400, 400)
+
+plot(x: int, y: int) is
+    image.set_pixel(x, y, 0ub, 0ub, 160ub)
+si
+
+circle(centre_x: int, centre_y: int, radius: int) is
+    let x mut = radius
+    let y mut = 0
+    let error mut = 1 - radius
+
+    while x >= y do
+        plot(centre_x + x, centre_y + y)
+        plot(centre_x + y, centre_y + x)
+        plot(centre_x - y, centre_y + x)
+        plot(centre_x - x, centre_y + y)
+        plot(centre_x - x, centre_y - y)
+        plot(centre_x - y, centre_y - x)
+        plot(centre_x + y, centre_y - x)
+        plot(centre_x + x, centre_y - y)
+
+        y = y + 1
+
+        if error < 0 then
+            error = error + 2 * y + 1
+        else
+            x = x - 1
+            error = error + 2 * (y - x) + 1
+        fi
+    od
+si
+
+for radius in 1..10 do
+    circle(200, 200, radius * 18)
+od
+
+image.write("circles.png")
+
+image.show("circles.png")

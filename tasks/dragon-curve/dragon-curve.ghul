@@ -1,0 +1,30 @@
+use Raster.IMAGE
+use Raster.TURTLE
+
+let order = 12
+let step = 6.0D
+
+let image = IMAGE(620, 440)
+let pen = TURTLE(image)
+
+dragon(depth: int, angle: double) is
+    if depth == 0 then
+        pen.forward(step)
+        return
+    fi
+
+    dragon(depth - 1, 90.0D)
+    pen.turn(angle)
+    dragon(depth - 1, -90.0D)
+si
+
+image.colour(0ub, 0ub, 160ub)
+image.stroke(1.0D)
+
+pen.move_to(468.0D, 150.0D)
+
+dragon(order, 90.0D)
+
+image.write("dragon.png")
+
+image.show("dragon.png")
