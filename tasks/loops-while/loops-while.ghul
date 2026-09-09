@@ -1,0 +1,9 @@
+use IO.Std.write_line
+
+let value mut = 1024
+
+while value > 0 do
+    write_line("{value}")
+
+    value = value / 2
+od
