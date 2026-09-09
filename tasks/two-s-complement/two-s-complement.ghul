@@ -9,7 +9,9 @@ bits(value: int) -> string =>
 two_s_complement(value: int) -> int => (value ^ -1) + 1
 
 for value in [1, 42, 0, -1, 2147483647] do
+    let negated = two_s_complement(value)
+
     write_line("{value}")
     write_line("  {bits(value)}")
-    write_line("  {bits(two_s_complement(value))} = {two_s_complement(value)}")
+    write_line("  {bits(negated)} = {negated}")
 od
