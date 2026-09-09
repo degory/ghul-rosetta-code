@@ -1,0 +1,7 @@
+use IO.Std.write_line
+use Ghul.Pipes.sort
+use Ghul.Pipes.join
+
+let numbers = [2, 4, 3, 1, 2]
+
+write_line(numbers |> sort() |> join(", "))

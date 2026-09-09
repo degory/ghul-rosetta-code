@@ -1,0 +1,27 @@
+use IO.Std.write_line
+use Ghul.Pipes.filter
+use Ghul.Pipes.join
+
+is_prime(n: int) -> bool is
+    if n < 2 then
+        return false
+    fi
+
+    if n % 2 == 0 then
+        return n == 2
+    fi
+
+    let divisor mut = 3
+
+    while divisor * divisor <= n do
+        if n % divisor == 0 then
+            return false
+        fi
+
+        divisor = divisor + 2
+    od
+
+    true
+si
+
+write_line((1::50) |> filter(is_prime) |> join(", "))

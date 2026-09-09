@@ -1,0 +1,12 @@
+use IO.Std.write_line
+use Ghul.Pipes.zip
+use Ghul.Pipes.each
+
+let letters = ['a', 'b', 'c']
+let capitals = ['A', 'B', 'C']
+let digits = [1, 2, 3]
+
+letters
+    |> zip(capitals, (letter, capital) => "{letter}{capital}")
+    |> zip(digits, (pair, digit) => "{pair}{digit}")
+    |> each(row => write_line(row))

@@ -1,0 +1,12 @@
+use IO.Std.write_line
+use Ghul.Pipes.map
+use Ghul.Pipes.collect_array
+use Ghul.Pipes.join
+
+let letters =
+    (cast int('a') :: cast int('z'))
+        |> map(code => cast char(code))
+        |> collect_array()
+
+write_line(letters |> join(""))
+write_line("{letters.count} letters, {letters[0]} to {letters[letters.count - 1]}")

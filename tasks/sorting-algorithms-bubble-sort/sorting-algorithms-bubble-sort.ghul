@@ -1,0 +1,35 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes.collect_list
+use Ghul.Pipes.join
+
+bubble_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    let sorted mut = false
+
+    while !sorted do
+        sorted = true
+
+        for i in 0..values.count - 1 do
+            if values[i] > values[i + 1] then
+                let swap = values[i]
+
+                values[i] = values[i + 1]
+                values[i + 1] = swap
+
+                sorted = false
+            fi
+        od
+    od
+si
+
+let numbers = [5, 3, 8, 1, 9, 2, 7] |> collect_list()
+
+bubble_sort(numbers)
+
+write_line(numbers |> join(", "))
+
+let words = ["pear", "apple", "quince", "banana"] |> collect_list()
+
+bubble_sort(words)
+
+write_line(words |> join(", "))
