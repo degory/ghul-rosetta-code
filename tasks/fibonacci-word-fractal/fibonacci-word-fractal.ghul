@@ -1,7 +1,7 @@
 use Raster.IMAGE
 use Raster.TURTLE
 
-let order = 21
+let order = 23
 let step = 1.0D
 
 word(order: int) -> string =>
@@ -19,14 +19,14 @@ word(order: int) -> string =>
 
 let letters = word(order)
 
-let image = IMAGE(450, 210)
+let image = IMAGE(450, 620)
 let pen = TURTLE(image)
 
-image.view(0.0D, 0.0D, 450.0D, 210.0D)
+image.view(0.0D, 0.0D, 450.0D, 620.0D)
 image.colour(0ub, 0ub, 160ub)
 image.stroke(1.0D)
 
-pen.move_to(21.0D, 190.0D)
+pen.move_to(21.0D, 600.0D)
 
 for at in 0..letters.length do
     pen.forward(step)
