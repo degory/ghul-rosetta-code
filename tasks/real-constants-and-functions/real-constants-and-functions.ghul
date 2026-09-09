@@ -1,0 +1,12 @@
+use IO.Std.write_line
+use System.Math
+
+write_line("e: {Math.e}")
+write_line("pi: {Math.pi}")
+write_line("square root of 2: {Math.sqrt(2.0)}")
+write_line("natural log of 10: {Math.log(10.0)}")
+write_line("e to the 2: {Math.exp(2.0)}")
+write_line("absolute value of -3.5: {Math.abs(-3.5)}")
+write_line("floor of -3.5: {Math.floor(-3.5)}")
+write_line("ceiling of -3.5: {Math.ceiling(-3.5)}")
+write_line("2 to the 10: {Math.pow(2.0, 10.0)}")

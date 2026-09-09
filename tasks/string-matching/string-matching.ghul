@@ -1,0 +1,19 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let text = "the rain in spain stays mainly in the plain"
+
+let wanted = "ain"
+
+write_line("starts with the: {text.starts_with("the")}")
+write_line("contains {wanted}: {text.contains(wanted)}")
+write_line("ends with plain: {text.ends_with("plain")}")
+write_line("first at: {text.index_of(wanted)}")
+
+let places =
+    (0..text.length - wanted.length + 1)
+        |> filter(at => text[at..at + wanted.length] =~ wanted)
+        |> map(at => "{at}")
+        |> join(", ")
+
+write_line("all at: {places}")

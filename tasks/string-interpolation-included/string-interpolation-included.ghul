@@ -1,0 +1,5 @@
+use IO.Std.write_line
+
+let size = "little"
+
+write_line("Mary had a {size} lamb")
