@@ -8,12 +8,12 @@ luhn(number: string) -> bool is
             |> index()
             |> map(entry =>
                 (
-                    let digit = cast int(entry.value) - cast int('0');
+                    let digit = cast int(entry.value) - cast int('0')
 
                     if entry.index % 2 == 0 then
                         digit
                     else
-                        let doubled = digit * 2;
+                        let doubled = digit * 2
 
                         if doubled > 9 then doubled - 9 else doubled fi
                     fi
