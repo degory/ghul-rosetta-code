@@ -55,6 +55,21 @@
       "published_hash": "c1a469bc92ad348755e4c96a74429108c00124695eac289ca0a5918d486fe371"
     },
     {
+      "title": "Abbreviations, easy",
+      "slug": "abbreviations-easy",
+      "state": "solved"
+    },
+    {
+      "title": "Abbreviations, simple",
+      "slug": "abbreviations-simple",
+      "state": "solved"
+    },
+    {
+      "title": "Abelian sandpile model",
+      "slug": "abelian-sandpile-model",
+      "state": "solved"
+    },
+    {
       "title": "Abstract type",
       "slug": "abstract-type",
       "state": "published",
@@ -205,6 +220,11 @@
       "published_hash": "4d3f494cf00ab0720f957a79c54b72e86f12d3143f8f5b59fb95b3a9a94c8a42"
     },
     {
+      "title": "Assertions",
+      "slug": "assertions",
+      "state": "solved"
+    },
+    {
       "title": "Atomic updates",
       "slug": "atomic-updates",
       "state": "published",
@@ -267,6 +287,11 @@
       "published_hash": "57b1c91700a5d5090d2559843229a8852cad6f9a8bfc337ceda53f85e958675b"
     },
     {
+      "title": "Bioinformatics/Base count",
+      "slug": "bioinformatics-base-count",
+      "state": "solved"
+    },
+    {
       "title": "Bioinformatics/Global alignment",
       "slug": "bioinformatics-global-alignment",
       "state": "published",
@@ -313,6 +338,11 @@
       "image_hashes": {
         "Ghul-bitmap-flood-fill-flooded.png": "0ed90f2efe61c8b894a1c139e3f838b1ed9e11ba"
       }
+    },
+    {
+      "title": "Bitmap/Histogram",
+      "slug": "bitmap-histogram",
+      "state": "solved"
     },
     {
       "title": "Bitmap/Midpoint circle algorithm",
@@ -494,10 +524,25 @@
       "published_hash": "0782849535459e51f4eccfcb9c6fe63ff800c341a05be1191499c14d882ef4d6"
     },
     {
+      "title": "Code Golf",
+      "slug": "code-golf",
+      "state": "solved"
+    },
+    {
       "title": "Colorful numbers",
       "slug": "colorful-numbers",
       "state": "published",
       "published_hash": "ccf38a20c39315b01d4e13e912ac53ced806f1976751e86ab0f7db47fbf72c5e"
+    },
+    {
+      "title": "Colour bars/Display",
+      "slug": "colour-bars-display",
+      "state": "solved"
+    },
+    {
+      "title": "Colour pinstripe/Display",
+      "slug": "colour-pinstripe-display",
+      "state": "solved"
     },
     {
       "title": "Colour pinstripe/Printer",
@@ -587,6 +632,11 @@
       "published_hash": "83df7f995087129262276357f0ec4d24a666b158c833f466f618b971b7f26b2a"
     },
     {
+      "title": "Death Star",
+      "slug": "death-star",
+      "state": "solved"
+    },
+    {
       "title": "Deceptive numbers",
       "slug": "deceptive-numbers",
       "state": "published"
@@ -608,6 +658,11 @@
       "slug": "descending-primes",
       "state": "published",
       "published_hash": "6040de9e3d73d61a1f4a23f5d4a9335016482aa07491b45a3f6fb507d90d5209"
+    },
+    {
+      "title": "Determine sentence type",
+      "slug": "determine-sentence-type",
+      "state": "solved"
     },
     {
       "title": "Digital root",
@@ -658,6 +713,11 @@
       "image_hashes": {
         "Ghul-dragon-curve-dragon.png": "86fed155019e0a6dbb22b4839c4946e5e28ef3fe"
       }
+    },
+    {
+      "title": "Draw a pixel",
+      "state": "rejected",
+      "reason": "needs-gui"
     },
     {
       "title": "Draw a rotating cube",
@@ -788,6 +848,11 @@
       "state": "published"
     },
     {
+      "title": "Extreme floating point values",
+      "slug": "extreme-floating-point-values",
+      "state": "solved"
+    },
+    {
       "title": "FTP",
       "state": "rejected",
       "reason": "needs-network"
@@ -892,6 +957,11 @@
       "slug": "flatten-a-list",
       "state": "published",
       "published_hash": "e9f4cce7a9edabf4e01ad76b5541865744069b3ba7e5891109d868bbf4e3606b"
+    },
+    {
+      "title": "Flipping bits game",
+      "slug": "flipping-bits-game",
+      "state": "solved"
     },
     {
       "title": "Formal power series",
@@ -1179,6 +1249,11 @@
       "published_hash": "62eb4c31f15a9ee3562bd29edb504692e7c22351b8fdd82ab5cf639999c9b2d0"
     },
     {
+      "title": "Idiomatically determine all the lowercase and uppercase letters",
+      "slug": "idiomatically-determine-all-the-lowercase-and-uppercase-letters",
+      "state": "solved"
+    },
+    {
       "title": "Idoneal numbers",
       "slug": "idoneal-numbers",
       "state": "published",
@@ -1343,6 +1418,11 @@
       "published_hash": "f5b532a7755d9adbf459c4671e7b811f2a2a7b518f3490e49f5b230827912ecd"
     },
     {
+      "title": "Knuth\u0027s algorithm S",
+      "slug": "knuth-s-algorithm-s",
+      "state": "solved"
+    },
+    {
       "title": "Knuth\u0027s power tree",
       "slug": "knuths-power-tree",
       "state": "published",
@@ -1369,6 +1449,11 @@
         "Ghul-kronecker-product-based-fractals-vicsek.png": "512d4574347c215db582b0661eab4035a17d61b0",
         "Ghul-kronecker-product-based-fractals-saltire.png": "630effa12da11b97178209058b72b58ebef05eb9"
       }
+    },
+    {
+      "title": "L-system",
+      "slug": "l-system",
+      "state": "solved"
     },
     {
       "title": "LZW compression",
@@ -1532,6 +1617,11 @@
       "published_hash": "525a660ed7e4032b46ee917ee81c15d211515aa814291f70782b6dbc74d440be"
     },
     {
+      "title": "Moser\u0027s circle problem",
+      "slug": "moser-s-circle-problem",
+      "state": "solved"
+    },
+    {
       "title": "Motzkin numbers",
       "slug": "motzkin-numbers",
       "state": "published",
@@ -1575,6 +1665,11 @@
       "image_hashes": {
         "Ghul-munching-squares-munching.png": "3c7e963ed7127a198c809a241b42f3532a148c02"
       }
+    },
+    {
+      "title": "Musical scale",
+      "state": "rejected",
+      "reason": "needs-gui"
     },
     {
       "title": "Mutex",
@@ -1688,6 +1783,11 @@
       "published_hash": "a9728c029685bd904768eb5ba2fccfae5845f7b0037e39e04c8e94d9e68595f5"
     },
     {
+      "title": "Old Russian measure of length",
+      "slug": "old-russian-measure-of-length",
+      "state": "solved"
+    },
+    {
       "title": "One-dimensional cellular automata",
       "slug": "one-dimensional-cellular-automata",
       "state": "published",
@@ -1698,6 +1798,11 @@
       "slug": "operator-precedence",
       "state": "published",
       "published_hash": "5f4fa45663d4748455391866706be6718026db732c800be02df78ada0e89e08b"
+    },
+    {
+      "title": "Optional parameters",
+      "slug": "optional-parameters",
+      "state": "solved"
     },
     {
       "title": "Order disjoint list items",
@@ -1796,6 +1901,11 @@
       "published_hash": "36b68dca9abac70ebfe1ae9ebb5ef231382aeb8e9729d95dedff60534e09791f"
     },
     {
+      "title": "Perlin noise",
+      "slug": "perlin-noise",
+      "state": "solved"
+    },
+    {
       "title": "Permutations",
       "slug": "permutations",
       "state": "published",
@@ -1827,6 +1937,16 @@
       "slug": "pisano-period",
       "state": "published",
       "published_hash": "24f916e20500e0fd812468302d5589a15f20ff1e20c1a77678a8c7747e645108"
+    },
+    {
+      "title": "Plasma effect",
+      "slug": "plasma-effect",
+      "state": "solved"
+    },
+    {
+      "title": "Plot coordinate pairs",
+      "slug": "plot-coordinate-pairs",
+      "state": "solved"
     },
     {
       "title": "Polynomial long division",
@@ -1866,6 +1986,16 @@
       "title": "Primorial numbers",
       "slug": "primorial-numbers",
       "state": "published"
+    },
+    {
+      "title": "Pseudo-random numbers/Middle-square method",
+      "slug": "pseudo-random-numbers-middle-square-method",
+      "state": "solved"
+    },
+    {
+      "title": "Pseudorandom number generator image",
+      "slug": "pseudorandom-number-generator-image",
+      "state": "solved"
     },
     {
       "title": "Pythagoras tree",
@@ -1934,6 +2064,16 @@
       "title": "Ranking methods",
       "slug": "ranking-methods",
       "state": "published"
+    },
+    {
+      "title": "Rate counter",
+      "state": "rejected",
+      "reason": "nondeterministic"
+    },
+    {
+      "title": "Read a configuration file",
+      "slug": "read-a-configuration-file",
+      "state": "solved"
     },
     {
       "title": "Recaman\u0027s sequence",
@@ -2023,6 +2163,11 @@
       "state": "published"
     },
     {
+      "title": "Self-describing numbers",
+      "slug": "self-describing-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Semiprime",
       "slug": "semiprime",
       "state": "published",
@@ -2090,16 +2235,31 @@
       "published_hash": "183e8facdece9f378a00fbc44fc82905d7bbb38290ea3c153480503d7acbafc6"
     },
     {
+      "title": "Sierpinski triangle/Graphical",
+      "slug": "sierpinski-triangle-graphical",
+      "state": "solved"
+    },
+    {
       "title": "Sieve of Eratosthenes",
       "slug": "sieve-of-eratosthenes",
       "state": "published",
       "published_hash": "dc4598ec2a043318f6804a087e499e9c8b1bf6a03b112f1c44a5a0a7a3bd605d"
     },
     {
+      "title": "Simple turtle graphics",
+      "slug": "simple-turtle-graphics",
+      "state": "solved"
+    },
+    {
       "title": "Sisyphus sequence",
       "slug": "sisyphus-sequence",
       "state": "published",
       "published_hash": "b9b8f0177cfca66fe2dce42b686c218fa5c85f5b790e0ea85e0c0a203af015c1"
+    },
+    {
+      "title": "Sleeping Beauty problem",
+      "slug": "sleeping-beauty-problem",
+      "state": "solved"
     },
     {
       "title": "Smarandache prime-digital sequence",
@@ -2130,6 +2290,16 @@
       "state": "published"
     },
     {
+      "title": "Sorting algorithms/Bead sort",
+      "slug": "sorting-algorithms-bead-sort",
+      "state": "solved"
+    },
+    {
+      "title": "Sorting algorithms/Patience sort",
+      "slug": "sorting-algorithms-patience-sort",
+      "state": "solved"
+    },
+    {
       "title": "Sorting algorithms/Quicksort",
       "slug": "sorting-algorithms-quicksort",
       "state": "published",
@@ -2140,6 +2310,26 @@
       "slug": "sorting-algorithms-sleep-sort",
       "state": "published",
       "published_hash": "17f8d8eb087e4865b332434dd0090aec12368569c2abd4da2acac684d0ecf91f"
+    },
+    {
+      "title": "Sorting algorithms/Strand sort",
+      "slug": "sorting-algorithms-strand-sort",
+      "state": "solved"
+    },
+    {
+      "title": "Sparkline in unicode",
+      "slug": "sparkline-in-unicode",
+      "state": "solved"
+    },
+    {
+      "title": "Special characters",
+      "slug": "special-characters",
+      "state": "solved"
+    },
+    {
+      "title": "Special variables",
+      "slug": "special-variables",
+      "state": "solved"
     },
     {
       "title": "Spelling of ordinal numbers",
@@ -2153,10 +2343,20 @@
       "published_hash": "484380e3bf6ab01a0a8bfdfed4c3d3ab0f5dac7d0ed402bc0bad571732123df6"
     },
     {
+      "title": "Spinning rod animation/Text",
+      "slug": "spinning-rod-animation-text",
+      "state": "solved"
+    },
+    {
       "title": "Spiral matrix",
       "slug": "spiral-matrix",
       "state": "published",
       "published_hash": "40046a5435dd324339c5ab95c6bf96fa0f628596600d169f838b03de741ed1fa"
+    },
+    {
+      "title": "Start from a main routine",
+      "slug": "start-from-a-main-routine",
+      "state": "solved"
     },
     {
       "title": "Stern-Brocot sequence",
@@ -2181,6 +2381,11 @@
       "state": "published"
     },
     {
+      "title": "String comparison",
+      "slug": "string-comparison",
+      "state": "solved"
+    },
+    {
       "title": "Strong and weak primes",
       "slug": "strong-and-weak-primes",
       "state": "published"
@@ -2202,6 +2407,11 @@
       "slug": "sum-to-100",
       "state": "published",
       "published_hash": "620d995ae15d56dba8438122b2737006e06921d4250451a1f86152d1aca15902"
+    },
+    {
+      "title": "Summarize and say sequence",
+      "slug": "summarize-and-say-sequence",
+      "state": "solved"
     },
     {
       "title": "Summarize primes",
@@ -2250,6 +2460,11 @@
       "published_hash": "4441e48abd4bc0f03cfa3b194823db780aede16238ef929b29d7f384e1bbd34a"
     },
     {
+      "title": "Terminal control/Inverse video",
+      "slug": "terminal-control-inverse-video",
+      "state": "solved"
+    },
+    {
       "title": "Ternary logic",
       "slug": "ternary-logic",
       "state": "published",
@@ -2294,6 +2509,11 @@
       "slug": "towers-of-hanoi",
       "state": "published",
       "published_hash": "b8bbd0dd5b377bca6084a942a084f2f6a92171b08c04325633fb708fc701d18e"
+    },
+    {
+      "title": "Trabb Pardo\u2013Knuth algorithm",
+      "slug": "trabb-pardo-knuth-algorithm",
+      "state": "solved"
     },
     {
       "title": "Tree datastructures",
@@ -2349,6 +2569,11 @@
       "slug": "twin-primes-whose-sum-is-square-number",
       "state": "published",
       "published_hash": "21a088bb92110656576e8bb36a9f539d24ed2028ac9fcead3c4bee598b5dec0c"
+    },
+    {
+      "title": "Two\u0027s complement",
+      "slug": "two-s-complement",
+      "state": "solved"
     },
     {
       "title": "URL decoding",
@@ -2419,6 +2644,11 @@
       "slug": "van-der-corput-sequence",
       "state": "published",
       "published_hash": "4362dcd05bdf0e4380a05a1c22aef8af80a3dd47d210f1d1a9e4f336543ff9bb"
+    },
+    {
+      "title": "Variable size/Set",
+      "slug": "variable-size-set",
+      "state": "solved"
     },
     {
       "title": "Variable-length quantity",
@@ -2512,10 +2742,20 @@
       "published_hash": "ba471144f60fd11d2fa5b5a11d996e875b27f67c49b2f0359692bb20b054399f"
     },
     {
+      "title": "Word wheel",
+      "slug": "word-wheel",
+      "state": "solved"
+    },
+    {
       "title": "Word wrap",
       "slug": "word-wrap",
       "state": "published",
       "published_hash": "a05f057ed0575b267f53ec0a5d1eac9c5b9e3a3061d2aecf1c3ef6495ec8be40"
+    },
+    {
+      "title": "Words containing \u0022the\u0022 substring",
+      "slug": "words-containing-the-substring",
+      "state": "solved"
     },
     {
       "title": "Xiaolin Wu\u0027s line algorithm",
