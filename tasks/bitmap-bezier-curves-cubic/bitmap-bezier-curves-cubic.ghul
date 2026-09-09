@@ -1,0 +1,38 @@
+use Collections.List
+use Ghul.Pipes
+use Raster.IMAGE
+
+use POINT = (x: double, y: double)
+
+let steps = 200
+
+cubic(a: POINT, b: POINT, c: POINT, d: POINT) -> List[POINT] =>
+    (0..steps + 1)
+        |> map(step =>
+            (let t = cast double(step) / cast double(steps)
+             let u = 1.0D - t
+
+             (x = u * u * u * a.x + 3.0D * u * u * t * b.x +
+                  3.0D * u * t * t * c.x + t * t * t * d.x,
+              y = u * u * u * a.y + 3.0D * u * u * t * b.y +
+                  3.0D * u * t * t * c.y + t * t * t * d.y)))
+        |> collect_list()
+
+let start = (x = 20.0D, y = 200.0D)
+let first = (x = 60.0D, y = 20.0D)
+let second = (x = 240.0D, y = 220.0D)
+let finish = (x = 280.0D, y = 40.0D)
+
+let image = IMAGE(300, 240)
+
+image.colour(190ub, 190ub, 190ub)
+image.stroke(1.0D)
+image.line([start, first, second, finish])
+
+image.colour(0ub, 0ub, 160ub)
+image.stroke(2.0D)
+image.line(cubic(start, first, second, finish))
+
+image.write("cubic.png")
+
+image.show("cubic.png")
