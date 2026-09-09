@@ -655,6 +655,11 @@
       "state": "solved"
     },
     {
+      "title": "Conjugate a Latin verb",
+      "slug": "conjugate-a-latin-verb",
+      "state": "solved"
+    },
+    {
       "title": "Consecutive primes with ascending or descending differences",
       "slug": "consecutive-primes-with-ascending-or-descending-differences",
       "state": "published",
@@ -1761,6 +1766,11 @@
       "state": "solved"
     },
     {
+      "title": "Loops/Increment loop index within loop body",
+      "slug": "loops-increment-loop-index-within-loop-body",
+      "state": "solved"
+    },
+    {
       "title": "Loops/Infinite",
       "state": "rejected",
       "reason": "output-unbounded"
@@ -1773,6 +1783,11 @@
     {
       "title": "Loops/While",
       "slug": "loops-while",
+      "state": "solved"
+    },
+    {
+      "title": "Loops/With multiple ranges",
+      "slug": "loops-with-multiple-ranges",
       "state": "solved"
     },
     {
@@ -2324,6 +2339,11 @@
       "published_hash": "35116e069f82737389b74116a8ecf84428b70d2f0b37c946be94bf80e1d53b73"
     },
     {
+      "title": "RPG attributes generator",
+      "slug": "rpg-attributes-generator",
+      "state": "solved"
+    },
+    {
       "title": "Radical of an integer",
       "slug": "radical-of-an-integer",
       "state": "published",
@@ -2456,6 +2476,11 @@
       "published_hash": "74b26394a8409bf7239173439f0d2fda7db8b97515f4de055fd2114d93335399"
     },
     {
+      "title": "Selectively replace multiple instances of a character within a string",
+      "slug": "selectively-replace-multiple-instances-of-a-character-within-a-string",
+      "state": "solved"
+    },
+    {
       "title": "Self numbers",
       "slug": "self-numbers",
       "state": "published"
@@ -2487,6 +2512,11 @@
       "title": "Sexy primes",
       "slug": "sexy-primes",
       "state": "published"
+    },
+    {
+      "title": "Shape-Machine",
+      "slug": "shape-machine",
+      "state": "solved"
     },
     {
       "title": "Shortest common supersequence",
@@ -2547,6 +2577,11 @@
       "slug": "sieve-of-eratosthenes",
       "state": "published",
       "published_hash": "dc4598ec2a043318f6804a087e499e9c8b1bf6a03b112f1c44a5a0a7a3bd605d"
+    },
+    {
+      "title": "Sieve of Pritchard",
+      "slug": "sieve-of-pritchard",
+      "state": "solved"
     },
     {
       "title": "Sign of an integer (signum)",
@@ -2677,6 +2712,11 @@
       "slug": "spiral-matrix",
       "state": "published",
       "published_hash": "40046a5435dd324339c5ab95c6bf96fa0f628596600d169f838b03de741ed1fa"
+    },
+    {
+      "title": "Split a character string based on change of character",
+      "slug": "split-a-character-string-based-on-change-of-character",
+      "state": "solved"
     },
     {
       "title": "Start from a main routine",
@@ -2884,6 +2924,11 @@
       "slug": "trabb-pardo-knuth-algorithm",
       "state": "published",
       "published_hash": "6b749f61a5990bebc51e57eecb637b0c684a2e9403176b08a5ebf7ac5d872996"
+    },
+    {
+      "title": "Transliterate English text using the Greek alphabet",
+      "slug": "transliterate-english-text-using-the-greek-alphabet",
+      "state": "solved"
     },
     {
       "title": "Tree datastructures",
