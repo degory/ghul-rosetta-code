@@ -1,0 +1,18 @@
+-0.0                         -0
+1.0 / 0.0                    ∞
+-1.0 / 0.0                   -∞
+0.0 / 0.0                    NaN
+
+double.negative_infinity     -∞
+double.positive_infinity     ∞
+double.na_n                  NaN
+
+-0.0 == 0.0                  True
+1.0 / -0.0                   -∞
+nan == nan                   False
+double.is_na_n(nan)          True
+
+infinity + 1.0               ∞
+infinity - infinity          NaN
+infinity * 0.0               NaN
+1.0 / infinity               0
