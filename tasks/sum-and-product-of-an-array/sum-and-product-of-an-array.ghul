@@ -1,0 +1,7 @@
+use IO.Std.write_line
+use Ghul.Pipes.reduce
+
+let numbers = [1, 2, 3, 4, 5]
+
+write_line("sum:     {numbers |> reduce(0, (a, b) => a + b)}")
+write_line("product: {numbers |> reduce(1, (a, b) => a * b)}")

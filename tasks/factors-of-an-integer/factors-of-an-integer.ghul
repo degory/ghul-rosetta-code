@@ -1,0 +1,10 @@
+use IO.Std.write_line
+use Ghul.Pipes.filter
+use Ghul.Pipes.join
+
+factors(n: int) -> Ghul.Pipes.Pipe[int] =>
+    (1::n) |> filter(d => n % d == 0)
+
+for n in [1, 45, 53, 64, 1024] do
+    write_line("{n,4}: {factors(n) |> join(", ")}")
+od
