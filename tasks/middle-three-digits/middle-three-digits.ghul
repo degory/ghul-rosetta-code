@@ -14,7 +14,7 @@ middle_three(value: int) -> Middle is
     fi
 
     if digits.length % 2 == 0 then
-        return Middle.REFUSED("an even number of digits has no middle three")
+        return Middle.REFUSED("an even number of digits has no middle")
     fi
 
     return Middle.DIGITS(digits.substring(digits.length / 2 - 1, 3))

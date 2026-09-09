@@ -17,7 +17,8 @@ geometric(values: double[]) -> double is
 si
 
 harmonic(values: double[]) -> double is
-    let reciprocals = values |> reduce(0.0, (running, v) => running + 1.0 / v)
+    let reciprocals =
+        values |> reduce(0.0, (running, v) => running + 1.0 / v)
 
     return cast double(values.count) / reciprocals
 si
