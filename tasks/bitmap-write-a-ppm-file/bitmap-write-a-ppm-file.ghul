@@ -1,0 +1,62 @@
+use Collections.LIST
+use Ghul.Pipes
+use IO.Std.write_line
+
+use COLOUR = (red: ubyte, green: ubyte, blue: ubyte)
+
+class BITMAP is
+    width: int
+    height: int
+
+    bytes: LIST[ubyte]
+
+    init(width: int, height: int) is
+        self.width = width
+        self.height = height
+
+        bytes = (0..width * height * 3) |> map(_ => 0ub) |> collect_list()
+    si
+
+    set_pixel(x: int, y: int, colour: COLOUR) is
+        let at = (y * width + x) * 3
+
+        bytes[at] = colour.red
+        bytes[at + 1] = colour.green
+        bytes[at + 2] = colour.blue
+    si
+si
+
+write_ppm(image: BITMAP, path: string) is
+    let file = IO.File.create(path)
+
+    let header =
+        System.Text.Encoding.ascii.get_bytes(
+            "P6\n{image.width} {image.height}\n255\n"
+        )
+
+    file.write(header, 0, header.count)
+
+    let pixels = image.bytes |> collect_array()
+
+    file.write(pixels, 0, pixels.count)
+
+    file.dispose()
+si
+
+let image = BITMAP(200, 150)
+
+for y in 0..image.height do
+    for x in 0..image.width do
+        image.set_pixel(
+            x, y,
+            (red = cast ubyte(255 * x / image.width),
+             green = cast ubyte(255 * y / image.height),
+             blue = 128ub)
+        )
+    od
+od
+
+write_ppm(image, "gradient.ppm")
+
+write_line("P6 {image.width} {image.height} 255")
+write_line("{IO.FileInfo("gradient.ppm").length} bytes")
