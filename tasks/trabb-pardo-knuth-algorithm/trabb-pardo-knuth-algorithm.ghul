@@ -1,0 +1,25 @@
+use IO.Std.write_line
+use IO.Std.read_line
+use System.Math
+use Ghul.Pipes
+
+f(x: double) -> double => Math.sqrt(Math.abs(x)) + 5.0 * x * x * x
+
+write_line("enter 11 numbers:")
+
+let numbers =
+    (0..11)
+    |> map(_ => double.parse(read_line()!))
+    |> collect_list()
+
+numbers.reverse()
+
+for x in numbers do
+    let result = f(x)
+
+    if result > 400.0 then
+        write_line("{x}: too large")
+    else
+        write_line("{x}: {result}")
+    fi
+od
