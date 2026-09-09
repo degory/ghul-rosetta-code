@@ -1,0 +1,54 @@
+use IO.Std.write_line
+
+use Suit.HEARTS
+use Suit.SPADES
+
+enum Suit is
+    HEARTS,
+    DIAMONDS,
+    CLUBS,
+    SPADES,
+si
+
+union Shape is
+    CIRCLE(radius: int);
+    SQUARE(side: int);
+si
+
+describe(value: int) -> string is
+    if value < 0 then
+        return "negative"
+    elif value == 0 then
+        return "zero"
+    else
+        return "positive"
+    fi
+si
+
+colour(suit: Suit) -> string =>
+    case suit
+    when HEARTS, Suit.DIAMONDS then "red"
+    else "black"
+    esac
+
+area(shape: Shape) -> int =>
+    case shape
+    when circle: Shape.CIRCLE then circle.radius * circle.radius * 3
+    when square: Shape.SQUARE then square.side * square.side
+    esac
+
+size(shape: Shape) -> string =>
+    if let circle: Shape.CIRCLE = shape /\ circle.radius > 10 then
+        "a big circle"
+    else
+        "something else"
+    fi
+
+write_line("{describe(-2)}, {describe(0)}, {describe(7)}")
+write_line("{colour(HEARTS)}, {colour(SPADES)}")
+write_line("{area(Shape.CIRCLE(2))}, {area(Shape.SQUARE(3))}")
+write_line("{size(Shape.CIRCLE(20))}, {size(Shape.SQUARE(1))}")
+
+let missing: string? = null
+
+write_line("{missing ?? "a fallback for an absent value"}")

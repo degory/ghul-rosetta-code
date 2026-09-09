@@ -1,0 +1,17 @@
+use IO.Std.write_line
+
+divides(numerator: int, denominator: int) -> bool is
+    try
+        let _ = numerator / denominator
+
+        return true
+    catch _: System.DivideByZeroException
+        return false
+    yrt
+si
+
+for denominator in [2, 0] do
+    write_line("10 / {denominator} divides: {divides(10, denominator)}")
+od
+
+write_line("10.0 / 0.0 is {10.0 / 0.0}, which raises nothing")
