@@ -1,0 +1,7 @@
+use IO.Std.write_line
+
+let planets = ["Mercury", "Venus", "Earth", "Mars"]
+
+for planet in planets do
+    write_line(planet)
+od

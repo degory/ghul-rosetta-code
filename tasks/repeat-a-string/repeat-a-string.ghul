@@ -1,0 +1,6 @@
+use IO.Std.write_line
+use Ghul.Pipes.repeat
+use Ghul.Pipes.join
+
+write_line(repeat("ha", 5) |> join(""))
+write_line(string('*', 5))
