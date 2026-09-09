@@ -264,16 +264,20 @@ from later statements and from functions alike. Prefer the bare form and mutate
 what it holds - a list, a map - rather than reassigning it, so nothing in the
 file is written from two places.
 
-Neither is a reason to move a solution's working data to the top level just so
-named functions can be written. Passing what a function needs as an argument is
-usually shorter, and always clearer.
+A top-level `let ... mut` is the right shape when the state genuinely belongs
+to the program: a counter the whole run advances, a seed the next draw reads.
+These are short, often imperative programs, and a global that the program is
+about is not a smell.
 
-The case that tempts a top-level `let ... mut` hardest is a helper that has to
-carry state from one call to the next - a cursor into a buffer, a running total
-- because ghūl has no nested function definitions and there is nowhere obvious
-to put it. There is: a function literal in a local variable. A `let ... mut` is
-captured by reference, so the helper reads and writes the enclosing function's
-own state directly.
+What to avoid is hoisting one function's working data up there so that a named
+function can reach it without being passed anything. Passing what a function
+needs as an argument is usually shorter, and always clearer.
+
+The case that tempts hardest is a helper that has to carry state from one call
+to the next - a cursor into a buffer - because ghūl has no nested function
+definitions and there is nowhere obvious to put it. There is: a function
+literal in a local variable. A `let ... mut` is captured by reference, so the
+helper reads and writes the enclosing function's own state directly.
 
 ```ghul
 read_ppm(path: string) -> BITMAP is
@@ -288,12 +292,14 @@ read_ppm(path: string) -> BITMAP is
             at = at + 1
         od
 
-        return text(raw, from, at)
+        return string(
+            (from..at)
+                |> map(index => cast char(raw[index]))
+                |> collect_array()
+        )
     si
 
     assert token() =~ "P6" else "not a binary PPM"
-
-    ...
 si
 ```
 
