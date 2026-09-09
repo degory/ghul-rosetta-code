@@ -122,10 +122,59 @@ emit_body() {
 
     if [ -n "$OUTPUT" ] ; then
         echo "{{out}}"
-        echo "<pre>"
-        echo "$OUTPUT"
+        emit_output "$SLUG" "$OUTPUT"
+    fi
+}
+
+# The output, with any image the program named turned into a reference the
+# wiki renders. A `<<image NAME>>` line is written by Png.show at the point
+# in the output where the picture belongs, and cannot stay inside a <pre>
+# block, which the wiki renders literally - so the block is closed before
+# each reference and opened again after it. A run with no images comes out
+# as one block, exactly as before.
+emit_output() {
+    local SLUG=$1
+    local OUTPUT=$2
+
+    local OPEN=no
+
+    while IFS= read -r LINE ; do
+        case "$LINE" in
+            "<<image "*">>")
+                local NAME=${LINE#<<image }
+                NAME=${NAME%>>}
+
+                if [ "$OPEN" = yes ] ; then
+                    echo "</pre>"
+                    OPEN=no
+                fi
+
+                echo "[[File:$(image_title "$SLUG" "$NAME")|thumb|none]]"
+                ;;
+            *)
+                if [ "$OPEN" = no ] ; then
+                    echo "<pre>"
+                    OPEN=yes
+                fi
+
+                echo "$LINE"
+                ;;
+        esac
+    done <<< "$OUTPUT"
+
+    if [ "$OPEN" = yes ] ; then
         echo "</pre>"
     fi
+}
+
+# What an image is called on the wiki. The File: namespace is shared with
+# every other language there, so a name like Spiral.png would collide; the
+# slug and the language make one that cannot.
+image_title() {
+    local SLUG=$1
+    local NAME=$2
+
+    echo "Ghul-$SLUG-$NAME"
 }
 
 emit() {

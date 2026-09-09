@@ -1,0 +1,31 @@
+use System.Math
+
+let size = 400
+let turns = 5.0D
+let steps = 20000
+
+let image = Png.IMAGE(size, size)
+
+for y in 0..size do
+    for x in 0..size do
+        image.set(x, y, 255ub, 255ub, 255ub)
+    od
+od
+
+let centre = cast double(size) / 2.0D
+let last = turns * 2.0D * Math.pi
+let scale = (centre - 8.0D) / last
+
+for step in 0::steps do
+    let angle = last * cast double(step) / cast double(steps)
+    let radius = scale * angle
+
+    let x = cast int(centre + radius * Math.cos(angle))
+    let y = cast int(centre + radius * Math.sin(angle))
+
+    image.set(x, y, 0ub, 0ub, 160ub)
+od
+
+image.write("spiral.png")
+
+Png.show("spiral.png")
