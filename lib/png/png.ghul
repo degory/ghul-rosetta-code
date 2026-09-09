@@ -1,0 +1,150 @@
+namespace Png is
+    use Collections.LIST
+    use Ghul.Pipes
+
+    // A truecolour PNG: signature, IHDR, one IDAT holding the zlib stream,
+    // IEND. The scanlines carry filter byte 0, so what is compressed is the
+    // pixels as they stand.
+    class IMAGE is
+        width: int
+        height: int
+
+        _pixels: LIST[ubyte]
+
+        init(width: int, height: int) is
+            self.width = width
+            self.height = height
+
+            _pixels = (0..width * height * 3) |> map(_ => 0ub) |> collect_list()
+        si
+
+        set(x: int, y: int, red: ubyte, green: ubyte, blue: ubyte) is
+            let at = (y * width + x) * 3
+
+            _pixels[at] = red
+            _pixels[at + 1] = green
+            _pixels[at + 2] = blue
+        si
+
+        write(path: string) is
+            let out = LIST[ubyte]()
+
+            for value in [137ub, 80ub, 78ub, 71ub, 13ub, 10ub, 26ub, 10ub] do
+                out.add(value)
+            od
+
+            let header = LIST[ubyte]()
+
+            _append_int(header, width)
+            _append_int(header, height)
+
+            for value in [8ub, 2ub, 0ub, 0ub, 0ub] do
+                header.add(value)
+            od
+
+            _append_chunk(out, "IHDR", header |> collect_array())
+            _append_chunk(out, "IDAT", _zlib(_scanlines()))
+            _append_chunk(out, "IEND", [])
+
+            IO.File.write_all_bytes(path, out |> collect_array())
+        si
+
+        _scanlines() -> ubyte[] =>
+            (let raw = LIST[ubyte]()
+
+             for y in 0..height do
+                 raw.add(0ub)
+
+                 for at in y * width * 3 .. (y + 1) * width * 3 do
+                     raw.add(_pixels[at])
+                 od
+             od
+
+             raw |> collect_array())
+
+        _zlib(data: ubyte[]) -> ubyte[] =>
+            (let out = LIST[ubyte]()
+
+             out.add(0x78ub)
+             out.add(0x01ub)
+
+             for value in _deflate(data) do
+                 out.add(value)
+             od
+
+             _append_int(out, _adler32(data))
+
+             out |> collect_array())
+
+        _deflate(data: ubyte[]) -> ubyte[] =>
+            (let buffer = IO.MemoryStream()
+
+             let stream =
+                 System.IO.Compression.DeflateStream(
+                     buffer,
+                     System.IO.Compression.CompressionMode.COMPRESS,
+                     true
+                 )
+
+             stream.write(data, 0, data.count)
+             stream.close()
+
+             buffer.to_array())
+
+        _adler32(data: ubyte[]) -> int =>
+            (let low mut = 1
+             let high mut = 0
+
+             for value in data do
+                 low = (low + cast int(value)) % 65521
+                 high = (high + low) % 65521
+             od
+
+             (high << 16) | low)
+
+        _append_int(out: LIST[ubyte], value: int) is
+            out.add(cast ubyte((value >> 24) & 0xFF))
+            out.add(cast ubyte((value >> 16) & 0xFF))
+            out.add(cast ubyte((value >> 8) & 0xFF))
+            out.add(cast ubyte(value & 0xFF))
+        si
+
+        _append_chunk(out: LIST[ubyte], kind: string, data: ubyte[]) is
+            _append_int(out, data.count)
+
+            let body = LIST[ubyte]()
+
+            for letter in kind do
+                body.add(cast ubyte(letter))
+            od
+
+            for value in data do
+                body.add(value)
+            od
+
+            for value in body do
+                out.add(value)
+            od
+
+            _append_int(out, cast int(_crc32(body |> collect_array())))
+        si
+
+        _crc32(data: ubyte[]) -> uint =>
+            (let remainder mut = 0xFFFFFFFFu
+
+             for value in data do
+                 remainder = remainder ^ cast uint(value)
+
+                 for _ in 0..8 do
+                     remainder =
+                         if (remainder & 1u) != 0u then
+                             0xEDB88320u ^ (remainder >>> 1)
+                         else
+                             remainder >>> 1
+                         fi
+                 od
+             od
+
+             remainder ^ 0xFFFFFFFFu)
+    si
+si
