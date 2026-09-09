@@ -1,0 +1,70 @@
+use Ghul.Pipes
+use Raster.IMAGE
+
+luminance(red: ubyte, green: ubyte, blue: ubyte) -> ubyte =>
+    cast ubyte(
+        0.2126D * cast double(red) +
+        0.7152D * cast double(green) +
+        0.0722D * cast double(blue) + 0.5D
+    )
+
+to_grey(colour: IMAGE) -> ubyte[] =>
+    (0..colour.width * colour.height)
+        |> map(at =>
+            (let seen =
+                 colour.pixel(at % colour.width, at / colour.width)
+
+             luminance(seen.red, seen.green, seen.blue)))
+        |> collect_array()
+
+to_colour(levels: ubyte[], width: int, height: int) -> IMAGE is
+    let image = IMAGE(width, height)
+
+    for at in 0..levels.count do
+        image.set_pixel(
+            at % width, at / width, levels[at], levels[at], levels[at]
+        )
+    od
+
+    return image
+si
+
+let width = 300
+let height = 200
+
+let colour = IMAGE(width, height)
+
+for y in 0..height do
+    for x in 0..width do
+        colour.set_pixel(
+            x, y,
+            cast ubyte(255 * x / width),
+            cast ubyte(255 * y / height),
+            cast ubyte(255 - 255 * x / width)
+        )
+    od
+od
+
+colour.colour(255ub, 0ub, 0ub)
+colour.fill([(x = 30.0D, y = 30.0D),
+             (x = 110.0D, y = 30.0D),
+             (x = 70.0D, y = 110.0D)])
+
+colour.colour(0ub, 255ub, 0ub)
+colour.fill([(x = 120.0D, y = 30.0D),
+             (x = 200.0D, y = 30.0D),
+             (x = 160.0D, y = 110.0D)])
+
+colour.colour(0ub, 0ub, 255ub)
+colour.fill([(x = 210.0D, y = 30.0D),
+             (x = 290.0D, y = 30.0D),
+             (x = 250.0D, y = 110.0D)])
+
+colour.write("colour.png")
+
+let grey = to_colour(to_grey(colour), width, height)
+
+grey.write("grey.png")
+
+colour.show("colour.png")
+grey.show("grey.png")

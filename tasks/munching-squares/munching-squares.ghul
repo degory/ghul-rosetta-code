@@ -1,0 +1,30 @@
+use System.Math
+use Raster.IMAGE
+
+let size = 256
+
+shade(value: int, phase: double) -> ubyte =>
+    cast ubyte(
+        127.5D * (1.0D - Math.cos(
+            2.0D * Math.pi * cast double(value) / 256.0D + phase
+        ))
+    )
+
+let image = IMAGE(size, size)
+
+for y in 0..size do
+    for x in 0..size do
+        let value = x ^ y
+
+        image.set_pixel(
+            x, y,
+            shade(value, 0.0D),
+            shade(value, 2.1D),
+            shade(value, 4.2D)
+        )
+    od
+od
+
+image.write("munching.png")
+
+image.show("munching.png")

@@ -1,29 +1,27 @@
-use System.Math
+use Ghul.Pipes
 use Raster.IMAGE
+use System.Math
 
 let turns = 5.0D
 let steps = 2000
 
 let last = turns * 2.0D * Math.pi
 
+at(angle: double) -> (x: double, y: double) =>
+    (x = angle * Math.cos(angle), y = angle * Math.sin(angle))
+
 let image = IMAGE(400, 400)
 
-// The spiral is stated in the plane it is drawn in, so the picture is
-// described in the same terms as the curve.
 image.view(-last, -last, last, last)
 
 image.colour(0ub, 0ub, 160ub)
 image.stroke(1.5D)
 
-at(angle: double) -> (x: double, y: double) =>
-    (x = angle * Math.cos(angle), y = angle * Math.sin(angle))
-
-for step in 0..steps do
-    let from = at(last * cast double(step) / cast double(steps))
-    let to = at(last * cast double(step + 1) / cast double(steps))
-
-    image.line(from.x, from.y, to.x, to.y)
-od
+image.line(
+    (0..steps + 1)
+        |> map(step => at(last * cast double(step) / cast double(steps)))
+        |> collect_list()
+)
 
 image.write("spiral.png")
 

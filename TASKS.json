@@ -275,6 +275,21 @@
       }
     },
     {
+      "title": "Bitmap/B\u00E9zier curves/Cubic",
+      "slug": "bitmap-bezier-curves-cubic",
+      "state": "solved"
+    },
+    {
+      "title": "Bitmap/B\u00E9zier curves/Quadratic",
+      "slug": "bitmap-bezier-curves-quadratic",
+      "state": "solved"
+    },
+    {
+      "title": "Bitmap/Flood fill",
+      "slug": "bitmap-flood-fill",
+      "state": "solved"
+    },
+    {
       "title": "Bitmap/Midpoint circle algorithm",
       "slug": "bitmap-midpoint-circle-algorithm",
       "state": "published",
@@ -318,6 +333,11 @@
       "slug": "brilliant-numbers",
       "state": "published",
       "published_hash": "e4382adb4f4691ef764f75c91a50b39585a4fe9d5084101debd2deec0279782b"
+    },
+    {
+      "title": "Brownian tree",
+      "slug": "brownian-tree",
+      "state": "solved"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -784,6 +804,11 @@
       "published_hash": "57fdfeabb3d04b8c7288c89465b5cb20aca72943409eae63f567ff16ff6bcf91"
     },
     {
+      "title": "Fibonacci word/fractal",
+      "slug": "fibonacci-word-fractal",
+      "state": "solved"
+    },
+    {
       "title": "File size distribution",
       "state": "rejected",
       "reason": "nondeterministic"
@@ -937,6 +962,11 @@
       "slug": "gray-code",
       "state": "published",
       "published_hash": "72aa391c38c8c2ec0b29b375c95b44b52cccf8128fdcb316a9a9b16db27fe517"
+    },
+    {
+      "title": "Grayscale image",
+      "slug": "grayscale-image",
+      "state": "solved"
     },
     {
       "title": "Greatest common divisor",
@@ -1457,6 +1487,11 @@
       "published_hash": "df64cea937796eaa72fcd093efa6a912a3728ecca5dc638fe9d6937b981bc767"
     },
     {
+      "title": "Munching squares",
+      "slug": "munching-squares",
+      "state": "solved"
+    },
+    {
       "title": "Mutex",
       "slug": "mutex",
       "state": "published",
@@ -1654,6 +1689,11 @@
       "slug": "parsing-shunting-yard-algorithm",
       "state": "published",
       "published_hash": "c7ca81f26b2458be33b8ab24af879e7ac7f19390eb93cdd5654663072a296ccf"
+    },
+    {
+      "title": "Peano curve",
+      "slug": "peano-curve",
+      "state": "solved"
     },
     {
       "title": "Pell numbers",
@@ -1929,6 +1969,16 @@
       "image_hashes": {
         "Ghul-sierpinski-arrowhead-curve-arrowhead.png": "408f3f5a7b43deee3d78535a8985471835513850"
       }
+    },
+    {
+      "title": "Sierpinski curve",
+      "slug": "sierpinski-curve",
+      "state": "solved"
+    },
+    {
+      "title": "Sierpinski square curve",
+      "slug": "sierpinski-square-curve",
+      "state": "solved"
     },
     {
       "title": "Sierpinski triangle",
@@ -2304,6 +2354,11 @@
       "title": "Visualize a tree",
       "slug": "visualize-a-tree",
       "state": "published"
+    },
+    {
+      "title": "Voronoi diagram",
+      "slug": "voronoi-diagram",
+      "state": "solved"
     },
     {
       "title": "Wagstaff primes",
