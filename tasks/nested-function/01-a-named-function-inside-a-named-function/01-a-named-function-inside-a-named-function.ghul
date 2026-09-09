@@ -1,0 +1,22 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+make_list(separator: string) -> string is
+    let counter mut = 0
+
+    make_item(item: string) -> string is
+        counter = counter + 1
+        "{counter}{separator}{item}"
+    si
+
+    let items = LIST()
+
+    for item in ["first", "second", "third"] do
+        items.add(make_item(item))
+    od
+
+    return items |> join("\n")
+si
+
+write_line(make_list(". "))
