@@ -42,6 +42,11 @@
       "published_hash": "325e0cda4f339e95c2746052218a313572b5311fd9af9aaf8f4264a22d6656fb"
     },
     {
+      "title": "A\u002BB",
+      "slug": "a-b",
+      "state": "solved"
+    },
+    {
       "title": "ABC problem",
       "slug": "abc-problem",
       "state": "published",
@@ -214,6 +219,11 @@
       }
     },
     {
+      "title": "Argument destructuring",
+      "slug": "argument-destructuring",
+      "state": "solved"
+    },
+    {
       "title": "Arithmetic derivative",
       "slug": "arithmetic-derivative",
       "state": "published",
@@ -224,6 +234,26 @@
       "slug": "arithmetic-evaluation",
       "state": "published",
       "published_hash": "4d3f494cf00ab0720f957a79c54b72e86f12d3143f8f5b59fb95b3a9a94c8a42"
+    },
+    {
+      "title": "Arithmetic/Integer",
+      "slug": "arithmetic-integer",
+      "state": "solved"
+    },
+    {
+      "title": "Array concatenation",
+      "slug": "array-concatenation",
+      "state": "solved"
+    },
+    {
+      "title": "Array length",
+      "slug": "array-length",
+      "state": "solved"
+    },
+    {
+      "title": "Arrays",
+      "slug": "arrays",
+      "state": "solved"
     },
     {
       "title": "Assertions",
@@ -397,6 +427,11 @@
       "published_hash": "fab5365bf9a8382c11a17487c28e28363e5beea5c0be4adf607ec1dfe619beee"
     },
     {
+      "title": "Boolean values",
+      "slug": "boolean-values",
+      "state": "solved"
+    },
+    {
       "title": "Boustrophedon transform",
       "slug": "boustrophedon-transform",
       "state": "published",
@@ -460,6 +495,11 @@
       "published_hash": "fdc6f21edcd5a674b6bf9b9d5f077a47f8bd22a45d55b90bf7aaf9c0f3eb858e"
     },
     {
+      "title": "Call a function",
+      "slug": "call-a-function",
+      "state": "solved"
+    },
+    {
       "title": "Camel case and snake case",
       "slug": "camel-case-and-snake-case",
       "state": "published",
@@ -484,6 +524,11 @@
       "published_hash": "ad926def56d0f7e67504b4e1afb7817fca6038cf4731c53c1c7d5b18098c2ad3"
     },
     {
+      "title": "Character codes",
+      "slug": "character-codes",
+      "state": "solved"
+    },
+    {
       "title": "Chat server",
       "state": "rejected",
       "reason": "needs-network"
@@ -493,6 +538,11 @@
       "slug": "check-machin-like-formulas",
       "state": "published",
       "published_hash": "8e803969e2c09ec8c1d82d261e1480c3348e632a45fcaeb8375218870047da50"
+    },
+    {
+      "title": "Check that file exists",
+      "slug": "check-that-file-exists",
+      "state": "solved"
     },
     {
       "title": "Checkpoint synchronization",
@@ -578,6 +628,11 @@
       "published_hash": "5bf8ede189c9ff39827a189e0e771aa88b98a79988f4a3fc26c2bb8bb75cc7e6"
     },
     {
+      "title": "Compare length of two strings",
+      "slug": "compare-length-of-two-strings",
+      "state": "solved"
+    },
+    {
       "title": "Compare sorting algorithms\u0027 performance",
       "state": "rejected",
       "reason": "nondeterministic"
@@ -595,6 +650,11 @@
       "published_hash": "e6f25a3827815019adfc08a9bc6e096cac7a28d288a5d39f3713623f3ede60d0"
     },
     {
+      "title": "Conditional structures",
+      "slug": "conditional-structures",
+      "state": "solved"
+    },
+    {
       "title": "Consecutive primes with ascending or descending differences",
       "slug": "consecutive-primes-with-ascending-or-descending-differences",
       "state": "published",
@@ -605,6 +665,11 @@
       "slug": "constrained-genericity",
       "state": "published",
       "published_hash": "23ea12d49f78bee0543a7d59f6ed07cc0bf082ce96fea43a7676eecb8148d4ed"
+    },
+    {
+      "title": "Copy a string",
+      "slug": "copy-a-string",
+      "state": "solved"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -684,6 +749,16 @@
       "slug": "descending-primes",
       "state": "published",
       "published_hash": "6040de9e3d73d61a1f4a23f5d4a9335016482aa07491b45a3f6fb507d90d5209"
+    },
+    {
+      "title": "Detect division by zero",
+      "slug": "detect-division-by-zero",
+      "state": "solved"
+    },
+    {
+      "title": "Determine if a string is numeric",
+      "slug": "determine-if-a-string-is-numeric",
+      "state": "solved"
     },
     {
       "title": "Determine sentence type",
@@ -1584,6 +1659,36 @@
       "slug": "look-and-say-sequence",
       "state": "published",
       "published_hash": "cec14431ff7f40148023fd91bc29409623fdb115d5f4e3dab787a225cafdb21c"
+    },
+    {
+      "title": "Loops/Break",
+      "slug": "loops-break",
+      "state": "solved"
+    },
+    {
+      "title": "Loops/Do-while",
+      "slug": "loops-do-while",
+      "state": "solved"
+    },
+    {
+      "title": "Loops/Downward for",
+      "slug": "loops-downward-for",
+      "state": "solved"
+    },
+    {
+      "title": "Loops/For",
+      "slug": "loops-for",
+      "state": "solved"
+    },
+    {
+      "title": "Loops/For with a specified step",
+      "slug": "loops-for-with-a-specified-step",
+      "state": "solved"
+    },
+    {
+      "title": "Loops/While",
+      "slug": "loops-while",
+      "state": "solved"
     },
     {
       "title": "Lucky and even lucky numbers",
