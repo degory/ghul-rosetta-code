@@ -62,7 +62,12 @@ run_task() {
         dotnet build "$DIR" --nologo -v quiet >/dev/null 2>&1 || return 1
     fi
 
-    "$BUILT"
+    # From the task's own directory, which is where it is run every other way:
+    # the test runner sets it as the working directory, and each project sets
+    # RunWorkingDirectory so `dotnet run` matches. A task that reads a data
+    # file beside it, or writes an image for the entry to refer to, names that
+    # file relative to the directory it lives in and finds it nowhere else.
+    ( cd "$DIR" && "./bin/Debug/net10.0/binary" )
 }
 
 # The parts of a task, in order, or nothing when it is an ordinary single-program task.
