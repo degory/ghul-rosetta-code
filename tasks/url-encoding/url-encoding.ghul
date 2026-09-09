@@ -17,6 +17,6 @@ url_encode(text: string) -> string =>
         |> join("")
 
 ["http://foo bar/",
- "google.com/search?q=`Abdu'l-Bahá",
+ "ghul.dev/search?q=ghūl language",
  "%25"]
     |> each(text => write_line("{text} -> {url_encode(text)}"))
