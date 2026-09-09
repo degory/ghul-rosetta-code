@@ -3,26 +3,17 @@ use Raster.IMAGE
 
 let image = IMAGE(400, 300)
 
+image.colour(0ub, 0ub, 0ub)
+
 fraction(value: double) -> double => value - Math.floor(value)
 
 rest(value: double) -> double => 1.0D - fraction(value)
 
-plot(x: int, y: int, weight: double) is
-    if x < 0 \/ y < 0 \/ x >= image.width \/ y >= image.height then
-        return
-    fi
-
-    let under = cast double(image.pixel(x, y).red)
-    let level = cast ubyte(under * (1.0D - weight))
-
-    image.set_pixel(x, y, level, level, level)
-si
-
 mark(x: int, y: int, steep: bool, weight: double) is
     if steep then
-        plot(y, x, weight)
+        image.blend(y, x, weight)
     else
-        plot(x, y, weight)
+        image.blend(x, y, weight)
     fi
 si
 
