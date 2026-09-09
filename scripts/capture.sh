@@ -28,6 +28,15 @@ fi
 # Deliberately no il.expected: these tasks assert what the program prints, not what the
 # compiler emits. A test folder with no il.expected has its IL output ignored.
 
+# An image the task wrote becomes the expectation for it. ghul-test compares
+# the bytes first and the decoded pixels only if those differ, so an
+# expectation stays good across a change to what the encoder compresses to.
+for image in $CASE/*.png ; do
+    if [ -f "$image" ] ; then
+        cp "$image" "$image.expected"
+    fi
+done
+
 if [ -f $CASE/run.out ] ; then
     mv $CASE/run.out $CASE/run.expected
     rm -f $CASE/fail.expected
