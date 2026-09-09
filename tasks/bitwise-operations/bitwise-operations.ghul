@@ -5,10 +5,6 @@ use System.Numerics.BitOperations
 show(name: string, value: int) =>
     write_line("{name,-22} {Convert.to_string(value, 2),32}")
 
-// ghul has no unary bitwise complement, so an exclusive or against a
-// word of ones stands in for it.
-complement(a: int) -> int => a ^ -1
-
 rotate_left(a: int, by: int) -> int =>
     cast int(BitOperations.rotate_left(cast uint(a), by))
 
@@ -21,7 +17,7 @@ bitwise(a: int, b: int) is
     show("a and b", a & b)
     show("a or b", a | b)
     show("a xor b", a ^ b)
-    show("complement of a", complement(a))
+    show("complement of a", \a)
     show("shifted left", a << b)
     show("shifted right", a >>> b)
     show("shifted arithmetic", a >> b)
