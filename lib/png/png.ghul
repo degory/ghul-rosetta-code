@@ -2,6 +2,13 @@ namespace Png is
     use Collections.LIST
     use Ghul.Pipes
 
+    // Names an image the program wrote, at the point in the output it
+    // belongs. Publishing uploads the file and puts the reference the wiki
+    // needs here; a solution says only which image it means.
+    show(name: string) is
+        IO.Std.write_line("<<image {name}>>")
+    si
+
     // A truecolour PNG: signature, IHDR, one IDAT holding the zlib stream,
     // IEND. The scanlines carry filter byte 0, so what is compressed is the
     // pixels as they stand.

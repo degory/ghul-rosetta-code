@@ -200,6 +200,96 @@ reopen(root: string, title: string, why: string) is
     write_line("{entry.title}: {entry.state} ({entry.note})")
 si
 
+// The images a section refers to, by the name the solution wrote each under.
+// `Png.show` writes the reference, and generate-wiki.sh turns it into the
+// wiki's markup, so the file names are read back out of the markup rather
+// than guessed at from the directory.
+referenced_images(section: string) -> LIST[string] =>
+    (let found = LIST[string]()
+
+     for line in section.split(['\n']) do
+         let trimmed = line.trim()
+
+         if trimmed.starts_with("[[File:") then
+             let rest = trimmed.substring("[[File:".length)
+             let at = rest.index_of('|')
+
+             found.add(if at < 0 then rest.replace("]]", "") else rest.substring(0, at) fi)
+         fi
+     od
+
+     found)
+
+// Puts a task's images on the wiki before the page that refers to them.
+//
+// A file already there is left alone when it is the one we uploaded, and
+// replaced only when the wiki's digest is the one recorded for it. Anything
+// else is somebody else's file under a name we chose, or ours after somebody
+// edited it, and overwriting either unasked is the thing the section check
+// exists to prevent. The File: namespace is shared with every language on
+// the wiki, so this matters more there than on a task page.
+upload_images(
+    root: string,
+    wiki: WIKI,
+    entry: TASK_ENTRY,
+    slug: string,
+    section: string
+) is
+    let titles = referenced_images(section)
+
+    if titles.count == 0 then
+        return
+    fi
+
+    let recorded = entry.image_hashes ?? MAP[string, string]()
+
+    entry.image_hashes = recorded
+
+    for title in titles do
+        // Ghul-<slug>-<name>: the name the solution wrote is the tail.
+        let name = title.substring("Ghul-{slug}-".length)
+        let path = IO.Path.combine(root, "tasks", slug, name)
+
+        if !IO.File.exists(path) then
+            throw System.Exception(
+                "{title} is referred to but {name} was not written by the task"
+            )
+        fi
+
+        let ours = file_digest(path)
+        let live = wiki.file_sha1("File:{title}")
+
+        if let there = live then
+            if there =~ ours then
+                write_line("  {title}: already there")
+
+                recorded[title] = ours
+
+                continue
+            fi
+
+            if !recorded.contains_key(title) \/ recorded[title] !~ there then
+                throw System.Exception(
+                    "File:{title} is not the image published from here, so it "
+                    "was not replaced - read it before overwriting it"
+                )
+            fi
+        fi
+
+        wiki.upload(title, path, "ghūl solution for {entry.title}")
+
+        recorded[title] = ours
+
+        write_line("  {title}: {if live? then "replaced" else "uploaded" fi}")
+    od
+si
+
+// The digest MediaWiki reports for a file is the SHA-1 of its bytes.
+file_digest(path: string) -> string =>
+    (let hash = System.Security.Cryptography.SHA1.hash_data(IO.File.read_all_bytes(path))
+
+     System.Convert.to_hex_string(hash).to_lower())
+
 // user and password for Special:BotPasswords, one per line, from a file outside the checkout.
 credentials() -> (user: string, password: string) is
     let path =
@@ -616,6 +706,8 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
 
                 write_line("{entry.title}: written to {sandbox}, would have gone {where}")
             else
+                upload_images(root, wiki, entry, slug, section)
+
                 wiki.edit(entry.title, spliced, edit_summary(placement))
 
                 entry.state = "published"

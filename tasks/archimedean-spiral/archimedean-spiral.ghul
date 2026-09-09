@@ -1,4 +1,3 @@
-use IO.Std.write_line
 use System.Math
 
 let size = 400
@@ -29,4 +28,4 @@ od
 
 image.write("spiral.png")
 
-write_line("wrote spiral.png, {size} by {size}")
+Png.show("spiral.png")

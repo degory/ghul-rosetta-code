@@ -1,5 +1,9 @@
 namespace Rosetta is
+    use System.Exception
     use System.Net.Http
+    use System.Net.Http.MultipartFormDataContent
+    use System.Net.Http.StringContent
+    use System.Net.Http.ByteArrayContent
     use System.Text.Json.JsonDocument
     use System.Text.Json.JsonElement
     use Collections
@@ -189,6 +193,82 @@ namespace Rosetta is
 
             return
                 System.Text.RegularExpressions.Regex.matches(body, "diff-deletedline").count
+        si
+
+        // The wiki's own digest of a file's current version, or absent when
+        // there is no such file. Comparing it against what was uploaded from
+        // here is what tells our own picture from one somebody else has put
+        // in its place.
+        file_sha1(title: string) -> string? is
+            let document =
+                _get(
+                    "action=query&prop=imageinfo&iiprop=sha1"
+                    "&titles={System.Uri.escape_data_string(title)}"
+                )
+
+            let pages =
+                document.root_element.get_property("query").get_property("pages")
+
+            for page in pages.enumerate_array() do
+                let images: JsonElement mut
+
+                if page.try_get_property("imageinfo", images ref) then
+                    for image in images.enumerate_array() do
+                        let sha1: JsonElement mut
+
+                        if image.try_get_property("sha1", sha1 ref) then
+                            return sha1.get_string()
+                        fi
+                    od
+                fi
+            od
+
+            return null
+        si
+
+        // Sends a file. The upload form is multipart rather than the encoded
+        // fields every other call uses, because it carries the bytes.
+        upload(title: string, path: string, comment: string) is
+            assert _csrf_token? else "log_in has not run, so there is no edit token"
+
+            let token = _csrf_token
+
+            let form = MultipartFormDataContent()
+
+            form.add(StringContent("upload"), "action")
+            form.add(StringContent(title), "filename")
+            form.add(StringContent(comment), "comment")
+            form.add(StringContent(comment), "text")
+            form.add(StringContent(token), "token")
+            form.add(StringContent("json"), "format")
+            form.add(StringContent("2"), "formatversion")
+            form.add(StringContent("1"), "ignorewarnings")
+
+            form.add(ByteArrayContent(IO.File.read_all_bytes(path)), "file", title)
+
+            let response = _client.post_async(_api, form).result
+            let body = response.content.read_as_string_async().result
+            let root = JsonDocument.parse(body, _).root_element
+
+            let failure: JsonElement mut
+
+            if root.try_get_property("error", failure ref) then
+                let code: JsonElement mut
+
+                throw Exception(
+                    "uploading {title} failed: "
+                    "{if failure.try_get_property("code", code ref) then code.get_string() ?? "" else "" fi}"
+                )
+            fi
+
+            let result: JsonElement mut
+
+            if
+                !root.get_property("upload").try_get_property("result", result ref) \/
+                result.get_string() !~ "Success"
+            then
+                throw Exception("uploading {title} did not succeed: {body}")
+            fi
         si
 
         // Replaces a page's whole text. `log_in` must have run first.

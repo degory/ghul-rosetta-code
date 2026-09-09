@@ -25,6 +25,11 @@ namespace Rosetta is
         note: string? public
         published_hash: string? public
 
+        // The wiki's digest of each image this repository uploaded for the
+        // task, by the name the solution wrote it under. What tells our own
+        // picture from one somebody has replaced it with.
+        image_hashes: MAP[string, string]? public
+
         init() is
             title = ""
             state = "queued"
