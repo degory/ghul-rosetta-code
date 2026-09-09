@@ -1,0 +1,44 @@
+use IO.Std.write_line
+use Collections.MAP
+use Ghul.Pipes
+
+let wheel = "ndeokgelw"
+let centre = 'k'
+
+available(letters: string) -> MAP[char, int] is
+    let counts = MAP[char, int]()
+
+    for letter in letters do
+        if !counts.contains_key(letter) then
+            counts[letter] = 0
+        fi
+
+        counts[letter] = counts[letter] + 1
+    od
+
+    return counts
+si
+
+spellable(word: string) -> bool is
+    let left = available(wheel)
+
+    for letter in word do
+        if !left.contains_key(letter) \/ left[letter] == 0 then
+            return false
+        fi
+
+        left[letter] = left[letter] - 1
+    od
+
+    return true
+si
+
+let found =
+    IO.File.read_all_lines("unixdict.txt")
+    |> filter(word =>
+        word.length >= 3 /\ word.contains(centre) /\ spellable(word))
+    |> collect_list()
+
+write_line(found |> join("\n"))
+write_line("")
+write_line("{found.count} words")
