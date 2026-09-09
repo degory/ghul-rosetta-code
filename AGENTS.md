@@ -79,10 +79,13 @@ So, in rough order of how often it comes up:
   threads or nests, and here it threads:
   `xs |> map(f) |> filter(p) |> join(", ")`, never
   `join(filter(map(xs, f), p), ", ")`.
-- **Prefer functions to classes.** A class earns its place when the task is
-  itself about objects, or when it is plainly clearer than the alternative.
-  A task solved with a class holding two fields and one method, where three
-  functions would do, is a transliteration of somebody else's entry.
+- **Lean towards functions, but use the right tool.** A class earns its place
+  when the task is itself about objects, when state and the operations on it
+  belong together - a bitmap and its pixels, a parser and its cursor - or when
+  it is otherwise plainly clearer than the alternative. What the lean is
+  against is the class that carries no weight: two fields and one method where
+  three functions would do is a transliteration of somebody else's entry, not
+  encapsulation.
 - **Prefer an expression body.** `=>` over `is` ... `si` wherever the body is an
   expression, including where that expression is an `if`, a `case`, or a block.
   Write a block expression parenthesised rather than with `val` ... `lav`: the
@@ -297,6 +300,11 @@ si
 The cursor stays where it belongs, and nothing outside `read_ppm` can reach it.
 A helper that needs no state of its own is a global function taking what it
 reads as an argument, as `space` is here.
+
+Where the state and the operations on it are the subject rather than a detail
+of one function - a bitmap that is filled, written and read back - a class says
+so more plainly than either, and is the right answer. The preference for
+functions is a lean, not a rule; see "Lean towards functions" above.
 
 ## Solutions carry no comments
 
