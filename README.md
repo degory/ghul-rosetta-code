@@ -184,21 +184,25 @@ dotnet run --project tools/rosetta -- sync              # reconcile the ledger w
 dotnet run --project tools/rosetta -- candidates 20     # tasks nothing has been decided about
 dotnet run --project tools/rosetta -- show solved       # ledger entries, all or in one state
 dotnet run --project tools/rosetta -- set "Zig-zag matrix" rejected needs-gui
-dotnet run --project tools/rosetta -- publish --dry-run # where each entry would go, and the page it would leave
-dotnet run --project tools/rosetta -- publish --target "Rosetta Code:Sandbox"   # a real run, written somewhere harmless
+dotnet run --project tools/rosetta -- publish --solved --dry-run # where each entry would go, and the page it would leave
+dotnet run --project tools/rosetta -- publish --solved --target "Rosetta Code:Sandbox"   # a real run, written somewhere harmless
 dotnet run --project tools/rosetta -- publish amb       # post one task, by slug
 dotnet run --project tools/rosetta -- publish --replace amb   # replace the ghul section already there
-dotnet run --project tools/rosetta -- publish           # post every solved task
+dotnet run --project tools/rosetta -- publish --solved  # post every solved task
 ```
 
 `sync` treats the wiki as the authority on what is published and `tasks/` as the authority on
 what has a solution, and leaves alone anything only the ledger knows - a rejection, a block.
 
 `publish` reads the markup `scripts/generate-wiki.sh` leaves in `wiki-out/`, so generate before
-publishing - `--solved` before a bare `publish`, `--out <slug>...` before publishing those slugs. It puts the section in case-insensitive alphabetical position among the
-page's other language headers, or replaces the ghul section already there. Naming one or more
-slugs publishes only those; with none, every solved task goes. A dry run writes the whole
-proposed page to `wiki-out/<slug>.page` for reading before anything is sent.
+publishing - `--solved` before `publish --solved`, `--out <slug>...` before publishing those
+slugs. It puts the section in case-insensitive alphabetical position among the page's other
+language headers, or replaces the ghul section already there. Naming one or more slugs publishes
+only those, and `--solved` publishes every solved task; a run given neither is refused, because
+the two mistakes are not equally cheap - publishing nothing wastes a run, and publishing
+everything by accident edits a public wiki. An unrecognised option is refused too, rather than
+being read as a slug that matches no task. A dry run writes the whole proposed page to
+`wiki-out/<slug>.page` for reading before anything is sent.
 
 Re-publishing an improved solution needs `--replace`, and the refusal that makes it necessary is
 worth understanding before reaching for it. A replacement is refused unless the section on the

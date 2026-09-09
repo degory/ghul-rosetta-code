@@ -6,7 +6,7 @@
 #   scripts/publish.sh --solved       publish every task not yet on the wiki
 #
 # Any other argument is passed through to `rosetta publish`, so --dry-run and
-# --replace work as they do there.
+# --replace work as they do there, in any position.
 #
 # The record is the point of this script. `rosetta publish` writes each page's
 # new digest into TASKS.json as it goes, and that digest is the only thing a
@@ -40,6 +40,10 @@ fi
 
 BRANCH=ghul-coder/publish-record-$(date +%Y-%m-%d-%H%M%S)
 
+# Where to go back to if nothing publishes. `main` is checked out in the primary
+# clone, so a worktree cannot return to it by name.
+WAS=$(git symbolic-ref --quiet --short HEAD || git rev-parse HEAD)
+
 git fetch --quiet origin main
 git checkout --quiet -b "$BRANCH" origin/main
 
@@ -47,11 +51,25 @@ git checkout --quiet -b "$BRANCH" origin/main
 # earlier state of the tree would put that state on the wiki. Regenerate the
 # tasks about to be published, and nothing else: --solved and an explicit list
 # generate exactly what the publish run will read.
-case "$1" in
-    --solved) scripts/generate-wiki.sh --solved ;;
-    --*)      ;;
-    *)        scripts/generate-wiki.sh --out "$@" ;;
-esac
+# The flags can come in any order, so which tasks to generate is decided by
+# reading all of them rather than by looking at the first. A flag left in the
+# slug list generates nothing and then publishes nothing.
+SLUGS=()
+SOLVED=
+
+for argument in "$@" ; do
+    case "$argument" in
+        --solved) SOLVED=yes ;;
+        --*)      ;;
+        *)        SLUGS+=("$argument") ;;
+    esac
+done
+
+if [ -n "$SOLVED" ] ; then
+    scripts/generate-wiki.sh --solved
+elif [ ${#SLUGS[@]} -gt 0 ] ; then
+    scripts/generate-wiki.sh --out "${SLUGS[@]}"
+fi
 
 # A refusal is per page and the rest of the batch carries on, so a non-zero
 # exit still leaves records worth keeping. Take the status and continue.
@@ -60,7 +78,7 @@ dotnet run --project tools/rosetta -- publish "$@" || STATUS=$?
 
 if [ -z "$(git status --porcelain TASKS.json)" ] ; then
     echo "nothing was published, so there is no record to land"
-    git checkout --quiet main
+    git checkout --quiet "$WAS"
     git branch --quiet -D "$BRANCH"
     exit "$STATUS"
 fi
