@@ -111,13 +111,27 @@ emit_body() {
 
     local OUTPUT
 
-    if ! OUTPUT=$(run_task "$DIR" "$NAME") ; then
-        echo "$DIR: does not build or run" >&2
-        return 1
-    fi
+    # A task that reads standard input is driven by the test runner, which
+    # paces what it sends against what the program has printed. Running it
+    # here with nothing on standard input produces a transcript of prompts
+    # with no answers in it, so the captured expectation is the output: it is
+    # the transcript the runner produced, and nothing else can reproduce it.
+    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] ; then
+        if [ ! -f "$EXPECTED" ] ; then
+            echo "$DIR: reads standard input and has no run.expected - run the test first" >&2
+            return 1
+        fi
 
-    if [ -f "$EXPECTED" ] && [ "$OUTPUT" != "$(cat "$EXPECTED")" ] ; then
-        echo "$DIR: output differs from run.expected - recapture the test" >&2
+        OUTPUT=$(cat "$EXPECTED")
+    else
+        if ! OUTPUT=$(run_task "$DIR" "$NAME") ; then
+            echo "$DIR: does not build or run" >&2
+            return 1
+        fi
+
+        if [ -f "$EXPECTED" ] && [ "$OUTPUT" != "$(cat "$EXPECTED")" ] ; then
+            echo "$DIR: output differs from run.expected - recapture the test" >&2
+        fi
     fi
 
     printf '%s' "<syntaxhighlight lang=\"ghul\">"

@@ -90,6 +90,12 @@ away with nothing to update in between. Where that output differs from the test'
 the entry is still emitted and the difference is reported on stderr - the test needs recapturing,
 which is worth knowing but is not a reason to withhold the markup.
 
+A task that reads standard input is the exception. The test runner paces what it sends against
+what the program has printed, so running the task here with nothing on standard input produces a
+transcript of prompts with no answers in it. For those the captured `run.expected` is the output,
+since it is the transcript the runner produced and nothing else reproduces it - which means an
+edited solution of that kind needs its test recapturing before its markup is generated.
+
 The bulk forms print the task's wiki URL beside each file. The single-task form prints the URL to stderr,
 so stdout stays exactly what goes on the page and can be piped:
 

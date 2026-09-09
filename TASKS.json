@@ -9,32 +9,37 @@
     {
       "title": "100 prisoners",
       "slug": "100-prisoners",
-      "state": "solved",
-      "note": "reopened, was rejected/nondeterministic: a seeded generator makes the simulation reproducible, and the ~31% answer is the point"
+      "state": "published",
+      "note": "reopened, was rejected/nondeterministic: a seeded generator makes the simulation reproducible, and the ~31% answer is the point",
+      "published_hash": "49ef91d98471bb12ead75f312ba15ed976c0f986d27ae070445d0a57e8117598"
     },
     {
       "title": "15 puzzle game",
       "slug": "15-puzzle-game",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
+      "state": "published",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
+      "published_hash": "63deebbf382e996d59083ef57d8f904b7b1129b200efe04909494da14482d783"
     },
     {
       "title": "2048",
       "slug": "2048",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
+      "state": "published",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
+      "published_hash": "15ca06f28a477b8cb252157b7c29d0488e8c816f86480ce84ef2acc6fa85961b"
     },
     {
       "title": "21 game",
       "slug": "21-game",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
+      "state": "published",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
+      "published_hash": "2c897d2a3746ca10c01d391a44247a684db0a58144731b2f07eefc98fb35e9a0"
     },
     {
       "title": "24 game",
       "slug": "24-game",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
+      "state": "published",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
+      "published_hash": "325e0cda4f339e95c2746052218a313572b5311fd9af9aaf8f4264a22d6656fb"
     },
     {
       "title": "ABC problem",
@@ -45,8 +50,9 @@
     {
       "title": "ADFGVX cipher",
       "slug": "adfgvx-cipher",
-      "state": "solved",
-      "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key"
+      "state": "published",
+      "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key",
+      "published_hash": "c1a469bc92ad348755e4c96a74429108c00124695eac289ca0a5918d486fe371"
     },
     {
       "title": "Abstract type",
@@ -128,8 +134,9 @@
     {
       "title": "Anagrams",
       "slug": "anagrams",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched"
+      "state": "published",
+      "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched",
+      "published_hash": "04cbdce0202001bdea0f0dc4e4cae323793360d5f11c03b9b8caf4cef09b5cb1"
     },
     {
       "title": "Anaprimes",
@@ -180,9 +187,9 @@
       "slug": "archimedean-spiral",
       "state": "published",
       "note": "reopened, was rejected/needs-gui: renders to a PNG written by the repository\u0027s own encoder, so it needs no drawing library",
-      "published_hash": "ac1354c3787c6a5199341816bdb6c1a8d8a2973fa5f18a6593041ee29eb15799",
+      "published_hash": "7718661c10e509dcb44989d682a0e89da505a460d0a6dd1ae4a302e13aa2b432",
       "image_hashes": {
-        "Ghul-archimedean-spiral-spiral.png": "9dd040c2ec18ec65042d6383d052124695aadba5"
+        "Ghul-archimedean-spiral-spiral.png": "e1dc2a0fcdb64bc747c9b8974c5ed33a9c8338d7"
       }
     },
     {
@@ -266,6 +273,12 @@
       "published_hash": "7d41c5157b844a88daf070d3155282f012dd3a8b2e3b38b9289718fa6a6b2f00"
     },
     {
+      "title": "Bitmap",
+      "slug": "bitmap",
+      "state": "published",
+      "published_hash": "a49e75d1f082d313f9df1ac861663c3cbc0fa8938138ec0159765ae318ea84a9"
+    },
+    {
       "title": "Bitmap/Bresenham\u0027s line algorithm",
       "slug": "bitmap-bresenhams-line-algorithm",
       "state": "published",
@@ -277,17 +290,29 @@
     {
       "title": "Bitmap/B\u00E9zier curves/Cubic",
       "slug": "bitmap-bezier-curves-cubic",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2e7df8da71f9b3fb446157c1fdf0f2669862a8954246a32f55026e1c9a5016c2",
+      "image_hashes": {
+        "Ghul-bitmap-bezier-curves-cubic-cubic.png": "7ccaeb4f33c20b90a2ee27ebb06adf60aa731016"
+      }
     },
     {
       "title": "Bitmap/B\u00E9zier curves/Quadratic",
       "slug": "bitmap-bezier-curves-quadratic",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "76bfe1e1799a84b8ad82e68fea6a51d92b749c1c8cc740e569280cd44c2911bf",
+      "image_hashes": {
+        "Ghul-bitmap-bezier-curves-quadratic-quadratic.png": "f4c840f53a624266ea44cd26d194204dfdf2671d"
+      }
     },
     {
       "title": "Bitmap/Flood fill",
       "slug": "bitmap-flood-fill",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ae7575eb27bc3657f50a6b1f73c925667017d37df1a706c6d9185ec1e6e1b9b8",
+      "image_hashes": {
+        "Ghul-bitmap-flood-fill-flooded.png": "0ed90f2efe61c8b894a1c139e3f838b1ed9e11ba"
+      }
     },
     {
       "title": "Bitmap/Midpoint circle algorithm",
@@ -305,10 +330,22 @@
       "note": "the task is the delegation itself, to cjpeg or convert, which is a binary the build would have to find"
     },
     {
+      "title": "Bitmap/Read a PPM file",
+      "slug": "bitmap-read-a-ppm-file",
+      "state": "published",
+      "published_hash": "d9aa5a560eb1a11ffe93a32ce72a00476f419fe7eea68ac5e9ad168ee88c3cae"
+    },
+    {
       "title": "Bitmap/Read an image through a pipe",
       "state": "rejected",
       "reason": "needs-native-lib",
       "note": "same delegation as the conversion task, in the other direction"
+    },
+    {
+      "title": "Bitmap/Write a PPM file",
+      "slug": "bitmap-write-a-ppm-file",
+      "state": "published",
+      "published_hash": "58478955892419328a75f61bc719bad516ed5530d113cbe5e26586327582abd3"
     },
     {
       "title": "Blum integer",
@@ -349,7 +386,11 @@
     {
       "title": "Brownian tree",
       "slug": "brownian-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "66616cfe76d931bde8a173a8dcf92c172aed4f2bf070eedb39a69d9e67a481da",
+      "image_hashes": {
+        "Ghul-brownian-tree-brownian.png": "522b8bddf58370cb46e4f8b608237b3cdfadbe54"
+      }
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -818,7 +859,11 @@
     {
       "title": "Fibonacci word/fractal",
       "slug": "fibonacci-word-fractal",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "53914ed500741d1bc3eb1932c07526d222f2055d26d19b9fcd5d8ff7cc64522c",
+      "image_hashes": {
+        "Ghul-fibonacci-word-fractal-fibonacci.png": "94bf56e5d097b1e824ccac736f8f8748cca812e2"
+      }
     },
     {
       "title": "File size distribution",
@@ -924,8 +969,9 @@
     {
       "title": "Generate random chess position",
       "slug": "generate-random-chess-position",
-      "state": "solved",
-      "note": "reopened, was rejected/nondeterministic: assert the generated position is a legal FEN rather than pinning one string"
+      "state": "published",
+      "note": "reopened, was rejected/nondeterministic: assert the generated position is a legal FEN rather than pinning one string",
+      "published_hash": "c8ea667614fb3e2ca594d9a50f584001c385c73e1e16de08a6e0ef451ae163a0"
     },
     {
       "title": "Generator/Exponential",
@@ -948,8 +994,9 @@
     {
       "title": "Go Fish",
       "slug": "go-fish",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
+      "state": "published",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
+      "published_hash": "2b5d14b1fbdf5ed9da5fdeff2f46d27c5794e371802daf55c4825526d2f87673"
     },
     {
       "title": "Goldbach\u0027s comet",
@@ -978,7 +1025,12 @@
     {
       "title": "Grayscale image",
       "slug": "grayscale-image",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "89647b63a7e91c55c86418d2cf02f93109b4abb55cabf735b1f097421bc06ec1",
+      "image_hashes": {
+        "Ghul-grayscale-image-colour.png": "2824f53c5d00bf660fb41a3c5751e877bdcd7234",
+        "Ghul-grayscale-image-grey.png": "dafaaca1fd6eb825fa7338bd46d721d3ee590cc6"
+      }
     },
     {
       "title": "Greatest common divisor",
@@ -1104,8 +1156,9 @@
     {
       "title": "Hunt the Wumpus",
       "slug": "hunt-the-wumpus",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation"
+      "state": "published",
+      "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
+      "published_hash": "e88519ca92e5d28b268fd038ef6800f946c8b66522fc40c62bc4f6124bd1daee"
     },
     {
       "title": "I\u0027m a software engineer, get me out of here",
@@ -1308,6 +1361,16 @@
       "published_hash": "42463ed4b70f40b1e89f0823103fcf1328679690b9bad06bc00a26438f84d2aa"
     },
     {
+      "title": "Kronecker product based fractals",
+      "slug": "kronecker-product-based-fractals",
+      "state": "published",
+      "published_hash": "5dfb23753476d197d5594b938614dc59fce725b57ca378a552c119f50bffba32",
+      "image_hashes": {
+        "Ghul-kronecker-product-based-fractals-vicsek.png": "512d4574347c215db582b0661eab4035a17d61b0",
+        "Ghul-kronecker-product-based-fractals-saltire.png": "630effa12da11b97178209058b72b58ebef05eb9"
+      }
+    },
+    {
       "title": "LZW compression",
       "slug": "lzw-compression",
       "state": "published",
@@ -1507,7 +1570,11 @@
     {
       "title": "Munching squares",
       "slug": "munching-squares",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "be5db417978c3e182a8a3b2d010e0acfa197398e61d59e728df50e5410073915",
+      "image_hashes": {
+        "Ghul-munching-squares-munching.png": "3c7e963ed7127a198c809a241b42f3532a148c02"
+      }
     },
     {
       "title": "Mutex",
@@ -1711,7 +1778,11 @@
     {
       "title": "Peano curve",
       "slug": "peano-curve",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "faa54b31bc09d7b03c625c4d03bfa5e3360b9a22420312e7887c1af4cf7d5a10",
+      "image_hashes": {
+        "Ghul-peano-curve-peano.png": "edf0d5ccea77c6d95acecb833086de8a8c7a88fa"
+      }
     },
     {
       "title": "Pell numbers",
@@ -1800,9 +1871,9 @@
       "title": "Pythagoras tree",
       "slug": "pythagoras-tree",
       "state": "published",
-      "published_hash": "5bc7aefeb5cf1ba6f82bc943c33b46a1b290c95e8a6e5e763217e47c911261c0",
+      "published_hash": "126a132957b9f8363738fa006de808af877d3536461c43850716d94b324e715f",
       "image_hashes": {
-        "Ghul-pythagoras-tree-pythagoras.png": "c3597aa1b5406c50cb82c22335efe21e14c5cdf1"
+        "Ghul-pythagoras-tree-pythagoras.png": "4f04a9647ba819e6d437ef6c77276bb795b8b8b0"
       }
     },
     {
@@ -1989,14 +2060,28 @@
       }
     },
     {
+      "title": "Sierpinski carpet",
+      "slug": "sierpinski-carpet",
+      "state": "published",
+      "published_hash": "67acd971aaa4c179798977a87d18c01cefc330b8a1db8f9c7e35e77d99e10367"
+    },
+    {
       "title": "Sierpinski curve",
       "slug": "sierpinski-curve",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "32bb10cb82e81f5f923e6d48386e440e2855c62c39f6a9f7eaa6ac86612fc027",
+      "image_hashes": {
+        "Ghul-sierpinski-curve-sierpinski.png": "80f0d93b880ae26e4e7f844bd42dc9496555adaf"
+      }
     },
     {
       "title": "Sierpinski square curve",
       "slug": "sierpinski-square-curve",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "65ba6b47132d62b014afadecf98c72c5b32fdb634d58cea4f4a2207d67495075",
+      "image_hashes": {
+        "Ghul-sierpinski-square-curve-square-curve.png": "b2d0613ebe59a3e354d7f89925c81d7d217546f9"
+      }
     },
     {
       "title": "Sierpinski triangle",
@@ -2035,8 +2120,9 @@
     {
       "title": "Sorensen\u2013Dice coefficient",
       "slug": "sorensen-dice-coefficient",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched"
+      "state": "published",
+      "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched",
+      "published_hash": "48679a1a511b8de805c7025a5855f73d90705e46aa1eb8e8e0ddbbfcb1584f36"
     },
     {
       "title": "Sort an outline at every level",
@@ -2267,12 +2353,14 @@
     {
       "title": "URL decoding",
       "slug": "url-decoding",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5a59d3783f587c94a93639536694d14a7b7f3bc49aa6ce52da5e74a51b1594be"
     },
     {
       "title": "URL encoding",
       "slug": "url-encoding",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "33cae3201b8d61b4da0d155534483773511c47e93aa9160e79bedf72a67a97f2"
     },
     {
       "title": "UTF-8 encode and decode",
@@ -2376,7 +2464,11 @@
     {
       "title": "Voronoi diagram",
       "slug": "voronoi-diagram",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "306c05d66361567b89df317620086f117332c715236d2354e7fcaa3fcd5e1675",
+      "image_hashes": {
+        "Ghul-voronoi-diagram-voronoi.png": "2cdd4756f52bf081ef2fdd2ddf95cb60ce25e84e"
+      }
     },
     {
       "title": "Wagstaff primes",
