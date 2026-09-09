@@ -1,0 +1,84 @@
+use IO.Std.write_line
+use IO.Std.read_line
+use Collections.LIST
+use Ghul.Pipes
+
+let size = 3
+
+let source = System.Random(20260909)
+
+fresh() -> LIST[int] =>
+    (0..size * size) |> map(_ => source.next(2)) |> collect_list()
+
+flip_row(board: LIST[int], row: int) is
+    for column in 0..size do
+        board[row * size + column] = 1 - board[row * size + column]
+    od
+si
+
+flip_column(board: LIST[int], column: int) is
+    for row in 0..size do
+        board[row * size + column] = 1 - board[row * size + column]
+    od
+si
+
+same(left: LIST[int], right: LIST[int]) -> bool =>
+    (0..size * size) |> all(cell => left[cell] == right[cell])
+
+show(caption: string, board: LIST[int]) is
+    write_line(caption)
+    write_line("   {(0..size) |> map(c => "{cast char(cast int('a') + c)}") |> join(" ")}")
+
+    for row in 0..size do
+        let cells =
+            (0..size) |> map(column => "{board[row * size + column]}")
+
+        write_line("{row + 1}  {cells |> join(" ")}")
+    od
+
+    write_line("")
+si
+
+let target = fresh()
+
+let board = fresh()
+
+while same(board, target) do
+    flip_row(board, source.next(size))
+od
+
+show("target", target)
+
+let moves mut = 0
+
+while !same(board, target) do
+    show("board after {moves} moves", board)
+
+    let typed = read_line()
+
+    if !typed? then
+        write_line("no more input")
+
+        break
+    fi
+
+    write_line("move: {typed}")
+
+    let move = typed.trim()
+
+    if move.length == 1 /\ char.is_digit(move[0]) then
+        flip_row(board, cast int(move[0]) - cast int('1'))
+        moves = moves + 1
+    elif move.length == 1 /\ char.is_letter(move[0]) then
+        flip_column(board, cast int(move.to_lower()[0]) - cast int('a'))
+        moves = moves + 1
+    else
+        write_line("enter a row number or a column letter")
+    fi
+od
+
+show("board after {moves} moves", board)
+
+if same(board, target) then
+    write_line("solved in {moves} moves")
+fi
