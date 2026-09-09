@@ -1,0 +1,24 @@
+use IO.Std.write_line
+use IO.Std.read_line
+
+if let entered = read_line() then
+    write_line("input: {entered}")
+
+    let value mut = double.parse(entered)
+
+    let iterations mut = 0
+
+    do
+        let next = (value + 3.0) * 0.86
+
+        iterations = iterations + 1
+
+        if next == value then
+            break
+        fi
+
+        value = next
+    od
+
+    write_line("quiescent at {value:0.0000000000} after {iterations} steps")
+fi

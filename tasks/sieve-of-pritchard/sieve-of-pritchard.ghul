@@ -1,0 +1,66 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.SET
+use Ghul.Pipes
+
+pritchard(limit: int) -> LIST[int] is
+    let wheel = SET([1])
+
+    let primes = LIST()
+
+    let length mut = 1
+
+    let prime mut = 2
+
+    while prime * prime <= limit do
+        if length < limit then
+            extend(wheel, length, prime, limit)
+
+            length = System.Math.min(length * prime, limit)
+        fi
+
+        for member in wheel |> collect_list() do
+            if prime * member <= length then
+                wheel.remove(prime * member)
+            fi
+        od
+
+        primes.add(prime)
+
+        prime = next_member(wheel, length)
+    od
+
+    for member in wheel |> sort() do
+        if member > 1 /\ member <= limit then
+            primes.add(member)
+        fi
+    od
+
+    primes
+si
+
+extend(wheel: SET[int], length: int, prime: int, limit: int) is
+    let target = System.Math.min(length * prime, limit)
+
+    for member in wheel |> collect_list() do
+        let step mut = member + length
+
+        while step <= target do
+            wheel.add(step)
+
+            step = step + length
+        od
+    od
+si
+
+next_member(wheel: SET[int], length: int) -> int is
+    for member in wheel |> sort() do
+        if member > 1 then
+            return member
+        fi
+    od
+
+    return length + 1
+si
+
+write_line("{pritchard(150) |> map(prime => "{prime}") |> join(" ")}")

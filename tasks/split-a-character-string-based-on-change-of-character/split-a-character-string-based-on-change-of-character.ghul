@@ -1,0 +1,20 @@
+use IO.Std.write_line
+use Collections.LIST
+
+split(text: string) -> LIST[string] is
+    let runs = LIST()
+
+    let start mut = 0
+
+    for at in 1::text.length do
+        if at == text.length \/ text[at] != text[start] then
+            runs.add(text[start..at])
+
+            start = at
+        fi
+    od
+
+    runs
+si
+
+write_line(split("gHHH5YY++///\\") |> Ghul.Pipes.join(", "))

@@ -1,0 +1,42 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let dice = System.Random(20260909)
+
+attribute() -> int is
+    let rolls = (1::4) |> map(_ => dice.next(1, 7)) |> collect_list()
+
+    let lowest = rolls |> min_by(roll => roll)
+
+    let total = rolls |> reduce(0, (running, roll) => running + roll)
+
+    return total - (lowest ?? 0)
+si
+
+character() -> LIST[int] =>
+    (1::6) |> map(_ => attribute()) |> collect_list()
+
+let rolled mut = character()
+
+let attempts mut = 1
+
+while !acceptable(rolled) do
+    rolled = character()
+
+    attempts = attempts + 1
+od
+
+acceptable(values: LIST[int]) -> bool is
+    let total = values |> reduce(0, (running, value) => running + value)
+
+    let strong = values |> filter(value => value >= 15) |> count()
+
+    return total >= 75 /\ strong >= 2
+si
+
+let total = rolled |> reduce(0, (running, value) => running + value)
+
+write_line("attributes: {rolled |> map(value => "{value}") |> join(", ")}")
+write_line("total: {total}")
+write_line("rolled {attempts} characters before one qualified")
