@@ -1,6 +1,11 @@
 use IO.Std.write_line
+use System.Globalization.CultureInfo
 
-show(expression: string, value: object) =>
+show(expression: string, value: double) =>
+    write_line(
+        "{expression,-28} {value.to_string(CultureInfo.invariant_culture)}")
+
+show(expression: string, value: bool) =>
     write_line("{expression,-28} {value}")
 
 let zero = 0.0
