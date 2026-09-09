@@ -1,0 +1,61 @@
+use System.Math
+use Raster.IMAGE
+
+let width = 600
+let height = 450
+let limit = 300
+
+let cx = -0.7D
+let cy = 0.27015D
+
+escape(start_x: double, start_y: double) -> int =>
+    (let x mut = start_x
+     let y mut = start_y
+     let steps mut = 0
+
+     while steps < limit /\ x * x + y * y <= 4.0D do
+         let next = x * x - y * y + cx
+
+         y = 2.0D * x * y + cy
+         x = next
+         steps = steps + 1
+     od
+
+     steps)
+
+band(level: double, phase: double) -> ubyte =>
+    cast ubyte(
+        127.5D * (1.0D - Math.cos(6.0D * Math.pi * level + phase))
+    )
+
+let image = IMAGE(width, height)
+
+for row in 0..height do
+    for column in 0..width do
+        let x =
+            -1.8D + 3.6D * cast double(column) / cast double(width)
+        let y =
+            -1.35D + 2.7D * cast double(row) / cast double(height)
+
+        let steps = escape(x, y)
+
+        if steps < limit then
+            let level =
+                Math.log(cast double(steps) + 1.0D) /
+                Math.log(cast double(limit) + 1.0D)
+
+            image.set_pixel(
+                column, row,
+                band(level, 0.0D),
+                band(level, 2.1D),
+                band(level, 4.2D)
+            )
+        else
+            image.set_pixel(column, row, 0ub, 0ub, 0ub)
+        fi
+    od
+od
+
+image.write("julia.png")
+
+image.show("julia.png")
