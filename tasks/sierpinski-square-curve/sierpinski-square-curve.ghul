@@ -1,0 +1,65 @@
+use Raster.IMAGE
+use Raster.TURTLE
+
+let order = 4
+let step = 8.0D
+
+let image = IMAGE(540, 540)
+let pen = TURTLE(image)
+
+corner(depth: int) is
+    if depth == 0 then
+        return
+    fi
+
+    corner(depth - 1)
+
+    pen.forward(step)
+    pen.turn(-90.0D)
+    pen.forward(step)
+    pen.turn(90.0D)
+    pen.forward(step)
+    pen.turn(-90.0D)
+
+    corner(depth - 1)
+
+    pen.forward(step)
+    pen.turn(90.0D)
+    pen.forward(step)
+    pen.turn(90.0D)
+
+    corner(depth - 1)
+
+    pen.forward(step)
+    pen.turn(-90.0D)
+    pen.forward(step)
+    pen.turn(90.0D)
+    pen.forward(step)
+    pen.turn(-90.0D)
+
+    corner(depth - 1)
+si
+
+image.view(0.0D, 0.0D, 540.0D, 540.0D)
+image.colour(0ub, 0ub, 160ub)
+image.stroke(1.2D)
+
+pen.move_to(266.0D, 26.0D)
+
+pen.forward(step)
+pen.turn(90.0D)
+
+corner(order)
+
+pen.forward(step)
+pen.turn(90.0D)
+pen.forward(step)
+pen.turn(90.0D)
+
+corner(order)
+
+pen.forward(step)
+
+image.write("square-curve.png")
+
+image.show("square-curve.png")
