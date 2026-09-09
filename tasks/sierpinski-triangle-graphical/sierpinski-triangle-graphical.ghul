@@ -1,0 +1,38 @@
+use Collections.List
+use Ghul.Pipes
+use Raster.IMAGE
+
+use POINT = (x: double, y: double)
+
+midpoint(a: POINT, b: POINT) -> POINT =>
+    (x = (a.x + b.x) / 2.0D, y = (a.y + b.y) / 2.0D)
+
+triangle(a: POINT, b: POINT, c: POINT) -> List[POINT] =>
+    [a, b, c] |> collect_list()
+
+let image = IMAGE(512, 456)
+
+image.view(0.0D, 0.0D, 1.0D, 0.89D)
+image.colour(30ub, 90ub, 160ub)
+
+draw(a: POINT, b: POINT, c: POINT, order: int) is
+    if order == 0 then
+        image.fill(triangle(a, b, c))
+        return
+    fi
+
+    draw(a, midpoint(a, b), midpoint(a, c), order - 1)
+    draw(midpoint(a, b), b, midpoint(b, c), order - 1)
+    draw(midpoint(a, c), midpoint(b, c), c, order - 1)
+si
+
+draw(
+    (x = 0.5D, y = 0.87D),
+    (x = 0.0D, y = 0.01D),
+    (x = 1.0D, y = 0.01D),
+    6
+)
+
+image.write("sierpinski.png")
+
+image.show("sierpinski.png")
