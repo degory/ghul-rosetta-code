@@ -1,3 +1,47 @@
+use IO.Std.read_line
+use IO.Std.write
 use IO.Std.write_line
 
-write_line("not written yet")
+// Seeded, so the transcript below reproduces. The guesses come from
+// standard input, which is not echoed, so the program prints each one.
+let random = System.Random(11)
+
+let low = 1
+let high = 100
+
+let target = random.next(low, high + 1)
+
+write_line("I am thinking of a number between {low} and {high}.")
+
+do
+    write("Your guess: ")
+
+    let line = read_line()
+
+    if !line? then
+        write_line()
+        write_line("No more guesses.")
+
+        break
+    fi
+
+    write_line(line)
+
+    let guess mut = 0
+
+    if !int.try_parse(line, guess ref) \/ guess < low \/ guess > high then
+        write_line("That is not a number between {low} and {high}.")
+
+        continue
+    fi
+
+    if guess < target then
+        write_line("Too low.")
+    elif guess > target then
+        write_line("Too high.")
+    else
+        write_line("Well guessed!")
+
+        break
+    fi
+od

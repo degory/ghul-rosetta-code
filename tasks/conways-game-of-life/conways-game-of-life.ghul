@@ -56,7 +56,9 @@ show(generation: int, grid: Grid) is
     write_line("generation {generation}")
 
     for row in grid do
-        write_line(row |> map(alive => if alive then "#" else "." fi) |> join(""))
+        let cells = row |> map(alive => if alive then "#" else "." fi)
+
+        write_line(cells |> join(""))
     od
 
     write_line()

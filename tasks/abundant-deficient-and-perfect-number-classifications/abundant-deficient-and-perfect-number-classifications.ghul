@@ -12,11 +12,13 @@ for _ in 0::limit do
 od
 
 for divisor in 1::limit / 2 do
-    let mut_multiple mut = divisor * 2
+    let multiple mut = divisor * 2
 
-    while mut_multiple <= limit do
-        proper_divisor_sums[mut_multiple] = proper_divisor_sums[mut_multiple] + divisor
-        mut_multiple = mut_multiple + divisor
+    while multiple <= limit do
+        proper_divisor_sums[multiple] =
+            proper_divisor_sums[multiple] + divisor
+
+        multiple = multiple + divisor
     od
 od
 

@@ -9,7 +9,7 @@ run(program: string, input: string) is
         cells.add(0)
     od
 
-    // Jump targets, so a loop does not rescan the source to find its partner.
+    // Jump targets, so a loop does not rescan the source for its partner.
     let partner = LIST()
 
     for _ in 0..program.length do
@@ -43,7 +43,10 @@ run(program: string, input: string) is
         when '-' then cells[cell] = (cells[cell] + 255) % 256
         when '.' then write(cast char(cells[cell]))
         when ',' then
-            cells[cell] = if read < input.length then cast int(input[read]) else 0 fi
+            let next =
+                if read < input.length then cast int(input[read]) else 0 fi
+
+            cells[cell] = next
             read = read + 1
         when '[' then
             if cells[cell] == 0 then

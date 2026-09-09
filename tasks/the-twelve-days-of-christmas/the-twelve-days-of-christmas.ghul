@@ -25,7 +25,7 @@ for day in 0..12 do
     write_line("On the {ordinals[day]} day of Christmas")
     write_line("My true love gave to me:")
 
-    for gift in day..<<0 do
+    for gift in (0::day) |> reverse() do
         write_line(gifts[gift])
     od
 
