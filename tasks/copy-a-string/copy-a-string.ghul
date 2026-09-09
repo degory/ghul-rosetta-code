@@ -1,0 +1,15 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let original = "hello"
+
+let reference = original
+
+let copy = string(original |> collect_array())
+
+write_line("reference is another name for the same string")
+write_line("original == reference: {original == reference}")
+
+write_line("copy holds the same characters in a new string")
+write_line("original == copy: {original == copy}")
+write_line("original =~ copy: {original =~ copy}")

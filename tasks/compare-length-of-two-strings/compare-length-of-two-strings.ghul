@@ -1,0 +1,14 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+report(words: string[]) is
+    for word in words |> sort((left, right) => right.length - left.length) do
+        write_line("{word} has length {word.length}")
+    od
+si
+
+report(["abcd", "123456789"])
+
+write_line("")
+
+report(["abcd", "123456789", "abcdef", "1234567"])
