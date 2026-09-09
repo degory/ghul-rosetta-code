@@ -132,8 +132,8 @@ emit_body() {
 }
 
 # The output, with any image the program named turned into a reference the
-# wiki renders. A `<<image NAME>>` line is written by Png.show at the point
-# in the output where the picture belongs, and cannot stay inside a <pre>
+# wiki renders. A `<<image NAME>>` line is written by an image's `show` at
+# the point in the output where it belongs, and cannot stay inside a <pre>
 # block, which the wiki renders literally - so the block is closed before
 # each reference and opened again after it. A run with no images comes out
 # as one block, exactly as before.
