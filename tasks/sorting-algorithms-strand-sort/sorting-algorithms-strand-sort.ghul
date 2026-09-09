@@ -1,0 +1,56 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.List
+use Ghul.Pipes
+
+merge(left: List[int], right: List[int]) -> Pipe[int] is
+    let at_left mut = 0
+    let at_right mut = 0
+
+    while at_left < left.count /\ at_right < right.count do
+        if left[at_left] <= right[at_right] then
+            yield left[at_left]
+            at_left = at_left + 1
+        else
+            yield right[at_right]
+            at_right = at_right + 1
+        fi
+    od
+
+    yield in left |> skip(at_left)
+    yield in right |> skip(at_right)
+si
+
+strand_sort(values: List[int]) -> List[int] is
+    let remaining = LIST[int]()
+
+    remaining.add_range(values)
+
+    let sorted: List[int] mut = LIST[int]()
+
+    while remaining.count > 0 do
+        let strand = LIST[int]()
+
+        strand.add(remaining[0])
+        remaining.remove_at(0)
+
+        let at mut = 0
+
+        while at < remaining.count do
+            if remaining[at] >= strand[strand.count - 1] then
+                strand.add(remaining[at])
+                remaining.remove_at(at)
+            else
+                at = at + 1
+            fi
+        od
+
+        sorted = merge(sorted, strand) |> collect_list()
+    od
+
+    return sorted
+si
+
+for values in [[5, 3, 1, 7, 4, 1, 1, 20], [2, 1], [8]] do
+    write_line("{values |> join(" ")} -> {strand_sort(values) |> join(" ")}")
+od

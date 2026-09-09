@@ -1,0 +1,37 @@
+use IO.Std.write_line
+
+class ANIMAL is
+    init() is si
+
+    speak() -> string => "an animal"
+si
+
+class DOG: ANIMAL is
+    _barks: int
+
+    init() is
+        super.init()
+        _barks = 0
+    si
+
+    bark() -> DOG is
+        _barks = _barks + 1
+        return self
+    si
+
+    speak() -> string => "{super.speak()} that barked {_barks} times"
+si
+
+let factorial = n rec => if n == 0 then 1 else n * rec(n - 1) fi
+
+let missing: string? = null
+
+let (_, second) = (1, "two")
+
+write_line("self      {DOG().bark().bark().speak()}")
+write_line("super     {DOG().speak()}")
+write_line("null      an absent value tests as {missing?}")
+write_line("true      {1 == 1} and false {1 == 2}")
+write_line("_         discards a value: {second}")
+write_line("_[T]      the default value of an int: {_[int]}")
+write_line("rec       a function literal calls itself: {factorial(5)}")

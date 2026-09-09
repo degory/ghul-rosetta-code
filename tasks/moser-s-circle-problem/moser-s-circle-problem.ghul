@@ -1,0 +1,21 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+polynomial(n: int) -> int =>
+    (n * n * n * n - 6 * n * n * n + 23 * n * n - 18 * n + 24) / 24
+
+choose(n: int, k: int) -> int =>
+    if k > n then
+        0
+    else
+        (1..k + 1)
+        |> reduce(1, (total, step) => total * (n - k + step) / step)
+    fi
+
+binomials(n: int) -> int => choose(n, 4) + choose(n, 2) + 1
+
+write_line("{"n",3}{"polynomial",14}{"binomials",14}")
+
+for n in 1..21 do
+    write_line("{n,3}{polynomial(n),14}{binomials(n),14}")
+od

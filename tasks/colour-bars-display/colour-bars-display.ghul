@@ -1,0 +1,30 @@
+use Ghul.Pipes
+use Raster.IMAGE
+
+let bars = [
+    (red = 0ub, green = 0ub, blue = 0ub),
+    (red = 255ub, green = 0ub, blue = 0ub),
+    (red = 0ub, green = 255ub, blue = 0ub),
+    (red = 0ub, green = 0ub, blue = 255ub),
+    (red = 255ub, green = 0ub, blue = 255ub),
+    (red = 0ub, green = 255ub, blue = 255ub),
+    (red = 255ub, green = 255ub, blue = 0ub),
+    (red = 255ub, green = 255ub, blue = 255ub)
+]
+
+let width = 640
+let height = 400
+
+let image = IMAGE(width, height)
+
+for x in 0..width do
+    let bar = bars[x * bars.count / width]
+
+    for y in 0..height do
+        image.set_pixel(x, y, bar.red, bar.green, bar.blue)
+    od
+od
+
+image.write("colour-bars.png")
+
+image.show("colour-bars.png")

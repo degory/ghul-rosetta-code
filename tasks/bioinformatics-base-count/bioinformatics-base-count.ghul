@@ -1,0 +1,42 @@
+use IO.Std.write_line
+use Collections.MAP
+use Ghul.Pipes
+
+let sequence =
+    "CGTAAAAAATTACAACGTCCTTTGGCTATCTCTTAAACTCCTGCTAAATG"
+    "CTCGTGCTTTCCAATTATGTAAGCGTTCCGAGACGGGGTGGTCGATTCTG"
+    "AGGACAAAGGTCAAGATGGAGCGCATCGAACGCAATAAGGATCATTTGAT"
+    "GGGACGTTTCGTCGACAAAGTCTTGTTTCGAGAGTAACGGCTACCGTCTT"
+    "CGATTCTGCTTATAACACTATGTTCTTATGAAATGGATGTTCTGAGTTGG"
+    "TCAGTCCCAATGTGCGGGGTTTCTTTTAGTACGTCGGGAGTGGTATTATA"
+    "TTTAATTTTTCTATATAGCGATCTGTATTTAAGCAATTCATTTAGGTTAT"
+    "CGCCGCGATGCTCGGTTCGGACCGCCAAGCATCTGGCTCCACTGCTAGTG"
+    "TCCTAAATTTGAATGGCAAACACAAATAAGATTTAGCAATTCGTGTAGAC"
+    "GACCGGGGACTTGCATGATGGGAGCAGCTTTGTTAAACTACGAACGTAAT"
+
+let width = 50
+
+let counts = MAP[char, int]()
+
+for base in "ACGT" do
+    counts[base] = 0
+od
+
+for base in sequence do
+    counts[base] = counts[base] + 1
+od
+
+for start in 0..sequence.length / width do
+    let line = sequence.substring(start * width, width)
+
+    write_line("{start * width + 1,5}: {line}")
+od
+
+write_line("")
+
+for base in "ACGT" do
+    write_line("{base}: {counts[base],5}")
+od
+
+write_line("")
+write_line("total: {sequence.length,5}")

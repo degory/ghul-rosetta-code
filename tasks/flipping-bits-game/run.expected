@@ -1,0 +1,27 @@
+target
+   a b c
+1  0 1 1
+2  0 1 0
+3  1 0 1
+
+board after 0 moves
+   a b c
+1  1 0 1
+2  1 0 0
+3  0 1 1
+
+move: a
+board after 1 moves
+   a b c
+1  0 0 1
+2  0 0 0
+3  1 1 1
+
+move: b
+board after 2 moves
+   a b c
+1  0 1 1
+2  0 1 0
+3  1 0 1
+
+solved in 2 moves

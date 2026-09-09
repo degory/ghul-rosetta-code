@@ -1,0 +1,38 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+use UNIT = (name: string, metres: double)
+
+let units: UNIT[] = [
+    (name = "tochka", metres = 0.00254),
+    (name = "liniya", metres = 0.0254),
+    (name = "dyuim", metres = 0.0254),
+    (name = "vershok", metres = 0.04445),
+    (name = "piad", metres = 0.1778),
+    (name = "fut", metres = 0.3048),
+    (name = "arshin", metres = 0.7112),
+    (name = "sazhen", metres = 2.1336),
+    (name = "versta", metres = 1066.8),
+    (name = "milia", metres = 7467.6),
+    (name = "centimeter", metres = 0.01),
+    (name = "meter", metres = 1.0),
+    (name = "kilometer", metres = 1000.0)
+]
+
+convert(amount: double, from: string) is
+    let source = (units |> find(unit => unit.name =~ from))!
+
+    write_line("{amount} {from} is")
+
+    for unit in units do
+        let converted = amount * source.metres / unit.metres
+
+        write_line("  {converted,14:F6} {unit.name}")
+    od
+
+    write_line("")
+si
+
+convert(1.0, "arshin")
+convert(2.0, "versta")
+convert(1000.0, "meter")

@@ -1,0 +1,81 @@
+use Collections.List
+use Ghul.Pipes
+use Raster.IMAGE
+use Raster.TURTLE
+
+let image = IMAGE(640, 360)
+
+let pen = TURTLE(image)
+
+house(size: double) is
+    let x = pen.x
+    let y = pen.y
+    let heading = pen.heading
+
+    for _ in 0..4 do
+        pen.forward(size)
+        pen.turn(90.0)
+    od
+
+    pen.pen_up()
+    pen.turn(90.0)
+    pen.forward(size)
+    pen.turn(-90.0)
+    pen.pen_down()
+
+    pen.turn(60.0)
+    pen.forward(size)
+    pen.turn(-120.0)
+    pen.forward(size)
+
+    pen.move_to(x, y)
+    pen.face(heading)
+si
+
+bar_chart(values: List[double], size: double) is
+    let x = pen.x
+    let y = pen.y
+    let heading = pen.heading
+
+    let tallest =
+        values |> reduce(0.0, (most, value) =>
+            if value > most then value else most fi)
+
+    let width = size / cast double(values.count)
+
+    for value in values do
+        let height = size * value / tallest
+
+        pen.turn(90.0)
+        pen.forward(height)
+        pen.turn(-90.0)
+        pen.forward(width)
+        pen.turn(-90.0)
+        pen.forward(height)
+        pen.turn(90.0)
+    od
+
+    pen.move_to(x, y)
+    pen.face(heading)
+si
+
+image.view(0.0, 0.0, 640.0, 360.0)
+
+image.colour(140ub, 60ub, 40ub)
+image.stroke(3.0)
+
+pen.move_to(70.0, 30.0)
+pen.face(0.0)
+
+house(160.0)
+
+image.colour(40ub, 90ub, 160ub)
+
+pen.move_to(370.0, 30.0)
+pen.face(0.0)
+
+bar_chart([3.0, 7.0, 1.0, 5.0, 9.0, 4.0] |> collect_list(), 220.0)
+
+image.write("turtle.png")
+
+image.show("turtle.png")

@@ -1,0 +1,7 @@
+self      an animal that barked 2 times
+super     an animal that barked 0 times
+null      an absent value tests as False
+true      True and false False
+_         discards a value: two
+_[T]      the default value of an int: 0
+rec       a function literal calls itself: 120

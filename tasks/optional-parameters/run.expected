@@ -1,0 +1,20 @@
+default
+  a bbbb ccc
+  b ccc aaa
+  c aa bbb
+by column 2
+  b ccc aaa
+  c aa bbb
+  a bbbb ccc
+by length of column 1
+  c aa bbb
+  b ccc aaa
+  a bbbb ccc
+reversed
+  c aa bbb
+  b ccc aaa
+  a bbbb ccc
+named, in any order
+  a bbbb ccc
+  c aa bbb
+  b ccc aaa

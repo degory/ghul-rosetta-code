@@ -1,0 +1,23 @@
+use Raster.IMAGE
+
+let size = 250
+
+next(state: uint) -> uint => state * 1664525u + 1013904223u
+
+let image = IMAGE(size, size)
+
+let state mut = 20260909u
+
+for y in 0..size do
+    for x in 0..size do
+        state = next(state)
+
+        let bit = cast ubyte((state >> 16) & 1u) * 255ub
+
+        image.set_pixel(x, y, bit, bit, bit)
+    od
+od
+
+image.write("prng.png")
+
+image.show("prng.png")

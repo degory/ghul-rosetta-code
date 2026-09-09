@@ -1,0 +1,31 @@
+use Raster.IMAGE
+
+let stripes = [
+    (red = 0ub, green = 0ub, blue = 0ub),
+    (red = 255ub, green = 0ub, blue = 0ub),
+    (red = 0ub, green = 255ub, blue = 0ub),
+    (red = 0ub, green = 0ub, blue = 255ub),
+    (red = 255ub, green = 0ub, blue = 255ub),
+    (red = 0ub, green = 255ub, blue = 255ub),
+    (red = 255ub, green = 255ub, blue = 0ub),
+    (red = 255ub, green = 255ub, blue = 255ub)
+]
+
+let width = 640
+let height = 400
+
+let image = IMAGE(width, height)
+
+for y in 0..height do
+    let band = y * 4 / height + 1
+
+    for x in 0..width do
+        let stripe = stripes[x / band % stripes.count]
+
+        image.set_pixel(x, y, stripe.red, stripe.green, stripe.blue)
+    od
+od
+
+image.write("pinstripe.png")
+
+image.show("pinstripe.png")

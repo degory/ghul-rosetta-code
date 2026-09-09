@@ -1,0 +1,22 @@
+use IO.Std.write_line
+
+let coin = System.Random(20260909)
+
+let runs = 1000000
+
+let wakings mut = 0
+let heads mut = 0
+
+for _ in 0..runs do
+    if coin.next(2) == 0 then
+        wakings = wakings + 1
+        heads = heads + 1
+    else
+        wakings = wakings + 2
+    fi
+od
+
+write_line("{runs} runs of the experiment")
+write_line("{wakings} wakings")
+write_line("{heads} of them after heads")
+write_line("credence: {cast double(heads) / cast double(wakings):F4}")

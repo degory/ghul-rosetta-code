@@ -1,0 +1,40 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let text =
+    "hi there, how are you today? I'd like to present to you the washing "
+    "machine 9001. You have been nominated to win one of these! Just make "
+    "sure you don't break it"
+
+ends_a_sentence(letter: char) -> bool =>
+    letter == '!' \/ letter == '?' \/ letter == '.'
+
+kind(ending: char) -> string =>
+    case ending
+    when '!' then "E"
+    when '?' then "Q"
+    when '.' then "S"
+    else "N"
+    esac
+
+sentences(source: string) -> Pipe[string] is
+    let start mut = 0
+
+    for at in 0..source.length do
+        if ends_a_sentence(source[at]) then
+            yield source.substring(start, at - start + 1).trim()
+
+            start = at + 1
+        fi
+    od
+
+    let rest = source.substring(start).trim()
+
+    if rest.length > 0 then
+        yield rest
+    fi
+si
+
+for sentence in sentences(text) do
+    write_line("{kind(sentence[sentence.length - 1])}  {sentence}")
+od

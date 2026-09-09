@@ -1,0 +1,6 @@
+use IO.Std.write_line
+
+let inverse = "\u001B[7m"
+let normal = "\u001B[0m"
+
+write_line("{inverse}inverse{normal} normal")

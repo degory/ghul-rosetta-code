@@ -1,0 +1,39 @@
+use IO.Std.write_line
+use System.Globalization.CultureInfo
+
+show(expression: string, value: double) =>
+    write_line(
+        "{expression,-28} {value.to_string(CultureInfo.invariant_culture)}")
+
+show(expression: string, value: bool) =>
+    write_line("{expression,-28} {value}")
+
+let zero = 0.0
+let one = 1.0
+
+let minus_zero = -zero
+let positive_infinity = one / zero
+let negative_infinity = -one / zero
+let not_a_number = zero / zero
+
+show("-0.0", minus_zero)
+show("1.0 / 0.0", positive_infinity)
+show("-1.0 / 0.0", negative_infinity)
+show("0.0 / 0.0", not_a_number)
+
+write_line("")
+show("double.negative_infinity", double.negative_infinity)
+show("double.positive_infinity", double.positive_infinity)
+show("double.na_n", double.na_n)
+
+write_line("")
+show("-0.0 == 0.0", minus_zero == zero)
+show("1.0 / -0.0", one / minus_zero)
+show("nan == nan", not_a_number == not_a_number)
+show("double.is_na_n(nan)", double.is_na_n(not_a_number))
+
+write_line("")
+show("infinity + 1.0", positive_infinity + one)
+show("infinity - infinity", positive_infinity + negative_infinity)
+show("infinity * 0.0", positive_infinity * zero)
+show("1.0 / infinity", one / positive_infinity)

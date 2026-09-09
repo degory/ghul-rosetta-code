@@ -1,0 +1,29 @@
+use IO.Std.write_line
+
+range(name: string, low: object, high: object) =>
+    write_line("{name,-8} {low,30} {high,29}")
+
+write_line("{"type",-8} {"minimum",30} {"maximum",29}")
+
+range("byte", byte.min_value, byte.max_value)
+range("ubyte", ubyte.min_value, ubyte.max_value)
+range("short", short.min_value, short.max_value)
+range("ushort", ushort.min_value, ushort.max_value)
+range("int", int.min_value, int.max_value)
+range("uint", uint.min_value, uint.max_value)
+range("long", long.min_value, long.max_value)
+range("ulong", ulong.min_value, ulong.max_value)
+range("single", single.min_value, single.max_value)
+range("double", double.min_value, double.max_value)
+range("decimal", decimal.min_value, decimal.max_value)
+range("bigint", "unbounded", "unbounded")
+
+write_line("")
+
+let small = 32767s
+let large = 9000000000L
+let wide = 170141183460469231731687303715884105727n
+
+write_line("a short holds {small}")
+write_line("an L suffix makes a long: {large}")
+write_line("an n suffix makes a bigint: {wide}")

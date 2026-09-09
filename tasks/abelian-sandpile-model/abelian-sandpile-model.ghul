@@ -1,0 +1,93 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+use Raster.IMAGE
+
+class SANDPILE is
+    _cells: LIST[int]
+
+    size: int
+
+    init(size: int) is
+        self.size = size
+        _cells = (0..size * size) |> map(_ => 0) |> collect_list()
+    si
+
+    at(x: int, y: int) -> int => _cells[y * size + x]
+
+    add(x: int, y: int, grains: int) is
+        _cells[y * size + x] = at(x, y) + grains
+    si
+
+    settle() is
+        let unstable mut = true
+
+        while unstable do
+            unstable = false
+
+            for y in 1..size - 1 do
+                for x in 1..size - 1 do
+                    if at(x, y) >= 4 then
+                        let spilled = at(x, y) / 4
+
+                        add(x, y, -4 * spilled)
+                        add(x - 1, y, spilled)
+                        add(x + 1, y, spilled)
+                        add(x, y - 1, spilled)
+                        add(x, y + 1, spilled)
+
+                        unstable = true
+                    fi
+                od
+            od
+        od
+    si
+si
+
+settled(size: int, grains: int) -> SANDPILE is
+    let pile = SANDPILE(size)
+
+    pile.add(size / 2, size / 2, grains)
+    pile.settle()
+
+    return pile
+si
+
+show(grains: int) is
+    let pile = settled(5, grains)
+
+    write_line("{grains} grains:")
+
+    for y in 0..pile.size do
+        write_line(
+            "  {(0..pile.size) |> map(x => "{pile.at(x, y)}") |> join(" ")}"
+        )
+    od
+si
+
+let shades = [
+    (red = 30ub, green = 30ub, blue = 60ub),
+    (red = 70ub, green = 130ub, blue = 180ub),
+    (red = 240ub, green = 200ub, blue = 80ub),
+    (red = 200ub, green = 70ub, blue = 50ub)
+]
+
+show(4)
+show(6)
+show(16)
+
+let big = settled(201, 20000)
+
+let image = IMAGE(big.size, big.size)
+
+for y in 0..big.size do
+    for x in 0..big.size do
+        let shade = shades[big.at(x, y)]
+
+        image.set_pixel(x, y, shade.red, shade.green, shade.blue)
+    od
+od
+
+image.write("sandpile.png")
+
+image.show("sandpile.png")
