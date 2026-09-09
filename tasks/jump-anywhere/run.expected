@@ -1,0 +1,8 @@
+break out of both loops: 5
+rows with no gap: 3 1 4, 2 6 5
+unwound five frames: bottom reached
+  generator: started
+main: got one
+  generator: resumed
+main: got two
+  generator: finished

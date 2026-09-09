@@ -1,0 +1,62 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.SET
+use Ghul.Pipes
+
+first_repeat(grid: int[][]) -> int? is
+    let seen = SET()
+
+    return for row in grid do
+        for value in row do
+            if !seen.add(value) then break value fi
+        od
+    od
+si
+
+complete_rows(grid: int[][]) -> LIST[string] is
+    let complete = LIST()
+
+    scan: for row in grid do
+        for value in row do
+            if value < 0 then continue scan fi
+        od
+
+        complete.add(row |> map(value => "{value}") |> join(" "))
+    od
+
+    complete
+si
+
+descend(level: int) is
+    if level == 0 then
+        throw System.Exception("bottom reached")
+    fi
+
+    descend(level - 1)
+si
+
+steps() -> Pipe[string] is
+    write_line("  generator: started")
+    yield "one"
+    write_line("  generator: resumed")
+    yield "two"
+    write_line("  generator: finished")
+si
+
+let grid = [[3, 1, 4], [-1, 5, 9], [2, 6, 5]]
+
+if let repeated = first_repeat(grid) then
+    write_line("break out of both loops: {repeated}")
+fi
+
+write_line("rows with no gap: {complete_rows(grid) |> join(", ")}")
+
+try
+    descend(4)
+catch error: System.Exception
+    write_line("unwound five frames: {error.message}")
+yrt
+
+for step in steps() do
+    write_line("main: got {step}")
+od
