@@ -1,0 +1,10 @@
+use IO.Std.write_line
+
+entry() is
+    write_line("a function named entry starts the program by default")
+si
+
+@entry()
+run() is
+    write_line("the @entry pragma names this one instead")
+si
