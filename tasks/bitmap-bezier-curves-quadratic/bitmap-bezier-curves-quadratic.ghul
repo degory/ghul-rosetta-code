@@ -1,0 +1,35 @@
+use Collections.List
+use Ghul.Pipes
+use Raster.IMAGE
+
+use POINT = (x: double, y: double)
+
+let steps = 200
+
+quadratic(a: POINT, b: POINT, c: POINT) -> List[POINT] =>
+    (0..steps + 1)
+        |> map(step =>
+            (let t = cast double(step) / cast double(steps)
+             let u = 1.0D - t
+
+             (x = u * u * a.x + 2.0D * u * t * b.x + t * t * c.x,
+              y = u * u * a.y + 2.0D * u * t * b.y + t * t * c.y)))
+        |> collect_list()
+
+let start = (x = 20.0D, y = 220.0D)
+let control = (x = 160.0D, y = 10.0D)
+let finish = (x = 280.0D, y = 180.0D)
+
+let image = IMAGE(300, 240)
+
+image.colour(190ub, 190ub, 190ub)
+image.stroke(1.0D)
+image.line([start, control, finish])
+
+image.colour(0ub, 0ub, 160ub)
+image.stroke(2.0D)
+image.line(quadratic(start, control, finish))
+
+image.write("quadratic.png")
+
+image.show("quadratic.png")
