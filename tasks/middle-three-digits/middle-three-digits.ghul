@@ -1,0 +1,34 @@
+use IO.Std.write_line
+use System.Math
+
+union Middle is
+    DIGITS(value: string) default;
+    REFUSED(reason: string);
+si
+
+middle_three(value: int) -> Middle is
+    let digits = "{Math.abs(cast long(value))}"
+
+    if digits.length < 3 then
+        return Middle.REFUSED("fewer than three digits")
+    fi
+
+    if digits.length % 2 == 0 then
+        return Middle.REFUSED("an even number of digits has no middle three")
+    fi
+
+    return Middle.DIGITS(digits.substring(digits.length / 2 - 1, 3))
+si
+
+for value in [
+    123, 12345, 1234567, 987654321, 10001, -10001, -123, -100, 100, -12345,
+    1, 2, -1, -10, 2002, -2002, 0
+] do
+    let answer = middle_three(value)
+
+    if answer? then
+        write_line("{value,10}: {answer!}")
+    elif let refused: Middle.REFUSED = answer then
+        write_line("{value,10}: {refused.reason}")
+    fi
+od

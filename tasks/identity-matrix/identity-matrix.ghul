@@ -1,0 +1,14 @@
+use IO.Std.write_line
+use Ghul.Pipes.map
+use Ghul.Pipes.join
+
+identity(size: int) -> Ghul.Pipes.Pipe[string] =>
+    (0..size)
+        |> map(row =>
+            (0..size)
+                |> map(column => if row == column then "1" else "0" fi)
+                |> join(" "))
+
+for row in identity(5) do
+    write_line(row)
+od

@@ -296,6 +296,16 @@
       "published_hash": "24a8eaed6e0a09a3bd9f1b453380d9903b7c13e134f9acd2993c888adaef2b02"
     },
     {
+      "title": "Averages/Median",
+      "slug": "averages-median",
+      "state": "solved"
+    },
+    {
+      "title": "Averages/Pythagorean means",
+      "slug": "averages-pythagorean-means",
+      "state": "solved"
+    },
+    {
       "title": "Averages/Root mean square",
       "slug": "averages-root-mean-square",
       "state": "solved"
@@ -683,6 +693,11 @@
       "published_hash": "5bf8ede189c9ff39827a189e0e771aa88b98a79988f4a3fc26c2bb8bb75cc7e6"
     },
     {
+      "title": "Command-line arguments",
+      "state": "blocked",
+      "reason": "ghul#2487"
+    },
+    {
       "title": "Comments",
       "slug": "comments",
       "state": "solved"
@@ -703,6 +718,11 @@
       "slug": "compiler-ast-interpreter",
       "state": "published",
       "published_hash": "ade12835518522cf6149fb77fc7383f9577c8bd5d9d1129596ef3beae2487135"
+    },
+    {
+      "title": "Compound data type",
+      "slug": "compound-data-type",
+      "state": "solved"
     },
     {
       "title": "Concurrent computing",
@@ -1256,6 +1276,11 @@
       "published_hash": "61f0e73314e57d4270524ff703a15fb22013d3624fac40a07d82a3c279a0aa51"
     },
     {
+      "title": "Function composition",
+      "slug": "function-composition",
+      "state": "solved"
+    },
+    {
       "title": "Function definition",
       "slug": "function-definition",
       "state": "published",
@@ -1391,6 +1416,11 @@
       "published_hash": "11ceec1dfab941d3225ca9bd8c99942589f1dc8fdbb424abc54228434d804992"
     },
     {
+      "title": "HTTP",
+      "state": "rejected",
+      "reason": "needs-network"
+    },
+    {
       "title": "HTTPS/Authenticated",
       "state": "rejected",
       "reason": "needs-network"
@@ -1496,6 +1526,11 @@
       "published_hash": "dce83aa971cf03d5ef2004601c5fbe4fee3aaffcf8dbadba3fbded87598a2cba"
     },
     {
+      "title": "Hostname",
+      "state": "rejected",
+      "reason": "nondeterministic"
+    },
+    {
       "title": "Huffman coding",
       "slug": "huffman-coding",
       "state": "published",
@@ -1531,6 +1566,11 @@
       "slug": "iccanobif-primes",
       "state": "published",
       "published_hash": "62eb4c31f15a9ee3562bd29edb504692e7c22351b8fdd82ab5cf639999c9b2d0"
+    },
+    {
+      "title": "Identity matrix",
+      "slug": "identity-matrix",
+      "state": "solved"
     },
     {
       "title": "Idiomatically determine all the lowercase and uppercase letters",
@@ -1842,6 +1882,11 @@
       "published_hash": "44d640b60ef7237da7ca847aac0506b6044f7e8c9024f428a6d7430258e439c7"
     },
     {
+      "title": "Letter frequency",
+      "slug": "letter-frequency",
+      "state": "solved"
+    },
+    {
       "title": "Levenshtein distance",
       "slug": "levenshtein-distance",
       "state": "published",
@@ -2017,6 +2062,11 @@
       "published_hash": "3c092d2dae30b1c0e596d4c66c3bebabb17c1b994ae305bd1ffe0850366ccb3c"
     },
     {
+      "title": "Matrix transposition",
+      "slug": "matrix-transposition",
+      "state": "solved"
+    },
+    {
       "title": "Merge and aggregate datasets",
       "slug": "merge-and-aggregate-datasets",
       "state": "published"
@@ -2038,6 +2088,11 @@
       "slug": "mian-chowla-sequence",
       "state": "published",
       "published_hash": "a9b6497d3441446810cad0de7711f78f8141bfe47dd4436da6cc2c08024eb9fe"
+    },
+    {
+      "title": "Middle three digits",
+      "slug": "middle-three-digits",
+      "state": "solved"
     },
     {
       "title": "Minimal steps down to 1",
@@ -2361,6 +2416,11 @@
       "state": "published"
     },
     {
+      "title": "Perfect numbers",
+      "slug": "perfect-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Perfect totient numbers",
       "slug": "perfect-totient-numbers",
       "state": "published",
@@ -2466,6 +2526,11 @@
       "title": "Primorial numbers",
       "slug": "primorial-numbers",
       "state": "published"
+    },
+    {
+      "title": "Program name",
+      "state": "blocked",
+      "reason": "ghul#2487"
     },
     {
       "title": "Program termination",
@@ -2614,10 +2679,20 @@
       "state": "solved"
     },
     {
+      "title": "Return multiple values",
+      "slug": "return-multiple-values",
+      "state": "solved"
+    },
+    {
       "title": "Reverse a string",
       "slug": "reverse-a-string",
       "state": "published",
       "published_hash": "ab07645a0984c8f97aebb2d8ef2512c8c1a156577e580d8acd17e49531a635a1"
+    },
+    {
+      "title": "Reverse words in a string",
+      "slug": "reverse-words-in-a-string",
+      "state": "solved"
     },
     {
       "title": "Rhonda numbers",
@@ -3053,6 +3128,11 @@
       "state": "solved"
     },
     {
+      "title": "Sum multiples of 3 and 5",
+      "slug": "sum-multiples-of-3-and-5",
+      "state": "solved"
+    },
+    {
       "title": "Sum of a series",
       "slug": "sum-of-a-series",
       "state": "solved"
@@ -3157,6 +3237,11 @@
       "slug": "thue-morse",
       "state": "published",
       "published_hash": "5503332b9cee6123eac0a6d039ae4330989f691339de208035d913741901df29"
+    },
+    {
+      "title": "Time a function",
+      "state": "rejected",
+      "reason": "nondeterministic"
     },
     {
       "title": "Tokenize a string",
