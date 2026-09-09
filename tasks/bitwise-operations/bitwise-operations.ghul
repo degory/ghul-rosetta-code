@@ -1,0 +1,33 @@
+use IO.Std.write_line
+use System.Convert
+use System.Numerics.BitOperations
+
+show(name: string, value: int) =>
+    write_line("{name,-22} {Convert.to_string(value, 2),32}")
+
+// ghul has no unary bitwise complement, so an exclusive or against a
+// word of ones stands in for it.
+complement(a: int) -> int => a ^ -1
+
+rotate_left(a: int, by: int) -> int =>
+    cast int(BitOperations.rotate_left(cast uint(a), by))
+
+rotate_right(a: int, by: int) -> int =>
+    cast int(BitOperations.rotate_right(cast uint(a), by))
+
+bitwise(a: int, b: int) is
+    show("a", a)
+    show("b", b)
+    show("a and b", a & b)
+    show("a or b", a | b)
+    show("a xor b", a ^ b)
+    show("complement of a", complement(a))
+    show("shifted left", a << b)
+    show("shifted right", a >>> b)
+    show("shifted arithmetic", a >> b)
+    show("rotated left", rotate_left(a, b))
+    show("rotated right", rotate_right(a, b))
+si
+
+// A negative value, so the two right shifts differ.
+bitwise(-1412567278, 4)

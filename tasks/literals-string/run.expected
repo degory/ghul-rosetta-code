@@ -1,0 +1,7 @@
+a plain string literal
+interpolated: hello, world
+escaped: a tab[	], a quote["], a backslash[\]
+braces are doubled: { and }
+unicode by code point: € and 😀
+adjacent literals chain, so this is one string written over three lines
+a character literal: g

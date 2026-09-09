@@ -1,0 +1,17 @@
+use IO.Std.write_line
+use Collections.STACK
+
+let plates = STACK[string]()
+
+plates.push("bottom")
+plates.push("middle")
+plates.push("top")
+
+write_line("depth: {plates.count}")
+write_line("peek:  {plates.peek()}")
+
+while plates.count > 0 do
+    write_line("pop:   {plates.pop()}")
+od
+
+write_line("empty: {plates.count == 0}")

@@ -1,0 +1,25 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes.join
+
+rows(count: int) -> Ghul.Pipes.Pipe[LIST[int]] is
+    let row mut = LIST([1])
+
+    for _ in 1::count do
+        yield row
+
+        let next = LIST([1])
+
+        for i in 0..row.count - 1 do
+            next.add(row[i] + row[i + 1])
+        od
+
+        next.add(1)
+
+        row = next
+    od
+si
+
+for row in rows(8) do
+    write_line(row |> join(" "))
+od

@@ -1,0 +1,14 @@
+use IO.Std.write_line
+
+let smallest =
+    (for candidate in 1::100000 do
+        if candidate * candidate % 1000000 == 269696 then
+            break candidate
+        fi
+    od)!
+
+let babbage = 99736L
+
+write_line("smallest: {smallest} squared is {smallest * smallest}")
+write_line("Babbage's: {babbage} squared is {babbage * babbage}")
+write_line("both end in 269696, so Babbage's answer was not the smallest")

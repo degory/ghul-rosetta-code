@@ -1,0 +1,9 @@
+use IO.Std.write_line
+
+apply(f: (string) -> string, argument: string) -> string =>
+    f(argument)
+
+shout(text: string) -> string => "{text.to_upper_invariant()}!"
+
+write_line(apply(shout, "hello"))
+write_line(apply(text => "<{text}>", "hello"))

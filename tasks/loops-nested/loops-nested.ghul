@@ -1,0 +1,36 @@
+use IO.Std.write
+use IO.Std.write_line
+use Collections.LIST
+
+grid(size: int, random: System.Random) -> LIST[LIST[int]] is
+    let rows = LIST[LIST[int]]()
+
+    for _ in 1::size do
+        let row = LIST[int]()
+
+        for _ in 1::size do
+            row.add(random.next(1, 21))
+        od
+
+        rows.add(row)
+    od
+
+    rows
+si
+
+show_until_twenty(rows: LIST[LIST[int]]) is
+    search: for row in rows do
+        for value in row do
+            write("{value,3}")
+
+            if value == 20 then
+                write_line()
+                break search
+            fi
+        od
+
+        write_line()
+    od
+si
+
+show_until_twenty(grid(10, System.Random(20)))

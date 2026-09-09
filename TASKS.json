@@ -296,6 +296,16 @@
       "published_hash": "24a8eaed6e0a09a3bd9f1b453380d9903b7c13e134f9acd2993c888adaef2b02"
     },
     {
+      "title": "Averages/Root mean square",
+      "slug": "averages-root-mean-square",
+      "state": "solved"
+    },
+    {
+      "title": "Babbage problem",
+      "slug": "babbage-problem",
+      "state": "solved"
+    },
+    {
       "title": "Balanced brackets",
       "slug": "balanced-brackets",
       "state": "published",
@@ -332,6 +342,11 @@
       "slug": "binary-digits",
       "state": "published",
       "published_hash": "229fc9ceb9920f3f62a52184ae1dea02b09d0a14984b925d021ec6219764d22a"
+    },
+    {
+      "title": "Binary search",
+      "slug": "binary-search",
+      "state": "solved"
     },
     {
       "title": "Binomial transform",
@@ -437,6 +452,11 @@
       "published_hash": "58478955892419328a75f61bc719bad516ed5530d113cbe5e26586327582abd3"
     },
     {
+      "title": "Bitwise operations",
+      "slug": "bitwise-operations",
+      "state": "solved"
+    },
+    {
       "title": "Blum integer",
       "slug": "blum-integer",
       "state": "published",
@@ -539,6 +559,16 @@
       "slug": "cartesian-product-of-two-or-more-lists",
       "state": "published",
       "published_hash": "e370366e0d68eae5dd470d729fdf846a3c8bed88ef33b8d7b22697b2a6d9c706"
+    },
+    {
+      "title": "Case-sensitivity of identifiers",
+      "slug": "case-sensitivity-of-identifiers",
+      "state": "solved"
+    },
+    {
+      "title": "Catalan numbers",
+      "slug": "catalan-numbers",
+      "state": "solved"
     },
     {
       "title": "Catamorphism",
@@ -709,6 +739,16 @@
       "slug": "copy-a-string",
       "state": "published",
       "published_hash": "2bcdea8057df2a108a0a4608dab3c9cf8aa457858dd212e1d34568b713c1152b"
+    },
+    {
+      "title": "Count in octal",
+      "slug": "count-in-octal",
+      "state": "solved"
+    },
+    {
+      "title": "Count occurrences of a substring",
+      "slug": "count-occurrences-of-a-substring",
+      "state": "solved"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -1412,6 +1452,11 @@
       "published_hash": "49067ca560ac35123cb880979a268cdf45073a7ea86cc9e69189620d0943fa47"
     },
     {
+      "title": "Higher-order functions",
+      "slug": "higher-order-functions",
+      "state": "solved"
+    },
+    {
       "title": "Hilbert curve",
       "slug": "hilbert-curve",
       "state": "published",
@@ -1780,6 +1825,11 @@
       "state": "solved"
     },
     {
+      "title": "Least common multiple",
+      "slug": "least-common-multiple",
+      "state": "solved"
+    },
+    {
       "title": "Left factorials",
       "slug": "left-factorials",
       "state": "published",
@@ -1802,6 +1852,11 @@
       "slug": "literals-integer",
       "state": "published",
       "published_hash": "b9a49c99bb873ed3e7621a55c14a368072ca92fb403c2f646c2c81d5f01ffea2"
+    },
+    {
+      "title": "Literals/String",
+      "slug": "literals-string",
+      "state": "solved"
     },
     {
       "title": "Logical operations",
@@ -1893,6 +1948,11 @@
       "slug": "loops-n-plus-one-half",
       "state": "published",
       "published_hash": "df130eba714a425efeee1190329aef7418d833f8ededc5f9ea6698ed1d90bb04"
+    },
+    {
+      "title": "Loops/Nested",
+      "slug": "loops-nested",
+      "state": "solved"
     },
     {
       "title": "Loops/While",
@@ -2280,6 +2340,11 @@
       "slug": "parsing-shunting-yard-algorithm",
       "state": "published",
       "published_hash": "c7ca81f26b2458be33b8ab24af879e7ac7f19390eb93cdd5654663072a296ccf"
+    },
+    {
+      "title": "Pascal's triangle",
+      "slug": "pascals-triangle",
+      "state": "solved"
     },
     {
       "title": "Peano curve",
@@ -2871,6 +2936,11 @@
       "published_hash": "438e7c4b4cd6b1c295a22e61ddd2d1a2fa3570b8a6f03d2f563d1f42b574a339"
     },
     {
+      "title": "Stack",
+      "slug": "stack",
+      "state": "solved"
+    },
+    {
       "title": "Start from a main routine",
       "slug": "start-from-a-main-routine",
       "state": "published",
@@ -2945,6 +3015,11 @@
       "published_hash": "3533216fd2fd9d083be07156ce7a2f562bc9fc49383089e42f952a6c102657b4"
     },
     {
+      "title": "Strip a set of characters from a string",
+      "slug": "strip-a-set-of-characters-from-a-string",
+      "state": "solved"
+    },
+    {
       "title": "Strong and weak primes",
       "slug": "strong-and-weak-primes",
       "state": "published"
@@ -2970,6 +3045,11 @@
     {
       "title": "Sum and product of an array",
       "slug": "sum-and-product-of-an-array",
+      "state": "solved"
+    },
+    {
+      "title": "Sum digits of an integer",
+      "slug": "sum-digits-of-an-integer",
       "state": "solved"
     },
     {
@@ -3044,6 +3124,11 @@
       "slug": "taxicab-numbers",
       "state": "published",
       "published_hash": "4441e48abd4bc0f03cfa3b194823db780aede16238ef929b29d7f384e1bbd34a"
+    },
+    {
+      "title": "Temperature conversion",
+      "slug": "temperature-conversion",
+      "state": "solved"
     },
     {
       "title": "Terminal control/Inverse video",

@@ -1,0 +1,12 @@
+// ghul is case sensitive, so these are three separate variables. It also
+// has a naming convention the compiler checks - a variable is snake_case -
+// and two of the three names here are deliberately against it.
+@@suppress("non-snake-case-name")
+
+use IO.Std.write_line
+
+let dog = "Benjamin"
+let Dog = "Samba"
+let DOG = "Bernie"
+
+write_line("The three dogs are named {dog}, {Dog} and {DOG}.")
