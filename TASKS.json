@@ -42,6 +42,11 @@
       "published_hash": "325e0cda4f339e95c2746052218a313572b5311fd9af9aaf8f4264a22d6656fb"
     },
     {
+      "title": "99 bottles of beer",
+      "slug": "99-bottles-of-beer",
+      "state": "solved"
+    },
+    {
       "title": "A+B",
       "slug": "a-b",
       "state": "published",
@@ -268,6 +273,11 @@
       "published_hash": "c440c142798d55123ec966d1ab7bf6653941610eaec00f2f04427d54878f6926"
     },
     {
+      "title": "Associative array/Creation",
+      "slug": "associative-array-creation",
+      "state": "solved"
+    },
+    {
       "title": "Atomic updates",
       "slug": "atomic-updates",
       "state": "published",
@@ -484,6 +494,11 @@
       "published_hash": "ab5b0f64eecbf1d35a71c5ac6209d37423f3837c4977f344b8dbcc7c1298fbff"
     },
     {
+      "title": "Caesar cipher",
+      "slug": "caesar-cipher",
+      "state": "solved"
+    },
+    {
       "title": "Calculating the value of e",
       "slug": "calculating-the-value-of-e",
       "state": "published",
@@ -636,6 +651,11 @@
       "slug": "comma-quibbling",
       "state": "published",
       "published_hash": "5bf8ede189c9ff39827a189e0e771aa88b98a79988f4a3fc26c2bb8bb75cc7e6"
+    },
+    {
+      "title": "Comments",
+      "slug": "comments",
+      "state": "solved"
     },
     {
       "title": "Compare length of two strings",
@@ -827,6 +847,11 @@
       "slug": "doomsday-rule",
       "state": "published",
       "published_hash": "df775e87e97f607fb4d6040619f9c9e6ee4c7947d761bf3948e215b455b2286c"
+    },
+    {
+      "title": "Dot product",
+      "slug": "dot-product",
+      "state": "solved"
     },
     {
       "title": "Dragon curve",
@@ -1030,6 +1055,11 @@
       "published_hash": "f93bd35b1687c008d801fc02e7b84de5f0aaf0e4914b65d1c696e397657aa458"
     },
     {
+      "title": "Factors of an integer",
+      "slug": "factors-of-an-integer",
+      "state": "solved"
+    },
+    {
       "title": "Fairshare between two and more",
       "slug": "fairshare-between-two-and-more",
       "state": "published"
@@ -1088,6 +1118,11 @@
       "title": "File size distribution",
       "state": "rejected",
       "reason": "nondeterministic"
+    },
+    {
+      "title": "Filter",
+      "slug": "filter",
+      "state": "solved"
     },
     {
       "title": "Find limit of recursion",
@@ -1213,6 +1248,11 @@
       "slug": "gapful-numbers",
       "state": "published",
       "published_hash": "8f52b1b8ae1a58b9cf969068caa2daa5b1a66fa6fc05dd8c899ca569a8eecf58"
+    },
+    {
+      "title": "Generate lower case ASCII alphabet",
+      "slug": "generate-lower-case-ascii-alphabet",
+      "state": "solved"
     },
     {
       "title": "Generate random chess position",
@@ -1354,6 +1394,16 @@
       "title": "Hello world/Graphical",
       "state": "rejected",
       "reason": "needs-gui"
+    },
+    {
+      "title": "Hello world/Newline omission",
+      "slug": "hello-world-newline-omission",
+      "state": "solved"
+    },
+    {
+      "title": "Hello world/Standard error",
+      "slug": "hello-world-standard-error",
+      "state": "solved"
     },
     {
       "title": "Hello world/Text",
@@ -1725,6 +1775,11 @@
       "published_hash": "46290ab98252cfdb10c4134e23b0155c4456fa26619d3c53cda3722b21f0ea35"
     },
     {
+      "title": "Leap year",
+      "slug": "leap-year",
+      "state": "solved"
+    },
+    {
       "title": "Left factorials",
       "slug": "left-factorials",
       "state": "published",
@@ -1778,10 +1833,20 @@
       "published_hash": "cec14431ff7f40148023fd91bc29409623fdb115d5f4e3dab787a225cafdb21c"
     },
     {
+      "title": "Loop over multiple arrays simultaneously",
+      "slug": "loop-over-multiple-arrays-simultaneously",
+      "state": "solved"
+    },
+    {
       "title": "Loops/Break",
       "slug": "loops-break",
       "state": "published",
       "published_hash": "b50f57146a5e84ca98e0dffdcbd0e490d43004d7e1cd0b6fa0fa60d7e3e97035"
+    },
+    {
+      "title": "Loops/Continue",
+      "slug": "loops-continue",
+      "state": "solved"
     },
     {
       "title": "Loops/Do-while",
@@ -1806,6 +1871,11 @@
       "slug": "loops-for-with-a-specified-step",
       "state": "published",
       "published_hash": "cfdcc4bc75f25b1836307c7ca7f433196f173a3c7dae02fbfea7a629cbf09b5b"
+    },
+    {
+      "title": "Loops/Foreach",
+      "slug": "loops-foreach",
+      "state": "solved"
     },
     {
       "title": "Loops/Increment loop index within loop body",
@@ -2312,6 +2382,11 @@
       "published_hash": "92f4131ed9c5131f6852b47142942e7c633f4ae1c31b19edf20995b0f0f5c25a"
     },
     {
+      "title": "Primality by trial division",
+      "slug": "primality-by-trial-division",
+      "state": "solved"
+    },
+    {
       "title": "Prime decomposition",
       "slug": "prime-decomposition",
       "state": "published",
@@ -2452,6 +2527,11 @@
       "published_hash": "5d63798157b477b447af8c05e49668c03a738827c751c2c15daa9dc0aab0b2f2"
     },
     {
+      "title": "Remove duplicate elements",
+      "slug": "remove-duplicate-elements",
+      "state": "solved"
+    },
+    {
       "title": "Rendezvous",
       "slug": "rendezvous",
       "state": "published",
@@ -2462,6 +2542,11 @@
       "slug": "rep-string",
       "state": "published",
       "published_hash": "f7820aaca79cafa48b62db39b6f8102981b807d3fad3c215188e0c874fa4c7aa"
+    },
+    {
+      "title": "Repeat a string",
+      "slug": "repeat-a-string",
+      "state": "solved"
     },
     {
       "title": "Reverse a string",
@@ -2694,6 +2779,11 @@
       "published_hash": "48679a1a511b8de805c7025a5855f73d90705e46aa1eb8e8e0ddbbfcb1584f36"
     },
     {
+      "title": "Sort an integer array",
+      "slug": "sort-an-integer-array",
+      "state": "solved"
+    },
+    {
       "title": "Sort an outline at every level",
       "slug": "sort-an-outline-at-every-level",
       "state": "published"
@@ -2703,6 +2793,11 @@
       "slug": "sorting-algorithms-bead-sort",
       "state": "published",
       "published_hash": "d49a150be9c1dc5d4aec6a35b08a93be3f846b55d2a111b9cc70ef3edd3c344e"
+    },
+    {
+      "title": "Sorting algorithms/Bubble sort",
+      "slug": "sorting-algorithms-bubble-sort",
+      "state": "solved"
     },
     {
       "title": "Sorting algorithms/Patience sort",
@@ -2810,6 +2905,11 @@
       "published_hash": "8b3e7168db503754fb1d505de5e05d5dea8b8e78e5fbef8d474a4b5508defd49"
     },
     {
+      "title": "String case",
+      "slug": "string-case",
+      "state": "solved"
+    },
+    {
       "title": "String comparison",
       "slug": "string-comparison",
       "state": "published",
@@ -2826,6 +2926,11 @@
       "slug": "string-interpolation-included",
       "state": "published",
       "published_hash": "edb33b3e526407a898a5b1b719e398ac18d936a375ba3dd1b69dc21ad0bfb90a"
+    },
+    {
+      "title": "String length",
+      "slug": "string-length",
+      "state": "solved"
     },
     {
       "title": "String matching",
@@ -2861,6 +2966,21 @@
       "slug": "sudan-function",
       "state": "published",
       "published_hash": "ea58e3989703d1345dee3f8dc6cc00387072018476074369127efe20d5dfb32a"
+    },
+    {
+      "title": "Sum and product of an array",
+      "slug": "sum-and-product-of-an-array",
+      "state": "solved"
+    },
+    {
+      "title": "Sum of a series",
+      "slug": "sum-of-a-series",
+      "state": "solved"
+    },
+    {
+      "title": "Sum of squares",
+      "slug": "sum-of-squares",
+      "state": "solved"
     },
     {
       "title": "Sum to 100",
