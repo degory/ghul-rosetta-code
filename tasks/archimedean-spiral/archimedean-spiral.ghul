@@ -1,31 +1,30 @@
 use System.Math
+use Raster.IMAGE
 
-let size = 400
 let turns = 5.0D
-let steps = 20000
+let steps = 2000
 
-let image = Png.IMAGE(size, size)
-
-for y in 0..size do
-    for x in 0..size do
-        image.set(x, y, 255ub, 255ub, 255ub)
-    od
-od
-
-let centre = cast double(size) / 2.0D
 let last = turns * 2.0D * Math.pi
-let scale = (centre - 8.0D) / last
 
-for step in 0::steps do
-    let angle = last * cast double(step) / cast double(steps)
-    let radius = scale * angle
+let image = IMAGE(400, 400)
 
-    let x = cast int(centre + radius * Math.cos(angle))
-    let y = cast int(centre + radius * Math.sin(angle))
+// The spiral is stated in the plane it is drawn in, so the picture is
+// described in the same terms as the curve.
+image.view(-last, -last, last, last)
 
-    image.set(x, y, 0ub, 0ub, 160ub)
+image.colour(0ub, 0ub, 160ub)
+image.stroke(1.5D)
+
+at(angle: double) -> (x: double, y: double) =>
+    (x = angle * Math.cos(angle), y = angle * Math.sin(angle))
+
+for step in 0..steps do
+    let from = at(last * cast double(step) / cast double(steps))
+    let to = at(last * cast double(step + 1) / cast double(steps))
+
+    image.line(from.x, from.y, to.x, to.y)
 od
 
 image.write("spiral.png")
 
-Png.show("spiral.png")
+image.show("spiral.png")
