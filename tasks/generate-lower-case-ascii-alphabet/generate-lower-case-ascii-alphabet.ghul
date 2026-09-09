@@ -1,12 +1,8 @@
 use IO.Std.write_line
-use Ghul.Pipes.map
 use Ghul.Pipes.collect_array
 use Ghul.Pipes.join
 
-let letters =
-    (cast int('a') :: cast int('z'))
-        |> map(code => cast char(code))
-        |> collect_array()
+let letters = ('a'::'z') |> collect_array()
 
 let last = letters.count - 1
 

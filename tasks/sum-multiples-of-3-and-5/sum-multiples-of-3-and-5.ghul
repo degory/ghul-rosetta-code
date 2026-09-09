@@ -1,14 +1,12 @@
 use IO.Std.write_line
 use Ghul.Pipes.filter
-use Ghul.Pipes.map
 use Ghul.Pipes.reduce
 
-sum_of_multiples(below: int) -> long =>
-    (1..below)
-        |> filter(n => n % 3 == 0 \/ n % 5 == 0)
-        |> map(n => cast long(n))
+sum_of_multiples(below: long) -> long =>
+    (1L..below)
+        |> filter(n => n % 3L == 0L \/ n % 5L == 0L)
         |> reduce(0L, (running, n) => running + n)
 
-for below in [10, 1000, 1000000] do
+for below in [10L, 1000L, 1000000L] do
     write_line("below {below,8}: {sum_of_multiples(below)}")
 od
