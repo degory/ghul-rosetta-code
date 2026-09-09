@@ -6,8 +6,8 @@ use IO.Std.write_line
 let double = (n: int) => n * 2
 let increment = (n: int) => n + 1
 
-let double_then_increment = compose(increment, double)
-let increment_then_double = compose(double, increment)
+let double_then_increment = increment >> double
+let increment_then_double = double >> increment
 
 write_line("{double_then_increment(5)}")
 write_line("{increment_then_double(5)}")

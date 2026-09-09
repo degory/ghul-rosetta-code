@@ -1,6 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.zip
-use Ghul.Pipes.collect_map
+use Ghul.Pipes
 
 let keys = ["hydrogen", "helium", "lithium", "beryllium"]
 let values = [1, 2, 3, 4]

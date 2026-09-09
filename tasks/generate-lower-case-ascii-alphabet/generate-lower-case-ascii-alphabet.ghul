@@ -1,8 +1,7 @@
 use IO.Std.write_line
-use Ghul.Pipes.collect_array
-use Ghul.Pipes.join
+use Ghul.Pipes
 
-let letters = ('a'::'z') |> collect_array()
+let letters = ('a'::'z') |> collect()
 
 let last = letters.count - 1
 

@@ -1,6 +1,6 @@
 use IO.Std.write_line
 
-apply(f: (string) -> string, argument: string) -> string =>
+apply[T,U](f: (T) -> U, argument: T) -> U =>
     f(argument)
 
 shout(text: string) -> string => "{text.to_upper_invariant()}!"
