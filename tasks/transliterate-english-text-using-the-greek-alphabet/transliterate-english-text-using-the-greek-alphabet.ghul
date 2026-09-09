@@ -1,0 +1,82 @@
+use IO.Std.write_line
+use Collections.LIST
+use System.Text.StringBuilder
+
+let pairs = [
+    ("ch", 'χ'), ("kh", 'χ'), ("ph", 'φ'), ("rh", 'ρ'), ("th", 'θ'),
+    ("ps", 'ψ'), ("ck", 'κ'), ("ee", 'η'), ("oo", 'ω'),
+    ("a", 'α'), ("b", 'β'), ("c", 'κ'), ("d", 'δ'), ("e", 'ε'),
+    ("f", 'φ'), ("g", 'γ'), ("h", 'η'), ("i", 'ι'), ("j", 'ι'),
+    ("k", 'κ'), ("l", 'λ'), ("m", 'μ'), ("n", 'ν'), ("o", 'ο'),
+    ("p", 'π'), ("q", 'κ'), ("r", 'ρ'), ("s", 'σ'), ("t", 'τ'),
+    ("u", 'υ'), ("v", 'β'), ("w", 'ω'), ("x", 'ξ'), ("y", 'υ'),
+    ("z", 'ζ')
+]
+
+matched_at(text: string, at: int) -> (string, char)? is
+    for (english, greek) in pairs do
+        if at + english.length <= text.length then
+            if text[at..at + english.length].to_lower() =~ english then
+                return (english, greek)
+            fi
+        fi
+    od
+
+    return null
+si
+
+transliterate(text: string) -> string is
+    let built = StringBuilder()
+
+    let at mut = 0
+
+    while at < text.length do
+        if let (english, greek) = matched_at(text, at) then
+            if char.is_upper(text[at]) then
+                built.append(char.to_upper(greek))
+            else
+                built.append(greek)
+            fi
+
+            at = at + english.length
+        else
+            built.append(text[at])
+
+            at = at + 1
+        fi
+    od
+
+    let greek = "{built}"
+
+    let final_sigma = StringBuilder()
+
+    for place in 0..greek.length do
+        let last = place == greek.length - 1
+
+        let ends_word = last \/ !char.is_letter(greek[place + 1])
+
+        if greek[place] == 'σ' /\ ends_word then
+            final_sigma.append('ς')
+        else
+            final_sigma.append(greek[place])
+        fi
+    od
+
+    return "{final_sigma}"
+si
+
+let passage = [
+    "I was looking at some rhododendrons in my back garden,",
+    "dressed in my khaki shorts, when the telephone rang.",
+    "",
+    "As I answered it, I cheerfully glimpsed that the July sun",
+    "caused a fragment of black pine wax to ooze on the velvet quilt",
+    "laying in my patio."
+]
+
+write_line(transliterate("The quick brown fox jumped over the lazy dog."))
+write_line("")
+
+for line in passage do
+    write_line(transliterate(line))
+od
