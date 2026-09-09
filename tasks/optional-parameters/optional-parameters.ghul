@@ -31,12 +31,6 @@ sort_table(
         fi)
     |> collect()
 
-sort_table(
-    rows: List[Row],
-    options: (column: int, ordering: Ordering, reverse: bool)
-) -> List[Row] =>
-    sort_table(rows, options.column, options.ordering, options.reverse)
-
 by_length(left: string, right: string) -> int =>
     left.length <> right.length
 
@@ -59,7 +53,12 @@ show("by column 2", table |> sort_table(2))
 show("by length of column 1", table |> sort_table(1, by_length))
 show("reversed", table |> sort_table(0, lexicographic, true))
 
-let descending_by_column_2 =
-    (column = 2, ordering = lexicographic, reverse = true)
-
-show("named, as a tuple", table |> sort_table(descending_by_column_2))
+show(
+    "named, in any order",
+    sort_table(
+        reverse = true,
+        rows = table,
+        ordering = lexicographic,
+        column = 2
+    )
+)
