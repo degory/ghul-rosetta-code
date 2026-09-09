@@ -1,0 +1,66 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.MAP
+use Collections.SET
+use Ghul.Pipes
+
+summarize(term: string) -> string is
+    let counts = MAP[char, int]()
+
+    for digit in term do
+        counts[digit] =
+            (if counts.contains_key(digit) then counts[digit] else 0 fi) + 1
+    od
+
+    return
+        counts.keys
+        |> sort((left, right) => right <> left)
+        |> map(digit => "{counts[digit]}{digit}")
+        |> join("")
+si
+
+sequence(seed: int) -> LIST[string] is
+    let terms = LIST[string]()
+    let seen = SET[string]()
+
+    let term mut = "{seed}"
+
+    while seen.add(term) do
+        terms.add(term)
+        term = summarize(term)
+    od
+
+    return terms
+si
+
+canonical(seed: int) -> string => string("{seed}" |> sort() |> collect_array())
+
+let lengths = MAP[string, int]()
+
+let longest mut = 0
+
+for seed in 1..1000000 do
+    let key = canonical(seed)
+
+    if !lengths.contains_key(key) then
+        lengths[key] = sequence(seed).count
+    fi
+
+    if lengths[key] > longest then
+        longest = lengths[key]
+    fi
+od
+
+let winners =
+    (1..1000000)
+    |> filter(seed => lengths[canonical(seed)] == longest)
+    |> collect_list()
+
+write_line("seed values: {winners |> join(" ")}")
+write_line("")
+write_line("iterations: {longest}")
+write_line("")
+
+for term in sequence(winners[0]) do
+    write_line(term)
+od
