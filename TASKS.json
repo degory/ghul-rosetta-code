@@ -964,6 +964,11 @@
       "reason": "nondeterministic"
     },
     {
+      "title": "Find limit of recursion",
+      "state": "rejected",
+      "reason": "nondeterministic"
+    },
+    {
       "title": "First-class functions",
       "slug": "first-class-functions",
       "state": "published",
@@ -1194,6 +1199,11 @@
       "slug": "haversine-formula",
       "state": "published",
       "published_hash": "670c5627fc7a0c3b66f8f69187e212ffde42ab33eb0f3b83b1f0b65879f36fd7"
+    },
+    {
+      "title": "Hello world/Graphical",
+      "state": "rejected",
+      "reason": "needs-gui"
     },
     {
       "title": "Hello world/Text",
@@ -1428,6 +1438,21 @@
       "slug": "kernighans-large-earthquake-problem",
       "state": "published",
       "published_hash": "5eeaf753645f8893d500c96a7e5880ac5364d6092fdfd722a07ea1ebc540588d"
+    },
+    {
+      "title": "Keyboard input/Flush the keyboard buffer",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "Keyboard input/Keypress check",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "Keyboard input/Obtain a Y or N response",
+      "state": "rejected",
+      "reason": "needs-interaction"
     },
     {
       "title": "Keyboard macros",
@@ -2313,6 +2338,11 @@
       }
     },
     {
+      "title": "Simple windowed application",
+      "state": "rejected",
+      "reason": "needs-gui"
+    },
+    {
       "title": "Sisyphus sequence",
       "slug": "sisyphus-sequence",
       "state": "published",
@@ -2513,6 +2543,11 @@
       "slug": "synchronous-concurrency",
       "state": "published",
       "published_hash": "8b149805bc797bea8a225b89ec5e86f7f0cc792106a8825825d9453fc8689f19"
+    },
+    {
+      "title": "System time",
+      "state": "rejected",
+      "reason": "nondeterministic"
     },
     {
       "title": "Tau function",
