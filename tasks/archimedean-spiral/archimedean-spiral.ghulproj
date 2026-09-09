@@ -10,6 +10,6 @@
 
   <ItemGroup>
     <GhulSources Include="**/*.ghul" />
-    <ProjectReference Include="../../lib/png/png.ghulproj" />
+    <PackageReference Include="ghul.raster" />
   </ItemGroup>
 </Project>
