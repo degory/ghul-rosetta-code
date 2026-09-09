@@ -1,0 +1,23 @@
+use IO.Std.write_line
+use System.Math
+
+// The library takes and returns radians, so the degree column is the same
+// angle converted on the way in and on the way out.
+
+to_radians(degrees: double) -> double => degrees * Math.pi / 180.0
+to_degrees(radians: double) -> double => radians * 180.0 / Math.pi
+
+let radians = Math.pi / 4.0
+let degrees = 45.0
+
+write_line("sin {Math.sin(radians)} {Math.sin(to_radians(degrees))}")
+write_line("cos {Math.cos(radians)} {Math.cos(to_radians(degrees))}")
+write_line("tan {Math.tan(radians)} {Math.tan(to_radians(degrees))}")
+
+let arcsin = Math.asin(Math.sin(radians))
+let arccos = Math.acos(Math.cos(radians))
+let arctan = Math.atan(Math.tan(radians))
+
+write_line("asin {arcsin} radians, {to_degrees(arcsin)} degrees")
+write_line("acos {arccos} radians, {to_degrees(arccos)} degrees")
+write_line("atan {arctan} radians, {to_degrees(arctan)} degrees")

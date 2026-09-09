@@ -1,8 +1,6 @@
 use IO.Std.write_line
 use System.Math
-use Ghul.Pipes.map
-use Ghul.Pipes.reduce
-use Ghul.Pipes.count
+use Ghul.Pipes
 
 root_mean_square(values: Collections.List[double]) -> double is
     let squares =
@@ -10,9 +8,9 @@ root_mean_square(values: Collections.List[double]) -> double is
             |> map(v => v * v)
             |> reduce(0.0, (running, square) => running + square)
 
-    return Math.sqrt(squares / cast double(values.count))
+    return Math.sqrt(squares / cast(values.count))
 si
 
-let one_to_ten = (1::10) |> map(n => cast double(n)) |> Ghul.Pipes.collect()
+let one_to_ten = (1::10) |> map(n => cast double(n)) |> collect()
 
 write_line("{root_mean_square(one_to_ten)}")

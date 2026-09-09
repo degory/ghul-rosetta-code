@@ -1,11 +1,11 @@
 use IO.Std.write_line
 
 let smallest =
-    (for candidate in 1::100000 do
+    for candidate in 1::100000 do
         if candidate * candidate % 1000000 == 269696 then
             break candidate
         fi
-    od)!
+    od!
 
 let babbage = 99736L
 

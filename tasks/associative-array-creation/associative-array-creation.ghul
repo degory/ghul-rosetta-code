@@ -1,7 +1,7 @@
 use IO.Std.write_line
 use Collections.MAP
 
-let ages = MAP[string, int]()
+let ages = MAP()
 
 ages.add("alice", 30)
 ages["bob"] = 27

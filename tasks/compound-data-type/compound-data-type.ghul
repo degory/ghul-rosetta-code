@@ -1,7 +1,7 @@
 use IO.Std.write_line
 
 // A struct is a value type, so a copy is a separate point.
-struct POINT(x: int, y: int);
+struct POINT(x: int, y: int)
 
 let origin = POINT(0, 0)
 let corner = POINT(3, 4)

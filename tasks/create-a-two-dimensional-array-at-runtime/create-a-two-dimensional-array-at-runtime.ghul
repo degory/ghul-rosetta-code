@@ -1,0 +1,29 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes.join
+
+grid(rows: int, columns: int) -> LIST[LIST[int]] is
+    let made = LIST()
+
+    for _ in 1::rows do
+        let row = LIST()
+
+        for _ in 1::columns do
+            row.add(0)
+        od
+
+        made.add(row)
+    od
+
+    made
+si
+
+let dimensions = LIST([3, 4])
+
+let values = grid(dimensions[0], dimensions[1])
+
+values[1][2] = 7
+
+for row in values do
+    write_line(row |> join(" "))
+od

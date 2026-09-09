@@ -1,0 +1,24 @@
+use IO.Std.write_line
+use Ghul.Pipes.index
+use Ghul.Pipes.find
+
+let haystack =
+    ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"]
+
+position(needle: string) -> int? is
+    let hit = haystack |> index() |> find(entry => entry.value =~ needle)
+
+    if hit? then
+        return hit.index
+    fi
+
+    return null
+si
+
+for needle in ["five", "dog"] do
+    if let at = position(needle) then
+        write_line("{needle} is at index {at}")
+    else
+        write_line("{needle} is not in the list")
+    fi
+od

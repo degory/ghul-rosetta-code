@@ -1,6 +1,5 @@
 use IO.Std.write_line
-use Ghul.Pipes.map
-use Ghul.Pipes.reduce
+use Ghul.Pipes
 
 // C(n) = sum over i of C(i) * C(n - 1 - i)
 by_convolution(n: int) -> long is

@@ -1,0 +1,23 @@
+use IO.Std.write_line
+
+class ACCOUNT(owner: string) is
+    _balance: int
+
+    deposit(amount: int) is
+        assert amount > 0 else "a deposit must be positive"
+
+        _balance = _balance + amount
+    si
+
+    balance: int => _balance
+
+    to_string() -> string => "{owner} has {_balance}"
+si
+
+let account = ACCOUNT("alice")
+
+account.deposit(30)
+account.deposit(12)
+
+write_line("{account}")
+write_line("balance read through the property: {account.balance}")

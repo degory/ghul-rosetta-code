@@ -1,0 +1,27 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes.collect_list
+use Ghul.Pipes.join
+
+gnome_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    let at mut = 0
+
+    while at < values.count do
+        if at == 0 \/ values[at] >= values[at - 1] then
+            at = at + 1
+        else
+            let swap = values[at]
+
+            values[at] = values[at - 1]
+            values[at - 1] = swap
+
+            at = at - 1
+        fi
+    od
+si
+
+let numbers = [5, 3, 8, 1, 9, 2, 7] |> collect_list()
+
+gnome_sort(numbers)
+
+write_line(numbers |> join(", "))

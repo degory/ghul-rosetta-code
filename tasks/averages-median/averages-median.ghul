@@ -1,9 +1,9 @@
 use IO.Std.write_line
 use Ghul.Pipes.sort
-use Ghul.Pipes.collect_array
+use Ghul.Pipes.collect
 
 median(values: Collections.Iterable[double]) -> double is
-    let ordered = values |> sort() |> collect_array()
+    let ordered = values |> sort() |> collect()
 
     assert ordered.count > 0 else "the median of no values is not defined"
 

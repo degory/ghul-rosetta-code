@@ -1,6 +1,6 @@
 // ghul is case sensitive, so these are three separate variables. It also
 // has a naming convention the compiler checks - a variable is snake_case -
-// and two of the three names here are deliberately against it.
+// and two of the three names here deliberately break it.
 @@suppress("non-snake-case-name")
 
 use IO.Std.write_line

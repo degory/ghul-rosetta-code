@@ -1,0 +1,12 @@
+use IO.Std.write_line
+
+// Seeded, so the run is reproducible - the point is the choosing, not the
+// particular elements it lands on.
+let random = System.Random(42)
+
+let colours =
+    ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
+
+for _ in 1::5 do
+    write_line(colours[random.next(colours.count)])
+od

@@ -1,0 +1,9 @@
+use IO.Std.write_line
+
+repeat(action: () -> void, times: int) is
+    for _ in 1::times do
+        action()
+    od
+si
+
+repeat(() => write_line("bang"), 4)

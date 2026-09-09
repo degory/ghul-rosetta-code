@@ -1,6 +1,6 @@
 use IO.Std.write_line
 
-compose[A, B, C](f: (B) -> C, g: (A) -> B) -> (A) -> C =>
+>>[A, B, C](f: (B) -> C, g: (A) -> B) -> (A) -> C =>
     a => f(g(a))
 
 let double = (n: int) => n * 2
