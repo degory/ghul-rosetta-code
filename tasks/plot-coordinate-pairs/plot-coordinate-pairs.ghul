@@ -1,0 +1,56 @@
+use Collections.List
+use Ghul.Pipes
+use Raster.IMAGE
+
+use POINT = (x: double, y: double)
+
+let xs = [0.0D, 1.0D, 2.0D, 3.0D, 4.0D, 5.0D, 6.0D, 7.0D, 8.0D, 9.0D]
+
+let ys = [
+    2.7D, 2.8D, 31.4D, 38.1D, 58.0D,
+    76.2D, 100.5D, 130.0D, 149.3D, 180.0D
+]
+
+let points =
+    xs
+    |> zip(ys)
+    |> map(pair => (x = pair.`0, y = pair.`1))
+    |> collect_list()
+
+marker(at: POINT) -> List[POINT] =>
+    [(x = at.x - 0.14D, y = at.y),
+     (x = at.x, y = at.y + 2.8D),
+     (x = at.x + 0.14D, y = at.y),
+     (x = at.x, y = at.y - 2.8D)]
+    |> collect_list()
+
+let image = IMAGE(480, 360)
+
+
+image.view(-1.0D, -20.0D, 10.0D, 200.0D)
+
+image.colour(160ub, 160ub, 160ub)
+image.stroke(1.0D)
+
+for tick in 0..10 do
+    image.line(cast double(tick), -20.0D, cast double(tick), 200.0D)
+od
+
+for tick in 0..5 do
+    let y = cast double(tick) * 40.0D
+    image.line(-1.0D, y, 10.0D, y)
+od
+
+image.colour(20ub, 60ub, 180ub)
+image.stroke(2.0D)
+image.line(points)
+
+image.colour(200ub, 40ub, 40ub)
+
+for point in points do
+    image.fill(marker(point))
+od
+
+image.write("plot.png")
+
+image.show("plot.png")
