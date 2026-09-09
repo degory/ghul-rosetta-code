@@ -32,3 +32,6 @@ input.txt
 # build symbols
 **/*.pdb
 *.png
+
+# images a task wrote in a format nothing here asserts
+*.ppm
