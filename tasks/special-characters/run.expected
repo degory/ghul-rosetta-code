@@ -1,0 +1,11 @@
+escape     character
+\t         U+0009
+\n         U+000A
+\r         U+000D
+\\         U+005C
+\"         U+0022
+\u20AC     U+20AC
+
+a brace in an interpolated string is doubled: { }
+a keyword is an identifier behind a backtick
+a backtick ends the digits of a literal: €
