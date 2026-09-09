@@ -27,7 +27,7 @@ bin/
 wiki-out/
 
 # written by the Synchronous concurrency solution when it runs
-input.txt
+tasks/synchronous-concurrency/input.txt
 
 # build symbols
 **/*.pdb

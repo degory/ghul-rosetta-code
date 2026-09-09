@@ -1,3 +1,3 @@
 10 / 2 divides: True
 10 / 0 divides: False
-10.0 / 0.0 is ∞, which raises nothing
+10.0 / 0.0 is infinite: True
