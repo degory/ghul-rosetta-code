@@ -2302,6 +2302,11 @@
       "published_hash": "bc13fd4ee777a75f19921b317475428a04edabbff7bb9883d97c303bcf153b69"
     },
     {
+      "title": "Multiline shebang",
+      "slug": "multiline-shebang",
+      "state": "solved"
+    },
+    {
       "title": "Multiple distinct objects",
       "slug": "multiple-distinct-objects",
       "state": "published",
@@ -2386,6 +2391,11 @@
       "slug": "narcissistic-decimal-number",
       "state": "published",
       "published_hash": "17201cbb5c1b50f8ff954fde54046e8e966df355a8547500b1df57bbbf712ef8"
+    },
+    {
+      "title": "Native shebang",
+      "slug": "native-shebang",
+      "state": "solved"
     },
     {
       "title": "Natural sorting",
