@@ -448,6 +448,11 @@ self_test() is
         markdown.render("- one\n\n## Next") =~ "* one\n\n====Next===="
     )
 
+    check_that(
+        "a wrapped list item's continuation line joins the item",
+        markdown.render("1. one\n   still one\n2. two") =~ "# one still one\n# two"
+    )
+
     if failures > 0 then
         error.write_line("{failures} checks failed")
 
