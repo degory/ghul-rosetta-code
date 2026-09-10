@@ -1,0 +1,17 @@
+use IO.Std.write_line
+use Collections.Iterable
+use Ghul.Pipes
+
+fs(f: (int) -> int, s: Iterable[int]) -> Pipe[int] =>
+    s |> map(f)
+
+f1(n: int) -> int => n * 2
+f2(n: int) -> int => n * n
+
+let fsf1 = s => fs(f1, s)
+let fsf2 = s => fs(f2, s)
+
+for s in [0::3, [2, 4, 6, 8]] do
+    write_line("fsf1: {fsf1(s) |> join(", ")}")
+    write_line("fsf2: {fsf2(s) |> join(", ")}")
+od
