@@ -1,7 +1,7 @@
 #!/usr/bin/env ghul
 
-use IO.Std.write_line;
-use Ghul.Pipes.join;
+use IO.Std.write_line
+use Ghul.Pipes.join
 
-let words = if args.count > 0 then args else ["Hello,", "world!"] fi;
-write_line(words |> join(" "));
+let words = if args.count > 0 then args else ["Hello,", "world!"] fi
+write_line(words |> join(" "))
