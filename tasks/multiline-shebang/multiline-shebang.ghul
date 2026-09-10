@@ -1,0 +1,9 @@
+#!/usr/bin/env ghul
+
+use IO.Std.write_line
+use Ghul.Pipes.index
+
+let words = if args.count > 0 then args else ["one", "two", "three"] fi
+for (position, word) in words |> index() do
+    write_line("arg {position}: {word}")
+od
