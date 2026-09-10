@@ -8,6 +8,11 @@
 # program with its own project and test. Each becomes a ===heading=== section with its own source
 # and output, in the order the numbers give.
 #
+# A task, or a part, may carry `notes.md` beside its source: Markdown prose placed ahead of the
+# code, converted to wiki markup by `rosetta render-notes`. Optional and rare by design - see
+# 'writing explanatory text' in the README. A run that touches a task carrying one prints
+# "(notes)" beside it, since a batch that adds prose is not one to wave through unread.
+#
 #   scripts/generate-wiki.sh <slug>          markup to stdout, ready to paste
 #   scripts/generate-wiki.sh --all           writes wiki-out/<slug>.wiki for every working task
 #   scripts/generate-wiki.sh --solved        the same, for the tasks not yet on the wiki
@@ -134,6 +139,10 @@ emit_body() {
         fi
     fi
 
+    if [ -f "$DIR/notes.md" ] ; then
+        emit_notes "$DIR/notes.md" || return 1
+    fi
+
     printf '%s' "<syntaxhighlight lang=\"ghul\">"
     cat "$SOURCE"
     echo "</syntaxhighlight>"
@@ -143,6 +152,43 @@ emit_body() {
         echo "{{out}}"
         emit_output "$SLUG" "$OUTPUT"
     fi
+}
+
+# A task's own explanatory prose, written in Markdown at `notes.md` beside its source and
+# converted to wiki markup here, ahead of the code. Optional, and absent from most tasks: see
+# 'writing explanatory text' in the README before adding one.
+emit_notes() {
+    local NOTES=$1
+
+    if ! dotnet run --project "$ROOT/tools/rosetta" -- render-notes "$NOTES" ; then
+        echo "$NOTES: could not be rendered" >&2
+        return 1
+    fi
+
+    echo
+}
+
+# Whether a task, or any of its parts, carries notes.md - for the caller deciding whether a batch
+# needs a human to read prose before it goes anywhere, rather than for generating markup.
+task_has_notes() {
+    local SLUG=$1
+    local TASK=$ROOT/tasks/$SLUG
+    local PARTS
+
+    PARTS=$(task_parts "$SLUG")
+
+    if [ -z "$PARTS" ] ; then
+        [ -f "$TASK/notes.md" ]
+        return
+    fi
+
+    local PART
+
+    for PART in $PARTS ; do
+        [ -f "$TASK/$PART/notes.md" ] && return 0
+    done
+
+    return 1
 }
 
 # The output, with any image the program named turned into a reference the
@@ -260,8 +306,11 @@ generate_to_out() {
         return 1
     fi
 
-    printf '%-28s %-9s %s\n' \
-        "$SLUG" "$(task_status "$ROOT/tasks/$SLUG")" "$(task_url "$ROOT/tasks/$SLUG")"
+    local NOTES=
+    task_has_notes "$SLUG" && NOTES=" (notes)"
+
+    printf '%-28s %-9s %s%s\n' \
+        "$SLUG" "$(task_status "$ROOT/tasks/$SLUG")" "$(task_url "$ROOT/tasks/$SLUG")" "$NOTES"
 }
 
 # The slugs of every task the ledger holds in the given state. A rejected task carries no slug,

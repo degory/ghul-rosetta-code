@@ -13,6 +13,8 @@ nobody re-reads.
   is `hello-world-text`.
 - `tasks/<slug>/task.json` - the task's title, its wiki URL, and a copy of its state from the
   ledger.
+- `tasks/<slug>/notes.md` - optional, and rare: explanatory prose ahead of the code. See
+  'writing explanatory text' below.
 - `tasks/<slug>/run.expected` - the test expectation: the output the program must produce. The
   project is the test case - `ghulflags` and the `*.expected` files sit beside the source, and
   `dotnet ghul-test --use-dotnet-build tasks/<slug>` runs it in place.
@@ -143,6 +145,40 @@ implementations in fifty other languages.
   `<syntaxhighlight lang="ghul">` block, which it renders unhighlighted rather than rejecting.
   Follow it with the real captured output in a `{{out}}` block.
 
+## writing explanatory text
+
+Most tasks need nothing beyond the code and its output - the two together are the entry, and
+that is the default here. Some tasks genuinely read better with a sentence or two ahead of the
+code: what the approach is, or why one of two readings of the task was chosen. Where that is
+true, and only when the user has asked for it, a task may carry `notes.md` beside its source (or
+beside a part's, for a task with parts):
+
+```
+tasks/binary-digits/
+    notes.md
+    binary-digits.ghul
+    ...
+```
+
+It is Markdown, and `scripts/generate-wiki.sh` converts it to wiki markup and places it ahead of
+the `<syntaxhighlight>` block. The supported subset is deliberately small: paragraphs, `#`/`##`
+headings, `*`/`-` bullet lists, `1.` numbered lists, `**bold**`, `*italic*`, and
+`[link text](url)`. Anything else in the file is passed through unconverted rather than dropped,
+so a construct outside the subset is visible on the rendered page rather than silently missing.
+
+```sh
+dotnet run --project tools/rosetta -- render-notes tasks/binary-digits/notes.md
+```
+
+renders one file on its own, for reading before it goes anywhere.
+
+**A task carrying `notes.md` is not one to wave through unread.** The code is covered by the
+test; the prose is not, and it is read on the page the way the code is not - as an argument
+rather than as an assertion. `scripts/generate-wiki.sh`'s bulk forms mark such a task `(notes)`
+in their report line, and `scripts/publish.sh` names it again before publishing. Neither of those
+is a gate by itself: read the rendered text before the branch that adds one is merged, and again
+before it is published.
+
 ## status
 
 `TASKS.json` is the ledger: one entry per task that has been done or decided about, keyed by its
@@ -189,6 +225,7 @@ dotnet run --project tools/rosetta -- publish --solved --target "Rosetta Code:Sa
 dotnet run --project tools/rosetta -- publish amb       # post one task, by slug
 dotnet run --project tools/rosetta -- publish --replace amb   # replace the ghul section already there
 dotnet run --project tools/rosetta -- publish --solved  # post every solved task
+dotnet run --project tools/rosetta -- render-notes tasks/binary-digits/notes.md  # one file's markup
 ```
 
 `sync` treats the wiki as the authority on what is published and `tasks/` as the authority on
