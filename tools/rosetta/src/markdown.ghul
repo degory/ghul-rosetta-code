@@ -13,6 +13,9 @@ namespace Rosetta is
     //
     // Heading levels start one below the page's own `=={{header|ghul}}==`, so Markdown `#` is
     // wiki `===` and `##` is `====`.
+    //
+    // A wrapped list item's continuation lines join onto the item rather than starting a new
+    // paragraph, which would otherwise break MediaWiki's own numbering mid-list.
     class MARKDOWN_TO_WIKI is
         init() is si
 
@@ -64,9 +67,12 @@ namespace Rosetta is
                     continue
                 fi
 
+                // A line that continues a wrapped list item - not blank, not itself a new
+                // marker - is joined onto the item rather than read as a new paragraph, which
+                // would otherwise interrupt MediaWiki's own numbering.
                 if list_kind? then
-                    _end_list(out, list_kind)
-                    list_kind = null
+                    out[out.count - 1] = "{out[out.count - 1]} {_inline(trimmed)}"
+                    continue
                 fi
 
                 paragraph.add(trimmed)
