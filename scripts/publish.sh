@@ -71,6 +71,27 @@ elif [ ${#SLUGS[@]} -gt 0 ] ; then
     scripts/generate-wiki.sh --out "${SLUGS[@]}"
 fi
 
+# A task carrying notes.md put explanatory prose on the page as well as tested code, and that
+# prose has not been through the tests the code has. This is only a reminder about what is about
+# to go out - the run this script is part of is already a deliberate, explicit act - but it is
+# worth saying before the edit is sent, not after.
+if [ -n "$SOLVED" ] ; then
+    PUBLISHING=$(jq -r '.tasks[] | select(.state == "solved" and .slug != null) | .slug' TASKS.json)
+else
+    PUBLISHING="${SLUGS[*]}"
+fi
+
+NOTED=
+for SLUG in $PUBLISHING ; do
+    if [ -f "tasks/$SLUG/notes.md" ] || compgen -G "tasks/$SLUG/[0-9][0-9]-*/notes.md" >/dev/null ; then
+        NOTED="$NOTED $SLUG"
+    fi
+done
+
+if [ -n "$NOTED" ] ; then
+    echo "these carry notes.md - confirm the rendered prose was reviewed before publishing:${NOTED}" >&2
+fi
+
 # A refusal is per page and the rest of the batch carries on, so a non-zero
 # exit still leaves records worth keeping. Take the status and continue.
 STATUS=0

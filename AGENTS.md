@@ -387,6 +387,30 @@ The verdict being overturned is written into the entry's note, so a later run re
 reason no longer holds instead of re-reaching it. Reopening without saying what changed just
 sets the task up to be rejected again.
 
+## Explanatory text
+
+The default is code and output, nothing else - that is the shape of nearly every entry here, and
+it is what a reader of the wiki expects. Do not add explanatory prose to a task unless the user
+asks for it for that task.
+
+When asked, write it as Markdown in `tasks/<slug>/notes.md` (or beside a part's source, for a task
+with parts): paragraphs, `#`/`##` headings, bullet and numbered lists, `**bold**`, `*italic*`, and
+`[text](url)` links are the supported subset. `scripts/generate-wiki.sh` converts it to wiki markup
+and places it ahead of the code. Render it on its own and read the result before doing anything
+else with it:
+
+```sh
+dotnet run --project tools/rosetta -- render-notes tasks/<slug>/notes.md
+```
+
+**Show the user the rendered text and get it read before the branch is raised for merge, and do
+not arm auto-merge on it.** The code in a task is covered by a captured test; the prose is not,
+and unlike the code it makes a claim to the reader rather than an assertion the test can check
+automatically. Follow `raise-pr` as usual to open the pull request, but stop short of the auto-merge
+step `land-pr` would otherwise arm immediately, and say plainly that the PR is waiting on a
+person because it carries prose. This is independent of publishing, which is already gated on an
+explicit request from the user - README.md's 'writing explanatory text' has the detail.
+
 ## Publishing, and the record of it
 
 ```sh

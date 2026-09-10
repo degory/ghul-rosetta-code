@@ -17,11 +17,15 @@ use Rosetta
 //   rosetta publish [--dry-run] [--replace] [--target <page>] [--api <url>] [slug ...]
 //   rosetta publish --rehearse <page> [--api <url>] <slug>
 //   rosetta adopt <slug> ...          record the live section as ours, when it matches wiki-out/
+//   rosetta render-notes <path>      a task's notes.md as wiki markup, to stdout
 //
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
 usage() is
-    error.write_line("usage: rosetta <sync|candidates|show|set|reopen|check|self-test|publish|adopt> [arguments]")
+    error.write_line(
+        "usage: rosetta <sync|candidates|show|set|reopen|check|self-test|publish|adopt|render-notes> "
+        "[arguments]"
+    )
 si
 
 // The repository root, found by walking up from the working directory. Every path the tool
@@ -393,6 +397,55 @@ self_test() is
     check_that(
         "wiping the page passes the confinement check, which is why it is not the only one",
         splice.is_confined(page, section, PLACEMENT.REPLACES(0, page.length))
+    )
+
+    let markdown = MARKDOWN_TO_WIKI()
+
+    check_that(
+        "a heading becomes a level-three wiki heading",
+        markdown.render("# The approach") =~ "===The approach==="
+    )
+
+    check_that(
+        "a sub-heading becomes a level-four wiki heading",
+        markdown.render("## Notes") =~ "====Notes===="
+    )
+
+    check_that(
+        "bold and italic survive together",
+        markdown.render("**bold** and *italic* and _also italic_") =~
+            "'''bold''' and ''italic'' and ''also italic''"
+    )
+
+    check_that(
+        "a link becomes url-then-text",
+        markdown.render("see [the task](https://rosettacode.org/wiki/X)") =~
+            "see [https://rosettacode.org/wiki/X the task]"
+    )
+
+    check_that(
+        "a bullet list becomes wiki bullets",
+        markdown.render("- one\n- two\n* three") =~ "* one\n* two\n* three"
+    )
+
+    check_that(
+        "a numbered list becomes wiki numbering",
+        markdown.render("1. one\n2. two") =~ "# one\n# two"
+    )
+
+    check_that(
+        "a blank line separates paragraphs",
+        markdown.render("first\nparagraph\n\nsecond") =~ "first paragraph\n\nsecond"
+    )
+
+    check_that(
+        "an underscore in a link's url is not read as italic",
+        markdown.render("[x](https://example.org/a_b_c)") =~ "[https://example.org/a_b_c x]"
+    )
+
+    check_that(
+        "a list is followed by a blank line before the next heading",
+        markdown.render("- one\n\n## Next") =~ "* one\n\n====Next===="
     )
 
     if failures > 0 then
@@ -795,6 +848,12 @@ else
         self_test()
     when "adopt" then
         adopt(root, arguments)
+    when "render-notes" then
+        if arguments.count < 1 then
+            error.write_line("usage: rosetta render-notes <path-to-notes.md>")
+        else
+            write_line(MARKDOWN_TO_WIKI().render(IO.File.read_all_text(arguments[0])))
+        fi
     when "check" then
         check(if arguments.count > 1 /\ arguments[0] =~ "--api" then arguments[1] else null fi)
     when "publish" then

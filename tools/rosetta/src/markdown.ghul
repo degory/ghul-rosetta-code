@@ -1,0 +1,149 @@
+namespace Rosetta is
+    use Collections
+    use System.Text.RegularExpressions.Regex
+
+    // Converts the small Markdown subset a task's `notes.md` may carry into MediaWiki markup.
+    //
+    // The subset is deliberately narrow: paragraphs, `#`/`##` headings, `*`/`-` bullet lists,
+    // `1.` numbered lists, `**bold**`, `*italic*`/`_italic_`, and `[text](url)` links. That
+    // covers what explanatory prose on a Rosetta Code page actually uses; anything else in the
+    // source (tables, images, nested lists) is passed through a paragraph unconverted rather than
+    // silently dropped, so a construct this does not understand is visible on the rendered page
+    // rather than missing from it.
+    //
+    // Heading levels start one below the page's own `=={{header|ghul}}==`, so Markdown `#` is
+    // wiki `===` and `##` is `====`.
+    class MARKDOWN_TO_WIKI is
+        init() is si
+
+        render(text: string) -> string is
+            let out = LIST[string]()
+            let lines = text.replace("\r\n", "\n").split(['\n'])
+
+            let paragraph = LIST[string]()
+            let list_kind: string? mut = null
+
+            let flush_paragraph = () =>
+                if paragraph.count > 0 then
+                    out.add(_inline(paragraph |> Ghul.Pipes.join(" ")))
+                    out.add("")
+                    paragraph.clear()
+                fi
+
+            for raw in lines do
+                let line = raw.trim_end()
+                let trimmed = line.trim()
+
+                if trimmed.length == 0 then
+                    flush_paragraph()
+                    _end_list(out, list_kind)
+                    list_kind = null
+                    continue
+                fi
+
+                if let heading = _heading(trimmed) then
+                    flush_paragraph()
+                    _end_list(out, list_kind)
+                    list_kind = null
+                    out.add(heading)
+                    out.add("")
+                    continue
+                fi
+
+                if let item = _bullet_item(trimmed) then
+                    flush_paragraph()
+                    list_kind = "*"
+                    out.add("* {_inline(item)}")
+                    continue
+                fi
+
+                if let item = _numbered_item(trimmed) then
+                    flush_paragraph()
+                    list_kind = "#"
+                    out.add("# {_inline(item)}")
+                    continue
+                fi
+
+                if list_kind? then
+                    _end_list(out, list_kind)
+                    list_kind = null
+                fi
+
+                paragraph.add(trimmed)
+            od
+
+            flush_paragraph()
+
+            while out.count > 0 /\ out[out.count - 1].length == 0 do
+                out.remove_at(out.count - 1)
+            od
+
+            return out |> Ghul.Pipes.join("\n")
+        si
+
+        // A blank line follows a list before the next block, matching the blank line a
+        // paragraph or heading leaves behind - MediaWiki reads a bullet line straight after
+        // other text as a continuation of it rather than as a new list.
+        _end_list(out: LIST[string], list_kind: string?) is
+            if list_kind? /\ out.count > 0 /\ out[out.count - 1].length > 0 then
+                out.add("")
+            fi
+        si
+
+        _heading(line: string) -> string? is
+            let m = Regex.match(line, "^(#{{1,4}})[ \\t]+(.+)$")
+
+            if !m.success then
+                return null
+            fi
+
+            let level = m.groups[1].value.length + 2
+            let marker = string('=', level)
+
+            return "{marker}{_inline(m.groups[2].value.trim())}{marker}"
+        si
+
+        _bullet_item(line: string) -> string? =>
+            if line.starts_with("- ") \/ line.starts_with("* ") \/ line.starts_with("+ ") then
+                line.substring(2).trim()
+            else
+                null
+            fi
+
+        _numbered_item(line: string) -> string? is
+            let m = Regex.match(line, "^[0-9]+\\.[ \\t]+(.+)$")
+
+            return if m.success then m.groups[1].value.trim() else null fi
+        si
+
+        // Links first, so bold/italic never reaches into a URL - an underscore in a Wikipedia
+        // link's path is not an italic marker. The link's own display text still gets bold and
+        // italic applied, since that text is prose the writer might reasonably emphasise.
+        _inline(text: string) -> string is
+            let out = System.Text.StringBuilder()
+            let links = Regex.matches(text, "\\[([^\\]]+)\\]\\(([^)]+)\\)")
+
+            let position mut = 0
+
+            for i in 0..links.count do
+                let link = links[i]
+
+                out.append(_emphasis(text.substring(position, link.index - position)))
+                out.append("[{link.groups[2].value} {_emphasis(link.groups[1].value)}]")
+
+                position = link.index + link.length
+            od
+
+            out.append(_emphasis(text.substring(position)))
+
+            return out.to_string()
+        si
+
+        _emphasis(text: string) -> string is
+            let bold = Regex.replace(text, "\\*\\*([^*]+)\\*\\*", "'''$1'''")
+            let italic = Regex.replace(bold, "(?<!\\*)\\*([^*]+)\\*(?!\\*)", "''$1''")
+
+            return Regex.replace(italic, "(?<!_)_([^_]+)_(?!_)", "''$1''")
+        si
+    si
+si
