@@ -1,13 +1,10 @@
 use IO.Std.write_line
 
->>[A, B, C](f: (B) -> C, g: (A) -> B) -> (A) -> C =>
-    a => f(g(a))
-
 let double = (n: int) => n * 2
 let increment = (n: int) => n + 1
 
-let double_then_increment = increment >> double
-let increment_then_double = double >> increment
+let double_then_increment = double >> increment
+let increment_then_double = increment >> double
 
 write_line("{double_then_increment(5)}")
 write_line("{increment_then_double(5)}")
