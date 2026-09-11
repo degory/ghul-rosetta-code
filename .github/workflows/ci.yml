@@ -67,11 +67,4 @@ jobs:
         echo "shards: $RESULT"
         [ "$RESULT" = success ]
 
-  # Posts as ghul-reviewer[bot], whose approval is what satisfies the branch's
-  # one-approving-review requirement: the fallback identity, github-actions[bot],
-  # cannot approve a pull request at all.
-  #
-  # Only Anthropic credentials are held here, so the provider is pinned rather
-  # than following the fleet default, which moves between providers as token
-  # quotas run out.
 
