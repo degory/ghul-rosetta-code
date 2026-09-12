@@ -84,10 +84,16 @@ sync(root: string) is
     let published = wiki.category_members(SITE.category)
     let local = local_tasks(root)
 
-    for title in published do
-        let entry = ledger.entry(title)
+    // a wiki section over an entry this ledger does not hold as published came from a run
+    // elsewhere: publish records the state and its hash together, so writing the state in
+    // from here would claim a publish with no hash behind it. reported and left alone; if
+    // the section is ours, adopt records it against markup this repository vouched for
+    let foreign = unpublished_here(ledger, published)
 
-        entry.state = "published"
+    for title in foreign do
+        error.write_line(
+            "{title}: the wiki has a ghul section this ledger did not publish - left alone; if it is ours, adopt it"
+        )
     od
 
     for pair in local do
@@ -96,6 +102,10 @@ sync(root: string) is
         entry.slug = pair.value
 
         if entry.state !~ "published" /\ entry.state !~ "blocked" then
+            if entry.state !~ "solved" then
+                write_line("{pair.key}: {entry.state} -> solved")
+            fi
+
             entry.state = "solved"
         fi
     od
@@ -123,6 +133,31 @@ sync(root: string) is
     od
 
     write_line("{ledger.count} tasks: {ledger.in_state("published").count} published, {ledger.in_state("solved").count} solved, {ledger.in_state("blocked").count} blocked, {ledger.in_state("rejected").count} rejected")
+
+    if foreign.count > 0 then
+        error.write_line("{foreign.count} ghul sections on the wiki are not recorded here as published")
+
+        System.Environment.exit_code = 1
+    fi
+si
+
+// the wiki's published pages this ledger cannot claim: an entry in another state than
+// published, or none at all. the category says a page has a ghul section, not which ledger
+// put it there
+unpublished_here(ledger: LEDGER, published: LIST[string]) -> LIST[string] is
+    let foreign = LIST[string]()
+
+    for title in published do
+        if let entry = ledger.find(title) then
+            if entry.state !~ "published" then
+                foreign.add(title)
+            fi
+        else
+            foreign.add(title)
+        fi
+    od
+
+    return foreign
 si
 
 // Tasks the ledger says nothing about. Everything else has either been done or been decided
@@ -452,6 +487,41 @@ self_test() is
         "a wrapped list item's continuation line joins the item",
         markdown.render("1. one\n   still one\n2. two") =~ "# one still one\n# two"
     )
+
+    // the ledger is loaded from a path that does not exist, so it starts empty and the
+    // check covers the decision alone, with no file involved
+    let ledger = LEDGER(IO.Path.combine(IO.Path.get_temp_path(), IO.Path.get_random_file_name()))
+
+    ledger.entry("Published long ago").state = "published"
+    ledger.entry("Solved here").state = "solved"
+    ledger.entry("Queued here").state = "queued"
+
+    let foreign = unpublished_here(
+        ledger,
+        LIST[string](["Published long ago", "Solved here", "Queued here", "Never heard of"])
+    )
+
+    check_that(
+        "a wiki section this ledger published is not foreign",
+        !foreign.contains("Published long ago")
+    )
+
+    check_that(
+        "a wiki section over a locally solved task is foreign",
+        foreign.contains("Solved here")
+    )
+
+    check_that(
+        "a wiki section over a locally queued task is foreign",
+        foreign.contains("Queued here")
+    )
+
+    check_that(
+        "a wiki section the ledger has no entry for is foreign",
+        foreign.contains("Never heard of")
+    )
+
+    check_that("exactly the foreign titles come back", foreign.count =~ 3)
 
     if failures > 0 then
         error.write_line("{failures} checks failed")

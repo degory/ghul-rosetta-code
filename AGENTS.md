@@ -365,7 +365,11 @@ dotnet run --project tools/rosetta -- sync
 ```
 
 `TASKS.json` is the authority on what has been done and what has been decided against. Never
-edit a `task.json` status by hand - `sync` writes it. When a task turns out not to be worth
+edit a `task.json` status by hand - `sync` writes it. `sync` records the tasks in `tasks/` as
+solved, but it never writes `published`: a section on the wiki that this ledger did not publish
+came from another run of the repository, and `sync` reports those and exits non-zero rather than
+adopting them, because a publish recorded without its hash is what makes a page unpublishable
+later. When a task turns out not to be worth
 doing, say so once and for all rather than leaving it to be reassessed:
 
 ```sh
