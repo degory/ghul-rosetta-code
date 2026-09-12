@@ -488,8 +488,8 @@ self_test() is
         markdown.render("1. one\n   still one\n2. two") =~ "# one still one\n# two"
     )
 
-    // The ledger is loaded from a path that does not exist, so it starts empty and the check
-    // covers the decision alone, with no file involved.
+    // the ledger is loaded from a path that does not exist, so it starts empty and the
+    // check covers the decision alone, with no file involved
     let ledger = LEDGER(IO.Path.combine(IO.Path.get_temp_path(), IO.Path.get_random_file_name()))
 
     ledger.entry("Published long ago").state = "published"
