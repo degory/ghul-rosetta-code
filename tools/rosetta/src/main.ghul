@@ -84,12 +84,10 @@ sync(root: string) is
     let published = wiki.category_members(SITE.category)
     let local = local_tasks(root)
 
-    // A page carrying a ghul section is not proof this ledger put the section there. `publish`
-    // records the state and the section hash together, so an entry the ledger does not already
-    // hold as `published` was published by a run elsewhere, and writing the state in from here
-    // would claim a publish with no hash behind it. Hashing whatever is on the page instead
-    // would bless an edit this repository cannot vouch for, which is what `adopt` exists to
-    // decide against markup it can. So these are reported and left alone.
+    // a wiki section over an entry this ledger does not hold as published came from a run
+    // elsewhere: publish records the state and its hash together, so writing the state in
+    // from here would claim a publish with no hash behind it. reported and left alone; if
+    // the section is ours, adopt records it against markup this repository vouched for
     let foreign = unpublished_here(ledger, published)
 
     for title in foreign do
@@ -143,9 +141,9 @@ sync(root: string) is
     fi
 si
 
-// The titles among the wiki's published pages that this ledger cannot claim: an entry held in
-// some state other than `published`, or no entry at all. The wiki category says a page has a
-// ghul section, not which ledger put it there.
+// the wiki's published pages this ledger cannot claim: an entry in another state than
+// published, or none at all. the category says a page has a ghul section, not which ledger
+// put it there
 unpublished_here(ledger: LEDGER, published: LIST[string]) -> LIST[string] is
     let foreign = LIST[string]()
 
