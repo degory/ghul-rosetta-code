@@ -228,8 +228,12 @@ dotnet run --project tools/rosetta -- publish --solved  # post every solved task
 dotnet run --project tools/rosetta -- render-notes tasks/binary-digits/notes.md  # one file's markup
 ```
 
-`sync` treats the wiki as the authority on what is published and `tasks/` as the authority on
-what has a solution, and leaves alone anything only the ledger knows - a rejection, a block.
+`sync` treats `tasks/` as the authority on what has a solution, and leaves alone anything only
+the ledger knows - a rejection, a block. The wiki it only reads as a cross-check: a page
+carrying a ghul section the ledger does not already hold as published was published from
+somewhere else, so `sync` reports it and changes nothing rather than recording a publish it
+cannot vouch for (if the section is ours, `adopt` records it). `sync` exits non-zero when that
+happens, since it is a divergence for a person to decide.
 
 `publish` reads the markup `scripts/generate-wiki.sh` leaves in `wiki-out/`, so generate before
 publishing - `--solved` before `publish --solved`, `--out <slug>...` before publishing those
