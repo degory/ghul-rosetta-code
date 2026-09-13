@@ -1,0 +1,40 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+comb_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    let gap mut = values.count
+    let sorted mut = false
+
+    while !sorted do
+        gap = cast int(cast double(gap) / 1.3)
+
+        if gap <= 1 then
+            gap = 1
+            sorted = true
+        fi
+
+        for i in 0..values.count - gap do
+            if values[i] > values[i + gap] then
+                let swap = values[i]
+
+                values[i] = values[i + gap]
+                values[i + gap] = swap
+
+                sorted = false
+            fi
+        od
+    od
+si
+
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
+
+comb_sort(numbers)
+
+write_line(numbers |> join(", "))
+
+let words = LIST(["pear", "apple", "quince", "banana"])
+
+comb_sort(words)
+
+write_line(words |> join(", "))
