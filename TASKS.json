@@ -3364,6 +3364,11 @@
       "published_hash": "eafe8ee1ba122ca5cc62084684db03a3eb6ac0c8476a8ca90929eea42ad7246a"
     },
     {
+      "title": "Strip block comments",
+      "slug": "strip-block-comments",
+      "state": "solved"
+    },
+    {
       "title": "Strip whitespace from a string/Top and tail",
       "slug": "strip-whitespace-from-a-string-top-and-tail",
       "state": "published",
