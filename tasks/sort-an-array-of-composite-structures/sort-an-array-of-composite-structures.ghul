@@ -1,0 +1,16 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let pairs = LIST([
+    (name = "Crosby", value = "Stills"),
+    (name = "Nash", value = "Young"),
+    (name = "Young", value = "Crosby"),
+    (name = "Stills", value = "Nash")
+])
+
+pairs.sort((a, b) => a.name <> b.name)
+
+for pair in pairs do
+    write_line("{pair.name}: {pair.value}")
+od
