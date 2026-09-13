@@ -1,0 +1,26 @@
+use IO.Std.write_line
+
+mkdir_p(path: string) is
+    let parts = path.split(['/'])
+    let built mut = ""
+
+    for part in parts do
+        built = if built =~ "" then part else "{built}/{part}" fi
+
+        if !IO.Directory.exists(built) then
+            IO.Directory.create_directory(built)
+        fi
+    od
+si
+
+mkdir_p("depth/one/two")
+IO.Directory.create_directory("builtin/one/two")
+
+write_line("{IO.Directory.exists("depth/one/two")}")
+write_line("{IO.Directory.exists("builtin/one/two")}")
+
+mkdir_p("depth/one/two")
+write_line("{IO.Directory.exists("depth/one/two")}")
+
+IO.Directory.delete("depth", true)
+IO.Directory.delete("builtin", true)
