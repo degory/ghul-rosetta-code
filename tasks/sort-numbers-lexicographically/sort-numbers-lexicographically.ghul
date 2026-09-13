@@ -1,0 +1,12 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let n = 13
+
+let sorted = (1::n)
+    |> map(i => "{i}")
+    |> sort((a, b) => a <> b)
+    |> map(int.parse)
+    |> collect_list()
+
+write_line(sorted |> join(", "))
