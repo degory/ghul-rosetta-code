@@ -3374,6 +3374,11 @@
       "state": "solved"
     },
     {
+      "title": "Strip control codes and extended characters from a string",
+      "slug": "strip-control-codes-and-extended-characters-from-a-string",
+      "state": "solved"
+    },
+    {
       "title": "Strip whitespace from a string/Top and tail",
       "slug": "strip-whitespace-from-a-string-top-and-tail",
       "state": "published",
