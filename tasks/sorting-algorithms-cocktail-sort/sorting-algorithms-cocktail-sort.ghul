@@ -1,0 +1,55 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+cocktail_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    let swapped mut = true
+
+    while swapped do
+        swapped = false
+
+        for i in 0..values.count - 1 do
+            if values[i] > values[i + 1] then
+                let swap = values[i]
+
+                values[i] = values[i + 1]
+                values[i + 1] = swap
+
+                swapped = true
+            fi
+        od
+
+        if !swapped then
+            break
+        fi
+
+        swapped = false
+
+        let i mut = values.count - 2
+
+        while i >= 0 do
+            if values[i] > values[i + 1] then
+                let swap = values[i]
+
+                values[i] = values[i + 1]
+                values[i + 1] = swap
+
+                swapped = true
+            fi
+
+            i = i - 1
+        od
+    od
+si
+
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
+
+cocktail_sort(numbers)
+
+write_line(numbers |> join(", "))
+
+let words = LIST(["pear", "apple", "quince", "banana"])
+
+cocktail_sort(words)
+
+write_line(words |> join(", "))
