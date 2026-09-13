@@ -268,6 +268,11 @@
       "published_hash": "34a93bff7f22b3f211f9d82a3870d83a2b22580c5d948b9676a5a0cc4451d343"
     },
     {
+      "title": "Array",
+      "state": "rejected",
+      "reason": "task-unclear"
+    },
+    {
       "title": "Array concatenation",
       "slug": "array-concatenation",
       "state": "published",
@@ -708,6 +713,11 @@
       "slug": "code-golf",
       "state": "published",
       "published_hash": "177f9dcdd919948f54c76ea2db665f729b19dfd775ad1a3f580c50cf370048a1"
+    },
+    {
+      "title": "Collections",
+      "slug": "collections",
+      "state": "solved"
     },
     {
       "title": "Colorful numbers",
