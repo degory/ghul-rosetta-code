@@ -1,0 +1,56 @@
+use IO.Std.write_line
+use Collections.LIST
+use System.Random
+use Ghul.Pipes.map
+use Ghul.Pipes.join
+use Ghul.Pipes.collect_array
+
+riffle_shuffle(deck: LIST[int], random: Random) -> LIST[int] is
+    let half = deck.count / 2
+    let left = LIST[int](deck[0..half])
+    let right = LIST[int](deck[half..<0])
+    let merged = LIST[int]()
+
+    while left.count > 0 /\ right.count > 0 do
+        if random.next(0, left.count + right.count) < left.count then
+            merged.add(left[0])
+            left.remove_at(0)
+        else
+            merged.add(right[0])
+            right.remove_at(0)
+        fi
+    od
+
+    merged.add_range(left)
+    merged.add_range(right)
+
+    merged
+si
+
+overhand_shuffle(deck: LIST[int], random: Random) -> LIST[int] is
+    let remaining = LIST[int](deck)
+    let stacked = LIST[int]()
+
+    while remaining.count > 0 do
+        let wanted = random.next(1, cast(remaining.count / 5) + 2)
+        let group = if wanted < remaining.count then wanted else remaining.count fi
+        let taken = LIST[int](remaining[0..group])
+
+        taken.add_range(stacked)
+        stacked.clear()
+        stacked.add_range(taken)
+
+        remaining.remove_range(0, group)
+    od
+
+    stacked
+si
+
+let random = Random(42)
+let deck = LIST[int]((0..10) |> collect_array())
+
+let riffled = riffle_shuffle(deck, random)
+let overhanded = overhand_shuffle(riffled, random)
+
+write_line(riffled |> map(v => "{v}") |> join(" "))
+write_line(overhanded |> map(v => "{v}") |> join(" "))
