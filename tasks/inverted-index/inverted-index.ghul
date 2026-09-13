@@ -1,0 +1,37 @@
+use IO.Std.write_line
+use Collections.MAP
+use Collections.SET
+use Ghul.Pipes.each
+use Ghul.Pipes.sort
+use Ghul.Pipes.join
+use Ghul.Pipes.map
+
+let documents = [
+    "it is what it is",
+    "what is done is done",
+    "what is done is what is done"
+]
+
+let index = MAP[string, SET[int]]()
+let number mut = 0
+
+for document in documents do
+    for word in document.split([' ']) do
+        if !index.contains_key(word) then
+            index[word] = SET[int]()
+        fi
+
+        index[word].add(number)
+    od
+
+    number = number + 1
+od
+
+for term in ["what", "is", "done", "absent"] do
+    let hits = if index.contains_key(term)
+        then index[term] |> sort() |> map(n => "{n}") |> join(", ")
+        else ""
+        fi
+
+    write_line("{term}: {hits}")
+od
