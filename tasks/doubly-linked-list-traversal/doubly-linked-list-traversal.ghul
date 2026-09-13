@@ -1,0 +1,46 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+class NODE(value: int) is
+    next: NODE? public
+    previous: NODE? public
+si
+
+forward(head: NODE) -> Pipe[int] is
+    let cursor mut = head.next
+
+    yield head.value
+
+    while cursor? do
+        yield cursor.value
+        cursor = cursor.next
+    od
+si
+
+backward(tail: NODE) -> Pipe[int] is
+    let cursor mut = tail.previous
+
+    yield tail.value
+
+    while cursor? do
+        yield cursor.value
+        cursor = cursor.previous
+    od
+si
+
+let a = NODE(1)
+let b = NODE(2)
+let c = NODE(3)
+
+a.next = b
+b.previous = a
+b.next = c
+c.previous = b
+
+for value in forward(a) do
+    write_line(value)
+od
+
+for value in backward(c) do
+    write_line(value)
+od
