@@ -1,0 +1,17 @@
+use IO.Std.write_line
+
+class NODE(value: int) is
+    next: NODE? public
+    previous: NODE? public
+si
+
+let a = NODE(1)
+let b = NODE(2)
+
+a.next = b
+b.previous = a
+
+write_line("a.next?.value = {a.next?.value}")
+write_line("b.previous?.value = {b.previous?.value}")
+write_line("a.previous is null: {!a.previous?}")
+write_line("b.next is null: {!b.next?}")

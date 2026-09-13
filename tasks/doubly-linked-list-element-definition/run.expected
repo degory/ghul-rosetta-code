@@ -1,0 +1,4 @@
+a.next?.value = 2
+b.previous?.value = 1
+a.previous is null: True
+b.next is null: True
