@@ -1849,6 +1849,11 @@
       "published_hash": "4aff0a2a401d8eae8391f2e126e18dd84f99e1bcbf8506c435a53f2ee87080b0"
     },
     {
+      "title": "JSON",
+      "slug": "json",
+      "state": "solved"
+    },
+    {
       "title": "JSON pointer",
       "slug": "json-pointer",
       "state": "published",
@@ -3158,6 +3163,11 @@
       "slug": "sign-of-an-integer-signum",
       "state": "published",
       "published_hash": "5859c4e8c64c46b8b8d7b12d62d2670e4cbec9d20ed6248abd800ce9fd492aad"
+    },
+    {
+      "title": "Simple database",
+      "state": "blocked",
+      "reason": "ghul#2487"
     },
     {
       "title": "Simple turtle graphics",
