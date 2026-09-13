@@ -1,0 +1,14 @@
+use IO.Std.write_line
+
+class NODE(value: int) is
+    next: NODE? public
+si
+
+let a = NODE(1)
+let b = NODE(2)
+
+a.next = b
+
+write_line("a.value = {a.value}")
+write_line("a.next?.value = {a.next?.value}")
+write_line("b.next is null: {!b.next?}")
