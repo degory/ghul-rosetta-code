@@ -1,0 +1,24 @@
+use IO.Std.write_line
+
+class ANIMAL is
+    init() is si
+si
+
+class CAT: ANIMAL is
+    init() is super.init() si
+si
+
+let cat = CAT()
+let animal: ANIMAL = cat
+
+write_line("a CAT is an ANIMAL: {isa ANIMAL(animal)}")
+
+let count: int = 7
+let maybe_count: int? = count
+
+write_line("count widened to int?: {maybe_count}")
+
+let smallest: byte = 5b
+let widened: double = cast double(cast int(smallest))
+
+write_line("byte {smallest} widened by explicit cast to {widened}")
