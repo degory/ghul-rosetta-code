@@ -1,0 +1,33 @@
+use IO.Std.write_line
+use Collections.LIST
+use System.Random
+use Ghul.Pipes.map
+use Ghul.Pipes.join
+use Ghul.Pipes.zip
+use Ghul.Pipes.all
+
+sattolo_cycle(items: LIST[int], random: Random) is
+    let i mut = items.count - 1
+
+    while i >= 1 do
+        let j = random.next(0, i)
+        let value = items[i]
+
+        items[i] = items[j]
+        items[j] = value
+
+        i = i - 1
+    od
+si
+
+let random = Random(42)
+let original = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+let shuffled = LIST[int](original)
+
+sattolo_cycle(shuffled, random)
+
+write_line(shuffled |> map(v => "{v}") |> join(" "))
+
+write_line("{original
+    |> zip(shuffled)
+    |> all((before, after) => before != after)}")
