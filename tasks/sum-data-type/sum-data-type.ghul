@@ -1,0 +1,28 @@
+use IO.Std.write_line
+
+union Shape is
+    CIRCLE(radius: double);
+    RECTANGLE(width: double, height: double);
+    TRIANGLE(base: double, height: double);
+si
+
+area(shape: Shape) -> double =>
+    case shape
+    when c: Shape.CIRCLE then c.radius * c.radius * 3.14159
+    when r: Shape.RECTANGLE then r.width * r.height
+    when t: Shape.TRIANGLE then t.base * t.height / 2.0
+    esac
+
+describe(shape: Shape) -> string =>
+    case shape
+    when c: Shape.CIRCLE then "circle of radius {c.radius}"
+    when r: Shape.RECTANGLE then "{r.width} by {r.height} rectangle"
+    when t: Shape.TRIANGLE then "triangle {t.base} by {t.height}"
+    esac
+
+let shapes: Shape[] =
+    [Shape.CIRCLE(2.0), Shape.RECTANGLE(3.0, 4.0), Shape.TRIANGLE(5.0, 6.0)]
+
+for shape in shapes do
+    write_line("{describe(shape)}: area {area(shape)}")
+od
