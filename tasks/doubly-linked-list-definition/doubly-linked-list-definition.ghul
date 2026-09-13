@@ -1,0 +1,73 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+class NODE(value: int) is
+    next: NODE? public
+    previous: NODE? public
+si
+
+class DOUBLY_LINKED_LIST is
+    head: NODE? public
+    tail: NODE? public
+
+    init() is si
+
+    add_to_head(value: int) is
+        let node = NODE(value)
+
+        if let old_head = head then
+            node.next = old_head
+            old_head.previous = node
+        else
+            tail = node
+        fi
+
+        head = node
+    si
+
+    add_to_tail(value: int) is
+        let node = NODE(value)
+
+        if let old_tail = tail then
+            node.previous = old_tail
+            old_tail.next = node
+        else
+            head = node
+        fi
+
+        tail = node
+    si
+
+    add_after(after: NODE, value: int) is
+        let node = NODE(value)
+
+        node.previous = after
+        node.next = after.next
+
+        if let following = after.next then
+            following.previous = node
+        else
+            tail = node
+        fi
+
+        after.next = node
+    si
+
+    values() -> Pipe[int] is
+        let cursor mut = head
+
+        while cursor? do
+            yield cursor.value
+            cursor = cursor.next
+        od
+    si
+si
+
+let list = DOUBLY_LINKED_LIST()
+
+list.add_to_tail(2)
+list.add_to_tail(4)
+list.add_to_head(1)
+list.add_after(list.head!.next!, 3)
+
+write_line(list.values() |> join(", "))
