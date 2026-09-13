@@ -1,0 +1,12 @@
+use IO.Std.write_line
+use IO.Std.read_line
+use Collections.MAP
+
+let variables = MAP[string, int]()
+
+let name = read_line()!
+let value = int.parse(read_line()!)
+
+variables[name] = value
+
+write_line("{name} = {variables[name]}")
