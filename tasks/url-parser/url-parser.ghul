@@ -1,0 +1,57 @@
+use IO.Std.write_line
+use System.Text.RegularExpressions.Regex
+
+let pattern = Regex(
+    "^(?<scheme>[^:/?#]+):"
+    "(?://(?:(?<user>[^@/]*)@)?"
+    "(?<host>\\[[^\\]]*\\]|[^:/?#]*)"
+    "(?::(?<port>[0-9]+))?)?"
+    "(?<path>[^?#]*)"
+    "(?:\\?(?<query>[^#]*))?"
+    "(?:#(?<fragment>.*))?$")
+
+show(name: string, group: string) is
+    if group.length > 0 then
+        write_line("  {name} = {group}")
+    fi
+si
+
+parse_url(url: string) is
+    let m = pattern.match(url)
+
+    write_line("{url}")
+
+    if !m.success then
+        write_line("  could not be parsed")
+    else
+        show("scheme", m.groups["scheme"].value)
+        show("domain", m.groups["host"].value)
+
+        if m.groups["port"].success then
+            show("port", ":{m.groups["port"].value}")
+        fi
+
+        show("path", m.groups["path"].value)
+        show("query", m.groups["query"].value)
+        show("fragment", m.groups["fragment"].value)
+    fi
+si
+
+let urls = [
+    "foo://example.com:8042/over/there?name=ferret#nose",
+    "urn:example:animal:ferret:nose",
+    "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila"
+        "?profileSQL=true",
+    "ftp://ftp.is.co.za/rfc/rfc1808.txt",
+    "http://www.ietf.org/rfc/rfc2396.txt#header1",
+    "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
+    "mailto:John.Doe@example.com",
+    "news:comp.infosystems.www.servers.unix",
+    "tel:+1-816-555-1212",
+    "telnet://192.0.2.16:80/",
+    "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
+]
+
+for url in urls do
+    parse_url(url)
+od
