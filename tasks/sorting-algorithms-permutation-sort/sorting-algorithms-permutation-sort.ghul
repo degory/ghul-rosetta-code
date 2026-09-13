@@ -1,0 +1,53 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+in_order[T: Ghul.Comparable[T]](values: LIST[T]) -> bool =>
+    (0..values.count - 1)
+        |> all(i => values[i] <= values[i + 1])
+
+next_permutation[T: Ghul.Comparable[T]](values: LIST[T]) is
+    let pivot mut = values.count - 2
+
+    while pivot >= 0 /\ values[pivot] >= values[pivot + 1] do
+        pivot = pivot - 1
+    od
+
+    if pivot >= 0 then
+        let successor mut = values.count - 1
+
+        while values[successor] <= values[pivot] do
+            successor = successor - 1
+        od
+
+        let swap = values[pivot]
+
+        values[pivot] = values[successor]
+        values[successor] = swap
+    fi
+
+    let low mut = pivot + 1
+    let high mut = values.count - 1
+
+    while low < high do
+        let temp = values[low]
+
+        values[low] = values[high]
+        values[high] = temp
+
+        low = low + 1
+        high = high - 1
+    od
+si
+
+permutation_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    while !in_order(values) do
+        next_permutation(values)
+    od
+si
+
+let numbers = LIST([3, 5, 1, 4, 2])
+
+permutation_sort(numbers)
+
+write_line(numbers |> join(", "))
