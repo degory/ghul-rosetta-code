@@ -1,0 +1,30 @@
+use IO.Std.write_line
+use Ghul.Pipes.map
+use Ghul.Pipes.join
+use Ghul.Pipes.each
+use Ghul.Pipes.all
+use Ghul.Pipes.collect_list
+
+class ENVIRONMENT(value: int public, count: int public);
+
+hailstone_step(env: ENVIRONMENT) is
+    if env.value != 1 then
+        env.value = if env.value % 2 == 0
+            then env.value / 2
+            else 3 * env.value + 1
+            fi
+
+        env.count = env.count + 1
+    fi
+si
+
+let environments = (1..13)
+    |> map(value => ENVIRONMENT(value, 0))
+    |> collect_list()
+
+while !(environments |> all(env => env.value == 1)) do
+    environments |> each(hailstone_step)
+    write_line(environments |> map(env => "{env.value}") |> join(" "))
+od
+
+write_line(environments |> map(env => "{env.count}") |> join(" "))
