@@ -1,0 +1,40 @@
+use IO.Std.write_line
+
+class NODE(value: int) is
+    next: NODE? public
+    previous: NODE? public
+si
+
+insert_between(before: NODE, after: NODE, value: int) is
+    let inserted = NODE(value)
+
+    inserted.previous = before
+    inserted.next = after
+    before.next = inserted
+    after.previous = inserted
+si
+
+render(head: NODE) -> string is
+    let values mut = "{head.value}"
+    let cursor mut = head.next
+
+    while cursor? do
+        values = "{values} -> {cursor.value}"
+        cursor = cursor.next
+    od
+
+    values
+si
+
+let a = NODE(1)
+let b = NODE(2)
+
+a.next = b
+b.previous = a
+
+write_line(render(a))
+
+insert_between(a, b, 3)
+
+write_line(render(a))
+write_line("b.previous?.value = {b.previous?.value}")
