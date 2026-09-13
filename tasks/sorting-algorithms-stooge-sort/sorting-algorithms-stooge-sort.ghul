@@ -1,0 +1,38 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+stooge_sort[T: Ghul.Comparable[T]](
+    values: LIST[T], low: int, high: int
+) is
+    if values[high] < values[low] then
+        let swap = values[low]
+
+        values[low] = values[high]
+        values[high] = swap
+    fi
+
+    if high - low > 1 then
+        let third = (high - low + 1) / 3
+
+        stooge_sort(values, low, high - third)
+        stooge_sort(values, low + third, high)
+        stooge_sort(values, low, high - third)
+    fi
+si
+
+stooge_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    stooge_sort(values, 0, values.count - 1)
+si
+
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
+
+stooge_sort(numbers)
+
+write_line(numbers |> join(", "))
+
+let words = LIST(["pear", "apple", "quince", "banana"])
+
+stooge_sort(words)
+
+write_line(words |> join(", "))
