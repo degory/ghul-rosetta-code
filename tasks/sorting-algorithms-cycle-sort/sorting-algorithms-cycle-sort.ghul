@@ -1,0 +1,60 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+cycle_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    for start in 0..values.count - 1 do
+        let item mut = values[start]
+        let position mut = start
+
+        for i in start + 1..values.count do
+            if values[i] < item then
+                position = position + 1
+            fi
+        od
+
+        if position == start then
+            continue
+        fi
+
+        while item =~ values[position] do
+            position = position + 1
+        od
+
+        let swap = values[position]
+
+        values[position] = item
+        item = swap
+
+        while position != start do
+            position = start
+
+            for i in start + 1..values.count do
+                if values[i] < item then
+                    position = position + 1
+                fi
+            od
+
+            while item =~ values[position] do
+                position = position + 1
+            od
+
+            let cycled = values[position]
+
+            values[position] = item
+            item = cycled
+        od
+    od
+si
+
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
+
+cycle_sort(numbers)
+
+write_line(numbers |> join(", "))
+
+let words = LIST(["pear", "apple", "quince", "banana"])
+
+cycle_sort(words)
+
+write_line(words |> join(", "))
