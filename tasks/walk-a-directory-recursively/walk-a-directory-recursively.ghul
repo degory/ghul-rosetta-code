@@ -1,0 +1,34 @@
+use IO.Std.write_line
+use Ghul.Pipes.filter
+use Ghul.Pipes.sort
+use Ghul.Pipes.each
+
+walk(dir: string) -> Ghul.Pipes.Pipe[string] is
+    for path in IO.Directory.get_files(dir) do
+        yield path
+    od
+
+    for sub in IO.Directory.get_directories(dir) do
+        yield in walk(sub)
+    od
+si
+
+let root = "walk-sample"
+
+IO.Directory.create_directory("{root}/sub/deeper")
+
+for (name, dir) in [
+    ("a.txt", root),
+    ("b.log", root),
+    ("c.txt", "{root}/sub"),
+    ("d.txt", "{root}/sub/deeper")
+] do
+    IO.File.write_all_text("{dir}/{name}", "")
+od
+
+walk(root)
+    |> filter(path => path.ends_with(".txt"))
+    |> sort()
+    |> each(path => write_line(path))
+
+IO.Directory.delete(root, true)
