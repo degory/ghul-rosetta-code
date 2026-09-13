@@ -1,0 +1,28 @@
+use IO.Std.write_line
+use Ghul.Pipes
+use Collections
+
+common_directory_path(paths: string[]) -> string is
+    let segments = paths |> map(p => p.split(['/'])) |> collect_array()
+    let common = LIST[string]()
+
+    for i in 0..segments[0].count do
+        let candidate = segments[0][i]
+
+        if segments |> all(s => i < s.count /\ s[i] =~ candidate) then
+            common.add(candidate)
+        else
+            break
+        fi
+    od
+
+    common |> join("/")
+si
+
+let paths = [
+    "/home/user1/tmp/coverage/test",
+    "/home/user1/tmp/covert/operator",
+    "/home/user1/tmp/coven/members"
+]
+
+write_line(common_directory_path(paths))

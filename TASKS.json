@@ -1280,6 +1280,11 @@
       "published_hash": "ae1f7a62922488075bc9945e33a449920db721a1551da0102fe80b45a8e56c62"
     },
     {
+      "title": "Find common directory path",
+      "slug": "find-common-directory-path",
+      "state": "solved"
+    },
+    {
       "title": "Find limit of recursion",
       "state": "rejected",
       "reason": "nondeterministic"
