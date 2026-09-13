@@ -1,0 +1,118 @@
+use IO.Std.write_line
+use Collections.MAP
+use Collections.LIST
+use Ghul.Pipes.each
+use Ghul.Pipes.map
+use Ghul.Pipes.join
+use Ghul.Pipes.sort
+use Ghul.Pipes.collect_array
+
+let men_preferences = MAP[string, string[]]()
+let women_preferences = MAP[string, string[]]()
+
+men_preferences["abe"] = ["abi", "eve", "cath", "ivy", "jan", "dee", "fay", "bea", "hope", "gay"]
+men_preferences["bob"] = ["cath", "hope", "abi", "dee", "eve", "fay", "bea", "jan", "ivy", "gay"]
+men_preferences["col"] = ["hope", "eve", "abi", "dee", "bea", "fay", "ivy", "gay", "cath", "jan"]
+men_preferences["dan"] = ["ivy", "fay", "dee", "gay", "hope", "eve", "jan", "bea", "cath", "abi"]
+men_preferences["ed"] = ["jan", "dee", "bea", "cath", "fay", "eve", "abi", "ivy", "hope", "gay"]
+men_preferences["fred"] = ["bea", "abi", "dee", "gay", "eve", "ivy", "cath", "jan", "hope", "fay"]
+men_preferences["gav"] = ["gay", "eve", "ivy", "bea", "cath", "abi", "dee", "hope", "jan", "fay"]
+men_preferences["hal"] = ["abi", "eve", "hope", "fay", "ivy", "cath", "jan", "bea", "gay", "dee"]
+men_preferences["ian"] = ["hope", "cath", "dee", "gay", "bea", "abi", "fay", "ivy", "jan", "eve"]
+men_preferences["jon"] = ["abi", "fay", "jan", "gay", "eve", "bea", "dee", "cath", "ivy", "hope"]
+
+women_preferences["abi"] = ["bob", "fred", "jon", "gav", "ian", "abe", "dan", "ed", "col", "hal"]
+women_preferences["bea"] = ["bob", "abe", "col", "fred", "gav", "dan", "ian", "ed", "jon", "hal"]
+women_preferences["cath"] = ["fred", "bob", "ed", "gav", "hal", "col", "ian", "abe", "dan", "jon"]
+women_preferences["dee"] = ["fred", "jon", "col", "abe", "ian", "hal", "gav", "dan", "bob", "ed"]
+women_preferences["eve"] = ["jon", "hal", "fred", "dan", "abe", "gav", "col", "ed", "ian", "bob"]
+women_preferences["fay"] = ["bob", "abe", "ed", "ian", "jon", "dan", "fred", "gav", "col", "hal"]
+women_preferences["gay"] = ["jon", "gav", "hal", "fred", "bob", "abe", "col", "ed", "dan", "ian"]
+women_preferences["hope"] = ["gav", "jon", "bob", "abe", "ian", "dan", "hal", "ed", "col", "fred"]
+women_preferences["ivy"] = ["ian", "col", "hal", "gav", "fred", "bob", "abe", "ed", "jon", "dan"]
+women_preferences["jan"] = ["ed", "hal", "gav", "abe", "bob", "jon", "col", "ian", "fred", "dan"]
+
+rank(preferences: string[], name: string) -> int is
+    let position mut = 0
+
+    for candidate in preferences do
+        if candidate =~ name then
+            return position
+        fi
+
+        position = position + 1
+    od
+
+    -1
+si
+
+prefers(preferences: MAP[string, string[]], judge: string, a: string, b: string) -> bool =>
+    rank(preferences[judge], a) < rank(preferences[judge], b)
+
+engage() -> MAP[string, string] is
+    let engaged_to = MAP[string, string]()
+    let next_choice = MAP[string, int]()
+    let free = LIST[string](men_preferences.keys |> sort())
+
+    for man in men_preferences.keys do
+        next_choice[man] = 0
+    od
+
+    while free.count > 0 do
+        let man = free[0]
+        let woman = men_preferences[man][next_choice[man]]
+
+        next_choice[man] = next_choice[man] + 1
+
+        if !engaged_to.contains_key(woman) then
+            free.remove_at(0)
+            engaged_to[woman] = man
+        elif prefers(women_preferences, woman, man, engaged_to[woman]) then
+            free.remove_at(0)
+            free.add(engaged_to[woman])
+            engaged_to[woman] = man
+        fi
+    od
+
+    engaged_to
+si
+
+is_stable(engaged_to: MAP[string, string]) -> bool is
+    for woman in engaged_to.keys do
+        for man in men_preferences.keys do
+            if man != engaged_to[woman] /\
+                prefers(men_preferences, man, woman, find_partner(engaged_to, man)) /\
+                prefers(women_preferences, woman, man, engaged_to[woman])
+            then
+                return false
+            fi
+        od
+    od
+
+    true
+si
+
+find_partner(engaged_to: MAP[string, string], man: string) -> string is
+    for woman in engaged_to.keys do
+        if engaged_to[woman] =~ man then
+            return woman
+        fi
+    od
+
+    ""
+si
+
+let engaged_to = engage()
+
+engaged_to.keys
+    |> sort()
+    |> each(woman => write_line("{woman} - {engaged_to[woman]}"))
+
+write_line("stable: {is_stable(engaged_to)}")
+
+let first = engaged_to.keys |> sort() |> collect_array()
+let temp = engaged_to[first[0]]
+engaged_to[first[0]] = engaged_to[first[1]]
+engaged_to[first[1]] = temp
+
+write_line("stable after perturbation: {is_stable(engaged_to)}")
