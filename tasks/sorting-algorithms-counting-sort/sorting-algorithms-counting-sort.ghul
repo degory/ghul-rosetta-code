@@ -1,0 +1,30 @@
+use IO.Std.write_line
+use Collections.List
+use Collections.LIST
+use Ghul.Pipes
+
+counting_sort(values: List[int], low: int, high: int) -> List[int] is
+    let counts = LIST()
+
+    for _ in low..high + 1 do
+        counts.add(0)
+    od
+
+    for value in values do
+        counts[value - low] = counts[value - low] + 1
+    od
+
+    let result = LIST()
+
+    for offset in 0..counts.count do
+        for _ in 0..counts[offset] do
+            result.add(offset + low)
+        od
+    od
+
+    result
+si
+
+let numbers = [5, 3, 8, 1, 9, 2, 7, 1, 9]
+
+write_line(counting_sort(numbers, 1, 9) |> join(", "))
