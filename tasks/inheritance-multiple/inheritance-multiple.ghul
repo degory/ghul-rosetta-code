@@ -1,0 +1,13 @@
+use IO.Std.write_line
+
+trait Camera is si
+trait MobilePhone is si
+
+class CAMERA_PHONE: Camera, MobilePhone is
+    init() is si
+si
+
+let phone = CAMERA_PHONE()
+
+write_line("is a Camera: {isa Camera(phone)}")
+write_line("is a MobilePhone: {isa MobilePhone(phone)}")
