@@ -1,10 +1,11 @@
 use default
 
 let pairs = LIST([
-    (name = "Crosby", value = "Stills"),
-    (name = "Nash", value = "Young"),
-    (name = "Young", value = "Crosby"),
-    (name = "Stills", value = "Nash")
+    (name = "Oxygen", value = "O"),
+    (name = "Helium", value = "He"),
+    (name = "Nitrogen", value = "N"),
+    (name = "Carbon", value = "C"),
+    (name = "Hydrogen", value = "H")
 ])
 
 pairs.sort((a, b) => a.name <> b.name)
