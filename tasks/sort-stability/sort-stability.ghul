@@ -1,0 +1,17 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+let countries = [
+    (country = "UK", city = "London"),
+    (country = "US", city = "New York"),
+    (country = "US", city = "Birmingham"),
+    (country = "UK", city = "Birmingham")
+]
+
+let by_city = countries
+    |> sort((a, b) => a.city <> b.city)
+    |> collect_list()
+
+for row in by_city do
+    write_line("{row.country} {row.city}")
+od
