@@ -3978,7 +3978,8 @@
     {
       "title": "Truncate a file",
       "slug": "truncate-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "60e67a1a5c8f646dfe6778ed00ae103487b7a9fd36e05f23036bf5e8d107a673"
     },
     {
       "title": "Truth table",
@@ -4022,7 +4023,8 @@
     {
       "title": "URL parser",
       "slug": "url-parser",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f21b8808d8d748054fc340019eaa863cd3df744340c952ca3c826448a2dc51be"
     },
     {
       "title": "UTF-8 encode and decode",
@@ -4159,12 +4161,14 @@
     {
       "title": "Walk a directory/Non-recursively",
       "slug": "walk-a-directory-non-recursively",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8893ac561fce63fa1b32c29623b8972d6e166f7fac4bdb31b6d15ce9c110e207"
     },
     {
       "title": "Walk a directory/Recursively",
       "slug": "walk-a-directory-recursively",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "28e31222049768f417d01569176d6cd715ed275885af47805cd75a5376b135f9"
     },
     {
       "title": "Walsh matrix",
