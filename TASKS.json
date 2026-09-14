@@ -614,6 +614,11 @@
       "published_hash": "aaae3cf12566463a6240a32d24a358087c68e53b7868efe9bfc7e010437c5bf9"
     },
     {
+      "title": "Card shuffles",
+      "slug": "card-shuffles",
+      "state": "solved"
+    },
+    {
       "title": "Cartesian product of two or more lists",
       "slug": "cartesian-product-of-two-or-more-lists",
       "state": "published",
@@ -1055,6 +1060,11 @@
       "published_hash": "b0a39e0e5ddd37cce261c889cd34a927cc44a5bdcb265d3e07753e2e8f6bd71c"
     },
     {
+      "title": "Dynamic variable names",
+      "slug": "dynamic-variable-names",
+      "state": "solved"
+    },
+    {
       "title": "EKG sequence convergence",
       "slug": "ekg-sequence-convergence",
       "state": "published",
@@ -1190,6 +1200,11 @@
       "published_hash": "59bc59b4e01c2577ed1cda4c3e1a6dee8d1340247db7d71cd4e84c5c03b70437"
     },
     {
+      "title": "Execute a system command",
+      "slug": "execute-a-system-command",
+      "state": "solved"
+    },
+    {
       "title": "Execute Brain****",
       "slug": "execute-brain",
       "state": "published",
@@ -1217,6 +1232,11 @@
       "slug": "extreme-floating-point-values",
       "state": "published",
       "published_hash": "ed9b06ce61b1b790a68209d7c454fca70733341c9915ed3a889fa1fbeff810bb"
+    },
+    {
+      "title": "First class environments",
+      "slug": "first-class-environments",
+      "state": "solved"
     },
     {
       "title": "FTP",
@@ -1741,6 +1761,11 @@
       "note": "not interactive at all: Dijkstra and Floyd-Warshall over a fixed map, reading no input. The needs-interaction rejection and the run.session reopen were both wrong about it"
     },
     {
+      "title": "Inverted index",
+      "slug": "inverted-index",
+      "state": "solved"
+    },
+    {
       "title": "ISBN13 check digit",
       "slug": "isbn13-check-digit",
       "state": "published",
@@ -2011,6 +2036,11 @@
       "published_hash": "f5b532a7755d9adbf459c4671e7b811f2a2a7b518f3490e49f5b230827912ecd"
     },
     {
+      "title": "Knuth shuffle",
+      "slug": "knuth-shuffle",
+      "state": "solved"
+    },
+    {
       "title": "Knuth\u0027s algorithm S",
       "slug": "knuth-s-algorithm-s",
       "state": "published",
@@ -2276,6 +2306,11 @@
       "slug": "magnanimous-numbers",
       "state": "published",
       "published_hash": "577a05bc6211d6ea7c88eb24a62513ead3e6c314085c503d9cce132bf796999b"
+    },
+    {
+      "title": "Make directory path",
+      "slug": "make-directory-path",
+      "state": "solved"
     },
     {
       "title": "Man or boy test",
@@ -2767,6 +2802,11 @@
       }
     },
     {
+      "title": "Playing cards",
+      "slug": "playing-cards",
+      "state": "solved"
+    },
+    {
       "title": "Plot coordinate pairs",
       "slug": "plot-coordinate-pairs",
       "state": "published",
@@ -2774,6 +2814,11 @@
       "image_hashes": {
         "Ghul-plot-coordinate-pairs-plot.png": "b407ce0c753e116a841c77acb631763da0f816a8"
       }
+    },
+    {
+      "title": "Poker hand analyser",
+      "slug": "poker-hand-analyser",
+      "state": "solved"
     },
     {
       "title": "Polynomial long division",
@@ -2884,6 +2929,11 @@
       "slug": "quine",
       "state": "published",
       "published_hash": "35116e069f82737389b74116a8ecf84428b70d2f0b37c946be94bf80e1d53b73"
+    },
+    {
+      "title": "Rock-paper-scissors",
+      "slug": "rock-paper-scissors",
+      "state": "solved"
     },
     {
       "title": "RPG attributes generator",
@@ -3071,10 +3121,20 @@
       "published_hash": "74b26394a8409bf7239173439f0d2fda7db8b97515f4de055fd2114d93335399"
     },
     {
+      "title": "Sattolo cycle",
+      "slug": "sattolo-cycle",
+      "state": "solved"
+    },
+    {
       "title": "Search a list",
       "slug": "search-a-list",
       "state": "published",
       "published_hash": "cd0714494e6645b4076e4166bb59106959f70cd171492fe8b1422ae75552601e"
+    },
+    {
+      "title": "Secure temporary file",
+      "slug": "secure-temporary-file",
+      "state": "solved"
     },
     {
       "title": "Selectively replace multiple instances of a character within a string",
@@ -3481,6 +3541,11 @@
       "published_hash": "438e7c4b4cd6b1c295a22e61ddd2d1a2fa3570b8a6f03d2f563d1f42b574a339"
     },
     {
+      "title": "Stable marriage problem",
+      "slug": "stable-marriage-problem",
+      "state": "solved"
+    },
+    {
       "title": "Stack",
       "slug": "stack",
       "state": "published",
@@ -3849,6 +3914,11 @@
       "published_hash": "e923529d3e0412e4fedbe6bdc05e182fd8531e82a87b15351bde6ebd8d7adc9a"
     },
     {
+      "title": "Truncate a file",
+      "slug": "truncate-a-file",
+      "state": "solved"
+    },
+    {
       "title": "Truth table",
       "slug": "truth-table",
       "state": "published"
@@ -4023,6 +4093,16 @@
       "slug": "wagstaff-primes",
       "state": "published",
       "published_hash": "9af3ab72422dde4a93c2db4a8e231076f131e77b7a203eaddd7dffa6a042d18d"
+    },
+    {
+      "title": "Walk a directory/Non-recursively",
+      "slug": "walk-a-directory-non-recursively",
+      "state": "solved"
+    },
+    {
+      "title": "Walk a directory/Recursively",
+      "slug": "walk-a-directory-recursively",
+      "state": "solved"
     },
     {
       "title": "Walsh matrix",
