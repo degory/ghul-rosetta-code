@@ -1,4 +1,3 @@
-a.next?.value = 2
-b.previous?.value = 1
-a.previous is null: True
-b.next is null: True
+first: previous none, next 2
+middle: previous 1, next 3
+last: previous 2, next none

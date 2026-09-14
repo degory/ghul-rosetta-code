@@ -1,73 +1,96 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-class NODE(value: int) is
-    next: NODE? public
-    previous: NODE? public
+class NODE[T](value: T) is
+    next: NODE[T]?
+    previous: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.previous = self
+        inserted.next = next
+
+        if let following = next then
+            following.previous = inserted
+        fi
+
+        next = inserted
+
+        inserted
+    si
+
+    insert_before(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.next = self
+        inserted.previous = previous
+
+        if let preceding = previous then
+            preceding.next = inserted
+        fi
+
+        previous = inserted
+
+        inserted
+    si
 si
 
-class DOUBLY_LINKED_LIST is
-    head: NODE? public
-    tail: NODE? public
+class DOUBLY_LINKED_LIST[T] is
+    head: NODE[T]?
+    tail: NODE[T]?
 
     init() is si
 
-    add_to_head(value: int) is
-        let node = NODE(value)
+    add_to_head(value: T) -> NODE[T] is
+        let added = if let first = head then first.insert_before(value) else NODE[T](value) fi
 
-        if let old_head = head then
-            node.next = old_head
-            old_head.previous = node
-        else
-            tail = node
+        if !tail? then
+            tail = added
         fi
 
-        head = node
+        head = added
+
+        added
     si
 
-    add_to_tail(value: int) is
-        let node = NODE(value)
+    add_to_tail(value: T) -> NODE[T] is
+        let added = if let last = tail then last.insert_after(value) else NODE[T](value) fi
 
-        if let old_tail = tail then
-            node.previous = old_tail
-            old_tail.next = node
-        else
-            head = node
+        if !head? then
+            head = added
         fi
 
-        tail = node
+        tail = added
+
+        added
     si
 
-    add_after(after: NODE, value: int) is
-        let node = NODE(value)
+    add_after(existing: NODE[T], value: T) -> NODE[T] is
+        let added = existing.insert_after(value)
 
-        node.previous = after
-        node.next = after.next
-
-        if let following = after.next then
-            following.previous = node
-        else
-            tail = node
+        if existing == tail then
+            tail = added
         fi
 
-        after.next = node
+        added
     si
 
-    values() -> Pipe[int] is
+    values() -> Pipe[T] is
         let cursor mut = head
 
-        while cursor? do
-            yield cursor.value
-            cursor = cursor.next
+        while let node = cursor do
+            yield node.value
+            cursor = node.next
         od
     si
 si
 
-let list = DOUBLY_LINKED_LIST()
+let list = DOUBLY_LINKED_LIST[int]()
 
-list.add_to_tail(2)
+let two = list.add_to_tail(2)
 list.add_to_tail(4)
 list.add_to_head(1)
-list.add_after(list.head!.next!, 3)
+list.add_after(two, 3)
 
 write_line(list.values() |> join(", "))

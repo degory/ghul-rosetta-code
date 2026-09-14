@@ -1,40 +1,43 @@
 use IO.Std.write_line
 
-class NODE(value: int) is
-    next: NODE? public
-    previous: NODE? public
+class NODE[T](value: T) is
+    next: NODE[T]?
+    previous: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.previous = self
+        inserted.next = next
+
+        if let following = next then
+            following.previous = inserted
+        fi
+
+        next = inserted
+
+        inserted
+    si
 si
 
-insert_between(before: NODE, after: NODE, value: int) is
-    let inserted = NODE(value)
+render[T](first: NODE[T]) -> string is
+    let text mut = "{first.value}"
+    let cursor mut = first.next
 
-    inserted.previous = before
-    inserted.next = after
-    before.next = inserted
-    after.previous = inserted
-si
-
-render(head: NODE) -> string is
-    let values mut = "{head.value}"
-    let cursor mut = head.next
-
-    while cursor? do
-        values = "{values} -> {cursor.value}"
-        cursor = cursor.next
+    while let node = cursor do
+        text = "{text} -> {node.value}"
+        cursor = node.next
     od
 
-    values
+    text
 si
 
-let a = NODE(1)
-let b = NODE(2)
-
-a.next = b
-b.previous = a
+let a = NODE("A")
+let b = a.insert_after("B")
 
 write_line(render(a))
 
-insert_between(a, b, 3)
+a.insert_after("C")
 
 write_line(render(a))
-write_line("b.previous?.value = {b.previous?.value}")
+write_line("B.previous = {b.previous?.value}")

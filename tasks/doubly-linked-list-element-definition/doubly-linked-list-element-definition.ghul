@@ -1,17 +1,47 @@
 use IO.Std.write_line
 
-class NODE(value: int) is
-    next: NODE? public
-    previous: NODE? public
+class NODE[T](value: T) is
+    next: NODE[T]?
+    previous: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.previous = self
+        inserted.next = next
+
+        if let following = next then
+            following.previous = inserted
+        fi
+
+        next = inserted
+
+        inserted
+    si
+
+    insert_before(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.next = self
+        inserted.previous = previous
+
+        if let preceding = previous then
+            preceding.next = inserted
+        fi
+
+        previous = inserted
+
+        inserted
+    si
 si
 
-let a = NODE(1)
-let b = NODE(2)
+describe[T](node: NODE[T]?) -> string =>
+    if let present = node then "{present.value}" else "none" fi
 
-a.next = b
-b.previous = a
+let first = NODE(1)
+let last = first.insert_after(3)
+let middle = last.insert_before(2)
 
-write_line("a.next?.value = {a.next?.value}")
-write_line("b.previous?.value = {b.previous?.value}")
-write_line("a.previous is null: {!a.previous?}")
-write_line("b.next is null: {!b.next?}")
+write_line("first: previous {describe(first.previous)}, next {describe(first.next)}")
+write_line("middle: previous {describe(middle.previous)}, next {describe(middle.next)}")
+write_line("last: previous {describe(last.previous)}, next {describe(last.next)}")
