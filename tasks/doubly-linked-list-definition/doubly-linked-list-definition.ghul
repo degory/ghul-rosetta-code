@@ -43,7 +43,12 @@ class DOUBLY_LINKED_LIST[T] is
     init() is si
 
     add_to_head(value: T) -> NODE[T] is
-        let added = if let first = head then first.insert_before(value) else NODE[T](value) fi
+        let added =
+            if let first = head then
+                first.insert_before(value)
+            else
+                NODE[T](value)
+            fi
 
         if !tail? then
             tail = added
@@ -55,7 +60,12 @@ class DOUBLY_LINKED_LIST[T] is
     si
 
     add_to_tail(value: T) -> NODE[T] is
-        let added = if let last = tail then last.insert_after(value) else NODE[T](value) fi
+        let added =
+            if let last = tail then
+                last.insert_after(value)
+            else
+                NODE[T](value)
+            fi
 
         if !head? then
             head = added
