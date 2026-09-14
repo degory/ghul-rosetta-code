@@ -33,3 +33,5 @@ wiki-out/
 # images a task wrote in a format nothing here asserts
 *.ppm
 tasks/file-input-output/output.txt
+tasks/substitution-cipher/cipher.txt
+tasks/substitution-cipher/decrypted.txt

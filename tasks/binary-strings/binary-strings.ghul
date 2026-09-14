@@ -1,0 +1,49 @@
+use IO.Std.write_line
+use Collections
+use Ghul.Pipes
+
+to_text(bytes: List[ubyte]) -> string =>
+    string(bytes |> map(b => cast char(b)) |> collect_array())
+
+replace_byte(
+    bytes: List[ubyte], old: ubyte, replacement: ubyte
+) -> LIST[ubyte] is
+    let result = LIST[ubyte]()
+
+    for b in bytes do
+        result.add(if b == old then replacement else b fi)
+    od
+
+    result
+si
+
+join_bytes(a: List[ubyte], b: List[ubyte]) -> LIST[ubyte] is
+    let result = LIST[ubyte](a)
+
+    for b2 in b do
+        result.add(b2)
+    od
+
+    result
+si
+
+let hello = LIST[ubyte]([104ub, 101ub, 108ub, 108ub, 111ub])
+write_line("created: {to_text(hello)}")
+write_line("empty: {LIST[ubyte]().count == 0}")
+
+let same = hello
+write_line("assigned equal: {same =~ hello}")
+
+let copy = LIST[ubyte](hello)
+copy.add(33ub)
+write_line("clone independent: {!(copy =~ hello)}")
+
+hello.add(33ub)
+write_line("appended: {to_text(hello)}")
+write_line("substring: {to_text(hello[1..3])}")
+
+let replaced = replace_byte(hello, 108ub, 76ub)
+write_line("replaced: {to_text(replaced)}")
+
+let joined = join_bytes(hello, copy)
+write_line("joined: {to_text(joined)}")

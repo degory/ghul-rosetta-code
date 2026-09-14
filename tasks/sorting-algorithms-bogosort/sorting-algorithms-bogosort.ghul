@@ -1,0 +1,35 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let random = System.Random(42)
+
+in_order(values: LIST[int]) -> bool =>
+    (0..values.count - 1)
+        |> all(i => values[i] <= values[i + 1])
+
+shuffle(values: LIST[int]) is
+    let i mut = values.count - 1
+
+    while i > 0 do
+        let j = random.next(i + 1)
+        let swap = values[i]
+
+        values[i] = values[j]
+        values[j] = swap
+
+        i = i - 1
+    od
+si
+
+bogosort(values: LIST[int]) is
+    while !in_order(values) do
+        shuffle(values)
+    od
+si
+
+let numbers = LIST([5, 3, 8, 1, 9])
+
+bogosort(numbers)
+
+write_line(numbers |> join(", "))

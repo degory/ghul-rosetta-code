@@ -1,0 +1,35 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+shell_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    let gap mut = values.count / 2
+
+    while gap > 0 do
+        for i in gap..values.count do
+            let temp = values[i]
+            let j mut = i
+
+            while j >= gap /\ values[j - gap] > temp do
+                values[j] = values[j - gap]
+                j = j - gap
+            od
+
+            values[j] = temp
+        od
+
+        gap = gap / 2
+    od
+si
+
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
+
+shell_sort(numbers)
+
+write_line(numbers |> join(", "))
+
+let words = LIST(["pear", "apple", "quince", "banana"])
+
+shell_sort(words)
+
+write_line(words |> join(", "))

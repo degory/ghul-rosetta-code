@@ -1,0 +1,29 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+triples_pipe(n: int) -> Pipe[(int, int, int)] =>
+    (1..n) |> flat_map((a: int) =>
+        (a..n) |> flat_map((b: int) =>
+            (b..n)
+                |> filter((c: int) => a * a + b * b == c * c)
+                |> map((c: int) => (a, b, c))))
+
+triples_generator(n: int) -> Pipe[(int, int, int)] is
+    for a in 1..n do
+        for b in a..n do
+            for c in b..n do
+                if a * a + b * b == c * c then
+                    yield (a, b, c)
+                fi
+            od
+        od
+    od
+si
+
+render(triples: Pipe[(int, int, int)]) -> string =>
+    triples
+        |> map(t => "({t.`0}, {t.`1}, {t.`2})")
+        |> join(", ")
+
+write_line(render(triples_pipe(20)))
+write_line(render(triples_generator(20)))

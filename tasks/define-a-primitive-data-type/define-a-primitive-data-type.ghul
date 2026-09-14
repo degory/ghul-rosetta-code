@@ -1,0 +1,28 @@
+use IO.Std.write_line
+
+struct BOUNDED is
+    value: int public
+
+    init(value: int) is
+        if value < 1 \/ value > 10 then
+            throw System.Exception(
+                "{value} is outside the range 1..10")
+        fi
+
+        self.value = value
+    si
+si
+
+let a = BOUNDED(3)
+let b = BOUNDED(a.value + 1)
+
+write_line("a = {a.value}")
+write_line("b = {b.value}")
+
+try
+    let c = BOUNDED(11)
+
+    write_line("c = {c.value}")
+catch e: System.Exception
+    write_line("rejected: {e.message}")
+yrt

@@ -1,0 +1,32 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+union TREE[T] is
+    LEAF
+    NODE(value: T, left: TREE[T], right: TREE[T])
+si
+
+map[T, U](tree: TREE[T], f: T -> U) -> TREE[U] =>
+    if let node: TREE.NODE = tree then
+        TREE.NODE(f(node.value), map(node.left, f), map(node.right, f))
+    else
+        TREE.LEAF[U]
+    fi
+
+in_order[T](tree: TREE[T]) -> Pipe[T] is
+    if let node: TREE.NODE = tree then
+        yield in in_order(node.left)
+        yield node.value
+        yield in in_order(node.right)
+    fi
+si
+
+let tree =
+    TREE.NODE(2,
+        TREE.NODE(1, TREE.LEAF[int], TREE.LEAF[int]),
+        TREE.NODE(3, TREE.LEAF[int], TREE.LEAF[int]))
+
+let doubled = map(tree, x => x * 2)
+
+write_line(in_order(tree) |> join(", "))
+write_line(in_order(doubled) |> join(", "))

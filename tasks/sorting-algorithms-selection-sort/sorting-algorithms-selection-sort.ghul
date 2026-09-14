@@ -1,0 +1,32 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+selection_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    for i in 0..values.count - 1 do
+        let smallest mut = i
+
+        for j in i + 1..values.count do
+            if values[j] < values[smallest] then
+                smallest = j
+            fi
+        od
+
+        let swap = values[i]
+
+        values[i] = values[smallest]
+        values[smallest] = swap
+    od
+si
+
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
+
+selection_sort(numbers)
+
+write_line(numbers |> join(", "))
+
+let words = LIST(["pear", "apple", "quince", "banana"])
+
+selection_sort(words)
+
+write_line(words |> join(", "))

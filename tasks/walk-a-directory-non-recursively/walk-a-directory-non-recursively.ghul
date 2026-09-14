@@ -1,0 +1,22 @@
+use IO.Std.write_line
+use Ghul.Pipes.map
+use Ghul.Pipes.sort
+use Ghul.Pipes.each
+
+let root = "walk-sample"
+
+IO.Directory.create_directory(root)
+IO.Directory.create_directory("{root}/sub")
+
+for name in ["a.txt", "b.txt", "c.log"] do
+    IO.File.write_all_text("{root}/{name}", "")
+od
+
+IO.File.write_all_text("{root}/sub/d.txt", "")
+
+IO.Directory.get_files(root, "*.txt")
+    |> map(path => IO.Path.get_file_name(path)!)
+    |> sort()
+    |> each(name => write_line(name))
+
+IO.Directory.delete(root, true)

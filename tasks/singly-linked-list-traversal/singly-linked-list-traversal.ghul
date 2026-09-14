@@ -1,0 +1,31 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+class NODE[T](value: T) is
+    next: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.next = next
+        next = inserted
+
+        inserted
+    si
+si
+
+values[T](first: NODE[T]) -> Pipe[T] is
+    let cursor: NODE[T]? mut = first
+
+    while let node = cursor do
+        yield node.value
+        cursor = node.next
+    od
+si
+
+let first = NODE(1)
+first.insert_after(2).insert_after(3)
+
+for value in values(first) do
+    write_line(value)
+od

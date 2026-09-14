@@ -1,0 +1,32 @@
+use IO.Std.write_line
+use System.Text.Json.Nodes.JsonNode
+use System.Text.Json.Nodes.JsonObject
+use System.Text.Json.Nodes.JsonArray
+use System.Text.Json.Nodes.JsonValue
+
+let text =
+    "{{\"name\": \"Ada\", \"age\": 36, "
+    "\"languages\": [\"Ada\", \"ghūl\"]}}"
+
+let parsed =
+    JsonNode.parse(text, null, _[System.Text.Json.JsonDocumentOptions])!
+        .as_object()
+let languages = parsed["languages"]!.as_array()
+
+write_line("name = {parsed["name"]!.get_value[string]()}")
+write_line("age = {parsed["age"]!.get_value[int]()}")
+write_line("first language = {languages[0]!.get_value[string]()}")
+
+let created = JsonObject(null)
+
+created["title"] = JsonValue.create("Rosetta Code", null)
+created["year"] = JsonValue.create(2007, null)
+
+let tags = JsonArray(null)
+
+tags.add(JsonValue.create("wiki", null))
+tags.add(JsonValue.create("programming", null))
+
+created["tags"] = tags
+
+write_line(created.to_json_string(null))

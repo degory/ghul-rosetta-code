@@ -1,0 +1,21 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+strip_control(text: string) -> string =>
+    string(
+        text
+            |> filter(c => cast int(c) >= 32 /\ cast int(c) != 127)
+            |> collect_array())
+
+strip_control_and_extended(text: string) -> string =>
+    string(
+        text
+            |> filter(c => cast int(c) >= 32 /\ cast int(c) <= 126)
+            |> collect_array())
+
+let sample = "Hello\tWorldCafé"
+
+write_line("original: {sample}")
+write_line("control stripped: {strip_control(sample)}")
+write_line(
+    "control and extended stripped: {strip_control_and_extended(sample)}")

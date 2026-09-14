@@ -1,0 +1,21 @@
+use IO.Std.write_line
+use Collections.LIST
+use Collections.SET
+use Ghul.Pipes
+
+sort_disjoint_sublist(values: LIST[int], indices: SET[int]) is
+    let positions = indices |> sort() |> collect_list()
+    let picked = positions |> map(i => values[i]) |> sort()
+        |> collect_list()
+
+    for i in 0..positions.count do
+        values[positions[i]] = picked[i]
+    od
+si
+
+let values = LIST([7, 6, 5, 4, 3, 2, 1, 0])
+let indices = SET([6, 1, 7])
+
+sort_disjoint_sublist(values, indices)
+
+write_line(values |> join(", "))

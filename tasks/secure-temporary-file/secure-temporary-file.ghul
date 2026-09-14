@@ -1,0 +1,36 @@
+use IO.Std.write_line
+use IO.FileStream
+use IO.FileMode
+use IO.FileAccess
+
+create_secure_temp_file(dir: string, prefix: string) -> string is
+    let attempt mut = 0
+
+    let path = do
+        let candidate = "{dir}/{prefix}{attempt}.tmp"
+
+        try
+            let stream = FileStream(candidate, FileMode.CREATE_NEW, FileAccess.WRITE)
+            stream.dispose()
+            break candidate
+        catch e: IO.IOException
+            attempt = attempt + 1
+        yrt
+    od
+
+    path!
+si
+
+let dir = "tmp-secure"
+
+IO.Directory.create_directory(dir)
+IO.File.write_all_text("{dir}/session0.tmp", "")
+
+let first = create_secure_temp_file(dir, "session")
+let second = create_secure_temp_file(dir, "session")
+
+write_line(IO.Path.get_file_name(first)!)
+write_line(IO.Path.get_file_name(second)!)
+write_line("{first =~ second}")
+
+IO.Directory.delete(dir, true)

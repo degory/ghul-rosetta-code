@@ -1,0 +1,81 @@
+use IO.Std.write_line
+use Collections.LIST
+use System.Random
+use Ghul.Pipes.map
+use Ghul.Pipes.join
+
+union Suit is
+    HEARTS;
+    DIAMONDS;
+    CLUBS;
+    SPADES;
+si
+
+suit_symbol(suit: Suit) -> string =>
+    case suit
+    when Suit.HEARTS then "H"
+    when Suit.DIAMONDS then "D"
+    when Suit.CLUBS then "C"
+    when Suit.SPADES then "S"
+    else ""
+    esac
+
+let pip_names = [
+    "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
+]
+
+struct CARD(pip: int public, suit: Suit public) is
+    describe() -> string => "{pip_names[pip]}{suit_symbol(suit)}"
+si
+
+class DECK is
+    _cards: LIST[CARD] field;
+
+    init() is
+        _cards = LIST[CARD]()
+
+        for suit in [Suit.HEARTS, Suit.DIAMONDS, Suit.CLUBS, Suit.SPADES] do
+            for pip in 0..13 do
+                _cards.add(CARD(pip, suit))
+            od
+        od
+    si
+
+    shuffle(random: Random) is
+        let i mut = _cards.count - 1
+
+        while i >= 1 do
+            let j = random.next(0, i + 1)
+            let value = _cards[i]
+
+            _cards[i] = _cards[j]
+            _cards[j] = value
+
+            i = i - 1
+        od
+    si
+
+    deal(n: int) -> LIST[CARD] is
+        let dealt = LIST[CARD](_cards[0..n])
+
+        _cards.remove_range(0, n)
+
+        dealt
+    si
+
+    count: int => _cards.count;
+
+    describe() -> string => _cards |> map(c => c.describe()) |> join(" ")
+si
+
+let deck = DECK()
+
+write_line("{deck.count}")
+write_line(deck.describe())
+
+deck.shuffle(Random(42))
+
+let hand = deck.deal(5)
+
+write_line(hand |> map(c => c.describe()) |> join(" "))
+write_line("{deck.count}")

@@ -1,0 +1,23 @@
+use IO.Std.write_line
+
+class NODE[T](value: T) is
+    next: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.next = next
+        next = inserted
+
+        inserted
+    si
+si
+
+describe[T](node: NODE[T]?) -> string =>
+    if let present = node then "{present.value}" else "none" fi
+
+let a = NODE(1)
+let b = a.insert_after(2)
+
+write_line("a: value {a.value}, next {describe(a.next)}")
+write_line("b: value {b.value}, next {describe(b.next)}")

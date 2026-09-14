@@ -1,0 +1,54 @@
+use IO.Std.write_line
+
+class NODE[T](value: T) is
+    next: NODE[T]?
+    previous: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.previous = self
+        inserted.next = next
+
+        if let following = next then
+            following.previous = inserted
+        fi
+
+        next = inserted
+
+        inserted
+    si
+
+    insert_before(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.next = self
+        inserted.previous = previous
+
+        if let preceding = previous then
+            preceding.next = inserted
+        fi
+
+        previous = inserted
+
+        inserted
+    si
+si
+
+describe[T](node: NODE[T]?) -> string =>
+    if let present = node then "{present.value}" else "none" fi
+
+show[T](name: string, node: NODE[T]) is
+    let previous = describe(node.previous)
+    let next = describe(node.next)
+
+    write_line("{name}: previous {previous}, next {next}")
+si
+
+let first = NODE(1)
+let last = first.insert_after(3)
+let middle = last.insert_before(2)
+
+show("first", first)
+show("middle", middle)
+show("last", last)

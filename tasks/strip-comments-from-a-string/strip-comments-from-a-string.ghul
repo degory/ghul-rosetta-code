@@ -1,0 +1,20 @@
+use IO.Std.write_line
+
+strip_comment(line: string, markers: char[]) -> string is
+    let cut mut = line.length
+
+    for marker in markers do
+        let index = line.index_of(marker)
+
+        if index >= 0 /\ index < cut then
+            cut = index
+        fi
+    od
+
+    line[0..cut].trim()
+si
+
+let markers = ['#', ';']
+
+write_line(strip_comment("apples, pears # and bananas", markers))
+write_line(strip_comment("apples, pears ; and bananas", markers))

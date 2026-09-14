@@ -1,0 +1,28 @@
+use IO.Std.write_line
+
+class ANIMAL open is
+    init() is si
+si
+
+class DOG: ANIMAL open is
+    init() is super.init() si
+si
+
+class CAT: ANIMAL is
+    init() is super.init() si
+si
+
+class LAB: DOG is
+    init() is super.init() si
+si
+
+class COLLIE: DOG is
+    init() is super.init() si
+si
+
+write_line("Animal <- Dog <- Lab: {isa ANIMAL(LAB())}, {isa DOG(LAB())}")
+write_line(
+    "Animal <- Dog <- Collie: {isa ANIMAL(COLLIE())}, "
+    "{isa DOG(COLLIE())}")
+write_line("Animal <- Cat: {isa ANIMAL(CAT())}")
+write_line("Cat is not a Dog: {!isa DOG(CAT())}")

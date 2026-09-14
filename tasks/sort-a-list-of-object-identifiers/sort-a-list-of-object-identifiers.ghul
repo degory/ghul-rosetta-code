@@ -1,0 +1,35 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+compare_oids(a: string, b: string) -> int is
+    let left = a.split(['.']) |> map(int.parse) |> collect_array()
+    let right = b.split(['.']) |> map(int.parse) |> collect_array()
+
+    for i in 0..left.count do
+        if i >= right.count then
+            return 1
+        fi
+
+        if left[i] != right[i] then
+            return left[i] - right[i]
+        fi
+    od
+
+    if left.count < right.count then -1 else 0 fi
+si
+
+let oids = LIST([
+    "1.3.6.1.4.1.11.2.17.19.3.4.0.10",
+    "1.3.6.1.4.1.11.2.17.5.2.0.79",
+    "1.3.6.1.4.1.11.2.17.19.3.4.0.4",
+    "1.3.6.1.4.1.11150.3.4.0.1",
+    "1.3.6.1.4.1.11.2.17.19.3.4.0.1",
+    "1.3.6.1.4.1.11150.3.4.0"
+])
+
+oids.sort(compare_oids)
+
+for oid in oids do
+    write_line(oid)
+od

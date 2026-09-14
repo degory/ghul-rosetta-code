@@ -1,0 +1,48 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+strip_block_comments(
+    text: string, start: string, ended: string
+) -> string is
+    let result mut = ""
+    let pos mut = 0
+
+    while pos < text.length do
+        let open = text.index_of(start, pos)
+
+        if open < 0 then
+            result = "{result}{text[pos..<0]}"
+            pos = text.length
+        else
+            result = "{result}{text[pos..open]}"
+
+            let close = text.index_of(ended, open + start.length)
+
+            pos = if close < 0 then text.length
+                  else close + ended.length fi
+        fi
+    od
+
+    result
+si
+
+let lines = [
+    "  /**",
+    "   * Some comments",
+    "   * longer comments here that we can parse.",
+    "   *",
+    "   * Rahoo ",
+    "   */",
+    "   function subroutine() {{",
+    "    a = /* inline comment */ b + c ;",
+    "   }}",
+    "   /*/ <-- tricky comments */",
+    "",
+    "   /**",
+    "    * Another comment.",
+    "    */",
+    "    function something() {{",
+    "    }}"
+]
+
+write_line(strip_block_comments(lines |> join("\n"), "/*", "*/"))

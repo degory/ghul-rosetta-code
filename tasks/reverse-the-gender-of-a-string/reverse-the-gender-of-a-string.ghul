@@ -1,0 +1,45 @@
+use IO.Std.write_line
+use Collections
+use System.Text.RegularExpressions.Regex
+
+let swaps = MAP[string, string]()
+swaps.add("she", "he")
+swaps.add("he", "she")
+swaps.add("her", "him")
+swaps.add("him", "her")
+swaps.add("hers", "his")
+swaps.add("his", "hers")
+swaps.add("herself", "himself")
+swaps.add("himself", "herself")
+swaps.add("woman", "man")
+swaps.add("man", "woman")
+swaps.add("girl", "boy")
+swaps.add("boy", "girl")
+swaps.add("mother", "father")
+swaps.add("father", "mother")
+swaps.add("wife", "husband")
+swaps.add("husband", "wife")
+
+reverse_gender(text: string) -> string is
+    let word_pattern = Regex("[A-Za-z]+")
+
+    word_pattern.replace(text, m => (
+        let word = m.value
+        let lower = word.to_lower()
+
+        if swaps.contains_key(lower) then
+            let replacement = swaps[lower]
+
+            if char.is_upper(word[0]) then
+                "{char.to_upper(replacement[0])}{replacement[1..<0]}"
+            else
+                replacement
+            fi
+        else
+            word
+        fi
+    ))
+si
+
+write_line(reverse_gender(
+    "She was a soul stripper. She took my heart!"))

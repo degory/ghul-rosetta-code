@@ -1,0 +1,39 @@
+use IO.Std.write_line
+use IO.File
+use Ghul.Pipes
+
+let plain_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let cipher_alphabet = "QWERTYUIOPASDFGHJKLZXCVBNM"
+
+substitute(text: string, from: string, to: string) -> string =>
+    string(
+        text
+            |> map(c =>
+                if char.is_upper(c) then
+                    let i = from.index_of(c)
+                    if i >= 0 then to[i] else c fi
+                elif char.is_lower(c) then
+                    let i = from.index_of(char.to_upper(c))
+                    if i >= 0 then char.to_lower(to[i]) else c fi
+                else
+                    c
+                fi)
+            |> collect_array())
+
+encrypt(text: string) -> string =>
+    substitute(text, plain_alphabet, cipher_alphabet)
+
+decrypt(text: string) -> string =>
+    substitute(text, cipher_alphabet, plain_alphabet)
+
+let source = File.read_all_text("plain.txt")
+
+File.write_all_text("cipher.txt", encrypt(source))
+
+let ciphertext = File.read_all_text("cipher.txt")
+File.write_all_text("decrypted.txt", decrypt(ciphertext))
+
+write_line("original:  {source}")
+write_line("encrypted: {File.read_all_text("cipher.txt")}")
+write_line("decrypted: {File.read_all_text("decrypted.txt")}")
+write_line("round trip ok: {File.read_all_text("decrypted.txt") =~ source}")

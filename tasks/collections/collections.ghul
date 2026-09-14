@@ -1,0 +1,11 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+let planets = LIST[string]()
+
+planets.add("Mercury")
+planets.add("Venus")
+planets.add("Earth")
+
+write_line(planets |> join(", "))

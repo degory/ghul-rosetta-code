@@ -1,0 +1,4 @@
+Animal <- Dog <- Lab: True, True
+Animal <- Dog <- Collie: True, True
+Animal <- Cat: True
+Cat is not a Dog: True

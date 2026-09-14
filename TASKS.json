@@ -268,6 +268,11 @@
       "published_hash": "34a93bff7f22b3f211f9d82a3870d83a2b22580c5d948b9676a5a0cc4451d343"
     },
     {
+      "title": "Array",
+      "state": "rejected",
+      "reason": "task-unclear"
+    },
+    {
       "title": "Array concatenation",
       "slug": "array-concatenation",
       "state": "published",
@@ -388,6 +393,11 @@
       "slug": "binary-search",
       "state": "published",
       "published_hash": "1e57c40c56d44cc7dde77f4f37cb20e6c12beaa6b4321793e522566ffeb04d5a"
+    },
+    {
+      "title": "Binary strings",
+      "slug": "binary-strings",
+      "state": "solved"
     },
     {
       "title": "Binomial transform",
@@ -604,6 +614,11 @@
       "published_hash": "aaae3cf12566463a6240a32d24a358087c68e53b7868efe9bfc7e010437c5bf9"
     },
     {
+      "title": "Card shuffles",
+      "slug": "card-shuffles",
+      "state": "solved"
+    },
+    {
       "title": "Cartesian product of two or more lists",
       "slug": "cartesian-product-of-two-or-more-lists",
       "state": "published",
@@ -703,6 +718,11 @@
       "slug": "code-golf",
       "state": "published",
       "published_hash": "177f9dcdd919948f54c76ea2db665f729b19dfd775ad1a3f580c50cf370048a1"
+    },
+    {
+      "title": "Collections",
+      "slug": "collections",
+      "state": "solved"
     },
     {
       "title": "Colorful numbers",
@@ -913,6 +933,11 @@
       "published_hash": "cb6935c8c343c5814793f0fd4f317436c876b61983df254ad0069c9276a12917"
     },
     {
+      "title": "Define a primitive data type",
+      "slug": "define-a-primitive-data-type",
+      "state": "solved"
+    },
+    {
       "title": "Department numbers",
       "slug": "department-numbers",
       "state": "published",
@@ -990,6 +1015,26 @@
       "published_hash": "379f32b1c998bced98d613f08cd762fa32ad3f27ae1801f48a8452ff0b4a5192"
     },
     {
+      "title": "Doubly-linked list/Definition",
+      "slug": "doubly-linked-list-definition",
+      "state": "solved"
+    },
+    {
+      "title": "Doubly-linked list/Element definition",
+      "slug": "doubly-linked-list-element-definition",
+      "state": "solved"
+    },
+    {
+      "title": "Doubly-linked list/Element insertion",
+      "slug": "doubly-linked-list-element-insertion",
+      "state": "solved"
+    },
+    {
+      "title": "Doubly-linked list/Traversal",
+      "slug": "doubly-linked-list-traversal",
+      "state": "solved"
+    },
+    {
       "title": "Dragon curve",
       "slug": "dragon-curve",
       "state": "published",
@@ -1013,6 +1058,11 @@
       "slug": "duffinian-numbers",
       "state": "published",
       "published_hash": "b0a39e0e5ddd37cce261c889cd34a927cc44a5bdcb265d3e07753e2e8f6bd71c"
+    },
+    {
+      "title": "Dynamic variable names",
+      "slug": "dynamic-variable-names",
+      "state": "solved"
     },
     {
       "title": "EKG sequence convergence",
@@ -1067,6 +1117,11 @@
       "slug": "entropy",
       "state": "published",
       "published_hash": "ca546b6f290b3b597b6468fd96f039d57cca472508dd6b401d0248f12c365467"
+    },
+    {
+      "title": "Enumerations",
+      "slug": "enumerations",
+      "state": "solved"
     },
     {
       "title": "Environment variables",
@@ -1145,6 +1200,11 @@
       "published_hash": "59bc59b4e01c2577ed1cda4c3e1a6dee8d1340247db7d71cd4e84c5c03b70437"
     },
     {
+      "title": "Execute a system command",
+      "slug": "execute-a-system-command",
+      "state": "solved"
+    },
+    {
       "title": "Execute Brain****",
       "slug": "execute-brain",
       "state": "published",
@@ -1172,6 +1232,11 @@
       "slug": "extreme-floating-point-values",
       "state": "published",
       "published_hash": "ed9b06ce61b1b790a68209d7c454fca70733341c9915ed3a889fa1fbeff810bb"
+    },
+    {
+      "title": "First class environments",
+      "slug": "first-class-environments",
+      "state": "solved"
     },
     {
       "title": "FTP",
@@ -1258,6 +1323,11 @@
       }
     },
     {
+      "title": "File extension is in extensions list",
+      "slug": "file-extension-is-in-extensions-list",
+      "state": "solved"
+    },
+    {
       "title": "File input/output",
       "slug": "file-input-output",
       "state": "published",
@@ -1273,6 +1343,11 @@
       "slug": "filter",
       "state": "published",
       "published_hash": "ae1f7a62922488075bc9945e33a449920db721a1551da0102fe80b45a8e56c62"
+    },
+    {
+      "title": "Find common directory path",
+      "slug": "find-common-directory-path",
+      "state": "solved"
     },
     {
       "title": "Find limit of recursion",
@@ -1441,6 +1516,11 @@
       "slug": "giuga-numbers",
       "state": "published",
       "published_hash": "d002e8e47b03090d3a9228f0a83bbb829f47735613fbe0f9b5698424db92fef4"
+    },
+    {
+      "title": "Globally replace text in several files",
+      "slug": "globally-replace-text-in-several-files",
+      "state": "solved"
     },
     {
       "title": "Go Fish",
@@ -1681,6 +1761,11 @@
       "note": "not interactive at all: Dijkstra and Floyd-Warshall over a fixed map, reading no input. The needs-interaction rejection and the run.session reopen were both wrong about it"
     },
     {
+      "title": "Inverted index",
+      "slug": "inverted-index",
+      "state": "solved"
+    },
+    {
       "title": "ISBN13 check digit",
       "slug": "isbn13-check-digit",
       "state": "published",
@@ -1723,6 +1808,11 @@
       "published_hash": "705e09011317d998ec03c5a08346f2045fa67e54d29c6478077e329d58d94232"
     },
     {
+      "title": "Implicit type conversion",
+      "slug": "implicit-type-conversion",
+      "state": "solved"
+    },
+    {
       "title": "Include a file",
       "slug": "include-a-file",
       "state": "published",
@@ -1750,6 +1840,16 @@
       "slug": "infinity",
       "state": "published",
       "published_hash": "c18edb618f36ac7a940137cd6e5602e06194a441bfd89efd6a2d99708a1fc865"
+    },
+    {
+      "title": "Inheritance/Multiple",
+      "slug": "inheritance-multiple",
+      "state": "solved"
+    },
+    {
+      "title": "Inheritance/Single",
+      "slug": "inheritance-single",
+      "state": "solved"
     },
     {
       "title": "Input loop",
@@ -1797,6 +1897,11 @@
       "slug": "iterators",
       "state": "published",
       "published_hash": "4aff0a2a401d8eae8391f2e126e18dd84f99e1bcbf8506c435a53f2ee87080b0"
+    },
+    {
+      "title": "JSON",
+      "slug": "json",
+      "state": "solved"
     },
     {
       "title": "JSON pointer",
@@ -1931,6 +2036,11 @@
       "published_hash": "f5b532a7755d9adbf459c4671e7b811f2a2a7b518f3490e49f5b230827912ecd"
     },
     {
+      "title": "Knuth shuffle",
+      "slug": "knuth-shuffle",
+      "state": "solved"
+    },
+    {
       "title": "Knuth\u0027s algorithm S",
       "slug": "knuth-s-algorithm-s",
       "state": "published",
@@ -2032,6 +2142,11 @@
       "slug": "levenshtein-distance",
       "state": "published",
       "published_hash": "141f936e6d5acb0f069e11f498cf86612e069a6504da22b82e359247520514a7"
+    },
+    {
+      "title": "List comprehensions",
+      "slug": "list-comprehensions",
+      "state": "solved"
     },
     {
       "title": "Literals/Integer",
@@ -2191,6 +2306,11 @@
       "slug": "magnanimous-numbers",
       "state": "published",
       "published_hash": "577a05bc6211d6ea7c88eb24a62513ead3e6c314085c503d9cce132bf796999b"
+    },
+    {
+      "title": "Make directory path",
+      "slug": "make-directory-path",
+      "state": "solved"
     },
     {
       "title": "Man or boy test",
@@ -2387,6 +2507,11 @@
       "published_hash": "6cf06b005e03d83022fbc7dbea6c8b702ade24b0d04e9485c119eb954697e6e7"
     },
     {
+      "title": "Named parameters",
+      "slug": "named-parameters",
+      "state": "solved"
+    },
+    {
       "title": "Narcissistic decimal number",
       "slug": "narcissistic-decimal-number",
       "state": "published",
@@ -2563,6 +2688,11 @@
       "published_hash": "68d89e6f3c597a4cd6cf6685be7f8a0d0de02f93711252b2d3dca68466647d31"
     },
     {
+      "title": "Parametric polymorphism",
+      "slug": "parametric-polymorphism",
+      "state": "solved"
+    },
+    {
       "title": "Parsing/RPN calculator algorithm",
       "slug": "parsing-rpn-calculator-algorithm",
       "state": "published",
@@ -2672,6 +2802,11 @@
       }
     },
     {
+      "title": "Playing cards",
+      "slug": "playing-cards",
+      "state": "solved"
+    },
+    {
       "title": "Plot coordinate pairs",
       "slug": "plot-coordinate-pairs",
       "state": "published",
@@ -2679,6 +2814,11 @@
       "image_hashes": {
         "Ghul-plot-coordinate-pairs-plot.png": "b407ce0c753e116a841c77acb631763da0f816a8"
       }
+    },
+    {
+      "title": "Poker hand analyser",
+      "slug": "poker-hand-analyser",
+      "state": "solved"
     },
     {
       "title": "Polynomial long division",
@@ -2791,6 +2931,11 @@
       "published_hash": "35116e069f82737389b74116a8ecf84428b70d2f0b37c946be94bf80e1d53b73"
     },
     {
+      "title": "Rock-paper-scissors",
+      "slug": "rock-paper-scissors",
+      "state": "solved"
+    },
+    {
       "title": "RPG attributes generator",
       "slug": "rpg-attributes-generator",
       "state": "published",
@@ -2855,6 +3000,11 @@
       "published_hash": "5d63798157b477b447af8c05e49668c03a738827c751c2c15daa9dc0aab0b2f2"
     },
     {
+      "title": "Regular expressions",
+      "slug": "regular-expressions",
+      "state": "solved"
+    },
+    {
       "title": "Remove duplicate elements",
       "slug": "remove-duplicate-elements",
       "state": "published",
@@ -2897,6 +3047,11 @@
       "published_hash": "ab07645a0984c8f97aebb2d8ef2512c8c1a156577e580d8acd17e49531a635a1"
     },
     {
+      "title": "Reverse the gender of a string",
+      "slug": "reverse-the-gender-of-a-string",
+      "state": "solved"
+    },
+    {
       "title": "Reverse words in a string",
       "slug": "reverse-words-in-a-string",
       "state": "published",
@@ -2925,6 +3080,11 @@
       "slug": "roman-numerals-encode",
       "state": "published",
       "published_hash": "0971ad46b880bcf0913ef96f2800cf3f67c5b29c8e2719430845fc9f8cc95a22"
+    },
+    {
+      "title": "Rot-13",
+      "slug": "rot-13",
+      "state": "solved"
     },
     {
       "title": "Run-length encoding",
@@ -2961,10 +3121,20 @@
       "published_hash": "74b26394a8409bf7239173439f0d2fda7db8b97515f4de055fd2114d93335399"
     },
     {
+      "title": "Sattolo cycle",
+      "slug": "sattolo-cycle",
+      "state": "solved"
+    },
+    {
       "title": "Search a list",
       "slug": "search-a-list",
       "state": "published",
       "published_hash": "cd0714494e6645b4076e4166bb59106959f70cd171492fe8b1422ae75552601e"
+    },
+    {
+      "title": "Secure temporary file",
+      "slug": "secure-temporary-file",
+      "state": "solved"
     },
     {
       "title": "Selectively replace multiple instances of a character within a string",
@@ -2988,6 +3158,11 @@
       "slug": "semiprime",
       "state": "published",
       "published_hash": "5403c4872899698754ffb1999ee048be1b3e5a76ed0ea979eccd8dd5698a43b3"
+    },
+    {
+      "title": "Set",
+      "slug": "set",
+      "state": "solved"
     },
     {
       "title": "Set consolidation",
@@ -3090,6 +3265,11 @@
       "published_hash": "5859c4e8c64c46b8b8d7b12d62d2670e4cbec9d20ed6248abd800ce9fd492aad"
     },
     {
+      "title": "Simple database",
+      "state": "blocked",
+      "reason": "ghul#2487"
+    },
+    {
       "title": "Simple turtle graphics",
       "slug": "simple-turtle-graphics",
       "state": "published",
@@ -3102,6 +3282,21 @@
       "title": "Simple windowed application",
       "state": "rejected",
       "reason": "needs-gui"
+    },
+    {
+      "title": "Singly-linked list/Element definition",
+      "slug": "singly-linked-list-element-definition",
+      "state": "solved"
+    },
+    {
+      "title": "Singly-linked list/Element insertion",
+      "slug": "singly-linked-list-element-insertion",
+      "state": "solved"
+    },
+    {
+      "title": "Singly-linked list/Traversal",
+      "slug": "singly-linked-list-traversal",
+      "state": "solved"
     },
     {
       "title": "Sisyphus sequence",
@@ -3139,6 +3334,16 @@
       "published_hash": "48679a1a511b8de805c7025a5855f73d90705e46aa1eb8e8e0ddbbfcb1584f36"
     },
     {
+      "title": "Sort a list of object identifiers",
+      "slug": "sort-a-list-of-object-identifiers",
+      "state": "solved"
+    },
+    {
+      "title": "Sort an array of composite structures",
+      "slug": "sort-an-array-of-composite-structures",
+      "state": "solved"
+    },
+    {
       "title": "Sort an integer array",
       "slug": "sort-an-integer-array",
       "state": "published",
@@ -3150,10 +3355,30 @@
       "state": "published"
     },
     {
+      "title": "Sort disjoint sublist",
+      "slug": "sort-disjoint-sublist",
+      "state": "solved"
+    },
+    {
+      "title": "Sort numbers lexicographically",
+      "slug": "sort-numbers-lexicographically",
+      "state": "solved"
+    },
+    {
+      "title": "Sort stability",
+      "slug": "sort-stability",
+      "state": "solved"
+    },
+    {
       "title": "Sorting algorithms/Bead sort",
       "slug": "sorting-algorithms-bead-sort",
       "state": "published",
       "published_hash": "d49a150be9c1dc5d4aec6a35b08a93be3f846b55d2a111b9cc70ef3edd3c344e"
+    },
+    {
+      "title": "Sorting algorithms/Bogosort",
+      "slug": "sorting-algorithms-bogosort",
+      "state": "solved"
     },
     {
       "title": "Sorting algorithms/Bubble sort",
@@ -3162,10 +3387,45 @@
       "published_hash": "494e512f9abc13bcb090f297d7e4d73686de6c613d19ef935a4ab728ee2af6f8"
     },
     {
+      "title": "Sorting algorithms/Circle sort",
+      "slug": "sorting-algorithms-circle-sort",
+      "state": "solved"
+    },
+    {
+      "title": "Sorting algorithms/Cocktail sort",
+      "slug": "sorting-algorithms-cocktail-sort",
+      "state": "solved"
+    },
+    {
+      "title": "Sorting algorithms/Cocktail sort with shifting bounds",
+      "slug": "sorting-algorithms-cocktail-sort-with-shifting-bounds",
+      "state": "solved"
+    },
+    {
+      "title": "Sorting algorithms/Comb sort",
+      "slug": "sorting-algorithms-comb-sort",
+      "state": "solved"
+    },
+    {
+      "title": "Sorting algorithms/Counting sort",
+      "slug": "sorting-algorithms-counting-sort",
+      "state": "solved"
+    },
+    {
+      "title": "Sorting algorithms/Cycle sort",
+      "slug": "sorting-algorithms-cycle-sort",
+      "state": "solved"
+    },
+    {
       "title": "Sorting algorithms/Gnome sort",
       "slug": "sorting-algorithms-gnome-sort",
       "state": "published",
       "published_hash": "847d18ceb0c53efdd94ab83e0b70736ad1ca2f95549c73daf70d1bbd093c0db8"
+    },
+    {
+      "title": "Sorting algorithms/Heapsort",
+      "slug": "sorting-algorithms-heapsort",
+      "state": "solved"
     },
     {
       "title": "Sorting algorithms/Insertion sort",
@@ -3180,10 +3440,20 @@
       "published_hash": "18b4b6577f95a5118f0524507a1358ace33a2d58586e045e82d7ef6d82d2b863"
     },
     {
+      "title": "Sorting algorithms/Pancake sort",
+      "slug": "sorting-algorithms-pancake-sort",
+      "state": "solved"
+    },
+    {
       "title": "Sorting algorithms/Patience sort",
       "slug": "sorting-algorithms-patience-sort",
       "state": "published",
       "published_hash": "45b31261deb034d4bb73d5e2272c4d9411a8bd7fb16cca80824566cbd1970125"
+    },
+    {
+      "title": "Sorting algorithms/Permutation sort",
+      "slug": "sorting-algorithms-permutation-sort",
+      "state": "solved"
     },
     {
       "title": "Sorting algorithms/Quicksort",
@@ -3192,16 +3462,36 @@
       "published_hash": "98ffebbc4b83a6c66e612cd0a6246c79b22a13e2bd49bf6c31dc6ce0fb33a022"
     },
     {
+      "title": "Sorting algorithms/Selection sort",
+      "slug": "sorting-algorithms-selection-sort",
+      "state": "solved"
+    },
+    {
+      "title": "Sorting algorithms/Shell sort",
+      "slug": "sorting-algorithms-shell-sort",
+      "state": "solved"
+    },
+    {
       "title": "Sorting algorithms/Sleep sort",
       "slug": "sorting-algorithms-sleep-sort",
       "state": "published",
       "published_hash": "17f8d8eb087e4865b332434dd0090aec12368569c2abd4da2acac684d0ecf91f"
     },
     {
+      "title": "Sorting algorithms/Stooge sort",
+      "slug": "sorting-algorithms-stooge-sort",
+      "state": "solved"
+    },
+    {
       "title": "Sorting algorithms/Strand sort",
       "slug": "sorting-algorithms-strand-sort",
       "state": "published",
       "published_hash": "7affa7be7f069274d54fe66de150a70dd2fe99c008076dc45ec39769cfd697c4"
+    },
+    {
+      "title": "Sorting algorithms/Tree sort on a linked list",
+      "slug": "sorting-algorithms-tree-sort-on-a-linked-list",
+      "state": "solved"
     },
     {
       "title": "Sparkline in unicode",
@@ -3249,6 +3539,11 @@
       "slug": "split-a-character-string-based-on-change-of-character",
       "state": "published",
       "published_hash": "438e7c4b4cd6b1c295a22e61ddd2d1a2fa3570b8a6f03d2f563d1f42b574a339"
+    },
+    {
+      "title": "Stable marriage problem",
+      "slug": "stable-marriage-problem",
+      "state": "solved"
     },
     {
       "title": "Stack",
@@ -3339,6 +3634,21 @@
       "published_hash": "eafe8ee1ba122ca5cc62084684db03a3eb6ac0c8476a8ca90929eea42ad7246a"
     },
     {
+      "title": "Strip block comments",
+      "slug": "strip-block-comments",
+      "state": "solved"
+    },
+    {
+      "title": "Strip comments from a string",
+      "slug": "strip-comments-from-a-string",
+      "state": "solved"
+    },
+    {
+      "title": "Strip control codes and extended characters from a string",
+      "slug": "strip-control-codes-and-extended-characters-from-a-string",
+      "state": "solved"
+    },
+    {
       "title": "Strip whitespace from a string/Top and tail",
       "slug": "strip-whitespace-from-a-string-top-and-tail",
       "state": "published",
@@ -3348,6 +3658,11 @@
       "title": "Strong and weak primes",
       "slug": "strong-and-weak-primes",
       "state": "published"
+    },
+    {
+      "title": "Substitution cipher",
+      "slug": "substitution-cipher",
+      "state": "solved"
     },
     {
       "title": "Substring",
@@ -3378,6 +3693,11 @@
       "slug": "sum-and-product-of-an-array",
       "state": "published",
       "published_hash": "b29fa21b32f926e5365108be73ce109b2cd83f21fa89bd05d3bb17fc2a82c76c"
+    },
+    {
+      "title": "Sum data type",
+      "slug": "sum-data-type",
+      "state": "solved"
     },
     {
       "title": "Sum digits of an integer",
@@ -3594,6 +3914,11 @@
       "published_hash": "e923529d3e0412e4fedbe6bdc05e182fd8531e82a87b15351bde6ebd8d7adc9a"
     },
     {
+      "title": "Truncate a file",
+      "slug": "truncate-a-file",
+      "state": "solved"
+    },
+    {
       "title": "Truth table",
       "slug": "truth-table",
       "state": "published"
@@ -3631,6 +3956,11 @@
       "slug": "url-encoding",
       "state": "published",
       "published_hash": "fbb4e227a7991faa40f94a85c901da8b923a27847c0403e657e790c4481c3d99"
+    },
+    {
+      "title": "URL parser",
+      "slug": "url-parser",
+      "state": "solved"
     },
     {
       "title": "UTF-8 encode and decode",
@@ -3763,6 +4093,16 @@
       "slug": "wagstaff-primes",
       "state": "published",
       "published_hash": "9af3ab72422dde4a93c2db4a8e231076f131e77b7a203eaddd7dffa6a042d18d"
+    },
+    {
+      "title": "Walk a directory/Non-recursively",
+      "slug": "walk-a-directory-non-recursively",
+      "state": "solved"
+    },
+    {
+      "title": "Walk a directory/Recursively",
+      "slug": "walk-a-directory-recursively",
+      "state": "solved"
     },
     {
       "title": "Walsh matrix",

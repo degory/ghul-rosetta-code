@@ -1,0 +1,51 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+class NODE[T](value: T) is
+    next: NODE[T]?
+    previous: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.previous = self
+        inserted.next = next
+
+        if let following = next then
+            following.previous = inserted
+        fi
+
+        next = inserted
+
+        inserted
+    si
+si
+
+forward[T](first: NODE[T]) -> Pipe[T] is
+    let cursor: NODE[T]? mut = first
+
+    while let node = cursor do
+        yield node.value
+        cursor = node.next
+    od
+si
+
+backward[T](last: NODE[T]) -> Pipe[T] is
+    let cursor: NODE[T]? mut = last
+
+    while let node = cursor do
+        yield node.value
+        cursor = node.previous
+    od
+si
+
+let first = NODE(1)
+let last = first.insert_after(2).insert_after(3)
+
+for value in forward(first) do
+    write_line(value)
+od
+
+for value in backward(last) do
+    write_line(value)
+od

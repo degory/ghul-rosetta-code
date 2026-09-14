@@ -1,0 +1,16 @@
+use IO.Std.write_line
+use IO.File
+
+replace_in_file(source: string, destination: string) is
+    let replaced =
+        File.read_all_text(source)
+            .replace("Goodbye London!", "Hello New York!")
+
+    File.write_all_text(destination, replaced)
+
+    write_line("{destination}:")
+    write_line(File.read_all_text(destination))
+si
+
+replace_in_file("one.txt", "one.out.txt")
+replace_in_file("two.txt", "two.out.txt")

@@ -1,0 +1,18 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+rot13(c: char) -> char =>
+    if c >= 'a' /\ c <= 'z' then
+        cast char((cast int(c) - cast int('a') + 13) % 26 + cast int('a'))
+    elif c >= 'A' /\ c <= 'Z' then
+        cast char((cast int(c) - cast int('A') + 13) % 26 + cast int('A'))
+    else
+        c
+    fi
+
+rot13(s: string) -> string =>
+    string(s |> map(rot13) |> collect_array())
+
+while let line = IO.Std.read_line() do
+    write_line(rot13(line))
+od

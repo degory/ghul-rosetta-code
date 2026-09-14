@@ -1,0 +1,35 @@
+use IO.Std.write_line
+
+class NODE[T](value: T) is
+    next: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.next = next
+        next = inserted
+
+        inserted
+    si
+si
+
+render[T](first: NODE[T]) -> string is
+    let text mut = "{first.value}"
+    let cursor mut = first.next
+
+    while let node = cursor do
+        text = "{text} -> {node.value}"
+        cursor = node.next
+    od
+
+    text
+si
+
+let a = NODE("A")
+a.insert_after("B")
+
+write_line(render(a))
+
+a.insert_after("C")
+
+write_line(render(a))

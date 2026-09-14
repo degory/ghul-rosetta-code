@@ -1,0 +1,55 @@
+use IO.Std.write_line
+use Collections.LIST
+use Ghul.Pipes
+
+flip[T](values: LIST[T], upto: int) is
+    let low mut = 0
+    let high mut = upto
+
+    while low < high do
+        let swap = values[low]
+
+        values[low] = values[high]
+        values[high] = swap
+
+        low = low + 1
+        high = high - 1
+    od
+si
+
+pancake_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
+    let size mut = values.count
+
+    while size > 1 do
+        let largest mut = 0
+
+        for i in 1..size do
+            if values[i] > values[largest] then
+                largest = i
+            fi
+        od
+
+        if largest != size - 1 then
+            flip(values, largest)
+            flip(values, size - 1)
+        fi
+
+        size = size - 1
+    od
+si
+
+let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
+
+write_line(numbers |> join(", "))
+
+pancake_sort(numbers)
+
+write_line(numbers |> join(", "))
+
+let words = LIST(["pear", "apple", "quince", "banana"])
+
+write_line(words |> join(", "))
+
+pancake_sort(words)
+
+write_line(words |> join(", "))

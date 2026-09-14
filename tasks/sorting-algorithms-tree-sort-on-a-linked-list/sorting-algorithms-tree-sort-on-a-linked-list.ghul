@@ -1,0 +1,68 @@
+use IO.Std.write_line
+use Ghul.Pipes
+
+union LinkedList is
+    NODE(value: int, next: LinkedList mut);
+    EMPTY;
+si
+
+union Tree is
+    BRANCH(
+        value: int,
+        left: Tree mut,
+        right: Tree mut
+    );
+    LEAF;
+si
+
+insert(tree: Tree, value: int) -> Tree =>
+    if let (node_value, left, right): Tree.BRANCH = tree then
+        if value < node_value then
+            Tree.BRANCH(node_value, insert(left, value), right)
+        else
+            Tree.BRANCH(node_value, left, insert(right, value))
+        fi
+    else
+        Tree.BRANCH(value, Tree.LEAF, Tree.LEAF)
+    fi
+
+build_tree(list: LinkedList) -> Tree is
+    let tree: Tree mut = Tree.LEAF
+    let cursor mut = list
+
+    while let (value, next): LinkedList.NODE = cursor do
+        tree = insert(tree, value)
+        cursor = next
+    od
+
+    tree
+si
+
+in_order(tree: Tree) -> Ghul.Pipes.Pipe[int] is
+    if let (value, left, right): Tree.BRANCH = tree then
+        yield in in_order(left)
+        yield value
+        yield in in_order(right)
+    fi
+si
+
+let values = LinkedList.NODE(
+    5,
+    LinkedList.NODE(
+        3,
+        LinkedList.NODE(
+            8,
+            LinkedList.NODE(
+                1,
+                LinkedList.NODE(
+                    9,
+                    LinkedList.NODE(2, LinkedList.EMPTY)
+                )
+            )
+        )
+    )
+)
+
+let sorted = in_order(build_tree(values)) |> collect_list()
+
+write_line(sorted |> join(", "))

@@ -1,0 +1,100 @@
+use IO.Std.write_line
+use Collections.MAP
+use Collections.SET
+use Ghul.Pipes.map
+use Ghul.Pipes.sort
+use Ghul.Pipes.each
+use Ghul.Pipes.join
+use Ghul.Pipes.all
+use Ghul.Pipes.collect_array
+
+let face_values = MAP[string, int]()
+
+face_values["2"] = 2
+face_values["3"] = 3
+face_values["4"] = 4
+face_values["5"] = 5
+face_values["6"] = 6
+face_values["7"] = 7
+face_values["8"] = 8
+face_values["9"] = 9
+face_values["10"] = 10
+face_values["j"] = 11
+face_values["q"] = 12
+face_values["k"] = 13
+face_values["a"] = 14
+
+parse(card: string) -> (face: int, suit: char) is
+    let suit = card[card.length - 1]
+    let face_text = card[0..(card.length - 1)]
+
+    (face_values[face_text], suit)
+si
+
+classify(hand: string) -> string is
+    let tokens = hand.split([' '])
+
+    if tokens.count != 5 then
+        "invalid"
+    else
+        let cards = tokens |> map(parse) |> collect_array()
+        let seen = SET[(int, char)]()
+
+        if !(cards |> all(c => seen.add(c))) then
+            "invalid"
+        else
+            let faces = cards |> map(c => c.face) |> sort() |> collect_array()
+            let suits = cards |> map(c => c.suit) |> collect_array()
+
+            let counts = MAP[int, int]()
+
+            for face in faces do
+                counts[face] = if counts.contains_key(face)
+                    then counts[face] + 1
+                    else 1
+                    fi
+            od
+
+            let groups = counts.values |> sort() |> collect_array()
+            let is_flush = suits |> all(s => s =~ suits[0])
+
+            let is_straight =
+                (faces[4] - faces[0] == 4 /\ groups.count == 5) \/
+                faces =~ [2, 3, 4, 5, 14]
+
+            if is_straight /\ is_flush then
+                "straight-flush"
+            elif groups =~ [1, 4] then
+                "four-of-a-kind"
+            elif groups =~ [2, 3] then
+                "full-house"
+            elif is_flush then
+                "flush"
+            elif is_straight then
+                "straight"
+            elif groups =~ [1, 1, 3] then
+                "three-of-a-kind"
+            elif groups =~ [1, 2, 2] then
+                "two-pair"
+            elif groups =~ [1, 1, 1, 2] then
+                "one-pair"
+            else
+                "high-card"
+            fi
+        fi
+    fi
+si
+
+let hands = [
+    "2h 2d 2c kc qd",
+    "2h 5h 7d 8c 9s",
+    "ah 2d 3c 4c 5d",
+    "2h 3h 2d 3c 3d",
+    "2h 7h 2d 3c 3d",
+    "2h 7h 7d 7c 7s",
+    "10h jh qh kh ah",
+    "4h 4s ks 5d 10s",
+    "qc 10c 7c 6c qc"
+]
+
+hands |> each(hand => write_line("{hand}: {classify(hand)}"))
