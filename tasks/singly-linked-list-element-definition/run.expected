@@ -1,3 +1,2 @@
-a.value = 1
-a.next?.value = 2
-b.next is null: True
+a: value 1, next 2
+b: value 2, next none

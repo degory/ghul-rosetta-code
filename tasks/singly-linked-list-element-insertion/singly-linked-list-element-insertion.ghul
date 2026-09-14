@@ -1,35 +1,35 @@
 use IO.Std.write_line
 
-class NODE(value: int) is
-    next: NODE? public
+class NODE[T](value: T) is
+    next: NODE[T]?
+
+    insert_after(value: T) -> NODE[T] is
+        let inserted = NODE[T](value)
+
+        inserted.next = next
+        next = inserted
+
+        inserted
+    si
 si
 
-insert_after(after: NODE, value: int) is
-    let inserted = NODE(value)
+render[T](first: NODE[T]) -> string is
+    let text mut = "{first.value}"
+    let cursor mut = first.next
 
-    inserted.next = after.next
-    after.next = inserted
-si
-
-render(head: NODE) -> string is
-    let values mut = "{head.value}"
-    let cursor mut = head.next
-
-    while cursor? do
-        values = "{values} -> {cursor.value}"
-        cursor = cursor.next
+    while let node = cursor do
+        text = "{text} -> {node.value}"
+        cursor = node.next
     od
 
-    values
+    text
 si
 
-let a = NODE(1)
-let b = NODE(2)
-
-a.next = b
+let a = NODE("A")
+a.insert_after("B")
 
 write_line(render(a))
 
-insert_after(a, 3)
+a.insert_after("C")
 
 write_line(render(a))
