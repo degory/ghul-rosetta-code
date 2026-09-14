@@ -3114,7 +3114,8 @@
     {
       "title": "Rot-13",
       "slug": "rot-13",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "aba13e7d39068249d3458103b17c39e76478c3d29736c60aca58c6a5e9a81b3d"
     },
     {
       "title": "Run-length encoding",
@@ -3153,7 +3154,8 @@
     {
       "title": "Sattolo cycle",
       "slug": "sattolo-cycle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "acdc4718e141bd99093be34d1c07ba9f7153f1d4f3a059fe38115c55bcf16bd7"
     },
     {
       "title": "Search a list",
@@ -3164,7 +3166,8 @@
     {
       "title": "Secure temporary file",
       "slug": "secure-temporary-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b57ccc8bfdb7963bffcece4dff949603a914d7b60f43051fa17fe2096f2e04dc"
     },
     {
       "title": "Selectively replace multiple instances of a character within a string",
@@ -3192,7 +3195,8 @@
     {
       "title": "Set",
       "slug": "set",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "01ebb251b9c5158c46f4f224f70dd9ed22616e85afd9fb2bf396fb0053fb2fe3"
     },
     {
       "title": "Set consolidation",
@@ -3316,17 +3320,20 @@
     {
       "title": "Singly-linked list/Element definition",
       "slug": "singly-linked-list-element-definition",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "17770a360c15f176e0c2d403c422fcb56ca3708962378afbb3a7c8f3743ffd69"
     },
     {
       "title": "Singly-linked list/Element insertion",
       "slug": "singly-linked-list-element-insertion",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e041c3833e2006f19260e5bbad9a9e500cd20389cd6d78b4fe9d44a20391e9d0"
     },
     {
       "title": "Singly-linked list/Traversal",
       "slug": "singly-linked-list-traversal",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6c9e210a50083e19fc92b4d4246a49b7ee030db587c80c06e9eb987ce1261b7a"
     },
     {
       "title": "Sisyphus sequence",
@@ -3366,7 +3373,8 @@
     {
       "title": "Sort a list of object identifiers",
       "slug": "sort-a-list-of-object-identifiers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "392f1dfa4cf9be37e62c81db51551e9823703fd4510fb1929bdfb9e213e7447a"
     },
     {
       "title": "Sort an array of composite structures",
