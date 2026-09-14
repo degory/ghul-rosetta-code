@@ -1,0 +1,88 @@
+use IO.Std.write_line
+use IO.Std.read_line
+use Collections.MAP
+use System.Random
+
+union Move is
+    ROCK;
+    PAPER;
+    SCISSORS;
+si
+
+parse(text: string) -> Move =>
+    case text
+    when "rock" then Move.ROCK
+    when "paper" then Move.PAPER
+    when "scissors" then Move.SCISSORS
+    else throw System.Exception("unrecognised move: {text}")
+    esac
+
+name(move: Move) -> string =>
+    case move
+    when Move.ROCK then "rock"
+    when Move.PAPER then "paper"
+    when Move.SCISSORS then "scissors"
+    else throw System.Exception("unrecognised move")
+    esac
+
+beats(a: Move, b: Move) -> bool =>
+    (a =~ Move.ROCK /\ b =~ Move.SCISSORS) \/
+    (a =~ Move.SCISSORS /\ b =~ Move.PAPER) \/
+    (a =~ Move.PAPER /\ b =~ Move.ROCK)
+
+counters(move: Move) -> Move =>
+    case move
+    when Move.ROCK then Move.PAPER
+    when Move.PAPER then Move.SCISSORS
+    when Move.SCISSORS then Move.ROCK
+    else throw System.Exception("unrecognised move")
+    esac
+
+let random = Random(7)
+let counts = MAP[string, int]()
+
+counts["rock"] = 1
+counts["paper"] = 1
+counts["scissors"] = 1
+
+let computer_wins mut = 0
+let player_wins mut = 0
+let ties mut = 0
+
+let choose_computer_move = () -> Move is
+    let total = counts["rock"] + counts["paper"] + counts["scissors"]
+    let target = random.next(0, total)
+
+    if target < counts["rock"] then
+        counters(Move.ROCK)
+    elif target < counts["rock"] + counts["paper"] then
+        counters(Move.PAPER)
+    else
+        counters(Move.SCISSORS)
+    fi
+si
+
+let line mut = read_line()
+
+while line? do
+    let move_text = line
+    let player_move = parse(move_text)
+    let computer_move = choose_computer_move()
+
+    counts[move_text] = counts[move_text] + 1
+
+    if beats(player_move, computer_move) then
+        player_wins = player_wins + 1
+        write_line("you: {name(player_move)}, computer: {name(computer_move)}, you win")
+    elif beats(computer_move, player_move) then
+        computer_wins = computer_wins + 1
+        write_line("you: {name(player_move)}, computer: {name(computer_move)}, computer wins")
+    else
+        ties = ties + 1
+        write_line("you: {name(player_move)}, computer: {name(computer_move)}, tie")
+    fi
+
+    line = read_line()
+od
+
+write_line("you: {player_wins}, computer: {computer_wins}, ties: {ties}")
