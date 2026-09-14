@@ -1,37 +1,38 @@
 use IO.Std.write_line
 use Ghul.Pipes
 
-within(x: double, y: double, centre: double, radius: double) -> bool =>
-    x * x + (y - centre) * (y - centre) <= radius * radius
+within(x: double, y: double, centre: double, radius: double) -> bool => x *
+    x +
+    (y - centre) * (y - centre) <=
+    radius * radius
 
-symbol(x: double, y: double, radius: double) -> string =>
-    if !within(x, y, 0.0D, radius) then
-        " "
-    elif within(x, y, -radius / 2.0D, radius / 6.0D) then
-        "#"
-    elif within(x, y, radius / 2.0D, radius / 6.0D) then
-        "."
-    elif within(x, y, -radius / 2.0D, radius / 2.0D) then
-        "."
-    elif within(x, y, radius / 2.0D, radius / 2.0D) then
-        "#"
-    elif x < 0.0D then
-        "."
-    else
-        "#"
-    fi
+symbol(x: double, y: double, radius: double) -> string => if !within(x, y, 0.0D, radius) then
+    " "
+elif within(x, y, -radius / 2.0D, radius / 6.0D) then
+    "#"
+elif within(x, y, radius / 2.0D, radius / 6.0D) then
+    "."
+elif within(x, y, -radius / 2.0D, radius / 2.0D) then
+    "."
+elif within(x, y, radius / 2.0D, radius / 2.0D) then
+    "#"
+elif x < 0.0D then
+    "."
+else
+    "#"
+fi
 
 taijitu(radius: int) -> Pipe[string] is
-    for row in -radius::radius do
-        yield ((-2 * radius)::(2 * radius))
-            |> map((column: int) =>
-                symbol(cast(column) / 2.0D, cast(row),
-                    cast(radius)))
-            |> join("")
+    for row in -radius :: radius do
+        yield ((-2 * radius)::(2 * radius)) |> map(
+            (column) => symbol(cast(column) / 2.0D, cast(row), cast(radius))
+        ) |> join("")
     od
 si
 
-[4, 8]
-    |> each((radius: int) =>
-        (taijitu(radius) |> each(line => write_line(line))
-         write_line("")))
+[4, 8] |> each(
+    (radius) => (
+        taijitu(radius) |> each(line => write_line(line))
+        write_line("")
+    )
+)

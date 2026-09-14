@@ -31,23 +31,20 @@ jacobsthal_oblongs() -> Pipe[bigint] is
     od
 si
 
-is_prime(n: bigint) -> bool =>
-    n > 1n /\
-        stream(two, d => d || d + 1n)
-            |> take_while(d => d * d <= n)
-            |> all(d => n % d !~ 0n)
+is_prime(n: bigint) -> bool => n >
+    1n /\
+    stream(two, d => Ghul.Pipes.STREAM.YIELD(d, d + 1n)) |> take_while(d => d * d <= n) |> all(
+        d => n % d !~ 0n
+    )
 
 show(label: string, values: Pipe[bigint], count: int) is
     write_line("{label}:")
     let rows = values |> take(count) |> chunk(10) |> collect()
 
-    rows |> each(row =>
-        write_line(row |> map((v: bigint) => "{v,16}") |> join(" ")))
+    rows |> each(row => write_line(row |> map((v) => "{v,16}") |> join(" ")))
 si
 
 show("first 30 Jacobsthal numbers", jacobsthal(), 30)
 show("first 30 Jacobsthal-Lucas numbers", jacobsthal_lucas(), 30)
 show("first 20 Jacobsthal oblong numbers", jacobsthal_oblongs(), 20)
-show("first 10 Jacobsthal primes",
-    jacobsthal() |> filter(is_prime),
-    10)
+show("first 10 Jacobsthal primes", jacobsthal() |> filter(is_prime), 10)

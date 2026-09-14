@@ -23,7 +23,6 @@ permutations(items: LIST[int]) -> Pipe[LIST[int]] is
     fi
 si
 
-permutations(LIST([1, 2, 3]))
-    |> each((permutation: LIST[int]) => write_line(permutation
-        |> map(value => "{value}")
-        |> join(" ")))
+permutations(LIST([1, 2, 3])) |> each(
+    (permutation) => write_line(permutation |> map(value => "{value}") |> join(" "))
+)

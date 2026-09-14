@@ -39,11 +39,12 @@ class WHEEL_SET is
     si
 si
 
-describe(value: Value) -> string =>
-    case value
-    when number: NUMBER then "{number.digit}"
-    when wheel: WHEEL then "{wheel.name}"
-    esac
+describe(value: Value) -> string => case value
+when number: NUMBER then
+    "{number.digit}"
+when wheel: WHEEL then
+    "{wheel.name}"
+esac
 
 show(wheels: (name: char, values: Value[])[]) is
     let wheel_set = WHEEL_SET(wheels)
@@ -61,24 +62,21 @@ show(wheels: (name: char, values: Value[])[]) is
     write_line("  {generated |> join(" ")}")
 si
 
-let simple: (name: char, values: Value[])[] =
-    [(name = 'A', values = [NUMBER(1), NUMBER(2), NUMBER(3)])]
+let simple: (name: char, values: Value[])[] = [(name = 'A', values = [NUMBER(1), NUMBER(2), NUMBER(
+    3
+)])]
 
-let two_wheels: (name: char, values: Value[])[] = [
-    (name = 'A', values = [NUMBER(1), WHEEL('B'), NUMBER(2)]),
-    (name = 'B', values = [NUMBER(3), NUMBER(4)])
-]
+let two_wheels = [(name = 'A', values = [NUMBER(1), WHEEL('B'), NUMBER(
+    2
+)]), (name = 'B', values = [NUMBER(3), NUMBER(4)])]
 
-let shared: (name: char, values: Value[])[] = [
-    (name = 'A', values = [NUMBER(1), WHEEL('D'), WHEEL('D')]),
-    (name = 'D', values = [NUMBER(6), NUMBER(7), NUMBER(8)])
-]
+let shared = [(name = 'A', values = [NUMBER(1), WHEEL('D'), WHEEL(
+    'D'
+)]), (name = 'D', values = [NUMBER(6), NUMBER(7), NUMBER(8)])]
 
-let multiply_connected: (name: char, values: Value[])[] = [
-    (name = 'A', values = [NUMBER(1), WHEEL('B'), WHEEL('C')]),
-    (name = 'B', values = [NUMBER(3), NUMBER(4)]),
-    (name = 'C', values = [NUMBER(5), WHEEL('B')])
-]
+let multiply_connected = [(name = 'A', values = [NUMBER(1), WHEEL('B'), WHEEL(
+    'C'
+)]), (name = 'B', values = [NUMBER(3), NUMBER(4)]), (name = 'C', values = [NUMBER(5), WHEEL('B')])]
 
 for group in [simple, two_wheels, shared, multiply_connected] do
     show(group)

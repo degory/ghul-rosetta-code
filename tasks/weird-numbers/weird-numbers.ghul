@@ -22,27 +22,22 @@ proper_divisors(n: int) -> LIST[int] is
     divisors
 si
 
-sums_to(divisors: List[int], from: int, target: int) -> bool =>
-    if target == 0 then
-        true
-    elif from >= divisors.count then
-        false
-    elif divisors[from] > target then
-        sums_to(divisors, from + 1, target)
-    else
-        sums_to(divisors, from + 1, target - divisors[from]) \/
-            sums_to(divisors, from + 1, target)
-    fi
+sums_to(divisors: List[int], from: int, target: int) -> bool => if target == 0 then
+    true
+elif from >= divisors.count then
+    false
+elif divisors[from] > target then
+    sums_to(divisors, from + 1, target)
+else
+    sums_to(divisors, from + 1, target - divisors[from]) \/ sums_to(divisors, from + 1, target)
+fi
 
-weird(n: int) -> bool =>
-    (let divisors = proper_divisors(n) |> sort_descending() |> collect()
+weird(n: int) -> bool => (
+    let divisors = proper_divisors(n) |> sort_descending() |> collect()
 
-     divisors |> reduce(0, (total: int, d: int) => total + d) > n /\
-         !sums_to(divisors, 0, n))
+    divisors |> reduce(0, (total, d) => total + d) > n /\ !sums_to(divisors, 0, n)
+)
 
-stream(2, n => n || n + 1)
-    |> filter(weird)
-    |> take(25)
-    |> chunk(5)
-    |> each(row =>
-        write_line(row |> map((n: int) => "{n,7}") |> join("")))
+stream(2, n => Ghul.Pipes.STREAM.YIELD(n, n + 1)) |> filter(weird) |> take(25) |> chunk(5) |> each(
+    row => write_line(row |> map((n) => "{n,7}") |> join(""))
+)

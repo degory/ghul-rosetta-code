@@ -6,10 +6,11 @@ zigzag(n: int) -> LIST[LIST[int]] is
     let cells = LIST()
 
     for _ in 0..n do
-        cells.add(stream(0, v => v || v + 1)
-            |> take(n)
-            |> map(_ => 0)
-            |> collect_list())
+        cells.add(
+            stream(0, v => Ghul.Pipes.STREAM.YIELD(v, v + 1)) |> take(n) |> map(
+                _ => 0
+            ) |> collect_list()
+        )
     od
 
     let row mut = 0
@@ -44,5 +45,4 @@ si
 
 let n = 5
 
-zigzag(n) |> each(row =>
-    write_line(row |> map((value: int) => "{value,2}") |> join(" ")))
+zigzag(n) |> each(row => write_line(row |> map((value) => "{value,2}") |> join(" ")))

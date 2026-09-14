@@ -3,8 +3,9 @@ use Collections.LIST
 use Ghul.Pipes
 
 magic_square(n: int) -> LIST[int] is
-    let cells =
-        stream(0, v => v || v + 1) |> take(n * n) |> map(_ => 0) |> collect_list()
+    let cells = stream(0, v => Ghul.Pipes.STREAM.YIELD(v, v + 1)) |> take(n * n) |> map(
+        _ => 0
+    ) |> collect_list()
 
     let row mut = 0
     let column mut = n / 2
@@ -31,5 +32,4 @@ let square = magic_square(n)
 let magic_number = n * (n * n + 1) / 2
 
 write_line("5 by 5 magic square, magic number {magic_number}:")
-square |> chunk(n)
-    |> each(row => write_line(row |> map((value: int) => "{value,3}") |> join("")))
+square |> chunk(n) |> each(row => write_line(row |> map((value) => "{value,3}") |> join("")))

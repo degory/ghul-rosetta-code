@@ -9,10 +9,9 @@ mian_chowla() -> Pipe[int] is
     let candidate mut = 1
 
     while true do
-        let fresh = terms
-            |> map(term => term + candidate)
-            |> cat([candidate + candidate])
-            |> collect()
+        let fresh = terms |> map(term => term + candidate) |> cat(
+            [candidate + candidate]
+        ) |> collect()
 
         if fresh |> all(sum => !sums.contains(sum)) then
             terms.add(candidate)
@@ -27,18 +26,13 @@ si
 
 write_line("the first 30 terms:")
 
-mian_chowla()
-    |> take(30)
-    |> chunk(10)
-    |> each(row =>
-        write_line(row |> map((n: int) => "{n,6}") |> join("")))
+mian_chowla() |> take(30) |> chunk(10) |> each(
+    row => write_line(row |> map((n) => "{n,6}") |> join(""))
+)
 
 write_line("")
 write_line("terms 91 to 100:")
 
-mian_chowla()
-    |> skip(90)
-    |> take(10)
-    |> chunk(5)
-    |> each(row =>
-        write_line(row |> map((n: int) => "{n,8}") |> join("")))
+mian_chowla() |> skip(90) |> take(10) |> chunk(5) |> each(
+    row => write_line(row |> map((n) => "{n,8}") |> join(""))
+)

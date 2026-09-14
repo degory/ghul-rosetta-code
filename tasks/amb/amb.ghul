@@ -4,10 +4,7 @@ use Collections.List
 use Collections.LIST
 use Ghul.Pipes
 
-amb[T](
-    sets: List[Iterable[T]],
-    accepts: (T, T) -> bool
-) -> Pipe[LIST[T]] is
+amb[T](sets: List[Iterable[T]], accepts: (T, T) -> bool) -> Pipe[LIST[T]] is
     if sets.count == 0 then
         yield LIST[T]()
     else
@@ -26,15 +23,9 @@ amb[T](
     fi
 si
 
-let sets: List[Iterable[string]] = [
-    ["the", "that", "a"],
-    ["frog", "elephant", "thing"],
-    ["walked", "treaded", "grows"],
-    ["slowly", "quickly"]
-]
+let sets = [["the", "that", "a"], ["frog", "elephant", "thing"], ["walked", "treaded", "grows"], ["slowly", "quickly"]]
 
-let joins =
-    (left: string, right: string) => left[left.length - 1] == right[0]
+let joins = (left, right) => left[left.length - 1] == right[0]
 
 for sentence in amb(sets, joins) do
     write_line(sentence |> join(" "))

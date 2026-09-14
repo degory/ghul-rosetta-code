@@ -4,10 +4,11 @@ use Ghul.Pipes
 
 use POSITION = (x: int, y: int)
 
-is_prime(number: int) -> bool =>
-    number > 1 /\ ((2..number)
-        |> take_while(divisor => divisor * divisor <= number)
-        |> all(divisor => number % divisor != 0))
+is_prime(number: int) -> bool => number >
+    1 /\
+    ((2..number) |> take_while(divisor => divisor * divisor <= number) |> all(
+        divisor => number % divisor != 0
+    ))
 
 spiral() -> Pipe[POSITION] is
     let x mut = 0
@@ -50,9 +51,9 @@ si
 let size = 21
 let centre = size / 2
 
-let grid = (0..size)
-    |> map(row => (0..size) |> map(column => " ") |> collect_list())
-    |> collect_list()
+let grid = (0..size) |> map(
+    row => (0..size) |> map(column => " ") |> collect_list()
+) |> collect_list()
 
 for placed in spiral() |> index() |> take(size * size) do
     if is_prime(placed.index + 1) then
@@ -60,4 +61,4 @@ for placed in spiral() |> index() |> take(size * size) do
     fi
 od
 
-grid |> each((row: LIST[string]) => write_line(row |> join("")))
+grid |> each((row) => write_line(row |> join("")))

@@ -6,7 +6,7 @@ let wheel = "ndeokgelw"
 let centre = 'k'
 
 available(letters: string) -> MAP[char, int] is
-    let counts = MAP[char, int]()
+    let counts = MAP()
 
     for letter in letters do
         if !counts.contains_key(letter) then
@@ -33,11 +33,9 @@ spellable(word: string) -> bool is
     return true
 si
 
-let found =
-    IO.File.read_all_lines("unixdict.txt")
-    |> filter(word =>
-        word.length >= 3 /\ word.contains(centre) /\ spellable(word))
-    |> collect_list()
+let found = IO.File.read_all_lines("unixdict.txt") |> filter(
+    word => word.length >= 3 /\ word.contains(centre) /\ spellable(word)
+) |> collect_list()
 
 write_line(found |> join("\n"))
 write_line("")

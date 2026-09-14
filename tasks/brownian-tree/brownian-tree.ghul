@@ -12,20 +12,21 @@ next(limit: int) -> int is
     return cast int(state % cast long(limit))
 si
 
-let tree = SET[(x: int, y: int)]()
+let tree = SET()
 
-touches(x: int, y: int) -> bool =>
-    (let found mut = false
+touches(x: int, y: int) -> bool => (
+    let found mut = false
 
-     for across in -1..2 do
-         for up in -1..2 do
-             if tree.contains((x = x + across, y = y + up)) then
-                 found = true
-             fi
-         od
-     od
+    for across in -1 .. 2 do
+        for up in -1 .. 2 do
+            if tree.contains((x = x + across, y = y + up)) then
+                found = true
+            fi
+        od
+    od
 
-     found)
+    found
+)
 
 let image = IMAGE(size, size)
 

@@ -9,15 +9,9 @@ expand(axiom: string, rules: MAP[char, string], steps: int) -> string is
     let current mut = axiom
 
     for _ in 0..steps do
-        current =
-            current
-            |> map(symbol =>
-                if rules.contains_key(symbol) then
-                    rules[symbol]
-                else
-                    "{symbol}"
-                fi)
-            |> join("")
+        current = current |> map(
+            symbol => if rules.contains_key(symbol) then rules[symbol] else "{symbol}" fi
+        ) |> join("")
     od
 
     return current
@@ -31,7 +25,7 @@ interpret(program: string, operations: MAP[char, () -> void]) is
     od
 si
 
-let rabbits = MAP[char, string]()
+let rabbits = MAP()
 
 rabbits['I'] = "M"
 rabbits['M'] = "MI"
@@ -46,7 +40,7 @@ for step in 1..6 do
     write_line("{step} {generation}")
 od
 
-let plant = MAP[char, string]()
+let plant = MAP()
 
 plant['X'] = "F+[[X]-X]-F[-FX]+X"
 plant['F'] = "FF"
@@ -62,16 +56,15 @@ let pen = TURTLE(image)
 pen.move_to(0.0, 0.0)
 pen.face(90.0)
 
-let saved = LIST[(x: double, y: double, heading: double)]()
+let saved = LIST()
 
-let drawing = MAP[char, () -> void]()
+let drawing = MAP()
 
 drawing['F'] = () => pen.forward(2.0)
 drawing['+'] = () => pen.turn(-25.0)
 drawing['-'] = () => pen.turn(25.0)
 
-drawing['['] = () =>
-    saved.add((x = pen.x, y = pen.y, heading = pen.heading))
+drawing['['] = () => saved.add((x = pen.x, y = pen.y, heading = pen.heading))
 
 drawing[']'] = () is
     let top = saved[saved.count - 1]

@@ -3,10 +3,9 @@ use Collections.LIST
 use Collections.MAP
 use Ghul.Pipes
 
-sorted_letters(word: string) -> string =>
-    string(word |> sort() |> collect_array())
+sorted_letters(word: string) -> string => string(word |> sort() |> collect_array())
 
-let sets = MAP[string, LIST[string]]()
+let sets = MAP()
 
 for word in IO.File.read_all_lines("unixdict.txt") do
     let key = sorted_letters(word)
@@ -18,10 +17,8 @@ for word in IO.File.read_all_lines("unixdict.txt") do
     sets[key].add(word)
 od
 
-let largest =
-    sets.values
-        |> reduce(0, (n, words) => System.Math.max(n, words.count))
+let largest = sets.values |> reduce(0, (n, words) => System.Math.max(n, words.count))
 
-sets.values
-    |> filter(words => words.count == largest)
-    |> each(words => write_line(words |> join(" ")))
+sets.values |> filter(words => words.count == largest) |> each(
+    words => write_line(words |> join(" "))
+)

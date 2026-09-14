@@ -15,8 +15,8 @@ yellowstone(count: int) -> LIST[int] is
         let candidate mut = 1
 
         while used.contains(candidate) \/
-                gcd(candidate, previous) != 1 \/
-                gcd(candidate, before_previous) == 1 do
+            gcd(candidate, previous) != 1 \/
+            gcd(candidate, before_previous) == 1 do
             candidate = candidate + 1
         od
 
@@ -28,4 +28,4 @@ yellowstone(count: int) -> LIST[int] is
 si
 
 write_line("first 30 Yellowstone numbers:")
-write_line(yellowstone(30) |> map((t: int) => "{t}") |> join(" "))
+write_line(yellowstone(30) |> map((t) => "{t}") |> join(" "))

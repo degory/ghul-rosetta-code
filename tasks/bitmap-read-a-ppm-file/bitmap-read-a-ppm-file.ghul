@@ -14,7 +14,7 @@ class BITMAP is
         self.width = width
         self.height = height
 
-        bytes = (0..width * height * 3) |> map(_ => 0ub) |> collect_list()
+        bytes = (0 .. width * height * 3) |> map(_ => 0ub) |> collect_list()
     si
 
     set_pixel(x: int, y: int, colour: COLOUR) is
@@ -25,21 +25,21 @@ class BITMAP is
         bytes[at + 2] = colour.blue
     si
 
-    pixel(x: int, y: int) -> COLOUR =>
-        (let at = (y * width + x) * 3
+    pixel(x: int, y: int) -> COLOUR => (
+        let at = (y * width + x) * 3
 
-         (red = bytes[at], green = bytes[at + 1], blue = bytes[at + 2]))
+        (red = bytes[at], green = bytes[at + 1], blue = bytes[at + 2])
+    )
 si
 
-space(value: ubyte) -> bool =>
-    value == 32ub \/ value == 9ub \/ value == 10ub \/ value == 13ub
+space(value: ubyte) -> bool => value == 32ub \/ value == 9ub \/ value == 10ub \/ value == 13ub
 
 read_ppm(path: string) -> BITMAP is
     let raw = IO.File.read_all_bytes(path)
 
     let at mut = 0
 
-    let token = () -> string is
+    let token = () is
         while at < raw.count /\ (space(raw[at]) \/ raw[at] == 35ub) do
             if raw[at] == 35ub then
                 while at < raw.count /\ raw[at] != 10ub do
@@ -56,11 +56,7 @@ read_ppm(path: string) -> BITMAP is
             at = at + 1
         od
 
-        return string(
-            (from..at)
-                |> map(index => cast char(raw[index]))
-                |> collect_array()
-        )
+        return string((from..at) |> map(index => cast char(raw[index])) |> collect_array())
     si
 
     assert token() =~ "P6" else "not a binary PPM"
@@ -74,7 +70,7 @@ read_ppm(path: string) -> BITMAP is
 
     let image = BITMAP(width, height)
 
-    for index in 0..width * height * 3 do
+    for index in 0 .. width * height * 3 do
         image.bytes[index] = raw[at + index]
     od
 
@@ -84,10 +80,7 @@ si
 write_ppm(image: BITMAP, path: string) is
     let file = IO.File.create(path)
 
-    let header =
-        System.Text.Encoding.ascii.get_bytes(
-            "P6\n{image.width} {image.height}\n255\n"
-        )
+    let header = System.Text.Encoding.ascii.get_bytes("P6\n{image.width} {image.height}\n255\n")
 
     file.write(header, 0, header.count)
 
@@ -101,13 +94,12 @@ si
 to_grey(image: BITMAP) -> BITMAP is
     let grey = BITMAP(image.width, image.height)
 
-    for at in 0..image.width * image.height do
-        let level =
-            cast ubyte(
-                0.2126D * cast double(image.bytes[at * 3]) +
-                0.7152D * cast double(image.bytes[at * 3 + 1]) +
-                0.0722D * cast double(image.bytes[at * 3 + 2]) + 0.5D
-            )
+    for at in 0 .. image.width * image.height do
+        let level = cast ubyte(0.2126D *
+            cast double(image.bytes[at * 3]) +
+            0.7152D * cast double(image.bytes[at * 3 + 1]) +
+            0.0722D * cast double(image.bytes[at * 3 + 2]) +
+            0.5D)
 
         grey.bytes[at * 3] = level
         grey.bytes[at * 3 + 1] = level
@@ -122,10 +114,11 @@ let source = BITMAP(120, 90)
 for y in 0..source.height do
     for x in 0..source.width do
         source.set_pixel(
-            x, y,
-            (red = cast ubyte(255 * x / source.width),
-             green = cast ubyte(255 * y / source.height),
-             blue = 200ub)
+            x,
+            y,
+            (red = cast ubyte(255 * x / source.width), green = cast ubyte(255 *
+                y /
+                source.height), blue = 200ub)
         )
     od
 od
