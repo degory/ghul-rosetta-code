@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 kronecker(left: int[][], right: int[][]) -> int[][] =>
     (0..left.count * right.count)

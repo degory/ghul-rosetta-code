@@ -1,5 +1,4 @@
-use Collections.List
-use Ghul.Pipes
+use default
 use Raster.IMAGE
 
 use POINT = (x: double, y: double)

@@ -1,23 +1,19 @@
-use IO.Std.write_line
-use Collections.LIST
+use default
 use System.Random
-use Ghul.Pipes.map
-use Ghul.Pipes.join
 
 union Suit is
-    HEARTS;
-    DIAMONDS;
-    CLUBS;
-    SPADES;
+    HEARTS
+    DIAMONDS
+    CLUBS
+    SPADES
 si
 
 suit_symbol(suit: Suit) -> string =>
     case suit
-    when Suit.HEARTS then "H"
-    when Suit.DIAMONDS then "D"
-    when Suit.CLUBS then "C"
-    when Suit.SPADES then "S"
-    else ""
+    when _: Suit.HEARTS then "H"
+    when _: Suit.DIAMONDS then "D"
+    when _: Suit.CLUBS then "C"
+    when _: Suit.SPADES then "S"
     esac
 
 let pip_names = [
@@ -29,7 +25,7 @@ struct CARD(pip: int public, suit: Suit public) is
 si
 
 class DECK is
-    _cards: LIST[CARD] field;
+    _cards: LIST[CARD] field
 
     init() is
         _cards = LIST[CARD]()
@@ -63,7 +59,7 @@ class DECK is
         dealt
     si
 
-    count: int => _cards.count;
+    count: int => _cards.count
 
     describe() -> string => _cards |> map(c => c.describe()) |> join(" ")
 si

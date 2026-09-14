@@ -1,8 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.Iterable
-use Collections.List
-use Ghul.Pipes
+use default
 
 pairs(left: List[int], right: List[int])
     -> Pipe[(first: int, second: int)]

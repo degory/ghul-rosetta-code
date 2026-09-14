@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 sylvester(count: int) -> Pipe[bigint] is
     let term mut = 2n

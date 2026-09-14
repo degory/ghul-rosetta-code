@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 power(base: long, exponent: int) -> long is
     let value mut = 1L

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 let digit_set = "0123456789abcdefghijklmnopqrstuvwxyz"
 

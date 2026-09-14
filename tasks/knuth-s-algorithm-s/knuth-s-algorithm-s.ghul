@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Pipes
+use default
 
 s_of_n_creator(n: int, source: System.Random) -> (int) -> List[int] is
     let sample = LIST[int]()

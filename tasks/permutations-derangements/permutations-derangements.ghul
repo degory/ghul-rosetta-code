@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Pipes
+use default
 
 extend(prefix: LIST[int], size: int) -> Pipe[List[int]] is
     if prefix.count == size then

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 let start_of_text = 2c
 let end_of_text = 3c

@@ -1,8 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Collections.MAP
-use Ghul.Pipes
+use default
 
 union Huffman(weight: int) is
     LEAF(symbol: char, ..)

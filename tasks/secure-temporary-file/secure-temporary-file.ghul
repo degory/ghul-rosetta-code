@@ -1,7 +1,5 @@
 use IO.Std.write_line
-use IO.FileStream
-use IO.FileMode
-use IO.FileAccess
+use IO
 
 create_secure_temp_file(dir: string, prefix: string) -> string is
     let attempt mut = 0

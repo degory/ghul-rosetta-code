@@ -1,5 +1,4 @@
-use Raster.IMAGE
-use Raster.TURTLE
+use Raster
 use System.Math
 
 let order = 4

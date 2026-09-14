@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 killings(n: int, k: int) -> Pipe[int] is
     let standing = (0..n) |> collect_list()

@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 undulating_value(first: int, second: int, length: int) -> long => (
     let value mut = 0L

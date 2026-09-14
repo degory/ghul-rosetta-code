@@ -1,6 +1,5 @@
 use IO.Std.write
-use IO.Std.write_line
-use Collections.LIST
+use default
 
 run(program: string, input: string) is
     let cells = LIST()

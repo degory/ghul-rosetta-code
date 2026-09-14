@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 let text =
     "Now is the time for all good men to come to the aid of their country"

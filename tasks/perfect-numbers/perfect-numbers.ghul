@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 is_perfect(n: int) -> bool is
     if n < 2 then

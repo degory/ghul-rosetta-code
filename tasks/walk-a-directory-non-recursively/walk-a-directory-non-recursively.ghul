@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes.map
-use Ghul.Pipes.sort
-use Ghul.Pipes.each
+use default
 
 let root = "walk-sample"
 

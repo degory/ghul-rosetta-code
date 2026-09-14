@@ -1,5 +1,4 @@
-use Raster.IMAGE
-use Raster.TURTLE
+use Raster
 
 let order = 23
 let step = 1.0D

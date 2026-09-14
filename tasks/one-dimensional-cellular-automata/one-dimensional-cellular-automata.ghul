@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 alive(cells: string, index: int) -> bool =>
     index >= 0 /\ index < cells.length /\ cells[index] == '#'

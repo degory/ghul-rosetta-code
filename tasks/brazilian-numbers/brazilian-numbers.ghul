@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 same_digits(number: int, base: int) -> bool is
     let first = number % base

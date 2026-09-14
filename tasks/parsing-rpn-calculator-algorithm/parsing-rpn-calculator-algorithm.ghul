@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 use System.Math
 
 apply(operator: string, left: double, right: double) -> double =>

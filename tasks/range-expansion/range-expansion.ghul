@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 expand(part: string) -> Pipe[int] is
     let split_at = (1..part.length)

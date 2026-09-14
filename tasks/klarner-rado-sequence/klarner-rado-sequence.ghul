@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 klarner_rado(count: int) -> Collections.List[int] is
     let sequence = LIST()

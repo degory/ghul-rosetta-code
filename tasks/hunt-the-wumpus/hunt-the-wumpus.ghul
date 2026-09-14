@@ -1,6 +1,5 @@
 use IO.Std
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 // The rooms of a dodecahedron: twenty of them, each
 // joined to three others.

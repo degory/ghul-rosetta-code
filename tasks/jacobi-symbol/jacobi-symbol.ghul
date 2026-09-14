@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 jacobi(a: int, n: int) -> int is
     assert n > 0 /\ n % 2 == 1 else "n must be positive and odd"

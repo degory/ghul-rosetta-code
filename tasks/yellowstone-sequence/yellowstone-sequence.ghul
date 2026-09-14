@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.SET
-use Ghul.Pipes
+use default
 
 gcd(a: int, b: int) -> int => if b == 0 then a else gcd(b, a % b) fi
 

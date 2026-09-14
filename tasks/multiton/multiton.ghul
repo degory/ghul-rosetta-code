@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Collections.MAP
+use default
 
 class MULTITON[K, V] is
     _create: K -> V

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 ackermann(m: int, n: int) -> int =>
     if m == 0 then

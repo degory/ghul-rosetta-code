@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 let limit = 1_000_000
 let is_prime = LIST(limit + 1)

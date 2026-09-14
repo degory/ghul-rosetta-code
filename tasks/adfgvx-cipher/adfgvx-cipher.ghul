@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.SET
-use Ghul.Pipes
+use default
 use System.Text.StringBuilder
 
 let labels = "ADFGVX"

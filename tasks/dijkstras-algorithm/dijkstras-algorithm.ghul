@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.MAP
-use Ghul.Pipes
+use default
 
 use EDGE = (start: string, finish: string, cost: int)
 use REACHED = (cost: int, previous: string)

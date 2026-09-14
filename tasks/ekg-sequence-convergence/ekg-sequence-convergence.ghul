@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.SET
-use Ghul.Pipes
+use default
 
 shares_factor(left_value: int, right_value: int) -> bool => (
     let left mut = left_value

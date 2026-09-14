@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
-use Collections
+use default
 
 common_directory_path(paths: string[]) -> string is
     let segments = paths |> map(p => p.split(['/'])) |> collect_array()

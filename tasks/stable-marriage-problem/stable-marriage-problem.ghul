@@ -1,11 +1,4 @@
-use IO.Std.write_line
-use Collections.MAP
-use Collections.LIST
-use Ghul.Pipes.each
-use Ghul.Pipes.map
-use Ghul.Pipes.join
-use Ghul.Pipes.sort
-use Ghul.Pipes.collect_array
+use default
 
 let men_preferences = MAP[string, string[]]()
 let women_preferences = MAP[string, string[]]()

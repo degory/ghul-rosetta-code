@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 digits(value: int, base: int) -> LIST[int] is
     let result = LIST()

@@ -1,11 +1,6 @@
-use IO.Std.write_line
-use Ghul.Pipes.map
-use Ghul.Pipes.join
-use Ghul.Pipes.each
-use Ghul.Pipes.all
-use Ghul.Pipes.collect_list
+use default
 
-class ENVIRONMENT(value: int public, count: int public);
+class ENVIRONMENT(value: int public, count: int public)
 
 hailstone_step(env: ENVIRONMENT) is
     if env.value != 1 then

@@ -1,6 +1,5 @@
 use IO.Std
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 union Parsed is
     OK(value: double, at: int) default

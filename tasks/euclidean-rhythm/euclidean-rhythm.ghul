@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 repeat(form: string, times: int) -> Pipe[string] is
     for _ in 1::times do

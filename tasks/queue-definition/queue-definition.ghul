@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
+use default
 use System.InvalidOperationException
 
 class QUEUE[T] is

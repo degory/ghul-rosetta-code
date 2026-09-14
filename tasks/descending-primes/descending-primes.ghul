@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections
-use Ghul.Pipes
+use default
 
 is_prime(n: int) -> bool =>
     if n < 2 then false

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 digit_sum(digits: string) -> int =>
     digits |> reduce(0, (sum, c) => sum + cast int(c) - cast int('0'))

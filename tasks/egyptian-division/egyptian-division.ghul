@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 use ROW = (power_of_2: int, doubling: int)
 use SUMS = (answer: int, accumulator: int)

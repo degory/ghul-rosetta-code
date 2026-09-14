@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Pipes
+use default
 
 use MOVE = (next: int, label: string)
 use STEP = (steps: int, next: int, label: string)

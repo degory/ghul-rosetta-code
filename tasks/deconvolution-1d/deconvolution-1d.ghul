@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 deconvolve(g: int[], f: int[]) -> LIST[int] is
     let h = LIST()

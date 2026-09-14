@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
-use Collections.LIST
+use default
 
 digit_square_sum(n: int) -> int =>
     if n == 0 then 0 else n % 10 * (n % 10) + digit_square_sum(n / 10) fi

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 sigma(value: int) -> int is
     let total mut = 0

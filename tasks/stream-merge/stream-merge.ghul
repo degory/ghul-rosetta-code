@@ -1,9 +1,5 @@
-use IO.Std.write_line
-use Collections.Iterable
-use Collections.LIST
-use Collections.List
+use default
 use Ghul.Comparable
-use Ghul.Pipes
 
 merge_two[T: Comparable[T]](left: Iterable[T],
                             right: Iterable[T]) -> Pipe[T]

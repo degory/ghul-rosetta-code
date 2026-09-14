@@ -1,8 +1,5 @@
 use IO.Std.write_line
-use Ghul.Coroutines.COROUTINE
-use Ghul.Coroutines.SEMAPHORE
-use Ghul.Coroutines.pause
-use Ghul.Coroutines.run
+use Ghul.Coroutines
 
 class EVENT is
     _signalled: bool

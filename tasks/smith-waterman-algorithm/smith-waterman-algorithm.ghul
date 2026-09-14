@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 score(first: char, second: char) -> int =>
     if first == second then 2 else -1 fi

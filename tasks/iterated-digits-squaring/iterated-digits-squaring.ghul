@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
+use default
 
 digit_square_sum(value: int) -> int => (
     let rest mut = value

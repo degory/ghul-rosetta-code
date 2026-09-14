@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 sift_down[T: Ghul.Comparable[T]](values: LIST[T], start: int, end: int) is
     let root mut = start

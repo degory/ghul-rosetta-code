@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections
-use Ghul.Pipes
+use default
 
 to_text(bytes: List[ubyte]) -> string =>
     string(bytes |> map(b => cast char(b)) |> collect_array())

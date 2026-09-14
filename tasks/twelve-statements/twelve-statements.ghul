@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.List
-use Ghul.Pipes
+use default
 
 holds(values: List[bool], number: int) -> bool => values[number - 1]
 

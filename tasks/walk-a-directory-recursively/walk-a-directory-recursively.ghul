@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes.filter
-use Ghul.Pipes.sort
-use Ghul.Pipes.each
+use default
 
 walk(dir: string) -> Ghul.Pipes.Pipe[string] is
     for path in IO.Directory.get_files(dir) do

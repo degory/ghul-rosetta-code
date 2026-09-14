@@ -1,6 +1,5 @@
 use IO.Std.write
-use IO.Std.write_line
-use Collections.LIST
+use default
 
 grid(size: int, random: System.Random) -> LIST[LIST[int]] is
     let rows = LIST()

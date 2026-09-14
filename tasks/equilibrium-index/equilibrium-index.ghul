@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 equilibrium_indices(values: int[]) -> Pipe[int] is
     let total = values |> reduce(0, (sum, value) => sum + value)

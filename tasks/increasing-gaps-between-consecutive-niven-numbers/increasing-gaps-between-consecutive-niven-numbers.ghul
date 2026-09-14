@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 niven_numbers() -> Pipe[int] is
     let digit_sum mut = 1

@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections
-use Ghul.Pipes
+use default
 
 mean(values: List[double]) -> double =>
     values |> reduce(0.0D, (total, value) => total + value) /

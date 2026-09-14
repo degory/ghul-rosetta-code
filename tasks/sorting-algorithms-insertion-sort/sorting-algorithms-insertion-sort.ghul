@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 insertion_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
     for i in 1..values.count do

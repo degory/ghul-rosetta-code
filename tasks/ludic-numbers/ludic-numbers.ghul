@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.SET
-use Ghul.Pipes
+use default
 
 let remaining mut = (2..25000) |> collect_list()
 let ludic = LIST()

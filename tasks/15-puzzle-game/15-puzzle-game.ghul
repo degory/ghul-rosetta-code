@@ -1,6 +1,5 @@
 use IO.Std
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 let side = 4
 let squares = side * side

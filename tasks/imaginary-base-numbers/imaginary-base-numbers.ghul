@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
-use Collections.LIST
+use default
 
 to_quater_imaginary(value: int) -> string is
     let digits = LIST()

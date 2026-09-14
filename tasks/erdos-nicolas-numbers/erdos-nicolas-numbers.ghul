@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 erdos_nicolas(limit: int) -> Pipe[(value: int, k: int)] is
     let running_sum = LIST(limit + 1)

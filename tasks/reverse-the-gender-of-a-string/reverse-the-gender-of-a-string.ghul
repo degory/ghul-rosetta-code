@@ -1,24 +1,18 @@
-use IO.Std.write_line
-use Collections
+use default
 use System.Text.RegularExpressions.Regex
 
-let swaps = MAP[string, string]()
-swaps.add("she", "he")
-swaps.add("he", "she")
-swaps.add("her", "him")
-swaps.add("him", "her")
-swaps.add("hers", "his")
-swaps.add("his", "hers")
-swaps.add("herself", "himself")
-swaps.add("himself", "herself")
-swaps.add("woman", "man")
-swaps.add("man", "woman")
-swaps.add("girl", "boy")
-swaps.add("boy", "girl")
-swaps.add("mother", "father")
-swaps.add("father", "mother")
-swaps.add("wife", "husband")
-swaps.add("husband", "wife")
+let swaps = MAP[string, string](
+    [
+        ("she", "he"), ("he", "she"),
+        ("her", "him"), ("him", "her"),
+        ("hers", "his"), ("his", "hers"),
+        ("herself", "himself"), ("himself", "herself"),
+        ("woman", "man"), ("man", "woman"),
+        ("girl", "boy"), ("boy", "girl"),
+        ("mother", "father"), ("father", "mother"),
+        ("wife", "husband"), ("husband", "wife")
+    ]
+    |> map(((word, swap)) => KeyValuePair(word, swap)))
 
 reverse_gender(text: string) -> string is
     let word_pattern = Regex("[A-Za-z]+")

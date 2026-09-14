@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 riordan(count: int) -> Pipe[bigint] is
     let previous mut = 1n

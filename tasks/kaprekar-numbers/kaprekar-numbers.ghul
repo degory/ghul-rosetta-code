@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 kaprekar(n: int) -> bool => (
     let square mut = cast long(n) * cast long(n)

@@ -1,7 +1,6 @@
 #!/usr/bin/env ghul
 
-use IO.Std.write_line
-use Ghul.Pipes.index
+use default
 
 let words = if args.count > 0 then args else ["one", "two", "three"] fi
 for (position, word) in words |> index() do

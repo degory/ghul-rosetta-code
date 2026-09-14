@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 has_extension(name: string, extensions: string[]) -> bool =>
     extensions |> any(ext =>

@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 n_step(initial: int[]) -> Pipe[int] is
     let window = LIST(initial)

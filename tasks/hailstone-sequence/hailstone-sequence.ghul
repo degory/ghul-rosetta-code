@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 hailstone(n: int) -> Pipe[int] is
     let current mut = n

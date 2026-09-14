@@ -1,9 +1,6 @@
 use IO.Std.write
 use IO.Std.write_line
-use Ghul.Coroutines.CHANNEL
-use Ghul.Coroutines.COROUTINE
-use Ghul.Coroutines.pause
-use Ghul.Coroutines.run
+use Ghul.Coroutines
 
 class OUT_OF_INK: System.Exception is
     init() is

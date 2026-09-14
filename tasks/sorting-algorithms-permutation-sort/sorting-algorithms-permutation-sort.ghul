@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 in_order[T: Ghul.Comparable[T]](values: LIST[T]) -> bool =>
     (0..values.count - 1)

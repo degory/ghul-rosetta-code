@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 smallest_factor(n: int) -> int =>
     (2::n) |> find_or_throw(divisor => n % divisor == 0)

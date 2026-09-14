@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.SET
-use Ghul.Pipes
+use default
 
 sort_disjoint_sublist(values: LIST[int], indices: SET[int]) is
     let positions = indices |> sort() |> collect_list()

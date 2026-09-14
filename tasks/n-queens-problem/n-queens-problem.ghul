@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Pipes
+use default
 
 safe(queens: List[int], row: int, column: int) -> bool =>
     queens |> index()

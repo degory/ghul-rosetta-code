@@ -1,9 +1,8 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 union LinkedList is
-    NODE(value: int, next: LinkedList mut);
-    EMPTY;
+    NODE(value: int, next: LinkedList mut)
+    EMPTY
 si
 
 union Tree is
@@ -11,8 +10,8 @@ union Tree is
         value: int,
         left: Tree mut,
         right: Tree mut
-    );
-    LEAF;
+    )
+    LEAF
 si
 
 insert(tree: Tree, value: int) -> Tree =>

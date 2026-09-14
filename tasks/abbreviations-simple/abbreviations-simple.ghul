@@ -1,8 +1,5 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
-use System.StringComparison
-use System.StringSplitOptions
+use default
+use System
 
 use COMMAND = (word: string, minimum: int)
 

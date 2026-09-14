@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 comb_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
     let gap mut = values.count

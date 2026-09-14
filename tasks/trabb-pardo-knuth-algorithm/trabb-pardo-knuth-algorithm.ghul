@@ -1,7 +1,6 @@
-use IO.Std.write_line
+use default
 use IO.Std.read_line
 use System.Math
-use Ghul.Pipes
 
 f(x: double) -> double => Math.sqrt(Math.abs(x)) + 5.0 * x * x * x
 

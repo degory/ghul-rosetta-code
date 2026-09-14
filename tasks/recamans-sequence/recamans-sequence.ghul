@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.SET
-use Ghul.Pipes
+use default
 
 recaman() -> Pipe[int] is
     let seen = SET()

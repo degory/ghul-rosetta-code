@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 joined_larger_first(left: int, right: int) -> int =>
     string.compare_ordinal("{right}{left}", "{left}{right}")

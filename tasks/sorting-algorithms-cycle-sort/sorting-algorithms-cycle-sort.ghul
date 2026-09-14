@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 cycle_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
     for start in 0..values.count - 1 do

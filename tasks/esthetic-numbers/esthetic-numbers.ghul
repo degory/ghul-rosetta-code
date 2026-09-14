@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.Queue
-use Ghul.Pipes
+use default
 
 let digit_symbols = "0123456789abcdef"
 

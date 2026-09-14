@@ -1,9 +1,5 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.MAP
-use Ghul.Pipes
-use Raster.IMAGE
-use Raster.TURTLE
+use default
+use Raster
 
 expand(axiom: string, rules: MAP[char, string], steps: int) -> string is
     let current mut = axiom

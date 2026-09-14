@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 factorial(value: int) -> bigint is
     let product mut = 1n
