@@ -397,7 +397,8 @@
     {
       "title": "Binary strings",
       "slug": "binary-strings",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ee479094dbd7e6edc7604a5acc6081c6515999ab932590942bff9babd81ce8ee"
     },
     {
       "title": "Binomial transform",
@@ -616,7 +617,8 @@
     {
       "title": "Card shuffles",
       "slug": "card-shuffles",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "71e76fb236ef758e292699c197f6327fc82bf9d40ee85d7cb01c2d46948d7ee3"
     },
     {
       "title": "Cartesian product of two or more lists",
@@ -722,7 +724,8 @@
     {
       "title": "Collections",
       "slug": "collections",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a124dd5894aa97c9e8bf5a4fddd2b778340113b604e75750c7fd5fb3338463fe"
     },
     {
       "title": "Colorful numbers",
@@ -935,7 +938,8 @@
     {
       "title": "Define a primitive data type",
       "slug": "define-a-primitive-data-type",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "206dba0b1f7bb90b5e0d4c17161125fbdd586e2a9b2a4caac7ee8791091ada12"
     },
     {
       "title": "Department numbers",
@@ -1017,22 +1021,26 @@
     {
       "title": "Doubly-linked list/Definition",
       "slug": "doubly-linked-list-definition",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "dd34c780f009ae4b292b49bf68330f7997b8a5720d62e16b339a548ff278b834"
     },
     {
       "title": "Doubly-linked list/Element definition",
       "slug": "doubly-linked-list-element-definition",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4f817745c649f8f760ea346a4aa4baee31a76fdf8cf8591c4708e3150db83f92"
     },
     {
       "title": "Doubly-linked list/Element insertion",
       "slug": "doubly-linked-list-element-insertion",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "04603873baf21c904661c22b4cc7f605a13299610933a6a5dfa82eecb3176751"
     },
     {
       "title": "Doubly-linked list/Traversal",
       "slug": "doubly-linked-list-traversal",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d44bdfa7030fe3dbbc9a6135655187163157ea4962e6ff3b5a9d8a456f1f167d"
     },
     {
       "title": "Dragon curve",
@@ -1062,7 +1070,8 @@
     {
       "title": "Dynamic variable names",
       "slug": "dynamic-variable-names",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d0b2360a2b00b0f102539c590ffb7ab91f962e73be79bdbfff9eef5575178ac3"
     },
     {
       "title": "EKG sequence convergence",
@@ -1121,7 +1130,8 @@
     {
       "title": "Enumerations",
       "slug": "enumerations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ec2d83c9f3f0f268c203a42fd19e3706337118e1dbe44243ee4622d2ea648ec3"
     },
     {
       "title": "Environment variables",
@@ -1200,11 +1210,6 @@
       "published_hash": "59bc59b4e01c2577ed1cda4c3e1a6dee8d1340247db7d71cd4e84c5c03b70437"
     },
     {
-      "title": "Execute a system command",
-      "slug": "execute-a-system-command",
-      "state": "solved"
-    },
-    {
       "title": "Execute Brain****",
       "slug": "execute-brain",
       "state": "published",
@@ -1215,6 +1220,12 @@
       "slug": "execute-computer-zero",
       "state": "published",
       "published_hash": "d94524bc481acfa0dc648b8cf987f667fe71334fe28eec5d1ab4963281bf9d4b"
+    },
+    {
+      "title": "Execute a system command",
+      "slug": "execute-a-system-command",
+      "state": "published",
+      "published_hash": "96246573507f7302e96221eafd656214d3657339214a01af133a1b959495e921"
     },
     {
       "title": "Exponential digital sums",
@@ -1232,11 +1243,6 @@
       "slug": "extreme-floating-point-values",
       "state": "published",
       "published_hash": "ed9b06ce61b1b790a68209d7c454fca70733341c9915ed3a889fa1fbeff810bb"
-    },
-    {
-      "title": "First class environments",
-      "slug": "first-class-environments",
-      "state": "solved"
     },
     {
       "title": "FTP",
@@ -1325,7 +1331,8 @@
     {
       "title": "File extension is in extensions list",
       "slug": "file-extension-is-in-extensions-list",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "55f206a374b6747b5c4abced6a89fa17204c43145b6518dca8715edfd5e2ae66"
     },
     {
       "title": "File input/output",
@@ -1347,7 +1354,8 @@
     {
       "title": "Find common directory path",
       "slug": "find-common-directory-path",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "657687c7909a7acc6c9d8e0c87ece7d885c96ddc62f14d42f53a8daf91e7337f"
     },
     {
       "title": "Find limit of recursion",
@@ -1359,6 +1367,12 @@
       "slug": "find-square-difference",
       "state": "published",
       "published_hash": "a43bbe0ad65260ea79afa862f48d5e1ff71beddfa5a257803978d51a35b6dcf2"
+    },
+    {
+      "title": "First class environments",
+      "slug": "first-class-environments",
+      "state": "published",
+      "published_hash": "4ea88e9d9bd196140fd4e3d99323c32858175512b8783038d2cb1f0f499d612a"
     },
     {
       "title": "First-class functions",
@@ -1520,7 +1534,8 @@
     {
       "title": "Globally replace text in several files",
       "slug": "globally-replace-text-in-several-files",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1875a5c16492f868b90c6a1dc5390fc6626e7eb8bebf21d91e1a058509eaee6a"
     },
     {
       "title": "Go Fish",
@@ -1761,11 +1776,6 @@
       "note": "not interactive at all: Dijkstra and Floyd-Warshall over a fixed map, reading no input. The needs-interaction rejection and the run.session reopen were both wrong about it"
     },
     {
-      "title": "Inverted index",
-      "slug": "inverted-index",
-      "state": "solved"
-    },
-    {
       "title": "ISBN13 check digit",
       "slug": "isbn13-check-digit",
       "state": "published",
@@ -1810,7 +1820,8 @@
     {
       "title": "Implicit type conversion",
       "slug": "implicit-type-conversion",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "75f527bcc7ed3dc13aca3c2044193e8f9638a571ec3f31d986e16252dd69252f"
     },
     {
       "title": "Include a file",
@@ -1844,12 +1855,14 @@
     {
       "title": "Inheritance/Multiple",
       "slug": "inheritance-multiple",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8dd9d4ee9e39759e3250406c78c8f8a3c99a2ba92e77791afda760fec132ef17"
     },
     {
       "title": "Inheritance/Single",
       "slug": "inheritance-single",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b86a2ee64b2397430edf277443cc832430ce075fde9af567d31ecd379e56de52"
     },
     {
       "title": "Input loop",
@@ -1881,6 +1894,12 @@
       "published_hash": "e942109e61f9ca9a6a6c5cf35b8bab093b567b5c53bc5c8d69b4b606ad0b0744"
     },
     {
+      "title": "Inverted index",
+      "slug": "inverted-index",
+      "state": "published",
+      "published_hash": "300455223ce05085903e2c1555c6a997b43ac28fc0cacfe336efa120a71093ef"
+    },
+    {
       "title": "Isqrt (integer square root) of X",
       "slug": "isqrt-integer-square-root-of-x",
       "state": "published",
@@ -1901,7 +1920,8 @@
     {
       "title": "JSON",
       "slug": "json",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "32d5cba70d86eb01eb68bd99da0dcaabababb8521b6162fe669667872a9dc9e4"
     },
     {
       "title": "JSON pointer",
@@ -2038,7 +2058,8 @@
     {
       "title": "Knuth shuffle",
       "slug": "knuth-shuffle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f2812c91237b85c0249d6c025a45096ae110952de75550821203427cffc7d4a8"
     },
     {
       "title": "Knuth\u0027s algorithm S",
@@ -2146,7 +2167,8 @@
     {
       "title": "List comprehensions",
       "slug": "list-comprehensions",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "92324dfd04a7489e710c7bc2b3165054b7140de7dc25f665e5e1f85a60a333ca"
     },
     {
       "title": "Literals/Integer",
@@ -2931,11 +2953,6 @@
       "published_hash": "35116e069f82737389b74116a8ecf84428b70d2f0b37c946be94bf80e1d53b73"
     },
     {
-      "title": "Rock-paper-scissors",
-      "slug": "rock-paper-scissors",
-      "state": "solved"
-    },
-    {
       "title": "RPG attributes generator",
       "slug": "rpg-attributes-generator",
       "state": "published",
@@ -3068,6 +3085,11 @@
       "slug": "riordan-numbers",
       "state": "published",
       "published_hash": "b680b4d94b4c1f828cbda682ea5cad1c546e642ad02317a8046aac0fb4a7cee9"
+    },
+    {
+      "title": "Rock-paper-scissors",
+      "slug": "rock-paper-scissors",
+      "state": "solved"
     },
     {
       "title": "Roman numerals/Decode",
