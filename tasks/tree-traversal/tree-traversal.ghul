@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.Queue
-use Ghul.Pipes
+use default
 
 union Tree[T] is
     EMPTY

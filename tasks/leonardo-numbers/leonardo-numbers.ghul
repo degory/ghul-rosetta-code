@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 leonardo(first: int, second: int, add: int) -> Pipe[int] is
     let previous mut = first

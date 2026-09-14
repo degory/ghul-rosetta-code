@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.List
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 merge_sort[T: Ghul.Comparable[T]](values: List[T]) -> List[T] is
     if values.count <= 1 then

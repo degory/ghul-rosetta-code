@@ -1,8 +1,5 @@
 use IO.Std.write_line
-use System.Text.Json.Nodes.JsonNode
-use System.Text.Json.Nodes.JsonObject
-use System.Text.Json.Nodes.JsonArray
-use System.Text.Json.Nodes.JsonValue
+use System.Text.Json.Nodes
 
 let text =
     "{{\"name\": \"Ada\", \"age\": 36, "

@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 bernoulli(rows: int) -> Pipe[LIST[int]] is
     let row mut = LIST()

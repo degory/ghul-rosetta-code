@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 use System.Convert.to_string
 
 divisors(n: int) -> Pipe[int] =>

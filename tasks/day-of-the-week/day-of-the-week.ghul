@@ -1,7 +1,5 @@
-use IO.Std.write_line
-use Ghul.Pipes
-use System.DateTime
-use System.DayOfWeek
+use default
+use System
 
 christmas_days() -> Pipe[DateTime] is
     for year in 2008::2121 do

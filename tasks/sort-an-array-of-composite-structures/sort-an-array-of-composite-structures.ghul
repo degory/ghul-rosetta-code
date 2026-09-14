@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 let pairs = LIST([
     (name = "Crosby", value = "Stills"),

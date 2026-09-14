@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Pipes
+use default
 
 q_sequence(count: int) -> List[int] is
     let terms = LIST([0, 1, 1])

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 mobius(value: int) -> int is
     let remaining mut = value

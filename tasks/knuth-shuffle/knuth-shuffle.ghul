@@ -1,9 +1,5 @@
-use IO.Std.write_line
-use Collections.LIST
+use default
 use System.Random
-use Ghul.Pipes.map
-use Ghul.Pipes.join
-use Ghul.Pipes.collect_array
 
 knuth_shuffle(items: LIST[int], random: Random) is
     let i mut = items.count - 1

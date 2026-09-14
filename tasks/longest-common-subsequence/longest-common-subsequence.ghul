@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.MAP
-use Ghul.Pipes
+use default
 
 longest_common_subsequence(left: string, right: string) -> string is
     let known = MAP()

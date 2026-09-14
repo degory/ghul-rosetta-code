@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 strip(text: string, unwanted: string) -> string =>
     string(text |> filter(c => unwanted.index_of(c) < 0) |> collect_array())

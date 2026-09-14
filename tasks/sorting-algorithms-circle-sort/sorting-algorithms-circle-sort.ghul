@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 circle_sort_pass[T: Ghul.Comparable[T]](
     values: LIST[T], lo: int, hi: int

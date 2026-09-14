@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 overlap(left: string, right: string) -> int is
     let longest = System.Math.min(left.length, right.length)

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
+use default
 use System.Math.min
 
 levenshtein(source: string, target: string) -> int is

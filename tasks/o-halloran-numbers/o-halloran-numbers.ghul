@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.SET
-use Ghul.Pipes
+use default
 
 cuboid_areas() -> SET[int] is
     let areas = SET()

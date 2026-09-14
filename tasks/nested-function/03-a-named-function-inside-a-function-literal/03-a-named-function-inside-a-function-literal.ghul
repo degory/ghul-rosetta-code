@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 let make_list = (separator: string) -> string is
     let counter mut = 0

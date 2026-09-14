@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 cocktail_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
     let swapped mut = true

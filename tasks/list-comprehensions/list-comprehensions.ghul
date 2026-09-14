@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 triples_pipe(n: int) -> Pipe[(int, int, int)] =>
     (1..n) |> flat_map((a: int) =>

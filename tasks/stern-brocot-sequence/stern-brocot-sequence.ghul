@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 let sequence = LIST([1, 1])
 let considered mut = 1

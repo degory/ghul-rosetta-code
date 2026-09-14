@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 strip_block_comments(
     text: string, start: string, ended: string

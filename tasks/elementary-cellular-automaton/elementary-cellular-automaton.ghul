@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Pipes
+use default
 
 neighbourhood(cells: List[bool], at: int) -> int is
     let left = cells[(at + cells.count - 1) % cells.count]

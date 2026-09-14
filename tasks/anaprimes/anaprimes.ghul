@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 let sieve_limit = 10_000_000
 let composite = LIST(sieve_limit)

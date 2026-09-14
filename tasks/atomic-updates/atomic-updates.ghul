@@ -1,15 +1,8 @@
 // The scheduler is cooperative and only changes coroutine at an await,
 // so a method with no await in it runs to completion undisturbed.
 
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Coroutines.COROUTINE
-use Ghul.Coroutines.pause
-use Ghul.Coroutines.run
-use Ghul.Pipes.join
-use Ghul.Pipes.map
-use Ghul.Pipes.reduce
+use default
+use Ghul.Coroutines
 
 class BUCKETS is
     _values: LIST[int]

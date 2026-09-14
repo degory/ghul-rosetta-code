@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 divisor_count(n: int) -> int is
     let count mut = 0

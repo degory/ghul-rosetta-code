@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Pipes
+use default
 
 use PATIENT = (id: string, lastname: string)
 use VISIT = (id: string, date: string, score: double?)

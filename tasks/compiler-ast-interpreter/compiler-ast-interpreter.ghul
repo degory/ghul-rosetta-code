@@ -1,6 +1,5 @@
 use IO.Std
-use Collections.LIST
-use Collections.MAP
+use default
 
 union Node is
     EMPTY

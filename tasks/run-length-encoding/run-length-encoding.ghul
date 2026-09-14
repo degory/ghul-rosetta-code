@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 encode(text: string) -> string is
     let runs = System.Text.StringBuilder()

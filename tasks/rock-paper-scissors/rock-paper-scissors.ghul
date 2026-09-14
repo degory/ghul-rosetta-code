@@ -1,12 +1,11 @@
-use IO.Std.write_line
+use default
 use IO.Std.read_line
-use Collections.MAP
 use System.Random
 
 union Move is
-    ROCK;
-    PAPER;
-    SCISSORS;
+    ROCK
+    PAPER
+    SCISSORS
 si
 
 parse(text: string) -> Move =>
@@ -19,10 +18,9 @@ parse(text: string) -> Move =>
 
 name(move: Move) -> string =>
     case move
-    when Move.ROCK then "rock"
-    when Move.PAPER then "paper"
-    when Move.SCISSORS then "scissors"
-    else throw System.Exception("unrecognised move")
+    when _: Move.ROCK then "rock"
+    when _: Move.PAPER then "paper"
+    when _: Move.SCISSORS then "scissors"
     esac
 
 beats(a: Move, b: Move) -> bool =>
@@ -32,10 +30,9 @@ beats(a: Move, b: Move) -> bool =>
 
 counters(move: Move) -> Move =>
     case move
-    when Move.ROCK then Move.PAPER
-    when Move.PAPER then Move.SCISSORS
-    when Move.SCISSORS then Move.ROCK
-    else throw System.Exception("unrecognised move")
+    when _: Move.ROCK then Move.PAPER
+    when _: Move.PAPER then Move.SCISSORS
+    when _: Move.SCISSORS then Move.ROCK
     esac
 
 let random = Random(7)
@@ -68,18 +65,20 @@ while line? do
     let move_text = line
     let player_move = parse(move_text)
     let computer_move = choose_computer_move()
+    let played =
+        "you: {name(player_move)}, computer: {name(computer_move)}"
 
     counts[move_text] = counts[move_text] + 1
 
     if beats(player_move, computer_move) then
         player_wins = player_wins + 1
-        write_line("you: {name(player_move)}, computer: {name(computer_move)}, you win")
+        write_line("{played}, you win")
     elif beats(computer_move, player_move) then
         computer_wins = computer_wins + 1
-        write_line("you: {name(player_move)}, computer: {name(computer_move)}, computer wins")
+        write_line("{played}, computer wins")
     else
         ties = ties + 1
-        write_line("you: {name(player_move)}, computer: {name(computer_move)}, tie")
+        write_line("{played}, tie")
     fi
 
     line = read_line()

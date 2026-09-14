@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
-use Collections.List
+use default
 
 let factorial = n rec => if n <= 1 then 1 else n * rec(n - 1) fi
 

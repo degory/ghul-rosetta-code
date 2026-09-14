@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.MAP
-use Ghul.Pipes
+use default
 
 sorted_letters(word: string) -> string =>
     string(word |> sort() |> collect_array())

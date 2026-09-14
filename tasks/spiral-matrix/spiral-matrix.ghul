@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 let headings = [(down = 0, across = 1), (down = 1, across = 0),
                 (down = 0, across = -1), (down = -1, across = 0)]

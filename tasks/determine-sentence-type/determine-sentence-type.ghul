@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 let text =
     "hi there, how are you today? I'd like to present to you the washing "

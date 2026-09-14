@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 substrings(text: string) -> Pipe[string] is
     for start in 0..text.length do

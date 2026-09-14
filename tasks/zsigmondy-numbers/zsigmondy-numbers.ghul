@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 difference(exponent: int, a: int, b: int) -> bigint =>
     bigint.pow(bigint(a), exponent) -

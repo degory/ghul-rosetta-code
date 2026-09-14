@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 repeats(text: string, size: int) -> bool =>
     (0..text.length) |> all(index => text[index] == text[index % size])

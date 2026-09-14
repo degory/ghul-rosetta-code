@@ -1,7 +1,5 @@
-use Collections.List
-use Ghul.Pipes
-use Raster.IMAGE
-use Raster.TURTLE
+use default
+use Raster
 
 let image = IMAGE(640, 360)
 

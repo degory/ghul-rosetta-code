@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 row_of(n: int) -> LIST[bigint] is
     let row mut = LIST()

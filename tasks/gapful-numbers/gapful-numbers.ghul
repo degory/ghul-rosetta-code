@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 gapful_from(start: int, wanted: int) -> LIST[int] is
     let found = LIST()

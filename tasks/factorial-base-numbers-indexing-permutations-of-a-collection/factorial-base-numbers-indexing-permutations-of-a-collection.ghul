@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 permute[T](digits: Collections.List[int], items: Collections.List[T])
         -> LIST[T] is

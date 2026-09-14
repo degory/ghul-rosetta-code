@@ -1,5 +1,4 @@
-use IO.Std
-use IO.File
+use IO
 
 let contents = File.read_all_text("input.txt")
 

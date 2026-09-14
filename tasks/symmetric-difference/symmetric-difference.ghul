@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.SET
-use Ghul.Pipes
+use default
 
 only_in(left: SET[string], right: SET[string]) -> Pipe[string] =>
     left |> filter(name => !right.contains(name))

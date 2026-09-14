@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.SET
-use Ghul.Pipes
+use default
 
 is_colorful(value: int) -> bool is
     if value < 10 then return true fi

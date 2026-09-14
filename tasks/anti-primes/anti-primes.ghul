@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 divisor_count(n: int) -> int =>
     (1::n) |> filter(divisor => n % divisor == 0) |> count()

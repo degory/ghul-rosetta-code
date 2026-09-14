@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.MAP
-use Collections.List
-use Ghul.Pipes
+use default
 
 union Expression is
     VARIABLE(name: string)

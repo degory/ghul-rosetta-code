@@ -1,13 +1,8 @@
 // Each philosopher takes the lower-numbered of its two forks first, so
 // the table cannot deadlock.
 
-use IO.Std.write_line
-use Ghul.Coroutines.COROUTINE
-use Ghul.Coroutines.MUTEX
-use Ghul.Coroutines.pause
-use Ghul.Coroutines.run
-use Ghul.Pipes.collect_list
-use Ghul.Pipes.map
+use default
+use Ghul.Coroutines
 
 let philosophers =
     ["Aristotle", "Kant", "Spinoza", "Marx", "Russell"]

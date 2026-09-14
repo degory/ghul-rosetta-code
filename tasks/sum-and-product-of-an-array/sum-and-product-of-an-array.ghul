@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 let numbers = [1, 2, 3, 4, 5]
 

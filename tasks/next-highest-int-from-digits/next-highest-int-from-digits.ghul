@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 next_highest(number: string) -> string =>
     if let pivot = (0..number.length - 1)

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 is_curzon(base: int, n: int) -> bool is
     let divisor = bigint(base * n + 1)

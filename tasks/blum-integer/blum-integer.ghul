@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 let limit = 8_900_000
 let smallest_factor = LIST(limit + 1)

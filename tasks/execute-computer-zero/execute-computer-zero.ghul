@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.MAP
-use Ghul.Pipes
+use default
 
 let opcodes =
     LIST(["NOP", "LDA", "STA", "ADD", "SUB", "BRZ", "JMP", "STP"])

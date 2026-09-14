@@ -1,8 +1,6 @@
 use IO.Std.read_line
 use IO.Std.write
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 // Seeded, so the transcript below reproduces. The guesses come from
 // standard input, which is not echoed, so the program prints each one.

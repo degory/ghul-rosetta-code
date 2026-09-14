@@ -1,9 +1,9 @@
 use IO.Std.write_line
 
 union Shape is
-    CIRCLE(radius: double);
-    RECTANGLE(width: double, height: double);
-    TRIANGLE(base: double, height: double);
+    CIRCLE(radius: double)
+    RECTANGLE(width: double, height: double)
+    TRIANGLE(base: double, height: double)
 si
 
 area(shape: Shape) -> double =>

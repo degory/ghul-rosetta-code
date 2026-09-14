@@ -1,8 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.MAP
-use Collections.SET
-use Ghul.Pipes
+use default
 
 summarize(term: string) -> string is
     let counts = MAP[char, int]()

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 derivative(value: bigint) -> bigint is
     if value.sign < 0 then return 0n - derivative(-value) fi

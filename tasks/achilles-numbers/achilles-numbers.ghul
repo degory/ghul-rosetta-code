@@ -1,8 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Collections.Iterable
-use Ghul.Pipes
+use default
 
 factorize(n: int) -> List[(prime: int, exponent: int)] is
     let factors = LIST()

@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.List
-use Ghul.Pipes
+use default
 
 top(pile: LIST[int]) -> int => pile[pile.count - 1]
 

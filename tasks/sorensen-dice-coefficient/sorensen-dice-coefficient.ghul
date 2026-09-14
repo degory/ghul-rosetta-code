@@ -1,7 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Collections.MAP
-use Ghul.Pipes
+use default
 
 bigrams(phrase: string) -> MAP[string, int] =>
     (let counted = MAP[string, int]()

@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 permutations(items: LIST[int]) -> Pipe[LIST[int]] is
     if items.count == 0 then

@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections
-use Ghul.Pipes
+use default
 use Matrix = List[List[int]]
 
 multiply(left: Matrix, right: Matrix) -> Matrix is

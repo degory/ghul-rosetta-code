@@ -2,9 +2,7 @@
 // step, and nothing reads a real one.
 
 use IO.Std.write_line
-use Ghul.Coroutines.COROUTINE
-use Ghul.Coroutines.pause
-use Ghul.Coroutines.run
+use Ghul.Coroutines
 use System.Math.pi
 use System.Math.sin
 

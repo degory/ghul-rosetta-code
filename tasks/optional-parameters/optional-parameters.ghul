@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.List
-use Ghul.Pipes
+use default
 
 use Ordering = (string, string) -> int
 use Row = string[]

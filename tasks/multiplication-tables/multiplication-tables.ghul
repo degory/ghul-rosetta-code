@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 let heading = (1::12) |> map(column => "{column,4}") |> join("")
 

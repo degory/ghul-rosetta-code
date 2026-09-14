@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 fairshare(base: int) -> Pipe[int] =>
     from(0) |> map(count => digit_sum(count, base) % base)

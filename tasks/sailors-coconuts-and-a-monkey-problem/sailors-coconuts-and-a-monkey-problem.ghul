@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 satisfies_tale(total: int, sailors: int) -> bool is
     let pile mut = total

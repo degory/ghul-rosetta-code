@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 mod_pow(base: long, exponent: long, modulus: long) -> long is
     let result mut = 1L

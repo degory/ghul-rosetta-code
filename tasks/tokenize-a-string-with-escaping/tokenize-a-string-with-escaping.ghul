@@ -1,6 +1,5 @@
-use IO.Std.write_line
+use default
 use System.Text.StringBuilder
-use Ghul.Pipes
 
 tokenize(text: string, separator: char, escape: char) -> Pipe[string] is
     let token = StringBuilder()

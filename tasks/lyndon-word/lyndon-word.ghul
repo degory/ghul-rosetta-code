@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 lyndon_words(alphabet: string, n: int) -> Pipe[string] is
     let last = alphabet.length - 1

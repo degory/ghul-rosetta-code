@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.SET
-use Ghul.Pipes
+use default
 
 render(s: SET[int]) -> string is
     let items = s |> collect_list()

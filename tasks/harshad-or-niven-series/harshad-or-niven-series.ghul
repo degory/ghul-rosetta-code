@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 digit_sum(value: int) -> int =>
     if value < 10 then

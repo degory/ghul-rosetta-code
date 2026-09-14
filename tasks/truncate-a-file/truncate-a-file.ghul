@@ -1,8 +1,5 @@
-use IO.Std.write_line
-use IO.FileStream
-use IO.FileMode
-use IO.FileAccess
-use Ghul.Pipes.join
+use default
+use IO
 
 truncate(path: string, length: long) is
     if !IO.File.exists(path) then

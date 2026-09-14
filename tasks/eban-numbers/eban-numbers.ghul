@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 eban_group(group: int) -> bool =>
     (let (tens, units) = (group / 10, group % 10)

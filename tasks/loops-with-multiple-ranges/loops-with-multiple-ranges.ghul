@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 stepped(start: int, stop: int, step: int) -> Pipe[int] is
     let value mut = start

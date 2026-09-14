@@ -1,6 +1,4 @@
-use Collections.LIST
-use Ghul.Pipes
-use IO.Std.write_line
+use default
 
 use COLOUR = (red: ubyte, green: ubyte, blue: ubyte)
 

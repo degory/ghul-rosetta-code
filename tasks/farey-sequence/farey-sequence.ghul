@@ -1,5 +1,4 @@
-use IO.Std.write_line
-use Ghul.Pipes
+use default
 
 farey(order: int) -> Pipe[(numerator: int, denominator: int)] is
     let low mut = (numerator = 0, denominator = 1)

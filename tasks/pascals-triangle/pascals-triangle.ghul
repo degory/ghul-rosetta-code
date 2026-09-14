@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections
-use Ghul.Pipes
+use default
 
 rows(count: int) -> Ghul.Pipes.Pipe[List[int]] is
     let row mut = LIST([1])

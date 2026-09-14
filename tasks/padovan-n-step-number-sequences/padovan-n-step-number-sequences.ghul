@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 
 padovan(step: int, count: int) -> LIST[int] is
     let terms mut = LIST()

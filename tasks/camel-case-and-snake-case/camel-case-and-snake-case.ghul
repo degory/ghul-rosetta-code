@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.LIST
-use Ghul.Pipes
+use default
 use System.Text.StringBuilder
 
 class NAME(words: Collections.List[string] private) is

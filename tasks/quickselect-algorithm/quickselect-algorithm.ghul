@@ -1,6 +1,4 @@
-use IO.Std.write_line
-use Collections.List
-use Ghul.Pipes
+use default
 
 quickselect(values: List[int], k: int) -> int is
     let pivot = values[values.count / 2]

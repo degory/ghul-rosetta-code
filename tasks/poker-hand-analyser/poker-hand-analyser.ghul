@@ -1,12 +1,4 @@
-use IO.Std.write_line
-use Collections.MAP
-use Collections.SET
-use Ghul.Pipes.map
-use Ghul.Pipes.sort
-use Ghul.Pipes.each
-use Ghul.Pipes.join
-use Ghul.Pipes.all
-use Ghul.Pipes.collect_array
+use default
 
 let face_values = MAP[string, int]()
 

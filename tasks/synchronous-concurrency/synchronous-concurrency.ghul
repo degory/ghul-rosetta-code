@@ -1,8 +1,5 @@
 use IO.Std.write_line
-use Ghul.Coroutines.CHANNEL
-use Ghul.Coroutines.COROUTINE
-use Ghul.Coroutines.pause
-use Ghul.Coroutines.run
+use Ghul.Coroutines
 
 union Request is
     PRINT(line: string)
