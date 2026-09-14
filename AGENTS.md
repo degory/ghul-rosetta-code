@@ -451,12 +451,21 @@ side. A solution that prints several results is one part, not several.
 
 ## Test requirements
 
-The integration tests must pass before opening a pull request. They are what CI runs, and they
+The integration tests must pass before a pull request merges. They are what CI runs, and they
 build each task as they go.
 
 | Step | How to run | Typical duration |
 |------|-----------|------------------|
-| Integration tests | `dotnet ghul-test --use-dotnet-build tasks` | seconds to minutes |
+| One task's test | `dotnet ghul-test --use-dotnet-build tasks/<slug>` | seconds |
+| Integration tests | `dotnet ghul-test --use-dotnet-build tasks` | minutes |
+
+Locally, run the tests for the tasks you created or edited, and no others: name them on one command
+line (`tasks/<slug-a> tasks/<slug-b>`). A new task has to be run anyway to capture its expectation,
+and an edited one to show it still passes. A task nobody touched cannot have changed, and CI runs the
+whole suite on every pull request, so adding solutions never calls for running all of them. Whether
+to run the whole suite, or a subset, is a judgement call only when something every task depends on
+has changed: the compiler or runtime version, `Directory.Build.props` or `Directory.Packages.props`,
+the test runner or how the tests are run, or a shared script.
 
 A root `dotnet build` type-checks every solution in one pass and is the only thing that reports a
 stray statement terminator, so it is worth running, but it produces none of the programs - see
