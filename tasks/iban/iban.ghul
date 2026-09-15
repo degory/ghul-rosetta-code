@@ -1,0 +1,27 @@
+use default
+
+is_valid_iban(raw: string) -> bool is
+    let iban = raw |> filter(ch => ch != ' ') |> map(ch => "{ch}") |> join("")
+
+    if iban.length < 4 \/ !(iban[0] >= 'A' /\ iban[0] <= 'Z') \/ !(iban[1] >= 'A' /\ iban[1] <= 'Z') then
+        return false
+    fi
+
+    let rearranged = "{iban[4..<0]}{iban[0..4]}"
+
+    let numeric = rearranged
+        |> map(ch => if ch >= 'A' /\ ch <= 'Z' then "{cast int(ch) - cast int('A') + 10}" else "{ch}" fi)
+        |> join("")
+
+    let remainder mut = 0
+
+    for ch in numeric do
+        remainder = (remainder * 10 + (cast int(ch) - cast int('0'))) % 97
+    od
+
+    remainder == 1
+si
+
+for candidate in ["GB82 WEST 1234 5698 7654 32", "GB82 WEST 1234 5698 7654 33"] do
+    write_line("{candidate}: {if is_valid_iban(candidate) then "valid" else "invalid" fi}")
+od
