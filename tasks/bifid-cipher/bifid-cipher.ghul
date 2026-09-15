@@ -6,30 +6,17 @@ class SQUARE(letters: string) is
     at(r: int, c: int) -> char => letters[(r - 1) * 5 + (c - 1)]
 si
 
-normalize(text: string) -> string is
-    let sb = System.Text.StringBuilder()
-
-    for ch in text.to_upper() do
-        if ch >= 'A' /\ ch <= 'Z' then
-            sb.append(if ch == 'J' then 'I' else ch fi)
-        fi
-    od
-
-    sb.to_string()
-si
+normalize(text: string) -> string =>
+    text.to_upper()
+        |> filter(ch => ch >= 'A' /\ ch <= 'Z')
+        |> map(ch => if ch == 'J' then 'I' else ch fi)
+        |> map(ch => "{ch}")
+        |> join("")
 
 encrypt(text: string, square: SQUARE) -> string is
     let letters = normalize(text)
     let n = letters.length
-    let coords = LIST[int]()
-
-    for ch in letters do
-        coords.add(square.row(ch))
-    od
-
-    for ch in letters do
-        coords.add(square.col(ch))
-    od
+    let coords = (letters |> map(square.row)) |> cat(letters |> map(square.col)) |> collect_list()
 
     let sb = System.Text.StringBuilder()
 
@@ -43,12 +30,7 @@ si
 decrypt(text: string, square: SQUARE) -> string is
     let letters = normalize(text)
     let n = letters.length
-    let coords = LIST[int]()
-
-    for ch in letters do
-        coords.add(square.row(ch))
-        coords.add(square.col(ch))
-    od
+    let coords = letters |> flat_map(ch => [square.row(ch), square.col(ch)]) |> collect_list()
 
     let sb = System.Text.StringBuilder()
 
