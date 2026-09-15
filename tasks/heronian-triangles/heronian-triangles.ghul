@@ -1,0 +1,87 @@
+use default
+use TRIANGLE = (a: int, b: int, c: int, area: long)
+
+gcd(a: int, b: int) -> int is
+    let x mut = a
+    let y mut = b
+
+    while y != 0 do
+        let t = y
+
+        y = x % y
+        x = t
+    od
+
+    x
+si
+
+heron_area(a: int, b: int, c: int) -> long? is
+    let al = cast long(a)
+    let bl = cast long(b)
+    let cl = cast long(c)
+    let sixteen_area_sq = 2L * al * al * bl * bl + 2L * bl * bl * cl * cl + 2L * cl * cl * al * al - al * al * al * al - bl * bl * bl * bl - cl * cl * cl * cl
+
+    if sixteen_area_sq <= 0L then
+        return null
+    fi
+
+    let root = cast long(System.Math.sqrt(cast double(sixteen_area_sq)))
+
+    for r in [root - 1L, root, root + 1L] do
+        if r >= 0L /\ r * r == sixteen_area_sq /\ r % 4L == 0L then
+            return r / 4L
+        fi
+    od
+
+    null
+si
+
+try_triangle(a: int, b: int, c: int) -> TRIANGLE? is
+    if let area = heron_area(a, b, c) then
+        (a = a, b = b, c = c, area = area)
+    else
+        null
+    fi
+si
+
+compare_triangles(x: TRIANGLE, y: TRIANGLE) -> int is
+    let by_area = x.area <> y.area
+
+    if by_area != 0 then
+        return by_area
+    fi
+
+    let by_perimeter = (x.a + x.b + x.c) <> (y.a + y.b + y.c)
+
+    if by_perimeter != 0 then
+        return by_perimeter
+    fi
+
+    x.c <> y.c
+si
+
+let triangles =
+    (1::200)
+        |> flat_map(a => (a::200)
+            |> flat_map(b => (b::200)
+                |> filter(c => a + b > c /\ gcd(gcd(a, b), c) == 1)
+                |> map(c => try_triangle(a, b, c))))
+        |> filter(t => t?)
+        |> map(t => t!)
+        |> sort(compare_triangles)
+        |> collect_list()
+
+write_line("primitive Heronian triangles with sides <= 200: {triangles.count}")
+write_line("")
+write_line("first ten, ordered by area, then perimeter, then longest side:")
+
+for t in triangles |> take(10) do
+    write_line("  sides = ({t.a}, {t.b}, {t.c}), perimeter = {t.a + t.b + t.c}, area = {t.area}")
+od
+
+write_line("")
+write_line("triangles with area = 210:")
+
+for t in triangles |> filter(t => t.area == 210L) do
+    write_line("  sides = ({t.a}, {t.b}, {t.c}), perimeter = {t.a + t.b + t.c}, area = {t.area}")
+od
