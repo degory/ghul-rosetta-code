@@ -1,0 +1,39 @@
+use default
+
+lis(xs: int[]) -> LIST[int] is
+    let n = xs.count
+    let lengths = (0::n) |> map(_ => 1) |> collect_list()
+    let prev = (0::n) |> map(_ => -1) |> collect_list()
+
+    for i in 0..n do
+        for j in 0..i do
+            if xs[j] < xs[i] /\ lengths[j] + 1 > lengths[i] then
+                lengths[i] = lengths[j] + 1
+                prev[i] = j
+            fi
+        od
+    od
+
+    let best_index mut = 0
+
+    for i in 0..n do
+        if lengths[i] > lengths[best_index] then
+            best_index = i
+        fi
+    od
+
+    let result = LIST[int]()
+    let cur mut = best_index
+
+    while cur >= 0 do
+        result.add(xs[cur])
+        cur = prev[cur]
+    od
+
+    result |> reverse() |> collect_list()
+si
+
+for xs in [[3, 2, 6, 4, 5, 1], [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]] do
+    write_line("{xs |> map(x => "{x}") |> join(", ")}")
+    write_line("  -> {lis(xs) |> map(x => "{x}") |> join(", ")}")
+od
