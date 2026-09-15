@@ -1,28 +1,10 @@
 use default
 
-**(base: int, exponent: int) -> int is
-    let result mut = 1
-    let e mut = exponent
+**(base: int, exponent: int) -> int =>
+    (1::exponent) |> reduce(1, (result, _) => result * base)
 
-    while e > 0 do
-        result = result * base
-        e = e - 1
-    od
-
-    result
-si
-
-**(base: double, exponent: int) -> double is
-    let result mut = 1.0
-    let e mut = exponent
-
-    while e > 0 do
-        result = result * base
-        e = e - 1
-    od
-
-    result
-si
+**(base: double, exponent: int) -> double =>
+    (1::exponent) |> reduce(1.0, (result, _) => result * base)
 
 power(base: int, exponent: int) -> int => base ** exponent
 power(base: double, exponent: int) -> double => base ** exponent
