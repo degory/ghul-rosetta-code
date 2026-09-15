@@ -1,0 +1,53 @@
+use default
+
+is_prime(n: int) -> bool is
+    if n < 2 then
+        return false
+    fi
+
+    if n % 2 == 0 then
+        return n == 2
+    fi
+
+    let i mut = 3
+
+    while i * i <= n do
+        if n % i == 0 then
+            return false
+        fi
+
+        i = i + 2
+    od
+
+    true
+si
+
+mod_pow(base: long, exponent: long, modulus: long) -> long is
+    let result mut = 1L
+    let b mut = base % modulus
+    let e mut = exponent
+
+    while e > 0L do
+        if e % 2L == 1L then
+            result = (result * b) % modulus
+        fi
+
+        e = e / 2L
+        b = (b * b) % modulus
+    od
+
+    result
+si
+
+is_pseudoprime(a: int, x: int) -> bool =>
+    x > 1 /\ !is_prime(x) /\ mod_pow(cast long(a), cast long(x - 1), cast long(x)) == 1L
+
+pseudoprimes_up_to(a: int, limit: int) -> LIST[int] =>
+    (2::limit) |> filter(x => is_pseudoprime(a, x)) |> collect_list()
+
+for a in 1::20 do
+    let found = pseudoprimes_up_to(a, 12000)
+    let first_twenty = found |> take(20) |> map(x => "{x}") |> join(", ")
+
+    write_line("base {a}: count = {found.count}, first 20: {first_twenty}")
+od
