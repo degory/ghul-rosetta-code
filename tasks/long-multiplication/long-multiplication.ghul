@@ -1,6 +1,10 @@
 use default
 
-digits_of(s: string) -> LIST[int] => s |> reverse() |> map(c => cast int(c) - cast int('0')) |> collect_list()
+digits_of(s: string) -> LIST[int] is
+    let value = c => cast int(c) - cast int('0')
+
+    s |> reverse() |> map(value) |> collect_list()
+si
 
 multiply(a: string, b: string) -> string is
     let da = digits_of(a)

@@ -33,7 +33,15 @@ lis(xs: int[]) -> LIST[int] is
     result |> reverse() |> collect_list()
 si
 
-for xs in [[3, 2, 6, 4, 5, 1], [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]] do
-    write_line("{xs |> map(x => "{x}") |> join(", ")}")
-    write_line("  -> {lis(xs) |> map(x => "{x}") |> join(", ")}")
+let sequences = [
+    [3, 2, 6, 4, 5, 1],
+    [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
+]
+
+for xs in sequences do
+    let xs_text = xs |> map(x => "{x}") |> join(", ")
+    let lis_text = lis(xs) |> map(x => "{x}") |> join(", ")
+
+    write_line("{xs_text}")
+    write_line("  -> {lis_text}")
 od

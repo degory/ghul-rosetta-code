@@ -1,7 +1,8 @@
 use default
 use RESULT = (is_lychrel: bool, values: LIST[bigint])
 
-reverse_digits(n: bigint) -> bigint => bigint.parse("{n}" |> reverse() |> join(""))
+reverse_digits(n: bigint) -> bigint =>
+    bigint.parse("{n}" |> reverse() |> join(""))
 
 is_palindrome(n: bigint) -> bool is
     let s = "{n}"
@@ -50,9 +51,18 @@ for n in 1::10000 do
     fi
 od
 
+let seeds_text = seeds |> map(n => "{n}") |> join(", ")
+let related_starts = palindromic_starts
+    |> filter(n => seeds.contains(n) \/ seen.contains(cast bigint(n)))
+    |> map(n => "{n}")
+    |> join(", ")
+
 write_line("seed Lychrel candidates: {seeds.count}")
-write_line("{seeds |> map(n => "{n}") |> join(", ")}")
+write_line("{seeds_text}")
 write_line("")
 write_line("related Lychrel candidates: {related_count}")
 write_line("")
-write_line("palindromic starting numbers among 1..10000 that are Lychrel seeds or related: {palindromic_starts |> filter(n => seeds.contains(n) \/ seen.contains(cast bigint(n))) |> map(n => "{n}") |> join(", ")}")
+write_line(
+    "palindromic starting numbers among 1..10000 that are Lychrel "
+    "seeds or related: {related_starts}"
+)
