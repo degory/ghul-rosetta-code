@@ -1,0 +1,78 @@
+use default
+
+class SQUARE(letters: string) is
+    row(c: char) -> int => letters.index_of(c) / 5 + 1
+    col(c: char) -> int => letters.index_of(c) % 5 + 1
+    at(r: int, c: int) -> char => letters[(r - 1) * 5 + (c - 1)]
+si
+
+normalize(text: string) -> string is
+    let sb = System.Text.StringBuilder()
+
+    for ch in text.to_upper() do
+        if ch >= 'A' /\ ch <= 'Z' then
+            sb.append(if ch == 'J' then 'I' else ch fi)
+        fi
+    od
+
+    sb.to_string()
+si
+
+encrypt(text: string, square: SQUARE) -> string is
+    let letters = normalize(text)
+    let n = letters.length
+    let coords = LIST[int]()
+
+    for ch in letters do
+        coords.add(square.row(ch))
+    od
+
+    for ch in letters do
+        coords.add(square.col(ch))
+    od
+
+    let sb = System.Text.StringBuilder()
+
+    for i in 0..n do
+        sb.append(square.at(coords[i * 2], coords[i * 2 + 1]))
+    od
+
+    sb.to_string()
+si
+
+decrypt(text: string, square: SQUARE) -> string is
+    let letters = normalize(text)
+    let n = letters.length
+    let coords = LIST[int]()
+
+    for ch in letters do
+        coords.add(square.row(ch))
+        coords.add(square.col(ch))
+    od
+
+    let sb = System.Text.StringBuilder()
+
+    for i in 0..n do
+        sb.append(square.at(coords[i], coords[n + i]))
+    od
+
+    sb.to_string()
+si
+
+demo(label: string, message: string, square: SQUARE) is
+    let encoded = encrypt(message, square)
+    let decoded = decrypt(encoded, square)
+
+    write_line(label)
+    write_line("  plain:   {normalize(message)}")
+    write_line("  encoded: {encoded}")
+    write_line("  decoded: {decoded}")
+si
+
+let archetype = SQUARE("ABCDEFGHIKLMNOPQRSTUVWXYZ")
+let wiki_square = SQUARE("BGWKZQPNDSIOAXEFCLUMTHYVR")
+
+demo("archetypal square, task's own example", "ATTACKATDAWN", archetype)
+demo("Wikipedia square, Wikipedia's own example", "FLEEATONCE", wiki_square)
+demo("task's example message, Wikipedia's square", "ATTACKATDAWN", wiki_square)
+demo("longer message, archetypal square", "The invasion will start on the first of January", archetype)
