@@ -1,0 +1,35 @@
+use default
+
+squeezed(text: string, target: char) -> Ghul.Pipes.Pipe[char] is
+    let previous: char? mut = null
+
+    for ch in text do
+        if ch != target \/ !previous? \/ previous != target then
+            yield ch
+        fi
+
+        previous = ch
+    od
+si
+
+squeeze(text: string, target: char) -> string => squeezed(text, target) |> map(c => "{c}") |> join("")
+
+show(text: string, target: char) is
+    let result = squeeze(text, target)
+
+    write_line("squeeze character: '{target}'")
+    write_line("original: length = {text.length}, string = <<<{text}>>>")
+    write_line("squeezed: length = {result.length}, string = <<<{result}>>>")
+    write_line("")
+si
+
+show("", ' ')
+show("\"If I were two-faced, would I be wearing this one?\" --- Abraham Lincoln ", '-')
+show("..1111111111111111111111111111111111111111111111111111111111111117777888", '7')
+show("I never give 'em hell, I just tell the truth, and they think it's hell. ", '.')
+
+let truman = "                                                   ---  Harry S Truman  "
+
+for target in [' ', '-', 'r'] do
+    show(truman, target)
+od
