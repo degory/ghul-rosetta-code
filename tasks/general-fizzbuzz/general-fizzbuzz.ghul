@@ -1,0 +1,17 @@
+use default
+use IO.Std.read_line
+
+let max_n = int.parse(read_line()!)
+let factors = LIST[(factor: int, word: string)]()
+
+for _ in 0..3 do
+    let parts = read_line()!.split([' '])
+
+    factors.add((factor = int.parse(parts[0]), word = parts[1]))
+od
+
+for n in 1::max_n do
+    let label = factors |> filter(f => n % f.factor == 0) |> map(f => f.word) |> join("")
+
+    write_line(if label.length == 0 then "{n}" else label fi)
+od
