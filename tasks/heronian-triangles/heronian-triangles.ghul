@@ -19,7 +19,12 @@ heron_area(a: int, b: int, c: int) -> long? is
     let al = cast long(a)
     let bl = cast long(b)
     let cl = cast long(c)
-    let sixteen_area_sq = 2L * al * al * bl * bl + 2L * bl * bl * cl * cl + 2L * cl * cl * al * al - al * al * al * al - bl * bl * bl * bl - cl * cl * cl * cl
+    let cross_terms =
+        2L * al * al * bl * bl +
+        2L * bl * bl * cl * cl +
+        2L * cl * cl * al * al
+    let squares = al * al * al * al + bl * bl * bl * bl + cl * cl * cl * cl
+    let sixteen_area_sq = cross_terms - squares
 
     if sixteen_area_sq <= 0L then
         return null
@@ -71,17 +76,28 @@ let triangles =
         |> sort(compare_triangles)
         |> collect_list()
 
-write_line("primitive Heronian triangles with sides <= 200: {triangles.count}")
+describe(t: TRIANGLE) is
+    let perimeter = t.a + t.b + t.c
+
+    write_line(
+        "  sides = ({t.a}, {t.b}, {t.c}), "
+        "perimeter = {perimeter}, area = {t.area}"
+    )
+si
+
+write_line(
+    "primitive Heronian triangles with sides <= 200: {triangles.count}"
+)
 write_line("")
 write_line("first ten, ordered by area, then perimeter, then longest side:")
 
 for t in triangles |> take(10) do
-    write_line("  sides = ({t.a}, {t.b}, {t.c}), perimeter = {t.a + t.b + t.c}, area = {t.area}")
+    describe(t)
 od
 
 write_line("")
 write_line("triangles with area = 210:")
 
 for t in triangles |> filter(t => t.area == 210L) do
-    write_line("  sides = ({t.a}, {t.b}, {t.c}), perimeter = {t.a + t.b + t.c}, area = {t.area}")
+    describe(t)
 od
