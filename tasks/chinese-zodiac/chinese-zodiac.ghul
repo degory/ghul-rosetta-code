@@ -1,0 +1,22 @@
+use default
+
+let animals = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"]
+let elements = ["Wood", "Fire", "Earth", "Metal", "Water"]
+let stems = ["jia3", "yi3", "bing3", "ding1", "wu4", "ji3", "geng1", "xin1", "ren2", "gui3"]
+let branches = ["zi3", "chou3", "yin2", "mao3", "chen2", "si4", "wu3", "wei4", "shen1", "you3", "xu1", "hai4"]
+
+zodiac(year: int) is
+    let offset = year - 1984
+    let stem_index = ((offset % 10) + 10) % 10
+    let branch_index = ((offset % 12) + 12) % 12
+    let cycle_position = (((offset % 60) + 60) % 60) + 1
+    let element = elements[stem_index / 2]
+    let aspect = if stem_index % 2 == 0 then "yang" else "yin" fi
+    let animal = animals[branch_index]
+
+    write_line("{year}: {element} {animal}, {aspect} ({stems[stem_index]}-{branches[branch_index]}, cycle year {cycle_position})")
+si
+
+for year in [1935, 1984, 1997, 2000, 2025, 2044] do
+    zodiac(year)
+od
