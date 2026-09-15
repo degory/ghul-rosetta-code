@@ -383,6 +383,12 @@
       "published_hash": "e45b4511a7353c905314301e3477a71f0bcb0616883a6dcbe9b427a063df229b"
     },
     {
+      "title": "Bifid cipher",
+      "slug": "bifid-cipher",
+      "state": "published",
+      "published_hash": "46c1873fdaa17e06d683eccfdde254b9b65b865dda3f82b4ceab720209aafa6e"
+    },
+    {
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published",
@@ -534,6 +540,12 @@
       "published_hash": "ff1bcf58b85b9b08eaa5b2e2ec94cfff191c261420c63644101a066920a7add0"
     },
     {
+      "title": "Boyer-Moore string search",
+      "slug": "boyer-moore-string-search",
+      "state": "published",
+      "published_hash": "c4b6c747028a45a8bf4985a9c7df483435ed3be8c70aefe272daca0f844a1b6f"
+    },
+    {
       "title": "Brace expansion",
       "slug": "brace-expansion",
       "state": "published",
@@ -571,6 +583,12 @@
       "slug": "burrows-wheeler-transform",
       "state": "published",
       "published_hash": "ab5b0f64eecbf1d35a71c5ac6209d37423f3837c4977f344b8dbcc7c1298fbff"
+    },
+    {
+      "title": "CRC-32",
+      "slug": "crc-32",
+      "state": "published",
+      "published_hash": "9d7196de6eb518f5ab47fcce19b3176d4528a35be1ddf92b275491b85247d9df"
     },
     {
       "title": "Caesar cipher",
@@ -633,6 +651,12 @@
       "published_hash": "0c1e41924ac51c50a9cdc26e913d7758d880908b21c6df1be5e2b093aef17229"
     },
     {
+      "title": "Casting out nines",
+      "slug": "casting-out-nines",
+      "state": "published",
+      "published_hash": "990dcfc5503002c8ee361dc981425300c76c853a854a6789159b6ce67dae5d8b"
+    },
+    {
       "title": "Catalan numbers",
       "slug": "catalan-numbers",
       "state": "published",
@@ -684,6 +708,18 @@
       "slug": "cheryls-birthday",
       "state": "published",
       "published_hash": "5a815f028fb62d897d46c24434f7fe1d77c87e480dbcfdd5ea46ccdff61b3e9e"
+    },
+    {
+      "title": "Chinese remainder theorem",
+      "slug": "chinese-remainder-theorem",
+      "state": "published",
+      "published_hash": "448553ee86f8bdbf56f0f1127436e70590296b650ef28d15efd33d34bf657256"
+    },
+    {
+      "title": "Chinese zodiac",
+      "slug": "chinese-zodiac",
+      "state": "published",
+      "published_hash": "0db0c1836e3e49501e78556fd10646e3fabd274782c8c62bd04eb8f1e72489fd"
     },
     {
       "title": "Chrome simulated search",
@@ -763,6 +799,18 @@
       "published_hash": "da0c0ca98e7bc623d830a96f7b4dc15cab181c224dcbcadc00c74aee02d70ce7"
     },
     {
+      "title": "Combinations and permutations",
+      "slug": "combinations-and-permutations",
+      "state": "published",
+      "published_hash": "a07fbae5bc2d402ef9b434281606f652afc4d2d6cd13b29ef34afff87d2e7fad"
+    },
+    {
+      "title": "Combinations with repetitions",
+      "slug": "combinations-with-repetitions",
+      "state": "published",
+      "published_hash": "b8349e04fe1aca19dddb1e91c555f6c22e79d4fcfe1b5a3d8efb225457456298"
+    },
+    {
       "title": "Comma quibbling",
       "slug": "comma-quibbling",
       "state": "published",
@@ -833,9 +881,21 @@
       "published_hash": "23ea12d49f78bee0543a7d59f6ed07cc0bf082ce96fea43a7676eecb8148d4ed"
     },
     {
+      "title": "Continued fraction",
+      "slug": "continued-fraction",
+      "state": "published",
+      "published_hash": "f6eb086fb24f63a6ab6e92948c58d0ef71cc9fff0bcc84d08505dd03176fb286"
+    },
+    {
       "title": "Convert decimal number to rational",
       "state": "rejected",
       "reason": "task-unclear"
+    },
+    {
+      "title": "Convert seconds to compound duration",
+      "slug": "convert-seconds-to-compound-duration",
+      "state": "published",
+      "published_hash": "61f2efea581ef596cebeaa8a0bfc67cf11f105815617177ede462f4fb4aca99c"
     },
     {
       "title": "Conway\u0027s Game of Life",
@@ -848,6 +908,12 @@
       "slug": "copy-a-string",
       "state": "published",
       "published_hash": "2bcdea8057df2a108a0a4608dab3c9cf8aa457858dd212e1d34568b713c1152b"
+    },
+    {
+      "title": "Count in factors",
+      "slug": "count-in-factors",
+      "state": "published",
+      "published_hash": "3af546b1350cc6f5e6fbec39ee0075befab28c30b1ffe54cee601f4b2afc1e60"
     },
     {
       "title": "Count in octal",
@@ -965,10 +1031,22 @@
       "published_hash": "7a5c6fb4dc0a117d6d82e551a8b285312462ea96353418d6508e496d654a8a78"
     },
     {
+      "title": "Determine if a string is collapsible",
+      "slug": "determine-if-a-string-is-collapsible",
+      "state": "published",
+      "published_hash": "46a1378c778ac1819799aeedbede47cb8358c05b3146c789780609dc806fbf1d"
+    },
+    {
       "title": "Determine if a string is numeric",
       "slug": "determine-if-a-string-is-numeric",
       "state": "published",
       "published_hash": "268082b7df250f8c210f64a392db2cda838d1d3d30ee0fdfb380ab5b0e097723"
+    },
+    {
+      "title": "Determine if a string is squeezable",
+      "slug": "determine-if-a-string-is-squeezable",
+      "state": "published",
+      "published_hash": "b23f6c213842d6454332abac7b5c4669886c9c3e2697db9fec248d5405405d42"
     },
     {
       "title": "Determine sentence type",
@@ -1073,6 +1151,12 @@
       "published_hash": "b0a39e0e5ddd37cce261c889cd34a927cc44a5bdcb265d3e07753e2e8f6bd71c"
     },
     {
+      "title": "Dutch national flag problem",
+      "slug": "dutch-national-flag-problem",
+      "state": "published",
+      "published_hash": "4b714c3edee450662c506e5977eb2dce61e4263e7e6166c9a1f0f854644e6b79"
+    },
+    {
       "title": "Dynamic variable names",
       "slug": "dynamic-variable-names",
       "state": "published",
@@ -1107,6 +1191,12 @@
       "slug": "elementary-cellular-automaton-infinite-length",
       "state": "published",
       "published_hash": "0ece9f43bc3dd6f5dab98b010de99d39f8c928bc82685a317afa3b09d371a6f1"
+    },
+    {
+      "title": "Emirp primes",
+      "slug": "emirp-primes",
+      "state": "published",
+      "published_hash": "a2408edfc12588fa61954f28fcc79e37507ebb515a9d14ea8f92490ab6d6b70a"
     },
     {
       "title": "Empty program",
@@ -1197,6 +1287,12 @@
       "published_hash": "ae83308c99082a916b877722a1ef9f2ed0b16eae385cfacd9bb2d7be743ffd1e"
     },
     {
+      "title": "Euler\u0027s identity",
+      "slug": "eulers-identity",
+      "state": "published",
+      "published_hash": "27c07029075f42222165203838d5fbbcab90cbc67e3219f6b7d0acc83f370de7"
+    },
+    {
       "title": "Evaluate binomial coefficients",
       "slug": "evaluate-binomial-coefficients",
       "state": "published",
@@ -1213,6 +1309,12 @@
       "slug": "events",
       "state": "published",
       "published_hash": "59bc59b4e01c2577ed1cda4c3e1a6dee8d1340247db7d71cd4e84c5c03b70437"
+    },
+    {
+      "title": "Exceptions",
+      "slug": "exceptions",
+      "state": "published",
+      "published_hash": "a2e81f71fbec45fa0f2b0ebe174489f7568044db0a63cef8075153d42564432b"
     },
     {
       "title": "Execute Brain****",
@@ -1239,6 +1341,12 @@
       "published_hash": "0cd9d220240b62163a6152113eddfe3774793788b9343aa5c45a40dc212a3c51"
     },
     {
+      "title": "Exponentiation operator",
+      "slug": "exponentiation-operator",
+      "state": "published",
+      "published_hash": "01c3b0032f107af1278b047b5ed1228cdd555fbc2db8204d93739b5378ca3382"
+    },
+    {
       "title": "Extensible prime generator",
       "slug": "extensible-prime-generator",
       "state": "published"
@@ -1248,6 +1356,12 @@
       "slug": "extreme-floating-point-values",
       "state": "published",
       "published_hash": "ed9b06ce61b1b790a68209d7c454fca70733341c9915ed3a889fa1fbeff810bb"
+    },
+    {
+      "title": "FASTA format",
+      "slug": "fasta-format",
+      "state": "published",
+      "published_hash": "4db5a79d452ee669d0bd260d8843f4ef223804d4e8c73737b14b05a8fd0357c2"
     },
     {
       "title": "FTP",
@@ -1267,6 +1381,12 @@
       "published_hash": "59bc336f03f1d2bab40ff191412f298bd72efcd2b836b8207280e55ae4f1f3b2"
     },
     {
+      "title": "Factorial primes",
+      "slug": "factorial-primes",
+      "state": "published",
+      "published_hash": "3e92c34fa2b2fb49886cf10e221bb542fd7d037d492f9b4ec6b8ab92d6ece13a"
+    },
+    {
       "title": "Factorions",
       "slug": "factorions",
       "state": "published",
@@ -1277,6 +1397,12 @@
       "slug": "factorize-string-into-lyndon-words",
       "state": "published",
       "published_hash": "f93bd35b1687c008d801fc02e7b84de5f0aaf0e4914b65d1c696e397657aa458"
+    },
+    {
+      "title": "Factors of a Mersenne number",
+      "slug": "factors-of-a-mersenne-number",
+      "state": "published",
+      "published_hash": "6ef0b3fe01e5cffec3567e1825a25fc534154323286bd8e124481b43c5f23895"
     },
     {
       "title": "Factors of an integer",
@@ -1305,6 +1431,12 @@
       "slug": "fermat-numbers",
       "state": "published",
       "published_hash": "ef5b551f1eda17c639e10a9e04fdd251f493b8456252cb4d337970a8f5de342b"
+    },
+    {
+      "title": "Fermat pseudoprimes",
+      "slug": "fermat-pseudoprimes",
+      "state": "published",
+      "published_hash": "140c791a7945e7298329316efd97ea4ac5d956adfc1972e142596e40df7133b6"
     },
     {
       "title": "Fibonacci n-step number sequences",
@@ -1344,6 +1476,18 @@
       "slug": "file-input-output",
       "state": "published",
       "published_hash": "02196036b9d5aba1ad71abead92fbce9a9d59f4d74e434adafbb141baca9756d"
+    },
+    {
+      "title": "File modification time",
+      "slug": "file-modification-time",
+      "state": "published",
+      "published_hash": "bba354e30b866c1e412d74d947ac97dcc904ac101264e62f14c39b30cd156d01"
+    },
+    {
+      "title": "File size",
+      "slug": "file-size",
+      "state": "published",
+      "published_hash": "bf5bc483af2db38e9aeb17da4885d2ccd5e4ff7c9031088ea82a25ff635c8d92"
     },
     {
       "title": "File size distribution",
@@ -1391,6 +1535,12 @@
       "state": "published"
     },
     {
+      "title": "Fivenum",
+      "slug": "fivenum",
+      "state": "published",
+      "published_hash": "805e774b06a2d51b4c8fdbc83ed42238c5de97dce99807eb0a616b7a1b42e0e5"
+    },
+    {
       "title": "FizzBuzz",
       "slug": "fizzbuzz",
       "state": "published",
@@ -1413,6 +1563,12 @@
       "slug": "floyds-triangle",
       "state": "published",
       "published_hash": "d7297dbeda3b59d50415a629555fa7c96797791b23d762e080af33a15e90efa7"
+    },
+    {
+      "title": "Floyd-Warshall algorithm",
+      "slug": "floyd-warshall-algorithm",
+      "state": "published",
+      "published_hash": "addaaca55921fc9287e5c82f39200bf1552bdd524c7e500f082666de63239e4c"
     },
     {
       "title": "Formal power series",
@@ -1500,10 +1656,28 @@
       "reason": "needs-gui"
     },
     {
+      "title": "Gamma function",
+      "slug": "gamma-function",
+      "state": "published",
+      "published_hash": "147a66fea709db9468a9d56ad2f4fd0214d9631f1fa4dfe9a2635fbcce630be1"
+    },
+    {
       "title": "Gapful numbers",
       "slug": "gapful-numbers",
       "state": "published",
       "published_hash": "8f52b1b8ae1a58b9cf969068caa2daa5b1a66fa6fc05dd8c899ca569a8eecf58"
+    },
+    {
+      "title": "Gaussian primes",
+      "slug": "gaussian-primes",
+      "state": "published",
+      "published_hash": "26d14aedcef520cf52696b5eabe6e5270716682ff42597694617ffa537c85145"
+    },
+    {
+      "title": "General FizzBuzz",
+      "slug": "general-fizzbuzz",
+      "state": "published",
+      "published_hash": "aebc234f513276e0d58f7ab1d3f60b9de91b69ab343351eac23f0142e6ad75e2"
     },
     {
       "title": "Generate lower case ASCII alphabet",
@@ -1659,6 +1833,12 @@
       "published_hash": "561aef89e06d48cdafe1bccc26dab07f3c69357fa0a57e1ec489c25d6760a407"
     },
     {
+      "title": "Harmonic series",
+      "slug": "harmonic-series",
+      "state": "published",
+      "published_hash": "1cdd0f1505f4987fc465118ba932b8eb750bd970ec8a7f6edb440536c99ddc84"
+    },
+    {
       "title": "Harshad or Niven series",
       "slug": "harshad-or-niven-series",
       "state": "published",
@@ -1704,6 +1884,24 @@
       "slug": "hello-world-text",
       "state": "published",
       "published_hash": "49067ca560ac35123cb880979a268cdf45073a7ea86cc9e69189620d0943fa47"
+    },
+    {
+      "title": "Here document",
+      "slug": "here-document",
+      "state": "published",
+      "published_hash": "a3b9d199fc9a95273f841615726ccc55c10671eca25fe74c99bee047d0a1c083"
+    },
+    {
+      "title": "Heronian triangles",
+      "slug": "heronian-triangles",
+      "state": "published",
+      "published_hash": "09f238adaab81d89f05120b5b6dda1a400c554f3ba80bc61e6258047ecc7ddb8"
+    },
+    {
+      "title": "Hex dump",
+      "slug": "hex-dump",
+      "state": "published",
+      "published_hash": "fa3217d764fa93dbc5ca2e3eabc196ce2a3d8b83406cdd4b25e5103eaf4a694d"
     },
     {
       "title": "Higher-order functions",
@@ -1779,6 +1977,12 @@
       "state": "queued",
       "reason": "",
       "note": "not interactive at all: Dijkstra and Floyd-Warshall over a fixed map, reading no input. The needs-interaction rejection and the run.session reopen were both wrong about it"
+    },
+    {
+      "title": "IBAN",
+      "slug": "iban",
+      "state": "published",
+      "published_hash": "fca8b1c84147a02b54f34b77f9ce867bcba5157682690de38d6b8a9bb1db567f"
     },
     {
       "title": "ISBN13 check digit",
@@ -2128,6 +2332,12 @@
       "published_hash": "8b4b2d9cbc417a0f8684f76aa4a685253f4c054e24b49270fc374ff4c3cb5b4f"
     },
     {
+      "title": "Largest proper divisor of n",
+      "slug": "largest-proper-divisor-of-n",
+      "state": "published",
+      "published_hash": "eba373e53bbf659f31cf597cfac71e2084b05657602c1dd5e9b6049a0970f600"
+    },
+    {
       "title": "Last Friday of each month",
       "slug": "last-friday-of-each-month",
       "state": "published",
@@ -2170,6 +2380,12 @@
       "published_hash": "141f936e6d5acb0f069e11f498cf86612e069a6504da22b82e359247520514a7"
     },
     {
+      "title": "Linear congruential generator",
+      "slug": "linear-congruential-generator",
+      "state": "published",
+      "published_hash": "30be14820002af13df079a6295f0a870b157d848861597c871391682c5b6f8ff"
+    },
+    {
       "title": "List comprehensions",
       "slug": "list-comprehensions",
       "state": "published",
@@ -2194,6 +2410,12 @@
       "published_hash": "98d4a6c468aa1a3d1f4989ea1607ceed9db01b27bce60931b7db098cc6de0d4a"
     },
     {
+      "title": "Long multiplication",
+      "slug": "long-multiplication",
+      "state": "published",
+      "published_hash": "96e28322940bd0c7a516636794adc57278bc1bb139ddf1d6b3e65be313cc4363"
+    },
+    {
       "title": "Long primes",
       "slug": "long-primes",
       "state": "published"
@@ -2209,6 +2431,12 @@
       "slug": "longest-common-substring",
       "state": "published",
       "published_hash": "750944d0cc0d0be3c1b91f02e3e3f6784ce19542332dedc47a052918c3a5e914"
+    },
+    {
+      "title": "Longest increasing subsequence",
+      "slug": "longest-increasing-subsequence",
+      "state": "published",
+      "published_hash": "4aa37a6b95e800f916a3bc3a7906573fdf40139127e277b79d77bb53c0eb8a4c"
     },
     {
       "title": "Look-and-say sequence",
@@ -2315,6 +2543,12 @@
       "slug": "luhn-test-of-credit-card-numbers",
       "state": "published",
       "published_hash": "4a15bca99827ffc57fda69a51121d9163c6ea4327f2574ddd0288b644fd12572"
+    },
+    {
+      "title": "Lychrel numbers",
+      "slug": "lychrel-numbers",
+      "state": "published",
+      "published_hash": "b532d8bc4a975005dca90bff95db54d3397fefd4c9f3b30fd85276f7b5f2c5b3"
     },
     {
       "title": "Lyndon word",
