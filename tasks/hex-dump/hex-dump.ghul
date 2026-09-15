@@ -17,6 +17,7 @@ hex_dump(data: ubyte[], start: int, length: int) is
             else
                 "{first_half}  {second_half}"
             fi
+            .pad_right(48)
         let printable = b => b >= 32ub /\ b < 127ub
         let to_ascii_char =
             b => if printable(b) then cast char(b) else '.' fi
