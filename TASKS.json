@@ -833,6 +833,11 @@
       "published_hash": "23ea12d49f78bee0543a7d59f6ed07cc0bf082ce96fea43a7676eecb8148d4ed"
     },
     {
+      "title": "Convert decimal number to rational",
+      "state": "rejected",
+      "reason": "task-unclear"
+    },
+    {
       "title": "Conway\u0027s Game of Life",
       "slug": "conways-game-of-life",
       "state": "published",

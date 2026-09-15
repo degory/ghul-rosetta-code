@@ -1,0 +1,36 @@
+use default
+
+mod_pow(base: bigint, exponent: bigint, modulus: bigint) -> bigint is
+    let result mut = 1n
+    let b mut = base % modulus
+    let e mut = exponent
+
+    while e > 0n do
+        if e % 2n =~ 1n then
+            result = (result * b) % modulus
+        fi
+
+        e = e / 2n
+        b = (b * b) % modulus
+    od
+
+    result
+si
+
+find_mersenne_factor(p: int, limit: int) -> bigint? =>
+    (1::limit)
+        |> map(k => cast bigint(2 * k * p + 1))
+        |> filter(candidate => mod_pow(2n, cast bigint(p), candidate) =~ 1n)
+        |> first()
+
+show(p: int, limit: int) is
+    if let factor = find_mersenne_factor(p, limit) then
+        write_line("2^{p} - 1 is divisible by {factor}")
+    else
+        write_line("no factor of 2^{p} - 1 found below k = {limit}")
+    fi
+si
+
+show(11, 100)
+show(23, 100)
+show(31, 100)

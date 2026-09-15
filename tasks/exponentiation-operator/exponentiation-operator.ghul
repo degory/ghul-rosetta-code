@@ -1,0 +1,15 @@
+use default
+
+**(base: int, exponent: int) -> int =>
+    (1::exponent) |> reduce(1, (result, _) => result * base)
+
+**(base: double, exponent: int) -> double =>
+    (1::exponent) |> reduce(1.0, (result, _) => result * base)
+
+power(base: int, exponent: int) -> int => base ** exponent
+power(base: double, exponent: int) -> double => base ** exponent
+
+write_line("2 ** 10 = {2 ** 10}")
+write_line("2.5 ** 3 = {2.5 ** 3}")
+write_line("power(3, 4) = {power(3, 4)}")
+write_line("power(1.5, 2) = {power(1.5, 2)}")

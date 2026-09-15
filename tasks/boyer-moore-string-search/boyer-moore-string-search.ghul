@@ -1,0 +1,59 @@
+use default
+
+search(text: string, pattern: string) -> LIST[int] is
+    let m = pattern.length
+    let n = text.length
+    let hits = LIST[int]()
+
+    if m == 0 \/ m > n then
+        return hits
+    fi
+
+    let last_occurrence = MAP[char, int]()
+
+    for i in 0..m do
+        last_occurrence[pattern[i]] = i
+    od
+
+    let s mut = 0
+
+    while s <= n - m do
+        let j mut = m - 1
+
+        while j >= 0 /\ text[s + j] == pattern[j] do
+            j = j - 1
+        od
+
+        if j < 0 then
+            hits.add(s)
+            s = s + 1
+        else
+            let c = text[s + j]
+            let last =
+                if last_occurrence.contains_key(c) then
+                    last_occurrence[c]
+                else
+                    -1
+                fi
+            let shift = j - last
+
+            s = s + (if shift > 1 then shift else 1 fi)
+        fi
+    od
+
+    hits
+si
+
+let pattern = "alfalfa"
+let text =
+    "alfredo behalf calfskin alfalfa halfhearted malfunction severalfold"
+
+let hits = search(text, pattern)
+
+write_line("text:    {text}")
+write_line("pattern: {pattern}")
+write_line("matches at: {hits |> map(i => "{i}") |> join(", ")}")
+
+for hit in hits do
+    write_line("  {hit}: {text[hit..hit + pattern.length]}")
+od

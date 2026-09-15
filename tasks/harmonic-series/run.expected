@@ -1,0 +1,33 @@
+first 20 harmonic numbers:
+H(1) = 1.000000
+H(2) = 1.500000
+H(3) = 1.833333
+H(4) = 2.083333
+H(5) = 2.283333
+H(6) = 2.450000
+H(7) = 2.592857
+H(8) = 2.717857
+H(9) = 2.828968
+H(10) = 2.928968
+H(11) = 3.019877
+H(12) = 3.103211
+H(13) = 3.180134
+H(14) = 3.251562
+H(15) = 3.318229
+H(16) = 3.380729
+H(17) = 3.439553
+H(18) = 3.495108
+H(19) = 3.547740
+H(20) = 3.597740
+
+first position where H(n) exceeds a given integer:
+H(n) > 1 first at n = 2
+H(n) > 2 first at n = 4
+H(n) > 3 first at n = 11
+H(n) > 4 first at n = 31
+H(n) > 5 first at n = 83
+H(n) > 6 first at n = 227
+H(n) > 7 first at n = 616
+H(n) > 8 first at n = 1674
+H(n) > 9 first at n = 4550
+H(n) > 10 first at n = 12367

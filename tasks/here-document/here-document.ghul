@@ -1,0 +1,13 @@
+use default
+
+let doc =
+    "Rosetta Code\n"
+    "    is a programming chrestomathy site.\n"
+    "\n"
+    "It preserves:\n"
+    "  - indentation\n"
+    "  - line breaks\n"
+    "  - other whitespace\n"
+    "within a block built from adjacent string literals."
+
+write_line(doc)

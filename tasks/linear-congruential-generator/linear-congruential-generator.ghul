@@ -1,0 +1,25 @@
+use default
+
+bsd_rand(seed: int) -> Ghul.Pipes.Pipe[int] is
+    let state mut = cast long(seed)
+
+    do
+        state = (1103515245L * state + 12345L) % 2147483648L
+        yield cast int(state)
+    od
+si
+
+ms_rand(seed: int) -> Ghul.Pipes.Pipe[int] is
+    let state mut = cast long(seed)
+
+    do
+        state = (214013L * state + 2531011L) % 2147483648L
+        yield cast int(state / 65536L)
+    od
+si
+
+let bsd_text = bsd_rand(0) |> take(10) |> map(n => "{n}") |> join(", ")
+let ms_text = ms_rand(0) |> take(10) |> map(n => "{n}") |> join(", ")
+
+write_line("BSD rand, seed 0: {bsd_text}")
+write_line("MS rand, seed 0: {ms_text}")

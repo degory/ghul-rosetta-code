@@ -1,0 +1,6 @@
+n=5 k=3: nPk=60 nCk=10
+n=10 k=5: nPk=30240 nCk=252
+n=5 k=0: nPk=1 nCk=1
+n=5 k=5: nPk=120 nCk=1
+n=5 k=6: nPk=0 nCk=0
+n=0 k=0: nPk=1 nCk=1

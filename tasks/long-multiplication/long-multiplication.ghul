@@ -1,0 +1,39 @@
+use default
+
+digits_of(s: string) -> LIST[int] is
+    let value = c => cast int(c) - cast int('0')
+
+    s |> reverse() |> map(value) |> collect_list()
+si
+
+multiply(a: string, b: string) -> string is
+    let da = digits_of(a)
+    let db = digits_of(b)
+    let result = (0::(da.count + db.count)) |> map(_ => 0) |> collect_list()
+
+    for i in 0..da.count do
+        for j in 0..db.count do
+            result[i + j] = result[i + j] + da[i] * db[j]
+        od
+    od
+
+    let carry mut = 0
+
+    for k in 0..result.count do
+        let total = result[k] + carry
+
+        result[k] = total % 10
+        carry = total / 10
+    od
+
+    let raw = result |> reverse() |> map(d => "{d}") |> join("")
+    let trimmed = raw.trim_start(['0'])
+
+    if trimmed.length == 0 then "0" else trimmed fi
+si
+
+let a = "18446744073709551616"
+let b = "18446744073709551616"
+
+write_line("{a} * {b}")
+write_line("= {multiply(a, b)}")

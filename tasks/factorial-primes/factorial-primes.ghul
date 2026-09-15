@@ -1,0 +1,92 @@
+use default
+
+mod_pow(base: bigint, exponent: bigint, modulus: bigint) -> bigint is
+    let result mut = 1n
+    let b mut = base % modulus
+    let e mut = exponent
+
+    while e > 0n do
+        if e % 2n =~ 1n then
+            result = (result * b) % modulus
+        fi
+
+        e = e / 2n
+        b = (b * b) % modulus
+    od
+
+    result
+si
+
+is_probable_prime(n: bigint) -> bool is
+    if n < 2n then
+        return false
+    fi
+
+    if n =~ 2n \/ n =~ 3n then
+        return true
+    fi
+
+    if n % 2n =~ 0n then
+        return false
+    fi
+
+    let d mut = n - 1n
+    let r mut = 0
+
+    while d % 2n =~ 0n do
+        d = d / 2n
+        r = r + 1
+    od
+
+    let witnesses = [2n, 3n, 5n, 7n, 11n, 13n, 17n, 19n, 23n, 29n, 31n, 37n]
+
+    witnesses
+        |> filter(a => a < n)
+        |> all(a => (
+            let x mut = mod_pow(a, d, n)
+
+            if x =~ 1n \/ x =~ n - 1n then
+                true
+            else
+                let found mut = false
+                let i mut = 0
+
+                while i < r - 1 /\ !found do
+                    x = (x * x) % n
+
+                    if x =~ n - 1n then
+                        found = true
+                    fi
+
+                    i = i + 1
+                od
+
+                found
+            fi
+        ))
+si
+
+factorial_primes() -> Ghul.Pipes.Pipe[(n: int, sign: int, value: bigint)] is
+    let fact mut = 1n
+    let n mut = 1
+
+    do
+        fact = fact * cast bigint(n)
+
+        if is_probable_prime(fact - 1n) then
+            yield (n = n, sign = -1, value = fact - 1n)
+        fi
+
+        if is_probable_prime(fact + 1n) then
+            yield (n = n, sign = 1, value = fact + 1n)
+        fi
+
+        n = n + 1
+    od
+si
+
+for entry in factorial_primes() |> take(10) do
+    let op = if entry.sign < 0 then "-" else "+" fi
+
+    write_line("{entry.n}! {op} 1 = {entry.value}")
+od

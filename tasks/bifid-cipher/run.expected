@@ -1,0 +1,16 @@
+archetypal square, task's own example
+  plain:   ATTACKATDAWN
+  encoded: DQBDAXDQPDQH
+  decoded: ATTACKATDAWN
+Wikipedia square, Wikipedia's own example
+  plain:   FLEEATONCE
+  encoded: UAEOLWRINS
+  decoded: FLEEATONCE
+task's example message, Wikipedia's square
+  plain:   ATTACKATDAWN
+  encoded: EYFENGIWDILA
+  decoded: ATTACKATDAWN
+longer message, archetypal square
+  plain:   THEINVASIONWILLSTARTONTHEFIRSTOFIANUARY
+  encoded: RBPDHPHOQTNRBITMFODYPSAOSIAOBTOPDHTDCVI
+  decoded: THEINVASIONWILLSTARTONTHEFIRSTOFIANUARY

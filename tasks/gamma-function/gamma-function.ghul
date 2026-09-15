@@ -1,0 +1,28 @@
+use default
+
+let g = 7.0
+let coefficients = [
+    0.99999999999980993, 676.5203681218851, -1259.1392167224028,
+    771.32342877765313, -176.61502916214059, 12.507343278686905,
+    -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
+]
+
+gamma(x: double) -> double is
+    if x < 0.5 then
+        let sine = System.Math.sin(System.Math.pi * x)
+
+        System.Math.pi / (sine * gamma(1.0 - x))
+    else
+        let xm = x - 1.0
+        let t = xm + g + 0.5
+        let term = (sum, i) => sum + coefficients[i] / (xm + cast double(i))
+        let a = (1::8) |> reduce(coefficients[0], term)
+        let scale = System.Math.sqrt(2.0 * System.Math.pi)
+
+        scale * System.Math.pow(t, xm + 0.5) * System.Math.exp(-t) * a
+    fi
+si
+
+for x in [1.0, 2.0, 5.0, 0.5, 1.5, 10.0] do
+    write_line("gamma({x}) = {gamma(x),0:F6}")
+od

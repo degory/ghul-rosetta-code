@@ -1,0 +1,62 @@
+use default
+
+let n = 4
+let inf = 1000000
+let edges = [
+    (from = 1, to = 3, weight = -2),
+    (from = 2, to = 1, weight = 4),
+    (from = 2, to = 3, weight = 3),
+    (from = 3, to = 4, weight = 2),
+    (from = 4, to = 2, weight = -1)
+]
+
+let dist = MAP[(int, int), int]()
+let next_hop = MAP[(int, int), int]()
+
+for i in 1::n do
+    for j in 1::n do
+        dist[(i, j)] = if i == j then 0 else inf fi
+    od
+od
+
+for e in edges do
+    dist[(e.from, e.to)] = e.weight
+    next_hop[(e.from, e.to)] = e.to
+od
+
+for k in 1::n do
+    for i in 1::n do
+        for j in 1::n do
+            if dist[(i, k)] < inf /\ dist[(k, j)] < inf then
+                let through_k = dist[(i, k)] + dist[(k, j)]
+
+                if through_k < dist[(i, j)] then
+                    dist[(i, j)] = through_k
+                    next_hop[(i, j)] = next_hop[(i, k)]
+                fi
+            fi
+        od
+    od
+od
+
+path(u: int, v: int) -> string is
+    let result = LIST[int]([u])
+    let cur mut = u
+
+    while cur != v do
+        cur = next_hop[(cur, v)]
+        result.add(cur)
+    od
+
+    result |> map(x => "{x}") |> join(" -> ")
+si
+
+write_line("pair     dist    path")
+
+for i in 1::n do
+    for j in 1::n do
+        if i != j then
+            write_line("{i} -> {j}    {dist[(i, j)],4}     {path(i, j)}")
+        fi
+    od
+od

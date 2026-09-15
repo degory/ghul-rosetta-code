@@ -1,0 +1,18 @@
+use default
+
+report(label: string, path: string) is
+    if IO.File.exists(path) then
+        write_line("{label}: {IO.FileInfo(path).length} bytes")
+    else
+        write_line("{label}: does not exist")
+    fi
+si
+
+let local_path =
+    IO.Path.combine(System.Environment.current_directory, "input.txt")
+
+IO.File.write_all_text(local_path, "hello, rosetta code!")
+report("input.txt (current directory)", local_path)
+IO.File.delete(local_path)
+
+report("/input.txt (file system root)", "/input.txt")

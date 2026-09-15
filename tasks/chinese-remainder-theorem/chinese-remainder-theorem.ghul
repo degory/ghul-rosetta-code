@@ -1,0 +1,54 @@
+use default
+
+extended_gcd(a: long, b: long) -> (g: long, x: long, y: long) is
+    if b == 0L then
+        (g = a, x = 1L, y = 0L)
+    else
+        let (g, x1, y1) = extended_gcd(b, a % b)
+
+        (g = g, x = y1, y = x1 - (a / b) * y1)
+    fi
+si
+
+crt(ns: LIST[long], as: LIST[long]) -> long? is
+    let big_n mut = 1L
+
+    for n in ns do
+        big_n = big_n * n
+    od
+
+    let sum mut = 0L
+
+    for i in 0..ns.count do
+        let ni = ns[i]
+        let mi = big_n / ni
+        let (g, s, _) = extended_gcd(mi, ni)
+
+        if g != 1L then
+            return null
+        fi
+
+        sum = sum + as[i] * mi * s
+    od
+
+    let result = sum % big_n
+
+    if result < 0L then result + big_n else result fi
+si
+
+demo(ns: LIST[long], as: LIST[long]) is
+    let result = crt(ns, as)
+    let n_text = ns |> map(n => "{n}") |> join(", ")
+    let a_text = as |> map(a => "{a}") |> join(", ")
+
+    write_line("n = [{n_text}], a = [{a_text}]")
+
+    if let x = result then
+        write_line("  x = {x}")
+    else
+        write_line("  no solution")
+    fi
+si
+
+demo(LIST[long]([3L, 5L, 7L]), LIST[long]([2L, 3L, 2L]))
+demo(LIST[long]([10L, 4L, 12L]), LIST[long]([2L, 2L, 2L]))

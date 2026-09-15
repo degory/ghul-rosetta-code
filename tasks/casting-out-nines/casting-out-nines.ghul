@@ -1,0 +1,61 @@
+use default
+
+co9(x: long) -> long is
+    let n mut = x
+
+    while n >= 10L do
+        let sum mut = 0L
+        let m mut = n
+
+        while m > 0L do
+            sum = sum + m % 10L
+            m = m / 10L
+        od
+
+        n = sum
+    od
+
+    n
+si
+
+co9_fast(x: long, base: long) -> long is
+    let residue = x % (base - 1L)
+
+    if residue == 0L /\ x > 0L then base - 1L else residue fi
+si
+
+write_line("part 1: digit-sum checksum")
+
+for x in [318682L, 101558217124L, 65536L, 999999999L] do
+    write_line("  co9({x}) = {co9(x)}")
+od
+
+write_line("part 2: k where co9(k) = co9(k^2), for k in 1L::100L")
+
+let kaprekar_like =
+    (1L::100L) |> filter(k => co9(k) == co9(k * k)) |> collect_list()
+let kaprekar_text = kaprekar_like |> map(k => "{k}") |> join(", ")
+
+write_line("  {kaprekar_like.count} of 100 numbers: {kaprekar_text}")
+
+write_line("part 3: fast mod-based checksum, base 10")
+
+for x in [318682L, 101558217124L, 65536L, 999999999L] do
+    let fast = co9_fast(x, 10L)
+    let matches = fast == co9(x)
+
+    write_line("  co9_fast({x}, 10) = {fast}, matches part 1: {matches}")
+od
+
+write_line(
+    "part 3: generalised to base 16, k where k mod 15 = k^2 mod 15, "
+    "for k in 1L::100L"
+)
+
+let base16_like =
+    (1L::100L)
+    |> filter(k => co9_fast(k, 16L) == co9_fast(k * k, 16L))
+    |> collect_list()
+let base16_text = base16_like |> map(k => "{k}") |> join(", ")
+
+write_line("  {base16_like.count} of 100 numbers: {base16_text}")

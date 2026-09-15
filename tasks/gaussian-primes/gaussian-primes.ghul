@@ -1,0 +1,61 @@
+use default
+
+is_prime(n: int) -> bool is
+    if n < 2 then
+        return false
+    fi
+
+    if n % 2 == 0 then
+        return n == 2
+    fi
+
+    let i mut = 3
+
+    while i * i <= n do
+        if n % i == 0 then
+            return false
+        fi
+
+        i = i + 2
+    od
+
+    true
+si
+
+is_gaussian_prime(a: int, b: int) -> bool =>
+    if a != 0 /\ b != 0 then
+        is_prime(a * a + b * b)
+    elif a != 0 then
+        is_prime(System.Math.abs(a)) /\ System.Math.abs(a) % 4 == 3
+    elif b != 0 then
+        is_prime(System.Math.abs(b)) /\ System.Math.abs(b) % 4 == 3
+    else
+        false
+    fi
+
+let primes_under_100 =
+    (-10::10)
+        |> flat_map(a => (-10::10)
+            |> filter(b => a * a + b * b < 100 /\ is_gaussian_prime(a, b))
+            |> map(b => (a = a, b = b)))
+        |> collect_list()
+
+let count = primes_under_100.count
+let listing = primes_under_100
+    |> map(p => "{p.a}{if p.b >= 0 then "+" else "" fi}{p.b}i")
+    |> join(", ")
+
+write_line("gaussian primes with norm < 100 ({count} total):")
+write_line(listing)
+write_line("")
+write_line(
+    "plot, radius 50 (rows run from imaginary part +50 down to -50):"
+)
+
+for b in (-50::50) |> reverse() do
+    let row = (-50::50)
+        |> map(a => if is_gaussian_prime(a, b) then "*" else " " fi)
+        |> join("")
+
+    write_line(row)
+od

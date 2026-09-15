@@ -1,0 +1,40 @@
+use default
+
+evaluate(a: (int) -> double, b: (int) -> double, terms: int) -> double is
+    let h2 mut = 1.0
+    let h1 mut = a(0)
+    let k2 mut = 0.0
+    let k1 mut = 1.0
+
+    for n in 1::terms do
+        let an = a(n)
+        let bn = b(n)
+        let h = an * h1 + bn * h2
+        let k = an * k1 + bn * k2
+
+        h2 = h1 / k
+        k2 = k1 / k
+        h1 = h / k
+        k1 = 1.0
+    od
+
+    h1 / k1
+si
+
+let sqrt2 = evaluate(n => if n == 0 then 1.0 else 2.0 fi, n => 1.0, 10000)
+
+let e = evaluate(
+    n => if n == 0 then 2.0 else cast double(n) fi,
+    n => if n == 1 then 1.0 else cast double(n - 1) fi,
+    10000
+)
+
+let pi = evaluate(
+    n => if n == 0 then 3.0 else 6.0 fi,
+    n => cast double((2 * n - 1) * (2 * n - 1)),
+    10000
+)
+
+write_line("sqrt(2) = {sqrt2,0:F10}")
+write_line("e       = {e,0:F10}")
+write_line("pi      = {pi,0:F10}")

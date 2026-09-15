@@ -1,0 +1,68 @@
+use default
+use RESULT = (is_lychrel: bool, values: LIST[bigint])
+
+reverse_digits(n: bigint) -> bigint =>
+    bigint.parse("{n}" |> reverse() |> join(""))
+
+is_palindrome(n: bigint) -> bool is
+    let s = "{n}"
+
+    s =~ (s |> reverse() |> join(""))
+si
+
+lychrel_sequence(n: int) -> RESULT is
+    let current mut = cast bigint(n)
+    let values = LIST[bigint]()
+
+    for _ in 0::500 do
+        current = current + reverse_digits(current)
+        values.add(current)
+
+        if is_palindrome(current) then
+            return (is_lychrel = false, values = values)
+        fi
+    od
+
+    (is_lychrel = true, values = values)
+si
+
+let seen = SET[bigint]()
+let seeds = LIST[int]()
+let related_count mut = 0
+let palindromic_starts = LIST[int]()
+
+for n in 1::10000 do
+    if is_palindrome(cast bigint(n)) then
+        palindromic_starts.add(n)
+    fi
+
+    if seen.contains(cast bigint(n)) then
+        related_count = related_count + 1
+    else
+        let result = lychrel_sequence(n)
+
+        if result.is_lychrel then
+            seeds.add(n)
+
+            for v in result.values do
+                seen.add(v)
+            od
+        fi
+    fi
+od
+
+let seeds_text = seeds |> map(n => "{n}") |> join(", ")
+let related_starts = palindromic_starts
+    |> filter(n => seeds.contains(n) \/ seen.contains(cast bigint(n)))
+    |> map(n => "{n}")
+    |> join(", ")
+
+write_line("seed Lychrel candidates: {seeds.count}")
+write_line("{seeds_text}")
+write_line("")
+write_line("related Lychrel candidates: {related_count}")
+write_line("")
+write_line(
+    "palindromic starting numbers among 1..10000 that are Lychrel "
+    "seeds or related: {related_starts}"
+)

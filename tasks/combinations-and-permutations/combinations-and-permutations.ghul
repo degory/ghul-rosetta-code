@@ -1,0 +1,31 @@
+use default
+
+factorial(n: bigint) -> bigint is
+    let result mut = 1n
+    let i mut = 2n
+
+    while i <= n do
+        result = result * i
+        i = i + 1n
+    od
+
+    result
+si
+
+npk(n: bigint, k: bigint) -> bigint is
+    if k < 0n \/ k > n then 0n else factorial(n) / factorial(n - k) fi
+si
+
+nck(n: bigint, k: bigint) -> bigint is
+    if k < 0n \/ k > n then
+        0n
+    else
+        factorial(n) / (factorial(k) * factorial(n - k))
+    fi
+si
+
+let cases = [(5n, 3n), (10n, 5n), (5n, 0n), (5n, 5n), (5n, 6n), (0n, 0n)]
+
+for (n, k) in cases do
+    write_line("n={n} k={k}: nPk={npk(n, k)} nCk={nck(n, k)}")
+od
