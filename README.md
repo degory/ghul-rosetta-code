@@ -179,6 +179,33 @@ in their report line, and `scripts/publish.sh` names it again before publishing.
 is a gate by itself: read the rendered text before the branch that adds one is merged, and again
 before it is published.
 
+## running a solution in the playground
+
+Each entry opens with a link that runs it in the
+[ghūl playground](https://playground.ghul.dev), at `/rosetta-code/<slug>`, or
+`/rosetta-code/<slug>/<NN-part>` for one part of a task with parts. The
+playground fetches the source from this repository's `main` branch, so a link
+needs nothing but the task being here under that name.
+
+Not every solution can run there. The playground compiles against a short list
+of reference assemblies and runs the program in the browser, with no standard
+input and no filesystem to write to. A program that needs any of those carries
+a `playground-unsupported` file beside its source, holding one line saying why:
+
+```
+tasks/guess-the-number/
+    playground-unsupported      reads guesses from standard input
+    guess-the-number.ghul
+    ...
+```
+
+`scripts/generate-wiki.sh` writes no link for such a program, and the playground
+shows the reason to anyone who opens it by URL anyway. Reading standard input
+and referencing a package are the cases the script can see for itself; one
+of those without the file is reported, and gets no link. Everything else - a
+program that writes an image, reads a file, or relies on threads - can only be
+told by reading it, so the file is written when the solution is.
+
 ## status
 
 `TASKS.json` is the ledger: one entry per task that has been done or decided about, keyed by its

@@ -415,6 +415,16 @@ step `land-pr` would otherwise arm immediately, and say plainly that the PR is w
 person because it carries prose. This is independent of publishing, which is already gated on an
 explicit request from the user - README.md's 'writing explanatory text' has the detail.
 
+## Running in the playground
+
+Every entry links to the solution in the ghūl playground, which fetches the source from this
+repository and runs it in the reader's browser. That rules out standard input, the filesystem,
+threads and any package reference such as `ghul.raster`. Deciding whether a solution needs one of
+those takes reading it, so it is part of writing it: a program that cannot run there carries a
+`playground-unsupported` file beside its source, one line saying why, written for the reader who
+opens the link anyway. `scripts/generate-wiki.sh` writes no link for it. README.md's 'running a
+solution in the playground' has the detail.
+
 ## Publishing, and the record of it
 
 ```sh
