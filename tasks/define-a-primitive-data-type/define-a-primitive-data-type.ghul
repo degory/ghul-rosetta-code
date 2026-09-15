@@ -1,7 +1,7 @@
 use IO.Std.write_line
 
 struct BOUNDED is
-    value: int public
+    value: int
 
     init(value: int) is
         if value < 1 \/ value > 10 then
@@ -11,18 +11,39 @@ struct BOUNDED is
 
         self.value = value
     si
+
+    +(other: BOUNDED) -> BOUNDED => BOUNDED(value + other.value)
+    -(other: BOUNDED) -> BOUNDED => BOUNDED(value - other.value)
+    *(other: BOUNDED) -> BOUNDED => BOUNDED(value * other.value)
+    /(other: BOUNDED) -> BOUNDED => BOUNDED(value / other.value)
+
+    <>(other: BOUNDED) -> int => value - other.value
+
+    to_string() -> string => "{value}"
 si
 
 let a = BOUNDED(3)
-let b = BOUNDED(a.value + 1)
+let b = BOUNDED(4)
 
-write_line("a = {a.value}")
-write_line("b = {b.value}")
+write_line("a = {a}, b = {b}")
+write_line("a + b = {a + b}")
+write_line("b - a = {b - a}")
+write_line("a * a = {a * a}")
+write_line("b / a = {b / a}")
+write_line("a < b is {a < b}")
+write_line("a >= b is {a >= b}")
+write_line("a =~ BOUNDED(3) is {a =~ BOUNDED(3)}")
 
-try
-    let c = BOUNDED(11)
+let attempts = [
+    ("BOUNDED(11)", () => BOUNDED(11)),
+    ("a - b", () => a - b),
+    ("a * b", () => a * b)
+]
 
-    write_line("c = {c.value}")
-catch e: System.Exception
-    write_line("rejected: {e.message}")
-yrt
+for (text, attempt) in attempts do
+    try
+        write_line("{text} = {attempt()}")
+    catch e: System.Exception
+        write_line("{text} rejected: {e.message}")
+    yrt
+od
