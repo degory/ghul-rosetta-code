@@ -428,6 +428,32 @@ self_test() is
     // A section that never made it in.
     check_that("leaving ghul out is refused", !splice.keeps_every_other_section(page, page, "ghul"))
 
+    // The header template takes a display name after the language, and a section written that
+    // way is still the ghul section. Missing it inserted a second one beside it.
+    let aliased =
+        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Ghul|ghūl}}}}==\nold\n\n=={{{{header|Go}}}}==\ngo\n"
+
+    check_that(
+        "a ghul section with a display name is replaced, not duplicated",
+        isa PLACEMENT.REPLACES(splice.placement(aliased, "ghul"))
+    )
+
+    // A page already carrying two ghul sections, one after the other.
+    let duplicated =
+        "=={{{{header|Ada}}}}==\nada\n\n=={{{{header|Ghul|ghūl}}}}==\nolder\n\n=={{{{header|ghul}}}}==\nold\n\n=={{{{header|Go}}}}==\ngo\n"
+
+    let folded = splice.splice(duplicated, "ghul", section)
+
+    check_that(
+        "adjacent ghul sections are replaced by one",
+        System.Text.RegularExpressions.Regex.matches(folded, "(?i)header\\|ghul").count == 1 /\
+            !folded.contains("older") /\
+            !folded.contains("old\n")
+    )
+
+    check_that("folding duplicates keeps every other section", splice.keeps_every_other_section(duplicated, folded, "ghul"))
+    check_that("folding duplicates stays confined", splice.is_confined(duplicated, folded, splice.placement(duplicated, "ghul")))
+
     // A placement claiming the whole page, which is what the confinement check cannot see.
     check_that(
         "wiping the page passes the confinement check, which is why it is not the only one",
