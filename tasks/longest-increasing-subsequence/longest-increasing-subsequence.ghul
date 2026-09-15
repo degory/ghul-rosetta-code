@@ -1,6 +1,6 @@
 use default
 
-lis(xs: int[]) -> LIST[int] is
+lis(xs: int[]) -> Collections.List[int] is
     let n = xs.count
     let lengths = (0::n) |> map(_ => 1) |> collect_list()
     let prev = (0::n) |> map(_ => -1) |> collect_list()
@@ -22,7 +22,7 @@ lis(xs: int[]) -> LIST[int] is
         fi
     od
 
-    let result = LIST[int]()
+    let result = LIST()
     let cur mut = best_index
 
     while cur >= 0 do
@@ -30,7 +30,7 @@ lis(xs: int[]) -> LIST[int] is
         cur = prev[cur]
     od
 
-    result |> reverse() |> collect_list()
+    result |> reverse() |> collect()
 si
 
 let sequences = [
