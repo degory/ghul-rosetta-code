@@ -11,8 +11,8 @@ is_palindrome(n: bigint) -> bool is
 si
 
 lychrel_sequence(n: int) -> RESULT is
-    let current mut = cast bigint(n)
-    let values = LIST[bigint]()
+    let current mut = bigint(n)
+    let values = LIST()
 
     for _ in 0::500 do
         current = current + reverse_digits(current)
@@ -32,11 +32,11 @@ let related_count mut = 0
 let palindromic_starts = LIST[int]()
 
 for n in 1::10000 do
-    if is_palindrome(cast bigint(n)) then
+    if is_palindrome(bigint(n)) then
         palindromic_starts.add(n)
     fi
 
-    if seen.contains(cast bigint(n)) then
+    if seen.contains(bigint(n)) then
         related_count = related_count + 1
     else
         let result = lychrel_sequence(n)
@@ -53,7 +53,7 @@ od
 
 let seeds_text = seeds |> map(n => "{n}") |> join(", ")
 let related_starts = palindromic_starts
-    |> filter(n => seeds.contains(n) \/ seen.contains(cast bigint(n)))
+    |> filter(n => seeds.contains(n) \/ seen.contains(bigint(n)))
     |> map(n => "{n}")
     |> join(", ")
 
