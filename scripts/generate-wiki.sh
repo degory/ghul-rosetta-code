@@ -101,6 +101,32 @@ part_heading() {
     echo "${NAME^}"
 }
 
+# A link that opens the program in the ghūl playground, which fetches the source from this
+# repository by the path after /rosetta-code/. A program the playground cannot run carries a
+# playground-unsupported file giving the reason, and gets no link; the playground shows that
+# reason to anyone who reaches it anyway.
+#
+# Reading standard input and referencing a package are the two cases that can be told from the
+# files alone. Deciding either without the marker would leave the playground unable to explain
+# itself, so one without it is reported rather than quietly left unlinked.
+emit_playground_link() {
+    local DIR=$1
+    local NAME=$2
+    local ID=${DIR#"$ROOT/tasks/"}
+
+    if [ -f "$DIR/playground-unsupported" ] ; then
+        return 0
+    fi
+
+    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || grep -q "PackageReference" "$DIR/$NAME.ghulproj" 2>/dev/null ; then
+        echo "$ID: cannot run in the playground but has no playground-unsupported file - no link written" >&2
+        return 0
+    fi
+
+    echo "You can run this online [https://playground.ghul.dev/rosetta-code/$ID here]."
+    echo
+}
+
 # One program's source and output: the body of an entry, or of one part of one.
 emit_body() {
     local DIR=$1
@@ -138,6 +164,8 @@ emit_body() {
             echo "$DIR: output differs from run.expected - recapture the test" >&2
         fi
     fi
+
+    emit_playground_link "$DIR" "$NAME"
 
     if [ -f "$DIR/notes.md" ] ; then
         emit_notes "$DIR/notes.md" || return 1
