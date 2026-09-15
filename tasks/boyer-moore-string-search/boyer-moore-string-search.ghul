@@ -29,7 +29,12 @@ search(text: string, pattern: string) -> LIST[int] is
             s = s + 1
         else
             let c = text[s + j]
-            let last = if last_occurrence.contains_key(c) then last_occurrence[c] else -1 fi
+            let last =
+                if last_occurrence.contains_key(c) then
+                    last_occurrence[c]
+                else
+                    -1
+                fi
             let shift = j - last
 
             s = s + (if shift > 1 then shift else 1 fi)
@@ -40,7 +45,8 @@ search(text: string, pattern: string) -> LIST[int] is
 si
 
 let pattern = "alfalfa"
-let text = "alfredo behalf calfskin alfalfa halfhearted malfunction severalfold"
+let text =
+    "alfredo behalf calfskin alfalfa halfhearted malfunction severalfold"
 
 let hits = search(text, pattern)
 

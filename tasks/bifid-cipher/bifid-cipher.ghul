@@ -16,7 +16,9 @@ normalize(text: string) -> string =>
 encrypt(text: string, square: SQUARE) -> string is
     let letters = normalize(text)
     let n = letters.length
-    let coords = (letters |> map(square.row)) |> cat(letters |> map(square.col)) |> collect_list()
+    let rows = letters |> map(square.row)
+    let cols = letters |> map(square.col)
+    let coords = rows |> cat(cols) |> collect_list()
 
     let sb = System.Text.StringBuilder()
 
@@ -30,7 +32,9 @@ si
 decrypt(text: string, square: SQUARE) -> string is
     let letters = normalize(text)
     let n = letters.length
-    let coords = letters |> flat_map(ch => [square.row(ch), square.col(ch)]) |> collect_list()
+    let coords = letters
+        |> flat_map(ch => [square.row(ch), square.col(ch)])
+        |> collect_list()
 
     let sb = System.Text.StringBuilder()
 
@@ -56,5 +60,13 @@ let wiki_square = SQUARE("BGWKZQPNDSIOAXEFCLUMTHYVR")
 
 demo("archetypal square, task's own example", "ATTACKATDAWN", archetype)
 demo("Wikipedia square, Wikipedia's own example", "FLEEATONCE", wiki_square)
-demo("task's example message, Wikipedia's square", "ATTACKATDAWN", wiki_square)
-demo("longer message, archetypal square", "The invasion will start on the first of January", archetype)
+demo(
+    "task's example message, Wikipedia's square",
+    "ATTACKATDAWN",
+    wiki_square
+)
+demo(
+    "longer message, archetypal square",
+    "The invasion will start on the first of January",
+    archetype
+)
