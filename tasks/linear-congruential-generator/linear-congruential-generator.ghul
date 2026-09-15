@@ -5,7 +5,7 @@ bsd_rand(seed: int) -> Ghul.Pipes.Pipe[int] is
 
     do
         state = (1103515245L * state + 12345L) % 2147483648L
-        yield cast int(state)
+        yield cast(state)
     od
 si
 
@@ -14,7 +14,7 @@ ms_rand(seed: int) -> Ghul.Pipes.Pipe[int] is
 
     do
         state = (214013L * state + 2531011L) % 2147483648L
-        yield cast int(state / 65536L)
+        yield cast(state / 65536L)
     od
 si
 
