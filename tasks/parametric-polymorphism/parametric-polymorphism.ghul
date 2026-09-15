@@ -9,7 +9,7 @@ map[T, U](tree: Tree[T], f: T -> U) -> Tree[U] =>
     if let node: Tree.NODE = tree then
         Tree.NODE(f(node.value), map(node.left, f), map(node.right, f))
     else
-        Tree.LEAF[U]
+        Tree.LEAF
     fi
 
 in_order[T](tree: Tree[T]) -> Pipe[T] is
@@ -22,8 +22,8 @@ si
 
 let tree =
     Tree.NODE(2,
-        Tree.NODE(1, Tree.LEAF[int], Tree.LEAF[int]),
-        Tree.NODE(3, Tree.LEAF[int], Tree.LEAF[int]))
+        Tree.NODE(1, Tree.LEAF, Tree.LEAF),
+        Tree.NODE(3, Tree.LEAF, Tree.LEAF))
 
 let doubled = map(tree, x => x * 2)
 

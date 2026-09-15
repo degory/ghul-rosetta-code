@@ -1,7 +1,12 @@
 use IO.Std.write_line
 
-trait Camera is si
-trait MobilePhone is si
+trait Camera is
+    take_photo() => write_line("flash!")
+si
+
+trait MobilePhone is
+    make_call() => write_line("ring ring")
+si
 
 class CAMERA_PHONE: Camera, MobilePhone is
     init() is si
@@ -11,3 +16,6 @@ let phone = CAMERA_PHONE()
 
 write_line("is a Camera: {isa Camera(phone)}")
 write_line("is a MobilePhone: {isa MobilePhone(phone)}")
+
+phone.take_photo()
+phone.make_call()
