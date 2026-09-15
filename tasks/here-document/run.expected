@@ -1,0 +1,8 @@
+Rosetta Code
+    is a programming chrestomathy site.
+
+It preserves:
+  - indentation
+  - line breaks
+  - other whitespace
+within a block built from adjacent string literals.
