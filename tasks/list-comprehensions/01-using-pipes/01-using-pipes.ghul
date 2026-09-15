@@ -1,0 +1,10 @@
+use default
+
+triples(n: int) -> Pipe[(int, int, int)] =>
+    (1::n) |> flat_map(a =>
+        (a::n) |> flat_map(b =>
+            (b::n)
+                |> filter(c => a * a + b * b == c * c)
+                |> map(c => (a, b, c))))
+
+write_line(triples(20) |> join(", "))
