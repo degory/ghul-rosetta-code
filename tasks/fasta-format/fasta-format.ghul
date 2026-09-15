@@ -1,0 +1,35 @@
+use default
+
+records(lines: List[string]) -> Ghul.Pipes.Pipe[(name: string, sequence: string)] is
+    let name: string? mut = null
+    let sequence = System.Text.StringBuilder()
+
+    for line in lines do
+        if line.starts_with(">") then
+            if let n = name then
+                yield (name = n, sequence = sequence.to_string())
+            fi
+
+            name = line[1..<0]
+            sequence.clear()
+        else
+            sequence.append(line)
+        fi
+    od
+
+    if let n = name then
+        yield (name = n, sequence = sequence.to_string())
+    fi
+si
+
+let fasta =
+    ">Rosetta_Example_1\n"
+    "THERECANBENOSPACE\n"
+    ">Rosetta_Example_2\n"
+    "THERECANBESEVERAL\n"
+    "LINESBUTTHEYALLMUST\n"
+    "BECONCATENATED"
+
+for record in records(fasta.split(['\n'])) do
+    write_line("{record.name}: {record.sequence}")
+od
