@@ -1,7 +1,7 @@
 use default
 
-class NEGATIVE_VALUE_EXCEPTION: System.Exception is
-    init(message: string) is super.init(message); si
+class NEGATIVE_VALUE_EXCEPTION(message: string): System.Exception is
+    super(message);
 si
 
 risky(n: int) is
