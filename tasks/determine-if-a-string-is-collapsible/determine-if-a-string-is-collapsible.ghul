@@ -12,14 +12,19 @@ collapsed(text: string) -> Ghul.Pipes.Pipe[char] is
     od
 si
 
-collapse(text: string) -> string => collapsed(text) |> map(c => "{c}") |> join("")
+collapse(text: string) -> string =>
+    collapsed(text) |> map(c => "{c}") |> join("")
 
 let strings = [
     "",
-    "\"If I were two-faced, would I be wearing this one?\" --- Abraham Lincoln ",
-    "..1111111111111111111111111111111111111111111111111111111111111117777888",
-    "I never give 'em hell, I just tell the truth, and they think it's hell. ",
-    "                                                   ---  Harry S Truman  "
+    "\"If I were two-faced, would I be wearing this one?\" "
+    "--- Abraham Lincoln ",
+    "..111111111111111111111111111111111111111111111111"
+    "1111111111111117777888",
+    "I never give 'em hell, I just tell the truth, and "
+    "they think it's hell. ",
+    "                                                   "
+    "---  Harry S Truman  "
 ]
 
 for s in strings do

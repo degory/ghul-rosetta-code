@@ -22,8 +22,18 @@ evaluate(a: (int) -> double, b: (int) -> double, terms: int) -> double is
 si
 
 let sqrt2 = evaluate(n => if n == 0 then 1.0 else 2.0 fi, n => 1.0, 10000)
-let e = evaluate(n => if n == 0 then 2.0 else cast double(n) fi, n => if n == 1 then 1.0 else cast double(n - 1) fi, 10000)
-let pi = evaluate(n => if n == 0 then 3.0 else 6.0 fi, n => cast double((2 * n - 1) * (2 * n - 1)), 10000)
+
+let e = evaluate(
+    n => if n == 0 then 2.0 else cast double(n) fi,
+    n => if n == 1 then 1.0 else cast double(n - 1) fi,
+    10000
+)
+
+let pi = evaluate(
+    n => if n == 0 then 3.0 else 6.0 fi,
+    n => cast double((2 * n - 1) * (2 * n - 1)),
+    10000
+)
 
 write_line("sqrt(2) = {sqrt2,0:F10}")
 write_line("e       = {e,0:F10}")

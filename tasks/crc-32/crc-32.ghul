@@ -5,8 +5,12 @@ let table = (0..256)
         if (c & 1u) != 0u then 0xEDB88320u ^ (c >> 1) else c >> 1 fi))
     |> collect_list()
 
-crc32(data: ubyte[]) -> uint =>
-    (data |> reduce(0xFFFFFFFFu, (crc, b) => table[cast int((crc ^ cast uint(b)) & 0xFFu)] ^ (crc >> 8))) ^ 0xFFFFFFFFu
+crc32(data: ubyte[]) -> uint is
+    let step = (crc: uint, b: ubyte) =>
+        table[cast int((crc ^ cast uint(b)) & 0xFFu)] ^ (crc >> 8)
+
+    (data |> reduce(0xFFFFFFFFu, step)) ^ 0xFFFFFFFFu
+si
 
 let text = "The quick brown fox jumps over the lazy dog"
 let bytes = System.Text.Encoding.ascii.get_bytes(text)

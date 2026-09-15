@@ -1,6 +1,12 @@
 use default
 
-let units = [(suffix = "wk", size = 604800), (suffix = "d", size = 86400), (suffix = "hr", size = 3600), (suffix = "min", size = 60), (suffix = "sec", size = 1)]
+let units = [
+    (suffix = "wk", size = 604800),
+    (suffix = "d", size = 86400),
+    (suffix = "hr", size = 3600),
+    (suffix = "min", size = 60),
+    (suffix = "sec", size = 1)
+]
 
 parts(total: int) -> Ghul.Pipes.Pipe[string] is
     let remaining mut = total
