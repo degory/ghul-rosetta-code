@@ -7,7 +7,7 @@ let coefficients = [
     -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
 ]
 
-gamma(x: double) -> double is
+gamma(x: double) -> double =>
     if x < 0.5 then
         let sine = System.Math.sin(System.Math.pi * x)
 
@@ -21,7 +21,6 @@ gamma(x: double) -> double is
 
         scale * System.Math.pow(t, xm + 0.5) * System.Math.exp(-t) * a
     fi
-si
 
 for x in [1.0, 2.0, 5.0, 0.5, 1.5, 10.0] do
     write_line("gamma({x}) = {gamma(x),0:F6}")
