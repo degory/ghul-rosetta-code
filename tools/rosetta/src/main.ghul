@@ -620,6 +620,7 @@ adopt(root: string, slugs: LIST[string]) is
             fi
 
             entry.published_hash = digest(live)
+            entry.state = "published"
 
             ledger.save()
 
