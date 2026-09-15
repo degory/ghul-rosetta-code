@@ -1,33 +1,27 @@
 use default
 
-combos[T](items: List[T], k: int) -> LIST[LIST[T]] is
-    let result = LIST[LIST[T]]()
-
+combos[T](items: List[T], k: int) -> Ghul.Pipes.Pipe[LIST[T]] is
     if k == 0 then
-        result.add(LIST[T]())
+        yield LIST[T]()
+    else
+        for i in 0..items.count do
+            for rest in combos(items[i..<0], k - 1) do
+                let combo = LIST[T]([items[i]])
 
-        return result
-    fi
+                for item in rest do
+                    combo.add(item)
+                od
 
-    for i in 0..items.count do
-        for rest in combos(items[i..<0], k - 1) do
-            let combo = LIST[T]([items[i]])
-
-            for item in rest do
-                combo.add(item)
+                yield combo
             od
-
-            result.add(combo)
         od
-    od
-
-    result
+    fi
 si
 
 let doughnuts = ["iced", "jam", "plain"]
 let picks = combos(doughnuts, 2)
 
-write_line("choosing 2 from {doughnuts |> join(", ")}: {picks.count} ways")
+write_line("choosing 2 from {doughnuts |> join(", ")}: {picks |> count()} ways")
 
 for pick in picks do
     write_line("  {pick |> join(", ")}")
