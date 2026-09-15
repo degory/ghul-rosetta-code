@@ -19,8 +19,8 @@ si
 
 find_mersenne_factor(p: int, limit: int) -> bigint? =>
     (1::limit)
-        |> map(k => cast bigint(2 * k * p + 1))
-        |> filter(candidate => mod_pow(2n, cast bigint(p), candidate) =~ 1n)
+        |> map(k => bigint(2 * k * p + 1))
+        |> filter(candidate => mod_pow(2n, bigint(p), candidate) =~ 1n)
         |> first()
 
 show(p: int, limit: int) is

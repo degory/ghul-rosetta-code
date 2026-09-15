@@ -13,8 +13,8 @@ si
 
 write_line("first 20 harmonic numbers:")
 
-for h in harmonic_numbers() |> take(20) do
-    write_line("H({h.n}) = {h.value,0:F6}")
+for (n, value) in harmonic_numbers() |> take(20) do
+    write_line("H({n}) = {value,0:F6}")
 od
 
 write_line("")
@@ -25,7 +25,7 @@ for threshold in 1::10 do
         |> filter(h => h.value > cast double(threshold))
         |> first()
 
-    if let hit = past_threshold then
-        write_line("H(n) > {threshold} first at n = {hit.n}")
+    if let (n, _) = past_threshold then
+        write_line("H(n) > {threshold} first at n = {n}")
     fi
 od

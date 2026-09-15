@@ -1,31 +1,87 @@
 use default
 
-factorial(n: bigint) -> bigint is
-    let result mut = 1n
-    let i mut = 2n
-
-    while i <= n do
-        result = result * i
-        i = i + 1n
-    od
-
-    result
+factorial(n: int) -> bigint is
+    (1::n) |> reduce(1n, (acc, i) => acc * bigint(i))
 si
 
-npk(n: bigint, k: bigint) -> bigint is
-    if k < 0n \/ k > n then 0n else factorial(n) / factorial(n - k) fi
+npk(n: int, k: int) -> bigint => factorial(n) / factorial(n - k)
+
+nck(n: int, k: int) -> bigint =>
+    factorial(n) / (factorial(k) * factorial(n - k))
+
+let g = 7.0
+let coefficients = [
+    0.99999999999980993, 676.5203681218851, -1259.1392167224028,
+    771.32342877765313, -176.61502916214059, 12.507343278686905,
+    -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
+]
+
+// log(gamma(x)) for x >= 1, the Lanczos series without exponentiating -
+// a magnitude far beyond a double's range never overflows this way.
+log_gamma(x: double) -> double is
+    let xm = x - 1.0
+    let t = xm + g + 0.5
+    let term = (sum, i) => sum + coefficients[i] / (xm + cast double(i))
+    let a = (1::8) |> reduce(coefficients[0], term)
+
+    let half_log_2pi = 0.5 * System.Math.log(2.0 * System.Math.pi)
+
+    half_log_2pi + (xm + 0.5) * System.Math.log(t) - t + System.Math.log(a)
 si
 
-nck(n: bigint, k: bigint) -> bigint is
-    if k < 0n \/ k > n then
-        0n
-    else
-        factorial(n) / (factorial(k) * factorial(n - k))
-    fi
+// A value too large for a double is shown as a mantissa and a decimal
+// exponent, both read off the natural log rather than the value itself.
+scientific(ln_value: double) -> string is
+    let log10 = ln_value / System.Math.log(10.0)
+    let exponent = System.Math.floor(log10)
+    let mantissa = System.Math.pow(10.0, log10 - exponent)
+
+    "{mantissa,0:F6}e+{cast int(exponent)}"
 si
 
-let cases = [(5n, 3n), (10n, 5n), (5n, 0n), (5n, 5n), (5n, 6n), (0n, 0n)]
+approx_npk(n: int, k: int) -> string =>
+    scientific(
+        log_gamma(cast double(n + 1)) -
+        log_gamma(cast double(n - k + 1))
+    )
 
-for (n, k) in cases do
-    write_line("n={n} k={k}: nPk={npk(n, k)} nCk={nck(n, k)}")
+approx_nck(n: int, k: int) -> string =>
+    scientific(
+        log_gamma(cast double(n + 1)) -
+        log_gamma(cast double(k + 1)) -
+        log_gamma(cast double(n - k + 1))
+    )
+
+write_line("permutations from 1 to 12, exact integer arithmetic:")
+
+for k in 1::11 do
+    write_line("P(12,{k}) = {npk(12, k)}")
+od
+
+write_line("")
+write_line("combinations from 10 to 60, exact integer arithmetic:")
+
+for step in 1::5 do
+    let k = step * 10
+
+    write_line("C(60,{k}) = {nck(60, k)}")
+od
+
+write_line("")
+write_line("permutations from 5 to 15000, approximate floating point:")
+
+for n in [5, 50, 500, 1000, 5000, 15000] do
+    let k = n / 3
+
+    write_line("P({n},{k}) ~ {approx_npk(n, k)}")
+od
+
+write_line("")
+write_line("combinations from 100 to 1000, approximate floating point:")
+
+for n in 1::10 do
+    let m = n * 100
+    let k = m / 3
+
+    write_line("C({m},{k}) ~ {approx_nck(m, k)}")
 od
