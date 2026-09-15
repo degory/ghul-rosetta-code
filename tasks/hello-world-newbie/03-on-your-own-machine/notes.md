@@ -1,6 +1,6 @@
 Install the .NET 10 SDK from
 https://dotnet.microsoft.com/en-us/download/dotnet/10.0 - the compiler
-runs on it, and a ghul project is an ordinary .NET SDK project.
+runs on it, and a ghūl project is an ordinary .NET SDK project.
 
 1. Clone https://github.com/degory/ghul-repository-template, or
    the scratchpad or examples repository, for a project to start
@@ -14,7 +14,7 @@ The output appears in the terminal you ran it from. `dotnet build`,
 C# project.
 
 For an editor, Visual Studio Code (https://code.visualstudio.com) with
-the ghul extension
+the ghūl extension
 (https://marketplace.visualstudio.com/items?itemName=degory.ghul) gives
 errors as you type, completion, hover, go to definition, rename and
 formatting. Any editor that installs VS Code extensions gets the same;
