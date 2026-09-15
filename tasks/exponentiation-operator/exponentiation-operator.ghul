@@ -1,0 +1,33 @@
+use default
+
+**(base: int, exponent: int) -> int is
+    let result mut = 1
+    let e mut = exponent
+
+    while e > 0 do
+        result = result * base
+        e = e - 1
+    od
+
+    result
+si
+
+**(base: double, exponent: int) -> double is
+    let result mut = 1.0
+    let e mut = exponent
+
+    while e > 0 do
+        result = result * base
+        e = e - 1
+    od
+
+    result
+si
+
+power(base: int, exponent: int) -> int => base ** exponent
+power(base: double, exponent: int) -> double => base ** exponent
+
+write_line("2 ** 10 = {2 ** 10}")
+write_line("2.5 ** 3 = {2.5 ** 3}")
+write_line("power(3, 4) = {power(3, 4)}")
+write_line("power(1.5, 2) = {power(1.5, 2)}")
