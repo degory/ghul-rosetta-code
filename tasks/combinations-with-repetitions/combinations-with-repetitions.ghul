@@ -28,3 +28,8 @@ write_line("choosing 2 from {choices}: {picks |> count()} ways")
 for pick in picks do
     write_line("  {pick |> join(", ")}")
 od
+
+let ten_types = LIST[int](1::10)
+let ways = combos(ten_types, 3) |> count()
+
+write_line("choosing 3 from 10 types: {ways} ways")
