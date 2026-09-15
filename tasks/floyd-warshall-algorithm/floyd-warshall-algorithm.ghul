@@ -27,9 +27,13 @@ od
 for k in 1::n do
     for i in 1::n do
         for j in 1::n do
-            if dist[(i, k)] < inf /\ dist[(k, j)] < inf /\ dist[(i, k)] + dist[(k, j)] < dist[(i, j)] then
-                dist[(i, j)] = dist[(i, k)] + dist[(k, j)]
-                next_hop[(i, j)] = next_hop[(i, k)]
+            if dist[(i, k)] < inf /\ dist[(k, j)] < inf then
+                let through_k = dist[(i, k)] + dist[(k, j)]
+
+                if through_k < dist[(i, j)] then
+                    dist[(i, j)] = through_k
+                    next_hop[(i, j)] = next_hop[(i, k)]
+                fi
             fi
         od
     od
