@@ -45,7 +45,7 @@
       "title": "99 bottles of beer",
       "slug": "99-bottles-of-beer",
       "state": "published",
-      "published_hash": "e59f9c9d8eef9713931367c404e3fc879051d10183d0eb8262b1395fde4de3b7"
+      "published_hash": "138bfd52043107b61e21dd01de783a8e6c0aacaa16044e6907913059d0dbeec8"
     },
     {
       "title": "A\u002BB",
@@ -115,7 +115,7 @@
       "title": "Ackermann function",
       "slug": "ackermann-function",
       "state": "published",
-      "published_hash": "353f66d4767ca18fbe59dd42d01f6756077d1de7cc52771e0bb598d5c51e69dd"
+      "published_hash": "bb3cd56fe0fff6fe18ca5a10651ba693cfb91bfbd55ebedbf6820a4f96d62c40"
     },
     {
       "title": "Active Directory/Connect",
@@ -213,7 +213,7 @@
       "title": "Apply a callback to an array",
       "slug": "apply-a-callback-to-an-array",
       "state": "published",
-      "published_hash": "891a96f1d52152f8002a1bb9c9db1f245a32b44d8e01aa86291ff19b4d3e4e4f"
+      "published_hash": "88d311f1ca36183fb9dba0862505fbc314d06bf0d19576aaa8aa520d07d6001e"
     },
     {
       "title": "Arbitrary-precision integers (included)",
@@ -276,19 +276,19 @@
       "title": "Array concatenation",
       "slug": "array-concatenation",
       "state": "published",
-      "published_hash": "b4c26b94e28469c7e8d5c8d9679cc26827072b8844fec882fa2b3e3dc92d9ba3"
+      "published_hash": "2c7015692dfaa845a08f60d3e99f09c3e8903eeb26a484d87c0b869d510bc550"
     },
     {
       "title": "Array length",
       "slug": "array-length",
       "state": "published",
-      "published_hash": "2983b53ccae89bf6f80ccc9fb772f4ca1cc8054812f069c18a87337ccbab3540"
+      "published_hash": "8007f49f213a245c5a89f14c55eabfadd7cbccf3c6bbec34a623a5553db03190"
     },
     {
       "title": "Arrays",
       "slug": "arrays",
       "state": "published",
-      "published_hash": "1baa8dabded2239a4fba75acbf8e2b200152f322a67a8666e7a88f5e6573371d"
+      "published_hash": "6a2e8d8188d3a9a3b49ec5d2eaff74272e579ce9d3518fd9a47310751a71ee16"
     },
     {
       "title": "Assertions",
@@ -324,7 +324,7 @@
       "title": "Averages/Arithmetic mean",
       "slug": "arithmetic-mean",
       "state": "published",
-      "published_hash": "24a8eaed6e0a09a3bd9f1b453380d9903b7c13e134f9acd2993c888adaef2b02"
+      "published_hash": "59c74ac02751b368c131dc651cd24e47cf4b730dc892c2464d8bff41b1c7c08b"
     },
     {
       "title": "Averages/Median",
@@ -392,7 +392,7 @@
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published",
-      "published_hash": "229fc9ceb9920f3f62a52184ae1dea02b09d0a14984b925d021ec6219764d22a"
+      "published_hash": "86f8c8b774a30fa83846b66a1271fe480cf97bdefebc074a19fbbb39d69d4b8c"
     },
     {
       "title": "Binary search",
@@ -525,7 +525,7 @@
       "title": "Boolean values",
       "slug": "boolean-values",
       "state": "published",
-      "published_hash": "ef5df52a1245e344ae60bddd2b63971adf1e32d2b0fb4cd675023fce09585d94"
+      "published_hash": "9595e368e211820779fa1de28682588b68a09ae8354a2234a03d4aefa55050b5"
     },
     {
       "title": "Boustrophedon transform",
@@ -672,7 +672,7 @@
       "title": "Character codes",
       "slug": "character-codes",
       "state": "published",
-      "published_hash": "90455c6d34153e6c65758152e5bf0b5478ae68eadb7eaaac21d3accaa6624473"
+      "published_hash": "a4f35ca92126e1b631d002d2ae2dd392d0bd41e207a00d50fbf4d79f715af09d"
     },
     {
       "title": "Chat server",
@@ -825,7 +825,7 @@
       "title": "Comments",
       "slug": "comments",
       "state": "published",
-      "published_hash": "dc0545b1338081e92e51962b60782d794676b4f72204b424a9f57832e02f3785"
+      "published_hash": "9b54ff045380a9ba0ab8d8984a96300d0d03afd0c2258229b7cb60dbad245120"
     },
     {
       "title": "Compare length of two strings",
@@ -860,7 +860,7 @@
       "title": "Conditional structures",
       "slug": "conditional-structures",
       "state": "published",
-      "published_hash": "6b8cd43ea71398c590a148059bdeb6f44717a6c6bf721533c3939bced6adceff"
+      "published_hash": "45fd301ad09332cd29d72f2c5a5f816e0892eb6e0e74283552f64ada328cd1aa"
     },
     {
       "title": "Conjugate a Latin verb",
@@ -907,7 +907,7 @@
       "title": "Copy a string",
       "slug": "copy-a-string",
       "state": "published",
-      "published_hash": "2bcdea8057df2a108a0a4608dab3c9cf8aa457858dd212e1d34568b713c1152b"
+      "published_hash": "055bcfbc78c49059234e05b8f46e12bc5de39bf46707a03236022df5714b0781"
     },
     {
       "title": "Count in factors",
@@ -1202,13 +1202,13 @@
       "title": "Empty program",
       "slug": "empty-program",
       "state": "published",
-      "published_hash": "78a1e4936f13fd066d3fc92d226667e8f43c4972f9186fe06d0d2f25611432b5"
+      "published_hash": "8948dcaebfafef56a0cb5192df7d63d397e96b2b6625733c5cb8c53e9af77b4f"
     },
     {
       "title": "Empty string",
       "slug": "empty-string",
       "state": "published",
-      "published_hash": "182b4591bc9c3273ea454124118f385e110a602dca481b8d4de3644cf45921cd"
+      "published_hash": "af0f7af919d988629a5b73137680801140c9867ca4975d16f8ebae8e85a8d3d6"
     },
     {
       "title": "Engel expansion",
@@ -1302,7 +1302,7 @@
       "title": "Even or odd",
       "slug": "even-or-odd",
       "state": "published",
-      "published_hash": "4bbf2612d51921dc0b4b75d026f3de755188bb7140aeca2e77604a8d9d5bb133"
+      "published_hash": "dd7a9317fae2ed6925edebad47c3b2f0ced10771ff62daf5eb03893ee62797db"
     },
     {
       "title": "Events",
@@ -1372,7 +1372,7 @@
       "title": "Factorial",
       "slug": "factorial",
       "state": "published",
-      "published_hash": "7f514eb274e85ebb8d1c79b42c67287e81eb80d09ed0eaaa287c575319cdc445"
+      "published_hash": "932c02248b0835b4c9614d8c2210887228a6f3f15c21f14093733f61f75f4d05"
     },
     {
       "title": "Factorial base numbers indexing permutations of a collection",
@@ -1408,7 +1408,7 @@
       "title": "Factors of an integer",
       "slug": "factors-of-an-integer",
       "state": "published",
-      "published_hash": "70ddc5b0feefb3287a936d55a2d178a0146270d2b4b31b17cfde353c989644cb"
+      "published_hash": "f5f391d9c975d6e3916b39714aa4ac3a2b8a0da9cf91b170ea6172207c8d3a26"
     },
     {
       "title": "Fairshare between two and more",
@@ -1448,7 +1448,7 @@
       "title": "Fibonacci sequence",
       "slug": "fibonacci-sequence",
       "state": "published",
-      "published_hash": "1e0ae42fd95954aa391fc04ff29769a2ae7058f6b9699b102cc3bf7d4811b671"
+      "published_hash": "2b3ad011146f25f83394e667f5939f56f00469c00815f817d458ceed8d2597ce"
     },
     {
       "title": "Fibonacci word",
@@ -1544,7 +1544,7 @@
       "title": "FizzBuzz",
       "slug": "fizzbuzz",
       "state": "published",
-      "published_hash": "d18ddd7a38b7b77c346a8303451b8185a329accde0b03ef08e3409bf996fb9c0"
+      "published_hash": "42cf10b030cf1e99cac886d7ff47e3a4244db5377a30bf1c1e7439d7d8968824"
     },
     {
       "title": "Flatten a list",
@@ -1631,7 +1631,7 @@
       "title": "Function definition",
       "slug": "function-definition",
       "state": "published",
-      "published_hash": "cd4df9fb9acba44a113a3e43a4564f9f472d35034dba15b3870a091dfaa65719"
+      "published_hash": "9e3710f522b5febbc2fd3f4e211916bacd1772fb3ce9e30de92c923a026b8a38"
     },
     {
       "title": "Functional coverage tree",
@@ -1702,7 +1702,7 @@
       "title": "Generic swap",
       "slug": "generic-swap",
       "state": "published",
-      "published_hash": "2ba1387e635c74c756e5477d7d4bee9d4f80f2b0b89786af39377bf8c9430a02"
+      "published_hash": "cffff17da38d6c4919d2661340232bbb964c26c442e2ef42d571752118ca2d50"
     },
     {
       "title": "Giuga numbers",
@@ -1761,13 +1761,13 @@
       "title": "Greatest common divisor",
       "slug": "greatest-common-divisor",
       "state": "published",
-      "published_hash": "43b98a9a266190caca23adf26916156e39d161ce61c1a21870352ea6ddd30877"
+      "published_hash": "7bbf4ef66258765db2b01e2772cb2203d429616e73f136baec99a0c1555340d9"
     },
     {
       "title": "Greatest element of a list",
       "slug": "greatest-element-of-a-list",
       "state": "published",
-      "published_hash": "b42d16f203364cc8afbd5eed54c7dccd53ea30346019f587521a3d9a0d408ba6"
+      "published_hash": "1717f85ab4c87cf2c1f4086e1f787e2e17d02ad4ca22d9fd1b265e202c8c91be"
     },
     {
       "title": "Greatest prime dividing the n-th cubefree number",
@@ -1818,7 +1818,7 @@
       "title": "Hailstone sequence",
       "slug": "hailstone-sequence",
       "state": "published",
-      "published_hash": "bde64a9886a75299e8c441ff7c7399bcb2fdf54b267e29e2487c48ad3f4eadfe"
+      "published_hash": "3024feb3d50dc3bccf89e914a9c0aa18156033c2fe2b473a5f12a73300c72c5f"
     },
     {
       "title": "Hamming numbers",
@@ -1871,7 +1871,7 @@
       "title": "Hello world/Newline omission",
       "slug": "hello-world-newline-omission",
       "state": "published",
-      "published_hash": "ec84aa3b69570784ebe50fe52d61c9bb114bb3abd3e2ff08e0b06a73e430ae48"
+      "published_hash": "08dabf91c84b375d51883a0125faf66c9cf1bb7a8cd0770ae5a8fc36b29860d1"
     },
     {
       "title": "Hello world/Standard error",
@@ -1883,7 +1883,7 @@
       "title": "Hello world/Text",
       "slug": "hello-world-text",
       "state": "published",
-      "published_hash": "49067ca560ac35123cb880979a268cdf45073a7ea86cc9e69189620d0943fa47"
+      "published_hash": "c25f5df923cd3cbdecf18197e631edb7e6900ae3cd64494daabaabb32a9a8855"
     },
     {
       "title": "Here document",
@@ -2047,7 +2047,7 @@
       "title": "Increment a numerical string",
       "slug": "increment-a-numerical-string",
       "state": "published",
-      "published_hash": "e28e7067654da9e0c7bf8f0ef0f9c0e53a1c89fcc221f4a232651426693bae68"
+      "published_hash": "dd3690e2e4974e18fb5f59a843a5ad35e6621d543c97257e30660ddc4e76866c"
     },
     {
       "title": "Index finite lists of positive integers",
@@ -2347,7 +2347,7 @@
       "title": "Leap year",
       "slug": "leap-year",
       "state": "published",
-      "published_hash": "cd737178302737ce13c8f86f26d40fa5e603c6f58ffd33b55caa0c72fa9085fd"
+      "published_hash": "9e94222067c03885557862745763259d062769e908ad0fd96314a9157c63ead6"
     },
     {
       "title": "Least common multiple",
@@ -2407,7 +2407,7 @@
       "title": "Logical operations",
       "slug": "logical-operations",
       "state": "published",
-      "published_hash": "98d4a6c468aa1a3d1f4989ea1607ceed9db01b27bce60931b7db098cc6de0d4a"
+      "published_hash": "40be27f4165dff4f883b0c1a9f3da8502bcbfac597a4537741e4fa509a8690c0"
     },
     {
       "title": "Long multiplication",
@@ -2454,7 +2454,7 @@
       "title": "Loops/Break",
       "slug": "loops-break",
       "state": "published",
-      "published_hash": "b50f57146a5e84ca98e0dffdcbd0e490d43004d7e1cd0b6fa0fa60d7e3e97035"
+      "published_hash": "150c86d8f57d35bf72b78fd7b68d5eedc3348b073eec53b0eee1eb5ec423f0e7"
     },
     {
       "title": "Loops/Continue",
@@ -2466,31 +2466,31 @@
       "title": "Loops/Do-while",
       "slug": "loops-do-while",
       "state": "published",
-      "published_hash": "cebb914f7ee7e143475bd59b3fa7827a14dac53403ec6e3336084fc8fbd6cc73"
+      "published_hash": "ed02f92715cae085769c946b24694c2e7b7901e7fe23a02a05a7d05404cd98d0"
     },
     {
       "title": "Loops/Downward for",
       "slug": "loops-downward-for",
       "state": "published",
-      "published_hash": "6fea9968dbdbce6dbf3144b2001b0f2750b7d6f581b545c91d82c59fb1a27532"
+      "published_hash": "22beb01163c90e9fbd49e873972c3f8674d70f4e5553d52cf96840ec82f2696b"
     },
     {
       "title": "Loops/For",
       "slug": "loops-for",
       "state": "published",
-      "published_hash": "0fd003f5d1af84d45e4045daa25a3758ee026527eae8929d5518365b674e443e"
+      "published_hash": "3993c7dbb612e4ec64e4b7edc621f4da527008f6085c5373bfa95822fe3804c0"
     },
     {
       "title": "Loops/For with a specified step",
       "slug": "loops-for-with-a-specified-step",
       "state": "published",
-      "published_hash": "cfdcc4bc75f25b1836307c7ca7f433196f173a3c7dae02fbfea7a629cbf09b5b"
+      "published_hash": "ef04e4a435790d47c94fc520ce8b67aec9cdd1cc15d65613cf9c6759d46dc621"
     },
     {
       "title": "Loops/Foreach",
       "slug": "loops-foreach",
       "state": "published",
-      "published_hash": "3eaa24b198e73f83c8ebc9f2b690a32cb55b3d40c644909b67f380bdf5ce1f01"
+      "published_hash": "2d728936863c5fb609184eb3c236e957289d500b14da6b4bd16039c87c0c04d2"
     },
     {
       "title": "Loops/Increment loop index within loop body",
@@ -2507,7 +2507,7 @@
       "title": "Loops/N plus one half",
       "slug": "loops-n-plus-one-half",
       "state": "published",
-      "published_hash": "df130eba714a425efeee1190329aef7418d833f8ededc5f9ea6698ed1d90bb04"
+      "published_hash": "7360aab80b9772be82ade2268e2440534c4da007e5ce6180da604846d4026aca"
     },
     {
       "title": "Loops/Nested",
@@ -2519,7 +2519,7 @@
       "title": "Loops/While",
       "slug": "loops-while",
       "state": "published",
-      "published_hash": "a13fed8ecd13e7a8d36991463c24c4bcd9fda241dd83db72a3b812dedc20862a"
+      "published_hash": "c53c30531a675a3418dd5a1cbeb5450559a577367795141f6f8dd3dd37d923ea"
     },
     {
       "title": "Loops/With multiple ranges",
@@ -2942,7 +2942,7 @@
       "title": "Palindrome detection",
       "slug": "palindrome-detection",
       "state": "published",
-      "published_hash": "9cfd967334ca67774721910070ff74df94c0f7b11f63b9de558e9248c1e47f6e"
+      "published_hash": "bce3e4ce3c48ef355acd13dca311685b66a6e3ce67b8f402222f0b6047efc258"
     },
     {
       "title": "Pangram checker",
@@ -3294,7 +3294,7 @@
       "title": "Repeat a string",
       "slug": "repeat-a-string",
       "state": "published",
-      "published_hash": "90434a6497b347aa1a7f3008bf02066444b9abcc87cfec7c712ec5ab506e4457"
+      "published_hash": "f7171467c11c06ab949e88b054bc342582cc774cd4f5537aba0b4fb248beb611"
     },
     {
       "title": "Return multiple values",
@@ -3306,7 +3306,7 @@
       "title": "Reverse a string",
       "slug": "reverse-a-string",
       "state": "published",
-      "published_hash": "ab07645a0984c8f97aebb2d8ef2512c8c1a156577e580d8acd17e49531a635a1"
+      "published_hash": "d8e247a1f0a32cd55ff09a34abc0e2fac86472b5ccfc11a77030de80e425c00a"
     },
     {
       "title": "Reverse the gender of a string",
@@ -3523,7 +3523,7 @@
       "title": "Sieve of Eratosthenes",
       "slug": "sieve-of-eratosthenes",
       "state": "published",
-      "published_hash": "dc4598ec2a043318f6804a087e499e9c8b1bf6a03b112f1c44a5a0a7a3bd605d"
+      "published_hash": "7a4aa50b7a58ed3a4f8b872d4aaf30686f22959d721d4e63b7c76ac1c85e714e"
     },
     {
       "title": "Sieve of Pritchard",
@@ -3885,7 +3885,7 @@
       "title": "String case",
       "slug": "string-case",
       "state": "published",
-      "published_hash": "84f4773dc4bf368e1334049284e9251b04ae2e54f5f54bafaa6f81c90c4b548f"
+      "published_hash": "b4b7ad65454726985e9d379130a792876aa3e5e06aadcd2581726e45643a5fe0"
     },
     {
       "title": "String comparison",
@@ -3897,7 +3897,7 @@
       "title": "String concatenation",
       "slug": "string-concatenation",
       "state": "published",
-      "published_hash": "42b482e5822e891d3e9ea4364bd5ed8c3f10c5c2325d74db852beab1a6182b47"
+      "published_hash": "1e6b432a007963c0263f4217607c126de846229fb30410368c9ee2e3ccb88bdf"
     },
     {
       "title": "String interpolation (included)",
@@ -3909,7 +3909,7 @@
       "title": "String length",
       "slug": "string-length",
       "state": "published",
-      "published_hash": "eff572c53a21c777a1458c3660c7fbdf7213a69eacb1731839277adc36e2d010"
+      "published_hash": "a7efd39c2e9144a144bffadbef5fa2e6ceed602be22677abfc4361f36c6d9e23"
     },
     {
       "title": "String matching",
@@ -3992,7 +3992,7 @@
       "title": "Sum and product of an array",
       "slug": "sum-and-product-of-an-array",
       "state": "published",
-      "published_hash": "b29fa21b32f926e5365108be73ce109b2cd83f21fa89bd05d3bb17fc2a82c76c"
+      "published_hash": "50633c7c652ffebb542ccb28a98ab1eab353900e0a319e12c6c539f8cdc0aba8"
     },
     {
       "title": "Sum data type",
@@ -4016,7 +4016,7 @@
       "title": "Sum of a series",
       "slug": "sum-of-a-series",
       "state": "published",
-      "published_hash": "c904869e1d1bf1ae031b6a3ed2cc30dc46d7bbc1ef165019abe7652dcca376e1"
+      "published_hash": "8ab21623d2aa13615bf6847b0c14fe1f608a89341e2d4aca7f84537db464d4c6"
     },
     {
       "title": "Sum of squares",
@@ -4136,7 +4136,7 @@
       "title": "Tokenize a string",
       "slug": "tokenize-a-string",
       "state": "published",
-      "published_hash": "3c54618d113d4562b57832758a56df333e09940192fc2227ba2dd801163e71f9"
+      "published_hash": "d6df116bd7132ff56f5a45ba347414f355781bd5275f9a6e74393d76952a0570"
     },
     {
       "title": "Tokenize a string with escaping",
@@ -4160,7 +4160,7 @@
       "title": "Towers of Hanoi",
       "slug": "towers-of-hanoi",
       "state": "published",
-      "published_hash": "b8bbd0dd5b377bca6084a942a084f2f6a92171b08c04325633fb708fc701d18e"
+      "published_hash": "2b7234040f8fc6b5b6eb0fdcaf43dc55da9bb2432712ba9ce8e03b96bdb90fcb"
     },
     {
       "title": "Trabb Pardo\u2013Knuth algorithm",
