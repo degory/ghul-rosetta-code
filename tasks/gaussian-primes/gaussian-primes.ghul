@@ -40,11 +40,22 @@ let primes_under_100 =
             |> map(b => (a = a, b = b)))
         |> collect_list()
 
-write_line("gaussian primes with norm < 100 ({primes_under_100.count} total):")
-write_line(primes_under_100 |> map(p => "{p.a}{if p.b >= 0 then "+" else "" fi}{p.b}i") |> join(", "))
+let count = primes_under_100.count
+let listing = primes_under_100
+    |> map(p => "{p.a}{if p.b >= 0 then "+" else "" fi}{p.b}i")
+    |> join(", ")
+
+write_line("gaussian primes with norm < 100 ({count} total):")
+write_line(listing)
 write_line("")
-write_line("plot, radius 50 (rows run from imaginary part +50 down to -50):")
+write_line(
+    "plot, radius 50 (rows run from imaginary part +50 down to -50):"
+)
 
 for b in (-50::50) |> reverse() do
-    write_line((-50::50) |> map(a => if is_gaussian_prime(a, b) then "*" else " " fi) |> join(""))
+    let row = (-50::50)
+        |> map(a => if is_gaussian_prime(a, b) then "*" else " " fi)
+        |> join("")
+
+    write_line(row)
 od

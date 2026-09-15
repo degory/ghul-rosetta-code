@@ -21,7 +21,11 @@ write_line("")
 write_line("first position where H(n) exceeds a given integer:")
 
 for threshold in 1::10 do
-    if let hit = harmonic_numbers() |> filter(h => h.value > cast double(threshold)) |> first() then
+    let past_threshold = harmonic_numbers()
+        |> filter(h => h.value > cast double(threshold))
+        |> first()
+
+    if let hit = past_threshold then
         write_line("H(n) > {threshold} first at n = {hit.n}")
     fi
 od

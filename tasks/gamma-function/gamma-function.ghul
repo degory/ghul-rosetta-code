@@ -9,13 +9,17 @@ let coefficients = [
 
 gamma(x: double) -> double is
     if x < 0.5 then
-        System.Math.pi / (System.Math.sin(System.Math.pi * x) * gamma(1.0 - x))
+        let sine = System.Math.sin(System.Math.pi * x)
+
+        System.Math.pi / (sine * gamma(1.0 - x))
     else
         let xm = x - 1.0
         let t = xm + g + 0.5
-        let a = (1::8) |> reduce(coefficients[0], (sum, i) => sum + coefficients[i] / (xm + cast double(i)))
+        let term = (sum, i) => sum + coefficients[i] / (xm + cast double(i))
+        let a = (1::8) |> reduce(coefficients[0], term)
+        let scale = System.Math.sqrt(2.0 * System.Math.pi)
 
-        System.Math.sqrt(2.0 * System.Math.pi) * System.Math.pow(t, xm + 0.5) * System.Math.exp(-t) * a
+        scale * System.Math.pow(t, xm + 0.5) * System.Math.exp(-t) * a
     fi
 si
 
