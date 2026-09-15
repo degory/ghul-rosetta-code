@@ -1,0 +1,15 @@
+use default
+
+triples(n: int) -> Pipe[(int, int, int)] is
+    for a in 1::n do
+        for b in a::n do
+            for c in b::n do
+                if a * a + b * b == c * c then
+                    yield (a, b, c)
+                fi
+            od
+        od
+    od
+si
+
+write_line(triples(20) |> join(", "))
