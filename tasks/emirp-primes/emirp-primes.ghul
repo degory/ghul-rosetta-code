@@ -53,13 +53,16 @@ emirps() -> Ghul.Pipes.Pipe[int] is
 si
 
 let first_twenty = emirps() |> take(20) |> collect_list()
+let first_twenty_text = first_twenty |> map(n => "{n}") |> join(", ")
 
-write_line("first 20 emirps: {first_twenty |> map(n => "{n}") |> join(", ")}")
+write_line("first 20 emirps: {first_twenty_text}")
 
 let in_range = (7700::8000) |> filter(is_emirp) |> collect_list()
+let in_range_text = in_range |> map(n => "{n}") |> join(", ")
 
-write_line("emirps between 7700 and 8000: {in_range |> map(n => "{n}") |> join(", ")}")
+write_line("emirps between 7700 and 8000: {in_range_text}")
 
 let first_ten_thousand = emirps() |> take(10000) |> collect_list()
+let ten_thousandth = first_ten_thousand[first_ten_thousand.count - 1]
 
-write_line("10000th emirp: {first_ten_thousand[first_ten_thousand.count - 1]}")
+write_line("10000th emirp: {ten_thousandth}")
