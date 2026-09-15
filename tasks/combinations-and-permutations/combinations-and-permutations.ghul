@@ -17,9 +17,15 @@ npk(n: bigint, k: bigint) -> bigint is
 si
 
 nck(n: bigint, k: bigint) -> bigint is
-    if k < 0n \/ k > n then 0n else factorial(n) / (factorial(k) * factorial(n - k)) fi
+    if k < 0n \/ k > n then
+        0n
+    else
+        factorial(n) / (factorial(k) * factorial(n - k))
+    fi
 si
 
-for (n, k) in [(5n, 3n), (10n, 5n), (5n, 0n), (5n, 5n), (5n, 6n), (0n, 0n)] do
+let cases = [(5n, 3n), (10n, 5n), (5n, 0n), (5n, 5n), (5n, 6n), (0n, 0n)]
+
+for (n, k) in cases do
     write_line("n={n} k={k}: nPk={npk(n, k)} nCk={nck(n, k)}")
 od
