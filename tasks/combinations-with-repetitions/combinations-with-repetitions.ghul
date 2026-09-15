@@ -1,0 +1,34 @@
+use default
+
+combos[T](items: List[T], k: int) -> LIST[LIST[T]] is
+    let result = LIST[LIST[T]]()
+
+    if k == 0 then
+        result.add(LIST[T]())
+
+        return result
+    fi
+
+    for i in 0..items.count do
+        for rest in combos(items[i..<0], k - 1) do
+            let combo = LIST[T]([items[i]])
+
+            for item in rest do
+                combo.add(item)
+            od
+
+            result.add(combo)
+        od
+    od
+
+    result
+si
+
+let doughnuts = ["iced", "jam", "plain"]
+let picks = combos(doughnuts, 2)
+
+write_line("choosing 2 from {doughnuts |> join(", ")}: {picks.count} ways")
+
+for pick in picks do
+    write_line("  {pick |> join(", ")}")
+od
