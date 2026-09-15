@@ -1,0 +1,22 @@
+use default
+
+let units = [(suffix = "wk", size = 604800), (suffix = "d", size = 86400), (suffix = "hr", size = 3600), (suffix = "min", size = 60), (suffix = "sec", size = 1)]
+
+parts(total: int) -> Ghul.Pipes.Pipe[string] is
+    let remaining mut = total
+
+    for unit in units do
+        let count = remaining / unit.size
+        remaining = remaining % unit.size
+
+        if count > 0 then
+            yield "{count} {unit.suffix}"
+        fi
+    od
+si
+
+compound_duration(total: int) -> string => parts(total) |> join(", ")
+
+for seconds in [7259, 86400, 6000000] do
+    write_line("{seconds}: {compound_duration(seconds)}")
+od
