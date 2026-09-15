@@ -8,8 +8,7 @@ create_secure_temp_file(dir: string, prefix: string) -> string is
         let candidate = "{dir}/{prefix}{attempt}.tmp"
 
         try
-            let stream = FileStream(candidate, FileMode.CREATE_NEW, FileAccess.WRITE)
-            stream.dispose()
+            let use _ = FileStream(candidate, FileMode.CREATE_NEW, FileAccess.WRITE)
             break candidate
         catch e: IO.IOException
             attempt = attempt + 1

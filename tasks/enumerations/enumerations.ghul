@@ -1,13 +1,13 @@
 use IO.Std.write_line
 
 enum Day is
-    SUNDAY,
     MONDAY,
     TUESDAY,
     WEDNESDAY,
     THURSDAY,
     FRIDAY,
     SATURDAY,
+    SUNDAY,
 si
 
 enum Status is

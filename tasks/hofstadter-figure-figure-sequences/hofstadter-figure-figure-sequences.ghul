@@ -7,7 +7,7 @@ r_sequence() -> Pipe[int] is
 
     yield value
 
-    while true do
+    do
         let step =
             if skipped.count >= n then skipped[n - 1] else value + 1 fi
 
