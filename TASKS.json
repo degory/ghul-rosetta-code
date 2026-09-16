@@ -11,7 +11,7 @@
       "slug": "100-prisoners",
       "state": "published",
       "note": "reopened, was rejected/nondeterministic: a seeded generator makes the simulation reproducible, and the ~31% answer is the point",
-      "published_hash": "49ef91d98471bb12ead75f312ba15ed976c0f986d27ae070445d0a57e8117598"
+      "published_hash": "6236811d0b245e68620076b963ac9205df291f75aee11745b84160eee716226c"
     },
     {
       "title": "15 puzzle game",
@@ -91,7 +91,7 @@
       "title": "Abstract type",
       "slug": "abstract-type",
       "state": "published",
-      "published_hash": "c36886c1a3420432277732b684043f0ded259e86e1d4c5def3a8cf4a94c03c6a"
+      "published_hash": "2e6c287189cbdcedad71241a629762f56413df7fb6ecaed6410358b317b7c6b6"
     },
     {
       "title": "Abundant, deficient and perfect number classifications",
@@ -368,7 +368,7 @@
       "title": "Bell numbers",
       "slug": "bell-numbers",
       "state": "published",
-      "published_hash": "34a8d18cd971bbdece05ffeed6a5c1041701b09abead785a558f7ff28b2ce22e"
+      "published_hash": "c60cbac96bb447684e6f8e9d18398b094f2fe98b58c377a72cdce921c355dd09"
     },
     {
       "title": "Benford\u0027s law",
@@ -428,7 +428,7 @@
       "title": "Bitmap",
       "slug": "bitmap",
       "state": "published",
-      "published_hash": "a49e75d1f082d313f9df1ac861663c3cbc0fa8938138ec0159765ae318ea84a9"
+      "published_hash": "a9c8e73669c6a256b00bf5d4c12812c25fa357df2938507d80014b642c9bc35e"
     },
     {
       "title": "Bitmap/Bresenham\u0027s line algorithm",
@@ -537,7 +537,7 @@
       "title": "Box the compass",
       "slug": "box-the-compass",
       "state": "published",
-      "published_hash": "ff1bcf58b85b9b08eaa5b2e2ec94cfff191c261420c63644101a066920a7add0"
+      "published_hash": "ccc14cdae219a19c02a6a33e508c00dcfe0fb000965781946f5e578c4e933b3b"
     },
     {
       "title": "Boyer-Moore string search",
@@ -588,7 +588,7 @@
       "title": "CRC-32",
       "slug": "crc-32",
       "state": "published",
-      "published_hash": "9d7196de6eb518f5ab47fcce19b3176d4528a35be1ddf92b275491b85247d9df"
+      "published_hash": "504c8e5eab516c0f188bb98769120dae08bc378010eee440269807230fc4a225"
     },
     {
       "title": "Caesar cipher",
@@ -749,7 +749,7 @@
       "title": "Closures/Value capture",
       "slug": "closures-value-capture",
       "state": "published",
-      "published_hash": "0782849535459e51f4eccfcb9c6fe63ff800c341a05be1191499c14d882ef4d6"
+      "published_hash": "9ad55f5d684ba2439ef8c838dec43eb5af53617ce5db5aff15267895111b585f"
     },
     {
       "title": "Code Golf",
@@ -761,7 +761,7 @@
       "title": "Collections",
       "slug": "collections",
       "state": "published",
-      "published_hash": "a124dd5894aa97c9e8bf5a4fddd2b778340113b604e75750c7fd5fb3338463fe"
+      "published_hash": "2099734e9d7b62e1dab199c69051670b0df02926dcf9222b2cce978961984e7a"
     },
     {
       "title": "Colorful numbers",
@@ -831,7 +831,7 @@
       "title": "Compare length of two strings",
       "slug": "compare-length-of-two-strings",
       "state": "published",
-      "published_hash": "81702dc2841b98036fa1013fe7e8e6c3507b3d56fcd940b714a9fbaceb8e51eb"
+      "published_hash": "9b88e5e62ec7a9563f7f09f0cfd79cec97e849109dc3ec07fecc4b085685c803"
     },
     {
       "title": "Compare sorting algorithms\u0027 performance",
@@ -895,7 +895,7 @@
       "title": "Convert seconds to compound duration",
       "slug": "convert-seconds-to-compound-duration",
       "state": "published",
-      "published_hash": "61f2efea581ef596cebeaa8a0bfc67cf11f105815617177ede462f4fb4aca99c"
+      "published_hash": "b28d7ab7989b5ec0ffdecc4861654204221817df421a9b02c116a1d134e22c0b"
     },
     {
       "title": "Conway\u0027s Game of Life",
@@ -913,7 +913,7 @@
       "title": "Count in factors",
       "slug": "count-in-factors",
       "state": "published",
-      "published_hash": "3af546b1350cc6f5e6fbec39ee0075befab28c30b1ffe54cee601f4b2afc1e60"
+      "published_hash": "cd2b0af49b3bcaed456d50614f299287d995655bc92983d5de251fb87ce9a54f"
     },
     {
       "title": "Count in octal",
@@ -972,7 +972,7 @@
       "title": "Damm algorithm",
       "slug": "damm-algorithm",
       "state": "published",
-      "published_hash": "67217b807ea09bdd3f8832844f1ba7a38d4df74a4f371a53ebcf0166bb90f865"
+      "published_hash": "28cd3404209e92d00fbf3b9a16dae94985182aa2c0c631ed1c1fd21f5fa094cc"
     },
     {
       "title": "Day of the week",
@@ -1244,7 +1244,7 @@
       "title": "Equilibrium index",
       "slug": "equilibrium-index",
       "state": "published",
-      "published_hash": "10d8cd09336c2fa611aa1c07ccac3c214c8f73a35f945b10ddc176fe8e661694"
+      "published_hash": "f8d422ecc3989f91a8162abfbb9a26ac99051ecc1a343cd4392b973c01eebe0d"
     },
     {
       "title": "Erd\u0151s-Nicolas numbers",
@@ -1442,7 +1442,7 @@
       "title": "Fibonacci n-step number sequences",
       "slug": "fibonacci-n-step-number-sequences",
       "state": "published",
-      "published_hash": "e70438045ccd51f885e021d723ed7faea8f621b7eff785f32fce3c9d72780fc2"
+      "published_hash": "52c35aaa8588c1c356c77492c0ab3aa38d2a67454bd159f50949fddb944f83bd"
     },
     {
       "title": "Fibonacci sequence",
@@ -1504,7 +1504,7 @@
       "title": "Find common directory path",
       "slug": "find-common-directory-path",
       "state": "published",
-      "published_hash": "657687c7909a7acc6c9d8e0c87ece7d885c96ddc62f14d42f53a8daf91e7337f"
+      "published_hash": "8db71ad4568e73d6c03bcb9aa1837c039331570de47d71774e5b0812df027d05"
     },
     {
       "title": "Find limit of recursion",
@@ -1527,7 +1527,7 @@
       "title": "First-class functions",
       "slug": "first-class-functions",
       "state": "published",
-      "published_hash": "7926c3706b8e07a326b17fa38aac816fea70ac5bf1e1d48df0c2361e2d3a8981"
+      "published_hash": "f5649ca63e292ef707de3260717a0d36ccee646988c70787b5cf140b3e3faa43"
     },
     {
       "title": "First-class functions/Use numbers analogously",
@@ -1592,7 +1592,7 @@
       "title": "Forward difference",
       "slug": "forward-difference",
       "state": "published",
-      "published_hash": "c1c3c2ff650f3d57587a552b2e6331df954d4b13be81446c0a015cdf9365892d"
+      "published_hash": "7319d473a3f1705ca1496941ec96ec507033947c867c3b38ef5f0f9eabedbcd5"
     },
     {
       "title": "Four is magic",
@@ -1659,7 +1659,7 @@
       "title": "Gamma function",
       "slug": "gamma-function",
       "state": "published",
-      "published_hash": "a482c02ae3e7a86ab8482ed893c6af04485ec4d2edaeaaa4ce1b58c7788eee9a"
+      "published_hash": "06c1dee2b575e9ee61a9fa3457d70cb7956dcc0c560c5c9e5240175f57a90aba"
     },
     {
       "title": "Gapful numbers",
@@ -1779,7 +1779,7 @@
       "title": "Greatest subsequential sum",
       "slug": "greatest-subsequential-sum",
       "state": "published",
-      "published_hash": "ca423f19536694f00877798057e6b5227679badb49538fde012f1e61c91ba3cb"
+      "published_hash": "6e999d1f614bafdc25650a529a5f87b3f5cd234208033793a4ddd28282e4e645"
     },
     {
       "title": "Greedy algorithm for Egyptian fractions",
@@ -1824,7 +1824,7 @@
       "title": "Hamming numbers",
       "slug": "hamming-numbers",
       "state": "published",
-      "published_hash": "d93fba3dc5c680c6e96bc5ee9eeb40e491bfe2159512b940b4982bd6e37c16e7"
+      "published_hash": "5ab94119047eb69d08788f7026f8786c6d4d2c0e130436716c16f2e119053a22"
     },
     {
       "title": "Happy numbers",
@@ -1889,7 +1889,7 @@
       "title": "Here document",
       "slug": "here-document",
       "state": "published",
-      "published_hash": "a3b9d199fc9a95273f841615726ccc55c10671eca25fe74c99bee047d0a1c083"
+      "published_hash": "c5cb3b3869bdf191ed67a162e28aafb304e01658ea4b7056900bee1035d50ca6"
     },
     {
       "title": "Heronian triangles",
@@ -1988,7 +1988,7 @@
       "title": "ISBN13 check digit",
       "slug": "isbn13-check-digit",
       "state": "published",
-      "published_hash": "7ab634b0d472c633413a91e417714b0d8f669cdb3df38f29bcd4105bada9b913"
+      "published_hash": "37b4ed8700833879aa95dfec647491c0b37f5d3243a1d09e3db4a34953bfbbc4"
     },
     {
       "title": "Iccanobif primes",
@@ -2071,7 +2071,7 @@
       "title": "Inheritance/Single",
       "slug": "inheritance-single",
       "state": "published",
-      "published_hash": "b86a2ee64b2397430edf277443cc832430ce075fde9af567d31ecd379e56de52"
+      "published_hash": "130fdc00685912f0dfbab51cbb9b42be0ce4e7c1f032398e14befb493cc9a9a7"
     },
     {
       "title": "Input loop",
@@ -2130,7 +2130,7 @@
       "title": "JSON",
       "slug": "json",
       "state": "published",
-      "published_hash": "32d5cba70d86eb01eb68bd99da0dcaabababb8521b6162fe669667872a9dc9e4"
+      "published_hash": "ca57d214f9249ce63cf0f2d1b4b2f1760090023cb09fe4c53b4481a268eb9b1e"
     },
     {
       "title": "JSON pointer",
@@ -2166,7 +2166,7 @@
       "title": "Jensen\u0027s Device",
       "slug": "jensens-device",
       "state": "published",
-      "published_hash": "adcdfc1c4badbcd7bc8e88bbd762acd19fdbafe3dad724065b87054e3d36f7ea"
+      "published_hash": "c1213b508bb7ebdb06f4d0fb554597160afc4539141b06e03f842ed71b4ec813"
     },
     {
       "title": "Jewels and stones",
@@ -2217,7 +2217,7 @@
       "title": "Jump anywhere",
       "slug": "jump-anywhere",
       "state": "published",
-      "published_hash": "90aa31ec86b622e723d2192b187b9f3909c12034961a111d28c64e2b023b9bab"
+      "published_hash": "0b4f100ea92274f707b1f62d6bce53fc0d3183bfb68e51afc55af4214f894a57"
     },
     {
       "title": "Kaprekar numbers",
@@ -2341,7 +2341,7 @@
       "title": "Last Friday of each month",
       "slug": "last-friday-of-each-month",
       "state": "published",
-      "published_hash": "46290ab98252cfdb10c4134e23b0155c4456fa26619d3c53cda3722b21f0ea35"
+      "published_hash": "0794e0450f9ce2d2e6b242626d48a2c350bae44006f2b7121d9610ea37b59745"
     },
     {
       "title": "Leap year",
@@ -2365,7 +2365,7 @@
       "title": "Leonardo numbers",
       "slug": "leonardo-numbers",
       "state": "published",
-      "published_hash": "44d640b60ef7237da7ca847aac0506b6044f7e8c9024f428a6d7430258e439c7"
+      "published_hash": "420768d4cadac80a31368b4c8ee1ed6dc10c0d3f58d77315ff4e8e3c37505bed"
     },
     {
       "title": "Letter frequency",
@@ -2413,7 +2413,7 @@
       "title": "Long multiplication",
       "slug": "long-multiplication",
       "state": "published",
-      "published_hash": "96e28322940bd0c7a516636794adc57278bc1bb139ddf1d6b3e65be313cc4363"
+      "published_hash": "f3d73ad690fd91b285c17c7835aa3b1ed8a5ff0a4a2d79f68ec2ee2390627d20"
     },
     {
       "title": "Long primes",
@@ -2716,7 +2716,7 @@
       "title": "Munchausen numbers",
       "slug": "munchausen-numbers",
       "state": "published",
-      "published_hash": "df64cea937796eaa72fcd093efa6a912a3728ecca5dc638fe9d6937b981bc767"
+      "published_hash": "f048ef78d33e2111e2a7ac08da85dbd43cc00824e57906b706a409bb7740a2cf"
     },
     {
       "title": "Munching squares",
@@ -2778,7 +2778,7 @@
       "title": "Narcissistic decimal number",
       "slug": "narcissistic-decimal-number",
       "state": "published",
-      "published_hash": "17201cbb5c1b50f8ff954fde54046e8e966df355a8547500b1df57bbbf712ef8"
+      "published_hash": "bc776684e38c0b80993e474b55d571f9fb8386e01bf8322d53cf976dd57296fe"
     },
     {
       "title": "Native shebang",
@@ -2836,7 +2836,7 @@
       "title": "Number names",
       "slug": "number-names",
       "state": "published",
-      "published_hash": "39d941db9fe2decb2bf7b189db4ee2fceb48e8cd3e1548892e590b1acc19e647"
+      "published_hash": "d381a7af6137add4ada02c76f7bd1dd903486fe45640fe1aad6d818e14612817"
     },
     {
       "title": "Numbers with equal rises and falls",
@@ -2883,7 +2883,7 @@
       "title": "Operator precedence",
       "slug": "operator-precedence",
       "state": "published",
-      "published_hash": "5f4fa45663d4748455391866706be6718026db732c800be02df78ada0e89e08b"
+      "published_hash": "d6299166fd5d9f2a0cfc8fee6326f6bdfd712589e95969376e8a4a8302bf63ef"
     },
     {
       "title": "Optional parameters",
@@ -3095,7 +3095,7 @@
       "title": "Population count",
       "slug": "population-count",
       "state": "published",
-      "published_hash": "226b7b1e3442032274f98e54ed577acf971a0ee43fe7dbf8ead47f533f8aabc8"
+      "published_hash": "a0a4b759ec998d8762093d4496c0ed2a72b1d6907675fc2aec8825c931144d4d"
     },
     {
       "title": "Power set",
@@ -3107,7 +3107,7 @@
       "title": "Price fraction",
       "slug": "price-fraction",
       "state": "published",
-      "published_hash": "92f4131ed9c5131f6852b47142942e7c633f4ae1c31b19edf20995b0f0f5c25a"
+      "published_hash": "bfd26c49db179936a7b27a7680ffc847e18b752de7f42db79a05b7c3354f5c9d"
     },
     {
       "title": "Primality by trial division",
@@ -3218,7 +3218,7 @@
       "title": "Range expansion",
       "slug": "range-expansion",
       "state": "published",
-      "published_hash": "61b6bc65c3d9109f8ffd068ff4a2be6e694160895fa9d111ff4fcd86afce5913"
+      "published_hash": "20206941d1423705ceb5ddede2e3453ee906424118e46c12a6dfc79812390c6c"
     },
     {
       "title": "Range extraction",
@@ -3429,13 +3429,13 @@
       "title": "Semiprime",
       "slug": "semiprime",
       "state": "published",
-      "published_hash": "5403c4872899698754ffb1999ee048be1b3e5a76ed0ea979eccd8dd5698a43b3"
+      "published_hash": "4427137b6e49ca006a9b2575b3ba83939c69cc964b54cc29b1f4869e2d101a32"
     },
     {
       "title": "Set",
       "slug": "set",
       "state": "published",
-      "published_hash": "01ebb251b9c5158c46f4f224f70dd9ed22616e85afd9fb2bf396fb0053fb2fe3"
+      "published_hash": "b44a7e6be8617b8abef2c8a3302804ef65cbf6490a345259b920d166c7fbc36a"
     },
     {
       "title": "Set consolidation",
@@ -3636,7 +3636,7 @@
       "title": "Sort disjoint sublist",
       "slug": "sort-disjoint-sublist",
       "state": "published",
-      "published_hash": "8155b5e36ef08b707ff743df66c5215ea91e59d67aa3048190f580c196cc5d23"
+      "published_hash": "691034ca4eeab287b6eda4ddb3c4b19802b45e5643d7ebbb46324aadcfa27e03"
     },
     {
       "title": "Sort numbers lexicographically",
@@ -3660,7 +3660,7 @@
       "title": "Sorting algorithms/Bogosort",
       "slug": "sorting-algorithms-bogosort",
       "state": "published",
-      "published_hash": "db3607cdad7982aa0657c4054b704e7f3864bdc01958b7f2d37a9caa9e56ae68"
+      "published_hash": "dee568b1fdc28131f410e386e1fc65a31c4a30841895334c39324e880c6077f2"
     },
     {
       "title": "Sorting algorithms/Bubble sort",
@@ -3678,7 +3678,7 @@
       "title": "Sorting algorithms/Cocktail sort",
       "slug": "sorting-algorithms-cocktail-sort",
       "state": "published",
-      "published_hash": "f4a05d65322b7455e39f399d4fcabb9438bdee7e84d4d10b007d2b3effa90bc2"
+      "published_hash": "ed29a415fe5385109e9dcdc94b13134486b494d113ef8fb381bb6d931ef34925"
     },
     {
       "title": "Sorting algorithms/Cocktail sort with shifting bounds",
@@ -3714,7 +3714,7 @@
       "title": "Sorting algorithms/Heapsort",
       "slug": "sorting-algorithms-heapsort",
       "state": "published",
-      "published_hash": "beb4b14835b40b9e0913b65ebac5a919b3c4c14a8332625adcd36b48a07812d6"
+      "published_hash": "44235e8658e0d07ae5756c603029d0448e3fb3f442f127a9bb0ca9240522eb67"
     },
     {
       "title": "Sorting algorithms/Insertion sort",
@@ -3827,7 +3827,7 @@
       "title": "Spiral matrix",
       "slug": "spiral-matrix",
       "state": "published",
-      "published_hash": "40046a5435dd324339c5ab95c6bf96fa0f628596600d169f838b03de741ed1fa"
+      "published_hash": "6b144bce81034ed034ad2abda5e899fdcd0d4e4047890d3561b214a465cc2e62"
     },
     {
       "title": "Split a character string based on change of character",
@@ -3939,7 +3939,7 @@
       "title": "Strip comments from a string",
       "slug": "strip-comments-from-a-string",
       "state": "published",
-      "published_hash": "31844251ba7d75a18bfede75cbd6f56eeecc583ebea4108785c78ccd9c377b7a"
+      "published_hash": "48b951f5d5a3ad3761253c825a684d1eda21a02a2f9647df6329cfae6c94a7f0"
     },
     {
       "title": "Strip control codes and extended characters from a string",
@@ -4073,13 +4073,13 @@
       "title": "Tau function",
       "slug": "tau-function",
       "state": "published",
-      "published_hash": "716745a340237fd47b8e378a97188f51153217f90b089a718947d46c4047acd2"
+      "published_hash": "14af8de8ce821262b5392b829a41d289ee8ec8b1323d33165fd1ce095f90a9ed"
     },
     {
       "title": "Tau number",
       "slug": "tau-number",
       "state": "published",
-      "published_hash": "8b2bf49657a28f299f015bc67d504d68074354b3808c3eae691fe13b47760bad"
+      "published_hash": "4481c992aeab42b3f8ab0b83cc9e527482621d144a7a5258a0ddc78b7b274bb3"
     },
     {
       "title": "Taxicab numbers",
@@ -4125,7 +4125,7 @@
       "title": "Thue-Morse",
       "slug": "thue-morse",
       "state": "published",
-      "published_hash": "5503332b9cee6123eac0a6d039ae4330989f691339de208035d913741901df29"
+      "published_hash": "816ca35e9b0f5fcfd19520668c85aa7554cc504c9c3dd3e681cccad0f1661ec0"
     },
     {
       "title": "Time a function",
@@ -4251,7 +4251,7 @@
       "title": "URL decoding",
       "slug": "url-decoding",
       "state": "published",
-      "published_hash": "5a59d3783f587c94a93639536694d14a7b7f3bc49aa6ce52da5e74a51b1594be"
+      "published_hash": "4a51c31d1b328b6befef4b30e464a217c8c355eef0d6232331c3f0dbf4dca568"
     },
     {
       "title": "URL encoding",
@@ -4401,7 +4401,7 @@
       "title": "Walk a directory/Non-recursively",
       "slug": "walk-a-directory-non-recursively",
       "state": "published",
-      "published_hash": "8893ac561fce63fa1b32c29623b8972d6e166f7fac4bdb31b6d15ce9c110e207"
+      "published_hash": "7969beddd6d7199256eea19e68a73c101bd6bdbf704578f458fb7f8efc990c46"
     },
     {
       "title": "Walk a directory/Recursively",
@@ -4487,7 +4487,7 @@
       "title": "Yin and yang",
       "slug": "yin-and-yang",
       "state": "published",
-      "published_hash": "b8ff1ff16e00d24f39cd00a75586731b6f6a82e0d9cb47f69a5cdc13b0209624"
+      "published_hash": "688a2aba8bd9d28232a74d8d2b9d85de924cf2b637970b8e16b8a154df77e893"
     },
     {
       "title": "Zebra puzzle",
