@@ -1,4 +1,5 @@
 namespace Rosetta is
+    use IO.Std.error
     use System.Exception
     use System.Net.Http
     use System.Net.Http.MultipartFormDataContent
@@ -28,25 +29,54 @@ namespace Rosetta is
             )
         si
 
-        _get(query: string) -> JsonDocument is
-            let body = _client.get_string_async("{_api}?{query}&format=json&formatversion=2").result
+        // retries a request through a timeout, a bad status, or a non-JSON body - blips a
+        // struggling wiki produces on no predictable schedule. every _get/_post/upload call
+        // goes through this.
+        _with_retries[T](attempt: () -> T) -> T is
+            let max_attempts = 3
+            let attempt_number mut = 0
 
-            return JsonDocument.parse(body, _)
-        si
+            do
+                attempt_number = attempt_number + 1
 
-        _post(fields: MAP[string, string]) -> JsonDocument is
-            let form = LIST[KeyValuePair[string, string]]()
+                try
+                    return attempt()
+                catch problem: System.Exception
+                    if attempt_number >= max_attempts then
+                        throw problem
+                    fi
 
-            for pair in fields do
-                form.add(pair)
+                    let backoff_ms = attempt_number * 5000
+
+                    error.write_line(
+                        "wiki request failed, retrying in {backoff_ms / 1000}s: {problem.message}")
+
+                    System.Threading.Thread.sleep(backoff_ms)
+                yrt
             od
-
-            let content = FormUrlEncodedContent(form)
-            let response = _client.post_async(_api, content).result
-            let body = response.content.read_as_string_async().result
-
-            return JsonDocument.parse(body, _)
         si
+
+        _get(query: string) -> JsonDocument =>
+            _with_retries[JsonDocument](() is
+                let body = _client.get_string_async("{_api}?{query}&format=json&formatversion=2").result
+
+                JsonDocument.parse(body, _)
+            si)
+
+        _post(fields: MAP[string, string]) -> JsonDocument =>
+            _with_retries[JsonDocument](() is
+                let form = LIST[KeyValuePair[string, string]]()
+
+                for pair in fields do
+                    form.add(pair)
+                od
+
+                let content = FormUrlEncodedContent(form)
+                let response = _client.post_async(_api, content).result
+                let body = response.content.read_as_string_async().result
+
+                JsonDocument.parse(body, _)
+            si)
 
         // Every page in a category, following the continuation the API returns when the
         // membership is larger than one request can carry.
@@ -246,9 +276,12 @@ namespace Rosetta is
 
             form.add(ByteArrayContent(IO.File.read_all_bytes(path)), "file", title)
 
-            let response = _client.post_async(_api, form).result
-            let body = response.content.read_as_string_async().result
-            let root = JsonDocument.parse(body, _).root_element
+            let root = _with_retries[JsonElement](() is
+                let response = _client.post_async(_api, form).result
+                let body = response.content.read_as_string_async().result
+
+                JsonDocument.parse(body, _).root_element
+            si)
 
             let failure: JsonElement mut
 
@@ -267,7 +300,7 @@ namespace Rosetta is
                 !root.get_property("upload").try_get_property("result", result ref) \/
                 result.get_string() !~ "Success"
             then
-                throw Exception("uploading {title} did not succeed: {body}")
+                throw Exception("uploading {title} did not succeed: {root.get_raw_text()}")
             fi
         si
 
