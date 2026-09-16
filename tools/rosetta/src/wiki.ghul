@@ -278,9 +278,12 @@ namespace Rosetta is
 
             form.add(ByteArrayContent(IO.File.read_all_bytes(path)), "file", title)
 
-            let response = _client.post_async(_api, form).result
-            let body = response.content.read_as_string_async().result
-            let root = JsonDocument.parse(body, _).root_element
+            let root = _with_retries[JsonElement](() is
+                let response = _client.post_async(_api, form).result
+                let body = response.content.read_as_string_async().result
+
+                JsonDocument.parse(body, _).root_element
+            si)
 
             let failure: JsonElement mut
 
@@ -299,7 +302,7 @@ namespace Rosetta is
                 !root.get_property("upload").try_get_property("result", result ref) \/
                 result.get_string() !~ "Success"
             then
-                throw Exception("uploading {title} did not succeed: {body}")
+                throw Exception("uploading {title} did not succeed: {root.get_raw_text()}")
             fi
         si
 
