@@ -422,8 +422,10 @@ repository and runs it in the reader's browser. That rules out standard input, t
 threads and any package reference such as `ghul.raster`. Deciding whether a solution needs one of
 those takes reading it, so it is part of writing it: a program that cannot run there carries a
 `playground-unsupported` file beside its source, one line saying why, written for the reader who
-opens the link anyway. `scripts/generate-wiki.sh` writes no link for it. README.md's 'running a
-solution in the playground' has the detail.
+opens the link anyway. `scripts/generate-wiki.sh` writes no link for it. The link itself
+transcludes the wiki's `Template:Ghul playground` and passes only the program's path, so the
+wording is the template's rather than each entry's. README.md's 'running a solution in the
+playground' has the detail.
 
 ## Publishing, and the record of it
 

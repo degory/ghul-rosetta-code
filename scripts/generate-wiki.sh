@@ -106,6 +106,9 @@ part_heading() {
 # playground-unsupported file giving the reason, and gets no link; the playground shows that
 # reason to anyone who reaches it anyway.
 #
+# The wiki's Template:Ghul playground carries the wording, so an entry says only which program to
+# open and the text can be changed for every entry at once by editing that template.
+#
 # Reading standard input and referencing a package are the two cases that can be told from the
 # files alone. Deciding either without the marker would leave the playground unable to explain
 # itself, so one without it is reported rather than quietly left unlinked.
@@ -123,7 +126,7 @@ emit_playground_link() {
         return 0
     fi
 
-    echo "You can run this online [https://playground.ghul.dev/rosetta-code/$ID here]."
+    echo "{{ghul playground|$ID}}"
     echo
 }
 

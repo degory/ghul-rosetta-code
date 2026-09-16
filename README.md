@@ -187,6 +187,12 @@ Each entry opens with a link that runs it in the
 playground fetches the source from this repository's `main` branch, so a link
 needs nothing but the task being here under that name.
 
+The link is written as `{{ghul playground|<slug>}}`, transcluding the wiki's
+[Template:Ghul playground](https://rosettacode.org/wiki/Template:Ghul_playground).
+The entry says only which program to open, so the wording around the link is
+changed for every entry at once by editing that template, with nothing
+republished.
+
 Not every solution can run there. The playground compiles against a short list
 of reference assemblies and runs the program in the browser, with no standard
 input and no filesystem to write to. A program that needs any of those carries
