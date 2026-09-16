@@ -29,11 +29,9 @@ namespace Rosetta is
             )
         si
 
-        // A struggling wiki answers a request with a timeout, a non-2xx status, or a body that
-        // is not the JSON it promised, on no schedule anyone can predict. Every request the
-        // client makes goes through this, so a caller only ever sees the wiki's own semantic
-        // answer - or, once retrying has genuinely given up, the underlying failure - and not
-        // one of these blips.
+        // retries a request through a timeout, a bad status, or a non-JSON body - blips a
+        // struggling wiki produces on no predictable schedule. every _get/_post/upload call
+        // goes through this.
         _with_retries[T](attempt: () -> T) -> T is
             let max_attempts = 3
             let attempt_number mut = 0
