@@ -877,6 +877,8 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
 
             refused = refused + 1
 
+            System.Threading.Thread.sleep(pace_ms())
+
             continue
         fi
 
