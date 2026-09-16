@@ -109,7 +109,7 @@
       "title": "Achilles numbers",
       "slug": "achilles-numbers",
       "state": "published",
-      "published_hash": "c98c015a7b3496abf13fb7b6bd205920a21541180cc8b824e93b9b4c106becef"
+      "published_hash": "5845e0ea6cd6fd3cc0f2116b8195e1968ba282e754770109154e0e4b22af9d06"
     },
     {
       "title": "Ackermann function",
@@ -180,7 +180,8 @@
     {
       "title": "Anaprimes",
       "slug": "anaprimes",
-      "state": "published"
+      "state": "published",
+      "published_hash": "b8440f91f8b346f9e018836f5f6ff6eea1ab255cc23b8193ca55c172742d6c54"
     },
     {
       "title": "Animate a pendulum",
@@ -410,7 +411,7 @@
       "title": "Binomial transform",
       "slug": "binomial-transform",
       "state": "published",
-      "published_hash": "57b1c91700a5d5090d2559843229a8852cad6f9a8bfc337ceda53f85e958675b"
+      "published_hash": "41db2d7bc1d4d199c5d3525d810582e199c9aa92a847d92c4b44338812a7bafc"
     },
     {
       "title": "Bioinformatics/Base count",
@@ -683,7 +684,7 @@
       "title": "Check Machin-like formulas",
       "slug": "check-machin-like-formulas",
       "state": "published",
-      "published_hash": "8e803969e2c09ec8c1d82d261e1480c3348e632a45fcaeb8375218870047da50"
+      "published_hash": "955a0ed50ab064d94c4fc64bb3b6929ebd96fac930050ccf95d9023f0da14695"
     },
     {
       "title": "Check that file exists",
@@ -695,7 +696,7 @@
       "title": "Checkpoint synchronization",
       "slug": "checkpoint-synchronization",
       "state": "published",
-      "published_hash": "f8e14084460ad7c9d7035b9646046223042ef787ac17a67db4468a51d6f46ee0"
+      "published_hash": "e8a3d54fae8a1e97a93d5f19f2db7cf5bd3cd6c5b1e6a8c15f961412831c0ebc"
     },
     {
       "title": "Chernick\u0027s Carmichael numbers",
@@ -767,7 +768,7 @@
       "title": "Colorful numbers",
       "slug": "colorful-numbers",
       "state": "published",
-      "published_hash": "ccf38a20c39315b01d4e13e912ac53ced806f1976751e86ab0f7db47fbf72c5e"
+      "published_hash": "147eb7a90abe115ea49d2668a4460acc628e63622877221541424a19c555e593"
     },
     {
       "title": "Colour bars/Display",
@@ -866,13 +867,13 @@
       "title": "Conjugate a Latin verb",
       "slug": "conjugate-a-latin-verb",
       "state": "published",
-      "published_hash": "c2ba3d4b5f5a568e1c029fbdd37899f72085394177be289b627181656b7e0e68"
+      "published_hash": "0b406c47338564e142172016d488edc2de55c1a3f44a8ac67f25342db8bb0506"
     },
     {
       "title": "Consecutive primes with ascending or descending differences",
       "slug": "consecutive-primes-with-ascending-or-descending-differences",
       "state": "published",
-      "published_hash": "e2d5e291693eb6745ca9b4798c83f949f43064bde22b23d2e80ced151434845b"
+      "published_hash": "34a0f7b5b003dbb7576ab27164a61a92f2f0fddf7e385c58d33890a2f0de62a0"
     },
     {
       "title": "Constrained genericity",
@@ -1167,7 +1168,7 @@
       "title": "EKG sequence convergence",
       "slug": "ekg-sequence-convergence",
       "state": "published",
-      "published_hash": "da71a467f4b8f0bfdeb7a88b2b3ae46a1c51dbcce1071e7525a4c2980f0d71e7"
+      "published_hash": "2193a74e0dc4a59e23920200d7c6ea0ba63e7fb9825a07546c568b8ba5f3c112"
     },
     {
       "title": "Eban numbers",
@@ -1239,7 +1240,7 @@
       "title": "Equal prime and composite sums",
       "slug": "equal-prime-and-composite-sums",
       "state": "published",
-      "published_hash": "838cdb26515511c540b710512ac3e541b7e96962d855139f7d281db4d6d6ed83"
+      "published_hash": "c93b2c92341482b9a1e33b30f4ffa3c67400d8224366761f054640e95e3419a1"
     },
     {
       "title": "Equilibrium index",
@@ -1251,7 +1252,7 @@
       "title": "Erd\u0151s-Nicolas numbers",
       "slug": "erdos-nicolas-numbers",
       "state": "published",
-      "published_hash": "017afe1a6c67eccd9151995b2b7cfef0a005f4c7a0f11eb6d97d0413a699cb92"
+      "published_hash": "86b9b0ee8626943c99ba1d2c503817d52159c894a7d7e42d5d5313e5625d160b"
     },
     {
       "title": "Erd\u0151s-primes",
@@ -1427,7 +1428,8 @@
     {
       "title": "Faulhaber\u0027s triangle",
       "slug": "faulhabers-triangle",
-      "state": "published"
+      "state": "published",
+      "published_hash": "e95ea177e129471833c9c56e600747635383e5f6bf7c81847c406cf976eaed53"
     },
     {
       "title": "Fermat numbers",
@@ -1524,7 +1526,7 @@
       "title": "First class environments",
       "slug": "first-class-environments",
       "state": "published",
-      "published_hash": "4ea88e9d9bd196140fd4e3d99323c32858175512b8783038d2cb1f0f499d612a"
+      "published_hash": "835f4f39c5a870ccc0d28443a7f423acd7683bfb30ebeb8d49d3cc1020f39583"
     },
     {
       "title": "First-class functions",
@@ -1694,7 +1696,7 @@
       "slug": "generate-random-chess-position",
       "state": "published",
       "note": "reopened, was rejected/nondeterministic: assert the generated position is a legal FEN rather than pinning one string",
-      "published_hash": "c8ea667614fb3e2ca594d9a50f584001c385c73e1e16de08a6e0ef451ae163a0"
+      "published_hash": "415642f90690375884c02020b70c39bc70f020b83d1ca5f0ae344d864c7f9c51"
     },
     {
       "title": "Generator/Exponential",
@@ -1731,7 +1733,7 @@
       "title": "Goldbach\u0027s comet",
       "slug": "goldbachs-comet",
       "state": "published",
-      "published_hash": "33e7cb14656922a44c7dcc6db5212a52e8b0564634af60295dcb220aca077269"
+      "published_hash": "ab473cd0cfe0a65972b0699c275a796d1f5227dd0e02b5d4aca47f23c00e442c"
     },
     {
       "title": "Golden ratio/Convergence",
@@ -1905,7 +1907,7 @@
       "title": "Hex dump",
       "slug": "hex-dump",
       "state": "published",
-      "published_hash": "0aa9e6cad37e9e93374ea954728343d3f1d2f600ef34648e81bbf2bcd2ea04f5"
+      "published_hash": "11aed746bee092277644248f0554bb4b1f87ec4a3635ca511a6f933ba22b0385"
     },
     {
       "title": "Higher-order functions",
@@ -1998,7 +2000,7 @@
       "title": "Iccanobif primes",
       "slug": "iccanobif-primes",
       "state": "published",
-      "published_hash": "62eb4c31f15a9ee3562bd29edb504692e7c22351b8fdd82ab5cf639999c9b2d0"
+      "published_hash": "56fab0859d5283d9872062a3adf99ee94f98e62606ceb422c225ca8b3d431f20"
     },
     {
       "title": "Identity matrix",
@@ -2045,7 +2047,8 @@
     {
       "title": "Increasing gaps between consecutive Niven numbers",
       "slug": "increasing-gaps-between-consecutive-niven-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "be50558cfc6b5a962c31816f2ac909ef7836c8c689ca47b52b50eb2ef692851b"
     },
     {
       "title": "Increment a numerical string",
@@ -2098,7 +2101,7 @@
       "title": "Intersecting number wheels",
       "slug": "intersecting-number-wheels",
       "state": "published",
-      "published_hash": "903b98b5c597931cb3b21b04ee51fc32b513fec8d00acf2461cb73ef269250d7"
+      "published_hash": "60b475fa01a6d03d31bed747f4b92b2778a7c2f028763f617bc1561d4dbc9184"
     },
     {
       "title": "Inventory sequence",
@@ -2182,7 +2185,7 @@
       "title": "Jordan-P\u00F3lya numbers",
       "slug": "jordan-polya-numbers",
       "state": "published",
-      "published_hash": "546775a50d4082ad5dd94c0b682e1e4d51270f37c8619e6bae611031ae754067"
+      "published_hash": "ac647ce2c930b99b6a3ceb371feb63cc8f608ee308dfc55204c7038238454684"
     },
     {
       "title": "JortSort",
