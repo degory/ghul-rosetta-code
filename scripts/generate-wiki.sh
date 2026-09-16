@@ -109,9 +109,11 @@ part_heading() {
 # The wiki's Template:Ghul playground carries the wording, so an entry says only which program to
 # open and the text can be changed for every entry at once by editing that template.
 #
-# Reading standard input and referencing a package are the two cases that can be told from the
-# files alone. Deciding either without the marker would leave the playground unable to explain
-# itself, so one without it is reported rather than quietly left unlinked.
+# Reading standard input and referencing a package the playground does not carry are the two
+# cases that can be told from the files alone. Deciding either without the marker would leave the
+# playground unable to explain itself, so one without it is reported rather than quietly left
+# unlinked. ghul.raster is in the playground's own reference set, so a task that references only
+# that package is not one of these cases.
 emit_playground_link() {
     local DIR=$1
     local NAME=$2
@@ -121,7 +123,11 @@ emit_playground_link() {
         return 0
     fi
 
-    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || grep -q "PackageReference" "$DIR/$NAME.ghulproj" 2>/dev/null ; then
+    local OTHER_PACKAGES
+    OTHER_PACKAGES=$( { grep -o 'PackageReference Include="[^"]*"' "$DIR/$NAME.ghulproj" 2>/dev/null \
+        | grep -v 'Include="ghul.raster"' || true ; } )
+
+    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || [ -n "$OTHER_PACKAGES" ] ; then
         echo "$ID: cannot run in the playground but has no playground-unsupported file - no link written" >&2
         return 0
     fi
