@@ -45,7 +45,7 @@
       "title": "99 bottles of beer",
       "slug": "99-bottles-of-beer",
       "state": "published",
-      "published_hash": "138bfd52043107b61e21dd01de783a8e6c0aacaa16044e6907913059d0dbeec8"
+      "published_hash": "82fdf2cbd7ce8813f9d45f0a0d4e1d2a64e5bf688a59a21b409108f2502c0b44"
     },
     {
       "title": "A\u002BB",
@@ -115,7 +115,7 @@
       "title": "Ackermann function",
       "slug": "ackermann-function",
       "state": "published",
-      "published_hash": "bb3cd56fe0fff6fe18ca5a10651ba693cfb91bfbd55ebedbf6820a4f96d62c40"
+      "published_hash": "bb3696b1c3035f2a86c744389452b4ddf7c2092fa325e8ee522500a21ae462e1"
     },
     {
       "title": "Active Directory/Connect",
@@ -213,7 +213,7 @@
       "title": "Apply a callback to an array",
       "slug": "apply-a-callback-to-an-array",
       "state": "published",
-      "published_hash": "88d311f1ca36183fb9dba0862505fbc314d06bf0d19576aaa8aa520d07d6001e"
+      "published_hash": "54bf7c97d6c1eedc2f714d9c88eee652b693e8f7a65a0f59ac3c81e932dca4f4"
     },
     {
       "title": "Arbitrary-precision integers (included)",
@@ -276,19 +276,19 @@
       "title": "Array concatenation",
       "slug": "array-concatenation",
       "state": "published",
-      "published_hash": "2c7015692dfaa845a08f60d3e99f09c3e8903eeb26a484d87c0b869d510bc550"
+      "published_hash": "373a58da1c6e2639d9526eea5d6ec37781a47f52ca72060a8071a51c4cb07af0"
     },
     {
       "title": "Array length",
       "slug": "array-length",
       "state": "published",
-      "published_hash": "8007f49f213a245c5a89f14c55eabfadd7cbccf3c6bbec34a623a5553db03190"
+      "published_hash": "ecbfe208b68f267d10c89436609af0b147b9adbe1f3dedb18418a27e50c7b772"
     },
     {
       "title": "Arrays",
       "slug": "arrays",
       "state": "published",
-      "published_hash": "6a2e8d8188d3a9a3b49ec5d2eaff74272e579ce9d3518fd9a47310751a71ee16"
+      "published_hash": "f95285deaceb3cce8852d2a26196f3858e40273695b9dae7bb227ca168f3a9fc"
     },
     {
       "title": "Assertions",
@@ -324,7 +324,7 @@
       "title": "Averages/Arithmetic mean",
       "slug": "arithmetic-mean",
       "state": "published",
-      "published_hash": "59c74ac02751b368c131dc651cd24e47cf4b730dc892c2464d8bff41b1c7c08b"
+      "published_hash": "78e0a732f18c9f0b729fd60031998c4df98c3592f262a9fa10e335531e4c0259"
     },
     {
       "title": "Averages/Median",
@@ -392,7 +392,7 @@
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published",
-      "published_hash": "86f8c8b774a30fa83846b66a1271fe480cf97bdefebc074a19fbbb39d69d4b8c"
+      "published_hash": "5de98d69930774a1aa93cce6e2c81a443c794e82bb1a6b8c27c568d1c2eacb4d"
     },
     {
       "title": "Binary search",
@@ -525,7 +525,7 @@
       "title": "Boolean values",
       "slug": "boolean-values",
       "state": "published",
-      "published_hash": "9595e368e211820779fa1de28682588b68a09ae8354a2234a03d4aefa55050b5"
+      "published_hash": "9539e6a8f109709925c3008ace6b77328db8940d835bf7e0b5aaa818c11ee0c2"
     },
     {
       "title": "Boustrophedon transform",
@@ -672,7 +672,7 @@
       "title": "Character codes",
       "slug": "character-codes",
       "state": "published",
-      "published_hash": "a4f35ca92126e1b631d002d2ae2dd392d0bd41e207a00d50fbf4d79f715af09d"
+      "published_hash": "73b3a51e125a968b6eab73523e9d42f211de9ed8b4de7c728a20e095908b6531"
     },
     {
       "title": "Chat server",
@@ -825,7 +825,7 @@
       "title": "Comments",
       "slug": "comments",
       "state": "published",
-      "published_hash": "9b54ff045380a9ba0ab8d8984a96300d0d03afd0c2258229b7cb60dbad245120"
+      "published_hash": "dd9bf0ca36e75559a29f7417b42fe6f74725f184b5cd0e7c24bfb2ce6cdb2d16"
     },
     {
       "title": "Compare length of two strings",
@@ -860,7 +860,7 @@
       "title": "Conditional structures",
       "slug": "conditional-structures",
       "state": "published",
-      "published_hash": "45fd301ad09332cd29d72f2c5a5f816e0892eb6e0e74283552f64ada328cd1aa"
+      "published_hash": "416e1d90384b3e7d1334f21fe2d39e8a2907b16d3b6fad40a2e59ef02361b257"
     },
     {
       "title": "Conjugate a Latin verb",
@@ -907,7 +907,7 @@
       "title": "Copy a string",
       "slug": "copy-a-string",
       "state": "published",
-      "published_hash": "055bcfbc78c49059234e05b8f46e12bc5de39bf46707a03236022df5714b0781"
+      "published_hash": "7864e95ee72bec48606adab7a2c75bbfabb0157ca514441a8cd9f2fc2743cf29"
     },
     {
       "title": "Count in factors",
@@ -1202,13 +1202,13 @@
       "title": "Empty program",
       "slug": "empty-program",
       "state": "published",
-      "published_hash": "8948dcaebfafef56a0cb5192df7d63d397e96b2b6625733c5cb8c53e9af77b4f"
+      "published_hash": "5339a4b3e0b23e587bd6719c501306394a1024ef2133f58f8c9185d4792d4ddb"
     },
     {
       "title": "Empty string",
       "slug": "empty-string",
       "state": "published",
-      "published_hash": "af0f7af919d988629a5b73137680801140c9867ca4975d16f8ebae8e85a8d3d6"
+      "published_hash": "0310e74ce14e2fccf536c4ead7e952b2ebfad9eff4be404bec2119d5262154fe"
     },
     {
       "title": "Engel expansion",
