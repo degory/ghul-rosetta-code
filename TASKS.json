@@ -76,7 +76,7 @@
       "title": "Abbreviations, simple",
       "slug": "abbreviations-simple",
       "state": "published",
-      "published_hash": "67c6b0437dd33625c52e07447eda6afc1c6b393c3c90918f31a0311896b44268"
+      "published_hash": "0d8256d0b10382201b923b1d5d1e0cea06fc8b463432f833476d09ffcb64d737"
     },
     {
       "title": "Abelian sandpile model",
@@ -132,7 +132,7 @@
       "slug": "active-object",
       "state": "published",
       "note": "a cooperative scheduler gives it a reproducible clock, so the nondeterminism rejection no longer holds",
-      "published_hash": "371e30da5e41605b3c695c7fbc7006417b415fa06c79b7da7b7cd9dea48e1525"
+      "published_hash": "75a225488a5da0f9240625c2196449f197e5f565935fb3c02520ff4626bde9ed"
     },
     {
       "title": "Additive primes",
@@ -362,7 +362,7 @@
       "title": "Balanced ternary",
       "slug": "balanced-ternary",
       "state": "published",
-      "published_hash": "dbb4a2604acf88c21a16e1c3703330e9aa94aebfbd4b91b22d6a639053effb94"
+      "published_hash": "a3a09e5037fe8e7148853c1dfc31d4849f8a907d4df056b1bd47a2fd5083d0bb"
     },
     {
       "title": "Bell numbers",
@@ -495,7 +495,7 @@
       "title": "Bitmap/Read a PPM file",
       "slug": "bitmap-read-a-ppm-file",
       "state": "published",
-      "published_hash": "d9aa5a560eb1a11ffe93a32ce72a00476f419fe7eea68ac5e9ad168ee88c3cae"
+      "published_hash": "9c566ede79703d12ec757f5913d0bd2bd8880cbb311199c2f10101dbcb9df664"
     },
     {
       "title": "Bitmap/Read an image through a pipe",
@@ -606,7 +606,7 @@
       "title": "Calkin-Wilf sequence",
       "slug": "calkin-wilf-sequence",
       "state": "published",
-      "published_hash": "bcbae68f315d0270c46e0fb8cb4cbcdd1f08f233342377bd370fa3a47a943b3d"
+      "published_hash": "67b1f89d4297a303344f1834be7c0f6635680ac06ba51e5c64db37204843771c"
     },
     {
       "title": "Call a foreign-language function",
@@ -707,7 +707,7 @@
       "title": "Cheryl\u0027s birthday",
       "slug": "cheryls-birthday",
       "state": "published",
-      "published_hash": "5a815f028fb62d897d46c24434f7fe1d77c87e480dbcfdd5ea46ccdff61b3e9e"
+      "published_hash": "2cdd5a5ed903f77b63846853c8b875c3df4d07dfee53017a6b48fcceafc75f4b"
     },
     {
       "title": "Chinese remainder theorem",
@@ -802,7 +802,7 @@
       "title": "Combinations and permutations",
       "slug": "combinations-and-permutations",
       "state": "published",
-      "published_hash": "343f379dd7208bcdd67590d9a8c7dd7a0a3c95504cb4a19988deaff8c3f832f9"
+      "published_hash": "738201d585f355fe051cb90c4ccd7b0bb7c791fd5f5803f736613c7efb607930"
     },
     {
       "title": "Combinations with repetitions",
@@ -992,7 +992,8 @@
     {
       "title": "Deceptive numbers",
       "slug": "deceptive-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "5a4725774cf6d990993b771789a7e732bf2808ba8987accba45461963e217284"
     },
     {
       "title": "Deconvolution/1D",
@@ -1022,7 +1023,7 @@
       "title": "Descending primes",
       "slug": "descending-primes",
       "state": "published",
-      "published_hash": "6040de9e3d73d61a1f4a23f5d4a9335016482aa07491b45a3f6fb507d90d5209"
+      "published_hash": "015b4a149f6810d1ef04c128cbf740b5e1b09d8cbb38ca2644e318f6d9018d73"
     },
     {
       "title": "Detect division by zero",
@@ -1093,7 +1094,7 @@
       "title": "Doomsday rule",
       "slug": "doomsday-rule",
       "state": "published",
-      "published_hash": "df775e87e97f607fb4d6040619f9c9e6ee4c7947d761bf3948e215b455b2286c"
+      "published_hash": "04a14a6549431cdc1760f0f3107c388e0c462e2ed6a83430b171691776bd32d8"
     },
     {
       "title": "Dot product",
@@ -1105,7 +1106,7 @@
       "title": "Doubly-linked list/Definition",
       "slug": "doubly-linked-list-definition",
       "state": "published",
-      "published_hash": "dd34c780f009ae4b292b49bf68330f7997b8a5720d62e16b339a548ff278b834"
+      "published_hash": "b8f649952fae87c865a5f48e0a086a1240d3ea9fcd6342b912fb50b9f841351d"
     },
     {
       "title": "Doubly-linked list/Element definition",
@@ -1117,13 +1118,13 @@
       "title": "Doubly-linked list/Element insertion",
       "slug": "doubly-linked-list-element-insertion",
       "state": "published",
-      "published_hash": "04603873baf21c904661c22b4cc7f605a13299610933a6a5dfa82eecb3176751"
+      "published_hash": "774c8408a837fd6f7f7cbee17a636494cfb73214cadb72bac72fd703ca1cbee7"
     },
     {
       "title": "Doubly-linked list/Traversal",
       "slug": "doubly-linked-list-traversal",
       "state": "published",
-      "published_hash": "d44bdfa7030fe3dbbc9a6135655187163157ea4962e6ff3b5a9d8a456f1f167d"
+      "published_hash": "a8c285ee238cc226edc29fdfec81056780dff805f78773d624725c84c9972aed"
     },
     {
       "title": "Dragon curve",
@@ -1148,7 +1149,7 @@
       "title": "Duffinian numbers",
       "slug": "duffinian-numbers",
       "state": "published",
-      "published_hash": "b0a39e0e5ddd37cce261c889cd34a927cc44a5bdcb265d3e07753e2e8f6bd71c"
+      "published_hash": "656a6aa42a73ebac863a1e155f6b76152b33e00368ec7800723556132ad1ed88"
     },
     {
       "title": "Dutch national flag problem",
@@ -1256,7 +1257,7 @@
       "title": "Erd\u0151s-primes",
       "slug": "erdos-primes",
       "state": "published",
-      "published_hash": "a27705e3590eeadddc7b5dc1db266fcaf07f77cb87c1c2f4e2d3015b43d0b589"
+      "published_hash": "dfb0cc7ae172ed68f84f4c05abb23b38137469c24a0ed411ec3d4d8a2f579f5e"
     },
     {
       "title": "Erd\u0151s\u2013Woods numbers",
@@ -1284,13 +1285,13 @@
       "title": "Euclidean rhythm",
       "slug": "euclidean-rhythm",
       "state": "published",
-      "published_hash": "ae83308c99082a916b877722a1ef9f2ed0b16eae385cfacd9bb2d7be743ffd1e"
+      "published_hash": "482624b66aedab7cc2080e965e288aa81f963c1293e26c3c9f913568628c5f51"
     },
     {
       "title": "Euler\u0027s identity",
       "slug": "eulers-identity",
       "state": "published",
-      "published_hash": "27c07029075f42222165203838d5fbbcab90cbc67e3219f6b7d0acc83f370de7"
+      "published_hash": "971a0c8a8b505c32107f0f2f42f89c2a87d39a593f9dbb5fa05a929a9443f854"
     },
     {
       "title": "Evaluate binomial coefficients",
@@ -1385,7 +1386,7 @@
       "title": "Factorial primes",
       "slug": "factorial-primes",
       "state": "published",
-      "published_hash": "3e92c34fa2b2fb49886cf10e221bb542fd7d037d492f9b4ec6b8ab92d6ece13a"
+      "published_hash": "6c7485a4c914c3a57f2aed3836667c5898718c326f21f3e4ddcdc1e3e963333f"
     },
     {
       "title": "Factorions",
@@ -1414,7 +1415,8 @@
     {
       "title": "Fairshare between two and more",
       "slug": "fairshare-between-two-and-more",
-      "state": "published"
+      "state": "published",
+      "published_hash": "41d4a2e4dca6bb61c8483edb003e5db8a39a3ceef6060278c5602f37484e7728"
     },
     {
       "title": "Farey sequence",
@@ -1600,7 +1602,7 @@
       "title": "Four is magic",
       "slug": "four-is-magic",
       "state": "published",
-      "published_hash": "18a40250b4e53303ac1523bb22ed2ef89e6e9b9431fba44a553346a06a58d03b"
+      "published_hash": "b83ef7c7df79c9681aaa7e5b5d78c21488600a3496c16667f205bf7a1c21973a"
     },
     {
       "title": "Four is the number of letters in the ...",
@@ -1710,7 +1712,7 @@
       "title": "Giuga numbers",
       "slug": "giuga-numbers",
       "state": "published",
-      "published_hash": "d002e8e47b03090d3a9228f0a83bbb829f47735613fbe0f9b5698424db92fef4"
+      "published_hash": "4a7ed61d0ec029bbb548eec0c815fe1c6750cc27e7ec18e82f5f9697c179a131"
     },
     {
       "title": "Globally replace text in several files",
@@ -1942,7 +1944,7 @@
       "title": "Honaker primes",
       "slug": "honaker-primes",
       "state": "published",
-      "published_hash": "ee836ab88940f8a1791eb6667a82d33400406202c009e21d0b63e997e5355dd9"
+      "published_hash": "e240e27be76ee2b0c2dc94aaec33e923e64743c4a5ca37c1c98547cc059d5d18"
     },
     {
       "title": "Horner\u0027s rule for polynomial evaluation",
@@ -2150,7 +2152,7 @@
       "title": "Jacobsthal numbers",
       "slug": "jacobsthal-numbers",
       "state": "published",
-      "published_hash": "667941e08b57bf0d9f96cbd74695156cbacf0888733d1d4806db27ce93a368f3"
+      "published_hash": "23168cbcf1cdbefd570ab31d0f53fba76d933e8bb82c024ce5b9eb8b48cd555f"
     },
     {
       "title": "Jaro similarity",
@@ -2276,7 +2278,7 @@
       "title": "Knuth\u0027s algorithm S",
       "slug": "knuth-s-algorithm-s",
       "state": "published",
-      "published_hash": "48a2169324343b6b3b65e255d0715ce8cc85399eae0b4398506bc469e56a1689"
+      "published_hash": "9cc341367d507be02e6c093639f3e0d8d260a4f15f94a682cc83c684219ced86"
     },
     {
       "title": "Knuth\u0027s power tree",
@@ -2325,7 +2327,7 @@
       "title": "Lah numbers",
       "slug": "lah-numbers",
       "state": "published",
-      "published_hash": "2182ac9cecb2a9d8759677bd376fe23c09f8a0ccc73d1af0a6996f687013c03c"
+      "published_hash": "50bdedb94e167f3c103e68b4096e9eee778b7e3aa8169f286214726c9b1e0251"
     },
     {
       "title": "Largest int from concatenated ints",
@@ -2420,7 +2422,8 @@
     {
       "title": "Long primes",
       "slug": "long-primes",
-      "state": "published"
+      "state": "published",
+      "published_hash": "a3e1305e091fffb04281120e77b4340ee0453eefe0f804de060d78e5b5e2c1d5"
     },
     {
       "title": "Longest common subsequence",
@@ -2568,13 +2571,13 @@
       "title": "Magnanimous numbers",
       "slug": "magnanimous-numbers",
       "state": "published",
-      "published_hash": "577a05bc6211d6ea7c88eb24a62513ead3e6c314085c503d9cce132bf796999b"
+      "published_hash": "8bf9e9414282f5706ce1661bf1907d80ce61444f383f657057cabc6461ea6d2f"
     },
     {
       "title": "Make directory path",
       "slug": "make-directory-path",
       "state": "published",
-      "published_hash": "5f70df5a0ecc25e2bc01e3c56779f21c3b8a8748fa4392426cb9890d06d15a3d"
+      "published_hash": "28392c3efddc497e4cde005b969d5e4851a52cb5bafa383130e3b0fb4fd41b0e"
     },
     {
       "title": "Man or boy test",
@@ -2973,7 +2976,7 @@
       "title": "Parsing/Shunting-yard algorithm",
       "slug": "parsing-shunting-yard-algorithm",
       "state": "published",
-      "published_hash": "c7ca81f26b2458be33b8ab24af879e7ac7f19390eb93cdd5654663072a296ccf"
+      "published_hash": "6965f7fb22766f0f813056a7ef8b47e54ccfc7c33edac9ea8afc6781ff5bbbd0"
     },
     {
       "title": "Partial function application",
@@ -3028,12 +3031,14 @@
     {
       "title": "Permutations by swapping",
       "slug": "permutations-by-swapping",
-      "state": "published"
+      "state": "published",
+      "published_hash": "991984ee2a4bb93177e6db98dc56ec6cc49431cbc7073d3e263f9bd69fc6c34a"
     },
     {
       "title": "Permutations/Derangements",
       "slug": "permutations-derangements",
-      "state": "published"
+      "state": "published",
+      "published_hash": "6184adc82eb96a59c1fb53e4d59483127d3ac81dcee46f4838537d9296f7a47e"
     },
     {
       "title": "Pernicious numbers",
@@ -3091,7 +3096,8 @@
     {
       "title": "Polynomial long division",
       "slug": "polynomial-long-division",
-      "state": "published"
+      "state": "published",
+      "published_hash": "309414ef4fedffa78cbefc3a3125ffb57f4932f98473d9a05759f774d8f0386a"
     },
     {
       "title": "Population count",
@@ -3332,7 +3338,7 @@
       "title": "Riordan numbers",
       "slug": "riordan-numbers",
       "state": "published",
-      "published_hash": "b680b4d94b4c1f828cbda682ea5cad1c546e642ad02317a8046aac0fb4a7cee9"
+      "published_hash": "219d7f5e7d2689bd47af81025dfbbdd4f709858690f81ab400b6bd0ffa89950c"
     },
     {
       "title": "Rock-paper-scissors",
@@ -3378,13 +3384,14 @@
     {
       "title": "Safe primes and unsafe primes",
       "slug": "safe-primes-and-unsafe-primes",
-      "state": "published"
+      "state": "published",
+      "published_hash": "e75db937bca372bb382db6d61aacb8dc199438a87a19811cb7a0a70dd2c615ff"
     },
     {
       "title": "Sailors, coconuts and a monkey problem",
       "slug": "sailors-coconuts-and-a-monkey-problem",
       "state": "published",
-      "published_hash": "1b06b9b180c4ecd21aec4bea31719888c8aac78b73d636d8dc7b55fd91bf0144"
+      "published_hash": "a0cb6c12e0b4bbae3b4995ff7d9a075f9054b027a1bbfc158211817aa9cce537"
     },
     {
       "title": "Same fringe",
@@ -3586,7 +3593,7 @@
       "title": "Sleeping Beauty problem",
       "slug": "sleeping-beauty-problem",
       "state": "published",
-      "published_hash": "3ac78dee3614ea90d4c04dd495c6440c3977957c63583828870398f8ae44ac43"
+      "published_hash": "6ce1ca763dec7f118bdbec3c691822fab92ddc0e8c2f414e9519310a257e92bf"
     },
     {
       "title": "Smarandache prime-digital sequence",
@@ -3674,7 +3681,7 @@
       "title": "Sorting algorithms/Circle sort",
       "slug": "sorting-algorithms-circle-sort",
       "state": "published",
-      "published_hash": "5cc95bc19cbeefc0b5aa5bda71bc420fdeafe53e8ff6f012bfdb7e5b94705109"
+      "published_hash": "627e7afa8e368f0bc31ca5fc655db9164ad79d546c2801c988952d9e36567f08"
     },
     {
       "title": "Sorting algorithms/Cocktail sort",
@@ -3740,7 +3747,7 @@
       "title": "Sorting algorithms/Patience sort",
       "slug": "sorting-algorithms-patience-sort",
       "state": "published",
-      "published_hash": "45b31261deb034d4bb73d5e2272c4d9411a8bd7fb16cca80824566cbd1970125"
+      "published_hash": "c21ae680aedf2a281a39e79ad92e403cec083af6b27f7ea351abde7877f21f22"
     },
     {
       "title": "Sorting algorithms/Permutation sort",
@@ -3782,7 +3789,7 @@
       "title": "Sorting algorithms/Strand sort",
       "slug": "sorting-algorithms-strand-sort",
       "state": "published",
-      "published_hash": "7affa7be7f069274d54fe66de150a70dd2fe99c008076dc45ec39769cfd697c4"
+      "published_hash": "7e6803d14eace25c2e8a3d2c422bfc9bf07faa8add9409e1d02facb20b31fb95"
     },
     {
       "title": "Sorting algorithms/Tree sort on a linked list",
@@ -3841,7 +3848,7 @@
       "title": "Stable marriage problem",
       "slug": "stable-marriage-problem",
       "state": "published",
-      "published_hash": "ab17c067b410a261ced6aacd96919733aab9870777aed1446515bd45b118191a"
+      "published_hash": "a3e3a03cd3b2d7ffd2b4f0e35e0510d7ffa6fcd511823e2f13b7e63e42916e57"
     },
     {
       "title": "Stack",
@@ -4030,7 +4037,7 @@
       "title": "Sum to 100",
       "slug": "sum-to-100",
       "state": "published",
-      "published_hash": "620d995ae15d56dba8438122b2737006e06921d4250451a1f86152d1aca15902"
+      "published_hash": "00404b35b06fa9330ea3281807a364a3404f866bec9edf7ebb15e18d157d1615"
     },
     {
       "title": "Summarize and say sequence",
@@ -4052,7 +4059,7 @@
       "title": "Sylvester\u0027s sequence",
       "slug": "sylvesters-sequence",
       "state": "published",
-      "published_hash": "bff0e6430f83d8fa2017b5d36fa34223aff48871c9e53a28dc7f5af7bc914f75"
+      "published_hash": "e895f734af7a036812097f1b0e1b674bd94ee536b060bd8d1f6e2bee5a1b08fe"
     },
     {
       "title": "Symmetric difference",
@@ -4225,12 +4232,14 @@
     {
       "title": "Truth table",
       "slug": "truth-table",
-      "state": "published"
+      "state": "published",
+      "published_hash": "ff0395396e6bde2b0bfe8c9f8d77c33852a69ab6f0eea7be335e429bb054bf78"
     },
     {
       "title": "Twelve statements",
       "slug": "twelve-statements",
-      "state": "published"
+      "state": "published",
+      "published_hash": "e6e5fd10f81c2f5d218b8495a75f7a6f390104fd3cbe3fe4af15a2d1c8bf2b33"
     },
     {
       "title": "Twin primes",
@@ -4277,7 +4286,7 @@
       "title": "Ulam spiral (for primes)",
       "slug": "ulam-spiral-for-primes",
       "state": "published",
-      "published_hash": "0d55c0f91c3857c347f30fe9b09905b82543c40e2f46f022a937c16dff7663f1"
+      "published_hash": "9878a349415d037f81e46e6982bb459d4f5bef17a757a8c38f54a45d9282c711"
     },
     {
       "title": "Undulating numbers",
@@ -4317,7 +4326,7 @@
       "title": "Vampire number",
       "slug": "vampire-number",
       "state": "published",
-      "published_hash": "e33d3e88728368c93855f971efdb44d0d7612ca2d7d9eb1a5623c89da77bb938"
+      "published_hash": "313e2bfdfb113f5107ee4d04ab0468f08f48d45fac5481a76a15cf1b881da583"
     },
     {
       "title": "Van Eck sequence",
@@ -4335,13 +4344,13 @@
       "title": "Variable size/Set",
       "slug": "variable-size-set",
       "state": "published",
-      "published_hash": "fb9114b593f53d4bf2170b0326ac5302abed38ea731173350449b8a24739717a"
+      "published_hash": "6d8897066fb7e17df919fcee32ed2ccd7ff30d023771f24100b59ef0f234dc0b"
     },
     {
       "title": "Variable-length quantity",
       "slug": "variable-length-quantity",
       "state": "published",
-      "published_hash": "ae028be79b2a047f43b75f8ba27ab7d4400dad71cb4eaa675862ceac797dea04"
+      "published_hash": "87f4c3c2d466c3328e4b5f0471b4fa79f2a71c0307740fb1c865c84307d12585"
     },
     {
       "title": "Variables",
@@ -4382,7 +4391,8 @@
     {
       "title": "Visualize a tree",
       "slug": "visualize-a-tree",
-      "state": "published"
+      "state": "published",
+      "published_hash": "272d44c45901854364ba49b7f90bc0a51662ce4aa1f1e1ef40c907eb12c5aad8"
     },
     {
       "title": "Voronoi diagram",
@@ -4438,7 +4448,8 @@
     {
       "title": "Wieferich primes",
       "slug": "wieferich-primes",
-      "state": "published"
+      "state": "published",
+      "published_hash": "098f27e2e06a4576a9e80029888302883f3c8a87c702900748061721634cf1c7"
     },
     {
       "title": "Wolstenholme numbers",
