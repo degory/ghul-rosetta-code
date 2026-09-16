@@ -676,6 +676,11 @@ adopt(root: string, slugs: LIST[string]) is
     fi
 si
 
+// How long a publish run waits between one task's requests and the next's. Paces every request
+// the wiki sees from a run, not only a successful edit, so a task that made a request and then
+// failed still waits before the next one starts.
+pace_ms() -> int => 30000
+
 // `target` redirects every write to one page, so the whole path - sign in, fetch the real task
 // page, splice, save - can be run against a sandbox. The only thing it leaves untested is which
 // page the text is sent to.
@@ -845,17 +850,34 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
                 0
             esac
 
-        let removals =
-            if rehearse then
-                destination.lines_removed(source, spliced)
-            else
-                wiki.lines_removed(source, spliced)
-            fi
+        // A network blip or a malformed response here is the wiki's problem for this one
+        // request, not a reason to stop publishing everything after it - the same standing the
+        // edit itself is given below.
+        let removals mut = 0
+
+        try
+            removals =
+                if rehearse then
+                    destination.lines_removed(source, spliced)
+                else
+                    wiki.lines_removed(source, spliced)
+                fi
+        catch problem: System.Exception
+            error.write_line("{entry.title}: could not check how many lines this would remove, so nothing was sent - {problem.message}")
+
+            refused = refused + 1
+
+            System.Threading.Thread.sleep(pace_ms())
+
+            continue
+        yrt
 
         if removals > allowed_removals then
             error.write_line("{entry.title}: the wiki's own diff says this would remove {removals} lines, so nothing was sent")
 
             refused = refused + 1
+
+            System.Threading.Thread.sleep(pace_ms())
 
             continue
         fi
@@ -873,7 +895,10 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
 
                 write_line("{entry.title}: written to {sandbox}, would have gone {where}")
             else
-                upload_images(root, wiki, entry, slug, section)
+                // slug! rather than slug: the try/catch above sits between where slug is
+                // narrowed and this use of it, and the compiler does not carry a local's
+                // narrowing across a try block even though nothing here reassigns it.
+                upload_images(root, wiki, entry, slug!, section)
 
                 wiki.edit(entry.title, spliced, edit_summary(placement, note))
 
@@ -890,8 +915,7 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
             error.write_line("{entry.title}: {refusal.message}")
         yrt
 
-        // The wiki asks unflagged accounts to edit no faster than this.
-        System.Threading.Thread.sleep(10000)
+        System.Threading.Thread.sleep(pace_ms())
     od
 
     if refused > 0 then
