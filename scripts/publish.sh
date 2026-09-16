@@ -5,8 +5,8 @@
 #   scripts/publish.sh <slug>...      publish those tasks
 #   scripts/publish.sh --solved       publish every task not yet on the wiki
 #
-# Any other argument is passed through to `rosetta publish`, so --dry-run and
-# --replace work as they do there, in any position.
+# Any other argument is passed through to `rosetta publish`, so --dry-run,
+# --replace and --note <text> work as they do there, in any position.
 #
 # The record is the point of this script. `rosetta publish` writes each page's
 # new digest into TASKS.json as it goes, and that digest is the only thing a
@@ -54,14 +54,25 @@ git checkout --quiet -b "$BRANCH" origin/main
 # The flags can come in any order, so which tasks to generate is decided by
 # reading all of them rather than by looking at the first. A flag left in the
 # slug list generates nothing and then publishes nothing.
+#
+# --target, --api, --rehearse and --note each take the next argument as their
+# value rather than a slug - skip it along with the flag, or it lands in SLUGS
+# and a generate/publish run goes looking for a task by that name.
 SLUGS=()
 SOLVED=
+SKIP_NEXT=
 
 for argument in "$@" ; do
+    if [ -n "$SKIP_NEXT" ] ; then
+        SKIP_NEXT=
+        continue
+    fi
+
     case "$argument" in
-        --solved) SOLVED=yes ;;
-        --*)      ;;
-        *)        SLUGS+=("$argument") ;;
+        --solved)                          SOLVED=yes ;;
+        --target|--api|--rehearse|--note)  SKIP_NEXT=yes ;;
+        --*)                               ;;
+        *)                                 SLUGS+=("$argument") ;;
     esac
 done
 

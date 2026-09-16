@@ -14,7 +14,7 @@ use Rosetta
 //   rosetta set <title> <state> [reason] [note]
 //   rosetta reopen <title> <note>    put a rejected task back in play, recording why
 //   rosetta check [--api <url>]      sign in and report the account, changing nothing
-//   rosetta publish [--dry-run] [--replace] [--target <page>] [--api <url>] [slug ...]
+//   rosetta publish [--dry-run] [--replace] [--note <text>] [--target <page>] [--api <url>] [slug ...]
 //   rosetta publish --rehearse <page> [--api <url>] <slug>
 //   rosetta adopt <slug> ...          record the live section as ours, when it matches wiki-out/
 //   rosetta render-notes <path>      a task's notes.md as wiki markup, to stdout
@@ -359,12 +359,17 @@ si
 // Feeds the guards the damage they exist to stop. A guard that has never been seen to refuse
 // anything is only believed to work.
 // The page history is read by people looking for what changed, so an edit that rewrites the
-// section already there says so rather than claiming to have added one.
-edit_summary(placement: PLACEMENT) -> string =>
-    case placement
-    when _: PLACEMENT.REPLACES then "Update the ghūl solution"
-    else "Add a ghūl solution"
-    esac
+// section already there says so rather than claiming to have added one. `note` names what a batch
+// of edits is doing beyond the ordinary update or addition - a reader scanning recent changes for
+// a run of edits from one account otherwise has nothing to tell them apart.
+edit_summary(placement: PLACEMENT, note: string?) -> string =>
+    let base =
+        case placement
+        when _: PLACEMENT.REPLACES then "Update the ghūl solution"
+        else "Add a ghūl solution"
+        esac
+    in
+        if let n = note then "{base}: {n}" else base fi
 
 self_test() is
     let splice = SECTION_SPLICE()
@@ -408,12 +413,18 @@ self_test() is
 
     check_that(
         "replacing a section is summarised as an update",
-        edit_summary(splice.placement(out_of_order, "ghul")) =~ "Update the ghūl solution"
+        edit_summary(splice.placement(out_of_order, "ghul"), null) =~ "Update the ghūl solution"
     )
 
     check_that(
         "adding a section is summarised as an addition",
-        edit_summary(splice.placement(page, "ghul")) =~ "Add a ghūl solution"
+        edit_summary(splice.placement(page, "ghul"), null) =~ "Add a ghūl solution"
+    )
+
+    check_that(
+        "a note is appended to the summary",
+        edit_summary(splice.placement(out_of_order, "ghul"), "link it to the playground") =~
+            "Update the ghūl solution: link it to the playground"
     )
 
     // The page replaced by the section alone: what a wrong placement would produce, and the
@@ -671,7 +682,7 @@ si
 // `rehearse` reads and writes one page instead of a task page: the section is spliced into
 // whatever that page already holds, and the result written back. Running it twice replaces the
 // section rather than adding a second one, which is the same path a corrected solution takes.
-publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?, rehearse: bool, replace: bool) is
+publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?, rehearse: bool, replace: bool, note: string?) is
     let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
     let splice = SECTION_SPLICE()
 
@@ -864,7 +875,7 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
             else
                 upload_images(root, wiki, entry, slug, section)
 
-                wiki.edit(entry.title, spliced, edit_summary(placement))
+                wiki.edit(entry.title, spliced, edit_summary(placement, note))
 
                 entry.state = "published"
                 entry.published_hash = digest(section.trim())
@@ -962,6 +973,7 @@ else
         let dry_run = arguments.contains("--dry-run")
         let target: string? mut = null
         let api: string? mut = null
+        let note: string? mut = null
         let rehearse mut = false
         let replace = arguments.contains("--replace")
         let solved = arguments.contains("--solved")
@@ -976,11 +988,17 @@ else
             elif awaiting =~ "--api" then
                 api = argument
                 awaiting = ""
+            elif awaiting =~ "--note" then
+                note = argument
+                awaiting = ""
             elif awaiting =~ "--rehearse" then
                 target = argument
                 rehearse = true
                 awaiting = ""
-            elif argument =~ "--target" \/ argument =~ "--api" \/ argument =~ "--rehearse" then
+            elif
+                argument =~ "--target" \/ argument =~ "--api" \/
+                argument =~ "--note" \/ argument =~ "--rehearse"
+            then
                 awaiting = argument
             elif
                 argument =~ "--dry-run" \/ argument =~ "--replace" \/
@@ -1005,7 +1023,7 @@ else
             error.write_line(
                 "publish needs one or more slugs, or --solved for every solved task")
         else
-            publish(root, slugs, dry_run, target, api, rehearse, replace)
+            publish(root, slugs, dry_run, target, api, rehearse, replace, note)
         fi
     else
         usage()
