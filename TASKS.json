@@ -236,7 +236,7 @@
       "title": "Argument destructuring",
       "slug": "argument-destructuring",
       "state": "published",
-      "published_hash": "1dedd29163c8984cc34050b3540d65311a8235485187fb87b95a5dd6aa523981"
+      "published_hash": "8976538c313780014cd7bc845980b83ea27d83ed0b1cf24e00b7ece409a0676d"
     },
     {
       "title": "Arithmetic derivative",
@@ -319,7 +319,7 @@
       "title": "Autogram checker",
       "slug": "autogram-checker",
       "state": "published",
-      "published_hash": "acc99018f7b2113dfeb6b352ce07caf1d1481044b7ce23c38b748c95ea29f3dd"
+      "published_hash": "21b6380e202f2c5ba1f32136c57278f005aa740960cda1b86177d3e951422bf0"
     },
     {
       "title": "Averages/Arithmetic mean",
@@ -423,7 +423,7 @@
       "title": "Bioinformatics/Global alignment",
       "slug": "bioinformatics-global-alignment",
       "state": "published",
-      "published_hash": "7d41c5157b844a88daf070d3155282f012dd3a8b2e3b38b9289718fa6a6b2f00"
+      "published_hash": "24ed4384bb1298e1a369cc59de8eff824fa9b79b466d51de700580b2e5439905"
     },
     {
       "title": "Bitmap",
@@ -544,7 +544,7 @@
       "title": "Boyer-Moore string search",
       "slug": "boyer-moore-string-search",
       "state": "published",
-      "published_hash": "c4b6c747028a45a8bf4985a9c7df483435ed3be8c70aefe272daca0f844a1b6f"
+      "published_hash": "dd9842ff0ca53ef1359c3deae93b0524cc7be39ac0a24cf2da66efb4a13c030c"
     },
     {
       "title": "Brace expansion",
@@ -637,7 +637,7 @@
       "title": "Card shuffles",
       "slug": "card-shuffles",
       "state": "published",
-      "published_hash": "71e76fb236ef758e292699c197f6327fc82bf9d40ee85d7cb01c2d46948d7ee3"
+      "published_hash": "5b21dcd54d6a77cc79764dadfcaa64b82aaf341b3107dddba10080874316a5cc"
     },
     {
       "title": "Cartesian product of two or more lists",
@@ -667,7 +667,7 @@
       "title": "Catamorphism",
       "slug": "catamorphism",
       "state": "published",
-      "published_hash": "3254327f2e801201f2786510cf84629508e195c660012d058041fce14c5301fa"
+      "published_hash": "781f145529d0cc99838ce6c549393e84ff43581227bb8cad5bce644a751ced2c"
     },
     {
       "title": "Character codes",
@@ -702,7 +702,7 @@
       "title": "Chernick\u0027s Carmichael numbers",
       "slug": "chernicks-carmichael-numbers",
       "state": "published",
-      "published_hash": "e35ee9a07f78eb03612c224d62cc28d30277efc0ebe64982231efebd3898269f"
+      "published_hash": "0d66fde9924561057e767120d91da8db9878bc8a8b579fef809551b3aae89de5"
     },
     {
       "title": "Cheryl\u0027s birthday",
@@ -843,7 +843,7 @@
       "title": "Compiler/AST interpreter",
       "slug": "compiler-ast-interpreter",
       "state": "published",
-      "published_hash": "ade12835518522cf6149fb77fc7383f9577c8bd5d9d1129596ef3beae2487135"
+      "published_hash": "5d6b68a45d59fb2ff21c938ed671dc1eba2085733c86169f8078e84609c6ab09"
     },
     {
       "title": "Compound data type",
@@ -961,7 +961,7 @@
       "title": "Cycles of a permutation",
       "slug": "cycles-of-a-permutation",
       "state": "published",
-      "published_hash": "11d71606f66e3c98431778e0989443f42136e91a100cec99ee890167f6b86e56"
+      "published_hash": "456225bca60196ed3b0c53e9827c277f987b5239875ae5e0cb8c01cc1c2848d9"
     },
     {
       "title": "Cyclops numbers",
@@ -1083,7 +1083,8 @@
     {
       "title": "Display an outline as a nested table",
       "slug": "display-an-outline-as-a-nested-table",
-      "state": "published"
+      "state": "published",
+      "published_hash": "f63a175fc187cf29ff30e2a403ff11fa5c842046953dce422be2db1eb67cbcf5"
     },
     {
       "title": "Diversity prediction theorem",
@@ -1192,7 +1193,7 @@
       "title": "Elementary cellular automaton/Infinite length",
       "slug": "elementary-cellular-automaton-infinite-length",
       "state": "published",
-      "published_hash": "0ece9f43bc3dd6f5dab98b010de99d39f8c928bc82685a317afa3b09d371a6f1"
+      "published_hash": "0eadcc0e0e6a507b1b3044928aa886aebdeb9f72bc13992fdd8612c50d2af759"
     },
     {
       "title": "Emirp primes",
@@ -1216,7 +1217,7 @@
       "title": "Engel expansion",
       "slug": "engel-expansion",
       "state": "published",
-      "published_hash": "6690e93e90be4802613aa034610657cb66a9c29eddee8d0f4fe8ce134033131e"
+      "published_hash": "310421329e5ceb94622279ad0f85188da2fbdc6a88c9ff5999b03a1c62a9587d"
     },
     {
       "title": "Entropy",
@@ -1328,7 +1329,7 @@
       "title": "Execute Computer/Zero",
       "slug": "execute-computer-zero",
       "state": "published",
-      "published_hash": "d94524bc481acfa0dc648b8cf987f667fe71334fe28eec5d1ab4963281bf9d4b"
+      "published_hash": "319dc2874d97387bde17b523489dc031a0184bf68bfb4623afa9d543f26a744f"
     },
     {
       "title": "Execute a system command",
@@ -1375,13 +1376,13 @@
       "title": "Factorial",
       "slug": "factorial",
       "state": "published",
-      "published_hash": "932c02248b0835b4c9614d8c2210887228a6f3f15c21f14093733f61f75f4d05"
+      "published_hash": "0495a9cdab8b824baaab4711103adef0b909f8b81f1b130874f1d6275308fec0"
     },
     {
       "title": "Factorial base numbers indexing permutations of a collection",
       "slug": "factorial-base-numbers-indexing-permutations-of-a-collection",
       "state": "published",
-      "published_hash": "59bc336f03f1d2bab40ff191412f298bd72efcd2b836b8207280e55ae4f1f3b2"
+      "published_hash": "7e562ffae80a732aa849ee8eb2167c8db8a46f0656de1aa9cb2329e8d1b8a870"
     },
     {
       "title": "Factorial primes",
@@ -1399,7 +1400,7 @@
       "title": "Factorize string into Lyndon words",
       "slug": "factorize-string-into-lyndon-words",
       "state": "published",
-      "published_hash": "f93bd35b1687c008d801fc02e7b84de5f0aaf0e4914b65d1c696e397657aa458"
+      "published_hash": "6985ecf0d7292ea6a551922786a50945af9daf3b13ba8011c6ada041c8b8a943"
     },
     {
       "title": "Factors of a Mersenne number",
@@ -1441,7 +1442,7 @@
       "title": "Fermat pseudoprimes",
       "slug": "fermat-pseudoprimes",
       "state": "published",
-      "published_hash": "140c791a7945e7298329316efd97ea4ac5d956adfc1972e142596e40df7133b6"
+      "published_hash": "f63169ba7c1c3da74783e11ec3ce9cec488904ad7df67e6a684c195394741b8d"
     },
     {
       "title": "Fibonacci n-step number sequences",
@@ -1453,7 +1454,7 @@
       "title": "Fibonacci sequence",
       "slug": "fibonacci-sequence",
       "state": "published",
-      "published_hash": "2b3ad011146f25f83394e667f5939f56f00469c00815f817d458ceed8d2597ce"
+      "published_hash": "3936c102952ada79a7ae37daceeafd0782b4345ea11659410dad928897853a16"
     },
     {
       "title": "Fibonacci word",
@@ -1550,7 +1551,7 @@
       "title": "FizzBuzz",
       "slug": "fizzbuzz",
       "state": "published",
-      "published_hash": "42cf10b030cf1e99cac886d7ff47e3a4244db5377a30bf1c1e7439d7d8968824"
+      "published_hash": "3b24fc63858545eec7c48e1ca0b96a90ab5fc5bcf79632fe989a95af9a09b9a5"
     },
     {
       "title": "Flatten a list",
@@ -1580,7 +1581,7 @@
       "title": "Formal power series",
       "slug": "formal-power-series",
       "state": "published",
-      "published_hash": "cd8935d3f6e1c8cc37b82e01eae9d85fd3e191c98a2e2e76b076907a528189bc"
+      "published_hash": "0774a529e862227c1c5e04753ae40dc7bd9cf9902c66d1402be55b685f099cb5"
     },
     {
       "title": "Formatted numeric output",
@@ -1625,7 +1626,7 @@
       "title": "French Republican calendar",
       "slug": "french-republican-calendar",
       "state": "published",
-      "published_hash": "61f0e73314e57d4270524ff703a15fb22013d3624fac40a07d82a3c279a0aa51"
+      "published_hash": "554b678bc84ec264b3101dedf89f1463b3c1128d60ebbfe5e7332abbea1b70f9"
     },
     {
       "title": "Function composition",
@@ -1637,13 +1638,13 @@
       "title": "Function definition",
       "slug": "function-definition",
       "state": "published",
-      "published_hash": "9e3710f522b5febbc2fd3f4e211916bacd1772fb3ce9e30de92c923a026b8a38"
+      "published_hash": "7541e067b695a1149986986146b0891156b79c0a695bcffc413e31507534adec"
     },
     {
       "title": "Functional coverage tree",
       "slug": "functional-coverage-tree",
       "state": "published",
-      "published_hash": "6f479fef8707a683a78879804bbbb9e50007567a0a9d6e48853df1c80561d679"
+      "published_hash": "bf6f2271bd7d662035e418588f5eda6be48de84c2d4dde9f0d81dc7f586037a6"
     },
     {
       "title": "Fusc sequence",
@@ -1677,7 +1678,7 @@
       "title": "Gaussian primes",
       "slug": "gaussian-primes",
       "state": "published",
-      "published_hash": "26d14aedcef520cf52696b5eabe6e5270716682ff42597694617ffa537c85145"
+      "published_hash": "8ccb7cf01c39f5e02057bfaa133f82ef61e94508cafd64cd4c0b76d9d144523d"
     },
     {
       "title": "General FizzBuzz",
@@ -1767,7 +1768,7 @@
       "title": "Greatest common divisor",
       "slug": "greatest-common-divisor",
       "state": "published",
-      "published_hash": "7bbf4ef66258765db2b01e2772cb2203d429616e73f136baec99a0c1555340d9"
+      "published_hash": "3c6918ff87b943c28ef313901a2d922e4d8aec149ead215ce032968bcf50a706"
     },
     {
       "title": "Greatest element of a list",
@@ -1779,7 +1780,7 @@
       "title": "Greatest prime dividing the n-th cubefree number",
       "slug": "greatest-prime-dividing-the-n-th-cubefree-number",
       "state": "published",
-      "published_hash": "c328363636ef76949868ad17bcbd3042ae54324450c0d2f00d96201c32eda2b5"
+      "published_hash": "77c4934b96de09b4460cc1438a81360f3db3e6175df433a3b45f605a5ce0d2ed"
     },
     {
       "title": "Greatest subsequential sum",
@@ -1889,7 +1890,7 @@
       "title": "Hello world/Text",
       "slug": "hello-world-text",
       "state": "published",
-      "published_hash": "c25f5df923cd3cbdecf18197e631edb7e6900ae3cd64494daabaabb32a9a8855"
+      "published_hash": "35dc663bd2d8807f24062cc70684f39fffc2e213fa42a90eb274067aac31525e"
     },
     {
       "title": "Here document",
@@ -2030,7 +2031,7 @@
       "title": "Imaginary base numbers",
       "slug": "imaginary-base-numbers",
       "state": "published",
-      "published_hash": "705e09011317d998ec03c5a08346f2045fa67e54d29c6478077e329d58d94232"
+      "published_hash": "e5c77c80f3293c4e8a451924b4d96acccafec32127430f511e10fa6633f8f848"
     },
     {
       "title": "Implicit type conversion",
@@ -2060,7 +2061,7 @@
       "title": "Index finite lists of positive integers",
       "slug": "index-finite-lists-of-positive-integers",
       "state": "published",
-      "published_hash": "be447f277d51121a1ff082038d21757b7cf27fc289899748b6980dbaef518e88"
+      "published_hash": "5bf9bc847f9e05d7af230eca5d1a755103dcd57580e25777b7c2dfb6feaf5358"
     },
     {
       "title": "Infinity",
@@ -2131,7 +2132,7 @@
       "title": "Iterators",
       "slug": "iterators",
       "state": "published",
-      "published_hash": "4aff0a2a401d8eae8391f2e126e18dd84f99e1bcbf8506c435a53f2ee87080b0"
+      "published_hash": "6830c29061377a9b7737393f584f3aba732737cf637747f7fc37da08dfe04ee4"
     },
     {
       "title": "JSON",
@@ -2143,7 +2144,7 @@
       "title": "JSON pointer",
       "slug": "json-pointer",
       "state": "published",
-      "published_hash": "fe14bf45a1f4a6799d0f5fa7c9007a6813524e512dc0e194fd646f802c6f15c8"
+      "published_hash": "f3c1e9356baec9bfd025750215d75b536e9cc33c98a22af4a0f5d3201110fcd3"
     },
     {
       "title": "Jacobi symbol",
@@ -2167,7 +2168,7 @@
       "title": "Jaro-Winkler distance",
       "slug": "jaro-winkler-distance",
       "state": "published",
-      "published_hash": "786474c4a43a9d17d66fa25ebe0e33347366394d058dede14ee5ed60c8660dc3"
+      "published_hash": "3e0c75b01691a2332b2c3dab111a27f35f5a904274717db46f96aa0543bcf0a6"
     },
     {
       "title": "Jensen\u0027s Device",
@@ -2287,13 +2288,13 @@
       "title": "Knuth\u0027s power tree",
       "slug": "knuths-power-tree",
       "state": "published",
-      "published_hash": "4e1dbd66a28a61eb83055fd97386782782cbf4c511429eba6feabf6e58a1a58b"
+      "published_hash": "c2a824e2ad104361493381a37c049638e0378424bc0be0eb5a6106ff47332dea"
     },
     {
       "title": "Kolakoski sequence",
       "slug": "kolakoski-sequence",
       "state": "published",
-      "published_hash": "2093f4219b9cd5519082966eadaff2821ba77c066973b9da44bf9e7b2ab6b88e"
+      "published_hash": "f54915db874dc75e75b3ba908cb0f5fe085956850099b57f504aa71505648bfe"
     },
     {
       "title": "Kronecker product",
@@ -2486,7 +2487,7 @@
       "title": "Loops/For",
       "slug": "loops-for",
       "state": "published",
-      "published_hash": "3993c7dbb612e4ec64e4b7edc621f4da527008f6085c5373bfa95822fe3804c0"
+      "published_hash": "79f7747293113ad794562cfcbb8d053be5533d2dfed2eba4fa7f7140c435fea9"
     },
     {
       "title": "Loops/For with a specified step",
@@ -2527,7 +2528,7 @@
       "title": "Loops/While",
       "slug": "loops-while",
       "state": "published",
-      "published_hash": "c53c30531a675a3418dd5a1cbeb5450559a577367795141f6f8dd3dd37d923ea"
+      "published_hash": "cf58f84a318f3d4382c8c64f606255b6f3a6f282725390c37c316449992d1f96"
     },
     {
       "title": "Loops/With multiple ranges",
@@ -2538,7 +2539,8 @@
     {
       "title": "Lucky and even lucky numbers",
       "slug": "lucky-and-even-lucky-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "6f7547a109c908712736160d69f7713cb30d8d65c8d7ab9180bb62709d9ca925"
     },
     {
       "title": "Ludic numbers",
@@ -2562,7 +2564,7 @@
       "title": "Lyndon word",
       "slug": "lyndon-word",
       "state": "published",
-      "published_hash": "4a25067c707de6365bddd61da0277de40617f56c32b16c44234213c28040f131"
+      "published_hash": "95406c9c93a2c4e45b94b99e3fe6b805c73fe96a7fd0ee7389cf0a8d28546b71"
     },
     {
       "title": "Magic squares of odd order",
@@ -2648,7 +2650,8 @@
     {
       "title": "Minimal steps down to 1",
       "slug": "minimal-steps-down-to-1",
-      "state": "published"
+      "state": "published",
+      "published_hash": "1694a6616b69b561face05418f1f1365c46a60c9b84637b2132d9f02e1e3fe58"
     },
     {
       "title": "Monads/List monad",
@@ -2666,7 +2669,7 @@
       "title": "Monads/Writer monad",
       "slug": "writer-monad",
       "state": "published",
-      "published_hash": "525a660ed7e4032b46ee917ee81c15d211515aa814291f70782b6dbc74d440be"
+      "published_hash": "39d3b77f2997c85b6d3f6a16c4056d18db42d22219047ec6392ce0c3f33d8755"
     },
     {
       "title": "Monty Hall problem",
@@ -2678,7 +2681,7 @@
       "title": "Moser\u0027s circle problem",
       "slug": "moser-s-circle-problem",
       "state": "published",
-      "published_hash": "ea638a37f5a6901b7aa70d3501f30cf8f74f57b76700caafcfb4f7b21c32161a"
+      "published_hash": "549f21ff53cb3fc4dbb3d60985223614a82f0fae2f13d76b5ab1088a84135f67"
     },
     {
       "title": "Motzkin numbers",
@@ -2720,7 +2723,7 @@
       "title": "Multiton",
       "slug": "multiton",
       "state": "published",
-      "published_hash": "2406839cc1e2007ea9b33de88e25c151ef6515cef51e3b675827087b78283447"
+      "published_hash": "7f1db112d4fa70f30982f833f84f5cd0efa4d00d457057616280bc86dcb82ce7"
     },
     {
       "title": "Munchausen numbers",
@@ -2746,7 +2749,7 @@
       "title": "Mutex",
       "slug": "mutex",
       "state": "published",
-      "published_hash": "4c2fd63469f7562ce5911d30d2bb300dde29448cf513c85c994ecd259019b7fa"
+      "published_hash": "6fa8786fb21590a877cbf1c5554e700381af90d3b18beb80cd9804b88a44bcf1"
     },
     {
       "title": "Mutual recursion",
@@ -3321,7 +3324,7 @@
       "title": "Reverse a string",
       "slug": "reverse-a-string",
       "state": "published",
-      "published_hash": "d8e247a1f0a32cd55ff09a34abc0e2fac86472b5ccfc11a77030de80e425c00a"
+      "published_hash": "f1ac0227b51318e50f9dc333dd25b38146096f0c4259609a7a1f1732b8db5f75"
     },
     {
       "title": "Reverse the gender of a string",
@@ -4193,7 +4196,7 @@
       "title": "Transliterate English text using the Greek alphabet",
       "slug": "transliterate-english-text-using-the-greek-alphabet",
       "state": "published",
-      "published_hash": "bc5196506ef65da81d07e27f452366217594f95986f7dee0adbe48fb8a53117f"
+      "published_hash": "7fc9ffec31611b0dce201575389f907814a9c780a1554933b8fc1c23f6f2c008"
     },
     {
       "title": "Tree datastructures",
@@ -4438,7 +4441,7 @@
       "title": "Walsh matrix",
       "slug": "walsh-matrix",
       "state": "published",
-      "published_hash": "14b2ecca8c04f96e3217caf757a6af1bfefb1d445749d15a23f0163a22543519"
+      "published_hash": "573e7836ce5166089c2c00c52a3190760b5b8dcacc2fd4a9f062debc6a9c89a6"
     },
     {
       "title": "Wasteful, equidigital and frugal numbers",
