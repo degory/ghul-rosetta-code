@@ -3,10 +3,7 @@ use default
 use STEP = (order: List[int], sign: int)
 
 swap(values: LIST[int], left: int, right: int) is
-    let held = values[left]
-
-    values[left] = values[right]
-    values[right] = held
+    (values[left], values[right]) = (values[right], values[left])
 si
 
 permutations(size: int) -> Pipe[STEP] is

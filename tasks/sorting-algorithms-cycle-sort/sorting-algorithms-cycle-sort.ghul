@@ -19,10 +19,7 @@ cycle_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
             position = position + 1
         od
 
-        let swap = values[position]
-
-        values[position] = item
-        item = swap
+        (values[position], item) = (item, values[position])
 
         while position != start do
             position = start

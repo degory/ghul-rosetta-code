@@ -115,10 +115,7 @@ od
 
 for at in 0..deck.count do
     let other = at + random.next(deck.count - at)
-    let swap = deck[at]
-
-    deck[at] = deck[other]
-    deck[other] = swap
+    (deck[at], deck[other]) = (deck[other], deck[at])
 od
 
 for _ in 0..9 do

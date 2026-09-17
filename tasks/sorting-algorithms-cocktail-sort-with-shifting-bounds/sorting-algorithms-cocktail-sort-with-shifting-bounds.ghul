@@ -1,10 +1,7 @@
 use default
 
 swap[T](values: LIST[T], i: int, j: int) is
-    let temp = values[i]
-
-    values[i] = values[j]
-    values[j] = temp
+    (values[i], values[j]) = (values[j], values[i])
 si
 
 cocktail_sort[T: Ghul.Comparable[T]](values: LIST[T]) is

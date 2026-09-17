@@ -4,10 +4,7 @@ stooge_sort[T: Ghul.Comparable[T]](
     values: LIST[T], low: int, high: int
 ) is
     if values[high] < values[low] then
-        let swap = values[low]
-
-        values[low] = values[high]
-        values[high] = swap
+        (values[low], values[high]) = (values[high], values[low])
     fi
 
     if high - low > 1 then
