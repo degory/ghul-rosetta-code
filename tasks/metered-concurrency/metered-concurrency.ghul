@@ -1,15 +1,9 @@
-// The scheduler is cooperative and runs the workers on one thread, so
-// a turn parked stands in for the two seconds the task asks for.
-
 use IO.Std.write_line
 use Ghul.Coroutines
 
 let permits = 3
 let workers = 5
-// The task has each worker hold its permit for two seconds. Every
-// coroutine here runs cooperatively on one thread, so the hold is
-// measured in scheduler turns instead.
-let holding_turns = 2
+let holding_ms = 2000
 
 let semaphore = SEMAPHORE(permits)
 
@@ -20,9 +14,7 @@ worker(id: int) -> COROUTINE is
 
     write_line("worker {id} acquired, {holding()} holding")
 
-    for _ in 1::holding_turns do
-        await pause()
-    od
+    await sleep(holding_ms)
 
     semaphore.release()
 
