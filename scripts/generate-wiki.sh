@@ -109,11 +109,14 @@ part_heading() {
 # The wiki's Template:Ghul playground carries the wording, so an entry says only which program to
 # open and the text can be changed for every entry at once by editing that template.
 #
-# Reading standard input and referencing a package the playground does not carry are the two
-# cases that can be told from the files alone. Deciding either without the marker would leave the
-# playground unable to explain itself, so one without it is reported rather than quietly left
-# unlinked. ghul.raster is in the playground's own reference set, so a task that references only
-# that package is not one of these cases.
+# Reading standard input from a blind pipe, and referencing a package the playground does not
+# carry, are the two cases that can be told from the files alone. Deciding either without the
+# marker would leave the playground unable to explain itself, so one without it is reported
+# rather than quietly left unlinked. ghul.raster is in the playground's own reference set, so a
+# task that references only that package is not one of these cases - and neither is a task driven
+# by run.session: the playground reads a line and echoes it back exactly where the runner's own
+# session driver would, so a program that prompts before it reads works there the same way it
+# does under the test.
 emit_playground_link() {
     local DIR=$1
     local NAME=$2
@@ -127,7 +130,7 @@ emit_playground_link() {
     OTHER_PACKAGES=$( { grep -o 'PackageReference Include="[^"]*"' "$DIR/$NAME.ghulproj" 2>/dev/null \
         | grep -v 'Include="ghul.raster"' || true ; } )
 
-    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || [ -n "$OTHER_PACKAGES" ] ; then
+    if [ -f "$DIR/run.in" ] || [ -n "$OTHER_PACKAGES" ] ; then
         echo "$ID: cannot run in the playground but has no playground-unsupported file - no link written" >&2
         return 0
     fi

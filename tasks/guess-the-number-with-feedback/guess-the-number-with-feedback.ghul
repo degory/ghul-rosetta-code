@@ -2,8 +2,7 @@ use IO.Std.read_line
 use IO.Std.write
 use IO.Std.write_line
 
-// Seeded, so the transcript below reproduces. The guesses come from
-// standard input, which is not echoed, so the program prints each one.
+// Seeded, so the transcript below reproduces.
 let random = System.Random(11)
 
 let low = 1
@@ -24,8 +23,6 @@ do
 
         break
     fi
-
-    write_line(line)
 
     let guess mut = 0
 
