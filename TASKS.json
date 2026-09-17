@@ -18,28 +18,28 @@
       "slug": "15-puzzle-game",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "63deebbf382e996d59083ef57d8f904b7b1129b200efe04909494da14482d783"
+      "published_hash": "f3a6272f933850a680296db2d5b1685a049ce170b91aa3ca0b1c1b1a9d3a6515"
     },
     {
       "title": "2048",
       "slug": "2048",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "15ca06f28a477b8cb252157b7c29d0488e8c816f86480ce84ef2acc6fa85961b"
+      "published_hash": "915ca1a1d3e3be719990a46ec6d9f1e5b0921e40d9382b7b8e17b40bb736e690"
     },
     {
       "title": "21 game",
       "slug": "21-game",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "2c897d2a3746ca10c01d391a44247a684db0a58144731b2f07eefc98fb35e9a0"
+      "published_hash": "1abfecdf62a4290806f07b2c022376a0c1a61c60d2117af06b2457e2337cef77"
     },
     {
       "title": "24 game",
       "slug": "24-game",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "325e0cda4f339e95c2746052218a313572b5311fd9af9aaf8f4264a22d6656fb"
+      "published_hash": "cc18d002e19c2010d9fc0e781ab1409414fc5c6635adf66c2f4902e98c64660d"
     },
     {
       "title": "99 bottles of beer",
@@ -577,7 +577,7 @@
       "title": "Bulls and cows",
       "slug": "bulls-and-cows",
       "state": "published",
-      "published_hash": "76513d000c44be4d3adcbdce9c8e386c3951369b0a89e74c4f5cbd11d30cfb3f"
+      "published_hash": "8ea2673a6cace010947ab390472d5cc992b6b3c7b69b6f8aa09c02f461c9ddb3"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -1162,7 +1162,7 @@
       "title": "Dynamic variable names",
       "slug": "dynamic-variable-names",
       "state": "published",
-      "published_hash": "d0b2360a2b00b0f102539c590ffb7ab91f962e73be79bdbfff9eef5575178ac3"
+      "published_hash": "0316cad5dba8157b6135d05e5bfd65bb6bbdc7782153b4f57f4f063abd3087ac"
     },
     {
       "title": "EKG sequence convergence",
@@ -1683,7 +1683,7 @@
       "title": "General FizzBuzz",
       "slug": "general-fizzbuzz",
       "state": "published",
-      "published_hash": "aebc234f513276e0d58f7ab1d3f60b9de91b69ab343351eac23f0142e6ad75e2"
+      "published_hash": "ea27bdb6cb340f5ca4c71f0cadb2d00b30b3c1eaa1f4c2bc5b097d6c8be6698f"
     },
     {
       "title": "Generate lower case ASCII alphabet",
@@ -1727,7 +1727,7 @@
       "slug": "go-fish",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "2b5d14b1fbdf5ed9da5fdeff2f46d27c5794e371802daf55c4825526d2f87673"
+      "published_hash": "0925a9c333683304aa0a8588c7476a2c91ab122bdfb295934e892fc9a54d7d42"
     },
     {
       "title": "Goldbach\u0027s comet",
@@ -1797,13 +1797,13 @@
       "title": "Guess the number",
       "slug": "guess-the-number",
       "state": "published",
-      "published_hash": "432858fdcbdf82ddd8c2fecfe94dbdcaa52268fc3bda26e46f88115678405ead"
+      "published_hash": "4cbbe65b7499b5a52448e91d2a414e0031baae9a0a349c3839ac1f29a6fb6665"
     },
     {
       "title": "Guess the number/With feedback",
       "slug": "guess-the-number-with-feedback",
       "state": "published",
-      "published_hash": "ac776c73ea90836a8dbd95e5b9b0cfd0beba1eb45ec1bc8106d731175d0a1d28"
+      "published_hash": "ab21d3070593ab461ee304135e554ec2b71146fdfc3fe2bc4ab7343f8acbe003"
     },
     {
       "title": "HTTP",
@@ -1976,7 +1976,7 @@
       "slug": "hunt-the-wumpus",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "e88519ca92e5d28b268fd038ef6800f946c8b66522fc40c62bc4f6124bd1daee"
+      "published_hash": "8652d0257daed6297200c5ff1d2f1097970923409108afa28847be41920d5ac9"
     },
     {
       "title": "I\u0027m a software engineer, get me out of here",
@@ -3351,7 +3351,7 @@
       "title": "Rock-paper-scissors",
       "slug": "rock-paper-scissors",
       "state": "published",
-      "published_hash": "a983caf683257317f128a6de33edc6aabeb777adb96c34a09e8ca47ee9fee847"
+      "published_hash": "de473ed9596a40b1752d4439be9ae089a7e63036d6f1782a192e690d12bfe929"
     },
     {
       "title": "Roman numerals/Decode",
@@ -3369,7 +3369,7 @@
       "title": "Rot-13",
       "slug": "rot-13",
       "state": "published",
-      "published_hash": "aba13e7d39068249d3458103b17c39e76478c3d29736c60aca58c6a5e9a81b3d"
+      "published_hash": "f22d630858b3a48d19a0deaf1874a8b5f79f2b72fb1a32024890ecaaf2edd715"
     },
     {
       "title": "Run-length encoding",
@@ -4187,7 +4187,7 @@
       "title": "Trabb Pardo\u2013Knuth algorithm",
       "slug": "trabb-pardo-knuth-algorithm",
       "state": "published",
-      "published_hash": "6b749f61a5990bebc51e57eecb637b0c684a2e9403176b08a5ebf7ac5d872996"
+      "published_hash": "c03344f636575d670273a9d84db66a2d505bbddc4d69728d4d3b1d621078a502"
     },
     {
       "title": "Transliterate English text using the Greek alphabet",
