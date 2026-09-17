@@ -11,10 +11,7 @@ sift_down[T: Ghul.Comparable[T]](values: LIST[T], start: int, end: int) is
         fi
 
         if values[root] < values[child] then
-            let swap = values[root]
-
-            values[root] = values[child]
-            values[child] = swap
+            (values[root], values[child]) = (values[child], values[root])
 
             root = child
         else
@@ -36,10 +33,7 @@ heap_sort[T: Ghul.Comparable[T]](values: LIST[T]) is
     let end mut = count - 1
 
     while end > 0 do
-        let swap = values[0]
-
-        values[0] = values[end]
-        values[end] = swap
+        (values[0], values[end]) = (values[end], values[0])
 
         end = end - 1
 

@@ -13,10 +13,7 @@ circle_sort_pass[T: Ghul.Comparable[T]](
 
     while low < high do
         if values[low] > values[high] then
-            let swap = values[low]
-
-            values[low] = values[high]
-            values[high] = swap
+            (values[low], values[high]) = (values[high], values[low])
 
             swapped = true
         fi
@@ -26,10 +23,7 @@ circle_sort_pass[T: Ghul.Comparable[T]](
     od
 
     if low == high /\ values[low] > values[high + 1] then
-        let swap = values[low]
-
-        values[low] = values[high + 1]
-        values[high + 1] = swap
+        (values[low], values[high + 1]) = (values[high + 1], values[low])
 
         swapped = true
     fi

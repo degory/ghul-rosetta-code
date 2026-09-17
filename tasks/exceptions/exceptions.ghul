@@ -6,16 +6,16 @@ si
 
 risky(n: int) is
     if n < 0 then
-        throw NEGATIVE_VALUE_EXCEPTION("negative value: {n}");
+        throw NEGATIVE_VALUE_EXCEPTION("negative value: {n}")
     fi
 
-    write_line("ok: {n}");
+    write_line("ok: {n}")
 si
 
 for n in [5, -3, 10] do
     try
-        risky(n);
+        risky(n)
     catch e: NEGATIVE_VALUE_EXCEPTION
-        write_line("caught: {e.message}");
+        write_line("caught: {e.message}")
     yrt
 od
