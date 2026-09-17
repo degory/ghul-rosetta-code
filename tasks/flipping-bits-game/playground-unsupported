@@ -1,1 +1,1 @@
-it reads from standard input, which the playground cannot supply
+it echoes what it read as its own output, and the playground now echoes typed input too
