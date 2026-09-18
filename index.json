@@ -12284,6 +12284,33 @@
       ]
     },
     {
+      "slug": "penneys-game",
+      "title": "Penney's game",
+      "url": "https://rosettacode.org/wiki/Penney's_game",
+      "tags": [
+        "game",
+        "interactive",
+        "generators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "penneys-game",
+          "heading": null,
+          "source": "tasks/penneys-game/penneys-game.ghul",
+          "output": "tasks/penneys-game/run.expected",
+          "lines": 91,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
