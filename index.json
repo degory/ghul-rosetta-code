@@ -14590,6 +14590,32 @@
       ]
     },
     {
+      "slug": "order-by-pair-comparisons",
+      "title": "Order by pair comparisons",
+      "url": "https://rosettacode.org/wiki/Order_by_pair_comparisons",
+      "tags": [
+        "sorting",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 53,
+      "parts": [
+        {
+          "id": "order-by-pair-comparisons",
+          "heading": null,
+          "source": "tasks/order-by-pair-comparisons/order-by-pair-comparisons.ghul",
+          "output": "tasks/order-by-pair-comparisons/run.expected",
+          "lines": 53,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "order-disjoint-list-items",
       "title": "Order disjoint list items",
       "url": "https://rosettacode.org/wiki/Order_disjoint_list_items",
