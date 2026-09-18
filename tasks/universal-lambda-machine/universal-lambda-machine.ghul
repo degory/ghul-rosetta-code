@@ -11,21 +11,25 @@ si
 
 class ENV(first: THUNK, rest: ENV?)
 
-class WHNF(term: Term, env: ENV?, head: THUNK?, tail: THUNK?)
+union Value is
+    CLOSURE(term: Term, env: ENV?)
+    PAIRED(head: THUNK, tail: THUNK)
+si
 
 class THUNK(term: Term, env: ENV?) is
-    value: WHNF? public
+    value: Value? public
 si
 
-class FRAME(thunk: THUNK, update: bool)
-
-enum Kind is
-    FUNCTION,
-    CONSTANT,
-    CONS
+union Frame is
+    ARGUMENT(thunk: THUNK)
+    UPDATE(thunk: THUNK)
 si
 
-class RESULT(kind: Kind, tag: int, head: THUNK?, tail: THUNK?)
+union Result is
+    FUNCTION
+    CONSTANT(tag: int)
+    CONS(head: THUNK, tail: THUNK)
+si
 
 lookup(env: ENV?, index: int) -> THUNK is
     let e mut = env!
@@ -37,75 +41,73 @@ lookup(env: ENV?, index: int) -> THUNK is
     e.first
 si
 
-evaluate(start: THUNK, arguments: List[THUNK]) -> RESULT is
-    let stack = STACK[FRAME]()
+evaluate(start: THUNK, arguments: List[THUNK]) -> Result is
+    let stack = STACK[Frame]()
 
     for i in 0..arguments.count do
-        stack.push(FRAME(arguments[arguments.count - 1 - i], false))
+        stack.push(Frame.ARGUMENT(arguments[arguments.count - 1 - i]))
     od
 
-    let settle = (value: WHNF) is
-        while stack.count > 0 /\ stack.peek().update do
-            stack.pop().thunk.value = value
+    let settle = (value: Value) is
+        while stack.count > 0 do
+            if let update: Frame.UPDATE = stack.peek() then
+                update.thunk.value = value
+                stack.pop()
+            else
+                return
+            fi
         od
     si
 
-    let pair = (head: THUNK, tail: THUNK) is
-        settle(WHNF(Term.PAIR, null, head, tail))
-    si
+    let argument = () -> THUNK =>
+        if let (thunk): Frame.ARGUMENT = stack.pop() then thunk
+        else throw System.InvalidOperationException("argument expected")
+        fi
 
-    let term mut = start.term
-    let env mut = start.env
-
-    if let value = start.value then
-        term = value.term
-        env = value.env
-    else
-        stack.push(FRAME(start, true))
-    fi
+    let term mut = Term.VAR(1)
+    let env mut = ENV(start, null)
 
     do
         case term
-        when (function, argument): Term.APP then
-            stack.push(FRAME(THUNK(argument, env), false))
+        when (function, operand): Term.APP then
+            stack.push(Frame.ARGUMENT(THUNK(operand, env)))
             term = function
         when (body): Term.LAM then
-            settle(WHNF(term, env, null, null))
+            settle(Value.CLOSURE(term, env))
 
             if stack.count == 0 then
-                return RESULT(Kind.FUNCTION, 0, null, null)
+                return Result.FUNCTION
             fi
 
-            env = ENV(stack.pop().thunk, env)
+            env = ENV(argument(), env)
             term = body
         when (index): Term.VAR then
             let thunk = lookup(env, index)
 
-            if let value = thunk.value then
-                if let head = value.head then
-                    pair(head, value.tail!)
+            case thunk.value
+            when (head, tail): Value.PAIRED then
+                settle(Value.PAIRED(head, tail))
 
-                    return RESULT(Kind.CONS, 0, head, value.tail)
-                fi
-
-                term = value.term
-                env = value.env
+                return Result.CONS(head, tail)
+            when (closure, closure_env): Value.CLOSURE then
+                term = closure
+                env = closure_env
             else
-                stack.push(FRAME(thunk, true))
+                stack.push(Frame.UPDATE(thunk))
                 term = thunk.term
                 env = thunk.env
-            fi
+            esac
         when (tag): Term.ATOM then
-            settle(WHNF(term, null, null, null))
+            settle(Value.CLOSURE(term, null))
 
-            return RESULT(Kind.CONSTANT, tag, null, null)
+            return Result.CONSTANT(tag)
         else
-            let head = stack.pop().thunk
-            let tail = stack.pop().thunk
+            let head = argument()
+            let tail = argument()
 
-            pair(head, tail)
+            settle(Value.PAIRED(head, tail))
 
-            return RESULT(Kind.CONS, 0, head, tail)
+            return Result.CONS(head, tail)
         esac
     od
 si
@@ -166,7 +168,7 @@ si
 constant(term: Term) -> THUNK is
     let thunk = THUNK(term, null)
 
-    thunk.value = WHNF(term, null, null, null)
+    thunk.value = Value.CLOSURE(term, null)
     thunk
 si
 
@@ -179,19 +181,21 @@ items(thunk: THUNK, limit: int) -> Pipe[THUNK] is
     let count mut = 0
 
     while count < limit do
-        let cell = evaluate(rest, [top])
-
-        if cell.kind != Kind.CONS then
+        if let (head, tail): Result.CONS = evaluate(rest, [top]) then
+            yield head
+            rest = tail
+        else
             return
         fi
 
-        yield cell.head!
-        rest = cell.tail!
         count = count + 1
     od
 si
 
-bit_of(thunk: THUNK) -> int => evaluate(thunk, [zero, one]).tag
+bit_of(thunk: THUNK) -> int =>
+    if let (tag): Result.CONSTANT = evaluate(thunk, [zero, one]) then tag
+    else throw System.InvalidOperationException("bit expected")
+    fi
 
 bits_of(bytes: List[int]) -> List[bool] =>
     bytes
