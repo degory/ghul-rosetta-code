@@ -4207,6 +4207,33 @@
       ]
     },
     {
+      "slug": "compiler-code-generator",
+      "title": "Compiler/code generator",
+      "url": "https://rosettacode.org/wiki/Compiler/code_generator",
+      "tags": [
+        "parsing",
+        "unions",
+        "pattern-matching"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 135,
+      "parts": [
+        {
+          "id": "compiler-code-generator",
+          "heading": null,
+          "source": "tasks/compiler-code-generator/compiler-code-generator.ghul",
+          "output": "tasks/compiler-code-generator/run.expected",
+          "lines": 135,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "compiler-lexical-analyzer",
       "title": "Compiler/lexical analyzer",
       "url": "https://rosettacode.org/wiki/Compiler/lexical_analyzer",
