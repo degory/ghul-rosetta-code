@@ -1,0 +1,15 @@
+the line to learn is y = 0.7x + 0.1
+
+after   0 passes:  955 of 2000 correct
+after   1 passes: 1984 of 2000 correct
+after   2 passes: 1985 of 2000 correct
+after   3 passes: 1986 of 2000 correct
+after  25 passes: 1992 of 2000 correct
+after  50 passes: 1987 of 2000 correct
+after  75 passes: 1975 of 2000 correct
+after 100 passes: 1999 of 2000 correct
+
+the perceptron's line is y = 0.700x + 0.10
+in the picture, blue points are guessed above the line,
+green below and red wrongly; the line learned is orange
+<<image perceptron.png>>

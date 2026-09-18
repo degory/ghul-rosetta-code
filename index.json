@@ -15107,6 +15107,37 @@
       ]
     },
     {
+      "slug": "perceptron",
+      "title": "Perceptron",
+      "url": "https://rosettacode.org/wiki/Perceptron",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/perceptron/perceptron.png.expected"
+      ],
+      "lines": 97,
+      "parts": [
+        {
+          "id": "perceptron",
+          "heading": null,
+          "source": "tasks/perceptron/perceptron.ghul",
+          "output": "tasks/perceptron/run.expected",
+          "lines": 97,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/perceptron/perceptron.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
