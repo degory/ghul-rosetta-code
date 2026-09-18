@@ -1,0 +1,46 @@
+use default
+use IO.Std.read_line
+
+bottles(n: int) -> string =>
+    case n
+    when 0 then "no more bottles"
+    when 1 then "1 bottle"
+    else "{n} bottles"
+    esac
+
+sing() is
+    for n in (1::99) |> map(i => 100 - i) do
+        let some = bottles(n)
+
+        write_line("{some} of beer on the wall, {some} of beer.")
+        write_line(
+            "Take one down and pass it around, "
+            "{bottles(n - 1)} of beer on the wall.")
+        write_line()
+    od
+si
+
+run(program: string) -> int is
+    let accumulator mut = 0
+
+    for command in program do
+        case char.to_upper(command)
+        when 'H' then write_line("Hello, world!")
+        when 'Q' then write_line(program)
+        when '9' then sing()
+        when '+' then accumulator = accumulator + 1
+        else
+        esac
+    od
+
+    accumulator
+si
+
+while let program = read_line() do
+    write_line("> {program}")
+
+    let accumulator = run(program)
+
+    write_line("the accumulator ends at {accumulator}")
+    write_line()
+od

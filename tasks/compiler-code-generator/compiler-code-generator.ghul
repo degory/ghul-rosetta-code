@@ -1,0 +1,135 @@
+use default
+use IO.Std.read_line
+
+union Node is
+    EMPTY
+    LEAF(kind: string, value: string)
+    BRANCH(kind: string, left: Node, right: Node)
+si
+
+load() -> Node is
+    let line = read_line() ?? ";"
+    let kind = line.split([' '])[0]
+
+    if kind =~ ";" then
+        return Node.EMPTY
+    fi
+
+    if kind =~ "Identifier" \/ kind =~ "Integer" \/ kind =~ "String" then
+        return Node.LEAF(kind, line.substring(kind.length).trim())
+    fi
+
+    let left = load()
+    let right = load()
+
+    return Node.BRANCH(kind, left, right)
+si
+
+class INSTRUCTION(at: int, name: string, operand: string) is
+    target: int public
+si
+
+let code = LIST[INSTRUCTION]()
+let variables = LIST[string]()
+let strings = LIST[string]()
+
+let size mut = 0
+
+emit(name: string, operand: string) -> INSTRUCTION is
+    let instruction = INSTRUCTION(size, name, operand)
+    let jumps = name =~ "jz" \/ name =~ "jmp"
+
+    code.add(instruction)
+    size = size + if operand =~ "" /\ !jumps then 1 else 5 fi
+
+    instruction
+si
+
+slot(names: LIST[string], name: string) -> int is
+    if !(names |> any(n => n =~ name)) then
+        names.add(name)
+    fi
+
+    names.index_of(name)
+si
+
+let operators = MAP[string, string]()
+
+for (kind, name) in [
+    ("Multiply", "mul"), ("Divide", "div"), ("Mod", "mod"),
+    ("Add", "add"), ("Subtract", "sub"), ("Less", "lt"),
+    ("LessEqual", "le"), ("Greater", "gt"), ("GreaterEqual", "ge"),
+    ("Equal", "eq"), ("NotEqual", "ne"), ("And", "and"), ("Or", "or"),
+    ("Negate", "neg"), ("Not", "not"),
+    ("Prtc", "prtc"), ("Prti", "prti"), ("Prts", "prts")
+] do
+    operators[kind] = name
+od
+
+generate(node: Node) is
+    case node
+    when (~"Identifier", name): Node.LEAF then
+        let _ = emit("fetch", "[{slot(variables, name)}]")
+    when (~"Integer", value): Node.LEAF then
+        let _ = emit("push", value)
+    when (~"String", text): Node.LEAF then
+        let _ = emit("push", "{slot(strings, text)}")
+    when (~"Sequence", first, second): Node.BRANCH then
+        generate(first)
+        generate(second)
+    when (~"Assign", (_, name): Node.LEAF, value): Node.BRANCH then
+        generate(value)
+
+        let _ = emit("store", "[{slot(variables, name)}]")
+    when (~"While", condition, body): Node.BRANCH then
+        let top = size
+
+        generate(condition)
+
+        let exit = emit("jz", "")
+
+        generate(body)
+        emit("jmp", "").target = top
+        exit.target = size
+    when (~"If", condition, (_, yes, no): Node.BRANCH): Node.BRANCH then
+        generate(condition)
+
+        let skip = emit("jz", "")
+
+        generate(yes)
+
+        if isa Node.EMPTY(no) then
+            skip.target = size
+        else
+            let over = emit("jmp", "")
+
+            skip.target = size
+            generate(no)
+            over.target = size
+        fi
+    when (kind, left, right): Node.BRANCH then
+        generate(left)
+        generate(right)
+
+        let _ = emit(operators[kind], "")
+    else
+    esac
+si
+
+generate(load())
+
+let _ = emit("halt", "")
+
+write_line("Datasize: {variables.count} Strings: {strings.count}")
+strings |> each(s => write_line(s))
+
+for i in code do
+    if i.name =~ "jz" \/ i.name =~ "jmp" then
+        write_line(
+            "{i.at,4} {i.name,-7}({i.target - i.at - 1}) {i.target}")
+    elif i.operand =~ "" then
+        write_line("{i.at,4} {i.name}")
+    else
+        write_line("{i.at,4} {i.name,-5} {i.operand}")
+    fi
+od

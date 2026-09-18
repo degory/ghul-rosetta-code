@@ -1,0 +1,145 @@
+use default
+
+class STATE is
+    label: char? public
+    edge1: STATE? public
+    edge2: STATE? public
+
+    init() is si
+si
+
+class NFA(initial: STATE, accept: STATE)
+
+precedence(c: char) -> int =>
+    case c
+    when '*', '+', '?' then 3
+    when '.' then 2
+    when '|' then 1
+    else 0
+    esac
+
+postfix(infix: string) -> string is
+    let output = System.Text.StringBuilder()
+    let operators = STACK[char]()
+
+    for c in infix do
+        if c == '(' then
+            operators.push(c)
+        elif c == ')' then
+            while operators.peek() != '(' do
+                output.append(operators.pop())
+            od
+
+            operators.pop()
+        elif precedence(c) > 0 then
+            while operators.count > 0 /\
+                    precedence(operators.peek()) >= precedence(c) do
+                output.append(operators.pop())
+            od
+
+            operators.push(c)
+        else
+            output.append(c)
+        fi
+    od
+
+    while operators.count > 0 do
+        output.append(operators.pop())
+    od
+
+    output.to_string()
+si
+
+compile(pattern: string) -> NFA is
+    let stack = STACK[NFA]()
+
+    for c in postfix(pattern) do
+        let initial = STATE()
+        let accept = STATE()
+
+        case c
+        when '.' then
+            let second = stack.pop()
+            let first = stack.pop()
+
+            first.accept.edge1 = second.initial
+            stack.push(NFA(first.initial, second.accept))
+        when '|' then
+            let second = stack.pop()
+            let first = stack.pop()
+
+            initial.edge1 = first.initial
+            initial.edge2 = second.initial
+            first.accept.edge1 = accept
+            second.accept.edge1 = accept
+            stack.push(NFA(initial, accept))
+        when '*', '+', '?' then
+            let inner = stack.pop()
+
+            initial.edge1 = inner.initial
+
+            if c != '+' then
+                initial.edge2 = accept
+            fi
+
+            if c == '?' then
+                inner.accept.edge1 = accept
+            else
+                inner.accept.edge1 = inner.initial
+                inner.accept.edge2 = accept
+            fi
+
+            stack.push(NFA(initial, accept))
+        else
+            initial.label = c
+            initial.edge1 = accept
+            stack.push(NFA(initial, accept))
+        esac
+    od
+
+    stack.pop()
+si
+
+closure(state: STATE?, into: SET[STATE]) is
+    if let s = state then
+        if into.add(s) /\ !s.label? then
+            closure(s.edge1, into)
+            closure(s.edge2, into)
+        fi
+    fi
+si
+
+matches(pattern: string, text: string) -> bool is
+    let nfa = compile(pattern)
+    let current mut = SET[STATE]()
+
+    closure(nfa.initial, current)
+
+    for c in text do
+        let next = SET[STATE]()
+
+        for s in current do
+            if s.label? /\ s.label == c then
+                closure(s.edge1, next)
+            fi
+        od
+
+        current = next
+    od
+
+    current.contains(nfa.accept)
+si
+
+let patterns =
+    ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c", "a.b+.c?"]
+let texts = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
+
+for pattern in patterns do
+    write_line("{pattern} (postfix {postfix(pattern)})")
+
+    for text in texts do
+        write_line("    {"\"{text}\"",-8} {matches(pattern, text)}")
+    od
+
+    write_line()
+od

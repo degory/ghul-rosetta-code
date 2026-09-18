@@ -1,0 +1,213 @@
+use default
+use IO.Std.read_line
+
+struct Q(top: bigint, bottom: bigint) is
+    +(o: Q) -> Q => make(top * o.bottom + o.top * bottom, bottom * o.bottom)
+    -(o: Q) -> Q => make(top * o.bottom - o.top * bottom, bottom * o.bottom)
+    *(o: Q) -> Q => make(top * o.top, bottom * o.bottom)
+
+    /(o: Q) -> Q =>
+        if o.top.is_zero then throw System.DivideByZeroException()
+        else make(top * o.bottom, bottom * o.top)
+        fi
+
+    to_string() -> string =>
+        if bottom.is_one then "{top}" else "{top}/{bottom}" fi
+si
+
+make(top: bigint, bottom: bigint) -> Q =>
+    let g = bigint.greatest_common_divisor(top, bottom) in
+    let sign = if bottom.sign < 0 then -1n else 1n fi in
+    Q(sign * top / g, sign * bottom / g)
+
+whole(n: bigint) -> Q => Q(n, 1n)
+
+decimal(q: Q) -> string is
+    let integer = bigint.abs(q.top) / q.bottom
+    let sign = if q.top.sign < 0 then "-" else "" fi
+    let digits = System.Text.StringBuilder()
+    let seen = MAP[bigint, int]()
+    let remainder mut = bigint.abs(q.top) % q.bottom
+
+    while !remainder.is_zero /\ !seen.contains_key(remainder) do
+        seen[remainder] = digits.length
+        remainder = remainder * 10n
+        digits.append(remainder / q.bottom)
+        remainder = remainder % q.bottom
+    od
+
+    let text = digits.to_string()
+
+    if remainder.is_zero then
+        return if text.length == 0 then "{sign}{integer}"
+            else "{sign}{integer}.{text}"
+            fi
+    fi
+
+    let start = seen[remainder]
+
+    "{sign}{integer}.{text.substring(0, start)}({text.substring(start)})"
+si
+
+let nothing = cast char(0)
+
+class BAD_INPUT(text: string init): System.Exception is
+    super(text)
+si
+
+class CALCULATOR(line: string, previous: Q?) is
+    _at: int
+
+    peek: char is
+        while _at < line.length /\ line[_at] == ' ' do
+            _at = _at + 1
+        od
+
+        if _at < line.length then line[_at] else nothing fi
+    si
+
+    take(c: char) -> bool is
+        if peek == c then
+            _at = _at + 1
+            return true
+        fi
+
+        false
+    si
+
+    digits() -> string is
+        let start = _at
+
+        while _at < line.length /\ char.is_digit(line[_at]) do
+            _at = _at + 1
+        od
+
+        line.substring(start, _at - start)
+    si
+
+    number() -> Q is
+        let integer = digits()
+        let fraction mut = ""
+        let recurring mut = ""
+
+        if _at < line.length /\ line[_at] == '.' then
+            _at = _at + 1
+            fraction = digits()
+
+            if _at < line.length /\ line[_at] == '(' then
+                _at = _at + 1
+                recurring = digits()
+
+                if !take(')') then throw BAD_INPUT("missing )") fi
+            fi
+        fi
+
+        let scale = bigint.pow(10n, fraction.length)
+        let value mut = make(bigint.parse("0{integer}{fraction}"), scale)
+
+        if recurring.length > 0 then
+            let nines = bigint.pow(10n, recurring.length) - 1n
+
+            value = value + make(bigint.parse(recurring), scale * nines)
+        fi
+
+        value
+    si
+
+    primary() -> Q is
+        let c = peek
+
+        if char.is_digit(c) \/ c == '.' then
+            return number()
+        elif take('@') then
+            if let p = previous then return p fi
+
+            throw BAD_INPUT("there is no previous result yet")
+        elif take('(') then
+            let inside = expression()
+
+            if !take(')') then throw BAD_INPUT("missing )") fi
+
+            return inside
+        elif c == nothing then
+            throw BAD_INPUT("the expression ends too soon")
+        fi
+
+        throw BAD_INPUT("unexpected {c}")
+    si
+
+    unary() -> Q is
+        if take('-') then
+            return whole(0n) - unary()
+        elif take('+') then
+            return unary()
+        elif peek == 'a' /\ line.substring(_at).starts_with("abs") then
+            _at = _at + 3
+
+            let value = unary()
+
+            return make(bigint.abs(value.top), value.bottom)
+        fi
+
+        primary()
+    si
+
+    term() -> Q is
+        let value mut = unary()
+
+        do
+            if take('*') then
+                value = value * unary()
+            elif take('/') then
+                value = value / unary()
+            else
+                break
+            fi
+        od
+
+        value
+    si
+
+    expression() -> Q is
+        let value mut = term()
+
+        do
+            if take('+') then
+                value = value + term()
+            elif take('-') then
+                value = value - term()
+            else
+                break
+            fi
+        od
+
+        value
+    si
+
+    evaluate() -> Q is
+        let value = expression()
+
+        if peek != nothing then
+            throw BAD_INPUT("unexpected {peek}")
+        fi
+
+        value
+    si
+si
+
+let previous: Q? mut = null
+
+while let line = read_line() do
+    write_line("> {line}")
+
+    try
+        let result = CALCULATOR(line, previous).evaluate()
+
+        previous = result
+        write_line("{result} = {decimal(result)}")
+    catch e: BAD_INPUT
+        write_line("error: {e.message}")
+    catch e: System.DivideByZeroException
+        write_line("error: division by zero")
+    yrt
+od

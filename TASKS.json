@@ -884,6 +884,11 @@
       "published_hash": "e8a3d54fae8a1e97a93d5f19f2db7cf5bd3cd6c5b1e6a8c15f961412831c0ebc"
     },
     {
+      "title": "Chemical calculator",
+      "slug": "chemical-calculator",
+      "state": "solved"
+    },
+    {
       "title": "Chernick\u0027s Carmichael numbers",
       "slug": "chernicks-carmichael-numbers",
       "state": "published",
@@ -1091,10 +1096,30 @@
       "published_hash": "5d6b68a45d59fb2ff21c938ed671dc1eba2085733c86169f8078e84609c6ab09"
     },
     {
+      "title": "Compiler/Preprocessor",
+      "slug": "compiler-preprocessor",
+      "state": "solved"
+    },
+    {
+      "title": "Compiler/Verifying syntax",
+      "slug": "compiler-verifying-syntax",
+      "state": "solved"
+    },
+    {
+      "title": "Compiler/code generator",
+      "slug": "compiler-code-generator",
+      "state": "solved"
+    },
+    {
       "title": "Compiler/lexical analyzer",
       "slug": "compiler-lexical-analyzer",
       "state": "published",
       "published_hash": "c35745073b9f64ede1e94c30f487c5a77a0d5599891d63c4dee239bd02e9c4bf"
+    },
+    {
+      "title": "Compiler/syntax analyzer",
+      "slug": "compiler-syntax-analyzer",
+      "state": "solved"
     },
     {
       "title": "Compiler/virtual machine interpreter",
@@ -1735,6 +1760,21 @@
       "slug": "execute-computer-zero",
       "state": "published",
       "published_hash": "319dc2874d97387bde17b523489dc031a0184bf68bfb4623afa9d543f26a744f"
+    },
+    {
+      "title": "Execute HQ9\u002B",
+      "slug": "execute-hq9",
+      "state": "solved"
+    },
+    {
+      "title": "Execute SNUSP",
+      "slug": "execute-snusp",
+      "state": "solved"
+    },
+    {
+      "title": "Execute a Markov algorithm",
+      "slug": "execute-a-markov-algorithm",
+      "state": "solved"
     },
     {
       "title": "Execute a system command",
@@ -3294,6 +3334,11 @@
       }
     },
     {
+      "title": "McNaughton-Yamada-Thompson algorithm",
+      "slug": "mcnaughton-yamada-thompson-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Median filter",
       "slug": "median-filter",
       "state": "published",
@@ -3727,6 +3772,11 @@
       "slug": "parametric-polymorphism",
       "state": "published",
       "published_hash": "7983595a759e0c149f5b34b4e18d6ff90246ec341c97b9c9949219cd3b32832a"
+    },
+    {
+      "title": "Parse EBNF",
+      "slug": "parse-ebnf",
+      "state": "solved"
     },
     {
       "title": "Parsing/RPN calculator algorithm",
@@ -4222,6 +4272,11 @@
       "reason": "nondeterministic"
     },
     {
+      "title": "Rational calculator",
+      "slug": "rational-calculator",
+      "state": "solved"
+    },
+    {
       "title": "Read a configuration file",
       "slug": "read-a-configuration-file",
       "state": "published",
@@ -4247,6 +4302,11 @@
       "image_hashes": {
         "Ghul-recamans-sequence-recaman.png": "10529f90098c985b6c114125344f49439b7038ac"
       }
+    },
+    {
+      "title": "Recursive descent parser generator",
+      "slug": "recursive-descent-parser-generator",
+      "state": "solved"
     },
     {
       "title": "Regular expressions",
@@ -5515,6 +5575,11 @@
       "slug": "undulating-numbers",
       "state": "published",
       "published_hash": "ca84f23579c4c8733e2582f87426bce7627a5f1cf68e58270d3962e95d0fb0da"
+    },
+    {
+      "title": "Universal Lambda Machine",
+      "slug": "universal-lambda-machine",
+      "state": "solved"
     },
     {
       "title": "Universal Turing machine",

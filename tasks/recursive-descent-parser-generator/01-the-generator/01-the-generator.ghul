@@ -1,0 +1,233 @@
+use default
+use IO.Std.read_line
+
+let prelude = [
+    "use default",
+    "",
+    "let source = IO.Std.read_line() ?? \"\"",
+    "",
+    "tokenize(text: string) -> LIST[string] is",
+    "    let result = LIST[string]()",
+    "    let i mut = 0",
+    "",
+    "    while i < text.length do",
+    "        if char.is_letter(text[i]) then",
+    "            let start = i",
+    "",
+    "            while i < text.length /\\ "
+        "char.is_letter_or_digit(text[i]) do",
+    "                i = i + 1",
+    "            od",
+    "",
+    "            result.add(text.substring(start, i - start))",
+    "        elif char.is_white_space(text[i]) then",
+    "            i = i + 1",
+    "        else",
+    "            result.add(\"{{text[i]}}\")",
+    "            i = i + 1",
+    "        fi",
+    "    od",
+    "",
+    "    result",
+    "si",
+    "",
+    "let tokens = tokenize(source)",
+    "let at mut = 0",
+    "let temporaries mut = 0",
+    "",
+    "peek() -> string => if at < tokens.count then tokens[at] else \"\" fi",
+    "",
+    "accept(token: string) -> bool is",
+    "    if peek() =~ token then",
+    "        at = at + 1",
+    "        return true",
+    "    fi",
+    "",
+    "    false",
+    "si",
+    "",
+    "expect(token: string) is",
+    "    if !accept(token) then",
+    "        throw System.Exception("
+        "\"expected {{token}}, found {{peek()}}\")",
+    "    fi",
+    "si",
+    "",
+    "name() -> string is",
+    "    let token = peek()",
+    "",
+    "    if token.length == 0 \\/ !char.is_letter(token[0]) then",
+    "        throw System.Exception(\"expected a name, found {{token}}\")",
+    "    fi",
+    "",
+    "    at = at + 1",
+    "    token",
+    "si",
+    "",
+    "emit(left: string, operator: string, right: string) -> string is",
+    "    temporaries = temporaries + 1",
+    "",
+    "    let result = \"_{{temporaries:D4}}\"",
+    "",
+    "    write_line(\"{{result}} = {{left}} {{operator}} {{right}}\")",
+    "    result",
+    "si",
+    ""
+]
+
+union Item is
+    LITERAL(text: string)
+    RULE(name: string)
+    OPEN
+    CLOSE
+    BAR
+si
+
+items(text: string) -> List[Item] is
+    let result = LIST[Item]()
+    let i mut = 0
+
+    while i < text.length do
+        let c = text[i]
+
+        if c == '"' then
+            let end = text.index_of('"', i + 1)
+
+            result.add(Item.LITERAL(text.substring(i + 1, end - i - 1)))
+            i = end + 1
+        elif char.is_letter(c) then
+            let start = i
+
+            while i < text.length /\ char.is_letter_or_digit(text[i]) do
+                i = i + 1
+            od
+
+            result.add(Item.RULE(text.substring(start, i - start)))
+        else
+            case c
+            when '{' then result.add(Item.OPEN)
+            when '}' then result.add(Item.CLOSE)
+            when '|' then result.add(Item.BAR)
+            else
+            esac
+
+            i = i + 1
+        fi
+    od
+
+    result
+si
+
+alternatives(parts: List[Item]) -> List[List[Item]] is
+    let result = LIST([LIST[Item]()])
+
+    for part in parts do
+        if isa Item.BAR(part) then
+            result.add(LIST[Item]())
+        else
+            result[result.count - 1].add(part)
+        fi
+    od
+
+    result
+si
+
+let code = LIST[string]()
+
+say(line: string) => code.add(line)
+
+called(item: Item) -> string =>
+    case item
+    when (name): Item.RULE then name
+    when (text): Item.LITERAL then text
+    else ""
+    esac
+
+binary(name: string, head: string, pairs: List[List[Item]]) is
+    say("{name}() -> string is")
+    say("    let left mut = {head}()")
+    say("")
+    say("    do")
+
+    for (pair, place) in
+            pairs |> index() |> map(iv => (iv.value, iv.index)) do
+        let operator = called(pair[0])
+        let operand = called(pair[1])
+        let keyword = if place == 0 then "if" else "elif" fi
+
+        say("        {keyword} accept(\"{operator}\") then")
+        say("            left = emit(left, \"{operator}\", {operand}())")
+    od
+
+    say("        else")
+    say("            break")
+    say("        fi")
+    say("    od")
+    say("")
+    say("    left")
+    say("si")
+si
+
+choice(name: string, options: List[List[Item]]) is
+    say("{name}() -> string is")
+
+    for option in options do
+        if isa Item.LITERAL(option[0]) then
+            say("    if accept(\"{called(option[0])}\") then")
+
+            for item in option |> skip(1) do
+                if isa Item.RULE(item) then
+                    say("        let value = {called(item)}()")
+                else
+                    say("        expect(\"{called(item)}\")")
+                fi
+
+                say("")
+            od
+
+            say("        return value")
+            say("    fi")
+            say("")
+        else
+            say("    {called(option[0])}()")
+        fi
+    od
+
+    say("si")
+si
+
+let rules = LIST[string]()
+
+while let line = read_line() do
+    let equals = line.index_of('=')
+    let name = line.substring(0, equals).trim()
+    let parts = items(line.substring(equals + 1))
+
+    rules.add(name)
+    say("")
+
+    if parts |> any(p => isa Item.OPEN(p)) then
+        let body =
+            parts
+                |> skip(2)
+                |> take(parts.count - 3)
+                |> collect_list()
+
+        binary(name, called(parts[0]), alternatives(body))
+    else
+        choice(name, alternatives(parts))
+    fi
+od
+
+prelude |> each(line => write_line(line))
+code |> skip(1) |> each(line => write_line(line))
+
+write_line()
+write_line("write_line(source)")
+write_line("write_line()")
+write_line()
+write_line("let result = {rules[0]}()")
+write_line()
+write_line("expect(\"\")")
+write_line("write_line()")
+write_line("write_line(\"the value is in {{result}}\")")

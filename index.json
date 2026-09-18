@@ -3476,6 +3476,32 @@
       ]
     },
     {
+      "slug": "chemical-calculator",
+      "title": "Chemical calculator",
+      "url": "https://rosettacode.org/wiki/Chemical_calculator",
+      "tags": [
+        "parsing",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 76,
+      "parts": [
+        {
+          "id": "chemical-calculator",
+          "heading": null,
+          "source": "tasks/chemical-calculator/chemical-calculator.ghul",
+          "output": "tasks/chemical-calculator/run.expected",
+          "lines": 76,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "chernicks-carmichael-numbers",
       "title": "Chernick's Carmichael numbers",
       "url": "https://rosettacode.org/wiki/Chernick's_Carmichael_numbers",
@@ -4207,6 +4233,33 @@
       ]
     },
     {
+      "slug": "compiler-code-generator",
+      "title": "Compiler/code generator",
+      "url": "https://rosettacode.org/wiki/Compiler/code_generator",
+      "tags": [
+        "parsing",
+        "unions",
+        "pattern-matching"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 135,
+      "parts": [
+        {
+          "id": "compiler-code-generator",
+          "heading": null,
+          "source": "tasks/compiler-code-generator/compiler-code-generator.ghul",
+          "output": "tasks/compiler-code-generator/run.expected",
+          "lines": 135,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "compiler-lexical-analyzer",
       "title": "Compiler/lexical analyzer",
       "url": "https://rosettacode.org/wiki/Compiler/lexical_analyzer",
@@ -4227,6 +4280,84 @@
           "source": "tasks/compiler-lexical-analyzer/compiler-lexical-analyzer.ghul",
           "output": "tasks/compiler-lexical-analyzer/run.expected",
           "lines": 224,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "compiler-preprocessor",
+      "title": "Compiler/Preprocessor",
+      "url": "https://rosettacode.org/wiki/Compiler/Preprocessor",
+      "tags": [
+        "parsing",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 135,
+      "parts": [
+        {
+          "id": "compiler-preprocessor",
+          "heading": null,
+          "source": "tasks/compiler-preprocessor/compiler-preprocessor.ghul",
+          "output": "tasks/compiler-preprocessor/run.expected",
+          "lines": 135,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "compiler-syntax-analyzer",
+      "title": "Compiler/syntax analyzer",
+      "url": "https://rosettacode.org/wiki/Compiler/syntax_analyzer",
+      "tags": [
+        "parsing",
+        "unions"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 218,
+      "parts": [
+        {
+          "id": "compiler-syntax-analyzer",
+          "heading": null,
+          "source": "tasks/compiler-syntax-analyzer/compiler-syntax-analyzer.ghul",
+          "output": "tasks/compiler-syntax-analyzer/run.expected",
+          "lines": 218,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "compiler-verifying-syntax",
+      "title": "Compiler/Verifying syntax",
+      "url": "https://rosettacode.org/wiki/Compiler/Verifying_syntax",
+      "tags": [
+        "parsing",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 161,
+      "parts": [
+        {
+          "id": "compiler-verifying-syntax",
+          "heading": null,
+          "source": "tasks/compiler-verifying-syntax/compiler-verifying-syntax.ghul",
+          "output": "tasks/compiler-verifying-syntax/run.expected",
+          "lines": 161,
           "playground": true,
           "input": true,
           "images": []
@@ -6811,6 +6942,32 @@
       ]
     },
     {
+      "slug": "execute-a-markov-algorithm",
+      "title": "Execute a Markov algorithm",
+      "url": "https://rosettacode.org/wiki/Execute_a_Markov_algorithm",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "execute-a-markov-algorithm",
+          "heading": null,
+          "source": "tasks/execute-a-markov-algorithm/execute-a-markov-algorithm.ghul",
+          "output": "tasks/execute-a-markov-algorithm/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "execute-a-system-command",
       "title": "Execute a system command",
       "url": "https://rosettacode.org/wiki/Execute_a_system_command",
@@ -6894,6 +7051,57 @@
           "source": "tasks/execute-computer-zero/execute-computer-zero.ghul",
           "output": "tasks/execute-computer-zero/run.expected",
           "lines": 187,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "execute-hq9",
+      "title": "Execute HQ9+",
+      "url": "https://rosettacode.org/wiki/Execute_HQ9+",
+      "tags": [
+        "interactive",
+        "pattern-matching"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "execute-hq9",
+          "heading": null,
+          "source": "tasks/execute-hq9/execute-hq9.ghul",
+          "output": "tasks/execute-hq9/run.expected",
+          "lines": 46,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "execute-snusp",
+      "title": "Execute SNUSP",
+      "url": "https://rosettacode.org/wiki/Execute_SNUSP",
+      "tags": [
+        "pattern-matching"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 68,
+      "parts": [
+        {
+          "id": "execute-snusp",
+          "heading": null,
+          "source": "tasks/execute-snusp/execute-snusp.ghul",
+          "output": "tasks/execute-snusp/run.expected",
+          "lines": 68,
           "playground": true,
           "input": false,
           "images": []
@@ -13076,6 +13284,33 @@
       ]
     },
     {
+      "slug": "mcnaughton-yamada-thompson-algorithm",
+      "title": "McNaughton-Yamada-Thompson algorithm",
+      "url": "https://rosettacode.org/wiki/McNaughton-Yamada-Thompson_algorithm",
+      "tags": [
+        "algorithms",
+        "parsing",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 145,
+      "parts": [
+        {
+          "id": "mcnaughton-yamada-thompson-algorithm",
+          "heading": null,
+          "source": "tasks/mcnaughton-yamada-thompson-algorithm/mcnaughton-yamada-thompson-algorithm.ghul",
+          "output": "tasks/mcnaughton-yamada-thompson-algorithm/run.expected",
+          "lines": 145,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "median-filter",
       "title": "Median filter",
       "url": "https://rosettacode.org/wiki/Median_filter",
@@ -14904,6 +15139,33 @@
       ]
     },
     {
+      "slug": "parse-ebnf",
+      "title": "Parse EBNF",
+      "url": "https://rosettacode.org/wiki/Parse_EBNF",
+      "tags": [
+        "parsing",
+        "recursion",
+        "unions"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 342,
+      "parts": [
+        {
+          "id": "parse-ebnf",
+          "heading": null,
+          "source": "tasks/parse-ebnf/parse-ebnf.ghul",
+          "output": "tasks/parse-ebnf/run.expected",
+          "lines": 342,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "parsing-rpn-calculator-algorithm",
       "title": "Parsing/RPN calculator algorithm",
       "url": "https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm",
@@ -16725,6 +16987,33 @@
       ]
     },
     {
+      "slug": "rational-calculator",
+      "title": "Rational calculator",
+      "url": "https://rosettacode.org/wiki/Rational_calculator",
+      "tags": [
+        "parsing",
+        "operators",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 213,
+      "parts": [
+        {
+          "id": "rational-calculator",
+          "heading": null,
+          "source": "tasks/rational-calculator/rational-calculator.ghul",
+          "output": "tasks/rational-calculator/run.expected",
+          "lines": 213,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rcrpg",
       "title": "RCRPG",
       "url": "https://rosettacode.org/wiki/RCRPG",
@@ -16867,6 +17156,43 @@
           "images": [
             "tasks/recamans-sequence/02-the-arc-diagram/recaman.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "recursive-descent-parser-generator",
+      "title": "Recursive descent parser generator",
+      "url": "https://rosettacode.org/wiki/Recursive_descent_parser_generator",
+      "tags": [
+        "parsing",
+        "text-processing",
+        "unions"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 354,
+      "parts": [
+        {
+          "id": "recursive-descent-parser-generator/01-the-generator",
+          "heading": "The generator",
+          "source": "tasks/recursive-descent-parser-generator/01-the-generator/01-the-generator.ghul",
+          "output": "tasks/recursive-descent-parser-generator/01-the-generator/run.expected",
+          "lines": 233,
+          "playground": true,
+          "input": true,
+          "images": []
+        },
+        {
+          "id": "recursive-descent-parser-generator/02-the-generated-parser",
+          "heading": "The generated parser",
+          "source": "tasks/recursive-descent-parser-generator/02-the-generated-parser/02-the-generated-parser.ghul",
+          "output": "tasks/recursive-descent-parser-generator/02-the-generated-parser/run.expected",
+          "lines": 121,
+          "playground": true,
+          "input": true,
+          "images": []
         }
       ]
     },
@@ -22066,6 +22392,33 @@
           "source": "tasks/undulating-numbers/undulating-numbers.ghul",
           "output": "tasks/undulating-numbers/run.expected",
           "lines": 82,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "universal-lambda-machine",
+      "title": "Universal Lambda Machine",
+      "url": "https://rosettacode.org/wiki/Universal_Lambda_Machine",
+      "tags": [
+        "algorithms",
+        "unions",
+        "generators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 287,
+      "parts": [
+        {
+          "id": "universal-lambda-machine",
+          "heading": null,
+          "source": "tasks/universal-lambda-machine/universal-lambda-machine.ghul",
+          "output": "tasks/universal-lambda-machine/run.expected",
+          "lines": 287,
           "playground": true,
           "input": false,
           "images": []
