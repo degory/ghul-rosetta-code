@@ -19859,6 +19859,33 @@
       ]
     },
     {
+      "slug": "vigenere-cipher-cryptanalysis",
+      "title": "Vigenère cipher/Cryptanalysis",
+      "url": "https://rosettacode.org/wiki/Vigenère_cipher/Cryptanalysis",
+      "tags": [
+        "strings",
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "vigenere-cipher-cryptanalysis",
+          "heading": null,
+          "source": "tasks/vigenere-cipher-cryptanalysis/vigenere-cipher-cryptanalysis.ghul",
+          "output": "tasks/vigenere-cipher-cryptanalysis/run.expected",
+          "lines": 96,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "visualize-a-tree",
       "title": "Visualize a tree",
       "url": "https://rosettacode.org/wiki/Visualize_a_tree",
