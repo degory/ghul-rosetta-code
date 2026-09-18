@@ -7520,7 +7520,7 @@
         "basics"
       ],
       "interest": 1,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 1,
@@ -7531,7 +7531,7 @@
           "source": "tasks/hello-world-standard-error/hello-world-standard-error.ghul",
           "output": "tasks/hello-world-standard-error/run.expected",
           "lines": 1,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
