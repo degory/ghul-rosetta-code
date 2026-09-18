@@ -1,0 +1,118 @@
+you dealt; the first discard is green 1
+bot 1 plays green skip
+  bot 2 misses a turn
+bot 3 plays green 0
+your hand: 1: red 6, 2: blue skip, 3: wild, 4: red 9, 5: yellow draw two, 6: blue 7, 7: green 3
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> 1
+red 6 does not match
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> 7
+you play green 3
+bot 1 plays green 7
+bot 2 plays green 6
+bot 3 draws a card
+your hand: 1: red 6, 2: blue skip, 3: wild, 4: red 9, 5: yellow draw two, 6: blue 7
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> 3 blue
+you play wild and call blue
+bot 1 draws a card
+bot 2 plays blue 5
+bot 3 plays blue 8
+your hand: 1: red 6, 2: blue skip, 3: red 9, 4: yellow draw two, 5: blue 7
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> 2
+you play blue skip
+  bot 1 misses a turn
+bot 2 plays wild and calls red
+bot 3 plays red 2
+your hand: 1: red 6, 2: red 9, 3: yellow draw two, 4: blue 7
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> 1
+you play red 6
+bot 1 plays red reverse
+your hand: 1: red 9, 2: yellow draw two, 3: blue 7
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> 1
+you play red 9
+bot 3 plays red 3
+bot 2 plays red 5
+bot 1 plays green 5
+your hand: 1: yellow draw two, 2: blue 7
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> d
+you draw yellow skip
+bot 3 draws a card
+bot 3 plays wild draw four and calls yellow
+  bot 2 draws four and misses a turn
+bot 1 plays yellow 5
+your hand: 1: yellow draw two, 2: blue 7, 3: yellow skip
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> 1
+you play yellow draw two
+  bot 3 draws two and misses a turn
+bot 2 plays yellow 7
+bot 1 draws a card
+bot 1 plays yellow 2
+your hand: 1: blue 7, 2: yellow skip
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+> 2 uno
+you play yellow skip
+  you: uno!
+  bot 3 misses a turn
+bot 2 draws a card
+bot 1 draws a card
+your hand: 1: blue 7
+play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+(no more input, so your cards are played for you)
+you draw blue 1
+bot 3 plays yellow reverse
+you draw blue 5
+bot 1 plays green reverse
+you draw yellow 4
+bot 3 plays yellow reverse
+you play yellow 4
+bot 1 draws a card
+bot 2 plays red 4
+bot 3 plays yellow 4
+you draw blue reverse
+bot 1 draws a card
+bot 2 plays green 4
+bot 3 draws a card
+you draw yellow 6
+bot 1 plays green 8
+bot 2 plays green 2
+bot 3 plays blue 2
+you play blue 7
+bot 1 draws a card
+bot 2 plays blue 3
+bot 3 plays blue skip
+  you miss a turn
+bot 1 plays red skip
+  bot 2 misses a turn
+bot 3 draws a card
+bot 3 plays red 7
+you draw red 1
+you play red 1
+bot 1 plays red 8
+bot 2 plays red 3
+bot 3 draws a card
+bot 3 plays red draw two
+  you draw two and miss a turn
+bot 1 plays red reverse
+you play blue reverse
+bot 1 plays green reverse
+  bot 1: uno!
+you play green 8
+bot 3 draws a card
+bot 2 plays green 5
+  bot 2: uno!
+bot 1 plays green 9
+hand 1: bot 1 went out for 34 points; you 0, bot 1 34, bot 2 0, bot 3 0
+hand 2: bot 1 went out for 170 points; you 0, bot 1 204, bot 2 0, bot 3 0
+hand 3: you went out for 178 points; you 178, bot 1 204, bot 2 0, bot 3 0
+hand 4: you went out for 93 points; you 271, bot 1 204, bot 2 0, bot 3 0
+hand 5: you went out for 142 points; you 413, bot 1 204, bot 2 0, bot 3 0
+hand 6: bot 3 went out for 54 points; you 413, bot 1 204, bot 2 0, bot 3 54
+hand 7: you went out for 97 points; you 510, bot 1 204, bot 2 0, bot 3 54
+you win the game

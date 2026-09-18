@@ -18517,6 +18517,32 @@
       ]
     },
     {
+      "slug": "uno-card-game",
+      "title": "Uno (card game)",
+      "url": "https://rosettacode.org/wiki/Uno_(card_game)",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 419,
+      "parts": [
+        {
+          "id": "uno-card-game",
+          "heading": null,
+          "source": "tasks/uno-card-game/uno-card-game.ghul",
+          "output": "tasks/uno-card-game/run.expected",
+          "lines": 419,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "unprimeable-numbers",
       "title": "Unprimeable numbers",
       "url": "https://rosettacode.org/wiki/Unprimeable_numbers",
