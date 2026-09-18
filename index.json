@@ -19500,6 +19500,37 @@
       ]
     },
     {
+      "slug": "total-circles-area",
+      "title": "Total circles area",
+      "url": "https://rosettacode.org/wiki/Total_circles_area",
+      "tags": [
+        "maths",
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/total-circles-area/circles.png.expected"
+      ],
+      "lines": 141,
+      "parts": [
+        {
+          "id": "total-circles-area",
+          "heading": null,
+          "source": "tasks/total-circles-area/total-circles-area.ghul",
+          "output": "tasks/total-circles-area/run.expected",
+          "lines": 141,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/total-circles-area/circles.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "towers-of-hanoi",
       "title": "Towers of Hanoi",
       "url": "https://rosettacode.org/wiki/Towers_of_Hanoi",
