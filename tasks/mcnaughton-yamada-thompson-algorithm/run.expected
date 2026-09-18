@@ -1,0 +1,40 @@
+a.b.c* (postfix ab.c*.)
+    ""       False
+    "abc"    True
+    "abbc"   False
+    "abcc"   True
+    "abad"   False
+    "abbbc"  False
+
+a.(b|d).c* (postfix abd|.c*.)
+    ""       False
+    "abc"    True
+    "abbc"   False
+    "abcc"   True
+    "abad"   False
+    "abbbc"  False
+
+(a.(b|d))* (postfix abd|.*)
+    ""       True
+    "abc"    False
+    "abbc"   False
+    "abcc"   False
+    "abad"   True
+    "abbbc"  False
+
+a.(b.b)*.c (postfix abb.*.c.)
+    ""       False
+    "abc"    False
+    "abbc"   True
+    "abcc"   False
+    "abad"   False
+    "abbbc"  False
+
+a.b+.c? (postfix ab+.c?.)
+    ""       False
+    "abc"    True
+    "abbc"   True
+    "abcc"   False
+    "abad"   False
+    "abbbc"  True
+

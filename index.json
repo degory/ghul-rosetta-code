@@ -13181,6 +13181,33 @@
       ]
     },
     {
+      "slug": "mcnaughton-yamada-thompson-algorithm",
+      "title": "McNaughton-Yamada-Thompson algorithm",
+      "url": "https://rosettacode.org/wiki/McNaughton-Yamada-Thompson_algorithm",
+      "tags": [
+        "algorithms",
+        "parsing",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 145,
+      "parts": [
+        {
+          "id": "mcnaughton-yamada-thompson-algorithm",
+          "heading": null,
+          "source": "tasks/mcnaughton-yamada-thompson-algorithm/mcnaughton-yamada-thompson-algorithm.ghul",
+          "output": "tasks/mcnaughton-yamada-thompson-algorithm/run.expected",
+          "lines": 145,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "median-filter",
       "title": "Median filter",
       "url": "https://rosettacode.org/wiki/Median_filter",
