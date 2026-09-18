@@ -1,0 +1,198 @@
+use default
+use Raster.ANIMATION
+use Raster.IMAGE
+use System.Math
+
+struct VEC(x: double, y: double) is
+    +(other: VEC) -> VEC => VEC(x + other.x, y + other.y)
+    -(other: VEC) -> VEC => VEC(x - other.x, y - other.y)
+    *(k: double) -> VEC => VEC(x * k, y * k)
+
+    length: double => Math.sqrt(x * x + y * y)
+
+    limited(low: double, high: double) -> VEC =>
+        if length > high then
+            self * (high / length)
+        elif length < low /\ length > 0.0D then
+            self * (low / length)
+        else
+            self
+        fi
+si
+
+class BOID is
+    position: VEC public
+    velocity: VEC public
+
+    init(position: VEC, velocity: VEC) is
+        self.position = position
+        self.velocity = velocity
+    si
+si
+
+let cave = IO.File.read_all_lines("cave.txt")
+
+let columns = cave[0].length
+let rows = cave.count
+let width = cast double(columns)
+let height = 2.0D * cast double(rows)
+
+let frames = 240
+let sight = 6.0D
+let personal_space = 1.5D
+
+row_of(y: double) -> int => rows - 1 - cast int(Math.floor(y / 2.0D))
+
+column_of(x: double) -> int =>
+    (cast int(Math.floor(x)) % columns + columns) % columns
+
+is_wall(point: VEC) -> bool =>
+    point.y < 0.0D \/ point.y >= height \/
+    cave[row_of(point.y)][column_of(point.x)] == '#'
+
+wall_push(point: VEC) -> VEC is
+    let push mut = VEC(0.0D, 0.0D)
+
+    for dx in -3::3 do
+        for dy in -6::6 do
+            let probe = point + VEC(cast double(dx), cast double(dy))
+
+            if is_wall(probe) then
+                let away = point - probe
+                let distance = Math.max(away.length, 0.5D)
+
+                push = push + away * Math.pow(distance, -3.0D)
+            fi
+        od
+    od
+
+    push
+si
+
+steer(boid: BOID, flock: List[BOID]) -> VEC is
+    let near =
+        flock
+            |> filter(other =>
+                !(other == boid) /\
+                (other.position - boid.position).length < sight)
+            |> collect_list()
+
+    let force mut = VEC(0.04D, 0.0D) + wall_push(boid.position) * 1.5D
+
+    if near.count > 0 then
+        let n = cast double(near.count)
+
+        let centre =
+            near |> map(o => o.position)
+                |> reduce(VEC(0.0D, 0.0D), (a, b) => a + b)
+
+        let heading =
+            near |> map(o => o.velocity)
+                |> reduce(VEC(0.0D, 0.0D), (a, b) => a + b)
+
+        let crowding =
+            near
+                |> filter(o =>
+                    (o.position - boid.position).length < personal_space)
+                |> map(o => boid.position - o.position)
+                |> reduce(VEC(0.0D, 0.0D), (a, b) => a + b)
+
+        force = force +
+            (centre * (1.0D / n) - boid.position) * 0.01D +
+            (heading * (1.0D / n) - boid.velocity) * 0.05D +
+            crowding * 0.1D
+    fi
+
+    force
+si
+
+move(boid: BOID, flock: List[BOID]) -> bool is
+    boid.velocity = (boid.velocity + steer(boid, flock)).limited(0.4D, 0.8D)
+
+    let next = boid.position + boid.velocity
+
+    if is_wall(next) then
+        boid.velocity = boid.velocity * -0.5D
+        return false
+    fi
+
+    let wrapped = next.x >= width
+
+    boid.position =
+        if wrapped then VEC(next.x - width, next.y) else next fi
+
+    wrapped
+si
+
+draw(image: IMAGE, flock: List[BOID]) is
+    image.clear(235ub, 240ub, 245ub)
+    image.colour(90ub, 80ub, 70ub)
+
+    for (row, line) in cave |> index() do
+        for (column, c) in line |> index() do
+            if c == '#' then
+                let x = cast double(column)
+                let y = height - 2.0D * cast double(row + 1)
+
+                image.fill_rectangle(
+                    x - 0.05D, y - 0.05D, x + 1.05D, y + 2.05D)
+            fi
+        od
+    od
+
+    image.colour(200ub, 40ub, 40ub)
+
+    for boid in flock do
+        image.dot(boid.position.x, boid.position.y, 2.0D)
+    od
+si
+
+cave |> each(line => write_line(line))
+write_line("")
+
+let random = System.Random(1)
+
+let flock =
+    cave
+        |> index()
+        |> flat_map(r =>
+            r.value
+                |> index()
+                |> filter(c => c.value == 'O')
+                |> map(c => VEC(
+                    cast double(c.index) + 0.5D,
+                    height - 2.0D * cast double(r.index) - 1.0D)))
+        |> map(position => BOID(
+            position,
+            VEC(0.3D, random.next_double() * 0.4D - 0.2D)))
+        |> collect_list()
+
+let image = IMAGE(240, 90)
+
+image.view(0.0D, 0.0D, width, height)
+
+let animation = ANIMATION(240, 90)
+let crossings mut = 0
+let bumps mut = 0
+
+for _ in 0..frames do
+    draw(image, flock)
+    animation.add(image, 40)
+
+    for boid in flock do
+        if move(boid, flock) then
+            crossings = crossings + 1
+        fi
+    od
+
+    bumps = bumps +
+        (flock |> filter(boid => is_wall(boid.position)) |> count())
+od
+
+write_line("{flock.count} boids, {frames} frames")
+write_line("{crossings} crossings of the cave")
+write_line("{bumps} boids found inside a wall")
+
+animation.write("boids.png")
+
+animation.show("boids.png")

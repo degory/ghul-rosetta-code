@@ -2265,6 +2265,37 @@
       ]
     },
     {
+      "slug": "boids",
+      "title": "Boids",
+      "url": "https://rosettacode.org/wiki/Boids",
+      "tags": [
+        "simulation",
+        "graphics",
+        "operators"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/boids/boids.png.expected"
+      ],
+      "lines": 198,
+      "parts": [
+        {
+          "id": "boids",
+          "heading": null,
+          "source": "tasks/boids/boids.ghul",
+          "output": "tasks/boids/run.expected",
+          "lines": 198,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/boids/boids.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "boolean-values",
       "title": "Boolean values",
       "url": "https://rosettacode.org/wiki/Boolean_values",
