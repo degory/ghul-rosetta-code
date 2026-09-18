@@ -22837,6 +22837,32 @@
       ]
     },
     {
+      "slug": "war-card-game",
+      "title": "War card game",
+      "url": "https://rosettacode.org/wiki/War_card_game",
+      "tags": [
+        "game",
+        "simulation"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "war-card-game",
+          "heading": null,
+          "source": "tasks/war-card-game/war-card-game.ghul",
+          "output": "tasks/war-card-game/run.expected",
+          "lines": 91,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "wasteful-equidigital-and-frugal-numbers",
       "title": "Wasteful, equidigital and frugal numbers",
       "url": "https://rosettacode.org/wiki/Wasteful,_equidigital_and_frugal_numbers",
