@@ -16058,6 +16058,32 @@
       ]
     },
     {
+      "slug": "solve-a-hidato-puzzle",
+      "title": "Solve a Hidato puzzle",
+      "url": "https://rosettacode.org/wiki/Solve_a_Hidato_puzzle",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 99,
+      "parts": [
+        {
+          "id": "solve-a-hidato-puzzle",
+          "heading": null,
+          "source": "tasks/solve-a-hidato-puzzle/solve-a-hidato-puzzle.ghul",
+          "output": "tasks/solve-a-hidato-puzzle/run.expected",
+          "lines": 99,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "solve-the-no-connection-puzzle",
       "title": "Solve the no connection puzzle",
       "url": "https://rosettacode.org/wiki/Solve_the_no_connection_puzzle",

@@ -1,0 +1,99 @@
+use default
+use System.StringSplitOptions.REMOVE_EMPTY_ENTRIES
+
+let puzzle = [
+    "__ 33 35 __ __  .  .  .",
+    "__ __ 24 22 __  .  .  .",
+    "__ __ __ 21 __ __  .  .",
+    "__ 26 __ 13 40 11  .  .",
+    "27 __ __ __  9 __  1  .",
+    " .  . __ __ 18 __ __  .",
+    " .  .  .  . __  7 __ __",
+    " .  .  .  .  .  .  5 __"
+]
+
+let hole = -1
+let blank = 0
+
+let rows = puzzle.count
+cells(line: string) -> string[] => line.split([' '], REMOVE_EMPTY_ENTRIES)
+
+let columns = cells(puzzle[0]).count
+
+let board =
+    puzzle
+        |> flat_map(line => cells(line))
+        |> map(cell =>
+            if cell =~ "." then hole
+            elif cell =~ "__" then blank
+            else int.parse(cell)
+            fi)
+        |> collect_list()
+
+let given = SET[int](board |> filter(n => n > 0))
+let last = given |> reduce(0, (a, b) => System.Math.max(a, b))
+
+at(row: int, column: int) -> int =>
+    if row < 0 \/ row >= rows \/ column < 0 \/ column >= columns then hole
+    else board[row * columns + column]
+    fi
+
+place(row: int, column: int, n: int) -> bool is
+    let square = at(row, column)
+
+    let wrong =
+        square == hole \/
+        (square != blank /\ square != n) \/
+        (square == blank /\ given.contains(n))
+
+    if wrong then
+        return false
+    fi
+
+    if n == last then
+        board[row * columns + column] = n
+        return true
+    fi
+
+    board[row * columns + column] = n
+
+    for dr in -1::1 do
+        for dc in -1::1 do
+            let moves = dr != 0 \/ dc != 0
+
+            if moves /\ place(row + dr, column + dc, n + 1) then
+                return true
+            fi
+        od
+    od
+
+    board[row * columns + column] = square
+    false
+si
+
+show() is
+    for row in 0..rows do
+        let line =
+            (0..columns)
+                |> map(column =>
+                    let n = at(row, column) in
+                    if n == hole then "  "
+                    elif n == blank then "__"
+                    else "{n,2}"
+                    fi)
+                |> join(" ")
+
+        write_line(line.trim_end())
+    od
+si
+
+show()
+write_line()
+
+let start = board.index_of(1)
+
+if place(start / columns, start % columns, 1) then
+    show()
+else
+    write_line("no solution")
+fi
