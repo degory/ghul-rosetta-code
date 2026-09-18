@@ -17072,6 +17072,34 @@
       ]
     },
     {
+      "slug": "tamagotchi-emulator",
+      "title": "Tamagotchi emulator",
+      "url": "https://rosettacode.org/wiki/Tamagotchi_emulator",
+      "tags": [
+        "game",
+        "interactive",
+        "simulation",
+        "classes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 126,
+      "parts": [
+        {
+          "id": "tamagotchi-emulator",
+          "heading": null,
+          "source": "tasks/tamagotchi-emulator/tamagotchi-emulator.ghul",
+          "output": "tasks/tamagotchi-emulator/run.expected",
+          "lines": 126,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "tau-function",
       "title": "Tau function",
       "url": "https://rosettacode.org/wiki/Tau_function",

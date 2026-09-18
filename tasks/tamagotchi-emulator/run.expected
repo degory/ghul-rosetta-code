@@ -1,0 +1,111 @@
+what will you call your pet?
+> Mochi
+commands: feed, play, clean, cure, wait
+(^_^) Mochi, age 0: hunger 0/10, happiness 5/10
+> dance
+commands: feed, play, clean, cure, wait
+> feed
+Mochi eats
+(^_^) Mochi, age 1: hunger 1/10, happiness 5/10
+> play
+Mochi hid a treat: left or right?
+> left
+found it! Mochi is delighted
+(^_^) Mochi, age 2: hunger 2/10, happiness 8/10
+      @ needs cleaning up
+> wait
+time passes
+(^_^) Mochi, age 3: hunger 3/10, happiness 7/10
+      @@ needs cleaning up
+> wait
+time passes
+(^_^) Mochi, age 4: hunger 4/10, happiness 7/10
+      @@ needs cleaning up
+> feed
+Mochi eats
+(^_^) Mochi, age 5: hunger 1/10, happiness 7/10
+      @@@ needs cleaning up
+> play
+Mochi hid a treat: left or right?
+> right
+it was in the left hand
+Mochi enjoyed the game anyway
+(^_^) Mochi, age 6: hunger 2/10, happiness 7/10
+      @@@ needs cleaning up
+> wait
+time passes
+(^_^) Mochi, age 7: hunger 3/10, happiness 7/10
+      @@@ needs cleaning up
+> wait
+time passes
+(^_^) Mochi, age 8: hunger 4/10, happiness 7/10
+      @@@ needs cleaning up
+> feed
+Mochi eats
+(>_<) Mochi, age 9: hunger 1/10, happiness 6/10
+      @@@@ needs cleaning up
+      Mochi is sick
+> wait
+time passes
+(>_<) Mochi, age 10: hunger 2/10, happiness 6/10
+      @@@@ needs cleaning up
+      Mochi is sick
+> cure
+clean up first, or Mochi will get sick again
+(>_<) Mochi, age 11: hunger 3/10, happiness 6/10
+      @@@@ needs cleaning up
+      Mochi is sick
+> clean
+all clean
+(>_<) Mochi, age 12: hunger 4/10, happiness 5/10
+      Mochi is sick
+> cure
+Mochi feels better
+(^_^) Mochi, age 13: hunger 5/10, happiness 5/10
+      @ needs cleaning up
+> feed
+Mochi eats
+(^_^) Mochi, age 14: hunger 2/10, happiness 5/10
+      @ needs cleaning up
+> clean
+all clean
+(^_^) Mochi, age 15: hunger 3/10, happiness 4/10
+> play
+Mochi hid a treat: left or right?
+> left
+it was in the right hand
+Mochi enjoyed the game anyway
+(^_^) Mochi, age 16: hunger 4/10, happiness 5/10
+      @ needs cleaning up
+> clean
+all clean
+(^_^) Mochi, age 17: hunger 5/10, happiness 5/10
+      @ needs cleaning up
+> wait
+time passes
+(^_^) Mochi, age 18: hunger 6/10, happiness 4/10
+      @ needs cleaning up
+> feed
+Mochi eats
+(^_^) Mochi, age 19: hunger 3/10, happiness 4/10
+      @@ needs cleaning up
+> clean
+all clean
+(^_^) Mochi, age 20: hunger 4/10, happiness 4/10
+      @ needs cleaning up
+> play
+Mochi hid a treat: left or right?
+> left
+found it! Mochi is delighted
+(^_^) Mochi, age 21: hunger 5/10, happiness 6/10
+      @ needs cleaning up
+> clean
+all clean
+(^_^) Mochi, age 22: hunger 6/10, happiness 6/10
+> wait
+time passes
+(;_;) Mochi, age 23: hunger 7/10, happiness 6/10
+> feed
+Mochi eats
+(x_x) Mochi, age 24: hunger 4/10, happiness 5/10
+Mochi died peacefully of old age at age 24
