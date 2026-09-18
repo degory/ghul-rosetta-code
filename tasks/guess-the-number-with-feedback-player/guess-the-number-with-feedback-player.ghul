@@ -1,0 +1,44 @@
+use default
+use IO.Std.read_line
+
+let low mut = 1
+let high mut = 100
+let tries mut = 0
+
+write_line("think of a number from {low} to {high}")
+write_line("answer each guess with h if yours is higher,")
+write_line("l if it is lower, or c if I have it")
+
+do
+    if low > high then
+        write_line("those answers contradict each other")
+        break
+    fi
+
+    let guess = (low + high) / 2
+
+    tries = tries + 1
+    write_line()
+    write_line("guess {tries}: {guess}")
+
+    let answer = read_line()
+
+    if !answer? then
+        break
+    fi
+
+    let reply = answer.trim().to_lower()
+
+    write_line("> {reply}")
+
+    case reply
+    when "h" then low = guess + 1
+    when "l" then high = guess - 1
+    when "c" then
+        write_line("got it in {tries}")
+        break
+    else
+        write_line("answer h, l or c")
+        tries = tries - 1
+    esac
+od

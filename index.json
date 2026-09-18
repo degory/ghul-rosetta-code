@@ -9111,6 +9111,32 @@
       ]
     },
     {
+      "slug": "guess-the-number-with-feedback-player",
+      "title": "Guess the number/With feedback (player)",
+      "url": "https://rosettacode.org/wiki/Guess_the_number/With_feedback_(player)",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "guess-the-number-with-feedback-player",
+          "heading": null,
+          "source": "tasks/guess-the-number-with-feedback-player/guess-the-number-with-feedback-player.ghul",
+          "output": "tasks/guess-the-number-with-feedback-player/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hailstone-sequence",
       "title": "Hailstone sequence",
       "url": "https://rosettacode.org/wiki/Hailstone_sequence",
