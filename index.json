@@ -847,7 +847,7 @@
         "maths"
       ],
       "interest": 5,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [
         "tasks/animate-a-pendulum/pendulum.png.expected"
@@ -860,7 +860,7 @@
           "source": "tasks/animate-a-pendulum/animate-a-pendulum.ghul",
           "output": "tasks/animate-a-pendulum/run.expected",
           "lines": 77,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": [
             "tasks/animate-a-pendulum/pendulum.png.expected"
@@ -18210,7 +18210,7 @@
         "dotnet-interop"
       ],
       "interest": 4,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 9,
@@ -18221,7 +18221,7 @@
           "source": "tasks/spinning-rod-animation-text/spinning-rod-animation-text.ghul",
           "output": "tasks/spinning-rod-animation-text/run.expected",
           "lines": 9,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
