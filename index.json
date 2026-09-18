@@ -5056,6 +5056,36 @@
       ]
     },
     {
+      "slug": "draw-a-rotating-cube",
+      "title": "Draw a rotating cube",
+      "url": "https://rosettacode.org/wiki/Draw_a_rotating_cube",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/draw-a-rotating-cube/cube.png.expected"
+      ],
+      "lines": 107,
+      "parts": [
+        {
+          "id": "draw-a-rotating-cube",
+          "heading": null,
+          "source": "tasks/draw-a-rotating-cube/draw-a-rotating-cube.ghul",
+          "output": "tasks/draw-a-rotating-cube/run.expected",
+          "lines": 107,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/draw-a-rotating-cube/cube.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "draw-a-sphere",
       "title": "Draw a sphere",
       "url": "https://rosettacode.org/wiki/Draw_a_sphere",
@@ -7542,6 +7572,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "geocentric-model",
+      "title": "Geocentric model",
+      "url": "https://rosettacode.org/wiki/Geocentric_model",
+      "tags": [
+        "simulation",
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/geocentric-model/geocentric.png.expected"
+      ],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "geocentric-model",
+          "heading": null,
+          "source": "tasks/geocentric-model/geocentric-model.ghul",
+          "output": "tasks/geocentric-model/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/geocentric-model/geocentric.png.expected"
+          ]
         }
       ]
     },
@@ -13972,6 +14033,36 @@
       ]
     },
     {
+      "slug": "polyspiral",
+      "title": "Polyspiral",
+      "url": "https://rosettacode.org/wiki/Polyspiral",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/polyspiral/polyspiral.png.expected"
+      ],
+      "lines": 53,
+      "parts": [
+        {
+          "id": "polyspiral",
+          "heading": null,
+          "source": "tasks/polyspiral/polyspiral.ghul",
+          "output": "tasks/polyspiral/run.expected",
+          "lines": 53,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/polyspiral/polyspiral.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "population-count",
       "title": "Population count",
       "url": "https://rosettacode.org/wiki/Population_count",
@@ -14581,6 +14672,35 @@
       ]
     },
     {
+      "slug": "raster-bars",
+      "title": "Raster bars",
+      "url": "https://rosettacode.org/wiki/Raster_bars",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/raster-bars/bars.png.expected"
+      ],
+      "lines": 67,
+      "parts": [
+        {
+          "id": "raster-bars",
+          "heading": null,
+          "source": "tasks/raster-bars/raster-bars.ghul",
+          "output": "tasks/raster-bars/run.expected",
+          "lines": 67,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/raster-bars/bars.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "rcrpg",
       "title": "RCRPG",
       "url": "https://rosettacode.org/wiki/RCRPG",
@@ -15140,6 +15260,36 @@
           "playground": true,
           "input": true,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "rotating-rubik-s-cube",
+      "title": "Rotating Rubik's cube",
+      "url": "https://rosettacode.org/wiki/Rotating_Rubik's_cube",
+      "tags": [
+        "graphics",
+        "puzzles"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/rotating-rubik-s-cube/rubik.png.expected"
+      ],
+      "lines": 108,
+      "parts": [
+        {
+          "id": "rotating-rubik-s-cube",
+          "heading": null,
+          "source": "tasks/rotating-rubik-s-cube/rotating-rubik-s-cube.ghul",
+          "output": "tasks/rotating-rubik-s-cube/run.expected",
+          "lines": 108,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/rotating-rubik-s-cube/rubik.png.expected"
+          ]
         }
       ]
     },
@@ -20005,6 +20155,35 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "vibrating-rectangles",
+      "title": "Vibrating rectangles",
+      "url": "https://rosettacode.org/wiki/Vibrating_rectangles",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/vibrating-rectangles/rectangles.png.expected"
+      ],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "vibrating-rectangles",
+          "heading": null,
+          "source": "tasks/vibrating-rectangles/vibrating-rectangles.ghul",
+          "output": "tasks/vibrating-rectangles/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/vibrating-rectangles/rectangles.png.expected"
+          ]
         }
       ]
     },
