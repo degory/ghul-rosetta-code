@@ -1158,6 +1158,11 @@
       "reason": "needs-gui"
     },
     {
+      "title": "Draw a sphere",
+      "slug": "draw-a-sphere",
+      "state": "solved"
+    },
+    {
       "title": "Duffinian numbers",
       "slug": "duffinian-numbers",
       "state": "published",
