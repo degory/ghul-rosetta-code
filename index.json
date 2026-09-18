@@ -18673,24 +18673,39 @@
       "title": "Water collected between towers",
       "url": "https://rosettacode.org/wiki/Water_collected_between_towers",
       "tags": [
+        "graphics",
         "algorithms",
         "generators"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 35,
+      "images": [
+        "tasks/water-collected-between-towers/02-the-towers-drawn/towers.png.expected"
+      ],
+      "lines": 139,
       "parts": [
         {
-          "id": "water-collected-between-towers",
-          "heading": null,
-          "source": "tasks/water-collected-between-towers/water-collected-between-towers.ghul",
-          "output": "tasks/water-collected-between-towers/run.expected",
+          "id": "water-collected-between-towers/01-counting-the-water",
+          "heading": "Counting the water",
+          "source": "tasks/water-collected-between-towers/01-counting-the-water/01-counting-the-water.ghul",
+          "output": "tasks/water-collected-between-towers/01-counting-the-water/run.expected",
           "lines": 35,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "water-collected-between-towers/02-the-towers-drawn",
+          "heading": "The towers drawn",
+          "source": "tasks/water-collected-between-towers/02-the-towers-drawn/02-the-towers-drawn.ghul",
+          "output": "tasks/water-collected-between-towers/02-the-towers-drawn/run.expected",
+          "lines": 104,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/water-collected-between-towers/02-the-towers-drawn/towers.png.expected"
+          ]
         }
       ]
     },
