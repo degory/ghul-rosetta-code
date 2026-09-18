@@ -13453,23 +13453,38 @@
       "url": "https://rosettacode.org/wiki/Recaman's_sequence",
       "tags": [
         "number-theory",
+        "graphics",
         "generators"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 55,
+      "images": [
+        "tasks/recamans-sequence/02-the-arc-diagram/recaman.png.expected"
+      ],
+      "lines": 140,
       "parts": [
         {
-          "id": "recamans-sequence",
-          "heading": null,
-          "source": "tasks/recamans-sequence/recamans-sequence.ghul",
-          "output": "tasks/recamans-sequence/run.expected",
+          "id": "recamans-sequence/01-the-terms",
+          "heading": "The terms",
+          "source": "tasks/recamans-sequence/01-the-terms/01-the-terms.ghul",
+          "output": "tasks/recamans-sequence/01-the-terms/run.expected",
           "lines": 55,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "recamans-sequence/02-the-arc-diagram",
+          "heading": "The arc diagram",
+          "source": "tasks/recamans-sequence/02-the-arc-diagram/02-the-arc-diagram.ghul",
+          "output": "tasks/recamans-sequence/02-the-arc-diagram/run.expected",
+          "lines": 85,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/recamans-sequence/02-the-arc-diagram/recaman.png.expected"
+          ]
         }
       ]
     },
