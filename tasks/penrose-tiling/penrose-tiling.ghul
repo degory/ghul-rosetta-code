@@ -1,5 +1,6 @@
 use default
 use Raster.IMAGE
+use Raster.SHAPES
 
 use Math = System.Math
 use Point = (x: double, y: double)
@@ -56,16 +57,17 @@ let image = IMAGE(660, 440)
 image.view(-0.62D, -0.4133D, 0.62D, 0.4133D)
 image.stroke(1.0D)
 
+let shapes = SHAPES()
+
 for tile in tiles do
     if isa Half.FAT(tile) then
-        image.colour(232ub, 184ub, 118ub)
+        shapes.add([tile.a, tile.b, tile.c], 232ub, 184ub, 118ub)
     else
-        image.colour(118ub, 164ub, 214ub)
+        shapes.add([tile.a, tile.b, tile.c], 118ub, 164ub, 214ub)
     fi
-
-    image.fill([tile.a, tile.b, tile.c])
-    image.line([tile.a, tile.b, tile.c, tile.a])
 od
+
+image.fill(shapes)
 
 image.colour(60ub, 60ub, 70ub)
 
