@@ -84,42 +84,65 @@ classify(value: int, base: int) -> Kind =>
     )
     fi
 
-report(base: int, kind: Kind, name: string) is
-    let matching = (1::limit) |> filter(n => classify(n, base) =~ kind)
-    let first_fifty = LIST[int]()
-    let ten_thousandth mut = 0
-    let found mut = 0
-    let below mut = 0
+class TALLY is
+    first_fifty: LIST[int] field
+    ten_thousandth: int public
+    below: int public
+    found: int public
 
-    for value in matching do
+    init() is
+        first_fifty = LIST[int]()
+    si
+
+    take(value: int) is
         found = found + 1
 
         if value <= counted then below = below + 1 fi
         if found <= 50 then first_fifty.add(value) fi
+        if found == 10_000 then ten_thousandth = value fi
+    si
 
-        if found == 10_000 then
-            ten_thousandth = value
-            if value > counted then break fi
-        fi
-    od
+    settled(value: int) -> bool => found >= 10_000 /\ value > counted
 
-    write_line("base {base} {name} numbers")
-    write_line("  first fifty:")
+    show(base: int, name: string) is
+        write_line("base {base} {name} numbers")
+        write_line("  first fifty:")
 
-    for row in 0..5 do
-        let cells = first_fifty[row * 10..row * 10 + 10]
-                        |> map(v => "{v,7}")
+        for row in 0..5 do
+            let cells = first_fifty[row * 10..row * 10 + 10]
+                            |> map(v => "{v,7}")
 
-        write_line("   {cells |> join("")}")
-    od
+            write_line("   {cells |> join("")}")
+        od
 
-    write_line("  the 10,000th is {ten_thousandth}")
-    write_line("  {below} of them are below 1,000,000")
-    write_line("")
+        write_line("  the 10,000th is {ten_thousandth}")
+        write_line("  {below} of them are below 1,000,000")
+        write_line("")
+    si
 si
 
 for base in [10, 11] do
-    report(base, WASTEFUL, "wasteful")
-    report(base, EQUIDIGITAL, "equidigital")
-    report(base, FRUGAL, "frugal")
+    let wasteful = TALLY()
+    let equidigital = TALLY()
+    let frugal = TALLY()
+
+    for value in 1::limit do
+        case classify(value, base)
+        when _: WASTEFUL then wasteful.take(value)
+        when _: EQUIDIGITAL then equidigital.take(value)
+        when _: FRUGAL then frugal.take(value)
+        esac
+
+        if
+            wasteful.settled(value) /\
+            equidigital.settled(value) /\
+            frugal.settled(value)
+        then
+            break
+        fi
+    od
+
+    wasteful.show(base, "wasteful")
+    equidigital.show(base, "equidigital")
+    frugal.show(base, "frugal")
 od
