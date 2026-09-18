@@ -13166,6 +13166,37 @@
       ]
     },
     {
+      "slug": "mobius-strip",
+      "title": "Möbius strip",
+      "url": "https://rosettacode.org/wiki/Möbius_strip",
+      "tags": [
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/mobius-strip/mobius.png.expected"
+      ],
+      "lines": 103,
+      "parts": [
+        {
+          "id": "mobius-strip",
+          "heading": null,
+          "source": "tasks/mobius-strip/mobius-strip.ghul",
+          "output": "tasks/mobius-strip/run.expected",
+          "lines": 103,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/mobius-strip/mobius.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "monads-list-monad",
       "title": "Monads/List monad",
       "url": "https://rosettacode.org/wiki/Monads/List_monad",
@@ -13269,6 +13300,37 @@
           "input": false,
           "images": [
             "tasks/monty-hall-problem/02-watching-them-converge/monty-hall.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "morpion-solitaire",
+      "title": "Morpion solitaire",
+      "url": "https://rosettacode.org/wiki/Morpion_solitaire",
+      "tags": [
+        "game",
+        "graphics",
+        "simulation"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/morpion-solitaire/morpion.png.expected"
+      ],
+      "lines": 197,
+      "parts": [
+        {
+          "id": "morpion-solitaire",
+          "heading": null,
+          "source": "tasks/morpion-solitaire/morpion-solitaire.ghul",
+          "output": "tasks/morpion-solitaire/run.expected",
+          "lines": 197,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/morpion-solitaire/morpion.png.expected"
           ]
         }
       ]
@@ -14744,6 +14806,39 @@
       ]
     },
     {
+      "slug": "particle-swarm-optimization",
+      "title": "Particle swarm optimization",
+      "url": "https://rosettacode.org/wiki/Particle_swarm_optimization",
+      "tags": [
+        "algorithms",
+        "maths",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/particle-swarm-optimization/mccormick.png.expected",
+        "tasks/particle-swarm-optimization/michalewicz.png.expected"
+      ],
+      "lines": 164,
+      "parts": [
+        {
+          "id": "particle-swarm-optimization",
+          "heading": null,
+          "source": "tasks/particle-swarm-optimization/particle-swarm-optimization.ghul",
+          "output": "tasks/particle-swarm-optimization/run.expected",
+          "lines": 164,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/particle-swarm-optimization/mccormick.png.expected",
+            "tasks/particle-swarm-optimization/michalewicz.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "pascals-triangle",
       "title": "Pascal's triangle",
       "url": "https://rosettacode.org/wiki/Pascal's_triangle",
@@ -14766,6 +14861,39 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "peaceful-chess-queen-armies",
+      "title": "Peaceful chess queen armies",
+      "url": "https://rosettacode.org/wiki/Peaceful_chess_queen_armies",
+      "tags": [
+        "puzzles",
+        "game",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [
+        "tasks/peaceful-chess-queen-armies/queens-4-5.png.expected",
+        "tasks/peaceful-chess-queen-armies/queens-9-8.png.expected"
+      ],
+      "lines": 140,
+      "parts": [
+        {
+          "id": "peaceful-chess-queen-armies",
+          "heading": null,
+          "source": "tasks/peaceful-chess-queen-armies/peaceful-chess-queen-armies.ghul",
+          "output": "tasks/peaceful-chess-queen-armies/run.expected",
+          "lines": 140,
+          "playground": false,
+          "input": false,
+          "images": [
+            "tasks/peaceful-chess-queen-armies/queens-4-5.png.expected",
+            "tasks/peaceful-chess-queen-armies/queens-9-8.png.expected"
+          ]
         }
       ]
     },
@@ -14979,6 +15107,130 @@
       ]
     },
     {
+      "slug": "perceptron",
+      "title": "Perceptron",
+      "url": "https://rosettacode.org/wiki/Perceptron",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/perceptron/perceptron.png.expected"
+      ],
+      "lines": 97,
+      "parts": [
+        {
+          "id": "perceptron",
+          "heading": null,
+          "source": "tasks/perceptron/perceptron.ghul",
+          "output": "tasks/perceptron/run.expected",
+          "lines": 97,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/perceptron/perceptron.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "percolation-bond-percolation",
+      "title": "Percolation/Bond percolation",
+      "url": "https://rosettacode.org/wiki/Percolation/Bond_percolation",
+      "tags": [
+        "simulation",
+        "graphics",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/percolation-bond-percolation/bonds.png.expected"
+      ],
+      "lines": 156,
+      "parts": [
+        {
+          "id": "percolation-bond-percolation",
+          "heading": null,
+          "source": "tasks/percolation-bond-percolation/percolation-bond-percolation.ghul",
+          "output": "tasks/percolation-bond-percolation/run.expected",
+          "lines": 156,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/percolation-bond-percolation/bonds.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "percolation-mean-cluster-density",
+      "title": "Percolation/Mean cluster density",
+      "url": "https://rosettacode.org/wiki/Percolation/Mean_cluster_density",
+      "tags": [
+        "simulation",
+        "graphics",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/percolation-mean-cluster-density/clusters.png.expected"
+      ],
+      "lines": 109,
+      "parts": [
+        {
+          "id": "percolation-mean-cluster-density",
+          "heading": null,
+          "source": "tasks/percolation-mean-cluster-density/percolation-mean-cluster-density.ghul",
+          "output": "tasks/percolation-mean-cluster-density/run.expected",
+          "lines": 109,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/percolation-mean-cluster-density/clusters.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "percolation-site-percolation",
+      "title": "Percolation/Site percolation",
+      "url": "https://rosettacode.org/wiki/Percolation/Site_percolation",
+      "tags": [
+        "simulation",
+        "graphics",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/percolation-site-percolation/sites.png.expected"
+      ],
+      "lines": 100,
+      "parts": [
+        {
+          "id": "percolation-site-percolation",
+          "heading": null,
+          "source": "tasks/percolation-site-percolation/percolation-site-percolation.ghul",
+          "output": "tasks/percolation-site-percolation/run.expected",
+          "lines": 100,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/percolation-site-percolation/sites.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
@@ -15026,6 +15278,35 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "peripheral-drift-illusion",
+      "title": "Peripheral drift illusion",
+      "url": "https://rosettacode.org/wiki/Peripheral_drift_illusion",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/peripheral-drift-illusion/drift.png.expected"
+      ],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "peripheral-drift-illusion",
+          "heading": null,
+          "source": "tasks/peripheral-drift-illusion/peripheral-drift-illusion.ghul",
+          "output": "tasks/peripheral-drift-illusion/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/peripheral-drift-illusion/drift.png.expected"
+          ]
         }
       ]
     },
@@ -15250,6 +15531,35 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pinstripe-display",
+      "title": "Pinstripe/Display",
+      "url": "https://rosettacode.org/wiki/Pinstripe/Display",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/pinstripe-display/pinstripe.png.expected"
+      ],
+      "lines": 20,
+      "parts": [
+        {
+          "id": "pinstripe-display",
+          "heading": null,
+          "source": "tasks/pinstripe-display/pinstripe-display.ghul",
+          "output": "tasks/pinstripe-display/run.expected",
+          "lines": 20,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/pinstripe-display/pinstripe.png.expected"
+          ]
         }
       ]
     },
@@ -15767,6 +16077,36 @@
       ]
     },
     {
+      "slug": "punched-cards",
+      "title": "Punched cards",
+      "url": "https://rosettacode.org/wiki/Punched_cards",
+      "tags": [
+        "graphics",
+        "strings"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/punched-cards/cards.png.expected"
+      ],
+      "lines": 127,
+      "parts": [
+        {
+          "id": "punched-cards",
+          "heading": null,
+          "source": "tasks/punched-cards/punched-cards.ghul",
+          "output": "tasks/punched-cards/run.expected",
+          "lines": 127,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/punched-cards/cards.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "pythagoras-tree",
       "title": "Pythagoras tree",
       "url": "https://rosettacode.org/wiki/Pythagoras_tree",
@@ -15950,6 +16290,68 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "ramer-douglas-peucker-line-simplification",
+      "title": "Ramer-Douglas-Peucker line simplification",
+      "url": "https://rosettacode.org/wiki/Ramer-Douglas-Peucker_line_simplification",
+      "tags": [
+        "algorithms",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/ramer-douglas-peucker-line-simplification/simplified.png.expected"
+      ],
+      "lines": 75,
+      "parts": [
+        {
+          "id": "ramer-douglas-peucker-line-simplification",
+          "heading": null,
+          "source": "tasks/ramer-douglas-peucker-line-simplification/ramer-douglas-peucker-line-simplification.ghul",
+          "output": "tasks/ramer-douglas-peucker-line-simplification/run.expected",
+          "lines": 75,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/ramer-douglas-peucker-line-simplification/simplified.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramsey-s-theorem",
+      "title": "Ramsey's theorem",
+      "url": "https://rosettacode.org/wiki/Ramsey's_theorem",
+      "tags": [
+        "maths",
+        "generators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/ramsey-s-theorem/paley.png.expected"
+      ],
+      "lines": 81,
+      "parts": [
+        {
+          "id": "ramsey-s-theorem",
+          "heading": null,
+          "source": "tasks/ramsey-s-theorem/ramsey-s-theorem.ghul",
+          "output": "tasks/ramsey-s-theorem/run.expected",
+          "lines": 81,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/ramsey-s-theorem/paley.png.expected"
+          ]
         }
       ]
     },

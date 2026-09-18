@@ -3340,6 +3340,11 @@
       }
     },
     {
+      "title": "Morpion solitaire",
+      "slug": "morpion-solitaire",
+      "state": "solved"
+    },
+    {
       "title": "Moser\u0027s circle problem",
       "slug": "moser-s-circle-problem",
       "state": "published",
@@ -3424,6 +3429,11 @@
       "slug": "mobius-function",
       "state": "published",
       "published_hash": "3ee4462583deca52bebd72c2409c53587ce383e3e764571e572cddc05977f026"
+    },
+    {
+      "title": "M\u00F6bius strip",
+      "slug": "mobius-strip",
+      "state": "solved"
     },
     {
       "title": "N\u0027th",
@@ -3684,10 +3694,20 @@
       }
     },
     {
+      "title": "Particle swarm optimization",
+      "slug": "particle-swarm-optimization",
+      "state": "solved"
+    },
+    {
       "title": "Pascal\u0027s triangle",
       "slug": "pascals-triangle",
       "state": "published",
       "published_hash": "ce06e1367620574acad1ee9afb5895781b241232ae3e88aaa68e7ee30056e718"
+    },
+    {
+      "title": "Peaceful chess queen armies",
+      "slug": "peaceful-chess-queen-armies",
+      "state": "solved"
     },
     {
       "title": "Peano curve",
@@ -3748,6 +3768,26 @@
       }
     },
     {
+      "title": "Perceptron",
+      "slug": "perceptron",
+      "state": "solved"
+    },
+    {
+      "title": "Percolation/Bond percolation",
+      "slug": "percolation-bond-percolation",
+      "state": "solved"
+    },
+    {
+      "title": "Percolation/Mean cluster density",
+      "slug": "percolation-mean-cluster-density",
+      "state": "solved"
+    },
+    {
+      "title": "Percolation/Site percolation",
+      "slug": "percolation-site-percolation",
+      "state": "solved"
+    },
+    {
       "title": "Perfect numbers",
       "slug": "perfect-numbers",
       "state": "published",
@@ -3758,6 +3798,11 @@
       "slug": "perfect-totient-numbers",
       "state": "published",
       "published_hash": "36b63cc4ff27ac26d74be6202db71367ad3f52e920b456605cf1fff70dd27b84"
+    },
+    {
+      "title": "Peripheral drift illusion",
+      "slug": "peripheral-drift-illusion",
+      "state": "solved"
     },
     {
       "title": "Perlin noise",
@@ -3814,6 +3859,11 @@
       "slug": "pig-the-dice-game-player",
       "state": "published",
       "published_hash": "90d7d33046a8477aeb3f91476eecb0be5a4d914259e6c708925f395c75a7d6ee"
+    },
+    {
+      "title": "Pinstripe/Display",
+      "slug": "pinstripe-display",
+      "state": "solved"
     },
     {
       "title": "Pisano period",
@@ -3948,6 +3998,11 @@
       }
     },
     {
+      "title": "Punched cards",
+      "slug": "punched-cards",
+      "state": "solved"
+    },
+    {
       "title": "Pythagoras tree",
       "slug": "pythagoras-tree",
       "state": "published",
@@ -4003,6 +4058,16 @@
       "slug": "radical-of-an-integer",
       "state": "published",
       "published_hash": "dd7952e3ef2429ffceb3ea6bac89d6c711c3a794369b1fa1d6dbae73656825f9"
+    },
+    {
+      "title": "Ramer-Douglas-Peucker line simplification",
+      "slug": "ramer-douglas-peucker-line-simplification",
+      "state": "solved"
+    },
+    {
+      "title": "Ramsey\u0027s theorem",
+      "slug": "ramsey-s-theorem",
+      "state": "solved"
     },
     {
       "title": "Range consolidation",

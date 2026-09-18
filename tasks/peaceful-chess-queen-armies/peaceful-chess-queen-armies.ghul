@@ -1,0 +1,140 @@
+use default
+use Raster.IMAGE
+use System.Numerics.BitOperations
+
+use Armies = (black: ulong, white: ulong)
+
+attack_masks(n: int) -> ulong[] is
+    let masks = LIST[ulong]()
+
+    for cell in 0..n * n do
+        let row = cell / n
+        let column = cell % n
+        let mask mut = 0ul
+
+        for other in 0..n * n do
+            let r = other / n
+            let c = other % n
+
+            if r == row \/ c == column \/
+                    r - c == row - column \/ r + c == row + column then
+                mask = mask | (1ul << other)
+            fi
+        od
+
+        masks.add(mask)
+    od
+
+    return masks |> collect_array()
+si
+
+search(
+    attacks: ulong[], left: int, next_black: int, next_white: int,
+    black: ulong, white: ulong, black_reach: ulong, white_reach: ulong
+) -> Armies? is
+    if left == 0 then
+        return (black = black, white = white)
+    fi
+
+    let taken = black | white
+    let everything = (1ul << attacks.count - 1) * 2ul - 1ul
+    let for_black =
+        everything & \((1ul << next_black) - 1ul) & \(taken | white_reach)
+    let for_white =
+        everything & \((1ul << next_white) - 1ul) & \(taken | black_reach)
+
+    if BitOperations.pop_count(for_black) < left \/
+            BitOperations.pop_count(for_white) < left then
+        return null
+    fi
+
+    for b in next_black..attacks.count do
+        let bit = 1ul << b
+
+        if (taken | white_reach) & bit == 0ul then
+            let reach = black_reach | attacks[b]
+
+            for w in next_white..attacks.count do
+                let other = 1ul << w
+
+                if (taken | bit | reach) & other == 0ul then
+                    let found = search(
+                        attacks, left - 1, b + 1, w + 1,
+                        black | bit, white | other,
+                        reach, white_reach | attacks[w])
+
+                    if found? then
+                        return found
+                    fi
+                fi
+            od
+        fi
+    od
+
+    return null
+si
+
+solve(m: int, n: int) -> Armies? =>
+    search(attack_masks(n), m, 0, 0, 0ul, 0ul, 0ul, 0ul)
+
+show(armies: Armies, n: int) is
+    for row in 0..n do
+        let squares = (0..n) |> map(column =>
+            let bit = 1ul << row * n + column in
+            if armies.black & bit != 0ul then "B"
+            elif armies.white & bit != 0ul then "W"
+            elif (row + column) % 2 == 0 then "."
+            else ":"
+            fi)
+
+        write_line("    {squares |> join(" ")}")
+    od
+si
+
+draw(armies: Armies, n: int, file: string) is
+    let square = 44
+    let image = IMAGE(n * square, n * square)
+
+    image.view(0.0D, cast double(n), cast double(n), 0.0D)
+
+    for row in 0..n do
+        for column in 0..n do
+            let x = cast double(column)
+            let y = cast double(row)
+            let bit = 1ul << row * n + column
+
+            if (row + column) % 2 == 0 then
+                image.colour(238ub, 216ub, 181ub)
+            else
+                image.colour(181ub, 136ub, 99ub)
+            fi
+
+            image.fill_rectangle(x, y, x + 1.0D, y + 1.0D)
+
+            if armies.black & bit != 0ul then
+                image.colour(25ub, 25ub, 25ub)
+                image.disc(x + 0.5D, y + 0.5D, 0.32D)
+            elif armies.white & bit != 0ul then
+                image.colour(25ub, 25ub, 25ub)
+                image.disc(x + 0.5D, y + 0.5D, 0.33D)
+                image.colour(250ub, 250ub, 250ub)
+                image.disc(x + 0.5D, y + 0.5D, 0.29D)
+            fi
+        od
+    od
+
+    image.write(file)
+    image.show(file)
+si
+
+for (m, n) in [(4, 5), (9, 8), (10, 8)] do
+    if let armies = solve(m, n) then
+        write_line("{m} black and {m} white queens on a {n} by {n} board:")
+        show(armies, n)
+        draw(armies, n, "queens-{m}-{n}.png")
+    else
+        write_line("{m} of each colour cannot share a {n} by {n} board")
+    fi
+
+    write_line()
+od

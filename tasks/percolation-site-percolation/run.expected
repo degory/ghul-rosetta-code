@@ -1,0 +1,15 @@
+p      fraction of 1000 15 by 15 grids percolating
+0.0    0.000
+0.1    0.000
+0.2    0.000
+0.3    0.000
+0.4    0.004
+0.5    0.088
+0.6    0.590
+0.7    0.955
+0.8    1.000
+0.9    1.000
+1.0    1.000
+
+pictured: a grid filled at p = 0.6 that percolates
+<<image sites.png>>
