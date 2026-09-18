@@ -10270,6 +10270,33 @@
       ]
     },
     {
+      "slug": "mad-libs",
+      "title": "Mad Libs",
+      "url": "https://rosettacode.org/wiki/Mad_Libs",
+      "tags": [
+        "game",
+        "interactive",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "mad-libs",
+          "heading": null,
+          "source": "tasks/mad-libs/mad-libs.ghul",
+          "output": "tasks/mad-libs/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "magic-squares-of-odd-order",
       "title": "Magic squares of odd order",
       "url": "https://rosettacode.org/wiki/Magic_squares_of_odd_order",
