@@ -14865,6 +14865,39 @@
       ]
     },
     {
+      "slug": "peaceful-chess-queen-armies",
+      "title": "Peaceful chess queen armies",
+      "url": "https://rosettacode.org/wiki/Peaceful_chess_queen_armies",
+      "tags": [
+        "puzzles",
+        "game",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [
+        "tasks/peaceful-chess-queen-armies/queens-4-5.png.expected",
+        "tasks/peaceful-chess-queen-armies/queens-9-8.png.expected"
+      ],
+      "lines": 140,
+      "parts": [
+        {
+          "id": "peaceful-chess-queen-armies",
+          "heading": null,
+          "source": "tasks/peaceful-chess-queen-armies/peaceful-chess-queen-armies.ghul",
+          "output": "tasks/peaceful-chess-queen-armies/run.expected",
+          "lines": 140,
+          "playground": false,
+          "input": false,
+          "images": [
+            "tasks/peaceful-chess-queen-armies/queens-4-5.png.expected",
+            "tasks/peaceful-chess-queen-armies/queens-9-8.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "peano-curve",
       "title": "Peano curve",
       "url": "https://rosettacode.org/wiki/Peano_curve",
