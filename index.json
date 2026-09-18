@@ -11734,26 +11734,40 @@
       "url": "https://rosettacode.org/wiki/N-queens_problem",
       "tags": [
         "puzzles",
-        "pattern-matching",
-        "pipes",
+        "graphics",
         "generators",
+        "pipes",
         "recursion"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 37,
+      "images": [
+        "tasks/n-queens-problem/02-all-ninety-two-drawn/queens.png.expected"
+      ],
+      "lines": 118,
       "parts": [
         {
-          "id": "n-queens-problem",
-          "heading": null,
-          "source": "tasks/n-queens-problem/n-queens-problem.ghul",
-          "output": "tasks/n-queens-problem/run.expected",
+          "id": "n-queens-problem/01-counting-and-one-board",
+          "heading": "Counting and one board",
+          "source": "tasks/n-queens-problem/01-counting-and-one-board/01-counting-and-one-board.ghul",
+          "output": "tasks/n-queens-problem/01-counting-and-one-board/run.expected",
           "lines": 37,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "n-queens-problem/02-all-ninety-two-drawn",
+          "heading": "All ninety two drawn",
+          "source": "tasks/n-queens-problem/02-all-ninety-two-drawn/02-all-ninety-two-drawn.ghul",
+          "output": "tasks/n-queens-problem/02-all-ninety-two-drawn/run.expected",
+          "lines": 81,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/n-queens-problem/02-all-ninety-two-drawn/queens.png.expected"
+          ]
         }
       ]
     },
