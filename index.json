@@ -17391,6 +17391,32 @@
       ]
     },
     {
+      "slug": "sum-and-product-puzzle",
+      "title": "Sum and product puzzle",
+      "url": "https://rosettacode.org/wiki/Sum_and_product_puzzle",
+      "tags": [
+        "puzzles",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "sum-and-product-puzzle",
+          "heading": null,
+          "source": "tasks/sum-and-product-puzzle/sum-and-product-puzzle.ghul",
+          "output": "tasks/sum-and-product-puzzle/run.expected",
+          "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sum-data-type",
       "title": "Sum data type",
       "url": "https://rosettacode.org/wiki/Sum_data_type",
