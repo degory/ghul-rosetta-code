@@ -17915,6 +17915,37 @@
       ]
     },
     {
+      "slug": "tupper-s-self-referential-formula",
+      "title": "Tupper's self-referential formula",
+      "url": "https://rosettacode.org/wiki/Tupper's_self-referential_formula",
+      "tags": [
+        "graphics",
+        "maths",
+        "number-theory"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/tupper-s-self-referential-formula/tupper.png.expected"
+      ],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "tupper-s-self-referential-formula",
+          "heading": null,
+          "source": "tasks/tupper-s-self-referential-formula/tupper-s-self-referential-formula.ghul",
+          "output": "tasks/tupper-s-self-referential-formula/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/tupper-s-self-referential-formula/tupper.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "twelve-statements",
       "title": "Twelve statements",
       "url": "https://rosettacode.org/wiki/Twelve_statements",
