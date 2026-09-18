@@ -12740,6 +12740,32 @@
       ]
     },
     {
+      "slug": "mayan-numerals",
+      "title": "Mayan numerals",
+      "url": "https://rosettacode.org/wiki/Mayan_numerals",
+      "tags": [
+        "strings",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "mayan-numerals",
+          "heading": null,
+          "source": "tasks/mayan-numerals/mayan-numerals.ghul",
+          "output": "tasks/mayan-numerals/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "maybe-monad",
       "title": "Monads/Maybe monad",
       "url": "https://rosettacode.org/wiki/Monads/Maybe_monad",
