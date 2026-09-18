@@ -2978,6 +2978,37 @@
       ]
     },
     {
+      "slug": "catenoid-surface",
+      "title": "Catenoid surface",
+      "url": "https://rosettacode.org/wiki/Catenoid_surface",
+      "tags": [
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/catenoid-surface/catenoid.png.expected"
+      ],
+      "lines": 84,
+      "parts": [
+        {
+          "id": "catenoid-surface",
+          "heading": null,
+          "source": "tasks/catenoid-surface/catenoid-surface.ghul",
+          "output": "tasks/catenoid-surface/run.expected",
+          "lines": 84,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/catenoid-surface/catenoid.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "chaos-game",
       "title": "Chaos game",
       "url": "https://rosettacode.org/wiki/Chaos_game",
