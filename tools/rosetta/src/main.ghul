@@ -2,6 +2,7 @@ use IO.Std.write_line
 use IO.Std.error
 use Collections
 use Ghul.Pipes
+use Raster.ANIMATION
 use Rosetta
 
 // The ghūl solutions' side of Rosetta Code: what has been done, what is worth doing, and getting
@@ -319,13 +320,13 @@ upload_images(
     entry.image_hashes = recorded
 
     for title in titles do
-        // Ghul-<slug>-<name>: the name the solution wrote is the tail.
+        // Ghul-<slug>-<name>: the name the wiki file takes is the tail.
         let name = title.substring("Ghul-{slug}-".length)
-        let path = IO.Path.combine(root, "tasks", slug, name)
+        let path = image_file(root, slug, name)
 
         if !IO.File.exists(path) then
             throw System.Exception(
-                "{title} is referred to but {name} was not written by the task"
+                "{title} is referred to but {IO.Path.get_file_name(path)} was not written by the task"
             )
         fi
 
@@ -354,6 +355,56 @@ upload_images(
         recorded[title] = ours
 
         write_line("  {title}: {if live? then "replaced" else "uploaded" fi}")
+    od
+si
+
+// The file to send for an image the markup refers to.
+//
+// A still is the file the solution wrote. An animation is an animated PNG
+// in the repository, which is the file its test asserts, and a GIF on the
+// wiki, which keeps every frame of a GIF in the scaled thumbnail an entry
+// shows while showing a scaled animated PNG as its first frame alone. So the
+// markup names a GIF and the frames are rewritten as one here, rather than
+// every animation being kept twice. The conversion is deterministic, so a
+// file already on the wiki still compares equal to what this produces.
+image_file(root: string, slug: string, name: string) -> string is
+    let written = IO.Path.combine(root, "tasks", slug, name)
+
+    if !name.ends_with(".gif") \/ IO.File.exists(written) then
+        return written
+    fi
+
+    let animation = IO.Path.combine(
+        root, "tasks", slug, "{name.substring(0, name.length - ".gif".length)}.png"
+    )
+
+    // Named so the caller reports the file the task was meant to write.
+    if !IO.File.exists(animation) then
+        return animation
+    fi
+
+    let converted = IO.Path.combine(root, "wiki-out", "Ghul-{slug}-{name}")
+
+    ANIMATION.read(animation).write_gif(converted)
+
+    converted
+si
+
+// What `upload_images` would send, for a dry run. The conversion runs, so an
+// animation that cannot be read fails here rather than half way through a
+// publish.
+report_images(root: string, slug: string, section: string) is
+    for title in referenced_images(section) do
+        let name = title.substring("Ghul-{slug}-".length)
+        let path = image_file(root, slug, name)
+
+        if IO.File.exists(path) then
+            write_line("  {title}: {path.substring(root.length + 1)}")
+        else
+            error.write_line(
+                "  {title}: {IO.Path.get_file_name(path)} was not written by the task"
+            )
+        fi
     od
 si
 
@@ -825,6 +876,8 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
             IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.page"), spliced)
 
             write_line("{entry.title}: would go {where}; diff wiki-out/{slug}.current wiki-out/{slug}.page")
+
+            report_images(root, slug, section)
 
             continue
         fi

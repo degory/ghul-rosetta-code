@@ -8,6 +8,9 @@
   <ItemGroup>
     <GhulSources Include="src/**/*.ghul" />
 
+    <!-- to rewrite an animated PNG as the GIF the wiki animates -->
+    <PackageReference Include="ghul.raster" />
+
     <!-- Terminator-free sources; error on CI so stray `;` cannot creep
          back in, warning locally. -->
     <GhulOptions Include="--warn redundant-semicolon" />
