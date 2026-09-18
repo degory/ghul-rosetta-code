@@ -11718,6 +11718,36 @@
       ]
     },
     {
+      "slug": "logistic-curve-fitting-in-epidemiology",
+      "title": "Logistic curve fitting in epidemiology",
+      "url": "https://rosettacode.org/wiki/Logistic_curve_fitting_in_epidemiology",
+      "tags": [
+        "maths",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/logistic-curve-fitting-in-epidemiology/fit.png.expected"
+      ],
+      "lines": 89,
+      "parts": [
+        {
+          "id": "logistic-curve-fitting-in-epidemiology",
+          "heading": null,
+          "source": "tasks/logistic-curve-fitting-in-epidemiology/logistic-curve-fitting-in-epidemiology.ghul",
+          "output": "tasks/logistic-curve-fitting-in-epidemiology/run.expected",
+          "lines": 89,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/logistic-curve-fitting-in-epidemiology/fit.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "long-multiplication",
       "title": "Long multiplication",
       "url": "https://rosettacode.org/wiki/Long_multiplication",
