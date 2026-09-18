@@ -15138,6 +15138,37 @@
       ]
     },
     {
+      "slug": "percolation-bond-percolation",
+      "title": "Percolation/Bond percolation",
+      "url": "https://rosettacode.org/wiki/Percolation/Bond_percolation",
+      "tags": [
+        "simulation",
+        "graphics",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/percolation-bond-percolation/bonds.png.expected"
+      ],
+      "lines": 156,
+      "parts": [
+        {
+          "id": "percolation-bond-percolation",
+          "heading": null,
+          "source": "tasks/percolation-bond-percolation/percolation-bond-percolation.ghul",
+          "output": "tasks/percolation-bond-percolation/run.expected",
+          "lines": 156,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/percolation-bond-percolation/bonds.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
