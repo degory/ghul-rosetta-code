@@ -19577,6 +19577,37 @@
       ]
     },
     {
+      "slug": "statistics-basic",
+      "title": "Statistics/Basic",
+      "url": "https://rosettacode.org/wiki/Statistics/Basic",
+      "tags": [
+        "maths",
+        "generators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/statistics-basic/histograms.png.expected"
+      ],
+      "lines": 108,
+      "parts": [
+        {
+          "id": "statistics-basic",
+          "heading": null,
+          "source": "tasks/statistics-basic/statistics-basic.ghul",
+          "output": "tasks/statistics-basic/run.expected",
+          "lines": 108,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/statistics-basic/histograms.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "stern-brocot-sequence",
       "title": "Stern-Brocot sequence",
       "url": "https://rosettacode.org/wiki/Stern-Brocot_sequence",
