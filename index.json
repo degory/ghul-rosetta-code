@@ -18355,6 +18355,32 @@
       ]
     },
     {
+      "slug": "sudoku",
+      "title": "Sudoku",
+      "url": "https://rosettacode.org/wiki/Sudoku",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "sudoku",
+          "heading": null,
+          "source": "tasks/sudoku/sudoku.ghul",
+          "output": "tasks/sudoku/run.expected",
+          "lines": 91,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sum-and-product-of-an-array",
       "title": "Sum and product of an array",
       "url": "https://rosettacode.org/wiki/Sum_and_product_of_an_array",
