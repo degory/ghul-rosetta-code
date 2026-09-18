@@ -186,8 +186,12 @@
     {
       "title": "Animate a pendulum",
       "slug": "animate-a-pendulum",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-gui: pre-rendered as an animated PNG, converted to a GIF for the wiki"
+      "state": "published",
+      "note": "reopened, was rejected/needs-gui: pre-rendered as an animated PNG, converted to a GIF for the wiki",
+      "published_hash": "7aa36d117d95d7028a487171b065be81c21904654631696734c803677f56b735",
+      "image_hashes": {
+        "Ghul-animate-a-pendulum-pendulum.gif": "ef236db2c4e9caf664cede8814669066fb8a377d"
+      }
     },
     {
       "title": "Animated Spinners",
@@ -743,7 +747,8 @@
     {
       "title": "Chess player",
       "slug": "chess-player",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3b605d2a4b730ed53f019ce3e496f79ceaff9f0817f59dc50569f61b20ca3340"
     },
     {
       "title": "Chinese remainder theorem",
@@ -2745,7 +2750,8 @@
     {
       "title": "Mill game",
       "slug": "mill-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "392d324731c6c003453218ccd7f3f1b90ebf4cc082984cd5fc2b3574ef744b86"
     },
     {
       "title": "Minesweeper game",
@@ -3364,7 +3370,8 @@
     {
       "title": "RCRPG",
       "slug": "rcrpg",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7433d16a52c16af3c73027e07ccc193c65474c9a664fa87bdfc8409cf67ff248"
     },
     {
       "title": "RPG attributes generator",
