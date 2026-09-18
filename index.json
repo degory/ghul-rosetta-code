@@ -6730,6 +6730,33 @@
       ]
     },
     {
+      "slug": "fractran",
+      "title": "Fractran",
+      "url": "https://rosettacode.org/wiki/Fractran",
+      "tags": [
+        "primes",
+        "generators",
+        "parsing"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "fractran",
+          "heading": null,
+          "source": "tasks/fractran/fractran.ghul",
+          "output": "tasks/fractran/run.expected",
+          "lines": 47,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "french-republican-calendar",
       "title": "French Republican calendar",
       "url": "https://rosettacode.org/wiki/French_Republican_calendar",
