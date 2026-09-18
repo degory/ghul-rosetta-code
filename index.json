@@ -10888,6 +10888,37 @@
       ]
     },
     {
+      "slug": "kirkpatrick-seidel-algorithm",
+      "title": "Kirkpatrick–Seidel algorithm",
+      "url": "https://rosettacode.org/wiki/Kirkpatrick–Seidel_algorithm",
+      "tags": [
+        "algorithms",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/kirkpatrick-seidel-algorithm/hull.png.expected"
+      ],
+      "lines": 190,
+      "parts": [
+        {
+          "id": "kirkpatrick-seidel-algorithm",
+          "heading": null,
+          "source": "tasks/kirkpatrick-seidel-algorithm/kirkpatrick-seidel-algorithm.ghul",
+          "output": "tasks/kirkpatrick-seidel-algorithm/run.expected",
+          "lines": 190,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/kirkpatrick-seidel-algorithm/hull.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "klarner-rado-sequence",
       "title": "Klarner-Rado sequence",
       "url": "https://rosettacode.org/wiki/Klarner-Rado_sequence",

@@ -1,0 +1,190 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+struct P(x: double, y: double) is
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    ×(o: P) -> double => x * o.y - y * o.x
+    show: string => "({x:F3}, {y:F3})"
+si
+
+slope(p: P, q: P) -> double => (q.y - p.y) / (q.x - p.x)
+
+median(values: Iterable[double]) -> double =>
+    let sorted = values |> sort((a, b) => a <> b) |> collect_list() in
+    sorted[(sorted.count - 1) / 2]
+
+leftmost(points: List[P]) -> P =>
+    points |> reduce(points[0], (b, p) =>
+        if p.x < b.x \/ (p.x == b.x /\ p.y > b.y) then p else b fi)
+
+rightmost(points: List[P]) -> P =>
+    points |> reduce(points[0], (b, p) =>
+        if p.x > b.x \/ (p.x == b.x /\ p.y > b.y) then p else b fi)
+
+bridge(points: List[P], a: double) -> (P, P) is
+    if points.count == 2 then
+        let p = points[0], q = points[1]
+
+        return if p.x < q.x then (p, q) else (q, p) fi
+    fi
+
+    let kept = LIST[P]()
+    let pairs = LIST[(P, P)]()
+
+    for i in 0..points.count / 2 do
+        let p = points[2 * i], q = points[2 * i + 1]
+        let (left, right) = if p.x < q.x then (p, q) else (q, p) fi
+
+        if left.x == right.x then
+            kept.add(if left.y > right.y then left else right fi)
+        else
+            pairs.add((left, right))
+        fi
+    od
+
+    if points.count % 2 == 1 then
+        kept.add(points[points.count - 1])
+    fi
+
+    if pairs.count == 0 then
+        return bridge(kept, a)
+    fi
+
+    let k = median(pairs |> map(((p, q)) => slope(p, q)))
+    let height = (p: P) => p.y - k * p.x
+    let top = points |> map(height) |> reduce(height(points[0]), Math.max)
+    let touching =
+        points |> filter(p => height(p) >= top - 1.0e-12) |> collect_list()
+
+    let low = leftmost(touching)
+    let high = rightmost(touching)
+
+    if low.x <= a /\ a < high.x then
+        return (low, high)
+    fi
+
+    for (p, q) in pairs do
+        let s = slope(p, q)
+
+        if high.x <= a then
+            if s < k then kept.add(p) fi
+            kept.add(q)
+        else
+            kept.add(p)
+            if s > k then kept.add(q) fi
+        fi
+    od
+
+    bridge(kept, a)
+si
+
+upper(points: List[P], first: P, last: P) -> List[P] is
+    if points.count <= 1 /\ first =~ last then
+        return LIST([first])
+    fi
+
+    let (left, right) = bridge(points, median(points |> map(p => p.x)))
+
+    let before =
+        if left =~ first then LIST([first])
+        else
+            let part = points |> filter(p => p.x <= left.x) in
+            upper(part |> collect_list(), first, left)
+        fi
+
+    let after =
+        if right =~ last then LIST([last])
+        else
+            let part = points |> filter(p => p.x >= right.x) in
+            upper(part |> collect_list(), right, last)
+        fi
+
+    before |> cat(after) |> collect_list()
+si
+
+upper_hull(points: List[P]) -> List[P] is
+    let first = leftmost(points), last = rightmost(points)
+    let between = points |> filter(p => p.x > first.x /\ p.x < last.x)
+
+    upper(between |> cat([first, last]) |> collect_list(), first, last)
+si
+
+flipped(points: Iterable[P]) -> List[P] =>
+    points |> map(p => P(p.x, -p.y)) |> collect_list()
+
+backwards(items: List[P]) -> List[P] =>
+    (0..items.count)
+        |> map(i => items[items.count - 1 - i])
+        |> collect_list()
+
+hull(points: List[P]) -> List[P] =>
+    let top = upper_hull(points) in
+    let bottom = flipped(upper_hull(flipped(points))) in
+    let inner = backwards(bottom) |> skip(1) |> take(bottom.count - 2) in
+    top |> cat(inner) |> collect_list()
+
+turns_left(o: P, a: P, b: P) -> bool => (a - o) × (b - o) >= 0.0D
+
+monotone_chain(points: List[P]) -> List[P] is
+    let sorted = points |> sort((a, b) => a.x <> b.x) |> collect_list()
+    let chain = LIST[P]()
+
+    for pass in [sorted, backwards(sorted)] do
+        let start = chain.count
+
+        for p in pass do
+            while chain.count >= start + 2 /\
+                turns_left(
+                    chain[chain.count - 2], chain[chain.count - 1], p)
+            do
+                chain.remove_at(chain.count - 1)
+            od
+
+            chain.add(p)
+        od
+
+        chain.remove_at(chain.count - 1)
+    od
+
+    chain
+si
+
+let random = System.Random(11)
+let points =
+    (0..300)
+        |> map(_ =>
+            let angle = 2.0D * Math.pi * random.next_double() in
+            let r = Math.sqrt(random.next_double()) in
+            P(r * Math.cos(angle), r * Math.sin(angle)))
+        |> collect_list()
+
+let result = hull(points)
+let agrees = SET(result).set_equals(monotone_chain(points))
+
+write_line("{points.count} points, {result.count} on the hull:")
+result |> each(p => write_line("  {p.show}"))
+write_line("")
+write_line("the same set as the monotone chain finds: {agrees}")
+
+let image = IMAGE(360, 360)
+
+image.view(-1.1D, -1.1D, 1.1D, 1.1D)
+image.clear(252ub, 250ub, 245ub)
+image.colour(120ub, 130ub, 150ub)
+
+for p in points do
+    image.dot(p.x, p.y, 2.0D)
+od
+
+image.colour(200ub, 50ub, 40ub)
+image.stroke(2.0D)
+image.line(
+    result
+        |> cat([result[0]])
+        |> map(p => (x = p.x, y = p.y))
+        |> collect_list())
+
+image.write("hull.png")
+
+image.show("hull.png")
