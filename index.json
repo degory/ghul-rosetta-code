@@ -6909,6 +6909,37 @@
       ]
     },
     {
+      "slug": "forest-fire",
+      "title": "Forest fire",
+      "url": "https://rosettacode.org/wiki/Forest_fire",
+      "tags": [
+        "simulation",
+        "graphics",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/forest-fire/forest.png.expected"
+      ],
+      "lines": 112,
+      "parts": [
+        {
+          "id": "forest-fire",
+          "heading": null,
+          "source": "tasks/forest-fire/forest-fire.ghul",
+          "output": "tasks/forest-fire/run.expected",
+          "lines": 112,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/forest-fire/forest.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "formal-power-series",
       "title": "Formal power series",
       "url": "https://rosettacode.org/wiki/Formal_power_series",

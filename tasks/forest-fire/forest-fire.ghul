@@ -1,0 +1,112 @@
+use default
+use Raster.ANIMATION
+use Raster.IMAGE
+
+enum Cell is
+    EMPTY, TREE, BURNING
+si
+
+use Forest = List[List[Cell]]
+
+let columns = 80
+let rows = 60
+let cell = 3
+let generations = 120
+
+let grow = 0.03D
+let lightning = 0.0002D
+
+let random = System.Random(2024)
+
+inside(row: int, column: int) -> bool =>
+    row > 0 /\ row < rows - 1 /\ column > 0 /\ column < columns - 1
+
+near_fire(forest: Forest, row: int, column: int) -> bool =>
+    (row - 1::row + 1)
+        |> flat_map(r => (column - 1::column + 1) |> map(c => (r, c)))
+        |> any(((r, c)) => forest[r][c] == Cell.BURNING)
+
+next(forest: Forest, row: int, column: int) -> Cell =>
+    if !inside(row, column) then
+        Cell.EMPTY
+    else
+        case forest[row][column]
+        when Cell.BURNING then Cell.EMPTY
+        when Cell.TREE then
+            if near_fire(forest, row, column) \/
+                random.next_double() < lightning
+            then
+                Cell.BURNING
+            else
+                Cell.TREE
+            fi
+        else
+            if random.next_double() < grow then Cell.TREE else Cell.EMPTY fi
+        esac
+    fi
+
+step(forest: Forest) -> Forest =>
+    (0..rows)
+        |> map(row =>
+            (0..columns)
+                |> map(column => next(forest, row, column))
+                |> collect_list())
+        |> collect_list()
+
+census(forest: Forest, state: Cell) -> int =>
+    forest |> flat_map(row => row) |> filter(c => c == state) |> count()
+
+draw(image: IMAGE, forest: Forest) is
+    image.clear(60ub, 45ub, 30ub)
+
+    for (row, cells) in forest |> index() do
+        for (column, state) in cells |> index() do
+            case state
+            when Cell.TREE then image.colour(40ub, 140ub, 60ub)
+            when Cell.BURNING then image.colour(255ub, 140ub, 30ub)
+            else continue
+            esac
+
+            let x = cast double(column * cell)
+            let y = cast double(row * cell)
+
+            image.fill_rectangle(
+                x, y, x + cast double(cell), y + cast double(cell))
+        od
+    od
+si
+
+let forest mut =
+    (0..rows)
+        |> map(row =>
+            (0..columns)
+                |> map(column =>
+                    if inside(row, column) /\ random.next_double() < 0.5D
+                    then Cell.TREE
+                    else Cell.EMPTY
+                    fi)
+                |> collect_list())
+        |> collect_list()
+
+let image = IMAGE(columns * cell, rows * cell)
+let animation = ANIMATION(columns * cell, rows * cell)
+
+write_line("generation  trees  burning")
+
+for generation in 0..generations do
+    if generation % 10 == 0 then
+        let trees = census(forest, Cell.TREE)
+        let burning = census(forest, Cell.BURNING)
+
+        write_line("{generation,10} {trees,6} {burning,8}")
+    fi
+
+    draw(image, forest)
+    animation.add(image, 80)
+
+    forest = step(forest)
+od
+
+animation.write("forest.png")
+
+animation.show("forest.png")
