@@ -3215,6 +3215,36 @@
       ]
     },
     {
+      "slug": "cistercian-numerals",
+      "title": "Cistercian numerals",
+      "url": "https://rosettacode.org/wiki/Cistercian_numerals",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/cistercian-numerals/cistercian.png.expected"
+      ],
+      "lines": 71,
+      "parts": [
+        {
+          "id": "cistercian-numerals",
+          "heading": null,
+          "source": "tasks/cistercian-numerals/cistercian-numerals.ghul",
+          "output": "tasks/cistercian-numerals/run.expected",
+          "lines": 71,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/cistercian-numerals/cistercian.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "classes",
       "title": "Classes",
       "url": "https://rosettacode.org/wiki/Classes",
