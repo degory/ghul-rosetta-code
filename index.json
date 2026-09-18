@@ -2982,6 +2982,33 @@
       ]
     },
     {
+      "slug": "chess-player",
+      "title": "Chess player",
+      "url": "https://rosettacode.org/wiki/Chess_player",
+      "tags": [
+        "game",
+        "interactive",
+        "algorithms"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 424,
+      "parts": [
+        {
+          "id": "chess-player",
+          "heading": null,
+          "source": "tasks/chess-player/chess-player.ghul",
+          "output": "tasks/chess-player/run.expected",
+          "lines": 424,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "chinese-remainder-theorem",
       "title": "Chinese remainder theorem",
       "url": "https://rosettacode.org/wiki/Chinese_remainder_theorem",
