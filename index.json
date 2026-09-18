@@ -16961,6 +16961,33 @@
       ]
     },
     {
+      "slug": "rational-calculator",
+      "title": "Rational calculator",
+      "url": "https://rosettacode.org/wiki/Rational_calculator",
+      "tags": [
+        "parsing",
+        "operators",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 213,
+      "parts": [
+        {
+          "id": "rational-calculator",
+          "heading": null,
+          "source": "tasks/rational-calculator/rational-calculator.ghul",
+          "output": "tasks/rational-calculator/run.expected",
+          "lines": 213,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rcrpg",
       "title": "RCRPG",
       "url": "https://rosettacode.org/wiki/RCRPG",
