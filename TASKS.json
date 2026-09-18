@@ -369,7 +369,11 @@
     {
       "title": "Barnsley fern",
       "slug": "barnsley-fern",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f82061fe11976c2ca064b83e1a7aa11a48b4160b4cb5895c9f953216f83d82b2",
+      "image_hashes": {
+        "Ghul-barnsley-fern-fern.png": "b6f5f6b016bc13010b74b7dd3a1ea194cfe7cb13"
+      }
     },
     {
       "title": "Bell numbers",
@@ -525,7 +529,8 @@
     {
       "title": "Black box",
       "slug": "black-box",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "949d1aa826d72e8df779cede6323955bf2bdb8c8e8f13ffa28295911adf3b317"
     },
     {
       "title": "Blum integer",
@@ -683,7 +688,11 @@
     {
       "title": "Chaos game",
       "slug": "chaos-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "32280c08ab76ccc34b735b8c25156126791adaa7630f7fe7b352f5f78f8f70b8",
+      "image_hashes": {
+        "Ghul-chaos-game-chaos.png": "8782cd2c8604a2a6b14365f2550fc470094840ac"
+      }
     },
     {
       "title": "Character codes",
@@ -1166,7 +1175,11 @@
     {
       "title": "Draw a sphere",
       "slug": "draw-a-sphere",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "32691b248502905081e4972c7be451e760323032648077b18dbdb5b8a3d4543b",
+      "image_hashes": {
+        "Ghul-draw-a-sphere-sphere.png": "1001a0b5276485c39eb71b7f1ecfadb5d4ca3f62"
+      }
     },
     {
       "title": "Duffinian numbers",
@@ -1812,7 +1825,8 @@
     {
       "title": "Greed",
       "slug": "greed",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1b73da7c0b17f58bb0328df59ce3245fa3ad61052783b80811100fec4ef92a19"
     },
     {
       "title": "Greedy algorithm for Egyptian fractions",
@@ -1939,7 +1953,8 @@
     {
       "title": "Hexapawn",
       "slug": "hexapawn",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fb3962b8942f817affe76bd2ffa28da04a09bdb661433f26c56785232902519a"
     },
     {
       "title": "Higher-order functions",
@@ -2324,7 +2339,11 @@
     {
       "title": "Koch curve",
       "slug": "koch-curve",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e7e8f210fb99b14722564c4d11a2a1f79450490ad961c61cdc6c3fb7abfcb394",
+      "image_hashes": {
+        "Ghul-koch-curve-koch.png": "167e6152b8ee4860886e5cc956e5ba92e1d2b7a3"
+      }
     },
     {
       "title": "Kolakoski sequence",
@@ -2575,7 +2594,11 @@
     {
       "title": "Lorenz attractor",
       "slug": "lorenz-attractor",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e172ec757fcb1de1af55d8b3bc6dee8a48204c163711054a2bc8b823af50e7c6",
+      "image_hashes": {
+        "Ghul-lorenz-attractor-lorenz.png": "58b872c96b135f5a1014a27808a78da362ae8ef2"
+      }
     },
     {
       "title": "Lucky and even lucky numbers",
@@ -2610,7 +2633,8 @@
     {
       "title": "Mad Libs",
       "slug": "mad-libs",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "54819e7bf819fc933900d479d667c4e4d01472971baa53932cb4dd1cf371eafb"
     },
     {
       "title": "Magic squares of odd order",
@@ -2654,7 +2678,8 @@
     {
       "title": "Mastermind",
       "slug": "mastermind",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b339950bfd750b244e0d244a3f7523ce2f8756e2d3de9c23fa127db4b11d9739"
     },
     {
       "title": "Matrix multiplication",
@@ -2671,7 +2696,11 @@
     {
       "title": "Maze generation",
       "slug": "maze-generation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "eb952d75ed01391368e98b44d8266144f1e707302942f7effba58dbf190e4fa8",
+      "image_hashes": {
+        "Ghul-maze-generation-maze.png": "1236722483770ceee7a8d99e08ed604117328867"
+      }
     },
     {
       "title": "Merge and aggregate datasets",
@@ -2706,7 +2735,8 @@
     {
       "title": "Minesweeper game",
       "slug": "minesweeper-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bc16126704b6be7dc4f6659273ee7e21a4463b76b9eaf5795a363a6815a8549d"
     },
     {
       "title": "Minimal steps down to 1",
@@ -2893,7 +2923,8 @@
     {
       "title": "Nim game",
       "slug": "nim-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4eb4a040ebe349411b8a78cbf257f8a432a67d5ad2901b9fa696d262d10cc9f1"
     },
     {
       "title": "Non-continuous subsequences",
@@ -3087,17 +3118,26 @@
     {
       "title": "Penney\u0027s game",
       "slug": "penneys-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8653630caf0d45f95fa8d3ae3d368db307a71a344b80eb728c16f379b3b75fe1"
     },
     {
       "title": "Penrose tiling",
       "slug": "penrose-tiling",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4dac93e7c26dbe424f916bafa9452fcbcad707fc5037104e771a117ef2b08006",
+      "image_hashes": {
+        "Ghul-penrose-tiling-penrose.png": "b1a937952f9c5421070d75c41ef6ab55170fa229"
+      }
     },
     {
       "title": "Pentagram",
       "slug": "pentagram",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d3148edd3dadc0e9e5ab1122545547985f529788698123af77488aa11ae84073",
+      "image_hashes": {
+        "Ghul-pentagram-pentagram.png": "24c12e43a4f01d7ed7d0402f9c58d5312bb296e5"
+      }
     },
     {
       "title": "Perfect numbers",
@@ -3156,7 +3196,8 @@
     {
       "title": "Pig the dice game/Player",
       "slug": "pig-the-dice-game-player",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "90d7d33046a8477aeb3f91476eecb0be5a4d914259e6c708925f395c75a7d6ee"
     },
     {
       "title": "Pisano period",
@@ -3714,17 +3755,20 @@
     {
       "title": "Snake",
       "slug": "snake",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d9b033cdd83994e381be774537e090e557876e10508870d86e3b87e294281c45"
     },
     {
       "title": "Snake and ladder",
       "slug": "snake-and-ladder",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5a2be163a94add2fb9272c22b71073a7e5f3c933cd5b3249b5e1dabc30a31217"
     },
     {
       "title": "Sokoban",
       "slug": "sokoban",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c34d89d28236572da17b70591b31400c0edf61275fbcf7e697943ba6fec2d43f"
     },
     {
       "title": "Solve the no connection puzzle",
@@ -4185,7 +4229,11 @@
     {
       "title": "Superellipse",
       "slug": "superellipse",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "26d145979a361150a4b1bbe303b2e42ed27a3a7fecee0b66843c73edc0a96c02",
+      "image_hashes": {
+        "Ghul-superellipse-superellipse.png": "55d03336f213decb800835f7ffb8375c84c64446"
+      }
     },
     {
       "title": "Sylvester\u0027s sequence",
@@ -4213,7 +4261,8 @@
     {
       "title": "Tamagotchi emulator",
       "slug": "tamagotchi-emulator",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "43469d5065e94e6782860f5483ec74a99e556fd330e4d2226858d3664202e625"
     },
     {
       "title": "Tau function",
@@ -4254,7 +4303,8 @@
     {
       "title": "Tetris",
       "slug": "tetris",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4aed2c2ffe6e071f1747ff3c13003ee4ecadceed886c6b54a76b37446e97b23f"
     },
     {
       "title": "Text processing/Max licenses in use",
@@ -4264,7 +4314,8 @@
     {
       "title": "The Name Game",
       "slug": "the-name-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0843586586d76034b0be2bb7e806f5777d6463ff32eb348a4ef7caaae771eb5c"
     },
     {
       "title": "The Twelve Days of Christmas",
@@ -4287,7 +4338,8 @@
     {
       "title": "Tic-tac-toe",
       "slug": "tic-tac-toe",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "af7375ce1ff309ac841491242111047a35f94cf3400e53aa53b1f2b6d0125158"
     },
     {
       "title": "Time a function",
@@ -4393,7 +4445,11 @@
     {
       "title": "Tupper\u0027s self-referential formula",
       "slug": "tupper-s-self-referential-formula",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "befa17e94bac7b85c26230863895dcd28683ac244f1c49bf22f9085b6f5f1cd1",
+      "image_hashes": {
+        "Ghul-tupper-s-self-referential-formula-tupper.png": "38c166f5d68c6b40a80979110a61a969dadf7477"
+      }
     },
     {
       "title": "Twelve statements",
@@ -4633,7 +4689,8 @@
     {
       "title": "Wordle comparison",
       "slug": "wordle-comparison",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4f095e7bd782072d03fe2cab526d160c7910709dd28a1d0b86e7319924f2f7f7"
     },
     {
       "title": "Words containing \u0022the\u0022 substring",
