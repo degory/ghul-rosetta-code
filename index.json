@@ -15169,6 +15169,37 @@
       ]
     },
     {
+      "slug": "percolation-site-percolation",
+      "title": "Percolation/Site percolation",
+      "url": "https://rosettacode.org/wiki/Percolation/Site_percolation",
+      "tags": [
+        "simulation",
+        "graphics",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/percolation-site-percolation/sites.png.expected"
+      ],
+      "lines": 100,
+      "parts": [
+        {
+          "id": "percolation-site-percolation",
+          "heading": null,
+          "source": "tasks/percolation-site-percolation/percolation-site-percolation.ghul",
+          "output": "tasks/percolation-site-percolation/run.expected",
+          "lines": 100,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/percolation-site-percolation/sites.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
