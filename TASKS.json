@@ -50,7 +50,11 @@
     {
       "title": "A* search algorithm",
       "slug": "a-search-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "273026b7a291314fb5c91a5a14f5781300207b1332d5b0fb910d9ffd78644836",
+      "image_hashes": {
+        "Ghul-a-search-algorithm-route.png": "916138db9aa7773713523d30a5f4c0b408921d8e"
+      }
     },
     {
       "title": "A\u002BB",
@@ -281,7 +285,8 @@
     {
       "title": "Arithmetic/Rational",
       "slug": "arithmetic-rational",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "09f5cd109bcc7513fd5393479a8da7cf4b6f160d0104d2d0d052ad5ef73bff20"
     },
     {
       "title": "Array",
@@ -820,7 +825,11 @@
     {
       "title": "Color wheel",
       "slug": "color-wheel",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f2b8f111a50e75d664d4426106dfbb3c26e4a7e5fba6769fd40667ce828804dc",
+      "image_hashes": {
+        "Ghul-color-wheel-wheel.png": "fe37a79758c1faf688a5e9f80821be1b02d4da99"
+      }
     },
     {
       "title": "Colorful numbers",
@@ -959,7 +968,11 @@
     {
       "title": "Convex hull",
       "slug": "convex-hull",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0973fb59e2eda8d7c824f9df4459069fd94e4887db07ead6610db1823097f17e",
+      "image_hashes": {
+        "Ghul-convex-hull-hull.png": "8db84ad1e86ff4a51db9fe87802431f0ad53a00d"
+      }
     },
     {
       "title": "Conway\u0027s Game of Life",
@@ -1388,7 +1401,8 @@
     {
       "title": "Evolutionary algorithm",
       "slug": "evolutionary-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b83a81550af9ea48a0b52636338532f24e0515acabe05dcafdf9665b89114408"
     },
     {
       "title": "Exceptions",
@@ -1651,7 +1665,12 @@
     {
       "title": "Floyd-Steinberg dithering",
       "slug": "floyd-steinberg-dithering",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9e33a6b85da17ced3255aaa401e914dd95743b16bb519d75e0b491553bb3c580",
+      "image_hashes": {
+        "Ghul-floyd-steinberg-dithering-source.png": "a3eccdd5dfb067539e08fd01d7d8e89df9aa4809",
+        "Ghul-floyd-steinberg-dithering-dithered.png": "9224d07ce54a9cd791a319d8f960866ad54d224c"
+      }
     },
     {
       "title": "Floyd-Warshall algorithm",
@@ -1707,7 +1726,8 @@
     {
       "title": "Fractran",
       "slug": "fractran",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3e526f14709fa39a84d0f5b4c636e37391e79ab9c78803d9e91f76a10b2fe6f0"
     },
     {
       "title": "French Republican calendar",
@@ -2338,7 +2358,11 @@
     {
       "title": "K-means\u002B\u002B clustering",
       "slug": "k-means-clustering",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3eb7a789c0fbceb86d863653d7a0412f78788945e7d59f9440770d830cf81fb1",
+      "image_hashes": {
+        "Ghul-k-means-clustering-clusters.png": "7bed9f4c20ba5d40d745481575b9c8c164d739bb"
+      }
     },
     {
       "title": "Kaprekar numbers",
@@ -2388,7 +2412,11 @@
     {
       "title": "Knight\u0027s tour",
       "slug": "knight-s-tour",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "65489cf06a223cdf76e9616fe3cc9179952ce6e0c9c9513ce177acb884ee52ea",
+      "image_hashes": {
+        "Ghul-knight-s-tour-tour.png": "bcb183fee0a3af100b54d51ba2a09fbf2446e5f8"
+      }
     },
     {
       "title": "Knuth shuffle",
@@ -2750,7 +2778,11 @@
     {
       "title": "Marching squares",
       "slug": "marching-squares",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1b8a4a6011bfc57e02a2c2b355b3952bef1585f33e8c709804073566d4164c12",
+      "image_hashes": {
+        "Ghul-marching-squares-contours.png": "a793611d301558a6351361cfa1d18cbe3153a8e8"
+      }
     },
     {
       "title": "Mastermind",
@@ -3375,12 +3407,17 @@
     {
       "title": "Print itself",
       "slug": "print-itself",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a8823090fe3a107eb91356b21c9dae0812ed615b11cc2087f124039ac8064168"
     },
     {
       "title": "Problem of Apollonius",
       "slug": "problem-of-apollonius",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "23042967233eddd3e9a165367d43afefc1b7ea0c3f578e83f7903be408027136",
+      "image_hashes": {
+        "Ghul-problem-of-apollonius-apollonius.png": "33d9e234867910e965e785f09fb80cf3b2a0eb22"
+      }
     },
     {
       "title": "Program name",
@@ -3762,7 +3799,11 @@
     {
       "title": "Sierpinski pentagon",
       "slug": "sierpinski-pentagon",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1e9c55927f13234cc949899d06dcc4c4491d0bd3d33609e91202e583129ea652",
+      "image_hashes": {
+        "Ghul-sierpinski-pentagon-pentaflake.png": "80672eba631828ae91f62188ba02076f510e9b9f"
+      }
     },
     {
       "title": "Sierpinski square curve",
@@ -4255,7 +4296,8 @@
     {
       "title": "Subleq",
       "slug": "subleq",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "969618a00e3e20f229980ad653593ff4661a1ff3b98090355b0553021404b540"
     },
     {
       "title": "Substitution cipher",
@@ -4296,7 +4338,8 @@
     {
       "title": "Sum and product puzzle",
       "slug": "sum-and-product-puzzle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "37f1a37bb496e59130cc967275eb7fe240b25a03b37b3a9fb5a8727127387b5f"
     },
     {
       "title": "Sum data type",
@@ -4363,7 +4406,11 @@
     {
       "title": "Sutherland-Hodgman polygon clipping",
       "slug": "sutherland-hodgman-polygon-clipping",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5c615d77f6abc1b752b98cdbc8c302640536a9a7cc1d3103f1495a1358dd45c6",
+      "image_hashes": {
+        "Ghul-sutherland-hodgman-polygon-clipping-clipped.png": "537c378d102e1b91aa04bfdc44708cfc154a0d40"
+      }
     },
     {
       "title": "Sylvester\u0027s sequence",
@@ -4647,12 +4694,14 @@
     {
       "title": "Universal Turing machine",
       "slug": "universal-turing-machine",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "143d5e4d8626f880c39ba9ef0d63da5e4aab20dd9410181157bc8b971f8611ba"
     },
     {
       "title": "Uno (card game)",
       "slug": "uno-card-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e7223ee761893104430076ba8c4a333b710f35374ca89defbce7913dc8f501db"
     },
     {
       "title": "Unprimeable numbers",
