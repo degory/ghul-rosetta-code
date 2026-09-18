@@ -1,0 +1,70 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+use Eisenstein = (a: int, b: int)
+
+is_prime(n: int) -> bool =>
+    n >= 2 /\ ((2..n) |> filter(d => d * d <= n) |> all(d => n % d != 0))
+
+norm(e: Eisenstein) -> int => e.a * e.a - e.a * e.b + e.b * e.b
+
+is_eisenstein_prime(e: Eisenstein) -> bool =>
+    if e.a == 0 \/ e.b == 0 \/ e.a == e.b then
+        let p = Math.max(Math.abs(e.a), Math.abs(e.b)) in
+        is_prime(p) /\ p % 3 == 2
+    else
+        is_prime(norm(e))
+    fi
+
+real(e: Eisenstein) -> double => cast double(e.a) - cast double(e.b) / 2.0D
+
+imaginary(e: Eisenstein) -> double =>
+    cast double(e.b) * Math.sqrt(3.0D) / 2.0D
+
+show(e: Eisenstein) -> string =>
+    let im = imaginary(e) in
+    let sign = if im < 0.0D then "-" else "+" fi in
+    "{real(e),8:F4} {sign} {Math.abs(im):F4}i"
+
+let reach = 60
+
+let primes =
+    (-reach::reach)
+        |> flat_map(a => (-reach::reach) |> map(b => (a = a, b = b)))
+        |> filter(is_eisenstein_prime)
+        |> sort((x, y) =>
+            if norm(x) != norm(y) then norm(x) - norm(y)
+            elif x.b != y.b then x.b - y.b
+            else x.a - y.a
+            fi)
+        |> collect_list()
+
+write_line("the first 100 Eisenstein primes, nearest 0 first:")
+
+for row in 0..25 do
+    let four = primes |> skip(row * 4) |> take(4)
+
+    write_line(four |> map(show) |> join("  "))
+od
+
+let plotted = primes |> take(2000) |> collect_list()
+let largest = plotted[plotted.count - 1]
+
+write_line("")
+write_line("plotted the first 2000, out to norm {norm(largest)}")
+
+let image = IMAGE(400, 400)
+let extent = Math.sqrt(cast double(norm(largest))) * 1.05D
+
+image.view(-extent, -extent, extent, extent)
+image.clear(10ub, 12ub, 25ub)
+image.colour(120ub, 200ub, 255ub)
+
+for e in plotted do
+    image.dot(real(e), imaginary(e), 1.6D)
+od
+
+image.write("eisenstein.png")
+
+image.show("eisenstein.png")

@@ -1,0 +1,104 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+use Cell = (x: int, y: int, z: int)
+use Flat = (x: double, y: double)
+
+let level = 2
+let size = 9
+
+solid(c: Cell) -> bool is
+    if c.x < 0 \/ c.y < 0 \/ c.z < 0 \/
+        c.x >= size \/ c.y >= size \/ c.z >= size
+    then
+        return false
+    fi
+
+    let x mut = c.x, y mut = c.y, z mut = c.z
+
+    for _ in 0..level do
+        let middles =
+            [x % 3, y % 3, z % 3] |> filter(d => d == 1) |> count()
+
+        if middles >= 2 then
+            return false
+        fi
+
+        x = x / 3
+        y = y / 3
+        z = z / 3
+    od
+
+    true
+si
+
+project(x: double, y: double, z: double) -> Flat =>
+    (
+        x = (x - z) * Math.cos(Math.pi / 6.0D),
+        y = y - (x + z) * Math.sin(Math.pi / 6.0D))
+
+let faces = [
+    (
+        normal = (x = 1, y = 0, z = 0),
+        corners = [(1, 0, 0), (1, 1, 0), (1, 1, 1), (1, 0, 1)],
+        light = 0.7D),
+    (
+        normal = (x = 0, y = 1, z = 0),
+        corners = [(0, 1, 0), (1, 1, 0), (1, 1, 1), (0, 1, 1)],
+        light = 1.0D),
+    (
+        normal = (x = 0, y = 0, z = 1),
+        corners = [(0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1)],
+        light = 0.5D)
+]
+
+let cells =
+    (0..size)
+        |> flat_map(x =>
+            (0..size) |> flat_map(y =>
+                (0..size) |> map(z => (x = x, y = y, z = z))))
+        |> filter(solid)
+        |> sort((a, b) => (a.x + a.y + a.z) - (b.x + b.y + b.z))
+        |> collect_list()
+
+let image = IMAGE(420, 450)
+let reach = cast double(size) * 1.05D
+
+image.view(-reach, -1.07D * reach, reach, 1.07D * reach)
+image.clear(250ub, 248ub, 240ub)
+image.stroke(0.8D)
+
+for c in cells do
+    for face in faces do
+        let n = face.normal
+        let beside = (x = c.x + n.x, y = c.y + n.y, z = c.z + n.z)
+
+        if !solid(beside) then
+            let outline =
+                face.corners
+                    |> map(((dx, dy, dz)) => project(
+                        cast double(c.x + dx),
+                        cast double(c.y + dy),
+                        cast double(c.z + dz)))
+                    |> collect_list()
+
+            image.colour(
+                cast ubyte(200.0D * face.light),
+                cast ubyte(90.0D * face.light),
+                cast ubyte(40.0D * face.light))
+            image.fill(outline)
+
+            image.colour(30ub, 20ub, 20ub)
+            image.line(outline |> cat([outline[0]]) |> collect_list())
+        fi
+    od
+od
+
+let total = size * size * size
+
+write_line("a level {level} sponge: {cells.count} of {total} cubes")
+
+image.write("sponge.png")
+
+image.show("sponge.png")

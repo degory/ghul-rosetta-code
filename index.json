@@ -1527,6 +1527,36 @@
       ]
     },
     {
+      "slug": "b-spline",
+      "title": "B-spline",
+      "url": "https://rosettacode.org/wiki/B-spline",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/b-spline/b-spline.png.expected"
+      ],
+      "lines": 74,
+      "parts": [
+        {
+          "id": "b-spline",
+          "heading": null,
+          "source": "tasks/b-spline/b-spline.ghul",
+          "output": "tasks/b-spline/run.expected",
+          "lines": 74,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/b-spline/b-spline.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "babbage-problem",
       "title": "Babbage problem",
       "url": "https://rosettacode.org/wiki/Babbage_problem",
@@ -1548,6 +1578,36 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "babylonian-spiral",
+      "title": "Babylonian spiral",
+      "url": "https://rosettacode.org/wiki/Babylonian_spiral",
+      "tags": [
+        "maths",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/babylonian-spiral/spiral.png.expected"
+      ],
+      "lines": 102,
+      "parts": [
+        {
+          "id": "babylonian-spiral",
+          "heading": null,
+          "source": "tasks/babylonian-spiral/babylonian-spiral.ghul",
+          "output": "tasks/babylonian-spiral/run.expected",
+          "lines": 102,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/babylonian-spiral/spiral.png.expected"
+          ]
         }
       ]
     },
@@ -3215,6 +3275,36 @@
       ]
     },
     {
+      "slug": "cistercian-numerals",
+      "title": "Cistercian numerals",
+      "url": "https://rosettacode.org/wiki/Cistercian_numerals",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/cistercian-numerals/cistercian.png.expected"
+      ],
+      "lines": 71,
+      "parts": [
+        {
+          "id": "cistercian-numerals",
+          "heading": null,
+          "source": "tasks/cistercian-numerals/cistercian-numerals.ghul",
+          "output": "tasks/cistercian-numerals/run.expected",
+          "lines": 71,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/cistercian-numerals/cistercian.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "classes",
       "title": "Classes",
       "url": "https://rosettacode.org/wiki/Classes",
@@ -4340,6 +4430,32 @@
       ]
     },
     {
+      "slug": "deal-cards-for-freecell",
+      "title": "Deal cards for FreeCell",
+      "url": "https://rosettacode.org/wiki/Deal_cards_for_FreeCell",
+      "tags": [
+        "game",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "deal-cards-for-freecell",
+          "heading": null,
+          "source": "tasks/deal-cards-for-freecell/deal-cards-for-freecell.ghul",
+          "output": "tasks/deal-cards-for-freecell/run.expected",
+          "lines": 46,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "death-star",
       "title": "Death Star",
       "url": "https://rosettacode.org/wiki/Death_Star",
@@ -5056,6 +5172,36 @@
       ]
     },
     {
+      "slug": "draw-a-cuboid",
+      "title": "Draw a cuboid",
+      "url": "https://rosettacode.org/wiki/Draw_a_cuboid",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/draw-a-cuboid/cuboid.png.expected"
+      ],
+      "lines": 64,
+      "parts": [
+        {
+          "id": "draw-a-cuboid",
+          "heading": null,
+          "source": "tasks/draw-a-cuboid/draw-a-cuboid.ghul",
+          "output": "tasks/draw-a-cuboid/run.expected",
+          "lines": 64,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/draw-a-cuboid/cuboid.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "draw-a-rotating-cube",
       "title": "Draw a rotating cube",
       "url": "https://rosettacode.org/wiki/Draw_a_rotating_cube",
@@ -5242,6 +5388,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "eisenstein-primes",
+      "title": "Eisenstein primes",
+      "url": "https://rosettacode.org/wiki/Eisenstein_primes",
+      "tags": [
+        "primes",
+        "maths",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/eisenstein-primes/eisenstein.png.expected"
+      ],
+      "lines": 70,
+      "parts": [
+        {
+          "id": "eisenstein-primes",
+          "heading": null,
+          "source": "tasks/eisenstein-primes/eisenstein-primes.ghul",
+          "output": "tasks/eisenstein-primes/run.expected",
+          "lines": 70,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/eisenstein-primes/eisenstein.png.expected"
+          ]
         }
       ]
     },
@@ -6303,6 +6480,33 @@
           "source": "tasks/farey-sequence/farey-sequence.ghul",
           "output": "tasks/farey-sequence/run.expected",
           "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "fast-fourier-transform",
+      "title": "Fast Fourier transform",
+      "url": "https://rosettacode.org/wiki/Fast_Fourier_transform",
+      "tags": [
+        "maths",
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 49,
+      "parts": [
+        {
+          "id": "fast-fourier-transform",
+          "heading": null,
+          "source": "tasks/fast-fourier-transform/fast-fourier-transform.ghul",
+          "output": "tasks/fast-fourier-transform/run.expected",
+          "lines": 49,
           "playground": true,
           "input": false,
           "images": []
@@ -7988,6 +8192,35 @@
       ]
     },
     {
+      "slug": "greyscale-bars-display",
+      "title": "Greyscale bars/Display",
+      "url": "https://rosettacode.org/wiki/Greyscale_bars/Display",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/greyscale-bars-display/bars.png.expected"
+      ],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "greyscale-bars-display",
+          "heading": null,
+          "source": "tasks/greyscale-bars-display/greyscale-bars-display.ghul",
+          "output": "tasks/greyscale-bars-display/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/greyscale-bars-display/bars.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "guess-the-number",
       "title": "Guess the number",
       "url": "https://rosettacode.org/wiki/Guess_the_number",
@@ -8154,6 +8387,36 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "harriss-spiral",
+      "title": "Harriss Spiral",
+      "url": "https://rosettacode.org/wiki/Harriss_Spiral",
+      "tags": [
+        "graphics",
+        "fractal"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/harriss-spiral/harriss.png.expected"
+      ],
+      "lines": 101,
+      "parts": [
+        {
+          "id": "harriss-spiral",
+          "heading": null,
+          "source": "tasks/harriss-spiral/harriss-spiral.ghul",
+          "output": "tasks/harriss-spiral/run.expected",
+          "lines": 101,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/harriss-spiral/harriss.png.expected"
+          ]
         }
       ]
     },
@@ -15320,6 +15583,36 @@
       ]
     },
     {
+      "slug": "rubik-s-cube",
+      "title": "Rubik's cube",
+      "url": "https://rosettacode.org/wiki/Rubik's_cube",
+      "tags": [
+        "graphics",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/rubik-s-cube/rubik.png.expected"
+      ],
+      "lines": 99,
+      "parts": [
+        {
+          "id": "rubik-s-cube",
+          "heading": null,
+          "source": "tasks/rubik-s-cube/rubik-s-cube.ghul",
+          "output": "tasks/rubik-s-cube/run.expected",
+          "lines": 99,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/rubik-s-cube/rubik.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "run-length-encoding",
       "title": "Run-length encoding",
       "url": "https://rosettacode.org/wiki/Run-length_encoding",
@@ -15964,6 +16257,36 @@
           "input": false,
           "images": [
             "tasks/sierpinski-pentagon/pentaflake.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sierpinski-sponge",
+      "title": "Sierpinski sponge",
+      "url": "https://rosettacode.org/wiki/Sierpinski_sponge",
+      "tags": [
+        "graphics",
+        "fractal"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/sierpinski-sponge/sponge.png.expected"
+      ],
+      "lines": 104,
+      "parts": [
+        {
+          "id": "sierpinski-sponge",
+          "heading": null,
+          "source": "tasks/sierpinski-sponge/sierpinski-sponge.ghul",
+          "output": "tasks/sierpinski-sponge/run.expected",
+          "lines": 104,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/sierpinski-sponge/sponge.png.expected"
           ]
         }
       ]
@@ -18236,6 +18559,32 @@
           "source": "tasks/sudan-function/sudan-function.ghul",
           "output": "tasks/sudan-function/run.expected",
           "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sudoku",
+      "title": "Sudoku",
+      "url": "https://rosettacode.org/wiki/Sudoku",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "sudoku",
+          "heading": null,
+          "source": "tasks/sudoku/sudoku.ghul",
+          "output": "tasks/sudoku/run.expected",
+          "lines": 91,
           "playground": true,
           "input": false,
           "images": []
