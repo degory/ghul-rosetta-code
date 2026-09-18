@@ -121,6 +121,23 @@ dotnet ghul-test --use-dotnet-build tasks
 The tests assert the program's output only. There are deliberately no IL snapshots: a test folder
 with no `il.expected` has its IL ignored.
 
+## pictures
+
+A solution that draws writes a PNG with `ghul.raster` and names it on standard output, which
+`Raster.IMAGE.show` does as `<<image plot.png>>`. Its test asserts the file byte for byte against
+the `plot.png.expected` beside it, the markup turns that line into a `[[File:Ghul-<slug>-plot.png]]`
+reference, and `rosetta publish` uploads the file under that name before editing the page. The
+title carries the slug because the wiki's File: namespace is shared with every other language
+there.
+
+An animation is one file too - `Raster.ANIMATION` writes its frames as an animated PNG, shown by
+the same line and asserted by the same kind of expectation - but it goes on the wiki as a GIF.
+MediaWiki keeps every frame of a GIF in the scaled thumbnail an entry shows, while a scaled
+animated PNG is its first frame alone. So the markup names `plot.gif` wherever the PNG holds more
+than one frame, and publishing rewrites the frames as a GIF and uploads that. Only the PNG is kept
+here: it is what the test asserts, and what `index.json` and ghul.dev refer to.
+`tasks/animate-a-pendulum` is one.
+
 ## writing solutions for the wiki
 
 The wiki page is the audience, so the solution has to read well standing on its own, next to

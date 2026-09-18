@@ -1,0 +1,77 @@
+use Raster.ANIMATION
+use Raster.IMAGE
+use System.Math
+
+use STATE = (angle: double, rate: double)
+
+let gravity = 9.81D
+let length = 1.0D
+let swing = 1.0D
+
+let width = 240
+let height = 180
+
+let frames = 40
+let substeps = 25
+
+advance(state: STATE, dt: double) -> STATE is
+    let rate = state.rate - dt * gravity / length * Math.sin(state.angle)
+
+    (angle = state.angle + dt * rate, rate = rate)
+si
+
+quarter_period(dt: double) -> double is
+    let state mut = (angle = swing, rate = 0.0D)
+    let elapsed mut = 0.0D
+
+    while state.angle > 0.0D do
+        state = advance(state, dt)
+        elapsed = elapsed + dt
+    od
+
+    elapsed
+si
+
+draw(image: IMAGE, angle: double) is
+    let x = length * Math.sin(angle)
+    let y = -length * Math.cos(angle)
+
+    image.clear()
+
+    image.colour(140ub, 140ub, 150ub)
+    image.stroke(2.0D)
+    image.line(0.0D, 0.0D, x, y)
+
+    image.colour(60ub, 60ub, 70ub)
+    image.disc(0.0D, 0.0D, 0.04D)
+
+    image.colour(200ub, 50ub, 40ub)
+    image.disc(x, y, 0.1D)
+si
+
+let period = 4.0D * quarter_period(0.0002D)
+
+let tick = period / cast double(frames * substeps)
+let delay = cast int(Math.round(1000.0D * period / cast double(frames)))
+
+let image = IMAGE(width, height)
+
+image.view(-1.05D, -1.15D, 1.05D, 0.25D)
+
+let animation = ANIMATION(width, height)
+
+let state mut = (angle = swing, rate = 0.0D)
+
+for _ in 0..frames do
+    draw(image, state.angle)
+
+    animation.add(image, delay)
+
+    for _ in 0..substeps do
+        state = advance(state, tick)
+    od
+od
+
+animation.write("pendulum.png")
+
+animation.show("pendulum.png")

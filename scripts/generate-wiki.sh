@@ -193,7 +193,7 @@ emit_body() {
 
     if [ -n "$OUTPUT" ] ; then
         echo "{{out}}"
-        emit_output "$SLUG" "$OUTPUT"
+        emit_output "$SLUG" "$DIR" "$OUTPUT"
     fi
 }
 
@@ -242,7 +242,8 @@ task_has_notes() {
 # as one block, exactly as before.
 emit_output() {
     local SLUG=$1
-    local OUTPUT=$2
+    local DIR=$2
+    local OUTPUT=$3
 
     local OPEN=no
 
@@ -257,7 +258,7 @@ emit_output() {
                     OPEN=no
                 fi
 
-                echo "[[File:$(image_title "$SLUG" "$NAME")|thumb|none]]"
+                echo "[[File:$(image_title "$SLUG" "$(wiki_image "$DIR/$NAME" "$NAME")")|thumb|none]]"
                 ;;
             *)
                 if [ "$OPEN" = no ] ; then
@@ -283,6 +284,36 @@ image_title() {
     local NAME=$2
 
     echo "Ghul-$SLUG-$NAME"
+}
+
+# Whether a PNG holds more than one frame. An animated PNG carries an acTL
+# chunk, which the format requires ahead of the first IDAT, so the first of
+# the two chunk names to appear says which kind of file this is. Nothing is
+# decoded: the chunks between the header and the image data are a handful of
+# bytes of known shape, and a four-byte name that is not a chunk name cannot
+# turn up among them.
+animated_png() {
+    local FILE=$1
+
+    [ -f "$FILE" ] || return 1
+
+    [ "$(LC_ALL=C grep -ao -e acTL -e IDAT "$FILE" | head -1)" = acTL ]
+}
+
+# What an image is called on the wiki, which is what the solution called it
+# except when it is animated. MediaWiki keeps every frame of a GIF in the
+# scaled thumbnail an entry shows and shows only the first frame of an
+# animated PNG, so an animation goes up as the GIF `rosetta publish` converts
+# it to, under the name used here.
+wiki_image() {
+    local FILE=$1
+    local NAME=$2
+
+    if animated_png "$FILE" ; then
+        echo "${NAME%.png}.gif"
+    else
+        echo "$NAME"
+    fi
 }
 
 emit() {
