@@ -15374,6 +15374,38 @@
       ]
     },
     {
+      "slug": "sierpinski-pentagon",
+      "title": "Sierpinski pentagon",
+      "url": "https://rosettacode.org/wiki/Sierpinski_pentagon",
+      "tags": [
+        "fractal",
+        "graphics",
+        "generators",
+        "recursion"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/sierpinski-pentagon/pentaflake.png.expected"
+      ],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "sierpinski-pentagon",
+          "heading": null,
+          "source": "tasks/sierpinski-pentagon/sierpinski-pentagon.ghul",
+          "output": "tasks/sierpinski-pentagon/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/sierpinski-pentagon/pentaflake.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "sierpinski-square-curve",
       "title": "Sierpinski square curve",
       "url": "https://rosettacode.org/wiki/Sierpinski_square_curve",
