@@ -14806,6 +14806,39 @@
       ]
     },
     {
+      "slug": "particle-swarm-optimization",
+      "title": "Particle swarm optimization",
+      "url": "https://rosettacode.org/wiki/Particle_swarm_optimization",
+      "tags": [
+        "algorithms",
+        "maths",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/particle-swarm-optimization/mccormick.png.expected",
+        "tasks/particle-swarm-optimization/michalewicz.png.expected"
+      ],
+      "lines": 164,
+      "parts": [
+        {
+          "id": "particle-swarm-optimization",
+          "heading": null,
+          "source": "tasks/particle-swarm-optimization/particle-swarm-optimization.ghul",
+          "output": "tasks/particle-swarm-optimization/run.expected",
+          "lines": 164,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/particle-swarm-optimization/mccormick.png.expected",
+            "tasks/particle-swarm-optimization/michalewicz.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "pascals-triangle",
       "title": "Pascal's triangle",
       "url": "https://rosettacode.org/wiki/Pascal's_triangle",
