@@ -2162,6 +2162,37 @@
       ]
     },
     {
+      "slug": "birthday-problem",
+      "title": "Birthday problem",
+      "url": "https://rosettacode.org/wiki/Birthday_problem",
+      "tags": [
+        "maths",
+        "simulation",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/birthday-problem/birthdays.png.expected"
+      ],
+      "lines": 144,
+      "parts": [
+        {
+          "id": "birthday-problem",
+          "heading": null,
+          "source": "tasks/birthday-problem/birthday-problem.ghul",
+          "output": "tasks/birthday-problem/run.expected",
+          "lines": 144,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/birthday-problem/birthdays.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "bitmap",
       "title": "Bitmap",
       "url": "https://rosettacode.org/wiki/Bitmap",
