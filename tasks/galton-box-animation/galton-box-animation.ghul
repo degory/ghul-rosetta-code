@@ -1,0 +1,106 @@
+use default
+use Raster.ANIMATION
+use Raster.IMAGE
+
+class BALL is
+    row: int public
+    slot: int public
+
+    init() is
+        row = 0
+        slot = 0
+    si
+si
+
+let rows = 8
+let balls = 60
+let width = 240
+let height = 180
+
+let pin_spacing = 20.0D
+let top = 20.0D
+let ball_size = 4.0D
+
+let random = System.Random(12)
+
+let bins = LIST[int](System.Linq.Enumerable.repeat(0, rows + 1))
+let falling = LIST[BALL]()
+
+x_of(row: int, slot: int) -> double =>
+    let offset = cast double(slot) - cast double(row) / 2.0D in
+    cast double(width) / 2.0D + offset * pin_spacing
+
+y_of(row: int) -> double => top + cast double(row) * 11.0D
+
+draw(image: IMAGE) is
+    image.clear(245ub, 242ub, 232ub)
+
+    image.colour(90ub, 90ub, 100ub)
+
+    for row in 0..rows do
+        for pin in 0::row do
+            image.dot(x_of(row, pin), y_of(row), 2.0D)
+        od
+    od
+
+    let floor = cast double(height - 4)
+
+    image.colour(40ub, 90ub, 160ub)
+
+    for (slot, count) in bins |> index() do
+        let x = x_of(rows, slot)
+
+        for i in 0..count do
+            let y = floor - ball_size * (cast double(i) + 0.5D)
+
+            image.dot(x, y, ball_size / 2.0D)
+        od
+    od
+
+    image.colour(200ub, 60ub, 40ub)
+
+    for ball in falling do
+        let x = x_of(ball.row, ball.slot)
+
+        image.dot(x, y_of(ball.row) - 5.0D, ball_size / 2.0D)
+    od
+si
+
+let image = IMAGE(width, height)
+let animation = ANIMATION(width, height)
+let released mut = 0
+let tick mut = 0
+
+while released < balls \/ falling.count > 0 do
+    for ball in falling |> filter(b => b.row == rows) |> collect_list() do
+        bins[ball.slot] = bins[ball.slot] + 1
+        falling.remove(ball)
+    od
+
+    for ball in falling do
+        ball.row = ball.row + 1
+
+        if random.next(2) == 1 then
+            ball.slot = ball.slot + 1
+        fi
+    od
+
+    if released < balls /\ tick % 2 == 0 then
+        falling.add(BALL())
+        released = released + 1
+    fi
+
+    draw(image)
+    animation.add(image, 60)
+
+    tick = tick + 1
+od
+
+animation.add(image, 2000)
+
+write_line("{balls} balls through {rows} rows of pins")
+write_line("bins: {bins |> join(" ")}")
+
+animation.write("galton.png")
+
+animation.show("galton.png")

@@ -7823,6 +7823,36 @@
       ]
     },
     {
+      "slug": "galton-box-animation",
+      "title": "Galton box animation",
+      "url": "https://rosettacode.org/wiki/Galton_box_animation",
+      "tags": [
+        "simulation",
+        "graphics"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/galton-box-animation/galton.png.expected"
+      ],
+      "lines": 106,
+      "parts": [
+        {
+          "id": "galton-box-animation",
+          "heading": null,
+          "source": "tasks/galton-box-animation/galton-box-animation.ghul",
+          "output": "tasks/galton-box-animation/run.expected",
+          "lines": 106,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/galton-box-animation/galton.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "gamma-function",
       "title": "Gamma function",
       "url": "https://rosettacode.org/wiki/Gamma_function",
