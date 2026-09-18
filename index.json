@@ -1794,6 +1794,37 @@
       ]
     },
     {
+      "slug": "bezier-curves-intersections",
+      "title": "Bézier curves/Intersections",
+      "url": "https://rosettacode.org/wiki/Bézier_curves/Intersections",
+      "tags": [
+        "maths",
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/bezier-curves-intersections/intersections.png.expected"
+      ],
+      "lines": 118,
+      "parts": [
+        {
+          "id": "bezier-curves-intersections",
+          "heading": null,
+          "source": "tasks/bezier-curves-intersections/bezier-curves-intersections.ghul",
+          "output": "tasks/bezier-curves-intersections/run.expected",
+          "lines": 118,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/bezier-curves-intersections/intersections.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "bifid-cipher",
       "title": "Bifid cipher",
       "url": "https://rosettacode.org/wiki/Bifid_cipher",
@@ -2974,6 +3005,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "catenoid-surface",
+      "title": "Catenoid surface",
+      "url": "https://rosettacode.org/wiki/Catenoid_surface",
+      "tags": [
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/catenoid-surface/catenoid.png.expected"
+      ],
+      "lines": 84,
+      "parts": [
+        {
+          "id": "catenoid-surface",
+          "heading": null,
+          "source": "tasks/catenoid-surface/catenoid-surface.ghul",
+          "output": "tasks/catenoid-surface/run.expected",
+          "lines": 84,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/catenoid-surface/catenoid.png.expected"
+          ]
         }
       ]
     },
@@ -5257,6 +5319,35 @@
           "input": false,
           "images": [
             "tasks/draw-a-sphere/sphere.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "draw-the-empire-state-building",
+      "title": "Draw the Empire State Building",
+      "url": "https://rosettacode.org/wiki/Draw_the_Empire_State_Building",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/draw-the-empire-state-building/empire-state.png.expected"
+      ],
+      "lines": 90,
+      "parts": [
+        {
+          "id": "draw-the-empire-state-building",
+          "heading": null,
+          "source": "tasks/draw-the-empire-state-building/draw-the-empire-state-building.ghul",
+          "output": "tasks/draw-the-empire-state-building/run.expected",
+          "lines": 90,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/draw-the-empire-state-building/empire-state.png.expected"
           ]
         }
       ]
@@ -10116,6 +10207,37 @@
       ]
     },
     {
+      "slug": "klein-bottle",
+      "title": "Klein bottle",
+      "url": "https://rosettacode.org/wiki/Klein_bottle",
+      "tags": [
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/klein-bottle/klein.png.expected"
+      ],
+      "lines": 112,
+      "parts": [
+        {
+          "id": "klein-bottle",
+          "heading": null,
+          "source": "tasks/klein-bottle/klein-bottle.ghul",
+          "output": "tasks/klein-bottle/run.expected",
+          "lines": 112,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/klein-bottle/klein.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "knapsack-problem-0-1",
       "title": "Knapsack problem/0-1",
       "url": "https://rosettacode.org/wiki/Knapsack_problem/0-1",
@@ -12940,6 +13062,32 @@
       ]
     },
     {
+      "slug": "nonogram-solver",
+      "title": "Nonogram solver",
+      "url": "https://rosettacode.org/wiki/Nonogram_solver",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 168,
+      "parts": [
+        {
+          "id": "nonogram-solver",
+          "heading": null,
+          "source": "tasks/nonogram-solver/nonogram-solver.ghul",
+          "output": "tasks/nonogram-solver/run.expected",
+          "lines": 168,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "nth-root",
       "title": "Nth root",
       "url": "https://rosettacode.org/wiki/Nth_root",
@@ -13851,6 +13999,37 @@
           "input": false,
           "images": [
             "tasks/pentagram/pentagram.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pentomino-tiling",
+      "title": "Pentomino tiling",
+      "url": "https://rosettacode.org/wiki/Pentomino_tiling",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/pentomino-tiling/pentominoes.png.expected"
+      ],
+      "lines": 211,
+      "parts": [
+        {
+          "id": "pentomino-tiling",
+          "heading": null,
+          "source": "tasks/pentomino-tiling/pentomino-tiling.ghul",
+          "output": "tasks/pentomino-tiling/run.expected",
+          "lines": 211,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/pentomino-tiling/pentominoes.png.expected"
           ]
         }
       ]
@@ -16787,6 +16966,37 @@
       ]
     },
     {
+      "slug": "solve-a-holy-knight-s-tour",
+      "title": "Solve a Holy Knight's tour",
+      "url": "https://rosettacode.org/wiki/Solve_a_Holy_Knight's_tour",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/solve-a-holy-knight-s-tour/tour.png.expected"
+      ],
+      "lines": 121,
+      "parts": [
+        {
+          "id": "solve-a-holy-knight-s-tour",
+          "heading": null,
+          "source": "tasks/solve-a-holy-knight-s-tour/solve-a-holy-knight-s-tour.ghul",
+          "output": "tasks/solve-a-holy-knight-s-tour/run.expected",
+          "lines": 121,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/solve-a-holy-knight-s-tour/tour.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "solve-a-rubik-s-cube",
       "title": "Solve a Rubik's cube",
       "url": "https://rosettacode.org/wiki/Solve_a_Rubik's_cube",
@@ -19469,6 +19679,37 @@
       ]
     },
     {
+      "slug": "total-circles-area",
+      "title": "Total circles area",
+      "url": "https://rosettacode.org/wiki/Total_circles_area",
+      "tags": [
+        "maths",
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/total-circles-area/circles.png.expected"
+      ],
+      "lines": 141,
+      "parts": [
+        {
+          "id": "total-circles-area",
+          "heading": null,
+          "source": "tasks/total-circles-area/total-circles-area.ghul",
+          "output": "tasks/total-circles-area/run.expected",
+          "lines": 141,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/total-circles-area/circles.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "towers-of-hanoi",
       "title": "Towers of Hanoi",
       "url": "https://rosettacode.org/wiki/Towers_of_Hanoi",
@@ -20819,6 +21060,36 @@
       ]
     },
     {
+      "slug": "wave-function-collapse",
+      "title": "Wave function collapse",
+      "url": "https://rosettacode.org/wiki/Wave_function_collapse",
+      "tags": [
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/wave-function-collapse/tile.png.expected"
+      ],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "wave-function-collapse",
+          "heading": null,
+          "source": "tasks/wave-function-collapse/wave-function-collapse.ghul",
+          "output": "tasks/wave-function-collapse/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/wave-function-collapse/tile.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "weird-numbers",
       "title": "Weird numbers",
       "url": "https://rosettacode.org/wiki/Weird_numbers",
@@ -20923,6 +21194,32 @@
           "output": "tasks/wolstenholme-numbers/run.expected",
           "lines": 99,
           "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "word-search",
+      "title": "Word search",
+      "url": "https://rosettacode.org/wiki/Word_search",
+      "tags": [
+        "puzzles",
+        "strings"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 128,
+      "parts": [
+        {
+          "id": "word-search",
+          "heading": null,
+          "source": "tasks/word-search/word-search.ghul",
+          "output": "tasks/word-search/run.expected",
+          "lines": 128,
+          "playground": true,
           "input": false,
           "images": []
         }
