@@ -3512,6 +3512,38 @@
       ]
     },
     {
+      "slug": "color-quantization",
+      "title": "Color quantization",
+      "url": "https://rosettacode.org/wiki/Color_quantization",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/color-quantization/picture.png.expected",
+        "tasks/color-quantization/quantized.png.expected"
+      ],
+      "lines": 209,
+      "parts": [
+        {
+          "id": "color-quantization",
+          "heading": null,
+          "source": "tasks/color-quantization/color-quantization.ghul",
+          "output": "tasks/color-quantization/run.expected",
+          "lines": 209,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/color-quantization/picture.png.expected",
+            "tasks/color-quantization/quantized.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "color-wheel",
       "title": "Color wheel",
       "url": "https://rosettacode.org/wiki/Color_wheel",

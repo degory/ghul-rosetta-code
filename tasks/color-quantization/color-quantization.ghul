@@ -1,0 +1,209 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+use Colour = (red: int, green: int, blue: int)
+
+pt(x: double, y: double) -> (x: double, y: double) => (x = x, y = y)
+
+scene() -> IMAGE is
+    let image = IMAGE(160, 120)
+
+    for y in 0..80 do
+        let t = cast double(y) / 80.0D
+
+        image.colour(
+            cast ubyte(40.0D + 200.0D * t),
+            cast ubyte(70.0D + 100.0D * t),
+            cast ubyte(160.0D - 60.0D * t))
+        image.fill_rectangle(
+            0.0D, cast double(y), 160.0D, cast double(y + 1))
+    od
+
+    image.colour(255ub, 220ub, 60ub)
+    image.disc(112.0D, 42.0D, 15.0D)
+
+    image.colour(90ub, 60ub, 120ub)
+    image.fill([pt(0.0D, 80.0D), pt(45.0D, 30.0D), pt(95.0D, 80.0D)])
+
+    image.colour(60ub, 110ub, 70ub)
+    image.fill([pt(55.0D, 80.0D), pt(105.0D, 48.0D), pt(160.0D, 80.0D)])
+
+    image.colour(70ub, 150ub, 60ub)
+    image.fill_rectangle(0.0D, 80.0D, 160.0D, 120.0D)
+
+    image.colour(200ub, 35ub, 40ub)
+    image.fill_rectangle(22.0D, 88.0D, 52.0D, 110.0D)
+
+    image.colour(120ub, 25ub, 30ub)
+    image.fill([pt(18.0D, 88.0D), pt(37.0D, 75.0D), pt(56.0D, 88.0D)])
+
+    image.colour(250ub, 245ub, 235ub)
+    image.fill_rectangle(33.0D, 97.0D, 41.0D, 110.0D)
+
+    image
+si
+
+hue(h: double) -> Colour =>
+    let part = (h * 6.0D) - Math.floor(h * 6.0D) in
+    let sector = cast int(h * 6.0D) % 6 in
+    let up = cast int(255.0D * part) in
+    let down = cast int(255.0D * (1.0D - part)) in
+    case sector
+    when 0 then (255, up, 0)
+    when 1 then (down, 255, 0)
+    when 2 then (0, 255, up)
+    when 3 then (0, down, 255)
+    when 4 then (up, 0, 255)
+    else (255, 0, down)
+    esac
+
+put(image: IMAGE, x: int, y: int, c: Colour) is
+    image.set_pixel(
+        x, y, cast ubyte(c.red), cast ubyte(c.green), cast ubyte(c.blue))
+si
+
+of(p: (red: ubyte, green: ubyte, blue: ubyte)) -> Colour =>
+    (
+        red = cast int(p.red),
+        green = cast int(p.green),
+        blue = cast int(p.blue))
+
+picture() -> IMAGE is
+    let image = scene()
+
+    for x in 0..image.width do
+        let c = hue(cast double(x) / cast double(image.width))
+
+        for y in 0..8 do
+            put(image, x, y, c)
+        od
+    od
+
+    image
+si
+
+use Weighted = (colour: Colour, count: int)
+
+channel(c: Colour, axis: int) -> int =>
+    case axis when 0 then c.red when 1 then c.green else c.blue esac
+
+spread(box: List[Weighted], axis: int) -> int =>
+    let values =
+        box |> map(w => channel(w.colour, axis)) |> collect_list() in
+    (values |> reduce(0, int.max)) - (values |> reduce(255, int.min))
+
+widest(box: List[Weighted]) -> int =>
+    (0..3) |> reduce(0, (best, axis) =>
+        if spread(box, axis) > spread(box, best) then axis else best fi)
+
+score(box: List[Weighted]) -> int => spread(box, widest(box))
+
+split(box: List[Weighted]) -> (List[Weighted], List[Weighted]) is
+    let axis = widest(box)
+    let sorted =
+        box
+            |> sort((a, b) =>
+                channel(a.colour, axis) - channel(b.colour, axis))
+            |> collect_list()
+
+    let total = sorted |> map(w => w.count) |> reduce(0, (a, b) => a + b)
+    let cut mut = 1
+    let seen mut = sorted[0].count
+
+    while cut < sorted.count - 1 /\ seen < total / 2 do
+        seen = seen + sorted[cut].count
+        cut = cut + 1
+    od
+
+    (
+        sorted |> take(cut) |> collect_list(),
+        sorted |> skip(cut) |> collect_list())
+si
+
+average(box: List[Weighted]) -> Colour is
+    let n = box |> map(w => w.count) |> reduce(0, (a, b) => a + b)
+
+    weighted(axis: int) -> int =>
+        (box |> map(w => channel(w.colour, axis) * w.count)
+            |> reduce(0, (a, b) => a + b)) / n
+
+    (red = weighted(0), green = weighted(1), blue = weighted(2))
+si
+
+median_cut(colours: List[Weighted], count: int) -> List[Colour] is
+    let boxes = LIST[List[Weighted]]([colours])
+
+    while boxes.count < count do
+        let largest =
+            (0..boxes.count) |> reduce(0, (best, i) =>
+                if score(boxes[i]) > score(boxes[best]) then i else best fi)
+
+        let (low, high) = split(boxes[largest])
+
+        boxes[largest] = low
+        boxes.add(high)
+    od
+
+    boxes |> map(average) |> collect_list()
+si
+
+distance(a: Colour, b: Colour) -> int =>
+    let dr = a.red - b.red, dg = a.green - b.green, db = a.blue - b.blue in
+    dr * dr + dg * dg + db * db
+
+nearest(palette: List[Colour], c: Colour) -> Colour =>
+    palette |> reduce(palette[0], (best, p) =>
+        if distance(p, c) < distance(best, c) then p else best fi)
+
+picture().write("picture.png")
+
+let input = IMAGE.read("picture.png")
+
+let pixels =
+    (0..input.height)
+        |> flat_map(y => (0..input.width) |> map(x => input.pixel(x, y)))
+        |> map(of)
+        |> collect_list()
+
+let counts = MAP[Colour, int]()
+
+for c in pixels do
+    counts[c] = if counts.contains_key(c) then counts[c] + 1 else 1 fi
+od
+
+let colours =
+    counts
+        |> map(kv => (colour = kv.key, count = kv.value))
+        |> collect_list()
+
+let palette = median_cut(colours, 16)
+
+write_line("{colours.count} colours reduced to {palette.count}:")
+
+for row in 0..4 do
+    write_line(
+        palette
+            |> skip(row * 4)
+            |> take(4)
+            |> map(c => "#{c.red:X2}{c.green:X2}{c.blue:X2}")
+            |> join("  "))
+od
+
+let scale = 2
+let output = IMAGE(input.width * 2 * scale, input.height * scale)
+
+for y in 0..input.height * scale do
+    for x in 0..input.width * scale do
+        let c = pixels[(y / scale) * input.width + x / scale]
+        let q = nearest(palette, c)
+        let right = x + input.width * scale
+
+        put(output, x, y, c)
+        put(output, right, y, q)
+    od
+od
+
+output.write("quantized.png")
+
+output.show("quantized.png")
