@@ -4234,6 +4234,32 @@
       ]
     },
     {
+      "slug": "compiler-syntax-analyzer",
+      "title": "Compiler/syntax analyzer",
+      "url": "https://rosettacode.org/wiki/Compiler/syntax_analyzer",
+      "tags": [
+        "parsing",
+        "unions"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 218,
+      "parts": [
+        {
+          "id": "compiler-syntax-analyzer",
+          "heading": null,
+          "source": "tasks/compiler-syntax-analyzer/compiler-syntax-analyzer.ghul",
+          "output": "tasks/compiler-syntax-analyzer/run.expected",
+          "lines": 218,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "compiler-virtual-machine-interpreter",
       "title": "Compiler/virtual machine interpreter",
       "url": "https://rosettacode.org/wiki/Compiler/virtual_machine_interpreter",
