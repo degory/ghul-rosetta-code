@@ -7576,6 +7576,37 @@
       ]
     },
     {
+      "slug": "geocentric-model",
+      "title": "Geocentric model",
+      "url": "https://rosettacode.org/wiki/Geocentric_model",
+      "tags": [
+        "simulation",
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/geocentric-model/geocentric.png.expected"
+      ],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "geocentric-model",
+          "heading": null,
+          "source": "tasks/geocentric-model/geocentric-model.ghul",
+          "output": "tasks/geocentric-model/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/geocentric-model/geocentric.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "giuga-numbers",
       "title": "Giuga numbers",
       "url": "https://rosettacode.org/wiki/Giuga_numbers",
