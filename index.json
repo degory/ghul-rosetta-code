@@ -2843,6 +2843,32 @@
       ]
     },
     {
+      "slug": "bulls-and-cows-player",
+      "title": "Bulls and cows/Player",
+      "url": "https://rosettacode.org/wiki/Bulls_and_cows/Player",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 60,
+      "parts": [
+        {
+          "id": "bulls-and-cows-player",
+          "heading": null,
+          "source": "tasks/bulls-and-cows-player/bulls-and-cows-player.ghul",
+          "output": "tasks/bulls-and-cows-player/run.expected",
+          "lines": 60,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "burrows-wheeler-transform",
       "title": "Burrows–Wheeler transform",
       "url": "https://rosettacode.org/wiki/Burrows–Wheeler_transform",
