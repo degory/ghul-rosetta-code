@@ -448,7 +448,12 @@
     {
       "title": "Bilinear interpolation",
       "slug": "bilinear-interpolation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "45fb3ce88441e29f12084d2c160771a9b6f8f0dc34e8ed3e2254856818cd7d8b",
+      "image_hashes": {
+        "Ghul-bilinear-interpolation-scene.png": "701edb8c917ff73a349373bd3afb95a5e5a2c60a",
+        "Ghul-bilinear-interpolation-larger.png": "8d48f29d2af218a075e7944a9350d7a827f0f78c"
+      }
     },
     {
       "title": "Binary digits",
@@ -720,7 +725,11 @@
     {
       "title": "Canny edge detector",
       "slug": "canny-edge-detector",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e8352b45d2c953b81123841b5909a8293943e1a2f119d8db93071da92bf7421a",
+      "image_hashes": {
+        "Ghul-canny-edge-detector-edges.png": "7e4ec47b69caa4755ad6915c3cfe4d4ff0d6a15a"
+      }
     },
     {
       "title": "Cantor set",
@@ -895,12 +904,20 @@
     {
       "title": "Color quantization",
       "slug": "color-quantization",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "947881d74b0fd2c8778526edb441418d3356bcc4eeaf56bca7d897b5f5a6850d",
+      "image_hashes": {
+        "Ghul-color-quantization-quantized.png": "ada1b6deaf259b3bbc648e426986392801336826"
+      }
     },
     {
       "title": "Color separation",
       "slug": "color-separation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ca464811c11c7c4359397318286f82ff8068a73d24a79ee996e185e65d35814e",
+      "image_hashes": {
+        "Ghul-color-separation-separation.png": "1c216e071d323d2abdf0a06edb9614a0d21478d0"
+      }
     },
     {
       "title": "Color wheel",
@@ -1344,8 +1361,12 @@
     {
       "title": "Draw a pixel",
       "slug": "draw-a-pixel",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-gui: a 320 x 240 image with one red pixel, shown in the entry and the playground"
+      "state": "published",
+      "note": "reopened, was rejected/needs-gui: a 320 x 240 image with one red pixel, shown in the entry and the playground",
+      "published_hash": "db4485651bb0bc1968f8024ff71351c4ebe028971669b31d8afa4c0510d29861",
+      "image_hashes": {
+        "Ghul-draw-a-pixel-pixel.png": "0cb9a20de0b2f99bb76efcb04e9b0b018470aa71"
+      }
     },
     {
       "title": "Draw a rotating cube",
@@ -1940,8 +1961,12 @@
     {
       "title": "Galton box animation",
       "slug": "galton-box-animation",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-gui: an animation, drawn frame by frame as an animated PNG and published as a GIF"
+      "state": "published",
+      "note": "reopened, was rejected/needs-gui: an animation, drawn frame by frame as an animated PNG and published as a GIF",
+      "published_hash": "c30f4239d0ae9168e2acc9e45189cb003a3e5665d9a9a743fb6ac1fceca202c6",
+      "image_hashes": {
+        "Ghul-galton-box-animation-galton.gif": "7e021309202a424a84bd28bfb110a3a89f8992ee"
+      }
     },
     {
       "title": "Gamma function",
@@ -3509,7 +3534,12 @@
     {
       "title": "Percentage difference between images",
       "slug": "percentage-difference-between-images",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "00fc034057636bf39bf9933b0369e82e1839f13b7e564db037711eb8af4b1497",
+      "image_hashes": {
+        "Ghul-percentage-difference-between-images-original.png": "701edb8c917ff73a349373bd3afb95a5e5a2c60a",
+        "Ghul-percentage-difference-between-images-reduced.png": "8855a3c25be47f3297d64671a5fbf895aa6c412b"
+      }
     },
     {
       "title": "Perfect numbers",
