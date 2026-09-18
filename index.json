@@ -18510,6 +18510,33 @@
       ]
     },
     {
+      "slug": "wordle-comparison",
+      "title": "Wordle comparison",
+      "url": "https://rosettacode.org/wiki/Wordle_comparison",
+      "tags": [
+        "game",
+        "strings",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "wordle-comparison",
+          "heading": null,
+          "source": "tasks/wordle-comparison/wordle-comparison.ghul",
+          "output": "tasks/wordle-comparison/run.expected",
+          "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "words-containing-the-substring",
       "title": "Words containing \"the\" substring",
       "url": "https://rosettacode.org/wiki/Words_containing_\"the\"_substring",
