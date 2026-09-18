@@ -1,0 +1,32 @@
+one game, hold at 20 against chase the leader:
+  hold at 20 rolls 1 and loses the turn
+  chase the leader rolls 1 and loses the turn
+  hold at 20 banks 20: 20 to 0
+  chase the leader rolls 1 and loses the turn
+  hold at 20 rolls 1 and loses the turn
+  chase the leader rolls 1 and loses the turn
+  hold at 20 rolls 1 and loses the turn
+  chase the leader rolls 1 and loses the turn
+  hold at 20 rolls 1 and loses the turn
+  chase the leader rolls 1 and loses the turn
+  hold at 20 rolls 1 and loses the turn
+  chase the leader banks 20: 20 to 20
+  hold at 20 rolls 1 and loses the turn
+  chase the leader rolls 1 and loses the turn
+  hold at 20 rolls 1 and loses the turn
+  chase the leader rolls 1 and loses the turn
+  hold at 20 banks 21: 41 to 20
+  chase the leader banks 21: 41 to 41
+  hold at 20 banks 20: 61 to 41
+  chase the leader rolls 1 and loses the turn
+  hold at 20 banks 24: 85 to 41
+  chase the leader rolls 1 and loses the turn
+  hold at 20 banks 15: 100 to 41
+hold at 20 wins
+
+hold at 20 going first against chase the leader: wins 50.1%
+hold at 20 going first against four rolls a turn: wins 57.4%
+chase the leader going first against hold at 20: wins 56.8%
+chase the leader going first against four rolls a turn: wins 59.3%
+four rolls a turn going first against hold at 20: wins 49.9%
+four rolls a turn going first against chase the leader: wins 48.0%

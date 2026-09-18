@@ -12545,6 +12545,32 @@
       ]
     },
     {
+      "slug": "pig-the-dice-game-player",
+      "title": "Pig the dice game/Player",
+      "url": "https://rosettacode.org/wiki/Pig_the_dice_game/Player",
+      "tags": [
+        "game",
+        "simulation"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "pig-the-dice-game-player",
+          "heading": null,
+          "source": "tasks/pig-the-dice-game-player/pig-the-dice-game-player.ghul",
+          "output": "tasks/pig-the-dice-game-player/run.expected",
+          "lines": 91,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pisano-period",
       "title": "Pisano period",
       "url": "https://rosettacode.org/wiki/Pisano_period",
