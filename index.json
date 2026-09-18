@@ -7909,27 +7909,41 @@
       "title": "Huffman coding",
       "url": "https://rosettacode.org/wiki/Huffman_coding",
       "tags": [
+        "graphics",
         "algorithms",
         "unions",
         "pattern-matching",
-        "pipes",
-        "generators"
+        "pipes"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 87,
+      "images": [
+        "tasks/huffman-coding/02-the-tree-drawn/huffman.png.expected"
+      ],
+      "lines": 225,
       "parts": [
         {
-          "id": "huffman-coding",
-          "heading": null,
-          "source": "tasks/huffman-coding/huffman-coding.ghul",
-          "output": "tasks/huffman-coding/run.expected",
+          "id": "huffman-coding/01-the-code-table",
+          "heading": "The code table",
+          "source": "tasks/huffman-coding/01-the-code-table/01-the-code-table.ghul",
+          "output": "tasks/huffman-coding/01-the-code-table/run.expected",
           "lines": 87,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "huffman-coding/02-the-tree-drawn",
+          "heading": "The tree drawn",
+          "source": "tasks/huffman-coding/02-the-tree-drawn/02-the-tree-drawn.ghul",
+          "output": "tasks/huffman-coding/02-the-tree-drawn/run.expected",
+          "lines": 138,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/huffman-coding/02-the-tree-drawn/huffman.png.expected"
+          ]
         }
       ]
     },
