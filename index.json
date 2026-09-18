@@ -14162,6 +14162,37 @@
       ]
     },
     {
+      "slug": "percentage-difference-between-images",
+      "title": "Percentage difference between images",
+      "url": "https://rosettacode.org/wiki/Percentage_difference_between_images",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/percentage-difference-between-images/original.png.expected",
+        "tasks/percentage-difference-between-images/reduced.png.expected"
+      ],
+      "lines": 99,
+      "parts": [
+        {
+          "id": "percentage-difference-between-images",
+          "heading": null,
+          "source": "tasks/percentage-difference-between-images/percentage-difference-between-images.ghul",
+          "output": "tasks/percentage-difference-between-images/run.expected",
+          "lines": 99,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/percentage-difference-between-images/original.png.expected",
+            "tasks/percentage-difference-between-images/reduced.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
