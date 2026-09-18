@@ -4454,23 +4454,38 @@
       "url": "https://rosettacode.org/wiki/Dijkstra's_algorithm",
       "tags": [
         "algorithms",
+        "graphics",
         "pipes"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 66,
+      "images": [
+        "tasks/dijkstras-algorithm/02-the-graph-drawn/dijkstra.png.expected"
+      ],
+      "lines": 204,
       "parts": [
         {
-          "id": "dijkstras-algorithm",
-          "heading": null,
-          "source": "tasks/dijkstras-algorithm/dijkstras-algorithm.ghul",
-          "output": "tasks/dijkstras-algorithm/run.expected",
+          "id": "dijkstras-algorithm/01-the-shortest-paths",
+          "heading": "The shortest paths",
+          "source": "tasks/dijkstras-algorithm/01-the-shortest-paths/01-the-shortest-paths.ghul",
+          "output": "tasks/dijkstras-algorithm/01-the-shortest-paths/run.expected",
           "lines": 66,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "dijkstras-algorithm/02-the-graph-drawn",
+          "heading": "The graph drawn",
+          "source": "tasks/dijkstras-algorithm/02-the-graph-drawn/02-the-graph-drawn.ghul",
+          "output": "tasks/dijkstras-algorithm/02-the-graph-drawn/run.expected",
+          "lines": 138,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/dijkstras-algorithm/02-the-graph-drawn/dijkstra.png.expected"
+          ]
         }
       ]
     },
@@ -11745,7 +11760,7 @@
       "images": [
         "tasks/n-queens-problem/02-all-ninety-two-drawn/queens.png.expected"
       ],
-      "lines": 118,
+      "lines": 120,
       "parts": [
         {
           "id": "n-queens-problem/01-counting-and-one-board",
@@ -11762,7 +11777,7 @@
           "heading": "All ninety two drawn",
           "source": "tasks/n-queens-problem/02-all-ninety-two-drawn/02-all-ninety-two-drawn.ghul",
           "output": "tasks/n-queens-problem/02-all-ninety-two-drawn/run.expected",
-          "lines": 81,
+          "lines": 83,
           "playground": true,
           "input": false,
           "images": [
