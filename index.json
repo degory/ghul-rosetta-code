@@ -7988,6 +7988,35 @@
       ]
     },
     {
+      "slug": "greyscale-bars-display",
+      "title": "Greyscale bars/Display",
+      "url": "https://rosettacode.org/wiki/Greyscale_bars/Display",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/greyscale-bars-display/bars.png.expected"
+      ],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "greyscale-bars-display",
+          "heading": null,
+          "source": "tasks/greyscale-bars-display/greyscale-bars-display.ghul",
+          "output": "tasks/greyscale-bars-display/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/greyscale-bars-display/bars.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "guess-the-number",
       "title": "Guess the number",
       "url": "https://rosettacode.org/wiki/Guess_the_number",
