@@ -1,0 +1,83 @@
+use default
+use Raster.Anchor
+use Raster.IMAGE
+
+struct P(x: double, y: double) is
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    ⋅(o: P) -> double => x * o.x + y * o.y
+    normal: P => P(-y, x)
+si
+
+use Polygon = List[P]
+
+rectangle(x: double, y: double, width: double, height: double) -> Polygon =>
+    LIST([
+        P(x, y), P(x, y + height),
+        P(x + width, y + height), P(x + width, y)])
+
+edges(shape: Polygon) -> Pipe[P] =>
+    (0..shape.count) |> map(i => shape[(i + 1) % shape.count] - shape[i])
+
+shadow(shape: Polygon, axis: P) -> (low: double, high: double) =>
+    let lengths = shape |> map(p => p ⋅ axis) |> collect_list() in
+    (low = lengths |> reduce(lengths[0], System.Math.min),
+     high = lengths |> reduce(lengths[0], System.Math.max))
+
+separated(a: Polygon, b: Polygon, axis: P) -> bool =>
+    let s = shadow(a, axis), t = shadow(b, axis) in
+    s.high < t.low \/ t.high < s.low
+
+overlap(a: Polygon, b: Polygon) -> bool =>
+    let axes = edges(a) |> cat(edges(b)) |> map(e => e.normal) in
+    !(axes |> any(axis => separated(a, b, axis)))
+
+show(shape: Polygon) -> string =>
+    "[{shape |> map(p => "[{p.x}, {p.y}]") |> join(", ")}]"
+
+let polygon: Polygon = LIST([
+    P(0.0D, 0.0D), P(0.0D, 2.0D), P(1.0D, 4.0D),
+    P(2.0D, 2.0D), P(2.0D, 0.0D)
+])
+let first = rectangle(4.0D, 0.0D, 2.0D, 2.0D)
+let second = rectangle(1.0D, 0.0D, 8.0D, 2.0D)
+
+write_line("polygon = {show(polygon)}")
+write_line("rect1   = (4, 0, 2, 2) => {show(first)}")
+write_line("rect2   = (1, 0, 8, 2) => {show(second)}")
+write_line("")
+write_line("polygon and rect1 overlap? {overlap(polygon, first)}")
+write_line("polygon and rect2 overlap? {overlap(polygon, second)}")
+
+outline(image: IMAGE, shape: Polygon, dx: double) is
+    image.line(
+        shape
+            |> cat([shape[0]])
+            |> map(p => (x = p.x + dx, y = p.y))
+            |> collect_list())
+si
+
+let image = IMAGE(480, 180)
+
+image.view(-0.5D, -2.2D, 21.0D, 5.85D)
+image.clear(252ub, 250ub, 245ub)
+image.stroke(2.0D)
+
+for (i, rect) in [first, second] |> index() do
+    let dx = 11.0D * cast double(i)
+
+    image.colour(60ub, 110ub, 200ub)
+    outline(image, polygon, dx)
+
+    image.colour(200ub, 90ub, 40ub)
+    outline(image, rect, dx)
+
+    let verdict =
+        if overlap(polygon, rect) then "overlap" else "no overlap" fi
+
+    image.colour(60ub, 60ub, 60ub)
+    image.text(dx + 4.5D, -1.4D, 13.0D, verdict, Anchor.CENTRE)
+od
+
+image.write("overlap.png")
+
+image.show("overlap.png")

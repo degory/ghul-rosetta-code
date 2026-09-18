@@ -3312,6 +3312,37 @@
       ]
     },
     {
+      "slug": "check-if-a-polygon-overlaps-with-a-rectangle",
+      "title": "Check if a polygon overlaps with a rectangle",
+      "url": "https://rosettacode.org/wiki/Check_if_a_polygon_overlaps_with_a_rectangle",
+      "tags": [
+        "maths",
+        "algorithms",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/check-if-a-polygon-overlaps-with-a-rectangle/overlap.png.expected"
+      ],
+      "lines": 83,
+      "parts": [
+        {
+          "id": "check-if-a-polygon-overlaps-with-a-rectangle",
+          "heading": null,
+          "source": "tasks/check-if-a-polygon-overlaps-with-a-rectangle/check-if-a-polygon-overlaps-with-a-rectangle.ghul",
+          "output": "tasks/check-if-a-polygon-overlaps-with-a-rectangle/run.expected",
+          "lines": 83,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/check-if-a-polygon-overlaps-with-a-rectangle/overlap.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "check-machin-like-formulas",
       "title": "Check Machin-like formulas",
       "url": "https://rosettacode.org/wiki/Check_Machin-like_formulas",
