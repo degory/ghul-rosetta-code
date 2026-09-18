@@ -4310,14 +4310,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 48,
+      "lines": 42,
       "parts": [
         {
           "id": "dining-philosophers",
           "heading": null,
           "source": "tasks/dining-philosophers/dining-philosophers.ghul",
           "output": "tasks/dining-philosophers/run.expected",
-          "lines": 48,
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []

@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# The interleaving varies from run to run, so what is asserted is what the
+# task promises: everyone eats, nobody is left holding a fork, and no fork is
+# ever in two hands at once.
+
+awk '
+    /is thinking$/       { thought[$1]++;  want[$1] = "eat";  next }
+    /^.* eats with forks/ {
+        who = $1
+
+        if (want[who] != "eat") {
+            print who " ate out of turn"; bad = 1
+        }
+
+        left = $(NF - 2); right = $NF
+
+        for (fork in holder) {
+            if ((fork == left || fork == right) && holder[fork] != "") {
+                print "fork " fork " was already held by " holder[fork]; bad = 1
+            }
+        }
+
+        holder[left] = who; holder[right] = who
+        eaten[who]++; want[who] = "put down"
+        next
+    }
+    /puts the forks down$/ {
+        who = $1
+
+        if (want[who] != "put down") {
+            print who " put down forks it was not holding"; bad = 1
+        }
+
+        for (fork in holder) {
+            if (holder[fork] == who) holder[fork] = ""
+        }
+
+        released[who]++; want[who] = "eat"
+        next
+    }
+    { print "unrecognised line: " $0; bad = 1 }
+
+    END {
+        for (who in thought) {
+            if (thought[who] != 2 || eaten[who] != 2 || released[who] != 2) {
+                print who " thought " thought[who] ", ate " eaten[who] \
+                      ", put the forks down " released[who] " times"
+                bad = 1
+            }
+        }
+
+        if (length(thought) != 5) {
+            print length(thought) " philosophers came to the table"; bad = 1
+        }
+
+        for (fork in holder) {
+            if (holder[fork] != "") {
+                print holder[fork] " never let go of fork " fork; bad = 1
+            }
+        }
+
+        exit bad
+    }
+' "$1"
