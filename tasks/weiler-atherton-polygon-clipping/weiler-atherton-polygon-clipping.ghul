@@ -1,0 +1,186 @@
+use default
+use Raster.IMAGE
+
+struct P(x: double, y: double) is
+    +(o: P) -> P => P(x + o.x, y + o.y)
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    *(k: double) -> P => P(x * k, y * k)
+    ×(o: P) -> double => x * o.y - y * o.x
+
+    to_string() -> string => "({x:0.#}, {y:0.#})"
+si
+
+class NODE(at: P, crossing: bool) is
+    next: NODE? public
+    other: NODE? public
+    entering: bool public
+    visited: bool public
+si
+
+use Crossing = (edge: int, t: double, node: NODE)
+
+area(polygon: List[P]) -> double =>
+    (0..polygon.count)
+        |> map(i => polygon[i] × polygon[(i + 1) % polygon.count])
+        |> reduce(0.0D, (a, b) => a + b)
+
+contains(polygon: List[P], p: P) -> bool is
+    let inside mut = false
+
+    for i in 0..polygon.count do
+        let a = polygon[i]
+        let b = polygon[(i + 1) % polygon.count]
+
+        if (a.y > p.y) != (b.y > p.y) /\
+                p.x < a.x + (p.y - a.y) * (b.x - a.x) / (b.y - a.y) then
+            inside = !inside
+        fi
+    od
+
+    inside
+si
+
+ring(polygon: List[P], crossings: List[Crossing]) -> List[NODE] is
+    let nodes = LIST[NODE]()
+
+    for i in 0..polygon.count do
+        nodes.add(NODE(polygon[i], false))
+
+        crossings
+            |> filter(c => c.edge == i)
+            |> sort((a, b) => a.t <> b.t)
+            |> each(c => nodes.add(c.node))
+    od
+
+    for i in 0..nodes.count do
+        nodes[i].next = nodes[(i + 1) % nodes.count]
+    od
+
+    nodes
+si
+
+clip(subject: List[P], given: List[P]) -> List[List[P]] is
+    let flip = (area(subject) > 0.0D) != (area(given) > 0.0D)
+    let window =
+        (0..given.count)
+            |> map(i =>
+                if flip then given[given.count - 1 - i] else given[i] fi)
+            |> collect_list()
+
+    let on_subject = LIST[Crossing]()
+    let on_window = LIST[Crossing]()
+
+    for i in 0..subject.count do
+        let a = subject[i]
+        let r = subject[(i + 1) % subject.count] - a
+
+        for j in 0..window.count do
+            let c = window[j]
+            let q = window[(j + 1) % window.count] - c
+            let d = r × q
+
+            if d != 0.0D then
+                let t = (c - a) × q / d
+                let u = (c - a) × r / d
+
+                if t > 0.0D /\ t < 1.0D /\ u > 0.0D /\ u < 1.0D then
+                    let s = NODE(a + r * t, true)
+                    let w = NODE(a + r * t, true)
+
+                    s.other = w
+                    w.other = s
+                    on_subject.add((edge = i, t = t, node = s))
+                    on_window.add((edge = j, t = u, node = w))
+                fi
+            fi
+        od
+    od
+
+    let nodes = ring(subject, on_subject)
+
+    ring(window, on_window)
+
+    let inside mut = contains(window, subject[0])
+
+    for node in nodes do
+        if node.crossing then
+            node.entering = !inside
+            inside = !inside
+        fi
+    od
+
+    let results = LIST[List[P]]()
+
+    for start in nodes do
+        if start.crossing /\ start.entering /\ !start.visited then
+            let polygon = LIST[P]()
+            let node: NODE mut = start
+
+            do
+                node.visited = true
+                node.other!.visited = true
+                polygon.add(node.at)
+                node = node.next!
+
+                while !node.crossing do
+                    polygon.add(node.at)
+                    node = node.next!
+                od
+
+                if node == start \/ node.other == start then
+                    break
+                fi
+
+                node = node.other!
+            od
+
+            results.add(polygon)
+        fi
+    od
+
+    results
+si
+
+let subject = [
+    P(180.0D, 420.0D), P(180.0D, 120.0D), P(520.0D, 120.0D),
+    P(520.0D, 420.0D), P(420.0D, 420.0D), P(320.0D, 220.0D)
+]
+
+let window = [
+    P(60.0D, 220.0D), P(330.0D, 120.0D), P(410.0D, 290.0D),
+    P(80.0D, 480.0D), P(280.0D, 280.0D)
+]
+
+let pieces = clip(subject, window)
+
+write_line("{pieces.count} polygons")
+
+for piece in pieces do
+    write_line()
+    piece |> each(p => write_line("    {p}"))
+od
+
+let image = IMAGE(600, 560)
+
+image.view(0.0D, 540.0D, 600.0D, 60.0D)
+image.clear(252ub, 252ub, 250ub)
+
+outline(polygon: List[P]) -> List[(x: double, y: double)] =>
+    polygon |> cat([polygon[0]]) |> map(p => (x = p.x, y = p.y))
+        |> collect_list()
+
+image.colour(250ub, 200ub, 90ub)
+
+for piece in pieces do
+    image.fill(outline(piece))
+od
+
+image.stroke(2.0D)
+image.colour(40ub, 90ub, 180ub)
+image.line(outline(subject))
+image.colour(200ub, 50ub, 40ub)
+image.line(outline(window))
+
+image.write("clipped.png")
+
+image.show("clipped.png")

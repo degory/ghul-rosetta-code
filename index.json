@@ -22648,6 +22648,37 @@
       ]
     },
     {
+      "slug": "weiler-atherton-polygon-clipping",
+      "title": "Weiler-Atherton polygon clipping",
+      "url": "https://rosettacode.org/wiki/Weiler-Atherton_polygon_clipping",
+      "tags": [
+        "algorithms",
+        "operators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/weiler-atherton-polygon-clipping/clipped.png.expected"
+      ],
+      "lines": 186,
+      "parts": [
+        {
+          "id": "weiler-atherton-polygon-clipping",
+          "heading": null,
+          "source": "tasks/weiler-atherton-polygon-clipping/weiler-atherton-polygon-clipping.ghul",
+          "output": "tasks/weiler-atherton-polygon-clipping/run.expected",
+          "lines": 186,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/weiler-atherton-polygon-clipping/clipped.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "weird-numbers",
       "title": "Weird numbers",
       "url": "https://rosettacode.org/wiki/Weird_numbers",
