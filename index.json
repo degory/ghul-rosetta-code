@@ -6916,6 +6916,32 @@
       ]
     },
     {
+      "slug": "execute-a-markov-algorithm",
+      "title": "Execute a Markov algorithm",
+      "url": "https://rosettacode.org/wiki/Execute_a_Markov_algorithm",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "execute-a-markov-algorithm",
+          "heading": null,
+          "source": "tasks/execute-a-markov-algorithm/execute-a-markov-algorithm.ghul",
+          "output": "tasks/execute-a-markov-algorithm/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "execute-a-system-command",
       "title": "Execute a system command",
       "url": "https://rosettacode.org/wiki/Execute_a_system_command",
