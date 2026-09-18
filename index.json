@@ -18187,6 +18187,37 @@
       ]
     },
     {
+      "slug": "smallest-enclosing-circle-problem",
+      "title": "Smallest enclosing circle problem",
+      "url": "https://rosettacode.org/wiki/Smallest_enclosing_circle_problem",
+      "tags": [
+        "algorithms",
+        "operators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/smallest-enclosing-circle-problem/circle.png.expected"
+      ],
+      "lines": 117,
+      "parts": [
+        {
+          "id": "smallest-enclosing-circle-problem",
+          "heading": null,
+          "source": "tasks/smallest-enclosing-circle-problem/smallest-enclosing-circle-problem.ghul",
+          "output": "tasks/smallest-enclosing-circle-problem/run.expected",
+          "lines": 117,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/smallest-enclosing-circle-problem/circle.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "smarandache-prime-digital-sequence",
       "title": "Smarandache prime-digital sequence",
       "url": "https://rosettacode.org/wiki/Smarandache_prime-digital_sequence",
