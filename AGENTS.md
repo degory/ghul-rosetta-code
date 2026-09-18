@@ -173,6 +173,14 @@ does not name `System.Linq`. A list of `n` copies of a value is `repeat(value, n
 not `LIST[T](System.Linq.Enumerable.repeat(value, n))`; `repeat(value)`, `from(start)` and
 `from(start, step)` are the unbounded forms.
 
+## Output that has to line up is ASCII
+
+The wiki's monospace font has no box-drawing, geometric or most mathematical characters, so a
+browser draws them from a fallback font where they are not the width of a space, and columns built
+from them come out ragged. Where output depends on alignment - a board, a box, a tree's guide
+lines, a table - draw it in ASCII (`+--+`, `|`, `\-`, `o`, `#`), or draw a picture instead.
+Non-ASCII output is fine where nothing has to line up with it.
+
 ## Solutions are not marked `pure`
 
 The pipe combinators take pure functions, and most of what a solution passes them is not provably
