@@ -1,0 +1,60 @@
+use default
+use Raster.COLOUR_MAP
+use Raster.IMAGE
+
+use Point = (x: double, y: double, z: double)
+
+let sigma = 10.0D
+let rho = 28.0D
+let beta = 8.0D / 3.0D
+let dt = 0.004D
+
+rate(at: Point) -> Point =>
+    (x = sigma * (at.y - at.x),
+     y = at.x * (rho - at.z) - at.y,
+     z = at.x * at.y - beta * at.z)
+
+along(at: Point, by: Point, scale: double) -> Point =>
+    (x = at.x + by.x * scale,
+     y = at.y + by.y * scale,
+     z = at.z + by.z * scale)
+
+mean(a: Point, b: Point, c: Point, d: Point) -> Point =>
+    (x = (a.x + 2.0D * b.x + 2.0D * c.x + d.x) / 6.0D,
+     y = (a.y + 2.0D * b.y + 2.0D * c.y + d.y) / 6.0D,
+     z = (a.z + 2.0D * b.z + 2.0D * c.z + d.z) / 6.0D)
+
+step(at: Point) -> STREAM[Point, Point] =>
+    (let first = rate(at)
+     let second = rate(along(at, first, dt / 2.0D))
+     let third = rate(along(at, second, dt / 2.0D))
+     let fourth = rate(along(at, third, dt))
+
+     let slope = mean(first, second, third, fourth)
+     let next = along(at, slope, dt)
+
+     next || next)
+
+let path =
+    stream((x = 1.0D, y = 1.0D, z = 1.0D), step)
+        |> skip(400)
+        |> take(20000)
+        |> collect_list()
+
+let image = IMAGE(560, 700)
+
+image.view(-22.0D, 0.0D, 22.0D, 55.0D)
+image.stroke(1.0D)
+
+for at in 0..path.count - 1 do
+    let part = cast double(at) / cast double(path.count)
+    let from = path[at]
+    let to = path[at + 1]
+
+    image.colour(COLOUR_MAP.viridis(part))
+    image.line(from.x, from.z, to.x, to.z)
+od
+
+image.write("lorenz.png")
+
+image.show("lorenz.png")

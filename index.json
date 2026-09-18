@@ -10231,6 +10231,38 @@
       ]
     },
     {
+      "slug": "lorenz-attractor",
+      "title": "Lorenz attractor",
+      "url": "https://rosettacode.org/wiki/Lorenz_attractor",
+      "tags": [
+        "maths",
+        "graphics",
+        "simulation",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/lorenz-attractor/lorenz.png.expected"
+      ],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "lorenz-attractor",
+          "heading": null,
+          "source": "tasks/lorenz-attractor/lorenz-attractor.ghul",
+          "output": "tasks/lorenz-attractor/run.expected",
+          "lines": 57,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/lorenz-attractor/lorenz.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "lucky-and-even-lucky-numbers",
       "title": "Lucky and even lucky numbers",
       "url": "https://rosettacode.org/wiki/Lucky_and_even_lucky_numbers",
