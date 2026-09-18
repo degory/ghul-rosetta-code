@@ -8119,6 +8119,37 @@
       ]
     },
     {
+      "slug": "free-polyominoes-enumeration",
+      "title": "Free polyominoes enumeration",
+      "url": "https://rosettacode.org/wiki/Free_polyominoes_enumeration",
+      "tags": [
+        "puzzles",
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/free-polyominoes-enumeration/hexominoes.png.expected"
+      ],
+      "lines": 128,
+      "parts": [
+        {
+          "id": "free-polyominoes-enumeration",
+          "heading": null,
+          "source": "tasks/free-polyominoes-enumeration/free-polyominoes-enumeration.ghul",
+          "output": "tasks/free-polyominoes-enumeration/run.expected",
+          "lines": 128,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/free-polyominoes-enumeration/hexominoes.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "french-republican-calendar",
       "title": "French Republican calendar",
       "url": "https://rosettacode.org/wiki/French_Republican_calendar",
