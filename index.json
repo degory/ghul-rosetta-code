@@ -3712,6 +3712,37 @@
       ]
     },
     {
+      "slug": "convex-hull",
+      "title": "Convex hull",
+      "url": "https://rosettacode.org/wiki/Convex_hull",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/convex-hull/hull.png.expected"
+      ],
+      "lines": 95,
+      "parts": [
+        {
+          "id": "convex-hull",
+          "heading": null,
+          "source": "tasks/convex-hull/convex-hull.ghul",
+          "output": "tasks/convex-hull/run.expected",
+          "lines": 95,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/convex-hull/hull.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "conways-game-of-life",
       "title": "Conway's Game of Life",
       "url": "https://rosettacode.org/wiki/Conway's_Game_of_Life",
