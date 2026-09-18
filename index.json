@@ -7032,6 +7032,31 @@
       ]
     },
     {
+      "slug": "execute-snusp",
+      "title": "Execute SNUSP",
+      "url": "https://rosettacode.org/wiki/Execute_SNUSP",
+      "tags": [
+        "pattern-matching"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 68,
+      "parts": [
+        {
+          "id": "execute-snusp",
+          "heading": null,
+          "source": "tasks/execute-snusp/execute-snusp.ghul",
+          "output": "tasks/execute-snusp/run.expected",
+          "lines": 68,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "exponential-digital-sums",
       "title": "Exponential digital sums",
       "url": "https://rosettacode.org/wiki/Exponential_digital_sums",
