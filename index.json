@@ -15009,6 +15009,33 @@
       ]
     },
     {
+      "slug": "parse-ebnf",
+      "title": "Parse EBNF",
+      "url": "https://rosettacode.org/wiki/Parse_EBNF",
+      "tags": [
+        "parsing",
+        "recursion",
+        "unions"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 342,
+      "parts": [
+        {
+          "id": "parse-ebnf",
+          "heading": null,
+          "source": "tasks/parse-ebnf/parse-ebnf.ghul",
+          "output": "tasks/parse-ebnf/run.expected",
+          "lines": 342,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "parsing-rpn-calculator-algorithm",
       "title": "Parsing/RPN calculator algorithm",
       "url": "https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm",
