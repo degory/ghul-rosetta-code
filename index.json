@@ -3626,6 +3626,33 @@
       ]
     },
     {
+      "slug": "compiler-virtual-machine-interpreter",
+      "title": "Compiler/virtual machine interpreter",
+      "url": "https://rosettacode.org/wiki/Compiler/virtual_machine_interpreter",
+      "tags": [
+        "parsing",
+        "algorithms",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 134,
+      "parts": [
+        {
+          "id": "compiler-virtual-machine-interpreter",
+          "heading": null,
+          "source": "tasks/compiler-virtual-machine-interpreter/compiler-virtual-machine-interpreter.ghul",
+          "output": "tasks/compiler-virtual-machine-interpreter/run.expected",
+          "lines": 134,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "compound-data-type",
       "title": "Compound data type",
       "url": "https://rosettacode.org/wiki/Compound_data_type",
