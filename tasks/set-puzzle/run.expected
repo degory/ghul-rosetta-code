@@ -1,0 +1,70 @@
+basic: dealt 9 cards
+    purple, three, oval, striped
+    red, one, oval, solid
+    purple, one, squiggle, solid
+    green, two, diamond, solid
+    red, two, squiggle, open
+    green, two, oval, striped
+    red, two, oval, striped
+    purple, two, oval, striped
+    green, one, diamond, solid
+
+containing 4 sets
+
+    purple, three, oval, striped
+    red, two, squiggle, open
+    green, one, diamond, solid
+
+    red, one, oval, solid
+    purple, one, squiggle, solid
+    green, one, diamond, solid
+
+    green, two, diamond, solid
+    red, two, squiggle, open
+    purple, two, oval, striped
+
+    green, two, oval, striped
+    red, two, oval, striped
+    purple, two, oval, striped
+
+advanced: dealt 12 cards
+    red, three, squiggle, solid
+    green, two, diamond, striped
+    red, three, diamond, solid
+    purple, three, diamond, open
+    purple, one, diamond, open
+    green, one, oval, striped
+    purple, two, oval, open
+    green, two, squiggle, open
+    red, one, oval, open
+    red, three, oval, solid
+    green, two, diamond, open
+    purple, one, squiggle, striped
+
+containing 6 sets
+
+    red, three, squiggle, solid
+    red, three, diamond, solid
+    red, three, oval, solid
+
+    red, three, squiggle, solid
+    green, two, squiggle, open
+    purple, one, squiggle, striped
+
+    green, two, diamond, striped
+    red, three, diamond, solid
+    purple, one, diamond, open
+
+    purple, three, diamond, open
+    green, two, squiggle, open
+    red, one, oval, open
+
+    green, one, oval, striped
+    purple, two, oval, open
+    red, three, oval, solid
+
+    red, three, oval, solid
+    green, two, diamond, open
+    purple, one, squiggle, striped
+
+<<image set.png>>

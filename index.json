@@ -17566,6 +17566,38 @@
       ]
     },
     {
+      "slug": "set-puzzle",
+      "title": "Set puzzle",
+      "url": "https://rosettacode.org/wiki/Set_puzzle",
+      "tags": [
+        "game",
+        "puzzles",
+        "generators",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/set-puzzle/set.png.expected"
+      ],
+      "lines": 160,
+      "parts": [
+        {
+          "id": "set-puzzle",
+          "heading": null,
+          "source": "tasks/set-puzzle/set-puzzle.ghul",
+          "output": "tasks/set-puzzle/run.expected",
+          "lines": 160,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/set-puzzle/set.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "sexy-primes",
       "title": "Sexy primes",
       "url": "https://rosettacode.org/wiki/Sexy_primes",
