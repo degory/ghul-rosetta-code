@@ -114,6 +114,33 @@
       ]
     },
     {
+      "slug": "15-puzzle-solver",
+      "title": "15 puzzle solver",
+      "url": "https://rosettacode.org/wiki/15_puzzle_solver",
+      "tags": [
+        "puzzles",
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 124,
+      "parts": [
+        {
+          "id": "15-puzzle-solver",
+          "heading": null,
+          "source": "tasks/15-puzzle-solver/15-puzzle-solver.ghul",
+          "output": "tasks/15-puzzle-solver/run.expected",
+          "lines": 124,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "2048",
       "title": "2048",
       "url": "https://rosettacode.org/wiki/2048",
