@@ -6336,6 +6336,33 @@
       ]
     },
     {
+      "slug": "fast-fourier-transform",
+      "title": "Fast Fourier transform",
+      "url": "https://rosettacode.org/wiki/Fast_Fourier_transform",
+      "tags": [
+        "maths",
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 49,
+      "parts": [
+        {
+          "id": "fast-fourier-transform",
+          "heading": null,
+          "source": "tasks/fast-fourier-transform/fast-fourier-transform.ghul",
+          "output": "tasks/fast-fourier-transform/run.expected",
+          "lines": 49,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "fasta-format",
       "title": "FASTA format",
       "url": "https://rosettacode.org/wiki/FASTA_format",
