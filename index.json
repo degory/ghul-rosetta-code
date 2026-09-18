@@ -10246,14 +10246,14 @@
       "images": [
         "tasks/lorenz-attractor/lorenz.png.expected"
       ],
-      "lines": 57,
+      "lines": 60,
       "parts": [
         {
           "id": "lorenz-attractor",
           "heading": null,
           "source": "tasks/lorenz-attractor/lorenz-attractor.ghul",
           "output": "tasks/lorenz-attractor/run.expected",
-          "lines": 57,
+          "lines": 60,
           "playground": true,
           "input": false,
           "images": [
@@ -17062,6 +17062,37 @@
           "playground": false,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "superellipse",
+      "title": "Superellipse",
+      "url": "https://rosettacode.org/wiki/Superellipse",
+      "tags": [
+        "maths",
+        "graphics",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/superellipse/superellipse.png.expected"
+      ],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "superellipse",
+          "heading": null,
+          "source": "tasks/superellipse/superellipse.ghul",
+          "output": "tasks/superellipse/run.expected",
+          "lines": 41,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/superellipse/superellipse.png.expected"
+          ]
         }
       ]
     },
