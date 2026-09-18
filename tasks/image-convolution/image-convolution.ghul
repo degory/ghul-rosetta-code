@@ -1,0 +1,125 @@
+use default
+use Raster.Anchor
+use Raster.IMAGE
+use System.Math
+
+pt(x: double, y: double) -> (x: double, y: double) => (x = x, y = y)
+
+scene() -> IMAGE is
+    let image = IMAGE(160, 120)
+
+    for y in 0..80 do
+        let t = cast double(y) / 80.0D
+
+        image.colour(
+            cast ubyte(40.0D + 200.0D * t),
+            cast ubyte(70.0D + 100.0D * t),
+            cast ubyte(160.0D - 60.0D * t))
+        image.fill_rectangle(
+            0.0D, cast double(y), 160.0D, cast double(y + 1))
+    od
+
+    image.colour(255ub, 220ub, 60ub)
+    image.disc(112.0D, 42.0D, 15.0D)
+
+    image.colour(90ub, 60ub, 120ub)
+    image.fill([pt(0.0D, 80.0D), pt(45.0D, 30.0D), pt(95.0D, 80.0D)])
+
+    image.colour(60ub, 110ub, 70ub)
+    image.fill([pt(55.0D, 80.0D), pt(105.0D, 48.0D), pt(160.0D, 80.0D)])
+
+    image.colour(70ub, 150ub, 60ub)
+    image.fill_rectangle(0.0D, 80.0D, 160.0D, 120.0D)
+
+    image.colour(200ub, 35ub, 40ub)
+    image.fill_rectangle(22.0D, 88.0D, 52.0D, 110.0D)
+
+    image.colour(120ub, 25ub, 30ub)
+    image.fill([pt(18.0D, 88.0D), pt(37.0D, 75.0D), pt(56.0D, 88.0D)])
+
+    image.colour(250ub, 245ub, 235ub)
+    image.fill_rectangle(33.0D, 97.0D, 41.0D, 110.0D)
+
+    image
+si
+
+use Kernel = (name: string, weights: int[], divisor: int)
+
+channel(value: double) -> ubyte =>
+    cast ubyte(Math.clamp(Math.round(value), 0.0D, 255.0D))
+
+convolve(source: IMAGE, kernel: Kernel) -> IMAGE is
+    let result = IMAGE(source.width, source.height)
+    let divisor = cast double(kernel.divisor)
+
+    for y in 0..source.height do
+        for x in 0..source.width do
+            let red mut = 0.0D, green mut = 0.0D, blue mut = 0.0D
+
+            for j in -1::1 do
+                for i in -1::1 do
+                    let sx = Math.clamp(x + i, 0, source.width - 1)
+                    let sy = Math.clamp(y + j, 0, source.height - 1)
+                    let p = source.pixel(sx, sy)
+                    let w = cast double(kernel.weights[(j + 1) * 3 + i + 1])
+
+                    red = red + w * cast double(p.red)
+                    green = green + w * cast double(p.green)
+                    blue = blue + w * cast double(p.blue)
+                od
+            od
+
+            result.set_pixel(
+                x, y,
+                channel(red / divisor),
+                channel(green / divisor),
+                channel(blue / divisor))
+        od
+    od
+
+    result
+si
+
+let kernels: Kernel[] = [
+    ("blur", [1, 2, 1, 2, 4, 2, 1, 2, 1], 16),
+    ("sharpen", [0, -1, 0, -1, 5, -1, 0, -1, 0], 1),
+    ("edges", [-1, -1, -1, -1, 8, -1, -1, -1, -1], 1),
+    ("emboss", [-2, -1, 0, -1, 1, 1, 0, 1, 2], 1)
+]
+
+scene().write("scene.png")
+
+let source = IMAGE.read("scene.png")
+let results = LIST([("original", source)])
+
+for kernel in kernels do
+    results.add((kernel.name, convolve(source, kernel)))
+    write_line("{kernel.name,-8} {kernel.weights |> join(" ")}")
+od
+
+let cell_width = source.width + 10, cell_height = source.height + 24
+let sheet = IMAGE(cell_width * 3 + 10, cell_height * 2 + 10)
+
+sheet.clear(235ub, 235ub, 230ub)
+
+for (i, (name, image)) in results |> index() do
+    let left = 10 + i % 3 * cell_width, top = 10 + i / 3 * cell_height
+
+    for y in 0..image.height do
+        for x in 0..image.width do
+            let p = image.pixel(x, y)
+
+            sheet.set_pixel(left + x, top + y, p.red, p.green, p.blue)
+        od
+    od
+
+    sheet.colour(40ub, 40ub, 40ub)
+    sheet.text(
+        cast double(left + image.width / 2),
+        cast double(top + image.height + 15),
+        11.0D, name, Anchor.CENTRE)
+od
+
+sheet.write("filters.png")
+
+sheet.show("filters.png")

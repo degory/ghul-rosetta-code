@@ -9911,6 +9911,38 @@
       ]
     },
     {
+      "slug": "image-convolution",
+      "title": "Image convolution",
+      "url": "https://rosettacode.org/wiki/Image_convolution",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/image-convolution/filters.png.expected",
+        "tasks/image-convolution/scene.png.expected"
+      ],
+      "lines": 125,
+      "parts": [
+        {
+          "id": "image-convolution",
+          "heading": null,
+          "source": "tasks/image-convolution/image-convolution.ghul",
+          "output": "tasks/image-convolution/run.expected",
+          "lines": 125,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/image-convolution/filters.png.expected",
+            "tasks/image-convolution/scene.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "imaginary-base-numbers",
       "title": "Imaginary base numbers",
       "url": "https://rosettacode.org/wiki/Imaginary_base_numbers",
