@@ -2817,6 +2817,38 @@
       ]
     },
     {
+      "slug": "canny-edge-detector",
+      "title": "Canny edge detector",
+      "url": "https://rosettacode.org/wiki/Canny_edge_detector",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/canny-edge-detector/edges.png.expected",
+        "tasks/canny-edge-detector/scene.png.expected"
+      ],
+      "lines": 212,
+      "parts": [
+        {
+          "id": "canny-edge-detector",
+          "heading": null,
+          "source": "tasks/canny-edge-detector/canny-edge-detector.ghul",
+          "output": "tasks/canny-edge-detector/run.expected",
+          "lines": 212,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/canny-edge-detector/edges.png.expected",
+            "tasks/canny-edge-detector/scene.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "cantor-set",
       "title": "Cantor set",
       "url": "https://rosettacode.org/wiki/Cantor_set",
