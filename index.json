@@ -12578,6 +12578,38 @@
       ]
     },
     {
+      "slug": "penrose-tiling",
+      "title": "Penrose tiling",
+      "url": "https://rosettacode.org/wiki/Penrose_tiling",
+      "tags": [
+        "graphics",
+        "unions",
+        "generators",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/penrose-tiling/penrose.png.expected"
+      ],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "penrose-tiling",
+          "heading": null,
+          "source": "tasks/penrose-tiling/penrose-tiling.ghul",
+          "output": "tasks/penrose-tiling/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/penrose-tiling/penrose.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "pentagram",
       "title": "Pentagram",
       "url": "https://rosettacode.org/wiki/Pentagram",
