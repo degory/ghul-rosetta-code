@@ -193,25 +193,33 @@ The entry says only which program to open, so the wording around the link is
 changed for every entry at once by editing that template, with nothing
 republished.
 
-Not every solution can run there. The playground compiles against a short list
-of reference assemblies and runs the program in the browser, with no standard
-input. Its filesystem is in memory, holding the files the program names (below)
-and whatever it writes itself. A program that needs anything else carries a
-`playground-unsupported` file beside its source, holding one line saying why:
+Not every solution can run there. The playground compiles one source file
+against a short list of reference assemblies - the ghūl runtime, `ghul.raster`
+and the parts of .NET that work in a browser - and runs the program in the
+page. It supplies standard input a line at a time from a box under the output,
+shows the images a program draws, and runs threads. Its filesystem is in
+memory, holding the files the program names (below) and whatever it writes
+itself. What it cannot do is reach the network, start another process, or end
+with `Environment.exit`, and it runs heavy computation tens of times slower
+than the same program runs natively. A program that needs one of those, or
+takes minutes there, carries a `playground-unsupported` file beside its
+source, holding one line saying why:
 
 ```
-tasks/guess-the-number/
-    playground-unsupported      reads guesses from standard input
-    guess-the-number.ghul
+tasks/execute-a-system-command/
+    playground-unsupported      it starts another process, which a program running in a browser cannot do
+    execute-a-system-command.ghul
     ...
 ```
 
 `scripts/generate-wiki.sh` writes no link for such a program, and the playground
-shows the reason to anyone who opens it by URL anyway. Reading standard input
-and referencing a package are the cases the script can see for itself; one
-of those without the file is reported, and gets no link. Everything else - a
-program that writes an image, reads a file, or relies on threads - can only be
-told by reading it, so the file is written when the solution is.
+shows the reason to anyone who opens it by URL anyway. Referencing a package
+other than `ghul.raster` is the one case the script can see for itself; one
+without the file is reported, and gets no link. Everything else can only be
+told by reading the program, so the file is written when the solution is. That
+includes a program that reads standard input: the playground can supply it,
+so what decides is what the program does with it, such as echoing each line
+back beside the playground's own echo.
 
 A program that reads files names them in a `playground-files` file beside its
 source, one path per line relative to that directory. The playground fetches
