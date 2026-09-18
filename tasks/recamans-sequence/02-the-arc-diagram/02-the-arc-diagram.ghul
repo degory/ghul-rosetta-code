@@ -1,0 +1,85 @@
+use default
+use Math = System.Math
+use Raster.Anchor
+use Raster.IMAGE
+
+recaman() -> Pipe[int] is
+    let seen = SET()
+    let term mut = 0
+    let index mut = 0
+
+    do
+        yield term
+        seen.add(term)
+
+        index = index + 1
+
+        let back = term - index
+
+        term = if back > 0 /\ !seen.contains(back) then back
+               else term + index
+               fi
+    od
+si
+
+let terms = recaman() |> take(66) |> collect()
+
+let hops = (1..terms.count)
+    |> map(n => (from = terms[n - 1], to = terms[n]))
+    |> collect()
+
+let highest =
+    terms |> reduce(0, (best, term) => Math.max(best, term))
+
+let widest =
+    hops
+    |> map(hop => Math.abs(hop.to - hop.from))
+    |> reduce(0, (best, span) => Math.max(best, span))
+
+let deepest = cast double(widest) / 2.0
+
+let left = -3.0
+let right = cast double(highest) + 3.0
+let top = deepest + 3.0
+let bottom = -(deepest + 10.0)
+
+let scale = 4.0
+let margin = 12.0
+
+let image = IMAGE(
+    cast int((right - left) * scale + 2.0 * margin),
+    cast int((top - bottom) * scale + 2.0 * margin))
+
+image.view(left, bottom, right, top, margin)
+
+image.colour(170ub, 170ub, 170ub)
+image.stroke(1.0)
+image.line(0.0, 0.0, cast double(highest), 0.0)
+
+for tick in 0::highest / 25 do
+    let at = cast double(tick * 25)
+    let label = "{tick * 25}"
+
+    image.line(at, -1.5, at, 1.5)
+    image.text(at, bottom + 2.5, 13.0, label, Anchor.CENTRE)
+od
+
+image.colour(30ub, 70ub, 160ub)
+image.stroke(1.4)
+
+for hop in hops |> index() do
+    let (from, to) = hop.value
+
+    let middle = cast double(from + to) / 2.0
+    let radius = cast double(Math.abs(to - from)) / 2.0
+
+    if hop.index % 2 == 0 then
+        image.arc(middle, 0.0, radius, 0.0, 180.0)
+    else
+        image.arc(middle, 0.0, radius, 180.0, 360.0)
+    fi
+od
+
+image.write("recaman.png")
+
+image.show("recaman.png")

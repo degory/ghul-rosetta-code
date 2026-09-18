@@ -1,0 +1,92 @@
+use default
+use System.Math.log10
+use Raster.Anchor
+use Raster.IMAGE
+
+let leading_counts = (1::10) |> map(_ => 0) |> collect_list()
+
+let previous mut = 0n
+let current mut = 1n
+
+for _ in 1::1000 do
+    let first = current.to_string()[0]
+    let digit = cast int(first) - cast int('0')
+    leading_counts[digit] = leading_counts[digit] + 1
+
+    let next = previous + current
+    previous = current
+    current = next
+od
+
+let actual = (1::9)
+    |> map(digit => cast double(leading_counts[digit]) / 10.0)
+    |> collect()
+
+let expected = (1::9)
+    |> map(digit => 100.0 * log10(1.0 + 1.0 / cast double(digit)))
+    |> collect()
+
+let observed_colour = (red = 40ub, green = 90ub, blue = 180ub)
+let benford_colour = (red = 225ub, green = 145ub, blue = 45ub)
+
+let image = IMAGE(700, 470)
+
+image.view(0.3, 0.0, 9.7, 33.0, 62.0)
+
+box(left: double, bottom: double, right: double, top: double) is
+    image.fill(
+        [(x = left, y = bottom),
+         (x = right, y = bottom),
+         (x = right, y = top),
+         (x = left, y = top)]
+        |> collect_list())
+si
+
+image.colour(215ub, 215ub, 215ub)
+image.stroke(1.0)
+
+for step in 0::6 do
+    let y = cast double(step * 5)
+
+    image.line(0.3, y, 9.7, y)
+    image.text(0.15, y - 0.4, 12.0, "{step * 5}%", Anchor.RIGHT)
+od
+
+image.colour(120ub, 120ub, 120ub)
+image.line(0.3, 0.0, 9.7, 0.0)
+
+for entry in actual |> index() do
+    let digit = entry.index + 1
+    let middle = cast double(digit)
+
+    image.colour(observed_colour)
+    box(middle - 0.36, 0.0, middle - 0.03, entry.value)
+
+    image.colour(benford_colour)
+    box(middle + 0.03, 0.0, middle + 0.36, expected[entry.index])
+
+    image.colour(60ub, 60ub, 60ub)
+    image.text(middle, -2.1, 14.0, "{digit}", Anchor.CENTRE)
+od
+
+image.colour(60ub, 60ub, 60ub)
+image.text(5.0, -4.8, 13.0, "leading digit", Anchor.CENTRE)
+
+let keys = [
+    (shade = observed_colour, label = "first 1000 Fibonacci numbers"),
+    (shade = benford_colour, label = "Benford's law")
+]
+
+for key in keys |> index() do
+    let y = 31.0 - 2.6 * cast double(key.index)
+
+    image.colour(key.value.shade)
+    box(3.8, y - 0.55, 4.15, y + 0.55)
+
+    image.colour(60ub, 60ub, 60ub)
+    image.text(4.35, y - 0.45, 12.0, key.value.label, Anchor.LEFT)
+od
+
+image.write("benford.png")
+
+image.show("benford.png")

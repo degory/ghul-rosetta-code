@@ -1,0 +1,104 @@
+use default
+use Math = System.Math
+use Raster.Anchor
+use Raster.IMAGE
+
+running_maxima(heights: Iterable[int]) -> Pipe[int] is
+    let highest mut = 0
+
+    for height in heights do
+        highest = Math.max(highest, height)
+
+        yield highest
+    od
+si
+
+depths(heights: int[]) -> List[int] => (
+    let left = running_maxima(heights) |> collect()
+    let right =
+        running_maxima(heights |> reverse()) |> collect()
+    let last = heights.count - 1
+
+    (0..heights.count)
+    |> map(i => Math.min(left[i], right[last - i]) - heights[i])
+    |> collect()
+)
+
+let series =
+    [[1, 5, 3, 7, 2],
+     [5, 3, 7, 2, 6, 4, 5, 9, 1, 2],
+     [2, 6, 3, 5, 2, 8, 1, 4, 2, 2, 5, 3, 5, 7, 4, 1],
+     [5, 5, 5, 5],
+     [5, 6, 7, 8],
+     [8, 7, 7, 6],
+     [6, 7, 10, 7, 6]]
+
+let gap = 2.5
+
+let span =
+    (series |> map(towers => cast double(towers.count) + gap)
+            |> reduce(0.0, (total, width) => total + width)) - gap
+
+let tallest =
+    series
+    |> flat_map(towers => towers |> pipe())
+    |> max() ?? 0
+
+let image = IMAGE(1000, 300)
+
+image.view(
+    -0.5, -4.0,
+    span + 0.5, cast double(tallest) + 4.0,
+    16.0)
+
+box(left: double, bottom: double, right: double, top: double) is
+    image.fill(
+        [(x = left, y = bottom),
+         (x = right, y = bottom),
+         (x = right, y = top),
+         (x = left, y = top)]
+        |> collect_list())
+si
+
+let stone = (red = 110ub, green = 105ub, blue = 100ub)
+let water = (red = 90ub, green = 160ub, blue = 220ub)
+
+let ceiling = cast double(tallest)
+
+image.colour(water)
+box(0.0, ceiling + 1.8, 1.2, ceiling + 2.8)
+
+image.colour(70ub, 70ub, 70ub)
+image.text(2.0, ceiling + 2.0, 14.0, "water collected", Anchor.LEFT)
+
+let at mut = 0.0
+
+for towers in series do
+    let depth = depths(towers)
+    let volume = depth |> reduce(0, (total, units) => total + units)
+
+    for column in 0..towers.count do
+        let left = at + cast double(column)
+        let height = cast double(towers[column])
+
+        image.colour(stone)
+        box(left, 0.0, left + 1.0, height)
+
+        image.colour(water)
+        box(left, height, left + 1.0,
+            height + cast double(depth[column]))
+    od
+
+    image.colour(70ub, 70ub, 70ub)
+    image.stroke(1.2)
+    image.line(at, 0.0, at + cast double(towers.count), 0.0)
+
+    image.text(at + cast double(towers.count) / 2.0, -2.4, 15.0,
+               "{volume}", Anchor.CENTRE)
+
+    at = at + cast double(towers.count) + gap
+od
+
+image.write("towers.png")
+
+image.show("towers.png")

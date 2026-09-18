@@ -1512,25 +1512,40 @@
       "title": "Benford's law",
       "url": "https://rosettacode.org/wiki/Benford's_law",
       "tags": [
+        "graphics",
         "number-theory",
         "maths",
         "pipes"
       ],
-      "interest": 2,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 25,
+      "images": [
+        "tasks/benfords-law/02-actual-against-expected/benford.png.expected"
+      ],
+      "lines": 117,
       "parts": [
         {
-          "id": "benfords-law",
-          "heading": null,
-          "source": "tasks/benfords-law/benfords-law.ghul",
-          "output": "tasks/benfords-law/run.expected",
+          "id": "benfords-law/01-the-distribution",
+          "heading": "The distribution",
+          "source": "tasks/benfords-law/01-the-distribution/01-the-distribution.ghul",
+          "output": "tasks/benfords-law/01-the-distribution/run.expected",
           "lines": 25,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "benfords-law/02-actual-against-expected",
+          "heading": "Actual against expected",
+          "source": "tasks/benfords-law/02-actual-against-expected/02-actual-against-expected.ghul",
+          "output": "tasks/benfords-law/02-actual-against-expected/run.expected",
+          "lines": 92,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/benfords-law/02-actual-against-expected/benford.png.expected"
+          ]
         }
       ]
     },
@@ -6980,23 +6995,38 @@
       "url": "https://rosettacode.org/wiki/Goldbach's_comet",
       "tags": [
         "number-theory",
-        "primes"
+        "primes",
+        "graphics"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 38,
+      "images": [
+        "tasks/goldbachs-comet/02-the-comet/comet.png.expected"
+      ],
+      "lines": 130,
       "parts": [
         {
-          "id": "goldbachs-comet",
-          "heading": null,
-          "source": "tasks/goldbachs-comet/goldbachs-comet.ghul",
-          "output": "tasks/goldbachs-comet/run.expected",
+          "id": "goldbachs-comet/01-the-g-numbers",
+          "heading": "The g numbers",
+          "source": "tasks/goldbachs-comet/01-the-g-numbers/01-the-g-numbers.ghul",
+          "output": "tasks/goldbachs-comet/01-the-g-numbers/run.expected",
           "lines": 38,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "goldbachs-comet/02-the-comet",
+          "heading": "The comet",
+          "source": "tasks/goldbachs-comet/02-the-comet/02-the-comet.ghul",
+          "output": "tasks/goldbachs-comet/02-the-comet/run.expected",
+          "lines": 92,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/goldbachs-comet/02-the-comet/comet.png.expected"
+          ]
         }
       ]
     },
@@ -7321,23 +7351,38 @@
       "url": "https://rosettacode.org/wiki/Hailstone_sequence",
       "tags": [
         "number-theory",
+        "graphics",
         "generators"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 38,
+      "images": [
+        "tasks/hailstone-sequence/02-lengths-plotted/hailstone.png.expected"
+      ],
+      "lines": 114,
       "parts": [
         {
-          "id": "hailstone-sequence",
-          "heading": null,
-          "source": "tasks/hailstone-sequence/hailstone-sequence.ghul",
-          "output": "tasks/hailstone-sequence/run.expected",
+          "id": "hailstone-sequence/01-the-sequence",
+          "heading": "The sequence",
+          "source": "tasks/hailstone-sequence/01-the-sequence/01-the-sequence.ghul",
+          "output": "tasks/hailstone-sequence/01-the-sequence/run.expected",
           "lines": 38,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "hailstone-sequence/02-lengths-plotted",
+          "heading": "Lengths plotted",
+          "source": "tasks/hailstone-sequence/02-lengths-plotted/02-lengths-plotted.ghul",
+          "output": "tasks/hailstone-sequence/02-lengths-plotted/run.expected",
+          "lines": 76,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/hailstone-sequence/02-lengths-plotted/hailstone.png.expected"
+          ]
         }
       ]
     },
@@ -7918,27 +7963,41 @@
       "title": "Huffman coding",
       "url": "https://rosettacode.org/wiki/Huffman_coding",
       "tags": [
+        "graphics",
         "algorithms",
         "unions",
         "pattern-matching",
-        "pipes",
-        "generators"
+        "pipes"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 87,
+      "images": [
+        "tasks/huffman-coding/02-the-tree-drawn/huffman.png.expected"
+      ],
+      "lines": 225,
       "parts": [
         {
-          "id": "huffman-coding",
-          "heading": null,
-          "source": "tasks/huffman-coding/huffman-coding.ghul",
-          "output": "tasks/huffman-coding/run.expected",
+          "id": "huffman-coding/01-the-code-table",
+          "heading": "The code table",
+          "source": "tasks/huffman-coding/01-the-code-table/01-the-code-table.ghul",
+          "output": "tasks/huffman-coding/01-the-code-table/run.expected",
           "lines": 87,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "huffman-coding/02-the-tree-drawn",
+          "heading": "The tree drawn",
+          "source": "tasks/huffman-coding/02-the-tree-drawn/02-the-tree-drawn.ghul",
+          "output": "tasks/huffman-coding/02-the-tree-drawn/run.expected",
+          "lines": 138,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/huffman-coding/02-the-tree-drawn/huffman.png.expected"
+          ]
         }
       ]
     },
@@ -12500,24 +12559,39 @@
       "title": "Perlin noise",
       "url": "https://rosettacode.org/wiki/Perlin_noise",
       "tags": [
+        "graphics",
         "maths",
         "algorithms"
       ],
-      "interest": 2,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 93,
+      "images": [
+        "tasks/perlin-noise/02-a-slice-of-the-field/noise.png.expected"
+      ],
+      "lines": 205,
       "parts": [
         {
-          "id": "perlin-noise",
-          "heading": null,
-          "source": "tasks/perlin-noise/perlin-noise.ghul",
-          "output": "tasks/perlin-noise/run.expected",
+          "id": "perlin-noise/01-the-noise-function",
+          "heading": "The noise function",
+          "source": "tasks/perlin-noise/01-the-noise-function/01-the-noise-function.ghul",
+          "output": "tasks/perlin-noise/01-the-noise-function/run.expected",
           "lines": 93,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "perlin-noise/02-a-slice-of-the-field",
+          "heading": "A slice of the field",
+          "source": "tasks/perlin-noise/02-a-slice-of-the-field/02-a-slice-of-the-field.ghul",
+          "output": "tasks/perlin-noise/02-a-slice-of-the-field/run.expected",
+          "lines": 112,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/perlin-noise/02-a-slice-of-the-field/noise.png.expected"
+          ]
         }
       ]
     },
@@ -13507,23 +13581,38 @@
       "url": "https://rosettacode.org/wiki/Recaman's_sequence",
       "tags": [
         "number-theory",
+        "graphics",
         "generators"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 55,
+      "images": [
+        "tasks/recamans-sequence/02-the-arc-diagram/recaman.png.expected"
+      ],
+      "lines": 140,
       "parts": [
         {
-          "id": "recamans-sequence",
-          "heading": null,
-          "source": "tasks/recamans-sequence/recamans-sequence.ghul",
-          "output": "tasks/recamans-sequence/run.expected",
+          "id": "recamans-sequence/01-the-terms",
+          "heading": "The terms",
+          "source": "tasks/recamans-sequence/01-the-terms/01-the-terms.ghul",
+          "output": "tasks/recamans-sequence/01-the-terms/run.expected",
           "lines": 55,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "recamans-sequence/02-the-arc-diagram",
+          "heading": "The arc diagram",
+          "source": "tasks/recamans-sequence/02-the-arc-diagram/02-the-arc-diagram.ghul",
+          "output": "tasks/recamans-sequence/02-the-arc-diagram/run.expected",
+          "lines": 85,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/recamans-sequence/02-the-arc-diagram/recaman.png.expected"
+          ]
         }
       ]
     },
@@ -18000,21 +18089,35 @@
         "primes",
         "generators"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 61,
+      "images": [
+        "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/ulam.png.expected"
+      ],
+      "lines": 138,
       "parts": [
         {
-          "id": "ulam-spiral-for-primes",
-          "heading": null,
-          "source": "tasks/ulam-spiral-for-primes/ulam-spiral-for-primes.ghul",
-          "output": "tasks/ulam-spiral-for-primes/run.expected",
+          "id": "ulam-spiral-for-primes/01-a-grid-of-asterisks",
+          "heading": "A grid of asterisks",
+          "source": "tasks/ulam-spiral-for-primes/01-a-grid-of-asterisks/01-a-grid-of-asterisks.ghul",
+          "output": "tasks/ulam-spiral-for-primes/01-a-grid-of-asterisks/run.expected",
           "lines": 61,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "ulam-spiral-for-primes/02-drawing-the-spiral",
+          "heading": "Drawing the spiral",
+          "source": "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/02-drawing-the-spiral.ghul",
+          "output": "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/run.expected",
+          "lines": 77,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/ulam.png.expected"
+          ]
         }
       ]
     },
@@ -18731,24 +18834,39 @@
       "title": "Water collected between towers",
       "url": "https://rosettacode.org/wiki/Water_collected_between_towers",
       "tags": [
+        "graphics",
         "algorithms",
         "generators"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 35,
+      "images": [
+        "tasks/water-collected-between-towers/02-the-towers-drawn/towers.png.expected"
+      ],
+      "lines": 139,
       "parts": [
         {
-          "id": "water-collected-between-towers",
-          "heading": null,
-          "source": "tasks/water-collected-between-towers/water-collected-between-towers.ghul",
-          "output": "tasks/water-collected-between-towers/run.expected",
+          "id": "water-collected-between-towers/01-counting-the-water",
+          "heading": "Counting the water",
+          "source": "tasks/water-collected-between-towers/01-counting-the-water/01-counting-the-water.ghul",
+          "output": "tasks/water-collected-between-towers/01-counting-the-water/run.expected",
           "lines": 35,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "water-collected-between-towers/02-the-towers-drawn",
+          "heading": "The towers drawn",
+          "source": "tasks/water-collected-between-towers/02-the-towers-drawn/02-the-towers-drawn.ghul",
+          "output": "tasks/water-collected-between-towers/02-the-towers-drawn/run.expected",
+          "lines": 104,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/water-collected-between-towers/02-the-towers-drawn/towers.png.expected"
+          ]
         }
       ]
     },
