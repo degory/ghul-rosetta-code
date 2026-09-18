@@ -22,8 +22,8 @@ nested(node: NODE) -> string =>
 branches(node: NODE, prefix: string) -> Pipe[string] is
     for entry in node.children |> index() do
         let last = entry.index == node.children.count - 1
-        let joint = if last then "└─ " else "├─ " fi
-        let carry = if last then "   " else "│  " fi
+        let joint = if last then "\\- " else "+- " fi
+        let carry = if last then "   " else "|  " fi
 
         yield "{prefix}{joint}{entry.value.name}"
 
