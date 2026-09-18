@@ -19764,6 +19764,32 @@
       ]
     },
     {
+      "slug": "spoof-game",
+      "title": "Spoof game",
+      "url": "https://rosettacode.org/wiki/Spoof_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "spoof-game",
+          "heading": null,
+          "source": "tasks/spoof-game/spoof-game.ghul",
+          "output": "tasks/spoof-game/run.expected",
+          "lines": 96,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "stable-marriage-problem",
       "title": "Stable marriage problem",
       "url": "https://rosettacode.org/wiki/Stable_marriage_problem",
