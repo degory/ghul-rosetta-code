@@ -17749,6 +17749,37 @@
       ]
     },
     {
+      "slug": "sutherland-hodgman-polygon-clipping",
+      "title": "Sutherland-Hodgman polygon clipping",
+      "url": "https://rosettacode.org/wiki/Sutherland-Hodgman_polygon_clipping",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/sutherland-hodgman-polygon-clipping/clipped.png.expected"
+      ],
+      "lines": 114,
+      "parts": [
+        {
+          "id": "sutherland-hodgman-polygon-clipping",
+          "heading": null,
+          "source": "tasks/sutherland-hodgman-polygon-clipping/sutherland-hodgman-polygon-clipping.ghul",
+          "output": "tasks/sutherland-hodgman-polygon-clipping/run.expected",
+          "lines": 114,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/sutherland-hodgman-polygon-clipping/clipped.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "sylvesters-sequence",
       "title": "Sylvester's sequence",
       "url": "https://rosettacode.org/wiki/Sylvester's_sequence",
