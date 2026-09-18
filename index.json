@@ -16787,6 +16787,37 @@
       ]
     },
     {
+      "slug": "solve-a-holy-knight-s-tour",
+      "title": "Solve a Holy Knight's tour",
+      "url": "https://rosettacode.org/wiki/Solve_a_Holy_Knight's_tour",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/solve-a-holy-knight-s-tour/tour.png.expected"
+      ],
+      "lines": 121,
+      "parts": [
+        {
+          "id": "solve-a-holy-knight-s-tour",
+          "heading": null,
+          "source": "tasks/solve-a-holy-knight-s-tour/solve-a-holy-knight-s-tour.ghul",
+          "output": "tasks/solve-a-holy-knight-s-tour/run.expected",
+          "lines": 121,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/solve-a-holy-knight-s-tour/tour.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "solve-a-rubik-s-cube",
       "title": "Solve a Rubik's cube",
       "url": "https://rosettacode.org/wiki/Solve_a_Rubik's_cube",
