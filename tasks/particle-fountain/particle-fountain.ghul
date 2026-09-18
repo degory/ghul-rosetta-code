@@ -1,0 +1,94 @@
+use default
+use Raster.ANIMATION
+use Raster.IMAGE
+
+class DROP is
+    x: double public
+    y: double public
+    dx: double public
+    dy: double public
+
+    init() is si
+si
+
+let width = 240
+let height = 180
+let total = 1500
+let gravity = 0.1D
+let warm_up = 200
+let frames = 50
+
+let random = System.Random(7)
+
+spread(half: double) -> double =>
+    (random.next_double() * 2.0D - 1.0D) * half
+
+launch(drop: DROP) is
+    drop.x = cast double(width / 2) + spread(1.5D)
+    drop.y = cast double(height - 10)
+    drop.dx = spread(0.9D)
+    drop.dy = -3.8D + spread(0.3D)
+si
+
+let drops =
+    (0..total)
+        |> map(i => (
+            let drop = DROP()
+            launch(drop)
+            drop.y = cast double(height + i % 80)
+            drop))
+        |> collect_list()
+
+step() is
+    for drop in drops do
+        if drop.y > cast double(height) then
+            if random.next_double() < 0.1D then
+                launch(drop)
+            fi
+
+            continue
+        fi
+
+        drop.dy = drop.dy + gravity
+        drop.x = drop.x + drop.dx
+        drop.y = drop.y + drop.dy
+    od
+si
+
+airborne() -> int =>
+    drops |> filter(drop => drop.y <= cast double(height)) |> count()
+
+draw(image: IMAGE) is
+    image.clear(10ub, 15ub, 35ub)
+
+    for drop in drops do
+        if drop.y <= cast double(height) then
+            let fall = System.Math.clamp(drop.dy / 3.8D, -1.0D, 1.0D)
+            let shade = cast ubyte(170 + cast int(80.0D * fall * fall))
+
+            image.colour(shade - 60ub, shade, 255ub)
+            image.dot(drop.x, drop.y, 0.8D)
+        fi
+    od
+si
+
+for _ in 0..warm_up do
+    step()
+od
+
+let image = IMAGE(width, height)
+let animation = ANIMATION(width, height)
+
+for frame in 0..frames do
+    if frame % 25 == 0 then
+        write_line("frame {frame,3}: {airborne()} drops in the air")
+    fi
+
+    draw(image)
+    animation.add(image, 40)
+    step()
+od
+
+animation.write("fountain.png")
+
+animation.show("fountain.png")

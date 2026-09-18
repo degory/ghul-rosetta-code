@@ -13302,6 +13302,37 @@
       ]
     },
     {
+      "slug": "particle-fountain",
+      "title": "Particle fountain",
+      "url": "https://rosettacode.org/wiki/Particle_fountain",
+      "tags": [
+        "simulation",
+        "graphics",
+        "classes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/particle-fountain/fountain.png.expected"
+      ],
+      "lines": 94,
+      "parts": [
+        {
+          "id": "particle-fountain",
+          "heading": null,
+          "source": "tasks/particle-fountain/particle-fountain.ghul",
+          "output": "tasks/particle-fountain/run.expected",
+          "lines": 94,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/particle-fountain/fountain.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "pascals-triangle",
       "title": "Pascal's triangle",
       "url": "https://rosettacode.org/wiki/Pascal's_triangle",
