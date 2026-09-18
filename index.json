@@ -13166,6 +13166,37 @@
       ]
     },
     {
+      "slug": "mobius-strip",
+      "title": "Möbius strip",
+      "url": "https://rosettacode.org/wiki/Möbius_strip",
+      "tags": [
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/mobius-strip/mobius.png.expected"
+      ],
+      "lines": 103,
+      "parts": [
+        {
+          "id": "mobius-strip",
+          "heading": null,
+          "source": "tasks/mobius-strip/mobius-strip.ghul",
+          "output": "tasks/mobius-strip/run.expected",
+          "lines": 103,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/mobius-strip/mobius.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "monads-list-monad",
       "title": "Monads/List monad",
       "url": "https://rosettacode.org/wiki/Monads/List_monad",
