@@ -10737,6 +10737,34 @@
       ]
     },
     {
+      "slug": "minesweeper-game",
+      "title": "Minesweeper game",
+      "url": "https://rosettacode.org/wiki/Minesweeper_game",
+      "tags": [
+        "game",
+        "interactive",
+        "recursion",
+        "generators"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "minesweeper-game",
+          "heading": null,
+          "source": "tasks/minesweeper-game/minesweeper-game.ghul",
+          "output": "tasks/minesweeper-game/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "minimal-steps-down-to-1",
       "title": "Minimal steps down to 1",
       "url": "https://rosettacode.org/wiki/Minimal_steps_down_to_1",

@@ -1,0 +1,32 @@
+there are 3 mines
+enter 'c x y' to clear a square or 'm x y' to mark one
+......
+......
+......
+......
+> c 1 4
+   2..
+   2..
+   111
+      
+> m 5 1
+   2?.
+   2..
+   111
+      
+> c 6 2
+   2?.
+   2.3
+   111
+      
+> m 6 1
+   2??
+   2.3
+   111
+      
+> m 5 2
+   2??
+   2?3
+   111
+      
+all mines found
