@@ -114,6 +114,33 @@
       ]
     },
     {
+      "slug": "15-puzzle-solver",
+      "title": "15 puzzle solver",
+      "url": "https://rosettacode.org/wiki/15_puzzle_solver",
+      "tags": [
+        "puzzles",
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 124,
+      "parts": [
+        {
+          "id": "15-puzzle-solver",
+          "heading": null,
+          "source": "tasks/15-puzzle-solver/15-puzzle-solver.ghul",
+          "output": "tasks/15-puzzle-solver/run.expected",
+          "lines": 124,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "2048",
       "title": "2048",
       "url": "https://rosettacode.org/wiki/2048",
@@ -3572,6 +3599,60 @@
       ]
     },
     {
+      "slug": "compiler-lexical-analyzer",
+      "title": "Compiler/lexical analyzer",
+      "url": "https://rosettacode.org/wiki/Compiler/lexical_analyzer",
+      "tags": [
+        "parsing",
+        "generators",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 224,
+      "parts": [
+        {
+          "id": "compiler-lexical-analyzer",
+          "heading": null,
+          "source": "tasks/compiler-lexical-analyzer/compiler-lexical-analyzer.ghul",
+          "output": "tasks/compiler-lexical-analyzer/run.expected",
+          "lines": 224,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "compiler-virtual-machine-interpreter",
+      "title": "Compiler/virtual machine interpreter",
+      "url": "https://rosettacode.org/wiki/Compiler/virtual_machine_interpreter",
+      "tags": [
+        "parsing",
+        "algorithms",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 134,
+      "parts": [
+        {
+          "id": "compiler-virtual-machine-interpreter",
+          "heading": null,
+          "source": "tasks/compiler-virtual-machine-interpreter/compiler-virtual-machine-interpreter.ghul",
+          "output": "tasks/compiler-virtual-machine-interpreter/run.expected",
+          "lines": 134,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "compound-data-type",
       "title": "Compound data type",
       "url": "https://rosettacode.org/wiki/Compound_data_type",
@@ -3954,6 +4035,33 @@
           "source": "tasks/count-occurrences-of-a-substring/count-occurrences-of-a-substring.ghul",
           "output": "tasks/count-occurrences-of-a-substring/run.expected",
           "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "countdown",
+      "title": "Countdown",
+      "url": "https://rosettacode.org/wiki/Countdown",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "generators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 112,
+      "parts": [
+        {
+          "id": "countdown",
+          "heading": null,
+          "source": "tasks/countdown/countdown.ghul",
+          "output": "tasks/countdown/run.expected",
+          "lines": 112,
           "playground": true,
           "input": false,
           "images": []
@@ -16031,6 +16139,59 @@
       ]
     },
     {
+      "slug": "solve-a-hidato-puzzle",
+      "title": "Solve a Hidato puzzle",
+      "url": "https://rosettacode.org/wiki/Solve_a_Hidato_puzzle",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 99,
+      "parts": [
+        {
+          "id": "solve-a-hidato-puzzle",
+          "heading": null,
+          "source": "tasks/solve-a-hidato-puzzle/solve-a-hidato-puzzle.ghul",
+          "output": "tasks/solve-a-hidato-puzzle/run.expected",
+          "lines": 99,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "solve-a-rubik-s-cube",
+      "title": "Solve a Rubik's cube",
+      "url": "https://rosettacode.org/wiki/Solve_a_Rubik's_cube",
+      "tags": [
+        "puzzles",
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 222,
+      "parts": [
+        {
+          "id": "solve-a-rubik-s-cube",
+          "heading": null,
+          "source": "tasks/solve-a-rubik-s-cube/solve-a-rubik-s-cube.ghul",
+          "output": "tasks/solve-a-rubik-s-cube/run.expected",
+          "lines": 222,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "solve-the-no-connection-puzzle",
       "title": "Solve the no connection puzzle",
       "url": "https://rosettacode.org/wiki/Solve_the_no_connection_puzzle",
@@ -19718,6 +19879,33 @@
           "source": "tasks/vigenere-cipher/vigenere-cipher.ghul",
           "output": "tasks/vigenere-cipher/run.expected",
           "lines": 46,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "vigenere-cipher-cryptanalysis",
+      "title": "Vigenère cipher/Cryptanalysis",
+      "url": "https://rosettacode.org/wiki/Vigenère_cipher/Cryptanalysis",
+      "tags": [
+        "strings",
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "vigenere-cipher-cryptanalysis",
+          "heading": null,
+          "source": "tasks/vigenere-cipher-cryptanalysis/vigenere-cipher-cryptanalysis.ghul",
+          "output": "tasks/vigenere-cipher-cryptanalysis/run.expected",
+          "lines": 96,
           "playground": true,
           "input": false,
           "images": []

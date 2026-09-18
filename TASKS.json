@@ -21,6 +21,11 @@
       "published_hash": "f3a6272f933850a680296db2d5b1685a049ce170b91aa3ca0b1c1b1a9d3a6515"
     },
     {
+      "title": "15 puzzle solver",
+      "slug": "15-puzzle-solver",
+      "state": "solved"
+    },
+    {
       "title": "2048",
       "slug": "2048",
       "state": "published",
@@ -913,6 +918,16 @@
       "published_hash": "5d6b68a45d59fb2ff21c938ed671dc1eba2085733c86169f8078e84609c6ab09"
     },
     {
+      "title": "Compiler/lexical analyzer",
+      "slug": "compiler-lexical-analyzer",
+      "state": "solved"
+    },
+    {
+      "title": "Compiler/virtual machine interpreter",
+      "slug": "compiler-virtual-machine-interpreter",
+      "state": "solved"
+    },
+    {
       "title": "Compound data type",
       "slug": "compound-data-type",
       "state": "published",
@@ -1006,6 +1021,11 @@
       "slug": "count-occurrences-of-a-substring",
       "state": "published",
       "published_hash": "ec845360f04212d9d0a3c5bfeaf9aac07498f99ed89c595edd60731650dc0695"
+    },
+    {
+      "title": "Countdown",
+      "slug": "countdown",
+      "state": "solved"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -3948,6 +3968,16 @@
       "published_hash": "c34d89d28236572da17b70591b31400c0edf61275fbcf7e697943ba6fec2d43f"
     },
     {
+      "title": "Solve a Hidato puzzle",
+      "slug": "solve-a-hidato-puzzle",
+      "state": "solved"
+    },
+    {
+      "title": "Solve a Rubik\u0027s cube",
+      "slug": "solve-a-rubik-s-cube",
+      "state": "solved"
+    },
+    {
       "title": "Solve the no connection puzzle",
       "slug": "solve-the-no-connection-puzzle",
       "state": "published",
@@ -4817,6 +4847,11 @@
       "slug": "vigenere-cipher",
       "state": "published",
       "published_hash": "fe0156b5a85e3589bafd02f253576e2eccf7afb9a7eca3959fb5165a88ed3b5a"
+    },
+    {
+      "title": "Vigen\u00E8re cipher/Cryptanalysis",
+      "slug": "vigenere-cipher-cryptanalysis",
+      "state": "solved"
     },
     {
       "title": "Visualize a tree",

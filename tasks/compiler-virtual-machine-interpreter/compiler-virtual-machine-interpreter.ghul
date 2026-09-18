@@ -1,0 +1,134 @@
+use default
+
+use System.BitConverter
+use System.StringSplitOptions
+
+enum Op is
+    FETCH, STORE, PUSH,
+    ADD, SUB, MUL, DIV, MOD,
+    LT, GT, LE, GE, EQ, NE, AND, OR,
+    NEG, NOT, JMP, JZ,
+    PRTC, PRTS, PRTI, HALT
+si
+
+class MACHINE is
+    _code: ubyte[]
+    _strings: List[string]
+    _data: LIST[int]
+    _stack: LIST[int]
+    _pc: int
+
+    init(code: ubyte[], strings: List[string], data_size: int) is
+        _code = code
+        _strings = strings
+        _data = LIST[int](System.Linq.Enumerable.repeat(0, data_size))
+        _stack = LIST[int]()
+    si
+
+    run() is
+        do
+            let op = cast Op(cast int(_code[_pc]))
+
+            _pc = _pc + 1
+
+            case op
+            when Op.FETCH then _push(_data[_operand()])
+            when Op.STORE then _data[_operand()] = _pop()
+            when Op.PUSH then _push(_operand())
+            when Op.JMP then _pc = _pc + _offset()
+            when Op.JZ then
+                let offset = _offset()
+
+                _pc = _pc + if _pop() == 0 then offset else 4 fi
+            when Op.NEG then _push(-_pop())
+            when Op.NOT then _push(truth(_pop() == 0))
+            when Op.PRTC then IO.Std.write(cast char(_pop()))
+            when Op.PRTS then IO.Std.write(_strings[_pop()])
+            when Op.PRTI then IO.Std.write("{_pop()}")
+            when Op.HALT then break
+            else
+                let b = _pop()
+                let a = _pop()
+
+                _push(_binary(op, a, b))
+            esac
+        od
+    si
+
+    _binary(op: Op, a: int, b: int) -> int =>
+        case op
+        when Op.ADD then a + b
+        when Op.SUB then a - b
+        when Op.MUL then a * b
+        when Op.DIV then a / b
+        when Op.MOD then a % b
+        when Op.LT then truth(a < b)
+        when Op.GT then truth(a > b)
+        when Op.LE then truth(a <= b)
+        when Op.GE then truth(a >= b)
+        when Op.EQ then truth(a == b)
+        when Op.NE then truth(a != b)
+        when Op.AND then truth(a != 0 /\ b != 0)
+        when Op.OR then truth(a != 0 \/ b != 0)
+        else throw System.Exception("not a binary operator: {op}")
+        esac
+
+    _offset() -> int => BitConverter.to_int32(_code, _pc)
+
+    _operand() -> int is
+        let value = _offset()
+
+        _pc = _pc + 4
+
+        value
+    si
+
+    _push(value: int) is
+        _stack.add(value)
+    si
+
+    _pop() -> int is
+        let value = _stack[_stack.count - 1]
+
+        _stack.remove_at(_stack.count - 1)
+
+        value
+    si
+si
+
+truth(value: bool) -> int => if value then 1 else 0 fi
+
+unquote(text: string) -> string =>
+    text[1..<1].replace("\\n", "\n").replace("\\\\", "\\")
+
+let lines = LIST[string]()
+
+while let line = IO.Std.read_line() do
+    lines.add(line)
+od
+
+let header = lines[0].split([' '])
+let data_size = int.parse(header[1])
+let string_count = int.parse(header[3])
+
+let strings = lines |> skip(1) |> take(string_count) |> map(unquote)
+let code = LIST[ubyte]()
+
+for line in lines |> skip(1 + string_count) do
+    let parts = line.split([' '], StringSplitOptions.REMOVE_EMPTY_ENTRIES)
+
+    assert int.parse(parts[0]) == code.count
+    else "address {parts[0]} out of step"
+
+    let op = System.Enum.parse[Op](parts[1].to_upper_invariant())
+
+    code.add(cast ubyte(cast int(op)))
+
+    if parts.count > 2 then
+        let operand = int.parse(parts[2].trim(['[', ']', '(', ')']))
+
+        code.add_range(BitConverter.get_bytes(operand))
+    fi
+od
+
+MACHINE(code.to_array(), strings |> collect_list(), data_size).run()

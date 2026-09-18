@@ -1,0 +1,124 @@
+use default
+
+let names = ["up", "down", "left", "right"]
+let row_steps = [-1, 1, 0, 0]
+let column_steps = [0, 0, -1, 1]
+
+let found = -1
+
+distance(tile: int, at: int) -> int =>
+    System.Math.abs(at / 4 - (tile - 1) / 4) +
+    System.Math.abs(at % 4 - (tile - 1) % 4)
+
+class SOLVER is
+    _board: LIST[int]
+    _blank: int
+    _estimate: int
+    _path: LIST[int]
+
+    path: List[int] => _path
+
+    init(tiles: int[]) is
+        _board = LIST[int](tiles)
+        _blank = _board.index_of(0)
+        _path = LIST[int]()
+
+        _estimate =
+            tiles
+                |> index()
+                |> filter(t => t.value != 0)
+                |> map(t => distance(t.value, t.index))
+                |> reduce(0, (a, b) => a + b)
+    si
+
+    solve() is
+        let bound mut = _estimate
+
+        while bound != found do
+            bound = _search(0, bound, -1)
+        od
+    si
+
+    _search(depth: int, bound: int, last: int) -> int is
+        let cost = depth + _estimate
+
+        if cost > bound then
+            return cost
+        fi
+
+        if _estimate == 0 then
+            return found
+        fi
+
+        let next mut = int.max_value
+
+        for move in 0..4 do
+            let row = _blank / 4 + row_steps[move]
+            let column = _blank % 4 + column_steps[move]
+
+            if (last >= 0 /\ move == last ^ 1) \/
+                row < 0 \/ row > 3 \/ column < 0 \/ column > 3
+            then
+                continue
+            fi
+
+            let from = _blank
+            let target = row * 4 + column
+            let tile = _board[target]
+            let change = distance(tile, from) - distance(tile, target)
+
+            _slide(target, from, tile, change, move)
+
+            let result = _search(depth + 1, bound, move)
+
+            if result == found then
+                return found
+            fi
+
+            _slide(from, target, tile, -change, -1)
+
+            if result < next then
+                next = result
+            fi
+        od
+
+        next
+    si
+
+    _slide(blank: int, tile_at: int, tile: int, change: int, move: int) is
+        _board[tile_at] = tile
+        _board[blank] = 0
+        _blank = blank
+        _estimate = _estimate + change
+
+        if move >= 0 then
+            _path.add(move)
+        else
+            _path.remove_at(_path.count - 1)
+        fi
+    si
+si
+
+let solver = SOLVER([
+    15, 14,  1,  6,
+     9, 11,  4, 12,
+     0, 10,  7,  3,
+    13,  8,  5,  2
+])
+
+solver.solve()
+
+let moves = solver.path
+
+write_line("solved in {moves.count} moves:")
+write_line(moves |> map(m => names[m][0]) |> join(""))
+write_line("")
+
+for line in 0..(moves.count + 7) / 8 do
+    write_line(
+        moves
+            |> skip(line * 8)
+            |> take(8)
+            |> map(m => names[m])
+            |> join(", "))
+od
