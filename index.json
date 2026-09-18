@@ -3476,6 +3476,32 @@
       ]
     },
     {
+      "slug": "chemical-calculator",
+      "title": "Chemical calculator",
+      "url": "https://rosettacode.org/wiki/Chemical_calculator",
+      "tags": [
+        "parsing",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 76,
+      "parts": [
+        {
+          "id": "chemical-calculator",
+          "heading": null,
+          "source": "tasks/chemical-calculator/chemical-calculator.ghul",
+          "output": "tasks/chemical-calculator/run.expected",
+          "lines": 76,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "chernicks-carmichael-numbers",
       "title": "Chernick's Carmichael numbers",
       "url": "https://rosettacode.org/wiki/Chernick's_Carmichael_numbers",
