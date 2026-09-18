@@ -15583,6 +15583,36 @@
       ]
     },
     {
+      "slug": "rubik-s-cube",
+      "title": "Rubik's cube",
+      "url": "https://rosettacode.org/wiki/Rubik's_cube",
+      "tags": [
+        "graphics",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/rubik-s-cube/rubik.png.expected"
+      ],
+      "lines": 99,
+      "parts": [
+        {
+          "id": "rubik-s-cube",
+          "heading": null,
+          "source": "tasks/rubik-s-cube/rubik-s-cube.ghul",
+          "output": "tasks/rubik-s-cube/run.expected",
+          "lines": 99,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/rubik-s-cube/rubik.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "run-length-encoding",
       "title": "Run-length encoding",
       "url": "https://rosettacode.org/wiki/Run-length_encoding",
