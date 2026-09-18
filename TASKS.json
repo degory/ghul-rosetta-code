@@ -3342,7 +3342,11 @@
     {
       "title": "Morpion solitaire",
       "slug": "morpion-solitaire",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fa25c0bff02d708dd6d308f147cdd9fd57979ef7f482a6d7b0f604cab89a28cf",
+      "image_hashes": {
+        "Ghul-morpion-solitaire-morpion.png": "281bc0649540ec25022b1d232b27eda3ec18f3d1"
+      }
     },
     {
       "title": "Moser\u0027s circle problem",
@@ -3433,7 +3437,11 @@
     {
       "title": "M\u00F6bius strip",
       "slug": "mobius-strip",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bccd704c5e9c908c1e5f527bdd632d1f6e53a24098d74d7d8205076f8e2053ec",
+      "image_hashes": {
+        "Ghul-mobius-strip-mobius.png": "5dbafd948cdcd81bf714f37bd9850cb85a384898"
+      }
     },
     {
       "title": "N\u0027th",
@@ -3696,7 +3704,12 @@
     {
       "title": "Particle swarm optimization",
       "slug": "particle-swarm-optimization",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3a71dd98ae0a4dcc4798682c35f7bd80b2cae63456b6e80ebb2ecad1f62ba6eb",
+      "image_hashes": {
+        "Ghul-particle-swarm-optimization-mccormick.png": "a3ca8bafed6c466d9199b86cd029b0eca7e657df",
+        "Ghul-particle-swarm-optimization-michalewicz.png": "158b6ebd2869bce481af2c112718645d455a86ed"
+      }
     },
     {
       "title": "Pascal\u0027s triangle",
@@ -3707,7 +3720,12 @@
     {
       "title": "Peaceful chess queen armies",
       "slug": "peaceful-chess-queen-armies",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "283bfe37dc2f9f1da66703885ebb0fae2def1caf129cf85fc17b193bb87b50dd",
+      "image_hashes": {
+        "Ghul-peaceful-chess-queen-armies-queens-4-5.png": "8a3d6ad424202191aa60402aa9fed18a86931f3e",
+        "Ghul-peaceful-chess-queen-armies-queens-9-8.png": "7e62ca1eccd999627171493e399aa816bf232025"
+      }
     },
     {
       "title": "Peano curve",
@@ -3770,22 +3788,38 @@
     {
       "title": "Perceptron",
       "slug": "perceptron",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "810e6043e5626f89f61932b7191ee95dc57be772a01ab1bcc862e9419a8cd265",
+      "image_hashes": {
+        "Ghul-perceptron-perceptron.png": "119f528c32322dd9104462843d83f2628acea6ff"
+      }
     },
     {
       "title": "Percolation/Bond percolation",
       "slug": "percolation-bond-percolation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "afac54e50527614df23f717451d449692e79a0f4633cc4ee73baba355b87a8a5",
+      "image_hashes": {
+        "Ghul-percolation-bond-percolation-bonds.png": "889b29fe75e6f46da632fb5bb9ad0a6db674ca6b"
+      }
     },
     {
       "title": "Percolation/Mean cluster density",
       "slug": "percolation-mean-cluster-density",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d12859ad3d3b3c33b9d13c8d125b3f4c49abe365c269489c397e3eafcd394684",
+      "image_hashes": {
+        "Ghul-percolation-mean-cluster-density-clusters.png": "06f8a9bbb6647b7419a14ac5d9cde5833d66ca00"
+      }
     },
     {
       "title": "Percolation/Site percolation",
       "slug": "percolation-site-percolation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6d29e8770b73e6442f786f4dae2ecadf6d5f94ec2e5d8142a40f25aefff2b4ed",
+      "image_hashes": {
+        "Ghul-percolation-site-percolation-sites.png": "96e23278655bcb6edf7e9ee50f7451cc3108394e"
+      }
     },
     {
       "title": "Perfect numbers",
@@ -3802,7 +3836,11 @@
     {
       "title": "Peripheral drift illusion",
       "slug": "peripheral-drift-illusion",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "19724ce59c3ca92215c874b71ba6c5453a443e2e192d22ec58dfe61cc5abe883",
+      "image_hashes": {
+        "Ghul-peripheral-drift-illusion-drift.png": "4bf6072eb839ee23b22380774726f3ba4938908e"
+      }
     },
     {
       "title": "Perlin noise",
@@ -3863,7 +3901,11 @@
     {
       "title": "Pinstripe/Display",
       "slug": "pinstripe-display",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "56c90914694cbf920da816ef0b317177339a7af0e774221ea67de7b3b52df79d",
+      "image_hashes": {
+        "Ghul-pinstripe-display-pinstripe.png": "726fb7ff680aab89f346dab2718eeba5332a634f"
+      }
     },
     {
       "title": "Pisano period",
@@ -4000,7 +4042,11 @@
     {
       "title": "Punched cards",
       "slug": "punched-cards",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "769b7ff49373bccfd18cd8179c1426709a4b67aaa445fa8d4bdfe9177bf2f16c",
+      "image_hashes": {
+        "Ghul-punched-cards-cards.png": "1f913686b0f190a89f70c842bddec03650516793"
+      }
     },
     {
       "title": "Pythagoras tree",
@@ -4062,12 +4108,20 @@
     {
       "title": "Ramer-Douglas-Peucker line simplification",
       "slug": "ramer-douglas-peucker-line-simplification",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ba3edd0e959537a729789cce0f009f073d501711f17a014cb89e7753d9dc3624",
+      "image_hashes": {
+        "Ghul-ramer-douglas-peucker-line-simplification-simplified.png": "7bcdd05dea7132df4b551f55b53e1142346c3cd2"
+      }
     },
     {
       "title": "Ramsey\u0027s theorem",
       "slug": "ramsey-s-theorem",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4407add2e221f16eb00ca20612fda11b10c334dac8e223b1857c8b711ee0756c",
+      "image_hashes": {
+        "Ghul-ramsey-s-theorem-paley.png": "26b36f48a67b1e674b6da4b425ec26d49d82ac8b"
+      }
     },
     {
       "title": "Range consolidation",
