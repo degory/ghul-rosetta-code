@@ -9493,14 +9493,14 @@
       "images": [
         "tasks/knight-s-tour/tour.png.expected"
       ],
-      "lines": 138,
+      "lines": 140,
       "parts": [
         {
           "id": "knight-s-tour",
           "heading": null,
           "source": "tasks/knight-s-tour/knight-s-tour.ghul",
           "output": "tasks/knight-s-tour/run.expected",
-          "lines": 138,
+          "lines": 140,
           "playground": true,
           "input": false,
           "images": [
@@ -11018,6 +11018,48 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "marching-squares",
+      "title": "Marching squares",
+      "url": "https://rosettacode.org/wiki/Marching_squares",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "unions",
+        "generators"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/marching-squares/02-contours-of-a-field/contours.png.expected"
+      ],
+      "lines": 234,
+      "parts": [
+        {
+          "id": "marching-squares/01-tracing-a-perimeter",
+          "heading": "Tracing a perimeter",
+          "source": "tasks/marching-squares/01-tracing-a-perimeter/01-tracing-a-perimeter.ghul",
+          "output": "tasks/marching-squares/01-tracing-a-perimeter/run.expected",
+          "lines": 94,
+          "playground": true,
+          "input": false,
+          "images": []
+        },
+        {
+          "id": "marching-squares/02-contours-of-a-field",
+          "heading": "Contours of a field",
+          "source": "tasks/marching-squares/02-contours-of-a-field/02-contours-of-a-field.ghul",
+          "output": "tasks/marching-squares/02-contours-of-a-field/run.expected",
+          "lines": 140,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/marching-squares/02-contours-of-a-field/contours.png.expected"
+          ]
         }
       ]
     },
