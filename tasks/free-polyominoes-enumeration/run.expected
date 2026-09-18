@@ -1,0 +1,16 @@
+ 1 cells:     1 free polyominoes
+ 2 cells:     1 free polyominoes
+ 3 cells:     2 free polyominoes
+ 4 cells:     5 free polyominoes
+ 5 cells:    12 free polyominoes
+ 6 cells:    35 free polyominoes
+ 7 cells:   108 free polyominoes
+ 8 cells:   369 free polyominoes
+ 9 cells:  1285 free polyominoes
+10 cells:  4655 free polyominoes
+
+the twelve of size five:
+#####  ####  ####  ###  ###  ###  ###  ###   ##   ##   ##    #
+       #      #    ##   # #  #     #     ##   ##   ##   #   ###
+                             #     #          #     #   ##   #
+<<image hexominoes.png>>

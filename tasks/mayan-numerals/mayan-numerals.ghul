@@ -1,0 +1,62 @@
+use default
+
+let dots = ["    ", " ∙  ", " ∙∙ ", "∙∙∙ ", "∙∙∙∙"]
+let bar = "────"
+
+vigesimal(n: int) -> List[int] is
+    let digits = LIST[int]()
+    let rest mut = n
+
+    do
+        digits.insert(0, rest % 20)
+        rest = rest / 20
+
+        if rest == 0 then break fi
+    od
+
+    digits
+si
+
+glyph(digit: int) -> string[] is
+    let rows = ["    ", "    ", "    ", "    "] |> collect_list()
+
+    if digit == 0 then
+        rows[3] = " Θ  "
+    else
+        let bars = digit / 5
+
+        for b in 0..bars do
+            rows[3 - b] = bar
+        od
+
+        if digit % 5 > 0 then
+            rows[3 - bars] = dots[digit % 5]
+        fi
+    fi
+
+    rows |> collect_array()
+si
+
+cartouche(n: int) -> List[string] is
+    let glyphs = vigesimal(n) |> map(glyph) |> collect_list()
+    let across = glyphs |> map(_ => "════") |> collect_list()
+
+    let lines = LIST(["╔{across |> join("╦")}╗"])
+
+    for row in 0..4 do
+        lines.add("║{glyphs |> map(g => g[row]) |> join("║")}║")
+    od
+
+    lines.add("╚{across |> join("╩")}╝")
+
+    lines
+si
+
+for n in [4005, 8017, 326205, 886205, 3199999] do
+    write_line("{n:N0} is {vigesimal(n) |> join(".")} in base 20:")
+    cartouche(n) |> each(line => write_line("  {line}"))
+    write_line("")
+od
+
+write_line("3,199,999 is the largest number five glyphs can write,")
+write_line("every place full at nineteen")

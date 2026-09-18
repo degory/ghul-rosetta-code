@@ -1344,6 +1344,11 @@
       "published_hash": "6621686d1981d8b84ea898c22ecdd7fcff03f51ee1607b7798d35249effea521"
     },
     {
+      "title": "Determine if two triangles overlap",
+      "slug": "determine-if-two-triangles-overlap",
+      "state": "solved"
+    },
+    {
       "title": "Determine sentence type",
       "slug": "determine-sentence-type",
       "state": "published",
@@ -1387,6 +1392,11 @@
       "slug": "diversity-prediction-theorem",
       "state": "published",
       "published_hash": "e8d450ed29766b0d616cc2b87b898ffd9263e7487e87721a9cb89d2227c5a18a"
+    },
+    {
+      "title": "Divide a rectangle into a number of unequal triangles",
+      "slug": "divide-a-rectangle-into-a-number-of-unequal-triangles",
+      "state": "solved"
     },
     {
       "title": "Doomsday rule",
@@ -1479,6 +1489,11 @@
       "image_hashes": {
         "Ghul-draw-a-sphere-sphere.png": "1001a0b5276485c39eb71b7f1ecfadb5d4ca3f62"
       }
+    },
+    {
+      "title": "Draw a torus",
+      "slug": "draw-a-torus",
+      "state": "solved"
     },
     {
       "title": "Draw the Empire State Building",
@@ -2017,6 +2032,11 @@
       "published_hash": "3e526f14709fa39a84d0f5b4c636e37391e79ab9c78803d9e91f76a10b2fe6f0"
     },
     {
+      "title": "Free polyominoes enumeration",
+      "slug": "free-polyominoes-enumeration",
+      "state": "solved"
+    },
+    {
       "title": "French Republican calendar",
       "slug": "french-republican-calendar",
       "state": "published",
@@ -2405,6 +2425,11 @@
       "reason": "nondeterministic"
     },
     {
+      "title": "Hough transform",
+      "slug": "hough-transform",
+      "state": "solved"
+    },
+    {
       "title": "Huffman coding",
       "slug": "huffman-coding",
       "state": "published",
@@ -2467,6 +2492,11 @@
       "slug": "idoneal-numbers",
       "state": "published",
       "published_hash": "48f5661b9cc8f37c24d8245587389f92893d879ca75c47bc98d19014e4e3720d"
+    },
+    {
+      "title": "Image convolution",
+      "slug": "image-convolution",
+      "state": "solved"
     },
     {
       "title": "Image noise",
@@ -2717,6 +2747,11 @@
       "note": "the environment\u0027s key bindings, not standard input"
     },
     {
+      "title": "Kirkpatrick\u2013Seidel algorithm",
+      "slug": "kirkpatrick-seidel-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Klarner-Rado sequence",
       "slug": "klarner-rado-sequence",
       "state": "published",
@@ -2913,6 +2948,11 @@
       "published_hash": "bfed7806c50bc84e4af5b5669ecd4380b2aa59ca01350fba36ac1b85ce0f20ae"
     },
     {
+      "title": "Logistic curve fitting in epidemiology",
+      "slug": "logistic-curve-fitting-in-epidemiology",
+      "state": "solved"
+    },
+    {
       "title": "Long multiplication",
       "slug": "long-multiplication",
       "state": "published",
@@ -3077,6 +3117,11 @@
       "published_hash": "54819e7bf819fc933900d479d667c4e4d01472971baa53932cb4dd1cf371eafb"
     },
     {
+      "title": "Magic squares of doubly even order",
+      "slug": "magic-squares-of-doubly-even-order",
+      "state": "solved"
+    },
+    {
       "title": "Magic squares of odd order",
       "slug": "magic-squares-of-odd-order",
       "state": "published",
@@ -3143,6 +3188,11 @@
       "published_hash": "b4299788796cfc347e2ed95252a74886fe1a99a625ed2c044120e60fb3ace1e7"
     },
     {
+      "title": "Mayan numerals",
+      "slug": "mayan-numerals",
+      "state": "solved"
+    },
+    {
       "title": "Maze generation",
       "slug": "maze-generation",
       "state": "published",
@@ -3150,6 +3200,16 @@
       "image_hashes": {
         "Ghul-maze-generation-maze.png": "1236722483770ceee7a8d99e08ed604117328867"
       }
+    },
+    {
+      "title": "Maze solving",
+      "slug": "maze-solving",
+      "state": "solved"
+    },
+    {
+      "title": "Median filter",
+      "slug": "median-filter",
+      "state": "solved"
     },
     {
       "title": "Merge and aggregate datasets",
@@ -3216,6 +3276,11 @@
       "slug": "writer-monad",
       "state": "published",
       "published_hash": "39d3b77f2997c85b6d3f6a16c4056d18db42d22219047ec6392ce0c3f33d8755"
+    },
+    {
+      "title": "Monte Carlo methods",
+      "slug": "monte-carlo-methods",
+      "state": "solved"
     },
     {
       "title": "Monty Hall problem",

@@ -5274,6 +5274,37 @@
       ]
     },
     {
+      "slug": "determine-if-two-triangles-overlap",
+      "title": "Determine if two triangles overlap",
+      "url": "https://rosettacode.org/wiki/Determine_if_two_triangles_overlap",
+      "tags": [
+        "maths",
+        "algorithms",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/determine-if-two-triangles-overlap/triangles.png.expected"
+      ],
+      "lines": 103,
+      "parts": [
+        {
+          "id": "determine-if-two-triangles-overlap",
+          "heading": null,
+          "source": "tasks/determine-if-two-triangles-overlap/determine-if-two-triangles-overlap.ghul",
+          "output": "tasks/determine-if-two-triangles-overlap/run.expected",
+          "lines": 103,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/determine-if-two-triangles-overlap/triangles.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "determine-sentence-type",
       "title": "Determine sentence type",
       "url": "https://rosettacode.org/wiki/Determine_sentence_type",
@@ -5471,6 +5502,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "divide-a-rectangle-into-a-number-of-unequal-triangles",
+      "title": "Divide a rectangle into a number of unequal triangles",
+      "url": "https://rosettacode.org/wiki/Divide_a_rectangle_into_a_number_of_unequal_triangles",
+      "tags": [
+        "maths",
+        "graphics",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/divide-a-rectangle-into-a-number-of-unequal-triangles/triangles.png.expected"
+      ],
+      "lines": 142,
+      "parts": [
+        {
+          "id": "divide-a-rectangle-into-a-number-of-unequal-triangles",
+          "heading": null,
+          "source": "tasks/divide-a-rectangle-into-a-number-of-unequal-triangles/divide-a-rectangle-into-a-number-of-unequal-triangles.ghul",
+          "output": "tasks/divide-a-rectangle-into-a-number-of-unequal-triangles/run.expected",
+          "lines": 142,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/divide-a-rectangle-into-a-number-of-unequal-triangles/triangles.png.expected"
+          ]
         }
       ]
     },
@@ -5807,6 +5869,37 @@
           "input": false,
           "images": [
             "tasks/draw-a-sphere/sphere.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "draw-a-torus",
+      "title": "Draw a torus",
+      "url": "https://rosettacode.org/wiki/Draw_a_torus",
+      "tags": [
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/draw-a-torus/torus.png.expected"
+      ],
+      "lines": 85,
+      "parts": [
+        {
+          "id": "draw-a-torus",
+          "heading": null,
+          "source": "tasks/draw-a-torus/draw-a-torus.ghul",
+          "output": "tasks/draw-a-torus/run.expected",
+          "lines": 85,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/draw-a-torus/torus.png.expected"
           ]
         }
       ]
@@ -8026,6 +8119,37 @@
       ]
     },
     {
+      "slug": "free-polyominoes-enumeration",
+      "title": "Free polyominoes enumeration",
+      "url": "https://rosettacode.org/wiki/Free_polyominoes_enumeration",
+      "tags": [
+        "puzzles",
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/free-polyominoes-enumeration/hexominoes.png.expected"
+      ],
+      "lines": 128,
+      "parts": [
+        {
+          "id": "free-polyominoes-enumeration",
+          "heading": null,
+          "source": "tasks/free-polyominoes-enumeration/free-polyominoes-enumeration.ghul",
+          "output": "tasks/free-polyominoes-enumeration/run.expected",
+          "lines": 128,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/free-polyominoes-enumeration/hexominoes.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "french-republican-calendar",
       "title": "French Republican calendar",
       "url": "https://rosettacode.org/wiki/French_Republican_calendar",
@@ -9525,6 +9649,38 @@
       ]
     },
     {
+      "slug": "hough-transform",
+      "title": "Hough transform",
+      "url": "https://rosettacode.org/wiki/Hough_transform",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/hough-transform/hough.png.expected",
+        "tasks/hough-transform/pentagon.png.expected"
+      ],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "hough-transform",
+          "heading": null,
+          "source": "tasks/hough-transform/hough-transform.ghul",
+          "output": "tasks/hough-transform/run.expected",
+          "lines": 96,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/hough-transform/hough.png.expected",
+            "tasks/hough-transform/pentagon.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "huffman-coding",
       "title": "Huffman coding",
       "url": "https://rosettacode.org/wiki/Huffman_coding",
@@ -9751,6 +9907,38 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "image-convolution",
+      "title": "Image convolution",
+      "url": "https://rosettacode.org/wiki/Image_convolution",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/image-convolution/filters.png.expected",
+        "tasks/image-convolution/scene.png.expected"
+      ],
+      "lines": 125,
+      "parts": [
+        {
+          "id": "image-convolution",
+          "heading": null,
+          "source": "tasks/image-convolution/image-convolution.ghul",
+          "output": "tasks/image-convolution/run.expected",
+          "lines": 125,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/image-convolution/filters.png.expected",
+            "tasks/image-convolution/scene.png.expected"
+          ]
         }
       ]
     },
@@ -10700,6 +10888,37 @@
       ]
     },
     {
+      "slug": "kirkpatrick-seidel-algorithm",
+      "title": "Kirkpatrick–Seidel algorithm",
+      "url": "https://rosettacode.org/wiki/Kirkpatrick–Seidel_algorithm",
+      "tags": [
+        "algorithms",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/kirkpatrick-seidel-algorithm/hull.png.expected"
+      ],
+      "lines": 190,
+      "parts": [
+        {
+          "id": "kirkpatrick-seidel-algorithm",
+          "heading": null,
+          "source": "tasks/kirkpatrick-seidel-algorithm/kirkpatrick-seidel-algorithm.ghul",
+          "output": "tasks/kirkpatrick-seidel-algorithm/run.expected",
+          "lines": 190,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/kirkpatrick-seidel-algorithm/hull.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "klarner-rado-sequence",
       "title": "Klarner-Rado sequence",
       "url": "https://rosettacode.org/wiki/Klarner-Rado_sequence",
@@ -11499,6 +11718,36 @@
       ]
     },
     {
+      "slug": "logistic-curve-fitting-in-epidemiology",
+      "title": "Logistic curve fitting in epidemiology",
+      "url": "https://rosettacode.org/wiki/Logistic_curve_fitting_in_epidemiology",
+      "tags": [
+        "maths",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/logistic-curve-fitting-in-epidemiology/fit.png.expected"
+      ],
+      "lines": 89,
+      "parts": [
+        {
+          "id": "logistic-curve-fitting-in-epidemiology",
+          "heading": null,
+          "source": "tasks/logistic-curve-fitting-in-epidemiology/logistic-curve-fitting-in-epidemiology.ghul",
+          "output": "tasks/logistic-curve-fitting-in-epidemiology/run.expected",
+          "lines": 89,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/logistic-curve-fitting-in-epidemiology/fit.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "long-multiplication",
       "title": "Long multiplication",
       "url": "https://rosettacode.org/wiki/Long_multiplication",
@@ -12206,6 +12455,32 @@
       ]
     },
     {
+      "slug": "magic-squares-of-doubly-even-order",
+      "title": "Magic squares of doubly even order",
+      "url": "https://rosettacode.org/wiki/Magic_squares_of_doubly_even_order",
+      "tags": [
+        "maths",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "magic-squares-of-doubly-even-order",
+          "heading": null,
+          "source": "tasks/magic-squares-of-doubly-even-order/magic-squares-of-doubly-even-order.ghul",
+          "output": "tasks/magic-squares-of-doubly-even-order/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "magic-squares-of-odd-order",
       "title": "Magic squares of odd order",
       "url": "https://rosettacode.org/wiki/Magic_squares_of_odd_order",
@@ -12491,6 +12766,32 @@
       ]
     },
     {
+      "slug": "mayan-numerals",
+      "title": "Mayan numerals",
+      "url": "https://rosettacode.org/wiki/Mayan_numerals",
+      "tags": [
+        "strings",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "mayan-numerals",
+          "heading": null,
+          "source": "tasks/mayan-numerals/mayan-numerals.ghul",
+          "output": "tasks/mayan-numerals/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "maybe-monad",
       "title": "Monads/Maybe monad",
       "url": "https://rosettacode.org/wiki/Monads/Maybe_monad",
@@ -12555,6 +12856,69 @@
           "input": false,
           "images": [
             "tasks/maze-generation/maze.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "maze-solving",
+      "title": "Maze solving",
+      "url": "https://rosettacode.org/wiki/Maze_solving",
+      "tags": [
+        "puzzles",
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/maze-solving/solved.png.expected"
+      ],
+      "lines": 162,
+      "parts": [
+        {
+          "id": "maze-solving",
+          "heading": null,
+          "source": "tasks/maze-solving/maze-solving.ghul",
+          "output": "tasks/maze-solving/run.expected",
+          "lines": 162,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/maze-solving/solved.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "median-filter",
+      "title": "Median filter",
+      "url": "https://rosettacode.org/wiki/Median_filter",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/median-filter/cleaned.png.expected",
+        "tasks/median-filter/noisy.png.expected"
+      ],
+      "lines": 98,
+      "parts": [
+        {
+          "id": "median-filter",
+          "heading": null,
+          "source": "tasks/median-filter/median-filter.ghul",
+          "output": "tasks/median-filter/run.expected",
+          "lines": 98,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/median-filter/cleaned.png.expected",
+            "tasks/median-filter/noisy.png.expected"
           ]
         }
       ]
@@ -12834,6 +13198,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "monte-carlo-methods",
+      "title": "Monte Carlo methods",
+      "url": "https://rosettacode.org/wiki/Monte_Carlo_methods",
+      "tags": [
+        "maths",
+        "simulation",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/monte-carlo-methods/darts.png.expected"
+      ],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "monte-carlo-methods",
+          "heading": null,
+          "source": "tasks/monte-carlo-methods/monte-carlo-methods.ghul",
+          "output": "tasks/monte-carlo-methods/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/monte-carlo-methods/darts.png.expected"
+          ]
         }
       ]
     },
