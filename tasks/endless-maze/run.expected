@@ -1,0 +1,73 @@
+you are at the entrance of an endless maze
+go ahead, right, back or left; exit at the entrance, or quit
+
+paths: ahead right
+> ahead
+
+paths: right back
+> right
+
+paths: back left
+> north
+say ahead, right, back, left, exit or quit
+
+paths: back left
+> left
+
+paths: right back left
+> right
+
+paths: right back left
+> exit
+this is not the entrance
+
+paths: right back left
+> right
+
+paths: back left
+> left
+
+paths: back left
+> left
+
+paths: right back
+> right
+
+paths: right back
+> right
+
+paths: back left
+> left
+
+paths: ahead back left
+> ahead
+
+paths: ahead right back
+> ahead
+
+paths: ahead back left
+> ahead
+
+paths: ahead right back left
+> quit
+
+the part explored, E the entrance, @ where you stopped:
+  +--+--+--+
+  |E  . |  |
+  +  +  +  +
+  |  |.  . |
+  +--+--+  +
+  |  |.  .  
+  +--+  +--+
+  |  |.  . |
+  +--+--+  +
+  |  |.  . |
+  +--+  +--+
+  |  |.    |
+  +--+  +--+
+  |   . |  |
+  +--+  +--+
+  |  |.    |
+  +--+  +--+
+  |   @    |
+  +--+  +--+

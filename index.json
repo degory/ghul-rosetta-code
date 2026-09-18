@@ -6318,6 +6318,32 @@
       ]
     },
     {
+      "slug": "endless-maze",
+      "title": "Endless maze",
+      "url": "https://rosettacode.org/wiki/Endless_maze",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 134,
+      "parts": [
+        {
+          "id": "endless-maze",
+          "heading": null,
+          "source": "tasks/endless-maze/endless-maze.ghul",
+          "output": "tasks/endless-maze/run.expected",
+          "lines": 134,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "engel-expansion",
       "title": "Engel expansion",
       "url": "https://rosettacode.org/wiki/Engel_expansion",
