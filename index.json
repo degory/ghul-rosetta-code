@@ -4313,6 +4313,32 @@
       ]
     },
     {
+      "slug": "compiler-verifying-syntax",
+      "title": "Compiler/Verifying syntax",
+      "url": "https://rosettacode.org/wiki/Compiler/Verifying_syntax",
+      "tags": [
+        "parsing",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 161,
+      "parts": [
+        {
+          "id": "compiler-verifying-syntax",
+          "heading": null,
+          "source": "tasks/compiler-verifying-syntax/compiler-verifying-syntax.ghul",
+          "output": "tasks/compiler-verifying-syntax/run.expected",
+          "lines": 161,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "compiler-virtual-machine-interpreter",
       "title": "Compiler/virtual machine interpreter",
       "url": "https://rosettacode.org/wiki/Compiler/virtual_machine_interpreter",
