@@ -4964,24 +4964,39 @@
       "url": "https://rosettacode.org/wiki/Elementary_cellular_automaton",
       "tags": [
         "simulation",
+        "graphics",
         "generators",
         "pipes"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 38,
+      "images": [
+        "tasks/elementary-cellular-automaton/02-a-space-time-diagram/space-time.png.expected"
+      ],
+      "lines": 110,
       "parts": [
         {
-          "id": "elementary-cellular-automaton",
-          "heading": null,
-          "source": "tasks/elementary-cellular-automaton/elementary-cellular-automaton.ghul",
-          "output": "tasks/elementary-cellular-automaton/run.expected",
+          "id": "elementary-cellular-automaton/01-three-rules",
+          "heading": "Three rules",
+          "source": "tasks/elementary-cellular-automaton/01-three-rules/01-three-rules.ghul",
+          "output": "tasks/elementary-cellular-automaton/01-three-rules/run.expected",
           "lines": 38,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "elementary-cellular-automaton/02-a-space-time-diagram",
+          "heading": "A space time diagram",
+          "source": "tasks/elementary-cellular-automaton/02-a-space-time-diagram/02-a-space-time-diagram.ghul",
+          "output": "tasks/elementary-cellular-automaton/02-a-space-time-diagram/run.expected",
+          "lines": 72,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/elementary-cellular-automaton/02-a-space-time-diagram/space-time.png.expected"
+          ]
         }
       ]
     },
