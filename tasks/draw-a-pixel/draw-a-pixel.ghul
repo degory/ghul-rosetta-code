@@ -1,0 +1,14 @@
+use default
+use Raster.IMAGE
+
+let image = IMAGE(320, 240)
+
+image.set_pixel(100, 100, 255ub, 0ub, 0ub)
+
+let p = image.pixel(100, 100)
+
+write_line("pixel (100, 100) is ({p.red}, {p.green}, {p.blue})")
+
+image.write("pixel.png")
+
+image.show("pixel.png")
