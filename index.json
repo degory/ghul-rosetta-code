@@ -16262,6 +16262,36 @@
       ]
     },
     {
+      "slug": "sierpinski-sponge",
+      "title": "Sierpinski sponge",
+      "url": "https://rosettacode.org/wiki/Sierpinski_sponge",
+      "tags": [
+        "graphics",
+        "fractal"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/sierpinski-sponge/sponge.png.expected"
+      ],
+      "lines": 104,
+      "parts": [
+        {
+          "id": "sierpinski-sponge",
+          "heading": null,
+          "source": "tasks/sierpinski-sponge/sierpinski-sponge.ghul",
+          "output": "tasks/sierpinski-sponge/run.expected",
+          "lines": 104,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/sierpinski-sponge/sponge.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "sierpinski-square-curve",
       "title": "Sierpinski square curve",
       "url": "https://rosettacode.org/wiki/Sierpinski_square_curve",
