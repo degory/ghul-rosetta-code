@@ -4463,7 +4463,7 @@
       "images": [
         "tasks/dijkstras-algorithm/02-the-graph-drawn/dijkstra.png.expected"
       ],
-      "lines": 204,
+      "lines": 205,
       "parts": [
         {
           "id": "dijkstras-algorithm/01-the-shortest-paths",
@@ -4480,7 +4480,7 @@
           "heading": "The graph drawn",
           "source": "tasks/dijkstras-algorithm/02-the-graph-drawn/02-the-graph-drawn.ghul",
           "output": "tasks/dijkstras-algorithm/02-the-graph-drawn/run.expected",
-          "lines": 138,
+          "lines": 139,
           "playground": true,
           "input": false,
           "images": [
@@ -9913,23 +9913,38 @@
       "url": "https://rosettacode.org/wiki/Levenshtein_distance",
       "tags": [
         "strings",
-        "algorithms"
+        "algorithms",
+        "graphics"
       ],
-      "interest": 3,
+      "interest": 4,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 33,
+      "images": [
+        "tasks/levenshtein-distance/02-the-matrix-drawn/levenshtein.png.expected"
+      ],
+      "lines": 185,
       "parts": [
         {
-          "id": "levenshtein-distance",
-          "heading": null,
-          "source": "tasks/levenshtein-distance/levenshtein-distance.ghul",
-          "output": "tasks/levenshtein-distance/run.expected",
+          "id": "levenshtein-distance/01-the-distance",
+          "heading": "The distance",
+          "source": "tasks/levenshtein-distance/01-the-distance/01-the-distance.ghul",
+          "output": "tasks/levenshtein-distance/01-the-distance/run.expected",
           "lines": 33,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "levenshtein-distance/02-the-matrix-drawn",
+          "heading": "The matrix drawn",
+          "source": "tasks/levenshtein-distance/02-the-matrix-drawn/02-the-matrix-drawn.ghul",
+          "output": "tasks/levenshtein-distance/02-the-matrix-drawn/run.expected",
+          "lines": 152,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/levenshtein-distance/02-the-matrix-drawn/levenshtein.png.expected"
+          ]
         }
       ]
     },
