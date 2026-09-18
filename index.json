@@ -14004,6 +14004,37 @@
       ]
     },
     {
+      "slug": "pentomino-tiling",
+      "title": "Pentomino tiling",
+      "url": "https://rosettacode.org/wiki/Pentomino_tiling",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/pentomino-tiling/pentominoes.png.expected"
+      ],
+      "lines": 211,
+      "parts": [
+        {
+          "id": "pentomino-tiling",
+          "heading": null,
+          "source": "tasks/pentomino-tiling/pentomino-tiling.ghul",
+          "output": "tasks/pentomino-tiling/run.expected",
+          "lines": 211,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/pentomino-tiling/pentominoes.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
