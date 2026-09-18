@@ -1,0 +1,173 @@
+you are W and move first; the computer is B
+7 .-----------.-----------.
+  |           |           |
+6 |   .-------.-------.   |
+  |   |       |       |   |
+5 |   |   .---.---.   |   |
+  |   |   |       |   |   |
+4 .---.---.       .---.---.
+  |   |   |       |   |   |
+3 |   |   .---.---.   |   |
+  |   |       |       |   |
+2 |   .-------.-------.   |
+  |           |           |
+1 .-----------.-----------.
+  a   b   c   d   e   f   g
+where do you place a piece?
+> d2
+you place a piece on d2
+the computer places a piece on a4
+7 .-----------.-----------.
+  |           |           |
+6 |   .-------.-------.   |
+  |   |       |       |   |
+5 |   |   .---.---.   |   |
+  |   |   |       |   |   |
+4 B---.---.       .---.---.
+  |   |   |       |   |   |
+3 |   |   .---.---.   |   |
+  |   |       |       |   |
+2 |   .-------W-------.   |
+  |           |           |
+1 .-----------.-----------.
+  a   b   c   d   e   f   g
+where do you place a piece?
+> b4
+you place a piece on b4
+the computer places a piece on c4
+7 .-----------.-----------.
+  |           |           |
+6 |   .-------.-------.   |
+  |   |       |       |   |
+5 |   |   .---.---.   |   |
+  |   |   |       |   |   |
+4 B---W---B       .---.---.
+  |   |   |       |   |   |
+3 |   |   .---.---.   |   |
+  |   |       |       |   |
+2 |   .-------W-------.   |
+  |           |           |
+1 .-----------.-----------.
+  a   b   c   d   e   f   g
+where do you place a piece?
+> f4
+you place a piece on f4
+the computer places a piece on d7
+7 .-----------B-----------.
+  |           |           |
+6 |   .-------.-------.   |
+  |   |       |       |   |
+5 |   |   .---.---.   |   |
+  |   |   |       |   |   |
+4 B---W---B       .---W---.
+  |   |   |       |   |   |
+3 |   |   .---.---.   |   |
+  |   |       |       |   |
+2 |   .-------W-------.   |
+  |           |           |
+1 .-----------.-----------.
+  a   b   c   d   e   f   g
+where do you place a piece?
+(no more input, so your moves are chosen for you)
+you place a piece on e4
+the computer places a piece on g4
+you place a piece on d5
+the computer places a piece on g1
+you place a piece on g7
+the computer places a piece on b6
+you place a piece on e3
+the computer places a piece on e5
+you place a piece on c3
+the computer places a piece on d3
+you place a piece on d6
+the computer places a piece on f6
+you move d2-b2
+the computer moves c4-c5
+you move c3-c4
+the computer moves g1-d1
+you move b2-d2
+the computer moves d7-a7
+you move g7-d7
+  a mill: you remove the piece on e5
+the computer moves d1-a1
+  a mill: the computer removes the piece on f4
+you move d5-e5
+  a mill: you remove the piece on g4
+the computer moves c5-d5
+you move d7-g7
+the computer moves f6-f4
+you move c4-c3
+the computer moves f4-f6
+you move d2-d1
+the computer moves a7-d7
+you move d1-g1
+the computer moves d7-a7
+  a mill: the computer removes the piece on b4
+you move e4-f4
+the computer moves a1-d1
+you move f4-e4
+  a mill: you remove the piece on f6
+the computer moves d1-a1
+  a mill: the computer removes the piece on d6
+you move g7-g4
+the computer moves a4-b4
+you move c3-c4
+the computer moves b4-a4
+  a mill: the computer removes the piece on g4
+you move c4-b4
+the computer moves d5-c5
+you move b4-b2
+the computer moves d3-c3
+you move e4-f4
+the computer moves b6-b4
+you move f4-e4
+  a mill: you remove the piece on b4
+the computer moves a1-d1
+you move g1-g4
+the computer moves d1-a1
+  a mill: the computer removes the piece on b2
+you move g4-g7
+the computer moves c3-d3
+you move e4-f4
+the computer moves d3-d2
+you move f4-e4
+  a mill: you remove the piece on c5
+the computer moves d2-d1
+you move e4-f4
+the computer moves a4-b4
+you move f4-e4
+  a mill: you remove the piece on a7
+the computer moves b4-g1
+  a mill: the computer removes the piece on g7
+you move e3-c4
+the computer moves d1-e3
+you move e4-d1
+the computer moves g1-c5
+you move e5-g4
+the computer moves e3-e4
+you move d1-f4
+the computer moves a1-b2
+you move c4-b6
+the computer moves c5-e3
+you move f4-e5
+the computer moves b2-c3
+you move g4-d3
+the computer moves c3-g1
+you move e5-d2
+the computer moves g1-e5
+  a mill: the computer removes the piece on d3
+7 .-----------.-----------.
+  |           |           |
+6 |   W-------.-------.   |
+  |   |       |       |   |
+5 |   |   .---.---B   |   |
+  |   |   |       |   |   |
+4 .---.---.       B---.---.
+  |   |   |       |   |   |
+3 |   |   .---.---B   |   |
+  |   |       |       |   |
+2 |   .-------W-------.   |
+  |           |           |
+1 .-----------.-----------.
+  a   b   c   d   e   f   g
+the computer wins

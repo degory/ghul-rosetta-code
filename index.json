@@ -2982,6 +2982,33 @@
       ]
     },
     {
+      "slug": "chess-player",
+      "title": "Chess player",
+      "url": "https://rosettacode.org/wiki/Chess_player",
+      "tags": [
+        "game",
+        "interactive",
+        "algorithms"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 424,
+      "parts": [
+        {
+          "id": "chess-player",
+          "heading": null,
+          "source": "tasks/chess-player/chess-player.ghul",
+          "output": "tasks/chess-player/run.expected",
+          "lines": 424,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "chinese-remainder-theorem",
       "title": "Chinese remainder theorem",
       "url": "https://rosettacode.org/wiki/Chinese_remainder_theorem",
@@ -11068,6 +11095,32 @@
       ]
     },
     {
+      "slug": "mill-game",
+      "title": "Mill game",
+      "url": "https://rosettacode.org/wiki/Mill_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 308,
+      "parts": [
+        {
+          "id": "mill-game",
+          "heading": null,
+          "source": "tasks/mill-game/mill-game.ghul",
+          "output": "tasks/mill-game/run.expected",
+          "lines": 308,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "minesweeper-game",
       "title": "Minesweeper game",
       "url": "https://rosettacode.org/wiki/Minesweeper_game",
@@ -13774,6 +13827,33 @@
           "lines": 77,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "rcrpg",
+      "title": "RCRPG",
+      "url": "https://rosettacode.org/wiki/RCRPG",
+      "tags": [
+        "game",
+        "interactive",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 207,
+      "parts": [
+        {
+          "id": "rcrpg",
+          "heading": null,
+          "source": "tasks/rcrpg/rcrpg.ghul",
+          "output": "tasks/rcrpg/run.expected",
+          "lines": 207,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -18485,6 +18565,32 @@
           "lines": 82,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "uno-card-game",
+      "title": "Uno (card game)",
+      "url": "https://rosettacode.org/wiki/Uno_(card_game)",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 419,
+      "parts": [
+        {
+          "id": "uno-card-game",
+          "heading": null,
+          "source": "tasks/uno-card-game/uno-card-game.ghul",
+          "output": "tasks/uno-card-game/run.expected",
+          "lines": 419,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]

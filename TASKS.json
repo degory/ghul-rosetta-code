@@ -602,6 +602,11 @@
       "published_hash": "8294c9b3fb7f0f894c07c9946847d340524ea9370648691b31e5a1818add1b88"
     },
     {
+      "title": "CLI-based maze-game",
+      "state": "rejected",
+      "reason": "task-unclear"
+    },
+    {
       "title": "CRC-32",
       "slug": "crc-32",
       "state": "published",
@@ -734,6 +739,11 @@
       "slug": "cheryls-birthday",
       "state": "published",
       "published_hash": "2cdd5a5ed903f77b63846853c8b875c3df4d07dfee53017a6b48fcceafc75f4b"
+    },
+    {
+      "title": "Chess player",
+      "slug": "chess-player",
+      "state": "solved"
     },
     {
       "title": "Chinese remainder theorem",
@@ -2733,6 +2743,11 @@
       "published_hash": "d03ebbe9510262a8b7b221d7556217905289ff342539c0b9636b7156acf39892"
     },
     {
+      "title": "Mill game",
+      "slug": "mill-game",
+      "state": "solved"
+    },
+    {
       "title": "Minesweeper game",
       "slug": "minesweeper-game",
       "state": "published",
@@ -3345,6 +3360,11 @@
       "slug": "quine",
       "state": "published",
       "published_hash": "b821707b0d31db13c56e436129e143a7cbeed7e4881c6020596f3d03d864d840"
+    },
+    {
+      "title": "RCRPG",
+      "slug": "rcrpg",
+      "state": "solved"
     },
     {
       "title": "RPG attributes generator",
@@ -4510,6 +4530,11 @@
       "slug": "undulating-numbers",
       "state": "published",
       "published_hash": "ca84f23579c4c8733e2582f87426bce7627a5f1cf68e58270d3962e95d0fb0da"
+    },
+    {
+      "title": "Uno (card game)",
+      "slug": "uno-card-game",
+      "state": "solved"
     },
     {
       "title": "Unprimeable numbers",
