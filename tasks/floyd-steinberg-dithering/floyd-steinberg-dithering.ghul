@@ -1,0 +1,89 @@
+use default
+use Raster.IMAGE
+
+use Math = System.Math
+
+let width = 480
+let height = 360
+
+let light = (x = -0.45D, y = 0.55D, z = 0.70D)
+
+brightness(pixel_x: int, pixel_y: int) -> double =>
+    (let x = (cast double(pixel_x) - 0.5D * cast double(width)) /
+             (0.42D * cast double(height))
+     let y = (0.5D * cast double(height) - cast double(pixel_y)) /
+             (0.42D * cast double(height))
+
+     let sky = 0.86D - 0.42D * (y + 1.2D) / 2.4D
+     let away = x * x + y * y
+
+     if away > 1.0D then
+         sky
+     else
+         (let z = Math.sqrt(1.0D - away)
+          let facing = x * light.x + y * light.y + z * light.z
+
+          0.06D + 0.94D * Math.max(0.0D, facing))
+     fi)
+
+let source = IMAGE(width, height)
+let dithered = IMAGE(width, height)
+
+let grey = LIST[double]()
+
+for pixel_y in 0..height do
+    for pixel_x in 0..width do
+        let value = brightness(pixel_x, pixel_y)
+        let shade = cast ubyte(Math.round(255.0D * value))
+
+        grey.add(value)
+        source.set_pixel(pixel_x, pixel_y, shade, shade, shade)
+    od
+od
+
+let palette = 2
+
+nearest(value: double) -> double =>
+    (let steps = cast double(palette - 1)
+
+     Math.round(Math.min(1.0D, Math.max(0.0D, value)) * steps) / steps)
+
+spread(pixel_x: int, pixel_y: int, error: double, part: double) is
+    if pixel_x >= 0 /\ pixel_x < width /\ pixel_y < height then
+        let at = pixel_y * width + pixel_x
+
+        grey[at] = grey[at] + error * part
+    fi
+si
+
+for pixel_y in 0..height do
+    for pixel_x in 0..width do
+        let at = pixel_y * width + pixel_x
+        let wanted = grey[at]
+        let chosen = nearest(wanted)
+        let error = wanted - chosen
+
+        let shade = cast ubyte(Math.round(255.0D * chosen))
+
+        dithered.set_pixel(pixel_x, pixel_y, shade, shade, shade)
+
+        spread(pixel_x + 1, pixel_y, error, 7.0D / 16.0D)
+        spread(pixel_x - 1, pixel_y + 1, error, 3.0D / 16.0D)
+        spread(pixel_x, pixel_y + 1, error, 5.0D / 16.0D)
+        spread(pixel_x + 1, pixel_y + 1, error, 1.0D / 16.0D)
+    od
+od
+
+let ink =
+    (0..width * height)
+        |> filter(at => dithered.pixel(at % width, at / width).red < 128ub)
+        |> count()
+
+write_line("{width} by {height}, {palette} grey levels")
+write_line("{ink} of {width * height} pixels are black")
+
+source.write("source.png")
+dithered.write("dithered.png")
+
+source.show("source.png")
+dithered.show("dithered.png")

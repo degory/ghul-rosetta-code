@@ -48,6 +48,11 @@
       "published_hash": "82fdf2cbd7ce8813f9d45f0a0d4e1d2a64e5bf688a59a21b409108f2502c0b44"
     },
     {
+      "title": "A* search algorithm",
+      "slug": "a-search-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "A\u002BB",
       "slug": "a-b",
       "state": "published",
@@ -394,7 +399,10 @@
       "title": "Benford\u0027s law",
       "slug": "benfords-law",
       "state": "published",
-      "published_hash": "c622aeae950291fbfd25d38370382b2b407015d6f65d14751f5c9ef1dfcf505f"
+      "published_hash": "dec80d8bfcffefd75bf09a0ec5093d5bea68b1a442ed15e3ccc49f3a9c741b33",
+      "image_hashes": {
+        "Ghul-benfords-law-benford.png": "9f43077ef447c9981e6e96e136f463b515114c21"
+      }
     },
     {
       "title": "Bernoulli\u0027s triangle",
@@ -810,6 +818,11 @@
       "published_hash": "2099734e9d7b62e1dab199c69051670b0df02926dcf9222b2cce978961984e7a"
     },
     {
+      "title": "Color wheel",
+      "slug": "color-wheel",
+      "state": "solved"
+    },
+    {
       "title": "Colorful numbers",
       "slug": "colorful-numbers",
       "state": "published",
@@ -942,6 +955,11 @@
       "slug": "convert-seconds-to-compound-duration",
       "state": "published",
       "published_hash": "b28d7ab7989b5ec0ffdecc4861654204221817df421a9b02c116a1d134e22c0b"
+    },
+    {
+      "title": "Convex hull",
+      "slug": "convex-hull",
+      "state": "solved"
     },
     {
       "title": "Conway\u0027s Game of Life",
@@ -1631,6 +1649,11 @@
       "published_hash": "0d5b9cf4a63e5afd8657ef1eb19f58c8e1d9b309ff59758e90880cf9214e5ec2"
     },
     {
+      "title": "Floyd-Steinberg dithering",
+      "slug": "floyd-steinberg-dithering",
+      "state": "solved"
+    },
+    {
       "title": "Floyd-Warshall algorithm",
       "slug": "floyd-warshall-algorithm",
       "state": "published",
@@ -1798,7 +1821,10 @@
       "title": "Goldbach\u0027s comet",
       "slug": "goldbachs-comet",
       "state": "published",
-      "published_hash": "ab473cd0cfe0a65972b0699c275a796d1f5227dd0e02b5d4aca47f23c00e442c"
+      "published_hash": "061d38406bbadff624aa74bfc49d0b29af4cda648006046da057f22ce0039c71",
+      "image_hashes": {
+        "Ghul-goldbachs-comet-comet.png": "e19af5d2f37b83ceffb0e5f5a477db7618a36bdd"
+      }
     },
     {
       "title": "Golden ratio/Convergence",
@@ -1895,7 +1921,10 @@
       "title": "Hailstone sequence",
       "slug": "hailstone-sequence",
       "state": "published",
-      "published_hash": "b1392cf563b50185f0319c0c232a11d39fb43696971f1c4d120866e37d9830a4"
+      "published_hash": "9321921b3ccffb08e782474f84c3ecf42dcd7143f14ee3880325dd2ead4d6086",
+      "image_hashes": {
+        "Ghul-hailstone-sequence-hailstone.png": "ae850d3c01810bbcfc61f0f7f205c82179729ee0"
+      }
     },
     {
       "title": "Hamming numbers",
@@ -2040,7 +2069,10 @@
       "title": "Huffman coding",
       "slug": "huffman-coding",
       "state": "published",
-      "published_hash": "849e077e4cc0612cbb967982660bbefa792b71c95f4f1e2a15a15816a6e8118b"
+      "published_hash": "20be2f4f2e2f63207537f181da7a6625ceae779a709636cc21d092527db5326c",
+      "image_hashes": {
+        "Ghul-huffman-coding-huffman.png": "ad16771574ef99705c3281a4a10c582feaf7a264"
+      }
     },
     {
       "title": "Humble numbers",
@@ -2304,6 +2336,11 @@
       "published_hash": "0b4f100ea92274f707b1f62d6bce53fc0d3183bfb68e51afc55af4214f894a57"
     },
     {
+      "title": "K-means\u002B\u002B clustering",
+      "slug": "k-means-clustering",
+      "state": "solved"
+    },
+    {
       "title": "Kaprekar numbers",
       "slug": "kaprekar-numbers",
       "state": "published",
@@ -2347,6 +2384,11 @@
       "slug": "knapsack-problem-0-1",
       "state": "published",
       "published_hash": "97179152f6dc7ddd2fb0e11cc25590a41bbfd980102e011780cb7541b1870323"
+    },
+    {
+      "title": "Knight\u0027s tour",
+      "slug": "knight-s-tour",
+      "state": "solved"
     },
     {
       "title": "Knuth shuffle",
@@ -2704,6 +2746,11 @@
       "slug": "map-range",
       "state": "published",
       "published_hash": "c5b70fd09bb286c224c12a1afedc17faeed924ac821c676d799a48b38e272e70"
+    },
+    {
+      "title": "Marching squares",
+      "slug": "marching-squares",
+      "state": "solved"
     },
     {
       "title": "Mastermind",
@@ -3161,9 +3208,9 @@
       "title": "Penrose tiling",
       "slug": "penrose-tiling",
       "state": "published",
-      "published_hash": "4dac93e7c26dbe424f916bafa9452fcbcad707fc5037104e771a117ef2b08006",
+      "published_hash": "11e1a8cd1b1e3001afe3c981199a2aaf6f030d14f624bf9210f70e506f835a09",
       "image_hashes": {
-        "Ghul-penrose-tiling-penrose.png": "b1a937952f9c5421070d75c41ef6ab55170fa229"
+        "Ghul-penrose-tiling-penrose.png": "ec62e4a868b38db4207db1550d35f9c8fe8de1ae"
       }
     },
     {
@@ -3191,7 +3238,10 @@
       "title": "Perlin noise",
       "slug": "perlin-noise",
       "state": "published",
-      "published_hash": "60d8d32df3dcae660b09fdc458ac7ff6601349c6527430ffe1c81318577d532c"
+      "published_hash": "5c7ba22e4d207945096c2f3f5698a6fed5a43e1ccb58d41a0a2995707170c358",
+      "image_hashes": {
+        "Ghul-perlin-noise-noise.png": "da8e9ffa0d81dee11c90752da080c8523c8e083e"
+      }
     },
     {
       "title": "Permutations",
@@ -3328,6 +3378,11 @@
       "state": "solved"
     },
     {
+      "title": "Problem of Apollonius",
+      "slug": "problem-of-apollonius",
+      "state": "solved"
+    },
+    {
       "title": "Program name",
       "state": "blocked",
       "reason": "ghul#2487"
@@ -3461,7 +3516,10 @@
       "title": "Recaman\u0027s sequence",
       "slug": "recamans-sequence",
       "state": "published",
-      "published_hash": "34c08128b8c16c5ea55f6f7a1dc1f6e629055795ff4e5f5ab05b2de78de98f47"
+      "published_hash": "6afe7dbddbea2ccb9cceb32ca1f90d3ebbf0f4603d149164aeadff2b6766a6d6",
+      "image_hashes": {
+        "Ghul-recamans-sequence-recaman.png": "10529f90098c985b6c114125344f49439b7038ac"
+      }
     },
     {
       "title": "Regular expressions",
@@ -3700,6 +3758,11 @@
       "image_hashes": {
         "Ghul-sierpinski-curve-sierpinski.png": "80f0d93b880ae26e4e7f844bd42dc9496555adaf"
       }
+    },
+    {
+      "title": "Sierpinski pentagon",
+      "slug": "sierpinski-pentagon",
+      "state": "solved"
     },
     {
       "title": "Sierpinski square curve",
@@ -4298,6 +4361,11 @@
       }
     },
     {
+      "title": "Sutherland-Hodgman polygon clipping",
+      "slug": "sutherland-hodgman-polygon-clipping",
+      "state": "solved"
+    },
+    {
       "title": "Sylvester\u0027s sequence",
       "slug": "sylvesters-sequence",
       "state": "published",
@@ -4565,7 +4633,10 @@
       "title": "Ulam spiral (for primes)",
       "slug": "ulam-spiral-for-primes",
       "state": "published",
-      "published_hash": "9878a349415d037f81e46e6982bb459d4f5bef17a757a8c38f54a45d9282c711"
+      "published_hash": "31de949a8bb81c0ef8f707622ed46c487641b32d0fc15d7522f9d4a4108393dd",
+      "image_hashes": {
+        "Ghul-ulam-spiral-for-primes-ulam.png": "4663fe1db02ff66b23844686d6f1774e06107873"
+      }
     },
     {
       "title": "Undulating numbers",
@@ -4726,7 +4797,10 @@
       "title": "Water collected between towers",
       "slug": "water-collected-between-towers",
       "state": "published",
-      "published_hash": "69b68248c020b13c8337254bc07c7e269cc3f4496cd3f3d7b3a822bba642d491"
+      "published_hash": "1d7de841d91db6011595ec90567d380729d22f7140a5541d692a584d3b843017",
+      "image_hashes": {
+        "Ghul-water-collected-between-towers-towers.png": "b26c5a638cadea67df248aaff2605a54e166e4e1"
+      }
     },
     {
       "title": "Weird numbers",

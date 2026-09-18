@@ -1,0 +1,78 @@
+use default
+use Raster.IMAGE
+use Raster.SHAPES
+
+use Math = System.Math
+use Point = (x: double, y: double)
+use Pentagon = (x: double, y: double, radius: double)
+
+let golden = (1.0D + Math.sqrt(5.0D)) / 2.0D
+let shrink = 1.0D / (1.0D + golden)
+
+towards(index: int) -> double =>
+    Math.pi / 2.0D + 0.4D * Math.pi * cast double(index)
+
+corner_of(shape: Pentagon, index: int) -> Point =>
+    (let angle = towards(index)
+
+     (x = shape.x + shape.radius * Math.cos(angle),
+      y = shape.y + shape.radius * Math.sin(angle)))
+
+inner(shape: Pentagon, index: int) -> Pentagon =>
+    (let angle = towards(index)
+     let smaller = shape.radius * shrink
+     let reach = shape.radius - smaller
+
+     (x = shape.x + reach * Math.cos(angle),
+      y = shape.y + reach * Math.sin(angle),
+      radius = smaller))
+
+flake(shape: Pentagon, order: int) -> Pipe[Pentagon] is
+    if order == 0 then
+        yield shape
+    else
+        for index in 0..5 do
+            yield in flake(inner(shape, index), order - 1)
+        od
+    fi
+si
+
+let whole = (x = 0.0D, y = 0.0D, radius = 1.0D)
+let order = 5
+
+for shown in 1::order do
+    write_line(
+        "order {shown}: {flake(whole, shown) |> count()} pentagons")
+od
+
+let palette =
+    [(red = 214ub, green = 69ub, blue = 65ub),
+     (red = 238ub, green = 150ub, blue = 57ub),
+     (red = 88ub, green = 166ub, blue = 96ub),
+     (red = 58ub, green = 120ub, blue = 190ub),
+     (red = 140ub, green = 86ub, blue = 168ub)]
+
+let image = IMAGE(600, 600)
+
+let half = Math.sin(0.4D * Math.pi) + 0.04D
+let middle = (1.0D - Math.cos(Math.pi / 5.0D)) / 2.0D
+
+image.view(-half, middle - half, half, middle + half)
+
+let shapes = SHAPES()
+
+for index in 0..5 do
+    let tint = palette[index]
+
+    for leaf in flake(inner(whole, index), order - 1) do
+        shapes.add(
+            LIST((0..5) |> map(corner => corner_of(leaf, corner))),
+            tint)
+    od
+od
+
+image.fill(shapes)
+
+image.write("pentaflake.png")
+
+image.show("pentaflake.png")
