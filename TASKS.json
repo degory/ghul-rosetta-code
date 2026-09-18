@@ -374,7 +374,11 @@
     {
       "title": "B-spline",
       "slug": "b-spline",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ac00e9b13ef27a7c3fa0bad612ed47896de70ea58196969a014f851b285f16d9",
+      "image_hashes": {
+        "Ghul-b-spline-b-spline.png": "75f9881618efd5d49bd3f7bc840ba1b7c0bfc7ae"
+      }
     },
     {
       "title": "Babbage problem",
@@ -385,7 +389,11 @@
     {
       "title": "Babylonian spiral",
       "slug": "babylonian-spiral",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4bb07d55cfd2818e0c66e600c4b87f06f305ab1cc2a872ff383677c288ea42de",
+      "image_hashes": {
+        "Ghul-babylonian-spiral-spiral.png": "d6ba146a8ecffc18edd781309391728a184c34ef"
+      }
     },
     {
       "title": "Balanced brackets",
@@ -651,7 +659,11 @@
     {
       "title": "B\u00E9zier curves/Intersections",
       "slug": "bezier-curves-intersections",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ca9bdd52279799ca01d768560048f3c6e38fee403d16e8f30cb99641b1366c2e",
+      "image_hashes": {
+        "Ghul-bezier-curves-intersections-intersections.png": "9ea00d106d189804599af484e2bf0c472de632c5"
+      }
     },
     {
       "title": "CLI-based maze-game",
@@ -745,7 +757,11 @@
     {
       "title": "Catenoid surface",
       "slug": "catenoid-surface",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a7a7a30f0447c99947e5bfc29588bb2ff99017a1e817c021c8b22a4a6efa2df5",
+      "image_hashes": {
+        "Ghul-catenoid-surface-catenoid.png": "a138e9a79d65dc4e6b0c8f494d239086727f6859"
+      }
     },
     {
       "title": "Chaos game",
@@ -830,7 +846,11 @@
     {
       "title": "Cistercian numerals",
       "slug": "cistercian-numerals",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a86dfcd3ea65b490a846ea859ab41972377ad7567a7ceb36f200af590d059694",
+      "image_hashes": {
+        "Ghul-cistercian-numerals-cistercian.png": "46dab535a9bc363fac4b7be381316a975e958fd3"
+      }
     },
     {
       "title": "Classes",
@@ -1121,7 +1141,8 @@
     {
       "title": "Deal cards for FreeCell",
       "slug": "deal-cards-for-freecell",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "69857b2691d44f60f6e632e9cacff48e0dc654d42f1f446b833e31b220fe4fe7"
     },
     {
       "title": "Death Star",
@@ -1294,7 +1315,11 @@
     {
       "title": "Draw a cuboid",
       "slug": "draw-a-cuboid",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "26c63c8f4e912bd606e6e2aedceee78eba43bcc5e4803e594de93368959ce6cf",
+      "image_hashes": {
+        "Ghul-draw-a-cuboid-cuboid.png": "be6caceb542d0834ec37f5a5179a6464f5276057"
+      }
     },
     {
       "title": "Draw a pixel",
@@ -1323,7 +1348,11 @@
     {
       "title": "Draw the Empire State Building",
       "slug": "draw-the-empire-state-building",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ee232601c688b50279c3f2886bf1e6136eeb1a403a1138092af6a033a679f81c",
+      "image_hashes": {
+        "Ghul-draw-the-empire-state-building-empire-state.png": "850c942e3273deca555ba334b9957ef3c477d2f7"
+      }
     },
     {
       "title": "Duffinian numbers",
@@ -1364,7 +1393,11 @@
     {
       "title": "Eisenstein primes",
       "slug": "eisenstein-primes",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "aaefba078b8d539a6cf97ede997b2ad3caf9bf03fe5d7a329a06fd0766b3f77e",
+      "image_hashes": {
+        "Ghul-eisenstein-primes-eisenstein.png": "f142cf689f4d3dfaaa73180753c7ceaeb8674201"
+      }
     },
     {
       "title": "Elementary cellular automaton",
@@ -1621,7 +1654,8 @@
     {
       "title": "Fast Fourier transform",
       "slug": "fast-fourier-transform",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0988783245f627b88c743a8e8aa6195121059ef4f22f5118b0e1d70f284eadec"
     },
     {
       "title": "Faulhaber\u0027s triangle",
@@ -2040,7 +2074,11 @@
     {
       "title": "Greyscale bars/Display",
       "slug": "greyscale-bars-display",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7e0bf27cbfa3da8cd8f9117def12c4188083260d48f66ba9a2fb0c5817f5cdf0",
+      "image_hashes": {
+        "Ghul-greyscale-bars-display-bars.png": "e4998fbc6dec4f716638a7c0f6c3024b016e49b2"
+      }
     },
     {
       "title": "Guess the number",
@@ -2099,7 +2137,11 @@
     {
       "title": "Harriss Spiral",
       "slug": "harriss-spiral",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c09a9f9cfa8a18b9894c86ca42873c7bde49c38e22d57b8cdd3d2da49da2270c",
+      "image_hashes": {
+        "Ghul-harriss-spiral-harriss.png": "2841c1f2c32234cc473d9205bee34c917ff2dedb"
+      }
     },
     {
       "title": "Harshad or Niven series",
@@ -2543,7 +2585,11 @@
     {
       "title": "Klein bottle",
       "slug": "klein-bottle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "887e7be4718020a3bdf1c181cdc960823031fbfde9341fb85812cf43b29d830b",
+      "image_hashes": {
+        "Ghul-klein-bottle-klein.png": "3cdc3c38020d0945673df6481e0ac2df48f417ba"
+      }
     },
     {
       "title": "Knapsack problem/0-1",
@@ -3210,7 +3256,8 @@
     {
       "title": "Nonogram solver",
       "slug": "nonogram-solver",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "959ad83f7dfdb8c1de0a35c78029399cfc89bfe6256167ec48c37d939fee7c66"
     },
     {
       "title": "Nth root",
@@ -3431,7 +3478,11 @@
     {
       "title": "Pentomino tiling",
       "slug": "pentomino-tiling",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e75d36de50351eb6c22dd0cd223fb1a41b9d814436be920f87207a830f708264",
+      "image_hashes": {
+        "Ghul-pentomino-tiling-pentominoes.png": "d7e34048b89e98d91ee91a66ad706a2a7c24dfac"
+      }
     },
     {
       "title": "Perfect numbers",
@@ -3863,7 +3914,11 @@
     {
       "title": "Rubik\u0027s cube",
       "slug": "rubik-s-cube",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "946293804d17f117eded8c1efd32ee8fc11b87b3ec5b2a234292267d9bf40f1b",
+      "image_hashes": {
+        "Ghul-rubik-s-cube-rubik.png": "f3415b1b20ab58859c2029fee8c50470bc357fc0"
+      }
     },
     {
       "title": "Run-length encoding",
@@ -4019,7 +4074,11 @@
     {
       "title": "Sierpinski sponge",
       "slug": "sierpinski-sponge",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bc93932a7e4ae70984be7a43d7b7b4ec65ef7fe2cd2236a468140f1e01c4d859",
+      "image_hashes": {
+        "Ghul-sierpinski-sponge-sponge.png": "847fe760b93888c43041626e68bb9179b1aa9755"
+      }
     },
     {
       "title": "Sierpinski square curve",
@@ -4151,7 +4210,11 @@
     {
       "title": "Solve a Holy Knight\u0027s tour",
       "slug": "solve-a-holy-knight-s-tour",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "21a6292c761792120558376b094bb5868eb5cea3b96c8a3752bd89a4b1fcb008",
+      "image_hashes": {
+        "Ghul-solve-a-holy-knight-s-tour-tour.png": "e492a3a2a3b7bb80872ef275eb03541387d3c1a2"
+      }
     },
     {
       "title": "Solve a Rubik\u0027s cube",
@@ -4565,7 +4628,8 @@
     {
       "title": "Sudoku",
       "slug": "sudoku",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0e7d35987511e984534e45be71538d52588d0ca0d4eb44b7af14485d6f2e041d"
     },
     {
       "title": "Sum and product of an array",
@@ -4788,7 +4852,11 @@
     {
       "title": "Total circles area",
       "slug": "total-circles-area",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0d05b3a90ec198327733fc6021040521e7f5039222982958da2c7d7ad0dba481",
+      "image_hashes": {
+        "Ghul-total-circles-area-circles.png": "337a588d31f462e7f090e7c8c4b98fa615576b53"
+      }
     },
     {
       "title": "Towers of Hanoi",
@@ -5112,7 +5180,11 @@
     {
       "title": "Wave function collapse",
       "slug": "wave-function-collapse",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7e0acb80f287b86c0a51a0d7011bd141ca31458f5ce319be916b2149b63067b6",
+      "image_hashes": {
+        "Ghul-wave-function-collapse-tile.png": "9745020de2343db9c55e12869bb87b8f650fda7d"
+      }
     },
     {
       "title": "Weird numbers",
@@ -5144,7 +5216,8 @@
     {
       "title": "Word search",
       "slug": "word-search",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fd79e214691d2a91e4ad8caf21be8a9ec4c248686454e5c19368062ca8253351"
     },
     {
       "title": "Word wheel",
