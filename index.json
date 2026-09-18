@@ -16077,6 +16077,36 @@
       ]
     },
     {
+      "slug": "punched-cards",
+      "title": "Punched cards",
+      "url": "https://rosettacode.org/wiki/Punched_cards",
+      "tags": [
+        "graphics",
+        "strings"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/punched-cards/cards.png.expected"
+      ],
+      "lines": 127,
+      "parts": [
+        {
+          "id": "punched-cards",
+          "heading": null,
+          "source": "tasks/punched-cards/punched-cards.ghul",
+          "output": "tasks/punched-cards/run.expected",
+          "lines": 127,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/punched-cards/cards.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "pythagoras-tree",
       "title": "Pythagoras tree",
       "url": "https://rosettacode.org/wiki/Pythagoras_tree",
