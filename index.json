@@ -20098,6 +20098,35 @@
       ]
     },
     {
+      "slug": "vibrating-rectangles",
+      "title": "Vibrating rectangles",
+      "url": "https://rosettacode.org/wiki/Vibrating_rectangles",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/vibrating-rectangles/rectangles.png.expected"
+      ],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "vibrating-rectangles",
+          "heading": null,
+          "source": "tasks/vibrating-rectangles/vibrating-rectangles.ghul",
+          "output": "tasks/vibrating-rectangles/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/vibrating-rectangles/rectangles.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "vigenere-cipher",
       "title": "Vigenère cipher",
       "url": "https://rosettacode.org/wiki/Vigenère_cipher",
