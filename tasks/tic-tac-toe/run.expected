@@ -1,0 +1,37 @@
+1 | 2 | 3
+4 | 5 | 6
+7 | 8 | 9
+your move (1-9)?
+> 5
+1 | 2 | 3
+4 | X | 6
+7 | 8 | 9
+I take 1
+O | 2 | 3
+4 | X | 6
+7 | 8 | 9
+your move (1-9)?
+> 1
+choose a free square from 1 to 9
+your move (1-9)?
+> 9
+O | 2 | 3
+4 | X | 6
+7 | 8 | X
+I take 3
+O | 2 | O
+4 | X | 6
+7 | 8 | X
+your move (1-9)?
+> 3
+choose a free square from 1 to 9
+your move (1-9)?
+> 8
+O | 2 | O
+4 | X | 6
+7 | X | X
+I take 2
+O | O | O
+4 | X | 6
+7 | X | X
+I win

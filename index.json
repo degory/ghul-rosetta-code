@@ -17148,6 +17148,33 @@
       ]
     },
     {
+      "slug": "tic-tac-toe",
+      "title": "Tic-tac-toe",
+      "url": "https://rosettacode.org/wiki/Tic-tac-toe",
+      "tags": [
+        "game",
+        "interactive",
+        "recursion"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 117,
+      "parts": [
+        {
+          "id": "tic-tac-toe",
+          "heading": null,
+          "source": "tasks/tic-tac-toe/tic-tac-toe.ghul",
+          "output": "tasks/tic-tac-toe/run.expected",
+          "lines": 117,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "tokenize-a-string",
       "title": "Tokenize a string",
       "url": "https://rosettacode.org/wiki/Tokenize_a_string",
