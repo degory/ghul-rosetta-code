@@ -5040,22 +5040,18 @@
       "interest": 4,
       "playground": true,
       "input": false,
-      "images": [
-        "tasks/draw-a-clock/stopwatch.png.expected"
-      ],
-      "lines": 69,
+      "images": [],
+      "lines": 83,
       "parts": [
         {
           "id": "draw-a-clock",
           "heading": null,
           "source": "tasks/draw-a-clock/draw-a-clock.ghul",
           "output": "tasks/draw-a-clock/run.expected",
-          "lines": 69,
+          "lines": 83,
           "playground": true,
           "input": false,
-          "images": [
-            "tasks/draw-a-clock/stopwatch.png.expected"
-          ]
+          "images": []
         }
       ]
     },
