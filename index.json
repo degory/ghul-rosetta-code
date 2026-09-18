@@ -20592,6 +20592,36 @@
       ]
     },
     {
+      "slug": "sunflower-fractal",
+      "title": "Sunflower fractal",
+      "url": "https://rosettacode.org/wiki/Sunflower_fractal",
+      "tags": [
+        "fractal",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/sunflower-fractal/sunflower.png.expected"
+      ],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "sunflower-fractal",
+          "heading": null,
+          "source": "tasks/sunflower-fractal/sunflower-fractal.ghul",
+          "output": "tasks/sunflower-fractal/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/sunflower-fractal/sunflower.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "super-poulet-numbers",
       "title": "Super-Poulet numbers",
       "url": "https://rosettacode.org/wiki/Super-Poulet_numbers",
