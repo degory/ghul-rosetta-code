@@ -9649,6 +9649,38 @@
       ]
     },
     {
+      "slug": "hough-transform",
+      "title": "Hough transform",
+      "url": "https://rosettacode.org/wiki/Hough_transform",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/hough-transform/hough.png.expected",
+        "tasks/hough-transform/pentagon.png.expected"
+      ],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "hough-transform",
+          "heading": null,
+          "source": "tasks/hough-transform/hough-transform.ghul",
+          "output": "tasks/hough-transform/run.expected",
+          "lines": 96,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/hough-transform/hough.png.expected",
+            "tasks/hough-transform/pentagon.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "huffman-coding",
       "title": "Huffman coding",
       "url": "https://rosettacode.org/wiki/Huffman_coding",
