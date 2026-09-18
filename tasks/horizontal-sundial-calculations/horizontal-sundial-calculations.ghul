@@ -1,0 +1,45 @@
+use default
+use IO.Std.read_line
+use System.Math
+
+ask(prompt: string) -> double? is
+    write_line(prompt)
+
+    let line = read_line()
+
+    if !line? then
+        return null
+    fi
+
+    write_line("> {line.trim()}")
+
+    return double.parse(
+        line, System.Globalization.CultureInfo.invariant_culture)
+si
+
+radians(degrees: double) -> double => degrees * Math.pi / 180.0D
+degrees(radians: double) -> double => radians * 180.0D / Math.pi
+
+while let latitude = ask("latitude in degrees, negative for south:"),
+        longitude = ask("longitude in degrees, negative for west:"),
+        meridian = ask("legal meridian in degrees:") do
+
+    let sine = Math.sin(radians(latitude))
+
+    write_line()
+    write_line("sine of latitude:     {sine,8:F3}")
+    write_line("longitude difference: {longitude - meridian,8:F3}")
+    write_line()
+    write_line("hour    sun hour angle    dial hour line angle")
+
+    for hour in -6::6 do
+        let sun = 15.0D * cast double(hour) - (longitude - meridian)
+        let line = degrees(Math.atan(sine * Math.tan(radians(sun))))
+        let clock = if hour == 0 then 12 else (hour + 12) % 12 fi
+        let half = if hour < 0 then "am" else "pm" fi
+
+        write_line("{clock,2}{half}     {sun,10:F3}        {line,10:F3}")
+    od
+
+    write_line()
+od

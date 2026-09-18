@@ -9754,6 +9754,32 @@
       ]
     },
     {
+      "slug": "horizontal-sundial-calculations",
+      "title": "Horizontal sundial calculations",
+      "url": "https://rosettacode.org/wiki/Horizontal_sundial_calculations",
+      "tags": [
+        "maths",
+        "interactive"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "horizontal-sundial-calculations",
+          "heading": null,
+          "source": "tasks/horizontal-sundial-calculations/horizontal-sundial-calculations.ghul",
+          "output": "tasks/horizontal-sundial-calculations/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "horners-rule-for-polynomial-evaluation",
       "title": "Horner's rule for polynomial evaluation",
       "url": "https://rosettacode.org/wiki/Horner's_rule_for_polynomial_evaluation",
