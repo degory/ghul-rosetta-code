@@ -2,6 +2,6 @@
     "task": "Arithmetic evaluation",
     "url": "https://rosettacode.org/wiki/Arithmetic_evaluation",
     "status": "published",
-    "tags": ["parsing", "recursion", "unions", "pattern-matching"],
-    "interest": 3
+    "tags": ["parsing", "interactive", "unions", "pattern-matching", "recursion"],
+    "interest": 5
 }

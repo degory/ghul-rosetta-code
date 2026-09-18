@@ -1042,24 +1042,35 @@
       "url": "https://rosettacode.org/wiki/Arithmetic_evaluation",
       "tags": [
         "parsing",
-        "recursion",
+        "interactive",
         "unions",
-        "pattern-matching"
+        "pattern-matching",
+        "recursion"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
-      "input": false,
+      "input": true,
       "images": [],
-      "lines": 150,
+      "lines": 327,
       "parts": [
         {
-          "id": "arithmetic-evaluation",
-          "heading": null,
-          "source": "tasks/arithmetic-evaluation/arithmetic-evaluation.ghul",
-          "output": "tasks/arithmetic-evaluation/run.expected",
+          "id": "arithmetic-evaluation/01-parsing-and-evaluating",
+          "heading": "Parsing and evaluating",
+          "source": "tasks/arithmetic-evaluation/01-parsing-and-evaluating/01-parsing-and-evaluating.ghul",
+          "output": "tasks/arithmetic-evaluation/01-parsing-and-evaluating/run.expected",
           "lines": 150,
           "playground": true,
           "input": false,
+          "images": []
+        },
+        {
+          "id": "arithmetic-evaluation/02-a-calculator",
+          "heading": "A calculator",
+          "source": "tasks/arithmetic-evaluation/02-a-calculator/02-a-calculator.ghul",
+          "output": "tasks/arithmetic-evaluation/02-a-calculator/run.expected",
+          "lines": 177,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
