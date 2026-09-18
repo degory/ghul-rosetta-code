@@ -4397,6 +4397,11 @@
       "published_hash": "2c2efae2af162a924cd70304bd5f260ea6fc5a77777bf1955ed539e3294817cd"
     },
     {
+      "title": "Set puzzle",
+      "slug": "set-puzzle",
+      "state": "solved"
+    },
+    {
       "title": "Sexy primes",
       "slug": "sexy-primes",
       "state": "published",
@@ -4554,6 +4559,11 @@
       "published_hash": "6ce1ca763dec7f118bdbec3c691822fab92ddc0e8c2f414e9519310a257e92bf"
     },
     {
+      "title": "Smallest enclosing circle problem",
+      "slug": "smallest-enclosing-circle-problem",
+      "state": "solved"
+    },
+    {
       "title": "Smarandache prime-digital sequence",
       "slug": "smarandache-prime-digital-sequence",
       "state": "published",
@@ -4597,6 +4607,11 @@
       "image_hashes": {
         "Ghul-solve-a-holy-knight-s-tour-tour.png": "e492a3a2a3b7bb80872ef275eb03541387d3c1a2"
       }
+    },
+    {
+      "title": "Solve a Hopido puzzle",
+      "slug": "solve-a-hopido-puzzle",
+      "state": "solved"
     },
     {
       "title": "Solve a Rubik\u0027s cube",
@@ -4864,6 +4879,21 @@
       "published_hash": "6a3c51438b294da687e1fd1f473c2fcadf584f47696021ae404f80cebfe2ae1c"
     },
     {
+      "title": "Statistics/Basic",
+      "slug": "statistics-basic",
+      "state": "solved"
+    },
+    {
+      "title": "Statistics/Normal distribution",
+      "slug": "statistics-normal-distribution",
+      "state": "solved"
+    },
+    {
+      "title": "Stem-and-leaf plot",
+      "slug": "stem-and-leaf-plot",
+      "state": "solved"
+    },
+    {
       "title": "Stern-Brocot sequence",
       "slug": "stern-brocot-sequence",
       "state": "published",
@@ -5072,6 +5102,11 @@
       "slug": "summarize-primes",
       "state": "published",
       "published_hash": "c5ea8a59ae6ee9ee6ebf5ac83966291102f6121ed63b8a5104ff9152afbcc106"
+    },
+    {
+      "title": "Sunflower fractal",
+      "slug": "sunflower-fractal",
+      "state": "solved"
     },
     {
       "title": "Super-Poulet numbers",
@@ -5569,6 +5604,11 @@
       }
     },
     {
+      "title": "Weiler-Atherton polygon clipping",
+      "slug": "weiler-atherton-polygon-clipping",
+      "state": "solved"
+    },
+    {
       "title": "Weird numbers",
       "slug": "weird-numbers",
       "state": "published",
@@ -5626,6 +5666,11 @@
       "published_hash": "bf31c3cf73f1c405659b48df6a962afcb02dd02e0d3966d08e50836cce3448ae"
     },
     {
+      "title": "Write language name in 3D ASCII",
+      "slug": "write-language-name-in-3d-ascii",
+      "state": "solved"
+    },
+    {
       "title": "Xiaolin Wu\u0027s line algorithm",
       "slug": "xiaolin-wus-line-algorithm",
       "state": "published",
@@ -5678,6 +5723,11 @@
       "slug": "zero-to-the-zero-power",
       "state": "published",
       "published_hash": "200c8ab9b4c155cabca51f67fa89e144287db589f129ea776d2b9b92965294ad"
+    },
+    {
+      "title": "Zhang-Suen thinning algorithm",
+      "slug": "zhang-suen-thinning-algorithm",
+      "state": "solved"
     },
     {
       "title": "Zig-zag matrix",
