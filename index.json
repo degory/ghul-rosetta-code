@@ -13488,6 +13488,31 @@
       ]
     },
     {
+      "slug": "print-itself",
+      "title": "Print itself",
+      "url": "https://rosettacode.org/wiki/Print_itself",
+      "tags": [
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 1,
+      "parts": [
+        {
+          "id": "print-itself",
+          "heading": null,
+          "source": "tasks/print-itself/print-itself.ghul",
+          "output": "tasks/print-itself/run.expected",
+          "lines": 1,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "program-termination",
       "title": "Program termination",
       "url": "https://rosettacode.org/wiki/Program_termination",
