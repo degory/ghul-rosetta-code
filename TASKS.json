@@ -372,10 +372,20 @@
       "published_hash": "c80951c299c04e0dccb0de39d0ea593f83acbaf8f84b97b1d825baae576a7511"
     },
     {
+      "title": "B-spline",
+      "slug": "b-spline",
+      "state": "solved"
+    },
+    {
       "title": "Babbage problem",
       "slug": "babbage-problem",
       "state": "published",
       "published_hash": "fbd5e630dc07d012cfc85f726e2e96e92d7be7b048ee33e86b73be616fab9046"
+    },
+    {
+      "title": "Babylonian spiral",
+      "slug": "babylonian-spiral",
+      "state": "solved"
     },
     {
       "title": "Balanced brackets",
@@ -808,6 +818,11 @@
       "published_hash": "de96712a6e912e9d10e0d137c5d0a6534c9a6db7f8804a5bd5e000c376b7fa7f"
     },
     {
+      "title": "Cistercian numerals",
+      "slug": "cistercian-numerals",
+      "state": "solved"
+    },
+    {
       "title": "Classes",
       "slug": "classes",
       "state": "published",
@@ -1094,6 +1109,11 @@
       "published_hash": "6c693fb598af1e7cb28e0bac1193db5425e9279c017de5e3835ebaaba71cae8b"
     },
     {
+      "title": "Deal cards for FreeCell",
+      "slug": "deal-cards-for-freecell",
+      "state": "solved"
+    },
+    {
       "title": "Death Star",
       "slug": "death-star",
       "state": "published",
@@ -1262,6 +1282,11 @@
       }
     },
     {
+      "title": "Draw a cuboid",
+      "slug": "draw-a-cuboid",
+      "state": "solved"
+    },
+    {
       "title": "Draw a pixel",
       "state": "rejected",
       "reason": "needs-gui"
@@ -1320,6 +1345,11 @@
       "slug": "egyptian-division",
       "state": "published",
       "published_hash": "96f1e1c2f44912c5a0e1b1e7540b3e4490d6540356699008e75fa8809152472d"
+    },
+    {
+      "title": "Eisenstein primes",
+      "slug": "eisenstein-primes",
+      "state": "solved"
     },
     {
       "title": "Elementary cellular automaton",
@@ -1572,6 +1602,11 @@
       "slug": "farey-sequence",
       "state": "published",
       "published_hash": "07f350121bfcf2f4c201db10968d203400a18ce85c81716ff1789c04d409a17b"
+    },
+    {
+      "title": "Fast Fourier transform",
+      "slug": "fast-fourier-transform",
+      "state": "solved"
     },
     {
       "title": "Faulhaber\u0027s triangle",
@@ -1988,6 +2023,11 @@
       "published_hash": "e87805f9b1093a52765cf5fd627e9a7717bec3f6d668a4a369523350af537cf1"
     },
     {
+      "title": "Greyscale bars/Display",
+      "slug": "greyscale-bars-display",
+      "state": "solved"
+    },
+    {
       "title": "Guess the number",
       "slug": "guess-the-number",
       "state": "published",
@@ -2040,6 +2080,11 @@
       "slug": "harmonic-series",
       "state": "published",
       "published_hash": "f2b186302079872545c08d9adf0f7fb86e04e768fd15468952aee7f2032f2ceb"
+    },
+    {
+      "title": "Harriss Spiral",
+      "slug": "harriss-spiral",
+      "state": "solved"
     },
     {
       "title": "Harshad or Niven series",
@@ -3786,6 +3831,11 @@
       }
     },
     {
+      "title": "Rubik\u0027s cube",
+      "slug": "rubik-s-cube",
+      "state": "solved"
+    },
+    {
       "title": "Run-length encoding",
       "slug": "run-length-encoding",
       "state": "published",
@@ -3935,6 +3985,11 @@
       "image_hashes": {
         "Ghul-sierpinski-pentagon-pentaflake.png": "80672eba631828ae91f62188ba02076f510e9b9f"
       }
+    },
+    {
+      "title": "Sierpinski sponge",
+      "slug": "sierpinski-sponge",
+      "state": "solved"
     },
     {
       "title": "Sierpinski square curve",
@@ -4471,6 +4526,11 @@
       "slug": "sudan-function",
       "state": "published",
       "published_hash": "7970872ed4487da928001640c336064dcb536acb7034be480e90cea15f5ab884"
+    },
+    {
+      "title": "Sudoku",
+      "slug": "sudoku",
+      "state": "solved"
     },
     {
       "title": "Sum and product of an array",
