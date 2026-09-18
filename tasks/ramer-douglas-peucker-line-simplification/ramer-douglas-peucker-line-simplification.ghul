@@ -1,0 +1,75 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+struct P(x: double, y: double) is
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    ×(o: P) -> double => x * o.y - y * o.x
+
+    length: double => Math.sqrt(x * x + y * y)
+    to_string() -> string => "({x}, {y})"
+si
+
+distance(p: P, from: P, to: P) -> double =>
+    let line = to - from in
+    if line.length == 0.0D then (p - from).length
+    else Math.abs(line × (p - from)) / line.length
+    fi
+
+simplify(points: List[P], epsilon: double) -> List[P] is
+    let last = points.count - 1
+    let far mut = 0
+    let farthest mut = 0.0D
+
+    for i in 1..last do
+        let d = distance(points[i], points[0], points[last])
+
+        if d > farthest then
+            far = i
+            farthest = d
+        fi
+    od
+
+    if farthest <= epsilon then
+        return [points[0], points[last]]
+    fi
+
+    let left = simplify(points[0::far], epsilon)
+    let right = simplify(points[far::last], epsilon)
+
+    return left |> take(left.count - 1) |> cat(right) |> collect_list()
+si
+
+let line = [
+    P(0.0D, 0.0D), P(1.0D, 0.1D), P(2.0D, -0.1D), P(3.0D, 5.0D),
+    P(4.0D, 6.0D), P(5.0D, 7.0D), P(6.0D, 8.1D), P(7.0D, 9.0D),
+    P(8.0D, 9.0D), P(9.0D, 9.0D)
+]
+
+let simple = simplify(line, 1.0D)
+
+write_line(simple |> join(" "))
+
+let image = IMAGE(400, 400)
+
+image.view(-0.5D, -0.5D, 9.5D, 9.5D)
+image.clear(252ub, 252ub, 250ub)
+
+draw(points: List[P], width: double, size: double) is
+    image.stroke(width)
+    image.line(points |> map(p => (x = p.x, y = p.y)) |> collect_list())
+
+    for p in points do
+        image.dot(p.x, p.y, size)
+    od
+si
+
+image.colour(170ub, 170ub, 180ub)
+draw(line, 6.0D, 7.0D)
+
+image.colour(200ub, 50ub, 40ub)
+draw(simple, 2.0D, 4.0D)
+
+image.write("simplified.png")
+
+image.show("simplified.png")

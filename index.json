@@ -16294,6 +16294,37 @@
       ]
     },
     {
+      "slug": "ramer-douglas-peucker-line-simplification",
+      "title": "Ramer-Douglas-Peucker line simplification",
+      "url": "https://rosettacode.org/wiki/Ramer-Douglas-Peucker_line_simplification",
+      "tags": [
+        "algorithms",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/ramer-douglas-peucker-line-simplification/simplified.png.expected"
+      ],
+      "lines": 75,
+      "parts": [
+        {
+          "id": "ramer-douglas-peucker-line-simplification",
+          "heading": null,
+          "source": "tasks/ramer-douglas-peucker-line-simplification/ramer-douglas-peucker-line-simplification.ghul",
+          "output": "tasks/ramer-douglas-peucker-line-simplification/run.expected",
+          "lines": 75,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/ramer-douglas-peucker-line-simplification/simplified.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "range-consolidation",
       "title": "Range consolidation",
       "url": "https://rosettacode.org/wiki/Range_consolidation",
