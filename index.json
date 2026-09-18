@@ -16165,6 +16165,33 @@
       ]
     },
     {
+      "slug": "solve-a-rubik-s-cube",
+      "title": "Solve a Rubik's cube",
+      "url": "https://rosettacode.org/wiki/Solve_a_Rubik's_cube",
+      "tags": [
+        "puzzles",
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 222,
+      "parts": [
+        {
+          "id": "solve-a-rubik-s-cube",
+          "heading": null,
+          "source": "tasks/solve-a-rubik-s-cube/solve-a-rubik-s-cube.ghul",
+          "output": "tasks/solve-a-rubik-s-cube/run.expected",
+          "lines": 222,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "solve-the-no-connection-puzzle",
       "title": "Solve the no connection puzzle",
       "url": "https://rosettacode.org/wiki/Solve_the_no_connection_puzzle",
