@@ -2069,6 +2069,36 @@
       ]
     },
     {
+      "slug": "biorhythms",
+      "title": "Biorhythms",
+      "url": "https://rosettacode.org/wiki/Biorhythms",
+      "tags": [
+        "date-time",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/biorhythms/biorhythms.png.expected"
+      ],
+      "lines": 100,
+      "parts": [
+        {
+          "id": "biorhythms",
+          "heading": null,
+          "source": "tasks/biorhythms/biorhythms.ghul",
+          "output": "tasks/biorhythms/run.expected",
+          "lines": 100,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/biorhythms/biorhythms.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "bitmap",
       "title": "Bitmap",
       "url": "https://rosettacode.org/wiki/Bitmap",
