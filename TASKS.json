@@ -185,8 +185,9 @@
     },
     {
       "title": "Animate a pendulum",
-      "state": "rejected",
-      "reason": "needs-gui"
+      "slug": "animate-a-pendulum",
+      "state": "solved",
+      "note": "reopened, was rejected/needs-gui: pre-rendered as an animated PNG, converted to a GIF for the wiki"
     },
     {
       "title": "Animated Spinners",
