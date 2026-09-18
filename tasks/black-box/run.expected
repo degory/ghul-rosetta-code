@@ -1,0 +1,66 @@
+four atoms are hidden in an 8 x 8 box
+beams enter at 1-8 along the top, 9-16 down the right side,
+17-24 back along the bottom and 25-32 up the left side
+commands: fire <1-32>, guess <row> <column>, done
+> fire 1
+beam 1: exits at 28
+> fire 5
+beam 5: exits at 15
+> fire 9
+beam 9: exits at 32
+> fire 20
+beam 20: reflected
+> fire 13
+beam 13: hit
+> guess 6 2
+1 . . . . . . . .
+2 . . . . . . . .
+3 . . . . . . . .
+4 . . . . . . . .
+5 . . . . . . . .
+6 . o . . . . . .
+7 . . . . . . . .
+8 . . . . . . . .
+  1 2 3 4 5 6 7 8
+> guess 8 4
+1 . . . . . . . .
+2 . . . . . . . .
+3 . . . . . . . .
+4 . . . . . . . .
+5 . . . . . . . .
+6 . o . . . . . .
+7 . . . . . . . .
+8 . . . o . . . .
+  1 2 3 4 5 6 7 8
+> guess 5 7
+1 . . . . . . . .
+2 . . . . . . . .
+3 . . . . . . . .
+4 . . . . . . . .
+5 . . . . . . o .
+6 . o . . . . . .
+7 . . . . . . . .
+8 . . . o . . . .
+  1 2 3 4 5 6 7 8
+> guess 4 8
+1 . . . . . . . .
+2 . . . . . . . .
+3 . . . . . . . .
+4 . . . . . . . o
+5 . . . . . . o .
+6 . o . . . . . .
+7 . . . . . . . .
+8 . . . o . . . .
+  1 2 3 4 5 6 7 8
+> done
+1 . . . . . . . .
+2 . . . . . . . .
+3 . . . . . . . .
+4 . . . . . . . o
+5 . . . . . . X *
+6 . X . . . . . .
+7 . . . . . . . .
+8 . . . X . . . .
+  1 2 3 4 5 6 7 8
+X is a right guess, * a missed atom, o a wrong guess
+score 13; lower is better

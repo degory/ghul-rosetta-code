@@ -1,0 +1,126 @@
+use default
+use IO.Std.read_line
+use System.Math
+use System.Random
+
+let random = Random(12)
+
+class PET(name: string) is
+    age: int public
+    hunger: int public
+    happiness: int public
+    poops: int public
+    sick: bool public
+    cause_of_death: string? public
+
+    init(..) is
+        happiness = 5
+    si
+
+    alive: bool => !cause_of_death?
+
+    face: string =>
+        if !alive then "(x_x)"
+        elif sick then "(>_<)"
+        elif hunger > 6 \/ happiness < 3 then "(;_;)"
+        else "(^_^)"
+        fi
+
+    show() is
+        write_line(
+            "{face} {name}, age {age}: "
+            "hunger {hunger}/10, happiness {happiness}/10")
+
+        if poops > 0 then
+            let droppings = "".pad_right(poops, '@')
+            write_line("      {droppings} needs cleaning up")
+        fi
+
+        if sick then
+            write_line("      {name} is sick")
+        fi
+    si
+
+    pass_an_hour() is
+        age = age + 1
+        hunger = Math.min(hunger + 1, 10)
+
+        if age % 3 == 0 then
+            happiness = happiness - 1
+        fi
+
+        if random.next(3) == 0 then
+            poops = poops + 1
+        fi
+
+        sick = sick \/ poops >= 4
+
+        cause_of_death =
+            if hunger >= 10 then "starved"
+            elif happiness <= 0 then "died of loneliness"
+            elif sick /\ random.next(6) == 0 then "died of its illness"
+            elif age >= 24 then "died peacefully of old age"
+            else null
+            fi
+    si
+si
+
+write_line("what will you call your pet?")
+
+let pet = PET(read_line() ?? "Pet")
+write_line("> {pet.name}")
+write_line("commands: feed, play, clean, cure, wait")
+pet.show()
+
+while pet.alive do
+    let line = read_line()
+
+    if !line? then
+        break
+    fi
+
+    write_line("> {line}")
+
+    case line.trim().to_lower()
+    when "feed" then
+        pet.hunger = Math.max(pet.hunger - 4, 0)
+        write_line("{pet.name} eats")
+    when "play" then
+        let hand = if random.next(2) == 0 then "left" else "right" fi
+        write_line("{pet.name} hid a treat: left or right?")
+
+        let guess = read_line() ?? ""
+        write_line("> {guess}")
+
+        if guess.trim() =~ hand then
+            pet.happiness = Math.min(pet.happiness + 3, 10)
+            write_line("found it! {pet.name} is delighted")
+        else
+            pet.happiness = Math.min(pet.happiness + 1, 10)
+            write_line("it was in the {hand} hand")
+            write_line("{pet.name} enjoyed the game anyway")
+        fi
+    when "clean" then
+        pet.poops = 0
+        write_line("all clean")
+    when "cure" then
+        if pet.poops > 0 then
+            write_line("clean up first, or {pet.name} will get sick again")
+        else
+            pet.sick = false
+            write_line("{pet.name} feels better")
+        fi
+    when "wait" then
+        write_line("time passes")
+    else
+        write_line("commands: feed, play, clean, cure, wait")
+        continue
+    esac
+
+    pet.pass_an_hour()
+    pet.show()
+od
+
+if let cause = pet.cause_of_death then
+    write_line("{pet.name} {cause} at age {pet.age}")
+fi

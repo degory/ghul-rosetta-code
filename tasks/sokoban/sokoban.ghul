@@ -1,0 +1,84 @@
+use default
+
+let level = [
+    "#######",
+    "#     #",
+    "#     #",
+    "#. #  #",
+    "#. $$ #",
+    "#.$$  #",
+    "#.#  @#",
+    "#######"
+]
+
+let width = level[0].length
+let cells = level |> join("")
+
+let goals =
+    (0..cells.length) |> filter(i => cells[i] == '.') |> collect_list()
+
+let moves = [
+    (step = -1, name = 'l'),
+    (step = -width, name = 'u'),
+    (step = 1, name = 'r'),
+    (step = width, name = 'd')
+]
+
+use State = (player: int, boxes: string, path: string)
+
+put(text: string, at: int, value: char) -> string =>
+    text.remove(at, 1).insert(at, "{value}")
+
+solve() -> string? is
+    let start = cells.index_of('@')
+    let initial = cells.replace('@', ' ').replace('.', ' ')
+
+    let seen = SET[string]()
+    let queue = Collections.Queue[State]()
+
+    seen.add("{start}:{initial}")
+    queue.enqueue((player = start, boxes = initial, path = ""))
+
+    while queue.count > 0 do
+        let (player, boxes, path) = queue.dequeue()
+
+        if goals |> all(g => boxes[g] == '$') then
+            return path
+        fi
+
+        for (step, name) in moves do
+            let next = player + step
+            let beyond = next + step
+            let pushed = boxes[next] == '$'
+
+            let blocked =
+                cells[next] == '#' \/
+                (pushed /\ (cells[beyond] == '#' \/ boxes[beyond] == '$'))
+
+            if blocked then
+                continue
+            fi
+
+            let after =
+                if pushed then put(put(boxes, next, ' '), beyond, '$')
+                else boxes
+                fi
+
+            if seen.add("{next}:{after}") then
+                let move =
+                    if pushed then char.to_upper(name) else name fi
+
+                queue.enqueue(
+                    (player = next, boxes = after, path = "{path}{move}"))
+            fi
+        od
+    od
+
+    return null
+si
+
+for row in level do
+    write_line(row)
+od
+
+write_line(solve() ?? "no solution")

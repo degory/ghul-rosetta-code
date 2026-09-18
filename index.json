@@ -2039,6 +2039,33 @@
       ]
     },
     {
+      "slug": "black-box",
+      "title": "Black box",
+      "url": "https://rosettacode.org/wiki/Black_box",
+      "tags": [
+        "game",
+        "interactive",
+        "puzzles"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 144,
+      "parts": [
+        {
+          "id": "black-box",
+          "heading": null,
+          "source": "tasks/black-box/black-box.ghul",
+          "output": "tasks/black-box/run.expected",
+          "lines": 144,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "blum-integer",
       "title": "Blum integer",
       "url": "https://rosettacode.org/wiki/Blum_integer",
@@ -7663,6 +7690,33 @@
           "lines": 47,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "hexapawn",
+      "title": "Hexapawn",
+      "url": "https://rosettacode.org/wiki/Hexapawn",
+      "tags": [
+        "game",
+        "interactive",
+        "closures"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 187,
+      "parts": [
+        {
+          "id": "hexapawn",
+          "heading": null,
+          "source": "tasks/hexapawn/hexapawn.ghul",
+          "output": "tasks/hexapawn/run.expected",
+          "lines": 187,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -14924,6 +14978,32 @@
       ]
     },
     {
+      "slug": "snake",
+      "title": "Snake",
+      "url": "https://rosettacode.org/wiki/Snake",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "snake",
+          "heading": null,
+          "source": "tasks/snake/snake.ghul",
+          "output": "tasks/snake/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "snake-and-ladder",
       "title": "Snake and ladder",
       "url": "https://rosettacode.org/wiki/Snake_and_ladder",
@@ -14945,6 +15025,33 @@
           "lines": 63,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sokoban",
+      "title": "Sokoban",
+      "url": "https://rosettacode.org/wiki/Sokoban",
+      "tags": [
+        "game",
+        "puzzles",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 84,
+      "parts": [
+        {
+          "id": "sokoban",
+          "heading": null,
+          "source": "tasks/sokoban/sokoban.ghul",
+          "output": "tasks/sokoban/run.expected",
+          "lines": 84,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
@@ -17019,6 +17126,34 @@
       ]
     },
     {
+      "slug": "tamagotchi-emulator",
+      "title": "Tamagotchi emulator",
+      "url": "https://rosettacode.org/wiki/Tamagotchi_emulator",
+      "tags": [
+        "game",
+        "interactive",
+        "simulation",
+        "classes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 126,
+      "parts": [
+        {
+          "id": "tamagotchi-emulator",
+          "heading": null,
+          "source": "tasks/tamagotchi-emulator/tamagotchi-emulator.ghul",
+          "output": "tasks/tamagotchi-emulator/run.expected",
+          "lines": 126,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "tau-function",
       "title": "Tau function",
       "url": "https://rosettacode.org/wiki/Tau_function",
@@ -17169,6 +17304,32 @@
           "lines": 75,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "tetris",
+      "title": "Tetris",
+      "url": "https://rosettacode.org/wiki/Tetris",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 180,
+      "parts": [
+        {
+          "id": "tetris",
+          "heading": null,
+          "source": "tasks/tetris/tetris.ghul",
+          "output": "tasks/tetris/run.expected",
+          "lines": 180,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]

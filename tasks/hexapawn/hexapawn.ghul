@@ -1,0 +1,187 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+use Move = (from: int, to: int)
+
+let random = Random(8)
+let start = "BBB...WWW"
+
+other(side: char) -> char => if side == 'W' then 'B' else 'W' fi
+
+moves(board: string, side: char) -> List[Move] =>
+    (0..9)
+        |> filter(from => board[from] == side)
+        |> flat_map(from =>
+            let ahead = from + if side == 'W' then -3 else 3 fi in
+            [ahead - 1, ahead, ahead + 1]
+                |> filter(to =>
+                    to >= 0 /\ to < 9 /\ to / 3 == ahead / 3 /\
+                    if to == ahead then board[to] == '.'
+                    else board[to] == other(side)
+                    fi)
+                |> map(to => (from = from, to = to)))
+        |> collect_list()
+
+play(board: string, move: Move) -> string =>
+    string(
+        (0..9)
+            |> map(i =>
+                if i == move.to then board[move.from]
+                elif i == move.from then '.'
+                else board[i]
+                fi)
+            |> collect_array())
+
+has_won(board: string, side: char) -> bool =>
+    let far_rank = if side == 'W' then 0 else 6 fi in
+    board.substring(far_rank, 3).contains(side) \/
+    moves(board, other(side)).count == 0
+
+square(index: int) -> string => "{"abc"[index % 3]}{3 - index / 3}"
+
+show(board: string) is
+    for row in 0..3 do
+        write_line("{3 - row} {board.substring(row * 3, 3)}")
+    od
+
+    write_line("  abc")
+si
+
+parse(text: string) -> Move? is
+    let squares = text.replace(" ", "").replace("-", "")
+
+    if squares.length != 4 then
+        return null
+    fi
+
+    let index = (at: int) =>
+        (3 - (cast int(squares[at + 1]) - cast int('0'))) * 3 +
+        cast int(squares[at]) - cast int('a')
+
+    (from = index(0), to = index(2))
+si
+
+let memory = MAP[string, LIST[Move]]()
+
+options(board: string) -> LIST[Move] is
+    if !memory.contains_key(board) then
+        memory[board] = LIST[Move](moves(board, 'B'))
+    fi
+
+    memory[board]
+si
+
+game(white: (string) -> Move?, verbose: bool) -> char is
+    let board mut = start
+    let last_board mut = ""
+    let last_move mut = (from = 0, to = 0)
+
+    let forget_last_move = () is
+        if last_board.length > 0 then
+            memory[last_board].remove(last_move)
+        fi
+    si
+
+    while true do
+        if verbose then
+            show(board)
+        fi
+
+        let move = white(board)
+
+        if !move? then
+            return '?'
+        fi
+
+        board = play(board, move)
+
+        if has_won(board, 'W') then
+            forget_last_move()
+            return 'W'
+        fi
+
+        let choices = options(board)
+
+        if choices.count == 0 then
+            if verbose then
+                write_line("the computer resigns")
+            fi
+
+            forget_last_move()
+            return 'W'
+        fi
+
+        let chosen = choices[random.next(choices.count)]
+        last_board = board
+        last_move = chosen
+
+        if verbose then
+            let (from, to) = (square(chosen.from), square(chosen.to))
+            write_line("the computer plays {from}-{to}")
+        fi
+
+        board = play(board, chosen)
+
+        if has_won(board, 'B') then
+            if verbose then
+                show(board)
+            fi
+
+            return 'B'
+        fi
+    od
+
+    '?'
+si
+
+human(board: string) -> Move? is
+    let legal = moves(board, 'W')
+
+    while true do
+        write_line("your move (for example a1-a2)?")
+
+        let line = read_line()
+
+        if !line? then
+            return null
+        fi
+
+        write_line("> {line}")
+
+        if let move = parse(line) /\ legal |> any(m => m =~ move) then
+            return move
+        fi
+
+        write_line("that is not a legal move")
+    od
+
+    null
+si
+
+trainer(board: string) -> Move? =>
+    let legal = moves(board, 'W') in
+    legal[random.next(legal.count)]
+
+for number in 1::3 do
+    write_line("game {number}")
+
+    case game(human, true)
+    when 'W' then write_line("you win")
+    when 'B' then write_line("the computer wins")
+    else break
+    esac
+
+    write_line()
+od
+
+write_line("the computer now trains against random play:")
+
+for round in 1::5 do
+    let wins =
+        (0..20) |> filter(_ => game(trainer, false) == 'B') |> count()
+
+    write_line(
+        "  games {round * 20 - 19} to {round * 20}: "
+        "the computer wins {wins}")
+od
