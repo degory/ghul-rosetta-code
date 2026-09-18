@@ -44,6 +44,28 @@ jobs:
       run: dotnet ghul-test --use-dotnet-build --shard ${{ matrix.shard }}/10 tasks
 
 
+  # index.json is what ghul.dev's explorer reads, and is generated from the
+  # task directories. A task added or retagged without regenerating it, or
+  # with tags or an interest score that do not validate, fails here.
+  index:
+    name: Task index
+
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:10.0
+
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Restore .NET tools
+      run: dotnet tool restore
+
+    - name: Check index.json is current
+      run: dotnet run --project tools/rosetta -- index --check
+
+
   # The required status check. A shard's own job carries the matrix leg in
   # its name, so the name changes whenever the shard count does; this job's
   # does not, which keeps the shard count out of branch protection.
@@ -51,7 +73,7 @@ jobs:
   # `always()` is load-bearing: a skipped job satisfies a required check, so
   # without it anything that skipped the shards would show green here.
   build:
-    needs: [task_shards]
+    needs: [task_shards, index]
 
     if: always()
 
@@ -63,8 +85,10 @@ jobs:
     - name: Check every shard passed
       env:
         RESULT: ${{ needs.task_shards.result }}
+        INDEX: ${{ needs.index.result }}
       run: |
         echo "shards: $RESULT"
-        [ "$RESULT" = success ]
+        echo "index: $INDEX"
+        [ "$RESULT" = success ] && [ "$INDEX" = success ]
 
 

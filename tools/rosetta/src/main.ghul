@@ -18,12 +18,13 @@ use Rosetta
 //   rosetta publish --rehearse <page> [--api <url>] <slug>
 //   rosetta adopt <slug> ...          record the live section as ours, when it matches wiki-out/
 //   rosetta render-notes <path>      a task's notes.md as wiki markup, to stdout
+//   rosetta index [--check]          write index.json, or report whether it is current
 //
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
 usage() is
     error.write_line(
-        "usage: rosetta <sync|candidates|show|set|reopen|check|self-test|publish|adopt|render-notes> "
+        "usage: rosetta <sync|candidates|show|set|reopen|check|self-test|publish|adopt|render-notes|index> "
         "[arguments]"
     )
 si
@@ -138,6 +139,38 @@ sync(root: string) is
         error.write_line("{foreign.count} ghul sections on the wiki are not recorded here as published")
 
         System.Environment.exit_code = 1
+    fi
+si
+
+// index.json is generated, and CI runs this with --check so a task added or
+// retagged without regenerating it fails there rather than reaching the site
+// out of date
+write_index(root: string, check: bool) is
+    let index = TASK_INDEX(root)
+    let text = index.render()
+
+    for problem in index.problems do
+        error.write_line(problem)
+    od
+
+    if index.problems.count > 0 then
+        error.write_line("{index.problems.count} problems in task.json tags or interest")
+
+        System.Environment.exit_code = 1
+    fi
+
+    let current = if IO.File.exists(index.path) then IO.File.read_all_text(index.path) else "" fi
+
+    if check then
+        if current !~ text then
+            error.write_line("index.json is out of date - run: dotnet run --project tools/rosetta -- index")
+
+            System.Environment.exit_code = 1
+        fi
+    elif current !~ text then
+        IO.File.write_all_text(index.path, text)
+
+        write_line("index.json written")
     fi
 si
 
@@ -981,6 +1014,8 @@ else
         else
             reopen(root, arguments[0], arguments[1])
         fi
+    when "index" then
+        write_index(root, arguments.contains("--check"))
     when "self-test" then
         self_test()
     when "adopt" then
