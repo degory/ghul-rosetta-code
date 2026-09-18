@@ -212,6 +212,11 @@ of those without the file is reported, and gets no link. Everything else - a
 program that writes an image, reads a file, or relies on threads - can only be
 told by reading it, so the file is written when the solution is.
 
+A program that reads files names them in a `playground-files` file beside its
+source, one path per line relative to that directory. The playground fetches
+each one and puts it where the program opens it by its bare name, so a file
+shared through `data/` is listed by its path there (`../../data/unixdict.txt`).
+
 ## status
 
 `TASKS.json` is the ledger: one entry per task that has been done or decided about, keyed by its
