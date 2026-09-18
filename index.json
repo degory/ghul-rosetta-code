@@ -19818,23 +19818,38 @@
       "title": "Yellowstone sequence",
       "url": "https://rosettacode.org/wiki/Yellowstone_sequence",
       "tags": [
-        "number-theory"
+        "number-theory",
+        "graphics"
       ],
-      "interest": 2,
+      "interest": 4,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 28,
+      "images": [
+        "tasks/yellowstone-sequence/02-plotting-the-strands/yellowstone.png.expected"
+      ],
+      "lines": 92,
       "parts": [
         {
-          "id": "yellowstone-sequence",
-          "heading": null,
-          "source": "tasks/yellowstone-sequence/yellowstone-sequence.ghul",
-          "output": "tasks/yellowstone-sequence/run.expected",
+          "id": "yellowstone-sequence/01-the-first-thirty",
+          "heading": "The first thirty",
+          "source": "tasks/yellowstone-sequence/01-the-first-thirty/01-the-first-thirty.ghul",
+          "output": "tasks/yellowstone-sequence/01-the-first-thirty/run.expected",
           "lines": 28,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "yellowstone-sequence/02-plotting-the-strands",
+          "heading": "Plotting the strands",
+          "source": "tasks/yellowstone-sequence/02-plotting-the-strands/02-plotting-the-strands.ghul",
+          "output": "tasks/yellowstone-sequence/02-plotting-the-strands/run.expected",
+          "lines": 64,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/yellowstone-sequence/02-plotting-the-strands/yellowstone.png.expected"
+          ]
         }
       ]
     },
