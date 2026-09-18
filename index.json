@@ -1144,6 +1144,33 @@
       ]
     },
     {
+      "slug": "arithmetic-rational",
+      "title": "Arithmetic/Rational",
+      "url": "https://rosettacode.org/wiki/Arithmetic/Rational",
+      "tags": [
+        "maths",
+        "operators",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "arithmetic-rational",
+          "heading": null,
+          "source": "tasks/arithmetic-rational/arithmetic-rational.ghul",
+          "output": "tasks/arithmetic-rational/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "array-concatenation",
       "title": "Array concatenation",
       "url": "https://rosettacode.org/wiki/Array_concatenation",
