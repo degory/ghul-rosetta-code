@@ -11411,6 +11411,32 @@
       ]
     },
     {
+      "slug": "nim-game",
+      "title": "Nim game",
+      "url": "https://rosettacode.org/wiki/Nim_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "nim-game",
+          "heading": null,
+          "source": "tasks/nim-game/nim-game.ghul",
+          "output": "tasks/nim-game/run.expected",
+          "lines": 35,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "non-continuous-subsequences",
       "title": "Non-continuous subsequences",
       "url": "https://rosettacode.org/wiki/Non-continuous_subsequences",
