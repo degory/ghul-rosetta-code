@@ -7184,6 +7184,32 @@
       ]
     },
     {
+      "slug": "greed",
+      "title": "Greed",
+      "url": "https://rosettacode.org/wiki/Greed",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 103,
+      "parts": [
+        {
+          "id": "greed",
+          "heading": null,
+          "source": "tasks/greed/greed.ghul",
+          "output": "tasks/greed/run.expected",
+          "lines": 103,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "greedy-algorithm-for-egyptian-fractions",
       "title": "Greedy algorithm for Egyptian fractions",
       "url": "https://rosettacode.org/wiki/Greedy_algorithm_for_Egyptian_fractions",
