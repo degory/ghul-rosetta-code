@@ -17839,21 +17839,35 @@
         "primes",
         "generators"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 61,
+      "images": [
+        "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/ulam.png.expected"
+      ],
+      "lines": 138,
       "parts": [
         {
-          "id": "ulam-spiral-for-primes",
-          "heading": null,
-          "source": "tasks/ulam-spiral-for-primes/ulam-spiral-for-primes.ghul",
-          "output": "tasks/ulam-spiral-for-primes/run.expected",
+          "id": "ulam-spiral-for-primes/01-a-grid-of-asterisks",
+          "heading": "A grid of asterisks",
+          "source": "tasks/ulam-spiral-for-primes/01-a-grid-of-asterisks/01-a-grid-of-asterisks.ghul",
+          "output": "tasks/ulam-spiral-for-primes/01-a-grid-of-asterisks/run.expected",
           "lines": 61,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "ulam-spiral-for-primes/02-drawing-the-spiral",
+          "heading": "Drawing the spiral",
+          "source": "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/02-drawing-the-spiral.ghul",
+          "output": "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/run.expected",
+          "lines": 77,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/ulam.png.expected"
+          ]
         }
       ]
     },
