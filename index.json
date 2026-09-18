@@ -12861,6 +12861,37 @@
       ]
     },
     {
+      "slug": "maze-solving",
+      "title": "Maze solving",
+      "url": "https://rosettacode.org/wiki/Maze_solving",
+      "tags": [
+        "puzzles",
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/maze-solving/solved.png.expected"
+      ],
+      "lines": 162,
+      "parts": [
+        {
+          "id": "maze-solving",
+          "heading": null,
+          "source": "tasks/maze-solving/maze-solving.ghul",
+          "output": "tasks/maze-solving/run.expected",
+          "lines": 162,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/maze-solving/solved.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "merge-and-aggregate-datasets",
       "title": "Merge and aggregate datasets",
       "url": "https://rosettacode.org/wiki/Merge_and_aggregate_datasets",
