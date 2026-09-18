@@ -22920,6 +22920,32 @@
       ]
     },
     {
+      "slug": "write-language-name-in-3d-ascii",
+      "title": "Write language name in 3D ASCII",
+      "url": "https://rosettacode.org/wiki/Write_language_name_in_3D_ASCII",
+      "tags": [
+        "strings",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "write-language-name-in-3d-ascii",
+          "heading": null,
+          "source": "tasks/write-language-name-in-3d-ascii/write-language-name-in-3d-ascii.ghul",
+          "output": "tasks/write-language-name-in-3d-ascii/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "writer-monad",
       "title": "Monads/Writer monad",
       "url": "https://rosettacode.org/wiki/Monads/Writer_monad",
