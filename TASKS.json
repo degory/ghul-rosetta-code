@@ -29,7 +29,8 @@
     {
       "title": "16 puzzle game",
       "slug": "16-puzzle-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c966fa051892f5fbe34bb443763331542c4fd8209e8c6475aa8579089b730db1"
     },
     {
       "title": "2048",
@@ -55,7 +56,11 @@
     {
       "title": "3d turtle graphics",
       "slug": "3d-turtle-graphics",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4a8380aa8543c4068f35210da5807a2140f914bd47b8e73b91189988cb36aff1",
+      "image_hashes": {
+        "Ghul-3d-turtle-graphics-turtle.png": "61a1bf6791bbd2ba8bb6bfdd6c0a15951478a837"
+      }
     },
     {
       "title": "99 bottles of beer",
@@ -115,7 +120,11 @@
     {
       "title": "Abelian sandpile model/Identity",
       "slug": "abelian-sandpile-model-identity",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "541b5dadafa3ad0e7dcaec302cb90e202049cab338fc6c1ff46dca1fba60891a",
+      "image_hashes": {
+        "Ghul-abelian-sandpile-model-identity-identity.png": "f7c373f0b37a50ee9fbc079099ea02a00301db48"
+      }
     },
     {
       "title": "Abstract type",
@@ -509,12 +518,20 @@
     {
       "title": "Biorhythms",
       "slug": "biorhythms",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d1d4d51762176c4edd342a5b67e4ea7a6910f447160a4e3048f5fa65e4616334",
+      "image_hashes": {
+        "Ghul-biorhythms-biorhythms.png": "321491bffcf8bd5c77308658a0869d49dac135ac"
+      }
     },
     {
       "title": "Birthday problem",
       "slug": "birthday-problem",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "77b4d8199906eeec2beb7bfb4a93d1194e703bb78e3c581eefe6a79fad91fbaa",
+      "image_hashes": {
+        "Ghul-birthday-problem-birthdays.png": "3cc35ad78c3ae73ec5d2803d9d43a6ec6ccfad9a"
+      }
     },
     {
       "title": "Bitmap",
@@ -836,7 +853,11 @@
     {
       "title": "Check if a polygon overlaps with a rectangle",
       "slug": "check-if-a-polygon-overlaps-with-a-rectangle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "98acf60e28d97ed0ed22d07e2f05e8c303d2890166fefe4a1ef45f0548bbafe8",
+      "image_hashes": {
+        "Ghul-check-if-a-polygon-overlaps-with-a-rectangle-overlap.png": "8876509285b7150c2318093602b506259e4a759b"
+      }
     },
     {
       "title": "Check that file exists",
@@ -895,7 +916,11 @@
     {
       "title": "Circles of given radius through two points",
       "slug": "circles-of-given-radius-through-two-points",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4441c421d47701534619aee21d8de1e37dbd66389d934acd8bc3db06c6f5a7fe",
+      "image_hashes": {
+        "Ghul-circles-of-given-radius-through-two-points-circles.png": "492765aad8c5a5b41089fcfb3fc2ccae3b00078f"
+      }
     },
     {
       "title": "Cistercian numerals",
@@ -921,7 +946,11 @@
     {
       "title": "Closest-pair problem",
       "slug": "closest-pair-problem",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "25d920b78a018c608f49b3d630ed5046b18c4c04f1b6fd4eb210456e0a25e791",
+      "image_hashes": {
+        "Ghul-closest-pair-problem-closest.png": "90e999f810e0eb7d64285f34b74e1da1333fcf02"
+      }
     },
     {
       "title": "Closures/Value capture",
@@ -1100,7 +1129,11 @@
     {
       "title": "Constrained random points on a circle",
       "slug": "constrained-random-points-on-a-circle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8a580261e9456b8e64e67a165a7bd58802fd0f93b436b1c142660104818de624",
+      "image_hashes": {
+        "Ghul-constrained-random-points-on-a-circle-ring.png": "44429a6b170ed466dc9b6c1a9556214863d1d20f"
+      }
     },
     {
       "title": "Continued fraction",
@@ -1193,7 +1226,11 @@
     {
       "title": "Curve that touches three points",
       "slug": "curve-that-touches-three-points",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "22d50cc0d2901673aa80c4dc739c210a06ba0530cff2af70490c2b8715f01ae6",
+      "image_hashes": {
+        "Ghul-curve-that-touches-three-points-curve.png": "f63593a811c0bab02af2c56901255a423d41e860"
+      }
     },
     {
       "title": "Curzon numbers",
@@ -1204,7 +1241,8 @@
     {
       "title": "Cut a rectangle",
       "slug": "cut-a-rectangle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "74a92b103c267c6bd93b2f9b22b750c1516b0267d3d9aa729ab796e7c622b730"
     },
     {
       "title": "Cycles of a permutation",
