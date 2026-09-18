@@ -10730,6 +10730,37 @@
       ]
     },
     {
+      "slug": "maze-generation",
+      "title": "Maze generation",
+      "url": "https://rosettacode.org/wiki/Maze_generation",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "recursion"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/maze-generation/maze.png.expected"
+      ],
+      "lines": 106,
+      "parts": [
+        {
+          "id": "maze-generation",
+          "heading": null,
+          "source": "tasks/maze-generation/maze-generation.ghul",
+          "output": "tasks/maze-generation/run.expected",
+          "lines": 106,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/maze-generation/maze.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "merge-and-aggregate-datasets",
       "title": "Merge and aggregate datasets",
       "url": "https://rosettacode.org/wiki/Merge_and_aggregate_datasets",

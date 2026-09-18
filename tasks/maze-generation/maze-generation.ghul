@@ -1,0 +1,107 @@
+use default
+use Raster.IMAGE
+
+let columns = 24
+let rows = 16
+let cell = 22
+let margin = 5
+
+let random = System.Random(20260918)
+
+let visited = LIST[bool]()
+let right_open = LIST[bool]()
+let down_open = LIST[bool]()
+
+for _ in 0..columns * rows do
+    visited.add(false)
+    right_open.add(false)
+    down_open.add(false)
+od
+
+at(column: int, row: int) -> int => row * columns + column
+
+inside(column: int, row: int) -> bool =>
+    column >= 0 /\ column < columns /\ row >= 0 /\ row < rows
+
+let directions =
+    [(across = 1, down = 0), (across = -1, down = 0),
+     (across = 0, down = 1), (across = 0, down = -1)]
+
+shuffled() -> Collections.List[(across: int, down: int)] is
+    let order = LIST(directions)
+    let index mut = order.count - 1
+
+    while index > 0 do
+        let other = random.next(index + 1)
+        let held = order[index]
+
+        order[index] = order[other]
+        order[other] = held
+        index = index - 1
+    od
+
+    return order
+si
+
+carve(column: int, row: int) is
+    visited[at(column, row)] = true
+
+    for step in shuffled() do
+        let next_column = column + step.across
+        let next_row = row + step.down
+
+        if inside(next_column, next_row) /\
+                !visited[at(next_column, next_row)] then
+            if step.across == 1 then
+                right_open[at(column, row)] = true
+            elif step.across == -1 then
+                right_open[at(next_column, row)] = true
+            elif step.down == 1 then
+                down_open[at(column, row)] = true
+            else
+                down_open[at(column, next_row)] = true
+            fi
+
+            carve(next_column, next_row)
+        fi
+    od
+si
+
+carve(random.next(columns), random.next(rows))
+
+let image =
+    IMAGE(columns * cell + 2 * margin, rows * cell + 2 * margin)
+
+wall(from_x: int, from_y: int, to_x: int, to_y: int) is
+    image.line(
+        cast double(margin + from_x * cell),
+        cast double(margin + from_y * cell),
+        cast double(margin + to_x * cell),
+        cast double(margin + to_y * cell)
+    )
+si
+
+image.colour(30ub, 40ub, 90ub)
+image.stroke(2.4D)
+
+wall(0, 0, columns, 0)
+wall(0, rows, columns, rows)
+wall(0, 0, 0, rows)
+wall(columns, 0, columns, rows)
+
+for row in 0..rows do
+    for column in 0..columns do
+        if column < columns - 1 /\
+                !right_open[at(column, row)] then
+            wall(column + 1, row, column + 1, row + 1)
+        fi
+
+        if row < rows - 1 /\ !down_open[at(column, row)] then
+            wall(column, row + 1, column + 1, row + 1)
+        fi
+    od
+od
+
+image.write("maze.png")
+
+image.show("maze.png")
