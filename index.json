@@ -9838,6 +9838,33 @@
       ]
     },
     {
+      "slug": "hourglass-puzzle",
+      "title": "Hourglass puzzle",
+      "url": "https://rosettacode.org/wiki/Hourglass_puzzle",
+      "tags": [
+        "puzzles",
+        "game",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 131,
+      "parts": [
+        {
+          "id": "hourglass-puzzle",
+          "heading": null,
+          "source": "tasks/hourglass-puzzle/hourglass-puzzle.ghul",
+          "output": "tasks/hourglass-puzzle/run.expected",
+          "lines": 131,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "huffman-coding",
       "title": "Huffman coding",
       "url": "https://rosettacode.org/wiki/Huffman_coding",

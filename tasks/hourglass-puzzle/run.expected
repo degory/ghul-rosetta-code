@@ -1,0 +1,39 @@
+measure exactly 9 minutes with 4 and 7 minute glasses
+say flip 4, flip 7, flip both, wait, done, hint or quit
+the clock starts now, with both glasses run out
+
+0 minutes gone; sand left to fall: 0 in the 4, 0 in the 7
+> hint
+from here: flip both, wait, flip 4, wait, flip 7, wait, flip 7, wait, done
+
+0 minutes gone; sand left to fall: 0 in the 4, 0 in the 7
+> flip both
+
+0 minutes gone; sand left to fall: 4 in the 4, 7 in the 7
+> wait
+
+4 minutes gone; sand left to fall: 0 in the 4, 3 in the 7
+> flip 4
+
+4 minutes gone; sand left to fall: 4 in the 4, 3 in the 7
+> wait
+
+7 minutes gone; sand left to fall: 1 in the 4, 0 in the 7
+> done
+that is 7 minutes, not 9
+
+7 minutes gone; sand left to fall: 1 in the 4, 0 in the 7
+> flip 7
+
+7 minutes gone; sand left to fall: 1 in the 4, 7 in the 7
+> wait
+
+8 minutes gone; sand left to fall: 0 in the 4, 6 in the 7
+> flip 7
+
+8 minutes gone; sand left to fall: 0 in the 4, 1 in the 7
+> wait
+
+9 minutes gone; sand left to fall: 0 in the 4, 0 in the 7
+> done
+that is 9 minutes exactly
