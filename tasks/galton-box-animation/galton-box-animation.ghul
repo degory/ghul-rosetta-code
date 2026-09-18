@@ -23,7 +23,7 @@ let ball_size = 4.0D
 
 let random = System.Random(12)
 
-let bins = LIST[int](System.Linq.Enumerable.repeat(0, rows + 1))
+let bins = repeat(0, rows + 1) |> collect_list()
 let falling = LIST[BALL]()
 
 x_of(row: int, slot: int) -> double =>

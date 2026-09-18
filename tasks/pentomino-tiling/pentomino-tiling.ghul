@@ -70,8 +70,8 @@ let shapes =
     pieces
         |> map(((name, cells)) => (name, orientations(cells)))
         |> collect_list()
-let board = LIST[char](System.Linq.Enumerable.repeat('.', size * size))
-let used = LIST[bool](System.Linq.Enumerable.repeat(false, pieces.count))
+let board = repeat('.', size * size) |> collect_list()
+let used = repeat(false, pieces.count) |> collect_list()
 
 fits(shape: Shape, at: Cell) -> bool =>
     shape |> all(c =>

@@ -21,7 +21,7 @@ class MACHINE is
     init(code: ubyte[], strings: List[string], data_size: int) is
         _code = code
         _strings = strings
-        _data = LIST[int](System.Linq.Enumerable.repeat(0, data_size))
+        _data = repeat(0, data_size) |> collect_list()
         _stack = LIST[int]()
     si
 

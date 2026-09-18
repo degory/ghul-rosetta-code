@@ -166,6 +166,13 @@ ordinary operators with sensible precedence, so a dot product is `a ⋅ b` and a
 `a × b` (GHUL.md, "operators"). Keep a named function where there is no accepted symbol, and do not
 invent notation.
 
+## No `System.Linq`
+
+The pipe functions in `Ghul.Pipes` cover what a solution would reach into LINQ for, so a solution
+does not name `System.Linq`. A list of `n` copies of a value is `repeat(value, n) |> collect_list()`,
+not `LIST[T](System.Linq.Enumerable.repeat(value, n))`; `repeat(value)`, `from(start)` and
+`from(start, step)` are the unbounded forms.
+
 ## Solutions are not marked `pure`
 
 The pipe combinators take pure functions, and most of what a solution passes them is not provably

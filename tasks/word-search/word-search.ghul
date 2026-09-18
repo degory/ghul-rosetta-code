@@ -24,7 +24,7 @@ class GRID is
     placed: LIST[Placed]
 
     init() is
-        cells = LIST[char](System.Linq.Enumerable.repeat(' ', size * size))
+        cells = repeat(' ', size * size) |> collect_list()
         placed = LIST[Placed]()
     si
 
