@@ -2039,6 +2039,33 @@
       ]
     },
     {
+      "slug": "black-box",
+      "title": "Black box",
+      "url": "https://rosettacode.org/wiki/Black_box",
+      "tags": [
+        "game",
+        "interactive",
+        "puzzles"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 144,
+      "parts": [
+        {
+          "id": "black-box",
+          "heading": null,
+          "source": "tasks/black-box/black-box.ghul",
+          "output": "tasks/black-box/run.expected",
+          "lines": 144,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "blum-integer",
       "title": "Blum integer",
       "url": "https://rosettacode.org/wiki/Blum_integer",
