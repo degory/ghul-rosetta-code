@@ -7668,6 +7668,33 @@
       ]
     },
     {
+      "slug": "hexapawn",
+      "title": "Hexapawn",
+      "url": "https://rosettacode.org/wiki/Hexapawn",
+      "tags": [
+        "game",
+        "interactive",
+        "closures"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 187,
+      "parts": [
+        {
+          "id": "hexapawn",
+          "heading": null,
+          "source": "tasks/hexapawn/hexapawn.ghul",
+          "output": "tasks/hexapawn/run.expected",
+          "lines": 187,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "higher-order-functions",
       "title": "Higher-order functions",
       "url": "https://rosettacode.org/wiki/Higher-order_functions",
