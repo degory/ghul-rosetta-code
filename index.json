@@ -17181,6 +17181,32 @@
       ]
     },
     {
+      "slug": "robots",
+      "title": "Robots",
+      "url": "https://rosettacode.org/wiki/Robots",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 117,
+      "parts": [
+        {
+          "id": "robots",
+          "heading": null,
+          "source": "tasks/robots/robots.ghul",
+          "output": "tasks/robots/run.expected",
+          "lines": 117,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rock-paper-scissors",
       "title": "Rock-paper-scissors",
       "url": "https://rosettacode.org/wiki/Rock-paper-scissors",
