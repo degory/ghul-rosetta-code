@@ -203,9 +203,9 @@
       "slug": "animate-a-pendulum",
       "state": "published",
       "note": "reopened, was rejected/needs-gui: pre-rendered as an animated PNG, converted to a GIF for the wiki",
-      "published_hash": "7aa36d117d95d7028a487171b065be81c21904654631696734c803677f56b735",
+      "published_hash": "0ab0930965262825ab3900bf89a69ee74b5f370fc605ff6270b8052100c164ff",
       "image_hashes": {
-        "Ghul-animate-a-pendulum-pendulum.gif": "ef236db2c4e9caf664cede8814669066fb8a377d"
+        "Ghul-animate-a-pendulum-pendulum.gif": "46e5e6f7896c773389695a8d9370f8526f0615b4"
       }
     },
     {
@@ -1019,7 +1019,7 @@
       "title": "Compiler/virtual machine interpreter",
       "slug": "compiler-virtual-machine-interpreter",
       "state": "published",
-      "published_hash": "921e87c83aebe5820280765927ba23e8b6daad31662133a5ec934b5b27535884"
+      "published_hash": "5e8948b6dc27c046d59560c341b70edbc18bf67456911d846c3f9ba66129ff45"
     },
     {
       "title": "Compound data type",
@@ -2727,7 +2727,7 @@
       "title": "Langton\u0027s ant",
       "slug": "langton-s-ant",
       "state": "published",
-      "published_hash": "1d4d4c8d9e924ed2ef22316391f14e7c19831b40da932043685280e59717cd0f",
+      "published_hash": "a1bca184c36c146dccbc0c59bf8b2f547740069447afc8f05d4b5b287dc1f127",
       "image_hashes": {
         "Ghul-langton-s-ant-ant.gif": "6fdae749ba0624b7fe26625afcef72f1c51ad4dc"
       }
@@ -3304,7 +3304,7 @@
       "title": "Nonogram solver",
       "slug": "nonogram-solver",
       "state": "published",
-      "published_hash": "959ad83f7dfdb8c1de0a35c78029399cfc89bfe6256167ec48c37d939fee7c66"
+      "published_hash": "7db52c3f37de97c473b766c89cb7be4246ed4e6275ca67edb3558efddf18a168"
     },
     {
       "title": "Nth root",
@@ -3526,7 +3526,7 @@
       "title": "Pentomino tiling",
       "slug": "pentomino-tiling",
       "state": "published",
-      "published_hash": "e75d36de50351eb6c22dd0cd223fb1a41b9d814436be920f87207a830f708264",
+      "published_hash": "d9fbeaac2824e16a6d85c71576e2ef5822ce159249a6ba0bc6897f3337b82aa5",
       "image_hashes": {
         "Ghul-pentomino-tiling-pentominoes.png": "d7e34048b89e98d91ee91a66ad706a2a7c24dfac"
       }
@@ -4506,7 +4506,7 @@
       "title": "Spinning rod animation/Text",
       "slug": "spinning-rod-animation-text",
       "state": "published",
-      "published_hash": "206e61abaef76c543cc1d595266d93f45c32f0b20536a48ea9c3f69626c898a9"
+      "published_hash": "95c17db907e65b4bf5e8d14199ff7052d5c9ee9f0685db76a80f219d252cd297"
     },
     {
       "title": "Spiral matrix",
@@ -5238,7 +5238,7 @@
       "title": "Wave function collapse",
       "slug": "wave-function-collapse",
       "state": "published",
-      "published_hash": "7e0acb80f287b86c0a51a0d7011bd141ca31458f5ce319be916b2149b63067b6",
+      "published_hash": "df41ae9dba4e5262b3cc217d7830114a3d2fb2c247bbf66548bc765058d00e4a",
       "image_hashes": {
         "Ghul-wave-function-collapse-tile.png": "9745020de2343db9c55e12869bb87b8f650fda7d"
       }
@@ -5274,7 +5274,7 @@
       "title": "Word search",
       "slug": "word-search",
       "state": "published",
-      "published_hash": "fd79e214691d2a91e4ad8caf21be8a9ec4c248686454e5c19368062ca8253351"
+      "published_hash": "504c0c4b19eaaae83f1d620e03fa326677b3ce3a21610eae71574e49e0c46a71"
     },
     {
       "title": "Word wheel",
