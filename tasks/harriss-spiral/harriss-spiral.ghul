@@ -1,0 +1,101 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+use Point = (x: double, y: double)
+
+let plastic = 1.324718D
+
+let colours = [
+    (red = 200ub, green = 60ub, blue = 50ub),
+    (red = 230ub, green = 170ub, blue = 30ub),
+    (red = 40ub, green = 120ub, blue = 200ub),
+    (red = 40ub, green = 40ub, blue = 50ub)
+]
+
+quarter_arc(image: IMAGE, from: Point, to: Point) is
+    let middle = (x = (from.x + to.x) / 2.0D, y = (from.y + to.y) / 2.0D)
+    let half = (x = (to.x - from.x) / 2.0D, y = (to.y - from.y) / 2.0D)
+    let centre = (x = middle.x + half.y, y = middle.y - half.x)
+
+    let start = Math.atan2(from.y - centre.y, from.x - centre.x)
+    let finish = Math.atan2(to.y - centre.y, to.x - centre.x)
+    let sweep mut = finish - start
+
+    if sweep > Math.pi then sweep = sweep - 2.0D * Math.pi fi
+    if sweep < -Math.pi then sweep = sweep + 2.0D * Math.pi fi
+
+    let size = Math.sqrt(half.x * half.x + half.y * half.y)
+    let radius = Math.sqrt(2.0D) * size
+
+    image.line(
+        (0::24)
+            |> map(i =>
+                let a = start + sweep * cast double(i) / 24.0D in
+                (x = centre.x + radius * Math.cos(a),
+                 y = centre.y + radius * Math.sin(a)))
+            |> collect_list())
+si
+
+harriss(
+    image: IMAGE, at: Point, degrees: double, length: double,
+    steps: int, width: double
+) is
+    let here mut = at
+    let angle mut = degrees
+    let side mut = length
+
+    for step in 0..steps do
+        let radians = angle * Math.pi / 180.0D
+        let next = (
+            x = here.x + side * Math.cos(radians),
+            y = here.y + side * Math.sin(radians))
+
+        let quadrant = cast int(Math.round(angle / 90.0D))
+        let colour = colours[(quadrant % 4 + 4) % 4]
+
+        image.colour(colour.red, colour.green, colour.blue)
+        image.stroke(width)
+        quarter_arc(image, here, next)
+
+        here = next
+        angle = angle - 90.0D
+        side = side / plastic
+    od
+si
+
+let image = IMAGE(820, 660)
+
+image.clear(225ub, 225ub, 220ub)
+
+let x = 450.0D
+let y = 630.0D
+let base = 525.0D / plastic / plastic
+
+scaled(power: int) -> double => base / Math.pow(plastic, cast double(power))
+
+let left = x - (scaled(1) + scaled(3))
+let high = y - (base + scaled(2))
+
+let starts = [
+    (left, y - scaled(7), 180.0D, scaled(6), 2, 6.0D),
+    (left, high, 270.0D, scaled(5), 3, 6.0D),
+    (x + scaled(4), high, 270.0D, scaled(5), 3, 6.0D),
+    (x + scaled(1), high, 0.0D, scaled(4), 4, 6.0D),
+    (x - scaled(4), y - scaled(1), 0.0D, scaled(5), 2, 10.0D),
+    (x - scaled(4), y - scaled(3), -270.0D, scaled(4), 3, 12.0D),
+    (x - scaled(1), y - scaled(3), 180.0D, scaled(3), 4, 12.0D),
+    (x - scaled(1), y - base, 270.0D, scaled(2), 5, 14.0D),
+    (x, y - base, 0.0D, scaled(1), 6, 14.0D),
+    (x, y, -90.0D, base, 7, 18.0D)
+]
+
+for (sx, sy, degrees, length, steps, width) in starts do
+    harriss(image, (x = sx, y = sy), degrees, length, steps, width)
+od
+
+write_line("a nest of Harriss spirals, each arc {plastic} times smaller")
+
+image.write("harriss.png")
+
+image.show("harriss.png")

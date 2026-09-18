@@ -8391,6 +8391,36 @@
       ]
     },
     {
+      "slug": "harriss-spiral",
+      "title": "Harriss Spiral",
+      "url": "https://rosettacode.org/wiki/Harriss_Spiral",
+      "tags": [
+        "graphics",
+        "fractal"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/harriss-spiral/harriss.png.expected"
+      ],
+      "lines": 101,
+      "parts": [
+        {
+          "id": "harriss-spiral",
+          "heading": null,
+          "source": "tasks/harriss-spiral/harriss-spiral.ghul",
+          "output": "tasks/harriss-spiral/run.expected",
+          "lines": 101,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/harriss-spiral/harriss.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "harshad-or-niven-series",
       "title": "Harshad or Niven series",
       "url": "https://rosettacode.org/wiki/Harshad_or_Niven_series",
