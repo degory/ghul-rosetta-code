@@ -12517,6 +12517,37 @@
       ]
     },
     {
+      "slug": "pentagram",
+      "title": "Pentagram",
+      "url": "https://rosettacode.org/wiki/Pentagram",
+      "tags": [
+        "graphics",
+        "maths",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/pentagram/pentagram.png.expected"
+      ],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "pentagram",
+          "heading": null,
+          "source": "tasks/pentagram/pentagram.ghul",
+          "output": "tasks/pentagram/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/pentagram/pentagram.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
