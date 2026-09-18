@@ -6962,7 +6962,7 @@
       "images": [
         "tasks/goldbachs-comet/02-the-comet/comet.png.expected"
       ],
-      "lines": 126,
+      "lines": 130,
       "parts": [
         {
           "id": "goldbachs-comet/01-the-g-numbers",
@@ -6979,7 +6979,7 @@
           "heading": "The comet",
           "source": "tasks/goldbachs-comet/02-the-comet/02-the-comet.ghul",
           "output": "tasks/goldbachs-comet/02-the-comet/run.expected",
-          "lines": 88,
+          "lines": 92,
           "playground": true,
           "input": false,
           "images": [
@@ -12461,24 +12461,39 @@
       "title": "Perlin noise",
       "url": "https://rosettacode.org/wiki/Perlin_noise",
       "tags": [
+        "graphics",
         "maths",
         "algorithms"
       ],
-      "interest": 2,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 93,
+      "images": [
+        "tasks/perlin-noise/02-a-slice-of-the-field/noise.png.expected"
+      ],
+      "lines": 205,
       "parts": [
         {
-          "id": "perlin-noise",
-          "heading": null,
-          "source": "tasks/perlin-noise/perlin-noise.ghul",
-          "output": "tasks/perlin-noise/run.expected",
+          "id": "perlin-noise/01-the-noise-function",
+          "heading": "The noise function",
+          "source": "tasks/perlin-noise/01-the-noise-function/01-the-noise-function.ghul",
+          "output": "tasks/perlin-noise/01-the-noise-function/run.expected",
           "lines": 93,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "perlin-noise/02-a-slice-of-the-field",
+          "heading": "A slice of the field",
+          "source": "tasks/perlin-noise/02-a-slice-of-the-field/02-a-slice-of-the-field.ghul",
+          "output": "tasks/perlin-noise/02-a-slice-of-the-field/run.expected",
+          "lines": 112,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/perlin-noise/02-a-slice-of-the-field/noise.png.expected"
+          ]
         }
       ]
     },
