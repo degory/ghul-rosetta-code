@@ -17003,6 +17003,43 @@
       ]
     },
     {
+      "slug": "recursive-descent-parser-generator",
+      "title": "Recursive descent parser generator",
+      "url": "https://rosettacode.org/wiki/Recursive_descent_parser_generator",
+      "tags": [
+        "parsing",
+        "text-processing",
+        "unions"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 354,
+      "parts": [
+        {
+          "id": "recursive-descent-parser-generator/01-the-generator",
+          "heading": "The generator",
+          "source": "tasks/recursive-descent-parser-generator/01-the-generator/01-the-generator.ghul",
+          "output": "tasks/recursive-descent-parser-generator/01-the-generator/run.expected",
+          "lines": 233,
+          "playground": true,
+          "input": true,
+          "images": []
+        },
+        {
+          "id": "recursive-descent-parser-generator/02-the-generated-parser",
+          "heading": "The generated parser",
+          "source": "tasks/recursive-descent-parser-generator/02-the-generated-parser/02-the-generated-parser.ghul",
+          "output": "tasks/recursive-descent-parser-generator/02-the-generated-parser/run.expected",
+          "lines": 121,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "regular-expressions",
       "title": "Regular expressions",
       "url": "https://rosettacode.org/wiki/Regular_expressions",

@@ -1,0 +1,8 @@
+(one + two) * three - four * five
+
+_0001 = one + two
+_0002 = _0001 * three
+_0003 = four * five
+_0004 = _0002 - _0003
+
+the value is in _0004
