@@ -23181,6 +23181,33 @@
       ]
     },
     {
+      "slug": "wordiff",
+      "title": "Wordiff",
+      "url": "https://rosettacode.org/wiki/Wordiff",
+      "tags": [
+        "game",
+        "strings",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "wordiff",
+          "heading": null,
+          "source": "tasks/wordiff/wordiff.ghul",
+          "output": "tasks/wordiff/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "wordle-comparison",
       "title": "Wordle comparison",
       "url": "https://rosettacode.org/wiki/Wordle_comparison",
