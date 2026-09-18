@@ -1,0 +1,88 @@
+use default
+use IO.Std.read_line
+use System.Math
+
+struct Q(top: long, bottom: long) is
+    +(o: Q) -> Q =>
+        reduced(top * o.bottom + o.top * bottom, bottom * o.bottom)
+    -(o: Q) -> Q =>
+        reduced(top * o.bottom - o.top * bottom, bottom * o.bottom)
+    *(o: Q) -> Q => reduced(top * o.top, bottom * o.bottom)
+    /(o: Q) -> Q => reduced(top * o.bottom, bottom * o.top)
+
+    is_zero: bool => top == 0L
+si
+
+gcd(a: long, b: long) -> long =>
+    if b == 0L then Math.abs(a) else gcd(b, a % b) fi
+
+reduced(top: long, bottom: long) -> Q =>
+    let g = gcd(top, bottom) in
+    let sign = if bottom < 0L then -1L else 1L fi in
+    Q(sign * top / g, sign * bottom / g)
+
+use Term = (value: Q, text: string)
+
+let target = Q(24L, 1L)
+
+solve(terms: List[Term]) -> string? is
+    if terms.count == 1 then
+        return if terms[0].value =~ target then terms[0].text else null fi
+    fi
+
+    for i in 0..terms.count do
+        for j in 0..terms.count do
+            if i != j then
+                let a = terms[i]
+                let b = terms[j]
+                let rest =
+                    (0..terms.count)
+                        |> filter(k => k != i /\ k != j)
+                        |> map(k => terms[k])
+                        |> collect_list()
+
+                let joined = LIST[Term]()
+
+                if i < j then
+                    joined.add((a.value + b.value, "({a.text} + {b.text})"))
+                    joined.add((a.value * b.value, "({a.text} * {b.text})"))
+                fi
+
+                joined.add((a.value - b.value, "({a.text} - {b.text})"))
+
+                if !b.value.is_zero then
+                    joined.add((a.value / b.value, "({a.text} / {b.text})"))
+                fi
+
+                for term in joined do
+                    let next = rest |> cat([term]) |> collect_list()
+
+                    if let found = solve(next) then
+                        return found
+                    fi
+                od
+            fi
+        od
+    od
+
+    return null
+si
+
+while let line = read_line() do
+    let digits = line.trim()
+
+    let terms =
+        (0..digits.length)
+            |> map(i =>
+                let d = cast long(digits[i]) - 48L in
+                (value = Q(d, 1L), text = "{d}"))
+            |> collect_list()
+
+    if let found = solve(terms) then
+        let text = found.substring(1, found.length - 2)
+
+        write_line("{digits}: {text}")
+    else
+        write_line("{digits}: no solution")
+    fi
+od

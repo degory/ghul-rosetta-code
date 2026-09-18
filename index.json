@@ -255,6 +255,33 @@
       ]
     },
     {
+      "slug": "24-game-solve",
+      "title": "24 game/Solve",
+      "url": "https://rosettacode.org/wiki/24_game/Solve",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "24-game-solve",
+          "heading": null,
+          "source": "tasks/24-game-solve/24-game-solve.ghul",
+          "output": "tasks/24-game-solve/run.expected",
+          "lines": 88,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "3d-turtle-graphics",
       "title": "3d turtle graphics",
       "url": "https://rosettacode.org/wiki/3d_turtle_graphics",
