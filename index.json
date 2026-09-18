@@ -3583,6 +3583,38 @@
       ]
     },
     {
+      "slug": "circles-of-given-radius-through-two-points",
+      "title": "Circles of given radius through two points",
+      "url": "https://rosettacode.org/wiki/Circles_of_given_radius_through_two_points",
+      "tags": [
+        "maths",
+        "unions",
+        "pattern-matching",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/circles-of-given-radius-through-two-points/circles.png.expected"
+      ],
+      "lines": 100,
+      "parts": [
+        {
+          "id": "circles-of-given-radius-through-two-points",
+          "heading": null,
+          "source": "tasks/circles-of-given-radius-through-two-points/circles-of-given-radius-through-two-points.ghul",
+          "output": "tasks/circles-of-given-radius-through-two-points/run.expected",
+          "lines": 100,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/circles-of-given-radius-through-two-points/circles.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "cistercian-numerals",
       "title": "Cistercian numerals",
       "url": "https://rosettacode.org/wiki/Cistercian_numerals",
