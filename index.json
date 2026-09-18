@@ -5274,6 +5274,37 @@
       ]
     },
     {
+      "slug": "determine-if-two-triangles-overlap",
+      "title": "Determine if two triangles overlap",
+      "url": "https://rosettacode.org/wiki/Determine_if_two_triangles_overlap",
+      "tags": [
+        "maths",
+        "algorithms",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/determine-if-two-triangles-overlap/triangles.png.expected"
+      ],
+      "lines": 103,
+      "parts": [
+        {
+          "id": "determine-if-two-triangles-overlap",
+          "heading": null,
+          "source": "tasks/determine-if-two-triangles-overlap/determine-if-two-triangles-overlap.ghul",
+          "output": "tasks/determine-if-two-triangles-overlap/run.expected",
+          "lines": 103,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/determine-if-two-triangles-overlap/triangles.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "determine-sentence-type",
       "title": "Determine sentence type",
       "url": "https://rosettacode.org/wiki/Determine_sentence_type",

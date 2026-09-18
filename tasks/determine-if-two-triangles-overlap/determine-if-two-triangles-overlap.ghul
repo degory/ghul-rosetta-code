@@ -1,0 +1,103 @@
+use default
+use Raster.Anchor
+use Raster.IMAGE
+use System.Math
+use System.StringSplitOptions
+
+struct P(x: double, y: double) is
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    ⋅(o: P) -> double => x * o.x + y * o.y
+    normal: P => P(-y, x)
+    show: string => "({x}, {y})"
+si
+
+use Triangle = P[]
+
+shadow(t: Triangle, axis: P) -> (low: double, high: double) =>
+    let lengths = t |> map(p => p ⋅ axis) |> collect_list() in
+    (
+        low = lengths |> reduce(lengths[0], Math.min),
+        high = lengths |> reduce(lengths[0], Math.max))
+
+separated(a: Triangle, b: Triangle, axis: P, touching: bool) -> bool =>
+    let s = shadow(a, axis), t = shadow(b, axis) in
+    if touching then s.high < t.low \/ t.high < s.low
+    else s.high <= t.low \/ t.high <= s.low
+    fi
+
+edge_normals(t: Triangle) -> Pipe[P] =>
+    (0..3) |> map(i => (t[(i + 1) % 3] - t[i]).normal)
+
+overlap(a: Triangle, b: Triangle, touching: bool) -> bool =>
+    let axes = edge_normals(a) |> cat(edge_normals(b)) in
+    !(axes |> any(axis => separated(a, b, axis, touching)))
+
+triangle(text: string) -> Triangle is
+    let numbers =
+        text.split(['(', ')', ','], StringSplitOptions.REMOVE_EMPTY_ENTRIES)
+            |> map(double.parse)
+            |> collect_list()
+
+    (0..3)
+        |> map(i => P(numbers[2 * i], numbers[2 * i + 1]))
+        |> collect_array()
+si
+
+let pairs = [
+    ("(0,0),(5,0),(0,5)", "(0,0),(5,0),(0,6)"),
+    ("(0,0),(0,5),(5,0)", "(0,0),(0,5),(5,0)"),
+    ("(0,0),(5,0),(0,5)", "(-10,0),(-5,0),(-1,6)"),
+    ("(0,0),(5,0),(2.5,5)", "(0,4),(2.5,-1),(5,4)"),
+    ("(0,0),(1,1),(0,2)", "(2,1),(3,0),(3,2)"),
+    ("(0,0),(1,1),(0,2)", "(2,1),(3,-2),(3,4)"),
+    ("(0,0),(1,0),(0,1)", "(1,0),(2,0),(1,1)")
+]
+    |> map(((a, b)) => (triangle(a), triangle(b)))
+    |> collect_list()
+
+show(t: Triangle) -> string => t |> map(p => p.show) |> join(",")
+
+for (a, b) in pairs do
+    let verdict = if overlap(a, b, true) then "overlap" else "no overlap" fi
+
+    write_line("{show(a)} and {show(b)}: {verdict}")
+od
+
+let (a, b) = pairs[pairs.count - 1]
+
+write_line("")
+write_line("the last pair touch at a corner")
+write_line("overlapping if touching counts: {overlap(a, b, true)}")
+write_line("overlapping if it does not: {overlap(a, b, false)}")
+
+let panel = 120
+let image = IMAGE(panel * 4, panel * 2)
+
+image.clear(252ub, 250ub, 245ub)
+
+for (i, (a, b)) in pairs |> index() do
+    let left = cast double(i % 4 * panel), top = cast double(i / 4 * panel)
+    let all = a |> cat(b) |> collect_list()
+    let low_x = all |> map(p => p.x) |> reduce(all[0].x, Math.min)
+    let high_x = all |> map(p => p.x) |> reduce(all[0].x, Math.max)
+    let low_y = all |> map(p => p.y) |> reduce(all[0].y, Math.min)
+    let high_y = all |> map(p => p.y) |> reduce(all[0].y, Math.max)
+    let scale = 90.0D / Math.max(high_x - low_x, high_y - low_y)
+
+    let place = (p: P) =>
+        (
+            x = left + 15.0D + (p.x - low_x) * scale,
+            y = top + 105.0D - (p.y - low_y) * scale)
+
+    let first = (a, 60ub, 110ub, 200ub), second = (b, 200ub, 90ub, 40ub)
+
+    for (shape, r, g, blue) in [first, second] do
+        image.colour(r, g, blue)
+        image.stroke(2.0D)
+        image.line(shape |> cat([shape[0]]) |> map(place) |> collect_list())
+    od
+od
+
+image.write("triangles.png")
+
+image.show("triangles.png")
