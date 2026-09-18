@@ -6953,23 +6953,38 @@
       "url": "https://rosettacode.org/wiki/Goldbach's_comet",
       "tags": [
         "number-theory",
-        "primes"
+        "primes",
+        "graphics"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 38,
+      "images": [
+        "tasks/goldbachs-comet/02-the-comet/comet.png.expected"
+      ],
+      "lines": 126,
       "parts": [
         {
-          "id": "goldbachs-comet",
-          "heading": null,
-          "source": "tasks/goldbachs-comet/goldbachs-comet.ghul",
-          "output": "tasks/goldbachs-comet/run.expected",
+          "id": "goldbachs-comet/01-the-g-numbers",
+          "heading": "The g numbers",
+          "source": "tasks/goldbachs-comet/01-the-g-numbers/01-the-g-numbers.ghul",
+          "output": "tasks/goldbachs-comet/01-the-g-numbers/run.expected",
           "lines": 38,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "goldbachs-comet/02-the-comet",
+          "heading": "The comet",
+          "source": "tasks/goldbachs-comet/02-the-comet/02-the-comet.ghul",
+          "output": "tasks/goldbachs-comet/02-the-comet/run.expected",
+          "lines": 88,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/goldbachs-comet/02-the-comet/comet.png.expected"
+          ]
         }
       ]
     },

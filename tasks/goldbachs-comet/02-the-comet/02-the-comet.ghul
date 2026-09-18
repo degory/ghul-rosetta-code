@@ -1,0 +1,92 @@
+use default
+use Math = System.Math
+use Raster.Anchor
+use Raster.AXES
+use Raster.IMAGE
+
+let limit = 2_000
+let is_prime = (0::limit) |> map(_ => true) |> collect_list()
+
+is_prime[0] = false
+is_prime[1] = false
+
+for candidate in 2::limit do
+    if is_prime[candidate] /\ candidate <= limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple <= limit do
+            is_prime[multiple] = false
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+goldbach(even: int) -> int =>
+    (2::even / 2)
+        |> filter(p => is_prime[p] /\ is_prime[even - p])
+        |> count()
+
+let points = (2::limit / 2)
+    |> map(half => (even = 2 * half, count = goldbach(2 * half)))
+    |> collect()
+
+let tallest =
+    points |> reduce(0, (best, point) => Math.max(best, point.count))
+
+let bands = [
+    (residue = 0, red = 200ub, green = 40ub, blue = 40ub,
+     label = "multiples of 6"),
+    (residue = 2, red = 30ub, green = 90ub, blue = 190ub,
+     label = "6n + 2"),
+    (residue = 4, red = 20ub, green = 140ub, blue = 70ub,
+     label = "6n + 4")
+]
+
+let image = IMAGE(760, 480)
+
+image.view(
+    0.0, 0.0,
+    cast double(limit), cast double(tallest) + 2.0,
+    52.0)
+
+image.colour(80ub, 80ub, 80ub)
+image.stroke(1.0)
+
+let axes = AXES(image)
+
+axes.x_title = "E"
+axes.y_title = "G(E)"
+axes.draw()
+
+image.stroke(2.4)
+
+for point in points do
+    for band in bands do
+        if point.even % 6 == band.residue then
+            image.colour(band.red, band.green, band.blue)
+
+            let x = cast double(point.even)
+            let y = cast double(point.count)
+
+            image.line(x, y, x, y)
+        fi
+    od
+od
+
+let step = cast double(tallest) / 15.0
+
+for entry in bands |> index() do
+    let band = entry.value
+    let y = cast double(tallest) - step * cast double(entry.index + 1)
+
+    image.colour(band.red, band.green, band.blue)
+    image.stroke(2.4)
+    image.line(140.0, y, 210.0, y)
+
+    image.colour(60ub, 60ub, 60ub)
+    image.text(230.0, y - step / 3.0, 13.0, band.label, Anchor.LEFT)
+od
+
+image.write("comet.png")
+
+image.show("comet.png")
