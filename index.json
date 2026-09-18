@@ -847,7 +847,7 @@
         "maths"
       ],
       "interest": 5,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [
         "tasks/animate-a-pendulum/pendulum.png.expected"
@@ -860,7 +860,7 @@
           "source": "tasks/animate-a-pendulum/animate-a-pendulum.ghul",
           "output": "tasks/animate-a-pendulum/run.expected",
           "lines": 77,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": [
             "tasks/animate-a-pendulum/pendulum.png.expected"
@@ -1852,6 +1852,38 @@
       ]
     },
     {
+      "slug": "bilinear-interpolation",
+      "title": "Bilinear interpolation",
+      "url": "https://rosettacode.org/wiki/Bilinear_interpolation",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/bilinear-interpolation/larger.png.expected",
+        "tasks/bilinear-interpolation/scene.png.expected"
+      ],
+      "lines": 104,
+      "parts": [
+        {
+          "id": "bilinear-interpolation",
+          "heading": null,
+          "source": "tasks/bilinear-interpolation/bilinear-interpolation.ghul",
+          "output": "tasks/bilinear-interpolation/run.expected",
+          "lines": 104,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/bilinear-interpolation/larger.png.expected",
+            "tasks/bilinear-interpolation/scene.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "binary-digits",
       "title": "Binary digits",
       "url": "https://rosettacode.org/wiki/Binary_digits",
@@ -2817,6 +2849,38 @@
       ]
     },
     {
+      "slug": "canny-edge-detector",
+      "title": "Canny edge detector",
+      "url": "https://rosettacode.org/wiki/Canny_edge_detector",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/canny-edge-detector/edges.png.expected",
+        "tasks/canny-edge-detector/scene.png.expected"
+      ],
+      "lines": 210,
+      "parts": [
+        {
+          "id": "canny-edge-detector",
+          "heading": null,
+          "source": "tasks/canny-edge-detector/canny-edge-detector.ghul",
+          "output": "tasks/canny-edge-detector/run.expected",
+          "lines": 210,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/canny-edge-detector/edges.png.expected",
+            "tasks/canny-edge-detector/scene.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "cantor-set",
       "title": "Cantor set",
       "url": "https://rosettacode.org/wiki/Cantor_set",
@@ -3476,6 +3540,69 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "color-quantization",
+      "title": "Color quantization",
+      "url": "https://rosettacode.org/wiki/Color_quantization",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/color-quantization/picture.png.expected",
+        "tasks/color-quantization/quantized.png.expected"
+      ],
+      "lines": 209,
+      "parts": [
+        {
+          "id": "color-quantization",
+          "heading": null,
+          "source": "tasks/color-quantization/color-quantization.ghul",
+          "output": "tasks/color-quantization/run.expected",
+          "lines": 209,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/color-quantization/picture.png.expected",
+            "tasks/color-quantization/quantized.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "color-separation",
+      "title": "Color separation",
+      "url": "https://rosettacode.org/wiki/Color_separation",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/color-separation/scene.png.expected",
+        "tasks/color-separation/separation.png.expected"
+      ],
+      "lines": 129,
+      "parts": [
+        {
+          "id": "color-separation",
+          "heading": null,
+          "source": "tasks/color-separation/color-separation.ghul",
+          "output": "tasks/color-separation/run.expected",
+          "lines": 129,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/color-separation/scene.png.expected",
+            "tasks/color-separation/separation.png.expected"
+          ]
         }
       ]
     },
@@ -5259,6 +5386,36 @@
           "input": false,
           "images": [
             "tasks/draw-a-cuboid/cuboid.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "draw-a-pixel",
+      "title": "Draw a pixel",
+      "url": "https://rosettacode.org/wiki/Draw_a_pixel",
+      "tags": [
+        "graphics",
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/draw-a-pixel/pixel.png.expected"
+      ],
+      "lines": 14,
+      "parts": [
+        {
+          "id": "draw-a-pixel",
+          "heading": null,
+          "source": "tasks/draw-a-pixel/draw-a-pixel.ghul",
+          "output": "tasks/draw-a-pixel/run.expected",
+          "lines": 14,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/draw-a-pixel/pixel.png.expected"
           ]
         }
       ]
@@ -7662,6 +7819,36 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "galton-box-animation",
+      "title": "Galton box animation",
+      "url": "https://rosettacode.org/wiki/Galton_box_animation",
+      "tags": [
+        "simulation",
+        "graphics"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/galton-box-animation/galton.png.expected"
+      ],
+      "lines": 106,
+      "parts": [
+        {
+          "id": "galton-box-animation",
+          "heading": null,
+          "source": "tasks/galton-box-animation/galton-box-animation.ghul",
+          "output": "tasks/galton-box-animation/run.expected",
+          "lines": 106,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/galton-box-animation/galton.png.expected"
+          ]
         }
       ]
     },
@@ -14035,6 +14222,37 @@
       ]
     },
     {
+      "slug": "percentage-difference-between-images",
+      "title": "Percentage difference between images",
+      "url": "https://rosettacode.org/wiki/Percentage_difference_between_images",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/percentage-difference-between-images/original.png.expected",
+        "tasks/percentage-difference-between-images/reduced.png.expected"
+      ],
+      "lines": 99,
+      "parts": [
+        {
+          "id": "percentage-difference-between-images",
+          "heading": null,
+          "source": "tasks/percentage-difference-between-images/percentage-difference-between-images.ghul",
+          "output": "tasks/percentage-difference-between-images/run.expected",
+          "lines": 99,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/percentage-difference-between-images/original.png.expected",
+            "tasks/percentage-difference-between-images/reduced.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
@@ -17992,7 +18210,7 @@
         "dotnet-interop"
       ],
       "interest": 4,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 9,
@@ -18003,7 +18221,7 @@
           "source": "tasks/spinning-rod-animation-text/spinning-rod-animation-text.ghul",
           "output": "tasks/spinning-rod-animation-text/run.expected",
           "lines": 9,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }

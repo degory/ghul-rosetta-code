@@ -27,7 +27,7 @@ fits_below(top: int, bottom: int) -> bool =>
 wrap(i: int) -> int => (i + grid) % grid
 
 attempt() -> List[int]? is
-    let placed = LIST[int](System.Linq.Enumerable.repeat(-1, grid * grid))
+    let placed = repeat(-1, grid * grid) |> collect_list()
     let options =
         LIST[LIST[int]](
             (0..grid * grid) |> map(_ => LIST[int](0..blocks.count)))
