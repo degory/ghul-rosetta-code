@@ -19608,6 +19608,37 @@
       ]
     },
     {
+      "slug": "statistics-normal-distribution",
+      "title": "Statistics/Normal distribution",
+      "url": "https://rosettacode.org/wiki/Statistics/Normal_distribution",
+      "tags": [
+        "maths",
+        "generators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/statistics-normal-distribution/normal.png.expected"
+      ],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "statistics-normal-distribution",
+          "heading": null,
+          "source": "tasks/statistics-normal-distribution/statistics-normal-distribution.ghul",
+          "output": "tasks/statistics-normal-distribution/run.expected",
+          "lines": 88,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/statistics-normal-distribution/normal.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "stern-brocot-sequence",
       "title": "Stern-Brocot sequence",
       "url": "https://rosettacode.org/wiki/Stern-Brocot_sequence",
