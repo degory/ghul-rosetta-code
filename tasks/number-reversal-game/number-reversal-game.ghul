@@ -1,0 +1,59 @@
+use default
+use IO.Std.read_line
+
+let random = System.Random(9)
+
+shuffled() -> LIST[int] is
+    let digits = (1::9) |> collect_list()
+
+    for i in 0..8 do
+        let other = i + random.next(9 - i)
+        let held = digits[i]
+
+        digits[i] = digits[other]
+        digits[other] = held
+    od
+
+    digits
+si
+
+sorted(digits: List[int]) -> bool =>
+    (0..8) |> all(i => digits[i] < digits[i + 1])
+
+let digits mut = shuffled()
+
+while sorted(digits) do
+    digits = shuffled()
+od
+
+let score mut = 0
+
+write_line("put the digits in order by reversing the first few each turn")
+
+while !sorted(digits) do
+    write_line()
+    write_line("{digits |> join(" ")}   how many to reverse?")
+
+    let line = read_line()
+
+    if !line? then
+        break
+    fi
+
+    let flips = int.parse(line.trim())
+
+    write_line("> {flips}")
+
+    digits =
+        (0..flips)
+            |> map(i => digits[flips - 1 - i])
+            |> cat(digits |> skip(flips))
+            |> collect_list()
+
+    score = score + 1
+od
+
+if sorted(digits) then
+    write_line()
+    write_line("{digits |> join(" ")}   in order after {score} reversals")
+fi

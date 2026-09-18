@@ -14325,6 +14325,32 @@
       ]
     },
     {
+      "slug": "number-reversal-game",
+      "title": "Number reversal game",
+      "url": "https://rosettacode.org/wiki/Number_reversal_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "number-reversal-game",
+          "heading": null,
+          "source": "tasks/number-reversal-game/number-reversal-game.ghul",
+          "output": "tasks/number-reversal-game/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "numbers-with-equal-rises-and-falls",
       "title": "Numbers with equal rises and falls",
       "url": "https://rosettacode.org/wiki/Numbers_with_equal_rises_and_falls",
