@@ -2863,14 +2863,14 @@
         "tasks/canny-edge-detector/edges.png.expected",
         "tasks/canny-edge-detector/scene.png.expected"
       ],
-      "lines": 212,
+      "lines": 210,
       "parts": [
         {
           "id": "canny-edge-detector",
           "heading": null,
           "source": "tasks/canny-edge-detector/canny-edge-detector.ghul",
           "output": "tasks/canny-edge-detector/run.expected",
-          "lines": 212,
+          "lines": 210,
           "playground": true,
           "input": false,
           "images": [
