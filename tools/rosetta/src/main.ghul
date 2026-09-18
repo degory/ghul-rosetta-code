@@ -367,15 +367,41 @@ si
 // markup names a GIF and the frames are rewritten as one here, rather than
 // every animation being kept twice. The conversion is deterministic, so a
 // file already on the wiki still compares equal to what this produces.
+// Where a task wrote a file: its own directory, or for a task solved in
+// parts, the directory of the part that wrote it. A file found nowhere is
+// named in the task's own directory, so the caller reports the file the
+// task was meant to write.
+task_file(root: string, slug: string, name: string) -> string is
+    let directory = IO.Path.combine(root, "tasks", slug)
+    let own = IO.Path.combine(directory, name)
+
+    if IO.File.exists(own) then
+        return own
+    fi
+
+    let parts = IO.Directory.get_directories(directory)
+    System.Array.sort(parts)
+
+    for part in parts do
+        let written = IO.Path.combine(part, name)
+
+        if IO.File.exists(written) then
+            return written
+        fi
+    od
+
+    own
+si
+
 image_file(root: string, slug: string, name: string) -> string is
-    let written = IO.Path.combine(root, "tasks", slug, name)
+    let written = task_file(root, slug, name)
 
     if !name.ends_with(".gif") \/ IO.File.exists(written) then
         return written
     fi
 
-    let animation = IO.Path.combine(
-        root, "tasks", slug, "{name.substring(0, name.length - ".gif".length)}.png"
+    let animation = task_file(
+        root, slug, "{name.substring(0, name.length - ".gif".length)}.png"
     )
 
     // Named so the caller reports the file the task was meant to write.
