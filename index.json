@@ -14641,6 +14641,35 @@
       ]
     },
     {
+      "slug": "raster-bars",
+      "title": "Raster bars",
+      "url": "https://rosettacode.org/wiki/Raster_bars",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/raster-bars/bars.png.expected"
+      ],
+      "lines": 67,
+      "parts": [
+        {
+          "id": "raster-bars",
+          "heading": null,
+          "source": "tasks/raster-bars/raster-bars.ghul",
+          "output": "tasks/raster-bars/run.expected",
+          "lines": 67,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/raster-bars/bars.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "rcrpg",
       "title": "RCRPG",
       "url": "https://rosettacode.org/wiki/RCRPG",
