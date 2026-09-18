@@ -14844,6 +14844,32 @@
       ]
     },
     {
+      "slug": "snake-and-ladder",
+      "title": "Snake and ladder",
+      "url": "https://rosettacode.org/wiki/Snake_and_ladder",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "snake-and-ladder",
+          "heading": null,
+          "source": "tasks/snake-and-ladder/snake-and-ladder.ghul",
+          "output": "tasks/snake-and-ladder/run.expected",
+          "lines": 63,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "solve-the-no-connection-puzzle",
       "title": "Solve the no connection puzzle",
       "url": "https://rosettacode.org/wiki/Solve_the_no_connection_puzzle",

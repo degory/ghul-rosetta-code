@@ -1,0 +1,63 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+let jumps = MAP[int, int]()
+
+for (from, to) in [
+    (4, 14), (9, 31), (17, 7), (20, 38), (28, 84), (40, 59),
+    (51, 67), (54, 34), (62, 19), (63, 81), (64, 60), (71, 91),
+    (87, 24), (93, 73), (95, 75), (99, 78)
+] do
+    jumps[from] = to
+od
+
+let random = Random(3)
+
+move(who: string, rolls: string, square: int) -> int is
+    let roll = random.next(1, 7)
+
+    if square + roll > 100 then
+        write_line("{who} {rolls} {roll} and cannot move from {square}")
+        return square
+    fi
+
+    let landed = square + roll
+    write_line("{who} {rolls} {roll}, moving to {landed}")
+
+    if !jumps.contains_key(landed) then
+        return landed
+    fi
+
+    let next = jumps[landed]
+    write_line(
+        if next > landed then "  a ladder up to {next}"
+        else "  a snake down to {next}"
+        fi)
+
+    next
+si
+
+let you mut = 1
+let computer mut = 1
+
+while you < 100 /\ computer < 100 do
+    write_line("press enter to roll")
+
+    if !read_line()? then
+        write_line("game abandoned")
+        break
+    fi
+
+    you = move("you", "roll", you)
+
+    if you < 100 then
+        computer = move("the computer", "rolls", computer)
+    fi
+od
+
+if you == 100 then
+    write_line("you win")
+elif computer == 100 then
+    write_line("the computer wins")
+fi
