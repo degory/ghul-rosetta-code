@@ -14002,6 +14002,36 @@
       ]
     },
     {
+      "slug": "polyspiral",
+      "title": "Polyspiral",
+      "url": "https://rosettacode.org/wiki/Polyspiral",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/polyspiral/polyspiral.png.expected"
+      ],
+      "lines": 53,
+      "parts": [
+        {
+          "id": "polyspiral",
+          "heading": null,
+          "source": "tasks/polyspiral/polyspiral.ghul",
+          "output": "tasks/polyspiral/run.expected",
+          "lines": 53,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/polyspiral/polyspiral.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "population-count",
       "title": "Population count",
       "url": "https://rosettacode.org/wiki/Population_count",
