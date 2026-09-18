@@ -1,0 +1,190 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+struct V3(x: double, y: double, z: double) is
+    +(o: V3) -> V3 => V3(x + o.x, y + o.y, z + o.z)
+    -(o: V3) -> V3 => V3(x - o.x, y - o.y, z - o.z)
+    *(k: double) -> V3 => V3(x * k, y * k, z * k)
+    ⋅(o: V3) -> double => x * o.x + y * o.y + z * o.z
+    length: double => Math.sqrt(self ⋅ self)
+si
+
+use Segment = (from: V3, to: V3, colour: (ubyte, ubyte, ubyte))
+
+class TURTLE is
+    at: V3 public
+    heading: V3 public
+    left: V3 public
+    up: V3 public
+    colour: (ubyte, ubyte, ubyte) public
+    drawing: bool public
+    drawn: LIST[Segment]
+
+    init() is
+        at = V3(0.0D, 0.0D, 0.0D)
+        heading = V3(1.0D, 0.0D, 0.0D)
+        left = V3(0.0D, 1.0D, 0.0D)
+        up = V3(0.0D, 0.0D, 1.0D)
+        colour = (40ub, 40ub, 40ub)
+        drawing = true
+        drawn = LIST[Segment]()
+    si
+
+    forward(distance: double) is
+        let next = at + heading * distance
+
+        if drawing then
+            drawn.add((at, next, colour))
+        fi
+        at = next
+    si
+
+    turn(degrees: double) is
+        let a = degrees * Math.pi / 180.0D
+        let h = heading * Math.cos(a) + left * Math.sin(a)
+
+        left = left * Math.cos(a) - heading * Math.sin(a)
+        heading = h
+    si
+
+    pitch(degrees: double) is
+        let a = degrees * Math.pi / 180.0D
+        let h = heading * Math.cos(a) + up * Math.sin(a)
+
+        up = up * Math.cos(a) - heading * Math.sin(a)
+        heading = h
+    si
+
+    state: (V3, V3, V3, V3) => (at, heading, left, up)
+si
+
+rectangle(t: TURTLE, a: double, b: double) is
+    for side in [a, b, a, b] do
+        t.forward(side)
+        t.turn(90.0D)
+    od
+si
+
+box(t: TURTLE, width: double, depth: double, height: double) is
+    rectangle(t, width, depth)
+
+    for along in [width, depth, width, depth] do
+        t.pitch(90.0D)
+        t.forward(height)
+        t.pitch(-90.0D)
+        t.forward(along)
+        t.pitch(-90.0D)
+        t.forward(height)
+        t.pitch(90.0D)
+        t.turn(90.0D)
+    od
+si
+
+house(t: TURTLE, size: double) is
+    let start = t.state
+
+    box(t, size, size, size)
+
+    let apex = size / 2.0D
+    let rise = size / Math.sqrt(2.0D)
+    let slant = Math.sqrt(apex * apex + apex * apex + rise * rise)
+    let climb = Math.asin(rise / slant) * 180.0D / Math.pi
+
+    t.pitch(90.0D)
+    t.forward(size)
+    t.pitch(-90.0D)
+
+    for _ in 0..4 do
+        t.turn(45.0D)
+        t.pitch(climb)
+        t.forward(slant)
+        t.pitch(180.0D)
+        t.forward(slant)
+        t.pitch(180.0D - climb)
+        t.turn(-45.0D)
+        t.forward(size)
+        t.turn(90.0D)
+    od
+
+    t.pitch(-90.0D)
+    t.forward(size)
+    t.pitch(90.0D)
+
+    assert (t.at - start.`0).length < 1.0e-9
+si
+
+bar_chart(t: TURTLE, values: double[], size: double) is
+    let start = t.state
+    let width = size / cast double(values.count)
+    let most = values |> reduce(0.0D, Math.max)
+
+    for value in values do
+        box(t, width * 0.8D, width * 0.8D, size * value / most)
+
+        t.forward(width)
+    od
+
+    t.drawing = false
+    t.turn(180.0D)
+    t.forward(size)
+    t.turn(180.0D)
+    t.drawing = true
+
+    assert (t.at - start.`0).length < 1.0e-9
+si
+
+let turtle = TURTLE()
+
+turtle.colour = (170ub, 40ub, 40ub)
+house(turtle, 100.0D)
+
+turtle.turn(-90.0D)
+turtle.drawing = false
+turtle.forward(260.0D)
+turtle.drawing = true
+turtle.turn(90.0D)
+turtle.colour = (40ub, 90ub, 170ub)
+bar_chart(turtle, [0.5D, 0.33333D, 2.0D, 1.3D, 0.5D], 200.0D)
+
+let at_home = turtle.state
+
+write_line("{turtle.drawn.count} segments drawn")
+let facing = (at_home.`1 - V3(1.0D, 0.0D, 0.0D)).length < 1.0e-9
+write_line("facing the way it started: {facing}")
+
+let yaw = 35.0D * Math.pi / 180.0D
+let elevation = 25.0D * Math.pi / 180.0D
+
+project(p: V3) -> (x: double, y: double) =>
+    let across = p.x * Math.cos(yaw) - p.y * Math.sin(yaw) in
+    let depth = p.x * Math.sin(yaw) + p.y * Math.cos(yaw) in
+    let height = p.z * Math.cos(elevation) + depth * Math.sin(elevation) in
+    (x = across, y = height)
+
+let image = IMAGE(480, 360)
+
+let points =
+    turtle.drawn
+        |> flat_map(s => [project(s.from), project(s.to)])
+        |> collect_list()
+
+let low_x = points |> map(p => p.x) |> reduce(0.0D, Math.min)
+let high_x = points |> map(p => p.x) |> reduce(0.0D, Math.max)
+let low_y = points |> map(p => p.y) |> reduce(0.0D, Math.min)
+let high_y = points |> map(p => p.y) |> reduce(0.0D, Math.max)
+
+image.view(low_x - 20.0D, low_y - 20.0D, high_x + 20.0D, high_y + 20.0D)
+image.clear(252ub, 250ub, 245ub)
+image.stroke(2.0D)
+
+for (from, to, (r, g, b)) in turtle.drawn do
+    let a = project(from), z = project(to)
+
+    image.colour(r, g, b)
+    image.line(a.x, a.y, z.x, z.y)
+od
+
+image.write("turtle.png")
+
+image.show("turtle.png")

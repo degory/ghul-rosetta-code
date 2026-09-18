@@ -1,0 +1,76 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+struct P(x: double, y: double) is
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    length: double => Math.sqrt(x * x + y * y)
+si
+
+let full = 2.0D * Math.pi
+
+centre_of(a: P, b: P, c: P) -> P is
+    let d =
+        2.0D * (a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y))
+    let a2 = a.x * a.x + a.y * a.y
+    let b2 = b.x * b.x + b.y * b.y
+    let c2 = c.x * c.x + c.y * c.y
+
+    P(
+        (a2 * (b.y - c.y) + b2 * (c.y - a.y) + c2 * (a.y - b.y)) / d,
+        (a2 * (c.x - b.x) + b2 * (a.x - c.x) + c2 * (b.x - a.x)) / d)
+si
+
+curve(start: P, middle: P, finish: P, steps: int) -> List[P] is
+    let centre = centre_of(start, middle, finish)
+    let radius = (start - centre).length
+
+    angle(p: P) -> double => Math.atan2(p.y - centre.y, p.x - centre.x)
+
+    let from = angle(start)
+    let through = angle(middle)
+    let turn mut = angle(finish) - from
+
+    let wrap = (a: double) => a - full * Math.floor(a / full)
+
+    if (wrap(through - from) < wrap(turn)) != (turn > 0.0D) then
+        turn = if turn > 0.0D then turn - full else turn + full fi
+    fi
+
+    (0::steps)
+        |> map(i =>
+            let a = from + turn * cast double(i) / cast double(steps) in
+            let x = centre.x + radius * Math.cos(a) in
+            P(x, centre.y + radius * Math.sin(a)))
+        |> collect_list()
+si
+
+let start = P(10.0D, 10.0D)
+let middle = P(100.0D, 200.0D)
+let finish = P(200.0D, 10.0D)
+
+let centre = centre_of(start, middle, finish)
+
+write_line("the circle through all three has its centre at")
+write_line("({centre.x:F3}, {centre.y:F3})")
+write_line("and radius {(start - centre).length:F3}")
+
+let points = curve(start, middle, finish, 100)
+
+let image = IMAGE(300, 300)
+
+image.view(-20.0D, -40.0D, 230.0D, 210.0D)
+image.clear(252ub, 250ub, 245ub)
+image.colour(40ub, 80ub, 170ub)
+image.stroke(2.5D)
+image.line(points |> map(p => (x = p.x, y = p.y)) |> collect_list())
+
+image.colour(210ub, 50ub, 40ub)
+
+for p in [start, middle, finish] do
+    image.dot(p.x, p.y, 5.0D)
+od
+
+image.write("curve.png")
+
+image.show("curve.png")

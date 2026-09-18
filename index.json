@@ -141,6 +141,33 @@
       ]
     },
     {
+      "slug": "16-puzzle-game",
+      "title": "16 puzzle game",
+      "url": "https://rosettacode.org/wiki/16_puzzle_game",
+      "tags": [
+        "game",
+        "puzzles",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 93,
+      "parts": [
+        {
+          "id": "16-puzzle-game",
+          "heading": null,
+          "source": "tasks/16-puzzle-game/16-puzzle-game.ghul",
+          "output": "tasks/16-puzzle-game/run.expected",
+          "lines": 93,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "2048",
       "title": "2048",
       "url": "https://rosettacode.org/wiki/2048",
@@ -224,6 +251,37 @@
           "playground": true,
           "input": true,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "3d-turtle-graphics",
+      "title": "3d turtle graphics",
+      "url": "https://rosettacode.org/wiki/3d_turtle_graphics",
+      "tags": [
+        "graphics",
+        "operators",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/3d-turtle-graphics/turtle.png.expected"
+      ],
+      "lines": 190,
+      "parts": [
+        {
+          "id": "3d-turtle-graphics",
+          "heading": null,
+          "source": "tasks/3d-turtle-graphics/3d-turtle-graphics.ghul",
+          "output": "tasks/3d-turtle-graphics/run.expected",
+          "lines": 190,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/3d-turtle-graphics/turtle.png.expected"
+          ]
         }
       ]
     },
@@ -420,6 +478,38 @@
           "input": false,
           "images": [
             "tasks/abelian-sandpile-model/sandpile.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "abelian-sandpile-model-identity",
+      "title": "Abelian sandpile model/Identity",
+      "url": "https://rosettacode.org/wiki/Abelian_sandpile_model/Identity",
+      "tags": [
+        "maths",
+        "operators",
+        "classes",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/abelian-sandpile-model-identity/identity.png.expected"
+      ],
+      "lines": 121,
+      "parts": [
+        {
+          "id": "abelian-sandpile-model-identity",
+          "heading": null,
+          "source": "tasks/abelian-sandpile-model-identity/abelian-sandpile-model-identity.ghul",
+          "output": "tasks/abelian-sandpile-model-identity/run.expected",
+          "lines": 121,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/abelian-sandpile-model-identity/identity.png.expected"
           ]
         }
       ]
@@ -2042,6 +2132,67 @@
       ]
     },
     {
+      "slug": "biorhythms",
+      "title": "Biorhythms",
+      "url": "https://rosettacode.org/wiki/Biorhythms",
+      "tags": [
+        "date-time",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/biorhythms/biorhythms.png.expected"
+      ],
+      "lines": 100,
+      "parts": [
+        {
+          "id": "biorhythms",
+          "heading": null,
+          "source": "tasks/biorhythms/biorhythms.ghul",
+          "output": "tasks/biorhythms/run.expected",
+          "lines": 100,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/biorhythms/biorhythms.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "birthday-problem",
+      "title": "Birthday problem",
+      "url": "https://rosettacode.org/wiki/Birthday_problem",
+      "tags": [
+        "maths",
+        "simulation",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/birthday-problem/birthdays.png.expected"
+      ],
+      "lines": 144,
+      "parts": [
+        {
+          "id": "birthday-problem",
+          "heading": null,
+          "source": "tasks/birthday-problem/birthday-problem.ghul",
+          "output": "tasks/birthday-problem/run.expected",
+          "lines": 144,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/birthday-problem/birthdays.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "bitmap",
       "title": "Bitmap",
       "url": "https://rosettacode.org/wiki/Bitmap",
@@ -3161,6 +3312,37 @@
       ]
     },
     {
+      "slug": "check-if-a-polygon-overlaps-with-a-rectangle",
+      "title": "Check if a polygon overlaps with a rectangle",
+      "url": "https://rosettacode.org/wiki/Check_if_a_polygon_overlaps_with_a_rectangle",
+      "tags": [
+        "maths",
+        "algorithms",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/check-if-a-polygon-overlaps-with-a-rectangle/overlap.png.expected"
+      ],
+      "lines": 83,
+      "parts": [
+        {
+          "id": "check-if-a-polygon-overlaps-with-a-rectangle",
+          "heading": null,
+          "source": "tasks/check-if-a-polygon-overlaps-with-a-rectangle/check-if-a-polygon-overlaps-with-a-rectangle.ghul",
+          "output": "tasks/check-if-a-polygon-overlaps-with-a-rectangle/run.expected",
+          "lines": 83,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/check-if-a-polygon-overlaps-with-a-rectangle/overlap.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "check-machin-like-formulas",
       "title": "Check Machin-like formulas",
       "url": "https://rosettacode.org/wiki/Check_Machin-like_formulas",
@@ -3401,6 +3583,38 @@
       ]
     },
     {
+      "slug": "circles-of-given-radius-through-two-points",
+      "title": "Circles of given radius through two points",
+      "url": "https://rosettacode.org/wiki/Circles_of_given_radius_through_two_points",
+      "tags": [
+        "maths",
+        "unions",
+        "pattern-matching",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/circles-of-given-radius-through-two-points/circles.png.expected"
+      ],
+      "lines": 100,
+      "parts": [
+        {
+          "id": "circles-of-given-radius-through-two-points",
+          "heading": null,
+          "source": "tasks/circles-of-given-radius-through-two-points/circles-of-given-radius-through-two-points.ghul",
+          "output": "tasks/circles-of-given-radius-through-two-points/run.expected",
+          "lines": 100,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/circles-of-given-radius-through-two-points/circles.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "cistercian-numerals",
       "title": "Cistercian numerals",
       "url": "https://rosettacode.org/wiki/Cistercian_numerals",
@@ -3453,6 +3667,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "closest-pair-problem",
+      "title": "Closest-pair problem",
+      "url": "https://rosettacode.org/wiki/Closest-pair_problem",
+      "tags": [
+        "algorithms",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/closest-pair-problem/closest.png.expected"
+      ],
+      "lines": 95,
+      "parts": [
+        {
+          "id": "closest-pair-problem",
+          "heading": null,
+          "source": "tasks/closest-pair-problem/closest-pair-problem.ghul",
+          "output": "tasks/closest-pair-problem/run.expected",
+          "lines": 95,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/closest-pair-problem/closest.png.expected"
+          ]
         }
       ]
     },
@@ -4122,6 +4367,36 @@
       ]
     },
     {
+      "slug": "constrained-random-points-on-a-circle",
+      "title": "Constrained random points on a circle",
+      "url": "https://rosettacode.org/wiki/Constrained_random_points_on_a_circle",
+      "tags": [
+        "graphics",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/constrained-random-points-on-a-circle/ring.png.expected"
+      ],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "constrained-random-points-on-a-circle",
+          "heading": null,
+          "source": "tasks/constrained-random-points-on-a-circle/constrained-random-points-on-a-circle.ghul",
+          "output": "tasks/constrained-random-points-on-a-circle/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/constrained-random-points-on-a-circle/ring.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "continued-fraction",
       "title": "Continued fraction",
       "url": "https://rosettacode.org/wiki/Continued_fraction",
@@ -4485,6 +4760,36 @@
       ]
     },
     {
+      "slug": "curve-that-touches-three-points",
+      "title": "Curve that touches three points",
+      "url": "https://rosettacode.org/wiki/Curve_that_touches_three_points",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/curve-that-touches-three-points/curve.png.expected"
+      ],
+      "lines": 76,
+      "parts": [
+        {
+          "id": "curve-that-touches-three-points",
+          "heading": null,
+          "source": "tasks/curve-that-touches-three-points/curve-that-touches-three-points.ghul",
+          "output": "tasks/curve-that-touches-three-points/run.expected",
+          "lines": 76,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/curve-that-touches-three-points/curve.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "curzon-numbers",
       "title": "Curzon numbers",
       "url": "https://rosettacode.org/wiki/Curzon_numbers",
@@ -4505,6 +4810,32 @@
           "source": "tasks/curzon-numbers/curzon-numbers.ghul",
           "output": "tasks/curzon-numbers/run.expected",
           "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "cut-a-rectangle",
+      "title": "Cut a rectangle",
+      "url": "https://rosettacode.org/wiki/Cut_a_rectangle",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "cut-a-rectangle",
+          "heading": null,
+          "source": "tasks/cut-a-rectangle/cut-a-rectangle.ghul",
+          "output": "tasks/cut-a-rectangle/run.expected",
+          "lines": 88,
           "playground": true,
           "input": false,
           "images": []

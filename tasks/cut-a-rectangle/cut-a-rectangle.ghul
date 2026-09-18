@@ -1,0 +1,88 @@
+use default
+
+class CUTTER is
+    width: int
+    height: int
+    last: int
+    grid: LIST[int]
+    steps: int[]
+    moves: (int, int)[]
+    count: long
+
+    init(height: int, width: int) is
+        self.height = height
+        self.width = width
+        last = (height + 1) * (width + 1) - 1
+        grid = repeat(0, last + 1) |> collect_list()
+        steps = [-1, -width - 1, 1, width + 1]
+        moves = [(0, -1), (-1, 0), (0, 1), (1, 0)]
+        count = 0L
+    si
+
+    walk(y: int, x: int) is
+        if y == 0 \/ y == height \/ x == 0 \/ x == width then
+            count = count + 2L
+            return
+        fi
+
+        let t = y * (width + 1) + x
+
+        grid[t] = grid[t] + 1
+        grid[last - t] = grid[last - t] + 1
+
+        for (i, (dy, dx)) in moves |> index() do
+            if grid[t + steps[i]] == 0 then
+                walk(y + dy, x + dx)
+            fi
+        od
+
+        grid[t] = grid[t] - 1
+        grid[last - t] = grid[last - t] - 1
+    si
+
+    from_centre() -> long is
+        let middle_y = height / 2, middle_x = width / 2
+
+        for x in middle_x + 1..width do
+            let t = middle_y * (width + 1) + x
+
+            grid[t] = 1
+            grid[last - t] = 1
+            walk(middle_y - 1, x)
+        od
+
+        count + 1L
+    si
+si
+
+cuts(h: int, w: int) -> long is
+    let (tall, wide) = if h % 2 == 1 then (w, h) else (h, w) fi
+
+    if tall % 2 == 1 then
+        return 0L
+    fi
+
+    if wide == 1 then return 1L fi
+    if wide == 2 then return cast long(tall) fi
+    if tall == 2 then return cast long(wide) fi
+
+    let ways = CUTTER(tall, wide).from_centre()
+
+    if tall == wide then
+        return 2L * ways
+    fi
+
+    if wide % 2 == 0 then
+        return ways + CUTTER(wide, tall).from_centre() - 1L
+    fi
+
+    ways
+si
+
+for h in 1::9 do
+    for w in 1::h do
+        if h % 2 == 0 \/ w % 2 == 0 then
+            write_line("{h} x {w}: {cuts(h, w)}")
+        fi
+    od
+od

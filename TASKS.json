@@ -27,6 +27,11 @@
       "published_hash": "9a76e6c22a199f1316b92d9ce5354abf24f1e32c1e01c89cc1706b89e5ca00cc"
     },
     {
+      "title": "16 puzzle game",
+      "slug": "16-puzzle-game",
+      "state": "solved"
+    },
+    {
       "title": "2048",
       "slug": "2048",
       "state": "published",
@@ -46,6 +51,11 @@
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
       "published_hash": "cc18d002e19c2010d9fc0e781ab1409414fc5c6635adf66c2f4902e98c64660d"
+    },
+    {
+      "title": "3d turtle graphics",
+      "slug": "3d-turtle-graphics",
+      "state": "solved"
     },
     {
       "title": "99 bottles of beer",
@@ -101,6 +111,11 @@
       "image_hashes": {
         "Ghul-abelian-sandpile-model-sandpile.png": "f635e1ecfa7550bdcf59591b5ecd6e312c8e2b6e"
       }
+    },
+    {
+      "title": "Abelian sandpile model/Identity",
+      "slug": "abelian-sandpile-model-identity",
+      "state": "solved"
     },
     {
       "title": "Abstract type",
@@ -492,6 +507,16 @@
       "published_hash": "24ed4384bb1298e1a369cc59de8eff824fa9b79b466d51de700580b2e5439905"
     },
     {
+      "title": "Biorhythms",
+      "slug": "biorhythms",
+      "state": "solved"
+    },
+    {
+      "title": "Birthday problem",
+      "slug": "birthday-problem",
+      "state": "solved"
+    },
+    {
       "title": "Bitmap",
       "slug": "bitmap",
       "state": "published",
@@ -809,6 +834,11 @@
       "published_hash": "955a0ed50ab064d94c4fc64bb3b6929ebd96fac930050ccf95d9023f0da14695"
     },
     {
+      "title": "Check if a polygon overlaps with a rectangle",
+      "slug": "check-if-a-polygon-overlaps-with-a-rectangle",
+      "state": "solved"
+    },
+    {
       "title": "Check that file exists",
       "slug": "check-that-file-exists",
       "state": "published",
@@ -863,6 +893,11 @@
       "published_hash": "de96712a6e912e9d10e0d137c5d0a6534c9a6db7f8804a5bd5e000c376b7fa7f"
     },
     {
+      "title": "Circles of given radius through two points",
+      "slug": "circles-of-given-radius-through-two-points",
+      "state": "solved"
+    },
+    {
       "title": "Cistercian numerals",
       "slug": "cistercian-numerals",
       "state": "published",
@@ -882,6 +917,11 @@
       "state": "rejected",
       "reason": "needs-gui",
       "note": "the system clipboard, not standard input"
+    },
+    {
+      "title": "Closest-pair problem",
+      "slug": "closest-pair-problem",
+      "state": "solved"
     },
     {
       "title": "Closures/Value capture",
@@ -1058,6 +1098,11 @@
       "published_hash": "c144d96fc8744b17f91515e1dffbf58a0daed05132e6765311617f10b0bd9863"
     },
     {
+      "title": "Constrained random points on a circle",
+      "slug": "constrained-random-points-on-a-circle",
+      "state": "solved"
+    },
+    {
       "title": "Continued fraction",
       "slug": "continued-fraction",
       "state": "published",
@@ -1146,10 +1191,20 @@
       "published_hash": "d96fd1967a79be40a2e4fefae4d77a0cd8b508b1b1e71f1d3d33260f97b4fc17"
     },
     {
+      "title": "Curve that touches three points",
+      "slug": "curve-that-touches-three-points",
+      "state": "solved"
+    },
+    {
       "title": "Curzon numbers",
       "slug": "curzon-numbers",
       "state": "published",
       "published_hash": "04b7fb459544466ad5e22b8b1446061512ced4c909d71e538db4045bd2f09ed1"
+    },
+    {
+      "title": "Cut a rectangle",
+      "slug": "cut-a-rectangle",
+      "state": "solved"
     },
     {
       "title": "Cycles of a permutation",

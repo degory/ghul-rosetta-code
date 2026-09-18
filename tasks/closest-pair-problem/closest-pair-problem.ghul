@@ -1,0 +1,95 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+struct P(x: double, y: double) is
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    length: double => Math.sqrt(x * x + y * y)
+    show: string => "({x:F4}, {y:F4})"
+si
+
+use Pair = (distance: double, a: P, b: P)
+
+closer(p: Pair, q: Pair) -> Pair =>
+    if q.distance < p.distance then q else p fi
+
+pair(a: P, b: P) -> Pair => ((a - b).length, a, b)
+
+brute_force(points: List[P]) -> Pair =>
+    (0..points.count)
+        |> flat_map(i =>
+            (i + 1..points.count) |> map(j => pair(points[i], points[j])))
+        |> reduce((double.max_value, points[0], points[0]), closer)
+
+closest(by_x: List[P], by_y: List[P]) -> Pair is
+    if by_x.count <= 3 then
+        return brute_force(by_x)
+    fi
+
+    let half = by_x.count / 2
+    let middle = by_x[half - 1].x
+
+    let left_x = by_x |> take(half) |> collect_list()
+    let right_x = by_x |> skip(half) |> collect_list()
+    let left = SET(left_x)
+
+    let left_y = by_y |> filter(p => left.contains(p)) |> collect_list()
+    let right_y = by_y |> filter(p => !left.contains(p)) |> collect_list()
+
+    let best = closer(closest(left_x, left_y), closest(right_x, right_y))
+
+    let strip =
+        by_y
+            |> filter(p => Math.abs(p.x - middle) < best.distance)
+            |> collect_list()
+
+    let result mut = best
+
+    for (i, p) in strip |> index() do
+        for q in strip |> skip(i + 1) do
+            if q.y - p.y >= result.distance then
+                break
+            fi
+
+            result = closer(result, pair(p, q))
+        od
+    od
+
+    result
+si
+
+let random = System.Random(2)
+let points =
+    (0..2000)
+        |> map(_ => P(random.next_double(), random.next_double()))
+        |> collect_list()
+
+let fast =
+    closest(
+        points |> sort((a, b) => a.x <> b.x) |> collect_list(),
+        points |> sort((a, b) => a.y <> b.y) |> collect_list())
+
+let slow = brute_force(points)
+
+write_line("{points.count} random points in the unit square")
+write_line("divide and conquer: {fast.distance:F6}")
+write_line("between {fast.a.show} and {fast.b.show}")
+write_line("brute force:        {slow.distance:F6}")
+
+let image = IMAGE(400, 400)
+
+image.view(0.0D, 0.0D, 1.0D, 1.0D)
+image.clear(252ub, 250ub, 245ub)
+image.colour(120ub, 130ub, 150ub)
+
+for p in points do
+    image.dot(p.x, p.y, 1.5D)
+od
+
+image.colour(210ub, 40ub, 40ub)
+image.ring(fast.a.x, fast.a.y, 7.0D)
+image.ring(fast.b.x, fast.b.y, 7.0D)
+
+image.write("closest.png")
+
+image.show("closest.png")
