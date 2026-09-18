@@ -10147,6 +10147,37 @@
       ]
     },
     {
+      "slug": "klein-bottle",
+      "title": "Klein bottle",
+      "url": "https://rosettacode.org/wiki/Klein_bottle",
+      "tags": [
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/klein-bottle/klein.png.expected"
+      ],
+      "lines": 112,
+      "parts": [
+        {
+          "id": "klein-bottle",
+          "heading": null,
+          "source": "tasks/klein-bottle/klein-bottle.ghul",
+          "output": "tasks/klein-bottle/run.expected",
+          "lines": 112,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/klein-bottle/klein.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "knapsack-problem-0-1",
       "title": "Knapsack problem/0-1",
       "url": "https://rosettacode.org/wiki/Knapsack_problem/0-1",
