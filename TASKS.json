@@ -23,7 +23,8 @@
     {
       "title": "15 puzzle solver",
       "slug": "15-puzzle-solver",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9a76e6c22a199f1316b92d9ce5354abf24f1e32c1e01c89cc1706b89e5ca00cc"
     },
     {
       "title": "2048",
@@ -568,7 +569,11 @@
     {
       "title": "Boids",
       "slug": "boids",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2bf883aef781707f5f2764f16f22a5c96fff40f868c6237f0fa2795960581c5f",
+      "image_hashes": {
+        "Ghul-boids-boids.gif": "66d2173475a73d3c732f8265797dc76bc7eb651f"
+      }
     },
     {
       "title": "Boolean values",
@@ -925,12 +930,14 @@
     {
       "title": "Compiler/lexical analyzer",
       "slug": "compiler-lexical-analyzer",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c35745073b9f64ede1e94c30f487c5a77a0d5599891d63c4dee239bd02e9c4bf"
     },
     {
       "title": "Compiler/virtual machine interpreter",
       "slug": "compiler-virtual-machine-interpreter",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "921e87c83aebe5820280765927ba23e8b6daad31662133a5ec934b5b27535884"
     },
     {
       "title": "Compound data type",
@@ -1030,7 +1037,8 @@
     {
       "title": "Countdown",
       "slug": "countdown",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "51d63317808a2a56af3f2d7a74f6f968782868df4bfa98a281f839c9b62a412a"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -1247,7 +1255,11 @@
     {
       "title": "Draw a clock",
       "slug": "draw-a-clock",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "18cdf185825283383df9233c7a0a917ca92c12e50d65c74ea872e9824fb3d06d",
+      "image_hashes": {
+        "Ghul-draw-a-clock-clock.gif": "072ae87fdabad80e3f97249e4c1501d670d22751"
+      }
     },
     {
       "title": "Draw a pixel",
@@ -1257,8 +1269,12 @@
     {
       "title": "Draw a rotating cube",
       "slug": "draw-a-rotating-cube",
-      "state": "solved",
-      "note": "reopened, was rejected/needs-gui: animation is drawn as an animated PNG and published as a GIF"
+      "state": "published",
+      "note": "reopened, was rejected/needs-gui: animation is drawn as an animated PNG and published as a GIF",
+      "published_hash": "758165898c3381d9b2b34a6dd95b2b977a4c2281e5e32a89b07de5f78ec88411",
+      "image_hashes": {
+        "Ghul-draw-a-rotating-cube-cube.gif": "968d8c3f29b91e9adf70d7801e5a49f6950d75ca"
+      }
     },
     {
       "title": "Draw a sphere",
@@ -1724,7 +1740,11 @@
     {
       "title": "Forest fire",
       "slug": "forest-fire",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9a2d25ce22d8cd83c11b11ae015cc9a98d8b0f027ebab357a173723beaee3992",
+      "image_hashes": {
+        "Ghul-forest-fire-forest.gif": "43baf7b585d03af296026ae59ef0f088bb740d63"
+      }
     },
     {
       "title": "Formal power series",
@@ -1869,7 +1889,11 @@
     {
       "title": "Geocentric model",
       "slug": "geocentric-model",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b1db822175e017dbaaf9c94176c55b677e11ff338e1099efb99950c2df61132e",
+      "image_hashes": {
+        "Ghul-geocentric-model-geocentric.gif": "a8dd5ab22bdf66eb6a0032b69e5c568c4854c9d1"
+      }
     },
     {
       "title": "Giuga numbers",
@@ -2544,7 +2568,11 @@
     {
       "title": "Langton\u0027s ant",
       "slug": "langton-s-ant",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1d4d4c8d9e924ed2ef22316391f14e7c19831b40da932043685280e59717cd0f",
+      "image_hashes": {
+        "Ghul-langton-s-ant-ant.gif": "6fdae749ba0624b7fe26625afcef72f1c51ad4dc"
+      }
     },
     {
       "title": "Largest int from concatenated ints",
@@ -3279,7 +3307,11 @@
     {
       "title": "Particle fountain",
       "slug": "particle-fountain",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d3c1df85ddf8070383a6ee50a6dcdfe573e64e314680d85281f772d2088bee2e",
+      "image_hashes": {
+        "Ghul-particle-fountain-fountain.gif": "f1aab8b5f53d809135ac2af12b64b9ce9cc299b6"
+      }
     },
     {
       "title": "Pascal\u0027s triangle",
@@ -3439,7 +3471,11 @@
     {
       "title": "Polyspiral",
       "slug": "polyspiral",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f355a11da1e7c62427ffefa02f74604aa6323c3a0ceb9cf28f6be2402a599621",
+      "image_hashes": {
+        "Ghul-polyspiral-polyspiral.gif": "0c348e56d4a67c555302683ad06bff924b0e037c"
+      }
     },
     {
       "title": "Population count",
@@ -3606,7 +3642,11 @@
     {
       "title": "Raster bars",
       "slug": "raster-bars",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "47068d9ea303984eb37b22cfcf72e28e62ea8b26b21e69dce4d9255a684c6632",
+      "image_hashes": {
+        "Ghul-raster-bars-bars.gif": "1f8c224f8b0486cad86192c5590d809b30735682"
+      }
     },
     {
       "title": "Rate counter",
@@ -3739,7 +3779,11 @@
     {
       "title": "Rotating Rubik\u0027s cube",
       "slug": "rotating-rubik-s-cube",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b2f8e9c0c3fc7362dbc7f7df8574531be0b7928208baec4e49240e7e7e0ae606",
+      "image_hashes": {
+        "Ghul-rotating-rubik-s-cube-rubik.gif": "69ef71025387949e58cae34aa32234198627b50c"
+      }
     },
     {
       "title": "Run-length encoding",
@@ -4016,12 +4060,14 @@
     {
       "title": "Solve a Hidato puzzle",
       "slug": "solve-a-hidato-puzzle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "cd4000d3a53934ed8b0e52ca8755d4fc5f8eb090e45181994d5675e96e7e1525"
     },
     {
       "title": "Solve a Rubik\u0027s cube",
       "slug": "solve-a-rubik-s-cube",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "816157a4815168c67b202e17f3594a2d52a10c37fe62acad7849b330919bc8d6"
     },
     {
       "title": "Solve the no connection puzzle",
@@ -4891,7 +4937,11 @@
     {
       "title": "Vibrating rectangles",
       "slug": "vibrating-rectangles",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "881a0902aa54ba0a6681824f3c43e1336afe0c1fb332811925ea75f63642b5ee",
+      "image_hashes": {
+        "Ghul-vibrating-rectangles-rectangles.gif": "7dbb5b9058f6a4e90d90325a9161738b8b436864"
+      }
     },
     {
       "title": "Vigen\u00E8re cipher",
@@ -4902,7 +4952,8 @@
     {
       "title": "Vigen\u00E8re cipher/Cryptanalysis",
       "slug": "vigenere-cipher-cryptanalysis",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f24bb773048637eca748ddf774471f2b9e29ed1f8337820665dfb1174b82b4de"
     },
     {
       "title": "Visualize a tree",
@@ -4973,7 +5024,11 @@
     {
       "title": "Wireworld",
       "slug": "wireworld",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f51a98b1affa4ad2a8f0536fdab50eaa87bf9e0ae433a1c6d82a7e147a85464d",
+      "image_hashes": {
+        "Ghul-wireworld-wireworld.gif": "7e6a761b0003c54de7b8c690096c155d622e77de"
+      }
     },
     {
       "title": "Wolstenholme numbers",
