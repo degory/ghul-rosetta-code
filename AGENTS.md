@@ -147,6 +147,25 @@ annotation has not gained anything, and the original spelling stays. Keep one so
 with itself - `LIST[int]()` on one line and `LIST()` a few lines down, for no reason a reader can
 see, is worse than either alone.
 
+## Arithmetic on a type of your own uses operators
+
+Where a solution has vectors, points, matrices, complex or modular numbers, polynomials,
+quaternions, intervals - anything a reader would write in notation - it defines the operators
+rather than calling `plus(a, b)` and `times(p, k)`. A global operator works on a type the solution
+did not declare, a tuple alias included:
+
+```ghul
+use Point = (x: double, y: double, z: double)
+
++(a: Point, b: Point) -> Point => (x = a.x + b.x, y = a.y + b.y, z = a.z + b.z)
+*(p: Point, k: double) -> Point => (x = p.x * k, y = p.y * k, z = p.z * k)
+```
+
+and then `p + q * 2.0D` reads the way the mathematics does. The Unicode operator characters are
+ordinary operators with sensible precedence, so a dot product is `a ⋅ b` and a cross product
+`a × b` (GHUL.md, "operators"). Keep a named function where there is no accepted symbol, and do not
+invent notation.
+
 ## Solutions are not marked `pure`
 
 The pipe combinators take pure functions, and most of what a solution passes them is not provably
