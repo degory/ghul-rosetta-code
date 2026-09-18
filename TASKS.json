@@ -649,6 +649,11 @@
       "published_hash": "8294c9b3fb7f0f894c07c9946847d340524ea9370648691b31e5a1818add1b88"
     },
     {
+      "title": "B\u00E9zier curves/Intersections",
+      "slug": "bezier-curves-intersections",
+      "state": "solved"
+    },
+    {
       "title": "CLI-based maze-game",
       "state": "rejected",
       "reason": "task-unclear"
@@ -736,6 +741,11 @@
       "slug": "catamorphism",
       "state": "published",
       "published_hash": "781f145529d0cc99838ce6c549393e84ff43581227bb8cad5bce644a751ced2c"
+    },
+    {
+      "title": "Catenoid surface",
+      "slug": "catenoid-surface",
+      "state": "solved"
     },
     {
       "title": "Chaos game",
@@ -1309,6 +1319,11 @@
       "image_hashes": {
         "Ghul-draw-a-sphere-sphere.png": "1001a0b5276485c39eb71b7f1ecfadb5d4ca3f62"
       }
+    },
+    {
+      "title": "Draw the Empire State Building",
+      "slug": "draw-the-empire-state-building",
+      "state": "solved"
     },
     {
       "title": "Duffinian numbers",
@@ -2526,6 +2541,11 @@
       "published_hash": "7b3832541d8ce9259c351cd2afc9215c11cb5b0ba53d3b4feacf87a89fd112dc"
     },
     {
+      "title": "Klein bottle",
+      "slug": "klein-bottle",
+      "state": "solved"
+    },
+    {
       "title": "Knapsack problem/0-1",
       "slug": "knapsack-problem-0-1",
       "state": "published",
@@ -3188,6 +3208,11 @@
       "published_hash": "2852e41743b479eab522bf010f1d59cb762459128e99f067508a0971f8e30ec4"
     },
     {
+      "title": "Nonogram solver",
+      "slug": "nonogram-solver",
+      "state": "solved"
+    },
+    {
       "title": "Nth root",
       "slug": "nth-root",
       "state": "published",
@@ -3402,6 +3427,11 @@
       "image_hashes": {
         "Ghul-pentagram-pentagram.png": "24c12e43a4f01d7ed7d0402f9c58d5312bb296e5"
       }
+    },
+    {
+      "title": "Pentomino tiling",
+      "slug": "pentomino-tiling",
+      "state": "solved"
     },
     {
       "title": "Perfect numbers",
@@ -4119,6 +4149,11 @@
       "published_hash": "cd4000d3a53934ed8b0e52ca8755d4fc5f8eb090e45181994d5675e96e7e1525"
     },
     {
+      "title": "Solve a Holy Knight\u0027s tour",
+      "slug": "solve-a-holy-knight-s-tour",
+      "state": "solved"
+    },
+    {
       "title": "Solve a Rubik\u0027s cube",
       "slug": "solve-a-rubik-s-cube",
       "state": "published",
@@ -4751,6 +4786,11 @@
       "published_hash": "d9ad6259ae10ab092f8f565426702be12e7e805bebcf1b9ed8bd60f406d21bbc"
     },
     {
+      "title": "Total circles area",
+      "slug": "total-circles-area",
+      "state": "solved"
+    },
+    {
       "title": "Towers of Hanoi",
       "slug": "towers-of-hanoi",
       "state": "published",
@@ -5070,6 +5110,11 @@
       }
     },
     {
+      "title": "Wave function collapse",
+      "slug": "wave-function-collapse",
+      "state": "solved"
+    },
+    {
       "title": "Weird numbers",
       "slug": "weird-numbers",
       "state": "published",
@@ -5095,6 +5140,11 @@
       "slug": "wolstenholme-numbers",
       "state": "published",
       "published_hash": "ba471144f60fd11d2fa5b5a11d996e875b27f67c49b2f0359692bb20b054399f"
+    },
+    {
+      "title": "Word search",
+      "slug": "word-search",
+      "state": "solved"
     },
     {
       "title": "Word wheel",
