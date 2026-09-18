@@ -12737,14 +12737,14 @@
       "images": [
         "tasks/penrose-tiling/penrose.png.expected"
       ],
-      "lines": 78,
+      "lines": 80,
       "parts": [
         {
           "id": "penrose-tiling",
           "heading": null,
           "source": "tasks/penrose-tiling/penrose-tiling.ghul",
           "output": "tasks/penrose-tiling/run.expected",
-          "lines": 78,
+          "lines": 80,
           "playground": true,
           "input": false,
           "images": [
