@@ -522,6 +522,11 @@
       "published_hash": "58f0bcb0dc66900d895754cd7f9d2dbc4c4f4d6a4018e4669eeb7f5e72c9d88b"
     },
     {
+      "title": "Black box",
+      "slug": "black-box",
+      "state": "solved"
+    },
+    {
       "title": "Blum integer",
       "slug": "blum-integer",
       "state": "published",
@@ -1804,6 +1809,11 @@
       "published_hash": "6e999d1f614bafdc25650a529a5f87b3f5cd234208033793a4ddd28282e4e645"
     },
     {
+      "title": "Greed",
+      "slug": "greed",
+      "state": "solved"
+    },
+    {
       "title": "Greedy algorithm for Egyptian fractions",
       "slug": "greedy-algorithm-for-egyptian-fractions",
       "state": "published",
@@ -1924,6 +1934,11 @@
       "slug": "hex-dump",
       "state": "published",
       "published_hash": "11aed746bee092277644248f0554bb4b1f87ec4a3635ca511a6f933ba22b0385"
+    },
+    {
+      "title": "Hexapawn",
+      "slug": "hexapawn",
+      "state": "solved"
     },
     {
       "title": "Higher-order functions",
@@ -2592,6 +2607,11 @@
       "published_hash": "95406c9c93a2c4e45b94b99e3fe6b805c73fe96a7fd0ee7389cf0a8d28546b71"
     },
     {
+      "title": "Mad Libs",
+      "slug": "mad-libs",
+      "state": "solved"
+    },
+    {
       "title": "Magic squares of odd order",
       "slug": "magic-squares-of-odd-order",
       "state": "published",
@@ -2629,6 +2649,11 @@
       "slug": "map-range",
       "state": "published",
       "published_hash": "c5b70fd09bb286c224c12a1afedc17faeed924ac821c676d799a48b38e272e70"
+    },
+    {
+      "title": "Mastermind",
+      "slug": "mastermind",
+      "state": "solved"
     },
     {
       "title": "Matrix multiplication",
@@ -2676,6 +2701,11 @@
       "slug": "middle-three-digits",
       "state": "published",
       "published_hash": "d03ebbe9510262a8b7b221d7556217905289ff342539c0b9636b7156acf39892"
+    },
+    {
+      "title": "Minesweeper game",
+      "slug": "minesweeper-game",
+      "state": "solved"
     },
     {
       "title": "Minimal steps down to 1",
@@ -2858,6 +2888,11 @@
       "slug": "next-highest-int-from-digits",
       "state": "published",
       "published_hash": "719420937e0ba95d80ff33b072dadb79baedb348d99bea4bd245b18c18c333e8"
+    },
+    {
+      "title": "Nim game",
+      "slug": "nim-game",
+      "state": "solved"
     },
     {
       "title": "Non-continuous subsequences",
@@ -3049,6 +3084,11 @@
       "published_hash": "0f005f35bcb3092cb449ac9b6eef4190ed2a9c6ddd4c5884cba5dcfd6dd53e54"
     },
     {
+      "title": "Penney\u0027s game",
+      "slug": "penneys-game",
+      "state": "solved"
+    },
+    {
       "title": "Penrose tiling",
       "slug": "penrose-tiling",
       "state": "solved"
@@ -3111,6 +3151,11 @@
       "slug": "pierpont-primes",
       "state": "published",
       "published_hash": "c685a534cdbb8fbd30d6131a480285e52d05ae86f1bf5b53d1e9c6d43481db45"
+    },
+    {
+      "title": "Pig the dice game/Player",
+      "slug": "pig-the-dice-game-player",
+      "state": "solved"
     },
     {
       "title": "Pisano period",
@@ -3666,6 +3711,21 @@
       "published_hash": "1bf76d3cc1afbf2c60ee6c74ab02cadbddb1d579c15c9a75e5aae036be1913eb"
     },
     {
+      "title": "Snake",
+      "slug": "snake",
+      "state": "solved"
+    },
+    {
+      "title": "Snake and ladder",
+      "slug": "snake-and-ladder",
+      "state": "solved"
+    },
+    {
+      "title": "Sokoban",
+      "slug": "sokoban",
+      "state": "solved"
+    },
+    {
       "title": "Solve the no connection puzzle",
       "slug": "solve-the-no-connection-puzzle",
       "state": "published",
@@ -4150,6 +4210,11 @@
       "reason": "nondeterministic"
     },
     {
+      "title": "Tamagotchi emulator",
+      "slug": "tamagotchi-emulator",
+      "state": "solved"
+    },
+    {
       "title": "Tau function",
       "slug": "tau-function",
       "state": "published",
@@ -4186,9 +4251,19 @@
       "published_hash": "3b77f44ab408edd9833558938d13992ec5a99384ccb56ca7d9c2d8d514aeaabf"
     },
     {
+      "title": "Tetris",
+      "slug": "tetris",
+      "state": "solved"
+    },
+    {
       "title": "Text processing/Max licenses in use",
       "state": "rejected",
       "reason": "needs-network"
+    },
+    {
+      "title": "The Name Game",
+      "slug": "the-name-game",
+      "state": "solved"
     },
     {
       "title": "The Twelve Days of Christmas",
@@ -4207,6 +4282,11 @@
       "slug": "thue-morse",
       "state": "published",
       "published_hash": "816ca35e9b0f5fcfd19520668c85aa7554cc504c9c3dd3e681cccad0f1661ec0"
+    },
+    {
+      "title": "Tic-tac-toe",
+      "slug": "tic-tac-toe",
+      "state": "solved"
     },
     {
       "title": "Time a function",
@@ -4548,6 +4628,11 @@
       "slug": "word-wrap",
       "state": "published",
       "published_hash": "788ffc3bbd915d168f9bdfdbf4067cccb97a99c4d289e741cc85e452621062c8"
+    },
+    {
+      "title": "Wordle comparison",
+      "slug": "wordle-comparison",
+      "state": "solved"
     },
     {
       "title": "Words containing \u0022the\u0022 substring",
