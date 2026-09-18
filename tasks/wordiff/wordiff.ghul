@@ -1,0 +1,78 @@
+use default
+use IO.Std.read_line
+
+let dictionary =
+    IO.File.read_all_lines("unixdict.txt")
+        |> filter(w => w.length >= 3 /\ w |> all(c => c >= 'a' /\ c <= 'z'))
+        |> collect_list()
+
+let words = SET[string](dictionary)
+
+one_apart(a: string, b: string) -> bool =>
+    if a.length == b.length then
+        (0..a.length) |> filter(i => a[i] != b[i]) |> count() == 1
+    elif a.length == b.length + 1 then
+        (0..a.length) |> any(i => a.remove(i, 1) =~ b)
+    elif b.length == a.length + 1 then
+        (0..b.length) |> any(i => b.remove(i, 1) =~ a)
+    else
+        false
+    fi
+
+ask(prompt: string) -> string? is
+    write_line(prompt)
+
+    let line = read_line()
+
+    if !line? then
+        return null
+    fi
+
+    let answer = line.trim().to_lower()
+
+    write_line("> {answer}")
+
+    return answer
+si
+
+let names = LIST[string]()
+
+for player in 1::2 do
+    if let name = ask("name of player {player}:") then
+        names.add(name)
+    fi
+od
+
+let random = System.Random(7)
+let starters = dictionary |> filter(w => w.length <= 4) |> collect_list()
+let used = LIST[string]()
+let last mut = starters[random.next(starters.count)]
+
+used.add(last)
+
+write_line()
+write_line("the first word is {last}")
+
+let turn mut = 0
+
+while names.count == 2 do
+    let player = names[turn % 2]
+    let entered = ask("{player}, a word one letter away from {last}:")
+
+    if !entered? \/ entered =~ "" then
+        write_line("{player} gives up after {used.count - 1} words")
+        break
+    fi
+
+    if !words.contains(entered) then
+        write_line("{entered} is not in the dictionary")
+    elif used |> any(w => w =~ entered) then
+        write_line("{entered} has been played already")
+    elif !one_apart(last, entered) then
+        write_line("{entered} is not one letter away from {last}")
+    else
+        used.add(entered)
+        last = entered
+        turn = turn + 1
+    fi
+od

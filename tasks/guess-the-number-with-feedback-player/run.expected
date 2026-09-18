@@ -1,0 +1,26 @@
+think of a number from 1 to 100
+answer each guess with h if yours is higher,
+l if it is lower, or c if I have it
+
+guess 1: 50
+> h
+
+guess 2: 75
+> l
+
+guess 3: 62
+> h
+
+guess 4: 68
+> what
+answer h, l or c
+
+guess 4: 68
+> h
+
+guess 5: 71
+> h
+
+guess 6: 73
+> c
+got it in 6

@@ -1,0 +1,42 @@
+ordering violet red green indigo blue yellow orange
+
+1: is red <, = or > violet?
+> <
+
+2: is green <, = or > violet?
+> <
+
+3: is green <, = or > red?
+> >
+
+4: is indigo <, = or > green?
+> >
+
+5: is indigo <, = or > violet?
+> <
+
+6: is blue <, = or > indigo?
+> <
+
+7: is blue <, = or > green?
+> >
+
+8: is yellow <, = or > blue?
+> <
+
+9: is yellow <, = or > green?
+> <
+
+10: is yellow <, = or > red?
+> >
+
+11: is orange <, = or > blue?
+> <
+
+12: is orange <, = or > yellow?
+> <
+
+13: is orange <, = or > red?
+> >
+
+red orange yellow green blue indigo violet after 13 questions

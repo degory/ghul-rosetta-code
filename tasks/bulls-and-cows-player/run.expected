@@ -1,0 +1,18 @@
+think of four different digits from 1 to 9
+score each guess as bulls then cows, like 1 2
+
+guess 1: 8372
+bulls 1, cows 0
+
+guess 2: 9671
+bulls 0, cows 2
+
+guess 3: 6395
+bulls 0, cows 2
+
+guess 4: 5912
+bulls 2, cows 1
+
+guess 5: 5162
+bulls 4, cows 0
+got it in 5

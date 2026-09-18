@@ -1,0 +1,134 @@
+use default
+use IO.Std.read_line
+use System.Math
+
+let random = System.Random(2026)
+
+let steps = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+let turns = ["ahead", "right", "back", "left"]
+
+let decided = MAP[(int, int, int), bool]()
+
+edge(x: int, y: int, d: int) -> (int, int, int) =>
+    case d
+    when 0 then (x, y, 0)
+    when 1 then (x, y, 1)
+    when 2 then (x - 1, y, 0)
+    else (x, y - 1, 1)
+    esac
+
+passage(x: int, y: int, d: int) -> bool is
+    let key = edge(x, y, d)
+
+    if !decided.contains_key(key) then
+        decided[key] = random.next(2) == 0
+    fi
+
+    decided[key]
+si
+
+let x mut = 0
+let y mut = 0
+let facing mut = 0
+let visited = SET[(int, int)]()
+
+toward(turn: int) -> int => (facing - turn + 4) % 4
+
+visited.add((0, 0))
+
+write_line("you are at the entrance of an endless maze")
+write_line("go ahead, right, back or left; exit at the entrance, or quit")
+
+do
+    let paths =
+        (0..4) |> filter(t => passage(x, y, toward(t))) |> collect_list()
+
+    write_line()
+
+    if paths.count == 0 then
+        write_line("walls on every side")
+    else
+        write_line("paths: {paths |> map(t => turns[t]) |> join(" ")}")
+    fi
+
+    let line = read_line()
+
+    if !line? then
+        break
+    fi
+
+    let command = line.trim()
+
+    write_line("> {command}")
+
+    if command =~ "quit" then
+        break
+    elif command =~ "exit" then
+        if x == 0 /\ y == 0 then
+            write_line("you have left the maze")
+            break
+        fi
+
+        write_line("this is not the entrance")
+    elif let turn = (0..4) |> find(t => turns[t] =~ command) then
+        let d = toward(turn)
+
+        if passage(x, y, d) then
+            let (dx, dy) = steps[d]
+
+            x = x + dx
+            y = y + dy
+            facing = d
+            visited.add((x, y))
+        else
+            write_line("there is a wall that way")
+        fi
+    else
+        write_line("say ahead, right, back, left, exit or quit")
+    fi
+od
+
+let low_x =
+    visited |> map(v => v.`0) |> reduce(0, (a, b) => Math.min(a, b))
+let high_x =
+    visited |> map(v => v.`0) |> reduce(0, (a, b) => Math.max(a, b))
+let low_y =
+    visited |> map(v => v.`1) |> reduce(0, (a, b) => Math.min(a, b))
+let high_y =
+    visited |> map(v => v.`1) |> reduce(0, (a, b) => Math.max(a, b))
+
+known(key: (int, int, int)) -> bool =>
+    decided.contains_key(key) /\ decided[key]
+
+write_line()
+write_line("the part explored, E the entrance, @ where you stopped:")
+
+wall_above(row: int) -> string =>
+    (low_x::high_x)
+        |> map(column =>
+            if known((column, row, 1)) then "+  " else "+--" fi)
+        |> join("")
+
+cell(column: int, row: int) -> string =>
+    if column == x /\ row == y then "@ "
+    elif column == 0 /\ row == 0 then "E "
+    elif visited.contains((column, row)) then ". "
+    else "  "
+    fi
+
+for row in (0::high_y - low_y) |> map(i => high_y - i) do
+    let cells =
+        (low_x::high_x)
+            |> map(column =>
+                let open = known((column - 1, row, 0)) in
+                let side = if open then " " else "|" fi in
+                "{side}{cell(column, row)}")
+            |> join("")
+
+    let right = if known((high_x, row, 0)) then " " else "|" fi
+
+    write_line("  {wall_above(row)}+")
+    write_line("  {cells}{right}")
+od
+
+write_line("  {wall_above(low_y - 1)}+")

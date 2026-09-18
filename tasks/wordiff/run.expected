@@ -1,0 +1,31 @@
+name of player 1:
+> alice
+name of player 2:
+> bob
+
+the first word is hive
+alice, a word one letter away from hive:
+> five
+bob, a word one letter away from five:
+> xive
+xive is not in the dictionary
+bob, a word one letter away from five:
+> fire
+alice, a word one letter away from fire:
+> fir
+bob, a word one letter away from fir:
+> fire
+fire has been played already
+bob, a word one letter away from fir:
+> far
+alice, a word one letter away from far:
+> hive
+hive has been played already
+alice, a word one letter away from far:
+> fur
+bob, a word one letter away from fur:
+> fist
+fist is not one letter away from fur
+bob, a word one letter away from fur:
+> 
+bob gives up after 5 words

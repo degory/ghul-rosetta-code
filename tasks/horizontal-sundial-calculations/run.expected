@@ -1,0 +1,51 @@
+latitude in degrees, negative for south:
+> -4.95
+longitude in degrees, negative for west:
+> -150.5
+legal meridian in degrees:
+> -150
+
+sine of latitude:       -0.086
+longitude difference:   -0.500
+
+hour    sun hour angle    dial hour line angle
+ 6am        -89.500            84.225
+ 7am        -74.500            17.283
+ 8am        -59.500             8.334
+ 9am        -44.500             4.847
+10am        -29.500             2.795
+11am        -14.500             1.278
+12pm          0.500            -0.043
+ 1pm         15.500            -1.371
+ 2pm         30.500            -2.910
+ 3pm         45.500            -5.018
+ 4pm         60.500            -8.671
+ 5pm         75.500           -18.451
+ 6pm         90.500            84.225
+
+latitude in degrees, negative for south:
+> 51.48
+longitude in degrees, negative for west:
+> 0
+legal meridian in degrees:
+> 0
+
+sine of latitude:        0.782
+longitude difference:    0.000
+
+hour    sun hour angle    dial hour line angle
+ 6am        -90.000           -90.000
+ 7am        -75.000           -71.095
+ 8am        -60.000           -53.575
+ 9am        -45.000           -38.039
+10am        -30.000           -24.309
+11am        -15.000           -11.840
+12pm          0.000             0.000
+ 1pm         15.000            11.840
+ 2pm         30.000            24.309
+ 3pm         45.000            38.039
+ 4pm         60.000            53.575
+ 5pm         75.000            71.095
+ 6pm         90.000            90.000
+
+latitude in degrees, negative for south:

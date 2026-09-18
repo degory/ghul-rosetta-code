@@ -1,0 +1,96 @@
+use default
+use IO.Std.read_line
+use System.Math
+
+let random = System.Random(3)
+
+write_line("each round we both hide 0 to 3 coins and guess the total")
+write_line("no guessing the same total; the right guess wins the round")
+write_line("first to three rounds wins")
+
+read_numbers(prompt: string) -> int[]? is
+    write_line(prompt)
+
+    let line = read_line()
+
+    if !line? then
+        return null
+    fi
+
+    write_line("> {line.trim()}")
+
+    return line.split([' '], System.StringSplitOptions.REMOVE_EMPTY_ENTRIES)
+        |> map(int.parse)
+        |> collect_array()
+si
+
+computer_guess(coins: int, other: int?) -> int is
+    let guess mut = coins + random.next(4)
+
+    while other? /\ guess == other do
+        guess = coins + random.next(4)
+    od
+
+    guess
+si
+
+let mine mut = 0
+let yours mut = 0
+let round mut = 0
+
+while mine < 3 /\ yours < 3 do
+    round = round + 1
+    write_line()
+    write_line("round {round}, you {yours} me {mine}")
+
+    let coins = random.next(4)
+    let computer_first = round % 2 == 0
+    let first: int? =
+        if computer_first then computer_guess(coins, null) else null fi
+
+    if let guess = first then
+        write_line("I guess {guess}")
+    fi
+
+    let entered = read_numbers("your coins and your guess:")
+
+    if !entered? then
+        break
+    fi
+
+    let (hidden, called) = (entered[0], entered[1])
+
+    if hidden < 0 \/ hidden > 3 \/ (first? /\ called == first) then
+        write_line("hide 0 to 3 coins, and do not repeat my guess")
+        round = round - 1
+        continue
+    fi
+
+    let guess = first ?? computer_guess(coins, called)
+
+    if !computer_first then
+        write_line("I guess {guess}")
+    fi
+
+    let total = coins + hidden
+
+    write_line("I hid {coins}, so the total is {total}")
+
+    if called == total then
+        yours = yours + 1
+        write_line("you win the round")
+    elif guess == total then
+        mine = mine + 1
+        write_line("I win the round")
+    else
+        write_line("nobody guessed it")
+    fi
+od
+
+if yours == 3 then
+    write_line()
+    write_line("you win {yours} to {mine}")
+elif mine == 3 then
+    write_line()
+    write_line("I win {mine} to {yours}")
+fi

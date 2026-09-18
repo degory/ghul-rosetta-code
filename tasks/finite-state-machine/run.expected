@@ -1,0 +1,22 @@
+ready: deposit or quit?
+> deposit
+ready -> deposit -> waiting
+waiting: select or refund?
+> select
+waiting -> select -> dispense
+dispense: remove?
+> kick
+kick does nothing here
+dispense: remove?
+> remove
+dispense -> remove -> ready
+ready: deposit or quit?
+> deposit
+ready -> deposit -> waiting
+waiting: select or refund?
+> refund
+waiting -> refund -> refunding
+refunding -> ready
+ready: deposit or quit?
+> quit
+ready -> quit -> exit

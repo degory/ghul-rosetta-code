@@ -255,6 +255,33 @@
       ]
     },
     {
+      "slug": "24-game-solve",
+      "title": "24 game/Solve",
+      "url": "https://rosettacode.org/wiki/24_game/Solve",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "24-game-solve",
+          "heading": null,
+          "source": "tasks/24-game-solve/24-game-solve.ghul",
+          "output": "tasks/24-game-solve/run.expected",
+          "lines": 88,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "3d-turtle-graphics",
       "title": "3d turtle graphics",
       "url": "https://rosettacode.org/wiki/3d_turtle_graphics",
@@ -2809,6 +2836,32 @@
           "source": "tasks/bulls-and-cows/bulls-and-cows.ghul",
           "output": "tasks/bulls-and-cows/run.expected",
           "lines": 69,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "bulls-and-cows-player",
+      "title": "Bulls and cows/Player",
+      "url": "https://rosettacode.org/wiki/Bulls_and_cows/Player",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 60,
+      "parts": [
+        {
+          "id": "bulls-and-cows-player",
+          "heading": null,
+          "source": "tasks/bulls-and-cows-player/bulls-and-cows-player.ghul",
+          "output": "tasks/bulls-and-cows-player/run.expected",
+          "lines": 60,
           "playground": true,
           "input": true,
           "images": []
@@ -6265,6 +6318,32 @@
       ]
     },
     {
+      "slug": "endless-maze",
+      "title": "Endless maze",
+      "url": "https://rosettacode.org/wiki/Endless_maze",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 134,
+      "parts": [
+        {
+          "id": "endless-maze",
+          "heading": null,
+          "source": "tasks/endless-maze/endless-maze.ghul",
+          "output": "tasks/endless-maze/run.expected",
+          "lines": 134,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "engel-expansion",
       "title": "Engel expansion",
       "url": "https://rosettacode.org/wiki/Engel_expansion",
@@ -7587,6 +7666,32 @@
           "lines": 13,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "finite-state-machine",
+      "title": "Finite state machine",
+      "url": "https://rosettacode.org/wiki/Finite_state_machine",
+      "tags": [
+        "pattern-matching",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "finite-state-machine",
+          "heading": null,
+          "source": "tasks/finite-state-machine/finite-state-machine.ghul",
+          "output": "tasks/finite-state-machine/run.expected",
+          "lines": 66,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -9006,6 +9111,32 @@
       ]
     },
     {
+      "slug": "guess-the-number-with-feedback-player",
+      "title": "Guess the number/With feedback (player)",
+      "url": "https://rosettacode.org/wiki/Guess_the_number/With_feedback_(player)",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "guess-the-number-with-feedback-player",
+          "heading": null,
+          "source": "tasks/guess-the-number-with-feedback-player/guess-the-number-with-feedback-player.ghul",
+          "output": "tasks/guess-the-number-with-feedback-player/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hailstone-sequence",
       "title": "Hailstone sequence",
       "url": "https://rosettacode.org/wiki/Hailstone_sequence",
@@ -9623,6 +9754,32 @@
       ]
     },
     {
+      "slug": "horizontal-sundial-calculations",
+      "title": "Horizontal sundial calculations",
+      "url": "https://rosettacode.org/wiki/Horizontal_sundial_calculations",
+      "tags": [
+        "maths",
+        "interactive"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "horizontal-sundial-calculations",
+          "heading": null,
+          "source": "tasks/horizontal-sundial-calculations/horizontal-sundial-calculations.ghul",
+          "output": "tasks/horizontal-sundial-calculations/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "horners-rule-for-polynomial-evaluation",
       "title": "Horner's rule for polynomial evaluation",
       "url": "https://rosettacode.org/wiki/Horner's_rule_for_polynomial_evaluation",
@@ -9677,6 +9834,33 @@
             "tasks/hough-transform/hough.png.expected",
             "tasks/hough-transform/pentagon.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "hourglass-puzzle",
+      "title": "Hourglass puzzle",
+      "url": "https://rosettacode.org/wiki/Hourglass_puzzle",
+      "tags": [
+        "puzzles",
+        "game",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 131,
+      "parts": [
+        {
+          "id": "hourglass-puzzle",
+          "heading": null,
+          "source": "tasks/hourglass-puzzle/hourglass-puzzle.ghul",
+          "output": "tasks/hourglass-puzzle/run.expected",
+          "lines": 131,
+          "playground": true,
+          "input": true,
+          "images": []
         }
       ]
     },
@@ -14141,6 +14325,32 @@
       ]
     },
     {
+      "slug": "number-reversal-game",
+      "title": "Number reversal game",
+      "url": "https://rosettacode.org/wiki/Number_reversal_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "number-reversal-game",
+          "heading": null,
+          "source": "tasks/number-reversal-game/number-reversal-game.ghul",
+          "output": "tasks/number-reversal-game/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "numbers-with-equal-rises-and-falls",
       "title": "Numbers with equal rises and falls",
       "url": "https://rosettacode.org/wiki/Numbers_with_equal_rises_and_falls",
@@ -14375,6 +14585,32 @@
           "lines": 62,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "order-by-pair-comparisons",
+      "title": "Order by pair comparisons",
+      "url": "https://rosettacode.org/wiki/Order_by_pair_comparisons",
+      "tags": [
+        "sorting",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 53,
+      "parts": [
+        {
+          "id": "order-by-pair-comparisons",
+          "heading": null,
+          "source": "tasks/order-by-pair-comparisons/order-by-pair-comparisons.ghul",
+          "output": "tasks/order-by-pair-comparisons/run.expected",
+          "lines": 53,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -16945,6 +17181,32 @@
       ]
     },
     {
+      "slug": "robots",
+      "title": "Robots",
+      "url": "https://rosettacode.org/wiki/Robots",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 117,
+      "parts": [
+        {
+          "id": "robots",
+          "heading": null,
+          "source": "tasks/robots/robots.ghul",
+          "output": "tasks/robots/run.expected",
+          "lines": 117,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rock-paper-scissors",
       "title": "Rock-paper-scissors",
       "url": "https://rosettacode.org/wiki/Rock-paper-scissors",
@@ -19497,6 +19759,32 @@
           "lines": 19,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "spoof-game",
+      "title": "Spoof game",
+      "url": "https://rosettacode.org/wiki/Spoof_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "spoof-game",
+          "heading": null,
+          "source": "tasks/spoof-game/spoof-game.ghul",
+          "output": "tasks/spoof-game/run.expected",
+          "lines": 96,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -22549,6 +22837,32 @@
       ]
     },
     {
+      "slug": "war-card-game",
+      "title": "War card game",
+      "url": "https://rosettacode.org/wiki/War_card_game",
+      "tags": [
+        "game",
+        "simulation"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "war-card-game",
+          "heading": null,
+          "source": "tasks/war-card-game/war-card-game.ghul",
+          "output": "tasks/war-card-game/run.expected",
+          "lines": 91,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "wasteful-equidigital-and-frugal-numbers",
       "title": "Wasteful, equidigital and frugal numbers",
       "url": "https://rosettacode.org/wiki/Wasteful,_equidigital_and_frugal_numbers",
@@ -22862,6 +23176,33 @@
           "lines": 38,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "wordiff",
+      "title": "Wordiff",
+      "url": "https://rosettacode.org/wiki/Wordiff",
+      "tags": [
+        "game",
+        "strings",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "wordiff",
+          "heading": null,
+          "source": "tasks/wordiff/wordiff.ghul",
+          "output": "tasks/wordiff/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
