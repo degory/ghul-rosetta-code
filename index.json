@@ -5634,7 +5634,7 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 172,
+      "lines": 171,
       "parts": [
         {
           "id": "execute-brain/01-hello-world",
@@ -5651,7 +5651,7 @@
           "heading": "Running what you type",
           "source": "tasks/execute-brain/02-running-what-you-type/02-running-what-you-type.ghul",
           "output": "tasks/execute-brain/02-running-what-you-type/run.expected",
-          "lines": 103,
+          "lines": 102,
           "playground": true,
           "input": true,
           "images": []
