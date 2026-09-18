@@ -1,0 +1,10 @@
+area = 6 * 5;
+
+/* Include Header.h */
+/* Define area(h, w) as h * w */
+/* End Header.h */
+/* Define width as 5 */
+/* Define height as 6 */
+/* Use area, height, and width */
+area = 6 * 5;
+

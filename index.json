@@ -4261,6 +4261,32 @@
       ]
     },
     {
+      "slug": "compiler-preprocessor",
+      "title": "Compiler/Preprocessor",
+      "url": "https://rosettacode.org/wiki/Compiler/Preprocessor",
+      "tags": [
+        "parsing",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 135,
+      "parts": [
+        {
+          "id": "compiler-preprocessor",
+          "heading": null,
+          "source": "tasks/compiler-preprocessor/compiler-preprocessor.ghul",
+          "output": "tasks/compiler-preprocessor/run.expected",
+          "lines": 135,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "compiler-syntax-analyzer",
       "title": "Compiler/syntax analyzer",
       "url": "https://rosettacode.org/wiki/Compiler/syntax_analyzer",
