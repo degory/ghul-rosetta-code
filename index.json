@@ -1051,7 +1051,7 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 327,
+      "lines": 329,
       "parts": [
         {
           "id": "arithmetic-evaluation/01-parsing-and-evaluating",
@@ -1068,7 +1068,7 @@
           "heading": "A calculator",
           "source": "tasks/arithmetic-evaluation/02-a-calculator/02-a-calculator.ghul",
           "output": "tasks/arithmetic-evaluation/02-a-calculator/run.expected",
-          "lines": 177,
+          "lines": 179,
           "playground": true,
           "input": true,
           "images": []
@@ -5626,23 +5626,34 @@
       "url": "https://rosettacode.org/wiki/Execute_Brain****",
       "tags": [
         "parsing",
+        "interactive",
         "algorithms",
         "pattern-matching"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
-      "input": false,
+      "input": true,
       "images": [],
-      "lines": 69,
+      "lines": 172,
       "parts": [
         {
-          "id": "execute-brain",
-          "heading": null,
-          "source": "tasks/execute-brain/execute-brain.ghul",
-          "output": "tasks/execute-brain/run.expected",
+          "id": "execute-brain/01-hello-world",
+          "heading": "Hello world",
+          "source": "tasks/execute-brain/01-hello-world/01-hello-world.ghul",
+          "output": "tasks/execute-brain/01-hello-world/run.expected",
           "lines": 69,
           "playground": true,
           "input": false,
+          "images": []
+        },
+        {
+          "id": "execute-brain/02-running-what-you-type",
+          "heading": "Running what you type",
+          "source": "tasks/execute-brain/02-running-what-you-type/02-running-what-you-type.ghul",
+          "output": "tasks/execute-brain/02-running-what-you-type/run.expected",
+          "lines": 103,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]

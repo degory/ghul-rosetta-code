@@ -1,0 +1,14 @@
+program: ,[.[-],]
+input: ghul, echoed
+output: ghul, echoed
+
+program: ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
+input: 
+output: Hello World!
+
+
+program: +[
+input: 
+its brackets do not match
+
+program: 
