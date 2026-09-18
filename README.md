@@ -195,7 +195,8 @@ republished.
 
 Not every solution can run there. The playground compiles against a short list
 of reference assemblies and runs the program in the browser, with no standard
-input and no filesystem to write to. A program that needs any of those carries
+input and no files beyond those it names (below). A program that needs any of
+those carries
 a `playground-unsupported` file beside its source, holding one line saying why:
 
 ```
