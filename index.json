@@ -13062,6 +13062,32 @@
       ]
     },
     {
+      "slug": "nonogram-solver",
+      "title": "Nonogram solver",
+      "url": "https://rosettacode.org/wiki/Nonogram_solver",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 168,
+      "parts": [
+        {
+          "id": "nonogram-solver",
+          "heading": null,
+          "source": "tasks/nonogram-solver/nonogram-solver.ghul",
+          "output": "tasks/nonogram-solver/run.expected",
+          "lines": 168,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "nth-root",
       "title": "Nth root",
       "url": "https://rosettacode.org/wiki/Nth_root",
