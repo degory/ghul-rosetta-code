@@ -4336,6 +4336,36 @@
       ]
     },
     {
+      "slug": "constrained-random-points-on-a-circle",
+      "title": "Constrained random points on a circle",
+      "url": "https://rosettacode.org/wiki/Constrained_random_points_on_a_circle",
+      "tags": [
+        "graphics",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/constrained-random-points-on-a-circle/ring.png.expected"
+      ],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "constrained-random-points-on-a-circle",
+          "heading": null,
+          "source": "tasks/constrained-random-points-on-a-circle/constrained-random-points-on-a-circle.ghul",
+          "output": "tasks/constrained-random-points-on-a-circle/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/constrained-random-points-on-a-circle/ring.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "continued-fraction",
       "title": "Continued fraction",
       "url": "https://rosettacode.org/wiki/Continued_fraction",
