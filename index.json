@@ -7006,6 +7006,32 @@
       ]
     },
     {
+      "slug": "execute-hq9",
+      "title": "Execute HQ9+",
+      "url": "https://rosettacode.org/wiki/Execute_HQ9+",
+      "tags": [
+        "interactive",
+        "pattern-matching"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "execute-hq9",
+          "heading": null,
+          "source": "tasks/execute-hq9/execute-hq9.ghul",
+          "output": "tasks/execute-hq9/run.expected",
+          "lines": 46,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "exponential-digital-sums",
       "title": "Exponential digital sums",
       "url": "https://rosettacode.org/wiki/Exponential_digital_sums",
