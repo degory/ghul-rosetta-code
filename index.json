@@ -12455,6 +12455,32 @@
       ]
     },
     {
+      "slug": "magic-squares-of-doubly-even-order",
+      "title": "Magic squares of doubly even order",
+      "url": "https://rosettacode.org/wiki/Magic_squares_of_doubly_even_order",
+      "tags": [
+        "maths",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "magic-squares-of-doubly-even-order",
+          "heading": null,
+          "source": "tasks/magic-squares-of-doubly-even-order/magic-squares-of-doubly-even-order.ghul",
+          "output": "tasks/magic-squares-of-doubly-even-order/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "magic-squares-of-odd-order",
       "title": "Magic squares of odd order",
       "url": "https://rosettacode.org/wiki/Magic_squares_of_odd_order",
