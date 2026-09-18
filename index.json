@@ -573,7 +573,7 @@
         "dotnet-interop"
       ],
       "interest": 3,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 103,
@@ -584,7 +584,7 @@
           "source": "tasks/adfgvx-cipher/adfgvx-cipher.ghul",
           "output": "tasks/adfgvx-cipher/run.expected",
           "lines": 103,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -735,7 +735,7 @@
         "dotnet-interop"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 24,
@@ -746,7 +746,7 @@
           "source": "tasks/anagrams/anagrams.ghul",
           "output": "tasks/anagrams/run.expected",
           "lines": 24,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -5970,7 +5970,7 @@
         "dotnet-interop"
       ],
       "interest": 1,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 7,
@@ -5981,7 +5981,7 @@
           "source": "tasks/file-input-output/file-input-output.ghul",
           "output": "tasks/file-input-output/run.expected",
           "lines": 7,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -6904,7 +6904,7 @@
         "dotnet-interop"
       ],
       "interest": 1,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 16,
@@ -6915,7 +6915,7 @@
           "source": "tasks/globally-replace-text-in-several-files/globally-replace-text-in-several-files.ghul",
           "output": "tasks/globally-replace-text-in-several-files/run.expected",
           "lines": 16,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -13192,7 +13192,7 @@
         "parsing"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 34,
@@ -13203,7 +13203,7 @@
           "source": "tasks/read-a-configuration-file/read-a-configuration-file.ghul",
           "output": "tasks/read-a-configuration-file/run.expected",
           "lines": 34,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -13218,7 +13218,7 @@
         "pattern-matching"
       ],
       "interest": 1,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 14,
@@ -13229,7 +13229,7 @@
           "source": "tasks/read-a-file-line-by-line/read-a-file-line-by-line.ghul",
           "output": "tasks/read-a-file-line-by-line/run.expected",
           "lines": 14,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -14773,7 +14773,7 @@
         "pipes"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 82,
@@ -14784,7 +14784,7 @@
           "source": "tasks/sorensen-dice-coefficient/sorensen-dice-coefficient.ghul",
           "output": "tasks/sorensen-dice-coefficient/run.expected",
           "lines": 82,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -16343,7 +16343,7 @@
         "dotnet-interop"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 38,
@@ -16354,7 +16354,7 @@
           "source": "tasks/substitution-cipher/substitution-cipher.ghul",
           "output": "tasks/substitution-cipher/run.expected",
           "lines": 38,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -18413,7 +18413,7 @@
         "dotnet-interop"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 42,
@@ -18424,7 +18424,7 @@
           "source": "tasks/word-wheel/word-wheel.ghul",
           "output": "tasks/word-wheel/run.expected",
           "lines": 42,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -18465,7 +18465,7 @@
         "dotnet-interop"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 7,
@@ -18476,7 +18476,7 @@
           "source": "tasks/words-containing-the-substring/words-containing-the-substring.ghul",
           "output": "tasks/words-containing-the-substring/run.expected",
           "lines": 7,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }

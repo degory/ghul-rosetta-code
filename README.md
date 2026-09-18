@@ -195,8 +195,9 @@ republished.
 
 Not every solution can run there. The playground compiles against a short list
 of reference assemblies and runs the program in the browser, with no standard
-input and no filesystem to write to. A program that needs any of those carries
-a `playground-unsupported` file beside its source, holding one line saying why:
+input. Its filesystem is in memory, holding the files the program names (below)
+and whatever it writes itself. A program that needs anything else carries a
+`playground-unsupported` file beside its source, holding one line saying why:
 
 ```
 tasks/guess-the-number/
