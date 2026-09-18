@@ -48,6 +48,11 @@
       "published_hash": "82fdf2cbd7ce8813f9d45f0a0d4e1d2a64e5bf688a59a21b409108f2502c0b44"
     },
     {
+      "title": "A* search algorithm",
+      "slug": "a-search-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "A\u002BB",
       "slug": "a-b",
       "state": "published",
@@ -810,6 +815,11 @@
       "published_hash": "2099734e9d7b62e1dab199c69051670b0df02926dcf9222b2cce978961984e7a"
     },
     {
+      "title": "Color wheel",
+      "slug": "color-wheel",
+      "state": "solved"
+    },
+    {
       "title": "Colorful numbers",
       "slug": "colorful-numbers",
       "state": "published",
@@ -942,6 +952,11 @@
       "slug": "convert-seconds-to-compound-duration",
       "state": "published",
       "published_hash": "b28d7ab7989b5ec0ffdecc4861654204221817df421a9b02c116a1d134e22c0b"
+    },
+    {
+      "title": "Convex hull",
+      "slug": "convex-hull",
+      "state": "solved"
     },
     {
       "title": "Conway\u0027s Game of Life",
@@ -1631,6 +1646,11 @@
       "published_hash": "0d5b9cf4a63e5afd8657ef1eb19f58c8e1d9b309ff59758e90880cf9214e5ec2"
     },
     {
+      "title": "Floyd-Steinberg dithering",
+      "slug": "floyd-steinberg-dithering",
+      "state": "solved"
+    },
+    {
       "title": "Floyd-Warshall algorithm",
       "slug": "floyd-warshall-algorithm",
       "state": "published",
@@ -2304,6 +2324,11 @@
       "published_hash": "0b4f100ea92274f707b1f62d6bce53fc0d3183bfb68e51afc55af4214f894a57"
     },
     {
+      "title": "K-means\u002B\u002B clustering",
+      "slug": "k-means-clustering",
+      "state": "solved"
+    },
+    {
       "title": "Kaprekar numbers",
       "slug": "kaprekar-numbers",
       "state": "published",
@@ -2347,6 +2372,11 @@
       "slug": "knapsack-problem-0-1",
       "state": "published",
       "published_hash": "97179152f6dc7ddd2fb0e11cc25590a41bbfd980102e011780cb7541b1870323"
+    },
+    {
+      "title": "Knight\u0027s tour",
+      "slug": "knight-s-tour",
+      "state": "solved"
     },
     {
       "title": "Knuth shuffle",
@@ -2704,6 +2734,11 @@
       "slug": "map-range",
       "state": "published",
       "published_hash": "c5b70fd09bb286c224c12a1afedc17faeed924ac821c676d799a48b38e272e70"
+    },
+    {
+      "title": "Marching squares",
+      "slug": "marching-squares",
+      "state": "solved"
     },
     {
       "title": "Mastermind",
@@ -3328,6 +3363,11 @@
       "state": "solved"
     },
     {
+      "title": "Problem of Apollonius",
+      "slug": "problem-of-apollonius",
+      "state": "solved"
+    },
+    {
       "title": "Program name",
       "state": "blocked",
       "reason": "ghul#2487"
@@ -3700,6 +3740,11 @@
       "image_hashes": {
         "Ghul-sierpinski-curve-sierpinski.png": "80f0d93b880ae26e4e7f844bd42dc9496555adaf"
       }
+    },
+    {
+      "title": "Sierpinski pentagon",
+      "slug": "sierpinski-pentagon",
+      "state": "solved"
     },
     {
       "title": "Sierpinski square curve",
@@ -4296,6 +4341,11 @@
       "image_hashes": {
         "Ghul-superellipse-superellipse.png": "55d03336f213decb800835f7ffb8375c84c64446"
       }
+    },
+    {
+      "title": "Sutherland-Hodgman polygon clipping",
+      "slug": "sutherland-hodgman-polygon-clipping",
+      "state": "solved"
     },
     {
       "title": "Sylvester\u0027s sequence",

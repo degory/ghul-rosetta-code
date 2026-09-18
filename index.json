@@ -1175,6 +1175,33 @@
       ]
     },
     {
+      "slug": "arithmetic-rational",
+      "title": "Arithmetic/Rational",
+      "url": "https://rosettacode.org/wiki/Arithmetic/Rational",
+      "tags": [
+        "maths",
+        "operators",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "arithmetic-rational",
+          "heading": null,
+          "source": "tasks/arithmetic-rational/arithmetic-rational.ghul",
+          "output": "tasks/arithmetic-rational/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "array-concatenation",
       "title": "Array concatenation",
       "url": "https://rosettacode.org/wiki/Array_concatenation",
@@ -3008,6 +3035,33 @@
           "lines": 35,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "chess-player",
+      "title": "Chess player",
+      "url": "https://rosettacode.org/wiki/Chess_player",
+      "tags": [
+        "game",
+        "interactive",
+        "algorithms"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 424,
+      "parts": [
+        {
+          "id": "chess-player",
+          "heading": null,
+          "source": "tasks/chess-player/chess-player.ghul",
+          "output": "tasks/chess-player/run.expected",
+          "lines": 424,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -5526,6 +5580,33 @@
       ]
     },
     {
+      "slug": "evolutionary-algorithm",
+      "title": "Evolutionary algorithm",
+      "url": "https://rosettacode.org/wiki/Evolutionary_algorithm",
+      "tags": [
+        "simulation",
+        "strings",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "evolutionary-algorithm",
+          "heading": null,
+          "source": "tasks/evolutionary-algorithm/evolutionary-algorithm.ghul",
+          "output": "tasks/evolutionary-algorithm/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "exceptions",
       "title": "Exceptions",
       "url": "https://rosettacode.org/wiki/Exceptions",
@@ -6823,6 +6904,33 @@
           "images": [
             "tasks/fractal-tree/tree.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "fractran",
+      "title": "Fractran",
+      "url": "https://rosettacode.org/wiki/Fractran",
+      "tags": [
+        "primes",
+        "generators",
+        "parsing"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "fractran",
+          "heading": null,
+          "source": "tasks/fractran/fractran.ghul",
+          "output": "tasks/fractran/run.expected",
+          "lines": 47,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -11298,6 +11406,32 @@
       ]
     },
     {
+      "slug": "mill-game",
+      "title": "Mill game",
+      "url": "https://rosettacode.org/wiki/Mill_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 308,
+      "parts": [
+        {
+          "id": "mill-game",
+          "heading": null,
+          "source": "tasks/mill-game/mill-game.ghul",
+          "output": "tasks/mill-game/run.expected",
+          "lines": 308,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "minesweeper-game",
       "title": "Minesweeper game",
       "url": "https://rosettacode.org/wiki/Minesweeper_game",
@@ -13638,6 +13772,31 @@
       ]
     },
     {
+      "slug": "print-itself",
+      "title": "Print itself",
+      "url": "https://rosettacode.org/wiki/Print_itself",
+      "tags": [
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 1,
+      "parts": [
+        {
+          "id": "print-itself",
+          "heading": null,
+          "source": "tasks/print-itself/print-itself.ghul",
+          "output": "tasks/print-itself/run.expected",
+          "lines": 1,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "problem-of-apollonius",
       "title": "Problem of Apollonius",
       "url": "https://rosettacode.org/wiki/Problem_of_Apollonius",
@@ -14034,6 +14193,33 @@
           "lines": 77,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "rcrpg",
+      "title": "RCRPG",
+      "url": "https://rosettacode.org/wiki/RCRPG",
+      "tags": [
+        "game",
+        "interactive",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 207,
+      "parts": [
+        {
+          "id": "rcrpg",
+          "heading": null,
+          "source": "tasks/rcrpg/rcrpg.ghul",
+          "output": "tasks/rcrpg/run.expected",
+          "lines": 207,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -17316,6 +17502,32 @@
       ]
     },
     {
+      "slug": "subleq",
+      "title": "Subleq",
+      "url": "https://rosettacode.org/wiki/Subleq",
+      "tags": [
+        "parsing",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "subleq",
+          "heading": null,
+          "source": "tasks/subleq/subleq.ghul",
+          "output": "tasks/subleq/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "substitution-cipher",
       "title": "Substitution cipher",
       "url": "https://rosettacode.org/wiki/Substitution_cipher",
@@ -17464,6 +17676,32 @@
           "source": "tasks/sum-and-product-of-an-array/sum-and-product-of-an-array.ghul",
           "output": "tasks/sum-and-product-of-an-array/run.expected",
           "lines": 6,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sum-and-product-puzzle",
+      "title": "Sum and product puzzle",
+      "url": "https://rosettacode.org/wiki/Sum_and_product_puzzle",
+      "tags": [
+        "puzzles",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "sum-and-product-puzzle",
+          "heading": null,
+          "source": "tasks/sum-and-product-puzzle/sum-and-product-puzzle.ghul",
+          "output": "tasks/sum-and-product-puzzle/run.expected",
+          "lines": 38,
           "playground": true,
           "input": false,
           "images": []
@@ -18808,6 +19046,59 @@
           "lines": 82,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "universal-turing-machine",
+      "title": "Universal Turing machine",
+      "url": "https://rosettacode.org/wiki/Universal_Turing_machine",
+      "tags": [
+        "simulation",
+        "classes",
+        "parsing"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 106,
+      "parts": [
+        {
+          "id": "universal-turing-machine",
+          "heading": null,
+          "source": "tasks/universal-turing-machine/universal-turing-machine.ghul",
+          "output": "tasks/universal-turing-machine/run.expected",
+          "lines": 106,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "uno-card-game",
+      "title": "Uno (card game)",
+      "url": "https://rosettacode.org/wiki/Uno_(card_game)",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 425,
+      "parts": [
+        {
+          "id": "uno-card-game",
+          "heading": null,
+          "source": "tasks/uno-card-game/uno-card-game.ghul",
+          "output": "tasks/uno-card-game/run.expected",
+          "lines": 425,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
