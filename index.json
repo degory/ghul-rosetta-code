@@ -17131,6 +17131,32 @@
       ]
     },
     {
+      "slug": "subleq",
+      "title": "Subleq",
+      "url": "https://rosettacode.org/wiki/Subleq",
+      "tags": [
+        "parsing",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "subleq",
+          "heading": null,
+          "source": "tasks/subleq/subleq.ghul",
+          "output": "tasks/subleq/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "substitution-cipher",
       "title": "Substitution cipher",
       "url": "https://rosettacode.org/wiki/Substitution_cipher",
