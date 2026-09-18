@@ -1794,6 +1794,37 @@
       ]
     },
     {
+      "slug": "bezier-curves-intersections",
+      "title": "Bézier curves/Intersections",
+      "url": "https://rosettacode.org/wiki/Bézier_curves/Intersections",
+      "tags": [
+        "maths",
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/bezier-curves-intersections/intersections.png.expected"
+      ],
+      "lines": 118,
+      "parts": [
+        {
+          "id": "bezier-curves-intersections",
+          "heading": null,
+          "source": "tasks/bezier-curves-intersections/bezier-curves-intersections.ghul",
+          "output": "tasks/bezier-curves-intersections/run.expected",
+          "lines": 118,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/bezier-curves-intersections/intersections.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "bifid-cipher",
       "title": "Bifid cipher",
       "url": "https://rosettacode.org/wiki/Bifid_cipher",
