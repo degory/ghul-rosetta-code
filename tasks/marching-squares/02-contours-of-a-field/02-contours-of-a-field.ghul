@@ -1,0 +1,140 @@
+use default
+use Raster.COLOUR_MAP
+use Raster.IMAGE
+
+use Math = System.Math
+use Point = (x: double, y: double)
+
+let peaks =
+    [(x = -1.2D, y = -0.8D, height = 1.0D, spread = 1.0D),
+     (x = 1.4D, y = 0.9D, height = 1.4D, spread = 0.8D),
+     (x = 0.2D, y = -1.6D, height = -0.9D, spread = 0.7D)]
+
+height_at(x: double, y: double) -> double =>
+    peaks
+        |> map(peak =>
+            (let across = x - peak.x
+             let up = y - peak.y
+             let away = across * across + up * up
+
+             peak.height *
+             Math.exp(-away / (2.0D * peak.spread * peak.spread))))
+        |> reduce(0.0D, (total, part) => total + part)
+
+let left = -3.0D
+let bottom = -2.4D
+let right = 3.0D
+let top = 2.4D
+
+let steps = 120
+
+sample(column: int, row: int) -> Point =>
+    (x = left + (right - left) * cast double(column) /
+                cast double(steps),
+     y = bottom + (top - bottom) * cast double(row) /
+                  cast double(steps))
+
+crossing(from: Point, from_height: double,
+         to: Point, to_height: double, level: double) -> Point =>
+    (let part = (level - from_height) / (to_height - from_height)
+
+     (x = from.x + (to.x - from.x) * part,
+      y = from.y + (to.y - from.y) * part))
+
+contour(level: double) -> Pipe[(from: Point, to: Point)] is
+    for row in 0..steps do
+        for column in 0..steps do
+            let south_west = sample(column, row)
+            let south_east = sample(column + 1, row)
+            let north_east = sample(column + 1, row + 1)
+            let north_west = sample(column, row + 1)
+
+            let a = height_at(south_west.x, south_west.y)
+            let b = height_at(south_east.x, south_east.y)
+            let c = height_at(north_east.x, north_east.y)
+            let d = height_at(north_west.x, north_west.y)
+
+            let corners =
+                (if a > level then 1 else 0 fi) +
+                (if b > level then 2 else 0 fi) +
+                (if c > level then 4 else 0 fi) +
+                (if d > level then 8 else 0 fi)
+
+            let south = crossing(south_west, a, south_east, b, level)
+            let east = crossing(south_east, b, north_east, c, level)
+            let north = crossing(north_east, c, north_west, d, level)
+            let west = crossing(north_west, d, south_west, a, level)
+
+            let middle = (a + b + c + d) / 4.0D > level
+
+            case corners
+            when 1, 14 then yield (from = west, to = south)
+            when 2, 13 then yield (from = south, to = east)
+            when 3, 12 then yield (from = west, to = east)
+            when 4, 11 then yield (from = east, to = north)
+            when 6, 9 then yield (from = south, to = north)
+            when 7, 8 then yield (from = west, to = north)
+            when 5 then
+                if middle then
+                    yield (from = south, to = east)
+                    yield (from = west, to = north)
+                else
+                    yield (from = west, to = south)
+                    yield (from = east, to = north)
+                fi
+            when 10 then
+                if middle then
+                    yield (from = west, to = south)
+                    yield (from = east, to = north)
+                else
+                    yield (from = south, to = east)
+                    yield (from = west, to = north)
+                fi
+            else
+            esac
+        od
+    od
+si
+
+let levels =
+    (0::12) |> map(step => -0.75D + 0.15D * cast double(step))
+            |> collect_list()
+
+let image = IMAGE(600, 480)
+
+image.view(left, bottom, right, top)
+
+let lowest = -1.0D
+let highest = 1.5D
+
+for pixel_y in 0..image.height do
+    for pixel_x in 0..image.width do
+        let spot =
+            image.to_user(cast double(pixel_x), cast double(pixel_y))
+
+        let part =
+            (height_at(spot.x, spot.y) - lowest) / (highest - lowest)
+
+        image.colour(COLOUR_MAP.viridis(part))
+        image.set_pixel(pixel_x, pixel_y)
+    od
+od
+
+image.colour(250ub, 250ub, 250ub)
+image.stroke(1.1D)
+
+write_line("level   segments")
+
+for level in levels do
+    let pieces = contour(level) |> collect_list()
+
+    write_line("{level,6:F2}{pieces.count,11}")
+
+    for piece in pieces do
+        image.line(piece.from.x, piece.from.y, piece.to.x, piece.to.y)
+    od
+od
+
+image.write("contours.png")
+
+image.show("contours.png")
