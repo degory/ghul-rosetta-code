@@ -1256,8 +1256,9 @@
     },
     {
       "title": "Draw a rotating cube",
-      "state": "rejected",
-      "reason": "needs-gui"
+      "slug": "draw-a-rotating-cube",
+      "state": "solved",
+      "note": "reopened, was rejected/needs-gui: animation is drawn as an animated PNG and published as a GIF"
     },
     {
       "title": "Draw a sphere",
@@ -1864,6 +1865,11 @@
       "slug": "generic-swap",
       "state": "published",
       "published_hash": "5aa549bf495c83108908bf7479650e429799befe6d4dde56aedee27ebbbe6ddd"
+    },
+    {
+      "title": "Geocentric model",
+      "slug": "geocentric-model",
+      "state": "solved"
     },
     {
       "title": "Giuga numbers",
@@ -3431,6 +3437,11 @@
       "published_hash": "309414ef4fedffa78cbefc3a3125ffb57f4932f98473d9a05759f774d8f0386a"
     },
     {
+      "title": "Polyspiral",
+      "slug": "polyspiral",
+      "state": "solved"
+    },
+    {
       "title": "Population count",
       "slug": "population-count",
       "state": "published",
@@ -3593,6 +3604,11 @@
       "published_hash": "125e99805564340e5e4c5e3881629f2217dde4f1bd751f49bce3e1520298f189"
     },
     {
+      "title": "Raster bars",
+      "slug": "raster-bars",
+      "state": "solved"
+    },
+    {
       "title": "Rate counter",
       "state": "rejected",
       "reason": "nondeterministic"
@@ -3719,6 +3735,11 @@
       "slug": "rot-13",
       "state": "published",
       "published_hash": "f22d630858b3a48d19a0deaf1874a8b5f79f2b72fb1a32024890ecaaf2edd715"
+    },
+    {
+      "title": "Rotating Rubik\u0027s cube",
+      "slug": "rotating-rubik-s-cube",
+      "state": "solved"
     },
     {
       "title": "Run-length encoding",
@@ -4866,6 +4887,11 @@
       "slug": "vector-products",
       "state": "published",
       "published_hash": "62c835f53ef3a5c245783cef6f651883bf517ff5dcbf174df1dcb339ec922eaf"
+    },
+    {
+      "title": "Vibrating rectangles",
+      "slug": "vibrating-rectangles",
+      "state": "solved"
     },
     {
       "title": "Vigen\u00E8re cipher",
