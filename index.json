@@ -9148,6 +9148,38 @@
       ]
     },
     {
+      "slug": "koch-curve",
+      "title": "Koch curve",
+      "url": "https://rosettacode.org/wiki/Koch_curve",
+      "tags": [
+        "fractal",
+        "graphics",
+        "generators",
+        "recursion"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/koch-curve/koch.png.expected"
+      ],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "koch-curve",
+          "heading": null,
+          "source": "tasks/koch-curve/koch-curve.ghul",
+          "output": "tasks/koch-curve/run.expected",
+          "lines": 47,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/koch-curve/koch.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "kolakoski-sequence",
       "title": "Kolakoski sequence",
       "url": "https://rosettacode.org/wiki/Kolakoski_sequence",

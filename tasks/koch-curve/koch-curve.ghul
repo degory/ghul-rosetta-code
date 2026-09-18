@@ -1,0 +1,47 @@
+use default
+use Raster.IMAGE
+
+use Point = (x: double, y: double)
+
+let rise = System.Math.sqrt(3.0D) / 2.0D
+
+koch(depth: int, from: Point, to: Point) -> Pipe[Point] is
+    if depth == 0 then
+        yield from
+        return
+    fi
+
+    let dx = (to.x - from.x) / 3.0D
+    let dy = (to.y - from.y) / 3.0D
+
+    let third = (x = from.x + dx, y = from.y + dy)
+    let twice = (x = from.x + 2.0D * dx, y = from.y + 2.0D * dy)
+
+    let peak =
+        (x = third.x + dx * 0.5D - dy * rise,
+         y = third.y + dy * 0.5D + dx * rise)
+
+    yield in koch(depth - 1, from, third)
+    yield in koch(depth - 1, third, peak)
+    yield in koch(depth - 1, peak, twice)
+    yield in koch(depth - 1, twice, to)
+si
+
+let start = (x = 0.0D, y = 0.0D)
+let finish = (x = 1.0D, y = 0.0D)
+
+let points = koch(5, start, finish) |> collect_list()
+
+points.add(finish)
+
+let image = IMAGE(660, 220)
+
+image.view(-0.1D, -0.06D, 1.1D, 0.34D)
+image.colour(30ub, 60ub, 170ub)
+image.stroke(1.4D)
+
+image.line(points)
+
+image.write("koch.png")
+
+image.show("koch.png")
