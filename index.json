@@ -23209,6 +23209,36 @@
       ]
     },
     {
+      "slug": "zhang-suen-thinning-algorithm",
+      "title": "Zhang-Suen thinning algorithm",
+      "url": "https://rosettacode.org/wiki/Zhang-Suen_thinning_algorithm",
+      "tags": [
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/zhang-suen-thinning-algorithm/thinned.png.expected"
+      ],
+      "lines": 135,
+      "parts": [
+        {
+          "id": "zhang-suen-thinning-algorithm",
+          "heading": null,
+          "source": "tasks/zhang-suen-thinning-algorithm/zhang-suen-thinning-algorithm.ghul",
+          "output": "tasks/zhang-suen-thinning-algorithm/run.expected",
+          "lines": 135,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/zhang-suen-thinning-algorithm/thinned.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "zig-zag-matrix",
       "title": "Zig-zag matrix",
       "url": "https://rosettacode.org/wiki/Zig-zag_matrix",
