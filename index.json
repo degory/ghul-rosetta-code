@@ -6607,6 +6607,38 @@
       ]
     },
     {
+      "slug": "floyd-steinberg-dithering",
+      "title": "Floyd-Steinberg dithering",
+      "url": "https://rosettacode.org/wiki/Floyd-Steinberg_dithering",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/floyd-steinberg-dithering/dithered.png.expected",
+        "tasks/floyd-steinberg-dithering/source.png.expected"
+      ],
+      "lines": 89,
+      "parts": [
+        {
+          "id": "floyd-steinberg-dithering",
+          "heading": null,
+          "source": "tasks/floyd-steinberg-dithering/floyd-steinberg-dithering.ghul",
+          "output": "tasks/floyd-steinberg-dithering/run.expected",
+          "lines": 89,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/floyd-steinberg-dithering/dithered.png.expected",
+            "tasks/floyd-steinberg-dithering/source.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "floyd-warshall-algorithm",
       "title": "Floyd-Warshall algorithm",
       "url": "https://rosettacode.org/wiki/Floyd-Warshall_algorithm",
