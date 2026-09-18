@@ -1527,6 +1527,36 @@
       ]
     },
     {
+      "slug": "b-spline",
+      "title": "B-spline",
+      "url": "https://rosettacode.org/wiki/B-spline",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/b-spline/b-spline.png.expected"
+      ],
+      "lines": 74,
+      "parts": [
+        {
+          "id": "b-spline",
+          "heading": null,
+          "source": "tasks/b-spline/b-spline.ghul",
+          "output": "tasks/b-spline/run.expected",
+          "lines": 74,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/b-spline/b-spline.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "babbage-problem",
       "title": "Babbage problem",
       "url": "https://rosettacode.org/wiki/Babbage_problem",
