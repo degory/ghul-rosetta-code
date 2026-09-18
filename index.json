@@ -19639,6 +19639,32 @@
       ]
     },
     {
+      "slug": "stem-and-leaf-plot",
+      "title": "Stem-and-leaf plot",
+      "url": "https://rosettacode.org/wiki/Stem-and-leaf_plot",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 25,
+      "parts": [
+        {
+          "id": "stem-and-leaf-plot",
+          "heading": null,
+          "source": "tasks/stem-and-leaf-plot/stem-and-leaf-plot.ghul",
+          "output": "tasks/stem-and-leaf-plot/run.expected",
+          "lines": 25,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "stern-brocot-sequence",
       "title": "Stern-Brocot sequence",
       "url": "https://rosettacode.org/wiki/Stern-Brocot_sequence",
