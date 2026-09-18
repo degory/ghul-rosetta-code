@@ -20195,6 +20195,37 @@
       ]
     },
     {
+      "slug": "wireworld",
+      "title": "Wireworld",
+      "url": "https://rosettacode.org/wiki/Wireworld",
+      "tags": [
+        "simulation",
+        "graphics",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/wireworld/wireworld.png.expected"
+      ],
+      "lines": 89,
+      "parts": [
+        {
+          "id": "wireworld",
+          "heading": null,
+          "source": "tasks/wireworld/wireworld.ghul",
+          "output": "tasks/wireworld/run.expected",
+          "lines": 89,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/wireworld/wireworld.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "wolstenholme-numbers",
       "title": "Wolstenholme numbers",
       "url": "https://rosettacode.org/wiki/Wolstenholme_numbers",
