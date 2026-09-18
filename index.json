@@ -3576,6 +3576,37 @@
       ]
     },
     {
+      "slug": "color-separation",
+      "title": "Color separation",
+      "url": "https://rosettacode.org/wiki/Color_separation",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/color-separation/scene.png.expected",
+        "tasks/color-separation/separation.png.expected"
+      ],
+      "lines": 129,
+      "parts": [
+        {
+          "id": "color-separation",
+          "heading": null,
+          "source": "tasks/color-separation/color-separation.ghul",
+          "output": "tasks/color-separation/run.expected",
+          "lines": 129,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/color-separation/scene.png.expected",
+            "tasks/color-separation/separation.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "color-wheel",
       "title": "Color wheel",
       "url": "https://rosettacode.org/wiki/Color_wheel",
