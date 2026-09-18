@@ -21060,6 +21060,36 @@
       ]
     },
     {
+      "slug": "wave-function-collapse",
+      "title": "Wave function collapse",
+      "url": "https://rosettacode.org/wiki/Wave_function_collapse",
+      "tags": [
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/wave-function-collapse/tile.png.expected"
+      ],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "wave-function-collapse",
+          "heading": null,
+          "source": "tasks/wave-function-collapse/wave-function-collapse.ghul",
+          "output": "tasks/wave-function-collapse/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/wave-function-collapse/tile.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "weird-numbers",
       "title": "Weird numbers",
       "url": "https://rosettacode.org/wiki/Weird_numbers",
