@@ -452,6 +452,38 @@
       ]
     },
     {
+      "slug": "abelian-sandpile-model-identity",
+      "title": "Abelian sandpile model/Identity",
+      "url": "https://rosettacode.org/wiki/Abelian_sandpile_model/Identity",
+      "tags": [
+        "maths",
+        "operators",
+        "classes",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/abelian-sandpile-model-identity/identity.png.expected"
+      ],
+      "lines": 121,
+      "parts": [
+        {
+          "id": "abelian-sandpile-model-identity",
+          "heading": null,
+          "source": "tasks/abelian-sandpile-model-identity/abelian-sandpile-model-identity.ghul",
+          "output": "tasks/abelian-sandpile-model-identity/run.expected",
+          "lines": 121,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/abelian-sandpile-model-identity/identity.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "abstract-type",
       "title": "Abstract type",
       "url": "https://rosettacode.org/wiki/Abstract_type",
