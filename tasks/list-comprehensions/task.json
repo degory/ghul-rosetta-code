@@ -1,5 +1,7 @@
 {
     "task": "List comprehensions",
     "url": "https://rosettacode.org/wiki/List_comprehensions",
-    "status": "published"
+    "status": "published",
+    "tags": ["pipes", "generators", "pattern-matching"],
+    "interest": 3
 }

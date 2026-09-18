@@ -1,5 +1,7 @@
 {
     "task": "URL encoding",
     "url": "https://rosettacode.org/wiki/URL_encoding",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "dotnet-interop", "pipes"],
+    "interest": 2
 }

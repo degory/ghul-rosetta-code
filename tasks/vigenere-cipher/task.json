@@ -1,5 +1,7 @@
 {
     "task": "Vigenère cipher",
     "url": "https://rosettacode.org/wiki/Vigenère_cipher",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "dotnet-interop"],
+    "interest": 3
 }

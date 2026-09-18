@@ -1,5 +1,7 @@
 {
     "task": "JSON pointer",
     "url": "https://rosettacode.org/wiki/JSON_pointer",
-    "status": "published"
+    "status": "published",
+    "tags": ["parsing", "unions", "pattern-matching", "pipes", "optionals"],
+    "interest": 3
 }

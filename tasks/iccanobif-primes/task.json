@@ -1,5 +1,7 @@
 {
     "task": "Iccanobif primes",
     "url": "https://rosettacode.org/wiki/Iccanobif_primes",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "pipes", "generators"],
+    "interest": 3
 }

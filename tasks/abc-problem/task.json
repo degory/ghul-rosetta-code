@@ -1,5 +1,7 @@
 {
     "task": "ABC problem",
     "url": "https://rosettacode.org/wiki/ABC_problem",
-    "status": "published"
+    "status": "published",
+    "tags": ["puzzles", "recursion", "pipes"],
+    "interest": 3
 }

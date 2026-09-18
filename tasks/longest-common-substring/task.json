@@ -1,5 +1,7 @@
 {
     "task": "Longest common substring",
     "url": "https://rosettacode.org/wiki/Longest_common_substring",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "pipes", "algorithms"],
+    "interest": 2
 }

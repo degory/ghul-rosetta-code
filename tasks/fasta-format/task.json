@@ -1,5 +1,7 @@
 {
     "task": "FASTA format",
     "url": "https://rosettacode.org/wiki/FASTA_format",
-    "status": "published"
+    "status": "published",
+    "tags": ["text-processing", "parsing", "generators"],
+    "interest": 3
 }

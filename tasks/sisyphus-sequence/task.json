@@ -1,5 +1,7 @@
 {
     "task": "Sisyphus sequence",
     "url": "https://rosettacode.org/wiki/Sisyphus_sequence",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "generators"],
+    "interest": 2
 }

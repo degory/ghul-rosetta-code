@@ -1,5 +1,7 @@
 {
     "task": "JSON",
     "url": "https://rosettacode.org/wiki/JSON",
-    "status": "published"
+    "status": "published",
+    "tags": ["dotnet-interop"],
+    "interest": 2
 }

@@ -1,5 +1,7 @@
 {
     "task": "Regular expressions",
     "url": "https://rosettacode.org/wiki/Regular_expressions",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "dotnet-interop"],
+    "interest": 2
 }

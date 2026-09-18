@@ -1,5 +1,7 @@
 {
     "task": "Accumulator factory",
     "url": "https://rosettacode.org/wiki/Accumulator_factory",
-    "status": "published"
+    "status": "published",
+    "tags": ["basics", "closures", "generics", "unions"],
+    "interest": 3
 }

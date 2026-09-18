@@ -1,5 +1,7 @@
 {
     "task": "Monads/Writer monad",
     "url": "https://rosettacode.org/wiki/Monads/Writer_monad",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "generics", "operators"],
+    "interest": 3
 }

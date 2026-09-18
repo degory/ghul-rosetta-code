@@ -1,5 +1,7 @@
 {
     "task": "Active object",
     "url": "https://rosettacode.org/wiki/Active_object",
-    "status": "published"
+    "status": "published",
+    "tags": ["concurrency", "async", "closures"],
+    "interest": 3
 }

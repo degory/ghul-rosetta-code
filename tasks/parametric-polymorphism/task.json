@@ -1,5 +1,7 @@
 {
     "task": "Parametric polymorphism",
     "url": "https://rosettacode.org/wiki/Parametric_polymorphism",
-    "status": "published"
+    "status": "published",
+    "tags": ["data-structures", "generics", "unions", "pattern-matching"],
+    "interest": 3
 }

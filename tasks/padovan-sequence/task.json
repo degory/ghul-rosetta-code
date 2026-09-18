@@ -1,5 +1,7 @@
 {
     "task": "Padovan sequence",
     "url": "https://rosettacode.org/wiki/Padovan_sequence",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "pattern-matching", "generators"],
+    "interest": 3
 }

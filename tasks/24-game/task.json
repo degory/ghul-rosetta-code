@@ -1,5 +1,7 @@
 {
     "task": "24 game",
     "url": "https://rosettacode.org/wiki/24_game",
-    "status": "published"
+    "status": "published",
+    "tags": ["game", "puzzles", "parsing", "unions", "pattern-matching", "interactive"],
+    "interest": 4
 }

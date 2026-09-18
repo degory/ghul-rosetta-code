@@ -1,5 +1,7 @@
 {
     "task": "Transliterate English text using the Greek alphabet",
     "url": "https://rosettacode.org/wiki/Transliterate_English_text_using_the_Greek_alphabet",
-    "status": "published"
+    "status": "published",
+    "tags": ["text-processing", "pattern-matching"],
+    "interest": 2
 }

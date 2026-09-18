@@ -1,5 +1,7 @@
 {
     "task": "Zeckendorf number representation",
     "url": "https://rosettacode.org/wiki/Zeckendorf_number_representation",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 2
 }

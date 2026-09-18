@@ -1,5 +1,7 @@
 {
     "task": "IBAN",
     "url": "https://rosettacode.org/wiki/IBAN",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "pipes"],
+    "interest": 2
 }

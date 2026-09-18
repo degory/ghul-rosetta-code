@@ -1,5 +1,7 @@
 {
     "task": "Fibonacci n-step number sequences",
     "url": "https://rosettacode.org/wiki/Fibonacci_n-step_number_sequences",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 2
 }

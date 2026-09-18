@@ -1,5 +1,7 @@
 {
     "task": "Generate random chess position",
     "url": "https://rosettacode.org/wiki/Generate_random_chess_position",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "algorithms"],
+    "interest": 3
 }

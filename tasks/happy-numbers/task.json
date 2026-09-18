@@ -1,5 +1,7 @@
 {
     "task": "Happy numbers",
     "url": "https://rosettacode.org/wiki/Happy_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "recursion"],
+    "interest": 2
 }

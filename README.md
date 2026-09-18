@@ -11,8 +11,8 @@ nobody re-reads.
 - `tasks/<slug>/` - one runnable .NET project per Rosetta task. The slug is the task title
   lowercased with runs of non-alphanumeric characters collapsed to a hyphen, so `Hello world/Text`
   is `hello-world-text`.
-- `tasks/<slug>/task.json` - the task's title, its wiki URL, and a copy of its state from the
-  ledger.
+- `tasks/<slug>/task.json` - the task's title, its wiki URL, a copy of its state from the
+  ledger, and its tags and interest score (see 'tags and the index' below).
 - `tasks/<slug>/notes.md` - optional, and rare: explanatory prose ahead of the code. See
   'writing explanatory text' below.
 - `tasks/<slug>/run.expected` - the test expectation: the output the program must produce. The
@@ -242,7 +242,33 @@ Only tasks that have been judged are in the file. The 1300-odd others are whatev
 `Category:Programming Tasks` holds that the ledger does not mention.
 
 Each `task.json` carries a copy of its own task's state, because that is what
-`scripts/generate-wiki.sh` reads. `rosetta sync` writes it from the ledger; don't edit it by hand.
+`scripts/generate-wiki.sh` reads. `rosetta sync` writes it from the ledger, so don't edit the
+status by hand. The tags and the interest score are the opposite: written by hand, and read by
+nothing but the index.
+
+## tags and the index
+
+`index.json` lists every task for [ghul.dev](https://ghul.dev)'s Rosetta Code explorer. It is
+generated, and CI fails when it is out of date or when a task's tags or interest score are
+missing or invalid:
+
+```sh
+dotnet run --project tools/rosetta -- index            # regenerate index.json
+dotnet run --project tools/rosetta -- index --check    # what CI runs
+```
+
+Two fields in each `task.json` are written by hand:
+
+- `tags` - one to six tags from `TAGS.json`, most important first. Topic tags say what the task is
+  about; language-feature tags name the ghūl features a reader would come to this solution to
+  see, not every feature it happens to use. Adding a tag means adding it to `TAGS.json`, with its
+  meaning.
+- `interest` - 1 to 5, how much a stranger would want to run and change it: 5 draws a picture or
+  plays a game, 1 prints a constant. The explorer opens on a random task weighted by this.
+
+Everything else in an index entry comes from the task's files: its parts, source line counts, its
+`*.png.expected` images, whether it reads standard input (`run.in` or `run.session`), and whether
+the playground can run it (no `playground-unsupported` marker).
 
 ## the rosetta tool
 

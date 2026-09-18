@@ -1,5 +1,7 @@
 {
     "task": "Roman numerals/Decode",
     "url": "https://rosettacode.org/wiki/Roman_numerals/Decode",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "pattern-matching"],
+    "interest": 2
 }

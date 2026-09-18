@@ -1,0 +1,307 @@
+namespace Rosetta is
+    use System.Text.Json.JsonDocument
+    use System.Text.Json.JsonElement
+    use System.Text.Json.JsonValueKind
+    use System.Text.Json.Utf8JsonWriter
+    use System.Text.Json.JsonWriterOptions
+    use System.Text.Encodings.Web.JavaScriptEncoder
+    use System.Text.RegularExpressions.Regex
+    use Collections
+    use Ghul.Pipes
+
+    // One runnable program: a task with no parts is one of these, a task with
+    // parts is several.
+    class INDEX_PART is
+        id: string
+        heading: string?
+        source: string
+        output: string
+        lines: int
+        playground: bool
+        input: bool
+        images: LIST[string]
+
+        init(id: string, heading: string?, source: string, output: string, lines: int, playground: bool, input: bool, images: LIST[string]) is
+            self.id = id
+            self.heading = heading
+            self.source = source
+            self.output = output
+            self.lines = lines
+            self.playground = playground
+            self.input = input
+            self.images = images
+        si
+    si
+
+    // index.json: what ghul.dev's explorer reads about every task. Tags and
+    // interest are written by hand in each task.json, against the vocabulary
+    // in TAGS.json; everything else is derived from the task's files, so
+    // nothing here can disagree with them.
+    class TASK_INDEX is
+        _root: string
+        _vocabulary: MAP[string, string]
+        _tag_order: LIST[string]
+        _problems: LIST[string]
+
+        problems: LIST[string] => _problems
+
+        init(root: string) is
+            _root = root
+            _vocabulary = MAP[string, string]()
+            _tag_order = LIST[string]()
+            _problems = LIST[string]()
+
+            let document = JsonDocument.parse(IO.File.read_all_text(IO.Path.combine(root, "TAGS.json")), _)
+
+            for property in document.root_element.enumerate_object() do
+                _vocabulary[property.name] = property.value.get_string() ?? ""
+                _tag_order.add(property.name)
+            od
+        si
+
+        path: string => IO.Path.combine(_root, "index.json")
+
+        // The whole file, as it should read.
+        render() -> string is
+            let stream = IO.MemoryStream()
+            let options: JsonWriterOptions mut = _
+
+            options.indented = true
+            options.encoder = JavaScriptEncoder.unsafe_relaxed_json_escaping
+
+            let writer = Utf8JsonWriter(stream, options)
+
+            writer.write_start_object()
+            writer.write_number("version", 1)
+
+            writer.write_start_object("tags")
+
+            for tag in _tag_order do
+                writer.write_string(tag, _vocabulary[tag])
+            od
+
+            writer.write_end_object()
+
+            writer.write_start_array("tasks")
+
+            let directories = LIST[string](IO.Directory.get_directories(IO.Path.combine(_root, "tasks")))
+
+            directories.sort((a: string, b: string) -> int => string.compare_ordinal(a, b))
+
+            for directory in directories do
+                if IO.File.exists(IO.Path.combine(directory, "task.json")) then
+                    write_task(writer, directory)
+                fi
+            od
+
+            writer.write_end_array()
+            writer.write_end_object()
+            writer.flush()
+
+            return "{System.Text.Encoding.utf8.get_string(stream.to_array())}\n"
+        si
+
+        write_task(writer: Utf8JsonWriter, directory: string) is
+            let slug = IO.Path.get_file_name(directory) ?? ""
+            let document = JsonDocument.parse(IO.File.read_all_text(IO.Path.combine(directory, "task.json")), _)
+            let descriptor = document.root_element
+
+            let title = string_property(descriptor, "task") ?? slug
+            let url = string_property(descriptor, "url") ?? ""
+
+            let tags = LIST[string]()
+            let found: JsonElement mut
+
+            if descriptor.try_get_property("tags", found ref) /\ found.value_kind == JsonValueKind.ARRAY then
+                for element in found.enumerate_array() do
+                    let tag = element.get_string() ?? ""
+
+                    if !_vocabulary.contains_key(tag) then
+                        _problems.add("{slug}: tag '{tag}' is not in TAGS.json")
+                    elif tags.contains(tag) then
+                        _problems.add("{slug}: tag '{tag}' is listed twice")
+                    else
+                        tags.add(tag)
+                    fi
+                od
+
+                if tags.count == 0 then
+                    _problems.add("{slug}: no tags")
+                fi
+            else
+                _problems.add("{slug}: no tags")
+            fi
+
+            let interest mut = 0
+
+            if descriptor.try_get_property("interest", found ref) /\ found.value_kind == JsonValueKind.NUMBER then
+                interest = found.get_int32()
+            fi
+
+            if interest < 1 \/ interest > 5 then
+                _problems.add("{slug}: interest must be 1 to 5")
+            fi
+
+            let parts = parts_of(directory, slug)
+
+            if parts.count == 0 then
+                _problems.add("{slug}: no source")
+            fi
+
+            let images = LIST[string]()
+
+            for part in parts do
+                images.add_range(part.images)
+            od
+
+            writer.write_start_object()
+            writer.write_string("slug", slug)
+            writer.write_string("title", title)
+            writer.write_string("url", url)
+
+            writer.write_start_array("tags")
+
+            for tag in tags do
+                writer.write_string_value(tag)
+            od
+
+            writer.write_end_array()
+
+            writer.write_number("interest", interest)
+            writer.write_boolean("playground", parts |> any(p => p.playground))
+            writer.write_boolean("input", parts |> any(p => p.input))
+            write_strings(writer, "images", images)
+            writer.write_number("lines", parts |> reduce(0, (total, p) => total + p.lines))
+
+            writer.write_start_array("parts")
+
+            for part in parts do
+                writer.write_start_object()
+                writer.write_string("id", part.id)
+
+                if let heading = part.heading then
+                    writer.write_string("heading", heading)
+                else
+                    writer.write_null("heading")
+                fi
+
+                writer.write_string("source", part.source)
+                writer.write_string("output", part.output)
+                writer.write_number("lines", part.lines)
+                writer.write_boolean("playground", part.playground)
+                writer.write_boolean("input", part.input)
+                write_strings(writer, "images", part.images)
+                writer.write_end_object()
+            od
+
+            writer.write_end_array()
+            writer.write_end_object()
+        si
+
+        write_strings(writer: Utf8JsonWriter, name: string, values: LIST[string]) is
+            writer.write_start_array(name)
+
+            for value in values do
+                writer.write_string_value(value)
+            od
+
+            writer.write_end_array()
+        si
+
+        string_property(element: JsonElement, name: string) -> string? is
+            let found: JsonElement mut
+
+            if element.try_get_property(name, found ref) /\ found.value_kind == JsonValueKind.STRING then
+                return found.get_string()
+            fi
+
+            return null
+        si
+
+        // A task's programs in order: its NN-name parts when it has them,
+        // otherwise the task directory itself.
+        parts_of(directory: string, slug: string) -> LIST[INDEX_PART] is
+            let parts = LIST[INDEX_PART]()
+
+            let numbered =
+                LIST[string](
+                    IO.Directory.get_directories(directory)
+                    |> filter(d => Regex.is_match(IO.Path.get_file_name(d) ?? "", "^[0-9][0-9]-"))
+                )
+
+            numbered.sort((a: string, b: string) -> int => string.compare_ordinal(a, b))
+
+            if numbered.count == 0 then
+                if let part = part_of(directory, slug, null) then
+                    parts.add(part)
+                fi
+            else
+                for part_directory in numbered do
+                    let name = IO.Path.get_file_name(part_directory) ?? ""
+
+                    if let part = part_of(part_directory, "{slug}/{name}", heading_of(name)) then
+                        parts.add(part)
+                    else
+                        _problems.add("{slug}/{name}: no source")
+                    fi
+                od
+            fi
+
+            return parts
+        si
+
+        part_of(directory: string, id: string, heading: string?) -> INDEX_PART? is
+            let name = IO.Path.get_file_name(directory) ?? ""
+            let source = IO.Path.combine(directory, "{name}.ghul")
+
+            if !IO.File.exists(source) then
+                return null
+            fi
+
+            let images =
+                LIST[string](
+                    IO.Directory.get_files(directory, "*.png.expected")
+                    |> map(f => relative(f))
+                )
+
+            images.sort((a: string, b: string) -> int => string.compare_ordinal(a, b))
+
+            return
+                INDEX_PART(
+                    id,
+                    heading,
+                    relative(source),
+                    relative(IO.Path.combine(directory, "run.expected")),
+                    line_count(IO.File.read_all_text(source)),
+                    !IO.File.exists(IO.Path.combine(directory, "playground-unsupported")),
+                    IO.File.exists(IO.Path.combine(directory, "run.in")) \/
+                        IO.File.exists(IO.Path.combine(directory, "run.session")),
+                    images
+                )
+        si
+
+        // 01-using-map is "Using map", as generate-wiki.sh heads the part.
+        heading_of(name: string) -> string is
+            let rest = name.substring(name.index_of('-') + 1).replace('-', ' ')
+
+            if rest.length == 0 then
+                return rest
+            fi
+
+            return "{char.to_upper_invariant(rest[0])}{rest.substring(1)}"
+        si
+
+        line_count(text: string) -> int is
+            let trimmed = text.trim_end(['\n', '\r'])
+
+            if trimmed.length == 0 then
+                return 0
+            fi
+
+            return trimmed.split(['\n']).count
+        si
+
+        relative(path: string) -> string =>
+            IO.Path.get_relative_path(_root, path).replace('\\', '/')
+    si
+si

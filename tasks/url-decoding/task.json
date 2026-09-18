@@ -1,5 +1,7 @@
 {
     "task": "URL decoding",
     "url": "https://rosettacode.org/wiki/URL_decoding",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "dotnet-interop"],
+    "interest": 2
 }

@@ -1,5 +1,7 @@
 {
     "task": "Cartesian product of two or more lists",
     "url": "https://rosettacode.org/wiki/Cartesian_product_of_two_or_more_lists",
-    "status": "published"
+    "status": "published",
+    "tags": ["data-structures", "generators"],
+    "interest": 2
 }

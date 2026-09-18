@@ -1,5 +1,7 @@
 {
     "task": "A+B",
     "url": "https://rosettacode.org/wiki/A+B",
-    "status": "published"
+    "status": "published",
+    "tags": ["basics", "interactive", "pattern-matching"],
+    "interest": 1
 }

@@ -1,5 +1,7 @@
 {
     "task": "Bitwise operations",
     "url": "https://rosettacode.org/wiki/Bitwise_operations",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "dotnet-interop"],
+    "interest": 2
 }

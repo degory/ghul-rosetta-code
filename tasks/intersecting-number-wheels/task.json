@@ -1,5 +1,7 @@
 {
     "task": "Intersecting number wheels",
     "url": "https://rosettacode.org/wiki/Intersecting_number_wheels",
-    "status": "published"
+    "status": "published",
+    "tags": ["unions", "pattern-matching", "classes"],
+    "interest": 3
 }

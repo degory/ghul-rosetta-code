@@ -1,5 +1,7 @@
 {
     "task": "Euler's identity",
     "url": "https://rosettacode.org/wiki/Euler's_identity",
-    "status": "published"
+    "status": "published",
+    "tags": ["maths", "dotnet-interop"],
+    "interest": 3
 }

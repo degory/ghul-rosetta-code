@@ -1,5 +1,7 @@
 {
     "task": "Autogram checker",
     "url": "https://rosettacode.org/wiki/Autogram_checker",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "pattern-matching", "pipes", "generics"],
+    "interest": 3
 }

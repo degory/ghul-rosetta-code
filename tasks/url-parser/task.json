@@ -1,5 +1,7 @@
 {
     "task": "URL parser",
     "url": "https://rosettacode.org/wiki/URL_parser",
-    "status": "published"
+    "status": "published",
+    "tags": ["parsing", "dotnet-interop"],
+    "interest": 2
 }

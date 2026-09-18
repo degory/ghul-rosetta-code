@@ -1,5 +1,7 @@
 {
     "task": "Brilliant numbers",
     "url": "https://rosettacode.org/wiki/Brilliant_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "generators", "pipes"],
+    "interest": 2
 }

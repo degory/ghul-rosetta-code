@@ -1,5 +1,7 @@
 {
     "task": "Permutations/Derangements",
     "url": "https://rosettacode.org/wiki/Permutations/Derangements",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "number-theory", "generators"],
+    "interest": 3
 }

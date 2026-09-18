@@ -1,5 +1,7 @@
 {
     "task": "Stream merge",
     "url": "https://rosettacode.org/wiki/Stream_merge",
-    "status": "published"
+    "status": "published",
+    "tags": ["pattern-matching", "pipes", "generators"],
+    "interest": 3
 }

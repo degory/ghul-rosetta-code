@@ -1,5 +1,7 @@
 {
     "task": "Bernoulli's triangle",
     "url": "https://rosettacode.org/wiki/Bernoulli's_triangle",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators", "pipes"],
+    "interest": 2
 }

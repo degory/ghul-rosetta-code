@@ -1,5 +1,7 @@
 {
     "task": "Word wheel",
     "url": "https://rosettacode.org/wiki/Word_wheel",
-    "status": "published"
+    "status": "published",
+    "tags": ["puzzles", "dotnet-interop"],
+    "interest": 2
 }

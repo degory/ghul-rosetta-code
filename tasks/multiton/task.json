@@ -1,5 +1,7 @@
 {
     "task": "Multiton",
     "url": "https://rosettacode.org/wiki/Multiton",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "generics", "classes", "concurrency", "dotnet-interop"],
+    "interest": 3
 }

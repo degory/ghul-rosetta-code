@@ -1,5 +1,7 @@
 {
     "task": "Middle three digits",
     "url": "https://rosettacode.org/wiki/Middle_three_digits",
-    "status": "published"
+    "status": "published",
+    "tags": ["unions", "pattern-matching", "optionals"],
+    "interest": 2
 }

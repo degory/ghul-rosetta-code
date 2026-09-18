@@ -1,5 +1,7 @@
 {
     "task": "Call a function",
     "url": "https://rosettacode.org/wiki/Call_a_function",
-    "status": "published"
+    "status": "published",
+    "tags": ["basics", "closures", "pipes"],
+    "interest": 2
 }

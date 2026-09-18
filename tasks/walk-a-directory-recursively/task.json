@@ -1,5 +1,7 @@
 {
     "task": "Walk a directory/Recursively",
     "url": "https://rosettacode.org/wiki/Walk_a_directory/Recursively",
-    "status": "published"
+    "status": "published",
+    "tags": ["dotnet-interop", "generators"],
+    "interest": 2
 }

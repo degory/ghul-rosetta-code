@@ -1,5 +1,7 @@
 {
     "task": "Synchronous concurrency",
     "url": "https://rosettacode.org/wiki/Synchronous_concurrency",
-    "status": "published"
+    "status": "published",
+    "tags": ["concurrency", "async", "unions"],
+    "interest": 3
 }

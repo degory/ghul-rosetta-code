@@ -1,5 +1,7 @@
 {
     "task": "Dining philosophers",
     "url": "https://rosettacode.org/wiki/Dining_philosophers",
-    "status": "published"
+    "status": "published",
+    "tags": ["concurrency", "async", "algorithms"],
+    "interest": 4
 }

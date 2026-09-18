@@ -1,5 +1,7 @@
 {
     "task": "Own digits power sum",
     "url": "https://rosettacode.org/wiki/Own_digits_power_sum",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 2
 }

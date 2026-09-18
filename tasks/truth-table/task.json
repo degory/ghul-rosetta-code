@@ -1,5 +1,7 @@
 {
     "task": "Truth table",
     "url": "https://rosettacode.org/wiki/Truth_table",
-    "status": "published"
+    "status": "published",
+    "tags": ["unions", "pattern-matching", "generators"],
+    "interest": 3
 }

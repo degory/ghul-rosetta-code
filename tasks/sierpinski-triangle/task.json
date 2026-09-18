@@ -1,5 +1,7 @@
 {
     "task": "Sierpinski triangle",
     "url": "https://rosettacode.org/wiki/Sierpinski_triangle",
-    "status": "published"
+    "status": "published",
+    "tags": ["graphics", "fractal"],
+    "interest": 3
 }

@@ -1,5 +1,7 @@
 {
     "task": "Chinese remainder theorem",
     "url": "https://rosettacode.org/wiki/Chinese_remainder_theorem",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "optionals", "recursion"],
+    "interest": 3
 }

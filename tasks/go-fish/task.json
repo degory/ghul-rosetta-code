@@ -1,5 +1,7 @@
 {
     "task": "Go Fish",
     "url": "https://rosettacode.org/wiki/Go_Fish",
-    "status": "published"
+    "status": "published",
+    "tags": ["game", "interactive"],
+    "interest": 5
 }

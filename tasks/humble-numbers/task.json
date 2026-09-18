@@ -1,5 +1,7 @@
 {
     "task": "Humble numbers",
     "url": "https://rosettacode.org/wiki/Humble_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "pipes", "generators"],
+    "interest": 2
 }

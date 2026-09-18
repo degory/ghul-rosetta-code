@@ -1,5 +1,7 @@
 {
     "task": "Recaman's sequence",
     "url": "https://rosettacode.org/wiki/Recaman's_sequence",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 3
 }

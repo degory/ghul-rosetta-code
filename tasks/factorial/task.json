@@ -1,5 +1,7 @@
 {
     "task": "Factorial",
     "url": "https://rosettacode.org/wiki/Factorial",
-    "status": "published"
+    "status": "published",
+    "tags": ["maths", "recursion"],
+    "interest": 2
 }

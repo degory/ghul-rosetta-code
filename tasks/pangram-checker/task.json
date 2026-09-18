@@ -1,5 +1,7 @@
 {
     "task": "Pangram checker",
     "url": "https://rosettacode.org/wiki/Pangram_checker",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "pipes"],
+    "interest": 1
 }

@@ -1,5 +1,7 @@
 {
     "task": "Catalan numbers",
     "url": "https://rosettacode.org/wiki/Catalan_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "recursion"],
+    "interest": 2
 }

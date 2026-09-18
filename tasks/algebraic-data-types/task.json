@@ -1,5 +1,7 @@
 {
     "task": "Algebraic data types",
     "url": "https://rosettacode.org/wiki/Algebraic_data_types",
-    "status": "published"
+    "status": "published",
+    "tags": ["data-structures", "unions", "pattern-matching"],
+    "interest": 3
 }

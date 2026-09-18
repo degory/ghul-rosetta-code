@@ -1,5 +1,7 @@
 {
     "task": "Numerical and alphabetical suffixes",
     "url": "https://rosettacode.org/wiki/Numerical_and_alphabetical_suffixes",
-    "status": "published"
+    "status": "published",
+    "tags": ["parsing", "strings", "pattern-matching", "pipes"],
+    "interest": 3
 }

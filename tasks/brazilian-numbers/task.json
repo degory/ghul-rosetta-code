@@ -1,5 +1,7 @@
 {
     "task": "Brazilian numbers",
     "url": "https://rosettacode.org/wiki/Brazilian_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "pipes", "generators"],
+    "interest": 2
 }

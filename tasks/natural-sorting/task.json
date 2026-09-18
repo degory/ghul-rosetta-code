@@ -1,5 +1,7 @@
 {
     "task": "Natural sorting",
     "url": "https://rosettacode.org/wiki/Natural_sorting",
-    "status": "published"
+    "status": "published",
+    "tags": ["sorting", "strings", "dotnet-interop"],
+    "interest": 3
 }

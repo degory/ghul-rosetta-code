@@ -1,5 +1,7 @@
 {
     "task": "Fibonacci word",
     "url": "https://rosettacode.org/wiki/Fibonacci_word",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators", "dotnet-interop"],
+    "interest": 2
 }

@@ -1,5 +1,7 @@
 {
     "task": "N-queens problem",
     "url": "https://rosettacode.org/wiki/N-queens_problem",
-    "status": "published"
+    "status": "published",
+    "tags": ["puzzles", "pattern-matching", "pipes", "generators", "recursion"],
+    "interest": 4
 }

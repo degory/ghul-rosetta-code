@@ -1,5 +1,7 @@
 {
     "task": "Look-and-say sequence",
     "url": "https://rosettacode.org/wiki/Look-and-say_sequence",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators", "pipes"],
+    "interest": 3
 }

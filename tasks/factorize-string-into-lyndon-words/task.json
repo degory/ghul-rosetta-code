@@ -1,5 +1,7 @@
 {
     "task": "Factorize string into Lyndon words",
     "url": "https://rosettacode.org/wiki/Factorize_string_into_Lyndon_words",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "strings", "generators"],
+    "interest": 3
 }

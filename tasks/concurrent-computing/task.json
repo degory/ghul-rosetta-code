@@ -1,5 +1,7 @@
 {
     "task": "Concurrent computing",
     "url": "https://rosettacode.org/wiki/Concurrent_computing",
-    "status": "published"
+    "status": "published",
+    "tags": ["concurrency", "async"],
+    "interest": 3
 }

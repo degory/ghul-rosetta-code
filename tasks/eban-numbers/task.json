@@ -1,5 +1,7 @@
 {
     "task": "Eban numbers",
     "url": "https://rosettacode.org/wiki/Eban_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 2
 }

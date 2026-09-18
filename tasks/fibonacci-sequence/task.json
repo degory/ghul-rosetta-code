@@ -1,5 +1,7 @@
 {
     "task": "Fibonacci sequence",
     "url": "https://rosettacode.org/wiki/Fibonacci_sequence",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators", "pipes"],
+    "interest": 3
 }

@@ -1,5 +1,7 @@
 {
     "task": "Knuth's algorithm S",
     "url": "https://rosettacode.org/wiki/Knuth's_algorithm_S",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "closures"],
+    "interest": 2
 }

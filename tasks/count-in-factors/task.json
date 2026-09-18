@@ -1,5 +1,7 @@
 {
     "task": "Count in factors",
     "url": "https://rosettacode.org/wiki/Count_in_factors",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "pipes", "generators"],
+    "interest": 2
 }

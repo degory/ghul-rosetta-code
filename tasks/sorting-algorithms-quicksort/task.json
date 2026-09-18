@@ -1,5 +1,7 @@
 {
     "task": "Sorting algorithms/Quicksort",
     "url": "https://rosettacode.org/wiki/Sorting_algorithms/Quicksort",
-    "status": "published"
+    "status": "published",
+    "tags": ["sorting", "pipes", "recursion"],
+    "interest": 3
 }

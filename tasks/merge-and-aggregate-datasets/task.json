@@ -1,5 +1,7 @@
 {
     "task": "Merge and aggregate datasets",
     "url": "https://rosettacode.org/wiki/Merge_and_aggregate_datasets",
-    "status": "published"
+    "status": "published",
+    "tags": ["data-structures", "pipes", "optionals"],
+    "interest": 2
 }
