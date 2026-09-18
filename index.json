@@ -15169,6 +15169,37 @@
       ]
     },
     {
+      "slug": "percolation-mean-cluster-density",
+      "title": "Percolation/Mean cluster density",
+      "url": "https://rosettacode.org/wiki/Percolation/Mean_cluster_density",
+      "tags": [
+        "simulation",
+        "graphics",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/percolation-mean-cluster-density/clusters.png.expected"
+      ],
+      "lines": 109,
+      "parts": [
+        {
+          "id": "percolation-mean-cluster-density",
+          "heading": null,
+          "source": "tasks/percolation-mean-cluster-density/percolation-mean-cluster-density.ghul",
+          "output": "tasks/percolation-mean-cluster-density/run.expected",
+          "lines": 109,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/percolation-mean-cluster-density/clusters.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "percolation-site-percolation",
       "title": "Percolation/Site percolation",
       "url": "https://rosettacode.org/wiki/Percolation/Site_percolation",
