@@ -5293,6 +5293,35 @@
       ]
     },
     {
+      "slug": "draw-the-empire-state-building",
+      "title": "Draw the Empire State Building",
+      "url": "https://rosettacode.org/wiki/Draw_the_Empire_State_Building",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/draw-the-empire-state-building/empire-state.png.expected"
+      ],
+      "lines": 90,
+      "parts": [
+        {
+          "id": "draw-the-empire-state-building",
+          "heading": null,
+          "source": "tasks/draw-the-empire-state-building/draw-the-empire-state-building.ghul",
+          "output": "tasks/draw-the-empire-state-building/run.expected",
+          "lines": 90,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/draw-the-empire-state-building/empire-state.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "duffinian-numbers",
       "title": "Duffinian numbers",
       "url": "https://rosettacode.org/wiki/Duffinian_numbers",
