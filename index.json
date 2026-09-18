@@ -16325,6 +16325,37 @@
       ]
     },
     {
+      "slug": "ramsey-s-theorem",
+      "title": "Ramsey's theorem",
+      "url": "https://rosettacode.org/wiki/Ramsey's_theorem",
+      "tags": [
+        "maths",
+        "generators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/ramsey-s-theorem/paley.png.expected"
+      ],
+      "lines": 81,
+      "parts": [
+        {
+          "id": "ramsey-s-theorem",
+          "heading": null,
+          "source": "tasks/ramsey-s-theorem/ramsey-s-theorem.ghul",
+          "output": "tasks/ramsey-s-theorem/run.expected",
+          "lines": 81,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/ramsey-s-theorem/paley.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "range-consolidation",
       "title": "Range consolidation",
       "url": "https://rosettacode.org/wiki/Range_consolidation",
