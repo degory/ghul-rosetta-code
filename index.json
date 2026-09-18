@@ -22931,14 +22931,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 50,
+      "lines": 54,
       "parts": [
         {
           "id": "write-language-name-in-3d-ascii",
           "heading": null,
           "source": "tasks/write-language-name-in-3d-ascii/write-language-name-in-3d-ascii.ghul",
           "output": "tasks/write-language-name-in-3d-ascii/run.expected",
-          "lines": 50,
+          "lines": 54,
           "playground": true,
           "input": false,
           "images": []
