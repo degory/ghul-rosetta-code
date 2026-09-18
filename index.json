@@ -9478,6 +9478,38 @@
       ]
     },
     {
+      "slug": "knight-s-tour",
+      "title": "Knight's tour",
+      "url": "https://rosettacode.org/wiki/Knight's_tour",
+      "tags": [
+        "puzzles",
+        "graphics",
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/knight-s-tour/tour.png.expected"
+      ],
+      "lines": 138,
+      "parts": [
+        {
+          "id": "knight-s-tour",
+          "heading": null,
+          "source": "tasks/knight-s-tour/knight-s-tour.ghul",
+          "output": "tasks/knight-s-tour/run.expected",
+          "lines": 138,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/knight-s-tour/tour.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "knuth-s-algorithm-s",
       "title": "Knuth's algorithm S",
       "url": "https://rosettacode.org/wiki/Knuth's_algorithm_S",
