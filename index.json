@@ -2265,6 +2265,37 @@
       ]
     },
     {
+      "slug": "boids",
+      "title": "Boids",
+      "url": "https://rosettacode.org/wiki/Boids",
+      "tags": [
+        "simulation",
+        "graphics",
+        "operators"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/boids/boids.png.expected"
+      ],
+      "lines": 198,
+      "parts": [
+        {
+          "id": "boids",
+          "heading": null,
+          "source": "tasks/boids/boids.ghul",
+          "output": "tasks/boids/run.expected",
+          "lines": 198,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/boids/boids.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "boolean-values",
       "title": "Boolean values",
       "url": "https://rosettacode.org/wiki/Boolean_values",
@@ -4999,6 +5030,32 @@
       ]
     },
     {
+      "slug": "draw-a-clock",
+      "title": "Draw a clock",
+      "url": "https://rosettacode.org/wiki/Draw_a_clock",
+      "tags": [
+        "date-time",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 83,
+      "parts": [
+        {
+          "id": "draw-a-clock",
+          "heading": null,
+          "source": "tasks/draw-a-clock/draw-a-clock.ghul",
+          "output": "tasks/draw-a-clock/run.expected",
+          "lines": 83,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "draw-a-sphere",
       "title": "Draw a sphere",
       "url": "https://rosettacode.org/wiki/Draw_a_sphere",
@@ -6905,6 +6962,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "forest-fire",
+      "title": "Forest fire",
+      "url": "https://rosettacode.org/wiki/Forest_fire",
+      "tags": [
+        "simulation",
+        "graphics",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/forest-fire/forest.png.expected"
+      ],
+      "lines": 112,
+      "parts": [
+        {
+          "id": "forest-fire",
+          "heading": null,
+          "source": "tasks/forest-fire/forest-fire.ghul",
+          "output": "tasks/forest-fire/run.expected",
+          "lines": 112,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/forest-fire/forest.png.expected"
+          ]
         }
       ]
     },
@@ -10010,6 +10098,36 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "langton-s-ant",
+      "title": "Langton's ant",
+      "url": "https://rosettacode.org/wiki/Langton's_ant",
+      "tags": [
+        "simulation",
+        "graphics"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/langton-s-ant/ant.png.expected"
+      ],
+      "lines": 67,
+      "parts": [
+        {
+          "id": "langton-s-ant",
+          "heading": null,
+          "source": "tasks/langton-s-ant/langton-s-ant.ghul",
+          "output": "tasks/langton-s-ant/run.expected",
+          "lines": 67,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/langton-s-ant/ant.png.expected"
+          ]
         }
       ]
     },
@@ -13206,6 +13324,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "particle-fountain",
+      "title": "Particle fountain",
+      "url": "https://rosettacode.org/wiki/Particle_fountain",
+      "tags": [
+        "simulation",
+        "graphics",
+        "classes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/particle-fountain/fountain.png.expected"
+      ],
+      "lines": 94,
+      "parts": [
+        {
+          "id": "particle-fountain",
+          "heading": null,
+          "source": "tasks/particle-fountain/particle-fountain.ghul",
+          "output": "tasks/particle-fountain/run.expected",
+          "lines": 94,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/particle-fountain/fountain.png.expected"
+          ]
         }
       ]
     },
@@ -20191,6 +20340,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "wireworld",
+      "title": "Wireworld",
+      "url": "https://rosettacode.org/wiki/Wireworld",
+      "tags": [
+        "simulation",
+        "graphics",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/wireworld/wireworld.png.expected"
+      ],
+      "lines": 89,
+      "parts": [
+        {
+          "id": "wireworld",
+          "heading": null,
+          "source": "tasks/wireworld/wireworld.ghul",
+          "output": "tasks/wireworld/run.expected",
+          "lines": 89,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/wireworld/wireworld.png.expected"
+          ]
         }
       ]
     },

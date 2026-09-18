@@ -566,6 +566,11 @@
       "published_hash": "ff47b503d49fdc2c7adfca85db7536b59abbc7c88001bab38b4a012161171c4f"
     },
     {
+      "title": "Boids",
+      "slug": "boids",
+      "state": "solved"
+    },
+    {
       "title": "Boolean values",
       "slug": "boolean-values",
       "state": "published",
@@ -1240,6 +1245,11 @@
       }
     },
     {
+      "title": "Draw a clock",
+      "slug": "draw-a-clock",
+      "state": "solved"
+    },
+    {
       "title": "Draw a pixel",
       "state": "rejected",
       "reason": "needs-gui"
@@ -1709,6 +1719,11 @@
       "slug": "floyd-warshall-algorithm",
       "state": "published",
       "published_hash": "6019424044bc7eb97ee645eff53930956021de05d13847cc14289b3093a30613"
+    },
+    {
+      "title": "Forest fire",
+      "slug": "forest-fire",
+      "state": "solved"
     },
     {
       "title": "Formal power series",
@@ -2521,6 +2536,11 @@
       "published_hash": "50bdedb94e167f3c103e68b4096e9eee778b7e3aa8169f286214726c9b1e0251"
     },
     {
+      "title": "Langton\u0027s ant",
+      "slug": "langton-s-ant",
+      "state": "solved"
+    },
+    {
       "title": "Largest int from concatenated ints",
       "slug": "largest-int-from-concatenated-ints",
       "state": "published",
@@ -3249,6 +3269,11 @@
       "slug": "partial-function-application",
       "state": "published",
       "published_hash": "bd8e71582e690c0dca8e210a5c07216b42ed2e52412827e0facfefd2955d4087"
+    },
+    {
+      "title": "Particle fountain",
+      "slug": "particle-fountain",
+      "state": "solved"
     },
     {
       "title": "Pascal\u0027s triangle",
@@ -4918,6 +4943,11 @@
       "slug": "wieferich-primes",
       "state": "published",
       "published_hash": "098f27e2e06a4576a9e80029888302883f3c8a87c702900748061721634cf1c7"
+    },
+    {
+      "title": "Wireworld",
+      "slug": "wireworld",
+      "state": "solved"
     },
     {
       "title": "Wolstenholme numbers",
