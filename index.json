@@ -15282,6 +15282,35 @@
       ]
     },
     {
+      "slug": "peripheral-drift-illusion",
+      "title": "Peripheral drift illusion",
+      "url": "https://rosettacode.org/wiki/Peripheral_drift_illusion",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/peripheral-drift-illusion/drift.png.expected"
+      ],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "peripheral-drift-illusion",
+          "heading": null,
+          "source": "tasks/peripheral-drift-illusion/peripheral-drift-illusion.ghul",
+          "output": "tasks/peripheral-drift-illusion/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/peripheral-drift-illusion/drift.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "perlin-noise",
       "title": "Perlin noise",
       "url": "https://rosettacode.org/wiki/Perlin_noise",
