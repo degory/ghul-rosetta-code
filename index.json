@@ -7671,6 +7671,32 @@
       ]
     },
     {
+      "slug": "finite-state-machine",
+      "title": "Finite state machine",
+      "url": "https://rosettacode.org/wiki/Finite_state_machine",
+      "tags": [
+        "pattern-matching",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "finite-state-machine",
+          "heading": null,
+          "source": "tasks/finite-state-machine/finite-state-machine.ghul",
+          "output": "tasks/finite-state-machine/run.expected",
+          "lines": 66,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "first-class-environments",
       "title": "First class environments",
       "url": "https://rosettacode.org/wiki/First_class_environments",
