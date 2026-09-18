@@ -1,0 +1,28 @@
+q0   [1] 1  1 
+q0    1 [1] 1 
+q0    1  1 [1]
+q0    1  1  1 [B]
+qf    1  1  1 [1]
+simple incrementer: halted after 4 steps
+4 cells marked
+
+a    [0]
+b     1 [0]
+a    [1] 1 
+c    [0] 1  1 
+b    [0] 1  1  1 
+a    [0] 1  1  1  1 
+b     1 [1] 1  1  1 
+b     1  1 [1] 1  1 
+b     1  1  1 [1] 1 
+b     1  1  1  1 [1]
+b     1  1  1  1  1 [0]
+a     1  1  1  1 [1] 1 
+c     1  1  1 [1] 1  1 
+halt  1  1  1 [1] 1  1 
+three-state busy beaver: halted after 13 steps
+6 cells marked
+
+five-state busy beaver: halted after 47176870 steps
+4098 cells marked
+

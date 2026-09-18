@@ -18728,6 +18728,33 @@
       ]
     },
     {
+      "slug": "universal-turing-machine",
+      "title": "Universal Turing machine",
+      "url": "https://rosettacode.org/wiki/Universal_Turing_machine",
+      "tags": [
+        "simulation",
+        "classes",
+        "parsing"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 106,
+      "parts": [
+        {
+          "id": "universal-turing-machine",
+          "heading": null,
+          "source": "tasks/universal-turing-machine/universal-turing-machine.ghul",
+          "output": "tasks/universal-turing-machine/run.expected",
+          "lines": 106,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "uno-card-game",
       "title": "Uno (card game)",
       "url": "https://rosettacode.org/wiki/Uno_(card_game)",
