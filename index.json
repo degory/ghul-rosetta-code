@@ -5392,6 +5392,37 @@
       ]
     },
     {
+      "slug": "eisenstein-primes",
+      "title": "Eisenstein primes",
+      "url": "https://rosettacode.org/wiki/Eisenstein_primes",
+      "tags": [
+        "primes",
+        "maths",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/eisenstein-primes/eisenstein.png.expected"
+      ],
+      "lines": 70,
+      "parts": [
+        {
+          "id": "eisenstein-primes",
+          "heading": null,
+          "source": "tasks/eisenstein-primes/eisenstein-primes.ghul",
+          "output": "tasks/eisenstein-primes/run.expected",
+          "lines": 70,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/eisenstein-primes/eisenstein.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "ekg-sequence-convergence",
       "title": "EKG sequence convergence",
       "url": "https://rosettacode.org/wiki/EKG_sequence_convergence",
