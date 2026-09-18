@@ -2601,6 +2601,12 @@
       "reason": "output-unbounded"
     },
     {
+      "title": "Interactive programming (repl)",
+      "state": "rejected",
+      "reason": "needs-interaction",
+      "note": "the task asks for the language\u0027s own interactive mode and forbids writing one; gh\u016Bl has no REPL"
+    },
+    {
       "title": "Intersecting number wheels",
       "slug": "intersecting-number-wheels",
       "state": "published",
