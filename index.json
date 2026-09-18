@@ -13202,6 +13202,37 @@
       ]
     },
     {
+      "slug": "monte-carlo-methods",
+      "title": "Monte Carlo methods",
+      "url": "https://rosettacode.org/wiki/Monte_Carlo_methods",
+      "tags": [
+        "maths",
+        "simulation",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/monte-carlo-methods/darts.png.expected"
+      ],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "monte-carlo-methods",
+          "heading": null,
+          "source": "tasks/monte-carlo-methods/monte-carlo-methods.ghul",
+          "output": "tasks/monte-carlo-methods/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/monte-carlo-methods/darts.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "monty-hall-problem",
       "title": "Monty Hall problem",
       "url": "https://rosettacode.org/wiki/Monty_Hall_problem",

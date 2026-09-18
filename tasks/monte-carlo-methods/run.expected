@@ -1,0 +1,7 @@
+       100 throws: pi is about 2.840000, off by 0.301593
+      1000 throws: pi is about 3.196000, off by 0.054407
+     10000 throws: pi is about 3.133600, off by 0.007993
+    100000 throws: pi is about 3.139080, off by 0.002513
+   1000000 throws: pi is about 3.142068, off by 0.000475
+  10000000 throws: pi is about 3.141167, off by 0.000425
+<<image darts.png>>
