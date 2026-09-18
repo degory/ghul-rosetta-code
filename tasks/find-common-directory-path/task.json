@@ -1,5 +1,7 @@
 {
     "task": "Find common directory path",
     "url": "https://rosettacode.org/wiki/Find_common_directory_path",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "pipes"],
+    "interest": 1
 }

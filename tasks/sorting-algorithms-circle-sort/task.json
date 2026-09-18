@@ -1,5 +1,7 @@
 {
     "task": "Sorting algorithms/Circle sort",
     "url": "https://rosettacode.org/wiki/Sorting_algorithms/Circle_sort",
-    "status": "published"
+    "status": "published",
+    "tags": ["sorting", "generics", "recursion"],
+    "interest": 2
 }

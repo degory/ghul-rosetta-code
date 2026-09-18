@@ -1,5 +1,7 @@
 {
     "task": "Strip block comments",
     "url": "https://rosettacode.org/wiki/Strip_block_comments",
-    "status": "published"
+    "status": "published",
+    "tags": ["text-processing", "strings"],
+    "interest": 2
 }

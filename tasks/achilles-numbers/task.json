@@ -1,5 +1,7 @@
 {
     "task": "Achilles numbers",
     "url": "https://rosettacode.org/wiki/Achilles_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators", "pipes"],
+    "interest": 3
 }

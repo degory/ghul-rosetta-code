@@ -1,5 +1,7 @@
 {
     "task": "Multisplit",
     "url": "https://rosettacode.org/wiki/Multisplit",
-    "status": "published"
+    "status": "published",
+    "tags": ["parsing", "strings", "pattern-matching", "pipes", "generators"],
+    "interest": 3
 }

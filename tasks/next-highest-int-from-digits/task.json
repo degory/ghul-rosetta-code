@@ -1,5 +1,7 @@
 {
     "task": "Next highest int from digits",
     "url": "https://rosettacode.org/wiki/Next_highest_int_from_digits",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "pattern-matching", "pipes"],
+    "interest": 2
 }

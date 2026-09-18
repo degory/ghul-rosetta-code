@@ -1,5 +1,7 @@
 {
     "task": "Apply a callback to an array",
     "url": "https://rosettacode.org/wiki/Apply_a_callback_to_an_array",
-    "status": "published"
+    "status": "published",
+    "tags": ["basics", "generics", "pipes"],
+    "interest": 1
 }

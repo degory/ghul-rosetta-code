@@ -1,5 +1,7 @@
 {
     "task": "Align columns",
     "url": "https://rosettacode.org/wiki/Align_columns",
-    "status": "published"
+    "status": "published",
+    "tags": ["text-processing", "unions", "pattern-matching", "pipes"],
+    "interest": 2
 }

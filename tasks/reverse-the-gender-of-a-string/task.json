@@ -1,5 +1,7 @@
 {
     "task": "Reverse the gender of a string",
     "url": "https://rosettacode.org/wiki/Reverse_the_gender_of_a_string",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "dotnet-interop"],
+    "interest": 2
 }

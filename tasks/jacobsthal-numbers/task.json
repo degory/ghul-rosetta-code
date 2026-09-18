@@ -1,5 +1,7 @@
 {
     "task": "Jacobsthal numbers",
     "url": "https://rosettacode.org/wiki/Jacobsthal_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "pipes", "generators"],
+    "interest": 2
 }

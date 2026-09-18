@@ -1,5 +1,7 @@
 {
     "task": "Shortest common supersequence",
     "url": "https://rosettacode.org/wiki/Shortest_common_supersequence",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "recursion"],
+    "interest": 2
 }

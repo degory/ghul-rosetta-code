@@ -1,5 +1,7 @@
 {
     "task": "Jordan-Pólya numbers",
     "url": "https://rosettacode.org/wiki/Jordan-Pólya_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "pattern-matching", "pipes", "generators"],
+    "interest": 3
 }

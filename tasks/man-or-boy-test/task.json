@@ -1,5 +1,7 @@
 {
     "task": "Man or boy test",
     "url": "https://rosettacode.org/wiki/Man_or_boy_test",
-    "status": "published"
+    "status": "published",
+    "tags": ["recursion", "closures"],
+    "interest": 3
 }

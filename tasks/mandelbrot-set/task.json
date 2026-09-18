@@ -1,5 +1,7 @@
 {
     "task": "Mandelbrot set",
     "url": "https://rosettacode.org/wiki/Mandelbrot_set",
-    "status": "published"
+    "status": "published",
+    "tags": ["graphics", "fractal", "maths"],
+    "interest": 5
 }

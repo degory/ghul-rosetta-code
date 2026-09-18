@@ -1,5 +1,7 @@
 {
     "task": "Josephus problem",
     "url": "https://rosettacode.org/wiki/Josephus_problem",
-    "status": "published"
+    "status": "published",
+    "tags": ["puzzles", "algorithms", "recursion", "pipes", "generators"],
+    "interest": 3
 }

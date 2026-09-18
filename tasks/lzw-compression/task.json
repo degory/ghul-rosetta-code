@@ -1,5 +1,7 @@
 {
     "task": "LZW compression",
     "url": "https://rosettacode.org/wiki/LZW_compression",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "text-processing", "dotnet-interop"],
+    "interest": 3
 }

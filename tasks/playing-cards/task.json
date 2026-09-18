@@ -1,5 +1,7 @@
 {
     "task": "Playing cards",
     "url": "https://rosettacode.org/wiki/Playing_cards",
-    "status": "published"
+    "status": "published",
+    "tags": ["data-structures", "unions", "classes", "pattern-matching"],
+    "interest": 3
 }

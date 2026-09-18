@@ -1,5 +1,7 @@
 {
     "task": "Jump anywhere",
     "url": "https://rosettacode.org/wiki/Jump_anywhere",
-    "status": "published"
+    "status": "published",
+    "tags": ["pattern-matching", "pipes", "generators", "async", "classes"],
+    "interest": 4
 }

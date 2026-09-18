@@ -1,5 +1,7 @@
 {
     "task": "Letter frequency",
     "url": "https://rosettacode.org/wiki/Letter_frequency",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "text-processing", "pipes"],
+    "interest": 2
 }

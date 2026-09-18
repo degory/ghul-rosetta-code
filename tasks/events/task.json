@@ -1,5 +1,7 @@
 {
     "task": "Events",
     "url": "https://rosettacode.org/wiki/Events",
-    "status": "published"
+    "status": "published",
+    "tags": ["concurrency", "async", "classes"],
+    "interest": 3
 }

@@ -1,5 +1,7 @@
 {
     "task": "Words containing \"the\" substring",
     "url": "https://rosettacode.org/wiki/Words_containing_\"the\"_substring",
-    "status": "published"
+    "status": "published",
+    "tags": ["text-processing", "dotnet-interop"],
+    "interest": 2
 }

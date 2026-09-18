@@ -1,5 +1,7 @@
 {
     "task": "Greatest element of a list",
     "url": "https://rosettacode.org/wiki/Greatest_element_of_a_list",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "generics"],
+    "interest": 1
 }

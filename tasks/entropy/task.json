@@ -1,5 +1,7 @@
 {
     "task": "Entropy",
     "url": "https://rosettacode.org/wiki/Entropy",
-    "status": "published"
+    "status": "published",
+    "tags": ["maths", "dotnet-interop"],
+    "interest": 2
 }

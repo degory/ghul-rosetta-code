@@ -1,5 +1,7 @@
 {
     "task": "Factorial primes",
     "url": "https://rosettacode.org/wiki/Factorial_primes",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes"],
+    "interest": 2
 }

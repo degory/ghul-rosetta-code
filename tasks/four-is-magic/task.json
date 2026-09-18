@@ -1,5 +1,7 @@
 {
     "task": "Four is magic",
     "url": "https://rosettacode.org/wiki/Four_is_magic",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "recursion"],
+    "interest": 3
 }

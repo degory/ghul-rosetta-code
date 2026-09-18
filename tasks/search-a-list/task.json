@@ -1,5 +1,7 @@
 {
     "task": "Search a list",
     "url": "https://rosettacode.org/wiki/Search_a_list",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "pattern-matching", "optionals"],
+    "interest": 1
 }

@@ -1,5 +1,7 @@
 {
     "task": "Monads/List monad",
     "url": "https://rosettacode.org/wiki/Monads/List_monad",
-    "status": "published"
+    "status": "published",
+    "tags": ["pipes", "generics"],
+    "interest": 2
 }

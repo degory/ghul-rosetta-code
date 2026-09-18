@@ -1,5 +1,7 @@
 {
     "task": "Singly-linked list/Traversal",
     "url": "https://rosettacode.org/wiki/Singly-linked_list/Traversal",
-    "status": "published"
+    "status": "published",
+    "tags": ["data-structures", "generators", "optionals", "generics"],
+    "interest": 2
 }

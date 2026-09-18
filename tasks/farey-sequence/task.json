@@ -1,5 +1,7 @@
 {
     "task": "Farey sequence",
     "url": "https://rosettacode.org/wiki/Farey_sequence",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 3
 }

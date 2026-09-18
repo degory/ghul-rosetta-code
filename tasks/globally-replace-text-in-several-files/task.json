@@ -1,5 +1,7 @@
 {
     "task": "Globally replace text in several files",
     "url": "https://rosettacode.org/wiki/Globally_replace_text_in_several_files",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "dotnet-interop"],
+    "interest": 1
 }

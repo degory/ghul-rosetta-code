@@ -1,5 +1,7 @@
 {
     "task": "Rendezvous",
     "url": "https://rosettacode.org/wiki/Rendezvous",
-    "status": "published"
+    "status": "published",
+    "tags": ["concurrency", "async", "unions", "classes"],
+    "interest": 4
 }

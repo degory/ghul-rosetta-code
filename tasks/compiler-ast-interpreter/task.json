@@ -1,5 +1,7 @@
 {
     "task": "Compiler/AST interpreter",
     "url": "https://rosettacode.org/wiki/Compiler/AST_interpreter",
-    "status": "published"
+    "status": "published",
+    "tags": ["parsing", "unions", "pattern-matching"],
+    "interest": 4
 }

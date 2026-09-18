@@ -1,5 +1,7 @@
 {
     "task": "Anagrams",
     "url": "https://rosettacode.org/wiki/Anagrams",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "pipes", "dotnet-interop"],
+    "interest": 2
 }

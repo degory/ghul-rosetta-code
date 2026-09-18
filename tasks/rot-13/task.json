@@ -1,5 +1,7 @@
 {
     "task": "Rot-13",
     "url": "https://rosettacode.org/wiki/Rot-13",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "interactive", "pattern-matching"],
+    "interest": 2
 }

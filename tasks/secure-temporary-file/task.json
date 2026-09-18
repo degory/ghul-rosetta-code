@@ -1,5 +1,7 @@
 {
     "task": "Secure temporary file",
     "url": "https://rosettacode.org/wiki/Secure_temporary_file",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "dotnet-interop"],
+    "interest": 2
 }

@@ -1,5 +1,7 @@
 {
     "task": "Balanced brackets",
     "url": "https://rosettacode.org/wiki/Balanced_brackets",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "generators", "pipes", "optionals"],
+    "interest": 3
 }

@@ -1,5 +1,7 @@
 {
     "task": "Checkpoint synchronization",
     "url": "https://rosettacode.org/wiki/Checkpoint_synchronization",
-    "status": "published"
+    "status": "published",
+    "tags": ["concurrency", "async", "algorithms"],
+    "interest": 3
 }

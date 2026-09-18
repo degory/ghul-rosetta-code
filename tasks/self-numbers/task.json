@@ -1,5 +1,7 @@
 {
     "task": "Self numbers",
     "url": "https://rosettacode.org/wiki/Self_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 2
 }

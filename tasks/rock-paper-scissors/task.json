@@ -1,5 +1,7 @@
 {
     "task": "Rock-paper-scissors",
     "url": "https://rosettacode.org/wiki/Rock-paper-scissors",
-    "status": "published"
+    "status": "published",
+    "tags": ["game", "interactive", "unions", "pattern-matching"],
+    "interest": 5
 }

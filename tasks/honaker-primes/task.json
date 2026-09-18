@@ -1,5 +1,7 @@
 {
     "task": "Honaker primes",
     "url": "https://rosettacode.org/wiki/Honaker_primes",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "generators", "pipes"],
+    "interest": 3
 }

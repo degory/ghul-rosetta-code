@@ -1,5 +1,7 @@
 {
     "task": "Julia set",
     "url": "https://rosettacode.org/wiki/Julia_set",
-    "status": "published"
+    "status": "published",
+    "tags": ["graphics", "fractal"],
+    "interest": 5
 }

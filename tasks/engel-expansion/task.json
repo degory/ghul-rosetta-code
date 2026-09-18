@@ -1,5 +1,7 @@
 {
     "task": "Engel expansion",
     "url": "https://rosettacode.org/wiki/Engel_expansion",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "operators", "generators", "dotnet-interop"],
+    "interest": 3
 }

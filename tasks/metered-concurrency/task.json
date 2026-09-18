@@ -1,5 +1,7 @@
 {
     "task": "Metered concurrency",
     "url": "https://rosettacode.org/wiki/Metered_concurrency",
-    "status": "published"
+    "status": "published",
+    "tags": ["async", "concurrency"],
+    "interest": 3
 }

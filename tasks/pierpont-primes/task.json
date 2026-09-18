@@ -1,5 +1,7 @@
 {
     "task": "Pierpont primes",
     "url": "https://rosettacode.org/wiki/Pierpont_primes",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "generators"],
+    "interest": 3
 }

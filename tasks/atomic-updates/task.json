@@ -1,5 +1,7 @@
 {
     "task": "Atomic updates",
     "url": "https://rosettacode.org/wiki/Atomic_updates",
-    "status": "published"
+    "status": "published",
+    "tags": ["simulation", "async", "concurrency", "classes"],
+    "interest": 3
 }

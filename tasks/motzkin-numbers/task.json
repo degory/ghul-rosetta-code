@@ -1,5 +1,7 @@
 {
     "task": "Motzkin numbers",
     "url": "https://rosettacode.org/wiki/Motzkin_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "generators"],
+    "interest": 3
 }

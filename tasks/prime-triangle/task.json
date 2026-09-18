@@ -1,5 +1,7 @@
 {
     "task": "Prime triangle",
     "url": "https://rosettacode.org/wiki/Prime_triangle",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 3
 }

@@ -1,5 +1,7 @@
 {
     "task": "Dragon curve",
     "url": "https://rosettacode.org/wiki/Dragon_curve",
-    "status": "published"
+    "status": "published",
+    "tags": ["graphics", "fractal", "recursion"],
+    "interest": 5
 }

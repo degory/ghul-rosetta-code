@@ -1,5 +1,7 @@
 {
     "task": "Convert seconds to compound duration",
     "url": "https://rosettacode.org/wiki/Convert_seconds_to_compound_duration",
-    "status": "published"
+    "status": "published",
+    "tags": ["text-processing", "pipes", "generators"],
+    "interest": 2
 }

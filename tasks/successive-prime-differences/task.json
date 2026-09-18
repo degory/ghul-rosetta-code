@@ -1,5 +1,7 @@
 {
     "task": "Successive prime differences",
     "url": "https://rosettacode.org/wiki/Successive_prime_differences",
-    "status": "published"
+    "status": "published",
+    "tags": ["primes", "generators"],
+    "interest": 3
 }

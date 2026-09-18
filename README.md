@@ -259,7 +259,7 @@ dotnet run --project tools/rosetta -- index --check    # what CI runs
 
 Two fields in each `task.json` are written by hand:
 
-- `tags` - two to six tags from `TAGS.json`, most important first. Topic tags say what the task is
+- `tags` - one to six tags from `TAGS.json`, most important first. Topic tags say what the task is
   about; language-feature tags name the ghūl features a reader would come to this solution to
   see, not every feature it happens to use. Adding a tag means adding it to `TAGS.json`, with its
   meaning.

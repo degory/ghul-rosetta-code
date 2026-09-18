@@ -1,5 +1,7 @@
 {
     "task": "Cuban primes",
     "url": "https://rosettacode.org/wiki/Cuban_primes",
-    "status": "published"
+    "status": "published",
+    "tags": ["primes", "pipes", "generators", "algorithms"],
+    "interest": 3
 }

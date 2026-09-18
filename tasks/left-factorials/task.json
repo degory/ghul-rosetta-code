@@ -1,5 +1,7 @@
 {
     "task": "Left factorials",
     "url": "https://rosettacode.org/wiki/Left_factorials",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "pipes", "generators"],
+    "interest": 2
 }

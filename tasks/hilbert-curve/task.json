@@ -1,5 +1,7 @@
 {
     "task": "Hilbert curve",
     "url": "https://rosettacode.org/wiki/Hilbert_curve",
-    "status": "published"
+    "status": "published",
+    "tags": ["graphics", "fractal", "recursion"],
+    "interest": 5
 }

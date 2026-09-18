@@ -1,5 +1,7 @@
 {
     "task": "Fermat numbers",
     "url": "https://rosettacode.org/wiki/Fermat_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "generators"],
+    "interest": 3
 }

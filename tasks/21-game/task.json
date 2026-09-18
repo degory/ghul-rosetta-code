@@ -1,5 +1,7 @@
 {
     "task": "21 game",
     "url": "https://rosettacode.org/wiki/21_game",
-    "status": "published"
+    "status": "published",
+    "tags": ["game", "interactive", "unions", "pattern-matching", "optionals"],
+    "interest": 3
 }

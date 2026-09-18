@@ -1,5 +1,7 @@
 {
     "task": "Erdős-Nicolas numbers",
     "url": "https://rosettacode.org/wiki/Erdős-Nicolas_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 2
 }

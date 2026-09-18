@@ -1,5 +1,7 @@
 {
     "task": "Extreme floating point values",
     "url": "https://rosettacode.org/wiki/Extreme_floating_point_values",
-    "status": "published"
+    "status": "published",
+    "tags": ["maths", "dotnet-interop"],
+    "interest": 2
 }

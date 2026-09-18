@@ -1,5 +1,7 @@
 {
     "task": "Lucky and even lucky numbers",
     "url": "https://rosettacode.org/wiki/Lucky_and_even_lucky_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "unions", "pattern-matching", "optionals"],
+    "interest": 3
 }

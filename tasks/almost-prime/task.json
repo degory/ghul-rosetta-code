@@ -1,5 +1,7 @@
 {
     "task": "Almost prime",
     "url": "https://rosettacode.org/wiki/Almost_prime",
-    "status": "published"
+    "status": "published",
+    "tags": ["primes", "generators", "pipes"],
+    "interest": 2
 }

@@ -1,5 +1,7 @@
 {
     "task": "Cantor set",
     "url": "https://rosettacode.org/wiki/Cantor_set",
-    "status": "published"
+    "status": "published",
+    "tags": ["fractal", "graphics", "recursion"],
+    "interest": 4
 }

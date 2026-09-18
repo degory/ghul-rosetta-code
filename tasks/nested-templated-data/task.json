@@ -1,5 +1,7 @@
 {
     "task": "Nested templated data",
     "url": "https://rosettacode.org/wiki/Nested_templated_data",
-    "status": "published"
+    "status": "published",
+    "tags": ["data-structures", "unions", "pattern-matching", "pipes", "generators"],
+    "interest": 3
 }

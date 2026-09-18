@@ -1,5 +1,7 @@
 {
     "task": "Church numerals",
     "url": "https://rosettacode.org/wiki/Church_numerals",
-    "status": "published"
+    "status": "published",
+    "tags": ["recursion", "generics", "closures"],
+    "interest": 3
 }

@@ -1,5 +1,7 @@
 {
     "task": "Substitution cipher",
     "url": "https://rosettacode.org/wiki/Substitution_cipher",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "dotnet-interop"],
+    "interest": 2
 }

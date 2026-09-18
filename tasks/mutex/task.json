@@ -1,5 +1,7 @@
 {
     "task": "Mutex",
     "url": "https://rosettacode.org/wiki/Mutex",
-    "status": "published"
+    "status": "published",
+    "tags": ["async", "concurrency"],
+    "interest": 3
 }

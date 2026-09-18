@@ -1,5 +1,7 @@
 {
     "task": "Camel case and snake case",
     "url": "https://rosettacode.org/wiki/Camel_case_and_snake_case",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "classes", "pipes"],
+    "interest": 2
 }

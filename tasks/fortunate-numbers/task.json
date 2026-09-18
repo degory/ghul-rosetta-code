@@ -1,5 +1,7 @@
 {
     "task": "Fortunate numbers",
     "url": "https://rosettacode.org/wiki/Fortunate_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "generators"],
+    "interest": 2
 }

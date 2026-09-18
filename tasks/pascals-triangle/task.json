@@ -1,5 +1,7 @@
 {
     "task": "Pascal's triangle",
     "url": "https://rosettacode.org/wiki/Pascal's_triangle",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators"],
+    "interest": 3
 }

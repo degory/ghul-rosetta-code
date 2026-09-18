@@ -1,5 +1,7 @@
 {
     "task": "Stern-Brocot sequence",
     "url": "https://rosettacode.org/wiki/Stern-Brocot_sequence",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "pipes", "optionals"],
+    "interest": 3
 }

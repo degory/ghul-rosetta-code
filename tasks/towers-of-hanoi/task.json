@@ -1,5 +1,7 @@
 {
     "task": "Towers of Hanoi",
     "url": "https://rosettacode.org/wiki/Towers_of_Hanoi",
-    "status": "published"
+    "status": "published",
+    "tags": ["puzzles", "recursion"],
+    "interest": 4
 }

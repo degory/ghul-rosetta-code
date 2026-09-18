@@ -1,5 +1,7 @@
 {
     "task": "Thue-Morse",
     "url": "https://rosettacode.org/wiki/Thue-Morse",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "generators", "pipes"],
+    "interest": 3
 }

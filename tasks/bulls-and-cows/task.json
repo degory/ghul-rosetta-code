@@ -1,5 +1,7 @@
 {
     "task": "Bulls and cows",
     "url": "https://rosettacode.org/wiki/Bulls_and_cows",
-    "status": "published"
+    "status": "published",
+    "tags": ["game", "interactive"],
+    "interest": 4
 }

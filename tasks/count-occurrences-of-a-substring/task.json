@@ -1,5 +1,7 @@
 {
     "task": "Count occurrences of a substring",
     "url": "https://rosettacode.org/wiki/Count_occurrences_of_a_substring",
-    "status": "published"
+    "status": "published",
+    "tags": ["strings", "text-processing"],
+    "interest": 2
 }

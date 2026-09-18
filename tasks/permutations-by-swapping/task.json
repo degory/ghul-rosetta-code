@@ -1,5 +1,7 @@
 {
     "task": "Permutations by swapping",
     "url": "https://rosettacode.org/wiki/Permutations_by_swapping",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "generators"],
+    "interest": 3
 }

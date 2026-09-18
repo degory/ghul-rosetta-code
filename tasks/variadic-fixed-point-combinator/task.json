@@ -1,5 +1,7 @@
 {
     "task": "Variadic fixed-point combinator",
     "url": "https://rosettacode.org/wiki/Variadic_fixed-point_combinator",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "classes", "closures", "recursion"],
+    "interest": 3
 }

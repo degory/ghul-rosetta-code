@@ -1,5 +1,7 @@
 {
     "task": "Combinations with repetitions",
     "url": "https://rosettacode.org/wiki/Combinations_with_repetitions",
-    "status": "published"
+    "status": "published",
+    "tags": ["algorithms", "pipes", "generators", "generics"],
+    "interest": 3
 }

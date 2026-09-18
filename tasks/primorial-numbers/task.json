@@ -1,5 +1,7 @@
 {
     "task": "Primorial numbers",
     "url": "https://rosettacode.org/wiki/Primorial_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "primes", "pattern-matching"],
+    "interest": 2
 }

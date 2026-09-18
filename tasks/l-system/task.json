@@ -1,5 +1,7 @@
 {
     "task": "L-system",
     "url": "https://rosettacode.org/wiki/L-system",
-    "status": "published"
+    "status": "published",
+    "tags": ["graphics", "fractal", "closures"],
+    "interest": 5
 }

@@ -1,5 +1,7 @@
 {
     "task": "Truncate a file",
     "url": "https://rosettacode.org/wiki/Truncate_a_file",
-    "status": "published"
+    "status": "published",
+    "tags": ["dotnet-interop"],
+    "interest": 2
 }

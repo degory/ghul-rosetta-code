@@ -1,5 +1,7 @@
 {
     "task": "Munchausen numbers",
     "url": "https://rosettacode.org/wiki/Munchausen_numbers",
-    "status": "published"
+    "status": "published",
+    "tags": ["number-theory", "recursion", "pipes"],
+    "interest": 2
 }
