@@ -3671,6 +3671,37 @@
       ]
     },
     {
+      "slug": "closest-pair-problem",
+      "title": "Closest-pair problem",
+      "url": "https://rosettacode.org/wiki/Closest-pair_problem",
+      "tags": [
+        "algorithms",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/closest-pair-problem/closest.png.expected"
+      ],
+      "lines": 94,
+      "parts": [
+        {
+          "id": "closest-pair-problem",
+          "heading": null,
+          "source": "tasks/closest-pair-problem/closest-pair-problem.ghul",
+          "output": "tasks/closest-pair-problem/run.expected",
+          "lines": 94,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/closest-pair-problem/closest.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "closures-value-capture",
       "title": "Closures/Value capture",
       "url": "https://rosettacode.org/wiki/Closures/Value_capture",
