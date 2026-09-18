@@ -9,7 +9,6 @@ run(program: string, input: string) -> string is
         cells.add(0)
     od
 
-    // Jump targets, so a loop does not rescan the source for its partner.
     let partner = LIST()
 
     for _ in 0..program.length do
