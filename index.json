@@ -17566,6 +17566,38 @@
       ]
     },
     {
+      "slug": "set-puzzle",
+      "title": "Set puzzle",
+      "url": "https://rosettacode.org/wiki/Set_puzzle",
+      "tags": [
+        "game",
+        "puzzles",
+        "generators",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/set-puzzle/set.png.expected"
+      ],
+      "lines": 160,
+      "parts": [
+        {
+          "id": "set-puzzle",
+          "heading": null,
+          "source": "tasks/set-puzzle/set-puzzle.ghul",
+          "output": "tasks/set-puzzle/run.expected",
+          "lines": 160,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/set-puzzle/set.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "sexy-primes",
       "title": "Sexy primes",
       "url": "https://rosettacode.org/wiki/Sexy_primes",
@@ -18155,6 +18187,37 @@
       ]
     },
     {
+      "slug": "smallest-enclosing-circle-problem",
+      "title": "Smallest enclosing circle problem",
+      "url": "https://rosettacode.org/wiki/Smallest_enclosing_circle_problem",
+      "tags": [
+        "algorithms",
+        "operators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/smallest-enclosing-circle-problem/circle.png.expected"
+      ],
+      "lines": 117,
+      "parts": [
+        {
+          "id": "smallest-enclosing-circle-problem",
+          "heading": null,
+          "source": "tasks/smallest-enclosing-circle-problem/smallest-enclosing-circle-problem.ghul",
+          "output": "tasks/smallest-enclosing-circle-problem/run.expected",
+          "lines": 117,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/smallest-enclosing-circle-problem/circle.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "smarandache-prime-digital-sequence",
       "title": "Smarandache prime-digital sequence",
       "url": "https://rosettacode.org/wiki/Smarandache_prime-digital_sequence",
@@ -18338,6 +18401,37 @@
           "input": false,
           "images": [
             "tasks/solve-a-holy-knight-s-tour/tour.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "solve-a-hopido-puzzle",
+      "title": "Solve a Hopido puzzle",
+      "url": "https://rosettacode.org/wiki/Solve_a_Hopido_puzzle",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/solve-a-hopido-puzzle/hopido.png.expected"
+      ],
+      "lines": 118,
+      "parts": [
+        {
+          "id": "solve-a-hopido-puzzle",
+          "heading": null,
+          "source": "tasks/solve-a-hopido-puzzle/solve-a-hopido-puzzle.ghul",
+          "output": "tasks/solve-a-hopido-puzzle/run.expected",
+          "lines": 118,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/solve-a-hopido-puzzle/hopido.png.expected"
           ]
         }
       ]
@@ -19483,6 +19577,94 @@
       ]
     },
     {
+      "slug": "statistics-basic",
+      "title": "Statistics/Basic",
+      "url": "https://rosettacode.org/wiki/Statistics/Basic",
+      "tags": [
+        "maths",
+        "generators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/statistics-basic/histograms.png.expected"
+      ],
+      "lines": 108,
+      "parts": [
+        {
+          "id": "statistics-basic",
+          "heading": null,
+          "source": "tasks/statistics-basic/statistics-basic.ghul",
+          "output": "tasks/statistics-basic/run.expected",
+          "lines": 108,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/statistics-basic/histograms.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "statistics-normal-distribution",
+      "title": "Statistics/Normal distribution",
+      "url": "https://rosettacode.org/wiki/Statistics/Normal_distribution",
+      "tags": [
+        "maths",
+        "generators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/statistics-normal-distribution/normal.png.expected"
+      ],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "statistics-normal-distribution",
+          "heading": null,
+          "source": "tasks/statistics-normal-distribution/statistics-normal-distribution.ghul",
+          "output": "tasks/statistics-normal-distribution/run.expected",
+          "lines": 88,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/statistics-normal-distribution/normal.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "stem-and-leaf-plot",
+      "title": "Stem-and-leaf plot",
+      "url": "https://rosettacode.org/wiki/Stem-and-leaf_plot",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 25,
+      "parts": [
+        {
+          "id": "stem-and-leaf-plot",
+          "heading": null,
+          "source": "tasks/stem-and-leaf-plot/stem-and-leaf-plot.ghul",
+          "output": "tasks/stem-and-leaf-plot/run.expected",
+          "lines": 25,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "stern-brocot-sequence",
       "title": "Stern-Brocot sequence",
       "url": "https://rosettacode.org/wiki/Stern-Brocot_sequence",
@@ -20406,6 +20588,36 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sunflower-fractal",
+      "title": "Sunflower fractal",
+      "url": "https://rosettacode.org/wiki/Sunflower_fractal",
+      "tags": [
+        "fractal",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/sunflower-fractal/sunflower.png.expected"
+      ],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "sunflower-fractal",
+          "heading": null,
+          "source": "tasks/sunflower-fractal/sunflower-fractal.ghul",
+          "output": "tasks/sunflower-fractal/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/sunflower-fractal/sunflower.png.expected"
+          ]
         }
       ]
     },
@@ -22436,6 +22648,37 @@
       ]
     },
     {
+      "slug": "weiler-atherton-polygon-clipping",
+      "title": "Weiler-Atherton polygon clipping",
+      "url": "https://rosettacode.org/wiki/Weiler-Atherton_polygon_clipping",
+      "tags": [
+        "algorithms",
+        "operators",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/weiler-atherton-polygon-clipping/clipped.png.expected"
+      ],
+      "lines": 186,
+      "parts": [
+        {
+          "id": "weiler-atherton-polygon-clipping",
+          "heading": null,
+          "source": "tasks/weiler-atherton-polygon-clipping/weiler-atherton-polygon-clipping.ghul",
+          "output": "tasks/weiler-atherton-polygon-clipping/run.expected",
+          "lines": 186,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/weiler-atherton-polygon-clipping/clipped.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "weird-numbers",
       "title": "Weird numbers",
       "url": "https://rosettacode.org/wiki/Weird_numbers",
@@ -22670,6 +22913,32 @@
           "source": "tasks/words-containing-the-substring/words-containing-the-substring.ghul",
           "output": "tasks/words-containing-the-substring/run.expected",
           "lines": 7,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "write-language-name-in-3d-ascii",
+      "title": "Write language name in 3D ASCII",
+      "url": "https://rosettacode.org/wiki/Write_language_name_in_3D_ASCII",
+      "tags": [
+        "strings",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "write-language-name-in-3d-ascii",
+          "heading": null,
+          "source": "tasks/write-language-name-in-3d-ascii/write-language-name-in-3d-ascii.ghul",
+          "output": "tasks/write-language-name-in-3d-ascii/run.expected",
+          "lines": 50,
           "playground": true,
           "input": false,
           "images": []
@@ -22936,6 +23205,36 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "zhang-suen-thinning-algorithm",
+      "title": "Zhang-Suen thinning algorithm",
+      "url": "https://rosettacode.org/wiki/Zhang-Suen_thinning_algorithm",
+      "tags": [
+        "algorithms",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/zhang-suen-thinning-algorithm/thinned.png.expected"
+      ],
+      "lines": 135,
+      "parts": [
+        {
+          "id": "zhang-suen-thinning-algorithm",
+          "heading": null,
+          "source": "tasks/zhang-suen-thinning-algorithm/zhang-suen-thinning-algorithm.ghul",
+          "output": "tasks/zhang-suen-thinning-algorithm/run.expected",
+          "lines": 135,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/zhang-suen-thinning-algorithm/thinned.png.expected"
+          ]
         }
       ]
     },

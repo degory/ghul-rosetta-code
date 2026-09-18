@@ -1,0 +1,29 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+let seeds = 3000
+let phi = (Math.sqrt(5.0D) + 1.0D) / 2.0D
+
+let image = IMAGE(400, 400)
+
+image.view(-200.0D, -200.0D, 200.0D, 200.0D)
+image.clear(255ub, 255ub, 255ub)
+image.colour(0ub, 0ub, 255ub)
+image.stroke(1.0D)
+
+for i in 0::seeds do
+    let n = cast double(i)
+    let r = Math.pow(n, phi) / cast double(seeds)
+    let angle = 2.0D * Math.pi * phi * n
+
+    image.circle(
+        r * Math.sin(angle), r * Math.cos(angle),
+        5.0D * n / cast double(seeds))
+od
+
+write_line("{seeds} seeds, each turned the golden angle from the last")
+
+image.write("sunflower.png")
+
+image.show("sunflower.png")

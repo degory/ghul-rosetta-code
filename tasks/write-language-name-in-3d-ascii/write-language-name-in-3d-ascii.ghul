@@ -1,0 +1,50 @@
+use default
+
+let letters = [
+    [" ####", "#    ", "#    ", "# ###", "#   #", "#   #", " ####"],
+    ["#   #", "#   #", "#   #", "#####", "#   #", "#   #", "#   #"],
+    ["#   #", "#   #", "#   #", "#   #", "#   #", "#   #", " ### "],
+    ["#    ", "#    ", "#    ", "#    ", "#    ", "#    ", "#####"]
+]
+
+let rows = 7
+let bitmap =
+    (0..rows)
+        |> map(row => letters |> map(l => l[row]) |> join(" "))
+        |> collect_list()
+
+let columns = bitmap[0].length
+
+let width = 2 * columns + rows + 2
+let canvas =
+    (0..rows + 1)
+        |> map(_ => repeat(' ', width) |> collect_list())
+        |> collect_list()
+
+filled(row: int, column: int) -> bool =>
+    row >= 0 /\ row < rows /\ column >= 0 /\ column < columns /\
+        bitmap[row][column] == '#'
+
+for row in 0..rows do
+    for column in 0..columns do
+        if filled(row, column) then
+            let x = 2 * column + rows - row
+
+            canvas[row][x] = '#'
+            canvas[row][x + 1] = '#'
+
+            if !filled(row + 1, column) then
+                canvas[row + 1][x - 1] = '/'
+                canvas[row + 1][x] = '/'
+            fi
+
+            if !filled(row, column + 1) then
+                canvas[row][x + 2] = '\\'
+            fi
+        fi
+    od
+od
+
+for line in canvas do
+    write_line((line |> map(c => "{c}") |> join("")).trim_end())
+od

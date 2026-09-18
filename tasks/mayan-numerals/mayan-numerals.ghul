@@ -1,7 +1,7 @@
 use default
 
-let dots = ["    ", " ∙  ", " ∙∙ ", "∙∙∙ ", "∙∙∙∙"]
-let bar = "────"
+let dots = ["    ", " o  ", " oo ", "ooo ", "oooo"]
+let bar = "===="
 
 vigesimal(n: int) -> List[int] is
     let digits = LIST[int]()
@@ -21,7 +21,7 @@ glyph(digit: int) -> string[] is
     let rows = ["    ", "    ", "    ", "    "] |> collect_list()
 
     if digit == 0 then
-        rows[3] = " Θ  "
+        rows[3] = " @  "
     else
         let bars = digit / 5
 
@@ -39,15 +39,15 @@ si
 
 cartouche(n: int) -> List[string] is
     let glyphs = vigesimal(n) |> map(glyph) |> collect_list()
-    let across = glyphs |> map(_ => "════") |> collect_list()
+    let across = glyphs |> map(_ => "----") |> collect_list()
 
-    let lines = LIST(["╔{across |> join("╦")}╗"])
+    let lines = LIST(["+{across |> join("+")}+"])
 
     for row in 0..4 do
-        lines.add("║{glyphs |> map(g => g[row]) |> join("║")}║")
+        lines.add("|{glyphs |> map(g => g[row]) |> join("|")}|")
     od
 
-    lines.add("╚{across |> join("╩")}╝")
+    lines.add("+{across |> join("+")}+")
 
     lines
 si

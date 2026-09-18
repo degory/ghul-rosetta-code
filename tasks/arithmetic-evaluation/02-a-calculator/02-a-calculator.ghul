@@ -151,8 +151,8 @@ draw(expression: Expression, prefix: string, stem: string) is
 
         draw(
             child.value,
-            "{prefix}{if last then "   " else "│  " fi}",
-            "{prefix}{if last then "└─ " else "├─ " fi}")
+            "{prefix}{if last then "   " else "|  " fi}",
+            "{prefix}{if last then "\\- " else "+- " fi}")
     od
 si
 

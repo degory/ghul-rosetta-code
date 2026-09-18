@@ -1,0 +1,160 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+let colours = ["red", "green", "purple"]
+let numbers = ["one", "two", "three"]
+let symbols = ["oval", "squiggle", "diamond"]
+let shadings = ["solid", "open", "striped"]
+
+struct CARD(colour: int, number: int, symbol: int, shading: int) is
+    to_string() -> string =>
+        "{colours[colour]}, {numbers[number]}, "
+        "{symbols[symbol]}, {shadings[shading]}"
+si
+
+use Triple = (CARD, CARD, CARD)
+
+is_set(t: Triple) -> bool =>
+    let (a, b, c) = t in
+    (a.colour + b.colour + c.colour) % 3 == 0 /\
+    (a.number + b.number + c.number) % 3 == 0 /\
+    (a.symbol + b.symbol + c.symbol) % 3 == 0 /\
+    (a.shading + b.shading + c.shading) % 3 == 0
+
+triples(cards: List[CARD]) -> Pipe[Triple] is
+    for i in 0..cards.count do
+        for j in i + 1..cards.count do
+            for k in j + 1..cards.count do
+                yield (cards[i], cards[j], cards[k])
+            od
+        od
+    od
+si
+
+let deck =
+    (0..81)
+        |> map(i => CARD(i % 3, i / 3 % 3, i / 9 % 3, i / 27))
+        |> collect_list()
+
+let random = System.Random(81)
+
+deal(size: int) -> List[CARD] is
+    for i in 0..size do
+        let other = i + random.next(deck.count - i)
+        let held = deck[i]
+
+        deck[i] = deck[other]
+        deck[other] = held
+    od
+
+    return deck |> take(size) |> collect_list()
+si
+
+puzzle(size: int, wanted: int) -> List[CARD] is
+    do
+        let cards = deal(size)
+
+        if triples(cards) |> filter(is_set) |> count() == wanted then
+            return cards
+        fi
+    od
+si
+
+let deals = [
+    (mode = "basic", cards = puzzle(9, 4), wanted = 4),
+    (mode = "advanced", cards = puzzle(12, 6), wanted = 6)
+]
+
+for (mode, cards, wanted) in deals do
+    write_line("{mode}: dealt {cards.count} cards")
+
+    for card in cards do
+        write_line("    {card}")
+    od
+
+    write_line()
+    write_line("containing {wanted} sets")
+
+    for (a, b, c) in triples(cards) |> filter(is_set) do
+        write_line()
+        write_line("    {a}")
+        write_line("    {b}")
+        write_line("    {c}")
+    od
+
+    write_line()
+od
+
+let inks = [
+    (220ub, 30ub, 50ub), (20ub, 150ub, 60ub), (110ub, 40ub, 150ub)]
+
+outline(symbol: int, x: double, y: double)
+        -> List[(x: double, y: double)] =>
+    let steps = 32 in
+    (0..steps)
+        |> map(i =>
+            let turn = cast double(i) / cast double(steps) in
+            let t = 2.0D * Math.pi * turn in
+            case symbol
+            when 0 then
+                (x = x + 8.0D * Math.cos(t), y = y + 18.0D * Math.sin(t))
+            when 1 then
+                let dy = 18.0D * Math.sin(t) in
+                (x = x + 7.0D * Math.cos(t) + 4.0D * Math.sin(dy / 6.0D),
+                 y = y + dy)
+            else
+                let s = Math.sin(t) in
+                let c = Math.cos(t) in
+                let k = 1.0D / (Math.abs(s) + Math.abs(c)) in
+                (x = x + 9.0D * c * k, y = y + 19.0D * s * k)
+            esac)
+        |> collect_list()
+
+let card_width = 120.0D
+let card_height = 72.0D
+let gap = 12.0D
+
+let image = IMAGE(
+    cast int(4.0D * card_width + 5.0D * gap),
+    cast int(3.0D * card_height + 4.0D * gap))
+
+image.view(
+    0.0D, cast double(image.height), cast double(image.width), 0.0D)
+image.clear(40ub, 90ub, 60ub)
+
+for (card, place) in
+        deals[1].cards |> index() |> map(iv => (iv.value, iv.index)) do
+    let left = gap + cast double(place % 4) * (card_width + gap)
+    let top = gap + cast double(place / 4) * (card_height + gap)
+    let (red, green, blue) = inks[card.colour]
+
+    image.colour(255ub, 255ub, 252ub)
+    image.fill_rectangle(
+        left, top, left + card_width, top + card_height)
+
+    for i in 0..card.number + 1 do
+        let offset = cast double(i) - cast double(card.number) / 2.0D
+        let x = left + card_width / 2.0D + 26.0D * offset
+        let shape = outline(card.symbol, x, top + card_height / 2.0D)
+
+        if card.shading == 0 then
+            image.colour(red, green, blue)
+            image.fill(shape)
+        elif card.shading == 2 then
+            image.colour(
+                cast ubyte(255 - (255 - cast int(red)) / 3),
+                cast ubyte(255 - (255 - cast int(green)) / 3),
+                cast ubyte(255 - (255 - cast int(blue)) / 3))
+            image.fill(shape)
+        fi
+
+        image.colour(red, green, blue)
+        image.stroke(2.0D)
+        image.line(shape |> cat([shape[0]]) |> collect_list())
+    od
+od
+
+image.write("set.png")
+
+image.show("set.png")
