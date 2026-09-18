@@ -14951,6 +14951,32 @@
       ]
     },
     {
+      "slug": "snake",
+      "title": "Snake",
+      "url": "https://rosettacode.org/wiki/Snake",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "snake",
+          "heading": null,
+          "source": "tasks/snake/snake.ghul",
+          "output": "tasks/snake/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "snake-and-ladder",
       "title": "Snake and ladder",
       "url": "https://rosettacode.org/wiki/Snake_and_ladder",
