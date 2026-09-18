@@ -255,6 +255,37 @@
       ]
     },
     {
+      "slug": "a-search-algorithm",
+      "title": "A* search algorithm",
+      "url": "https://rosettacode.org/wiki/A*_search_algorithm",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "generators"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/a-search-algorithm/route.png.expected"
+      ],
+      "lines": 191,
+      "parts": [
+        {
+          "id": "a-search-algorithm",
+          "heading": null,
+          "source": "tasks/a-search-algorithm/a-search-algorithm.ghul",
+          "output": "tasks/a-search-algorithm/run.expected",
+          "lines": 191,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/a-search-algorithm/route.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "abbreviations-easy",
       "title": "Abbreviations, easy",
       "url": "https://rosettacode.org/wiki/Abbreviations,_easy",
