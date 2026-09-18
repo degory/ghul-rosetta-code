@@ -4340,6 +4340,32 @@
       ]
     },
     {
+      "slug": "deal-cards-for-freecell",
+      "title": "Deal cards for FreeCell",
+      "url": "https://rosettacode.org/wiki/Deal_cards_for_FreeCell",
+      "tags": [
+        "game",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "deal-cards-for-freecell",
+          "heading": null,
+          "source": "tasks/deal-cards-for-freecell/deal-cards-for-freecell.ghul",
+          "output": "tasks/deal-cards-for-freecell/run.expected",
+          "lines": 46,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "death-star",
       "title": "Death Star",
       "url": "https://rosettacode.org/wiki/Death_Star",
