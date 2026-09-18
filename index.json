@@ -10014,6 +10014,36 @@
       ]
     },
     {
+      "slug": "langton-s-ant",
+      "title": "Langton's ant",
+      "url": "https://rosettacode.org/wiki/Langton's_ant",
+      "tags": [
+        "simulation",
+        "graphics"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/langton-s-ant/ant.png.expected"
+      ],
+      "lines": 67,
+      "parts": [
+        {
+          "id": "langton-s-ant",
+          "heading": null,
+          "source": "tasks/langton-s-ant/langton-s-ant.ghul",
+          "output": "tasks/langton-s-ant/run.expected",
+          "lines": 67,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/langton-s-ant/ant.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "largest-int-from-concatenated-ints",
       "title": "Largest int from concatenated ints",
       "url": "https://rosettacode.org/wiki/Largest_int_from_concatenated_ints",

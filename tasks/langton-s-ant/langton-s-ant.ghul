@@ -1,0 +1,67 @@
+use default
+use Raster.ANIMATION
+use Raster.IMAGE
+
+let size = 100
+let pixels = 180
+let steps_per_frame = 250
+
+let black = LIST[bool](System.Linq.Enumerable.repeat(false, size * size))
+
+let row_steps = [-1, 0, 1, 0]
+let column_steps = [0, 1, 0, -1]
+
+draw(image: IMAGE, row: int, column: int) is
+    image.clear(250ub, 250ub, 247ub)
+    image.colour(30ub, 30ub, 40ub)
+
+    for i in 0..size * size do
+        if black[i] then
+            let x = cast double(i % size)
+            let y = cast double(i / size)
+
+            image.fill_rectangle(x, y, x + 1.0D, y + 1.0D)
+        fi
+    od
+
+    image.colour(220ub, 50ub, 40ub)
+    image.fill_rectangle(
+        cast double(column) - 0.5D, cast double(row) - 0.5D,
+        cast double(column) + 1.5D, cast double(row) + 1.5D)
+si
+
+let image = IMAGE(pixels, pixels)
+
+image.view(0.0D, 0.0D, cast double(size), cast double(size))
+
+let animation = ANIMATION(pixels, pixels)
+
+let row mut = size / 2
+let column mut = size / 2
+let facing mut = 0
+let steps mut = 0
+
+while row >= 0 /\ row < size /\ column >= 0 /\ column < size do
+    if steps % steps_per_frame == 0 then
+        draw(image, row, column)
+        animation.add(image, 40)
+    fi
+
+    let here = row * size + column
+
+    facing = (facing + if black[here] then 3 else 1 fi) % 4
+    black[here] = !black[here]
+
+    row = row + row_steps[facing]
+    column = column + column_steps[facing]
+    steps = steps + 1
+od
+
+write_line("the ant left the field after {steps} steps")
+
+draw(image, row, column)
+animation.add(image, 3000)
+
+animation.write("ant.png")
+
+animation.show("ant.png")
