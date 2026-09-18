@@ -3961,6 +3961,33 @@
       ]
     },
     {
+      "slug": "countdown",
+      "title": "Countdown",
+      "url": "https://rosettacode.org/wiki/Countdown",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "generators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 112,
+      "parts": [
+        {
+          "id": "countdown",
+          "heading": null,
+          "source": "tasks/countdown/countdown.ghul",
+          "output": "tasks/countdown/run.expected",
+          "lines": 112,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "crc-32",
       "title": "CRC-32",
       "url": "https://rosettacode.org/wiki/CRC-32",
