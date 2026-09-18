@@ -1,0 +1,283 @@
+use default
+use IO.Std.write
+
+union Term is
+    VAR(index: int)
+    LAM(body: Term)
+    APP(function: Term, argument: Term)
+    ATOM(tag: int)
+    PAIR
+si
+
+class ENV(first: THUNK, rest: ENV?)
+
+class WHNF(term: Term, env: ENV?, head: THUNK?, tail: THUNK?)
+
+class THUNK(term: Term, env: ENV?) is
+    value: WHNF? public
+si
+
+class FRAME(thunk: THUNK, update: bool)
+
+enum Kind is
+    FUNCTION,
+    CONSTANT,
+    CONS
+si
+
+class RESULT(kind: Kind, tag: int, head: THUNK?, tail: THUNK?)
+
+lookup(env: ENV?, index: int) -> THUNK is
+    let e mut = env!
+
+    for _ in 1..index do
+        e = e.rest!
+    od
+
+    e.first
+si
+
+evaluate(start: THUNK, arguments: List[THUNK]) -> RESULT is
+    let stack = STACK[FRAME]()
+
+    for i in 0..arguments.count do
+        stack.push(FRAME(arguments[arguments.count - 1 - i], false))
+    od
+
+    let settle = (value: WHNF) is
+        while stack.count > 0 /\ stack.peek().update do
+            stack.pop().thunk.value = value
+        od
+    si
+
+    let pair = (head: THUNK, tail: THUNK) is
+        settle(WHNF(Term.PAIR, null, head, tail))
+    si
+
+    let term mut = start.term
+    let env mut = start.env
+
+    if let value = start.value then
+        term = value.term
+        env = value.env
+    else
+        stack.push(FRAME(start, true))
+    fi
+
+    do
+        case term
+        when (function, argument): Term.APP then
+            stack.push(FRAME(THUNK(argument, env), false))
+            term = function
+        when (body): Term.LAM then
+            settle(WHNF(term, env, null, null))
+
+            if stack.count == 0 then
+                return RESULT(Kind.FUNCTION, 0, null, null)
+            fi
+
+            env = ENV(stack.pop().thunk, env)
+            term = body
+        when (index): Term.VAR then
+            let thunk = lookup(env, index)
+
+            if let value = thunk.value then
+                if let head = value.head then
+                    pair(head, value.tail!)
+
+                    return RESULT(Kind.CONS, 0, head, value.tail)
+                fi
+
+                term = value.term
+                env = value.env
+            else
+                stack.push(FRAME(thunk, true))
+                term = thunk.term
+                env = thunk.env
+            fi
+        when (tag): Term.ATOM then
+            settle(WHNF(term, null, null, null))
+
+            return RESULT(Kind.CONSTANT, tag, null, null)
+        else
+            let head = stack.pop().thunk
+            let tail = stack.pop().thunk
+
+            pair(head, tail)
+
+            return RESULT(Kind.CONS, 0, head, tail)
+        esac
+    od
+si
+
+let truth = Term.LAM(Term.LAM(Term.VAR(2)))
+let falsity = Term.LAM(Term.LAM(Term.VAR(1)))
+
+cons(head: Term, tail: Term) -> Term =>
+    Term.LAM(Term.APP(Term.APP(Term.VAR(1), head), tail))
+
+bit(b: bool) -> Term => if b then falsity else truth fi
+
+byte(b: int) -> Term is
+    let result mut = falsity
+
+    for i in 0..8 do
+        result = cons(bit((b >> i) & 1 == 1), result)
+    od
+
+    result
+si
+
+list(items: List[Term]) -> Term is
+    let result mut = falsity
+
+    for i in 0..items.count do
+        result = cons(items[items.count - 1 - i], result)
+    od
+
+    result
+si
+
+class READER(bits: List[bool]) is
+    at: int public
+
+    next() -> bool is
+        at = at + 1
+        bits[at - 1]
+    si
+
+    term() -> Term is
+        if !next() then
+            return if !next() then Term.LAM(term())
+                else Term.APP(term(), term())
+                fi
+        fi
+
+        let index mut = 1
+
+        while next() do
+            index = index + 1
+        od
+
+        Term.VAR(index)
+    si
+si
+
+constant(term: Term) -> THUNK is
+    let thunk = THUNK(term, null)
+
+    thunk.value = WHNF(term, null, null, null)
+    thunk
+si
+
+let top = constant(Term.PAIR)
+let zero = constant(Term.ATOM(0))
+let one = constant(Term.ATOM(1))
+
+items(thunk: THUNK, limit: int) -> Pipe[THUNK] is
+    let rest mut = thunk
+    let count mut = 0
+
+    while count < limit do
+        let cell = evaluate(rest, [top])
+
+        if cell.kind != Kind.CONS then
+            return
+        fi
+
+        yield cell.head!
+        rest = cell.tail!
+        count = count + 1
+    od
+si
+
+bit_of(thunk: THUNK) -> int => evaluate(thunk, [zero, one]).tag
+
+bits_of(bytes: List[int]) -> List[bool] =>
+    bytes
+        |> flat_map(b => (0..8) |> map(i => (b >> (7 - i)) & 1 == 1))
+        |> collect_list()
+
+run_bits(program: string, limit: int) -> string is
+    let bits = program |> map(c => c == '1') |> collect_list()
+    let reader = READER(bits)
+    let term = reader.term()
+    let input = list(bits |> skip(reader.at) |> map(bit) |> collect_list())
+
+    items(THUNK(Term.APP(term, input), null), limit)
+        |> map(t => "{bit_of(t)}")
+        |> join("")
+si
+
+run_bytes(bytes: List[int], limit: int) -> string is
+    let reader = READER(bits_of(bytes))
+    let term = reader.term()
+    let used = (reader.at + 7) / 8
+    let rest = bytes |> skip(used) |> map(byte) |> collect_list()
+
+    items(THUNK(Term.APP(term, list(rest)), null), limit)
+        |> map(b =>
+            let value =
+                items(b, 8) |> reduce(0, (a, t) => a * 2 + bit_of(t)) in
+            "{cast char(value)}")
+        |> join("")
+si
+
+let programs = [
+    (name = "the 342 bit program", limit = 1000, program =
+        "0101000110100000000110000101100111100000100101111101111000010101"
+        "1000000001100001111100000010111111011001011111101100101111010011"
+        "1010111100010000001011100101010001101000000000010110000101011111"
+        "1011111000000101011110111110111111000010110000001011111110101101"
+        "1100000011111100001011011110111001111010000001011000001101100010"
+        "0000101111000111001110"
+    ),
+    (name = "the quine", limit = 1000, program =
+        "0001011001000110100000000000010110111100101111001111110111110110"
+        "1000010110010001101000000000000101101111001011110011111101111101"
+        "1010"
+    ),
+    (name = "100 doors", limit = 100, program =
+        "0001000100010101000110100000010110000011001110110010100011010000"
+        "0000001011111110000001011111010110010110010001101000011111001101"
+        "0010111110111100000000101111111111011001100111111101110000000010"
+        "1111110000001011111010110011011100101011000000101111011001011110"
+        "0111100111101101000000000010110111001110111100000000010000001110"
+        "01110100000000101101110110"
+    ),
+    (name = "the sieve of Eratosthenes", limit = 100, program =
+        "0001000110011001010001101000000001011000001001000101011111011110"
+        "1001000110100001110011010000000000101101110011100111111101111000"
+        "000001111100110111000000101100000110110"
+    )
+]
+
+write_line("bit mode")
+
+for (name, limit, program) in programs do
+    write_line()
+    write_line("{name}:")
+    write_line(run_bits(program, limit))
+od
+
+let query = "010000011100111001110100000011100111010"
+
+let symbolic =
+    IO.File.read_all_bytes("symbolic.Blc")
+        |> map(b => cast int(b))
+        |> cat(query |> map(c => cast int(c)))
+        |> collect_list()
+
+let hilbert =
+    IO.File.read_all_bytes("hilbert.Blc")
+        |> map(b => cast int(b))
+        |> collect_list()
+
+write_line()
+write_line("byte mode")
+write_line()
+write_line("hilbert.Blc, which ends with the input 123:")
+write(run_bytes(hilbert, 100000))
+write_line()
+write_line("symbolic.Blc with input {query}:")
+write(run_bytes(symbolic, 100000))

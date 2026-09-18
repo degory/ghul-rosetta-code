@@ -22269,6 +22269,33 @@
       ]
     },
     {
+      "slug": "universal-lambda-machine",
+      "title": "Universal Lambda Machine",
+      "url": "https://rosettacode.org/wiki/Universal_Lambda_Machine",
+      "tags": [
+        "algorithms",
+        "unions",
+        "generators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 283,
+      "parts": [
+        {
+          "id": "universal-lambda-machine",
+          "heading": null,
+          "source": "tasks/universal-lambda-machine/universal-lambda-machine.ghul",
+          "output": "tasks/universal-lambda-machine/run.expected",
+          "lines": 283,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "universal-turing-machine",
       "title": "Universal Turing machine",
       "url": "https://rosettacode.org/wiki/Universal_Turing_machine",
