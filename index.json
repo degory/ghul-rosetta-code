@@ -5506,6 +5506,37 @@
       ]
     },
     {
+      "slug": "divide-a-rectangle-into-a-number-of-unequal-triangles",
+      "title": "Divide a rectangle into a number of unequal triangles",
+      "url": "https://rosettacode.org/wiki/Divide_a_rectangle_into_a_number_of_unequal_triangles",
+      "tags": [
+        "maths",
+        "graphics",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/divide-a-rectangle-into-a-number-of-unequal-triangles/triangles.png.expected"
+      ],
+      "lines": 142,
+      "parts": [
+        {
+          "id": "divide-a-rectangle-into-a-number-of-unequal-triangles",
+          "heading": null,
+          "source": "tasks/divide-a-rectangle-into-a-number-of-unequal-triangles/divide-a-rectangle-into-a-number-of-unequal-triangles.ghul",
+          "output": "tasks/divide-a-rectangle-into-a-number-of-unequal-triangles/run.expected",
+          "lines": 142,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/divide-a-rectangle-into-a-number-of-unequal-triangles/triangles.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "doomsday-rule",
       "title": "Doomsday rule",
       "url": "https://rosettacode.org/wiki/Doomsday_rule",
