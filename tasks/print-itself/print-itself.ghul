@@ -1,0 +1,1 @@
+IO.Std.write(IO.File.read_all_text("print-itself.ghul"))
