@@ -4760,6 +4760,36 @@
       ]
     },
     {
+      "slug": "curve-that-touches-three-points",
+      "title": "Curve that touches three points",
+      "url": "https://rosettacode.org/wiki/Curve_that_touches_three_points",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/curve-that-touches-three-points/curve.png.expected"
+      ],
+      "lines": 76,
+      "parts": [
+        {
+          "id": "curve-that-touches-three-points",
+          "heading": null,
+          "source": "tasks/curve-that-touches-three-points/curve-that-touches-three-points.ghul",
+          "output": "tasks/curve-that-touches-three-points/run.expected",
+          "lines": 76,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/curve-that-touches-three-points/curve.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "curzon-numbers",
       "title": "Curzon numbers",
       "url": "https://rosettacode.org/wiki/Curzon_numbers",
