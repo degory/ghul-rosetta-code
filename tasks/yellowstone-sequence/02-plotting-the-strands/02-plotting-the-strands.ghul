@@ -1,0 +1,65 @@
+use default
+use Raster.AXES
+use Raster.IMAGE
+
+gcd(a: int, b: int) -> int => if b == 0 then a else gcd(b, a % b) fi
+
+yellowstone(count: int) -> LIST[int] is
+    let terms = LIST([1, 2, 3])
+    let used = SET([1, 2, 3])
+
+    while terms.count < count do
+        let previous = terms[terms.count - 1]
+        let before_previous = terms[terms.count - 2]
+        let candidate mut = 1
+
+        while used.contains(candidate) \/
+                gcd(candidate, previous) != 1 \/
+                gcd(candidate, before_previous) == 1 do
+            candidate = candidate + 1
+        od
+
+        terms.add(candidate)
+        used.add(candidate)
+    od
+
+    terms
+si
+
+let terms = yellowstone(500)
+
+let highest = terms
+    |> reduce(0, (so_far, term) =>
+        if term > so_far then term else so_far fi)
+
+let points = terms
+    |> index()
+    |> map(term =>
+        (x = cast double(term.index + 1), y = cast double(term.value)))
+    |> collect_list()
+
+let image = IMAGE(760, 470)
+
+image.colour(90ub, 95ub, 110ub)
+image.stroke(1.0)
+
+let axes = AXES(image)
+
+axes.x_title = "n"
+axes.y_title = "a(n)"
+
+axes.fit(0.0, 0.0, cast double(terms.count), cast double(highest) + 20.0)
+axes.draw()
+
+image.colour(170ub, 180ub, 205ub)
+image.line(points)
+
+image.colour(30ub, 70ub, 140ub)
+
+for point in points do
+    image.dot(point.x, point.y, 1.7)
+od
+
+image.write("yellowstone.png")
+
+image.show("yellowstone.png")

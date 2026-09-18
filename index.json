@@ -1073,24 +1073,35 @@
       "url": "https://rosettacode.org/wiki/Arithmetic_evaluation",
       "tags": [
         "parsing",
-        "recursion",
+        "interactive",
         "unions",
-        "pattern-matching"
+        "pattern-matching",
+        "recursion"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
-      "input": false,
+      "input": true,
       "images": [],
-      "lines": 150,
+      "lines": 329,
       "parts": [
         {
-          "id": "arithmetic-evaluation",
-          "heading": null,
-          "source": "tasks/arithmetic-evaluation/arithmetic-evaluation.ghul",
-          "output": "tasks/arithmetic-evaluation/run.expected",
+          "id": "arithmetic-evaluation/01-parsing-and-evaluating",
+          "heading": "Parsing and evaluating",
+          "source": "tasks/arithmetic-evaluation/01-parsing-and-evaluating/01-parsing-and-evaluating.ghul",
+          "output": "tasks/arithmetic-evaluation/01-parsing-and-evaluating/run.expected",
           "lines": 150,
           "playground": true,
           "input": false,
+          "images": []
+        },
+        {
+          "id": "arithmetic-evaluation/02-a-calculator",
+          "heading": "A calculator",
+          "source": "tasks/arithmetic-evaluation/02-a-calculator/02-a-calculator.ghul",
+          "output": "tasks/arithmetic-evaluation/02-a-calculator/run.expected",
+          "lines": 179,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -3809,23 +3820,38 @@
       "url": "https://rosettacode.org/wiki/Conway's_Game_of_Life",
       "tags": [
         "simulation",
+        "graphics",
         "pipes"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 82,
+      "images": [
+        "tasks/conways-game-of-life/02-a-glider-gun/gun.png.expected"
+      ],
+      "lines": 184,
       "parts": [
         {
-          "id": "conways-game-of-life",
-          "heading": null,
-          "source": "tasks/conways-game-of-life/conways-game-of-life.ghul",
-          "output": "tasks/conways-game-of-life/run.expected",
+          "id": "conways-game-of-life/01-a-blinker",
+          "heading": "A blinker",
+          "source": "tasks/conways-game-of-life/01-a-blinker/01-a-blinker.ghul",
+          "output": "tasks/conways-game-of-life/01-a-blinker/run.expected",
           "lines": 82,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "conways-game-of-life/02-a-glider-gun",
+          "heading": "A glider gun",
+          "source": "tasks/conways-game-of-life/02-a-glider-gun/02-a-glider-gun.ghul",
+          "output": "tasks/conways-game-of-life/02-a-glider-gun/run.expected",
+          "lines": 102,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/conways-game-of-life/02-a-glider-gun/gun.png.expected"
+          ]
         }
       ]
     },
@@ -4531,23 +4557,38 @@
       "url": "https://rosettacode.org/wiki/Dijkstra's_algorithm",
       "tags": [
         "algorithms",
+        "graphics",
         "pipes"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 66,
+      "images": [
+        "tasks/dijkstras-algorithm/02-the-graph-drawn/dijkstra.png.expected"
+      ],
+      "lines": 205,
       "parts": [
         {
-          "id": "dijkstras-algorithm",
-          "heading": null,
-          "source": "tasks/dijkstras-algorithm/dijkstras-algorithm.ghul",
-          "output": "tasks/dijkstras-algorithm/run.expected",
+          "id": "dijkstras-algorithm/01-the-shortest-paths",
+          "heading": "The shortest paths",
+          "source": "tasks/dijkstras-algorithm/01-the-shortest-paths/01-the-shortest-paths.ghul",
+          "output": "tasks/dijkstras-algorithm/01-the-shortest-paths/run.expected",
           "lines": 66,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "dijkstras-algorithm/02-the-graph-drawn",
+          "heading": "The graph drawn",
+          "source": "tasks/dijkstras-algorithm/02-the-graph-drawn/02-the-graph-drawn.ghul",
+          "output": "tasks/dijkstras-algorithm/02-the-graph-drawn/run.expected",
+          "lines": 139,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/dijkstras-algorithm/02-the-graph-drawn/dijkstra.png.expected"
+          ]
         }
       ]
     },
@@ -5041,24 +5082,39 @@
       "url": "https://rosettacode.org/wiki/Elementary_cellular_automaton",
       "tags": [
         "simulation",
+        "graphics",
         "generators",
         "pipes"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 38,
+      "images": [
+        "tasks/elementary-cellular-automaton/02-a-space-time-diagram/space-time.png.expected"
+      ],
+      "lines": 110,
       "parts": [
         {
-          "id": "elementary-cellular-automaton",
-          "heading": null,
-          "source": "tasks/elementary-cellular-automaton/elementary-cellular-automaton.ghul",
-          "output": "tasks/elementary-cellular-automaton/run.expected",
+          "id": "elementary-cellular-automaton/01-three-rules",
+          "heading": "Three rules",
+          "source": "tasks/elementary-cellular-automaton/01-three-rules/01-three-rules.ghul",
+          "output": "tasks/elementary-cellular-automaton/01-three-rules/run.expected",
           "lines": 38,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "elementary-cellular-automaton/02-a-space-time-diagram",
+          "heading": "A space time diagram",
+          "source": "tasks/elementary-cellular-automaton/02-a-space-time-diagram/02-a-space-time-diagram.ghul",
+          "output": "tasks/elementary-cellular-automaton/02-a-space-time-diagram/run.expected",
+          "lines": 72,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/elementary-cellular-automaton/02-a-space-time-diagram/space-time.png.expected"
+          ]
         }
       ]
     },
@@ -5662,23 +5718,34 @@
       "url": "https://rosettacode.org/wiki/Execute_Brain****",
       "tags": [
         "parsing",
+        "interactive",
         "algorithms",
         "pattern-matching"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
-      "input": false,
+      "input": true,
       "images": [],
-      "lines": 69,
+      "lines": 171,
       "parts": [
         {
-          "id": "execute-brain",
-          "heading": null,
-          "source": "tasks/execute-brain/execute-brain.ghul",
-          "output": "tasks/execute-brain/run.expected",
+          "id": "execute-brain/01-hello-world",
+          "heading": "Hello world",
+          "source": "tasks/execute-brain/01-hello-world/01-hello-world.ghul",
+          "output": "tasks/execute-brain/01-hello-world/run.expected",
           "lines": 69,
           "playground": true,
           "input": false,
+          "images": []
+        },
+        {
+          "id": "execute-brain/02-running-what-you-type",
+          "heading": "Running what you type",
+          "source": "tasks/execute-brain/02-running-what-you-type/02-running-what-you-type.ghul",
+          "output": "tasks/execute-brain/02-running-what-you-type/run.expected",
+          "lines": 102,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -6537,23 +6604,38 @@
       "url": "https://rosettacode.org/wiki/Fivenum",
       "tags": [
         "maths",
+        "graphics",
         "pipes"
       ],
-      "interest": 2,
+      "interest": 4,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 32,
+      "images": [
+        "tasks/fivenum/02-a-box-plot/fivenum.png.expected"
+      ],
+      "lines": 139,
       "parts": [
         {
-          "id": "fivenum",
-          "heading": null,
-          "source": "tasks/fivenum/fivenum.ghul",
-          "output": "tasks/fivenum/run.expected",
+          "id": "fivenum/01-the-summary",
+          "heading": "The summary",
+          "source": "tasks/fivenum/01-the-summary/01-the-summary.ghul",
+          "output": "tasks/fivenum/01-the-summary/run.expected",
           "lines": 32,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "fivenum/02-a-box-plot",
+          "heading": "A box plot",
+          "source": "tasks/fivenum/02-a-box-plot/02-a-box-plot.ghul",
+          "output": "tasks/fivenum/02-a-box-plot/run.expected",
+          "lines": 107,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/fivenum/02-a-box-plot/fivenum.png.expected"
+          ]
         }
       ]
     },
@@ -10041,23 +10123,38 @@
       "url": "https://rosettacode.org/wiki/Levenshtein_distance",
       "tags": [
         "strings",
-        "algorithms"
+        "algorithms",
+        "graphics"
       ],
-      "interest": 3,
+      "interest": 4,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 33,
+      "images": [
+        "tasks/levenshtein-distance/02-the-matrix-drawn/levenshtein.png.expected"
+      ],
+      "lines": 185,
       "parts": [
         {
-          "id": "levenshtein-distance",
-          "heading": null,
-          "source": "tasks/levenshtein-distance/levenshtein-distance.ghul",
-          "output": "tasks/levenshtein-distance/run.expected",
+          "id": "levenshtein-distance/01-the-distance",
+          "heading": "The distance",
+          "source": "tasks/levenshtein-distance/01-the-distance/01-the-distance.ghul",
+          "output": "tasks/levenshtein-distance/01-the-distance/run.expected",
           "lines": 33,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "levenshtein-distance/02-the-matrix-drawn",
+          "heading": "The matrix drawn",
+          "source": "tasks/levenshtein-distance/02-the-matrix-drawn/02-the-matrix-drawn.ghul",
+          "output": "tasks/levenshtein-distance/02-the-matrix-drawn/run.expected",
+          "lines": 152,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/levenshtein-distance/02-the-matrix-drawn/levenshtein.png.expected"
+          ]
         }
       ]
     },
@@ -11556,23 +11653,38 @@
       "url": "https://rosettacode.org/wiki/Monty_Hall_problem",
       "tags": [
         "simulation",
-        "puzzles"
+        "puzzles",
+        "graphics"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 40,
+      "images": [
+        "tasks/monty-hall-problem/02-watching-them-converge/monty-hall.png.expected"
+      ],
+      "lines": 137,
       "parts": [
         {
-          "id": "monty-hall-problem",
-          "heading": null,
-          "source": "tasks/monty-hall-problem/monty-hall-problem.ghul",
-          "output": "tasks/monty-hall-problem/run.expected",
+          "id": "monty-hall-problem/01-two-strategies",
+          "heading": "Two strategies",
+          "source": "tasks/monty-hall-problem/01-two-strategies/01-two-strategies.ghul",
+          "output": "tasks/monty-hall-problem/01-two-strategies/run.expected",
           "lines": 40,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "monty-hall-problem/02-watching-them-converge",
+          "heading": "Watching them converge",
+          "source": "tasks/monty-hall-problem/02-watching-them-converge/02-watching-them-converge.ghul",
+          "output": "tasks/monty-hall-problem/02-watching-them-converge/run.expected",
+          "lines": 97,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/monty-hall-problem/02-watching-them-converge/monty-hall.png.expected"
+          ]
         }
       ]
     },
@@ -11904,26 +12016,40 @@
       "url": "https://rosettacode.org/wiki/N-queens_problem",
       "tags": [
         "puzzles",
-        "pattern-matching",
-        "pipes",
+        "graphics",
         "generators",
+        "pipes",
         "recursion"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 37,
+      "images": [
+        "tasks/n-queens-problem/02-all-ninety-two-drawn/queens.png.expected"
+      ],
+      "lines": 120,
       "parts": [
         {
-          "id": "n-queens-problem",
-          "heading": null,
-          "source": "tasks/n-queens-problem/n-queens-problem.ghul",
-          "output": "tasks/n-queens-problem/run.expected",
+          "id": "n-queens-problem/01-counting-and-one-board",
+          "heading": "Counting and one board",
+          "source": "tasks/n-queens-problem/01-counting-and-one-board/01-counting-and-one-board.ghul",
+          "output": "tasks/n-queens-problem/01-counting-and-one-board/run.expected",
           "lines": 37,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "n-queens-problem/02-all-ninety-two-drawn",
+          "heading": "All ninety two drawn",
+          "source": "tasks/n-queens-problem/02-all-ninety-two-drawn/02-all-ninety-two-drawn.ghul",
+          "output": "tasks/n-queens-problem/02-all-ninety-two-drawn/run.expected",
+          "lines": 83,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/n-queens-problem/02-all-ninety-two-drawn/queens.png.expected"
+          ]
         }
       ]
     },
@@ -20111,23 +20237,38 @@
       "title": "Yellowstone sequence",
       "url": "https://rosettacode.org/wiki/Yellowstone_sequence",
       "tags": [
-        "number-theory"
+        "number-theory",
+        "graphics"
       ],
-      "interest": 2,
+      "interest": 4,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 28,
+      "images": [
+        "tasks/yellowstone-sequence/02-plotting-the-strands/yellowstone.png.expected"
+      ],
+      "lines": 93,
       "parts": [
         {
-          "id": "yellowstone-sequence",
-          "heading": null,
-          "source": "tasks/yellowstone-sequence/yellowstone-sequence.ghul",
-          "output": "tasks/yellowstone-sequence/run.expected",
+          "id": "yellowstone-sequence/01-the-first-thirty",
+          "heading": "The first thirty",
+          "source": "tasks/yellowstone-sequence/01-the-first-thirty/01-the-first-thirty.ghul",
+          "output": "tasks/yellowstone-sequence/01-the-first-thirty/run.expected",
           "lines": 28,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "yellowstone-sequence/02-plotting-the-strands",
+          "heading": "Plotting the strands",
+          "source": "tasks/yellowstone-sequence/02-plotting-the-strands/02-plotting-the-strands.ghul",
+          "output": "tasks/yellowstone-sequence/02-plotting-the-strands/run.expected",
+          "lines": 65,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/yellowstone-sequence/02-plotting-the-strands/yellowstone.png.expected"
+          ]
         }
       ]
     },
