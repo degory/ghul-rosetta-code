@@ -6484,7 +6484,7 @@
       "images": [
         "tasks/fivenum/02-a-box-plot/fivenum.png.expected"
       ],
-      "lines": 137,
+      "lines": 139,
       "parts": [
         {
           "id": "fivenum/01-the-summary",
@@ -6501,7 +6501,7 @@
           "heading": "A box plot",
           "source": "tasks/fivenum/02-a-box-plot/02-a-box-plot.ghul",
           "output": "tasks/fivenum/02-a-box-plot/run.expected",
-          "lines": 105,
+          "lines": 107,
           "playground": true,
           "input": false,
           "images": [
@@ -11371,23 +11371,38 @@
       "url": "https://rosettacode.org/wiki/Monty_Hall_problem",
       "tags": [
         "simulation",
-        "puzzles"
+        "puzzles",
+        "graphics"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 40,
+      "images": [
+        "tasks/monty-hall-problem/02-watching-them-converge/monty-hall.png.expected"
+      ],
+      "lines": 137,
       "parts": [
         {
-          "id": "monty-hall-problem",
-          "heading": null,
-          "source": "tasks/monty-hall-problem/monty-hall-problem.ghul",
-          "output": "tasks/monty-hall-problem/run.expected",
+          "id": "monty-hall-problem/01-two-strategies",
+          "heading": "Two strategies",
+          "source": "tasks/monty-hall-problem/01-two-strategies/01-two-strategies.ghul",
+          "output": "tasks/monty-hall-problem/01-two-strategies/run.expected",
           "lines": 40,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "monty-hall-problem/02-watching-them-converge",
+          "heading": "Watching them converge",
+          "source": "tasks/monty-hall-problem/02-watching-them-converge/02-watching-them-converge.ghul",
+          "output": "tasks/monty-hall-problem/02-watching-them-converge/run.expected",
+          "lines": 97,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/monty-hall-problem/02-watching-them-converge/monty-hall.png.expected"
+          ]
         }
       ]
     },
