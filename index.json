@@ -9281,6 +9281,38 @@
       ]
     },
     {
+      "slug": "k-means-clustering",
+      "title": "K-means++ clustering",
+      "url": "https://rosettacode.org/wiki/K-means++_clustering",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "maths",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/k-means-clustering/clusters.png.expected"
+      ],
+      "lines": 162,
+      "parts": [
+        {
+          "id": "k-means-clustering",
+          "heading": null,
+          "source": "tasks/k-means-clustering/k-means-clustering.ghul",
+          "output": "tasks/k-means-clustering/run.expected",
+          "lines": 162,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/k-means-clustering/clusters.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "kaprekar-numbers",
       "title": "Kaprekar numbers",
       "url": "https://rosettacode.org/wiki/Kaprekar_numbers",
