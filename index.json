@@ -1481,6 +1481,36 @@
       ]
     },
     {
+      "slug": "barnsley-fern",
+      "title": "Barnsley fern",
+      "url": "https://rosettacode.org/wiki/Barnsley_fern",
+      "tags": [
+        "graphics",
+        "fractal"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/barnsley-fern/fern.png.expected"
+      ],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "barnsley-fern",
+          "heading": null,
+          "source": "tasks/barnsley-fern/barnsley-fern.ghul",
+          "output": "tasks/barnsley-fern/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/barnsley-fern/fern.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "bell-numbers",
       "title": "Bell numbers",
       "url": "https://rosettacode.org/wiki/Bell_numbers",
