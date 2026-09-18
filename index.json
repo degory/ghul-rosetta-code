@@ -2718,6 +2718,38 @@
       ]
     },
     {
+      "slug": "chaos-game",
+      "title": "Chaos game",
+      "url": "https://rosettacode.org/wiki/Chaos_game",
+      "tags": [
+        "fractal",
+        "graphics",
+        "generators",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/chaos-game/chaos.png.expected"
+      ],
+      "lines": 48,
+      "parts": [
+        {
+          "id": "chaos-game",
+          "heading": null,
+          "source": "tasks/chaos-game/chaos-game.ghul",
+          "output": "tasks/chaos-game/run.expected",
+          "lines": 48,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/chaos-game/chaos.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "character-codes",
       "title": "Character codes",
       "url": "https://rosettacode.org/wiki/Character_codes",

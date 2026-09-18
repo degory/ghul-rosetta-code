@@ -1,0 +1,48 @@
+use default
+use Raster.COLOUR_MAP
+use Raster.IMAGE
+
+use Step = (x: double, y: double, corner: int)
+
+let random = System.Random(20260918)
+
+let corners =
+    [(x = 0.0D, y = 0.0D),
+     (x = 1.0D, y = 0.0D),
+     (x = 0.5D, y = System.Math.sqrt(3.0D) / 2.0D)]
+
+let image = IMAGE(640, 560)
+
+toward_a_corner(at: Step) -> STREAM[Step, Step] =>
+    (let chosen = random.next(corners.count)
+     let corner = corners[chosen]
+
+     let next =
+         (x = (at.x + corner.x) / 2.0D,
+          y = (at.y + corner.y) / 2.0D,
+          corner = chosen)
+
+     next || next)
+
+plot(at: Step) is
+    let spot = image.to_pixel(at.x, at.y)
+
+    image.colour(COLOUR_MAP.hue(cast double(at.corner) / 3.0D))
+    image.blend(cast int(spot.x), cast int(spot.y), 0.6D)
+si
+
+let start =
+    (x = 0.3D + random.next_double() * 0.4D,
+     y = 0.1D + random.next_double() * 0.3D,
+     corner = 0)
+
+image.view(-0.03D, -0.03D, 1.03D, 0.90D)
+
+stream(start, toward_a_corner)
+    |> skip(20)
+    |> take(150000)
+    |> each(plot)
+
+image.write("chaos.png")
+
+image.show("chaos.png")
