@@ -13274,6 +13274,37 @@
       ]
     },
     {
+      "slug": "morpion-solitaire",
+      "title": "Morpion solitaire",
+      "url": "https://rosettacode.org/wiki/Morpion_solitaire",
+      "tags": [
+        "game",
+        "graphics",
+        "simulation"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/morpion-solitaire/morpion.png.expected"
+      ],
+      "lines": 197,
+      "parts": [
+        {
+          "id": "morpion-solitaire",
+          "heading": null,
+          "source": "tasks/morpion-solitaire/morpion-solitaire.ghul",
+          "output": "tasks/morpion-solitaire/run.expected",
+          "lines": 197,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/morpion-solitaire/morpion.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "moser-s-circle-problem",
       "title": "Moser's circle problem",
       "url": "https://rosettacode.org/wiki/Moser's_circle_problem",
