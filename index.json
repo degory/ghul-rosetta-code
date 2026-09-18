@@ -18406,6 +18406,37 @@
       ]
     },
     {
+      "slug": "solve-a-hopido-puzzle",
+      "title": "Solve a Hopido puzzle",
+      "url": "https://rosettacode.org/wiki/Solve_a_Hopido_puzzle",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "graphics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/solve-a-hopido-puzzle/hopido.png.expected"
+      ],
+      "lines": 118,
+      "parts": [
+        {
+          "id": "solve-a-hopido-puzzle",
+          "heading": null,
+          "source": "tasks/solve-a-hopido-puzzle/solve-a-hopido-puzzle.ghul",
+          "output": "tasks/solve-a-hopido-puzzle/run.expected",
+          "lines": 118,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/solve-a-hopido-puzzle/hopido.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "solve-a-rubik-s-cube",
       "title": "Solve a Rubik's cube",
       "url": "https://rosettacode.org/wiki/Solve_a_Rubik's_cube",
