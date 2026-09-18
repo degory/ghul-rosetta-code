@@ -5488,6 +5488,33 @@
       ]
     },
     {
+      "slug": "evolutionary-algorithm",
+      "title": "Evolutionary algorithm",
+      "url": "https://rosettacode.org/wiki/Evolutionary_algorithm",
+      "tags": [
+        "simulation",
+        "strings",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "evolutionary-algorithm",
+          "heading": null,
+          "source": "tasks/evolutionary-algorithm/evolutionary-algorithm.ghul",
+          "output": "tasks/evolutionary-algorithm/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "exceptions",
       "title": "Exceptions",
       "url": "https://rosettacode.org/wiki/Exceptions",
@@ -18686,14 +18713,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 419,
+      "lines": 425,
       "parts": [
         {
           "id": "uno-card-game",
           "heading": null,
           "source": "tasks/uno-card-game/uno-card-game.ghul",
           "output": "tasks/uno-card-game/run.expected",
-          "lines": 419,
+          "lines": 425,
           "playground": true,
           "input": true,
           "images": []
