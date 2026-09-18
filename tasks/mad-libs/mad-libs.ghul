@@ -1,0 +1,30 @@
+use default
+use IO.Std.read_line
+use System.Text.RegularExpressions.Regex
+
+let story = LIST[string]()
+
+while let line = read_line() /\ line.length > 0 do
+    story.add(line)
+od
+
+let text mut = story |> join("\n")
+
+let blanks =
+    Regex.matches(text, "<[^>]+>")
+        |> map(m => m.value)
+        |> collect_list()
+
+for blank in blanks do
+    if text.contains(blank) then
+        write_line("Enter a {blank.trim(['<', '>'])}:")
+
+        let word = read_line() ?? ""
+        write_line("> {word}")
+
+        text = text.replace(blank, word)
+    fi
+od
+
+write_line()
+write_line(text)

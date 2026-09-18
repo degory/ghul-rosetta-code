@@ -1,0 +1,117 @@
+use default
+use IO.Std.read_line
+
+let lines = [
+    (0, 1, 2), (3, 4, 5), (6, 7, 8),
+    (0, 3, 6), (1, 4, 7), (2, 5, 8),
+    (0, 4, 8), (2, 4, 6)
+]
+
+winner(board: List[char]) -> char? =>
+    lines
+        |> filter(((a, b, c)) =>
+            board[a] != ' ' /\ board[a] == board[b] /\ board[b] == board[c])
+        |> map(((a, _, _)) => board[a])
+        |> first()
+
+free(board: List[char]) -> Pipe[int] =>
+    (0..9) |> filter(i => board[i] == ' ')
+
+full(board: List[char]) -> bool => !(board |> any(c => c == ' '))
+
+other(player: char) -> char => if player == 'X' then 'O' else 'X' fi
+
+score(board: LIST[char], player: char) -> int is
+    if winner(board)? then
+        return -1
+    fi
+
+    let best mut = if full(board) then 0 else -1 fi
+
+    for cell in free(board) |> collect_list() do
+        board[cell] = player
+        let result = -score(board, other(player))
+        board[cell] = ' '
+
+        if result > best then
+            best = result
+        fi
+    od
+
+    best
+si
+
+best_move(board: LIST[char]) -> int is
+    let move mut = -1
+    let best mut = -2
+
+    for cell in free(board) |> collect_list() do
+        board[cell] = 'O'
+        let result = -score(board, 'X')
+        board[cell] = ' '
+
+        if result > best then
+            best = result
+            move = cell
+        fi
+    od
+
+    move
+si
+
+label(board: List[char], index: int) -> string =>
+    if board[index] == ' ' then "{index + 1}" else "{board[index]}" fi
+
+show(board: List[char]) is
+    for row in 0..3 do
+        write_line(
+            (0..3)
+                |> map(column => label(board, row * 3 + column))
+                |> join(" | "))
+    od
+si
+
+let board = LIST[char]((0..9) |> map(_ => ' '))
+let player mut = 'X'
+
+show(board)
+
+while !winner(board)? /\ !full(board) do
+    if player == 'X' then
+        write_line("your move (1-9)?")
+
+        let line = read_line()
+
+        if !line? then
+            break
+        fi
+
+        write_line("> {line}")
+
+        let cell mut = 0
+
+        let legal =
+            int.try_parse(line, cell ref) /\
+            cell >= 1 /\ cell <= 9 /\ board[cell - 1] == ' '
+
+        if !legal then
+            write_line("choose a free square from 1 to 9")
+            continue
+        fi
+
+        board[cell - 1] = 'X'
+    else
+        let cell = best_move(board)
+        write_line("I take {cell + 1}")
+        board[cell] = 'O'
+    fi
+
+    show(board)
+    player = other(player)
+od
+
+if let who = winner(board) then
+    write_line(if who == 'X' then "you win" else "I win" fi)
+elif full(board) then
+    write_line("a draw")
+fi

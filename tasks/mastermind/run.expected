@@ -1,0 +1,26 @@
+how many colours (2-20)?
+> 6
+may colours repeat in the code (y/n)?
+> n
+how long is the code (4-6)?
+> 4
+how many guesses (7-20)?
+> 10
+guess a code of 4 letters from ABCDEF
+> ABCD
+ 1. ABCD  XOO-
+> EFAB
+ 1. ABCD  XOO-
+ 2. EFAB  OO--
+> ABCX
+4 letters from ABCDEF, please
+> BCDE
+ 1. ABCD  XOO-
+ 2. EFAB  OO--
+ 3. BCDE  XXOO
+> CBDE
+ 1. ABCD  XOO-
+ 2. EFAB  OO--
+ 3. BCDE  XXOO
+ 4. CBDE  XXXX
+you found it

@@ -1,0 +1,91 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+let random = Random(11)
+
+toss() -> char => if random.next(2) == 0 then 'H' else 'T' fi
+
+tosses() -> Pipe[char] is
+    while true do
+        yield toss()
+    od
+si
+
+random_sequence() -> string => "{toss()}{toss()}{toss()}"
+
+best_reply(sequence: string) -> string =>
+    let flipped = if sequence[1] == 'H' then 'T' else 'H' fi in
+    "{flipped}{sequence[0]}{sequence[1]}"
+
+ask_sequence(taken: string?) -> string? is
+    while let line = read_line() do
+        let sequence = line.trim().to_upper()
+        write_line("> {sequence}")
+
+        let valid =
+            sequence.length == 3 /\
+            sequence |> all(c => c == 'H' \/ c == 'T')
+
+        if !valid then
+            write_line("three tosses please, each H or T")
+        elif sequence =~ taken then
+            write_line("that one is taken")
+        else
+            return sequence
+        fi
+    od
+
+    return null
+si
+
+let player_wins mut = 0
+let computer_wins mut = 0
+
+while true do
+    let computer_first = random.next(2) == 0
+
+    let computer mut = ""
+
+    if computer_first then
+        computer = random_sequence()
+        write_line("I choose {computer}. Your sequence?")
+    else
+        write_line("You choose first. Your sequence?")
+    fi
+
+    let player =
+        ask_sequence(if computer_first then computer else null fi)
+
+    if !player? then
+        break
+    fi
+
+    if !computer_first then
+        computer = best_reply(player)
+        write_line("I choose {computer}")
+    fi
+
+    let seen mut = ""
+
+    for coin in tosses() do
+        seen = "{seen}{coin}"
+
+        if seen.ends_with(player) \/ seen.ends_with(computer) then
+            break
+        fi
+    od
+
+    write_line("tosses: {seen}")
+
+    if seen.ends_with(player) then
+        player_wins = player_wins + 1
+        write_line("you win")
+    else
+        computer_wins = computer_wins + 1
+        write_line("I win")
+    fi
+
+    write_line("you {player_wins}, me {computer_wins}")
+    write_line()
+od

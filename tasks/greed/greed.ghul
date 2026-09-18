@@ -1,0 +1,103 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+let width = 79
+let height = 22
+let random = Random(9)
+
+let grid = LIST[int]((0..width * height) |> map(_ => random.next(1, 10)))
+
+let directions = MAP[char, (dx: int, dy: int)]()
+directions['q'] = (-1, -1)
+directions['w'] = (0, -1)
+directions['e'] = (1, -1)
+directions['a'] = (-1, 0)
+directions['d'] = (1, 0)
+directions['z'] = (-1, 1)
+directions['x'] = (0, 1)
+directions['c'] = (1, 1)
+
+let x mut = random.next(width)
+let y mut = random.next(height)
+let score mut = 0
+
+grid[y * width + x] = 0
+
+inside(column: int, row: int) -> bool =>
+    column >= 0 /\ column < width /\ row >= 0 /\ row < height
+
+reach(dx: int, dy: int) -> int is
+    if !inside(x + dx, y + dy) then
+        return 0
+    fi
+
+    let steps = grid[(y + dy) * width + x + dx]
+
+    let clear =
+        (1::steps) |> all(i =>
+            inside(x + dx * i, y + dy * i) /\
+            grid[(y + dy * i) * width + x + dx * i] != 0)
+
+    if clear then steps else 0 fi
+si
+
+show() is
+    for row in 0..height do
+        write_line(
+            (0..width)
+                |> map(column =>
+                    if column == x /\ row == y then "@"
+                    elif grid[row * width + column] == 0 then " "
+                    else "{grid[row * width + column]}"
+                    fi)
+                |> join(""))
+    od
+
+    write_line("score {score}")
+si
+
+can_move() -> bool =>
+    directions.values |> any(((dx, dy)) => reach(dx, dy) > 0)
+
+show()
+
+while can_move() do
+    write_line("move (q w e / a d / z x c)?")
+
+    let line = read_line()
+
+    if !line? then
+        break
+    fi
+
+    write_line("> {line}")
+
+    let key = line.trim()
+
+    if key.length != 1 \/ !directions.contains_key(key[0]) then
+        write_line("one of q w e a d z x c, please")
+        continue
+    fi
+
+    let (dx, dy) = directions[key[0]]
+    let steps = reach(dx, dy)
+
+    if steps == 0 then
+        write_line("you can't move that way")
+        continue
+    fi
+
+    for _ in 0..steps do
+        x = x + dx
+        y = y + dy
+        grid[y * width + x] = 0
+    od
+
+    score = score + steps
+    show()
+od
+
+if !can_move() then
+    write_line("no moves left: game over, you ate {score} squares")
+fi

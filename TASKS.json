@@ -51,7 +51,7 @@
       "title": "A\u002BB",
       "slug": "a-b",
       "state": "published",
-      "published_hash": "d354f6e15b4b64bff769461369ba205c5a1e01cb3b302728f73ddd7aa704fae0"
+      "published_hash": "45cbb9102f1c1a9381c9be73a8f5af3b5e08b2e3394e59220513af472fe76b5b"
     },
     {
       "title": "ABC problem",
@@ -64,7 +64,7 @@
       "slug": "adfgvx-cipher",
       "state": "published",
       "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key",
-      "published_hash": "8a4cde9b666482f17dcdfd4db4c1131dd9d993bd6e08762d950d514137a1f723"
+      "published_hash": "e5e8c5f821dd560be48797baf1960a335b98b83340e107d1a6fe4515238da83c"
     },
     {
       "title": "Abbreviations, easy",
@@ -175,7 +175,7 @@
       "slug": "anagrams",
       "state": "published",
       "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched",
-      "published_hash": "719c2f52adbe8a64cb78d665679bf2a918fe961a45cb6ef96190e6a14f53c2b9"
+      "published_hash": "3f077a11b8153f854056a641df5f3cfe7ed24084fb1f1532c5265aeb08876bfd"
     },
     {
       "title": "Anaprimes",
@@ -266,7 +266,7 @@
       "title": "Arithmetic/Integer",
       "slug": "arithmetic-integer",
       "state": "published",
-      "published_hash": "34a93bff7f22b3f211f9d82a3870d83a2b22580c5d948b9676a5a0cc4451d343"
+      "published_hash": "cc53cbcaac17ede77c8c92e47638f9f68b804e0ef70ca20a1a20e922114766ea"
     },
     {
       "title": "Array",
@@ -1481,7 +1481,7 @@
       "title": "File input/output",
       "slug": "file-input-output",
       "state": "published",
-      "published_hash": "02196036b9d5aba1ad71abead92fbce9a9d59f4d74e434adafbb141baca9756d"
+      "published_hash": "3e4f23f46f47d2f7df4377e61ae543ac76d69f2c6f133c9d48b0bf36c0873170"
     },
     {
       "title": "File modification time",
@@ -1563,7 +1563,7 @@
       "title": "Flipping bits game",
       "slug": "flipping-bits-game",
       "state": "published",
-      "published_hash": "7e69fe8a59c0f6b8b66cc42f7cf507d6ac9af91f251510e35d4769fb1eda62f1"
+      "published_hash": "685d95bd2bc16fc59721046329646312c48dbd906aa1bf9adf1df33f2bb9fafa"
     },
     {
       "title": "Floyd\u0027s triangle",
@@ -1721,7 +1721,7 @@
       "title": "Globally replace text in several files",
       "slug": "globally-replace-text-in-several-files",
       "state": "published",
-      "published_hash": "1875a5c16492f868b90c6a1dc5390fc6626e7eb8bebf21d91e1a058509eaee6a"
+      "published_hash": "14325a98fb4cfabdbcf839c3c859fea2373c06e7dfc0e54d5a39cd54fb42eefc"
     },
     {
       "title": "Go Fish",
@@ -1884,7 +1884,7 @@
       "title": "Hello world/Standard error",
       "slug": "hello-world-standard-error",
       "state": "published",
-      "published_hash": "d62913294b88b96c6f4d3d7259ccb6c2fb1d98907ceb02e7f89eb90fb15d0867"
+      "published_hash": "f158efb4076531d9441fa7f39bb8a527d01e725d2d9a3c32962d2e8047ed9e95"
     },
     {
       "title": "Hello world/Text",
@@ -2085,13 +2085,13 @@
       "title": "Input loop",
       "slug": "input-loop",
       "state": "published",
-      "published_hash": "bad1b77e8ac515d8864321b0bb5b7c97823f1de6276f6b1985b1466c2c53d9e4"
+      "published_hash": "7e1c5c4121e8424644e3c3234a257e97e5373d1e83cf48beca527e4968c53c45"
     },
     {
       "title": "Integer comparison",
       "slug": "integer-comparison",
       "state": "published",
-      "published_hash": "3b877387ee49323f0bbff3d9f1c44ff3e9615cab44f2b21228bfdce6f606922c"
+      "published_hash": "116a7adfda72d37a23b339bfb40785e0f8695f8a0c0652acdf8de7e3e0672412"
     },
     {
       "title": "Integer sequence",
@@ -3264,13 +3264,13 @@
       "title": "Read a configuration file",
       "slug": "read-a-configuration-file",
       "state": "published",
-      "published_hash": "5c37b413c76c40d5d4d4001c3d98068ad8e0fd315e40724ae0038ae19428e9e9"
+      "published_hash": "50eaf76f0a9bbf9d1fd2831593c1c2fe4255c8954d4e3d95de50bd3d2f910fd4"
     },
     {
       "title": "Read a file line by line",
       "slug": "read-a-file-line-by-line",
       "state": "published",
-      "published_hash": "82fe7409f74aab00ae576b34add6af4861de79d7bb4ca5b4f8fb5d3482d9de09"
+      "published_hash": "81411b2d97ec520b5eee6ce5b2b555b0b183bc5f57ced2187899b4752a500b93"
     },
     {
       "title": "Real constants and functions",
@@ -3484,7 +3484,7 @@
       "title": "Shape-Machine",
       "slug": "shape-machine",
       "state": "published",
-      "published_hash": "e4fec14a746c96cc1bbe9638b05533eb41d032e9153ce3b16dd6d561c5975c01"
+      "published_hash": "f25c13f1b1fe56e1154144c302dbb6c51bd1cf8798e949484890eb7d0b6e7659"
     },
     {
       "title": "Shortest common supersequence",
@@ -3636,7 +3636,7 @@
       "slug": "sorensen-dice-coefficient",
       "state": "published",
       "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched",
-      "published_hash": "48679a1a511b8de805c7025a5855f73d90705e46aa1eb8e8e0ddbbfcb1584f36"
+      "published_hash": "b4875c76c97cca88e0152ac6ece3357ed76b35622d5a41147a7123c510f046f6"
     },
     {
       "title": "Sort a list of object identifiers",
@@ -3996,7 +3996,7 @@
       "title": "Substitution cipher",
       "slug": "substitution-cipher",
       "state": "published",
-      "published_hash": "66e6a5a6beea78ff5df7589250e107722d42641710100ccb3287fb130ef1ef7a"
+      "published_hash": "da4f46b3ccec3b787ae0b4a9c9ed559fd9912432b468445801a85f8df7c46153"
     },
     {
       "title": "Substring",
@@ -4346,7 +4346,7 @@
       "title": "User input/Text",
       "slug": "user-input-text",
       "state": "published",
-      "published_hash": "7f5fb0c4beb36262f14748027ecce3c5ec5ec70b5f1c596947776f7ec9ec5304"
+      "published_hash": "e17d1cb5a2d5b8f063d4e0f2d5145373e775e99b63cd435f98281a1c79d08f94"
     },
     {
       "title": "User:Degory/sandbox",
@@ -4461,7 +4461,7 @@
       "title": "Wasteful, equidigital and frugal numbers",
       "slug": "wasteful-equidigital-and-frugal-numbers",
       "state": "published",
-      "published_hash": "7ce01016d8487f58b84214fded34814bb93c5782f3e4d9e6dff2759522ee877f"
+      "published_hash": "4752fe114d1078d1033359346e607d36b7881dd24829cee476a31e65dc691efc"
     },
     {
       "title": "Water collected between towers",
@@ -4491,7 +4491,7 @@
       "title": "Word wheel",
       "slug": "word-wheel",
       "state": "published",
-      "published_hash": "6bd545b1ba8c5b2c9df2773cd9fcda9d0281252663ac33205720e7d476ed3dda"
+      "published_hash": "a61e9949aea385df8a2d0d66f8a597ed3611ae2ab96156b0d03832ef591e3303"
     },
     {
       "title": "Word wrap",
@@ -4503,7 +4503,7 @@
       "title": "Words containing \u0022the\u0022 substring",
       "slug": "words-containing-the-substring",
       "state": "published",
-      "published_hash": "c459659cf7103b3c09d2cebfa8b41f0ee1a896cba31d6599f0c7e247e1420ae4"
+      "published_hash": "bf31c3cf73f1c405659b48df6a962afcb02dd02e0d3966d08e50836cce3448ae"
     },
     {
       "title": "Xiaolin Wu\u0027s line algorithm",

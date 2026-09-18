@@ -1,0 +1,91 @@
+use default
+use System.Random
+
+let goal = 100
+let random = Random(2024)
+
+use Strategy = (int, int, int) -> bool
+use Player = (name: string, rolls_again: Strategy)
+
+hold_at_20(banked: int, turn: int, opponent: int) -> bool =>
+    turn < 20 /\ banked + turn < goal
+
+chase_the_leader(banked: int, turn: int, opponent: int) -> bool =>
+    banked + turn < goal /\
+    (turn < 15 \/ opponent >= 71 \/ banked + turn < opponent)
+
+four_rolls(banked: int, turn: int, opponent: int) -> bool =>
+    turn < 16 /\ banked + turn < goal
+
+let strategies: Player[] = [
+    (name = "hold at 20", rolls_again = hold_at_20),
+    (name = "chase the leader", rolls_again = chase_the_leader),
+    (name = "four rolls a turn", rolls_again = four_rolls)
+]
+
+play(first: Player, second: Player, show: bool) -> int is
+    let scores = LIST[int]([0, 0])
+    let players = [first, second]
+    let current mut = 0
+
+    while true do
+        let player = players[current]
+        let other = scores[1 - current]
+        let turn mut = 0
+
+        while player.rolls_again(scores[current], turn, other) do
+            let roll = random.next(1, 7)
+
+            if roll == 1 then
+                turn = 0
+
+                if show then
+                    write_line("  {player.name} rolls 1 and loses the turn")
+                fi
+
+                break
+            fi
+
+            turn = turn + roll
+        od
+
+        scores[current] = scores[current] + turn
+
+        if show /\ turn > 0 then
+            write_line(
+                "  {player.name} banks {turn}: "
+                "{scores[0]} to {scores[1]}")
+        fi
+
+        if scores[current] >= goal then
+            return current
+        fi
+
+        current = 1 - current
+    od
+
+    -1
+si
+
+write_line("one game, {strategies[0].name} against {strategies[1].name}:")
+
+let winner = play(strategies[0], strategies[1], true)
+write_line("{strategies[winner].name} wins")
+write_line()
+
+let games = 20000
+
+for a in strategies do
+    for b in strategies do
+        if a.name != b.name then
+            let wins =
+                (0..games)
+                    |> filter(_ => play(a, b, false) == 0)
+                    |> count()
+
+            write_line(
+                "{a.name} going first against {b.name}: "
+                "wins {100.0 * cast double(wins) / cast double(games):F1}%")
+        fi
+    od
+od

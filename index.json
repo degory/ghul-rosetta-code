@@ -4310,14 +4310,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 48,
+      "lines": 42,
       "parts": [
         {
           "id": "dining-philosophers",
           "heading": null,
           "source": "tasks/dining-philosophers/dining-philosophers.ghul",
           "output": "tasks/dining-philosophers/run.expected",
-          "lines": 48,
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []
@@ -7179,6 +7179,32 @@
           "lines": 39,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "greed",
+      "title": "Greed",
+      "url": "https://rosettacode.org/wiki/Greed",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 103,
+      "parts": [
+        {
+          "id": "greed",
+          "heading": null,
+          "source": "tasks/greed/greed.ghul",
+          "output": "tasks/greed/run.expected",
+          "lines": 103,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -10270,6 +10296,33 @@
       ]
     },
     {
+      "slug": "mad-libs",
+      "title": "Mad Libs",
+      "url": "https://rosettacode.org/wiki/Mad_Libs",
+      "tags": [
+        "game",
+        "interactive",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "mad-libs",
+          "heading": null,
+          "source": "tasks/mad-libs/mad-libs.ghul",
+          "output": "tasks/mad-libs/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "magic-squares-of-odd-order",
       "title": "Magic squares of odd order",
       "url": "https://rosettacode.org/wiki/Magic_squares_of_odd_order",
@@ -10430,6 +10483,32 @@
           "lines": 13,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "mastermind",
+      "title": "Mastermind",
+      "url": "https://rosettacode.org/wiki/Mastermind",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 109,
+      "parts": [
+        {
+          "id": "mastermind",
+          "heading": null,
+          "source": "tasks/mastermind/mastermind.ghul",
+          "output": "tasks/mastermind/run.expected",
+          "lines": 109,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -10653,6 +10732,34 @@
           "lines": 34,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "minesweeper-game",
+      "title": "Minesweeper game",
+      "url": "https://rosettacode.org/wiki/Minesweeper_game",
+      "tags": [
+        "game",
+        "interactive",
+        "recursion",
+        "generators"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "minesweeper-game",
+          "heading": null,
+          "source": "tasks/minesweeper-game/minesweeper-game.ghul",
+          "output": "tasks/minesweeper-game/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -11406,6 +11513,32 @@
           "lines": 29,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "nim-game",
+      "title": "Nim game",
+      "url": "https://rosettacode.org/wiki/Nim_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "nim-game",
+          "heading": null,
+          "source": "tasks/nim-game/nim-game.ghul",
+          "output": "tasks/nim-game/run.expected",
+          "lines": 35,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -12231,6 +12364,33 @@
       ]
     },
     {
+      "slug": "penneys-game",
+      "title": "Penney's game",
+      "url": "https://rosettacode.org/wiki/Penney's_game",
+      "tags": [
+        "game",
+        "interactive",
+        "generators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "penneys-game",
+          "heading": null,
+          "source": "tasks/penneys-game/penneys-game.ghul",
+          "output": "tasks/penneys-game/run.expected",
+          "lines": 91,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "perfect-numbers",
       "title": "Perfect numbers",
       "url": "https://rosettacode.org/wiki/Perfect_numbers",
@@ -12458,6 +12618,32 @@
           "source": "tasks/pierpont-primes/pierpont-primes.ghul",
           "output": "tasks/pierpont-primes/run.expected",
           "lines": 79,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pig-the-dice-game-player",
+      "title": "Pig the dice game/Player",
+      "url": "https://rosettacode.org/wiki/Pig_the_dice_game/Player",
+      "tags": [
+        "game",
+        "simulation"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "pig-the-dice-game-player",
+          "heading": null,
+          "source": "tasks/pig-the-dice-game-player/pig-the-dice-game-player.ghul",
+          "output": "tasks/pig-the-dice-game-player/run.expected",
+          "lines": 91,
           "playground": true,
           "input": false,
           "images": []
@@ -14738,6 +14924,32 @@
       ]
     },
     {
+      "slug": "snake-and-ladder",
+      "title": "Snake and ladder",
+      "url": "https://rosettacode.org/wiki/Snake_and_ladder",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "snake-and-ladder",
+          "heading": null,
+          "source": "tasks/snake-and-ladder/snake-and-ladder.ghul",
+          "output": "tasks/snake-and-ladder/run.expected",
+          "lines": 63,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "solve-the-no-connection-puzzle",
       "title": "Solve the no connection puzzle",
       "url": "https://rosettacode.org/wiki/Solve_the_no_connection_puzzle",
@@ -16962,6 +17174,33 @@
       ]
     },
     {
+      "slug": "the-name-game",
+      "title": "The Name Game",
+      "url": "https://rosettacode.org/wiki/The_Name_Game",
+      "tags": [
+        "strings",
+        "interactive",
+        "closures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "the-name-game",
+          "heading": null,
+          "source": "tasks/the-name-game/the-name-game.ghul",
+          "output": "tasks/the-name-game/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "the-sieve-of-sundaram",
       "title": "The sieve of Sundaram",
       "url": "https://rosettacode.org/wiki/The_sieve_of_Sundaram",
@@ -17036,6 +17275,33 @@
           "lines": 10,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "tic-tac-toe",
+      "title": "Tic-tac-toe",
+      "url": "https://rosettacode.org/wiki/Tic-tac-toe",
+      "tags": [
+        "game",
+        "interactive",
+        "recursion"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 117,
+      "parts": [
+        {
+          "id": "tic-tac-toe",
+          "heading": null,
+          "source": "tasks/tic-tac-toe/tic-tac-toe.ghul",
+          "output": "tasks/tic-tac-toe/run.expected",
+          "lines": 117,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -18450,6 +18716,33 @@
           "source": "tasks/word-wrap/word-wrap.ghul",
           "output": "tasks/word-wrap/run.expected",
           "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "wordle-comparison",
+      "title": "Wordle comparison",
+      "url": "https://rosettacode.org/wiki/Wordle_comparison",
+      "tags": [
+        "game",
+        "strings",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "wordle-comparison",
+          "heading": null,
+          "source": "tasks/wordle-comparison/wordle-comparison.ghul",
+          "output": "tasks/wordle-comparison/run.expected",
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []
