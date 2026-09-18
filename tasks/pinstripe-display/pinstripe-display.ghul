@@ -1,0 +1,20 @@
+use Raster.IMAGE
+
+let width = 640
+let height = 400
+
+let image = IMAGE(width, height)
+
+for y in 0..height do
+    let band = y * 4 / height + 1
+
+    for x in 0..width do
+        let shade = if x / band % 2 == 0 then 255ub else 0ub fi
+
+        image.set_pixel(x, y, shade, shade, shade)
+    od
+od
+
+image.write("pinstripe.png")
+
+image.show("pinstripe.png")

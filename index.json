@@ -15535,6 +15535,35 @@
       ]
     },
     {
+      "slug": "pinstripe-display",
+      "title": "Pinstripe/Display",
+      "url": "https://rosettacode.org/wiki/Pinstripe/Display",
+      "tags": [
+        "graphics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/pinstripe-display/pinstripe.png.expected"
+      ],
+      "lines": 20,
+      "parts": [
+        {
+          "id": "pinstripe-display",
+          "heading": null,
+          "source": "tasks/pinstripe-display/pinstripe-display.ghul",
+          "output": "tasks/pinstripe-display/run.expected",
+          "lines": 20,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/pinstripe-display/pinstripe.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "pisano-period",
       "title": "Pisano period",
       "url": "https://rosettacode.org/wiki/Pisano_period",
