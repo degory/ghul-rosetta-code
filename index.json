@@ -15233,6 +15233,36 @@
       ]
     },
     {
+      "slug": "rotating-rubik-s-cube",
+      "title": "Rotating Rubik's cube",
+      "url": "https://rosettacode.org/wiki/Rotating_Rubik's_cube",
+      "tags": [
+        "graphics",
+        "puzzles"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/rotating-rubik-s-cube/rubik.png.expected"
+      ],
+      "lines": 108,
+      "parts": [
+        {
+          "id": "rotating-rubik-s-cube",
+          "heading": null,
+          "source": "tasks/rotating-rubik-s-cube/rotating-rubik-s-cube.ghul",
+          "output": "tasks/rotating-rubik-s-cube/run.expected",
+          "lines": 108,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/rotating-rubik-s-cube/rubik.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "rpg-attributes-generator",
       "title": "RPG attributes generator",
       "url": "https://rosettacode.org/wiki/RPG_attributes_generator",
