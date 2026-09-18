@@ -64,7 +64,7 @@
       "slug": "adfgvx-cipher",
       "state": "published",
       "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key",
-      "published_hash": "c1a469bc92ad348755e4c96a74429108c00124695eac289ca0a5918d486fe371"
+      "published_hash": "8a4cde9b666482f17dcdfd4db4c1131dd9d993bd6e08762d950d514137a1f723"
     },
     {
       "title": "Abbreviations, easy",
@@ -1317,7 +1317,7 @@
       "title": "Exceptions",
       "slug": "exceptions",
       "state": "published",
-      "published_hash": "113b05fda54d203f6f725b18534a46f4912f1bda6f7f3191c10b1efe5ac23ca9"
+      "published_hash": "e979b069002dce6899b688a11e9c37525b77ee8197b92004f0ed08535fc9b986"
     },
     {
       "title": "Execute Brain****",
@@ -1728,7 +1728,7 @@
       "slug": "go-fish",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "0925a9c333683304aa0a8588c7476a2c91ab122bdfb295934e892fc9a54d7d42"
+      "published_hash": "93fc936398049e006c217928e8f5dd4e914905c889a598bd39067b0b2e189162"
     },
     {
       "title": "Goldbach\u0027s comet",
@@ -3046,7 +3046,7 @@
       "title": "Permutations by swapping",
       "slug": "permutations-by-swapping",
       "state": "published",
-      "published_hash": "991984ee2a4bb93177e6db98dc56ec6cc49431cbc7073d3e263f9bd69fc6c34a"
+      "published_hash": "1549dcfbc110fe805cdaacb31680895e27d2b71881ed1d7cb637d8778ba11c5d"
     },
     {
       "title": "Permutations/Derangements",
@@ -3690,37 +3690,37 @@
       "title": "Sorting algorithms/Bogosort",
       "slug": "sorting-algorithms-bogosort",
       "state": "published",
-      "published_hash": "dee568b1fdc28131f410e386e1fc65a31c4a30841895334c39324e880c6077f2"
+      "published_hash": "9ece98e6a0ce272f13118968cbf17e988aa13edff9d03e995dcbb83e60df6f9f"
     },
     {
       "title": "Sorting algorithms/Bubble sort",
       "slug": "sorting-algorithms-bubble-sort",
       "state": "published",
-      "published_hash": "f56f16d5744042fcc23dc7fa84652c353c17875505bc9146322e9c773681e4b0"
+      "published_hash": "974e53a0cd323cd8f19d457150c5860b32178ad011b11541352b806738daa9a7"
     },
     {
       "title": "Sorting algorithms/Circle sort",
       "slug": "sorting-algorithms-circle-sort",
       "state": "published",
-      "published_hash": "627e7afa8e368f0bc31ca5fc655db9164ad79d546c2801c988952d9e36567f08"
+      "published_hash": "f45994943fec5d78f6c39292a73da77dd5c49f152f424f4a511424087ec27717"
     },
     {
       "title": "Sorting algorithms/Cocktail sort",
       "slug": "sorting-algorithms-cocktail-sort",
       "state": "published",
-      "published_hash": "ed29a415fe5385109e9dcdc94b13134486b494d113ef8fb381bb6d931ef34925"
+      "published_hash": "a019180eb5d98ed4f26714950c207bbaed9e18b9f6a8dcfdbd324527e6003c10"
     },
     {
       "title": "Sorting algorithms/Cocktail sort with shifting bounds",
       "slug": "sorting-algorithms-cocktail-sort-with-shifting-bounds",
       "state": "published",
-      "published_hash": "d3451d02858d5392accb5ca8bf49c19001c2b98ca53c7b6ce7b8f41bbbeff92d"
+      "published_hash": "275dd42fbc6f29d76c0fbe46975928a96e40a0c30e2ba358383b35f60e86cbc2"
     },
     {
       "title": "Sorting algorithms/Comb sort",
       "slug": "sorting-algorithms-comb-sort",
       "state": "published",
-      "published_hash": "909aa6dc9129cdd34c2f9cfd84c9a0eb00afc50aff43489bcfa5d87c97fa9779"
+      "published_hash": "56638b073d26d674ff2a0f67ffd6d974fb4f1adc2798ed01e5726e861c236377"
     },
     {
       "title": "Sorting algorithms/Counting sort",
@@ -3732,19 +3732,19 @@
       "title": "Sorting algorithms/Cycle sort",
       "slug": "sorting-algorithms-cycle-sort",
       "state": "published",
-      "published_hash": "3a5cd3f5472a25a81ccf72ad38d62d34bd4ca0de393449c7fb387639348bad30"
+      "published_hash": "dc45264c72098267730262020632637e20655b502627126af17f22450800f5d0"
     },
     {
       "title": "Sorting algorithms/Gnome sort",
       "slug": "sorting-algorithms-gnome-sort",
       "state": "published",
-      "published_hash": "f64454ffb21d6904ff8538a8f1b31a9d33d9df751b2684fb65f869ea8a65b53c"
+      "published_hash": "6bfd843df6ce4f2ddc5e0217afec3956f36bc830ab6287fdbd73b34098e98a70"
     },
     {
       "title": "Sorting algorithms/Heapsort",
       "slug": "sorting-algorithms-heapsort",
       "state": "published",
-      "published_hash": "44235e8658e0d07ae5756c603029d0448e3fb3f442f127a9bb0ca9240522eb67"
+      "published_hash": "76c9417d424935b71576a5e8c185296fa6f576bfedadff5ea74d80a535db6ea1"
     },
     {
       "title": "Sorting algorithms/Insertion sort",
@@ -3762,7 +3762,7 @@
       "title": "Sorting algorithms/Pancake sort",
       "slug": "sorting-algorithms-pancake-sort",
       "state": "published",
-      "published_hash": "39d3c10ea3c1fa29987e88fb1545410aa8d57423c91ec6e28d2becab7bcd8359"
+      "published_hash": "66bc8f8ee7bc81e92d8e0495fbd7926e7c28cebb06dcdd2b1b01d3bde9f725ff"
     },
     {
       "title": "Sorting algorithms/Patience sort",
@@ -3774,7 +3774,7 @@
       "title": "Sorting algorithms/Permutation sort",
       "slug": "sorting-algorithms-permutation-sort",
       "state": "published",
-      "published_hash": "636db649324563a5d7ed80e0ef0752189f4ded6fcdc4708b7157c6626bad5f11"
+      "published_hash": "d85365de8c22aab2a853622f4d118be60d78aaba5b03657efcbb028010c9079b"
     },
     {
       "title": "Sorting algorithms/Quicksort",
@@ -3786,7 +3786,7 @@
       "title": "Sorting algorithms/Selection sort",
       "slug": "sorting-algorithms-selection-sort",
       "state": "published",
-      "published_hash": "34fbea4ced55ea160b47e6b55bd6e7e17a2a63b9c952ca481b1134b9e0f881d1"
+      "published_hash": "9fcdb1bde10a07504e53bef257d35a11ad8edfdbdc46b23ebb947ac122453dae"
     },
     {
       "title": "Sorting algorithms/Shell sort",
@@ -3804,7 +3804,7 @@
       "title": "Sorting algorithms/Stooge sort",
       "slug": "sorting-algorithms-stooge-sort",
       "state": "published",
-      "published_hash": "bd1d0e56310b1d3ea80ac08b2b4141c7e43e13274b5b97217785f0688fdf18b7"
+      "published_hash": "10994d77629ca0d0d8abf157534920fe8c5c50ad8aa85c387ac724247d903a8d"
     },
     {
       "title": "Sorting algorithms/Strand sort",
