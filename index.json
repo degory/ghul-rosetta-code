@@ -16988,6 +16988,33 @@
       ]
     },
     {
+      "slug": "the-name-game",
+      "title": "The Name Game",
+      "url": "https://rosettacode.org/wiki/The_Name_Game",
+      "tags": [
+        "strings",
+        "interactive",
+        "closures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "the-name-game",
+          "heading": null,
+          "source": "tasks/the-name-game/the-name-game.ghul",
+          "output": "tasks/the-name-game/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "the-sieve-of-sundaram",
       "title": "The sieve of Sundaram",
       "url": "https://rosettacode.org/wiki/The_sieve_of_Sundaram",

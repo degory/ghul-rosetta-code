@@ -1,0 +1,21 @@
+use default
+use IO.Std.read_line
+
+verse(name: string) -> string is
+    let lower = name.to_lower()
+    let first = lower[0]
+    let tail =
+        if "aeiou".contains(first) then lower else lower.substring(1) fi
+
+    let rhyme = (letter: char) =>
+        if first == letter then tail else "{letter}{tail}" fi
+
+    "{name}, {name}, bo-{rhyme('b')}\n"
+    "Banana-fana fo-{rhyme('f')}\n"
+    "Fee-fi-mo-{rhyme('m')}\n"
+    "{name}!\n"
+si
+
+while let name = read_line() do
+    write_line(verse(name.trim()))
+od
