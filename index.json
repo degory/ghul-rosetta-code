@@ -12892,6 +12892,38 @@
       ]
     },
     {
+      "slug": "median-filter",
+      "title": "Median filter",
+      "url": "https://rosettacode.org/wiki/Median_filter",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/median-filter/cleaned.png.expected",
+        "tasks/median-filter/noisy.png.expected"
+      ],
+      "lines": 98,
+      "parts": [
+        {
+          "id": "median-filter",
+          "heading": null,
+          "source": "tasks/median-filter/median-filter.ghul",
+          "output": "tasks/median-filter/run.expected",
+          "lines": 98,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/median-filter/cleaned.png.expected",
+            "tasks/median-filter/noisy.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "merge-and-aggregate-datasets",
       "title": "Merge and aggregate datasets",
       "url": "https://rosettacode.org/wiki/Merge_and_aggregate_datasets",
