@@ -1552,6 +1552,36 @@
       ]
     },
     {
+      "slug": "babylonian-spiral",
+      "title": "Babylonian spiral",
+      "url": "https://rosettacode.org/wiki/Babylonian_spiral",
+      "tags": [
+        "maths",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/babylonian-spiral/spiral.png.expected"
+      ],
+      "lines": 102,
+      "parts": [
+        {
+          "id": "babylonian-spiral",
+          "heading": null,
+          "source": "tasks/babylonian-spiral/babylonian-spiral.ghul",
+          "output": "tasks/babylonian-spiral/run.expected",
+          "lines": 102,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/babylonian-spiral/spiral.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "balanced-brackets",
       "title": "Balanced brackets",
       "url": "https://rosettacode.org/wiki/Balanced_brackets",
