@@ -1512,25 +1512,40 @@
       "title": "Benford's law",
       "url": "https://rosettacode.org/wiki/Benford's_law",
       "tags": [
+        "graphics",
         "number-theory",
         "maths",
         "pipes"
       ],
-      "interest": 2,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 25,
+      "images": [
+        "tasks/benfords-law/02-actual-against-expected/benford.png.expected"
+      ],
+      "lines": 117,
       "parts": [
         {
-          "id": "benfords-law",
-          "heading": null,
-          "source": "tasks/benfords-law/benfords-law.ghul",
-          "output": "tasks/benfords-law/run.expected",
+          "id": "benfords-law/01-the-distribution",
+          "heading": "The distribution",
+          "source": "tasks/benfords-law/01-the-distribution/01-the-distribution.ghul",
+          "output": "tasks/benfords-law/01-the-distribution/run.expected",
           "lines": 25,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "benfords-law/02-actual-against-expected",
+          "heading": "Actual against expected",
+          "source": "tasks/benfords-law/02-actual-against-expected/02-actual-against-expected.ghul",
+          "output": "tasks/benfords-law/02-actual-against-expected/run.expected",
+          "lines": 92,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/benfords-law/02-actual-against-expected/benford.png.expected"
+          ]
         }
       ]
     },
