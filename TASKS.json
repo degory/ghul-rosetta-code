@@ -262,7 +262,7 @@
       "title": "Arithmetic evaluation",
       "slug": "arithmetic-evaluation",
       "state": "published",
-      "published_hash": "5636fe7764c28a24d353d161ee3db9a4ca2cb46ef6c02c78e8f1af8641e3c7d7"
+      "published_hash": "c7729a2fd995f3e429d02da5cae094b879fa2fa0217c9e9be324852b9b6e10f3"
     },
     {
       "title": "Arithmetic-geometric mean",
@@ -978,7 +978,10 @@
       "title": "Conway\u0027s Game of Life",
       "slug": "conways-game-of-life",
       "state": "published",
-      "published_hash": "cfab32e57a15ed4728fe9b0fa830b65cd13821dab2f233f9053c0e221c6e7d9b"
+      "published_hash": "a5d327626facd810cd991c281647dbc1b48515571cf0136cdb5ae3f9ff2e56c1",
+      "image_hashes": {
+        "Ghul-conways-game-of-life-gun.gif": "603988d93af0152a845175d5bf25bf0d0d164f06"
+      }
     },
     {
       "title": "Copy a string",
@@ -1142,7 +1145,10 @@
       "title": "Dijkstra\u0027s algorithm",
       "slug": "dijkstras-algorithm",
       "state": "published",
-      "published_hash": "505ba350af2432209cd30fe2404567f687569b5e0cbc2a4bac9853dc86db9da5"
+      "published_hash": "8afbc4abd52c11796d6df5f3444d3644f0b705c33792723c4478b9aadd4441ab",
+      "image_hashes": {
+        "Ghul-dijkstras-algorithm-dijkstra.png": "050966aeef2297832c79dc6054ebe0a17cbfdcf7"
+      }
     },
     {
       "title": "Dinesman\u0027s multiple-dwelling problem",
@@ -1272,7 +1278,10 @@
       "title": "Elementary cellular automaton",
       "slug": "elementary-cellular-automaton",
       "state": "published",
-      "published_hash": "7c7fea467e3891447a766d1ff23d9daec08ca1e88d452062d02e6636e2432dea"
+      "published_hash": "3b9069548f2c3fedfd10f1555b3ec1eedb4c6edf9b8c5b906cb88585d8e8d1fb",
+      "image_hashes": {
+        "Ghul-elementary-cellular-automaton-space-time.png": "80f7a40027a802d612117cfe7088c14eced25754"
+      }
     },
     {
       "title": "Elementary cellular automaton/Infinite length",
@@ -1414,7 +1423,7 @@
       "title": "Execute Brain****",
       "slug": "execute-brain",
       "state": "published",
-      "published_hash": "3fb5bae96981fbc80eb4841d63341661eb997d3941c83cc331cb3b6b3a43d3e2"
+      "published_hash": "3344dab0e0c7b13be5f9913805c18cbafbc58ca59d080c67c7d96941941635e9"
     },
     {
       "title": "Execute Computer/Zero",
@@ -1636,7 +1645,10 @@
       "title": "Fivenum",
       "slug": "fivenum",
       "state": "published",
-      "published_hash": "b805a36cbc0e53649626f748eb19d0961a36e5e9516797737fa7f26805007d5a"
+      "published_hash": "4ef9088d60d07484f5cc2bfd2ae06e1549598b2349a6b94fb14ad1c7ea7dea3e",
+      "image_hashes": {
+        "Ghul-fivenum-fivenum.png": "4deac7419d02c1cc5db6c21cce2dd2bc16e72ece"
+      }
     },
     {
       "title": "FizzBuzz",
@@ -2540,7 +2552,10 @@
       "title": "Levenshtein distance",
       "slug": "levenshtein-distance",
       "state": "published",
-      "published_hash": "f067d03483b18b7c3619619d66df3fe0c509d1539b214142359f9104fe7f0b26"
+      "published_hash": "32c516eb7a4cb0d9f2a3b51b0f3f2b56d487a5616bcad361e44e564f5f48ac24",
+      "image_hashes": {
+        "Ghul-levenshtein-distance-levenshtein.png": "aeb1e354a603a8cd22f07d241f39cfc16dba9a47"
+      }
     },
     {
       "title": "Linear congruential generator",
@@ -2881,7 +2896,10 @@
       "title": "Monty Hall problem",
       "slug": "monty-hall-problem",
       "state": "published",
-      "published_hash": "2920ffbbaede841a2cd28edb1d4f143c89be43947419bdd103d5747c9d1dcca2"
+      "published_hash": "e77e88488e7f1615de22c34920a25a0b4d012b55b37465364bca7a732da17a42",
+      "image_hashes": {
+        "Ghul-monty-hall-problem-monty-hall.png": "7e80e0aca72b0507133cfa9f379c7a7515129f90"
+      }
     },
     {
       "title": "Moser\u0027s circle problem",
@@ -2979,7 +2997,10 @@
       "title": "N-queens problem",
       "slug": "n-queens-problem",
       "state": "published",
-      "published_hash": "f7111c0dd4fb16227a72760189c2c1cb4965c2667d177a367d3415b36e61933d"
+      "published_hash": "bc3f8225d72bef70ef08a26157153cd8d72b40f46d9eadad5c44df4f3d9bb5ea",
+      "image_hashes": {
+        "Ghul-n-queens-problem-queens.png": "bfe760dfb55fb9fcc9c60c827e8428f161b89d2e"
+      }
     },
     {
       "title": "N-smooth numbers",
@@ -4912,7 +4933,10 @@
       "title": "Yellowstone sequence",
       "slug": "yellowstone-sequence",
       "state": "published",
-      "published_hash": "8fe781e51fe6aba245d222575cba6ae8cb9ed4de882a694862aced0b748c294a"
+      "published_hash": "f7104f792c67512e682204c87523044fe39aa9b718d90171f1689ebea8e33748",
+      "image_hashes": {
+        "Ghul-yellowstone-sequence-yellowstone.png": "aaad1f17a5cf4fe2283a7847537857ceb25e3aa9"
+      }
     },
     {
       "title": "Yin and yang",
