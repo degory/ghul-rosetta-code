@@ -1,0 +1,39 @@
+use default
+use Raster.IMAGE
+
+use Math = System.Math
+
+let inner = Math.cos(0.4D * Math.pi) / Math.cos(0.2D * Math.pi)
+
+corner(index: int) -> (x: double, y: double) =>
+    (let radius = if index % 2 == 0 then 1.0D else inner fi
+     let angle = (90.0D + 36.0D * cast double(index)) *
+             Math.pi / 180.0D
+
+     (x = radius * Math.cos(angle),
+      y = radius * Math.sin(angle)))
+
+let image = IMAGE(500, 500)
+
+image.view(-1.12D, -1.12D, 1.12D, 1.12D)
+
+image.colour(24ub, 28ub, 56ub)
+image.fill(
+    [(x = -1.2D, y = -1.2D), (x = 1.2D, y = -1.2D),
+     (x = 1.2D, y = 1.2D), (x = -1.2D, y = 1.2D)]
+)
+
+image.colour(242ub, 198ub, 62ub)
+image.fill((0..10) |> map(corner) |> collect_list())
+
+image.colour(148ub, 32ub, 48ub)
+image.stroke(3.0D)
+image.line(
+    (0::5)
+        |> map(point => corner(point * 4 % 10))
+        |> collect_list()
+)
+
+image.write("pentagram.png")
+
+image.show("pentagram.png")

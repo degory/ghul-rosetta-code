@@ -1481,6 +1481,36 @@
       ]
     },
     {
+      "slug": "barnsley-fern",
+      "title": "Barnsley fern",
+      "url": "https://rosettacode.org/wiki/Barnsley_fern",
+      "tags": [
+        "graphics",
+        "fractal"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/barnsley-fern/fern.png.expected"
+      ],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "barnsley-fern",
+          "heading": null,
+          "source": "tasks/barnsley-fern/barnsley-fern.ghul",
+          "output": "tasks/barnsley-fern/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/barnsley-fern/fern.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "bell-numbers",
       "title": "Bell numbers",
       "url": "https://rosettacode.org/wiki/Bell_numbers",
@@ -2726,6 +2756,38 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "chaos-game",
+      "title": "Chaos game",
+      "url": "https://rosettacode.org/wiki/Chaos_game",
+      "tags": [
+        "fractal",
+        "graphics",
+        "generators",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/chaos-game/chaos.png.expected"
+      ],
+      "lines": 48,
+      "parts": [
+        {
+          "id": "chaos-game",
+          "heading": null,
+          "source": "tasks/chaos-game/chaos-game.ghul",
+          "output": "tasks/chaos-game/run.expected",
+          "lines": 48,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/chaos-game/chaos.png.expected"
+          ]
         }
       ]
     },
@@ -4606,6 +4668,36 @@
           "input": false,
           "images": [
             "tasks/dragon-curve/dragon.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "draw-a-sphere",
+      "title": "Draw a sphere",
+      "url": "https://rosettacode.org/wiki/Draw_a_sphere",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/draw-a-sphere/sphere.png.expected"
+      ],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "draw-a-sphere",
+          "heading": null,
+          "source": "tasks/draw-a-sphere/draw-a-sphere.ghul",
+          "output": "tasks/draw-a-sphere/run.expected",
+          "lines": 66,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/draw-a-sphere/sphere.png.expected"
           ]
         }
       ]
@@ -9231,6 +9323,38 @@
       ]
     },
     {
+      "slug": "koch-curve",
+      "title": "Koch curve",
+      "url": "https://rosettacode.org/wiki/Koch_curve",
+      "tags": [
+        "fractal",
+        "graphics",
+        "generators",
+        "recursion"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/koch-curve/koch.png.expected"
+      ],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "koch-curve",
+          "heading": null,
+          "source": "tasks/koch-curve/koch-curve.ghul",
+          "output": "tasks/koch-curve/run.expected",
+          "lines": 47,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/koch-curve/koch.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "kolakoski-sequence",
       "title": "Kolakoski sequence",
       "url": "https://rosettacode.org/wiki/Kolakoski_sequence",
@@ -10250,6 +10374,38 @@
       ]
     },
     {
+      "slug": "lorenz-attractor",
+      "title": "Lorenz attractor",
+      "url": "https://rosettacode.org/wiki/Lorenz_attractor",
+      "tags": [
+        "maths",
+        "graphics",
+        "simulation",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/lorenz-attractor/lorenz.png.expected"
+      ],
+      "lines": 60,
+      "parts": [
+        {
+          "id": "lorenz-attractor",
+          "heading": null,
+          "source": "tasks/lorenz-attractor/lorenz-attractor.ghul",
+          "output": "tasks/lorenz-attractor/run.expected",
+          "lines": 60,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/lorenz-attractor/lorenz.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "lucky-and-even-lucky-numbers",
       "title": "Lucky and even lucky numbers",
       "url": "https://rosettacode.org/wiki/Lucky_and_even_lucky_numbers",
@@ -10713,6 +10869,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "maze-generation",
+      "title": "Maze generation",
+      "url": "https://rosettacode.org/wiki/Maze_generation",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "recursion"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/maze-generation/maze.png.expected"
+      ],
+      "lines": 107,
+      "parts": [
+        {
+          "id": "maze-generation",
+          "heading": null,
+          "source": "tasks/maze-generation/maze-generation.ghul",
+          "output": "tasks/maze-generation/run.expected",
+          "lines": 107,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/maze-generation/maze.png.expected"
+          ]
         }
       ]
     },
@@ -12500,6 +12687,69 @@
           "playground": true,
           "input": true,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "penrose-tiling",
+      "title": "Penrose tiling",
+      "url": "https://rosettacode.org/wiki/Penrose_tiling",
+      "tags": [
+        "graphics",
+        "unions",
+        "generators",
+        "pipes"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/penrose-tiling/penrose.png.expected"
+      ],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "penrose-tiling",
+          "heading": null,
+          "source": "tasks/penrose-tiling/penrose-tiling.ghul",
+          "output": "tasks/penrose-tiling/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/penrose-tiling/penrose.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pentagram",
+      "title": "Pentagram",
+      "url": "https://rosettacode.org/wiki/Pentagram",
+      "tags": [
+        "graphics",
+        "maths",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/pentagram/pentagram.png.expected"
+      ],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "pentagram",
+          "heading": null,
+          "source": "tasks/pentagram/pentagram.ghul",
+          "output": "tasks/pentagram/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/pentagram/pentagram.png.expected"
+          ]
         }
       ]
     },
@@ -17136,6 +17386,37 @@
       ]
     },
     {
+      "slug": "superellipse",
+      "title": "Superellipse",
+      "url": "https://rosettacode.org/wiki/Superellipse",
+      "tags": [
+        "maths",
+        "graphics",
+        "pipes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/superellipse/superellipse.png.expected"
+      ],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "superellipse",
+          "heading": null,
+          "source": "tasks/superellipse/superellipse.ghul",
+          "output": "tasks/superellipse/run.expected",
+          "lines": 41,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/superellipse/superellipse.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "sylvesters-sequence",
       "title": "Sylvester's sequence",
       "url": "https://rosettacode.org/wiki/Sylvester's_sequence",
@@ -17973,6 +18254,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "tupper-s-self-referential-formula",
+      "title": "Tupper's self-referential formula",
+      "url": "https://rosettacode.org/wiki/Tupper's_self-referential_formula",
+      "tags": [
+        "graphics",
+        "maths",
+        "number-theory"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/tupper-s-self-referential-formula/tupper.png.expected"
+      ],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "tupper-s-self-referential-formula",
+          "heading": null,
+          "source": "tasks/tupper-s-self-referential-formula/tupper-s-self-referential-formula.ghul",
+          "output": "tasks/tupper-s-self-referential-formula/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/tupper-s-self-referential-formula/tupper.png.expected"
+          ]
         }
       ]
     },

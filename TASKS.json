@@ -366,6 +366,11 @@
       "published_hash": "a3a09e5037fe8e7148853c1dfc31d4849f8a907d4df056b1bd47a2fd5083d0bb"
     },
     {
+      "title": "Barnsley fern",
+      "slug": "barnsley-fern",
+      "state": "solved"
+    },
+    {
       "title": "Bell numbers",
       "slug": "bell-numbers",
       "state": "published",
@@ -668,6 +673,11 @@
       "slug": "catamorphism",
       "state": "published",
       "published_hash": "781f145529d0cc99838ce6c549393e84ff43581227bb8cad5bce644a751ced2c"
+    },
+    {
+      "title": "Chaos game",
+      "slug": "chaos-game",
+      "state": "solved"
     },
     {
       "title": "Character codes",
@@ -1146,6 +1156,11 @@
       "title": "Draw a rotating cube",
       "state": "rejected",
       "reason": "needs-gui"
+    },
+    {
+      "title": "Draw a sphere",
+      "slug": "draw-a-sphere",
+      "state": "solved"
     },
     {
       "title": "Duffinian numbers",
@@ -2291,6 +2306,11 @@
       "published_hash": "c2a824e2ad104361493381a37c049638e0378424bc0be0eb5a6106ff47332dea"
     },
     {
+      "title": "Koch curve",
+      "slug": "koch-curve",
+      "state": "solved"
+    },
+    {
       "title": "Kolakoski sequence",
       "slug": "kolakoski-sequence",
       "state": "published",
@@ -2537,6 +2557,11 @@
       "published_hash": "be1124d9bb5c3d759fc5d5c4a89ab6fd1d25fa02eb40d414428a5715f7467310"
     },
     {
+      "title": "Lorenz attractor",
+      "slug": "lorenz-attractor",
+      "state": "solved"
+    },
+    {
       "title": "Lucky and even lucky numbers",
       "slug": "lucky-and-even-lucky-numbers",
       "state": "published",
@@ -2616,6 +2641,11 @@
       "slug": "matrix-transposition",
       "state": "published",
       "published_hash": "b4299788796cfc347e2ed95252a74886fe1a99a625ed2c044120e60fb3ace1e7"
+    },
+    {
+      "title": "Maze generation",
+      "slug": "maze-generation",
+      "state": "solved"
     },
     {
       "title": "Merge and aggregate datasets",
@@ -3017,6 +3047,16 @@
       "slug": "pell-numbers",
       "state": "published",
       "published_hash": "0f005f35bcb3092cb449ac9b6eef4190ed2a9c6ddd4c5884cba5dcfd6dd53e54"
+    },
+    {
+      "title": "Penrose tiling",
+      "slug": "penrose-tiling",
+      "state": "solved"
+    },
+    {
+      "title": "Pentagram",
+      "slug": "pentagram",
+      "state": "solved"
     },
     {
       "title": "Perfect numbers",
@@ -4082,6 +4122,11 @@
       "state": "published"
     },
     {
+      "title": "Superellipse",
+      "slug": "superellipse",
+      "state": "solved"
+    },
+    {
       "title": "Sylvester\u0027s sequence",
       "slug": "sylvesters-sequence",
       "state": "published",
@@ -4263,6 +4308,11 @@
       "slug": "truth-table",
       "state": "published",
       "published_hash": "ff0395396e6bde2b0bfe8c9f8d77c33852a69ab6f0eea7be335e429bb054bf78"
+    },
+    {
+      "title": "Tupper\u0027s self-referential formula",
+      "slug": "tupper-s-self-referential-formula",
+      "state": "solved"
     },
     {
       "title": "Twelve statements",

@@ -1,0 +1,41 @@
+use default
+use Raster.AXES
+use Raster.IMAGE
+
+use Math = System.Math
+
+let n = 2.5D
+let a = 200.0D
+let b = 200.0D
+
+shaped(turn: double, half_axis: double) -> double =>
+    (let value = Math.pow(Math.abs(turn), 2.0D / n) * half_axis
+
+     if turn < 0.0D then -value else value fi)
+
+outline(steps: int) -> Pipe[(x: double, y: double)] =>
+    (0::steps)
+        |> map(step =>
+            (let angle = 2.0D * Math.pi * cast double(step) /
+                    cast double(steps)
+
+             (x = shaped(Math.cos(angle), a),
+              y = shaped(Math.sin(angle), b))))
+
+let image = IMAGE(560, 560)
+
+image.view(-230.0D, -230.0D, 230.0D, 230.0D, 56.0D)
+
+image.colour(120ub, 120ub, 120ub)
+image.stroke(1.0D)
+
+AXES(image).draw()
+
+image.colour(180ub, 30ub, 60ub)
+image.stroke(2.0D)
+
+image.line(outline(720) |> collect_list())
+
+image.write("superellipse.png")
+
+image.show("superellipse.png")
