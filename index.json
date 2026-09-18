@@ -141,6 +141,33 @@
       ]
     },
     {
+      "slug": "16-puzzle-game",
+      "title": "16 puzzle game",
+      "url": "https://rosettacode.org/wiki/16_puzzle_game",
+      "tags": [
+        "game",
+        "puzzles",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 93,
+      "parts": [
+        {
+          "id": "16-puzzle-game",
+          "heading": null,
+          "source": "tasks/16-puzzle-game/16-puzzle-game.ghul",
+          "output": "tasks/16-puzzle-game/run.expected",
+          "lines": 93,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "2048",
       "title": "2048",
       "url": "https://rosettacode.org/wiki/2048",
