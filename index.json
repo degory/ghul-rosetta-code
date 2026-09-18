@@ -3685,14 +3685,14 @@
       "images": [
         "tasks/closest-pair-problem/closest.png.expected"
       ],
-      "lines": 94,
+      "lines": 95,
       "parts": [
         {
           "id": "closest-pair-problem",
           "heading": null,
           "source": "tasks/closest-pair-problem/closest-pair-problem.ghul",
           "output": "tasks/closest-pair-problem/run.expected",
-          "lines": 94,
+          "lines": 95,
           "playground": true,
           "input": false,
           "images": [
@@ -4780,6 +4780,32 @@
           "source": "tasks/curzon-numbers/curzon-numbers.ghul",
           "output": "tasks/curzon-numbers/run.expected",
           "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "cut-a-rectangle",
+      "title": "Cut a rectangle",
+      "url": "https://rosettacode.org/wiki/Cut_a_rectangle",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "cut-a-rectangle",
+          "heading": null,
+          "source": "tasks/cut-a-rectangle/cut-a-rectangle.ghul",
+          "output": "tasks/cut-a-rectangle/run.expected",
+          "lines": 88,
           "playground": true,
           "input": false,
           "images": []
