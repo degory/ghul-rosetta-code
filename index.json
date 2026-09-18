@@ -20991,6 +20991,32 @@
       ]
     },
     {
+      "slug": "word-search",
+      "title": "Word search",
+      "url": "https://rosettacode.org/wiki/Word_search",
+      "tags": [
+        "puzzles",
+        "strings"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 128,
+      "parts": [
+        {
+          "id": "word-search",
+          "heading": null,
+          "source": "tasks/word-search/word-search.ghul",
+          "output": "tasks/word-search/run.expected",
+          "lines": 128,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "word-wheel",
       "title": "Word wheel",
       "url": "https://rosettacode.org/wiki/Word_wheel",
