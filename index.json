@@ -17309,6 +17309,32 @@
       ]
     },
     {
+      "slug": "tetris",
+      "title": "Tetris",
+      "url": "https://rosettacode.org/wiki/Tetris",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 180,
+      "parts": [
+        {
+          "id": "tetris",
+          "heading": null,
+          "source": "tasks/tetris/tetris.ghul",
+          "output": "tasks/tetris/run.expected",
+          "lines": 180,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "the-name-game",
       "title": "The Name Game",
       "url": "https://rosettacode.org/wiki/The_Name_Game",
