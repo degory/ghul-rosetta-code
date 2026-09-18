@@ -15003,6 +15003,33 @@
       ]
     },
     {
+      "slug": "sokoban",
+      "title": "Sokoban",
+      "url": "https://rosettacode.org/wiki/Sokoban",
+      "tags": [
+        "game",
+        "puzzles",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 84,
+      "parts": [
+        {
+          "id": "sokoban",
+          "heading": null,
+          "source": "tasks/sokoban/sokoban.ghul",
+          "output": "tasks/sokoban/run.expected",
+          "lines": 84,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "solve-the-no-connection-puzzle",
       "title": "Solve the no connection puzzle",
       "url": "https://rosettacode.org/wiki/Solve_the_no_connection_puzzle",
