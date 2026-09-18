@@ -1,69 +1,85 @@
+play a card by its number, naming a colour for a wild card
+and adding 'uno' as you go down to one card, or 'd' to draw:
+for example 3, 5 blue, or 2 uno
+
 you dealt; the first discard is green 1
 bot 1 plays green skip
   bot 2 misses a turn
 bot 3 plays green 0
-your hand: 1: red 6, 2: blue skip, 3: wild, 4: red 9, 5: yellow draw two, 6: blue 7, 7: green 3
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: red 6, 2: blue skip, 3: wild, 4: red 9
+  5: yellow draw two, 6: blue 7, 7: green 3
+your move?
 > 1
 red 6 does not match
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your move?
 > 7
 you play green 3
 bot 1 plays green 7
 bot 2 plays green 6
 bot 3 draws a card
-your hand: 1: red 6, 2: blue skip, 3: wild, 4: red 9, 5: yellow draw two, 6: blue 7
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: red 6, 2: blue skip, 3: wild, 4: red 9
+  5: yellow draw two, 6: blue 7
+your move?
 > 3 blue
 you play wild and call blue
 bot 1 draws a card
 bot 2 plays blue 5
 bot 3 plays blue 8
-your hand: 1: red 6, 2: blue skip, 3: red 9, 4: yellow draw two, 5: blue 7
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: red 6, 2: blue skip, 3: red 9, 4: yellow draw two
+  5: blue 7
+your move?
 > 2
 you play blue skip
   bot 1 misses a turn
 bot 2 plays wild and calls red
 bot 3 plays red 2
-your hand: 1: red 6, 2: red 9, 3: yellow draw two, 4: blue 7
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: red 6, 2: red 9, 3: yellow draw two, 4: blue 7
+your move?
 > 1
 you play red 6
 bot 1 plays red reverse
-your hand: 1: red 9, 2: yellow draw two, 3: blue 7
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: red 9, 2: yellow draw two, 3: blue 7
+your move?
 > 1
 you play red 9
 bot 3 plays red 3
 bot 2 plays red 5
 bot 1 plays green 5
-your hand: 1: yellow draw two, 2: blue 7
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: yellow draw two, 2: blue 7
+your move?
 > d
 you draw yellow skip
 bot 3 draws a card
 bot 3 plays wild draw four and calls yellow
   bot 2 draws four and misses a turn
 bot 1 plays yellow 5
-your hand: 1: yellow draw two, 2: blue 7, 3: yellow skip
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: yellow draw two, 2: blue 7, 3: yellow skip
+your move?
 > 1
 you play yellow draw two
   bot 3 draws two and misses a turn
 bot 2 plays yellow 7
 bot 1 draws a card
 bot 1 plays yellow 2
-your hand: 1: blue 7, 2: yellow skip
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: blue 7, 2: yellow skip
+your move?
 > 2 uno
 you play yellow skip
   you: uno!
   bot 3 misses a turn
 bot 2 draws a card
 bot 1 draws a card
-your hand: 1: blue 7
-play a card by number, naming a colour for a wild and adding 'uno' as you go down to one card, or 'd' to draw
+your hand:
+  1: blue 7
+your move?
 (no more input, so your cards are played for you)
 you draw blue 1
 bot 3 plays yellow reverse

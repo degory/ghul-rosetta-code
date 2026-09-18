@@ -137,18 +137,19 @@ si
 use Choice = (index: int, colour: string, uno: bool)
 
 human_choice(hand: List[Card]) -> Choice? is
-    let listed =
-        (0..hand.count)
-            |> map(i => "{i + 1}: {name(hand[i])}")
-            |> join(", ")
+    write_line("your hand:")
 
-    write_line("your hand: {listed}")
+    for row in 0..(hand.count + 3) / 4 do
+        let cards =
+            (row * 4..System.Math.min(row * 4 + 4, hand.count))
+                |> map(i => "{i + 1}: {name(hand[i])}")
+                |> join(", ")
+
+        write_line("  {cards}")
+    od
 
     while true do
-        let answer =
-            ask(
-                "play a card by number, naming a colour for a wild and "
-                "adding 'uno' as you go down to one card, or 'd' to draw")
+        let answer = ask("your move?")
 
         if !answer? then
             return null
@@ -387,6 +388,11 @@ play_hand(dealer: int) -> int is
 
     -1
 si
+
+write_line("play a card by its number, naming a colour for a wild card")
+write_line("and adding 'uno' as you go down to one card, or 'd' to draw:")
+write_line("for example 3, 5 blue, or 2 uno")
+write_line()
 
 let dealer mut = 3
 let hand_number mut = 0
