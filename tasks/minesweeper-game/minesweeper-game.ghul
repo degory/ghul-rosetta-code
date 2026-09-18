@@ -1,0 +1,110 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+let width = 6
+let height = 4
+let random = Random(4)
+
+let cells = (0..width * height) |> collect_list()
+
+let mines =
+    SET[int](
+        cells
+            |> map(cell => (cell, random.next()))
+            |> sort((a, b) => a.`1 <> b.`1)
+            |> map(pair => pair.`0)
+            |> take(random.next(3, 5)))
+
+let cleared = SET[int]()
+let marked = SET[int]()
+
+neighbours(cell: int) -> Pipe[int] is
+    let (x, y) = (cell % width, cell / width)
+
+    for dy in -1::1 do
+        for dx in -1::1 do
+            let (nx, ny) = (x + dx, y + dy)
+
+            let on_grid = nx >= 0 /\ nx < width /\ ny >= 0 /\ ny < height
+
+            if (dx != 0 \/ dy != 0) /\ on_grid then
+                yield ny * width + nx
+            fi
+        od
+    od
+si
+
+adjacent_mines(cell: int) -> int =>
+    neighbours(cell) |> filter(n => mines.contains(n)) |> count()
+
+clear(cell: int) is
+    if cleared.contains(cell) \/ marked.contains(cell) then
+        return
+    fi
+
+    cleared.add(cell)
+
+    if adjacent_mines(cell) == 0 then
+        for n in neighbours(cell) |> collect_list() do
+            clear(n)
+        od
+    fi
+si
+
+symbol(cell: int, reveal: bool) -> string =>
+    if reveal /\ mines.contains(cell) then "*"
+    elif marked.contains(cell) then "?"
+    elif !cleared.contains(cell) then "."
+    elif adjacent_mines(cell) == 0 then " "
+    else "{adjacent_mines(cell)}"
+    fi
+
+show(reveal: bool) is
+    for y in 0..height do
+        write_line(
+            (0..width)
+                |> map(x => symbol(y * width + x, reveal))
+                |> join(""))
+    od
+si
+
+write_line("there are {mines.count} mines")
+write_line("enter 'c x y' to clear a square or 'm x y' to mark one")
+show(false)
+
+let finished mut = false
+
+while !finished do
+    let line = read_line()
+
+    if !line? then
+        break
+    fi
+
+    write_line("> {line}")
+
+    let parts = line.split([' '])
+    let (x, y) = (int.parse(parts[1]) - 1, int.parse(parts[2]) - 1)
+    let cell = y * width + x
+
+    if parts[0] =~ "m" then
+        if !marked.remove(cell) then
+            marked.add(cell)
+        fi
+    elif mines.contains(cell) then
+        write_line("that was a mine")
+        show(true)
+        finished = true
+        continue
+    else
+        clear(cell)
+    fi
+
+    show(false)
+
+    if marked.set_equals(mines) then
+        write_line("all mines found")
+        finished = true
+    fi
+od

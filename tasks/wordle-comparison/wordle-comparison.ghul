@@ -1,0 +1,42 @@
+use default
+
+enum Mark is
+    GREY,
+    YELLOW,
+    GREEN
+si
+
+marks(answer: string, guess: string) -> List[Mark] is
+    let positions = 0..guess.length
+
+    let unmatched =
+        positions
+            |> filter(i => guess[i] != answer[i])
+            |> map(i => answer[i])
+            |> collect_list()
+
+    positions
+        |> map(i =>
+            if guess[i] == answer[i] then Mark.GREEN
+            elif unmatched.remove(guess[i]) then Mark.YELLOW
+            else Mark.GREY
+            fi)
+        |> collect_list()
+si
+
+let pairs = [
+    ("ALLOW", "LOLLY"),
+    ("BULLY", "LOLLY"),
+    ("ROBIN", "ALERT"),
+    ("ROBIN", "SONIC"),
+    ("ROBIN", "ROBIN")
+]
+
+for (answer, guess) in pairs do
+    let shown =
+        marks(answer, guess)
+            |> map(m => m.to_string().to_lower())
+            |> join(", ")
+
+    write_line("{answer} v {guess} => ({shown})")
+od
