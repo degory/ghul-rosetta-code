@@ -1,0 +1,69 @@
+use default
+use Raster.ANIMATION
+use Raster.IMAGE
+use System.Math
+
+let size = 180
+
+point(second: double, radius: double) -> (double, double) =>
+    let angle = Math.pi / 2.0D - second * Math.pi / 30.0D in
+    (radius * Math.cos(angle), radius * Math.sin(angle))
+
+draw(image: IMAGE, second: int) is
+    image.clear(245ub, 242ub, 235ub)
+
+    image.colour(40ub, 40ub, 50ub)
+    image.stroke(3.0D)
+    image.circle(0.0D, 0.0D, 1.0D)
+
+    for tick in 0..60 do
+        let long = tick % 5 == 0
+        let inner = if long then 0.8D else 0.88D fi
+        let (x0, y0) = point(cast double(tick), inner)
+        let (x1, y1) = point(cast double(tick), 0.94D)
+
+        image.stroke(if long then 3.0D else 1.0D fi)
+        image.line(x0, y0, x1, y1)
+    od
+
+    let (x, y) = point(cast double(second), 0.85D)
+    let (tail_x, tail_y) = point(cast double(second + 30), 0.2D)
+
+    image.colour(200ub, 40ub, 40ub)
+    image.stroke(2.0D)
+    image.line(tail_x, tail_y, x, y)
+    image.disc(0.0D, 0.0D, 0.05D)
+si
+
+let live =
+    System.Environment.get_environment_variable("GHUL_LIVE_IMAGES")?
+
+let image = IMAGE(size, size)
+
+image.view(-1.1D, -1.1D, 1.1D, 1.1D)
+
+let animation = ANIMATION(size, size)
+let started = System.Diagnostics.Stopwatch.start_new()
+
+for second in 0..60 do
+    draw(image, second)
+    animation.add(image, 1000)
+
+    if live then
+        image.write("stopwatch.png")
+        image.show("stopwatch.png")
+
+        let due = cast long((second + 1) * 1000)
+        let wait = due - started.elapsed_milliseconds
+
+        if wait > 0L then
+            System.Threading.Thread.sleep(cast int(wait))
+        fi
+    fi
+od
+
+write_line("one minute on the stopwatch")
+
+animation.write("stopwatch.png")
+
+animation.show("stopwatch.png")
