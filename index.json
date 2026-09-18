@@ -3259,6 +3259,36 @@
       ]
     },
     {
+      "slug": "color-wheel",
+      "title": "Color wheel",
+      "url": "https://rosettacode.org/wiki/Color_wheel",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/color-wheel/wheel.png.expected"
+      ],
+      "lines": 73,
+      "parts": [
+        {
+          "id": "color-wheel",
+          "heading": null,
+          "source": "tasks/color-wheel/color-wheel.ghul",
+          "output": "tasks/color-wheel/run.expected",
+          "lines": 73,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/color-wheel/wheel.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "colorful-numbers",
       "title": "Colorful numbers",
       "url": "https://rosettacode.org/wiki/Colorful_numbers",
