@@ -274,6 +274,11 @@
       "published_hash": "cc53cbcaac17ede77c8c92e47638f9f68b804e0ef70ca20a1a20e922114766ea"
     },
     {
+      "title": "Arithmetic/Rational",
+      "slug": "arithmetic-rational",
+      "state": "solved"
+    },
+    {
       "title": "Array",
       "state": "rejected",
       "reason": "task-unclear"
@@ -1363,6 +1368,11 @@
       "published_hash": "b2fee79f4706b0d6b8673cc0521ee72ef3e40a5ba5c721af80794b5ac3628b9c"
     },
     {
+      "title": "Evolutionary algorithm",
+      "slug": "evolutionary-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Exceptions",
       "slug": "exceptions",
       "state": "published",
@@ -1670,6 +1680,11 @@
       "image_hashes": {
         "Ghul-fractal-tree-tree.png": "f8a1bd6acb63f7fd54f5c2f96bdcd15a81129693"
       }
+    },
+    {
+      "title": "Fractran",
+      "slug": "fractran",
+      "state": "solved"
     },
     {
       "title": "French Republican calendar",
@@ -3308,6 +3323,11 @@
       "state": "published"
     },
     {
+      "title": "Print itself",
+      "slug": "print-itself",
+      "state": "solved"
+    },
+    {
       "title": "Program name",
       "state": "blocked",
       "reason": "ghul#2487"
@@ -4170,6 +4190,11 @@
       "published_hash": "34d26d2e67c318a16fbbb1f4de6850053c0ca927014a58788def0db3b6971064"
     },
     {
+      "title": "Subleq",
+      "slug": "subleq",
+      "state": "solved"
+    },
+    {
       "title": "Substitution cipher",
       "slug": "substitution-cipher",
       "state": "published",
@@ -4204,6 +4229,11 @@
       "slug": "sum-and-product-of-an-array",
       "state": "published",
       "published_hash": "e8d395f679e0f55e4a4c68097557fe54e118e2d5cebaef9674b2ad9b155ee117"
+    },
+    {
+      "title": "Sum and product puzzle",
+      "slug": "sum-and-product-puzzle",
+      "state": "solved"
     },
     {
       "title": "Sum data type",
@@ -4542,6 +4572,11 @@
       "slug": "undulating-numbers",
       "state": "published",
       "published_hash": "ca84f23579c4c8733e2582f87426bce7627a5f1cf68e58270d3962e95d0fb0da"
+    },
+    {
+      "title": "Universal Turing machine",
+      "slug": "universal-turing-machine",
+      "state": "solved"
     },
     {
       "title": "Uno (card game)",
