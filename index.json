@@ -5056,6 +5056,36 @@
       ]
     },
     {
+      "slug": "draw-a-rotating-cube",
+      "title": "Draw a rotating cube",
+      "url": "https://rosettacode.org/wiki/Draw_a_rotating_cube",
+      "tags": [
+        "graphics",
+        "maths"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/draw-a-rotating-cube/cube.png.expected"
+      ],
+      "lines": 107,
+      "parts": [
+        {
+          "id": "draw-a-rotating-cube",
+          "heading": null,
+          "source": "tasks/draw-a-rotating-cube/draw-a-rotating-cube.ghul",
+          "output": "tasks/draw-a-rotating-cube/run.expected",
+          "lines": 107,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/draw-a-rotating-cube/cube.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "draw-a-sphere",
       "title": "Draw a sphere",
       "url": "https://rosettacode.org/wiki/Draw_a_sphere",
