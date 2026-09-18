@@ -1,0 +1,30 @@
+take sledge
+equip sledge
+alias inventory bag
+attack east
+e
+attack north
+n
+name crossroads
+s
+take ladder
+bag
+n
+drop ladder
+attack up
+u
+attack up
+u
+attack up
+u
+attack east
+attack west
+u
+w
+take ladder
+e
+drop ladder
+attack up
+u
+attack up
+u

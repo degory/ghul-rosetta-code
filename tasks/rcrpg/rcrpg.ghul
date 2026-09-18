@@ -1,0 +1,207 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+use Place = (x: int, y: int, z: int)
+
+class ROOM(items: LIST[string]) is
+    exits: SET[string] public
+    name: string? public
+
+    init(..) is
+        exits = SET[string]()
+    si
+si
+
+let random = Random(28)
+
+let steps = MAP[string, Place]()
+steps["north"] = (0, 1, 0)
+steps["south"] = (0, -1, 0)
+steps["east"] = (1, 0, 0)
+steps["west"] = (-1, 0, 0)
+steps["up"] = (0, 0, 1)
+steps["down"] = (0, 0, -1)
+
+let opposite = MAP[string, string]()
+opposite["north"] = "south"
+opposite["south"] = "north"
+opposite["east"] = "west"
+opposite["west"] = "east"
+opposite["up"] = "down"
+opposite["down"] = "up"
+
+let aliases = MAP[string, string]()
+
+for (short, long) in [
+    ("n", "north"), ("s", "south"), ("e", "east"), ("w", "west"),
+    ("u", "up"), ("d", "down"), ("i", "inventory"), ("inv", "inventory"),
+    ("a", "attack")
+] do
+    aliases[short] = long
+od
+
+let goal = (x = 1, y = 1, z = 5)
+let rooms = MAP[Place, ROOM]()
+
+let start = ROOM(LIST[string](["sledge"]))
+start.name = "the start"
+rooms[(x = 0, y = 0, z = 0)] = start
+
+let prize = ROOM(LIST[string](["gold", "gold", "gold"]))
+prize.name = "the prize room"
+rooms[goal] = prize
+
+let here mut = (x = 0, y = 0, z = 0)
+let carrying = LIST[string]()
+let equipped: string? mut = null
+
+room() -> ROOM => rooms[here]
+
+describe() is
+    let current = room()
+    let (x, y, z) = here
+    let called = if let name = current.name then " ({name})" else "" fi
+
+    write_line("you are at {x},{y},{z}{called}")
+
+    if current.items.count > 0 then
+        write_line("here: {current.items |> join(", ")}")
+    fi
+
+    let exits = current.exits |> collect_list()
+    exits.sort()
+    let listed = if exits.count == 0 then "none" else exits |> join(", ") fi
+    write_line("exits: {listed}")
+si
+
+neighbour(direction: string) -> Place =>
+    let step = steps[direction] in
+    (x = here.x + step.x, y = here.y + step.y, z = here.z + step.z)
+
+move(direction: string) is
+    if !room().exits.contains(direction) then
+        write_line("there is no way {direction}")
+    elif direction =~ "up" /\ !room().items.contains("ladder") then
+        write_line("you need a ladder in this room to climb up")
+    else
+        here = neighbour(direction)
+        describe()
+
+        if here =~ goal then
+            write_line("you have found the prize room!")
+        fi
+    fi
+si
+
+attack(direction: string) is
+    if !(equipped =~ "sledge") then
+        write_line("you need to equip a sledge to break through")
+        return
+    fi
+
+    let target = neighbour(direction)
+
+    if !rooms.contains_key(target) then
+        let item = ["sledge", "ladder", "gold"][random.next(3)]
+        rooms[target] = ROOM(LIST[string]([item]))
+    fi
+
+    room().exits.add(direction)
+    rooms[target].exits.add(opposite[direction])
+
+    write_line("you break a hole in the {direction} wall")
+si
+
+move_items(from: LIST[string], to: LIST[string], what: string) -> bool is
+    let chosen =
+        if what =~ "all" then from |> collect_list()
+        elif from.contains(what) then LIST[string]([what])
+        else LIST[string]()
+        fi
+
+    for item in chosen do
+        from.remove(item)
+        to.add(item)
+    od
+
+    chosen.count > 0
+si
+
+describe()
+
+while let line = read_line() do
+    write_line("> {line}")
+
+    let words =
+        line.to_lower()
+            .split([' '], System.StringSplitOptions.REMOVE_EMPTY_ENTRIES)
+
+    if words.count == 0 then
+        continue
+    fi
+
+    let command =
+        if aliases.contains_key(words[0]) then aliases[words[0]]
+        else words[0]
+        fi
+
+    let argument = if words.count > 1 then words[1] else "" fi
+
+    if steps.contains_key(command) then
+        move(command)
+    elif command =~ "attack" /\ steps.contains_key(argument) then
+        attack(argument)
+    elif command =~ "take" then
+        if move_items(room().items, carrying, argument) then
+            write_line("taken")
+        else
+            write_line("there is no {argument} here")
+        fi
+    elif command =~ "drop" then
+        if move_items(carrying, room().items, argument) then
+            write_line("dropped")
+        else
+            write_line("you have no {argument}")
+        fi
+
+        if !carrying.contains(equipped ?? "") then
+            equipped = null
+        fi
+    elif command =~ "inventory" then
+        let held =
+            if carrying.count == 0 then "nothing"
+            else carrying |> join(", ")
+            fi
+
+        write_line("you are carrying {held}")
+
+        if let item = equipped then
+            write_line("you have the {item} equipped")
+        fi
+    elif command =~ "equip" then
+        if carrying.contains(argument) then
+            equipped = argument
+            write_line("you equip the {argument}")
+        else
+            write_line("you have no {argument}")
+        fi
+    elif command =~ "name" /\ words.count > 1 then
+        room().name = line.trim().substring(words[0].length).trim()
+        write_line("this room is now called {room().name}")
+    elif command =~ "alias" /\ words.count == 3 then
+        aliases[words[2]] =
+            if aliases.contains_key(argument) then aliases[argument]
+            else argument
+            fi
+
+        write_line("{words[2]} now means {aliases[words[2]]}")
+    elif command =~ "look" then
+        describe()
+    else
+        write_line("commands: north, south, east, west, up, down,")
+        write_line("attack <direction>, take <item|all>, drop <item|all>,")
+        write_line("equip <item>, inventory, name <name>,")
+        write_line("alias <command> <new name>, look")
+    fi
+od

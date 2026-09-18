@@ -13779,6 +13779,33 @@
       ]
     },
     {
+      "slug": "rcrpg",
+      "title": "RCRPG",
+      "url": "https://rosettacode.org/wiki/RCRPG",
+      "tags": [
+        "game",
+        "interactive",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 207,
+      "parts": [
+        {
+          "id": "rcrpg",
+          "heading": null,
+          "source": "tasks/rcrpg/rcrpg.ghul",
+          "output": "tasks/rcrpg/run.expected",
+          "lines": 207,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "read-a-configuration-file",
       "title": "Read a configuration file",
       "url": "https://rosettacode.org/wiki/Read_a_configuration_file",

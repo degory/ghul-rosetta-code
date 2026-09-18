@@ -1,0 +1,87 @@
+you are at 0,0,0 (the start)
+here: sledge
+exits: none
+> take sledge
+taken
+> equip sledge
+you equip the sledge
+> alias inventory bag
+bag now means inventory
+> attack east
+you break a hole in the east wall
+> e
+you are at 1,0,0
+here: ladder
+exits: west
+> attack north
+you break a hole in the north wall
+> n
+you are at 1,1,0
+here: sledge
+exits: south
+> name crossroads
+this room is now called crossroads
+> s
+you are at 1,0,0
+here: ladder
+exits: north, west
+> take ladder
+taken
+> bag
+you are carrying sledge, ladder
+you have the sledge equipped
+> n
+you are at 1,1,0 (crossroads)
+here: sledge
+exits: south
+> drop ladder
+dropped
+> attack up
+you break a hole in the up wall
+> u
+you are at 1,1,1
+here: ladder
+exits: down
+> attack up
+you break a hole in the up wall
+> u
+you are at 1,1,2
+here: ladder
+exits: down
+> attack up
+you break a hole in the up wall
+> u
+you are at 1,1,3
+here: gold
+exits: down
+> attack east
+you break a hole in the east wall
+> attack west
+you break a hole in the west wall
+> u
+there is no way up
+> w
+you are at 0,1,3
+here: ladder
+exits: east
+> take ladder
+taken
+> e
+you are at 1,1,3
+here: gold
+exits: down, east, west
+> drop ladder
+dropped
+> attack up
+you break a hole in the up wall
+> u
+you are at 1,1,4
+here: ladder
+exits: down
+> attack up
+you break a hole in the up wall
+> u
+you are at 1,1,5 (the prize room)
+here: gold, gold, gold
+exits: down
+you have found the prize room!
