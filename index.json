@@ -1852,6 +1852,38 @@
       ]
     },
     {
+      "slug": "bilinear-interpolation",
+      "title": "Bilinear interpolation",
+      "url": "https://rosettacode.org/wiki/Bilinear_interpolation",
+      "tags": [
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/bilinear-interpolation/larger.png.expected",
+        "tasks/bilinear-interpolation/scene.png.expected"
+      ],
+      "lines": 104,
+      "parts": [
+        {
+          "id": "bilinear-interpolation",
+          "heading": null,
+          "source": "tasks/bilinear-interpolation/bilinear-interpolation.ghul",
+          "output": "tasks/bilinear-interpolation/run.expected",
+          "lines": 104,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/bilinear-interpolation/larger.png.expected",
+            "tasks/bilinear-interpolation/scene.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "binary-digits",
       "title": "Binary digits",
       "url": "https://rosettacode.org/wiki/Binary_digits",
