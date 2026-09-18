@@ -3717,23 +3717,38 @@
       "url": "https://rosettacode.org/wiki/Conway's_Game_of_Life",
       "tags": [
         "simulation",
+        "graphics",
         "pipes"
       ],
-      "interest": 4,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 82,
+      "images": [
+        "tasks/conways-game-of-life/02-a-glider-gun/gun.png.expected"
+      ],
+      "lines": 184,
       "parts": [
         {
-          "id": "conways-game-of-life",
-          "heading": null,
-          "source": "tasks/conways-game-of-life/conways-game-of-life.ghul",
-          "output": "tasks/conways-game-of-life/run.expected",
+          "id": "conways-game-of-life/01-a-blinker",
+          "heading": "A blinker",
+          "source": "tasks/conways-game-of-life/01-a-blinker/01-a-blinker.ghul",
+          "output": "tasks/conways-game-of-life/01-a-blinker/run.expected",
           "lines": 82,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "conways-game-of-life/02-a-glider-gun",
+          "heading": "A glider gun",
+          "source": "tasks/conways-game-of-life/02-a-glider-gun/02-a-glider-gun.ghul",
+          "output": "tasks/conways-game-of-life/02-a-glider-gun/run.expected",
+          "lines": 102,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/conways-game-of-life/02-a-glider-gun/gun.png.expected"
+          ]
         }
       ]
     },
