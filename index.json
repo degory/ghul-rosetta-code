@@ -7309,23 +7309,38 @@
       "url": "https://rosettacode.org/wiki/Hailstone_sequence",
       "tags": [
         "number-theory",
+        "graphics",
         "generators"
       ],
-      "interest": 3,
+      "interest": 5,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 38,
+      "images": [
+        "tasks/hailstone-sequence/02-lengths-plotted/hailstone.png.expected"
+      ],
+      "lines": 114,
       "parts": [
         {
-          "id": "hailstone-sequence",
-          "heading": null,
-          "source": "tasks/hailstone-sequence/hailstone-sequence.ghul",
-          "output": "tasks/hailstone-sequence/run.expected",
+          "id": "hailstone-sequence/01-the-sequence",
+          "heading": "The sequence",
+          "source": "tasks/hailstone-sequence/01-the-sequence/01-the-sequence.ghul",
+          "output": "tasks/hailstone-sequence/01-the-sequence/run.expected",
           "lines": 38,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "hailstone-sequence/02-lengths-plotted",
+          "heading": "Lengths plotted",
+          "source": "tasks/hailstone-sequence/02-lengths-plotted/02-lengths-plotted.ghul",
+          "output": "tasks/hailstone-sequence/02-lengths-plotted/run.expected",
+          "lines": 76,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/hailstone-sequence/02-lengths-plotted/hailstone.png.expected"
+          ]
         }
       ]
     },
