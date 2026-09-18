@@ -56,7 +56,8 @@
     {
       "title": "24 game/Solve",
       "slug": "24-game-solve",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ce1cac9876052872cfd0f274cfad0e8bab69a379b3c583ad0e457c0a4654383d"
     },
     {
       "title": "3d turtle graphics",
@@ -710,7 +711,8 @@
     {
       "title": "Bulls and cows/Player",
       "slug": "bulls-and-cows-player",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e0a0bf51b2c9ef62ea5f1770af984915c83b303fa9e68045f74d5d6eb2f7dfce"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
@@ -1607,7 +1609,8 @@
     {
       "title": "Endless maze",
       "slug": "endless-maze",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "cf6025a5e12aeac49a3f28501613cc163d7a845a14d122025bd4b06e512b02e1"
     },
     {
       "title": "Engel expansion",
@@ -1934,7 +1937,8 @@
     {
       "title": "Finite state machine",
       "slug": "finite-state-machine",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0cc1a4ecf3104e49a2a933db43dd4270cd6cf5d824b9b0fa6a76c2b0ca6095fa"
     },
     {
       "title": "First class environments",
@@ -2291,7 +2295,8 @@
     {
       "title": "Guess the number/With feedback (player)",
       "slug": "guess-the-number-with-feedback-player",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "901827a0b3b5b26ed5e27b78ed45e930ca1991d299832bdfc06fa48b43eb6044"
     },
     {
       "title": "HTTP",
@@ -2457,7 +2462,8 @@
     {
       "title": "Horizontal sundial calculations",
       "slug": "horizontal-sundial-calculations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d4105f9773125898684ca3b2922c6c173e4f99aec9018d8dc825540e2ba5a115"
     },
     {
       "title": "Horner\u0027s rule for polynomial evaluation",
@@ -2483,7 +2489,8 @@
     {
       "title": "Hourglass puzzle",
       "slug": "hourglass-puzzle",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "20c9e9ad7a8789d8ebc0682f2cde6496178a423f897090a0056745dc2039d37f"
     },
     {
       "title": "Huffman coding",
@@ -3592,7 +3599,8 @@
     {
       "title": "Number reversal game",
       "slug": "number-reversal-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "741dd7ee500837686cb7784b7eb2ae7b7ca432d94def0b3908b51dc68eb42a14"
     },
     {
       "title": "Numbers with equal rises and falls",
@@ -3651,7 +3659,8 @@
     {
       "title": "Order by pair comparisons",
       "slug": "order-by-pair-comparisons",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ff96b61aed1b828859b27a0eaa8543eda6d49f6f552276c245cbf02b71d0d4d9"
     },
     {
       "title": "Order disjoint list items",
@@ -4314,7 +4323,8 @@
     {
       "title": "Robots",
       "slug": "robots",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f9ba203a3a49f04c923e64b3288f7aa57783e256b6a415d0db279683bedb5b98"
     },
     {
       "title": "Rock-paper-scissors",
@@ -4931,7 +4941,8 @@
     {
       "title": "Spoof game",
       "slug": "spoof-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6f4ce6729481ff1fb8b90a931a57e63d6b6bf3b317000c0672b3f0d76f6163a1"
     },
     {
       "title": "Stable marriage problem",
@@ -5668,7 +5679,8 @@
     {
       "title": "War card game",
       "slug": "war-card-game",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "24c27e4614e0d6d3c66561feeea7f893872f5bc657ad5fb345b4c5003157f914"
     },
     {
       "title": "Wasteful, equidigital and frugal numbers",
@@ -5751,7 +5763,8 @@
     {
       "title": "Wordiff",
       "slug": "wordiff",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e2bc4f9c3c305ebf851fb3d3531668def410881b0b7619e9508f6b9e06dfeaa2"
     },
     {
       "title": "Wordle comparison",
