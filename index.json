@@ -10462,6 +10462,32 @@
       ]
     },
     {
+      "slug": "mastermind",
+      "title": "Mastermind",
+      "url": "https://rosettacode.org/wiki/Mastermind",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 109,
+      "parts": [
+        {
+          "id": "mastermind",
+          "heading": null,
+          "source": "tasks/mastermind/mastermind.ghul",
+          "output": "tasks/mastermind/run.expected",
+          "lines": 109,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "matrix-multiplication",
       "title": "Matrix multiplication",
       "url": "https://rosettacode.org/wiki/Matrix_multiplication",
