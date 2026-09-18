@@ -438,6 +438,11 @@
       "published_hash": "767fb327886e70fab4a5bcec530b35a7fa246bebb9fb75bd25aaee81b297829f"
     },
     {
+      "title": "Bilinear interpolation",
+      "slug": "bilinear-interpolation",
+      "state": "solved"
+    },
+    {
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published",
@@ -701,6 +706,11 @@
       "published_hash": "ae4e9c1f0c471dd43d05f4a230f39c39985fb72183a4a2e5b8c1542cd1691230"
     },
     {
+      "title": "Canny edge detector",
+      "slug": "canny-edge-detector",
+      "state": "solved"
+    },
+    {
       "title": "Cantor set",
       "slug": "cantor-set",
       "state": "published",
@@ -861,6 +871,16 @@
       "slug": "collections",
       "state": "published",
       "published_hash": "2099734e9d7b62e1dab199c69051670b0df02926dcf9222b2cce978961984e7a"
+    },
+    {
+      "title": "Color quantization",
+      "slug": "color-quantization",
+      "state": "solved"
+    },
+    {
+      "title": "Color separation",
+      "slug": "color-separation",
+      "state": "solved"
     },
     {
       "title": "Color wheel",
@@ -1298,8 +1318,9 @@
     },
     {
       "title": "Draw a pixel",
-      "state": "rejected",
-      "reason": "needs-gui"
+      "slug": "draw-a-pixel",
+      "state": "solved",
+      "note": "reopened, was rejected/needs-gui: a 320 x 240 image with one red pixel, shown in the entry and the playground"
     },
     {
       "title": "Draw a rotating cube",
@@ -1884,8 +1905,9 @@
     },
     {
       "title": "Galton box animation",
-      "state": "rejected",
-      "reason": "needs-gui"
+      "slug": "galton-box-animation",
+      "state": "solved",
+      "note": "reopened, was rejected/needs-gui: an animation, drawn frame by frame as an animated PNG and published as a GIF"
     },
     {
       "title": "Gamma function",
@@ -3431,6 +3453,11 @@
     {
       "title": "Pentomino tiling",
       "slug": "pentomino-tiling",
+      "state": "solved"
+    },
+    {
+      "title": "Percentage difference between images",
+      "slug": "percentage-difference-between-images",
       "state": "solved"
     },
     {
