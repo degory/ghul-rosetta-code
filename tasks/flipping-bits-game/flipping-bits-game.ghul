@@ -1,4 +1,5 @@
 use default
+use IO.Std.write
 use IO.Std.read_line
 
 let size = 3
@@ -56,15 +57,16 @@ let moves mut = 0
 while !same(board, target) do
     show("board after {moves} moves", board)
 
+    write("move: ")
+
     let typed = read_line()
 
     if !typed? then
+        write_line()
         write_line("no more input")
 
         break
     fi
-
-    write_line("move: {typed}")
 
     let move = typed.trim()
 

@@ -1,12 +1,17 @@
+use IO.Std.write
 use IO.Std.write_line
 use IO.Std.read_line
 use System.StringSplitOptions
 
-while let entered = read_line() do
-    write_line("input: {entered}")
+write("a b: ")
 
+while let entered = read_line() do
     let fields =
         entered.split([' '], StringSplitOptions.REMOVE_EMPTY_ENTRIES)
 
     write_line("{int.parse(fields[0]) + int.parse(fields[1])}")
+
+    write("a b: ")
 od
+
+write_line()
