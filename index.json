@@ -255,6 +255,37 @@
       ]
     },
     {
+      "slug": "3d-turtle-graphics",
+      "title": "3d turtle graphics",
+      "url": "https://rosettacode.org/wiki/3d_turtle_graphics",
+      "tags": [
+        "graphics",
+        "operators",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/3d-turtle-graphics/turtle.png.expected"
+      ],
+      "lines": 190,
+      "parts": [
+        {
+          "id": "3d-turtle-graphics",
+          "heading": null,
+          "source": "tasks/3d-turtle-graphics/3d-turtle-graphics.ghul",
+          "output": "tasks/3d-turtle-graphics/run.expected",
+          "lines": 190,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/3d-turtle-graphics/turtle.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "99-bottles-of-beer",
       "title": "99 bottles of beer",
       "url": "https://rosettacode.org/wiki/99_bottles_of_beer",
