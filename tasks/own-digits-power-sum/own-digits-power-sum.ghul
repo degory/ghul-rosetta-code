@@ -11,11 +11,7 @@ power(base: int, exponent: int) -> long is
 si
 
 digit_counts(value: long) -> LIST[int] is
-    let counts = LIST()
-
-    for _ in 0::9 do
-        counts.add(0)
-    od
+    let counts = repeat(0, 10) |> collect_list()
 
     let remaining mut = value
 
@@ -53,11 +49,7 @@ own_sums(width: int) -> Pipe[long] is
 
         if "{total}".length == width then
             let wanted = digit_counts(total)
-            let held = LIST()
-
-            for _ in 0::9 do
-                held.add(0)
-            od
+            let held = repeat(0, 10) |> collect_list()
 
             for digit in combination do
                 held[digit] = held[digit] + 1

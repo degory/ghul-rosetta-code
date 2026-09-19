@@ -1,21 +1,13 @@
 use default
 
 from_array(values: int[]) -> Collections.List[int] is
-    let result = LIST()
-
-    for value in values do
-        result.add(value)
-    od
+    let result = values |> collect_list()
 
     return result
 si
 
 text_of(values: Collections.List[int]) -> string is
-    let texts = LIST()
-
-    for value in values do
-        texts.add("{value}")
-    od
+    let texts = values |> map(value => "{value}") |> collect_list()
 
     return texts |> join(" ")
 si

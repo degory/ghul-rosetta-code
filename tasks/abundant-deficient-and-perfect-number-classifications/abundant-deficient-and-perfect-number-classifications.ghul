@@ -4,11 +4,7 @@ let limit = 20000
 
 // A sieve costs one pass over each divisor's multiples, where testing each
 // number separately would cost a division for every candidate divisor.
-let proper_divisor_sums = LIST()
-
-for _ in 0::limit do
-    proper_divisor_sums.add(0)
-od
+let proper_divisor_sums = repeat(0, limit + 1) |> collect_list()
 
 for divisor in 1::limit / 2 do
     let multiple mut = divisor * 2

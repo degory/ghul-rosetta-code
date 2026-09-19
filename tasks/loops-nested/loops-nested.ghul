@@ -5,11 +5,7 @@ grid(size: int, random: System.Random) -> LIST[LIST[int]] is
     let rows = LIST()
 
     for _ in 1::size do
-        let row = LIST()
-
-        for _ in 1::size do
-            row.add(random.next(1, 21))
-        od
+        let row = (1::size) |> map(_ => random.next(1, 21)) |> collect_list()
 
         rows.add(row)
     od

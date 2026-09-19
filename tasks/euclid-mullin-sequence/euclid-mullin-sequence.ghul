@@ -93,11 +93,7 @@ si
 let sequence = euclid_mullin(16) |> collect_list()
 
 render(terms: Collections.List[bigint]) -> string is
-    let texts = LIST()
-
-    for term in terms do
-        texts.add("{term}")
-    od
+    let texts = terms |> map(term => "{term}") |> collect_list()
 
     return texts |> join(" ")
 si

@@ -63,11 +63,7 @@ si
 
 show_path(target: int) is
     build_until(target)
-    let texts = LIST()
-
-    for step in path_to(target) do
-        texts.add("{step}")
-    od
+    let texts = path_to(target) |> map(step => "{step}") |> collect_list()
 
     write_line("path to {target}: {texts |> join(" ")}")
 si

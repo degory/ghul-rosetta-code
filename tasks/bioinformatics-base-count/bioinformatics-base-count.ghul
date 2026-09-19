@@ -14,11 +14,7 @@ let sequence =
 
 let width = 50
 
-let counts = MAP()
-
-for base in "ACGT" do
-    counts[base] = 0
-od
+let counts = "ACGT" |> collect_map(base => base, base => 0)
 
 for base in sequence do
     counts[base] = counts[base] + 1

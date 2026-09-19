@@ -84,11 +84,7 @@ od
 write_line("first 50 fortunate numbers:")
 
 for row in 0..5 do
-    let cells = LIST()
-
-    for column in 0..10 do
-        cells.add("{unique[row * 10 + column],3}")
-    od
+    let cells = (0..10) |> map(column => "{unique[row * 10 + column],3}") |> collect_list()
 
     write_line(cells |> join(" "))
 od

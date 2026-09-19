@@ -9,11 +9,7 @@ let top = 100_000
 // primes, and those are marked directly rather than sieved for.
 let sieved = cast int(System.Math.pow(cast(top), 1.5D))
 
-let aliquot = LIST()
-
-for _ in 0::sieved do
-    aliquot.add(0)
-od
+let aliquot = repeat(0, sieved + 1) |> collect_list()
 
 for divisor in 1::sieved / 2 do
     let multiple mut = divisor * 2
@@ -24,11 +20,7 @@ for divisor in 1::sieved / 2 do
     od
 od
 
-let touched = LIST()
-
-for _ in 0::top do
-    touched.add(false)
-od
+let touched = repeat(false, top + 1) |> collect_list()
 
 for value in 2::sieved do
     let sum = aliquot[value]
@@ -38,11 +30,7 @@ for value in 2::sieved do
     fi
 od
 
-let composite = LIST()
-
-for _ in 0::top do
-    composite.add(false)
-od
+let composite = repeat(false, top + 1) |> collect_list()
 
 let factor mut = 2
 

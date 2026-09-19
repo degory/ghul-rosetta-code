@@ -43,11 +43,7 @@ for row in 0..5 do
     write_line(first_fifty[row * 10..row * 10 + 10] |> join(""))
 od
 
-let widths = LIST()
-
-for _ in 1::20 do
-    widths.add(0)
-od
+let widths = repeat(0, 20) |> collect_list()
 
 for value in humble() do
     let width = "{value}".length

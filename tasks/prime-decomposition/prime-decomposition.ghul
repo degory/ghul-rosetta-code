@@ -30,11 +30,7 @@ decompose(n: bigint) -> List[bigint] is
 si
 
 show(n: bigint) is
-    let rendered = LIST()
-
-    for factor in decompose(n) do
-        rendered.add("{factor}")
-    od
+    let rendered = decompose(n) |> map(factor => "{factor}") |> collect_list()
 
     write_line("{n} = {rendered |> join(" x ")}")
 si

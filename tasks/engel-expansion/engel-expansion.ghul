@@ -44,11 +44,7 @@ show(name: string, fractional: string) is
     let (rebuilt, scale) = from_engel(terms)
     let verified = if rebuilt * denominator =~ numerator * scale
         then "round trips" else "DOES NOT ROUND TRIP" fi
-    let shown = LIST()
-
-    for term in terms |> take(30) do
-        shown.add("{term}")
-    od
+    let shown = terms |> take(30) |> map(term => "{term}") |> collect_list()
 
     write_line("{name}: {terms.count} terms, {verified}")
     write_line("  {shown |> join(" ")}")

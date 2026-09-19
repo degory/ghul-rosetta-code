@@ -22,10 +22,10 @@ si
 solve(divisors: List[int], subtractors: List[int],
       limit: int) -> List[STEP]
 is
-    let table = LIST()
-
-    table.add((steps = 0, next = 0, label = ""))
-    table.add((steps = 0, next = 0, label = ""))
+    let table = [
+        (steps = 0, next = 0, label = ""),
+        (steps = 0, next = 0, label = "")
+    ] |> collect_list()
 
     for value in 2::limit do
         let cheapest =

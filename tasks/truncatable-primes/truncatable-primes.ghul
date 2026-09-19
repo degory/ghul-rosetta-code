@@ -2,11 +2,7 @@ use default
 
 let limit = 1000000
 
-let composite = LIST()
-
-for _ in 0::limit do
-    composite.add(false)
-od
+let composite = repeat(false, limit + 1) |> collect_list()
 
 let root mut = 2
 

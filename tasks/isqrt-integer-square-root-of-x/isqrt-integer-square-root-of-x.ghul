@@ -34,11 +34,7 @@ grouped(value: bigint) -> string =>
 
 write_line("isqrt of 0 through 65:")
 
-let roots = LIST()
-
-for n in 0::65 do
-    roots.add("{isqrt(cast(n))}")
-od
+let roots = (0::65) |> map(n => "{isqrt(cast(n))}") |> collect_list()
 
 write_line(roots |> join(" "))
 
