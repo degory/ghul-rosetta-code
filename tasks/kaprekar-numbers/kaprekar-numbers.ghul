@@ -1,7 +1,7 @@
 use default
 
 kaprekar(n: int) -> bool => (
-    let square mut = cast long(n) * cast long(n)
+    let square = cast long(n) * cast long(n)
     let power mut = 10L
 
     let matched = while power <= square do

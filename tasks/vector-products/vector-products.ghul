@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 use VECTOR = (x: int, y: int, z: int)
 
 *(a: VECTOR, b: VECTOR) -> int =>

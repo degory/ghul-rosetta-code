@@ -10,8 +10,8 @@ magic_square(n: int) -> LIST[int] is
     for value in 1::(n * n) do
         cells[row * n + column] = value
 
-        let next_row mut = (row + n - 1) % n
-        let next_column mut = (column + 1) % n
+        let next_row = (row + n - 1) % n
+        let next_column = (column + 1) % n
 
         if cells[next_row * n + next_column] == 0 then
             row = next_row

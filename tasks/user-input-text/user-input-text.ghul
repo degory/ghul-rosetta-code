@@ -1,5 +1,5 @@
+use default
 use IO.Std.write
-use IO.Std.write_line
 use IO.Std.read_line
 
 write("string: ")

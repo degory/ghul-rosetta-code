@@ -39,7 +39,7 @@ rotated(piece: Piece) -> Piece => (
             |> collect_list()
 )
 
-let well = LIST((0..width * height) |> map(_ => '.'))
+let well = LIST(repeat('.', width * height))
 
 let bag = LIST[Piece]()
 
@@ -116,7 +116,7 @@ lock() -> bool is
 
     for r in full do
         well.remove_range(r * width, width)
-        well.insert_range(0, (0..width) |> map(_ => '.'))
+        well.insert_range(0, repeat('.', width))
     od
 
     score = score + [0, 100, 300, 500, 800][full.count]

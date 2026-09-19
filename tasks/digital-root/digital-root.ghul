@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 use ROOT = (persistence: int, digital_root: long)
 
 digit_sum(value: long) -> long =>

@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use IO
 
 create_secure_temp_file(dir: string, prefix: string) -> string is

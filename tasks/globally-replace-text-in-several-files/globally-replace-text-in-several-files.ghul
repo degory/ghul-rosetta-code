@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use IO.File
 
 replace_in_file(source: string, destination: string) is

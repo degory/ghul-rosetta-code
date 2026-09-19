@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 
 let subject = "   \t some padded text \t  "
 

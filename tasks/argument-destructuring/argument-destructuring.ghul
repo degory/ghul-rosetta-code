@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 
 apply[T.., U](f: T.. -> U, arguments: T..) -> U => f(arguments)
 

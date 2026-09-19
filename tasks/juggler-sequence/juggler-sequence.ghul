@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use System.Math.sqrt
 
 step(value: long) -> long =>

@@ -1,5 +1,5 @@
+use default
 use Ghul
-use IO.Std.write_line
 
 let double = n => n * 2
 let increment = n => n + 1

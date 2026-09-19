@@ -34,7 +34,7 @@ si
 
 arrangements(size: int) -> Pipe[List[int]] =>
     extend([1] |> collect_list(),
-           (0::size) |> map(_ => false) |> collect_list(),
+           repeat(false, size + 1) |> collect_list(),
            size)
 
 let totals = LIST[int]()

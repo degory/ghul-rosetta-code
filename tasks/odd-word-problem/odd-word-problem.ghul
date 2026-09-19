@@ -1,5 +1,5 @@
+use default
 use IO.Std.write
-use IO.Std.write_line
 
 let stream mut = ""
 let position mut = 0

@@ -3,7 +3,7 @@
 // and two of the three names here deliberately break it.
 @@suppress("non-snake-case-name")
 
-use IO.Std.write_line
+use default
 
 let dog = "Benjamin"
 let Dog = "Samba"

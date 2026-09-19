@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 
 // Seeded, so the run is reproducible - the point is the choosing, not the
 // particular elements it lands on.

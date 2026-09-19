@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use System.Environment
 
 Environment.set_environment_variable("ROSETTA_GREETING", "hello")

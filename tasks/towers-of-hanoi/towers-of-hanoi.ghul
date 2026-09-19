@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 
 move(disks: int, source: int, target: int, spare: int) -> void =>
     if disks > 0 then

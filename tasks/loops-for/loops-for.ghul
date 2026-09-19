@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 
 for row in 1::5 do
     let line = string('*', row)

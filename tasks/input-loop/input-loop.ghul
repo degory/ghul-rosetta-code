@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use IO.Std.read_line
 
 let lines mut = 0

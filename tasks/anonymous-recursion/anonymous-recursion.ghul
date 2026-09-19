@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 
 let fibonacci = n =>
     assert n >= 0 else "fibonacci is not defined for a negative argument" in

@@ -71,14 +71,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 68,
+      "lines": 62,
       "parts": [
         {
           "id": "100-prisoners",
           "heading": null,
           "source": "tasks/100-prisoners/100-prisoners.ghul",
           "output": "tasks/100-prisoners/run.expected",
-          "lines": 68,
+          "lines": 62,
           "playground": true,
           "input": false,
           "images": []
@@ -778,14 +778,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 86,
+      "lines": 85,
       "parts": [
         {
           "id": "algebraic-data-types",
           "heading": null,
           "source": "tasks/algebraic-data-types/algebraic-data-types.ghul",
           "output": "tasks/algebraic-data-types/run.expected",
-          "lines": 86,
+          "lines": 85,
           "playground": true,
           "input": false,
           "images": []
@@ -1770,14 +1770,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 137,
+      "lines": 126,
       "parts": [
         {
           "id": "balanced-ternary",
           "heading": null,
           "source": "tasks/balanced-ternary/balanced-ternary.ghul",
           "output": "tasks/balanced-ternary/run.expected",
-          "lines": 137,
+          "lines": 126,
           "playground": true,
           "input": false,
           "images": []
@@ -1954,14 +1954,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 72,
+      "lines": 60,
       "parts": [
         {
           "id": "bifid-cipher",
           "heading": null,
           "source": "tasks/bifid-cipher/bifid-cipher.ghul",
           "output": "tasks/bifid-cipher/run.expected",
-          "lines": 72,
+          "lines": 60,
           "playground": true,
           "input": false,
           "images": []
@@ -3647,14 +3647,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 37,
+      "lines": 36,
       "parts": [
         {
           "id": "church-numerals",
           "heading": null,
           "source": "tasks/church-numerals/church-numerals.ghul",
           "output": "tasks/church-numerals/run.expected",
-          "lines": 37,
+          "lines": 36,
           "playground": true,
           "input": false,
           "images": []
@@ -4457,14 +4457,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 54,
+      "lines": 53,
       "parts": [
         {
           "id": "conditional-structures",
           "heading": null,
           "source": "tasks/conditional-structures/conditional-structures.ghul",
           "output": "tasks/conditional-structures/run.expected",
-          "lines": 54,
+          "lines": 53,
           "playground": true,
           "input": false,
           "images": []
@@ -5527,14 +5527,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 27,
+      "lines": 26,
       "parts": [
         {
           "id": "digital-root",
           "heading": null,
           "source": "tasks/digital-root/digital-root.ghul",
           "output": "tasks/digital-root/run.expected",
-          "lines": 27,
+          "lines": 26,
           "playground": true,
           "input": false,
           "images": []
@@ -10765,14 +10765,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 43,
+      "lines": 37,
       "parts": [
         {
           "id": "iterated-digits-squaring",
           "heading": null,
           "source": "tasks/iterated-digits-squaring/iterated-digits-squaring.ghul",
           "output": "tasks/iterated-digits-squaring/run.expected",
-          "lines": 43,
+          "lines": 37,
           "playground": false,
           "input": false,
           "images": []
@@ -22933,14 +22933,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 20,
+      "lines": 19,
       "parts": [
         {
           "id": "vector-products",
           "heading": null,
           "source": "tasks/vector-products/vector-products.ghul",
           "output": "tasks/vector-products/run.expected",
-          "lines": 20,
+          "lines": 19,
           "playground": true,
           "input": false,
           "images": []

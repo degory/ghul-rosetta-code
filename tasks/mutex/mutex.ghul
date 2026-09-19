@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use Ghul.Coroutines
 
 let names = ["Alice", "Bob", "Carol"]

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 use Church[T] = ((T) -> T) -> (T) -> T
 
 zero[T](f: (T) -> T) -> (T) -> T => x => x

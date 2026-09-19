@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use System.Diagnostics
 
 let root = "ls-sample"

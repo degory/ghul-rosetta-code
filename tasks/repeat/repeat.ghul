@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 
 repeat(action: () -> void, times: int) is
     for _ in 1::times do
