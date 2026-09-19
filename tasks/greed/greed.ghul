@@ -8,15 +8,16 @@ let random = Random(9)
 
 let grid = LIST(0..width * height |> map(_ => random.next(1, 10)))
 
-let directions = MAP()
-directions['q'] = (-1, -1)
-directions['w'] = (0, -1)
-directions['e'] = (1, -1)
-directions['a'] = (-1, 0)
-directions['d'] = (1, 0)
-directions['z'] = (-1, 1)
-directions['x'] = (0, 1)
-directions['c'] = (1, 1)
+let directions = [
+    ('q', (-1, -1)),
+    ('w', (0, -1)),
+    ('e', (1, -1)),
+    ('a', (-1, 0)),
+    ('d', (1, 0)),
+    ('z', (-1, 1)),
+    ('x', (0, 1)),
+    ('c', (1, 1))
+] |> collect_map()
 
 let x mut = random.next(width)
 let y mut = random.next(height)

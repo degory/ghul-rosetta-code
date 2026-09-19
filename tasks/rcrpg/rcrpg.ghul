@@ -15,21 +15,23 @@ si
 
 let random = Random(28)
 
-let steps = MAP[string, Place]()
-steps["north"] = (0, 1, 0)
-steps["south"] = (0, -1, 0)
-steps["east"] = (1, 0, 0)
-steps["west"] = (-1, 0, 0)
-steps["up"] = (0, 0, 1)
-steps["down"] = (0, 0, -1)
+let steps = [
+    ("north", (x = 0, y = 1, z = 0)),
+    ("south", (x = 0, y = -1, z = 0)),
+    ("east", (x = 1, y = 0, z = 0)),
+    ("west", (x = -1, y = 0, z = 0)),
+    ("up", (x = 0, y = 0, z = 1)),
+    ("down", (x = 0, y = 0, z = -1))
+] |> collect_map()
 
-let opposite = MAP()
-opposite["north"] = "south"
-opposite["south"] = "north"
-opposite["east"] = "west"
-opposite["west"] = "east"
-opposite["up"] = "down"
-opposite["down"] = "up"
+let opposite = [
+    ("north", "south"),
+    ("south", "north"),
+    ("east", "west"),
+    ("west", "east"),
+    ("up", "down"),
+    ("down", "up")
+] |> collect_map()
 
 let aliases = MAP()
 

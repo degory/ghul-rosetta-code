@@ -1,20 +1,20 @@
 use default
 
-let face_values = MAP()
-
-face_values["2"] = 2
-face_values["3"] = 3
-face_values["4"] = 4
-face_values["5"] = 5
-face_values["6"] = 6
-face_values["7"] = 7
-face_values["8"] = 8
-face_values["9"] = 9
-face_values["10"] = 10
-face_values["j"] = 11
-face_values["q"] = 12
-face_values["k"] = 13
-face_values["a"] = 14
+let face_values = [
+    ("2", 2),
+    ("3", 3),
+    ("4", 4),
+    ("5", 5),
+    ("6", 6),
+    ("7", 7),
+    ("8", 8),
+    ("9", 9),
+    ("10", 10),
+    ("j", 11),
+    ("q", 12),
+    ("k", 13),
+    ("a", 14)
+] |> collect_map()
 
 parse(card: string) -> (face: int, suit: char) is
     let suit = card[card.length - 1]
