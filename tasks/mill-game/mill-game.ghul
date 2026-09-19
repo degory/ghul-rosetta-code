@@ -65,9 +65,7 @@ show() is
     od
 si
 
-let to_place = MAP()
-to_place['W'] = 9
-to_place['B'] = 9
+let to_place = [('W', 9), ('B', 9)] |> collect_map()
 
 other(side: char) -> char => if side == 'W' then 'B' else 'W' fi
 

@@ -9,11 +9,12 @@ let random = Random(21)
 let snake =
     LIST([(x = 5, y = 4), (x = 4, y = 4), (x = 3, y = 4)])
 
-let steps = MAP[char, (dx: int, dy: int)]()
-steps['w'] = (0, -1)
-steps['a'] = (-1, 0)
-steps['s'] = (0, 1)
-steps['d'] = (1, 0)
+let steps = [
+    ('w', (dx = 0, dy = -1)),
+    ('a', (dx = -1, dy = 0)),
+    ('s', (dx = 0, dy = 1)),
+    ('d', (dx = 1, dy = 0))
+] |> collect_map()
 
 new_food() -> (x: int, y: int) is
     while true do

@@ -9196,14 +9196,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 103,
+      "lines": 104,
       "parts": [
         {
           "id": "greed",
           "heading": null,
           "source": "tasks/greed/greed.ghul",
           "output": "tasks/greed/run.expected",
-          "lines": 103,
+          "lines": 104,
           "playground": true,
           "input": true,
           "images": []
@@ -11634,14 +11634,14 @@
       "images": [
         "tasks/l-system/plant.png.expected"
       ],
-      "lines": 85,
+      "lines": 79,
       "parts": [
         {
           "id": "l-system",
           "heading": null,
           "source": "tasks/l-system/l-system.ghul",
           "output": "tasks/l-system/run.expected",
-          "lines": 85,
+          "lines": 79,
           "playground": true,
           "input": false,
           "images": [
@@ -13487,14 +13487,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 308,
+      "lines": 306,
       "parts": [
         {
           "id": "mill-game",
           "heading": null,
           "source": "tasks/mill-game/mill-game.ghul",
           "output": "tasks/mill-game/run.expected",
-          "lines": 308,
+          "lines": 306,
           "playground": true,
           "input": true,
           "images": []
@@ -17026,14 +17026,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 207,
+      "lines": 209,
       "parts": [
         {
           "id": "rcrpg",
           "heading": null,
           "source": "tasks/rcrpg/rcrpg.ghul",
           "output": "tasks/rcrpg/run.expected",
-          "lines": 207,
+          "lines": 209,
           "playground": true,
           "input": true,
           "images": []
@@ -17546,14 +17546,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 87,
+      "lines": 83,
       "parts": [
         {
           "id": "rock-paper-scissors",
           "heading": null,
           "source": "tasks/rock-paper-scissors/rock-paper-scissors.ghul",
           "output": "tasks/rock-paper-scissors/run.expected",
-          "lines": 87,
+          "lines": 83,
           "playground": true,
           "input": true,
           "images": []
@@ -18869,14 +18869,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 110,
+      "lines": 111,
       "parts": [
         {
           "id": "snake",
           "heading": null,
           "source": "tasks/snake/snake.ghul",
           "output": "tasks/snake/run.expected",
-          "lines": 110,
+          "lines": 111,
           "playground": true,
           "input": true,
           "images": []
