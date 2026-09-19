@@ -20,12 +20,14 @@ use Rosetta
 //   rosetta adopt <slug> ...          record the live section as ours, when it matches wiki-out/
 //   rosetta render-notes <path>      a task's notes.md as wiki markup, to stdout
 //   rosetta index [--check]          write index.json, or report whether it is current
+//   rosetta edit-page <title> <file> <summary> [--dry-run]
+//                                    replace a page that is not a task's, such as a template
 //
 // Publishing reads the markup scripts/generate-wiki.sh leaves in wiki-out/, so generate first.
 
 usage() is
     error.write_line(
-        "usage: rosetta <sync|candidates|show|set|reopen|check|self-test|publish|adopt|render-notes|index> "
+        "usage: rosetta <sync|candidates|show|set|reopen|check|self-test|publish|adopt|render-notes|index|edit-page> "
         "[arguments]"
     )
 si
@@ -677,6 +679,37 @@ self_test() is
     fi
 si
 
+// Replaces the whole text of a page that is not a task's - a template, the language
+// page - from a file. A task's section goes through `publish`, which splices it into the
+// page and records it in the ledger; this does neither. With --dry-run it shows the
+// page's current text and the new one and changes nothing. A page already holding the
+// text is left alone.
+edit_page(title: string, path: string, summary: string, dry_run: bool) is
+    let wiki = WIKI(SITE.api)
+    let text = IO.File.read_all_text(path)
+    let current = wiki.page_wikitext(title)
+
+    if current? /\ current.trim_end() =~ text.trim_end() then
+        write_line("{title} already holds that text; nothing to do")
+        return
+    fi
+
+    if dry_run then
+        write_line("--- {title}, now:")
+        write_line(current ?? "(no such page)")
+        write_line("--- {title}, after:")
+        write_line(text)
+        return
+    fi
+
+    let account = credentials()
+
+    wiki.log_in(account.user, account.password)
+    wiki.edit(title, text, summary)
+
+    write_line("edited {title}")
+si
+
 // Signs in and reports the account, without changing anything.
 check(api: string?) is
     let wiki = WIKI(api ?? SITE.api)
@@ -1104,6 +1137,14 @@ else
             error.write_line("usage: rosetta render-notes <path-to-notes.md>")
         else
             write_line(MARKDOWN_TO_WIKI().render(IO.File.read_all_text(arguments[0])))
+        fi
+    when "edit-page" then
+        let dry_run = arguments.remove("--dry-run")
+
+        if arguments.count < 3 then
+            error.write_line("usage: rosetta edit-page <title> <file> <summary> [--dry-run]")
+        else
+            edit_page(arguments[0], arguments[1], arguments[2], dry_run)
         fi
     when "check" then
         check(if arguments.count > 1 /\ arguments[0] =~ "--api" then arguments[1] else null fi)

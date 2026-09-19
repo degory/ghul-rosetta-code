@@ -316,7 +316,13 @@ dotnet run --project tools/rosetta -- publish amb       # post one task, by slug
 dotnet run --project tools/rosetta -- publish --replace amb   # replace the ghul section already there
 dotnet run --project tools/rosetta -- publish --solved  # post every solved task
 dotnet run --project tools/rosetta -- render-notes tasks/binary-digits/notes.md  # one file's markup
+dotnet run --project tools/rosetta -- edit-page Template:Ghul_playground wiki-pages/Template-Ghul_playground.wiki "summary" --dry-run
 ```
+
+`edit-page` replaces a whole page that is not a task's - the template every playground link
+comes from, the language page - from a file, using the same credential. Those pages' text lives
+in `wiki-pages/`, so a change to one is reviewed like any other before it is posted. It leaves a
+page that already holds the text alone, and `--dry-run` shows the page before and after.
 
 `sync` treats `tasks/` as the authority on what has a solution, and leaves alone anything only
 the ledger knows - a rejection, a block. The wiki it only reads as a cross-check: a page
