@@ -78,7 +78,7 @@
       "title": "A* search algorithm",
       "slug": "a-search-algorithm",
       "state": "published",
-      "published_hash": "273026b7a291314fb5c91a5a14f5781300207b1332d5b0fb910d9ffd78644836",
+      "published_hash": "c77987de8c53c0e0a18b4364bbbfcb5d90dd8c829a401c5940c351874b7f6c74",
       "image_hashes": {
         "Ghul-a-search-algorithm-route.png": "916138db9aa7773713523d30a5f4c0b408921d8e"
       }
@@ -292,7 +292,7 @@
       "title": "Arithmetic derivative",
       "slug": "arithmetic-derivative",
       "state": "published",
-      "published_hash": "5936baaa4e63e3cbf98cb81312e13d1b8e19178089d9cee3a70e98327eddd4e6"
+      "published_hash": "59a845427c5780104b8b3db73974a648c09562960c5f6d25b5c0666e4ee9573b"
     },
     {
       "title": "Arithmetic evaluation",
@@ -304,25 +304,25 @@
       "title": "Arithmetic-geometric mean",
       "slug": "arithmetic-geometric-mean",
       "state": "published",
-      "published_hash": "3af89a24e1d3625088753f673115f62de83196ba0993fc1aba9d70c5efaa9828"
+      "published_hash": "47b2c348d70226d384126df7766b2137a618f7d9d386e53ca25842bd851c272c"
     },
     {
       "title": "Arithmetic/Complex",
       "slug": "arithmetic-complex",
       "state": "published",
-      "published_hash": "2c354a197dabfeb28075d230816f53012978c58ac8fa8195dc2983bea6265653"
+      "published_hash": "f61cc814bc5bbc765ab6ccdcf46a61a3ac02d4738b03bc450a45fb65b0737e85"
     },
     {
       "title": "Arithmetic/Integer",
       "slug": "arithmetic-integer",
       "state": "published",
-      "published_hash": "cc53cbcaac17ede77c8c92e47638f9f68b804e0ef70ca20a1a20e922114766ea"
+      "published_hash": "6cf74ad5bc59f4a3486777f9302da18bf6c2da153f48e0574f6b4502b54224ff"
     },
     {
       "title": "Arithmetic/Rational",
       "slug": "arithmetic-rational",
       "state": "published",
-      "published_hash": "09f5cd109bcc7513fd5393479a8da7cf4b6f160d0104d2d0d052ad5ef73bff20"
+      "published_hash": "e12096dcaf6ef90707e6714d09fb71bf6b296d9464e0be864dfb70d02385e4b4"
     },
     {
       "title": "Array",
@@ -339,7 +339,7 @@
       "title": "Array length",
       "slug": "array-length",
       "state": "published",
-      "published_hash": "ecbfe208b68f267d10c89436609af0b147b9adbe1f3dedb18418a27e50c7b772"
+      "published_hash": "6e993683272f4854f699600393e1d6fe712f94b3302376fea07395823bcac4df"
     },
     {
       "title": "Arrays",
@@ -351,7 +351,7 @@
       "title": "Assertions",
       "slug": "assertions",
       "state": "published",
-      "published_hash": "27f10aff20ca62e177d25f30777cef39f248f19444acd5115baba483fb272752"
+      "published_hash": "733f1934020de204fc79cd27e83e345953ef840bf162c5f7aaf6f6c619dc5d6a"
     },
     {
       "title": "Associative array/Creation",
@@ -393,13 +393,13 @@
       "title": "Averages/Pythagorean means",
       "slug": "averages-pythagorean-means",
       "state": "published",
-      "published_hash": "6a2bfca98d1b7263d65bb7f4c1ac3248bd9c502f6edf2b18f00e0121512cc0b5"
+      "published_hash": "3fe744be5e994b848677bbc089ae3eca2dc04a4d33183422c1e612c4e34cbfb1"
     },
     {
       "title": "Averages/Root mean square",
       "slug": "averages-root-mean-square",
       "state": "published",
-      "published_hash": "c80951c299c04e0dccb0de39d0ea593f83acbaf8f84b97b1d825baae576a7511"
+      "published_hash": "a0990ae94bdfedcc07ae958a02f691226beb8c5216192c169bcec778d0917bfc"
     },
     {
       "title": "B-spline",
@@ -414,13 +414,13 @@
       "title": "Babbage problem",
       "slug": "babbage-problem",
       "state": "published",
-      "published_hash": "fbd5e630dc07d012cfc85f726e2e96e92d7be7b048ee33e86b73be616fab9046"
+      "published_hash": "526012382475bf531b1afe88164c2ca1789062be159c8246ae1cb97885457a4a"
     },
     {
       "title": "Babylonian spiral",
       "slug": "babylonian-spiral",
       "state": "published",
-      "published_hash": "4bb07d55cfd2818e0c66e600c4b87f06f305ab1cc2a872ff383677c288ea42de",
+      "published_hash": "3baaa7ad470b61db29332d966451ff694aafab0251ac1205fe0c10a0adc20dc8",
       "image_hashes": {
         "Ghul-babylonian-spiral-spiral.png": "d6ba146a8ecffc18edd781309391728a184c34ef"
       }
@@ -437,7 +437,7 @@
       "title": "Balanced ternary",
       "slug": "balanced-ternary",
       "state": "published",
-      "published_hash": "a3a09e5037fe8e7148853c1dfc31d4849f8a907d4df056b1bd47a2fd5083d0bb"
+      "published_hash": "eddb6a43ccb61a7048ef956a52bed77625816898eb611fb3db0923a2674741d7"
     },
     {
       "title": "Barnsley fern",
@@ -458,7 +458,7 @@
       "title": "Benford\u0027s law",
       "slug": "benfords-law",
       "state": "published",
-      "published_hash": "dec80d8bfcffefd75bf09a0ec5093d5bea68b1a442ed15e3ccc49f3a9c741b33",
+      "published_hash": "6a795fcf3fe2b449eff75bf79fdd45b899761af79933dc6639bd76c5b71876c6",
       "image_hashes": {
         "Ghul-benfords-law-benford.png": "9f43077ef447c9981e6e96e136f463b515114c21"
       }
@@ -473,13 +473,13 @@
       "title": "Bifid cipher",
       "slug": "bifid-cipher",
       "state": "published",
-      "published_hash": "767fb327886e70fab4a5bcec530b35a7fa246bebb9fb75bd25aaee81b297829f"
+      "published_hash": "c307bc1d4797bf3fc0400f658f0fb4ff8bfbb1774adc104f99391e1ec5fd4140"
     },
     {
       "title": "Bilinear interpolation",
       "slug": "bilinear-interpolation",
       "state": "published",
-      "published_hash": "45fb3ce88441e29f12084d2c160771a9b6f8f0dc34e8ed3e2254856818cd7d8b",
+      "published_hash": "580d3f4db0136336f1ce9fefc88b06b71d7cead9530ec512460de51d772756f1",
       "image_hashes": {
         "Ghul-bilinear-interpolation-scene.png": "701edb8c917ff73a349373bd3afb95a5e5a2c60a",
         "Ghul-bilinear-interpolation-larger.png": "8d48f29d2af218a075e7944a9350d7a827f0f78c"
@@ -489,31 +489,31 @@
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published",
-      "published_hash": "5de98d69930774a1aa93cce6e2c81a443c794e82bb1a6b8c27c568d1c2eacb4d"
+      "published_hash": "a532665f6a4391388823533d8be3637b575419920e3c9dc868b01bb51e173d60"
     },
     {
       "title": "Binary search",
       "slug": "binary-search",
       "state": "published",
-      "published_hash": "2bfdebf6fc30225f0976a848713977315872c8c1fca5ec36b8f15f9b72295be1"
+      "published_hash": "4ec6f87cb2e311145b4b4795df586cb301cb9b3f6cf52e9e1c2e8fcf97ec4670"
     },
     {
       "title": "Binary strings",
       "slug": "binary-strings",
       "state": "published",
-      "published_hash": "0d6222b2c612950ae6ab8d57c6acc4821853b368fcaac5ccdd7b98723b3a4f69"
+      "published_hash": "54d326aee301017fd2b84f787d34188d0b841dcaee4dabcb80c6c50e287a5653"
     },
     {
       "title": "Binomial transform",
       "slug": "binomial-transform",
       "state": "published",
-      "published_hash": "41db2d7bc1d4d199c5d3525d810582e199c9aa92a847d92c4b44338812a7bafc"
+      "published_hash": "5472f5046fa2c7729ad9f0075df118f06d4d10def0d3245bf94ee8f23f843efa"
     },
     {
       "title": "Bioinformatics/Base count",
       "slug": "bioinformatics-base-count",
       "state": "published",
-      "published_hash": "78d456ec150236972e17d4f88852a1924177aaf1687641b80ef0979eecffc226"
+      "published_hash": "885d997187656fa3d1bd315b7b1ebe4c6dfb59a5550a36f4488a673e4734d94c"
     },
     {
       "title": "Bioinformatics/Global alignment",
@@ -534,7 +534,7 @@
       "title": "Birthday problem",
       "slug": "birthday-problem",
       "state": "published",
-      "published_hash": "77b4d8199906eeec2beb7bfb4a93d1194e703bb78e3c581eefe6a79fad91fbaa",
+      "published_hash": "8f5ffaea1e634752d3de7a6f9a3d5b5c2fe492613bac3d6e24c13267f7f17d85",
       "image_hashes": {
         "Ghul-birthday-problem-birthdays.png": "3cc35ad78c3ae73ec5d2803d9d43a6ec6ccfad9a"
       }
@@ -543,7 +543,7 @@
       "title": "Bitmap",
       "slug": "bitmap",
       "state": "published",
-      "published_hash": "a9c8e73669c6a256b00bf5d4c12812c25fa357df2938507d80014b642c9bc35e"
+      "published_hash": "79873c2993252ed2b7561da189165fb1f2db82b7e18067bc92b23cfa9d2d06d1"
     },
     {
       "title": "Bitmap/Bresenham\u0027s line algorithm",
@@ -585,7 +585,7 @@
       "title": "Bitmap/Histogram",
       "slug": "bitmap-histogram",
       "state": "published",
-      "published_hash": "dd7ae94e61b479570ff4dc712509a8570b21ef3119ce878a18beb25137fbadbe",
+      "published_hash": "adaf883d1734641e62e3866a9e624b65de162548df7b910229cb40a2797993bc",
       "image_hashes": {
         "Ghul-bitmap-histogram-source.png": "6222847679b96d562c5e8eaf32a1344db3d9aad3",
         "Ghul-bitmap-histogram-art.png": "f1ae451d76aa78ce26dd07997665724a017cda21"
@@ -724,7 +724,7 @@
       "title": "B\u00E9zier curves/Intersections",
       "slug": "bezier-curves-intersections",
       "state": "published",
-      "published_hash": "ca9bdd52279799ca01d768560048f3c6e38fee403d16e8f30cb99641b1366c2e",
+      "published_hash": "3e6e1b6a40171529b31cae3db0d9984a3dced5d7db44066bd8390f7448635bc7",
       "image_hashes": {
         "Ghul-bezier-curves-intersections-intersections.png": "9ea00d106d189804599af484e2bf0c472de632c5"
       }
