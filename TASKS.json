@@ -4,40 +4,40 @@
       "title": "100 doors",
       "slug": "100-doors",
       "state": "published",
-      "published_hash": "d6ac3efcf6b8a86ef3ce07c1ddee76133324dbfc27a05cf80f485220db0f9c16"
+      "published_hash": "1e39cf7030ef025651d36e66f40b5df21ad62d078ef2b778dfed7ced2d040d5c"
     },
     {
       "title": "100 prisoners",
       "slug": "100-prisoners",
       "state": "published",
       "note": "reopened, was rejected/nondeterministic: a seeded generator makes the simulation reproducible, and the ~31% answer is the point",
-      "published_hash": "6236811d0b245e68620076b963ac9205df291f75aee11745b84160eee716226c"
+      "published_hash": "d8f6e2df8c1a4b88bc8fed3f85c947d42d2d914aecb80736a8a29ffeb4143754"
     },
     {
       "title": "15 puzzle game",
       "slug": "15-puzzle-game",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "f3a6272f933850a680296db2d5b1685a049ce170b91aa3ca0b1c1b1a9d3a6515"
+      "published_hash": "021fbec1516f5c9f7095c847a9a98558fb740d35a061e106d338b56bafd1e0ae"
     },
     {
       "title": "15 puzzle solver",
       "slug": "15-puzzle-solver",
       "state": "published",
-      "published_hash": "9a76e6c22a199f1316b92d9ce5354abf24f1e32c1e01c89cc1706b89e5ca00cc"
+      "published_hash": "be7352aa35db03e19d5e0ba768cf28e933c16f0418c652f63a9bb9badbbb060d"
     },
     {
       "title": "16 puzzle game",
       "slug": "16-puzzle-game",
       "state": "published",
-      "published_hash": "c966fa051892f5fbe34bb443763331542c4fd8209e8c6475aa8579089b730db1"
+      "published_hash": "d6e3f18f349148eafa175f1f7bb6a317a67ce90ddf7d49caa0d305087080d512"
     },
     {
       "title": "2048",
       "slug": "2048",
       "state": "published",
       "note": "reopened, was rejected/needs-interaction: a fixed input script drives the session and the transcript is the expectation",
-      "published_hash": "915ca1a1d3e3be719990a46ec6d9f1e5b0921e40d9382b7b8e17b40bb736e690"
+      "published_hash": "44312ce74b01f509ef3af95de6205b02408209522def92179e5f6aae540d9a0d"
     },
     {
       "title": "21 game",
@@ -57,13 +57,13 @@
       "title": "24 game/Solve",
       "slug": "24-game-solve",
       "state": "published",
-      "published_hash": "ce1cac9876052872cfd0f274cfad0e8bab69a379b3c583ad0e457c0a4654383d"
+      "published_hash": "5ba1d33aaf7609c092ec4dce83fe8911e73ab1c52862666533afa4a6b99a052e"
     },
     {
       "title": "3d turtle graphics",
       "slug": "3d-turtle-graphics",
       "state": "published",
-      "published_hash": "4a8380aa8543c4068f35210da5807a2140f914bd47b8e73b91189988cb36aff1",
+      "published_hash": "f38e59adfd707d33d155c253ed7975c332d80b7f13d2a152563daee81f0cabaf",
       "image_hashes": {
         "Ghul-3d-turtle-graphics-turtle.png": "61a1bf6791bbd2ba8bb6bfdd6c0a15951478a837"
       }
@@ -87,20 +87,20 @@
       "title": "A\u002BB",
       "slug": "a-b",
       "state": "published",
-      "published_hash": "45cbb9102f1c1a9381c9be73a8f5af3b5e08b2e3394e59220513af472fe76b5b"
+      "published_hash": "97b67c2d093a6570693d83428ab3ae5c7f16b1b21ebeb64b7cea66cff824812b"
     },
     {
       "title": "ABC problem",
       "slug": "abc-problem",
       "state": "published",
-      "published_hash": "31863215b530332b20c4ea55b526727fd341d1ea015849d18960129512d3e570"
+      "published_hash": "ea9db931cabbf173e82a31ecb79920e74fd2bdd3237efc69d4e2f3937bdcde80"
     },
     {
       "title": "ADFGVX cipher",
       "slug": "adfgvx-cipher",
       "state": "published",
       "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key",
-      "published_hash": "e5e8c5f821dd560be48797baf1960a335b98b83340e107d1a6fe4515238da83c"
+      "published_hash": "36d665b0c8d67c80ddd1758b7153668e67abd50fa73b9993b79f70f5fbd3bd8b"
     },
     {
       "title": "Abbreviations, easy",
@@ -112,13 +112,13 @@
       "title": "Abbreviations, simple",
       "slug": "abbreviations-simple",
       "state": "published",
-      "published_hash": "0d8256d0b10382201b923b1d5d1e0cea06fc8b463432f833476d09ffcb64d737"
+      "published_hash": "59de8fd6f720e0bfad4cb86f505af8987d23045908a825ab5ae1c7bc9477c660"
     },
     {
       "title": "Abelian sandpile model",
       "slug": "abelian-sandpile-model",
       "state": "published",
-      "published_hash": "6ca3e999c5c8bee312614962ed008f3b242de174582ad15e4b466bb79260863e",
+      "published_hash": "5dfd6ebb0f573342325d693e95c279de299d19640b6f470d4e82a3261775ce91",
       "image_hashes": {
         "Ghul-abelian-sandpile-model-sandpile.png": "f635e1ecfa7550bdcf59591b5ecd6e312c8e2b6e"
       }
@@ -127,7 +127,7 @@
       "title": "Abelian sandpile model/Identity",
       "slug": "abelian-sandpile-model-identity",
       "state": "published",
-      "published_hash": "541b5dadafa3ad0e7dcaec302cb90e202049cab338fc6c1ff46dca1fba60891a",
+      "published_hash": "3bfedd1f7ed794822af16d1dd19bf55e650025139782e2e1c7e105f0c3517924",
       "image_hashes": {
         "Ghul-abelian-sandpile-model-identity-identity.png": "f7c373f0b37a50ee9fbc079099ea02a00301db48"
       }
@@ -142,7 +142,7 @@
       "title": "Abundant, deficient and perfect number classifications",
       "slug": "abundant-deficient-and-perfect-number-classifications",
       "state": "published",
-      "published_hash": "7d34d6ad7f01374861c8c20f429686947e6cb6a24f308da0a50cfe8db11db3de"
+      "published_hash": "4c8dc03f860860cfc5eaa9ed7f3c1e410cc6056bee5516d5c7818471092046d9"
     },
     {
       "title": "Accumulator factory",
@@ -160,7 +160,7 @@
       "title": "Ackermann function",
       "slug": "ackermann-function",
       "state": "published",
-      "published_hash": "bb3696b1c3035f2a86c744389452b4ddf7c2092fa325e8ee522500a21ae462e1"
+      "published_hash": "dc19bc59359518ba9fb873dd4d5a660cfea1ea4709e96c38cfcdce1c553450db"
     },
     {
       "title": "Active Directory/Connect",
@@ -177,7 +177,7 @@
       "slug": "active-object",
       "state": "published",
       "note": "a cooperative scheduler gives it a reproducible clock, so the nondeterminism rejection no longer holds",
-      "published_hash": "75a225488a5da0f9240625c2196449f197e5f565935fb3c02520ff4626bde9ed"
+      "published_hash": "a63808cf72419eeba37f8122b09afd57a8dab377fe4dec58e65d7ebc26a3814d"
     },
     {
       "title": "Additive primes",
@@ -189,7 +189,7 @@
       "title": "Algebraic data types",
       "slug": "algebraic-data-types",
       "state": "published",
-      "published_hash": "ab9b746dadb192668206dff531e0f1093049d15eb1c3b7b039fb181b500c2e9f"
+      "published_hash": "53f86682e8da671c5f4bdbdf1f416094558823665e5bb2f6a350949dc6b8e174"
     },
     {
       "title": "Align columns",
@@ -201,13 +201,13 @@
       "title": "Almost prime",
       "slug": "almost-prime",
       "state": "published",
-      "published_hash": "da3522689c3c92354bb7ceb57f68903d0c5d768e59f594b2874dcb4cd6440db4"
+      "published_hash": "16b242bb2e446625be317b193a02f07692471c0a46b897a76ae36cc5db6b7821"
     },
     {
       "title": "Amb",
       "slug": "amb",
       "state": "published",
-      "published_hash": "1b3a3615d5c3d57da00e80a52410a761d1b473fb3c7de084c60b6d95452ea67a"
+      "published_hash": "b0a9aa54e5f390915322db808f18e0d059cde2d15e5a436fd18c473cf25684d2"
     },
     {
       "title": "Amicable pairs",
@@ -220,7 +220,7 @@
       "slug": "anagrams",
       "state": "published",
       "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched",
-      "published_hash": "3f077a11b8153f854056a641df5f3cfe7ed24084fb1f1532c5265aeb08876bfd"
+      "published_hash": "944b03754deb7ec9ccfecfadfc00797d6c029cd4392561d2d8bb4048fe12fa4c"
     },
     {
       "title": "Anaprimes",
@@ -252,13 +252,13 @@
       "title": "Anonymous recursion",
       "slug": "anonymous-recursion",
       "state": "published",
-      "published_hash": "731ece53e65e75c975539b5bc19978d2e66c0791e4bd92ebfefb909f99f28783"
+      "published_hash": "cc96524dd0d85d73ae0849e56e712fc04d90df744150f3a98fcbe28658b6f1f0"
     },
     {
       "title": "Anti-primes",
       "slug": "anti-primes",
       "state": "published",
-      "published_hash": "371d1fdff1ff2fc4913e41db115de4b54d621e3745804174e72a23e758ff7f9c"
+      "published_hash": "8e25437f12ba065aa82ca83aa39b4f94aa3ed7cd703209893f835d4ca04ef8c0"
     },
     {
       "title": "Apply a callback to an array",
@@ -270,7 +270,7 @@
       "title": "Arbitrary-precision integers (included)",
       "slug": "arbitrary-precision-integers",
       "state": "published",
-      "published_hash": "666777c205bb896200ab7f7fa35c487e366e3e7a84c4d667fffffefb95608f7a"
+      "published_hash": "3142f0fe8c96f012acac997aeaeef983050b48bf9aa1c42162c73e2d9d6ad039"
     },
     {
       "title": "Archimedean spiral",
@@ -286,7 +286,7 @@
       "title": "Argument destructuring",
       "slug": "argument-destructuring",
       "state": "published",
-      "published_hash": "8976538c313780014cd7bc845980b83ea27d83ed0b1cf24e00b7ece409a0676d"
+      "published_hash": "d4405ed50315f60df59b4f3515e230b03472aa8f433e1afd517992e9a6c53e5e"
     },
     {
       "title": "Arithmetic derivative",
