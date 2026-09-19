@@ -3,7 +3,7 @@ use Raster.IMAGE
 
 use Tier = (half_width: double, top: double)
 
-let tiers = [
+let tiers: Tier[] = [
     (half_width = 60.0D, top = 30.0D),
     (half_width = 52.0D, top = 60.0D),
     (half_width = 40.0D, top = 290.0D),

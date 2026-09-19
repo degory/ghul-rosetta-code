@@ -69,12 +69,12 @@ probes |> each(probe =>
     write_line("  {probe.name} is empty: "
                "{is_empty(probe.set, 0.0D, 2.0D, 100_000)}"))
 
-let ripples =
+let ripples: RealSet =
     value =>
         0.0D < value /\ value < 10.0D /\
             Math.abs(Math.sin(Math.pi * value * value)) > 0.5D
 
-let waves =
+let waves: RealSet =
     value =>
         0.0D < value /\ value < 10.0D /\
             Math.abs(Math.sin(Math.pi * value)) > 0.5D

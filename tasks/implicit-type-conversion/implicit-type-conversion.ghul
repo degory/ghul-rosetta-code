@@ -9,12 +9,12 @@ class CAT: ANIMAL is
 si
 
 let cat = CAT()
-let animal = cat
+let animal: ANIMAL = cat
 
 write_line("a CAT is an ANIMAL: {isa ANIMAL(animal)}")
 
 let count = 7
-let maybe_count = count
+let maybe_count: int? = count
 
 write_line("count widened to int?: {maybe_count}")
 

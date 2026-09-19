@@ -22,7 +22,7 @@ amb[T](
     fi
 si
 
-let sets = [
+let sets: List[Iterable[string]] = [
     ["the", "that", "a"],
     ["frog", "elephant", "thing"],
     ["walked", "treaded", "grows"],

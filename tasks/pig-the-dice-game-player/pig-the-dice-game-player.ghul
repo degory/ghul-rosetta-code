@@ -17,7 +17,7 @@ chase_the_leader(banked: int, turn: int, opponent: int) -> bool =>
 four_rolls(banked: int, turn: int, opponent: int) -> bool =>
     turn < 16 /\ banked + turn < goal
 
-let strategies = [
+let strategies: Player[] = [
     (name = "hold at 20", rolls_again = hold_at_20),
     (name = "chase the leader", rolls_again = chase_the_leader),
     (name = "four rolls a turn", rolls_again = four_rolls)

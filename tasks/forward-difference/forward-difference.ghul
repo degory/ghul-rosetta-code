@@ -10,7 +10,7 @@ forward(order: int, xs: List[int]) -> List[int] =>
     else forward(order - 1, differences(xs))
     fi
 
-let xs = [90, 47, 58, 29, 22, 32, 55, 5, 55, 73]
+let xs: List[int] = [90, 47, 58, 29, 22, 32, 55, 5, 55, 73]
 
 for order in 0..xs.count do
     write_line("order {order}: {forward(order, xs) |> join(", ")}")
