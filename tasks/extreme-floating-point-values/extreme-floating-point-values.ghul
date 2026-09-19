@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use System.Globalization.CultureInfo
 
 show(expression: string, value: double) =>

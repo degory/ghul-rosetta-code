@@ -52,13 +52,7 @@ all_pardoned(finds: (LIST[int], int) -> bool) -> bool =>
      freed == prisoners)
 
 success_rate(finds: (LIST[int], int) -> bool) -> double =>
-    (let pardoned mut = 0
-     for _ in 0..trials do
-         if all_pardoned(finds) then
-             pardoned = pardoned + 1
-         fi
-     od
-     cast(pardoned) * 100.0D / cast(trials))
+    cast((0..trials) |> filter(_ => all_pardoned(finds)) |> count()) * 100.0D / cast(trials)
 
 write_line("{trials} trials of {prisoners} prisoners "
            "opening {attempts} drawers each")

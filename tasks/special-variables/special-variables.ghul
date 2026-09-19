@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 class ANIMAL is
     init() is si
 

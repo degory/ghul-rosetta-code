@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 swap[T](left: T ref, right: T ref) is
     (left!, right!) = (right!, left!)
 si

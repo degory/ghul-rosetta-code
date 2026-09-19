@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 count: int
 
 show() is

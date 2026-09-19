@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 is_prime(value: long) -> bool is
     if value < 2L then return false fi
 

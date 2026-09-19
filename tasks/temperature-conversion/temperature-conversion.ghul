@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 show(kelvin: double) is
     write_line("K {kelvin,8:F2}")
     write_line("C {kelvin - 273.15,8:F2}")

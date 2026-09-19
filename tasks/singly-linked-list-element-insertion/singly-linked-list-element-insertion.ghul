@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 class NODE[T](value: T) is
     next: NODE[T]?
 

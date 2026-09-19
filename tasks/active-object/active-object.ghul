@@ -1,7 +1,7 @@
 // Time is simulated: each scheduler turn advances the clock by one
 // step, and nothing reads a real one.
 
-use IO.Std.write_line
+use default
 use Ghul.Coroutines
 use System.Math.pi
 use System.Math.sin

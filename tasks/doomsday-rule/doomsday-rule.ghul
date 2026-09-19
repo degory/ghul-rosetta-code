@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let day_names = [
     "Sunday", "Monday", "Tuesday", "Wednesday",
     "Thursday", "Friday", "Saturday"

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 search[T: Ghul.Comparable[T]](values: T[], sought: T) -> int? is
     let low mut = 0
     let high mut = values.count - 1

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let fruit = ["apple", "orange"]
 
 write_line("{fruit.count}")

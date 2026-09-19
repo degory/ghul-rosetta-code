@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let answer = 42
 
 assert answer == 42

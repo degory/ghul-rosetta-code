@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let value mut = 1024
 
 while value > 0 do

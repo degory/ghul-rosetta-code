@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 write_line("decimal: {727}")
 write_line("hexadecimal: {0x2D7}")
 write_line("grouped: {1_000_000}")

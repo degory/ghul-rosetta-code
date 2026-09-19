@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 even(value: int) -> bool => value % 2 == 0
 
 also_even(value: int) -> bool => value & 1 == 0

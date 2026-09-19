@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let planets = ["Mercury", "Venus", "Earth", "Mars"]
 
 for planet in planets do

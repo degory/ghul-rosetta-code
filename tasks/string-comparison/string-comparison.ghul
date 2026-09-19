@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use System.StringComparison
 
 show(expression: string, result: object) =>

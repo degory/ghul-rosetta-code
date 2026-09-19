@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let inverse = "\u001B[7m"
 let normal = "\u001B[0m"
 

@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 range(name: string, low: object, high: object) =>
     write_line("{name,-8} {low,30} {high,29}")
 

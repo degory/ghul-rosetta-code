@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let fibonacci = n =>
     assert n >= 0 else "fibonacci is not defined for a negative argument" in
     (i rec => if i < 2 then i else rec(i - 1) + rec(i - 2) fi)(n)

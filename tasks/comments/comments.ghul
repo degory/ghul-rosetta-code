@@ -4,6 +4,6 @@
    can span as many lines as it likes. Block comments do not nest: the
    first closing marker ends the comment however many openers precede it. */
 
-use IO.Std.write_line
+use default
 
 write_line("ghul has two kinds of comment" /* and either can sit mid-line */)

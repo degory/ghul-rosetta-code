@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 rotate(text: string, key: int) -> string is
     let shifted = System.Text.StringBuilder()
 

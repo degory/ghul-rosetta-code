@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 occurrences(haystack: string, needle: string) -> int is
     let found mut = 0
     let at mut = haystack.index_of(needle)

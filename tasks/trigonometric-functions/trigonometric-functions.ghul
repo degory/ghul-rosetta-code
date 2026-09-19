@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use System.Math
 
 // The library takes and returns radians, so the degree column is the same

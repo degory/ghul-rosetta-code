@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use IO
 
 let reader = StreamReader("input.txt")

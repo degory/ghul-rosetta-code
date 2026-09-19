@@ -1,7 +1,7 @@
 // Each value waits its own number of scheduler turns rather than any
 // real time, so values one apart still wake in order.
 
-use IO.Std.write_line
+use default
 use Ghul.Coroutines
 
 let values = [5, 3, 8, 0, 1, 9, 2, 7]

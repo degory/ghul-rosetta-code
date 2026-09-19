@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 union Shape is
     CIRCLE(radius: double)
     RECTANGLE(width: double, height: double)

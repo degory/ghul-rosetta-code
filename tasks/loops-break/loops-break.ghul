@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let source = System.Random(20260909)
 
 do

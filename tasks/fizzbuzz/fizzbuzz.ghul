@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 for i in 1::100 do
     write_line(
         if i % 15 == 0 then

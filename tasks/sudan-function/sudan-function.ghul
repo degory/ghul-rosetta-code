@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 sudan(order: int, left: bigint, right: bigint) -> bigint =>
     if order == 0 then left + right
     elif right.is_zero then left

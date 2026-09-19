@@ -1,5 +1,5 @@
+use default
 use IO.Std.write
-use IO.Std.write_line
 use Ghul.Coroutines
 
 class OUT_OF_INK: System.Exception is

@@ -1,6 +1,6 @@
+use default
 use IO.Std.read_line
 use IO.Std.write
-use IO.Std.write_line
 
 // Seeded, so the transcript below reproduces.
 let random = System.Random(11)

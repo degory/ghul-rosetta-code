@@ -1,5 +1,4 @@
-use IO.Std.write_line
-
+use default
 let verbs = [
     ("amare", "am", ["o", "as", "at", "amus", "atis", "ant"]),
     ("monere", "mon", ["eo", "es", "et", "emus", "etis", "ent"]),

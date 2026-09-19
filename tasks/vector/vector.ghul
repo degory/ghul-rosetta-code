@@ -1,4 +1,4 @@
-use IO.Std.write_line
+use default
 use System.Math.atan2
 use System.Math.cos
 use System.Math.sin
