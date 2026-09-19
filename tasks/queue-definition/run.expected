@@ -1,7 +1,7 @@
-empty: True
-empty: False
+empty: true
+empty: false
 pop:   first
 pop:   second
 pop:   third
-empty: True
+empty: true
 pop:   the queue is empty

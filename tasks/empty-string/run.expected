@@ -1,4 +1,4 @@
-empty is empty: True
-filled is empty: False
-filled is not empty: True
-null or empty: True
+empty is empty: true
+filled is empty: false
+filled is not empty: true
+null or empty: true

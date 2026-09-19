@@ -9,4 +9,4 @@ main: pulled two
   coroutine: before the pause
 main: the coroutine suspended and control returned here
   coroutine: resumed from the scheduler
-main: the coroutine finished: True
+main: the coroutine finished: true

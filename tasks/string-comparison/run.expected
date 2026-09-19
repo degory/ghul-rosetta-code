@@ -1,19 +1,19 @@
 content
-first =~ built                           True
-first !~ second                          True
-first < second                           True
-second > first                           True
+first =~ built                           true
+first !~ second                          true
+first < second                           true
+second > first                           true
 first <> second                          -1
 
 identity
-first == built                           False
-first == first                           True
+first == built                           false
+first == first                           true
 
 case
-shouting =~ first                        False
-shouting.to_lower() =~ first.to_lower()  True
+shouting =~ first                        false
+shouting.to_lower() =~ first.to_lower()  true
 string.compare(shouting, first, ignore_case) 0
 
 numeric strings compare as text
-"10" < "9"                               True
-10 < 9                                   False
+"10" < "9"                               true
+10 < 9                                   false

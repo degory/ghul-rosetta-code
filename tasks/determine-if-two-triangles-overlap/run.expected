@@ -7,6 +7,6 @@
 (0, 0),(1, 0),(0, 1) and (1, 0),(2, 0),(1, 1): overlap
 
 the last pair touch at a corner
-overlapping if touching counts: True
-overlapping if it does not: False
+overlapping if touching counts: true
+overlapping if it does not: false
 <<image triangles.png>>

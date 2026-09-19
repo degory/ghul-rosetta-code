@@ -1,7 +1,7 @@
-text is null:      False
-nothing is null:   True
-number is null:    False
-no_number is null: True
+text is null:      false
+nothing is null:   true
+number is null:    false
+no_number is null: true
 
 text:      "hello"
 nothing:   null
