@@ -405,7 +405,7 @@
       "title": "B-spline",
       "slug": "b-spline",
       "state": "published",
-      "published_hash": "ac00e9b13ef27a7c3fa0bad612ed47896de70ea58196969a014f851b285f16d9",
+      "published_hash": "ddc4d3af53f8b461bc492c6b5cf61101fcfd300d8f5a7e9489d0fc79d4073b3d",
       "image_hashes": {
         "Ghul-b-spline-b-spline.png": "75f9881618efd5d49bd3f7bc840ba1b7c0bfc7ae"
       }
@@ -610,7 +610,7 @@
       "title": "Bitmap/Read a PPM file",
       "slug": "bitmap-read-a-ppm-file",
       "state": "published",
-      "published_hash": "9c566ede79703d12ec757f5913d0bd2bd8880cbb311199c2f10101dbcb9df664"
+      "published_hash": "904d8096d1d18a326c6f8155d11554bc1c72bdb062282356697d0de6baf784c6"
     },
     {
       "title": "Bitmap/Read an image through a pipe",
@@ -622,25 +622,25 @@
       "title": "Bitmap/Write a PPM file",
       "slug": "bitmap-write-a-ppm-file",
       "state": "published",
-      "published_hash": "bc48696449d9d3d0fc62d151bc0938e190da3f32d472e1159d0298f2192f3166"
+      "published_hash": "baea2f41bb402d98953d8dbc250070b892f7a419adb7e6df4aa886139d575314"
     },
     {
       "title": "Bitwise operations",
       "slug": "bitwise-operations",
       "state": "published",
-      "published_hash": "58f0bcb0dc66900d895754cd7f9d2dbc4c4f4d6a4018e4669eeb7f5e72c9d88b"
+      "published_hash": "c5a654627bed5bec3cba769dfe604d4ffc60d615ebefed356c87063b1fb51341"
     },
     {
       "title": "Black box",
       "slug": "black-box",
       "state": "published",
-      "published_hash": "949d1aa826d72e8df779cede6323955bf2bdb8c8e8f13ffa28295911adf3b317"
+      "published_hash": "700189e6380e3405335c6035b59506ed829f59991432cb170d73dc6e6e7a2cc4"
     },
     {
       "title": "Blum integer",
       "slug": "blum-integer",
       "state": "published",
-      "published_hash": "ff47b503d49fdc2c7adfca85db7536b59abbc7c88001bab38b4a012161171c4f"
+      "published_hash": "1dd496937f7d839a991373a75028647339e9f909b2fd00efc2a0a78c1e4164e1"
     },
     {
       "title": "Boids",
@@ -655,25 +655,25 @@
       "title": "Boolean values",
       "slug": "boolean-values",
       "state": "published",
-      "published_hash": "9539e6a8f109709925c3008ace6b77328db8940d835bf7e0b5aaa818c11ee0c2"
+      "published_hash": "0dc836f4c9ebf286f1c15cc0afc6dd3bcfae053d044ea3442d13498c4358478a"
     },
     {
       "title": "Boustrophedon transform",
       "slug": "boustrophedon-transform",
       "state": "published",
-      "published_hash": "5ed3ba523a166a7e3f91fa72da194937e650b161f1f737c4ca231d713ccbf025"
+      "published_hash": "b7cb2ce0a803eea6402e10e2b080caf55be8767196f3a0fd0c601d0dda9a7c77"
     },
     {
       "title": "Box the compass",
       "slug": "box-the-compass",
       "state": "published",
-      "published_hash": "ccc14cdae219a19c02a6a33e508c00dcfe0fb000965781946f5e578c4e933b3b"
+      "published_hash": "a575830ac7543471b19161cd5b4e67561215cfd92d990bc2e08df0eb41cc47f0"
     },
     {
       "title": "Boyer-Moore string search",
       "slug": "boyer-moore-string-search",
       "state": "published",
-      "published_hash": "dd9842ff0ca53ef1359c3deae93b0524cc7be39ac0a24cf2da66efb4a13c030c"
+      "published_hash": "09ad0326efa2c974b87521cd61f8d1656fc237da5ee2e8faeb6a119a6d5b7a77"
     },
     {
       "title": "Brace expansion",
@@ -685,19 +685,19 @@
       "title": "Brazilian numbers",
       "slug": "brazilian-numbers",
       "state": "published",
-      "published_hash": "c7ef0e68c7667f3546e93448bce165f89258f35f37d2a66a88a71afbfd6bd5d9"
+      "published_hash": "13d71d2f5e66538070511361c5814952d921732c745525ecaf67720a98b0516f"
     },
     {
       "title": "Brilliant numbers",
       "slug": "brilliant-numbers",
       "state": "published",
-      "published_hash": "348cd20359571bc3d6cf970fd28f6a3b688d5a04d0adeee9869c66e60d1dd3f4"
+      "published_hash": "7ac9621052afc03aba0b6af6b4d8f25571a9bf573147a2009fccceaf10d1c301"
     },
     {
       "title": "Brownian tree",
       "slug": "brownian-tree",
       "state": "published",
-      "published_hash": "33eaf8e83de6a1f8ce14bf3b45fd3577512b6f11b7e0a33cc582815d8c07a6e4",
+      "published_hash": "bd7ff782bd7a3420486ccc9853af66deece129907a4b6ebf3cfe052df5331769",
       "image_hashes": {
         "Ghul-brownian-tree-brownian.png": "522b8bddf58370cb46e4f8b608237b3cdfadbe54"
       }
@@ -712,13 +712,13 @@
       "title": "Bulls and cows/Player",
       "slug": "bulls-and-cows-player",
       "state": "published",
-      "published_hash": "e0a0bf51b2c9ef62ea5f1770af984915c83b303fa9e68045f74d5d6eb2f7dfce"
+      "published_hash": "84eef551eb0fcac4aa1a7e6ef423e420c9f709f07087c80247dd037c3071471d"
     },
     {
       "title": "Burrows\u2013Wheeler transform",
       "slug": "burrows-wheeler-transform",
       "state": "published",
-      "published_hash": "8294c9b3fb7f0f894c07c9946847d340524ea9370648691b31e5a1818add1b88"
+      "published_hash": "23840957506c5942dc673100b3986959c0aff6de91594d57dc6f9cbb4ad405c0"
     },
     {
       "title": "B\u00E9zier curves/Intersections",
@@ -744,7 +744,7 @@
       "title": "Caesar cipher",
       "slug": "caesar-cipher",
       "state": "published",
-      "published_hash": "a9be4dd97a76fa3ea24ca9b03296f036086841c252198ab6e680a1f46640057c"
+      "published_hash": "905da1ad9294495927235c526b4c344257275f37d20a43e85054c5180da7d5bb"
     },
     {
       "title": "Calculating the value of e",
@@ -762,13 +762,13 @@
       "title": "Call a foreign-language function",
       "slug": "call-a-foreign-language-function",
       "state": "published",
-      "published_hash": "fdc6f21edcd5a674b6bf9b9d5f077a47f8bd22a45d55b90bf7aaf9c0f3eb858e"
+      "published_hash": "4c41e57110687ec8634390c2d9d76841058bc9c2b6a7f0df6d07ebcf4b0b59cc"
     },
     {
       "title": "Call a function",
       "slug": "call-a-function",
       "state": "published",
-      "published_hash": "cd269b684778f564e3667e7be3a52fb0f86b676d8b06ccb205fbeaa4d3ef51e6"
+      "published_hash": "82c9c92476562ef497de3e5762d1576d1e44e4eb75567c4485925c3b6423b530"
     },
     {
       "title": "Camel case and snake case",
@@ -780,7 +780,7 @@
       "title": "Canny edge detector",
       "slug": "canny-edge-detector",
       "state": "published",
-      "published_hash": "e8352b45d2c953b81123841b5909a8293943e1a2f119d8db93071da92bf7421a",
+      "published_hash": "fa0934990f6f9f1d395e77bf44b8167cedbe7aa8929974815e264e326a66323c",
       "image_hashes": {
         "Ghul-canny-edge-detector-edges.png": "7e4ec47b69caa4755ad6915c3cfe4d4ff0d6a15a"
       }
@@ -795,25 +795,25 @@
       "title": "Card shuffles",
       "slug": "card-shuffles",
       "state": "published",
-      "published_hash": "5b21dcd54d6a77cc79764dadfcaa64b82aaf341b3107dddba10080874316a5cc"
+      "published_hash": "10ef39f63c6b6b4c0b47df1e4c5efd26577f90603ba7d1b3327653f804293c06"
     },
     {
       "title": "Cartesian product of two or more lists",
       "slug": "cartesian-product-of-two-or-more-lists",
       "state": "published",
-      "published_hash": "cc1c29ea2345657d5f3cb8fcea772bbf2c5addb033d9eadce2a65cbf6248aa3c"
+      "published_hash": "92dab87a8f9302a16cd2457a98061e4ad815a6ef820b4a8db41779b09a685ac0"
     },
     {
       "title": "Case-sensitivity of identifiers",
       "slug": "case-sensitivity-of-identifiers",
       "state": "published",
-      "published_hash": "048cf190e2729edd6e343008d961ab8b5353b70a3b7eda5fc3fe5ab9002dd87b"
+      "published_hash": "7cdc9e4d454e1308e3d9bd9b8f5afce92a975047bd9dfcb62e8e53894c8e8ea4"
     },
     {
       "title": "Casting out nines",
       "slug": "casting-out-nines",
       "state": "published",
-      "published_hash": "45aaa95cf7ac59c5ccd611f97de27fccfa12ac1b7a78e187c7a96adccef80f9d"
+      "published_hash": "9373242d13d9fe0e7b7c0ae1b295bffe659c1a8cc0e1d4c56ea4529d26acbe08"
     },
     {
       "title": "Catalan numbers",
@@ -831,7 +831,7 @@
       "title": "Catenoid surface",
       "slug": "catenoid-surface",
       "state": "published",
-      "published_hash": "a7a7a30f0447c99947e5bfc29588bb2ff99017a1e817c021c8b22a4a6efa2df5",
+      "published_hash": "a7781117c9979e712e6fc5e78f7f04ad40ac12f5b303d9a3437437ebc1bdff8b",
       "image_hashes": {
         "Ghul-catenoid-surface-catenoid.png": "a138e9a79d65dc4e6b0c8f494d239086727f6859"
       }
@@ -849,7 +849,7 @@
       "title": "Character codes",
       "slug": "character-codes",
       "state": "published",
-      "published_hash": "73b3a51e125a968b6eab73523e9d42f211de9ed8b4de7c728a20e095908b6531"
+      "published_hash": "21269f6fe0fb63050937da19b726c49af90de692d7f50f4a2f4d429f1e97550e"
     },
     {
       "title": "Chat server",
