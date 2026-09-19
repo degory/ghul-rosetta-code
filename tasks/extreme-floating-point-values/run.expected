@@ -7,10 +7,10 @@ double.negative_infinity     -Infinity
 double.positive_infinity     Infinity
 double.na_n                  NaN
 
--0.0 == 0.0                  True
+-0.0 == 0.0                  true
 1.0 / -0.0                   -Infinity
-nan == nan                   False
-double.is_na_n(nan)          True
+nan == nan                   false
+double.is_na_n(nan)          true
 
 infinity + 1.0               Infinity
 infinity - infinity          NaN

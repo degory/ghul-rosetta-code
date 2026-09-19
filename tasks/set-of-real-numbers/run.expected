@@ -5,8 +5,8 @@ membership:
   [0,3) - [0,1]   0: False 1: False 2: True
 
 emptiness over [0,2]:
-  [1,1] is empty: False
-  (1,1) is empty: True
-  (0,0] is empty: True
+  [1,1] is empty: false
+  (1,1) is empty: true
+  (0,0] is empty: true
 
 length of A - B over (0,10): 2.076
