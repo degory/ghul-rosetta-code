@@ -71,14 +71,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 68,
+      "lines": 62,
       "parts": [
         {
           "id": "100-prisoners",
           "heading": null,
           "source": "tasks/100-prisoners/100-prisoners.ghul",
           "output": "tasks/100-prisoners/run.expected",
-          "lines": 68,
+          "lines": 62,
           "playground": true,
           "input": false,
           "images": []
@@ -778,14 +778,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 86,
+      "lines": 85,
       "parts": [
         {
           "id": "algebraic-data-types",
           "heading": null,
           "source": "tasks/algebraic-data-types/algebraic-data-types.ghul",
           "output": "tasks/algebraic-data-types/run.expected",
-          "lines": 86,
+          "lines": 85,
           "playground": true,
           "input": false,
           "images": []
@@ -997,14 +997,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 9,
+      "lines": 8,
       "parts": [
         {
           "id": "anonymous-recursion",
           "heading": null,
           "source": "tasks/anonymous-recursion/anonymous-recursion.ghul",
           "output": "tasks/anonymous-recursion/run.expected",
-          "lines": 9,
+          "lines": 8,
           "playground": true,
           "input": false,
           "images": []
@@ -1144,14 +1144,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 17,
+      "lines": 16,
       "parts": [
         {
           "id": "argument-destructuring",
           "heading": null,
           "source": "tasks/argument-destructuring/argument-destructuring.ghul",
           "output": "tasks/argument-destructuring/run.expected",
-          "lines": 17,
+          "lines": 16,
           "playground": true,
           "input": false,
           "images": []
@@ -1393,14 +1393,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 5,
+      "lines": 4,
       "parts": [
         {
           "id": "array-length",
           "heading": null,
           "source": "tasks/array-length/array-length.ghul",
           "output": "tasks/array-length/run.expected",
-          "lines": 5,
+          "lines": 4,
           "playground": true,
           "input": false,
           "images": []
@@ -1444,14 +1444,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 13,
+      "lines": 12,
       "parts": [
         {
           "id": "assertions",
           "heading": null,
           "source": "tasks/assertions/assertions.ghul",
           "output": "tasks/assertions/run.expected",
-          "lines": 13,
+          "lines": 12,
           "playground": true,
           "input": false,
           "images": []
@@ -1684,14 +1684,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 14,
+      "lines": 13,
       "parts": [
         {
           "id": "babbage-problem",
           "heading": null,
           "source": "tasks/babbage-problem/babbage-problem.ghul",
           "output": "tasks/babbage-problem/run.expected",
-          "lines": 14,
+          "lines": 13,
           "playground": true,
           "input": false,
           "images": []
@@ -1770,14 +1770,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 137,
+      "lines": 126,
       "parts": [
         {
           "id": "balanced-ternary",
           "heading": null,
           "source": "tasks/balanced-ternary/balanced-ternary.ghul",
           "output": "tasks/balanced-ternary/run.expected",
-          "lines": 137,
+          "lines": 126,
           "playground": true,
           "input": false,
           "images": []
@@ -1954,14 +1954,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 72,
+      "lines": 60,
       "parts": [
         {
           "id": "bifid-cipher",
           "heading": null,
           "source": "tasks/bifid-cipher/bifid-cipher.ghul",
           "output": "tasks/bifid-cipher/run.expected",
-          "lines": 72,
+          "lines": 60,
           "playground": true,
           "input": false,
           "images": []
@@ -2012,14 +2012,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 8,
+      "lines": 7,
       "parts": [
         {
           "id": "binary-digits",
           "heading": null,
           "source": "tasks/binary-digits/binary-digits.ghul",
           "output": "tasks/binary-digits/run.expected",
-          "lines": 8,
+          "lines": 7,
           "playground": true,
           "input": false,
           "images": []
@@ -2039,14 +2039,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 30,
+      "lines": 29,
       "parts": [
         {
           "id": "binary-search",
           "heading": null,
           "source": "tasks/binary-search/binary-search.ghul",
           "output": "tasks/binary-search/run.expected",
-          "lines": 30,
+          "lines": 29,
           "playground": true,
           "input": false,
           "images": []
@@ -2608,14 +2608,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 19,
+      "lines": 18,
       "parts": [
         {
           "id": "boolean-values",
           "heading": null,
           "source": "tasks/boolean-values/boolean-values.ghul",
           "output": "tasks/boolean-values/run.expected",
-          "lines": 19,
+          "lines": 18,
           "playground": true,
           "input": false,
           "images": []
@@ -2906,14 +2906,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 33,
+      "lines": 32,
       "parts": [
         {
           "id": "caesar-cipher",
           "heading": null,
           "source": "tasks/caesar-cipher/caesar-cipher.ghul",
           "output": "tasks/caesar-cipher/run.expected",
-          "lines": 33,
+          "lines": 32,
           "playground": true,
           "input": false,
           "images": []
@@ -3350,14 +3350,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 6,
+      "lines": 5,
       "parts": [
         {
           "id": "character-codes",
           "heading": null,
           "source": "tasks/character-codes/character-codes.ghul",
           "output": "tasks/character-codes/run.expected",
-          "lines": 6,
+          "lines": 5,
           "playground": true,
           "input": false,
           "images": []
@@ -3434,14 +3434,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 16,
+      "lines": 15,
       "parts": [
         {
           "id": "check-that-file-exists",
           "heading": null,
           "source": "tasks/check-that-file-exists/check-that-file-exists.ghul",
           "output": "tasks/check-that-file-exists/run.expected",
-          "lines": 16,
+          "lines": 15,
           "playground": false,
           "input": false,
           "images": []
@@ -3647,14 +3647,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 37,
+      "lines": 36,
       "parts": [
         {
           "id": "church-numerals",
           "heading": null,
           "source": "tasks/church-numerals/church-numerals.ghul",
           "output": "tasks/church-numerals/run.expected",
-          "lines": 37,
+          "lines": 36,
           "playground": true,
           "input": false,
           "images": []
@@ -3735,14 +3735,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 23,
+      "lines": 22,
       "parts": [
         {
           "id": "classes",
           "heading": null,
           "source": "tasks/classes/classes.ghul",
           "output": "tasks/classes/run.expected",
-          "lines": 23,
+          "lines": 22,
           "playground": true,
           "input": false,
           "images": []
@@ -4403,14 +4403,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 13,
+      "lines": 12,
       "parts": [
         {
           "id": "compound-data-type",
           "heading": null,
           "source": "tasks/compound-data-type/compound-data-type.ghul",
           "output": "tasks/compound-data-type/run.expected",
-          "lines": 13,
+          "lines": 12,
           "playground": true,
           "input": false,
           "images": []
@@ -4457,14 +4457,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 54,
+      "lines": 53,
       "parts": [
         {
           "id": "conditional-structures",
           "heading": null,
           "source": "tasks/conditional-structures/conditional-structures.ghul",
           "output": "tasks/conditional-structures/run.expected",
-          "lines": 54,
+          "lines": 53,
           "playground": true,
           "input": false,
           "images": []
@@ -4482,14 +4482,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 18,
+      "lines": 17,
       "parts": [
         {
           "id": "conjugate-a-latin-verb",
           "heading": null,
           "source": "tasks/conjugate-a-latin-verb/conjugate-a-latin-verb.ghul",
           "output": "tasks/conjugate-a-latin-verb/run.expected",
-          "lines": 18,
+          "lines": 17,
           "playground": true,
           "input": false,
           "images": []
@@ -4796,14 +4796,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 16,
+      "lines": 15,
       "parts": [
         {
           "id": "count-occurrences-of-a-substring",
           "heading": null,
           "source": "tasks/count-occurrences-of-a-substring/count-occurrences-of-a-substring.ghul",
           "output": "tasks/count-occurrences-of-a-substring/run.expected",
-          "lines": 16,
+          "lines": 15,
           "playground": true,
           "input": false,
           "images": []
@@ -5092,14 +5092,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 32,
+      "lines": 31,
       "parts": [
         {
           "id": "damm-algorithm",
           "heading": null,
           "source": "tasks/damm-algorithm/damm-algorithm.ghul",
           "output": "tasks/damm-algorithm/run.expected",
-          "lines": 32,
+          "lines": 31,
           "playground": true,
           "input": false,
           "images": []
@@ -5290,14 +5290,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 49,
+      "lines": 48,
       "parts": [
         {
           "id": "define-a-primitive-data-type",
           "heading": null,
           "source": "tasks/define-a-primitive-data-type/define-a-primitive-data-type.ghul",
           "output": "tasks/define-a-primitive-data-type/run.expected",
-          "lines": 49,
+          "lines": 48,
           "playground": true,
           "input": false,
           "images": []
@@ -5315,14 +5315,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 19,
+      "lines": 18,
       "parts": [
         {
           "id": "department-numbers",
           "heading": null,
           "source": "tasks/department-numbers/department-numbers.ghul",
           "output": "tasks/department-numbers/run.expected",
-          "lines": 19,
+          "lines": 18,
           "playground": true,
           "input": false,
           "images": []
@@ -5366,14 +5366,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 17,
+      "lines": 16,
       "parts": [
         {
           "id": "detect-division-by-zero",
           "heading": null,
           "source": "tasks/detect-division-by-zero/detect-division-by-zero.ghul",
           "output": "tasks/detect-division-by-zero/run.expected",
-          "lines": 17,
+          "lines": 16,
           "playground": true,
           "input": false,
           "images": []
@@ -5417,14 +5417,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 11,
+      "lines": 10,
       "parts": [
         {
           "id": "determine-if-a-string-is-numeric",
           "heading": null,
           "source": "tasks/determine-if-a-string-is-numeric/determine-if-a-string-is-numeric.ghul",
           "output": "tasks/determine-if-a-string-is-numeric/run.expected",
-          "lines": 11,
+          "lines": 10,
           "playground": true,
           "input": false,
           "images": []
@@ -5527,14 +5527,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 27,
+      "lines": 26,
       "parts": [
         {
           "id": "digital-root",
           "heading": null,
           "source": "tasks/digital-root/digital-root.ghul",
           "output": "tasks/digital-root/run.expected",
-          "lines": 27,
+          "lines": 26,
           "playground": true,
           "input": false,
           "images": []
@@ -5732,14 +5732,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 53,
+      "lines": 52,
       "parts": [
         {
           "id": "doomsday-rule",
           "heading": null,
           "source": "tasks/doomsday-rule/doomsday-rule.ghul",
           "output": "tasks/doomsday-rule/run.expected",
-          "lines": 53,
+          "lines": 52,
           "playground": true,
           "input": false,
           "images": []
@@ -5812,14 +5812,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 54,
+      "lines": 53,
       "parts": [
         {
           "id": "doubly-linked-list-element-definition",
           "heading": null,
           "source": "tasks/doubly-linked-list-element-definition/doubly-linked-list-element-definition.ghul",
           "output": "tasks/doubly-linked-list-element-definition/run.expected",
-          "lines": 54,
+          "lines": 53,
           "playground": true,
           "input": false,
           "images": []
@@ -5839,14 +5839,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 43,
+      "lines": 42,
       "parts": [
         {
           "id": "doubly-linked-list-element-insertion",
           "heading": null,
           "source": "tasks/doubly-linked-list-element-insertion/doubly-linked-list-element-insertion.ghul",
           "output": "tasks/doubly-linked-list-element-insertion/run.expected",
-          "lines": 43,
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []
@@ -6434,14 +6434,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 10,
+      "lines": 9,
       "parts": [
         {
           "id": "empty-string",
           "heading": null,
           "source": "tasks/empty-string/empty-string.ghul",
           "output": "tasks/empty-string/run.expected",
-          "lines": 10,
+          "lines": 9,
           "playground": true,
           "input": false,
           "images": []
@@ -6539,14 +6539,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 22,
+      "lines": 21,
       "parts": [
         {
           "id": "enumerations",
           "heading": null,
           "source": "tasks/enumerations/enumerations.ghul",
           "output": "tasks/enumerations/run.expected",
-          "lines": 22,
+          "lines": 21,
           "playground": true,
           "input": false,
           "images": []
@@ -6590,14 +6590,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 67,
+      "lines": 66,
       "parts": [
         {
           "id": "equal-prime-and-composite-sums",
           "heading": null,
           "source": "tasks/equal-prime-and-composite-sums/equal-prime-and-composite-sums.ghul",
           "output": "tasks/equal-prime-and-composite-sums/run.expected",
-          "lines": 67,
+          "lines": 66,
           "playground": true,
           "input": false,
           "images": []
@@ -6823,14 +6823,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 18,
+      "lines": 17,
       "parts": [
         {
           "id": "evaluate-binomial-coefficients",
           "heading": null,
           "source": "tasks/evaluate-binomial-coefficients/evaluate-binomial-coefficients.ghul",
           "output": "tasks/evaluate-binomial-coefficients/run.expected",
-          "lines": 18,
+          "lines": 17,
           "playground": true,
           "input": false,
           "images": []
@@ -6848,14 +6848,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 9,
+      "lines": 8,
       "parts": [
         {
           "id": "even-or-odd",
           "heading": null,
           "source": "tasks/even-or-odd/even-or-odd.ghul",
           "output": "tasks/even-or-odd/run.expected",
-          "lines": 9,
+          "lines": 8,
           "playground": true,
           "input": false,
           "images": []
@@ -7224,14 +7224,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 7,
+      "lines": 6,
       "parts": [
         {
           "id": "factorial",
           "heading": null,
           "source": "tasks/factorial/factorial.ghul",
           "output": "tasks/factorial/run.expected",
-          "lines": 7,
+          "lines": 6,
           "playground": true,
           "input": false,
           "images": []
@@ -7864,14 +7864,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 13,
+      "lines": 12,
       "parts": [
         {
           "id": "find-square-difference",
           "heading": null,
           "source": "tasks/find-square-difference/find-square-difference.ghul",
           "output": "tasks/find-square-difference/run.expected",
-          "lines": 13,
+          "lines": 12,
           "playground": true,
           "input": false,
           "images": []
@@ -8034,14 +8034,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 15,
+      "lines": 14,
       "parts": [
         {
           "id": "fizzbuzz",
           "heading": null,
           "source": "tasks/fizzbuzz/fizzbuzz.ghul",
           "output": "tasks/fizzbuzz/run.expected",
-          "lines": 15,
+          "lines": 14,
           "playground": true,
           "input": false,
           "images": []
@@ -8253,14 +8253,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 4,
+      "lines": 3,
       "parts": [
         {
           "id": "formatted-numeric-output",
           "heading": null,
           "source": "tasks/formatted-numeric-output/formatted-numeric-output.ghul",
           "output": "tasks/formatted-numeric-output/run.expected",
-          "lines": 4,
+          "lines": 3,
           "playground": true,
           "input": false,
           "images": []
@@ -8524,14 +8524,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 15,
+      "lines": 14,
       "parts": [
         {
           "id": "function-definition",
           "heading": null,
           "source": "tasks/function-definition/function-definition.ghul",
           "output": "tasks/function-definition/run.expected",
-          "lines": 15,
+          "lines": 14,
           "playground": true,
           "input": false,
           "images": []
@@ -8811,14 +8811,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 26,
+      "lines": 25,
       "parts": [
         {
           "id": "generic-swap",
           "heading": null,
           "source": "tasks/generic-swap/generic-swap.ghul",
           "output": "tasks/generic-swap/run.expected",
-          "lines": 26,
+          "lines": 25,
           "playground": true,
           "input": false,
           "images": []
@@ -9036,14 +9036,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 23,
+      "lines": 22,
       "parts": [
         {
           "id": "gray-code",
           "heading": null,
           "source": "tasks/gray-code/gray-code.ghul",
           "output": "tasks/gray-code/run.expected",
-          "lines": 23,
+          "lines": 22,
           "playground": true,
           "input": false,
           "images": []
@@ -9093,14 +9093,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 8,
+      "lines": 7,
       "parts": [
         {
           "id": "greatest-common-divisor",
           "heading": null,
           "source": "tasks/greatest-common-divisor/greatest-common-divisor.ghul",
           "output": "tasks/greatest-common-divisor/run.expected",
-          "lines": 8,
+          "lines": 7,
           "playground": true,
           "input": false,
           "images": []
@@ -9807,14 +9807,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 9,
+      "lines": 8,
       "parts": [
         {
           "id": "higher-order-functions",
           "heading": null,
           "source": "tasks/higher-order-functions/higher-order-functions.ghul",
           "output": "tasks/higher-order-functions/run.expected",
-          "lines": 9,
+          "lines": 8,
           "playground": true,
           "input": false,
           "images": []
@@ -10373,14 +10373,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 24,
+      "lines": 23,
       "parts": [
         {
           "id": "implicit-type-conversion",
           "heading": null,
           "source": "tasks/implicit-type-conversion/implicit-type-conversion.ghul",
           "output": "tasks/implicit-type-conversion/run.expected",
-          "lines": 24,
+          "lines": 23,
           "playground": true,
           "input": false,
           "images": []
@@ -10450,14 +10450,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 8,
+      "lines": 7,
       "parts": [
         {
           "id": "increment-a-numerical-string",
           "heading": null,
           "source": "tasks/increment-a-numerical-string/increment-a-numerical-string.ghul",
           "output": "tasks/increment-a-numerical-string/run.expected",
-          "lines": 8,
+          "lines": 7,
           "playground": true,
           "input": false,
           "images": []
@@ -10529,14 +10529,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 21,
+      "lines": 20,
       "parts": [
         {
           "id": "inheritance-multiple",
           "heading": null,
           "source": "tasks/inheritance-multiple/inheritance-multiple.ghul",
           "output": "tasks/inheritance-multiple/run.expected",
-          "lines": 21,
+          "lines": 20,
           "playground": true,
           "input": false,
           "images": []
@@ -10555,14 +10555,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 28,
+      "lines": 27,
       "parts": [
         {
           "id": "inheritance-single",
           "heading": null,
           "source": "tasks/inheritance-single/inheritance-single.ghul",
           "output": "tasks/inheritance-single/run.expected",
-          "lines": 28,
+          "lines": 27,
           "playground": true,
           "input": false,
           "images": []
@@ -10765,14 +10765,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 43,
+      "lines": 37,
       "parts": [
         {
           "id": "iterated-digits-squaring",
           "heading": null,
           "source": "tasks/iterated-digits-squaring/iterated-digits-squaring.ghul",
           "output": "tasks/iterated-digits-squaring/run.expected",
-          "lines": 43,
+          "lines": 37,
           "playground": false,
           "input": false,
           "images": []
@@ -10923,14 +10923,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 19,
+      "lines": 18,
       "parts": [
         {
           "id": "jensens-device",
           "heading": null,
           "source": "tasks/jensens-device/jensens-device.ghul",
           "output": "tasks/jensens-device/run.expected",
-          "lines": 19,
+          "lines": 18,
           "playground": true,
           "input": false,
           "images": []
@@ -11797,14 +11797,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 10,
+      "lines": 9,
       "parts": [
         {
           "id": "leap-year",
           "heading": null,
           "source": "tasks/leap-year/leap-year.ghul",
           "output": "tasks/leap-year/run.expected",
-          "lines": 10,
+          "lines": 9,
           "playground": true,
           "input": false,
           "images": []
@@ -12044,14 +12044,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 10,
+      "lines": 9,
       "parts": [
         {
           "id": "literals-integer",
           "heading": null,
           "source": "tasks/literals-integer/literals-integer.ghul",
           "output": "tasks/literals-integer/run.expected",
-          "lines": 10,
+          "lines": 9,
           "playground": true,
           "input": false,
           "images": []
@@ -12070,14 +12070,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 22,
+      "lines": 21,
       "parts": [
         {
           "id": "literals-string",
           "heading": null,
           "source": "tasks/literals-string/literals-string.ghul",
           "output": "tasks/literals-string/run.expected",
-          "lines": 22,
+          "lines": 21,
           "playground": true,
           "input": false,
           "images": []
@@ -12095,14 +12095,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 11,
+      "lines": 10,
       "parts": [
         {
           "id": "logical-operations",
           "heading": null,
           "source": "tasks/logical-operations/logical-operations.ghul",
           "output": "tasks/logical-operations/run.expected",
-          "lines": 11,
+          "lines": 10,
           "playground": true,
           "input": false,
           "images": []
@@ -12334,14 +12334,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 15,
+      "lines": 14,
       "parts": [
         {
           "id": "loops-break",
           "heading": null,
           "source": "tasks/loops-break/loops-break.ghul",
           "output": "tasks/loops-break/run.expected",
-          "lines": 15,
+          "lines": 14,
           "playground": true,
           "input": false,
           "images": []
@@ -12384,14 +12384,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 13,
+      "lines": 12,
       "parts": [
         {
           "id": "loops-do-while",
           "heading": null,
           "source": "tasks/loops-do-while/loops-do-while.ghul",
           "output": "tasks/loops-do-while/run.expected",
-          "lines": 13,
+          "lines": 12,
           "playground": true,
           "input": false,
           "images": []
@@ -12435,14 +12435,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 7,
+      "lines": 6,
       "parts": [
         {
           "id": "loops-for",
           "heading": null,
           "source": "tasks/loops-for/loops-for.ghul",
           "output": "tasks/loops-for/run.expected",
-          "lines": 7,
+          "lines": 6,
           "playground": true,
           "input": false,
           "images": []
@@ -12486,14 +12486,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 7,
+      "lines": 6,
       "parts": [
         {
           "id": "loops-foreach",
           "heading": null,
           "source": "tasks/loops-foreach/loops-foreach.ghul",
           "output": "tasks/loops-foreach/run.expected",
-          "lines": 7,
+          "lines": 6,
           "playground": true,
           "input": false,
           "images": []
@@ -12513,14 +12513,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 70,
+      "lines": 69,
       "parts": [
         {
           "id": "loops-increment-loop-index-within-loop-body",
           "heading": null,
           "source": "tasks/loops-increment-loop-index-within-loop-body/loops-increment-loop-index-within-loop-body.ghul",
           "output": "tasks/loops-increment-loop-index-within-loop-body/run.expected",
-          "lines": 70,
+          "lines": 69,
           "playground": true,
           "input": false,
           "images": []
@@ -12588,14 +12588,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 9,
+      "lines": 8,
       "parts": [
         {
           "id": "loops-while",
           "heading": null,
           "source": "tasks/loops-while/loops-while.ghul",
           "output": "tasks/loops-while/run.expected",
-          "lines": 9,
+          "lines": 8,
           "playground": true,
           "input": false,
           "images": []
@@ -12939,14 +12939,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 26,
+      "lines": 25,
       "parts": [
         {
           "id": "make-directory-path",
           "heading": null,
           "source": "tasks/make-directory-path/make-directory-path.ghul",
           "output": "tasks/make-directory-path/run.expected",
-          "lines": 26,
+          "lines": 25,
           "playground": true,
           "input": false,
           "images": []
@@ -12965,14 +12965,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 26,
+      "lines": 25,
       "parts": [
         {
           "id": "man-or-boy-test",
           "heading": null,
           "source": "tasks/man-or-boy-test/man-or-boy-test.ghul",
           "output": "tasks/man-or-boy-test/run.expected",
-          "lines": 26,
+          "lines": 25,
           "playground": true,
           "input": false,
           "images": []
@@ -14492,14 +14492,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 23,
+      "lines": 22,
       "parts": [
         {
           "id": "nth-root",
           "heading": null,
           "source": "tasks/nth-root/nth-root.ghul",
           "output": "tasks/nth-root/run.expected",
-          "lines": 23,
+          "lines": 22,
           "playground": true,
           "input": false,
           "images": []
@@ -14519,14 +14519,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 28,
+      "lines": 27,
       "parts": [
         {
           "id": "null-object",
           "heading": null,
           "source": "tasks/null-object/null-object.ghul",
           "output": "tasks/null-object/run.expected",
-          "lines": 28,
+          "lines": 27,
           "playground": true,
           "input": false,
           "images": []
@@ -15965,14 +15965,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 12,
+      "lines": 11,
       "parts": [
         {
           "id": "pick-random-element",
           "heading": null,
           "source": "tasks/pick-random-element/pick-random-element.ghul",
           "output": "tasks/pick-random-element/run.expected",
-          "lines": 12,
+          "lines": 11,
           "playground": true,
           "input": false,
           "images": []
@@ -17313,14 +17313,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 9,
+      "lines": 8,
       "parts": [
         {
           "id": "repeat",
           "heading": null,
           "source": "tasks/repeat/repeat.ghul",
           "output": "tasks/repeat/run.expected",
-          "lines": 9,
+          "lines": 8,
           "playground": true,
           "input": false,
           "images": []
@@ -17364,14 +17364,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 14,
+      "lines": 13,
       "parts": [
         {
           "id": "return-multiple-values",
           "heading": null,
           "source": "tasks/return-multiple-values/return-multiple-values.ghul",
           "output": "tasks/return-multiple-values/run.expected",
-          "lines": 14,
+          "lines": 13,
           "playground": true,
           "input": false,
           "images": []
@@ -18248,14 +18248,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 22,
+      "lines": 21,
       "parts": [
         {
           "id": "shortest-common-supersequence",
           "heading": null,
           "source": "tasks/shortest-common-supersequence/shortest-common-supersequence.ghul",
           "output": "tasks/shortest-common-supersequence/run.expected",
-          "lines": 22,
+          "lines": 21,
           "playground": true,
           "input": false,
           "images": []
@@ -18595,14 +18595,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 8,
+      "lines": 7,
       "parts": [
         {
           "id": "sign-of-an-integer-signum",
           "heading": null,
           "source": "tasks/sign-of-an-integer-signum/sign-of-an-integer-signum.ghul",
           "output": "tasks/sign-of-an-integer-signum/run.expected",
-          "lines": 8,
+          "lines": 7,
           "playground": true,
           "input": false,
           "images": []
@@ -18652,14 +18652,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 23,
+      "lines": 22,
       "parts": [
         {
           "id": "singly-linked-list-element-definition",
           "heading": null,
           "source": "tasks/singly-linked-list-element-definition/singly-linked-list-element-definition.ghul",
           "output": "tasks/singly-linked-list-element-definition/run.expected",
-          "lines": 23,
+          "lines": 22,
           "playground": true,
           "input": false,
           "images": []
@@ -18679,14 +18679,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 35,
+      "lines": 34,
       "parts": [
         {
           "id": "singly-linked-list-element-insertion",
           "heading": null,
           "source": "tasks/singly-linked-list-element-insertion/singly-linked-list-element-insertion.ghul",
           "output": "tasks/singly-linked-list-element-insertion/run.expected",
-          "lines": 35,
+          "lines": 34,
           "playground": true,
           "input": false,
           "images": []
@@ -18760,14 +18760,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 22,
+      "lines": 21,
       "parts": [
         {
           "id": "sleeping-beauty-problem",
           "heading": null,
           "source": "tasks/sleeping-beauty-problem/sleeping-beauty-problem.ghul",
           "output": "tasks/sleeping-beauty-problem/run.expected",
-          "lines": 22,
+          "lines": 21,
           "playground": true,
           "input": false,
           "images": []
@@ -19917,14 +19917,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 21,
+      "lines": 20,
       "parts": [
         {
           "id": "special-characters",
           "heading": null,
           "source": "tasks/special-characters/special-characters.ghul",
           "output": "tasks/special-characters/run.expected",
-          "lines": 21,
+          "lines": 20,
           "playground": true,
           "input": false,
           "images": []
@@ -19944,14 +19944,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 37,
+      "lines": 36,
       "parts": [
         {
           "id": "special-variables",
           "heading": null,
           "source": "tasks/special-variables/special-variables.ghul",
           "output": "tasks/special-variables/run.expected",
-          "lines": 37,
+          "lines": 36,
           "playground": true,
           "input": false,
           "images": []
@@ -20176,14 +20176,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 10,
+      "lines": 9,
       "parts": [
         {
           "id": "start-from-a-main-routine",
           "heading": null,
           "source": "tasks/start-from-a-main-routine/start-from-a-main-routine.ghul",
           "output": "tasks/start-from-a-main-routine/run.expected",
-          "lines": 10,
+          "lines": 9,
           "playground": true,
           "input": false,
           "images": []
@@ -20471,14 +20471,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 8,
+      "lines": 7,
       "parts": [
         {
           "id": "string-concatenation",
           "heading": null,
           "source": "tasks/string-concatenation/string-concatenation.ghul",
           "output": "tasks/string-concatenation/run.expected",
-          "lines": 8,
+          "lines": 7,
           "playground": true,
           "input": false,
           "images": []
@@ -20496,14 +20496,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 5,
+      "lines": 4,
       "parts": [
         {
           "id": "string-interpolation-included",
           "heading": null,
           "source": "tasks/string-interpolation-included/string-interpolation-included.ghul",
           "output": "tasks/string-interpolation-included/run.expected",
-          "lines": 5,
+          "lines": 4,
           "playground": true,
           "input": false,
           "images": []
@@ -20671,14 +20671,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 20,
+      "lines": 19,
       "parts": [
         {
           "id": "strip-comments-from-a-string",
           "heading": null,
           "source": "tasks/strip-comments-from-a-string/strip-comments-from-a-string.ghul",
           "output": "tasks/strip-comments-from-a-string/run.expected",
-          "lines": 20,
+          "lines": 19,
           "playground": true,
           "input": false,
           "images": []
@@ -20722,14 +20722,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 8,
+      "lines": 7,
       "parts": [
         {
           "id": "strip-whitespace-from-a-string-top-and-tail",
           "heading": null,
           "source": "tasks/strip-whitespace-from-a-string-top-and-tail/strip-whitespace-from-a-string-top-and-tail.ghul",
           "output": "tasks/strip-whitespace-from-a-string-top-and-tail/run.expected",
-          "lines": 8,
+          "lines": 7,
           "playground": true,
           "input": false,
           "images": []
@@ -20851,14 +20851,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 7,
+      "lines": 6,
       "parts": [
         {
           "id": "substring-top-and-tail",
           "heading": null,
           "source": "tasks/substring-top-and-tail/substring-top-and-tail.ghul",
           "output": "tasks/substring-top-and-tail/run.expected",
-          "lines": 7,
+          "lines": 6,
           "playground": true,
           "input": false,
           "images": []
@@ -20903,14 +20903,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 31,
+      "lines": 30,
       "parts": [
         {
           "id": "sudan-function",
           "heading": null,
           "source": "tasks/sudan-function/sudan-function.ghul",
           "output": "tasks/sudan-function/run.expected",
-          "lines": 31,
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []
@@ -21008,14 +21008,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 28,
+      "lines": 27,
       "parts": [
         {
           "id": "sum-data-type",
           "heading": null,
           "source": "tasks/sum-data-type/sum-data-type.ghul",
           "output": "tasks/sum-data-type/run.expected",
-          "lines": 28,
+          "lines": 27,
           "playground": true,
           "input": false,
           "images": []
@@ -21033,14 +21033,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 17,
+      "lines": 16,
       "parts": [
         {
           "id": "sum-digits-of-an-integer",
           "heading": null,
           "source": "tasks/sum-digits-of-an-integer/sum-digits-of-an-integer.ghul",
           "output": "tasks/sum-digits-of-an-integer/run.expected",
-          "lines": 17,
+          "lines": 16,
           "playground": true,
           "input": false,
           "images": []
@@ -21520,14 +21520,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 10,
+      "lines": 9,
       "parts": [
         {
           "id": "temperature-conversion",
           "heading": null,
           "source": "tasks/temperature-conversion/temperature-conversion.ghul",
           "output": "tasks/temperature-conversion/run.expected",
-          "lines": 10,
+          "lines": 9,
           "playground": true,
           "input": false,
           "images": []
@@ -21545,14 +21545,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 6,
+      "lines": 5,
       "parts": [
         {
           "id": "terminal-control-inverse-video",
           "heading": null,
           "source": "tasks/terminal-control-inverse-video/terminal-control-inverse-video.ghul",
           "output": "tasks/terminal-control-inverse-video/run.expected",
-          "lines": 6,
+          "lines": 5,
           "playground": true,
           "input": false,
           "images": []
@@ -21893,14 +21893,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 10,
+      "lines": 9,
       "parts": [
         {
           "id": "towers-of-hanoi",
           "heading": null,
           "source": "tasks/towers-of-hanoi/towers-of-hanoi.ghul",
           "output": "tasks/towers-of-hanoi/run.expected",
-          "lines": 10,
+          "lines": 9,
           "playground": true,
           "input": false,
           "images": []
@@ -22105,14 +22105,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 39,
+      "lines": 38,
       "parts": [
         {
           "id": "tropical-algebra-overloading",
           "heading": null,
           "source": "tasks/tropical-algebra-overloading/tropical-algebra-overloading.ghul",
           "output": "tasks/tropical-algebra-overloading/run.expected",
-          "lines": 39,
+          "lines": 38,
           "playground": true,
           "input": false,
           "images": []
@@ -22800,14 +22800,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 29,
+      "lines": 28,
       "parts": [
         {
           "id": "variable-size-set",
           "heading": null,
           "source": "tasks/variable-size-set/variable-size-set.ghul",
           "output": "tasks/variable-size-set/run.expected",
-          "lines": 29,
+          "lines": 28,
           "playground": true,
           "input": false,
           "images": []
@@ -22825,14 +22825,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 31,
+      "lines": 30,
       "parts": [
         {
           "id": "variables",
           "heading": null,
           "source": "tasks/variables/variables.ghul",
           "output": "tasks/variables/run.expected",
-          "lines": 31,
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []
@@ -22933,14 +22933,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 20,
+      "lines": 19,
       "parts": [
         {
           "id": "vector-products",
           "heading": null,
           "source": "tasks/vector-products/vector-products.ghul",
           "output": "tasks/vector-products/run.expected",
-          "lines": 20,
+          "lines": 19,
           "playground": true,
           "input": false,
           "images": []
@@ -23888,14 +23888,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 5,
+      "lines": 4,
       "parts": [
         {
           "id": "zero-to-the-zero-power",
           "heading": null,
           "source": "tasks/zero-to-the-zero-power/zero-to-the-zero-power.ghul",
           "output": "tasks/zero-to-the-zero-power/run.expected",
-          "lines": 5,
+          "lines": 4,
           "playground": true,
           "input": false,
           "images": []
