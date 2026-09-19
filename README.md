@@ -199,8 +199,8 @@ before it is published.
 ## running a solution in the playground
 
 Each entry opens with a link that runs it in the
-[ghūl playground](https://playground.ghul.dev), at `/rosetta-code/<slug>`, or
-`/rosetta-code/<slug>/<NN-part>` for one part of a task with parts. The
+[ghūl playground](https://ghul.dev/playground/), at `/playground/rosetta-code/<slug>`, or
+`/playground/rosetta-code/<slug>/<NN-part>` for one part of a task with parts. The
 playground fetches the source from this repository's `main` branch, so a link
 needs nothing but the task being here under that name.
 

@@ -1,7 +1,7 @@
 Nothing to install. The ghūl playground compiles and runs ghūl in the
 browser, with errors, completion and hover as you type.
 
-1. Open https://playground.ghul.dev
+1. Open https://ghul.dev/playground/
 2. Replace whatever is in the editor with the program below.
 3. Press Run.
 
