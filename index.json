@@ -579,14 +579,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 43,
+      "lines": 39,
       "parts": [
         {
           "id": "abundant-deficient-and-perfect-number-classifications",
           "heading": null,
           "source": "tasks/abundant-deficient-and-perfect-number-classifications/abundant-deficient-and-perfect-number-classifications.ghul",
           "output": "tasks/abundant-deficient-and-perfect-number-classifications/run.expected",
-          "lines": 43,
+          "lines": 39,
           "playground": true,
           "input": false,
           "images": []
@@ -913,14 +913,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 24,
+      "lines": 14,
       "parts": [
         {
           "id": "anagrams",
           "heading": null,
           "source": "tasks/anagrams/anagrams.ghul",
           "output": "tasks/anagrams/run.expected",
-          "lines": 24,
+          "lines": 14,
           "playground": true,
           "input": false,
           "images": []
@@ -2065,14 +2065,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 47,
+      "lines": 43,
       "parts": [
         {
           "id": "binary-strings",
           "heading": null,
           "source": "tasks/binary-strings/binary-strings.ghul",
           "output": "tasks/binary-strings/run.expected",
-          "lines": 47,
+          "lines": 43,
           "playground": true,
           "input": false,
           "images": []
@@ -2092,14 +2092,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 61,
+      "lines": 53,
       "parts": [
         {
           "id": "binomial-transform",
           "heading": null,
           "source": "tasks/binomial-transform/binomial-transform.ghul",
           "output": "tasks/binomial-transform/run.expected",
-          "lines": 61,
+          "lines": 53,
           "playground": true,
           "input": false,
           "images": []
@@ -2117,14 +2117,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 40,
+      "lines": 36,
       "parts": [
         {
           "id": "bioinformatics-base-count",
           "heading": null,
           "source": "tasks/bioinformatics-base-count/bioinformatics-base-count.ghul",
           "output": "tasks/bioinformatics-base-count/run.expected",
-          "lines": 40,
+          "lines": 36,
           "playground": true,
           "input": false,
           "images": []
@@ -2635,14 +2635,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 90,
+      "lines": 86,
       "parts": [
         {
           "id": "boustrophedon-transform",
           "heading": null,
           "source": "tasks/boustrophedon-transform/boustrophedon-transform.ghul",
           "output": "tasks/boustrophedon-transform/run.expected",
-          "lines": 90,
+          "lines": 86,
           "playground": false,
           "input": false,
           "images": []
@@ -3792,14 +3792,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 9,
+      "lines": 5,
       "parts": [
         {
           "id": "closures-value-capture",
           "heading": null,
           "source": "tasks/closures-value-capture/closures-value-capture.ghul",
           "output": "tasks/closures-value-capture/run.expected",
-          "lines": 9,
+          "lines": 5,
           "playground": true,
           "input": false,
           "images": []
@@ -4536,14 +4536,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 38,
+      "lines": 35,
       "parts": [
         {
           "id": "constrained-genericity",
           "heading": null,
           "source": "tasks/constrained-genericity/constrained-genericity.ghul",
           "output": "tasks/constrained-genericity/run.expected",
-          "lines": 38,
+          "lines": 35,
           "playground": true,
           "input": false,
           "images": []
@@ -4875,14 +4875,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 27,
+      "lines": 23,
       "parts": [
         {
           "id": "create-a-two-dimensional-array-at-runtime",
           "heading": null,
           "source": "tasks/create-a-two-dimensional-array-at-runtime/create-a-two-dimensional-array-at-runtime.ghul",
           "output": "tasks/create-a-two-dimensional-array-at-runtime/run.expected",
-          "lines": 27,
+          "lines": 23,
           "playground": true,
           "input": false,
           "images": []
@@ -4903,14 +4903,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 93,
+      "lines": 89,
       "parts": [
         {
           "id": "cuban-primes",
           "heading": null,
           "source": "tasks/cuban-primes/cuban-primes.ghul",
           "output": "tasks/cuban-primes/run.expected",
-          "lines": 93,
+          "lines": 89,
           "playground": false,
           "input": false,
           "images": []
@@ -6488,14 +6488,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 71,
+      "lines": 67,
       "parts": [
         {
           "id": "engel-expansion",
           "heading": null,
           "source": "tasks/engel-expansion/engel-expansion.ghul",
           "output": "tasks/engel-expansion/run.expected",
-          "lines": 71,
+          "lines": 67,
           "playground": true,
           "input": false,
           "images": []
@@ -6667,14 +6667,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 60,
+      "lines": 56,
       "parts": [
         {
           "id": "erdos-primes",
           "heading": null,
           "source": "tasks/erdos-primes/erdos-primes.ghul",
           "output": "tasks/erdos-primes/run.expected",
-          "lines": 60,
+          "lines": 56,
           "playground": true,
           "input": false,
           "images": []
@@ -6747,14 +6747,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 105,
+      "lines": 101,
       "parts": [
         {
           "id": "euclid-mullin-sequence",
           "heading": null,
           "source": "tasks/euclid-mullin-sequence/euclid-mullin-sequence.ghul",
           "output": "tasks/euclid-mullin-sequence/run.expected",
-          "lines": 105,
+          "lines": 101,
           "playground": true,
           "input": false,
           "images": []
@@ -7250,14 +7250,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 92,
+      "lines": 88,
       "parts": [
         {
           "id": "factorial-base-numbers-indexing-permutations-of-a-collection",
           "heading": null,
           "source": "tasks/factorial-base-numbers-indexing-permutations-of-a-collection/factorial-base-numbers-indexing-permutations-of-a-collection.ghul",
           "output": "tasks/factorial-base-numbers-indexing-permutations-of-a-collection/run.expected",
-          "lines": 92,
+          "lines": 88,
           "playground": true,
           "input": false,
           "images": []
@@ -7968,14 +7968,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 27,
+      "lines": 21,
       "parts": [
         {
           "id": "first-class-functions-use-numbers-analogously",
           "heading": null,
           "source": "tasks/first-class-functions-use-numbers-analogously/first-class-functions-use-numbers-analogously.ghul",
           "output": "tasks/first-class-functions-use-numbers-analogously/run.expected",
-          "lines": 27,
+          "lines": 21,
           "playground": true,
           "input": false,
           "images": []
@@ -8280,14 +8280,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 94,
+      "lines": 90,
       "parts": [
         {
           "id": "fortunate-numbers",
           "heading": null,
           "source": "tasks/fortunate-numbers/fortunate-numbers.ghul",
           "output": "tasks/fortunate-numbers/run.expected",
-          "lines": 94,
+          "lines": 90,
           "playground": false,
           "input": false,
           "images": []
@@ -9919,14 +9919,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 132,
+      "lines": 124,
       "parts": [
         {
           "id": "home-primes",
           "heading": null,
           "source": "tasks/home-primes/home-primes.ghul",
           "output": "tasks/home-primes/run.expected",
-          "lines": 132,
+          "lines": 124,
           "playground": false,
           "input": false,
           "images": []
@@ -10128,14 +10128,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 65,
+      "lines": 61,
       "parts": [
         {
           "id": "humble-numbers",
           "heading": null,
           "source": "tasks/humble-numbers/humble-numbers.ghul",
           "output": "tasks/humble-numbers/run.expected",
-          "lines": 65,
+          "lines": 61,
           "playground": true,
           "input": false,
           "images": []
@@ -10476,14 +10476,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 53,
+      "lines": 50,
       "parts": [
         {
           "id": "index-finite-lists-of-positive-integers",
           "heading": null,
           "source": "tasks/index-finite-lists-of-positive-integers/index-finite-lists-of-positive-integers.ghul",
           "output": "tasks/index-finite-lists-of-positive-integers/run.expected",
-          "lines": 53,
+          "lines": 50,
           "playground": true,
           "input": false,
           "images": []
@@ -10634,14 +10634,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 83,
+      "lines": 79,
       "parts": [
         {
           "id": "intersecting-number-wheels",
           "heading": null,
           "source": "tasks/intersecting-number-wheels/intersecting-number-wheels.ghul",
           "output": "tasks/intersecting-number-wheels/run.expected",
-          "lines": 83,
+          "lines": 79,
           "playground": true,
           "input": false,
           "images": []
@@ -10739,14 +10739,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 54,
+      "lines": 50,
       "parts": [
         {
           "id": "isqrt-integer-square-root-of-x",
           "heading": null,
           "source": "tasks/isqrt-integer-square-root-of-x/isqrt-integer-square-root-of-x.ghul",
           "output": "tasks/isqrt-integer-square-root-of-x/run.expected",
-          "lines": 54,
+          "lines": 50,
           "playground": true,
           "input": false,
           "images": []
@@ -10897,14 +10897,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 94,
+      "lines": 92,
       "parts": [
         {
           "id": "jaro-winkler-distance",
           "heading": null,
           "source": "tasks/jaro-winkler-distance/jaro-winkler-distance.ghul",
           "output": "tasks/jaro-winkler-distance/run.expected",
-          "lines": 94,
+          "lines": 92,
           "playground": true,
           "input": false,
           "images": []
@@ -11321,14 +11321,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 50,
+      "lines": 46,
       "parts": [
         {
           "id": "klarner-rado-sequence",
           "heading": null,
           "source": "tasks/klarner-rado-sequence/klarner-rado-sequence.ghul",
           "output": "tasks/klarner-rado-sequence/run.expected",
-          "lines": 50,
+          "lines": 46,
           "playground": true,
           "input": false,
           "images": []
@@ -11408,14 +11408,14 @@
       "images": [
         "tasks/knight-s-tour/tour.png.expected"
       ],
-      "lines": 140,
+      "lines": 136,
       "parts": [
         {
           "id": "knight-s-tour",
           "heading": null,
           "source": "tasks/knight-s-tour/knight-s-tour.ghul",
           "output": "tasks/knight-s-tour/run.expected",
-          "lines": 140,
+          "lines": 136,
           "playground": true,
           "input": false,
           "images": [
@@ -11488,14 +11488,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 84,
+      "lines": 80,
       "parts": [
         {
           "id": "knuths-power-tree",
           "heading": null,
           "source": "tasks/knuths-power-tree/knuths-power-tree.ghul",
           "output": "tasks/knuths-power-tree/run.expected",
-          "lines": 84,
+          "lines": 80,
           "playground": true,
           "input": false,
           "images": []
@@ -12563,14 +12563,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 35,
+      "lines": 31,
       "parts": [
         {
           "id": "loops-nested",
           "heading": null,
           "source": "tasks/loops-nested/loops-nested.ghul",
           "output": "tasks/loops-nested/run.expected",
-          "lines": 35,
+          "lines": 31,
           "playground": true,
           "input": false,
           "images": []
@@ -12805,14 +12805,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 73,
+      "lines": 65,
       "parts": [
         {
           "id": "lzw-compression",
           "heading": null,
           "source": "tasks/lzw-compression/lzw-compression.ghul",
           "output": "tasks/lzw-compression/run.expected",
-          "lines": 73,
+          "lines": 65,
           "playground": true,
           "input": false,
           "images": []
@@ -12913,14 +12913,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 69,
+      "lines": 65,
       "parts": [
         {
           "id": "magnanimous-numbers",
           "heading": null,
           "source": "tasks/magnanimous-numbers/magnanimous-numbers.ghul",
           "output": "tasks/magnanimous-numbers/run.expected",
-          "lines": 69,
+          "lines": 65,
           "playground": true,
           "input": false,
           "images": []
@@ -13143,14 +13143,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 34,
+      "lines": 30,
       "parts": [
         {
           "id": "matrix-transposition",
           "heading": null,
           "source": "tasks/matrix-transposition/matrix-transposition.ghul",
           "output": "tasks/matrix-transposition/run.expected",
-          "lines": 34,
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []
@@ -14132,14 +14132,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 71,
+      "lines": 67,
       "parts": [
         {
           "id": "n-smooth-numbers",
           "heading": null,
           "source": "tasks/n-smooth-numbers/n-smooth-numbers.ghul",
           "output": "tasks/n-smooth-numbers/run.expected",
-          "lines": 71,
+          "lines": 67,
           "playground": true,
           "input": false,
           "images": []
@@ -14913,14 +14913,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 82,
+      "lines": 78,
       "parts": [
         {
           "id": "ormiston-pairs",
           "heading": null,
           "source": "tasks/ormiston-pairs/ormiston-pairs.ghul",
           "output": "tasks/ormiston-pairs/run.expected",
-          "lines": 82,
+          "lines": 78,
           "playground": true,
           "input": false,
           "images": []
@@ -14940,14 +14940,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 119,
+      "lines": 111,
       "parts": [
         {
           "id": "ormiston-triples",
           "heading": null,
           "source": "tasks/ormiston-triples/ormiston-triples.ghul",
           "output": "tasks/ormiston-triples/run.expected",
-          "lines": 119,
+          "lines": 111,
           "playground": false,
           "input": false,
           "images": []
@@ -14966,14 +14966,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 79,
+      "lines": 71,
       "parts": [
         {
           "id": "own-digits-power-sum",
           "heading": null,
           "source": "tasks/own-digits-power-sum/own-digits-power-sum.ghul",
           "output": "tasks/own-digits-power-sum/run.expected",
-          "lines": 79,
+          "lines": 71,
           "playground": true,
           "input": false,
           "images": []
@@ -16212,14 +16212,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 83,
+      "lines": 79,
       "parts": [
         {
           "id": "polynomial-long-division",
           "heading": null,
           "source": "tasks/polynomial-long-division/polynomial-long-division.ghul",
           "output": "tasks/polynomial-long-division/run.expected",
-          "lines": 83,
+          "lines": 79,
           "playground": true,
           "input": false,
           "images": []
@@ -16372,14 +16372,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 46,
+      "lines": 42,
       "parts": [
         {
           "id": "prime-decomposition",
           "heading": null,
           "source": "tasks/prime-decomposition/prime-decomposition.ghul",
           "output": "tasks/prime-decomposition/run.expected",
-          "lines": 46,
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []
@@ -16777,14 +16777,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 81,
+      "lines": 77,
       "parts": [
         {
           "id": "radical-of-an-integer",
           "heading": null,
           "source": "tasks/radical-of-an-integer/radical-of-an-integer.ghul",
           "output": "tasks/radical-of-an-integer/run.expected",
-          "lines": 81,
+          "lines": 77,
           "playground": true,
           "input": false,
           "images": []
@@ -18113,14 +18113,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 53,
+      "lines": 49,
       "parts": [
         {
           "id": "set-consolidation",
           "heading": null,
           "source": "tasks/set-consolidation/set-consolidation.ghul",
           "output": "tasks/set-consolidation/run.expected",
-          "lines": 53,
+          "lines": 49,
           "playground": true,
           "input": false,
           "images": []
@@ -18843,14 +18843,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 133,
+      "lines": 129,
       "parts": [
         {
           "id": "smith-waterman-algorithm",
           "heading": null,
           "source": "tasks/smith-waterman-algorithm/smith-waterman-algorithm.ghul",
           "output": "tasks/smith-waterman-algorithm/run.expected",
-          "lines": 133,
+          "lines": 129,
           "playground": true,
           "input": false,
           "images": []
@@ -19477,14 +19477,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 27,
+      "lines": 23,
       "parts": [
         {
           "id": "sorting-algorithms-counting-sort",
           "heading": null,
           "source": "tasks/sorting-algorithms-counting-sort/sorting-algorithms-counting-sort.ghul",
           "output": "tasks/sorting-algorithms-counting-sort/run.expected",
-          "lines": 27,
+          "lines": 23,
           "playground": true,
           "input": false,
           "images": []
@@ -20049,14 +20049,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 41,
+      "lines": 37,
       "parts": [
         {
           "id": "spiral-matrix",
           "heading": null,
           "source": "tasks/spiral-matrix/spiral-matrix.ghul",
           "output": "tasks/spiral-matrix/run.expected",
-          "lines": 41,
+          "lines": 37,
           "playground": true,
           "input": false,
           "images": []
@@ -20877,14 +20877,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 69,
+      "lines": 65,
       "parts": [
         {
           "id": "successive-prime-differences",
           "heading": null,
           "source": "tasks/successive-prime-differences/successive-prime-differences.ghul",
           "output": "tasks/successive-prime-differences/run.expected",
-          "lines": 69,
+          "lines": 65,
           "playground": true,
           "input": false,
           "images": []
@@ -21810,14 +21810,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 107,
+      "lines": 103,
       "parts": [
         {
           "id": "topological-sort",
           "heading": null,
           "source": "tasks/topological-sort/topological-sort.ghul",
           "output": "tasks/topological-sort/run.expected",
-          "lines": 107,
+          "lines": 103,
           "playground": true,
           "input": false,
           "images": []
@@ -21836,14 +21836,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 69,
+      "lines": 61,
       "parts": [
         {
           "id": "topswops",
           "heading": null,
           "source": "tasks/topswops/topswops.ghul",
           "output": "tasks/topswops/run.expected",
-          "lines": 69,
+          "lines": 61,
           "playground": false,
           "input": false,
           "images": []
@@ -22131,14 +22131,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 76,
+      "lines": 72,
       "parts": [
         {
           "id": "truncatable-primes",
           "heading": null,
           "source": "tasks/truncatable-primes/truncatable-primes.ghul",
           "output": "tasks/truncatable-primes/run.expected",
-          "lines": 76,
+          "lines": 72,
           "playground": true,
           "input": false,
           "images": []
@@ -22293,14 +22293,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 42,
+      "lines": 38,
       "parts": [
         {
           "id": "twin-primes-whose-sum-is-square-number",
           "heading": null,
           "source": "tasks/twin-primes-whose-sum-is-square-number/twin-primes-whose-sum-is-square-number.ghul",
           "output": "tasks/twin-primes-whose-sum-is-square-number/run.expected",
-          "lines": 42,
+          "lines": 38,
           "playground": true,
           "input": false,
           "images": []
@@ -22490,14 +22490,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 77,
+      "lines": 73,
       "parts": [
         {
           "id": "unprimeable-numbers",
           "heading": null,
           "source": "tasks/unprimeable-numbers/unprimeable-numbers.ghul",
           "output": "tasks/unprimeable-numbers/run.expected",
-          "lines": 77,
+          "lines": 73,
           "playground": true,
           "input": false,
           "images": []
@@ -22515,14 +22515,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 107,
+      "lines": 95,
       "parts": [
         {
           "id": "untouchable-numbers",
           "heading": null,
           "source": "tasks/untouchable-numbers/untouchable-numbers.ghul",
           "output": "tasks/untouchable-numbers/run.expected",
-          "lines": 107,
+          "lines": 95,
           "playground": false,
           "input": false,
           "images": []
@@ -22540,14 +22540,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 60,
+      "lines": 56,
       "parts": [
         {
           "id": "upside-down-numbers",
           "heading": null,
           "source": "tasks/upside-down-numbers/upside-down-numbers.ghul",
           "output": "tasks/upside-down-numbers/run.expected",
-          "lines": 60,
+          "lines": 56,
           "playground": true,
           "input": false,
           "images": []
@@ -22697,14 +22697,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 68,
+      "lines": 64,
       "parts": [
         {
           "id": "vampire-number",
           "heading": null,
           "source": "tasks/vampire-number/vampire-number.ghul",
           "output": "tasks/vampire-number/run.expected",
-          "lines": 68,
+          "lines": 64,
           "playground": true,
           "input": false,
           "images": []
@@ -22723,14 +22723,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 30,
+      "lines": 26,
       "parts": [
         {
           "id": "van-der-corput-sequence",
           "heading": null,
           "source": "tasks/van-der-corput-sequence/van-der-corput-sequence.ghul",
           "output": "tasks/van-der-corput-sequence/run.expected",
-          "lines": 30,
+          "lines": 26,
           "playground": true,
           "input": false,
           "images": []
@@ -22880,14 +22880,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 41,
+      "lines": 39,
       "parts": [
         {
           "id": "variadic-function",
           "heading": null,
           "source": "tasks/variadic-function/variadic-function.ghul",
           "output": "tasks/variadic-function/run.expected",
-          "lines": 41,
+          "lines": 39,
           "playground": true,
           "input": false,
           "images": []
@@ -23229,14 +23229,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 148,
+      "lines": 146,
       "parts": [
         {
           "id": "wasteful-equidigital-and-frugal-numbers",
           "heading": null,
           "source": "tasks/wasteful-equidigital-and-frugal-numbers/wasteful-equidigital-and-frugal-numbers.ghul",
           "output": "tasks/wasteful-equidigital-and-frugal-numbers/run.expected",
-          "lines": 148,
+          "lines": 146,
           "playground": false,
           "input": false,
           "images": []
@@ -23837,14 +23837,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 257,
+      "lines": 253,
       "parts": [
         {
           "id": "zeckendorf-arithmetic",
           "heading": null,
           "source": "tasks/zeckendorf-arithmetic/zeckendorf-arithmetic.ghul",
           "output": "tasks/zeckendorf-arithmetic/run.expected",
-          "lines": 257,
+          "lines": 253,
           "playground": true,
           "input": false,
           "images": []

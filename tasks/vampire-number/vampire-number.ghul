@@ -1,11 +1,7 @@
 use default
 
 sorted_string(s: string) -> string is
-    let chars = LIST()
-
-    for c in s do
-        chars.add(c)
-    od
+    let chars = s |> collect_list()
 
     chars.sort((x, y) =>
         if x < y then -1 elif x == y then 0 else 1 fi)

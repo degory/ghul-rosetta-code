@@ -50,11 +50,7 @@ show(wheels: (name: char, values: Value[])[]) is
         write_line("{name}: {values |> map(describe) |> join(" ")}")
     od
 
-    let generated = LIST()
-
-    for _ in 1::20 do
-        generated.add("{wheel_set.next(wheels[0].name)}")
-    od
+    let generated = (1::20) |> map(_ => "{wheel_set.next(wheels[0].name)}") |> collect_list()
 
     write_line("  {generated |> join(" ")}")
 si

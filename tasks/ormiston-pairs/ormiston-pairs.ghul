@@ -22,11 +22,7 @@ while root * root <= limit do
 od
 
 digit_signature(value: int) -> string => (
-    let counts = LIST()
-
-    for _ in 0..10 do
-        counts.add(0)
-    od
+    let counts = repeat(0, 10) |> collect_list()
 
     let rest mut = value
 

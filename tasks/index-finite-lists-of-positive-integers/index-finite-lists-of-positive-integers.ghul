@@ -30,13 +30,10 @@ unrank(index: bigint) -> LIST[bigint] is
 
     digits.reverse()
 
-    let values = LIST()
-
-    for text in (digits |> join("")).split([' ']) do
-        if text.length > 0 then
-            values.add(bigint.parse(text))
-        fi
-    od
+    let values = (digits |> join("")).split([' '])
+        |> filter(text => text.length > 0)
+        |> map(text => bigint.parse(text))
+        |> collect_list()
 
     return values
 si

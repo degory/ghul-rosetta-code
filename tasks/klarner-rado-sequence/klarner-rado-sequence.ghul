@@ -32,11 +32,7 @@ let sequence = klarner_rado(1_000_000)
 write_line("first 100 elements:")
 
 for row in 0..10 do
-    let cells = LIST()
-
-    for column in 0..10 do
-        cells.add("{sequence[row * 10 + column],6}")
-    od
+    let cells = (0..10) |> map(column => "{sequence[row * 10 + column],6}") |> collect_list()
 
     write_line(cells |> join(""))
 od

@@ -4,11 +4,7 @@ let top = 1_000_000_000
 let segment_size = 1 << 20
 
 base_primes(bound: int) -> LIST[int] is
-    let composite = LIST()
-
-    for _ in 0::bound do
-        composite.add(false)
-    od
+    let composite = repeat(false, bound + 1) |> collect_list()
 
     let factor mut = 2
 
@@ -31,11 +27,7 @@ si
 primes_below(bound: int) -> Pipe[int] is
     let root_bound = cast int(System.Math.sqrt(cast double(bound))) + 1
     let roots = base_primes(root_bound)
-    let block = LIST()
-
-    for _ in 0..segment_size do
-        block.add(false)
-    od
+    let block = repeat(false, segment_size) |> collect_list()
 
     let low mut = 2
 

@@ -4,11 +4,7 @@ grid(rows: int, columns: int) -> LIST[LIST[int]] is
     let made = LIST()
 
     for _ in 1::rows do
-        let row = LIST()
-
-        for _ in 1::columns do
-            row.add(0)
-        od
+        let row = repeat(0, columns) |> collect_list()
 
         made.add(row)
     od
