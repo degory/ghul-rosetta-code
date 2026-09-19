@@ -1,4 +1,5 @@
 use default
+
 let subject = "knights"
 
 write_line("first character removed: {subject[1..<0]}")

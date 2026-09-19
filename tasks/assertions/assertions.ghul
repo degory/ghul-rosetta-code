@@ -1,4 +1,5 @@
 use default
+
 let answer = 42
 
 assert answer == 42

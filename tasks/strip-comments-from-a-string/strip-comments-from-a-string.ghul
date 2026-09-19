@@ -1,4 +1,5 @@
 use default
+
 strip_comment(line: string, markers: char[]) -> string is
     let cut mut = line.length
 

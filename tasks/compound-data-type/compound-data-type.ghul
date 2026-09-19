@@ -1,4 +1,5 @@
 use default
+
 // A struct is a value type, so a copy is a separate point.
 struct POINT(x: int, y: int)
 

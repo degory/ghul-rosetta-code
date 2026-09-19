@@ -1,4 +1,5 @@
 use default
+
 binary(value: int) -> string =>
     if value < 2 then "{value}" else "{binary(value / 2)}{value % 2}" fi
 

@@ -1,4 +1,5 @@
 use default
+
 let minus_infinity = double.negative_infinity
 
 struct TROPICAL(value: double) is

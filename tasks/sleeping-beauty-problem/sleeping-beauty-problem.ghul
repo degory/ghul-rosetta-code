@@ -1,4 +1,5 @@
 use default
+
 let coin = System.Random(20260909)
 
 let runs = 1000000

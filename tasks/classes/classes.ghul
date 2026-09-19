@@ -1,4 +1,5 @@
 use default
+
 class ACCOUNT(owner: string) is
     _balance: int
 

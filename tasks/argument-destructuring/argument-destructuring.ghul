@@ -1,4 +1,5 @@
 use default
+
 apply[T.., U](f: T.. -> U, arguments: T..) -> U => f(arguments)
 
 greet(greeting: string, name: string) -> string =>

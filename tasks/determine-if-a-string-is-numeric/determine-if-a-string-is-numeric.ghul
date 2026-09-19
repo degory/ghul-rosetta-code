@@ -1,4 +1,5 @@
 use default
+
 numeric(text: string) -> bool is
     let parsed mut = 0.0
 

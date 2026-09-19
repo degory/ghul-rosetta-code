@@ -1,4 +1,5 @@
 use default
+
 divides(numerator: int, denominator: int) -> bool is
     try
         let _ = numerator / denominator

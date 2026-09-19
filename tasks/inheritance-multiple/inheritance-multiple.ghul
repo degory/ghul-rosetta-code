@@ -1,4 +1,5 @@
 use default
+
 trait Camera is
     take_photo() => write_line("flash!")
 si

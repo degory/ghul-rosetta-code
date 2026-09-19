@@ -1,4 +1,5 @@
 use default
+
 increment(text: string) -> string => "{int.parse(text) + 1}"
 
 huge(text: string) -> string => "{bigint.parse(text) + 1n}"

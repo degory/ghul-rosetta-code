@@ -1,4 +1,5 @@
 use default
+
 report(left: bool, right: bool) is
     write_line("{left} and {right}: {left /\ right}")
     write_line("{left} or {right}: {left \/ right}")

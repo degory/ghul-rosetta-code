@@ -1,4 +1,5 @@
 use default
+
 digit_sum(value: int, base: int) -> int is
     let remaining mut = value
     let total mut = 0

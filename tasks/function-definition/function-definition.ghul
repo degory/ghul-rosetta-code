@@ -1,4 +1,5 @@
 use default
+
 multiply(left: double, right: double) -> double => left * right
 
 describe(value: double) is

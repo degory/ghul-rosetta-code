@@ -1,4 +1,5 @@
 use default
+
 enum Day is
     MONDAY,
     TUESDAY,

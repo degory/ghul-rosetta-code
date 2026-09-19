@@ -1,4 +1,5 @@
 use default
+
 a(
     k: int,
     x1: () -> int,

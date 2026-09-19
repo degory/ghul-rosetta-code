@@ -1,4 +1,5 @@
 use default
+
 let subject = "   \t some padded text \t  "
 
 write_line("original: [{subject}]")

@@ -1,4 +1,5 @@
 use default
+
 binomial(n: int, k: int) -> long is
     assert k >= 0 /\ k <= n else "k must lie between 0 and n"
 

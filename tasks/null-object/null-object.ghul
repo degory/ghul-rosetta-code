@@ -1,4 +1,5 @@
 use default
+
 is_null(text: string?) -> bool => !text?
 
 is_null(number: int?) -> bool => !number?

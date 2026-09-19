@@ -1,4 +1,5 @@
 use default
+
 class Animal abstract is
     init() is si
 si

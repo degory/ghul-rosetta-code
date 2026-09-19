@@ -1,4 +1,5 @@
 use default
+
 class NODE[T](value: T) is
     next: NODE[T]?
     previous: NODE[T]?

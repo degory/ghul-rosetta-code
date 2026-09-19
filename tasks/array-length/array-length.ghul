@@ -1,4 +1,5 @@
 use default
+
 let fruit = ["apple", "orange"]
 
 write_line("{fruit.count}")

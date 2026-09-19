@@ -1,4 +1,5 @@
 use default
+
 // A tuple is the return type, so the elements can be named and the call
 // site can take them apart.
 divide(dividend: int, divisor: int) -> (quotient: int, remainder: int) =>

@@ -1,4 +1,5 @@
 use default
+
 let greeting = "hello"
 
 let sentence = "{greeting}, world"

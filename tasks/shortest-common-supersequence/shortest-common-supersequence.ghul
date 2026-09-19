@@ -1,4 +1,5 @@
 use default
+
 shortest_supersequence(u: string, v: string) -> string =>
     if u.length == 0 then
         v

@@ -1,4 +1,5 @@
 use default
+
 move(disks: int, source: int, target: int, spare: int) -> void =>
     if disks > 0 then
         move(disks - 1, source, spare, target)
