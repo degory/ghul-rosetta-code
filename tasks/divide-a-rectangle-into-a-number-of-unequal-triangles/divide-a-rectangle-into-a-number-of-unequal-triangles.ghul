@@ -21,14 +21,14 @@ sides(t: Triangle) -> List[double] =>
 
 similar(s: Triangle, t: Triangle) -> bool =>
     let x = sides(s), y = sides(t) in
-    (0..3) |> all(i => Math.abs(x[i] / x[2] - y[i] / y[2]) < 1.0e-6)
+    0..3 |> all(i => Math.abs(x[i] / x[2] - y[i] / y[2]) < 1.0e-6)
 
 area(t: Triangle) -> double =>
     Math.abs((t.b - t.a) × (t.c - t.a)) / 2.0D
 
 all_different(ts: List[Triangle]) -> bool =>
-    (0..ts.count) |> all(i =>
-        (i + 1..ts.count) |> all(j => !similar(ts[i], ts[j])))
+    0..ts.count |> all(i =>
+        i + 1..ts.count |> all(j => !similar(ts[i], ts[j])))
 
 length(e: (P, P, P)) -> double => (e.`1 - e.`0).length
 
@@ -60,7 +60,7 @@ divide(width: double, height: double, count: int) -> List[Triangle] is
 
         while triangles.count < count /\ tries < 1000 do
             let largest =
-                (0..triangles.count) |> reduce(0, (best, i) =>
+                0..triangles.count |> reduce(0, (best, i) =>
                     if area(triangles[i]) > area(triangles[best]) then i
                     else best fi)
 

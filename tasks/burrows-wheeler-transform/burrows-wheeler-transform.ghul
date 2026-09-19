@@ -21,7 +21,7 @@ transform(text: string) -> string =>
 
 invert(transformed: string) -> string is
     let width = transformed.length
-    let table mut = (0..width) |> map(i => "") |> collect()
+    let table mut = 0..width |> map(i => "") |> collect()
 
     for _ in 0..width do
         table = table

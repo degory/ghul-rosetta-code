@@ -61,7 +61,7 @@ write_line("a < b: {a < b}, a >= b: {a >= b}")
 write_line("a =~ 6/8: {a =~ frac(6L, 8L)}")
 
 let limit = 1 << 19
-let sums = LIST((0..limit) |> map(_ => whole(0L)))
+let sums = LIST(0..limit |> map(_ => whole(0L)))
 
 for factor in 1..limit do
     let reciprocal = frac(1L, cast(factor))
@@ -74,5 +74,5 @@ for factor in 1..limit do
     od
 od
 
-let perfect = (1..limit) |> filter(n => sums[n] =~ whole(2L))
+let perfect = 1..limit |> filter(n => sums[n] =~ whole(2L))
 write_line("perfect numbers below 2^19: {perfect |> join(", ")}")

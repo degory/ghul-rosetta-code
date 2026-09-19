@@ -5,14 +5,14 @@ use System.Math
 let n = 17
 
 let residues =
-    (1..n) |> map(i => i * i % n) |> collect_list()
+    1..n |> map(i => i * i % n) |> collect_list()
 
 linked(a: int, b: int) -> bool =>
     let d = ((a - b) % n + n) % n in
     residues |> any(r => r == d)
 
 for a in 0..n do
-    let row = (0..n) |> map(b =>
+    let row = 0..n |> map(b =>
         if a == b then "-" elif linked(a, b) then "1" else "0" fi)
 
     write_line(row |> join(" "))

@@ -49,11 +49,11 @@ class PUZZLE is
 
         lines =
             (0..rows)
-                |> map(r => (0..columns) |> map(c => r * columns + c))
+                |> map(r => 0..columns |> map(c => r * columns + c))
                 |> cat(
                     (0..columns)
                         |> map(c =>
-                            (0..rows) |> map(r => r * columns + c)))
+                            0..rows |> map(r => r * columns + c)))
                 |> map(line => line |> collect_list())
                 |> collect_list()
 

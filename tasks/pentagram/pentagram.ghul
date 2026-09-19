@@ -24,7 +24,7 @@ image.fill(
 )
 
 image.colour(242ub, 198ub, 62ub)
-image.fill((0..10) |> map(corner) |> collect_list())
+image.fill(0..10 |> map(corner) |> collect_list())
 
 image.colour(148ub, 32ub, 48ub)
 image.stroke(3.0D)

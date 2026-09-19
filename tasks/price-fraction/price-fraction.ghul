@@ -14,7 +14,7 @@ rescale(price: double) -> double =>
      od)!
 
 let shown =
-    (0::100) |> map(hundredths => (
+    0::100 |> map(hundredths => (
         let price = cast(hundredths) / 100.0D
 
         "{price:F2} -> {rescale(price):F2}"

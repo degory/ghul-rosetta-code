@@ -4,7 +4,7 @@ let limit = 10000000
 
 let composite = LIST()
 
-(0::limit) |> each(_ => composite.add(false))
+0::limit |> each(_ => composite.add(false))
 
 let root mut = 2
 

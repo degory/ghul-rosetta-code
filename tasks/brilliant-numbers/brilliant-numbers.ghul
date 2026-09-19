@@ -23,12 +23,12 @@ si
 
 brilliant_numbers(max_digits: int) -> LIST[long] is
     let found = LIST()
-    let limit = (0..max_digits) |> reduce(1, (acc, _) => acc * 10)
+    let limit = 0..max_digits |> reduce(1, (acc, _) => acc * 10)
     let primes = primes_below(limit) |> collect_list()
     let start mut = 0
 
     for digits in 1::max_digits do
-        let low = (1..digits) |> reduce(1, (acc, _) => acc * 10)
+        let low = 1..digits |> reduce(1, (acc, _) => acc * 10)
         let group = primes
             |> skip(start)
             |> take_while(p => p < low * 10)
@@ -53,7 +53,7 @@ let brilliant = brilliant_numbers(4)
 write_line("the first 100 brilliant numbers:")
 
 for row in 0..10 do
-    let cells = (0..10) |> map(column => "{brilliant[row * 10 + column],5}")
+    let cells = 0..10 |> map(column => "{brilliant[row * 10 + column],5}")
 
     write_line(cells |> join(""))
 od

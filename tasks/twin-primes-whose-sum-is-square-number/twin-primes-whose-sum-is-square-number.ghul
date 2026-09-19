@@ -22,7 +22,7 @@ is_prime(value: int) -> bool => value > 1 /\ !composite[value]
 
 is_square(value: int) -> bool =>
     (let root = cast int(System.Math.sqrt(cast(value))) in
-     (root - 1::root + 1) |> any(side => side * side == value))
+     root - 1::root + 1 |> any(side => side * side == value))
 
 write_line("twin primes below ten million whose sum is a square:")
 

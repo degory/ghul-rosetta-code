@@ -13,7 +13,7 @@ matrix(first: string, second: string) -> LIST[LIST[int]] is
     let scores = LIST()
 
     for i in 0::first.length do
-        let row = (0::second.length) |> map(j => 0) |> collect_list()
+        let row = 0::second.length |> map(j => 0) |> collect_list()
 
         scores.add(row)
     od

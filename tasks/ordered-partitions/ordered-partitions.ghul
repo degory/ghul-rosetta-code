@@ -49,7 +49,7 @@ braces(block: List[int]) -> string =>
 
 show(sizes: int[]) is
     let total = sizes |> reduce(0, (running, size) => running + size)
-    let items = (1::total) |> collect()
+    let items = 1::total |> collect()
 
     write_line("partitions({sizes |> join(", ")}):")
 

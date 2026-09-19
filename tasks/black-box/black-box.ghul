@@ -99,7 +99,7 @@ show(reveal: bool) is
         write_line("{row + 1} {cells}")
     od
 
-    write_line("  {(1::size) |> join(" ")}")
+    write_line("  {1::size |> join(" ")}")
 si
 
 write_line("four atoms are hidden in an 8 x 8 box")

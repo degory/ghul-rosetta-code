@@ -58,7 +58,7 @@ to_gregorian(republican: string) -> DateTime is
             360 + System.Array.index_of(sansculottides, name)
         fi
 
-    let days = (1..year) |> map(days_in) |> reduce(0, (a, b) => a + b)
+    let days = 1..year |> map(days_in) |> reduce(0, (a, b) => a + b)
 
     return epoch.add_days(cast(days + day_of_year))
 si

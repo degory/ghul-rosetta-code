@@ -83,8 +83,8 @@ in_rows(entries: Collections.Iterable[string], per_row: int) is
     fi
 si
 
-let primes_below_15 = (2..15) |> filter(is_prime) |> collect_list()
-let primes_below_180 = (2..180) |> filter(is_prime) |> collect_list()
+let primes_below_15 = 2..15 |> filter(is_prime) |> collect_list()
+let primes_below_180 = 2..180 |> filter(is_prime) |> collect_list()
 
 write_line("pisano_prime(p, 2) for every prime below 15:")
 in_rows(primes_below_15 |> map(p => "{p,4}:{pisano_prime(p, 2),8}"), 4)
@@ -95,4 +95,4 @@ in_rows(primes_below_180 |> map(p => "{p,4}:{pisano_prime(p, 1),5}"), 6)
 
 write_line("")
 write_line("pisano(m) for m from 1 to 180:")
-in_rows((1::180) |> map(m => "{m,4}:{pisano(m),5}"), 6)
+in_rows(1::180 |> map(m => "{m,4}:{pisano(m),5}"), 6)

@@ -41,7 +41,7 @@ upside_down(index: int) -> string is
     text |> join("")
 si
 
-let first_fifty = (1::50) |> map(upside_down) |> collect_list()
+let first_fifty = 1::50 |> map(upside_down) |> collect_list()
 
 write_line("the first fifty upside-down numbers:")
 

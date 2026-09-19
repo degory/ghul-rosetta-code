@@ -29,7 +29,7 @@ step(rule: int, cells: List[bool]) -> List[bool] is
 si
 
 single_cell() -> List[bool] =>
-    (0..width) |> map(at => at == width / 2) |> collect()
+    0..width |> map(at => at == width / 2) |> collect()
 
 draw(image: IMAGE, rule: int, left: int) is
     image.colour(234ub, 237ub, 244ub)

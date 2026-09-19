@@ -199,7 +199,7 @@ bit_of(thunk: THUNK) -> int =>
 
 bits_of(bytes: List[int]) -> List[bool] =>
     bytes
-        |> flat_map(b => (0..8) |> map(i => (b >> (7 - i)) & 1 == 1))
+        |> flat_map(b => 0..8 |> map(i => (b >> (7 - i)) & 1 == 1))
         |> collect_list()
 
 run_bits(program: string, limit: int) -> string is

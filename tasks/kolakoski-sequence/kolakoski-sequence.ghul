@@ -50,7 +50,7 @@ si
 
 self_describing(sequence: List[int]) -> bool => (
     let runs = run_lengths(sequence)
-    (0..runs.count - 1) |> all(i => runs[i] == sequence[i])
+    0..runs.count - 1 |> all(i => runs[i] == sequence[i])
 )
 
 report(values: int[], length: int) is

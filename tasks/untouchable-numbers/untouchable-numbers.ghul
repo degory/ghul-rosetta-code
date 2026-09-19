@@ -47,7 +47,7 @@ while factor * factor <= top do
     factor = factor + 1
 od
 
-let primes = (2::top) |> filter(p => !composite[p]) |> collect_list()
+let primes = 2::top |> filter(p => !composite[p]) |> collect_list()
 
 for prime in primes do
     if prime + 1 <= top then
@@ -67,7 +67,7 @@ for first in 0..primes.count do
     od
 od
 
-let untouchable = (1::top) |> filter(value => !touched[value])
+let untouchable = 1::top |> filter(value => !touched[value])
                            |> collect_list()
 
 write_line("the untouchable numbers up to 2000:")

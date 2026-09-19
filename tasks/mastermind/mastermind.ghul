@@ -36,7 +36,7 @@ tally(text: string, letter: char) -> int =>
 
 score(code: string, guess: string, palette: string) -> string is
     let exact =
-        (0..code.length) |> filter(i => code[i] == guess[i]) |> count()
+        0..code.length |> filter(i => code[i] == guess[i]) |> count()
 
     let common =
         palette

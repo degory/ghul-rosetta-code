@@ -33,7 +33,7 @@ new_deck() -> LIST[Card] is
     for colour in colours do
         deck.add((colour, "0"))
 
-        for value in (1::9) |> map(n => "{n}") |> cat(values) do
+        for value in 1::9 |> map(n => "{n}") |> cat(values) do
             deck.add((colour, value))
             deck.add((colour, value))
         od
@@ -47,7 +47,7 @@ new_deck() -> LIST[Card] is
     shuffled(deck)
 si
 
-let hands = LIST[LIST[Card]]((0..4) |> map(_ => LIST[Card]()))
+let hands = LIST[LIST[Card]](0..4 |> map(_ => LIST[Card]()))
 let scores = LIST[int]([0, 0, 0, 0])
 let deck mut = LIST[Card]()
 let discard = LIST[Card]()
@@ -109,8 +109,8 @@ favourite_colour(hand: List[Card]) -> string =>
 bot_choice(hand: List[Card]) -> int? =>
     (0..hand.count)
         |> filter(i => matches(hand[i]) /\ !is_wild(hand[i]))
-        |> cat((0..hand.count) |> filter(i => hand[i].value =~ "wild"))
-        |> cat((0..hand.count) |> filter(i =>
+        |> cat(0..hand.count |> filter(i => hand[i].value =~ "wild"))
+        |> cat(0..hand.count |> filter(i =>
             hand[i].value =~ "wild draw four" /\ !has_colour(hand)))
         |> first()
 
@@ -414,12 +414,12 @@ while scores |> all(s => s < 500) do
     verbose = false
 
     let standings =
-        (0..4) |> map(s => "{names[s]} {scores[s]}") |> join(", ")
+        0..4 |> map(s => "{names[s]} {scores[s]}") |> join(", ")
 
     write_line(
         "hand {hand_number}: {names[winner]} went out for {won} points; "
         "{standings}")
 od
 
-let champion = (0..4) |> filter(s => scores[s] >= 500) |> first() ?? 0
+let champion = 0..4 |> filter(s => scores[s] >= 500) |> first() ?? 0
 write_line("{acts(champion, "win", "wins")} the game")

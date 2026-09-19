@@ -351,7 +351,7 @@ notation(move: Move) -> string =>
 show(position: POSITION) is
     for row in 0..8 do
         let pieces =
-            (0..8) |> map(k => position.squares[row * 8 + k]) |> join(" ")
+            0..8 |> map(k => position.squares[row * 8 + k]) |> join(" ")
 
         write_line("{8 - row} {pieces}")
     od

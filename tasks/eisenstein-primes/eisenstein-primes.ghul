@@ -5,7 +5,7 @@ use System.Math
 use Eisenstein = (a: int, b: int)
 
 is_prime(n: int) -> bool =>
-    n >= 2 /\ ((2..n) |> filter(d => d * d <= n) |> all(d => n % d != 0))
+    n >= 2 /\ (2..n |> filter(d => d * d <= n) |> all(d => n % d != 0))
 
 norm(e: Eisenstein) -> int => e.a * e.a - e.a * e.b + e.b * e.b
 
@@ -31,7 +31,7 @@ let reach = 60
 
 let primes =
     (-reach::reach)
-        |> flat_map(a => (-reach::reach) |> map(b => (a = a, b = b)))
+        |> flat_map(a => -reach::reach |> map(b => (a = a, b = b)))
         |> filter(is_eisenstein_prime)
         |> sort((x, y) =>
             if norm(x) != norm(y) then norm(x) - norm(y)

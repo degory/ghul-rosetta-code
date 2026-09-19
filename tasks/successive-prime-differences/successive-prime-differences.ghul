@@ -18,7 +18,7 @@ while factor * factor <= limit do
     factor = factor + 1
 od
 
-let primes = (2::limit) |> filter(p => !composite[p]) |> collect_list()
+let primes = 2::limit |> filter(p => !composite[p]) |> collect_list()
 
 groups(differences: int[]) -> Pipe[LIST[int]] is
     for start in 0..primes.count - differences.count do

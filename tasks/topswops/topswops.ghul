@@ -23,7 +23,7 @@ swaps(deck: int[]) -> int => (
 )
 
 topswops(n: int) -> int => (
-    let deck = (1::n) |> collect_list()
+    let deck = 1::n |> collect_list()
 
     let best mut = 0
 

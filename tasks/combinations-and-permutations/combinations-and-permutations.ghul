@@ -1,7 +1,7 @@
 use default
 
 factorial(n: int) -> bigint is
-    (1::n) |> reduce(1n, (acc, i) => acc * bigint(i))
+    1::n |> reduce(1n, (acc, i) => acc * bigint(i))
 si
 
 npk(n: int, k: int) -> bigint => factorial(n) / factorial(n - k)
@@ -22,7 +22,7 @@ log_gamma(x: double) -> double is
     let xm = x - 1.0
     let t = xm + g + 0.5
     let term = (sum, i) => sum + coefficients[i] / (xm + cast double(i))
-    let a = (1::8) |> reduce(coefficients[0], term)
+    let a = 1::8 |> reduce(coefficients[0], term)
 
     let half_log_2pi = 0.5 * System.Math.log(2.0 * System.Math.pi)
 

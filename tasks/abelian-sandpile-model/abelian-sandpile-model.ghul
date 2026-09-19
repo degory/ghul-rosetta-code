@@ -58,7 +58,7 @@ show(grains: int) is
 
     for y in 0..pile.size do
         write_line(
-            "  {(0..pile.size) |> map(x => "{pile.at(x, y)}") |> join(" ")}"
+            "  {0..pile.size |> map(x => "{pile.at(x, y)}") |> join(" ")}"
         )
     od
 si

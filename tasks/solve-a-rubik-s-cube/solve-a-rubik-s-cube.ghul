@@ -17,7 +17,7 @@ let faces = [
 ]
 
 let solved =
-    (0..40) |> map(i => if i < 20 then i else 0 fi) |> collect_array()
+    0..40 |> map(i => if i < 20 then i else 0 fi) |> collect_array()
 
 apply(move: int, state: int[]) -> int[] is
     let face = faces[move / 3]
@@ -83,7 +83,7 @@ key(phase: int, state: int[]) -> string is
 
             let parity =
                 (12..20)
-                    |> flat_map(i => (i + 1..20) |> map(j => (i, j)))
+                    |> flat_map(i => i + 1..20 |> map(j => (i, j)))
                     |> filter(p => state[p.`0] > state[p.`1])
                     |> count() % 2
 

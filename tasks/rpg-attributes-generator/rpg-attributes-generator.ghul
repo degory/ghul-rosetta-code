@@ -3,7 +3,7 @@ use default
 let dice = System.Random(20260909)
 
 attribute() -> int is
-    let rolls = (1::4) |> map(_ => dice.next(1, 7)) |> collect_list()
+    let rolls = 1::4 |> map(_ => dice.next(1, 7)) |> collect_list()
 
     let lowest = rolls |> min_by(roll => roll)
 
@@ -13,7 +13,7 @@ attribute() -> int is
 si
 
 character() -> LIST[int] =>
-    (1::6) |> map(_ => attribute()) |> collect_list()
+    1::6 |> map(_ => attribute()) |> collect_list()
 
 let rolled mut = character()
 

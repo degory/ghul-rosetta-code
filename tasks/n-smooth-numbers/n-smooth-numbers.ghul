@@ -14,7 +14,7 @@ is_prime(value: int) -> bool is
 si
 
 smooth(bound: int, count: int) -> LIST[bigint] is
-    let factors = (2::bound) |> filter(is_prime)
+    let factors = 2::bound |> filter(is_prime)
                              |> map(p => bigint(p))
                              |> collect_list()
 
@@ -46,7 +46,7 @@ smooth(bound: int, count: int) -> LIST[bigint] is
     found
 si
 
-let bounds = (2::29) |> filter(is_prime) |> collect_list()
+let bounds = 2::29 |> filter(is_prime) |> collect_list()
 
 write_line("the first 25 n-smooth numbers:")
 

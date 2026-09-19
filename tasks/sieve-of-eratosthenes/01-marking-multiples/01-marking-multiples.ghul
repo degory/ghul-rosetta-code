@@ -3,7 +3,7 @@ use default
 sieve(limit: int) -> List[int] is
     let composite = LIST()
 
-    (0::limit) |> each(_ => composite.add(false))
+    0::limit |> each(_ => composite.add(false))
 
     let prime mut = 2
 

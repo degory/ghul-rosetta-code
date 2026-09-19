@@ -27,12 +27,12 @@ is_blum(value: int) -> bool is
     return p != q /\ p % 4 == 3 /\ q % 4 == 3 /\ smallest_factor[q] == q
 si
 
-let blum = (2::limit) |> filter(is_blum) |> take(400_000) |> collect_list()
+let blum = 2::limit |> filter(is_blum) |> take(400_000) |> collect_list()
 
 write_line("the first 50 Blum integers:")
 
 for row in 0..5 do
-    let cells = (0..10) |> map(column => "{blum[row * 10 + column],4}")
+    let cells = 0..10 |> map(column => "{blum[row * 10 + column],4}")
 
     write_line(cells |> join(""))
 od

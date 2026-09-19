@@ -50,7 +50,7 @@ let template =
                   group([at(3), at(4), at(1)]),
                   at(5)])])
 
-let payloads = (0::6) |> map(index => "Payload#{index}") |> collect()
+let payloads = 0::6 |> map(index => "Payload#{index}") |> collect()
 
 write_line("filled template:")
 write_line("  {render(fill(template, payloads))}")

@@ -13,4 +13,4 @@ is_perfect(n: int) -> bool is
     return divisors == n
 si
 
-write_line((1::10000) |> filter(is_perfect) |> join(", "))
+write_line(1::10000 |> filter(is_perfect) |> join(", "))

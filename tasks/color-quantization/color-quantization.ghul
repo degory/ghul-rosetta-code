@@ -94,7 +94,7 @@ spread(box: List[Weighted], axis: int) -> int =>
     (values |> reduce(0, int.max)) - (values |> reduce(255, int.min))
 
 widest(box: List[Weighted]) -> int =>
-    (0..3) |> reduce(0, (best, axis) =>
+    0..3 |> reduce(0, (best, axis) =>
         if spread(box, axis) > spread(box, best) then axis else best fi)
 
 score(box: List[Weighted]) -> int => spread(box, widest(box))
@@ -136,7 +136,7 @@ median_cut(colours: List[Weighted], count: int) -> List[Colour] is
 
     while boxes.count < count do
         let largest =
-            (0..boxes.count) |> reduce(0, (best, i) =>
+            0..boxes.count |> reduce(0, (best, i) =>
                 if score(boxes[i]) > score(boxes[best]) then i else best fi)
 
         let (low, high) = split(boxes[largest])
@@ -162,7 +162,7 @@ let input = IMAGE.read("picture.png")
 
 let pixels =
     (0..input.height)
-        |> flat_map(y => (0..input.width) |> map(x => input.pixel(x, y)))
+        |> flat_map(y => 0..input.width |> map(x => input.pixel(x, y)))
         |> map(of)
         |> collect_list()
 

@@ -45,9 +45,9 @@ arrangements(prefix: int, available: LIST[int]) -> Pipe[int] is
     od
 si
 
-let digits = LIST((2::9) |> collect_list())
+let digits = LIST(2::9 |> collect_list())
 
-let candidates = (0::9) |> cat(arrangements(0, digits))
+let candidates = 0::9 |> cat(arrangements(0, digits))
 let colorful = candidates |> filter(is_colorful) |> collect_list()
 
 colorful.sort()

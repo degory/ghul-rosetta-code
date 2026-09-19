@@ -1,7 +1,7 @@
 use default
 use System.Math.log10
 
-let leading_counts = (1::10) |> map(_ => 0) |> collect_list()
+let leading_counts = 1::10 |> map(_ => 0) |> collect_list()
 
 let previous mut = 0n
 let current mut = 1n

@@ -30,7 +30,7 @@ si
 
 highest(value: List[int]) -> int =>
     let found =
-        (0..width) |> reverse() |> find(index => value[index] != 0) in
+        0..width |> reverse() |> find(index => value[index] != 0) in
     found ?? -1
 
 show(value: List[int]) -> string =>
@@ -38,14 +38,14 @@ show(value: List[int]) -> string =>
     if top < 0 then
         "0"
     else
-        (0::top) |> reverse() |> map(index => "{value[index]}") |> join("")
+        0::top |> reverse() |> map(index => "{value[index]}") |> join("")
     fi
 
 is_zero(value: List[int]) -> bool =>
-    (0..width) |> all(index => value[index] == 0)
+    0..width |> all(index => value[index] == 0)
 
 compare(left: List[int], right: List[int]) -> int is
-    for index in (0..width) |> reverse() do
+    for index in 0..width |> reverse() do
         if left[index] != right[index] then
             return if left[index] > right[index] then 1 else -1 fi
         fi
@@ -111,7 +111,7 @@ si
 
 decrement(value: List[int]) -> LIST[int] is
     let result = copy(value)
-    let lowest = (0..width) |> find(index => result[index] == 1)
+    let lowest = 0..width |> find(index => result[index] == 1)
 
     if let at = lowest then
         result[at] = 0
@@ -186,7 +186,7 @@ divide(left: List[int], right: List[int]) -> DIVISION is
     let quotient = blank()
     let remainder mut = copy(left)
 
-    for index in (0..table.count) |> reverse() do
+    for index in 0..table.count |> reverse() do
         if compare(table[index], remainder) <= 0 then
             remainder = subtract(remainder, table[index])
             quotient[index] = quotient[index] + 1

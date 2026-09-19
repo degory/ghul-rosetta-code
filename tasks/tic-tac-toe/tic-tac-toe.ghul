@@ -15,7 +15,7 @@ winner(board: List[char]) -> char? =>
         |> first()
 
 free(board: List[char]) -> Pipe[int] =>
-    (0..9) |> filter(i => board[i] == ' ')
+    0..9 |> filter(i => board[i] == ' ')
 
 full(board: List[char]) -> bool => !(board |> any(c => c == ' '))
 

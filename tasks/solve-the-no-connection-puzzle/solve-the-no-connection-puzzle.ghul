@@ -52,7 +52,7 @@ draw(pegs: List[int]) is
     write_line("      {pegs[6]}   {pegs[7]}")
 si
 
-let pegs = (1::8) |> collect()
+let pegs = 1::8 |> collect()
 
 if let solution = permutations(pegs) |> find(peaceful) then
     write_line("one solution:")

@@ -57,7 +57,7 @@ route(table: List[STEP], value: int) -> string is
 si
 
 deepest_in(table: List[STEP], limit: int) is
-    let deepest = (1::limit) |> map(value => table[value].steps) |> max()
+    let deepest = 1::limit |> map(value => table[value].steps) |> max()
 
     if let most = deepest then
         let hardest =

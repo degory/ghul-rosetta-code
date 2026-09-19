@@ -20,7 +20,7 @@ lerp(a: Point, b: Point, t: double) -> Point =>
 
 de_boor(t: double) -> Point is
     let span = System.Math.min(cast int(t), spans - 1) + degree
-    let d = LIST((0::degree) |> map(j => control[j + span - degree]))
+    let d = LIST(0::degree |> map(j => control[j + span - degree]))
 
     for r in 1::degree do
         for step in 0::degree - r do

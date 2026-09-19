@@ -97,7 +97,7 @@ contour(level: double) -> Pipe[(from: Point, to: Point)] is
 si
 
 let levels =
-    (0::12) |> map(step => -0.75D + 0.15D * cast double(step))
+    0::12 |> map(step => -0.75D + 0.15D * cast double(step))
             |> collect_list()
 
 let image = IMAGE(600, 480)
