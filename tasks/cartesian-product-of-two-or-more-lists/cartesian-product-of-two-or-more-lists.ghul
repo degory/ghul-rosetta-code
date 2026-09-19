@@ -60,7 +60,7 @@ show_binary([], [1, 2])
 
 write_line("")
 
-let empty: int[] = []
+let empty = []
 
 show_nary([[1776, 1789], [7, 12], [4, 14, 23], [0, 1]])
 show_nary([[1, 2, 3], [30], [500, 100]])

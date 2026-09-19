@@ -34,7 +34,7 @@ class CLUSTERS is
     si
 
     spread(start: int, label: int) is
-        let pending = STACK[int]()
+        let pending = STACK()
 
         pending.push(start)
 

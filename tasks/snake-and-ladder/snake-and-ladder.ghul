@@ -2,7 +2,7 @@ use default
 use IO.Std.read_line
 use System.Random
 
-let jumps = MAP[int, int]()
+let jumps = MAP()
 
 for (from, to) in [
     (4, 14), (9, 31), (17, 7), (20, 38), (28, 84), (40, 59),

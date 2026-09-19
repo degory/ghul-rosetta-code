@@ -17,7 +17,7 @@ all_letters(word: string) -> bool =>
     word |> all(letter => char.is_letter(letter))
 
 no_repeats(word: string) -> bool =>
-    (let seen = SET[char]()
+    (let seen = SET()
      word |> all(letter => seen.add(letter)))
 
 read_order(key: string) -> LIST[int] =>

@@ -41,7 +41,7 @@ contains(polygon: List[P], p: P) -> bool is
 si
 
 ring(polygon: List[P], crossings: List[Crossing]) -> List[NODE] is
-    let nodes = LIST[NODE]()
+    let nodes = LIST()
 
     for i in 0..polygon.count do
         nodes.add(NODE(polygon[i], false))
@@ -67,8 +67,8 @@ clip(subject: List[P], given: List[P]) -> List[List[P]] is
                 if flip then given[given.count - 1 - i] else given[i] fi)
             |> collect_list()
 
-    let on_subject = LIST[Crossing]()
-    let on_window = LIST[Crossing]()
+    let on_subject = LIST()
+    let on_window = LIST()
 
     for i in 0..subject.count do
         let a = subject[i]
@@ -113,8 +113,8 @@ clip(subject: List[P], given: List[P]) -> List[List[P]] is
 
     for start in nodes do
         if start.crossing /\ start.entering /\ !start.visited then
-            let polygon = LIST[P]()
-            let node: NODE mut = start
+            let polygon = LIST()
+            let node mut = start
 
             do
                 node.visited = true

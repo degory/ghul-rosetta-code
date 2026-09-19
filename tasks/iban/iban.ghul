@@ -4,7 +4,7 @@ is_valid_iban(raw: string) -> bool is
     let iban =
         raw |> filter(ch => ch != ' ') |> map(ch => "{ch}") |> join("")
 
-    let is_letter = (ch: char) => ch >= 'A' /\ ch <= 'Z'
+    let is_letter = ch => ch >= 'A' /\ ch <= 'Z'
 
     if iban.length < 4 \/ !is_letter(iban[0]) \/ !is_letter(iban[1]) then
         return false
@@ -12,7 +12,7 @@ is_valid_iban(raw: string) -> bool is
 
     let rearranged = "{iban[4..<0]}{iban[0..4]}"
 
-    let letter_value = (ch: char) => "{cast int(ch) - cast int('A') + 10}"
+    let letter_value = ch => "{cast int(ch) - cast int('A') + 10}"
     let numeric = rearranged
         |> map(ch => if is_letter(ch) then letter_value(ch) else "{ch}" fi)
         |> join("")

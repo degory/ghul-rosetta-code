@@ -37,7 +37,7 @@ is_prime(value: bigint) -> bool is
 si
 
 three_smooth() -> Pipe[bigint] is
-    let found = LIST[bigint]()
+    let found = LIST()
     let next_double mut = 0
     let next_triple mut = 0
     let value mut = 1n

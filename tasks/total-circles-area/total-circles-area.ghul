@@ -53,7 +53,7 @@ crossings(c: Circle, o: Circle) -> List[double] is
     let d = distance(c, o)
 
     if d >= c.r + o.r \/ d <= Math.abs(c.r - o.r) then
-        return LIST[double]()
+        return LIST()
     fi
 
     let base = Math.atan2(o.y - c.y, o.x - c.x)
@@ -64,7 +64,7 @@ crossings(c: Circle, o: Circle) -> List[double] is
 si
 
 outer_arcs(c: Circle, others: List[Circle]) -> List[Arc] is
-    let angles = LIST[double](
+    let angles = LIST(
         others
             |> filter(o => !(o =~ c))
             |> flat_map(o => crossings(c, o))
@@ -93,7 +93,7 @@ area_under(arc: Arc) -> double =>
         c.r * c.x * (Math.sin(arc.to) - Math.sin(arc.from)) -
         c.r * c.y * (Math.cos(arc.to) - Math.cos(arc.from)))
 
-let all = LIST[Circle](circles)
+let all = LIST(circles)
 let kept = all |> filter(c => !inside(c, all)) |> collect_list()
 
 let arcs = kept |> flat_map(c => outer_arcs(c, kept)) |> collect_list()

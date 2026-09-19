@@ -11,7 +11,7 @@ class TOKEN(name: string, value: string, line: string, column: string)
 
 use Operator = (kind: string, precedence: int)
 
-let binary = MAP[string, Operator]()
+let binary = MAP()
 
 for (name, kind, precedence) in [
     ("Op_multiply", "Multiply", 13), ("Op_divide", "Divide", 13),
@@ -201,7 +201,7 @@ show(node: Node) is
     esac
 si
 
-let tokens = LIST[TOKEN]()
+let tokens = LIST()
 
 while let line = read_line() do
     let fields =

@@ -6,7 +6,7 @@ let table = (0..256)
     |> collect_list()
 
 crc32(data: ubyte[]) -> uint is
-    let step = (crc: uint, b: ubyte) =>
+    let step = (crc, b) =>
         table[cast int((crc ^ cast uint(b)) & 0xFFu)] ^ (crc >> 8)
 
     (data |> reduce(0xFFFFFFFFu, step)) ^ 0xFFFFFFFFu

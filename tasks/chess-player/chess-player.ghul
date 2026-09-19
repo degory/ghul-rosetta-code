@@ -11,7 +11,7 @@ class POSITION is
     en_passant: int public
 
     init() is
-        squares = LIST[char](
+        squares = LIST(
             "rnbqkbnr" "pppppppp" "........" "........"
             "........" "........" "PPPPPPPP" "RNBQKBNR")
         white_to_move = true
@@ -20,7 +20,7 @@ class POSITION is
     si
 
     init(other: POSITION) is
-        squares = LIST[char](other.squares)
+        squares = LIST(other.squares)
         white_to_move = other.white_to_move
         castling = other.castling
         en_passant = other.en_passant
@@ -94,13 +94,13 @@ castling_targets(position: POSITION, from: int) -> List[int] is
     let white = position.white_to_move
     let home = if white then 60 else 4 fi
     let (short, long) = if white then ("K", "Q") else ("k", "q") fi
-    let targets = LIST[int]()
+    let targets = LIST()
 
     if from != home \/ attacked(position, home, !white) then
         return targets
     fi
 
-    let open = (passing: int[], empty: int[]) =>
+    let open = (passing, empty) =>
         empty |> all(s => position.squares[s] == '.') /\
         passing |> all(s => !attacked(position, s, !white))
 
@@ -121,11 +121,11 @@ castling_targets(position: POSITION, from: int) -> List[int] is
 si
 
 pseudo_moves(position: POSITION) -> List[Move] is
-    let moves = LIST[Move]()
+    let moves = LIST()
     let white = position.white_to_move
-    let at = (r: int, k: int) => position.squares[r * 8 + k]
+    let at = (r, k) => position.squares[r * 8 + k]
 
-    let add = (from: int, to: int) is
+    let add = (from, to) is
         let row = to / 8
         let pawn = char.to_lower(position.squares[from]) == 'p'
 
@@ -148,7 +148,7 @@ pseudo_moves(position: POSITION) -> List[Move] is
         let column = from % 8
         let kind = char.to_lower(piece)
 
-        let step = (dr: int, dc: int, slide: bool) is
+        let step = (dr, dc, slide) is
             let r mut = row + dr
             let k mut = column + dc
 
@@ -312,7 +312,7 @@ search(position: POSITION, depth: int, alpha: int, beta: int) -> int is
 
     let best mut = alpha
 
-    let captured = (m: Move) => value(position.squares[m.to])
+    let captured = m => value(position.squares[m.to])
 
     for move in moves |> sort((a, b) => captured(b) <> captured(a)) do
         let score = -search(played(position, move), depth - 1, -beta, -best)

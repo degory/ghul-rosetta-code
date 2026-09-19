@@ -11,7 +11,7 @@ let connections =
 
 permutations(values: List[int]) -> Pipe[List[int]] is
     if values.count == 0 then
-        yield LIST[int]()
+        yield LIST()
     else
         for chosen in 0..values.count do
             let rest =
@@ -22,7 +22,7 @@ permutations(values: List[int]) -> Pipe[List[int]] is
                     |> collect()
 
             for tail in permutations(rest) do
-                let whole = LIST[int]()
+                let whole = LIST()
 
                 whole.add(values[chosen])
 

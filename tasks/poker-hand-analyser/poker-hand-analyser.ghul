@@ -1,6 +1,6 @@
 use default
 
-let face_values = MAP[string, int]()
+let face_values = MAP()
 
 face_values["2"] = 2
 face_values["3"] = 3
@@ -38,7 +38,7 @@ classify(hand: string) -> string is
             let faces = cards |> map(c => c.face) |> sort() |> collect_array()
             let suits = cards |> map(c => c.suit) |> collect_array()
 
-            let counts = MAP[int, int]()
+            let counts = MAP()
 
             for face in faces do
                 counts[face] = if counts.contains_key(face)

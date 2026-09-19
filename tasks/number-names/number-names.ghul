@@ -35,7 +35,7 @@ below_thousand(value: int) -> string =>
     fi
 
 groups(value: long) -> LIST[int] is
-    let parts = LIST[int]()
+    let parts = LIST()
     let rest mut = value
 
     while rest > 0L do

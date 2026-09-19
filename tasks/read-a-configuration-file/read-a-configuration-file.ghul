@@ -1,6 +1,6 @@
 use default
 
-let settings = MAP[string, string]()
+let settings = MAP()
 
 value(name: string) -> string =>
     if settings.contains_key(name) then settings[name] else "" fi

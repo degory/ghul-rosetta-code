@@ -3,9 +3,9 @@ use System.Random
 
 riffle_shuffle(deck: LIST[int], random: Random) -> LIST[int] is
     let half = deck.count / 2
-    let left = LIST[int](deck[0..half])
-    let right = LIST[int](deck[half..<0])
-    let merged = LIST[int]()
+    let left = LIST(deck[0..half])
+    let right = LIST(deck[half..<0])
+    let merged = LIST()
 
     while left.count > 0 /\ right.count > 0 do
         if random.next(0, left.count + right.count) < left.count then
@@ -24,13 +24,13 @@ riffle_shuffle(deck: LIST[int], random: Random) -> LIST[int] is
 si
 
 overhand_shuffle(deck: LIST[int], random: Random) -> LIST[int] is
-    let remaining = LIST[int](deck)
-    let stacked = LIST[int]()
+    let remaining = LIST(deck)
+    let stacked = LIST()
 
     while remaining.count > 0 do
         let wanted = random.next(1, cast(remaining.count / 5) + 2)
         let group = if wanted < remaining.count then wanted else remaining.count fi
-        let taken = LIST[int](remaining[0..group])
+        let taken = LIST(remaining[0..group])
 
         taken.add_range(stacked)
         stacked.clear()
@@ -43,7 +43,7 @@ overhand_shuffle(deck: LIST[int], random: Random) -> LIST[int] is
 si
 
 let random = Random(42)
-let deck = LIST[int]((0..10) |> collect_array())
+let deck = LIST((0..10) |> collect_array())
 
 let riffled = riffle_shuffle(deck, random)
 let overhanded = overhand_shuffle(riffled, random)

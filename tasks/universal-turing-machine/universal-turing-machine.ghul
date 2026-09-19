@@ -12,7 +12,7 @@ class MACHINE(
     table: MAP[string, Action]
 
     init(..) is
-        table = MAP[string, Action]()
+        table = MAP()
 
         for rule in rules do
             let parts = rule.split([' '])
@@ -31,7 +31,7 @@ class MACHINE(
 
     run(input: string, show: bool) is
         let start = if input.length == 0 then "{blank}" else input fi
-        let tape = LIST[char](start)
+        let tape = LIST(start)
         let head mut = 0
         let state mut = initial
         let steps mut = 0L

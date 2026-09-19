@@ -25,7 +25,7 @@ class GRID is
 
     init() is
         cells = repeat(' ', size * size) |> collect_list()
-        placed = LIST[Placed]()
+        placed = LIST()
     si
 
     empty: int => cells |> filter(c => c == ' ') |> count()

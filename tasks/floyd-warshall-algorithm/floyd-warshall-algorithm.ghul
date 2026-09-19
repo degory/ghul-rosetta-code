@@ -10,8 +10,8 @@ let edges = [
     (from = 4, to = 2, weight = -1)
 ]
 
-let dist = MAP[(int, int), int]()
-let next_hop = MAP[(int, int), int]()
+let dist = MAP()
+let next_hop = MAP()
 
 for i in 1::n do
     for j in 1::n do
@@ -40,7 +40,7 @@ for k in 1::n do
 od
 
 path(u: int, v: int) -> string is
-    let result = LIST[int]([u])
+    let result = LIST([u])
     let cur mut = u
 
     while cur != v do

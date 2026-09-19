@@ -124,7 +124,7 @@ si
 average(box: List[Weighted]) -> Colour is
     let n = box |> map(w => w.count) |> reduce(0, (a, b) => a + b)
 
-    weighted(axis: int) -> int =>
+    weighted(axis) =>
         (box |> map(w => channel(w.colour, axis) * w.count)
             |> reduce(0, (a, b) => a + b)) / n
 
@@ -166,7 +166,7 @@ let pixels =
         |> map(of)
         |> collect_list()
 
-let counts = MAP[Colour, int]()
+let counts = MAP()
 
 for c in pixels do
     counts[c] = if counts.contains_key(c) then counts[c] + 1 else 1 fi

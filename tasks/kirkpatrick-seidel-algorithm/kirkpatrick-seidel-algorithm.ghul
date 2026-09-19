@@ -29,7 +29,7 @@ bridge(points: List[P], a: double) -> (P, P) is
         return if p.x < q.x then (p, q) else (q, p) fi
     fi
 
-    let kept = LIST[P]()
+    let kept = LIST()
     let pairs = LIST[(P, P)]()
 
     for i in 0..points.count / 2 do
@@ -52,7 +52,7 @@ bridge(points: List[P], a: double) -> (P, P) is
     fi
 
     let k = median(pairs |> map(((p, q)) => slope(p, q)))
-    let height = (p: P) => p.y - k * p.x
+    let height = p => p.y - k * p.x
     let top = points |> map(height) |> reduce(height(points[0]), Math.max)
     let touching =
         points |> filter(p => height(p) >= top - 1.0e-12) |> collect_list()
@@ -128,7 +128,7 @@ turns_left(o: P, a: P, b: P) -> bool => (a - o) × (b - o) >= 0.0D
 
 monotone_chain(points: List[P]) -> List[P] is
     let sorted = points |> sort((a, b) => a.x <> b.x) |> collect_list()
-    let chain = LIST[P]()
+    let chain = LIST()
 
     for pass in [sorted, backwards(sorted)] do
         let start = chain.count

@@ -8,9 +8,9 @@ let margin = 5
 
 let random = System.Random(20260918)
 
-let visited = LIST[bool]()
-let right_open = LIST[bool]()
-let down_open = LIST[bool]()
+let visited = LIST()
+let right_open = LIST()
+let down_open = LIST()
 
 for _ in 0..columns * rows do
     visited.add(false)

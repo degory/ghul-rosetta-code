@@ -18,7 +18,7 @@ let table =
     "type 1  "
     "up 1"
 
-let commands = LIST[COMMAND]()
+let commands = LIST()
 
 for token in table.split([' '], StringSplitOptions.REMOVE_EMPTY_ENTRIES) do
     let minimum mut = 0

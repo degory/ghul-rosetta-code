@@ -21,7 +21,7 @@ let solved =
 
 apply(move: int, state: int[]) -> int[] is
     let face = faces[move / 3]
-    let turned = LIST[int](state)
+    let turned = LIST(state)
 
     for turn in 0::move % 3 do
         let before = turned.to_array()
@@ -59,7 +59,7 @@ inverse(move: int) -> int => move + 2 - 2 * (move % 3)
 slice(cubie: int) -> int => if cubie > 7 then 2 else cubie & 1 fi
 
 key(phase: int, state: int[]) -> string is
-    let values: List[int] =
+    let values =
         if phase == 1 then
             state[20..32]
         elif phase == 2 then
@@ -68,7 +68,7 @@ key(phase: int, state: int[]) -> string is
                     |> map(e => (state[e] / 8) << e)
                     |> reduce(0, (a, b) => a | b)
 
-            LIST[int]([edges | state[31]]) |> cat(state[32..40])
+            LIST([edges | state[31]]) |> cat(state[32..40])
                 |> collect_list()
         elif phase == 3 then
             let edges =
@@ -99,16 +99,16 @@ solve_phase(phase: int, start: int[]) -> List[int] is
     let start_key = key(phase, start)
     let goal_key = key(phase, solved)
 
-    let found = LIST[int]()
+    let found = LIST()
 
     if start_key =~ goal_key then
         return found
     fi
 
-    let queue = Collections.Queue[int[]]()
-    let direction = MAP[string, int]()
-    let last_move = MAP[string, int]()
-    let previous = MAP[string, string]()
+    let queue = Collections.Queue()
+    let direction = MAP()
+    let last_move = MAP()
+    let previous = MAP()
 
     queue.enqueue(start)
     queue.enqueue(solved)
@@ -171,7 +171,7 @@ solve_phase(phase: int, start: int[]) -> List[int] is
 si
 
 parse(cubies: string) -> int[] is
-    let state = LIST[int](solved)
+    let state = LIST(solved)
 
     for (i, cubie) in cubies.split([' ']) |> index() do
         let twisted mut = cubie

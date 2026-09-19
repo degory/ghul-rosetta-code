@@ -8,9 +8,9 @@ let margin = 5
 
 let random = System.Random(20260918)
 
-let visited = LIST[bool]()
-let right_open = LIST[bool]()
-let down_open = LIST[bool]()
+let visited = LIST()
+let right_open = LIST()
+let down_open = LIST()
 
 for _ in 0..columns * rows do
     visited.add(false)
@@ -118,8 +118,8 @@ neighbours(i: int) -> Pipe[int] =>
         |> filter(next => open(i, next))
 
 shortest_path(start: int, finish: int) -> List[int] is
-    let previous = MAP[int, int]()
-    let queue = Collections.Queue[int]()
+    let previous = MAP()
+    let queue = Collections.Queue()
 
     queue.enqueue(start)
     previous[start] = start
@@ -135,7 +135,7 @@ shortest_path(start: int, finish: int) -> List[int] is
         od
     od
 
-    let path = LIST[int]([finish])
+    let path = LIST([finish])
 
     while path[0] != start do
         path.insert(0, previous[path[0]])

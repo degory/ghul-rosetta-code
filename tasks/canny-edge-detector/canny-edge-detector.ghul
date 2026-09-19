@@ -116,7 +116,7 @@ canny(f: FIELD, low: double, high: double) -> FIELD is
 
     for y in 0..h do
         for x in 0..w do
-            let n = (dx: int, dy: int) => f.at(x + dx, y + dy)
+            let n = (dx, dy) => f.at(x + dx, y + dy)
 
             let gx =
                 n(1, -1) + 2.0D * n(1, 0) + n(1, 1) -

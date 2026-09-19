@@ -36,7 +36,7 @@ counters(move: Move) -> Move =>
     esac
 
 let random = Random(7)
-let counts = MAP[string, int]()
+let counts = MAP()
 
 counts["rock"] = 1
 counts["paper"] = 1
@@ -46,7 +46,7 @@ let computer_wins mut = 0
 let player_wins mut = 0
 let ties mut = 0
 
-let choose_computer_move = () -> Move is
+let choose_computer_move = () is
     let total = counts["rock"] + counts["paper"] + counts["scissors"]
     let target = random.next(0, total)
 

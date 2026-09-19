@@ -41,7 +41,7 @@ show(label: string, values: Pipe[bigint], count: int) is
     let rows = values |> take(count) |> chunk(10) |> collect()
 
     rows |> each(row =>
-        write_line(row |> map((v: bigint) => "{v,16}") |> join(" ")))
+        write_line(row |> map(v => "{v,16}") |> join(" ")))
 si
 
 show("first 30 Jacobsthal numbers", jacobsthal(), 30)

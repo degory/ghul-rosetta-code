@@ -7,13 +7,13 @@ let random = Random(17)
 
 use Cell = (row: int, column: int)
 
-let atoms = SET[Cell]()
+let atoms = SET()
 
 while atoms.count < 4 do
     atoms.add((row = random.next(size), column = random.next(size)))
 od
 
-let guesses = SET[Cell]()
+let guesses = SET()
 
 use Beam = (row: int, column: int, dr: int, dc: int)
 

@@ -80,7 +80,7 @@ mccormick(p: V2) -> double =>
     1.5D * p.x + 2.5D * p.y + 1.0D
 
 michalewicz(p: V2) -> double =>
-    let term = (x: double, i: double) =>
+    let term = (x, i) =>
         Math.sin(x) * Math.pow(Math.sin(i * x * x / Math.pi), 20.0D) in
     -(term(p.x, 1.0D) + term(p.y, 2.0D))
 
@@ -89,14 +89,14 @@ draw(problem: PROBLEM, found: (best: V2, particles: LIST[PARTICLE])) is
     let image = IMAGE(size, size)
     let span = problem.high - problem.low
 
-    let at = (column: int, row: int) =>
+    let at = (column, row) =>
         V2(
             problem.low.x +
                 span.x * (cast double(column) + 0.5D) / cast double(size),
             problem.high.y -
                 span.y * (cast double(row) + 0.5D) / cast double(size))
 
-    let values = LIST[double]()
+    let values = LIST()
 
     for row in 0..size do
         for column in 0..size do

@@ -38,7 +38,7 @@ for special in [
 od
 
 holes(c: char) -> LIST[int] =>
-    if c == ' ' then LIST[int]()
+    if c == ' ' then LIST()
     elif codes.contains_key(c) then codes[c]
     else throw System.ArgumentException("no card code for '{c}'")
     fi

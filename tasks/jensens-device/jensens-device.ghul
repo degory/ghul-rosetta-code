@@ -2,7 +2,7 @@ use IO.Std.write_line
 
 let i mut = 0
 
-let sum = (low: int, high: int, term: () -> double) -> double => (
+let sum = (low, high, term) => (
     let total mut = 0.0D
 
     i = low

@@ -16,7 +16,7 @@ patience_sort(values: List[int]) -> Pipe[int] is
         od
 
         if !placed then
-            let fresh = LIST[int]()
+            let fresh = LIST()
 
             fresh.add(value)
             piles.add(fresh)

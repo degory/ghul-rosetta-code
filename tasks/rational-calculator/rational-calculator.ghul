@@ -26,7 +26,7 @@ decimal(q: Q) -> string is
     let integer = bigint.abs(q.top) / q.bottom
     let sign = if q.top.sign < 0 then "-" else "" fi
     let digits = System.Text.StringBuilder()
-    let seen = MAP[bigint, int]()
+    let seen = MAP()
     let remainder mut = bigint.abs(q.top) % q.bottom
 
     while !remainder.is_zero /\ !seen.contains_key(remainder) do
@@ -195,7 +195,7 @@ class CALCULATOR(line: string, previous: Q?) is
     si
 si
 
-let previous: Q? mut = null
+let previous mut = null
 
 while let line = read_line() do
     write_line("> {line}")

@@ -49,8 +49,8 @@ steps_from(square: Square) -> Pipe[Square] is
     od
 si
 
-let cheapest = LIST[int]()
-let reached_from = LIST[int]()
+let cheapest = LIST()
+let reached_from = LIST()
 
 for _ in 0..size * size do
     cheapest.add(1_000_000)

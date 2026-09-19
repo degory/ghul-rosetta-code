@@ -28,7 +28,7 @@ class DECK is
     _cards: LIST[CARD] field
 
     init() is
-        _cards = LIST[CARD]()
+        _cards = LIST()
 
         for suit in [Suit.HEARTS, Suit.DIAMONDS, Suit.CLUBS, Suit.SPADES] do
             for pip in 0..13 do
@@ -52,7 +52,7 @@ class DECK is
     si
 
     deal(n: int) -> LIST[CARD] is
-        let dealt = LIST[CARD](_cards[0..n])
+        let dealt = LIST(_cards[0..n])
 
         _cards.remove_range(0, n)
 

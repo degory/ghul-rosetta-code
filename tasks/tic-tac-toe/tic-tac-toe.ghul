@@ -71,7 +71,7 @@ show(board: List[char]) is
     od
 si
 
-let board = LIST[char]((0..9) |> map(_ => ' '))
+let board = LIST((0..9) |> map(_ => ' '))
 let player mut = 'X'
 
 show(board)

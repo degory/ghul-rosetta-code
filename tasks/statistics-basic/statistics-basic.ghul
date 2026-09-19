@@ -39,7 +39,7 @@ samples() -> Pipe[double] is
 si
 
 let sizes = [100, 1000, 10000, 100000, 1000000]
-let tallies = LIST[TALLY]()
+let tallies = LIST()
 
 write_line("      size       mean     stddev")
 

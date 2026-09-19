@@ -78,7 +78,7 @@ whole(p0: Point, p1: Point, p2: Point) -> Curve => (p0, p1, p2, 0.0D, 1.0D)
 let first = whole(pt(-1.0D, 0.0D), pt(0.0D, 10.0D), pt(1.0D, 0.0D))
 let second = whole(pt(2.0D, 1.0D), pt(-8.0D, 2.0D), pt(2.0D, 3.0D))
 
-let hits = LIST[Hit]()
+let hits = LIST()
 
 intersect(first, second, hits)
 

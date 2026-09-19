@@ -26,7 +26,7 @@ insert(tree: Tree, value: int) -> Tree =>
     fi
 
 build_tree(list: LinkedList) -> Tree is
-    let tree: Tree mut = Tree.LEAF
+    let tree mut = Tree.LEAF
     let cursor mut = list
 
     while let (value, next): LinkedList.NODE = cursor do

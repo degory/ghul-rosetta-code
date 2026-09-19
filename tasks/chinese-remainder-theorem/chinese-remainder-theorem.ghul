@@ -50,5 +50,5 @@ demo(ns: LIST[long], as: LIST[long]) is
     fi
 si
 
-demo(LIST[long]([3L, 5L, 7L]), LIST[long]([2L, 3L, 2L]))
-demo(LIST[long]([10L, 4L, 12L]), LIST[long]([2L, 2L, 2L]))
+demo(LIST([3L, 5L, 7L]), LIST([2L, 3L, 2L]))
+demo(LIST([10L, 4L, 12L]), LIST([2L, 2L, 2L]))

@@ -24,7 +24,7 @@ let strategies: Player[] = [
 ]
 
 play(first: Player, second: Player, show: bool) -> int is
-    let scores = LIST[int]([0, 0])
+    let scores = LIST([0, 0])
     let players = [first, second]
     let current mut = 0
 

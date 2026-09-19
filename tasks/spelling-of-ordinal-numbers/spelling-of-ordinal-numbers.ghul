@@ -34,7 +34,7 @@ under_thousand(value: int) -> string =>
 cardinal(value: long) -> string is
     if value == 0L then return "zero" fi
 
-    let groups = LIST[string]()
+    let groups = LIST()
     let remaining mut = value
     let scale mut = 0
 

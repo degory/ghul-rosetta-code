@@ -5,7 +5,7 @@ use System.Numerics.BitOperations
 use Armies = (black: ulong, white: ulong)
 
 attack_masks(n: int) -> ulong[] is
-    let masks = LIST[ulong]()
+    let masks = LIST()
 
     for cell in 0..n * n do
         let row = cell / n

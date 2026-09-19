@@ -31,7 +31,7 @@ wait(s: State) -> State? =>
     fi
 
 moves(s: State) -> List[(command: string, next: State)] is
-    let result = LIST[(command: string, next: State)]()
+    let result = LIST()
 
     if let after = wait(s) then
         result.add((command = "wait", next = after))
@@ -45,10 +45,10 @@ moves(s: State) -> List[(command: string, next: State)] is
 si
 
 plan(start: State) -> List[string]? is
-    let seen = SET[State]()
-    let queue = Collections.Queue[(state: State, path: List[string])]()
+    let seen = SET()
+    let queue = Collections.Queue()
 
-    queue.enqueue((state = start, path = LIST[string]()))
+    queue.enqueue((state = start, path = LIST()))
     seen.add(start)
 
     while queue.count > 0 do
@@ -80,7 +80,7 @@ write_line("measure exactly {target} minutes with 4 and 7 minute glasses")
 write_line("say flip 4, flip 7, flip both, wait, done, hint or quit")
 write_line("the clock starts now, with both glasses run out")
 
-let state: State mut = (small = 0, large = 0, time = 0)
+let state mut = (small = 0, large = 0, time = 0)
 
 do
     write_line()

@@ -53,11 +53,11 @@ solve(numbers: List[Found], target: int, best: Found) -> Found is
             let (a, b) = (numbers[i].value, numbers[j].value)
 
             for (value, step) in combinations(a, b) do
-                let steps = LIST[string](numbers[i].steps)
+                let steps = LIST(numbers[i].steps)
                 steps.add_range(numbers[j].steps)
                 steps.add(step)
 
-                let next = LIST[Found](rest)
+                let next = LIST(rest)
                 next.add((value = value, steps = steps))
 
                 closest = solve(next, target, closest)
@@ -77,10 +77,10 @@ play(numbers: int[], target: int) is
 
     let start =
         numbers
-            |> map(n => (value = n, steps = LIST[string]()))
+            |> map(n => (value = n, steps = LIST()))
             |> collect_list()
 
-    let nothing = (value = 0, steps = LIST[string]())
+    let nothing = (value = 0, steps = LIST())
     let result = solve(start, target, nothing)
 
     for step in result.steps do
@@ -97,11 +97,11 @@ si
 play([3, 6, 25, 50, 75, 100], 952)
 
 let random = Random(1)
-let pool = LIST[int]([
+let pool = LIST([
     1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10,
     25, 50, 75, 100
 ])
-let chosen = LIST[int]()
+let chosen = LIST()
 
 for _ in 0..6 do
     let at = random.next(pool.count)

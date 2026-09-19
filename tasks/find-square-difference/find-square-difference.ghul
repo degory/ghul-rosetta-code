@@ -1,6 +1,6 @@
 use IO.Std.write_line
 
-let found: int? =
+let found =
     for n in 1::100000 do
         if n * n - (n - 1) * (n - 1) > 1000 then break n fi
     od

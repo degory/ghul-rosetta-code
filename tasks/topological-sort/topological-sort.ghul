@@ -29,7 +29,7 @@ si
 compile_order(graph: MAP[string, SET[string]])
     -> (ordered: List[string], blocked: List[string])
 is
-    let pending = MAP[string, SET[string]]()
+    let pending = MAP()
 
     for name in graph.keys do
         pending[name] = SET(graph[name])

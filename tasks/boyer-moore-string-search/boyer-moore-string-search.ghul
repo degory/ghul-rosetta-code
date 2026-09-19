@@ -3,13 +3,13 @@ use default
 search(text: string, pattern: string) -> LIST[int] is
     let m = pattern.length
     let n = text.length
-    let hits = LIST[int]()
+    let hits = LIST()
 
     if m == 0 \/ m > n then
         return hits
     fi
 
-    let last_occurrence = MAP[char, int]()
+    let last_occurrence = MAP()
 
     for i in 0..m do
         last_occurrence[pattern[i]] = i

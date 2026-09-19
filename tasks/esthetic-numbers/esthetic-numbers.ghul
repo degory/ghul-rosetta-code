@@ -17,7 +17,7 @@ render(value: long, base: int) -> string is
 si
 
 esthetic(base: int) -> Pipe[long] is
-    let pending = Queue[(value: long, last: int)]()
+    let pending = Queue()
 
     for digit in 1..base do
         pending.enqueue((cast long(digit), digit))

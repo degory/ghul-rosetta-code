@@ -9,17 +9,17 @@ run(lines: List[string]) is
         (0..lines.count)
             |> find(y => lines[y].index_of('$') >= 0)
 
-    let ip: Point mut =
+    let ip mut =
         if let y = at_start then (x = lines[y].index_of('$'), y = y)
         else (x = 0, y = 0)
         fi
 
-    let heading: Point mut = (x = 1, y = 0)
-    let memory = MAP[int, int]()
+    let heading mut = (x = 1, y = 0)
+    let memory = MAP()
     let cell mut = 0
-    let calls = STACK[(at: Point, heading: Point)]()
+    let calls = STACK()
 
-    get() -> int => if memory.contains_key(cell) then memory[cell] else 0 fi
+    get() => if memory.contains_key(cell) then memory[cell] else 0 fi
 
     step() is
         ip = (x = ip.x + heading.x, y = ip.y + heading.y)

@@ -24,7 +24,7 @@ let ball_size = 4.0D
 let random = System.Random(12)
 
 let bins = repeat(0, rows + 1) |> collect_list()
-let falling = LIST[BALL]()
+let falling = LIST()
 
 x_of(row: int, slot: int) -> double =>
     let offset = cast double(slot) - cast double(row) / 2.0D in

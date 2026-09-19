@@ -43,7 +43,7 @@ expand(source: string) -> string is
         cursor = 1
     fi
 
-    let mantissa = LIST[char]()
+    let mantissa = LIST()
     let scale mut = 0
     let fractional mut = false
 

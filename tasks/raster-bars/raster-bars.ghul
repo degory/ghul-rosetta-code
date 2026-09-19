@@ -10,7 +10,7 @@ let height = 180
 let frames = 60
 let thickness = 24
 
-let bars: (colour: Colour, phase: double)[] = [
+let bars = [
     (colour = (red = 1.0D, green = 0.25D, blue = 0.2D), phase = 0.0D),
     (colour = (red = 1.0D, green = 0.8D, blue = 0.2D), phase = 0.35D),
     (colour = (red = 0.3D, green = 1.0D, blue = 0.35D), phase = 0.7D),

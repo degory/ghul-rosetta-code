@@ -77,7 +77,7 @@ is
 si
 
 runs(with_multiplicity: bool, size: int) -> Pipe[int] is
-    let recent = LIST[int]()
+    let recent = LIST()
 
     for entry in prime_divisor_sums(with_multiplicity) do
         recent.add(entry.sum)

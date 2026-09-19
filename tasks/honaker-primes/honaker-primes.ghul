@@ -1,7 +1,7 @@
 use default
 
 primes() -> Pipe[int] is
-    let found = LIST[int]()
+    let found = LIST()
     let candidate mut = 1
 
     do

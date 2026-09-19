@@ -4,7 +4,7 @@ let dots = ["    ", " o  ", " oo ", "ooo ", "oooo"]
 let bar = "===="
 
 vigesimal(n: int) -> List[int] is
-    let digits = LIST[int]()
+    let digits = LIST()
     let rest mut = n
 
     do

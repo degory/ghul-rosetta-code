@@ -5,14 +5,14 @@ use SUMS = (answer: int, accumulator: int)
 
 divide(dividend: int, divisor: int) -> (answer: int, remainder: int) is
     let table = stream((power_of_2 = 1, doubling = divisor),
-            (row: ROW) => row ||
+            row => row ||
                 (power_of_2 = row.power_of_2 * 2,
                  doubling = row.doubling * 2))
         |> take_while(row => row.doubling <= dividend)
 
     let sums = table
         |> reverse()
-        |> reduce((answer = 0, accumulator = 0), (sums: SUMS, row: ROW) =>
+        |> reduce((answer = 0, accumulator = 0), (sums, row) =>
             if sums.accumulator + row.doubling <= dividend then
                 (answer = sums.answer + row.power_of_2,
                  accumulator = sums.accumulator + row.doubling)

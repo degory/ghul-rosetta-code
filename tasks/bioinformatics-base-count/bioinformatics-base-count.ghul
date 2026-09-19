@@ -14,7 +14,7 @@ let sequence =
 
 let width = 50
 
-let counts = MAP[char, int]()
+let counts = MAP()
 
 for base in "ACGT" do
     counts[base] = 0

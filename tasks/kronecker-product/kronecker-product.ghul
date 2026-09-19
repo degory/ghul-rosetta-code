@@ -18,12 +18,12 @@ pad(text: string, width: int) -> string =>
 
 show(matrix: int[][]) is
     let width = matrix
-        |> flat_map((row: int[]) => row |> map(value => "{value}".length))
+        |> flat_map(row => row |> map(value => "{value}".length))
         |> reduce(1, (widest, length) =>
             if length > widest then length else widest fi)
 
     matrix
-        |> each((row: int[]) => write_line(row
+        |> each(row => write_line(row
             |> map(value => pad("{value}", width))
             |> join(" ")))
 si

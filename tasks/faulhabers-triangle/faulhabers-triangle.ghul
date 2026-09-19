@@ -38,7 +38,7 @@ binomial(upper: int, lower: int) -> bigint =>
             running * bigint(upper - lower + step) / bigint(step))
 
 bernoullis(count: int) -> List[RATIONAL] is
-    let values = LIST[RATIONAL]()
+    let values = LIST()
 
     for index in 0::count do
         if index == 0 then

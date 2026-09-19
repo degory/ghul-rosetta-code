@@ -1,7 +1,7 @@
 use default
 use System.Text.RegularExpressions.Regex
 
-let swaps = MAP[string, string](
+let swaps = MAP(
     [
         ("she", "he"), ("he", "she"),
         ("her", "him"), ("him", "her"),

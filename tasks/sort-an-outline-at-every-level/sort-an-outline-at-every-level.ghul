@@ -13,14 +13,14 @@ indent_of(line: string) -> string =>
         |> join("")
 
 build(lines: List[string], unit: int) -> NODE is
-    let root = NODE("", LIST[NODE]())
-    let ancestors = LIST[NODE]()
+    let root = NODE("", LIST())
+    let ancestors = LIST()
 
     ancestors.add(root)
 
     for line in lines do
         let level = indent_of(line).length / unit + 1
-        let node = NODE(line.trim(), LIST[NODE]())
+        let node = NODE(line.trim(), LIST())
 
         while ancestors.count > level do
             ancestors.remove_at(ancestors.count - 1)

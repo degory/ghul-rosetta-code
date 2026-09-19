@@ -20,8 +20,8 @@ class GRAMMAR is
     order: LIST[string]
 
     init() is
-        rules = MAP[string, Rule]()
-        order = LIST[string]()
+        rules = MAP()
+        order = LIST()
     si
 si
 
@@ -111,7 +111,7 @@ class READER(source: string) is
     si
 
     term() -> Rule is
-        let parts = LIST[Rule]()
+        let parts = LIST()
 
         while let part = factor() do
             parts.add(part)
@@ -209,7 +209,7 @@ class MATCHER(grammar: GRAMMAR, text: string) is
     si
 
     ends(rule: Rule, at: int) -> LIST[int] is
-        let result = LIST[int]()
+        let result = LIST()
 
         case rule
         when (literal): Rule.TERMINAL then
@@ -225,7 +225,7 @@ class MATCHER(grammar: GRAMMAR, text: string) is
             let reached mut = LIST([at])
 
             for part in parts do
-                let next = LIST[int]()
+                let next = LIST()
 
                 for position in reached do
                     for end in ends(part, position) do

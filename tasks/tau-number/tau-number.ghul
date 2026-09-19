@@ -27,4 +27,4 @@ let first_hundred = stream(1, n => n || n + 1)
     |> collect()
 
 first_hundred |> chunk(10)
-    |> each(row => write_line(row |> map((n: int) => "{n,6}") |> join("")))
+    |> each(row => write_line(row |> map(n => "{n,6}") |> join("")))

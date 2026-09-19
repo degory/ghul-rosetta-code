@@ -6,9 +6,9 @@ let width = 79
 let height = 22
 let random = Random(9)
 
-let grid = LIST[int]((0..width * height) |> map(_ => random.next(1, 10)))
+let grid = LIST((0..width * height) |> map(_ => random.next(1, 10)))
 
-let directions = MAP[char, (dx: int, dy: int)]()
+let directions = MAP()
 directions['q'] = (-1, -1)
 directions['w'] = (0, -1)
 directions['e'] = (1, -1)

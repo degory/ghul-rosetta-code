@@ -20,7 +20,7 @@ ask(a: string, b: string) -> int is
 si
 
 order(items: List[string]) -> List[string] is
-    let sorted = LIST[string]()
+    let sorted = LIST()
 
     for item in items do
         let low mut = 0

@@ -73,7 +73,7 @@ let cipher =
 
 let letters = cipher |> filter(c => char.is_letter(c)) |> join("")
 
-let average_coincidence = (length: int) =>
+let average_coincidence = length =>
     sum((0..length)
         |> map(i => coincidence(column(letters, length, i)))) /
     cast double(length)

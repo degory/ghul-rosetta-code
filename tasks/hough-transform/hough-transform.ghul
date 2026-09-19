@@ -50,7 +50,7 @@ od
 let most = votes |> reduce(0, int.max)
 
 let peaks = LIST[(theta: int, rho: int, votes: int)]()
-let remaining = LIST[int](votes)
+let remaining = LIST(votes)
 
 for _ in 0..5 do
     let best =

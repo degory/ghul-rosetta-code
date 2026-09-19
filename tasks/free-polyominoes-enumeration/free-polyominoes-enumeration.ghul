@@ -33,7 +33,7 @@ key(shape: Shape) -> string =>
     shape |> map(c => "{c.row},{c.column}") |> join(" ")
 
 canonical(shape: Shape) -> Shape is
-    let forms = LIST[Shape]()
+    let forms = LIST()
     let current mut = shape
 
     for _ in 0..4 do
@@ -47,7 +47,7 @@ canonical(shape: Shape) -> Shape is
 si
 
 grow(shapes: List[Shape]) -> List[Shape] is
-    let seen = MAP[string, Shape]()
+    let seen = MAP()
 
     for shape in shapes do
         for cell in shape do

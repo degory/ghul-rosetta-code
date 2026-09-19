@@ -7,10 +7,10 @@ spiral(size: int) -> LIST[LIST[int]] is
     let grid = LIST()
 
     for _ in 0..size do
-        grid.add(LIST((0..size) |> map((column: int) => -1)))
+        grid.add(LIST((0..size) |> map(column => -1)))
     od
 
-    let free = (row: int, column: int) -> bool =>
+    let free = (row, column) =>
         row >= 0 /\ row < size /\ column >= 0 /\ column < size /\
             grid[row][column] < 0
 
@@ -38,4 +38,4 @@ si
 
 spiral(5)
     |> each(row =>
-        write_line(row |> map((n: int) => "{n,3}") |> join("")))
+        write_line(row |> map(n => "{n,3}") |> join("")))

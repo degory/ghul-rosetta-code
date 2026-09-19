@@ -17,7 +17,7 @@ extend(prefix: LIST[int], size: int) -> Pipe[List[int]] is
     fi
 si
 
-derangements(size: int) -> Pipe[List[int]] => extend(LIST[int](), size)
+derangements(size: int) -> Pipe[List[int]] => extend(LIST(), size)
 
 subfactorials() -> Pipe[bigint] is
     let previous mut = 1n
