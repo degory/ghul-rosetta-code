@@ -8,7 +8,7 @@ class SANDPILE is
 
     init(size: int) is
         self.size = size
-        _cells = (0..size * size) |> map(_ => 0) |> collect_list()
+        _cells = repeat(0, size * size) |> collect_list()
     si
 
     at(x: int, y: int) -> int => _cells[y * size + x]

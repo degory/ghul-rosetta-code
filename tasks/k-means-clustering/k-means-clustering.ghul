@@ -117,7 +117,7 @@ while !settled do
     centres = recentred()
 od
 
-let sizes = (0..clusters) |> map(_ => 0) |> collect_list()
+let sizes = repeat(0, clusters) |> collect_list()
 
 for which in membership do
     sizes[which] = sizes[which] + 1

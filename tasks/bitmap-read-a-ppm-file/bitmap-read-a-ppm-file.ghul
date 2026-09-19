@@ -12,7 +12,7 @@ class BITMAP is
         self.width = width
         self.height = height
 
-        bytes = (0..width * height * 3) |> map(_ => 0ub) |> collect_list()
+        bytes = repeat(0ub, width * height * 3) |> collect_list()
     si
 
     set_pixel(x: int, y: int, colour: COLOUR) is

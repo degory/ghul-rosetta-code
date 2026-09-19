@@ -9,7 +9,7 @@ let directions = "wasd"
 
 let random = System.Random(20260908)
 
-let board = (0..squares) |> map(_ => 0) |> collect_list()
+let board = repeat(0, squares) |> collect_list()
 
 // The board indices of each row or column, ordered along the
 // direction of travel, so one collapse serves all four moves.
