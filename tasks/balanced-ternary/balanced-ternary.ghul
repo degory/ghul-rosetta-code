@@ -1,5 +1,4 @@
 use default
-use System.Text.StringBuilder
 
 struct BT is
     digits: string
@@ -53,13 +52,7 @@ value(a: BT) -> bigint is
 si
 
 -(a: BT) -> BT is
-    let flipped = StringBuilder()
-
-    for c in a.digits do
-        flipped.append(digit_char(-digit_value(c)))
-    od
-
-    BT(flipped.to_string())
+    BT(a.digits |> map(c => digit_char(-digit_value(c))) |> join(""))
 si
 
 +(a: BT, b: BT) -> BT is
@@ -100,11 +93,7 @@ si
 -(a: BT, b: BT) -> BT => a + -b
 
 <<(a: BT, places: int) -> BT is
-    let zeroes = StringBuilder()
-
-    for _ in 1::places do
-        zeroes.append('0')
-    od
+    let zeroes = repeat('0', places) |> join("")
 
     BT("{a.digits}{zeroes}")
 si
