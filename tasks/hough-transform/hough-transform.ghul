@@ -54,7 +54,7 @@ let remaining = LIST(votes)
 
 for _ in 0..5 do
     let best =
-        (0..remaining.count) |> reduce(0, (b, i) =>
+        0..remaining.count |> reduce(0, (b, i) =>
             if remaining[i] > remaining[b] then i else b fi)
 
     let r = best / angles, t = best % angles

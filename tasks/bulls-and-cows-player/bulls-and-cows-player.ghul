@@ -4,9 +4,9 @@ use IO.Std.read_line
 use Score = (bulls: int, cows: int)
 
 score(guess: string, secret: string) -> Score =>
-    let bulls = (0..4) |> filter(i => guess[i] == secret[i]) |> count() in
+    let bulls = 0..4 |> filter(i => guess[i] == secret[i]) |> count() in
     let shared =
-        (0..4) |> filter(i => secret.index_of(guess[i]) >= 0) |> count() in
+        0..4 |> filter(i => secret.index_of(guess[i]) >= 0) |> count() in
     (bulls = bulls, cows = shared - bulls)
 
 let candidates mut =
@@ -14,7 +14,7 @@ let candidates mut =
         |> map(n => "{n}")
         |> filter(s =>
             s.index_of('0') < 0 /\
-            (0..4) |> all(i => s.last_index_of(s[i]) == i))
+            0..4 |> all(i => s.last_index_of(s[i]) == i))
         |> collect_list()
 
 let random = System.Random(4)

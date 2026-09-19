@@ -25,7 +25,7 @@ show(cells: List[bool]) -> string =>
 
 let width = 31
 
-let single_cell = (0..width) |> map(at => at == width / 2) |> collect()
+let single_cell = 0..width |> map(at => at == width / 2) |> collect()
 
 for rule in [90, 30, 110] do
     write_line("rule {rule}")

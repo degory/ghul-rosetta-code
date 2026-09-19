@@ -41,7 +41,7 @@ write_line("go ahead, right, back or left; exit at the entrance, or quit")
 
 do
     let paths =
-        (0..4) |> filter(t => passage(x, y, toward(t))) |> collect_list()
+        0..4 |> filter(t => passage(x, y, toward(t))) |> collect_list()
 
     write_line()
 
@@ -70,7 +70,7 @@ do
         fi
 
         write_line("this is not the entrance")
-    elif let turn = (0..4) |> find(t => turns[t] =~ command) then
+    elif let turn = 0..4 |> find(t => turns[t] =~ command) then
         let d = toward(turn)
 
         if passage(x, y, d) then
@@ -116,7 +116,7 @@ cell(column: int, row: int) -> string =>
     else "  "
     fi
 
-for row in (0::high_y - low_y) |> map(i => high_y - i) do
+for row in 0::high_y - low_y |> map(i => high_y - i) do
     let cells =
         (low_x::high_x)
             |> map(column =>

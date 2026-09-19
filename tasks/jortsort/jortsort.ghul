@@ -5,7 +5,7 @@ jort_sort[T: Ghul.Comparable[T]](values: T[]) -> bool is
 
     sorted.sort()
 
-    (0..values.count) |> all(index => sorted[index] =~ values[index])
+    0..values.count |> all(index => sorted[index] =~ values[index])
 si
 
 report[T: Ghul.Comparable[T]](values: T[]) is

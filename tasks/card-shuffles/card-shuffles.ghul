@@ -43,7 +43,7 @@ overhand_shuffle(deck: LIST[int], random: Random) -> LIST[int] is
 si
 
 let random = Random(42)
-let deck = LIST((0..10) |> collect_array())
+let deck = LIST(0..10 |> collect_array())
 
 let riffled = riffle_shuffle(deck, random)
 let overhanded = overhand_shuffle(riffled, random)

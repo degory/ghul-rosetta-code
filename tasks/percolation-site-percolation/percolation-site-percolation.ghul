@@ -46,7 +46,7 @@ class GRID is
             fi
         od
 
-        return (0..size) |> any(column => is_reached(column, size - 1))
+        return 0..size |> any(column => is_reached(column, size - 1))
     si
 si
 
@@ -56,14 +56,14 @@ let shown mut = null
 
 for step in 0::10 do
     let p = cast double(step) / 10.0D
-    let grids = (0..trials) |> map(_ => GRID(p)) |> collect_list()
+    let grids = 0..trials |> map(_ => GRID(p)) |> collect_list()
     let through = grids |> filter(g => g.percolates()) |> count()
 
     write_line("{p:F1}    {cast double(through) / cast double(trials):F3}")
 
     if step == 6 then
         shown = grids |> find(g =>
-            (0..size) |> any(column => g.is_reached(column, size - 1)))
+            0..size |> any(column => g.is_reached(column, size - 1)))
     fi
 od
 

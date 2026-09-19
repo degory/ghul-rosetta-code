@@ -42,8 +42,8 @@ ffr(n: int) -> int =>
 ffs(n: int) -> int =>
     s_sequence() |> skip(n - 1) |> first_or_throw()
 
-write_line("first ten of R: {(1::10) |> map(ffr) |> join(", ")}")
-write_line("first ten of S: {(1::10) |> map(ffs) |> join(", ")}")
+write_line("first ten of R: {1::10 |> map(ffr) |> join(", ")}")
+write_line("first ten of S: {1::10 |> map(ffs) |> join(", ")}")
 
 let covered = r_sequence()
     |> take(40)

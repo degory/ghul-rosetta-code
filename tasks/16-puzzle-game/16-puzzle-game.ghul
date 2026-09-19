@@ -1,7 +1,7 @@
 use default
 
 let size = 4
-let board = (1::16) |> collect_list()
+let board = 1::16 |> collect_list()
 
 show() is
     for row in 0..size do
@@ -36,8 +36,8 @@ apply(command: string) -> bool is
         return false
     fi
 
-    let row = (0..size) |> map(c => n * size + c) |> collect_list()
-    let column = (0..size) |> map(r => r * size + n) |> collect_list()
+    let row = 0..size |> map(c => n * size + c) |> collect_list()
+    let column = 0..size |> map(r => r * size + n) |> collect_list()
 
     case char.to_upper(command[0])
     when 'R' then rotate(row, true)

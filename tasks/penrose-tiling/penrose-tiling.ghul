@@ -46,7 +46,7 @@ spoke(index: int) -> Half =>
          Half.THIN(middle, first, second)
      fi)
 
-let tiles mut = (0..10) |> map(spoke) |> collect_list()
+let tiles mut = 0..10 |> map(spoke) |> collect_list()
 
 for _ in 0..6 do
     tiles = tiles |> flat_map(split) |> collect_list()

@@ -16,7 +16,7 @@ box(heading: double) -> int =>
     cast(heading / 11.25D + 0.5D) % 32
 
 let headings =
-    (0::32) |> map(index => (
+    0::32 |> map(index => (
         let base = cast(index) * 11.25D
 
         case index % 3

@@ -1,7 +1,7 @@
 use default
 
 let table = (0..256)
-    |> map(n => (0..8) |> reduce(cast uint(n), (c, _) =>
+    |> map(n => 0..8 |> reduce(cast uint(n), (c, _) =>
         if (c & 1u) != 0u then 0xEDB88320u ^ (c >> 1) else c >> 1 fi))
     |> collect_list()
 

@@ -4,7 +4,7 @@ let limit = 1_030_000_000
 let words = limit / 64 + 1
 let generated = LIST[ulong](words + 1)
 
-(0::words) |> each(_ => generated.add(0ul))
+0::words |> each(_ => generated.add(0ul))
 
 mark(value: int) is
     let word = value >> 6
@@ -36,7 +36,7 @@ for value in 1::limit do
 od
 
 self_numbers() -> Pipe[int] =>
-    (1::limit) |> filter(value => !is_generated(value))
+    1::limit |> filter(value => !is_generated(value))
 
 write_line("the first 50 self numbers:")
 

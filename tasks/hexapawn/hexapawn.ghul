@@ -179,7 +179,7 @@ write_line("the computer now trains against random play:")
 
 for round in 1::5 do
     let wins =
-        (0..20) |> filter(_ => game(trainer, false) == 'B') |> count()
+        0..20 |> filter(_ => game(trainer, false) == 'B') |> count()
 
     write_line(
         "  games {round * 20 - 19} to {round * 20}: "

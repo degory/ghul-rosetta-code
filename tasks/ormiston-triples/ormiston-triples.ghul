@@ -21,7 +21,7 @@ base_primes(bound: int) -> LIST[int] is
         factor = factor + 1
     od
 
-    (2::bound) |> filter(value => !composite[value]) |> collect_list()
+    2::bound |> filter(value => !composite[value]) |> collect_list()
 si
 
 primes_below(bound: int) -> Pipe[int] is

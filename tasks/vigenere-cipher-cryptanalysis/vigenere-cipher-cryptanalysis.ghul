@@ -42,7 +42,7 @@ chi_squared(text: string) -> double =>
             difference * difference / expected)))
 
 best_shift(text: string) -> int =>
-    (0..26) |> reduce(0, (best, by) =>
+    0..26 |> reduce(0, (best, by) =>
         if chi_squared(shift(text, by)) < chi_squared(shift(text, best))
         then by else best fi)
 
@@ -79,7 +79,7 @@ let average_coincidence = length =>
     cast double(length)
 
 let length =
-    (1::20) |> find(length => average_coincidence(length) > 0.06) ?? 1
+    1::20 |> find(length => average_coincidence(length) > 0.06) ?? 1
 
 let key =
     (0..length)

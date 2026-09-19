@@ -1,5 +1,5 @@
 use default
 
-let squares = (0..10) |> map(i => () => i * i) |> collect_list()
+let squares = 0..10 |> map(i => () => i * i) |> collect_list()
 
 write_line("{squares[3]()}")

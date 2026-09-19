@@ -106,7 +106,7 @@ si
 show(start: int) is
     let chain = home_prime_chain(cast(start)) |> collect_list()
     let steps = chain.count - 1
-    let stages = (0..steps) |> map(index => "HP{chain[index]}({steps - index})") |> collect_list()
+    let stages = 0..steps |> map(index => "HP{chain[index]}({steps - index})") |> collect_list()
 
     if steps == 0 then
         stages.add("HP{chain[0]}")

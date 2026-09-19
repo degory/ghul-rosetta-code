@@ -10,11 +10,11 @@ let words = SET(dictionary)
 
 one_apart(a: string, b: string) -> bool =>
     if a.length == b.length then
-        (0..a.length) |> filter(i => a[i] != b[i]) |> count() == 1
+        0..a.length |> filter(i => a[i] != b[i]) |> count() == 1
     elif a.length == b.length + 1 then
-        (0..a.length) |> any(i => a.remove(i, 1) =~ b)
+        0..a.length |> any(i => a.remove(i, 1) =~ b)
     elif b.length == a.length + 1 then
-        (0..b.length) |> any(i => b.remove(i, 1) =~ a)
+        0..b.length |> any(i => b.remove(i, 1) =~ a)
     else
         false
     fi

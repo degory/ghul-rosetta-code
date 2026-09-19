@@ -1,10 +1,10 @@
 use default
 
 **(base: int, exponent: int) -> int =>
-    (1::exponent) |> reduce(1, (result, _) => result * base)
+    1::exponent |> reduce(1, (result, _) => result * base)
 
 **(base: double, exponent: int) -> double =>
-    (1::exponent) |> reduce(1.0, (result, _) => result * base)
+    1::exponent |> reduce(1.0, (result, _) => result * base)
 
 power(base: int, exponent: int) -> int => base ** exponent
 power(base: double, exponent: int) -> double => base ** exponent

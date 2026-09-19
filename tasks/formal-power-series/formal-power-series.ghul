@@ -74,7 +74,7 @@ class SERIES(term: (int) -> RATIONAL) is
         SERIES(n => if n == 0 then whole(0) else at(n - 1) / whole(n) fi)
 
     show(name: string, count: int) is
-        let terms = (0..count) |> map(n => at(n).to_string()) |> join(", ")
+        let terms = 0..count |> map(n => at(n).to_string()) |> join(", ")
 
         write_line("{name}: {terms}")
     si

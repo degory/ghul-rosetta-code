@@ -24,10 +24,10 @@ fft(x: List[Complex]) -> List[Complex] is
     let odd = fft(every_other(x, 1))
 
     let turned =
-        (0..n / 2) |> map(k => twiddle(k, n) * odd[k]) |> collect_list()
+        0..n / 2 |> map(k => twiddle(k, n) * odd[k]) |> collect_list()
 
-    (0..n / 2) |> map(k => even[k] + turned[k])
-        |> cat((0..n / 2) |> map(k => even[k] - turned[k]))
+    0..n / 2 |> map(k => even[k] + turned[k])
+        |> cat(0..n / 2 |> map(k => even[k] - turned[k]))
         |> collect_list()
 si
 

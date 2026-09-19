@@ -46,7 +46,7 @@ render(poly: List[double]) -> string is
 
     let parts = LIST()
 
-    for power in (0::top) |> reverse() do
+    for power in 0::top |> reverse() do
         let size = Math.abs(poly[power])
 
         if poly[power] != 0.0D then

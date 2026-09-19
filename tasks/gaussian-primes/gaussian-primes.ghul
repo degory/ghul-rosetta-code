@@ -52,7 +52,7 @@ write_line(
     "plot, radius 50 (rows run from imaginary part +50 down to -50):"
 )
 
-for b in (-50::50) |> reverse() do
+for b in -50::50 |> reverse() do
     let row = (-50::50)
         |> map(a => if is_gaussian_prime(a, b) then "*" else " " fi)
         |> join("")

@@ -7,7 +7,7 @@ let labels = ["12", "11", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 let codes = MAP[char, LIST[int]]()
 
 row_of(label: string) -> int =>
-    (0..12) |> find(i => labels[i] =~ label) ?? -1
+    0..12 |> find(i => labels[i] =~ label) ?? -1
 
 punch(c: char, holes: string) is
     codes[c] = holes.split([' ']) |> map(row_of) |> collect_list()
@@ -50,12 +50,12 @@ let program = [
 
 for line in program do
     let punched =
-        (0..line.length) |> map(i => holes(line[i])) |> collect_list()
+        0..line.length |> map(i => holes(line[i])) |> collect_list()
 
     write_line(" {line}")
 
     for row in 0..12 do
-        let marks = (0..line.length) |> map(i =>
+        let marks = 0..line.length |> map(i =>
             if punched[i] |> any(r => r == row) then "#"
             elif row < 2 then "."
             else labels[row]

@@ -58,7 +58,7 @@ si
 
 write_line("the first ten Rhonda numbers, shown in base ten:")
 
-for base in (2::36) |> filter(b => !is_prime(b)) do
+for base in 2::36 |> filter(b => !is_prime(b)) do
     let found = rhondas(base) |> take(10) |> map(term => "{term,8}")
 
     write_line("base {base,2}:{found |> join("")}")

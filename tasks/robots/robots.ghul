@@ -31,7 +31,7 @@ draw() is
     write_line("+{"".pad_right(width, '-')}+")
 
     for y in 0..height do
-        let row = (0..width) |> map(x =>
+        let row = 0..width |> map(x =>
             let spot = (x = x, y = y) in
             if spot =~ player then "@"
             elif junk.contains(spot) then "*"
@@ -67,7 +67,7 @@ while alive /\ robots.count > 0 do
 
     if key =~ "t" then
         player = anywhere()
-    elif let index = (0..9) |> find(i => keys[i] =~ key) then
+    elif let index = 0..9 |> find(i => keys[i] =~ key) then
         let next = (
             x = Math.clamp(player.x + index % 3 - 1, 0, width - 1),
             y = Math.clamp(player.y + index / 3 - 1, 0, height - 1))

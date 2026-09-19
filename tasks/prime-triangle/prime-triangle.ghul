@@ -5,7 +5,7 @@ is_prime(value: int) -> bool =>
         |> take_while(divisor => divisor * divisor <= value)
         |> all(divisor => value % divisor != 0))
 
-let prime_sum = (0::41) |> map(is_prime) |> collect()
+let prime_sum = 0::41 |> map(is_prime) |> collect()
 
 extend(chosen: LIST[int], taken: LIST[bool],
        size: int) -> Pipe[List[int]]

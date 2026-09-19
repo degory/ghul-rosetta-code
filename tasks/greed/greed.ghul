@@ -6,7 +6,7 @@ let width = 79
 let height = 22
 let random = Random(9)
 
-let grid = LIST((0..width * height) |> map(_ => random.next(1, 10)))
+let grid = LIST(0..width * height |> map(_ => random.next(1, 10)))
 
 let directions = MAP()
 directions['q'] = (-1, -1)
@@ -35,7 +35,7 @@ reach(dx: int, dy: int) -> int is
     let steps = grid[(y + dy) * width + x + dx]
 
     let clear =
-        (1::steps) |> all(i =>
+        1::steps |> all(i =>
             inside(x + dx * i, y + dy * i) /\
             grid[(y + dy * i) * width + x + dx * i] != 0)
 

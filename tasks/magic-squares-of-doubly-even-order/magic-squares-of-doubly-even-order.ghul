@@ -21,10 +21,10 @@ check(square: List[List[int]]) -> bool is
 
     let lines =
         square
-            |> cat((0..n) |> map(c => column(square, c)))
+            |> cat(0..n |> map(c => column(square, c)))
             |> cat([
-                (0..n) |> map(i => square[i][i]) |> collect_list(),
-                (0..n) |> map(i => square[i][n - 1 - i]) |> collect_list()
+                0..n |> map(i => square[i][i]) |> collect_list(),
+                0..n |> map(i => square[i][n - 1 - i]) |> collect_list()
             ])
 
     lines |> all(line => line |> reduce(0, (a, b) => a + b) == target)

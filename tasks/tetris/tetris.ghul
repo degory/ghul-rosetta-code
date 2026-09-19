@@ -89,7 +89,7 @@ show() is
 
     for r in 0..height do
         let line =
-            (0..width) |> map(k => symbol(r * width + k)) |> join("")
+            0..width |> map(k => symbol(r * width + k)) |> join("")
 
         let side =
             if r == 0 then "  next"
@@ -111,7 +111,7 @@ lock() -> bool is
 
     let full =
         (0..height)
-            |> filter(r => (0..width) |> all(k => !free(r, k)))
+            |> filter(r => 0..width |> all(k => !free(r, k)))
             |> collect_list()
 
     for r in full do

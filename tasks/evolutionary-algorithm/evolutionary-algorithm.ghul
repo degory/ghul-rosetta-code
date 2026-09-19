@@ -10,7 +10,7 @@ let random = Random(3)
 random_letter() -> char => letters[random.next(letters.length)]
 
 fitness(candidate: string) -> int =>
-    (0..target.length) |> filter(i => candidate[i] == target[i]) |> count()
+    0..target.length |> filter(i => candidate[i] == target[i]) |> count()
 
 mutate(parent: string, rate: double) -> string =>
     string(
@@ -23,7 +23,7 @@ mutate(parent: string, rate: double) -> string =>
 
 let parent mut =
     string(
-        (0..target.length) |> map(_ => random_letter()) |> collect_array())
+        0..target.length |> map(_ => random_letter()) |> collect_array())
 
 let generation mut = 0
 

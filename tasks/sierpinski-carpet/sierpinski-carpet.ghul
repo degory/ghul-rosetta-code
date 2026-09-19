@@ -19,7 +19,7 @@ filled(x: int, y: int) -> bool =>
 
      solid)
 
-let size = (0..order) |> reduce(1, (total, _) => total * 3)
+let size = 0..order |> reduce(1, (total, _) => total * 3)
 
 for down in 0..size do
     write_line(

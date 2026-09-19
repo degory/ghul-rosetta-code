@@ -52,7 +52,7 @@ cyclops() -> Pipe[long] is
     let half mut = 0
 
     while true do
-        let scale = (0..half) |> reduce(1L, (acc, _) => acc * 10L)
+        let scale = 0..half |> reduce(1L, (acc, _) => acc * 10L)
 
         for left in zero_free(half) do
             for right in zero_free(half) do

@@ -22,7 +22,7 @@ is_idoneal(value: int) -> bool is
     true
 si
 
-let idoneals = (1::1_850) |> filter(is_idoneal) |> map(n => "{n,5}")
+let idoneals = 1::1_850 |> filter(is_idoneal) |> map(n => "{n,5}")
 
 write_line("the 65 known idoneal numbers:")
 

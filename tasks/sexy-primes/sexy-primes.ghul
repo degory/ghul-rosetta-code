@@ -3,7 +3,7 @@ use default
 let limit = 1_000_035
 let composite = LIST(limit + 6)
 
-(0::limit + 6) |> each(_ => composite.add(false))
+0::limit + 6 |> each(_ => composite.add(false))
 
 for candidate in 2::limit + 6 do
     if !composite[candidate] /\ candidate <= (limit + 6) / candidate then
@@ -18,10 +18,10 @@ od
 
 is_prime(value: int) -> bool => value >= 2 /\ !composite[value]
 
-primes() -> Pipe[int] => (2..limit) |> filter(is_prime)
+primes() -> Pipe[int] => 2..limit |> filter(is_prime)
 
 group_from(first: int, size: int) -> List[int] =>
-    (0..size) |> map(step => first + step * 6) |> collect()
+    0..size |> map(step => first + step * 6) |> collect()
 
 sexy_groups(size: int) -> Pipe[List[int]] =>
     primes()

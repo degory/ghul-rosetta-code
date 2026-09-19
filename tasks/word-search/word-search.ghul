@@ -31,7 +31,7 @@ class GRID is
     empty: int => cells |> filter(c => c == ' ') |> count()
 
     fits(word: string, row: int, column: int, dr: int, dc: int) -> bool =>
-        (0..word.length) |> all(i =>
+        0..word.length |> all(i =>
             let r = row + dr * i, c = column + dc * i in
             r >= 0 /\ r < size /\ c >= 0 /\ c < size /\
             (cells[at(r, c)] == ' ' \/ cells[at(r, c)] == word[i]))
@@ -94,12 +94,12 @@ for i in 0..size * size do
     fi
 od
 
-write_line("     {(0..size) |> map(c => "{c}") |> join("  ")}")
+write_line("     {0..size |> map(c => "{c}") |> join("  ")}")
 write_line("")
 
 for row in 0..size do
     let letters =
-        (0..size) |> map(c => "{grid.cells[at(row, c)]}") |> join("  ")
+        0..size |> map(c => "{grid.cells[at(row, c)]}") |> join("  ")
 
     write_line("{row}    {letters}")
 od

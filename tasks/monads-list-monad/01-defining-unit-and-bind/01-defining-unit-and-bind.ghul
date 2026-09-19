@@ -9,7 +9,7 @@ unit[T](value: T) -> Iterable[T] => [value]
     values |> flat_map(f)
 
 divisors(n: int) -> Iterable[int] =>
-    (1::n) |> filter(d => n % d == 0)
+    1::n |> filter(d => n % d == 0)
 
 spellings(n: int) -> Iterable[string] =>
     ["{n}", "0b{to_string(n, 2)}"]

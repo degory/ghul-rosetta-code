@@ -6,7 +6,7 @@ let width = 6
 let height = 4
 let random = Random(4)
 
-let cells = (0..width * height) |> collect_list()
+let cells = 0..width * height |> collect_list()
 
 let mines =
     SET(
