@@ -11,7 +11,7 @@ describe(number: int?) -> string =>
     if let value = number then "{value}" else "null" fi
 
 let text: string? = "hello"
-let nothing = null
+let nothing: string? = null
 let number: int? = 42
 let no_number: int? = null
 

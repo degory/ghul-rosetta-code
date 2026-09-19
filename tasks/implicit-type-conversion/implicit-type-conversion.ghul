@@ -13,12 +13,12 @@ let animal: ANIMAL = cat
 
 write_line("a CAT is an ANIMAL: {isa ANIMAL(animal)}")
 
-let count = 7
+let count: int = 7
 let maybe_count: int? = count
 
 write_line("count widened to int?: {maybe_count}")
 
-let smallest = 5b
-let widened = cast double(cast int(smallest))
+let smallest: byte = 5b
+let widened: double = cast double(cast int(smallest))
 
 write_line("byte {smallest} widened by explicit cast to {widened}")

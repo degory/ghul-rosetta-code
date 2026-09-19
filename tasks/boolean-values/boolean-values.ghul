@@ -10,7 +10,7 @@ if yes then
     write_line("a condition takes a bool and nothing else")
 fi
 
-let unknown = null
+let unknown: bool? = null
 
 if unknown ?? false then
     write_line("an absent bool counted as true")

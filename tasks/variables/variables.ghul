@@ -10,9 +10,9 @@ let immutable = 42
 
 let counter mut = 0
 
-let annotated = 1.5
+let annotated: double = 1.5
 
-let deferred mut
+let deferred: string mut
 
 deferred = "assigned later"
 
