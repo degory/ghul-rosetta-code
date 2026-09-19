@@ -147,6 +147,40 @@ annotation has not gained anything, and the original spelling stays. Keep one so
 with itself - `LIST[int]()` on one line and `LIST()` a few lines down, for no reason a reader can
 see, is worse than either alone.
 
+## Arithmetic on a type of your own uses operators
+
+Where a solution has vectors, points, matrices, complex or modular numbers, polynomials,
+quaternions, intervals - anything a reader would write in notation - it defines the operators
+rather than calling `plus(a, b)` and `times(p, k)`. A global operator works on a type the solution
+did not declare, a tuple alias included:
+
+```ghul
+use Point = (x: double, y: double, z: double)
+
++(a: Point, b: Point) -> Point => (x = a.x + b.x, y = a.y + b.y, z = a.z + b.z)
+*(p: Point, k: double) -> Point => (x = p.x * k, y = p.y * k, z = p.z * k)
+```
+
+and then `p + q * 2.0D` reads the way the mathematics does. The Unicode operator characters are
+ordinary operators with sensible precedence, so a dot product is `a ⋅ b` and a cross product
+`a × b` (GHUL.md, "operators"). Keep a named function where there is no accepted symbol, and do not
+invent notation.
+
+## No `System.Linq`
+
+The pipe functions in `Ghul.Pipes` cover what a solution would reach into LINQ for, so a solution
+does not name `System.Linq`. A list of `n` copies of a value is `repeat(value, n) |> collect_list()`,
+not `LIST[T](System.Linq.Enumerable.repeat(value, n))`; `repeat(value)`, `from(start)` and
+`from(start, step)` are the unbounded forms.
+
+## Output that has to line up is ASCII
+
+The wiki's monospace font has no box-drawing, geometric or most mathematical characters, so a
+browser draws them from a fallback font where they are not the width of a space, and columns built
+from them come out ragged. Where output depends on alignment - a board, a box, a tree's guide
+lines, a table - draw it in ASCII (`+--+`, `|`, `\-`, `o`, `#`), or draw a picture instead.
+Non-ASCII output is fine where nothing has to line up with it.
+
 ## Solutions are not marked `pure`
 
 The pipe combinators take pure functions, and most of what a solution passes them is not provably

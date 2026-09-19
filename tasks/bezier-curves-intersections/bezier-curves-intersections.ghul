@@ -1,0 +1,118 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+use Point = (x: double, y: double)
+use Curve = (p0: Point, p1: Point, p2: Point, from: double, to: double)
+use Hit = (t: double, s: double, at: Point)
+
+let tolerance = 1.0e-9
+
+pt(x: double, y: double) -> Point => (x = x, y = y)
+
+middle(a: Point, b: Point) -> Point =>
+    pt((a.x + b.x) / 2.0D, (a.y + b.y) / 2.0D)
+
+point_at(c: Curve, t: double) -> Point =>
+    let u = 1.0D - t in
+    pt(
+        u * u * c.p0.x + 2.0D * u * t * c.p1.x + t * t * c.p2.x,
+        u * u * c.p0.y + 2.0D * u * t * c.p1.y + t * t * c.p2.y)
+
+halves(c: Curve) -> (Curve, Curve) =>
+    let left = middle(c.p0, c.p1), right = middle(c.p1, c.p2) in
+    let split = middle(left, right), t = (c.from + c.to) / 2.0D in
+    ((c.p0, left, split, c.from, t), (split, right, c.p2, t, c.to))
+
+low(a: double, b: double, c: double) -> double =>
+    Math.min(a, Math.min(b, c))
+
+high(a: double, b: double, c: double) -> double =>
+    Math.max(a, Math.max(b, c))
+
+box(c: Curve) -> (low: Point, high: Point) =>
+    (
+        low = pt(
+            low(c.p0.x, c.p1.x, c.p2.x), low(c.p0.y, c.p1.y, c.p2.y)),
+        high = pt(
+            high(c.p0.x, c.p1.x, c.p2.x), high(c.p0.y, c.p1.y, c.p2.y)))
+
+overlap(a: Curve, b: Curve) -> bool =>
+    let p = box(a), q = box(b) in
+    p.low.x <= q.high.x /\ q.low.x <= p.high.x /\
+    p.low.y <= q.high.y /\ q.low.y <= p.high.y
+
+size(c: Curve) -> double =>
+    let b = box(c) in Math.max(b.high.x - b.low.x, b.high.y - b.low.y)
+
+near(a: double, b: double) -> bool => Math.abs(a - b) < 1.0e-6
+
+intersect(a: Curve, b: Curve, hits: LIST[Hit]) is
+    if !overlap(a, b) then
+        return
+    fi
+
+    if size(a) < tolerance /\ size(b) < tolerance then
+        let t = (a.from + a.to) / 2.0D
+        let s = (b.from + b.to) / 2.0D
+
+        if !(hits |> any(h => near(h.t, t) /\ near(h.s, s))) then
+            hits.add((t, s, middle(a.p0, a.p2)))
+        fi
+
+        return
+    fi
+
+    let (a0, a1) = halves(a)
+    let (b0, b1) = halves(b)
+
+    for x in [a0, a1] do
+        for y in [b0, b1] do
+            intersect(x, y, hits)
+        od
+    od
+si
+
+whole(p0: Point, p1: Point, p2: Point) -> Curve => (p0, p1, p2, 0.0D, 1.0D)
+
+let first = whole(pt(-1.0D, 0.0D), pt(0.0D, 10.0D), pt(1.0D, 0.0D))
+let second = whole(pt(2.0D, 1.0D), pt(-8.0D, 2.0D), pt(2.0D, 3.0D))
+
+let hits = LIST[Hit]()
+
+intersect(first, second, hits)
+
+write_line("       t           s                  x            y")
+
+for h in hits |> sort((a, b) => a.t <> b.t) do
+    let at = "({h.at.x,11:F8}, {h.at.y,11:F8})"
+
+    write_line("{h.t,10:F8}  {h.s,10:F8}     {at}")
+od
+
+let image = IMAGE(380, 350)
+
+image.view(-3.5D, -0.8D, 3.5D, 5.6D)
+image.clear(252ub, 250ub, 245ub)
+image.stroke(2.0D)
+
+trace(curve: Curve) -> List[Point] =>
+    (0::100)
+        |> map(i => point_at(curve, cast double(i) / 100.0D))
+        |> collect_list()
+
+image.colour(40ub, 90ub, 170ub)
+image.line(trace(first))
+
+image.colour(190ub, 70ub, 40ub)
+image.line(trace(second))
+
+image.colour(20ub, 20ub, 20ub)
+
+for h in hits do
+    image.ring(h.at.x, h.at.y, 5.0D)
+od
+
+image.write("intersections.png")
+
+image.show("intersections.png")

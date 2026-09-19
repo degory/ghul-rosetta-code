@@ -1,0 +1,33 @@
+put the digits in order by reversing the first few each turn
+
+4 5 3 6 1 7 9 2 8   how many to reverse?
+> 7
+
+9 7 1 6 3 5 4 2 8   how many to reverse?
+> 9
+
+8 2 4 5 3 6 1 7 9   how many to reverse?
+> 8
+
+7 1 6 3 5 4 2 8 9   how many to reverse?
+> 7
+
+2 4 5 3 6 1 7 8 9   how many to reverse?
+> 5
+
+6 3 5 4 2 1 7 8 9   how many to reverse?
+> 6
+
+1 2 4 5 3 6 7 8 9   how many to reverse?
+> 4
+
+5 4 2 1 3 6 7 8 9   how many to reverse?
+> 5
+
+3 1 2 4 5 6 7 8 9   how many to reverse?
+> 3
+
+2 1 3 4 5 6 7 8 9   how many to reverse?
+> 2
+
+1 2 3 4 5 6 7 8 9   in order after 10 reversals

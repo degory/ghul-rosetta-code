@@ -1,0 +1,83 @@
+use default
+use Raster.ANIMATION
+use Raster.IMAGE
+use System.Math
+
+let size = 180
+
+point(second: double, radius: double) -> (double, double) =>
+    let angle = Math.pi / 2.0D - second * Math.pi / 30.0D in
+    (radius * Math.cos(angle), radius * Math.sin(angle))
+
+hand(image: IMAGE, at: double, length: double, width: double) is
+    let (x, y) = point(at, length)
+    let (tail_x, tail_y) = point(at + 30.0D, 0.15D)
+
+    image.stroke(width)
+    image.line(tail_x, tail_y, x, y)
+si
+
+draw(image: IMAGE, time: System.DateTime) is
+    image.clear(245ub, 242ub, 235ub)
+
+    image.colour(40ub, 40ub, 50ub)
+    image.stroke(3.0D)
+    image.circle(0.0D, 0.0D, 1.0D)
+
+    for tick in 0..60 do
+        let long = tick % 5 == 0
+        let inner = if long then 0.8D else 0.88D fi
+        let (x0, y0) = point(cast double(tick), inner)
+        let (x1, y1) = point(cast double(tick), 0.94D)
+
+        image.stroke(if long then 3.0D else 1.0D fi)
+        image.line(x0, y0, x1, y1)
+    od
+
+    let second = cast double(time.second)
+    let minute = cast double(time.minute) + second / 60.0D
+    let hour = cast double(time.hour % 12) + minute / 60.0D
+
+    hand(image, 5.0D * hour, 0.5D, 5.0D)
+    hand(image, minute, 0.75D, 3.0D)
+
+    image.colour(200ub, 40ub, 40ub)
+    hand(image, second, 0.85D, 1.5D)
+    image.disc(0.0D, 0.0D, 0.05D)
+si
+
+let live =
+    System.Environment.get_environment_variable("GHUL_LIVE_IMAGES")?
+
+let image = IMAGE(size, size)
+
+image.view(-1.1D, -1.1D, 1.1D, 1.1D)
+
+let animation = ANIMATION(size, size)
+
+let now = System.DateTime.now
+let start = now.add_milliseconds(cast double(-now.millisecond))
+
+for second in 0..60 do
+    let time = start.add_seconds(cast double(second))
+
+    draw(image, time)
+    animation.add(image, 1000)
+
+    if live then
+        image.write("clock.png")
+        image.show("clock.png")
+
+        let wait = time.add_seconds(1.0D) - System.DateTime.now
+
+        if wait.total_milliseconds > 0.0D then
+            System.Threading.Thread.sleep(wait)
+        fi
+    fi
+od
+
+write_line("a minute of the clock, from the second it was started")
+
+animation.write("clock.png")
+
+animation.show("clock.png")

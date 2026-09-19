@@ -1,0 +1,144 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+let size = 8
+let random = Random(17)
+
+use Cell = (row: int, column: int)
+
+let atoms = SET[Cell]()
+
+while atoms.count < 4 do
+    atoms.add((row = random.next(size), column = random.next(size)))
+od
+
+let guesses = SET[Cell]()
+
+use Beam = (row: int, column: int, dr: int, dc: int)
+
+entrance(point: int) -> Beam =>
+    let side = (point - 1) / size in
+    let offset = (point - 1) % size in
+    let back = size - 1 - offset in
+    case side
+    when 0 then (row = -1, column = offset, dr = 1, dc = 0)
+    when 1 then (row = offset, column = size, dr = 0, dc = -1)
+    when 2 then (row = size, column = back, dr = -1, dc = 0)
+    else (row = back, column = -1, dr = 0, dc = 1)
+    esac
+
+point_at(cell: Cell) -> int =>
+    if cell.row < 0 then cell.column + 1
+    elif cell.column >= size then size + cell.row + 1
+    elif cell.row >= size then 2 * size + size - cell.column
+    else 3 * size + size - cell.row
+    fi
+
+inside(row: int, column: int) -> bool =>
+    row >= 0 /\ row < size /\ column >= 0 /\ column < size
+
+atom(row: int, column: int) -> bool =>
+    atoms.contains((row = row, column = column))
+
+fire(point: int) -> string is
+    let start = entrance(point)
+    let dr mut = start.dr
+    let dc mut = start.dc
+    let row mut = start.row
+    let column mut = start.column
+    let first mut = true
+
+    while first \/ inside(row, column) do
+        let ahead_row = row + dr
+        let ahead_column = column + dc
+
+        if atom(ahead_row, ahead_column) then
+            return "hit"
+        fi
+
+        let left = atom(ahead_row + dc, ahead_column + dr)
+        let right = atom(ahead_row - dc, ahead_column - dr)
+
+        if left \/ right then
+            if first \/ (left /\ right) then
+                return "reflected"
+            fi
+
+            let turned_dr = if left then -dc else dc fi
+            let turned_dc = if left then -dr else dr fi
+            dr = turned_dr
+            dc = turned_dc
+            continue
+        fi
+
+        row = ahead_row
+        column = ahead_column
+        first = false
+    od
+
+    let exit = point_at((row = row, column = column))
+
+    if exit == point then "reflected" else "exits at {exit}" fi
+si
+
+show(reveal: bool) is
+    for row in 0..size do
+        let cells =
+            (0..size)
+                |> map(column =>
+                    let cell = (row = row, column = column) in
+                    let guessed = guesses.contains(cell) in
+                    if reveal /\ atoms.contains(cell) then
+                        if guessed then "X" else "*" fi
+                    elif guessed then "o"
+                    else "."
+                    fi)
+                |> join(" ")
+
+        write_line("{row + 1} {cells}")
+    od
+
+    write_line("  {(1::size) |> join(" ")}")
+si
+
+write_line("four atoms are hidden in an 8 x 8 box")
+write_line("beams enter at 1-8 along the top, 9-16 down the right side,")
+write_line("17-24 back along the bottom and 25-32 up the left side")
+write_line("commands: fire <1-32>, guess <row> <column>, done")
+
+let cost mut = 0
+
+while let line = read_line() do
+    write_line("> {line}")
+
+    let words =
+        line.split([' '], System.StringSplitOptions.REMOVE_EMPTY_ENTRIES)
+
+    if words.count == 2 /\ words[0] =~ "fire" then
+        let point = int.parse(words[1])
+        let result = fire(point)
+        cost = cost + if result.starts_with("exits") then 2 else 1 fi
+        write_line("beam {point}: {result}")
+    elif words.count == 3 /\ words[0] =~ "guess" then
+        let cell = (
+            row = int.parse(words[1]) - 1,
+            column = int.parse(words[2]) - 1)
+
+        if !guesses.remove(cell) then
+            guesses.add(cell)
+        fi
+
+        show(false)
+    elif words.count == 1 /\ words[0] =~ "done" then
+        let missed =
+            atoms |> filter(a => !guesses.contains(a)) |> count()
+
+        show(true)
+        write_line("X is a right guess, * a missed atom, o a wrong guess")
+        write_line("score {cost + 5 * missed}; lower is better")
+        break
+    else
+        write_line("commands: fire <1-32>, guess <row> <column>, done")
+    fi
+od

@@ -1,0 +1,94 @@
+use default
+
+union Step(across: int, down: int, name: string) is
+    NORTH(..)
+    EAST(..)
+    SOUTH(..)
+    WEST(..)
+si
+
+let north = Step.NORTH(0, -1, "N")
+let east = Step.EAST(1, 0, "E")
+let south = Step.SOUTH(0, 1, "S")
+let west = Step.WEST(-1, 0, "W")
+
+let grid =
+    [".....",
+     ".....",
+     "..##.",
+     "..##.",
+     "...#.",
+     "....."]
+
+filled(column: int, row: int) -> bool =>
+    row >= 0 /\ row < grid.count /\
+    column >= 0 /\ column < grid[row].length /\
+    grid[row][column] == '#'
+
+corner(column: int, row: int) -> int =>
+    (if filled(column - 1, row - 1) then 1 else 0 fi) +
+    (if filled(column, row - 1) then 2 else 0 fi) +
+    (if filled(column - 1, row) then 4 else 0 fi) +
+    (if filled(column, row) then 8 else 0 fi)
+
+heading(value: int, previous: Step?) -> Step =>
+    case value
+    when 1, 5, 13 then north
+    when 2, 3, 7 then east
+    when 4, 12, 14 then west
+    when 8, 10, 11 then south
+    when 6 then
+        if let facing = previous /\ isa Step.NORTH(facing) then
+            west
+        else
+            east
+        fi
+    when 9 then
+        if let facing = previous /\ isa Step.EAST(facing) then
+            north
+        else
+            south
+        fi
+    else
+        throw System.Exception("{value} is not a perimeter corner")
+    esac
+
+let inked =
+    (0..grid.count)
+        |> flat_map(row =>
+            (0..grid[row].length)
+                |> map(column => (column = column, row = row)))
+        |> filter(cell => filled(cell.column, cell.row))
+        |> collect_list()
+
+assert inked.count > 0 else "the grid has no filled cell"
+
+let start = inked[0]
+
+let path = LIST[Step]()
+
+let column mut = start.column
+let row mut = start.row
+let previous: Step? mut = null
+
+do
+    let facing = heading(corner(column, row), previous)
+
+    path.add(facing)
+
+    column = column + facing.across
+    row = row + facing.down
+    previous = facing
+
+    if column == start.column /\ row == start.row then
+        break
+    fi
+od
+
+for line in grid do
+    write_line(line)
+od
+
+write_line("")
+write_line("corner ({start.column}, {start.row})")
+write_line("path {path |> map(step => step.name) |> join(" ")}")

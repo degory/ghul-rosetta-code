@@ -1,0 +1,90 @@
+use default
+use Raster.IMAGE
+
+use Tier = (half_width: double, top: double)
+
+let tiers: Tier[] = [
+    (half_width = 60.0D, top = 30.0D),
+    (half_width = 52.0D, top = 60.0D),
+    (half_width = 40.0D, top = 290.0D),
+    (half_width = 33.0D, top = 305.0D),
+    (half_width = 26.0D, top = 318.0D),
+    (half_width = 19.0D, top = 330.0D),
+    (half_width = 12.0D, top = 345.0D),
+    (half_width = 6.0D, top = 380.0D),
+    (half_width = 2.5D, top = 400.0D)
+]
+
+let random = System.Random(34)
+
+let image = IMAGE(240, 480)
+
+image.view(-120.0D, -10.0D, 120.0D, 470.0D)
+image.clear(15ub, 20ub, 45ub)
+
+image.colour(230ub, 230ub, 240ub)
+
+for _ in 0..60 do
+    image.dot(
+        -120.0D + 240.0D * random.next_double(),
+        200.0D + 270.0D * random.next_double(),
+        0.8D)
+od
+
+let bottom mut = 0.0D
+
+for tier in tiers do
+    image.colour(95ub, 95ub, 105ub)
+    let left = -tier.half_width
+
+    image.fill_rectangle(left, bottom, tier.half_width, tier.top)
+
+    image.colour(120ub, 120ub, 130ub)
+    image.fill_rectangle(left, bottom, left + 3.0D, tier.top)
+
+    bottom = tier.top
+od
+
+image.colour(200ub, 200ub, 210ub)
+image.stroke(1.5D)
+image.line(0.0D, 400.0D, 0.0D, 450.0D)
+
+let floor_height = 5.0D
+let window_width = 4.0D
+
+let floor mut = 1
+
+while cast double(floor) * floor_height < 340.0D do
+    let y = cast double(floor) * floor_height
+    let tier = tiers |> find(t => t.top > y + floor_height)
+
+    if let t = tier /\ t.half_width > 8.0D then
+        let x mut = -t.half_width + 5.0D
+
+        while x + window_width < t.half_width - 3.0D do
+            if random.next_double() < 0.35D then
+                image.colour(250ub, 220ub, 120ub)
+            else
+                image.colour(45ub, 45ub, 60ub)
+            fi
+
+            image.fill_rectangle(
+                x, y + 1.0D,
+                x + window_width - 1.5D, y + floor_height - 1.0D)
+
+            x = x + window_width
+        od
+    fi
+
+    floor = floor + 1
+od
+
+image.colour(10ub, 12ub, 20ub)
+image.fill_rectangle(-120.0D, -10.0D, 120.0D, 0.0D)
+
+write_line("the Empire State Building at night")
+write_line("{tiers.count} tiers and a mast")
+
+image.write("empire-state.png")
+
+image.show("empire-state.png")

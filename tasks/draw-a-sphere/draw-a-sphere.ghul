@@ -1,0 +1,66 @@
+use default
+use Raster.IMAGE
+
+use Math = System.Math
+
+let size = 480
+let centre = cast double(size) / 2.0D
+let radius = 208.0D
+
+let ambient = 0.14D
+let shine = 28.0D
+
+let towards_light =
+    (let x = -0.45D
+     let y = 0.55D
+     let z = 0.70D
+
+     let length = Math.sqrt(x * x + y * y + z * z)
+
+     (x = x / length, y = y / length, z = z / length))
+
+channel(base: double, level: double, gloss: double) -> ubyte =>
+    (let value = base * level + 255.0D * gloss
+
+     cast ubyte(Math.min(255.0D, Math.max(0.0D, value))))
+
+let image = IMAGE(size, size)
+
+for down in 0..size do
+    for across in 0..size do
+        let x = (cast double(across) + 0.5D - centre) / radius
+        let y = (centre - cast double(down) - 0.5D) / radius
+        let square = x * x + y * y
+
+        if square <= 1.0D then
+            let z = Math.sqrt(1.0D - square)
+
+            let lambert =
+                x * towards_light.x +
+                y * towards_light.y +
+                z * towards_light.z
+
+            let level = ambient + 0.9D * Math.max(0.0D, lambert)
+
+            let gloss =
+                Math.pow(
+                    Math.max(
+                        0.0D,
+                        2.0D * lambert * z - towards_light.z
+                    ),
+                    shine
+                )
+
+            image.set_pixel(
+                across, down,
+                channel(70.0D, level, gloss),
+                channel(130.0D, level, gloss),
+                channel(235.0D, level, gloss)
+            )
+        fi
+    od
+od
+
+image.write("sphere.png")
+
+image.show("sphere.png")

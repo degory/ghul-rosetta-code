@@ -1,0 +1,96 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+let size = 200
+let angles = 360
+
+pentagon() -> IMAGE is
+    let image = IMAGE(size, size)
+
+    image.clear(255ub, 255ub, 255ub)
+    image.colour(0ub, 0ub, 0ub)
+    image.stroke(2.0D)
+    image.line(
+        (0::5)
+            |> map(i =>
+                let a = Math.pi * (0.5D + 0.4D * cast double(i)) in
+                let x = 100.0D + 70.0D * Math.cos(a) in
+                (x = x, y = 105.0D - 70.0D * Math.sin(a)))
+            |> collect_list())
+
+    image
+si
+
+pentagon().write("pentagon.png")
+
+let source = IMAGE.read("pentagon.png")
+let diagonal = Math.sqrt(2.0D) * cast double(size) / 2.0D
+let distances = cast int(2.0D * diagonal) + 1
+
+let votes = repeat(0, angles * distances) |> collect_list()
+
+for y in 0..size do
+    for x in 0..size do
+        if source.pixel(x, y).red < 128ub then
+            let dx = cast double(x - size / 2)
+            let dy = cast double(size / 2 - y)
+
+            for t in 0..angles do
+                let theta = Math.pi * cast double(t) / cast double(angles)
+                let rho = dx * Math.cos(theta) + dy * Math.sin(theta)
+                let r = cast int(Math.round(rho + diagonal))
+
+                votes[r * angles + t] = votes[r * angles + t] + 1
+            od
+        fi
+    od
+od
+
+let most = votes |> reduce(0, int.max)
+
+let peaks = LIST[(theta: int, rho: int, votes: int)]()
+let remaining = LIST[int](votes)
+
+for _ in 0..5 do
+    let best =
+        (0..remaining.count) |> reduce(0, (b, i) =>
+            if remaining[i] > remaining[b] then i else b fi)
+
+    let r = best / angles, t = best % angles
+
+    peaks.add((t / 2, r - cast int(Math.round(diagonal)), remaining[best]))
+
+    for dr in -12::12 do
+        for dt in -12::12 do
+            let rr = r + dr, tt = (t + dt + angles) % angles
+
+            if rr >= 0 /\ rr < distances then
+                remaining[rr * angles + tt] = 0
+            fi
+        od
+    od
+od
+
+write_line("the five strongest lines, as angle in degrees")
+write_line("and distance from the centre:")
+
+for p in peaks |> sort((a, b) => a.theta - b.theta) do
+    write_line("  theta {p.theta,3}, rho {p.rho,4} ({p.votes} votes)")
+od
+
+let space = IMAGE(angles, distances)
+
+for r in 0..distances do
+    for t in 0..angles do
+        let level = cast double(votes[r * angles + t]) / cast double(most)
+        let shade = cast ubyte(255.0D * Math.sqrt(level))
+
+        space.set_pixel(t, distances - 1 - r, shade, shade, shade)
+    od
+od
+
+source.show("pentagon.png")
+
+space.write("hough.png")
+space.show("hough.png")

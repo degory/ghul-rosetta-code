@@ -1,0 +1,53 @@
+use default
+use IO.Std.read_line
+
+let questions mut = 0
+
+ask(a: string, b: string) -> int is
+    questions = questions + 1
+    write_line()
+    write_line("{questions}: is {a} <, = or > {b}?")
+
+    let answer = (read_line() ?? "=").trim()
+
+    write_line("> {answer}")
+
+    case answer
+    when "<" then -1
+    when ">" then 1
+    else 0
+    esac
+si
+
+order(items: List[string]) -> List[string] is
+    let sorted = LIST[string]()
+
+    for item in items do
+        let low mut = 0
+        let high mut = sorted.count
+
+        while low < high do
+            let middle = (low + high) / 2
+
+            if ask(item, sorted[middle]) < 0 then
+                high = middle
+            else
+                low = middle + 1
+            fi
+        od
+
+        sorted.insert(low, item)
+    od
+
+    sorted
+si
+
+let colours =
+    ["violet", "red", "green", "indigo", "blue", "yellow", "orange"]
+
+write_line("ordering {colours |> join(" ")}")
+
+let result = order(colours)
+
+write_line()
+write_line("{result |> join(" ")} after {questions} questions")

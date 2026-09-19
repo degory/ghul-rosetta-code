@@ -121,6 +121,23 @@ dotnet ghul-test --use-dotnet-build tasks
 The tests assert the program's output only. There are deliberately no IL snapshots: a test folder
 with no `il.expected` has its IL ignored.
 
+## pictures
+
+A solution that draws writes a PNG with `ghul.raster` and names it on standard output, which
+`Raster.IMAGE.show` does as `<<image plot.png>>`. Its test asserts the file byte for byte against
+the `plot.png.expected` beside it, the markup turns that line into a `[[File:Ghul-<slug>-plot.png]]`
+reference, and `rosetta publish` uploads the file under that name before editing the page. The
+title carries the slug because the wiki's File: namespace is shared with every other language
+there.
+
+An animation is one file too - `Raster.ANIMATION` writes its frames as an animated PNG, shown by
+the same line and asserted by the same kind of expectation - but it goes on the wiki as a GIF.
+MediaWiki keeps every frame of a GIF in the scaled thumbnail an entry shows, while a scaled
+animated PNG is its first frame alone. So the markup names `plot.gif` wherever the PNG holds more
+than one frame, and publishing rewrites the frames as a GIF and uploads that. Only the PNG is kept
+here: it is what the test asserts, and what `index.json` and ghul.dev refer to.
+`tasks/animate-a-pendulum` is one.
+
 ## writing solutions for the wiki
 
 The wiki page is the audience, so the solution has to read well standing on its own, next to
@@ -182,8 +199,8 @@ before it is published.
 ## running a solution in the playground
 
 Each entry opens with a link that runs it in the
-[ghūl playground](https://playground.ghul.dev), at `/rosetta-code/<slug>`, or
-`/rosetta-code/<slug>/<NN-part>` for one part of a task with parts. The
+[ghūl playground](https://ghul.dev/playground/), at `/playground/rosetta-code/<slug>`, or
+`/playground/rosetta-code/<slug>/<NN-part>` for one part of a task with parts. The
 playground fetches the source from this repository's `main` branch, so a link
 needs nothing but the task being here under that name.
 
@@ -299,7 +316,13 @@ dotnet run --project tools/rosetta -- publish amb       # post one task, by slug
 dotnet run --project tools/rosetta -- publish --replace amb   # replace the ghul section already there
 dotnet run --project tools/rosetta -- publish --solved  # post every solved task
 dotnet run --project tools/rosetta -- render-notes tasks/binary-digits/notes.md  # one file's markup
+dotnet run --project tools/rosetta -- edit-page Template:Ghul_playground wiki-pages/Template-Ghul_playground.wiki "summary" --dry-run
 ```
+
+`edit-page` replaces a whole page that is not a task's - the template every playground link
+comes from, the language page - from a file, using the same credential. Those pages' text lives
+in `wiki-pages/`, so a change to one is reviewed like any other before it is posted. It leaves a
+page that already holds the text alone, and `--dry-run` shows the page before and after.
 
 `sync` treats `tasks/` as the authority on what has a solution, and leaves alone anything only
 the ledger knows - a rejection, a block. The wiki it only reads as a cross-check: a page

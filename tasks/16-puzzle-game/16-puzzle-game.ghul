@@ -1,0 +1,93 @@
+use default
+
+let size = 4
+let board = (1::16) |> collect_list()
+
+show() is
+    for row in 0..size do
+        let cells = board |> skip(row * size) |> take(size)
+
+        write_line(cells |> map(n => "{n,3}") |> join(""))
+    od
+si
+
+solved() -> bool => board |> index() |> all(c => c.value == c.index + 1)
+
+rotate(cells: List[int], forward: bool) is
+    let values = cells |> map(i => board[i]) |> collect_list()
+    let count = values.count
+
+    for (k, cell) in cells |> index() do
+        let from =
+            if forward then (k + count - 1) % count else (k + 1) % count fi
+
+        board[cell] = values[from]
+    od
+si
+
+apply(command: string) -> bool is
+    if command.length != 2 \/ !char.is_digit(command[1]) then
+        return false
+    fi
+
+    let n = cast int(command[1]) - cast int('1')
+
+    if n < 0 \/ n >= size then
+        return false
+    fi
+
+    let row = (0..size) |> map(c => n * size + c) |> collect_list()
+    let column = (0..size) |> map(r => r * size + n) |> collect_list()
+
+    case char.to_upper(command[0])
+    when 'R' then rotate(row, true)
+    when 'L' then rotate(row, false)
+    when 'D' then rotate(column, true)
+    when 'U' then rotate(column, false)
+    else return false
+    esac
+
+    true
+si
+
+let random = System.Random(16)
+let letters = "LRUD"
+
+for _ in 0..3 do
+    let move = "{letters[random.next(4)]}{random.next(size) + 1}"
+
+    apply(move)
+od
+
+write_line("Rotate a row with Ln or Rn, a column with Un or Dn,")
+write_line("n from 1 to 4.")
+write_line("")
+
+show()
+
+let moves mut = 0
+
+while !solved() do
+    IO.Std.write("> ")
+
+    let line = IO.Std.read_line()
+
+    if !line? then
+        write_line("")
+        write_line("given up after {moves} moves")
+        break
+    fi
+
+    write_line(line)
+
+    if apply(line.trim()) then
+        moves = moves + 1
+        show()
+    else
+        write_line("not a move: {line}")
+    fi
+od
+
+if solved() then
+    write_line("solved in {moves} moves")
+fi

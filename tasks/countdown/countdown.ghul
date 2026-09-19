@@ -1,0 +1,112 @@
+use default
+use System.Math
+use System.Random
+
+use Found = (value: int, steps: LIST[string])
+
+use Move = (value: int, step: string)
+
+move(a: int, operator: string, b: int, value: int) -> Move =>
+    (value = value, step = "{a} {operator} {b} = {value}")
+
+combinations(a: int, b: int) -> Pipe[Move] is
+    let (large, small) = if a >= b then (a, b) else (b, a) fi
+
+    yield move(large, "+", small, large + small)
+
+    if large > small then
+        yield move(large, "-", small, large - small)
+    fi
+
+    if small > 1 then
+        yield move(large, "*", small, large * small)
+
+        if large % small == 0 then
+            yield move(large, "/", small, large / small)
+        fi
+    fi
+si
+
+solve(numbers: List[Found], target: int, best: Found) -> Found is
+    let closest mut = best
+
+    for found in numbers do
+        let distance = Math.abs(found.value - target)
+
+        if distance < Math.abs(closest.value - target) then
+            closest = found
+        fi
+    od
+
+    if closest.value == target then
+        return closest
+    fi
+
+    for i in 0..numbers.count do
+        for j in i + 1..numbers.count do
+            let rest =
+                (0..numbers.count)
+                    |> filter(k => k != i /\ k != j)
+                    |> map(k => numbers[k])
+                    |> collect_list()
+
+            let (a, b) = (numbers[i].value, numbers[j].value)
+
+            for (value, step) in combinations(a, b) do
+                let steps = LIST[string](numbers[i].steps)
+                steps.add_range(numbers[j].steps)
+                steps.add(step)
+
+                let next = LIST[Found](rest)
+                next.add((value = value, steps = steps))
+
+                closest = solve(next, target, closest)
+
+                if closest.value == target then
+                    return closest
+                fi
+            od
+        od
+    od
+
+    closest
+si
+
+play(numbers: int[], target: int) is
+    write_line("using {numbers |> join(", ")} to make {target}")
+
+    let start =
+        numbers
+            |> map(n => (value = n, steps = LIST[string]()))
+            |> collect_list()
+
+    let nothing = (value = 0, steps = LIST[string]())
+    let result = solve(start, target, nothing)
+
+    for step in result.steps do
+        write_line("  {step}")
+    od
+
+    if result.value != target then
+        write_line("  no exact answer; {result.value} is the closest")
+    fi
+
+    write_line()
+si
+
+play([3, 6, 25, 50, 75, 100], 952)
+
+let random = Random(1)
+let pool = LIST[int]([
+    1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10,
+    25, 50, 75, 100
+])
+let chosen = LIST[int]()
+
+for _ in 0..6 do
+    let at = random.next(pool.count)
+    chosen.add(pool[at])
+    pool.remove_at(at)
+od
+
+play(chosen.to_array(), random.next(101, 1000))

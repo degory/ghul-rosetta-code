@@ -1,0 +1,76 @@
+use default
+use Math = System.Math
+use Raster.Anchor
+use Raster.AXES
+use Raster.IMAGE
+
+hailstone(n: int) -> Pipe[int] is
+    let current mut = n
+
+    while true do
+        yield current
+
+        if current == 1 then
+            return
+        fi
+
+        current =
+            if current % 2 == 0 then current / 2 else 3 * current + 1 fi
+    od
+si
+
+let limit = 100_000
+
+let lengths =
+    (1::limit) |> map(n => hailstone(n) |> count()) |> collect()
+
+let peak =
+    lengths
+    |> index()
+    |> map(entry => (n = entry.index + 1, steps = entry.value))
+    |> reduce((n = 0, steps = 0),
+        (best, item) => if item.steps > best.steps then item
+                        else best
+                        fi)
+
+let tallest = peak.steps
+let longest = peak.n
+
+let image = IMAGE(860, 520)
+
+image.view(
+    0.0, 0.0,
+    cast double(limit), cast double(tallest) + 18.0,
+    62.0)
+
+image.colour(80ub, 80ub, 80ub)
+image.stroke(1.0)
+
+let axes = AXES(image)
+
+axes.x_title = "n"
+axes.y_title = "steps"
+axes.draw()
+
+image.colour(40ub, 70ub, 150ub)
+image.stroke(1.1)
+
+for entry in lengths |> index() do
+    let x = cast double(entry.index + 1)
+    let y = cast double(entry.value)
+
+    image.line(x, y, x, y)
+od
+
+let marked_x = cast double(longest)
+let marked_y = cast double(tallest)
+
+image.colour(200ub, 40ub, 40ub)
+image.stroke(6.0)
+image.line(marked_x, marked_y, marked_x, marked_y)
+
+image.text(marked_x, marked_y + 7.0, 13.0, "{longest}", Anchor.CENTRE)
+
+image.write("hailstone.png")
+
+image.show("hailstone.png")

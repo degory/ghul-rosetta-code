@@ -1,0 +1,47 @@
+use default
+
+use Fraction = (numerator: bigint, denominator: bigint)
+
+let source =
+    "17/91, 78/85, 19/51, 23/38, 29/33, 77/29, 95/23, "
+    "77/19, 1/17, 11/13, 13/11, 15/14, 15/2, 55/1"
+
+parse(text: string) -> List[Fraction] =>
+    text.split([','])
+        |> map(f => f.trim().split(['/']))
+        |> map(parts => (
+            numerator = bigint.parse(parts[0]),
+            denominator = bigint.parse(parts[1])))
+        |> collect_list()
+
+run(program: List[Fraction], start: bigint) -> Pipe[bigint] is
+    let n mut = start
+
+    while true do
+        yield n
+
+        let fits =
+            program |> filter(f => n % f.denominator =~ 0n) |> first()
+
+        if let next = fits then
+            n = n * next.numerator / next.denominator
+        else
+            return
+        fi
+    od
+si
+
+let program = parse(source)
+let steps = 20
+
+write_line("the first {steps} values from 2:")
+write_line(run(program, 2n) |> take(steps) |> join(", "))
+
+let primes =
+    run(program, 2n)
+        |> skip(1)
+        |> filter(n => n.is_power_of_two)
+        |> map(n => n.get_bit_length() - 1L)
+        |> take(20)
+
+write_line("the first 20 primes: {primes |> join(", ")}")

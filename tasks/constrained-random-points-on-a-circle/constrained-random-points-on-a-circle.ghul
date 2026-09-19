@@ -1,0 +1,50 @@
+use default
+use Raster.IMAGE
+
+let random = System.Random(10)
+
+candidates() -> Pipe[(x: int, y: int)] is
+    while true do
+        yield (x = random.next(-15, 16), y = random.next(-15, 16))
+    od
+si
+
+in_ring(p: (x: int, y: int)) -> bool =>
+    let square = p.x * p.x + p.y * p.y in
+    square >= 100 /\ square <= 225
+
+let points = candidates() |> filter(in_ring) |> take(100) |> collect_list()
+let distinct = points |> collect_set()
+
+write_line("{points.count} points, {distinct.count} of them different")
+write_line("")
+
+for y in -15::15 do
+    let line =
+        (-15::15)
+            |> map(x => distinct.contains((x = x, y = -y)))
+            |> map(hit => if hit then "o" else " " fi)
+            |> join(" ")
+
+    write_line(line.trim_end())
+od
+
+let image = IMAGE(248, 248)
+
+image.view(-15.5D, -15.5D, 15.5D, 15.5D)
+image.clear(252ub, 250ub, 245ub)
+
+image.colour(210ub, 210ub, 215ub)
+image.stroke(1.0D)
+image.circle(0.0D, 0.0D, 10.0D)
+image.circle(0.0D, 0.0D, 15.0D)
+
+image.colour(40ub, 80ub, 170ub)
+
+for p in distinct do
+    image.dot(cast double(p.x), cast double(p.y), 3.0D)
+od
+
+image.write("ring.png")
+
+image.show("ring.png")

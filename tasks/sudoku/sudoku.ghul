@@ -1,0 +1,91 @@
+use default
+
+let puzzle = [
+    "5 3 . . 7 . . . .",
+    "6 . . 1 9 5 . . .",
+    ". 9 8 . . . . 6 .",
+    "8 . . . 6 . . . 3",
+    "4 . . 8 . 3 . . 1",
+    "7 . . . 2 . . . 6",
+    ". 6 . . . . 2 8 .",
+    ". . . 4 1 9 . . 5",
+    ". . . . 8 . . 7 9"
+]
+
+let grid =
+    LIST[int](
+        puzzle
+            |> flat_map(row => row.split([' ']))
+            |> map(cell => if cell =~ "." then 0 else int.parse(cell) fi))
+
+allowed(at: int, digit: int) -> bool is
+    let row = at / 9
+    let column = at % 9
+    let box = (row / 3) * 27 + (column / 3) * 3
+
+    for i in 0..9 do
+        if grid[row * 9 + i] == digit \/
+            grid[i * 9 + column] == digit \/
+            grid[box + (i / 3) * 9 + i % 3] == digit
+        then
+            return false
+        fi
+    od
+
+    true
+si
+
+solve(at: int) -> bool is
+    if at == 81 then
+        return true
+    fi
+
+    if grid[at] != 0 then
+        return solve(at + 1)
+    fi
+
+    for digit in 1::9 do
+        if allowed(at, digit) then
+            grid[at] = digit
+
+            if solve(at + 1) then
+                return true
+            fi
+        fi
+    od
+
+    grid[at] = 0
+
+    false
+si
+
+show() is
+    for row in 0..9 do
+        if row % 3 == 0 then
+            write_line("+-------+-------+-------+")
+        fi
+
+        let cells =
+            (0..9)
+                |> map(column =>
+                    let digit = grid[row * 9 + column] in
+                    let text = if digit == 0 then "." else "{digit}" fi in
+                    if column % 3 == 0 then "| {text}" else text fi)
+                |> join(" ")
+
+        write_line("{cells} |")
+    od
+
+    write_line("+-------+-------+-------+")
+si
+
+write_line("puzzle:")
+show()
+
+if solve(0) then
+    write_line("")
+    write_line("solution:")
+    show()
+else
+    write_line("no solution")
+fi

@@ -1,0 +1,11 @@
+mean cluster density at p = 0.5, averaged over 5 runs
+
+   n      K(p)      off by
+   4   0.175000   0.109230
+  16   0.081250   0.015480
+  64   0.071777   0.006007
+ 256   0.067947   0.002177
+1024   0.066359   0.000589
+
+pictured: the 16 clusters in a 15 by 15 grid
+<<image clusters.png>>

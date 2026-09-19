@@ -1,0 +1,59 @@
+grammar:
+    "a" {
+        a = "a1" ( "a2" | "a3" ) { "a4" } [ "a5" ] "a6" ;
+    } "z"
+title: a
+comment: z
+rules:
+    a = "a1" ("a2" | "a3") { "a4" } [ "a5" ] "a6"
+tests:
+    "a1a3a4a4a5a6": pass
+    "a1 a2a6": pass
+    "a1 a3 a4 a6": pass
+    "a1 a4 a5 a6": fail
+    "a1 a2 a4 a5 a5 a6": fail
+    "a1 a2 a4 a5 a6 a7": fail
+    "your ad here": fail
+
+grammar:
+    {
+        expr = term { plus term } .
+        term = factor { times factor } .
+        factor = number | '(' expr ')' .
+        plus = "+" | "-" .
+        times = "*" | "/" .
+        number = digit { digit } .
+        digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" .
+    }
+rules:
+    expr = term { plus term }
+    term = factor { times factor }
+    factor = (number | "(" expr ")")
+    plus = ("+" | "-")
+    times = ("*" | "/")
+    number = digit { digit }
+    digit = ("0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9")
+tests:
+    "2": pass
+    "2*3 + 4/23 - 7": pass
+    "(3 + 4) * 6-2+(4*(4))": pass
+    "-2": fail
+    "3 +": fail
+    "(4 + 3": fail
+
+grammar:
+    a = "1"
+invalid grammar: missing opening {
+
+grammar:
+    { a = "1" ;
+invalid grammar: missing closing }
+
+grammar:
+    { hello world = "1"; }
+invalid grammar: = expected after hello
+
+grammar:
+    { foo = bar . }
+invalid grammar: undefined: bar
+

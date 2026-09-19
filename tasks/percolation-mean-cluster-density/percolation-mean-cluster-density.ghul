@@ -1,0 +1,109 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+let p = 0.5D
+let runs = 5
+let expected = 0.065770D
+
+let random = System.Random(3)
+
+class CLUSTERS is
+    size: int
+    filled: bool[]
+    labels: LIST[int]
+    count: int
+
+    init(size: int) is
+        self.size = size
+
+        filled =
+            (0..size * size)
+                |> map(_ => random.next_double() < p)
+                |> collect_array()
+
+        labels = repeat(0, size * size) |> collect_list()
+        count = 0
+
+        for cell in 0..size * size do
+            if filled[cell] /\ labels[cell] == 0 then
+                count = count + 1
+                spread(cell, count)
+            fi
+        od
+    si
+
+    spread(start: int, label: int) is
+        let pending = STACK[int]()
+
+        pending.push(start)
+
+        while pending.count > 0 do
+            let cell = pending.pop()
+
+            if filled[cell] /\ labels[cell] == 0 then
+                labels[cell] = label
+
+                let column = cell % size
+
+                if column > 0 then pending.push(cell - 1) fi
+                if column < size - 1 then pending.push(cell + 1) fi
+                if cell >= size then pending.push(cell - size) fi
+
+                if cell < size * size - size then
+                    pending.push(cell + size)
+                fi
+            fi
+        od
+    si
+si
+
+density(size: int) -> double =>
+    let total = (0..runs)
+        |> map(_ => cast double(CLUSTERS(size).count))
+        |> reduce(0.0D, (a, b) => a + b) in
+    total / cast double(runs) / cast double(size * size)
+
+write_line("mean cluster density at p = {p}, averaged over {runs} runs")
+write_line()
+write_line("   n      K(p)      off by")
+
+for size in [4, 16, 64, 256, 1024] do
+    let k = density(size)
+
+    write_line("{size,4}   {k:F6}   {Math.abs(k - expected):F6}")
+od
+
+let clusters = CLUSTERS(15)
+
+write_line()
+write_line("pictured: the {clusters.count} clusters in a 15 by 15 grid")
+
+let palette = [
+    (230ub, 25ub, 75ub), (60ub, 180ub, 75ub), (255ub, 190ub, 20ub),
+    (0ub, 130ub, 200ub), (245ub, 130ub, 48ub), (145ub, 30ub, 180ub),
+    (70ub, 200ub, 200ub), (240ub, 50ub, 230ub), (150ub, 190ub, 20ub),
+    (170ub, 110ub, 40ub), (128ub, 0ub, 0ub), (0ub, 0ub, 128ub)
+]
+
+let image = IMAGE(15 * 24, 15 * 24)
+
+image.view(0.0D, 15.0D, 15.0D, 0.0D)
+image.clear(250ub, 250ub, 250ub)
+
+for cell in 0..225 do
+    let label = clusters.labels[cell]
+
+    if label > 0 then
+        let (red, green, blue) = palette[(label - 1) % palette.count]
+        let x = cast double(cell % 15)
+        let y = cast double(cell / 15)
+
+        image.colour(red, green, blue)
+        image.fill_rectangle(x, y, x + 1.0D, y + 1.0D)
+    fi
+od
+
+image.write("clusters.png")
+
+image.show("clusters.png")

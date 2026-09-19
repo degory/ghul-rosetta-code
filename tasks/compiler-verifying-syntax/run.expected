@@ -1,0 +1,66 @@
+$
+    false: invalid character '$' found
+one
+    true
+either or both
+    true
+a + 1
+    true
+a + b < c
+    true
+a = b
+    true
+a or b = c
+    true
+3 + not 5
+    false: expected operand, found 'not'
+3 + (not 5)
+    true
+(42 + 3
+    false: expected ')', found end of line
+(42 + 3)
+    true
+ not 3 < 4 or (true or 3 /  4 + 8 *  5 - 5 * 2 < 56) and 4 * 3  < 12 or not true
+    true
+ and 3 < 2
+    false: expected operand, found 'and'
+not 7 < 2
+    true
+2 < 3 < 4
+    false: operator '<' is non-associative
+2 < (3 < 4)
+    true
+2 < foobar - 3 < 4
+    false: operator '<' is non-associative
+2 < foobar and 3 < 4
+    true
+4 * (32 - 16) + 9 = 73
+    true
+235 76 + 1
+    false: expected end of line, found '76'
+true or false = not true
+    false: expected operand, found 'not'
+true or false = (not true)
+    true
+not true or false = false
+    true
+not true = false
+    true
+a + b = not c and false
+    false: expected operand, found 'not'
+a + b = (not c) and false
+    true
+a + b = (not c and false)
+    true
+ab_c / bd2 or < e_f7
+    false: expected operand, found '<'
+g not = h
+    false: expected end of line, found 'not'
+été = false
+    false: invalid character 'é' found
+i++
+    false: expected operand, found '+'
+j & k
+    false: invalid character '&' found
+l or _m
+    false: identifier cannot begin with an underscore

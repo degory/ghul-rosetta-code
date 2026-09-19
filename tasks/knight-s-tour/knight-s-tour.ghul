@@ -1,0 +1,140 @@
+use default
+use Raster.COLOUR_MAP
+use Raster.IMAGE
+use Raster.SHAPES
+
+use Square = (file: int, rank: int)
+
+let size = 8
+let start = (file = 0, rank = 0)
+
+let leaps =
+    [(file = 1, rank = 2), (file = 2, rank = 1),
+     (file = 2, rank = -1), (file = 1, rank = -2),
+     (file = -1, rank = -2), (file = -2, rank = -1),
+     (file = -2, rank = 1), (file = -1, rank = 2)]
+
+at(square: Square) -> int => square.rank * size + square.file
+
+named(square: Square) -> string =>
+    "{cast char(cast int('a') + square.file)}{square.rank + 1}"
+
+inside(square: Square) -> bool =>
+    square.file >= 0 /\ square.file < size /\
+    square.rank >= 0 /\ square.rank < size
+
+let visit_order = LIST[int]()
+
+for _ in 0..size * size do
+    visit_order.add(0)
+od
+
+onward(square: Square) -> Pipe[Square] =>
+    leaps
+        |> map(leap =>
+            (file = square.file + leap.file,
+             rank = square.rank + leap.rank))
+        |> filter(next => inside(next) /\ visit_order[at(next)] == 0)
+
+let tour = LIST([start])
+
+visit_order[at(start)] = 1
+
+while tour.count < size * size do
+    let square = tour[tour.count - 1]
+
+    let next =
+        onward(square)
+            |> reduce(square,
+                (best, candidate) =>
+                    if at(best) == at(square) \/
+                            onward(candidate) |> count() <
+                            onward(best) |> count() then
+                        candidate
+                    else
+                        best
+                    fi)
+
+    assert at(next) != at(square) else "the tour reached a dead end"
+
+    visit_order[at(next)] = tour.count + 1
+
+    tour.add(next)
+od
+
+write_line("a knight's tour from {named(start)}")
+write_line("")
+
+for row in 0..size do
+    let rank = size - 1 - row
+
+    write_line(
+        (0..size)
+            |> map(file =>
+                "{visit_order[at((file = file, rank = rank))],3}")
+            |> join(""))
+od
+
+write_line("")
+
+for row in 0..size do
+    write_line(
+        (0..size)
+            |> map(step => named(tour[row * size + step]))
+            |> join(" "))
+od
+
+let image = IMAGE(520, 520)
+
+image.view(-0.1D, -0.1D, 8.1D, 8.1D)
+
+middle(square: Square) -> (x: double, y: double) =>
+    (x = cast double(square.file) + 0.5D,
+     y = cast double(square.rank) + 0.5D)
+
+let board = SHAPES()
+
+for rank in 0..size do
+    for file in 0..size do
+        let corner = (x = cast double(file), y = cast double(rank))
+
+        let cell =
+            [corner,
+             (x = corner.x + 1.0D, y = corner.y),
+             (x = corner.x + 1.0D, y = corner.y + 1.0D),
+             (x = corner.x, y = corner.y + 1.0D)]
+
+        if (file + rank) % 2 == 0 then
+            board.add(cell, 226ub, 222ub, 212ub)
+        else
+            board.add(cell, 246ub, 245ub, 240ub)
+        fi
+    od
+od
+
+image.fill(board)
+
+image.stroke(2.6D)
+
+for step in 0..tour.count - 1 do
+    let from = middle(tour[step])
+    let to = middle(tour[step + 1])
+
+    image.colour(
+        COLOUR_MAP.viridis(cast double(step) / cast double(tour.count)))
+
+    image.line(from.x, from.y, to.x, to.y)
+od
+
+image.colour(190ub, 40ub, 40ub)
+image.dot(middle(start).x, middle(start).y, 6.0D)
+
+image.colour(40ub, 40ub, 50ub)
+image.stroke(1.4D)
+image.line([(x = 0.0D, y = 0.0D), (x = 8.0D, y = 0.0D),
+            (x = 8.0D, y = 8.0D), (x = 0.0D, y = 8.0D),
+            (x = 0.0D, y = 0.0D)])
+
+image.write("tour.png")
+
+image.show("tour.png")

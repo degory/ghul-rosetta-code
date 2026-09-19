@@ -1,0 +1,211 @@
+use default
+use Raster.IMAGE
+use Raster.SHAPES
+
+use Cell = (row: int, column: int)
+use Shape = List[Cell]
+
+let size = 8
+
+let pieces = [
+    ('F', [(0, 1), (0, 2), (1, 0), (1, 1), (2, 1)]),
+    ('I', [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]),
+    ('L', [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1)]),
+    ('N', [(0, 1), (1, 0), (1, 1), (2, 0), (3, 0)]),
+    ('P', [(0, 0), (0, 1), (1, 0), (1, 1), (2, 0)]),
+    ('T', [(0, 0), (0, 1), (0, 2), (1, 1), (2, 1)]),
+    ('U', [(0, 0), (0, 2), (1, 0), (1, 1), (1, 2)]),
+    ('V', [(0, 0), (1, 0), (2, 0), (2, 1), (2, 2)]),
+    ('W', [(0, 0), (1, 0), (1, 1), (2, 1), (2, 2)]),
+    ('X', [(0, 1), (1, 0), (1, 1), (1, 2), (2, 1)]),
+    ('Y', [(0, 1), (1, 0), (1, 1), (2, 1), (3, 1)]),
+    ('Z', [(0, 0), (0, 1), (1, 1), (2, 1), (2, 2)])
+]
+
+reading_order(a: Cell, b: Cell) -> int =>
+    if a.row != b.row then a.row - b.row else a.column - b.column fi
+
+anchored(cells: Iterable[Cell]) -> Shape is
+    let sorted =
+        cells
+            |> sort(reading_order)
+            |> collect_list()
+
+    let first = sorted[0]
+
+    sorted
+        |> map(c => cell_at(c.row - first.row, c.column - first.column))
+        |> collect_list()
+si
+
+cell_at(row: int, column: int) -> Cell => (row = row, column = column)
+
+key(shape: Shape) -> string =>
+    shape |> map(c => "{c.row},{c.column}") |> join(" ")
+
+orientations(cells: List[(int, int)]) -> List[Shape] is
+    let found = LIST[Shape]()
+    let current mut =
+        cells |> map(((r, c)) => cell_at(r, c)) |> collect_list()
+
+    for _ in 0..4 do
+        for flip in [false, true] do
+            let turned =
+                anchored(current |> map(c =>
+                    if flip then cell_at(c.row, -c.column) else c fi))
+
+            if !(found |> any(f => key(f) =~ key(turned))) then
+                found.add(turned)
+            fi
+        od
+
+        current =
+            current |> map(c => cell_at(c.column, -c.row)) |> collect_list()
+    od
+
+    found
+si
+
+let shapes =
+    pieces
+        |> map(((name, cells)) => (name, orientations(cells)))
+        |> collect_list()
+let board = repeat('.', size * size) |> collect_list()
+let used = repeat(false, pieces.count) |> collect_list()
+
+fits(shape: Shape, at: Cell) -> bool =>
+    shape |> all(c =>
+        let r = at.row + c.row, col = at.column + c.column in
+        r >= 0 /\ r < size /\ col >= 0 /\ col < size /\
+        board[r * size + col] == '.')
+
+mark(shape: Shape, at: Cell, name: char) is
+    for c in shape do
+        board[(at.row + c.row) * size + at.column + c.column] = name
+    od
+si
+
+tile() -> bool is
+    let next = board.index_of('.')
+
+    if next < 0 then
+        return true
+    fi
+
+    let at = (row = next / size, column = next % size)
+
+    for (i, (name, turns)) in shapes |> index() do
+        if !used[i] then
+            for shape in turns do
+                if fits(shape, at) then
+                    mark(shape, at, name)
+                    used[i] = true
+
+                    if tile() then
+                        return true
+                    fi
+
+                    used[i] = false
+                    mark(shape, at, '.')
+                fi
+            od
+        fi
+    od
+
+    false
+si
+
+let random = System.Random(8)
+let attempts mut = 0
+
+do
+    attempts = attempts + 1
+
+    for i in 0..size * size do
+        board[i] = '.'
+    od
+
+    let holes mut = 0
+
+    while holes < 4 do
+        let spot = random.next(size * size)
+
+        if board[spot] == '.' then
+            board[spot] = '-'
+            holes = holes + 1
+        fi
+    od
+
+    if tile() then
+        break
+    fi
+od
+
+write_line("tiled on attempt {attempts}:")
+write_line("")
+
+for row in 0..size do
+    let cells = (0..size) |> map(c => "{board[row * size + c]}")
+
+    write_line(cells |> join(" "))
+od
+
+let hues = "FILNPTUVWXYZ"
+
+colour(name: char) -> (red: ubyte, green: ubyte, blue: ubyte) =>
+    let h = cast double(hues.index_of(name)) / 12.0D * 6.0D in
+    let f = h - System.Math.floor(h) in
+    let i = cast int(h) in
+    let up = cast ubyte(90.0D + 150.0D * f) in
+    let down = cast ubyte(240.0D - 150.0D * f) in
+    case i
+    when 0 then (red = 240ub, green = up, blue = 90ub)
+    when 1 then (red = down, green = 240ub, blue = 90ub)
+    when 2 then (red = 90ub, green = 240ub, blue = up)
+    when 3 then (red = 90ub, green = down, blue = 240ub)
+    when 4 then (red = up, green = 90ub, blue = 240ub)
+    else (red = 240ub, green = 90ub, blue = down)
+    esac
+
+let cell = 40.0D
+let image = IMAGE(320, 320)
+let tiles = SHAPES()
+
+image.clear(250ub, 250ub, 245ub)
+
+for i in 0..size * size do
+    let name = board[i]
+
+    if name != '-' then
+        let x = cell * cast double(i % size)
+        let y = cell * cast double(i / size)
+
+        tiles.add(
+            [
+                (x = x, y = y), (x = x + cell, y = y),
+                (x = x + cell, y = y + cell), (x = x, y = y + cell)
+            ],
+            colour(name))
+    fi
+od
+
+image.fill(tiles)
+image.colour(30ub, 30ub, 30ub)
+image.stroke(2.5D)
+
+for i in 0..size * size do
+    let r = i / size, c = i % size
+    let x = cell * cast double(c), y = cell * cast double(r)
+
+    if c + 1 < size /\ board[i] != board[i + 1] then
+        image.line(x + cell, y, x + cell, y + cell)
+    fi
+
+    if r + 1 < size /\ board[i] != board[i + size] then
+        image.line(x, y + cell, x + cell, y + cell)
+    fi
+od
+
+image.write("pentominoes.png")
+
+image.show("pentominoes.png")

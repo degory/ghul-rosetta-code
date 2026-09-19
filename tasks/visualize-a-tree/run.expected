@@ -17,14 +17,14 @@ nested:
 
 drawn:
   kingdom
-  ├─ animal
-  │  ├─ vertebrate
-  │  │  ├─ bird
-  │  │  └─ mammal
-  │  └─ invertebrate
-  │     └─ mollusc
-  ├─ plant
-  │  ├─ moss
-  │  ├─ fern
-  │  └─ conifer
-  └─ fungus
+  +- animal
+  |  +- vertebrate
+  |  |  +- bird
+  |  |  \- mammal
+  |  \- invertebrate
+  |     \- mollusc
+  +- plant
+  |  +- moss
+  |  +- fern
+  |  \- conifer
+  \- fungus

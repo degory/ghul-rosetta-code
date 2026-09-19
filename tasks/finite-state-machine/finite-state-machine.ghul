@@ -1,0 +1,66 @@
+use default
+use IO.Std.read_line
+
+enum State is
+    READY,
+    WAITING,
+    DISPENSE,
+    REFUNDING,
+    EXIT
+si
+
+use State.*
+
+explicit(state: State, signal: string) -> State? =>
+    case (state, signal)
+    when (~READY, "deposit") then WAITING
+    when (~READY, "quit") then EXIT
+    when (~WAITING, "select") then DISPENSE
+    when (~WAITING, "refund") then REFUNDING
+    when (~DISPENSE, "remove") then READY
+    else null
+    esac
+
+implicit(state: State) -> State? =>
+    case state
+    when REFUNDING then READY
+    else null
+    esac
+
+signals(state: State) -> string =>
+    case state
+    when READY then "deposit or quit"
+    when WAITING then "select or refund"
+    when DISPENSE then "remove"
+    else ""
+    esac
+
+name(state: State) -> string => "{state}".to_lower()
+
+let state mut = READY
+
+while state != EXIT do
+    if let next = implicit(state) then
+        write_line("{name(state)} -> {name(next)}")
+        state = next
+    else
+        write_line("{name(state)}: {signals(state)}?")
+
+        let line = read_line()
+
+        if !line? then
+            break
+        fi
+
+        let signal = line.trim().to_lower()
+
+        write_line("> {signal}")
+
+        if let next = explicit(state, signal) then
+            write_line("{name(state)} -> {signal} -> {name(next)}")
+            state = next
+        else
+            write_line("{signal} does nothing here")
+        fi
+    fi
+od

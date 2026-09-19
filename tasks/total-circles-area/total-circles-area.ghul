@@ -1,0 +1,141 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+use Circle = (x: double, y: double, r: double)
+use Arc = (circle: Circle, from: double, to: double)
+
+let circles: Circle[] = [
+    (1.6417233788D, 1.6121789534D, 0.0848270516D),
+    (-1.4944608174D, 1.2077959613D, 1.1039549836D),
+    (0.6110294452D, -0.6907087527D, 0.9089162485D),
+    (0.3844862411D, 0.2923344616D, 0.2375743054D),
+    (-0.2495892950D, -0.3832854473D, 1.0845181219D),
+    (1.7813504266D, 1.6178237031D, 0.8162655711D),
+    (-0.1985249206D, -0.8343333301D, 0.0538864941D),
+    (-1.7011985145D, -0.1263820964D, 0.4776976918D),
+    (-0.4319462812D, 1.4104420482D, 0.7886291537D),
+    (0.2178372997D, -0.9499557344D, 0.0357871187D),
+    (-0.6294854565D, -1.3078893852D, 0.7653357688D),
+    (1.7952608455D, 0.6281269104D, 0.2727652452D),
+    (1.4168575317D, 1.0683357171D, 1.1016025378D),
+    (1.4637371396D, 0.9463877418D, 1.1846214562D),
+    (-0.5263668798D, 1.7315156631D, 1.4428514068D),
+    (-1.2197352481D, 0.9144146579D, 1.0727263474D),
+    (-0.1389358881D, 0.1092805780D, 0.7350208828D),
+    (1.5293954595D, 0.0030278255D, 1.2472867347D),
+    (-0.5258728625D, 1.3782633069D, 1.3495508831D),
+    (-0.1403562064D, 0.2437382535D, 1.3804956588D),
+    (0.8055826339D, -0.0482092025D, 0.3327165165D),
+    (-0.6311979224D, 0.7184578971D, 0.2491045282D),
+    (1.4685857879D, -0.8347049536D, 1.3670667538D),
+    (-0.6855727502D, 1.6465021616D, 1.0593087096D),
+    (0.0152957411D, 0.0638919221D, 0.9771215985D)
+]
+
+let turn = 2.0D * Math.pi
+
+wrap(angle: double) -> double => angle - turn * Math.floor(angle / turn)
+
+distance(a: Circle, b: Circle) -> double =>
+    Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))
+
+inside(c: Circle, others: List[Circle]) -> bool =>
+    others |> any(o => !(o =~ c) /\ distance(o, c) + c.r <= o.r)
+
+on(c: Circle, angle: double) -> (x: double, y: double) =>
+    (x = c.x + c.r * Math.cos(angle), y = c.y + c.r * Math.sin(angle))
+
+covers(o: Circle, x: double, y: double) -> bool =>
+    (x - o.x) * (x - o.x) + (y - o.y) * (y - o.y) < o.r * o.r
+
+crossings(c: Circle, o: Circle) -> List[double] is
+    let d = distance(c, o)
+
+    if d >= c.r + o.r \/ d <= Math.abs(c.r - o.r) then
+        return LIST[double]()
+    fi
+
+    let base = Math.atan2(o.y - c.y, o.x - c.x)
+    let cosine = (c.r * c.r + d * d - o.r * o.r) / (2.0D * c.r * d)
+    let spread = Math.acos(cosine)
+
+    LIST([base - spread, base + spread])
+si
+
+outer_arcs(c: Circle, others: List[Circle]) -> List[Arc] is
+    let angles = LIST[double](
+        others
+            |> filter(o => !(o =~ c))
+            |> flat_map(o => crossings(c, o))
+            |> map(wrap))
+
+    if angles.count == 0 then
+        return LIST([(circle = c, from = 0.0D, to = 2.0D * Math.pi)])
+    fi
+
+    angles.sort()
+    angles.add(angles[0] + 2.0D * Math.pi)
+
+    (0..angles.count - 1)
+        |> map(i => (circle = c, from = angles[i], to = angles[i + 1]))
+        |> filter(arc =>
+            let middle = (arc.from + arc.to) / 2.0D in
+            let p = on(c, middle) in
+            !(others |> any(o => !(o =~ c) /\ covers(o, p.x, p.y))))
+        |> collect_list()
+si
+
+area_under(arc: Arc) -> double =>
+    let c = arc.circle in
+    0.5D * (
+        c.r * c.r * (arc.to - arc.from) +
+        c.r * c.x * (Math.sin(arc.to) - Math.sin(arc.from)) -
+        c.r * c.y * (Math.cos(arc.to) - Math.cos(arc.from)))
+
+let all = LIST[Circle](circles)
+let kept = all |> filter(c => !inside(c, all)) |> collect_list()
+
+let arcs = kept |> flat_map(c => outer_arcs(c, kept)) |> collect_list()
+let area = arcs |> map(area_under) |> reduce(0.0D, (a, b) => a + b)
+
+let hidden = circles.count - kept.count
+
+write_line("{circles.count} circles, {hidden} inside others")
+write_line("the boundary is {arcs.count} arcs")
+write_line("total area: {area:F8}")
+
+let image = IMAGE(400, 400)
+
+image.view(-3.2D, -3.0D, 3.4D, 3.6D)
+image.clear(252ub, 250ub, 245ub)
+image.colour(150ub, 190ub, 230ub)
+
+for c in circles do
+    image.disc(c.x, c.y, c.r)
+od
+
+image.colour(90ub, 130ub, 180ub)
+image.stroke(0.8D)
+
+for c in circles do
+    image.circle(c.x, c.y, c.r)
+od
+
+image.colour(20ub, 50ub, 120ub)
+image.stroke(2.0D)
+
+for arc in arcs do
+    let c = arc.circle
+
+    image.line(
+        (0::32)
+            |> map(i =>
+                let t = cast double(i) / 32.0D in
+                on(c, arc.from + (arc.to - arc.from) * t))
+            |> collect_list())
+od
+
+image.write("circles.png")
+
+image.show("circles.png")

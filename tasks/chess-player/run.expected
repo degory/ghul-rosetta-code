@@ -1,0 +1,79 @@
+you play white; enter moves like e2e4, or e7e8q to promote
+8 r n b q k b n r
+7 p p p p p p p p
+6 . . . . . . . .
+5 . . . . . . . .
+4 . . . . . . . .
+3 . . . . . . . .
+2 P P P P P P P P
+1 R N B Q K B N R
+  a b c d e f g h
+> e2e4
+the computer plays g8f6
+8 r n b q k b . r
+7 p p p p p p p p
+6 . . . . . n . .
+5 . . . . . . . .
+4 . . . . P . . .
+3 . . . . . . . .
+2 P P P P . P P P
+1 R N B Q K B N R
+  a b c d e f g h
+> g1f3
+the computer plays f6e4
+8 r n b q k b . r
+7 p p p p p p p p
+6 . . . . . . . .
+5 . . . . . . . .
+4 . . . . n . . .
+3 . . . . . N . .
+2 P P P P . P P P
+1 R N B Q K B . R
+  a b c d e f g h
+> e1g1
+that is not a legal move
+> d2d4
+the computer plays b8c6
+8 r . b q k b . r
+7 p p p p p p p p
+6 . . n . . . . .
+5 . . . . . . . .
+4 . . . P n . . .
+3 . . . . . N . .
+2 P P P . . P P P
+1 R N B Q K B . R
+  a b c d e f g h
+> f1c4
+the computer plays e4d6
+8 r . b q k b . r
+7 p p p p p p p p
+6 . . n n . . . .
+5 . . . . . . . .
+4 . . B P . . . .
+3 . . . . . N . .
+2 P P P . . P P P
+1 R N B Q K . . R
+  a b c d e f g h
+> c4b3
+the computer plays e7e6
+8 r . b q k b . r
+7 p p p p . p p p
+6 . . n n p . . .
+5 . . . . . . . .
+4 . . . P . . . .
+3 . B . . . N . .
+2 P P P . . P P P
+1 R N B Q K . . R
+  a b c d e f g h
+> e1g1
+the computer plays d8f6
+8 r . b . k b . r
+7 p p p p . p p p
+6 . . n n p q . .
+5 . . . . . . . .
+4 . . . P . . . .
+3 . B . . . N . .
+2 P P P . . P P P
+1 R N B Q . R K .
+  a b c d e f g h
+no more input: the game is adjourned

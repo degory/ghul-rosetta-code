@@ -1,0 +1,26 @@
+4 3 3 / 3 1 2 / 0 2 3 topples to
+2 1 0 / 0 3 3 / 1 2 3
+
+s1 + s2 = s2 + s1:
+    1 2 0     2 1 3     3 3 3
+    2 1 1  +  1 0 1  =  3 1 2
+    0 1 3     0 1 0     0 2 3
+
+s1 + s2 =~ s2 + s1: True
+
+s3 + s3_id:
+    3 3 3     2 1 2     3 3 3
+    3 3 3  +  1 0 1  =  3 3 3
+    3 3 3     2 1 2     3 3 3
+
+s3 + s3_id =~ s3: True
+
+s3_id + s3_id:
+    2 1 2     2 1 2     2 1 2
+    1 0 1  +  1 0 1  =  1 0 1
+    2 1 2     2 1 2     2 1 2
+
+s3_id + s3_id =~ s3_id: True
+
+the identity of the 64 x 64 sandpile is drawn below
+<<image identity.png>>

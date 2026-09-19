@@ -1,0 +1,128 @@
+use default
+use Raster.IMAGE
+use Raster.SHAPES
+
+use Cell = (row: int, column: int)
+use Shape = List[Cell]
+
+at(row: int, column: int) -> Cell => (row = row, column = column)
+
+reading_order(a: Cell, b: Cell) -> int =>
+    if a.row != b.row then a.row - b.row else a.column - b.column fi
+
+has(shape: Shape, cell: Cell) -> bool => shape |> any(c => c =~ cell)
+
+height(shape: Shape) -> int =>
+    shape |> map(c => c.row) |> reduce(0, int.max) + 1
+
+width(shape: Shape) -> int =>
+    shape |> map(c => c.column) |> reduce(0, int.max) + 1
+
+normalised(cells: Iterable[Cell]) -> Shape is
+    let list = cells |> collect_list()
+    let top = list |> map(c => c.row) |> reduce(list[0].row, int.min)
+    let left = list |> map(c => c.column) |> reduce(list[0].column, int.min)
+
+    list
+        |> map(c => at(c.row - top, c.column - left))
+        |> sort(reading_order)
+        |> collect_list()
+si
+
+key(shape: Shape) -> string =>
+    shape |> map(c => "{c.row},{c.column}") |> join(" ")
+
+canonical(shape: Shape) -> Shape is
+    let forms = LIST[Shape]()
+    let current mut = shape
+
+    for _ in 0..4 do
+        current = normalised(current |> map(c => at(c.column, -c.row)))
+        forms.add(current)
+        forms.add(normalised(current |> map(c => at(c.row, -c.column))))
+    od
+
+    forms |> reduce(forms[0], (best, f) =>
+        if key(f) <> key(best) < 0 then f else best fi)
+si
+
+grow(shapes: List[Shape]) -> List[Shape] is
+    let seen = MAP[string, Shape]()
+
+    for shape in shapes do
+        for cell in shape do
+            for (dr, dc) in [(0, 1), (1, 0), (0, -1), (-1, 0)] do
+                let next = at(cell.row + dr, cell.column + dc)
+
+                if !has(shape, next) then
+                    let cells = shape |> cat([next]) |> collect_list()
+                    let bigger = canonical(cells)
+
+                    seen[key(bigger)] = bigger
+                fi
+            od
+        od
+    od
+
+    seen.values |> sort((a, b) => key(a) <> key(b)) |> collect_list()
+si
+
+row_of(shape: Shape, row: int) -> string =>
+    (0..width(shape))
+        |> map(column => has(shape, at(row, column)))
+        |> map(filled => if filled then "#" else " " fi)
+        |> join("")
+
+art(shapes: List[Shape]) -> Pipe[string] =>
+    let tallest = shapes |> map(height) |> reduce(0, int.max) in
+    (0..tallest)
+        |> map(row => shapes |> map(s => row_of(s, row)) |> join("  "))
+        |> map(line => line.trim_end())
+
+let levels = LIST[List[Shape]]([LIST([LIST([at(0, 0)])])])
+
+while levels.count < 10 do
+    levels.add(grow(levels[levels.count - 1]))
+od
+
+for (i, shapes) in levels |> index() do
+    write_line("{i + 1,2} cells: {shapes.count,5} free polyominoes")
+od
+
+write_line("")
+write_line("the twelve of size five:")
+
+art(levels[4]) |> each(line => write_line(line))
+
+let sixes = levels[5]
+let size = 12.0D
+let columns = 7
+let panel = 90
+let rows = (sixes.count + columns - 1) / columns
+let image = IMAGE(columns * panel, rows * panel)
+let tiles = SHAPES()
+
+image.clear(250ub, 250ub, 245ub)
+
+for (i, shape) in sixes |> index() do
+    let left = cast double(i % columns * panel + 12)
+    let top = cast double(i / columns * panel + 12)
+
+    for c in shape do
+        let x = left + size * cast double(c.column)
+        let y = top + size * cast double(c.row)
+        let far = size - 1.0D
+
+        tiles.add(
+            [
+                (x = x, y = y), (x = x + far, y = y),
+                (x = x + far, y = y + far), (x = x, y = y + far)
+            ],
+            (60ub, 110ub, 200ub))
+    od
+od
+
+image.fill(tiles)
+image.write("hexominoes.png")
+
+image.show("hexominoes.png")

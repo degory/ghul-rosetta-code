@@ -1,0 +1,114 @@
+use default
+use Raster.IMAGE
+
+use Point = (x: double, y: double)
+
+let subject =
+    [(x = 50.0D, y = 150.0D), (x = 200.0D, y = 50.0D),
+     (x = 350.0D, y = 150.0D), (x = 350.0D, y = 300.0D),
+     (x = 250.0D, y = 300.0D), (x = 200.0D, y = 250.0D),
+     (x = 150.0D, y = 350.0D), (x = 100.0D, y = 250.0D),
+     (x = 100.0D, y = 200.0D)]
+
+let window =
+    [(x = 100.0D, y = 100.0D), (x = 300.0D, y = 100.0D),
+     (x = 300.0D, y = 300.0D), (x = 100.0D, y = 300.0D)]
+
+side(at: Point, from: Point, to: Point) -> double =>
+    (to.x - from.x) * (at.y - from.y) -
+    (to.y - from.y) * (at.x - from.x)
+
+crossing(first: Point, second: Point, from: Point, to: Point) ->
+        Point =>
+    (let near = side(first, from, to)
+     let far = side(second, from, to)
+     let part = near / (near - far)
+
+     (x = first.x + (second.x - first.x) * part,
+      y = first.y + (second.y - first.y) * part))
+
+same(a: Point, b: Point) -> bool => a.x == b.x /\ a.y == b.y
+
+extend(kept: LIST[Point], at: Point) is
+    if kept.count == 0 \/ !same(kept[kept.count - 1], at) then
+        kept.add(at)
+    fi
+si
+
+clip(polygon: Collections.List[Point], from: Point, to: Point) ->
+        LIST[Point] is
+    let kept = LIST[Point]()
+
+    for index in 0..polygon.count do
+        let previous = polygon[(index + polygon.count - 1) %
+                               polygon.count]
+        let at = polygon[index]
+
+        let here = side(at, from, to) >= 0.0D
+        let before = side(previous, from, to) >= 0.0D
+
+        if here != before then
+            extend(kept, crossing(previous, at, from, to))
+        fi
+
+        if here then
+            extend(kept, at)
+        fi
+    od
+
+    if kept.count > 1 /\ same(kept[0], kept[kept.count - 1]) then
+        kept.remove_at(kept.count - 1)
+    fi
+
+    return kept
+si
+
+let clipped mut = LIST(subject)
+
+for index in 0..window.count do
+    clipped =
+        clip(clipped,
+             window[index],
+             window[(index + 1) % window.count])
+od
+
+write_line("clipped polygon of {clipped.count} points:")
+
+for at in clipped do
+    write_line("    ({at.x:F3}, {at.y:F3})")
+od
+
+let image = IMAGE(520, 520)
+
+image.view(20.0D, 20.0D, 380.0D, 380.0D)
+
+closed(polygon: Collections.List[Point]) -> LIST[Point] is
+    let ring = LIST(polygon)
+
+    ring.add(polygon[0])
+
+    return ring
+si
+
+image.colour(210ub, 232ub, 214ub)
+image.fill(clipped)
+
+image.stroke(2.0D)
+
+image.colour(180ub, 60ub, 60ub)
+image.line(closed(subject))
+
+image.colour(70ub, 70ub, 180ub)
+image.line(closed(window))
+
+image.colour(30ub, 120ub, 60ub)
+image.stroke(2.6D)
+image.line(closed(clipped))
+
+for at in clipped do
+    image.dot(at.x, at.y, 4.0D)
+od
+
+image.write("clipped.png")
+
+image.show("clipped.png")

@@ -1,0 +1,117 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+struct P(x: double, y: double) is
+    +(o: P) -> P => P(x + o.x, y + o.y)
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    *(k: double) -> P => P(x * k, y * k)
+    ⋅(o: P) -> double => x * o.x + y * o.y
+    ×(o: P) -> double => x * o.y - y * o.x
+
+    length: double => Math.sqrt(self ⋅ self)
+si
+
+struct CIRCLE(centre: P, radius: double) is
+    contains(p: P) -> bool => (p - centre).length <= radius + 1.0e-9
+
+    to_string() -> string =>
+        "centre ({centre.x:F6}, {centre.y:F6}), radius {radius:F6}"
+si
+
+across(a: P, b: P) -> CIRCLE =>
+    CIRCLE((a + b) * 0.5D, (a - b).length / 2.0D)
+
+through(a: P, b: P, c: P) -> CIRCLE =>
+    let ab = b - a in
+    let ac = c - a in
+    let d = 2.0D * (ab × ac) in
+    let offset = P(
+        (ac.y * (ab ⋅ ab) - ab.y * (ac ⋅ ac)) / d,
+        (ab.x * (ac ⋅ ac) - ac.x * (ab ⋅ ab)) / d) in
+    CIRCLE(a + offset, offset.length)
+
+let random = System.Random(1857)
+
+enclose(given: List[P]) -> CIRCLE is
+    let points = LIST(given)
+
+    for i in 0..points.count do
+        let other = i + random.next(points.count - i)
+        let held = points[i]
+
+        points[i] = points[other]
+        points[other] = held
+    od
+
+    let circle mut = CIRCLE(points[0], 0.0D)
+
+    for i in 1..points.count do
+        if !circle.contains(points[i]) then
+            circle = CIRCLE(points[i], 0.0D)
+
+            for j in 0..i do
+                if !circle.contains(points[j]) then
+                    circle = across(points[i], points[j])
+
+                    for k in 0..j do
+                        if !circle.contains(points[k]) then
+                            circle =
+                                through(points[i], points[j], points[k])
+                        fi
+                    od
+                fi
+            od
+        fi
+    od
+
+    return circle
+si
+
+let tests = [
+    [P(0.0D, 0.0D), P(0.0D, 1.0D), P(1.0D, 0.0D)],
+    [P(5.0D, -2.0D), P(-3.0D, -2.0D), P(-2.0D, 5.0D),
+     P(1.0D, 6.0D), P(0.0D, 2.0D)]
+]
+
+for test in tests do
+    write_line(enclose(test))
+od
+
+let scattered =
+    (0..60)
+        |> map(_ =>
+            let angle = 2.0D * Math.pi * random.next_double() in
+            let r = 4.0D * Math.sqrt(random.next_double()) in
+            P(1.5D * r * Math.cos(angle), r * Math.sin(angle)))
+        |> collect_list()
+
+let circle = enclose(scattered)
+
+write_line()
+write_line("60 random points: {circle}")
+
+let image = IMAGE(400, 400)
+
+image.view(
+    circle.centre.x - 7.0D, circle.centre.y - 7.0D,
+    circle.centre.x + 7.0D, circle.centre.y + 7.0D)
+image.clear(252ub, 252ub, 250ub)
+
+image.colour(40ub, 90ub, 180ub)
+image.stroke(2.0D)
+image.circle(circle.centre.x, circle.centre.y, circle.radius)
+
+for p in scattered do
+    if Math.abs((p - circle.centre).length - circle.radius) < 1.0e-6 then
+        image.colour(210ub, 50ub, 40ub)
+        image.dot(p.x, p.y, 5.0D)
+    else
+        image.colour(40ub, 40ub, 40ub)
+        image.dot(p.x, p.y, 3.0D)
+    fi
+od
+
+image.write("circle.png")
+
+image.show("circle.png")

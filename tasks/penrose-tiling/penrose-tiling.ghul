@@ -1,0 +1,80 @@
+use default
+use Raster.IMAGE
+use Raster.SHAPES
+
+use Math = System.Math
+use Point = (x: double, y: double)
+
+union Half(a: Point, b: Point, c: Point) is
+    THIN(..)
+    FAT(..)
+si
+
+let phi = (1.0D + Math.sqrt(5.0D)) / 2.0D
+
+towards(from: Point, to: Point) -> Point =>
+    (x = from.x + (to.x - from.x) / phi,
+     y = from.y + (to.y - from.y) / phi)
+
+split(tile: Half) -> Pipe[Half] is
+    if isa Half.THIN(tile) then
+        let cut = towards(tile.a, tile.b)
+
+        yield Half.THIN(tile.c, cut, tile.b)
+        yield Half.FAT(cut, tile.c, tile.a)
+    else
+        let near = towards(tile.b, tile.a)
+        let far = towards(tile.b, tile.c)
+
+        yield Half.FAT(far, tile.c, tile.a)
+        yield Half.FAT(near, far, tile.b)
+        yield Half.THIN(far, near, tile.a)
+    fi
+si
+
+spoke(index: int) -> Half =>
+    (let low = cast double(2 * index - 1) * Math.pi / 10.0D
+     let high = cast double(2 * index + 1) * Math.pi / 10.0D
+
+     let first = (x = Math.cos(low), y = Math.sin(low))
+     let second = (x = Math.cos(high), y = Math.sin(high))
+     let middle = (x = 0.0D, y = 0.0D)
+
+     if index % 2 == 0 then
+         Half.THIN(middle, second, first)
+     else
+         Half.THIN(middle, first, second)
+     fi)
+
+let tiles mut = (0..10) |> map(spoke) |> collect_list()
+
+for _ in 0..6 do
+    tiles = tiles |> flat_map(split) |> collect_list()
+od
+
+let image = IMAGE(660, 440)
+
+image.view(-0.62D, -0.4133D, 0.62D, 0.4133D)
+image.stroke(1.0D)
+
+let shapes = SHAPES()
+
+for tile in tiles do
+    if isa Half.FAT(tile) then
+        shapes.add([tile.a, tile.b, tile.c], 232ub, 184ub, 118ub)
+    else
+        shapes.add([tile.a, tile.b, tile.c], 118ub, 164ub, 214ub)
+    fi
+od
+
+image.fill(shapes)
+
+image.colour(60ub, 60ub, 70ub)
+
+for tile in tiles do
+    image.line([tile.c, tile.a, tile.b])
+od
+
+image.write("penrose.png")
+
+image.show("penrose.png")

@@ -1,0 +1,81 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+let n = 17
+
+let residues =
+    (1..n) |> map(i => i * i % n) |> collect_list()
+
+linked(a: int, b: int) -> bool =>
+    let d = ((a - b) % n + n) % n in
+    residues |> any(r => r == d)
+
+for a in 0..n do
+    let row = (0..n) |> map(b =>
+        if a == b then "-" elif linked(a, b) then "1" else "0" fi)
+
+    write_line(row |> join(" "))
+od
+
+quads() -> Pipe[(int, int, int, int)] is
+    for a in 0..n do
+        for b in a + 1..n do
+            for c in b + 1..n do
+                for d in c + 1..n do
+                    yield (a, b, c, d)
+                od
+            od
+        od
+    od
+si
+
+uniform(q: (int, int, int, int)) -> bool =>
+    let (a, b, c, d) = q in
+    let pairs = [(a, b), (a, c), (a, d), (b, c), (b, d), (c, d)] in
+    let links = pairs |> filter(((x, y)) => linked(x, y)) |> count() in
+    links == 0 \/ links == 6
+
+let bad = quads() |> filter(uniform) |> count()
+
+write_line()
+write_line(
+    "{quads() |> count()} sets of 4 nodes checked, "
+    "{bad} totally connected or totally unconnected")
+
+let image = IMAGE(420, 420)
+
+image.view(-1.15D, -1.15D, 1.15D, 1.15D)
+image.clear(252ub, 252ub, 250ub)
+
+at(i: int) -> (x: double, y: double) =>
+    let turn = cast double(i) / cast double(n) in
+    let angle = Math.pi / 2.0D - 2.0D * Math.pi * turn in
+    (x = Math.cos(angle), y = Math.sin(angle))
+
+image.colour(40ub, 90ub, 180ub)
+image.stroke(1.2D)
+
+for a in 0..n do
+    for b in a + 1..n do
+        if linked(a, b) then
+            let p = at(a)
+            let q = at(b)
+
+            image.line(p.x, p.y, q.x, q.y)
+        fi
+    od
+od
+
+for i in 0..n do
+    let p = at(i)
+
+    image.colour(200ub, 60ub, 40ub)
+    image.dot(p.x, p.y, 11.0D)
+    image.colour(255ub, 255ub, 255ub)
+    image.text(p.x, p.y - 0.03D, 11.0D, "{i}", Raster.Anchor.CENTRE)
+od
+
+image.write("paley.png")
+
+image.show("paley.png")

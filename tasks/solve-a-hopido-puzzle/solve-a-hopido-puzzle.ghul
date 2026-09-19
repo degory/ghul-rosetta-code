@@ -1,0 +1,118 @@
+use default
+use Raster.IMAGE
+
+use Square = (row: int, column: int)
+
+let board = [
+    ". 0 0 . 0 0 .",
+    "0 0 0 0 0 0 0",
+    "0 0 0 0 0 0 0",
+    ". 0 0 0 0 0 .",
+    ". . 0 0 0 . .",
+    ". . . 0 . . ."
+]
+
+let rows = board.count
+let columns = (board[0].length + 1) / 2
+
+let hops = [
+    (-3, 0), (3, 0), (0, -3), (0, 3), (-2, -2), (-2, 2), (2, -2), (2, 2)
+]
+
+let open = LIST[Square]()
+
+for (row, line) in board |> index() do
+    for (position, c) in line |> index() do
+        if c == '0' then
+            open.add((row = row, column = position / 2))
+        fi
+    od
+od
+
+let order = MAP[Square, int]()
+
+free(s: Square) -> bool => open.contains(s) /\ !order.contains_key(s)
+
+moves(s: Square) -> List[Square] =>
+    hops
+        |> map(((dr, dc)) => (row = s.row + dr, column = s.column + dc))
+        |> filter(free)
+        |> collect_list()
+
+hop(s: Square, step: int) -> bool is
+    order[s] = step
+
+    if step == open.count then
+        return true
+    fi
+
+    let next =
+        moves(s) |> sort((a, b) => moves(a).count - moves(b).count)
+
+    for candidate in next do
+        if hop(candidate, step + 1) then
+            return true
+        fi
+    od
+
+    order.remove(s)
+
+    false
+si
+
+let start = open |> find(s => hop(s, 1))
+
+assert start? else "no solution"
+
+for row in 0..rows do
+    let line =
+        (0..columns)
+            |> map(column =>
+                let s = (row = row, column = column) in
+                if order.contains_key(s) then "{order[s],3}" else "   " fi)
+            |> join("")
+
+    write_line(line.trim_end())
+od
+
+let cell = 48.0D
+let image = IMAGE(cast int(cell) * columns, cast int(cell) * rows)
+
+image.clear(245ub, 240ub, 225ub)
+
+for s in open do
+    let x = cell * cast double(s.column)
+    let y = cell * cast double(s.row)
+
+    image.colour(200ub, 215ub, 235ub)
+    image.fill_rectangle(
+        x + 2.0D, y + 2.0D, x + cell - 2.0D, y + cell - 2.0D)
+od
+
+let path =
+    open
+        |> sort((a, b) => order[a] - order[b])
+        |> map(s => (
+            x = cell * (cast double(s.column) + 0.5D),
+            y = cell * (cast double(s.row) + 0.5D)))
+        |> collect_list()
+
+image.colour(30ub, 60ub, 140ub)
+image.stroke(2.0D)
+image.line(path)
+image.colour(200ub, 40ub, 40ub)
+image.dot(path[0].x, path[0].y, 7.0D)
+image.colour(30ub, 60ub, 140ub)
+image.ring(path[path.count - 1].x, path[path.count - 1].y, 7.0D)
+
+image.colour(90ub, 90ub, 100ub)
+
+for s in open do
+    image.text(
+        cell * cast double(s.column) + 5.0D,
+        cell * cast double(s.row) + 15.0D, 11.0D, "{order[s]}")
+od
+
+image.write("hopido.png")
+
+image.show("hopido.png")

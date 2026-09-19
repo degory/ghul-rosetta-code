@@ -1,0 +1,97 @@
+use default
+use Raster.AXES
+use Raster.IMAGE
+use System.Math.log10
+
+let random = System.Random(2026)
+
+let rounds = 10000
+
+let staying = LIST[double]()
+let switching = LIST[double]()
+
+let stay_wins mut = 0
+let switch_wins mut = 0
+
+for trial in 1::rounds do
+    let car = random.next(3)
+    let chosen = random.next(3)
+
+    let opened mut = random.next(3)
+
+    while opened == chosen \/ opened == car do
+        opened = random.next(3)
+    od
+
+    let switched = 3 - chosen - opened
+
+    if chosen == car then
+        stay_wins = stay_wins + 1
+    fi
+
+    if switched == car then
+        switch_wins = switch_wins + 1
+    fi
+
+    staying.add(cast double(stay_wins) / cast double(trial))
+    switching.add(cast double(switch_wins) / cast double(trial))
+od
+
+curve(rates: List[double]) -> List[(x: double, y: double)] =>
+    rates
+        |> index()
+        |> map(rate =>
+            (x = log10(cast double(rate.index + 1)), y = rate.value))
+        |> collect_list()
+
+let stay_colour = (red = 210ub, green = 130ub, blue = 40ub)
+let switch_colour = (red = 40ub, green = 85ub, blue = 165ub)
+
+let image = IMAGE(760, 460)
+
+image.colour(95ub, 100ub, 115ub)
+image.stroke(1.0)
+
+let axes = AXES(image)
+
+axes.x_title = "games played"
+axes.y_title = "win rate"
+
+axes.x_ticks(
+    (0::4)
+        |> map(decade =>
+            (value = cast double(decade),
+             label = "{System.Math.pow(10.0, cast double(decade))}"))
+        |> collect_list())
+
+axes.y_ticks([
+    (value = 0.0, label = "0"),
+    (value = 1.0 / 3.0, label = "1/3"),
+    (value = 0.5, label = "1/2"),
+    (value = 2.0 / 3.0, label = "2/3"),
+    (value = 1.0, label = "1")
+])
+
+axes.key("switching", switch_colour)
+axes.key("staying", stay_colour)
+
+axes.fit(0.0, 0.0, 4.0, 1.0)
+axes.draw()
+
+image.colour(195ub, 200ub, 210ub)
+
+for line in [1.0 / 3.0, 2.0 / 3.0] do
+    image.line(0.0, line, 4.0, line)
+od
+
+image.stroke(1.4)
+
+image.colour(stay_colour)
+image.line(curve(staying))
+
+image.colour(switch_colour)
+image.line(curve(switching))
+
+image.write("monty-hall.png")
+
+image.show("monty-hall.png")

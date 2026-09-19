@@ -1,0 +1,222 @@
+use default
+
+let goal = LIST([
+    "UF", "UR", "UB", "UL", "DF", "DR", "DB", "DL", "FR", "FL", "BR", "BL",
+    "UFR", "URB", "UBL", "ULF", "DRF", "DFL", "DLB", "DBR"
+])
+
+let allowed_moves = [0, 262143, 259263, 74943, 74898]
+
+let faces = [
+    [0, 1, 2, 3, 0, 1, 2, 3],
+    [4, 7, 6, 5, 4, 5, 6, 7],
+    [0, 9, 4, 8, 0, 3, 5, 4],
+    [2, 10, 6, 11, 2, 1, 7, 6],
+    [3, 11, 7, 9, 3, 2, 6, 5],
+    [1, 8, 5, 10, 1, 0, 4, 7]
+]
+
+let solved =
+    (0..40) |> map(i => if i < 20 then i else 0 fi) |> collect_array()
+
+apply(move: int, state: int[]) -> int[] is
+    let face = faces[move / 3]
+    let turned = LIST[int](state)
+
+    for turn in 0::move % 3 do
+        let before = turned.to_array()
+
+        for i in 0..8 do
+            let corner = if i > 3 then 12 else 0 fi
+            let target = face[i] + corner
+            let along = if i & 3 == 3 then i - 3 else i + 1 fi
+            let source = face[along] + corner
+
+            let twist =
+                if i < 4 then
+                    if move / 3 == 2 \/ move / 3 == 3 then 1 else 0 fi
+                elif move / 3 < 2 then
+                    0
+                else
+                    2 - (i & 1)
+                fi
+
+            turned[target] = before[source]
+            turned[target + 20] = before[source + 20] + twist
+
+            if turn == move % 3 then
+                turned[target + 20] =
+                    turned[target + 20] % (if corner > 0 then 3 else 2 fi)
+            fi
+        od
+    od
+
+    turned.to_array()
+si
+
+inverse(move: int) -> int => move + 2 - 2 * (move % 3)
+
+slice(cubie: int) -> int => if cubie > 7 then 2 else cubie & 1 fi
+
+key(phase: int, state: int[]) -> string is
+    let values: List[int] =
+        if phase == 1 then
+            state[20..32]
+        elif phase == 2 then
+            let edges =
+                (0..12)
+                    |> map(e => (state[e] / 8) << e)
+                    |> reduce(0, (a, b) => a | b)
+
+            LIST[int]([edges | state[31]]) |> cat(state[32..40])
+                |> collect_list()
+        elif phase == 3 then
+            let edges =
+                (0..12)
+                    |> map(e => slice(state[e]) << 2 * e)
+                    |> reduce(0, (a, b) => a | b)
+
+            let corners =
+                (0..8)
+                    |> map(c => ((state[c + 12] - 12) & 5) << 3 * c)
+                    |> reduce(0, (a, b) => a | b)
+
+            let parity =
+                (12..20)
+                    |> flat_map(i => (i + 1..20) |> map(j => (i, j)))
+                    |> filter(p => state[p.`0] > state[p.`1])
+                    |> count() % 2
+
+            [edges, corners, parity]
+        else
+            state
+        fi
+
+    values |> join(",")
+si
+
+solve_phase(phase: int, start: int[]) -> List[int] is
+    let start_key = key(phase, start)
+    let goal_key = key(phase, solved)
+
+    let found = LIST[int]()
+
+    if start_key =~ goal_key then
+        return found
+    fi
+
+    let queue = Collections.Queue[int[]]()
+    let direction = MAP[string, int]()
+    let last_move = MAP[string, int]()
+    let previous = MAP[string, string]()
+
+    queue.enqueue(start)
+    queue.enqueue(solved)
+    direction[start_key] = 1
+    direction[goal_key] = 2
+
+    while true do
+        let state = queue.dequeue()
+        let state_key = key(phase, state)
+        let state_direction = direction[state_key]
+
+        for move in 0..18 do
+            if allowed_moves[phase] & (1 << move) == 0 then
+                continue
+            fi
+
+            let next = apply(move, state)
+            let next_key = key(phase, next)
+            let seen =
+                if direction.contains_key(next_key) then
+                    direction[next_key]
+                else
+                    0
+                fi
+
+            if seen == 0 then
+                queue.enqueue(next)
+                direction[next_key] = state_direction
+                last_move[next_key] = move
+                previous[next_key] = state_key
+            elif seen != state_direction then
+                let forward mut = state_key
+                let backward mut = next_key
+                let joining mut = move
+
+                if state_direction == 2 then
+                    forward = next_key
+                    backward = state_key
+                    joining = inverse(move)
+                fi
+
+                found.add(joining)
+
+                while forward !~ start_key do
+                    found.insert(0, last_move[forward])
+                    forward = previous[forward]
+                od
+
+                while backward !~ goal_key do
+                    found.add(inverse(last_move[backward]))
+                    backward = previous[backward]
+                od
+
+                return found
+            fi
+        od
+    od
+
+    found
+si
+
+parse(cubies: string) -> int[] is
+    let state = LIST[int](solved)
+
+    for (i, cubie) in cubies.split([' ']) |> index() do
+        let twisted mut = cubie
+
+        while goal.index_of(twisted) < 0 do
+            twisted = "{twisted[1..<0]}{twisted[0]}"
+            state[i + 20] = state[i + 20] + 1
+        od
+
+        state[i] = goal.index_of(twisted)
+    od
+
+    state.to_array()
+si
+
+notation(move: int) -> string =>
+    "{"UDFBLR"[move / 3]}{["", "2", "'"][move % 3]}"
+
+solve(title: string, start: int[]) is
+    let state mut = start
+    let moves = LIST[int]()
+
+    for phase in 1::4 do
+        for move in solve_phase(phase, state) do
+            state = apply(move, state)
+            moves.add(move)
+        od
+    od
+
+    assert key(4, state) =~ key(4, solved)
+
+    write_line(title)
+    write_line("solved in {moves.count} moves:")
+    write_line(moves |> take(20) |> map(notation) |> join(" "))
+    write_line(moves |> skip(20) |> map(notation) |> join(" "))
+    write_line("")
+si
+
+let cubies =
+    "UL DL RF UB FD BR DB UF DR UR BL FL FDR BLU DLB URB RUF FLD BRD FUL"
+
+solve(cubies, parse(cubies))
+
+let scramble = [0, 14, 7, 12, 5, 9, 1, 16, 3, 11]
+
+solve(
+    "scrambled by {scramble |> map(notation) |> join(" ")}",
+    scramble |> reduce(solved, (state, move) => apply(move, state)))

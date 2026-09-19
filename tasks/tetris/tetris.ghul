@@ -1,0 +1,180 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+let width = 10
+let height = 12
+let random = Random(6)
+
+use Cell = (row: int, column: int)
+use Piece = (name: char, size: int, cells: List[Cell])
+
+shape(name: char, size: int, rows: string[]) -> Piece =>
+    (
+        name = name,
+        size = size,
+        cells =
+            (0..size * size)
+                |> filter(i => rows[i / size][i % size] == '#')
+                |> map(i => (row = i / size, column = i % size))
+                |> collect_list()
+    )
+
+let pieces = [
+    shape('I', 4, ["....", "####", "....", "...."]),
+    shape('O', 2, ["##", "##"]),
+    shape('T', 3, [".#.", "###", "..."]),
+    shape('S', 3, [".##", "##.", "..."]),
+    shape('Z', 3, ["##.", ".##", "..."]),
+    shape('J', 3, ["#..", "###", "..."]),
+    shape('L', 3, ["..#", "###", "..."])
+]
+
+rotated(piece: Piece) -> Piece => (
+    name = piece.name,
+    size = piece.size,
+    cells =
+        piece.cells
+            |> map(c => (row = c.column, column = piece.size - 1 - c.row))
+            |> collect_list()
+)
+
+let well = LIST[char]((0..width * height) |> map(_ => '.'))
+
+let bag = LIST[Piece]()
+
+draw() -> Piece is
+    if bag.count == 0 then
+        bag.add_range(
+            pieces
+                |> map(p => (piece = p, key = random.next()))
+                |> sort((a, b) => a.key <> b.key)
+                |> map(p => p.piece))
+    fi
+
+    let next = bag[0]
+    bag.remove_at(0)
+    next
+si
+
+free(r: int, k: int) -> bool =>
+    r >= 0 /\ r < height /\ k >= 0 /\ k < width /\
+    well[r * width + k] == '.'
+
+fits(piece: Piece, row: int, column: int) -> bool =>
+    piece.cells |> all(c => free(row + c.row, column + c.column))
+
+squares(piece: Piece, row: int, column: int) -> Pipe[int] =>
+    piece.cells |> map(c => (row + c.row) * width + column + c.column)
+
+let current mut = draw()
+let next mut = draw()
+let row mut = 0
+let column mut = 3
+let score mut = 0
+
+show() is
+    let occupied = SET[int](squares(current, row, column))
+    let preview = SET[int](squares(next, 0, 0))
+
+    let symbol = (i: int) =>
+        if occupied.contains(i) then current.name else well[i] fi
+
+    let upcoming = (r: int) =>
+        (0..4)
+            |> map(k =>
+                let i = r * width + k in
+                if preview.contains(i) then next.name else ' ' fi)
+            |> join("")
+
+    for r in 0..height do
+        let line =
+            (0..width) |> map(k => symbol(r * width + k)) |> join("")
+
+        let side =
+            if r == 0 then "  next"
+            elif r >= 1 /\ r <= 2 then "  {upcoming(r - 1)}"
+            elif r == 4 then "  score {score}"
+            else ""
+            fi
+
+        write_line("|{line}|{side}")
+    od
+
+    write_line("+{"".pad_right(width, '-')}+")
+si
+
+lock() -> bool is
+    for i in squares(current, row, column) do
+        well[i] = current.name
+    od
+
+    let full =
+        (0..height)
+            |> filter(r => (0..width) |> all(k => !free(r, k)))
+            |> collect_list()
+
+    for r in full do
+        well.remove_range(r * width, width)
+        well.insert_range(0, (0..width) |> map(_ => '.'))
+    od
+
+    score = score + [0, 100, 300, 500, 800][full.count]
+
+    current = next
+    next = draw()
+    row = 0
+    column = 3
+
+    fits(current, row, column)
+si
+
+write_line("keys: a left, d right, w rotate, s soft drop, x hard drop")
+show()
+
+let playing mut = true
+
+while playing do
+    let line = read_line()
+
+    if !line? then
+        break
+    fi
+
+    write_line("> {line}")
+
+    for key in line do
+        case key
+        when 'a' then
+            if fits(current, row, column - 1) then column = column - 1 fi
+        when 'd' then
+            if fits(current, row, column + 1) then column = column + 1 fi
+        when 'w' then
+            let turned = rotated(current)
+            if fits(turned, row, column) then current = turned fi
+        when 's' then
+            if fits(current, row + 1, column) then
+                row = row + 1
+            else
+                playing = lock()
+            fi
+        when 'x' then
+            while fits(current, row + 1, column) do
+                row = row + 1
+            od
+
+            playing = lock()
+        else
+        esac
+
+        if !playing then
+            break
+        fi
+    od
+
+    show()
+od
+
+if !playing then
+    write_line("the well is full: game over with score {score}")
+fi

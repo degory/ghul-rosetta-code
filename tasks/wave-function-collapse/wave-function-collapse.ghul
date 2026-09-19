@@ -1,0 +1,110 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+let blocks = [
+    ["...", "...", "..."],
+    [".#.", "###", "..."],
+    [".#.", ".##", ".#."],
+    ["...", "###", ".#."],
+    [".#.", "##.", ".#."]
+]
+
+let grid = 8
+let tile = grid * 2 + 1
+
+let random = System.Random(3)
+
+column_of(block: int, column: int) -> string =>
+    blocks[block] |> map(row => "{row[column]}") |> join("")
+
+fits_right(left: int, right: int) -> bool =>
+    column_of(left, 2) =~ column_of(right, 0)
+
+fits_below(top: int, bottom: int) -> bool =>
+    blocks[top][2] =~ blocks[bottom][0]
+
+wrap(i: int) -> int => (i + grid) % grid
+
+attempt() -> List[int]? is
+    let placed = repeat(-1, grid * grid) |> collect_list()
+    let options =
+        LIST[LIST[int]](
+            (0..grid * grid) |> map(_ => LIST[int](0..blocks.count)))
+
+    for _ in 0..grid * grid do
+        let open =
+            (0..grid * grid) |> filter(i => placed[i] < 0) |> collect_list()
+
+        let least =
+            open |> map(i => options[i].count) |> reduce(99, int.min)
+
+        if least == 0 then
+            return null
+        fi
+
+        let candidates =
+            open |> filter(i => options[i].count == least) |> collect_list()
+
+        let cell = candidates[random.next(candidates.count)]
+        let choice = options[cell][random.next(options[cell].count)]
+        let row = cell / grid, column = cell % grid
+
+        placed[cell] = choice
+
+        let right = row * grid + wrap(column + 1)
+        let left = row * grid + wrap(column - 1)
+        let below = wrap(row + 1) * grid + column
+        let above = wrap(row - 1) * grid + column
+
+        options[right].remove_all(b => !fits_right(choice, b))
+        options[left].remove_all(b => !fits_right(b, choice))
+        options[below].remove_all(b => !fits_below(choice, b))
+        options[above].remove_all(b => !fits_below(b, choice))
+    od
+
+    placed
+si
+
+let tries mut = 1
+let placed mut = attempt()
+
+while !placed? do
+    tries = tries + 1
+    placed = attempt()
+od
+
+let blocks_placed = placed!
+
+pixel(y: int, x: int) -> char =>
+    let row = Math.min(y / 2, grid - 1) in
+    let column = Math.min(x / 2, grid - 1) in
+    blocks[blocks_placed[row * grid + column]][y - 2 * row][x - 2 * column]
+
+
+write_line("collapsed on attempt {tries}")
+write_line("")
+
+for y in 0..tile do
+    write_line((0..tile) |> map(x => "{pixel(y, x)}") |> join(""))
+od
+
+let scale = 12
+let image = IMAGE(tile * scale, tile * scale)
+
+image.clear(250ub, 250ub, 245ub)
+image.colour(30ub, 40ub, 60ub)
+
+for y in 0..tile do
+    for x in 0..tile do
+        if pixel(y, x) == '#' then
+            image.fill_rectangle(
+                cast double(x * scale), cast double(y * scale),
+                cast double((x + 1) * scale), cast double((y + 1) * scale))
+        fi
+    od
+od
+
+image.write("tile.png")
+
+image.show("tile.png")

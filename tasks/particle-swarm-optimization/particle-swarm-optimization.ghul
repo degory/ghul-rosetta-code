@@ -1,0 +1,164 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+struct V2(x: double, y: double) is
+    +(o: V2) -> V2 => V2(x + o.x, y + o.y)
+    -(o: V2) -> V2 => V2(x - o.x, y - o.y)
+    *(k: double) -> V2 => V2(x * k, y * k)
+si
+
+class PARTICLE(position: V2 public, velocity: V2 public, best: V2 public)
+
+class PROBLEM(
+    name: string, f: V2 -> double, low: V2, high: V2,
+    omega: double, phi_p: double, phi_g: double,
+    count: int, iterations: int)
+
+let random = System.Random(42)
+
+between(low: double, high: double) -> double =>
+    low + (high - low) * random.next_double()
+
+clamp(p: V2, problem: PROBLEM) -> V2 =>
+    V2(
+        Math.clamp(p.x, problem.low.x, problem.high.x),
+        Math.clamp(p.y, problem.low.y, problem.high.y))
+
+swarm(problem: PROBLEM) -> (best: V2, particles: LIST[PARTICLE]) is
+    let f = problem.f
+    let span = problem.high - problem.low
+
+    let particles =
+        (0..problem.count)
+            |> map(_ =>
+                let at = V2(
+                    between(problem.low.x, problem.high.x),
+                    between(problem.low.y, problem.high.y)) in
+                PARTICLE(
+                    at,
+                    V2(
+                        between(-span.x, span.x),
+                        between(-span.y, span.y)),
+                    at))
+            |> collect_list()
+
+    let best mut = particles[0].best
+
+    for p in particles do
+        if f(p.best) < f(best) then
+            best = p.best
+        fi
+    od
+
+    for _ in 0..problem.iterations do
+        for p in particles do
+            p.velocity =
+                p.velocity * problem.omega +
+                (p.best - p.position) *
+                    (problem.phi_p * random.next_double()) +
+                (best - p.position) *
+                    (problem.phi_g * random.next_double())
+
+            p.position = clamp(p.position + p.velocity, problem)
+
+            if f(p.position) < f(p.best) then
+                p.best = p.position
+
+                if f(p.position) < f(best) then
+                    best = p.position
+                fi
+            fi
+        od
+    od
+
+    return (best = best, particles = particles)
+si
+
+mccormick(p: V2) -> double =>
+    Math.sin(p.x + p.y) + (p.x - p.y) * (p.x - p.y) -
+    1.5D * p.x + 2.5D * p.y + 1.0D
+
+michalewicz(p: V2) -> double =>
+    let term = (x: double, i: double) =>
+        Math.sin(x) * Math.pow(Math.sin(i * x * x / Math.pi), 20.0D) in
+    -(term(p.x, 1.0D) + term(p.y, 2.0D))
+
+draw(problem: PROBLEM, found: (best: V2, particles: LIST[PARTICLE])) is
+    let size = 300
+    let image = IMAGE(size, size)
+    let span = problem.high - problem.low
+
+    let at = (column: int, row: int) =>
+        V2(
+            problem.low.x +
+                span.x * (cast double(column) + 0.5D) / cast double(size),
+            problem.high.y -
+                span.y * (cast double(row) + 0.5D) / cast double(size))
+
+    let values = LIST[double]()
+
+    for row in 0..size do
+        for column in 0..size do
+            values.add(problem.f(at(column, row)))
+        od
+    od
+
+    let low = values |> reduce(values[0], (a, b) => Math.min(a, b))
+    let high = values |> reduce(values[0], (a, b) => Math.max(a, b))
+
+    for row in 0..size do
+        for column in 0..size do
+            let t = (values[row * size + column] - low) / (high - low)
+            let s = Math.sqrt(t)
+
+            image.set_pixel(
+                column, row,
+                cast ubyte(40.0D + 215.0D * s),
+                cast ubyte(30.0D + 200.0D * s * s),
+                cast ubyte(90.0D + 60.0D * (1.0D - s)))
+        od
+    od
+
+    image.view(
+        problem.low.x, problem.low.y, problem.high.x, problem.high.y)
+
+    image.colour(255ub, 255ub, 255ub)
+
+    for p in found.particles do
+        image.dot(p.position.x, p.position.y, 2.0D)
+    od
+
+    image.colour(0ub, 200ub, 255ub)
+    image.stroke(2.5D)
+    image.ring(found.best.x, found.best.y, 9.0D)
+
+    let file = "{problem.name.to_lower()}.png"
+
+    image.write(file)
+    image.show(file)
+si
+
+let problems = [
+    PROBLEM(
+        "McCormick", mccormick, V2(-1.5D, -3.0D), V2(4.0D, 4.0D),
+        0.0D, 0.6D, 0.3D, 100, 40),
+    PROBLEM(
+        "Michalewicz", michalewicz,
+        V2(0.0D, 0.0D), V2(Math.pi, Math.pi),
+        0.3D, 0.3D, 0.3D, 1000, 30)
+]
+
+write_line("each picture shows the swarm after its last iteration")
+write_line("and rings the best point found")
+write_line()
+
+for problem in problems do
+    let found = swarm(problem)
+    let b = found.best
+
+    write_line(
+        "{problem.name}: f({b.x:F5}, {b.y:F5}) = {problem.f(b):F5}")
+
+    draw(problem, found)
+od

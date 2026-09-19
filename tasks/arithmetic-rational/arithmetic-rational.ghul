@@ -1,0 +1,78 @@
+use default
+use System.Math
+
+struct FRAC(numerator: long, denominator: long) is
+    +(other: FRAC) -> FRAC =>
+        frac(numerator * other.denominator + other.numerator * denominator,
+            denominator * other.denominator)
+
+    -(other: FRAC) -> FRAC =>
+        frac(numerator * other.denominator - other.numerator * denominator,
+            denominator * other.denominator)
+
+    *(other: FRAC) -> FRAC =>
+        frac(numerator * other.numerator, denominator * other.denominator)
+
+    /(other: FRAC) -> FRAC =>
+        frac(numerator * other.denominator, denominator * other.numerator)
+
+    ÷(other: FRAC) -> long =>
+        let quotient = self / other in
+        quotient.numerator / quotient.denominator
+
+    %(other: FRAC) -> FRAC =>
+        self - whole(self ÷ other) * other
+
+    <>(other: FRAC) -> int =>
+        let left = numerator * other.denominator in
+        let right = other.numerator * denominator in
+        if left < right then -1 elif left > right then 1 else 0 fi
+
+    to_string() -> string =>
+        if denominator == 1L then "{numerator}"
+        else "{numerator}/{denominator}"
+        fi
+si
+
+gcd(a: long, b: long) -> long =>
+    if b == 0L then Math.abs(a) else gcd(b, a % b) fi
+
+frac(numerator: long, denominator: long) -> FRAC =>
+    let sign = if denominator < 0L then -1L else 1L fi in
+    let divisor = gcd(numerator, denominator) * sign in
+    FRAC(numerator / divisor, denominator / divisor)
+
+whole(n: long) -> FRAC => FRAC(n, 1L)
+
+-(value: FRAC) -> FRAC => FRAC(-value.numerator, value.denominator)
+
+abs(value: FRAC) -> FRAC =>
+    FRAC(Math.abs(value.numerator), value.denominator)
+
+let a = frac(3L, 4L)
+let b = frac(-5L, 6L)
+
+write_line("a = {a}, b = {b}")
+write_line("a + b = {a + b}, a - b = {a - b}")
+write_line("a * b = {a * b}, a / b = {a / b}")
+write_line("a ÷ b = {a ÷ b}, a % b = {a % b}")
+write_line("-b = {-b}, abs(b) = {abs(b)}")
+write_line("a < b: {a < b}, a >= b: {a >= b}")
+write_line("a =~ 6/8: {a =~ frac(6L, 8L)}")
+
+let limit = 1 << 19
+let sums = LIST[FRAC]((0..limit) |> map(_ => whole(0L)))
+
+for factor in 1..limit do
+    let reciprocal = frac(1L, cast(factor))
+
+    let multiple mut = factor
+
+    while multiple < limit do
+        sums[multiple] = sums[multiple] + reciprocal
+        multiple = multiple + factor
+    od
+od
+
+let perfect = (1..limit) |> filter(n => sums[n] =~ whole(2L))
+write_line("perfect numbers below 2^19: {perfect |> join(", ")}")

@@ -1,0 +1,110 @@
+use default
+use IO.Std.read_line
+use System.Random
+
+let width = 12
+let height = 8
+let random = Random(21)
+
+let snake =
+    LIST[(x: int, y: int)]([(x = 5, y = 4), (x = 4, y = 4), (x = 3, y = 4)])
+
+let steps = MAP[char, (dx: int, dy: int)]()
+steps['w'] = (0, -1)
+steps['a'] = (-1, 0)
+steps['s'] = (0, 1)
+steps['d'] = (1, 0)
+
+new_food() -> (x: int, y: int) is
+    while true do
+        let spot = (x = random.next(width), y = random.next(height))
+
+        if !snake.contains(spot) then
+            return spot
+        fi
+    od
+
+    (x = 0, y = 0)
+si
+
+let food mut = new_food()
+let heading mut = (dx = 1, dy = 0)
+
+show() is
+    for y in 0..height do
+        write_line(
+            (0..width)
+                |> map(x =>
+                    let spot = (x = x, y = y) in
+                    if spot =~ snake[0] then "@"
+                    elif snake.contains(spot) then "o"
+                    elif spot =~ food then "*"
+                    else "."
+                    fi)
+                |> join(""))
+    od
+
+    write_line("length {snake.count}")
+si
+
+step() -> bool is
+    let head = snake[0]
+    let next = (
+        x = (head.x + heading.dx + width) % width,
+        y = (head.y + heading.dy + height) % height)
+
+    let eats = next =~ food
+    let vacated = !eats /\ next =~ snake[snake.count - 1]
+
+    if snake.contains(next) /\ !vacated then
+        return false
+    fi
+
+    if !eats then
+        snake.remove_at(snake.count - 1)
+    fi
+
+    snake.insert(0, next)
+
+    if eats then
+        food = new_food()
+    fi
+
+    true
+si
+
+write_line("steer with w, a, s and d; each letter moves one square")
+show()
+
+let alive mut = true
+
+while alive do
+    let line = read_line()
+
+    if !line? then
+        break
+    fi
+
+    write_line("> {line}")
+
+    for key in line.trim().to_lower() do
+        if steps.contains_key(key) then
+            let turn = steps[key]
+
+            if turn.dx != -heading.dx \/ turn.dy != -heading.dy then
+                heading = turn
+            fi
+        fi
+
+        if !step() then
+            alive = false
+            break
+        fi
+    od
+
+    show()
+od
+
+if !alive then
+    write_line("the snake bit itself: game over at length {snake.count}")
+fi

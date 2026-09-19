@@ -1,0 +1,308 @@
+use default
+use IO.Std.read_line
+use System.Random
+use System.StringSplitOptions.REMOVE_EMPTY_ENTRIES
+
+let random = Random(9)
+
+let mills = [
+    ["a7", "d7", "g7"], ["b6", "d6", "f6"], ["c5", "d5", "e5"],
+    ["a4", "b4", "c4"], ["e4", "f4", "g4"], ["c3", "d3", "e3"],
+    ["b2", "d2", "f2"], ["a1", "d1", "g1"],
+    ["a1", "a4", "a7"], ["b2", "b4", "b6"], ["c3", "c4", "c5"],
+    ["d1", "d2", "d3"], ["d5", "d6", "d7"], ["e3", "e4", "e5"],
+    ["f2", "f4", "f6"], ["g1", "g4", "g7"]
+]
+
+let board = MAP[string, char]()
+let neighbours = MAP[string, LIST[string]]()
+
+for mill in mills do
+    for point in mill do
+        board[point] = '.'
+
+        if !neighbours.contains_key(point) then
+            neighbours[point] = LIST[string]()
+        fi
+    od
+
+    for i in 0..2 do
+        neighbours[mill[i]].add(mill[i + 1])
+        neighbours[mill[i + 1]].add(mill[i])
+    od
+od
+
+let template = [
+    "7 *-----------*-----------*",
+    "  |           |           |",
+    "6 |   *-------*-------*   |",
+    "  |   |       |       |   |",
+    "5 |   |   *---*---*   |   |",
+    "  |   |   |       |   |   |",
+    "4 *---*---*       *---*---*",
+    "  |   |   |       |   |   |",
+    "3 |   |   *---*---*   |   |",
+    "  |   |       |       |   |",
+    "2 |   *-------*-------*   |",
+    "  |           |           |",
+    "1 *-----------*-----------*",
+    "  a   b   c   d   e   f   g"
+]
+
+show() is
+    for row in 0..template.count do
+        let rank = 7 - row / 2
+
+        write_line(
+            (0..template[row].length)
+                |> map(column =>
+                    if template[row][column] == '*' then
+                        board["{"abcdefg"[(column - 2) / 4]}{rank}"]
+                    else
+                        template[row][column]
+                    fi)
+                |> join(""))
+    od
+si
+
+let to_place = MAP[char, int]()
+to_place['W'] = 9
+to_place['B'] = 9
+
+other(side: char) -> char => if side == 'W' then 'B' else 'W' fi
+
+holding(side: char) -> List[string] =>
+    board.keys |> filter(p => board[p] == side) |> collect_list()
+
+count_of(side: char) -> int => holding(side).count
+
+in_mill(point: string, side: char) -> bool =>
+    mills |> any(m =>
+        m |> any(p => p =~ point) /\ m |> all(p => board[p] == side))
+
+use Move = (from: string?, to: string)
+
+moves(side: char) -> List[Move] is
+    let empty = holding('.')
+
+    if to_place[side] > 0 then
+        return
+            empty
+                |> map(p => (from = cast string?(null), to = p))
+                |> collect_list()
+    fi
+
+    let flying = count_of(side) == 3
+    let result = LIST[Move]()
+
+    for from in holding(side) do
+        let targets =
+            if flying then empty
+            else neighbours[from] |> filter(p => board[p] == '.')
+            fi
+
+        for to in targets do
+            result.add((from = from, to = to))
+        od
+    od
+
+    result
+si
+
+play(move: Move, side: char) is
+    if let from = move.from then
+        board[from] = '.'
+    else
+        to_place[side] = to_place[side] - 1
+    fi
+
+    board[move.to] = side
+si
+
+undo(move: Move, side: char) is
+    board[move.to] = '.'
+
+    if let from = move.from then
+        board[from] = side
+    else
+        to_place[side] = to_place[side] + 1
+    fi
+si
+
+makes_mill(move: Move, side: char) -> bool is
+    play(move, side)
+    let made = in_mill(move.to, side)
+    undo(move, side)
+    made
+si
+
+removable(side: char) -> List[string] is
+    let pieces = holding(side)
+    let loose = pieces |> filter(p => !in_mill(p, side)) |> collect_list()
+
+    if loose.count > 0 then loose else pieces fi
+si
+
+pick[T](items: List[T]) -> T => items[random.next(items.count)]
+
+computer_move(side: char) -> Move is
+    let legal = moves(side)
+    let winning =
+        legal |> filter(m => makes_mill(m, side)) |> collect_list()
+
+    if winning.count > 0 then
+        return pick(winning)
+    fi
+
+    let threats =
+        moves(other(side))
+            |> filter(m => makes_mill(m, other(side)))
+            |> map(m => m.to)
+            |> collect_list()
+
+    let blocking =
+        legal
+            |> filter(m => threats |> any(t => t =~ m.to))
+            |> collect_list()
+
+    if blocking.count > 0 then pick(blocking) else pick(legal) fi
+si
+
+let autopilot mut = false
+
+ask(prompt: string) -> string? is
+    if autopilot then
+        return null
+    fi
+
+    write_line(prompt)
+
+    let line = read_line()
+
+    if !line? then
+        autopilot = true
+        write_line("(no more input, so your moves are chosen for you)")
+        return null
+    fi
+
+    write_line("> {line}")
+    line.trim().to_lower()
+si
+
+human_move() -> Move? is
+    let legal = moves('W')
+    let placing = to_place['W'] > 0
+
+    while true do
+        let answer =
+            ask(
+                if placing then "where do you place a piece?"
+                else "which piece do you move, and where to?"
+                fi)
+
+        if !answer? then
+            return null
+        fi
+
+        let squares =
+            answer
+                .replace("-", " ")
+                .split([' '], REMOVE_EMPTY_ENTRIES)
+
+        let chosen =
+            legal
+                |> filter(m =>
+                    if placing then
+                        squares.count == 1 /\ m.to =~ squares[0]
+                    else
+                        squares.count == 2 /\
+                        m.from =~ squares[0] /\ m.to =~ squares[1]
+                    fi)
+                |> first()
+
+        if let move = chosen then
+            return move
+        fi
+
+        write_line("that is not a legal move")
+    od
+
+    return null
+si
+
+human_removal(options: List[string]) -> string? is
+    while true do
+        let answer = ask("which of the computer's pieces do you remove?")
+
+        if !answer? then
+            return null
+        fi
+
+        if options |> any(o => o =~ answer) then
+            return answer
+        fi
+
+        write_line("choose one of {options |> join(", ")}")
+    od
+
+    return null
+si
+
+acts(side: char, yours: string, theirs: string) -> string =>
+    if side == 'W' then "you {yours}" else "the computer {theirs}" fi
+
+describe(move: Move, side: char) -> string =>
+    if let from = move.from then
+        "{acts(side, "move", "moves")} {from}-{move.to}"
+    else
+        "{acts(side, "place", "places")} a piece on {move.to}"
+    fi
+
+let side mut = 'W'
+let winner: char? mut = null
+
+write_line("you are W and move first; the computer is B")
+
+while !winner? do
+    let legal = moves(side)
+
+    if legal.count == 0 then
+        write_line("{acts(side, "cannot", "cannot")} move")
+        winner = other(side)
+        break
+    fi
+
+    if side == 'W' /\ !autopilot then
+        show()
+    fi
+
+    let move =
+        if side == 'W' then human_move() ?? computer_move(side)
+        else computer_move(side)
+        fi
+
+    play(move, side)
+    write_line(describe(move, side))
+
+    if in_mill(move.to, side) then
+        let options = removable(other(side))
+
+        let taken =
+            if side == 'W' then human_removal(options) ?? pick(options)
+            else pick(options)
+            fi
+
+        board[taken] = '.'
+        let removes = acts(side, "remove", "removes")
+        write_line("  a mill: {removes} the piece on {taken}")
+    fi
+
+    if to_place[other(side)] == 0 /\ count_of(other(side)) < 3 then
+        winner = side
+    fi
+
+    side = other(side)
+od
+
+show()
+write_line(acts(winner!, "win", "wins"))

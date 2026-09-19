@@ -1,0 +1,77 @@
+use default
+use Raster.IMAGE
+
+use POSITION = (x: int, y: int)
+
+let size = 401
+let centre = size / 2
+let limit = size * size
+
+let is_prime = (0::limit) |> map(_ => true) |> collect_list()
+
+is_prime[0] = false
+is_prime[1] = false
+
+for candidate in 2::limit do
+    if is_prime[candidate] /\ candidate <= limit / candidate then
+        let multiple mut = candidate * candidate
+
+        while multiple <= limit do
+            is_prime[multiple] = false
+            multiple = multiple + candidate
+        od
+    fi
+od
+
+spiral() -> Pipe[POSITION] is
+    let x mut = 0
+    let y mut = 0
+    let run mut = 1
+
+    yield (x = x, y = y)
+
+    do
+        for step in 0..run do
+            x = x + 1
+
+            yield (x = x, y = y)
+        od
+
+        for step in 0..run do
+            y = y - 1
+
+            yield (x = x, y = y)
+        od
+
+        run = run + 1
+
+        for step in 0..run do
+            x = x - 1
+
+            yield (x = x, y = y)
+        od
+
+        for step in 0..run do
+            y = y + 1
+
+            yield (x = x, y = y)
+        od
+
+        run = run + 1
+    od
+si
+
+let image = IMAGE(size, size)
+
+for placed in spiral() |> index() |> take(limit) do
+    if is_prime[placed.index + 1] then
+        image.set_pixel(
+            centre + placed.value.x,
+            centre + placed.value.y,
+            20ub, 40ub, 100ub)
+    fi
+od
+
+image.write("ulam.png")
+
+image.show("ulam.png")

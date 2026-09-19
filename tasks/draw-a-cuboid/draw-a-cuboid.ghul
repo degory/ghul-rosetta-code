@@ -1,0 +1,64 @@
+use default
+use Raster.IMAGE
+use Raster.SHAPES
+use System.Math
+
+use Point = (x: double, y: double, z: double)
+use Flat = (x: double, y: double)
+
+let width = 2.0D
+let height = 3.0D
+let depth = 4.0D
+
+let yaw = Math.pi / 6.0D
+let pitch = Math.pi / 7.0D
+
+project(p: Point) -> Flat =>
+    let x = p.x * Math.cos(yaw) - p.z * Math.sin(yaw) in
+    let z = p.x * Math.sin(yaw) + p.z * Math.cos(yaw) in
+    (x = x, y = p.y * Math.cos(pitch) + z * Math.sin(pitch))
+
+corner(i: int, j: int, k: int) -> Flat =>
+    project((
+        x = width * cast double(i) - width / 2.0D,
+        y = height * cast double(j) - height / 2.0D,
+        z = depth * cast double(k) - depth / 2.0D))
+
+outline(corners: (int, int, int)[]) -> List[Flat] =>
+    corners |> map(((i, j, k)) => corner(i, j, k)) |> collect_list()
+
+let top = outline([(0, 1, 0), (1, 1, 0), (1, 1, 1), (0, 1, 1)])
+let front = outline([(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)])
+let side = outline([(0, 0, 0), (0, 0, 1), (0, 1, 1), (0, 1, 0)])
+
+let faces = [(top, 1.0D), (front, 0.75D), (side, 0.55D)]
+
+let image = IMAGE(300, 300)
+
+image.view(-3.5D, -3.5D, 3.5D, 3.5D)
+image.clear(250ub, 250ub, 247ub)
+
+let shapes = SHAPES()
+
+for (points, light) in faces do
+    shapes.add(
+        points,
+        cast ubyte(80.0D * light),
+        cast ubyte(120.0D * light),
+        cast ubyte(240.0D * light))
+od
+
+image.fill(shapes)
+
+image.colour(20ub, 30ub, 60ub)
+image.stroke(2.0D)
+
+for (points, _) in faces do
+    image.line(points |> cat([points[0]]) |> collect_list())
+od
+
+write_line("a {width} x {height} x {depth} cuboid, three faces visible")
+
+image.write("cuboid.png")
+
+image.show("cuboid.png")

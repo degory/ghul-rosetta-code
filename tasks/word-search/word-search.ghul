@@ -1,0 +1,128 @@
+use default
+
+use Placed = (word: string, row: int, column: int, dr: int, dc: int)
+
+let size = 10
+let message = "ROSETTACODE"
+
+let directions = [
+    (0, 1), (1, 0), (1, 1), (1, -1), (0, -1), (-1, 0), (-1, -1), (-1, 1)
+]
+
+let words =
+    IO.File.read_all_lines("unixdict.txt")
+        |> filter(w => w.length >= 3 /\ w.length <= size)
+        |> filter(w => w |> all(c => c >= 'a' /\ c <= 'z'))
+        |> collect_list()
+
+let random = System.Random(42)
+
+at(row: int, column: int) -> int => row * size + column
+
+class GRID is
+    cells: LIST[char]
+    placed: LIST[Placed]
+
+    init() is
+        cells = repeat(' ', size * size) |> collect_list()
+        placed = LIST[Placed]()
+    si
+
+    empty: int => cells |> filter(c => c == ' ') |> count()
+
+    fits(word: string, row: int, column: int, dr: int, dc: int) -> bool =>
+        (0..word.length) |> all(i =>
+            let r = row + dr * i, c = column + dc * i in
+            r >= 0 /\ r < size /\ c >= 0 /\ c < size /\
+            (cells[at(r, c)] == ' ' \/ cells[at(r, c)] == word[i]))
+
+    try_place(word: string) -> bool is
+        let (dr, dc) = directions[random.next(directions.count)]
+        let row = random.next(size)
+        let column = random.next(size)
+
+        if placed |> any(p => p.word =~ word) \/
+            !fits(word, row, column, dr, dc)
+        then
+            return false
+        fi
+
+        let squares =
+            (0..word.length)
+                |> map(i => at(row + dr * i, column + dc * i))
+                |> collect_list()
+
+        let covered = squares |> filter(s => cells[s] == ' ') |> count()
+
+        if empty - covered < message.length then
+            return false
+        fi
+
+        for (i, s) in squares |> index() do
+            cells[s] = word[i]
+        od
+
+        placed.add((word, row, column, dr, dc))
+
+        true
+    si
+si
+
+build() -> GRID is
+    do
+        let grid = GRID()
+        let attempts mut = 0
+
+        while grid.empty > message.length /\ attempts < 20000 do
+            grid.try_place(words[random.next(words.count)])
+            attempts = attempts + 1
+        od
+
+        if grid.empty == message.length /\ grid.placed.count >= 25 then
+            return grid
+        fi
+    od
+si
+
+let grid = build()
+let letter mut = 0
+
+for i in 0..size * size do
+    if grid.cells[i] == ' ' then
+        grid.cells[i] = message[letter]
+        letter = letter + 1
+    fi
+od
+
+write_line("     {(0..size) |> map(c => "{c}") |> join("  ")}")
+write_line("")
+
+for row in 0..size do
+    let letters =
+        (0..size) |> map(c => "{grid.cells[at(row, c)]}") |> join("  ")
+
+    write_line("{row}    {letters}")
+od
+
+write_line("")
+
+ends(p: Placed) -> string =>
+    let last = p.word.length - 1 in
+    let end_column = p.column + p.dc * last in
+    let end_row = p.row + p.dr * last in
+    "({p.column},{p.row})({end_column},{end_row})"
+
+let solutions =
+    grid.placed
+        |> sort((a, b) => a.word <> b.word)
+        |> map(p => "{p.word,-10} {ends(p),-12}")
+        |> collect_list()
+
+for row in 0..(solutions.count + 1) / 2 do
+    let pair = solutions |> skip(row * 2) |> take(2) |> join("   ")
+
+    write_line(pair.trim_end())
+od
+
+write_line("")
+write_line("{grid.placed.count} words")

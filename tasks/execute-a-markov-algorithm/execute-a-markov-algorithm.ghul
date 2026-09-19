@@ -1,0 +1,58 @@
+use default
+
+class RULE(pattern: string, replacement: string, stops: bool)
+
+load(file: string) -> List[RULE] =>
+    IO.File.read_all_lines(file)
+        |> filter(line => !line.starts_with("#") /\ line.contains(" -> "))
+        |> map(line =>
+            let arrow = line.index_of(" -> ") in
+            let replacement = line.substring(arrow + 4).trim() in
+            let stops = replacement.starts_with(".") in
+            RULE(
+                line.substring(0, arrow).trim(),
+                if stops then replacement.substring(1) else replacement fi,
+                stops))
+        |> collect_list()
+
+run(rules: List[RULE], input: string) -> string is
+    let text mut = input
+
+    do
+        let rule = rules |> find(r => text.contains(r.pattern))
+
+        if !rule? then
+            break
+        fi
+
+        let at = text.index_of(rule.pattern)
+
+        text =
+            "{text.substring(0, at)}{rule.replacement}"
+            "{text.substring(at + rule.pattern.length)}"
+
+        if rule.stops then
+            break
+        fi
+    od
+
+    text
+si
+
+let samples = [
+    "I bought a B of As from T S.",
+    "I bought a B of As from T S.",
+    "I bought a B of As W my Bgage from T S.",
+    "_1111*11111_",
+    "000000A000000"
+]
+
+for (sample, number) in
+        samples |> index() |> map(iv => (iv.value, iv.index + 1)) do
+    let rules = load("ruleset{number}.txt")
+
+    write_line("ruleset {number}:")
+    write_line("    {sample}")
+    write_line("    {run(rules, sample)}")
+    write_line()
+od

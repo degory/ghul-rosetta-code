@@ -1,0 +1,121 @@
+use default
+use Raster.IMAGE
+
+use Square = (row: int, column: int)
+
+let board = [
+    "  0 0 0",
+    "  0   0 0",
+    "  0 0 0 0 0 0 0",
+    "0 0 0     0   0",
+    "0   0     0 0 0",
+    "1 0 0 0 0 0 0",
+    "    0 0   0",
+    "      0 0 0"
+]
+
+let rows = board.count
+let columns =
+    board |> map(line => (line.length + 1) / 2) |> reduce(0, int.max)
+
+let jumps = [
+    (-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)
+]
+
+let open = LIST[Square]()
+let start: Square mut = (row = 0, column = 0)
+
+for (row, line) in board |> index() do
+    for (position, c) in line |> index() do
+        let column = position / 2
+
+        if c != ' ' then
+            open.add((row = row, column = column))
+        fi
+
+        if c == '1' then
+            start = (row = row, column = column)
+        fi
+    od
+od
+
+let order = MAP[Square, int]()
+
+free(s: Square) -> bool => open.contains(s) /\ !order.contains_key(s)
+
+moves(s: Square) -> List[Square] =>
+    jumps
+        |> map(((dr, dc)) => (row = s.row + dr, column = s.column + dc))
+        |> filter(free)
+        |> collect_list()
+
+tour(s: Square, step: int) -> bool is
+    order[s] = step
+
+    if step == open.count then
+        return true
+    fi
+
+    let next =
+        moves(s) |> sort((a, b) => moves(a).count - moves(b).count)
+
+    for candidate in next do
+        if tour(candidate, step + 1) then
+            return true
+        fi
+    od
+
+    order.remove(s)
+
+    false
+si
+
+assert tour(start, 1) else "no tour"
+
+for row in 0..rows do
+    let line =
+        (0..columns)
+            |> map(column =>
+                let s = (row = row, column = column) in
+                if order.contains_key(s) then "{order[s],3}" else "   " fi)
+            |> join("")
+
+    write_line(line.trim_end())
+od
+
+let cell = 40.0D
+let image = IMAGE(cast int(cell) * columns, cast int(cell) * rows)
+
+image.clear(245ub, 240ub, 225ub)
+
+for s in open do
+    let x = cell * cast double(s.column)
+    let y = cell * cast double(s.row)
+    let light = (s.row + s.column) % 2 == 0
+
+    if light then
+        image.colour(235ub, 215ub, 180ub)
+    else
+        image.colour(180ub, 135ub, 95ub)
+    fi
+
+    image.fill_rectangle(x, y, x + cell, y + cell)
+od
+
+let path =
+    open
+        |> sort((a, b) => order[a] - order[b])
+        |> map(s => (
+            x = cell * (cast double(s.column) + 0.5D),
+            y = cell * (cast double(s.row) + 0.5D)))
+        |> collect_list()
+
+image.colour(30ub, 60ub, 140ub)
+image.stroke(2.0D)
+image.line(path)
+image.colour(200ub, 40ub, 40ub)
+image.dot(path[0].x, path[0].y, 6.0D)
+
+image.write("tour.png")
+
+image.show("tour.png")

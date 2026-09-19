@@ -1,0 +1,31 @@
+A random point on the top edge, joined to both bottom corners,
+cuts the rectangle into three triangles. Then, until there are
+enough, the largest triangle is cut from a random point on
+its longest side to the opposite corner, and a cut that would
+leave two similar triangles is tried again somewhere else.
+
+3 triangles covering an area of 40.00:
+  (0.00, 0.00) (0.00, 5.00) (3.22, 5.00)
+  (0.00, 0.00) (3.22, 5.00) (8.00, 0.00)
+  (8.00, 0.00) (3.22, 5.00) (8.00, 5.00)
+
+5 triangles covering an area of 40.00:
+  (0.00, 0.00) (0.00, 5.00) (2.97, 5.00)
+  (8.00, 0.00) (4.95, 0.00) (2.97, 5.00)
+  (4.95, 0.00) (0.00, 0.00) (2.97, 5.00)
+  (8.00, 0.00) (5.17, 2.81) (8.00, 5.00)
+  (5.17, 2.81) (2.97, 5.00) (8.00, 5.00)
+
+8 triangles covering an area of 40.00:
+  (2.29, 0.00) (0.00, 0.00) (3.82, 5.00)
+  (3.82, 5.00) (5.17, 3.38) (2.29, 0.00)
+  (8.00, 0.00) (4.97, 3.63) (8.00, 5.00)
+  (4.97, 3.63) (3.82, 5.00) (8.00, 5.00)
+  (8.00, 0.00) (4.87, 0.00) (5.17, 3.38)
+  (4.87, 0.00) (2.29, 0.00) (5.17, 3.38)
+  (3.82, 5.00) (2.64, 3.46) (0.00, 5.00)
+  (2.64, 3.46) (0.00, 0.00) (0.00, 5.00)
+
+30 triangles, drawn below
+no two similar: True
+<<image triangles.png>>

@@ -1,0 +1,97 @@
+use default
+use Raster.IMAGE
+
+struct V3(x: double, y: double, bias: double) is
+    +(o: V3) -> V3 => V3(x + o.x, y + o.y, bias + o.bias)
+    *(k: double) -> V3 => V3(x * k, y * k, bias * k)
+    ⋅(o: V3) -> double => x * o.x + y * o.y + bias * o.bias
+si
+
+let slope = 0.7D
+let intercept = 0.1D
+let rate = 0.01D
+
+above(x: double, y: double) -> int =>
+    if y > slope * x + intercept then 1 else -1 fi
+
+let random = System.Random(10)
+
+let spread = () => random.next_double() * 2.0D - 1.0D
+
+let points =
+    (0..2000)
+        |> map(_ => V3(spread(), spread(), 1.0D))
+        |> collect_list()
+
+let weights mut = V3(spread(), spread(), spread())
+
+guess(p: V3) -> int => if weights ⋅ p >= 0.0D then 1 else -1 fi
+
+train(p: V3) is
+    let error = above(p.x, p.y) - guess(p)
+
+    weights = weights + p * (rate * cast double(error))
+si
+
+correct() -> int =>
+    points |> filter(p => guess(p) == above(p.x, p.y)) |> count()
+
+write_line("the line to learn is y = {slope}x + {intercept}")
+write_line()
+write_line("after   0 passes: {correct(),4} of {points.count} correct")
+
+for pass in 1::100 do
+    for p in points do
+        train(p)
+    od
+
+    if pass <= 3 \/ pass % 25 == 0 then
+        write_line(
+            "after {pass,3} passes: "
+            "{correct(),4} of {points.count} correct")
+    fi
+od
+
+let learned_slope = -weights.x / weights.y
+let learned_intercept = -weights.bias / weights.y
+
+write_line()
+write_line(
+    "the perceptron's line is y = "
+    "{learned_slope:F3}x + {learned_intercept:F2}")
+
+write_line("in the picture, blue points are guessed above the line,")
+write_line("green below and red wrongly; the line learned is orange")
+
+let image = IMAGE(400, 400)
+
+image.view(-1.0D, -1.0D, 1.0D, 1.0D)
+image.clear(250ub, 250ub, 250ub)
+
+for p in points do
+    if guess(p) != above(p.x, p.y) then
+        image.colour(220ub, 30ub, 30ub)
+        image.dot(p.x, p.y, 3.0D)
+    elif guess(p) == 1 then
+        image.colour(60ub, 110ub, 200ub)
+        image.dot(p.x, p.y, 2.0D)
+    else
+        image.colour(90ub, 170ub, 90ub)
+        image.dot(p.x, p.y, 2.0D)
+    fi
+od
+
+image.stroke(1.5D)
+image.colour(30ub, 30ub, 30ub)
+image.line(
+    -1.0D, intercept - slope,
+    1.0D, intercept + slope)
+
+image.colour(230ub, 140ub, 20ub)
+image.line(
+    -1.0D, learned_intercept - learned_slope,
+    1.0D, learned_intercept + learned_slope)
+
+image.write("perceptron.png")
+
+image.show("perceptron.png")

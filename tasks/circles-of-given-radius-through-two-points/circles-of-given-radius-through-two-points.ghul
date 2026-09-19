@@ -1,0 +1,100 @@
+use default
+use Raster.IMAGE
+use System.Math
+
+struct P(x: double, y: double) is
+    +(o: P) -> P => P(x + o.x, y + o.y)
+    -(o: P) -> P => P(x - o.x, y - o.y)
+    *(k: double) -> P => P(x * k, y * k)
+    length: double => Math.sqrt(x * x + y * y)
+    normal: P => P(-y, x)
+
+    show: string => "({x:F4}, {y:F4})"
+si
+
+union Circles is
+    TWO(first: P, second: P)
+    ONE(centre: P)
+    ANY
+    POINT
+    NONE(reason: string)
+si
+
+circles(a: P, b: P, r: double) -> Circles is
+    let d = (b - a).length
+
+    if d == 0.0D then
+        return if r == 0.0D then Circles.POINT else Circles.ANY fi
+    fi
+
+    if r == 0.0D then
+        return Circles.NONE("a radius of zero describes no circle")
+    fi
+
+    if d > 2.0D * r then
+        return Circles.NONE("the points are too far apart")
+    fi
+
+    let middle = (a + b) * 0.5D
+
+    if d == 2.0D * r then
+        return Circles.ONE(middle)
+    fi
+
+    let offset = Math.sqrt(r * r - d * d / 4.0D)
+    let across = (b - a).normal * (offset / d)
+
+    Circles.TWO(middle + across, middle - across)
+si
+
+let inputs = [
+    (P(0.1234D, 0.9876D), P(0.8765D, 0.2345D), 2.0D),
+    (P(0.0000D, 2.0000D), P(0.0000D, 0.0000D), 1.0D),
+    (P(0.1234D, 0.9876D), P(0.1234D, 0.9876D), 2.0D),
+    (P(0.1234D, 0.9876D), P(0.8765D, 0.2345D), 0.5D),
+    (P(0.1234D, 0.9876D), P(0.1234D, 0.9876D), 0.0D)
+]
+
+for (a, b, r) in inputs do
+    let result =
+        case circles(a, b, r)
+        when (first, second): Circles.TWO then
+            "centres {first.show} and {second.show}"
+        when (centre): Circles.ONE then
+            "a diameter: one circle, centre {centre.show}"
+        when _: Circles.ANY then
+            "the points coincide: any circle through them"
+        when _: Circles.POINT then
+            "a single point"
+        when (reason): Circles.NONE then
+            "none: {reason}"
+        esac
+
+    write_line("{a.show} {b.show} r = {r}: {result}")
+od
+
+let (a, b, r) = inputs[0]
+
+if let (first, second): Circles.TWO = circles(a, b, r) then
+    let image = IMAGE(360, 360)
+
+    image.view(-3.2D, -3.0D, 4.0D, 4.2D)
+    image.clear(252ub, 250ub, 245ub)
+    image.stroke(2.0D)
+
+    image.colour(60ub, 110ub, 200ub)
+    image.circle(first.x, first.y, r)
+
+    image.colour(200ub, 90ub, 40ub)
+    image.circle(second.x, second.y, r)
+
+    image.colour(30ub, 30ub, 30ub)
+    image.dot(a.x, a.y, 4.0D)
+    image.dot(b.x, b.y, 4.0D)
+    image.ring(first.x, first.y, 3.0D)
+    image.ring(second.x, second.y, 3.0D)
+
+    image.write("circles.png")
+
+    image.show("circles.png")
+fi

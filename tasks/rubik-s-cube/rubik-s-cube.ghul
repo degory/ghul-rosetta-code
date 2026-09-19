@@ -1,0 +1,99 @@
+use default
+use Raster.IMAGE
+use Raster.SHAPES
+use System.Math
+
+use Point = (x: double, y: double, z: double)
+use Colour = (red: ubyte, green: ubyte, blue: ubyte)
+
+let size = 300
+let tilt = 0.45D
+
+plus(a: Point, b: Point) -> Point =>
+    (x = a.x + b.x, y = a.y + b.y, z = a.z + b.z)
+
+times(p: Point, k: double) -> Point =>
+    (x = p.x * k, y = p.y * k, z = p.z * k)
+
+rgb(r: int, g: int, b: int) -> Colour =>
+    (red = cast ubyte(r), green = cast ubyte(g), blue = cast ubyte(b))
+
+let x_axis: Point = (x = 1.0D, y = 0.0D, z = 0.0D)
+let y_axis: Point = (x = 0.0D, y = 1.0D, z = 0.0D)
+let z_axis: Point = (x = 0.0D, y = 0.0D, z = 1.0D)
+
+let faces: (normal: Point, u: Point, v: Point, colour: Colour)[] = [
+    (y_axis, x_axis, z_axis, rgb(245, 245, 245)),
+    (times(y_axis, -1.0D), x_axis, z_axis, rgb(255, 213, 0)),
+    (z_axis, x_axis, y_axis, rgb(0, 155, 72)),
+    (times(z_axis, -1.0D), x_axis, y_axis, rgb(0, 70, 173)),
+    (x_axis, y_axis, z_axis, rgb(183, 18, 52)),
+    (times(x_axis, -1.0D), y_axis, z_axis, rgb(255, 88, 0))
+]
+
+turned(p: Point, angle: double) -> Point is
+    let x = p.x * Math.cos(angle) + p.z * Math.sin(angle)
+    let z = p.z * Math.cos(angle) - p.x * Math.sin(angle)
+
+    (
+        x = x,
+        y = p.y * Math.cos(tilt) - z * Math.sin(tilt),
+        z = p.y * Math.sin(tilt) + z * Math.cos(tilt))
+si
+
+square(
+    centre: Point, u: Point, v: Point, half: double, angle: double
+) -> Collections.List[(x: double, y: double)] =>
+    [(-1.0D, -1.0D), (1.0D, -1.0D), (1.0D, 1.0D), (-1.0D, 1.0D)]
+        |> map(((a, b)) =>
+            turned(
+                plus(centre, plus(times(u, a * half), times(v, b * half))),
+                angle))
+        |> map(p => (x = p.x, y = p.y))
+        |> collect_list()
+
+draw(image: IMAGE, angle: double) is
+    image.clear(250ub, 250ub, 247ub)
+
+    let body = SHAPES()
+    let stickers = SHAPES()
+
+    for face in faces do
+        if turned(face.normal, angle).z > 0.0D then
+            let centre = times(face.normal, 1.5D)
+
+            let outline = square(centre, face.u, face.v, 1.5D, angle)
+
+            body.add(outline, 20ub, 20ub, 20ub)
+
+            for i in -1::1 do
+                for j in -1::1 do
+                    let at = plus(
+                        centre,
+                        plus(
+                            times(face.u, cast double(i)),
+                            times(face.v, cast double(j))))
+
+                    stickers.add(
+                        square(at, face.u, face.v, 0.42D, angle),
+                        face.colour)
+                od
+            od
+        fi
+    od
+
+    image.fill(body)
+    image.fill(stickers)
+si
+
+let image = IMAGE(size, size)
+
+image.view(-2.8D, -2.8D, 2.8D, 2.8D)
+
+draw(image, -Math.pi / 5.0D)
+
+write_line("a solved cube, white on top, green facing, red to the right")
+
+image.write("rubik.png")
+
+image.show("rubik.png")

@@ -1,0 +1,44 @@
+use default
+use System.Random
+
+let target = "METHINKS IT IS LIKE A WEASEL"
+let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+let c = 100
+let rate = 0.05
+let random = Random(3)
+
+random_letter() -> char => letters[random.next(letters.length)]
+
+fitness(candidate: string) -> int =>
+    (0..target.length) |> filter(i => candidate[i] == target[i]) |> count()
+
+mutate(parent: string, rate: double) -> string =>
+    string(
+        parent
+            |> map(letter =>
+                if random.next_double() < rate then random_letter()
+                else letter
+                fi)
+            |> collect_array())
+
+let parent mut =
+    string(
+        (0..target.length) |> map(_ => random_letter()) |> collect_array())
+
+let generation mut = 0
+
+while parent !~ target do
+    generation = generation + 1
+
+    let fittest =
+        (0..c)
+            |> map(_ => mutate(parent, rate))
+            |> reduce(parent, (best, copy) =>
+                if fitness(copy) > fitness(best) then copy else best fi)
+
+    if fitness(fittest) > fitness(parent) then
+        write_line("{generation,4}: {fittest} ({fitness(fittest)})")
+    fi
+
+    parent = fittest
+od

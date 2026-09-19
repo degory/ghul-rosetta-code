@@ -1,0 +1,121 @@
+use default
+use Raster.IMAGE
+
+@equality()
+class SANDPILE is
+    size: int
+    cells: LIST[int]
+
+    init(size: int, cells: Iterable[int]) is
+        self.size = size
+        self.cells = cells |> collect_list()
+        topple()
+    si
+
+    init(rows: int[][]) is
+        init(rows.count, rows |> flat_map(row => row))
+    si
+
+    filled(size: int, grains: int) -> SANDPILE static =>
+        SANDPILE(size, repeat(grains, size * size))
+
+    drop(i: int) is
+        cells[i] = cells[i] + 1
+    si
+
+    topple() is
+        let unstable mut = true
+
+        while unstable do
+            unstable = false
+
+            for i in 0..size * size do
+                if cells[i] >= 4 then
+                    unstable = true
+                    cells[i] = cells[i] - 4
+
+                    let row = i / size, column = i % size
+
+                    if row > 0 then drop(i - size) fi
+                    if row < size - 1 then drop(i + size) fi
+                    if column > 0 then drop(i - 1) fi
+                    if column < size - 1 then drop(i + 1) fi
+                fi
+            od
+        od
+    si
+
+    rows: List[string] =>
+        (0..size)
+            |> map(r => cells |> skip(r * size) |> take(size) |> join(" "))
+            |> collect_list()
+si
+
++(a: SANDPILE, b: SANDPILE) -> SANDPILE =>
+    SANDPILE(a.size, a.cells |> zip(b.cells) |> map(p => p.`0 + p.`1))
+
+side_by_side(label: string, piles: List[SANDPILE], signs: string[]) is
+    write_line(label)
+
+    for r in 0..piles[0].size do
+        let centre = r == piles[0].size / 2
+        let line mut = piles[0].rows[r]
+
+        for (i, pile) in piles |> skip(1) |> index() do
+            let sign = if centre then signs[i] else " " fi
+
+            line = "{line}  {sign}  {pile.rows[r]}"
+        od
+
+        write_line("    {line}")
+    od
+
+    write_line("")
+si
+
+let avalanche = SANDPILE([[4, 3, 3], [3, 1, 2], [0, 2, 3]])
+
+let s1 = SANDPILE([[1, 2, 0], [2, 1, 1], [0, 1, 3]])
+let s2 = SANDPILE([[2, 1, 3], [1, 0, 1], [0, 1, 0]])
+let s3 = SANDPILE.filled(3, 3)
+let s3_id = SANDPILE([[2, 1, 2], [1, 0, 1], [2, 1, 2]])
+
+write_line("4 3 3 / 3 1 2 / 0 2 3 topples to")
+write_line(avalanche.rows |> join(" / "))
+write_line("")
+
+side_by_side("s1 + s2 = s2 + s1:", [s1, s2, s1 + s2], ["+", "="])
+write_line("s1 + s2 =~ s2 + s1: {s1 + s2 =~ s2 + s1}")
+write_line("")
+side_by_side("s3 + s3_id:", [s3, s3_id, s3 + s3_id], ["+", "="])
+write_line("s3 + s3_id =~ s3: {s3 + s3_id =~ s3}")
+write_line("")
+side_by_side("s3_id + s3_id:", [s3_id, s3_id, s3_id + s3_id], ["+", "="])
+write_line("s3_id + s3_id =~ s3_id: {s3_id + s3_id =~ s3_id}")
+
+let six = SANDPILE.filled(64, 6)
+let identity = SANDPILE(64, six.cells |> map(grains => 6 - grains))
+
+write_line("")
+write_line("the identity of the 64 x 64 sandpile is drawn below")
+
+let shades = [
+    (20ub, 20ub, 60ub), (40ub, 120ub, 200ub),
+    (240ub, 200ub, 60ub), (200ub, 50ub, 40ub)
+]
+let scale = 5
+let image = IMAGE(64 * scale, 64 * scale)
+
+for (i, grains) in identity.cells |> index() do
+    let (r, g, b) = shades[grains]
+    let x = cast double(i % 64 * scale), y = cast double(i / 64 * scale)
+
+    image.colour(r, g, b)
+    let side = cast double(scale)
+
+    image.fill_rectangle(x, y, x + side, y + side)
+od
+
+image.write("identity.png")
+
+image.show("identity.png")

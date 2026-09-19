@@ -1,0 +1,54 @@
+use default
+use Raster.ANIMATION
+use Raster.IMAGE
+use System.Math
+
+let width = 240
+let height = 180
+let rectangles = 21
+let spacing = 4.0D
+let frames = 42
+
+channel(hue: double, offset: double) -> ubyte =>
+    let wave = 0.5D + 0.5D * Math.cos(2.0D * Math.pi * (hue - offset)) in
+    cast ubyte(Math.round(40.0D + 215.0D * wave))
+
+draw(image: IMAGE, frame: int) is
+    image.clear(10ub, 10ub, 15ub)
+    image.stroke(2.0D)
+
+    for ring in 0..rectangles do
+        let inset = spacing * cast double(ring) + 2.0D
+        let hue = cast double(frame - 2 * ring) / cast double(frames)
+
+        image.colour(
+            channel(hue, 0.0D),
+            channel(hue, 1.0D / 3.0D),
+            channel(hue, 2.0D / 3.0D))
+
+        let left = inset
+        let top = inset
+        let right = cast double(width) - inset
+        let bottom = cast double(height) - inset
+
+        image.line([
+            (x = left, y = top), (x = right, y = top),
+            (x = right, y = bottom), (x = left, y = bottom),
+            (x = left, y = top)])
+    od
+si
+
+let image = IMAGE(width, height)
+let animation = ANIMATION(width, height)
+
+for frame in 0..frames do
+    draw(image, frame)
+    animation.add(image, 50)
+od
+
+write_line("{rectangles} rectangles around one centre, the colour fading")
+write_line("in from the outermost to the innermost")
+
+animation.write("rectangles.png")
+
+animation.show("rectangles.png")

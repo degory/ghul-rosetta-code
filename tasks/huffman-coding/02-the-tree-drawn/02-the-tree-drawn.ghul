@@ -1,0 +1,138 @@
+use default
+use Raster.Anchor
+use Raster.IMAGE
+
+use SPOT = (x: double, y: double)
+
+union Huffman(weight: int) is
+    LEAF(symbol: char, ..)
+    NODE(left: Huffman, right: Huffman, ..)
+si
+
+use Huffman.LEAF
+use Huffman.NODE
+
+take_lightest(pending: LIST[Huffman]) -> Huffman is
+    let at mut = 0
+
+    for i in 1..pending.count do
+        if pending[i].weight < pending[at].weight then
+            at = i
+        fi
+    od
+
+    let lightest = pending[at]
+
+    pending.remove_at(at)
+
+    return lightest
+si
+
+build_tree(leaves: List[Huffman]) -> Huffman is
+    let pending = LIST(leaves)
+
+    while pending.count > 1 do
+        let first = take_lightest(pending)
+        let second = take_lightest(pending)
+
+        pending.add(NODE(first, second, first.weight + second.weight))
+    od
+
+    return pending[0]
+si
+
+let text = "this is an example for huffman encoding"
+
+let weights = MAP()
+
+for character in text do
+    let seen mut = 0
+
+    weights.try_get_value(character, seen ref)
+
+    weights[character] = seen + 1
+od
+
+let leaves = LIST()
+
+for symbol in weights.keys |> sort() do
+    leaves.add(LEAF(symbol, weights[symbol]))
+od
+
+let tree = build_tree(leaves)
+
+let marks = LIST[(at: SPOT, symbol: char, weight: int)]()
+let edges = LIST[(from: SPOT, to: SPOT, bit: string)]()
+
+let next_leaf mut = 0.0
+
+place(node: Huffman, depth: int) -> SPOT =>
+    if let leaf: LEAF = node then
+        (let at = (x = next_leaf, y = -cast double(depth))
+
+         next_leaf = next_leaf + 1.0
+         marks.add((at = at, symbol = leaf.symbol, weight = leaf.weight))
+
+         at)
+    else
+        (let left = place(node.left, depth + 1)
+         let right = place(node.right, depth + 1)
+
+         let at = (x = (left.x + right.x) / 2.0, y = -cast double(depth))
+
+         edges.add((from = at, to = left, bit = "0"))
+         edges.add((from = at, to = right, bit = "1"))
+
+         at)
+    fi
+
+let root = place(tree, 0)
+
+let deepest = marks |> map(mark => -mark.at.y) |> max() ?? 0.0
+
+let image = IMAGE(900, 360)
+
+image.view(-0.7, -deepest - 1.1, next_leaf - 0.3, 0.5, 14.0)
+
+image.colour(120ub, 140ub, 190ub)
+image.stroke(1.6)
+
+for edge in edges do
+    image.line(edge.from.x, edge.from.y, edge.to.x, edge.to.y)
+od
+
+image.colour(120ub, 120ub, 120ub)
+
+for edge in edges do
+    let x = (edge.from.x * 2.0 + edge.to.x) / 3.0
+    let y = (edge.from.y * 2.0 + edge.to.y) / 3.0
+    let aside = if edge.bit =~ "0" then -0.16 else 0.16 fi
+
+    image.text(x + aside, y, 11.0, edge.bit, Anchor.CENTRE)
+od
+
+for edge in edges do
+    image.colour(150ub, 150ub, 150ub)
+    image.stroke(5.0)
+    image.line(edge.from.x, edge.from.y, edge.from.x, edge.from.y)
+od
+
+for mark in marks do
+    let shown =
+        if mark.symbol == ' ' then "space" else "{mark.symbol}" fi
+
+    image.colour(30ub, 70ub, 160ub)
+    image.stroke(9.0)
+    image.line(mark.at.x, mark.at.y, mark.at.x, mark.at.y)
+
+    image.colour(30ub, 30ub, 30ub)
+    image.text(mark.at.x, mark.at.y - 0.42, 15.0, shown, Anchor.CENTRE)
+
+    image.colour(120ub, 120ub, 120ub)
+    image.text(mark.at.x, mark.at.y - 0.82, 12.0, "{mark.weight}",
+               Anchor.CENTRE)
+od
+
+image.write("huffman.png")
+
+image.show("huffman.png")
