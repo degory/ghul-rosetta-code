@@ -5,7 +5,7 @@ use System.Math
 use Step = (x: int, y: int)
 
 steps_of_length(squared: int) -> List[Step] is
-    let found = LIST[Step]()
+    let found = LIST()
     let a mut = 0
 
     while 2 * a * a <= squared do
@@ -32,8 +32,8 @@ bend(from: Step, to: Step) -> double =>
     turn - 2.0D * Math.pi * Math.floor(turn / (2.0D * Math.pi))
 
 spiral(count: int) -> List[Step] is
-    let points = LIST[Step]([(x = 0, y = 0), (x = 0, y = 1)])
-    let last: Step mut = (x = 0, y = 1)
+    let points = LIST([(x = 0, y = 0), (x = 0, y = 1)])
+    let last mut = (x = 0, y = 1)
     let squared mut = 1
 
     while points.count < count do

@@ -1,7 +1,7 @@
 use default
 
 bigrams(phrase: string) -> MAP[string, int] =>
-    (let counted = MAP[string, int]()
+    (let counted = MAP()
 
      for word in phrase.to_lower().split([' ']) do
          for at in 0..word.length - 1 do

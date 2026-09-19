@@ -23,7 +23,7 @@ play(seed: int) -> (winner: int, rounds: int) is
         deck[other] = held
     od
 
-    let hands = [Collections.Queue[Card](), Collections.Queue[Card]()]
+    let hands = [Collections.Queue(), Collections.Queue()]
 
     for i in 0..52 do
         hands[i % 2].enqueue(deck[i])
@@ -34,8 +34,8 @@ play(seed: int) -> (winner: int, rounds: int) is
     while hands[0].count > 0 /\ hands[1].count > 0 do
         rounds = rounds + 1
 
-        let pot = LIST[Card]()
-        let story = LIST[string]()
+        let pot = LIST()
+        let story = LIST()
         let winner mut = -1
 
         do

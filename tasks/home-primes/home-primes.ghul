@@ -79,7 +79,7 @@ prime_factors(value: bigint) -> Pipe[bigint] is
         yield remaining
     else
         let divisor = pollard_rho(remaining)
-        let factors = LIST[bigint]()
+        let factors = LIST()
 
         factors.add_range(prime_factors(divisor))
         factors.add_range(prime_factors(remaining / divisor))

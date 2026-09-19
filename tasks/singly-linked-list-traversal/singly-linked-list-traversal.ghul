@@ -4,7 +4,7 @@ class NODE[T](value: T) is
     next: NODE[T]?
 
     insert_after(value: T) -> NODE[T] is
-        let inserted = NODE[T](value)
+        let inserted = NODE(value)
 
         inserted.next = next
         next = inserted
@@ -14,7 +14,7 @@ class NODE[T](value: T) is
 si
 
 values[T](first: NODE[T]) -> Pipe[T] is
-    let cursor: NODE[T]? mut = first
+    let cursor mut = first
 
     while let node = cursor do
         yield node.value

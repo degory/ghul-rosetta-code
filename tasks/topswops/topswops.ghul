@@ -35,7 +35,7 @@ topswops(n: int) -> int => (
 
     let best mut = 0
 
-    let search = (position: int) -> void rec is
+    let search = (position) rec is
         if position == n then
             let rounds = swaps(deck.to_array())
 

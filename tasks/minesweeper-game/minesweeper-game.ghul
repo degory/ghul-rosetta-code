@@ -9,7 +9,7 @@ let random = Random(4)
 let cells = (0..width * height) |> collect_list()
 
 let mines =
-    SET[int](
+    SET(
         cells
             |> map(cell => (cell, random.next()))
             |> sort((a, b) => a.`1 <> b.`1)
@@ -17,7 +17,7 @@ let mines =
             |> take(random.next(3, 5)))
 
 let cleared = SET[int]()
-let marked = SET[int]()
+let marked = SET()
 
 neighbours(cell: int) -> Pipe[int] is
     let (x, y) = (cell % width, cell / width)

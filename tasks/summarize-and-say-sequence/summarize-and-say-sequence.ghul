@@ -1,7 +1,7 @@
 use default
 
 summarize(term: string) -> string is
-    let counts = MAP[char, int]()
+    let counts = MAP()
 
     for digit in term do
         counts[digit] =
@@ -16,8 +16,8 @@ summarize(term: string) -> string is
 si
 
 sequence(seed: int) -> LIST[string] is
-    let terms = LIST[string]()
-    let seen = SET[string]()
+    let terms = LIST()
+    let seen = SET()
 
     let term mut = "{seed}"
 
@@ -31,7 +31,7 @@ si
 
 canonical(seed: int) -> string => string("{seed}" |> sort() |> collect_array())
 
-let lengths = MAP[string, int]()
+let lengths = MAP()
 
 let longest mut = 0
 

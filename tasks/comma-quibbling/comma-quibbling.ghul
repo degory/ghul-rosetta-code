@@ -11,7 +11,7 @@ quibble(words: string[]) -> string =>
     )
     esac
 
-let examples: string[][] =
+let examples =
     [[], ["ABC"], ["ABC", "DEF"], ["ABC", "DEF", "G", "H"]]
 
 for words in examples do

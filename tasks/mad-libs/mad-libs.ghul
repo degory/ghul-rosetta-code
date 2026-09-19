@@ -2,7 +2,7 @@ use default
 use IO.Std.read_line
 use System.Text.RegularExpressions.Regex
 
-let story = LIST[string]()
+let story = LIST()
 
 while let line = read_line() /\ line.length > 0 do
     story.add(line)

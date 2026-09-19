@@ -206,7 +206,7 @@ lex(source: string) is
     yrt
 si
 
-let lines = LIST[string]()
+let lines = LIST()
 
 while let line = IO.Std.read_line() do
     lines.add(line)

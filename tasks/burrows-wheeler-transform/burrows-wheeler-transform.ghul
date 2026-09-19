@@ -8,7 +8,7 @@ ordinal_order(left: string, right: string) -> int =>
 
 rotations(text: string) -> Pipe[string] =>
     (0..text.length)
-        |> map((i: int) => "{text[i..<0]}{text[0..i]}")
+        |> map(i => "{text[i..<0]}{text[0..i]}")
 
 last_character(text: string) -> string =>
     "{text[text.length - 1]}"
@@ -21,7 +21,7 @@ transform(text: string) -> string =>
 
 invert(transformed: string) -> string is
     let width = transformed.length
-    let table mut = (0..width) |> map((i: int) => "") |> collect()
+    let table mut = (0..width) |> map(i => "") |> collect()
 
     for _ in 0..width do
         table = table

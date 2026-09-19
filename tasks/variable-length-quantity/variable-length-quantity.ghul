@@ -14,13 +14,13 @@ si
 
 from_octets(octets: List[ubyte]) -> long =>
     octets
-        |> reduce(0L, (value: long, octet: ubyte) =>
+        |> reduce(0L, (value, octet) =>
             (value << 7) | cast(cast(octet) & 0x7F))
 
 as_hex(octet: ubyte) -> string => "{octet:X2}"
 
 [0x200000L, 0x1FFFFFL]
-    |> each((value: long) =>
+    |> each(value =>
         (let octets = to_octets(value)
          let shown = octets |> map(as_hex) |> join(" ")
 

@@ -45,7 +45,7 @@ while mine < 3 /\ yours < 3 do
 
     let coins = random.next(4)
     let computer_first = round % 2 == 0
-    let first: int? =
+    let first =
         if computer_first then computer_guess(coins, null) else null fi
 
     if let guess = first then

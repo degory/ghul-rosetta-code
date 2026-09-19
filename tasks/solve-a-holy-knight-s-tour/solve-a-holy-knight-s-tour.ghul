@@ -22,8 +22,8 @@ let jumps = [
     (-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)
 ]
 
-let open = LIST[Square]()
-let start: Square mut = (row = 0, column = 0)
+let open = LIST()
+let start mut = (row = 0, column = 0)
 
 for (row, line) in board |> index() do
     for (position, c) in line |> index() do

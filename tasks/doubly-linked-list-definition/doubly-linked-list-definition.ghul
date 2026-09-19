@@ -5,7 +5,7 @@ class NODE[T](value: T) is
     previous: NODE[T]?
 
     insert_after(value: T) -> NODE[T] is
-        let inserted = NODE[T](value)
+        let inserted = NODE(value)
 
         inserted.previous = self
         inserted.next = next
@@ -20,7 +20,7 @@ class NODE[T](value: T) is
     si
 
     insert_before(value: T) -> NODE[T] is
-        let inserted = NODE[T](value)
+        let inserted = NODE(value)
 
         inserted.next = self
         inserted.previous = previous
@@ -46,7 +46,7 @@ class DOUBLY_LINKED_LIST[T] is
             if let first = head then
                 first.insert_before(value)
             else
-                NODE[T](value)
+                NODE(value)
             fi
 
         if !tail? then
@@ -63,7 +63,7 @@ class DOUBLY_LINKED_LIST[T] is
             if let last = tail then
                 last.insert_after(value)
             else
-                NODE[T](value)
+                NODE(value)
             fi
 
         if !head? then
@@ -95,7 +95,7 @@ class DOUBLY_LINKED_LIST[T] is
     si
 si
 
-let list = DOUBLY_LINKED_LIST[int]()
+let list = DOUBLY_LINKED_LIST()
 
 let two = list.add_to_tail(2)
 list.add_to_tail(4)

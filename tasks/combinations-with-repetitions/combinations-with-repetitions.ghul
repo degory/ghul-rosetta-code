@@ -2,11 +2,11 @@ use default
 
 combos[T](items: List[T], k: int) -> Ghul.Pipes.Pipe[LIST[T]] is
     if k == 0 then
-        yield LIST[T]()
+        yield LIST()
     else
         for i in 0..items.count do
             for rest in combos(items[i..<0], k - 1) do
-                let combo = LIST[T]([items[i]])
+                let combo = LIST([items[i]])
 
                 for item in rest do
                     combo.add(item)
@@ -29,7 +29,7 @@ for pick in picks do
     write_line("  {pick |> join(", ")}")
 od
 
-let ten_types = LIST[int](1::10)
+let ten_types = LIST(1::10)
 let ways = combos(ten_types, 3) |> count()
 
 write_line("choosing 3 from 10 types: {ways} ways")

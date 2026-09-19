@@ -34,7 +34,7 @@ overlap(a: Polygon, b: Polygon) -> bool =>
 show(shape: Polygon) -> string =>
     "[{shape |> map(p => "[{p.x}, {p.y}]") |> join(", ")}]"
 
-let polygon: Polygon = LIST([
+let polygon = LIST([
     P(0.0D, 0.0D), P(0.0D, 2.0D), P(1.0D, 4.0D),
     P(2.0D, 2.0D), P(2.0D, 0.0D)
 ])

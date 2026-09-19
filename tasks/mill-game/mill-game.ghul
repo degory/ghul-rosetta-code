@@ -14,15 +14,15 @@ let mills = [
     ["f2", "f4", "f6"], ["g1", "g4", "g7"]
 ]
 
-let board = MAP[string, char]()
-let neighbours = MAP[string, LIST[string]]()
+let board = MAP()
+let neighbours = MAP()
 
 for mill in mills do
     for point in mill do
         board[point] = '.'
 
         if !neighbours.contains_key(point) then
-            neighbours[point] = LIST[string]()
+            neighbours[point] = LIST()
         fi
     od
 
@@ -65,7 +65,7 @@ show() is
     od
 si
 
-let to_place = MAP[char, int]()
+let to_place = MAP()
 to_place['W'] = 9
 to_place['B'] = 9
 
@@ -259,7 +259,7 @@ describe(move: Move, side: char) -> string =>
     fi
 
 let side mut = 'W'
-let winner: char? mut = null
+let winner mut = null
 
 write_line("you are W and move first; the computer is B")
 

@@ -1,7 +1,7 @@
 use default
 
-let men_preferences = MAP[string, string[]]()
-let women_preferences = MAP[string, string[]]()
+let men_preferences = MAP()
+let women_preferences = MAP()
 
 men_preferences["abe"] = ["abi", "eve", "cath", "ivy", "jan", "dee", "fay", "bea", "hope", "gay"]
 men_preferences["bob"] = ["cath", "hope", "abi", "dee", "eve", "fay", "bea", "jan", "ivy", "gay"]
@@ -43,9 +43,9 @@ prefers(preferences: MAP[string, string[]], judge: string, a: string, b: string)
     rank(preferences[judge], a) < rank(preferences[judge], b)
 
 engage() -> MAP[string, string] is
-    let engaged_to = MAP[string, string]()
-    let next_choice = MAP[string, int]()
-    let free = LIST[string](men_preferences.keys |> sort())
+    let engaged_to = MAP()
+    let next_choice = MAP()
+    let free = LIST(men_preferences.keys |> sort())
 
     for man in men_preferences.keys do
         next_choice[man] = 0

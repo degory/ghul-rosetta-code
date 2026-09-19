@@ -52,7 +52,7 @@ si
 
 write_line("p      fraction of {trials} {size} by {size} grids percolating")
 
-let shown: GRID? mut = null
+let shown mut = null
 
 for step in 0::10 do
     let p = cast double(step) / 10.0D

@@ -19,14 +19,14 @@ merge(left: List[int], right: List[int]) -> Pipe[int] is
 si
 
 strand_sort(values: List[int]) -> List[int] is
-    let remaining = LIST[int]()
+    let remaining = LIST()
 
     remaining.add_range(values)
 
-    let sorted: List[int] mut = LIST[int]()
+    let sorted mut = LIST()
 
     while remaining.count > 0 do
-        let strand = LIST[int]()
+        let strand = LIST()
 
         strand.add(remaining[0])
         remaining.remove_at(0)

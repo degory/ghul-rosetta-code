@@ -1,7 +1,7 @@
 use default
 use IO.Std.read_line
 
-let variables = MAP[string, int]()
+let variables = MAP()
 
 let name = read_line()!
 let value = int.parse(read_line()!)

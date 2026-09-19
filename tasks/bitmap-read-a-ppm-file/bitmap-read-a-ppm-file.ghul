@@ -37,7 +37,7 @@ read_ppm(path: string) -> BITMAP is
 
     let at mut = 0
 
-    let token = () -> string is
+    let token = () is
         while at < raw.count /\ (space(raw[at]) \/ raw[at] == 35ub) do
             if raw[at] == 35ub then
                 while at < raw.count /\ raw[at] != 10ub do

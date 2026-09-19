@@ -3,7 +3,7 @@ use default
 let width = 48
 
 blank() -> LIST[int] is
-    let digits = LIST[int]()
+    let digits = LIST()
 
     for _ in 0..width do
         digits.add(0)

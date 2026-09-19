@@ -47,7 +47,7 @@ part(child: Expression, parent: string, on_right: bool) -> string =>
     fi
 
 convert(source: string) is
-    let stack = LIST[Expression]()
+    let stack = LIST()
 
     write_line("input: {source}")
     write_line("  {"token",-6}stack")

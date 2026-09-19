@@ -42,13 +42,13 @@ lookup(env: ENV?, index: int) -> THUNK is
 si
 
 evaluate(start: THUNK, arguments: List[THUNK]) -> Result is
-    let stack = STACK[Frame]()
+    let stack = STACK()
 
     for i in 0..arguments.count do
         stack.push(Frame.ARGUMENT(arguments[arguments.count - 1 - i]))
     od
 
-    let settle = (value: Value) is
+    let settle = (value) is
         while stack.count > 0 do
             if let update: Frame.UPDATE = stack.peek() then
                 update.thunk.value = value
@@ -59,7 +59,7 @@ evaluate(start: THUNK, arguments: List[THUNK]) -> Result is
         od
     si
 
-    let argument = () -> THUNK =>
+    let argument = () =>
         if let (thunk): Frame.ARGUMENT = stack.pop() then thunk
         else throw System.InvalidOperationException("argument expected")
         fi

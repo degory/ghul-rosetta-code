@@ -6,7 +6,7 @@ to_text(bytes: List[ubyte]) -> string =>
 replace_byte(
     bytes: List[ubyte], old: ubyte, replacement: ubyte
 ) -> LIST[ubyte] is
-    let result = LIST[ubyte]()
+    let result = LIST()
 
     for b in bytes do
         result.add(if b == old then replacement else b fi)
@@ -16,7 +16,7 @@ replace_byte(
 si
 
 join_bytes(a: List[ubyte], b: List[ubyte]) -> LIST[ubyte] is
-    let result = LIST[ubyte](a)
+    let result = LIST(a)
 
     for b2 in b do
         result.add(b2)
@@ -25,14 +25,14 @@ join_bytes(a: List[ubyte], b: List[ubyte]) -> LIST[ubyte] is
     result
 si
 
-let hello = LIST[ubyte]([104ub, 101ub, 108ub, 108ub, 111ub])
+let hello = LIST([104ub, 101ub, 108ub, 108ub, 111ub])
 write_line("created: {to_text(hello)}")
 write_line("empty: {LIST[ubyte]().count == 0}")
 
 let same = hello
 write_line("assigned equal: {same =~ hello}")
 
-let copy = LIST[ubyte](hello)
+let copy = LIST(hello)
 copy.add(33ub)
 write_line("clone independent: {!(copy =~ hello)}")
 

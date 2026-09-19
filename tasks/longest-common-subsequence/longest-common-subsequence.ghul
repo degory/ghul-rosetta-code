@@ -3,7 +3,7 @@ use default
 longest_common_subsequence(left: string, right: string) -> string is
     let known = MAP()
 
-    let longest = (i: int, j: int) -> string rec =>
+    let longest = (i, j) rec =>
         if i == left.length \/ j == right.length then
             ""
         elif known.contains_key((i, j)) then

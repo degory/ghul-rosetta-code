@@ -13,9 +13,9 @@ let keys = ["y", "k", "u", "h", "w", "l", "b", "j", "n"]
 
 anywhere() -> Spot => (x = random.next(width), y = random.next(height))
 
-let player: Spot mut = anywhere()
-let robots = LIST[Spot]()
-let junk = SET[Spot]()
+let player mut = anywhere()
+let robots = LIST()
+let junk = SET()
 
 while robots.count < 8 do
     let spot = anywhere()

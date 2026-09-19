@@ -13,7 +13,7 @@ degree(poly: List[double]) -> int =>
 divide(numerator: List[double], denominator: List[double]) -> DIVISION is
     let divisor_degree = degree(denominator)
     let remainder = numerator |> collect_list()
-    let quotient = LIST[double]()
+    let quotient = LIST()
 
     for _ in 0::degree(numerator) - divisor_degree do
         quotient.add(0.0D)
@@ -48,7 +48,7 @@ render(poly: List[double]) -> string is
 
     if top < 0 then return "0" fi
 
-    let parts = LIST[string]()
+    let parts = LIST()
 
     for power in (0::top) |> reverse() do
         let size = Math.abs(poly[power])

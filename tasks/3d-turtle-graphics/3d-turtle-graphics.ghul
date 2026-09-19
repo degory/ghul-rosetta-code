@@ -28,7 +28,7 @@ class TURTLE is
         up = V3(0.0D, 0.0D, 1.0D)
         colour = (40ub, 40ub, 40ub)
         drawing = true
-        drawn = LIST[Segment]()
+        drawn = LIST()
     si
 
     forward(distance: double) is

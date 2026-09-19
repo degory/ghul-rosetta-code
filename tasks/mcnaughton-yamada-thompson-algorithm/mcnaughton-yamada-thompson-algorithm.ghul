@@ -20,7 +20,7 @@ precedence(c: char) -> int =>
 
 postfix(infix: string) -> string is
     let output = System.Text.StringBuilder()
-    let operators = STACK[char]()
+    let operators = STACK()
 
     for c in infix do
         if c == '(' then
@@ -51,7 +51,7 @@ postfix(infix: string) -> string is
 si
 
 compile(pattern: string) -> NFA is
-    let stack = STACK[NFA]()
+    let stack = STACK()
 
     for c in postfix(pattern) do
         let initial = STATE()
@@ -111,12 +111,12 @@ si
 
 matches(pattern: string, text: string) -> bool is
     let nfa = compile(pattern)
-    let current mut = SET[STATE]()
+    let current mut = SET()
 
     closure(nfa.initial, current)
 
     for c in text do
-        let next = SET[STATE]()
+        let next = SET()
 
         for s in current do
             if s.label? /\ s.label == c then

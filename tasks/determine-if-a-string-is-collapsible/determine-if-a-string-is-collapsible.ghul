@@ -1,7 +1,7 @@
 use default
 
 collapsed(text: string) -> Ghul.Pipes.Pipe[char] is
-    let previous: char? mut = null
+    let previous mut = null
 
     for ch in text do
         if !previous? \/ ch != previous then

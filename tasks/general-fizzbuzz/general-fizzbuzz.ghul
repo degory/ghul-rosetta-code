@@ -2,7 +2,7 @@ use default
 use IO.Std.read_line
 
 let max_n = int.parse(read_line()!)
-let factors = LIST[(factor: int, word: string)]()
+let factors = LIST()
 
 for _ in 0..3 do
     let parts = read_line()!.split([' '])

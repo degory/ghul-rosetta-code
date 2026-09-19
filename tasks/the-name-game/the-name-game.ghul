@@ -7,7 +7,7 @@ verse(name: string) -> string is
     let tail =
         if "aeiou".contains(first) then lower else lower.substring(1) fi
 
-    let rhyme = (letter: char) =>
+    let rhyme = letter =>
         if first == letter then tail else "{letter}{tail}" fi
 
     "{name}, {name}, bo-{rhyme('b')}\n"

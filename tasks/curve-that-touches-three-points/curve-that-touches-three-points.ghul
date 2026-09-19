@@ -25,13 +25,13 @@ curve(start: P, middle: P, finish: P, steps: int) -> List[P] is
     let centre = centre_of(start, middle, finish)
     let radius = (start - centre).length
 
-    angle(p: P) -> double => Math.atan2(p.y - centre.y, p.x - centre.x)
+    angle(p) => Math.atan2(p.y - centre.y, p.x - centre.x)
 
     let from = angle(start)
     let through = angle(middle)
     let turn mut = angle(finish) - from
 
-    let wrap = (a: double) => a - full * Math.floor(a / full)
+    let wrap = a => a - full * Math.floor(a / full)
 
     if (wrap(through - from) < wrap(turn)) != (turn > 0.0D) then
         turn = if turn > 0.0D then turn - full else turn + full fi

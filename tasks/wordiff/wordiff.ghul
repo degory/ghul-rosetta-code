@@ -6,7 +6,7 @@ let dictionary =
         |> filter(w => w.length >= 3 /\ w |> all(c => c >= 'a' /\ c <= 'z'))
         |> collect_list()
 
-let words = SET[string](dictionary)
+let words = SET(dictionary)
 
 one_apart(a: string, b: string) -> bool =>
     if a.length == b.length then
@@ -35,7 +35,7 @@ ask(prompt: string) -> string? is
     return answer
 si
 
-let names = LIST[string]()
+let names = LIST()
 
 for player in 1::2 do
     if let name = ask("name of player {player}:") then
@@ -45,7 +45,7 @@ od
 
 let random = System.Random(7)
 let starters = dictionary |> filter(w => w.length <= 4) |> collect_list()
-let used = LIST[string]()
+let used = LIST()
 let last mut = starters[random.next(starters.count)]
 
 used.add(last)

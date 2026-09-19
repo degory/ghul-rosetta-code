@@ -15,8 +15,8 @@ let suits = "CDHS"
 name(card: int) -> string => "{ranks[card / 4]}{suits[card % 4]}"
 
 deal(game: int) -> List[string] is
-    let deck = LIST[int](0..52)
-    let dealt = LIST[string]()
+    let deck = LIST(0..52)
+    let dealt = LIST()
     let random = microsoft_rand(game)
 
     while deck.count > 0 do

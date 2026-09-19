@@ -1,7 +1,7 @@
 use default
 
 sorted_string(s: string) -> string is
-    let chars = LIST[char]()
+    let chars = LIST()
 
     for c in s do
         chars.add(c)

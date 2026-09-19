@@ -5,7 +5,7 @@ class NODE[T](value: T) is
     previous: NODE[T]?
 
     insert_after(value: T) -> NODE[T] is
-        let inserted = NODE[T](value)
+        let inserted = NODE(value)
 
         inserted.previous = self
         inserted.next = next
@@ -21,7 +21,7 @@ class NODE[T](value: T) is
 si
 
 forward[T](first: NODE[T]) -> Pipe[T] is
-    let cursor: NODE[T]? mut = first
+    let cursor mut = first
 
     while let node = cursor do
         yield node.value
@@ -30,7 +30,7 @@ forward[T](first: NODE[T]) -> Pipe[T] is
 si
 
 backward[T](last: NODE[T]) -> Pipe[T] is
-    let cursor: NODE[T]? mut = last
+    let cursor mut = last
 
     while let node = cursor do
         yield node.value

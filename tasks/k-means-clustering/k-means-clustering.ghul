@@ -69,8 +69,8 @@ let centres mut = seeded_centres()
 let membership = points |> map(_ => 0) |> collect_list()
 
 recentred() -> Collections.List[Point] is
-    let totals = LIST[Point]()
-    let sizes = LIST[int]()
+    let totals = LIST()
+    let sizes = LIST()
 
     for _ in 0..clusters do
         totals.add((x = 0.0D, y = 0.0D))

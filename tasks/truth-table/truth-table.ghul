@@ -100,7 +100,7 @@ table(source: string) is
     write_line("  {variables |> join(" ")} | result")
 
     for row in 0..(1 << variables.count) do
-        let values = MAP[string, bool]()
+        let values = MAP()
 
         for column in 0..variables.count do
             let bit = variables.count - 1 - column

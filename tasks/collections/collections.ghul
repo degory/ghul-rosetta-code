@@ -1,6 +1,6 @@
 use default
 
-let planets = LIST[string]()
+let planets = LIST()
 
 planets.add("Mercury")
 planets.add("Venus")

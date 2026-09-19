@@ -2,7 +2,7 @@ use default
 
 let pair_bound = 1200
 
-let sums = LIST[long]()
+let sums = LIST()
 
 for a in 1..pair_bound do
     let a_cubed = cast long(a) * cast long(a) * cast long(a)

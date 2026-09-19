@@ -23,7 +23,7 @@ symbol(x: double, y: double, radius: double) -> string =>
 taijitu(radius: int) -> Pipe[string] is
     for row in -radius::radius do
         yield ((-2 * radius)::(2 * radius))
-            |> map((column: int) =>
+            |> map(column =>
                 symbol(cast(column) / 2.0D, cast(row),
                     cast(radius)))
             |> join("")
@@ -31,6 +31,6 @@ taijitu(radius: int) -> Pipe[string] is
 si
 
 [4, 8]
-    |> each((radius: int) =>
+    |> each(radius =>
         (taijitu(radius) |> each(line => write_line(line))
          write_line("")))

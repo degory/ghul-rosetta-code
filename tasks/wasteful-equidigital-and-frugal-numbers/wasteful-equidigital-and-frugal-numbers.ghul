@@ -91,7 +91,7 @@ class TALLY is
     found: int public
 
     init() is
-        first_fifty = LIST[int]()
+        first_fifty = LIST()
     si
 
     take(value: int) is

@@ -24,8 +24,8 @@ class PREPROCESSOR(debug: bool) is
     output: LIST[string]
 
     init(..) is
-        defines = MAP[string, MACRO]()
-        output = LIST[string]()
+        defines = MAP()
+        output = LIST()
     si
 
     note(text: string) is
@@ -35,7 +35,7 @@ class PREPROCESSOR(debug: bool) is
     si
 
     expand(text: string, used: LIST[string]) -> string =>
-        identifier.replace(text, (m: Match) -> string is
+        identifier.replace(text, (m) is
             if !defines.contains_key(m.value) then
                 return m.value
             fi
@@ -46,7 +46,7 @@ class PREPROCESSOR(debug: bool) is
         si)
 
     call(m: Match) -> string is
-        let used = LIST[string]()
+        let used = LIST()
         let called = m.groups[1].value
 
         if !defines.contains_key(called) then
@@ -60,7 +60,7 @@ class PREPROCESSOR(debug: bool) is
             return m.value
         fi
 
-        let body = identifier.replace(macro.body, (p: Match) -> string =>
+        let body = identifier.replace(macro.body, p =>
             let index =
                 (0..macro.parameters.count)
                     |> find(i => macro.parameters[i] =~ p.value) in
@@ -118,7 +118,7 @@ class PREPROCESSOR(debug: bool) is
                 fi
             else
                 let replaced =
-                    usage.replace(line, (m: Match) -> string => call(m))
+                    usage.replace(line, m => call(m))
 
                 output.add(replaced)
             fi

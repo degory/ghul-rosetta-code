@@ -9,7 +9,7 @@ class ROOM(items: LIST[string]) is
     name: string? public
 
     init(..) is
-        exits = SET[string]()
+        exits = SET()
     si
 si
 
@@ -23,7 +23,7 @@ steps["west"] = (-1, 0, 0)
 steps["up"] = (0, 0, 1)
 steps["down"] = (0, 0, -1)
 
-let opposite = MAP[string, string]()
+let opposite = MAP()
 opposite["north"] = "south"
 opposite["south"] = "north"
 opposite["east"] = "west"
@@ -31,7 +31,7 @@ opposite["west"] = "east"
 opposite["up"] = "down"
 opposite["down"] = "up"
 
-let aliases = MAP[string, string]()
+let aliases = MAP()
 
 for (short, long) in [
     ("n", "north"), ("s", "south"), ("e", "east"), ("w", "west"),
@@ -42,19 +42,19 @@ for (short, long) in [
 od
 
 let goal = (x = 1, y = 1, z = 5)
-let rooms = MAP[Place, ROOM]()
+let rooms = MAP()
 
-let start = ROOM(LIST[string](["sledge"]))
+let start = ROOM(LIST(["sledge"]))
 start.name = "the start"
 rooms[(x = 0, y = 0, z = 0)] = start
 
-let prize = ROOM(LIST[string](["gold", "gold", "gold"]))
+let prize = ROOM(LIST(["gold", "gold", "gold"]))
 prize.name = "the prize room"
 rooms[goal] = prize
 
 let here mut = (x = 0, y = 0, z = 0)
-let carrying = LIST[string]()
-let equipped: string? mut = null
+let carrying = LIST()
+let equipped mut = null
 
 room() -> ROOM => rooms[here]
 
@@ -104,7 +104,7 @@ attack(direction: string) is
 
     if !rooms.contains_key(target) then
         let item = ["sledge", "ladder", "gold"][random.next(3)]
-        rooms[target] = ROOM(LIST[string]([item]))
+        rooms[target] = ROOM(LIST([item]))
     fi
 
     room().exits.add(direction)
@@ -116,8 +116,8 @@ si
 move_items(from: LIST[string], to: LIST[string], what: string) -> bool is
     let chosen =
         if what =~ "all" then from |> collect_list()
-        elif from.contains(what) then LIST[string]([what])
-        else LIST[string]()
+        elif from.contains(what) then LIST([what])
+        else LIST()
         fi
 
     for item in chosen do

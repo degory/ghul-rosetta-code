@@ -43,4 +43,4 @@ si
 let n = 5
 
 zigzag(n) |> each(row =>
-    write_line(row |> map((value: int) => "{value,2}") |> join(" ")))
+    write_line(row |> map(value => "{value,2}") |> join(" ")))

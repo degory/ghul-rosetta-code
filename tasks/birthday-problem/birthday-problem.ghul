@@ -77,7 +77,7 @@ first_even(chance: (int) -> double, from: int) -> int is
     low
 si
 
-let crossings = LIST[int]()
+let crossings = LIST()
 let curves = LIST[List[double]]()
 let start mut = 2
 

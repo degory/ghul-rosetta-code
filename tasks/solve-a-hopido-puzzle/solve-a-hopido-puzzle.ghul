@@ -19,7 +19,7 @@ let hops = [
     (-3, 0), (3, 0), (0, -3), (0, 3), (-2, -2), (-2, 2), (2, -2), (2, 2)
 ]
 
-let open = LIST[Square]()
+let open = LIST()
 
 for (row, line) in board |> index() do
     for (position, c) in line |> index() do

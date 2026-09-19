@@ -11,7 +11,7 @@ plain_whitespace(text: string) -> string =>
         |> join("")
 
 single_spaces(text: string) -> string is
-    let kept = LIST[char]()
+    let kept = LIST()
 
     for letter in text do
         let after_space = kept.count > 0 /\ kept[kept.count - 1] == ' '
@@ -60,7 +60,7 @@ key(text: string) -> string =>
     transforms |> reduce(text, (running, step) => step(running))
 
 runs(text: string) -> Pipe[string] is
-    let held = LIST[char]()
+    let held = LIST()
 
     for letter in text do
         let broke =

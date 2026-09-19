@@ -18,9 +18,9 @@ times(p: Point, k: double) -> Point =>
 rgb(r: int, g: int, b: int) -> Colour =>
     (red = cast ubyte(r), green = cast ubyte(g), blue = cast ubyte(b))
 
-let x_axis: Point = (x = 1.0D, y = 0.0D, z = 0.0D)
-let y_axis: Point = (x = 0.0D, y = 1.0D, z = 0.0D)
-let z_axis: Point = (x = 0.0D, y = 0.0D, z = 1.0D)
+let x_axis = (x = 1.0D, y = 0.0D, z = 0.0D)
+let y_axis = (x = 0.0D, y = 1.0D, z = 0.0D)
+let z_axis = (x = 0.0D, y = 0.0D, z = 1.0D)
 
 let faces: (normal: Point, u: Point, v: Point, colour: Colour)[] = [
     (y_axis, x_axis, z_axis, rgb(245, 245, 245)),

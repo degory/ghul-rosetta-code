@@ -32,7 +32,7 @@ class PRINTER is
     si
 
     submit(line: string) -> COROUTINE[Reply] is
-        let replies = CHANNEL[Reply]()
+        let replies = CHANNEL()
 
         _requests.send(REQUEST(line, replies))
 

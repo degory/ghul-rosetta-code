@@ -13,7 +13,7 @@ let puzzle = [
 ]
 
 let grid =
-    LIST[int](
+    LIST(
         puzzle
             |> flat_map(row => row.split([' ']))
             |> map(cell => if cell =~ "." then 0 else int.parse(cell) fi))

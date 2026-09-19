@@ -3,14 +3,14 @@ use default
 use PATIENT = (id: string, lastname: string)
 use VISIT = (id: string, date: string, score: double?)
 
-let patients: List[PATIENT] =
+let patients =
     [(id = "1001", lastname = "Hopper"),
      (id = "4004", lastname = "Wirth"),
      (id = "3003", lastname = "Kemeny"),
      (id = "2002", lastname = "Gosling"),
      (id = "5005", lastname = "Kurtz")]
 
-let visits: List[VISIT] =
+let visits =
     [(id = "2002", date = "2020-09-10", score = 6.8D),
      (id = "1001", date = "2020-09-17", score = 5.5D),
      (id = "4004", date = "2020-09-24", score = 8.4D),
@@ -32,7 +32,7 @@ patients |> each(patient => (
         if by_patient.contains_key(patient.id) then
             by_patient[patient.id]
         else
-            LIST[VISIT]()
+            LIST()
         fi
 
     let latest =

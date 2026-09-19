@@ -6,13 +6,13 @@ let documents = [
     "what is done is what is done"
 ]
 
-let index = MAP[string, SET[int]]()
+let index = MAP()
 let number mut = 0
 
 for document in documents do
     for word in document.split([' ']) do
         if !index.contains_key(word) then
-            index[word] = SET[int]()
+            index[word] = SET()
         fi
 
         index[word].add(number)

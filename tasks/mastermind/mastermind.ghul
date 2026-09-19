@@ -59,7 +59,7 @@ let length = ask("how long is the code", 4, longest)
 let guesses = ask("how many guesses", 7, 20)
 
 let palette = "ABCDEFGHIJKLMNOPQRST".substring(0, colours)
-let pool = LIST[char](palette)
+let pool = LIST(palette)
 
 let code = (
     let chosen = System.Text.StringBuilder()
@@ -75,7 +75,7 @@ let code = (
 
     chosen.to_string())
 
-let history = LIST[string]()
+let history = LIST()
 
 write_line("guess a code of {length} letters from {palette}")
 

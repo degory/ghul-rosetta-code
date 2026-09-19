@@ -39,7 +39,7 @@ rotated(piece: Piece) -> Piece => (
             |> collect_list()
 )
 
-let well = LIST[char]((0..width * height) |> map(_ => '.'))
+let well = LIST((0..width * height) |> map(_ => '.'))
 
 let bag = LIST[Piece]()
 
@@ -74,13 +74,13 @@ let column mut = 3
 let score mut = 0
 
 show() is
-    let occupied = SET[int](squares(current, row, column))
-    let preview = SET[int](squares(next, 0, 0))
+    let occupied = SET(squares(current, row, column))
+    let preview = SET(squares(next, 0, 0))
 
-    let symbol = (i: int) =>
+    let symbol = i =>
         if occupied.contains(i) then current.name else well[i] fi
 
-    let upcoming = (r: int) =>
+    let upcoming = r =>
         (0..4)
             |> map(k =>
                 let i = r * width + k in

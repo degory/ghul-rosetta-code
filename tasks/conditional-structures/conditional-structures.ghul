@@ -49,6 +49,6 @@ write_line("{colour(HEARTS)}, {colour(SPADES)}")
 write_line("{area(Shape.CIRCLE(2))}, {area(Shape.SQUARE(3))}")
 write_line("{size(Shape.CIRCLE(20))}, {size(Shape.SQUARE(1))}")
 
-let missing: string? = null
+let missing = null
 
 write_line("{missing ?? "a fallback for an absent value"}")

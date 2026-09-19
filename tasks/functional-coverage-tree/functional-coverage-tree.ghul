@@ -100,7 +100,7 @@ parse(line: string) -> (depth: int, node: NODE) is
 si
 
 let ancestors = LIST()
-let root: NODE? mut = null
+let root mut = null
 
 for line in table do
     let (depth, node) = parse(line)

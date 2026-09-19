@@ -50,7 +50,7 @@ divide(width: double, height: double, count: int) -> List[Triangle] is
 
     do
         let top = P(width * (0.2D + 0.6D * random.next_double()), height)
-        let triangles = LIST[Triangle]([
+        let triangles = LIST([
             (P(0.0D, 0.0D), P(0.0D, height), top),
             (P(0.0D, 0.0D), top, P(width, 0.0D)),
             (P(width, 0.0D), top, P(width, height))

@@ -25,8 +25,8 @@ write_line("three is {to_int(three)}")
 write_line("four is {to_int(four)}")
 write_line("three plus four is {to_int(add(three, four))}")
 write_line("three times four is {to_int(multiply(three, four))}")
-let three_as_exponent = to_church[(int) -> int](3)
-let four_as_exponent = to_church[(int) -> int](4)
+let three_as_exponent = to_church(3)
+let four_as_exponent = to_church(4)
 
 write_line(
     "four to the power three is "

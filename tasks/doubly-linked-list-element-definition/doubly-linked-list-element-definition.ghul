@@ -5,7 +5,7 @@ class NODE[T](value: T) is
     previous: NODE[T]?
 
     insert_after(value: T) -> NODE[T] is
-        let inserted = NODE[T](value)
+        let inserted = NODE(value)
 
         inserted.previous = self
         inserted.next = next
@@ -20,7 +20,7 @@ class NODE[T](value: T) is
     si
 
     insert_before(value: T) -> NODE[T] is
-        let inserted = NODE[T](value)
+        let inserted = NODE(value)
 
         inserted.next = self
         inserted.previous = previous

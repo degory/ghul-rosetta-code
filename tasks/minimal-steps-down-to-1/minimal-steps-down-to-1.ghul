@@ -22,7 +22,7 @@ si
 solve(divisors: List[int], subtractors: List[int],
       limit: int) -> List[STEP]
 is
-    let table = LIST[STEP]()
+    let table = LIST()
 
     table.add((steps = 0, next = 0, label = ""))
     table.add((steps = 0, next = 0, label = ""))
@@ -42,7 +42,7 @@ is
 si
 
 route(table: List[STEP], value: int) -> string is
-    let legs = LIST[string]()
+    let legs = LIST()
     let current mut = value
 
     while current > 1 do

@@ -11,9 +11,9 @@ clues_of(text: string) -> List[List[int]] =>
         |> collect_list()
 
 arrangements(clues: List[int], length: int) -> List[long] is
-    let found = LIST[long]()
+    let found = LIST()
 
-    place(i: int, start: int, mask: long) is
+    place(i, start, mask) is
         if i == clues.count then
             found.add(mask)
             return

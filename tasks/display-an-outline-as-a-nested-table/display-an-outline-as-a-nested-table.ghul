@@ -27,14 +27,14 @@ margin(line: string) -> int =>
 parse(lines: List[string]) -> NODE is
     let unit = lines |> map(margin) |> filter(width => width > 0) |> min()
     let step = unit ?? 1
-    let root = NODE(lines[0].trim(), LIST[NODE]())
-    let ancestors = LIST[NODE]()
+    let root = NODE(lines[0].trim(), LIST())
+    let ancestors = LIST()
 
     ancestors.add(root)
 
     for line in lines |> skip(1) do
         let level = margin(line) / step
-        let node = NODE(line.trim(), LIST[NODE]())
+        let node = NODE(line.trim(), LIST())
 
         while ancestors.count > level do
             ancestors.remove_at(ancestors.count - 1)
@@ -56,7 +56,7 @@ deepest(node: NODE) -> int =>
 
 pad(node: NODE, level: int, bottom: int) is
     if level < bottom /\ node.children.count == 0 then
-        node.children.add(NODE("", LIST[NODE]()))
+        node.children.add(NODE("", LIST()))
     fi
 
     for child in node.children do
@@ -99,7 +99,7 @@ pad(tree, 0, bottom)
 let rows = LIST[LIST[CELL]]()
 
 for _ in 0::bottom do
-    rows.add(LIST[CELL]())
+    rows.add(LIST())
 od
 
 gather(tree, 0, root_colour, rows)

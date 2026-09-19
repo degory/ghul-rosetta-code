@@ -29,7 +29,7 @@ brightness(pixel_x: int, pixel_y: int) -> double =>
 let source = IMAGE(width, height)
 let dithered = IMAGE(width, height)
 
-let grey = LIST[double]()
+let grey = LIST()
 
 for pixel_y in 0..height do
     for pixel_x in 0..width do

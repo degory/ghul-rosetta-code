@@ -14,7 +14,7 @@ class MULTITON[K, V] is
     get(key: K) -> V is
         let use _ = LOCK(_lock)
 
-        let existing: V mut
+        let existing mut
 
         if _instances.try_get_value(key, existing ref) then
             return existing

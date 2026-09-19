@@ -41,7 +41,7 @@ solve(terms: List[Term]) -> string? is
                         |> map(k => terms[k])
                         |> collect_list()
 
-                let joined = LIST[Term]()
+                let joined = LIST()
 
                 if i < j then
                     joined.add((a.value + b.value, "({a.text} + {b.text})"))

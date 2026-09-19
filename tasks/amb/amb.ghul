@@ -5,12 +5,12 @@ amb[T](
     accepts: (T, T) -> bool
 ) -> Pipe[LIST[T]] is
     if sets.count == 0 then
-        yield LIST[T]()
+        yield LIST()
     else
         for choice in sets[0] do
             for rest in amb(sets |> skip(1) |> collect(), accepts) do
                 if rest.count == 0 \/ accepts(choice, rest[0]) then
-                    let sequence = LIST[T]()
+                    let sequence = LIST()
 
                     sequence.add(choice)
                     sequence.add_range(rest)
@@ -22,7 +22,7 @@ amb[T](
     fi
 si
 
-let sets: List[Iterable[string]] = [
+let sets = [
     ["the", "that", "a"],
     ["frog", "elephant", "thing"],
     ["walked", "treaded", "grows"],
@@ -30,7 +30,7 @@ let sets: List[Iterable[string]] = [
 ]
 
 let joins =
-    (left: string, right: string) => left[left.length - 1] == right[0]
+    (left, right) => left[left.length - 1] == right[0]
 
 for sentence in amb(sets, joins) do
     write_line(sentence |> join(" "))

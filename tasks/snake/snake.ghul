@@ -7,7 +7,7 @@ let height = 8
 let random = Random(21)
 
 let snake =
-    LIST[(x: int, y: int)]([(x = 5, y = 4), (x = 4, y = 4), (x = 3, y = 4)])
+    LIST([(x = 5, y = 4), (x = 4, y = 4), (x = 3, y = 4)])
 
 let steps = MAP[char, (dx: int, dy: int)]()
 steps['w'] = (0, -1)

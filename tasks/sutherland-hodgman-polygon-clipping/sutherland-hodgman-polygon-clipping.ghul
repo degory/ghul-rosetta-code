@@ -37,7 +37,7 @@ si
 
 clip(polygon: Collections.List[Point], from: Point, to: Point) ->
         LIST[Point] is
-    let kept = LIST[Point]()
+    let kept = LIST()
 
     for index in 0..polygon.count do
         let previous = polygon[(index + polygon.count - 1) %

@@ -20,7 +20,7 @@ describe(shape: Shape) -> string =>
     when t: Shape.TRIANGLE then "triangle {t.base} by {t.height}"
     esac
 
-let shapes: Shape[] =
+let shapes =
     [Shape.CIRCLE(2.0), Shape.RECTANGLE(3.0, 4.0), Shape.TRIANGLE(5.0, 6.0)]
 
 for shape in shapes do

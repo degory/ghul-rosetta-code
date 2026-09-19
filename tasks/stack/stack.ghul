@@ -1,6 +1,6 @@
 use default
 
-let plates = STACK[string]()
+let plates = STACK()
 
 plates.push("bottom")
 plates.push("middle")
