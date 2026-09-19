@@ -162,9 +162,13 @@ emit_body() {
     # here with nothing on standard input produces a transcript of prompts
     # with no answers in it, so the captured expectation is the output: it is
     # the transcript the runner produced, and nothing else can reproduce it.
-    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] ; then
+    #
+    # A task judged by run.check prints something different every time, so a
+    # fresh run would change the published entry on every generation. Its
+    # run.expected is the recorded sample, and that is what is shown.
+    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || [ -f "$DIR/run.check" ] ; then
         if [ ! -f "$EXPECTED" ] ; then
-            echo "$DIR: reads standard input and has no run.expected - run the test first" >&2
+            echo "$DIR: reads standard input or varies from run to run, and has no run.expected - run the test first" >&2
             return 1
         fi
 
