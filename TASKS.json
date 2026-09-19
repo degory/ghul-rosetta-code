@@ -4112,12 +4112,14 @@
     {
       "title": "Prime triangle",
       "slug": "prime-triangle",
-      "state": "published"
+      "state": "published",
+      "published_hash": "b747f341051cf77d2677fed3df40f2bbfa5f94c6c1544bf92062cb9d8ab61e7b"
     },
     {
       "title": "Primorial numbers",
       "slug": "primorial-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "a6288d05f840a64ab43331b10aae8da45eaa5b20317c6972073be8843d9d72cd"
     },
     {
       "title": "Print itself",
@@ -4450,7 +4452,8 @@
     {
       "title": "Ruth-Aaron numbers",
       "slug": "ruth-aaron-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "93d9cda2cf7185a33ad155ff8c5de6ce9dcdd720d48f0b6ff3d0a12ac4c0879d"
     },
     {
       "title": "S-expressions",
@@ -4503,7 +4506,8 @@
     {
       "title": "Self numbers",
       "slug": "self-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "51af7b524641c81622549adb49a78445248c917cf43826aa93be88df5f6285c1"
     },
     {
       "title": "Self-describing numbers",
@@ -5281,7 +5285,8 @@
     {
       "title": "Super-Poulet numbers",
       "slug": "super-poulet-numbers",
-      "state": "published"
+      "state": "published",
+      "published_hash": "93111abe9e21ef3369413282b8ec8a44dd962ed2df5829bc2ac1029d9ec62826"
     },
     {
       "title": "Superellipse",
