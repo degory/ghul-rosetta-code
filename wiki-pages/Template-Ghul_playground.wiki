@@ -1,0 +1,8 @@
+<includeonly>You can [https://ghul.dev/playground/rosetta-code/{{{1}}} edit and run this online] in the ghūl playground.</includeonly><noinclude>
+Links a ghūl solution to the [https://ghul.dev/playground/ ghūl playground], which fetches it from the solution repository and runs it in the reader's browser.
+
+The parameter is the solution's path: a task's slug, or a slug and a part for a task solved more than one way.
+
+ <nowiki>{{ghul playground|100-doors}}</nowiki>
+ <nowiki>{{ghul playground|catamorphism/01-using-reduce}}</nowiki>
+</noinclude>
