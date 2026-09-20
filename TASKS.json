@@ -2770,12 +2770,17 @@
     {
       "title": "Honeycombs",
       "slug": "honeycombs",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "808a9c220f12636a16e614b04293e8415291f7d767e223467441eec137da4e7f",
+      "image_hashes": {
+        "Ghul-honeycombs-honeycomb.png": "3a2359d87dbf48abca59e2be77fb18c62880b8b7"
+      }
     },
     {
       "title": "Hopcroft-Karp Algorithm",
       "slug": "hopcroft-karp-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8381f19156d6a299e8b1f50aada38df0e8fedc1a4261267d4e6d5570a134a49c"
     },
     {
       "title": "Horizontal sundial calculations",
@@ -2792,8 +2797,9 @@
     {
       "title": "Host introspection",
       "slug": "host-introspection",
-      "state": "solved",
-      "note": "reopened, was rejected/nondeterministic: the hosts that run this are all 64-bit and little-endian, so the word size and the endianness are the same every run"
+      "state": "published",
+      "note": "reopened, was rejected/nondeterministic: the hosts that run this are all 64-bit and little-endian, so the word size and the endianness are the same every run",
+      "published_hash": "2e9dc9b4c7ec32208d9b96482278259a4fbe8b5de2b8518ad5a86e6ad9bb60f4"
     },
     {
       "title": "Hostname",
@@ -2988,7 +2994,8 @@
     {
       "title": "Introspection",
       "slug": "introspection",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e2c13f1656677a52a9cdab8fccf205ac4c76c9d33028a549e0835ecbb9f9af37"
     },
     {
       "title": "Inventory sequence",
@@ -3077,7 +3084,8 @@
     {
       "title": "Johnson\u0027s algorithm",
       "slug": "johnsons-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fc32e23be7acfef671c1a4e11d582deef8c5e57aae776fc51ec885aa6267b1de"
     },
     {
       "title": "Jordan-P\u00F3lya numbers",
@@ -3127,7 +3135,8 @@
     {
       "title": "K-d tree",
       "slug": "k-d-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fa81f73e7f5e36f26bbd0c03224cb81d08072918a0f626d9d62306649c1e8aa6"
     },
     {
       "title": "K-means\u002B\u002B clustering",
@@ -3246,7 +3255,8 @@
     {
       "title": "Kosaraju",
       "slug": "kosaraju",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1fc4514e3e5758c65e3b9842cbc1c59ddf67b4e07909bb06041508fb1138e0ed"
     },
     {
       "title": "Kronecker product",
@@ -3551,12 +3561,14 @@
     {
       "title": "MD4",
       "slug": "md4",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0f3ea04b24d2e45b0bc59cfe7485d871e7f4dec5c4a56b4dbbe631b646d68637"
     },
     {
       "title": "MD5/Implementation",
       "slug": "md5-implementation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0109448c5c5dfa7b3ce25ecdbf8ed06396e0777fbfa14fb4e6f3fedbb6785d8c"
     },
     {
       "title": "Mad Libs",
