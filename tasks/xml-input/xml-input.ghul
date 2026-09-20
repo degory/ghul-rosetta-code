@@ -9,7 +9,8 @@ let source =
     "  <Student Name=\"Dave\" Gender=\"M\" DateOfBirth=\"1992-07-08\">"
     "    <Pet Type=\"dog\" Name=\"Rover\" />"
     "  </Student>"
-    "  <Student DateOfBirth=\"1993-09-10\" Gender=\"F\" Name=\"&#x00C9;mily\" />"
+    "  <Student DateOfBirth=\"1993-09-10\" Gender=\"F\" "
+    "Name=\"&#x00C9;mily\" />"
     "</Students>"
 
 let student = XName.get("Student")

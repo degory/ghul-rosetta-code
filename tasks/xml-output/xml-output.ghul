@@ -6,7 +6,9 @@ character(name: string, remark: string) -> XElement =>
         XName.get("Character"),
         [XAttribute(XName.get("name"), name), remark])
 
-remarks_document(remarks: List[(name: string, remark: string)]) -> XDocument =>
+use Remark = (name: string, remark: string)
+
+remarks_document(remarks: List[Remark]) -> XDocument =>
     XDocument(
         [XElement(
             XName.get("CharacterRemarks"),
