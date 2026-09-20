@@ -1,0 +1,5 @@
+[{"name":"spider","legs":8,"tags":["small","hairy"]},{"name":"ostrich","legs":2,"tags":["large","fast"]}]
+spider, 8 legs, tagged small and hairy
+ostrich, 2 legs, tagged large and fast
+same count: true
+a different object: false

@@ -1,0 +1,10 @@
+FLAGS: 4 bytes
+  carry          at 0
+  zero           at 1
+  interrupt      at 2
+  decimal_mode   at 3
+HEADER: 8 bytes
+  kind           at 0
+  length         at 4
+  checksum       at 6
+carry is set: true

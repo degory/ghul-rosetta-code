@@ -1,0 +1,48 @@
+use default
+use System.Runtime.InteropServices.Marshal
+use System.Runtime.InteropServices.LayoutKind
+
+@System.Runtime.InteropServices.StructLayout(LayoutKind.SEQUENTIAL)
+struct FLAGS is
+    carry: byte field
+    zero: byte field
+    interrupt: byte field
+    decimal_mode: byte field
+
+    init(carry: byte, zero: byte, interrupt: byte, decimal_mode: byte) is
+        self.carry = carry
+        self.zero = zero
+        self.interrupt = interrupt
+        self.decimal_mode = decimal_mode
+    si
+si
+
+@System.Runtime.InteropServices.StructLayout(LayoutKind.SEQUENTIAL)
+struct HEADER is
+    kind: int field
+    length: short field
+    checksum: byte field
+
+    init(kind: int, length: short, checksum: byte) is
+        self.kind = kind
+        self.length = length
+        self.checksum = checksum
+    si
+si
+
+layout[T: struct](name: string) is
+    write_line("{name}: {Marshal.size_of[T]()} bytes")
+
+    for member in (typeof T).get_fields() do
+        let offset = Marshal.offset_of[T](member.name)
+
+        write_line("  {member.name,-14} at {offset}")
+    od
+si
+
+layout[FLAGS]("FLAGS")
+layout[HEADER]("HEADER")
+
+let flags = FLAGS(1b, 0b, 1b, 0b)
+
+write_line("carry is set: {flags.carry == 1b}")

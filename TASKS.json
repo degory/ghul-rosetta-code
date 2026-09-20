@@ -180,6 +180,12 @@
       "published_hash": "a63808cf72419eeba37f8122b09afd57a8dab377fe4dec58e65d7ebc26a3814d"
     },
     {
+      "title": "Add a variable to a class instance at runtime",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "an instance has the members its type declares and no others"
+    },
+    {
       "title": "Additive primes",
       "slug": "additive-primes",
       "state": "published",
@@ -686,6 +692,11 @@
       "slug": "brazilian-numbers",
       "state": "published",
       "published_hash": "13d71d2f5e66538070511361c5814952d921732c745525ecaf67720a98b0516f"
+    },
+    {
+      "title": "Break OO privacy",
+      "slug": "break-oo-privacy",
+      "state": "solved"
     },
     {
       "title": "Brilliant numbers",
@@ -2541,6 +2552,12 @@
       "published_hash": "a8267c2c332ce8b37f674f6a38b95e4a89149d70aaa11c7f7c7f49ec518d8071"
     },
     {
+      "title": "Host introspection",
+      "state": "rejected",
+      "reason": "nondeterministic",
+      "note": "word size and endianness are the machine\u0027s, so the output is not the same twice on different hosts"
+    },
+    {
       "title": "Hostname",
       "state": "rejected",
       "reason": "nondeterministic"
@@ -2723,6 +2740,11 @@
       "slug": "intersecting-number-wheels",
       "state": "published",
       "published_hash": "ba8dfdaaeca4fbf3c56a3e01b4d6911bbe3e4ffe6567c15868063f2d0cd87488"
+    },
+    {
+      "title": "Introspection",
+      "slug": "introspection",
+      "state": "solved"
     },
     {
       "title": "Inventory sequence",
@@ -3380,6 +3402,11 @@
       }
     },
     {
+      "title": "Memory layout of a data structure",
+      "slug": "memory-layout-of-a-data-structure",
+      "state": "solved"
+    },
+    {
       "title": "Merge and aggregate datasets",
       "slug": "merge-and-aggregate-datasets",
       "state": "published",
@@ -3695,6 +3722,11 @@
       "slug": "o-halloran-numbers",
       "state": "published",
       "published_hash": "6ec781c01ad7ab1dbe9183334d1b620e50a15be07231808043af4f7c67ea4ec5"
+    },
+    {
+      "title": "Object serialization",
+      "slug": "object-serialization",
+      "state": "solved"
     },
     {
       "title": "Odd and square numbers",
@@ -4351,6 +4383,22 @@
       "published_hash": "a48f0623ba8bbe8a2ce38d540bbcd4c4633d376d1ca4a1b2398514e6bb2ae939"
     },
     {
+      "title": "Reflection/Get source",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "an assembly carries no source, and nothing recovers the text of a method"
+    },
+    {
+      "title": "Reflection/List methods",
+      "slug": "reflection-list-methods",
+      "state": "solved"
+    },
+    {
+      "title": "Reflection/List properties",
+      "slug": "reflection-list-properties",
+      "state": "solved"
+    },
+    {
       "title": "Regular expressions",
       "slug": "regular-expressions",
       "state": "published",
@@ -4385,6 +4433,12 @@
       "slug": "repeat-a-string",
       "state": "published",
       "published_hash": "83995b02bf51936e0629fa5f449dbb391448057d1f2aad2bf8ce6deb8a315b83"
+    },
+    {
+      "title": "Respond to an unknown method call",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "there is no hook a call to a missing method reaches"
     },
     {
       "title": "Return multiple values",
@@ -4477,6 +4531,18 @@
       "published_hash": "810bcb762b55de94692cfb9c98d384db1077870b89e390ab4ae0a501dce439f4"
     },
     {
+      "title": "Runtime evaluation",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "nothing compiles or evaluates a string at runtime"
+    },
+    {
+      "title": "Runtime evaluation/In an environment",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "nothing compiles or evaluates a string at runtime"
+    },
+    {
       "title": "Ruth-Aaron numbers",
       "slug": "ruth-aaron-numbers",
       "state": "published",
@@ -4552,6 +4618,11 @@
       "slug": "semiprime",
       "state": "published",
       "published_hash": "876df1c6a47ea58111f291ca7fa9aebc6a9d8e9cc395f84b02910603a8c4f1a8"
+    },
+    {
+      "title": "Send an unknown method call",
+      "slug": "send-an-unknown-method-call",
+      "state": "solved"
     },
     {
       "title": "Set",
@@ -5075,6 +5146,11 @@
       "slug": "stack",
       "state": "published",
       "published_hash": "50c3a5556de1d7e48fe66ca86a9ba977e3686d0799f975e61a2401c65bea56db"
+    },
+    {
+      "title": "Stack traces",
+      "slug": "stack-traces",
+      "state": "solved"
     },
     {
       "title": "Start from a main routine",
@@ -5765,6 +5841,11 @@
       "slug": "van-der-corput-sequence",
       "state": "published",
       "published_hash": "1fa7457ef994124b181c9ef7bf8c6490aa540df3f1c0be7a564ae03e87bb5fb7"
+    },
+    {
+      "title": "Variable size/Get",
+      "slug": "variable-size-get",
+      "state": "solved"
     },
     {
       "title": "Variable size/Set",

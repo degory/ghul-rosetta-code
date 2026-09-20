@@ -1,0 +1,32 @@
+use default
+use System.Runtime.InteropServices.Marshal
+
+struct POINT is
+    x: double
+    y: double
+
+    init(x: double, y: double) is
+        self.x = x
+        self.y = y
+    si
+si
+
+size_of[T: struct](name: string) is
+    write_line("{name,-32} {Marshal.size_of[T](),2}")
+si
+
+write_line("{"type",-32} {"bytes"}")
+
+size_of[byte]("byte")
+size_of[int]("int")
+size_of[long]("long")
+size_of[double]("double")
+size_of[decimal]("decimal")
+size_of[POINT]("POINT")
+size_of[word]("word, the width of a pointer")
+
+let text = "hello"
+let numbers = [1, 2, 3, 4]
+
+write_line("the string holds {text.length} chars")
+write_line("the array holds {numbers.count} ints")
