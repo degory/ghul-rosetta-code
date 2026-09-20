@@ -524,6 +524,21 @@ step `land-pr` would otherwise arm immediately, and say plainly that the PR is w
 person because it carries prose. This is independent of publishing, which is already gated on an
 explicit request from the user - README.md's 'writing explanatory text' has the detail.
 
+## A command line a reader sees
+
+A task the program takes arguments from carries them in `run.args`, one argument a line, and the
+test runner starts it with them. The playground reads the same file, shows the arguments as a
+command line, and lets a visitor edit it before running the task, so the line has two audiences:
+it is an assertion and it is an example.
+
+Write a command line worth reading rather than only one worth asserting. Command-line arguments
+passes `first`, `second argument`, `--flag` and `last`: a visitor sees a line somebody might type,
+and the space in the second still shows what quoting is for.
+
+The playground quotes an argument containing whitespace or a quote, escaping either with a
+backslash, so a line with a space in it means the same thing in both directions. The file itself
+stays one argument a line.
+
 ## Running in the playground
 
 Every entry links to the solution in the ghūl playground, which fetches the source from this
