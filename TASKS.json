@@ -741,9 +741,10 @@
       "published_hash": "7ac9621052afc03aba0b6af6b4d8f25571a9bf573147a2009fccceaf10d1c301"
     },
     {
-      "title": "Bron-Kerbosch algorithm",
+      "title": "Bron\u2013Kerbosch algorithm",
       "slug": "bron-kerbosch-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "362408ca8ccf8342b9a42bc359e8a79541b0bc1cc64302f84280b8de7030a241"
     },
     {
       "title": "Brownian tree",
@@ -896,11 +897,6 @@
       "slug": "catamorphism",
       "state": "published",
       "published_hash": "781f145529d0cc99838ce6c549393e84ff43581227bb8cad5bce644a751ced2c"
-    },
-    {
-      "title": "Catch an exception thrown in a nested call",
-      "slug": "catch-an-exception-thrown-in-a-nested-call",
-      "state": "solved"
     },
     {
       "title": "Catenoid surface",
@@ -1932,6 +1928,12 @@
       "slug": "exceptions",
       "state": "published",
       "published_hash": "e979b069002dce6899b688a11e9c37525b77ee8197b92004f0ed08535fc9b986"
+    },
+    {
+      "title": "Exceptions/Catch an exception thrown in a nested call",
+      "slug": "catch-an-exception-thrown-in-a-nested-call",
+      "state": "published",
+      "published_hash": "98ed74d636972328ebd7f8e260324d9f1fd21c73553fb720fb9e3b4b93a36d9b"
     },
     {
       "title": "Execute Brain****",
