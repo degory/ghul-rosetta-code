@@ -795,12 +795,14 @@
     {
       "title": "CSV data manipulation",
       "slug": "csv-data-manipulation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2ee62f591f4a5f89bd4a66af7a575770c0236ce34eb1fdbf884737e1d23a3b69"
     },
     {
       "title": "CSV to HTML translation",
       "slug": "csv-to-html-translation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a6ae2d8c487f64cbd1a4388f096db4c6705b3956ab0a852f54ba4722b251fd52"
     },
     {
       "title": "Caesar cipher",
@@ -1082,7 +1084,8 @@
     {
       "title": "Cocke\u2013Younger\u2013Kasami (CYK) Algorithm",
       "slug": "cyk-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "590845906957987119d03e649892bc0094909ad87a7458707c7b7a66571b3cde"
     },
     {
       "title": "Code Golf",
@@ -1361,7 +1364,8 @@
     {
       "title": "Create a file",
       "slug": "create-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "68685264c187657a25f1a3d83f8e44fe7e04ad91712013cb182e3b2c01bbf458"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -1377,7 +1381,8 @@
     {
       "title": "Create an HTML table",
       "slug": "create-an-html-table",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ee0af45cbe9697a461885f6c45215226cfeba5425600461413863955a1cbecd6"
     },
     {
       "title": "Cuban primes",
@@ -1394,7 +1399,8 @@
     {
       "title": "Currying",
       "slug": "currying",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f2575425a732096800e8bdd88234063c5bfecf329388d07310024b2bf9d1b6d0"
     },
     {
       "title": "Curve that touches three points",
@@ -1477,7 +1483,8 @@
     {
       "title": "Deepcopy",
       "slug": "deepcopy",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "398589bcdd6b363309508fcdad0f8a10a3a4e101be9b090930514c5e2ee44de9"
     },
     {
       "title": "Define a primitive data type",
@@ -1488,12 +1495,14 @@
     {
       "title": "Delegates",
       "slug": "delegates",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "07bd3fd751e76934e7317d180e285c867feac1c7703a9f366cd32a9ac0d8b2b7"
     },
     {
       "title": "Delete a file",
       "slug": "delete-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3a76bf406c0870bd1ac395febb2b37f83d69b5ed1fae8551524cc5ddfe327a7d"
     },
     {
       "title": "Department numbers",
@@ -1737,7 +1746,8 @@
     {
       "title": "Echo server",
       "slug": "echo-server",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "06babde145fc75ad495dae8ac65a194475d1cc2f73ad98c37135c139f712f2ca"
     },
     {
       "title": "Eertree",
