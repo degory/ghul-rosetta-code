@@ -1,0 +1,6 @@
+All pairs shortest paths:
+The element (i, j) is the shortest path between vertex i and vertex j.
+[0 -5 -1 0 ]
+[INF 0 4 5 ]
+[INF INF 0 1 ]
+[INF INF INF 0 ]

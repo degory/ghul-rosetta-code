@@ -1,0 +1,149 @@
+use default
+
+use Matrix = Collections.List[Collections.List[double?]]
+
+use Edge = (from: int, to: int, weight: double)
+
+// An absent weight is the absence of an edge, so nothing has to reserve a
+// large number to stand for infinity.
+weighted(size: int, edges: Collections.List[Edge]) -> Matrix is
+    let graph = LIST[LIST[double?]]()
+
+    for u in 0..size do
+        let weights = LIST[double?]()
+
+        for v in 0..size do
+            weights.add(if u == v then 0.0 else null fi)
+        od
+
+        graph.add(weights)
+    od
+
+    for (from, to, weight) in edges do
+        graph[from][to] = weight
+    od
+
+    graph
+si
+
+let graph =
+    weighted(4,
+        [
+            (from = 0, to = 1, weight = -5.0),
+            (from = 0, to = 2, weight = 2.0),
+            (from = 0, to = 3, weight = 3.0),
+            (from = 1, to = 2, weight = 4.0),
+            (from = 2, to = 3, weight = 1.0)
+        ])
+
+// Bellman-Ford from a virtual source joined to every vertex by a
+// zero-weight edge, which is what makes the reweighting below
+// non-negative.
+potentials(graph: Matrix) -> Collections.List[double]? is
+    let size = graph.count
+    let potential = repeat(0.0, size) |> collect_list()
+
+    relax() -> bool is
+        let changed mut = false
+
+        for u in 0..size do
+            for v in 0..size do
+                if let weight = graph[u][v] then
+                    if potential[u] + weight < potential[v] then
+                        potential[v] = potential[u] + weight
+
+                        changed = true
+                    fi
+                fi
+            od
+        od
+
+        changed
+    si
+
+    for _ in 0..size do
+        if !relax() then
+            return potential
+        fi
+    od
+
+    if relax() then
+        return null
+    fi
+
+    potential
+si
+
+shortest_from(
+    graph: Matrix,
+    potential: Collections.List[double],
+    source: int
+) -> Collections.List[double?] is
+    let size = graph.count
+    let distance = LIST[double?]()
+
+    for _ in 0..size do
+        distance.add(null)
+    od
+
+    distance[source] = 0.0
+
+    let settled = repeat(false, size) |> collect_list()
+
+    for _ in 0..size do
+        let next: int? mut = null
+
+        for candidate in 0..size do
+            if !settled[candidate] /\ distance[candidate]? then
+                if !next? \/ distance[candidate]! < distance[next]! then
+                    next = candidate
+                fi
+            fi
+        od
+
+        if let u = next then
+            settled[u] = true
+
+            for v in 0..size do
+                if let weight = graph[u][v] then
+                    let through =
+                        distance[u]! + weight + potential[u] - potential[v]
+
+                    if !distance[v]? \/ through < distance[v]! then
+                        distance[v] = through
+                    fi
+                fi
+            od
+        fi
+    od
+
+    let result = LIST[double?]()
+
+    for v in 0..size do
+        if let reweighted = distance[v] then
+            result.add(reweighted - potential[source] + potential[v])
+        else
+            result.add(null)
+        fi
+    od
+
+    result
+si
+
+if let potential = potentials(graph) then
+    write_line("All pairs shortest paths:")
+    write_line(
+        "The element (i, j) is the shortest path between vertex i and "
+        "vertex j.")
+
+    for source in 0..graph.count do
+        let distances =
+            shortest_from(graph, potential, source)
+            |> map(d => if let value = d then "{value}" else "INF" fi)
+            |> join(" ")
+
+        write_line("[{distances} ]")
+    od
+else
+    write_line("the graph has a negative weight cycle")
+fi

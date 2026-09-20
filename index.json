@@ -12107,6 +12107,32 @@
       ]
     },
     {
+      "slug": "johnsons-algorithm",
+      "title": "Johnson's algorithm",
+      "url": "https://rosettacode.org/wiki/Johnson's_algorithm",
+      "tags": [
+        "algorithms",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 149,
+      "parts": [
+        {
+          "id": "johnsons-algorithm",
+          "heading": null,
+          "source": "tasks/johnsons-algorithm/johnsons-algorithm.ghul",
+          "output": "tasks/johnsons-algorithm/run.expected",
+          "lines": 149,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "jordan-polya-numbers",
       "title": "Jordan-Pólya numbers",
       "url": "https://rosettacode.org/wiki/Jordan-Pólya_numbers",
