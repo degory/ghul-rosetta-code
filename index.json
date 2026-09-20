@@ -6857,6 +6857,33 @@
       ]
     },
     {
+      "slug": "eertree",
+      "title": "Eertree",
+      "url": "https://rosettacode.org/wiki/Eertree",
+      "tags": [
+        "data-structures",
+        "strings",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 86,
+      "parts": [
+        {
+          "id": "eertree",
+          "heading": null,
+          "source": "tasks/eertree/eertree.ghul",
+          "output": "tasks/eertree/run.expected",
+          "lines": 86,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "egyptian-division",
       "title": "Egyptian division",
       "url": "https://rosettacode.org/wiki/Egyptian_division",
