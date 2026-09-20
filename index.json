@@ -2308,7 +2308,7 @@
         "pipes"
       ],
       "interest": 3,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 192,
@@ -2319,7 +2319,7 @@
           "source": "tasks/bitcoin-public-point-to-address/bitcoin-public-point-to-address.ghul",
           "output": "tasks/bitcoin-public-point-to-address/run.expected",
           "lines": 192,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -20084,7 +20084,7 @@
         "pipes"
       ],
       "interest": 3,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 109,
@@ -20095,7 +20095,7 @@
           "source": "tasks/sha-1/sha-1.ghul",
           "output": "tasks/sha-1/run.expected",
           "lines": 109,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -20110,7 +20110,7 @@
         "pipes"
       ],
       "interest": 3,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 134,
@@ -20121,7 +20121,7 @@
           "source": "tasks/sha-256/sha-256.ghul",
           "output": "tasks/sha-256/run.expected",
           "lines": 134,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -20137,7 +20137,7 @@
         "pipes"
       ],
       "interest": 3,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [
         "tasks/sha-256-merkle-tree/title.png.expected"
@@ -20150,7 +20150,7 @@
           "source": "tasks/sha-256-merkle-tree/sha-256-merkle-tree.ghul",
           "output": "tasks/sha-256-merkle-tree/run.expected",
           "lines": 42,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": [
             "tasks/sha-256-merkle-tree/title.png.expected"
@@ -26301,7 +26301,7 @@
         "dotnet-interop"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 28,
@@ -26312,7 +26312,7 @@
           "source": "tasks/xml-dom-serialization/xml-dom-serialization.ghul",
           "output": "tasks/xml-dom-serialization/run.expected",
           "lines": 28,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -26327,7 +26327,7 @@
         "dotnet-interop"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 20,
@@ -26338,7 +26338,7 @@
           "source": "tasks/xml-input/xml-input.ghul",
           "output": "tasks/xml-input/run.expected",
           "lines": 20,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -26354,7 +26354,7 @@
         "pipes"
       ],
       "interest": 2,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 26,
@@ -26365,7 +26365,7 @@
           "source": "tasks/xml-output/xml-output.ghul",
           "output": "tasks/xml-output/run.expected",
           "lines": 26,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -26381,7 +26381,7 @@
         "pipes"
       ],
       "interest": 3,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 53,
@@ -26392,7 +26392,7 @@
           "source": "tasks/xml-xpath/xml-xpath.ghul",
           "output": "tasks/xml-xpath/run.expected",
           "lines": 53,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
