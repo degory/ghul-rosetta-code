@@ -6531,6 +6531,32 @@
       ]
     },
     {
+      "slug": "echo-server",
+      "title": "Echo server",
+      "url": "https://rosettacode.org/wiki/Echo_server",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 93,
+      "parts": [
+        {
+          "id": "echo-server",
+          "heading": null,
+          "source": "tasks/echo-server/echo-server.ghul",
+          "output": "tasks/echo-server/run.expected",
+          "lines": 93,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "egyptian-division",
       "title": "Egyptian division",
       "url": "https://rosettacode.org/wiki/Egyptian_division",
