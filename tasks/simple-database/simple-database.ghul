@@ -1,0 +1,145 @@
+use default
+use System.DateTime
+
+// Where the entries live. A real invocation keeps them in the user's home
+// directory; the demo below points this at a file of its own so a run leaves
+// nothing behind.
+let default_file = IO.Path.combine(
+    System.Environment.get_folder_path(System.Environment_SpecialFolder.USER_PROFILE),
+    ".simple-database")
+
+// One record a line, tab separated, oldest first: a format a person can read
+// and any other tool can parse, which is what the task asks structured storage
+// to be. A tab cannot appear in a field because the fields are read from the
+// command line and checked on the way in.
+class ENTRY(date: DateTime, category: string, description: string) is
+    line: string => "{date:yyyy-MM-dd}\t{category}\t{description}"
+
+    read(line: string) -> ENTRY? static is
+        let parts = line.split(['\t'])
+
+        if parts.count != 3 then
+            return null
+        fi
+
+        ENTRY(DateTime.parse(parts[0]), parts[1], parts[2])
+    si
+
+    to_string() -> string => "{date:yyyy-MM-dd}  {category,-10}  {description}"
+si
+
+read_all(file: string) -> LIST[ENTRY] =>
+    if IO.File.exists(file) then
+        IO.File.read_all_lines(file)
+            |> map(line => ENTRY.read(line))
+            |> filter(entry => entry?)
+            |> map(entry => entry!)
+            |> collect_list()
+    else
+        LIST[ENTRY]()
+    fi
+
+add(file: string, category: string, description: string, date: DateTime) is
+    let entries = read_all(file)
+
+    entries.add(ENTRY(date, category, description))
+
+    IO.File.write_all_lines(file, entries |> map(entry => entry.line) |> collect_array())
+si
+
+latest(file: string) -> ENTRY? =>
+    read_all(file) |> max_by(entry => entry.date)
+
+// The newest entry of each category, in category order, which is what makes
+// the category worth storing.
+latest_by_category(file: string) -> LIST[ENTRY] is
+    let newest = read_all(file)
+        |> group_by(entry => entry.category)
+        |> map(group => group.value |> max_by(entry => entry.date)!)
+        |> collect_list()
+
+    newest.sort((left: ENTRY, right: ENTRY) -> int => string.compare(left.category, right.category))
+
+    newest
+si
+
+by_date(file: string) -> LIST[ENTRY] is
+    let all = read_all(file)
+
+    all.sort((left: ENTRY, right: ENTRY) -> int => left.date <> right.date)
+
+    all
+si
+
+show(caption: string, entries: Iterable[ENTRY]) is
+    write_line(caption)
+
+    entries |> each(entry => write_line("  {entry}"))
+si
+
+usage() is
+    write_line("usage: simple-database <command> [arguments]")
+    write_line("  add <category> <description> [yyyy-MM-dd]  remember something")
+    write_line("  latest                                     the newest entry")
+    write_line("  latest-each                                the newest of each category")
+    write_line("  all                                        every entry, oldest first")
+    write_line("  demo                                       all of the above, on a file of its own")
+si
+
+// Everything the tool does, against a database that exists for the length of
+// this run: the entry a reader of the wiki wants to see without a session of
+// their own.
+demo() is
+    let file = IO.Path.combine(IO.Path.get_temp_path(), "simple-database-{System.Guid.new_guid()}")
+
+    try
+        add(file, "book", "The Go Programming Language", DateTime.parse("2026-01-14"))
+        add(file, "film", "Solaris", DateTime.parse("2026-02-02"))
+        add(file, "book", "Programming in Lua", DateTime.parse("2026-03-21"))
+
+        write_line("latest: {latest(file)}")
+        write_line()
+        show("latest of each category:", latest_by_category(file))
+        write_line()
+        show("all, by date:", by_date(file))
+    finally
+        IO.File.delete(file)
+    yrt
+si
+
+entry(args: string[]) -> int is
+    let file = System.Environment.get_environment_variable("SIMPLE_DATABASE") ?? default_file
+
+    if args.count == 0 then
+        usage()
+
+        return 1
+    fi
+
+    case args[0]
+    when "add" then
+        if args.count < 3 then
+            usage()
+
+            return 1
+        fi
+
+        let date = if args.count > 3 then DateTime.parse(args[3]) else DateTime.now fi
+
+        add(file, args[1], args[2], date)
+    when "latest" then
+        write_line("{latest(file)}")
+    when "latest-each" then
+        show("latest of each category:", latest_by_category(file))
+    when "all" then
+        show("all, by date:", by_date(file))
+    when "demo" then
+        demo()
+    else
+        usage()
+
+        return 1
+    esac
+
+    0
+si

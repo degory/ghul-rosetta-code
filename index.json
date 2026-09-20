@@ -4155,6 +4155,32 @@
       ]
     },
     {
+      "slug": "command-line-arguments",
+      "title": "Command-line arguments",
+      "url": "https://rosettacode.org/wiki/Command-line_arguments",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 7,
+      "parts": [
+        {
+          "id": "command-line-arguments",
+          "heading": null,
+          "source": "tasks/command-line-arguments/command-line-arguments.ghul",
+          "output": "tasks/command-line-arguments/run.expected",
+          "lines": 7,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "comments",
       "title": "Comments",
       "url": "https://rosettacode.org/wiki/Comments",
@@ -9382,6 +9408,31 @@
           "images": [
             "tasks/hailstone-sequence/02-lengths-plotted/hailstone.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "halt-and-catch-fire",
+      "title": "Halt and catch fire",
+      "url": "https://rosettacode.org/wiki/Halt_and_catch_fire",
+      "tags": [
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 8,
+      "parts": [
+        {
+          "id": "halt-and-catch-fire",
+          "heading": null,
+          "source": "tasks/halt-and-catch-fire/halt-and-catch-fire.ghul",
+          "output": "tasks/halt-and-catch-fire/run.expected",
+          "lines": 8,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -16495,6 +16546,32 @@
       ]
     },
     {
+      "slug": "program-name",
+      "title": "Program name",
+      "url": "https://rosettacode.org/wiki/Program_name",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 8,
+      "parts": [
+        {
+          "id": "program-name",
+          "heading": null,
+          "source": "tasks/program-name/program-name.ghul",
+          "output": "tasks/program-name/run.expected",
+          "lines": 8,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "program-termination",
       "title": "Program termination",
       "url": "https://rosettacode.org/wiki/Program_termination",
@@ -18603,6 +18680,34 @@
           "source": "tasks/sign-of-an-integer-signum/sign-of-an-integer-signum.ghul",
           "output": "tasks/sign-of-an-integer-signum/run.expected",
           "lines": 8,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "simple-database",
+      "title": "Simple database",
+      "url": "https://rosettacode.org/wiki/Simple_database",
+      "tags": [
+        "data-structures",
+        "date-time",
+        "pipes",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 145,
+      "parts": [
+        {
+          "id": "simple-database",
+          "heading": null,
+          "source": "tasks/simple-database/simple-database.ghul",
+          "output": "tasks/simple-database/run.expected",
+          "lines": 145,
           "playground": true,
           "input": false,
           "images": []

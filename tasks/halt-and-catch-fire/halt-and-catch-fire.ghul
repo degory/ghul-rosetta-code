@@ -1,0 +1,8 @@
+use default
+
+// The shortest crash the language allows: reading past the end of an array is
+// checked by the runtime, so this throws where C would corrupt memory.
+let nothing = [0]
+
+write_line("about to fall over")
+write_line("{nothing[1]}")

@@ -1070,8 +1070,9 @@
     },
     {
       "title": "Command-line arguments",
-      "state": "blocked",
-      "reason": "ghul#2487"
+      "slug": "command-line-arguments",
+      "state": "solved",
+      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args"
     },
     {
       "title": "Comments",
@@ -2369,6 +2370,11 @@
       "image_hashes": {
         "Ghul-hailstone-sequence-hailstone.png": "ae850d3c01810bbcfc61f0f7f205c82179729ee0"
       }
+    },
+    {
+      "title": "Halt and catch fire",
+      "slug": "halt-and-catch-fire",
+      "state": "solved"
     },
     {
       "title": "Hamming numbers",
@@ -4138,8 +4144,9 @@
     },
     {
       "title": "Program name",
-      "state": "blocked",
-      "reason": "ghul#2487"
+      "slug": "program-name",
+      "state": "solved",
+      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args"
     },
     {
       "title": "Program termination",
@@ -4658,8 +4665,9 @@
     },
     {
       "title": "Simple database",
-      "state": "blocked",
-      "reason": "ghul#2487"
+      "slug": "simple-database",
+      "state": "solved",
+      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args"
     },
     {
       "title": "Simple turtle graphics",
