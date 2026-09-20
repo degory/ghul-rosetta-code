@@ -866,7 +866,7 @@
       "title": "Check if a polygon overlaps with a rectangle",
       "slug": "check-if-a-polygon-overlaps-with-a-rectangle",
       "state": "published",
-      "published_hash": "98acf60e28d97ed0ed22d07e2f05e8c303d2890166fefe4a1ef45f0548bbafe8",
+      "published_hash": "e11590d58bf4b8bb05662753578e84597ab630d4147d9d6a3bae464c6a12627b",
       "image_hashes": {
         "Ghul-check-if-a-polygon-overlaps-with-a-rectangle-overlap.png": "8876509285b7150c2318093602b506259e4a759b"
       }
@@ -875,7 +875,7 @@
       "title": "Check that file exists",
       "slug": "check-that-file-exists",
       "state": "published",
-      "published_hash": "7b35e27515cc1c14b048afc8b73272bf24f1cab3cde9902a07d1a53093fbbc11"
+      "published_hash": "53933c650c147cac9df1cda6615a8c2ad1a7fc5ecc3a1d579e58b3cb65980182"
     },
     {
       "title": "Checkpoint synchronization",
@@ -887,7 +887,7 @@
       "title": "Chemical calculator",
       "slug": "chemical-calculator",
       "state": "published",
-      "published_hash": "b0c0316d06b2d4d7c9488365d484d66d514a901f533a603e677ac8319b787043"
+      "published_hash": "317ac0b5da90c91c5793421a25ee422332afe081ab3dbfcad2c2cbc450b83b25"
     },
     {
       "title": "Chernick\u0027s Carmichael numbers",
@@ -905,13 +905,13 @@
       "title": "Chess player",
       "slug": "chess-player",
       "state": "published",
-      "published_hash": "3b605d2a4b730ed53f019ce3e496f79ceaff9f0817f59dc50569f61b20ca3340"
+      "published_hash": "45660eb5199f372bc6636a04cede9283e34e3d7d65d16cfaf6b50601f53fc568"
     },
     {
       "title": "Chinese remainder theorem",
       "slug": "chinese-remainder-theorem",
       "state": "published",
-      "published_hash": "9d11c4680f0626299870bf734bbb8c5a6ab2da30ec629c5fd116f9ee4a8be55e"
+      "published_hash": "5619f97df929ce05dc7f45731c2be70c42f0a81c1cda90c99744df922dab9d8f"
     },
     {
       "title": "Chinese zodiac",
@@ -929,7 +929,7 @@
       "slug": "church-numerals",
       "state": "published",
       "reason": "ghul#757",
-      "published_hash": "de96712a6e912e9d10e0d137c5d0a6534c9a6db7f8804a5bd5e000c376b7fa7f"
+      "published_hash": "60d8ac6a21a40888a7a588e2005b2ee6b07ee539d7ea05d756789ee6d3f04774"
     },
     {
       "title": "Circles of given radius through two points",
@@ -953,7 +953,7 @@
       "title": "Classes",
       "slug": "classes",
       "state": "published",
-      "published_hash": "3c996e5205e121237c5cbe646179420ec815df92b293bd8835d915bb8201ffd7"
+      "published_hash": "213069de7160da69e86547c4cbef5f6fdf9bd5d9da18392115f33302ace139d7"
     },
     {
       "title": "Clipboard manager/display",
@@ -965,7 +965,7 @@
       "title": "Closest-pair problem",
       "slug": "closest-pair-problem",
       "state": "published",
-      "published_hash": "25d920b78a018c608f49b3d630ed5046b18c4c04f1b6fd4eb210456e0a25e791",
+      "published_hash": "1e01a7010f1b62a201354bb824ac94dff7932ceb4d8b88e2a167b0bc218d6195",
       "image_hashes": {
         "Ghul-closest-pair-problem-closest.png": "90e999f810e0eb7d64285f34b74e1da1333fcf02"
       }
@@ -974,7 +974,7 @@
       "title": "Closures/Value capture",
       "slug": "closures-value-capture",
       "state": "published",
-      "published_hash": "9ad55f5d684ba2439ef8c838dec43eb5af53617ce5db5aff15267895111b585f"
+      "published_hash": "e59819401c40058b0efdfb096de2b94db3df98cff821d2cd45f9121545da4824"
     },
     {
       "title": "Code Golf",
@@ -986,13 +986,13 @@
       "title": "Collections",
       "slug": "collections",
       "state": "published",
-      "published_hash": "2099734e9d7b62e1dab199c69051670b0df02926dcf9222b2cce978961984e7a"
+      "published_hash": "300b5da297ba68722393d32410862cb313846d5ac3e42be2db3779305b528d2a"
     },
     {
       "title": "Color quantization",
       "slug": "color-quantization",
       "state": "published",
-      "published_hash": "947881d74b0fd2c8778526edb441418d3356bcc4eeaf56bca7d897b5f5a6850d",
+      "published_hash": "f1015491f095e9dfed5f6f789b4d71173d9d82f2738d1e58dfbe45b1ff5b3800",
       "image_hashes": {
         "Ghul-color-quantization-quantized.png": "ada1b6deaf259b3bbc648e426986392801336826"
       }
@@ -1019,7 +1019,7 @@
       "title": "Colorful numbers",
       "slug": "colorful-numbers",
       "state": "published",
-      "published_hash": "147eb7a90abe115ea49d2668a4460acc628e63622877221541424a19c555e593"
+      "published_hash": "bf1229141292c4da1131e054ffbb098416c489f912a50462540770eea614aab7"
     },
     {
       "title": "Colour bars/Display",
@@ -1054,19 +1054,19 @@
       "title": "Combinations and permutations",
       "slug": "combinations-and-permutations",
       "state": "published",
-      "published_hash": "738201d585f355fe051cb90c4ccd7b0bb7c791fd5f5803f736613c7efb607930"
+      "published_hash": "45b5ca8285ff42fd30b53842a4cd19ac8a33d4564802840405753d5c10fb9567"
     },
     {
       "title": "Combinations with repetitions",
       "slug": "combinations-with-repetitions",
       "state": "published",
-      "published_hash": "70dc54d5944669656fa89052a5aa0744051a1b22a45519446cc54cafef8b913d"
+      "published_hash": "bb0e0dd8b9e22e307e28d2303b44488daf42b0d33d9ff0a9042d2da22f183e94"
     },
     {
       "title": "Comma quibbling",
       "slug": "comma-quibbling",
       "state": "published",
-      "published_hash": "369046d7e6aa24706524f571467ddce078d5c2416a4b4577738ea1b054bbb309"
+      "published_hash": "a9eaadb4382eb03f66fccec1413c896f0fef8d36817cc1ace283f647d84cd0ab"
     },
     {
       "title": "Command-line arguments",
@@ -1077,7 +1077,7 @@
       "title": "Comments",
       "slug": "comments",
       "state": "published",
-      "published_hash": "dd9bf0ca36e75559a29f7417b42fe6f74725f184b5cd0e7c24bfb2ce6cdb2d16"
+      "published_hash": "ae605a0aef6843f793e799b70a14fd33add3989d09d9d301b89acdd9ad7daf2a"
     },
     {
       "title": "Compare length of two strings",
@@ -1100,13 +1100,13 @@
       "title": "Compiler/Preprocessor",
       "slug": "compiler-preprocessor",
       "state": "published",
-      "published_hash": "b63368248ca64b99df0d7f6b8c3eded30aea2e8298e38758131301fd9bce8749"
+      "published_hash": "dae770cd860301a498c21c88902f5918e1864771a41824a5f5ee416b4d064109"
     },
     {
       "title": "Compiler/Verifying syntax",
       "slug": "compiler-verifying-syntax",
       "state": "published",
-      "published_hash": "6784005afb71c37a3c245bfcc6ae7b7b5128d66ac384ea27bc43b5cc020cbf7a"
+      "published_hash": "0ac7da4a194a04979fbf682e9e405f57b5a1f15971044e15bf8617228253cad3"
     },
     {
       "title": "Compiler/code generator",
@@ -1118,13 +1118,13 @@
       "title": "Compiler/lexical analyzer",
       "slug": "compiler-lexical-analyzer",
       "state": "published",
-      "published_hash": "c35745073b9f64ede1e94c30f487c5a77a0d5599891d63c4dee239bd02e9c4bf"
+      "published_hash": "2a1073990ba7dde5907aaff8051ad18590556cb53d02fd666184c3a1864f659c"
     },
     {
       "title": "Compiler/syntax analyzer",
       "slug": "compiler-syntax-analyzer",
       "state": "published",
-      "published_hash": "58edbec60f2cd2f976fbacd8787c7bba3a26d7a2f87a2f2b7f82c91794c91f79"
+      "published_hash": "d0cbe754cafa7c3fcc65b526399037833b33eb8bfd2503ea7c1cd63068df49f9"
     },
     {
       "title": "Compiler/virtual machine interpreter",
@@ -1136,25 +1136,25 @@
       "title": "Compound data type",
       "slug": "compound-data-type",
       "state": "published",
-      "published_hash": "d106c3715a47f7547d48853c50d2e5b402032ad8e57dacf4b4a7152582b57f43"
+      "published_hash": "1b675463b94e09f32a5fa2c507f218606bc83221d90944592a4a1ef0ae0ae8cb"
     },
     {
       "title": "Concurrent computing",
       "slug": "concurrent-computing",
       "state": "published",
-      "published_hash": "f899ffc3c1664a78a6a08d934d98ead48528f8e2bc4e8935a457c5adeb8a2fed"
+      "published_hash": "c682a24ed8a23cd61c73348c00ce9420c52d58bec02cd1858da5ac511693f9a9"
     },
     {
       "title": "Conditional structures",
       "slug": "conditional-structures",
       "state": "published",
-      "published_hash": "416e1d90384b3e7d1334f21fe2d39e8a2907b16d3b6fad40a2e59ef02361b257"
+      "published_hash": "adec9b10993ab62b0aea80fcfa2afad3b519d075781cee7073650eb17148772c"
     },
     {
       "title": "Conjugate a Latin verb",
       "slug": "conjugate-a-latin-verb",
       "state": "published",
-      "published_hash": "0b406c47338564e142172016d488edc2de55c1a3f44a8ac67f25342db8bb0506"
+      "published_hash": "27403ed101e7838f3c243b19b1b6ae0826927cce97722d940ad20c978cda9dfe"
     },
     {
       "title": "Consecutive primes with ascending or descending differences",
@@ -1166,7 +1166,7 @@
       "title": "Constrained genericity",
       "slug": "constrained-genericity",
       "state": "published",
-      "published_hash": "c144d96fc8744b17f91515e1dffbf58a0daed05132e6765311617f10b0bd9863"
+      "published_hash": "4ea7c6a442a65c24514b02a4b4d1f5617e344755651a9120ea3dd9065b915c99"
     },
     {
       "title": "Constrained random points on a circle",
