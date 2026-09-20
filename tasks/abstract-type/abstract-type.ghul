@@ -9,13 +9,7 @@ trait Described is
     describe() -> string => "a shape"
 si
 
-class Polygon: Shape, Described abstract is
-    _sides: int
-
-    init(sides: int) is
-        _sides = sides
-    si
-
+class Polygon(sides: int private): Shape, Described abstract is
     area() -> double
 
     name() -> string => "{_sides}-sided polygon"
@@ -23,28 +17,14 @@ class Polygon: Shape, Described abstract is
     describe() -> string => "{name()}, area {area():F2}"
 si
 
-class SQUARE: Polygon is
-    _side: double
-
-    init(side: double) is
-        super.init(4)
-
-        _side = side
-    si
+class SQUARE(side: double private): Polygon is
+    super(4);
 
     area() -> double => _side * _side
 si
 
-class TRIANGLE: Polygon is
-    _base: double
-    _height: double
-
-    init(base: double, height: double) is
-        super.init(3)
-
-        _base = base
-        _height = height
-    si
+class TRIANGLE(base: double private, height: double private): Polygon is
+    super(3);
 
     area() -> double => _base * _height / 2.0D
 

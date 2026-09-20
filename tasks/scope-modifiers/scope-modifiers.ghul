@@ -2,15 +2,12 @@ use default
 
 counter: int
 
-class COUNTER is
+class COUNTER(step: int private) is
     made: int static
-
-    _step: int
 
     limit: int public
 
-    init(step: int) is
-        _step = step
+    init(..) is
         limit = 100
 
         made = made + 1

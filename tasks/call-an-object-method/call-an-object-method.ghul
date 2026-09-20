@@ -1,16 +1,10 @@
 use default
 
-class GREETER is
+class GREETER(name: string) is
     greeting: string static
 
     init() static is
         greeting = "hello"
-    si
-
-    name: string
-
-    init(name: string) is
-        self.name = name
     si
 
     greet() -> string => "{GREETER.greeting}, {name}"

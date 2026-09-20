@@ -1,12 +1,10 @@
 use default
 
-class MULTITON[K, V] is
-    _create: K -> V
+class MULTITON[K, V](create: K -> V private) is
     _instances: MAP[K, V]
     _lock: object
 
-    init(create: K -> V) is
-        _create = create
+    init(..) is
         _instances = MAP()
         _lock = object()
     si

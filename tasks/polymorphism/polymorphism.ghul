@@ -1,35 +1,21 @@
 use default
 
-class Shape abstract is
-    x: double
-    y: double
-
-    init(x: double, y: double) is
-        self.x = x
-        self.y = y
-    si
-
+class Shape(x: double, y: double) abstract is
     describe() -> string
 
     copy() -> Shape
 si
 
-class POINT: Shape is
-    init(x: double, y: double) is super.init(x, y) si
+class POINT(x: double, y: double): Shape is
+    super(x, y);
 
     describe() -> string => "a point at ({x}, {y})"
 
     copy() -> Shape => POINT(x, y)
 si
 
-class CIRCLE: Shape is
-    r: double
-
-    init(x: double, y: double, r: double) is
-        super.init(x, y)
-
-        self.r = r
-    si
+class CIRCLE(x: double, y: double, r: double): Shape is
+    super(x, y);
 
     describe() -> string => "a circle of radius {r} at ({x}, {y})"
 
@@ -42,7 +28,7 @@ shapes |> each(shape => write_line(shape.describe()))
 
 shapes |> each(shape =>
     let copy = shape.copy() in
-    write_line("{copy.describe()}, the same object as the original: {copy == shape}"))
+    write_line("{copy.describe()}, the same object: {copy == shape}"))
 
 shapes |> each(shape =>
     write_line(
