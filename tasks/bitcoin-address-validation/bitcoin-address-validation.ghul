@@ -1,0 +1,43 @@
+use default
+use System.Security.Cryptography.SHA256
+
+let alphabet =
+    "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+decoded(address: string) -> ubyte[]? is
+    let value mut = 0n
+
+    for character in address do
+        let digit = alphabet.index_of(character)
+
+        if digit < 0 then
+            return null
+        fi
+
+        value = value * 58n + cast bigint(digit)
+    od
+
+    let octets =
+        0..25
+            |> map(index =>
+                cast ubyte((value >> (8 * (24 - index))) & 255n))
+            |> collect_array()
+
+    return
+        if value >> 200 !~ 0n then null else octets fi
+si
+
+valid(address: string) -> bool =>
+    if let octets = decoded(address) then
+        let body = octets[0..21] |> collect_array()
+
+        let checksum = SHA256.hash_data(SHA256.hash_data(body))
+
+        octets[0] == 0ub /\ octets[21..25] =~ checksum[0..4]
+    else
+        false
+    fi
+
+for address in args do
+    write_line("{address}: {if valid(address) then "valid" else "not valid" fi}")
+od
