@@ -1464,25 +1464,25 @@
       "title": "Doubly-linked list/Definition",
       "slug": "doubly-linked-list-definition",
       "state": "published",
-      "published_hash": "b8f649952fae87c865a5f48e0a086a1240d3ea9fcd6342b912fb50b9f841351d"
+      "published_hash": "d8482d121105b6b39680754c776c85489bbbd81618e86c4b8844e1644700dcb8"
     },
     {
       "title": "Doubly-linked list/Element definition",
       "slug": "doubly-linked-list-element-definition",
       "state": "published",
-      "published_hash": "73ebf8194e03a9ce1ca656bf1e72c4b23d65442b270b52147eb9dc57feead722"
+      "published_hash": "9c5555c211f4feeb0611202c9e6674f3516c353da25954198d1d4f67af68cda6"
     },
     {
       "title": "Doubly-linked list/Element insertion",
       "slug": "doubly-linked-list-element-insertion",
       "state": "published",
-      "published_hash": "774c8408a837fd6f7f7cbee17a636494cfb73214cadb72bac72fd703ca1cbee7"
+      "published_hash": "666ba205e389ac8d691980d7812a5cf128f0306d137ad9047870abfb2d309c26"
     },
     {
       "title": "Doubly-linked list/Traversal",
       "slug": "doubly-linked-list-traversal",
       "state": "published",
-      "published_hash": "a8c285ee238cc226edc29fdfec81056780dff805f78773d624725c84c9972aed"
+      "published_hash": "0e8bc69d83c96ee85040c71a9456e29286c77399dbff4a3038fe96ab0ef2eea6"
     },
     {
       "title": "Dragon curve",
@@ -1526,7 +1526,7 @@
       "slug": "draw-a-rotating-cube",
       "state": "published",
       "note": "reopened, was rejected/needs-gui: animation is drawn as an animated PNG and published as a GIF",
-      "published_hash": "758165898c3381d9b2b34a6dd95b2b977a4c2281e5e32a89b07de5f78ec88411",
+      "published_hash": "66e477acf519e75c7c5091cabbb57640f29860dce98e78d985fd35ddfdc32021",
       "image_hashes": {
         "Ghul-draw-a-rotating-cube-cube.gif": "968d8c3f29b91e9adf70d7801e5a49f6950d75ca"
       }
@@ -1544,7 +1544,7 @@
       "title": "Draw a torus",
       "slug": "draw-a-torus",
       "state": "published",
-      "published_hash": "c8b658a4fd89d096d339b20ddc1b5b3bf0af872ae62c7fb6de445d955de039d3",
+      "published_hash": "cf452174269ab4a7e0c5e63038218068154e386dc788eac7325e0775f99fe4d3",
       "image_hashes": {
         "Ghul-draw-a-torus-torus.png": "d67fa551b72d7e8322aca8232c324c620f5198f4"
       }
@@ -1568,13 +1568,13 @@
       "title": "Dutch national flag problem",
       "slug": "dutch-national-flag-problem",
       "state": "published",
-      "published_hash": "58ca27be2773e2579ceb85ac333556ecfeb3b92b4009e9acc9fa4fe96c6ff6cd"
+      "published_hash": "39f7a6954d7a8f6100a4017f17a61f9befe0a6fb16e56f8f9f43a1332a4fd63f"
     },
     {
       "title": "Dynamic variable names",
       "slug": "dynamic-variable-names",
       "state": "published",
-      "published_hash": "0316cad5dba8157b6135d05e5bfd65bb6bbdc7782153b4f57f4f063abd3087ac"
+      "published_hash": "445cb3c14e40a52245567ae0026bdc06f4c7eb01d8c6b3cf5b48439c32400406"
     },
     {
       "title": "EKG sequence convergence",
@@ -1592,13 +1592,13 @@
       "title": "Egyptian division",
       "slug": "egyptian-division",
       "state": "published",
-      "published_hash": "96f1e1c2f44912c5a0e1b1e7540b3e4490d6540356699008e75fa8809152472d"
+      "published_hash": "d087c0595b018007110e026d0296f542bd2180295be4b028ad7d29d205317c43"
     },
     {
       "title": "Eisenstein primes",
       "slug": "eisenstein-primes",
       "state": "published",
-      "published_hash": "aaefba078b8d539a6cf97ede997b2ad3caf9bf03fe5d7a329a06fd0766b3f77e",
+      "published_hash": "992935620a0aee59e7553ba204677ebe82a45e13902a8c9b47cac6d5f1ec5181",
       "image_hashes": {
         "Ghul-eisenstein-primes-eisenstein.png": "f142cf689f4d3dfaaa73180753c7ceaeb8674201"
       }
@@ -1607,7 +1607,7 @@
       "title": "Elementary cellular automaton",
       "slug": "elementary-cellular-automaton",
       "state": "published",
-      "published_hash": "3b9069548f2c3fedfd10f1555b3ec1eedb4c6edf9b8c5b906cb88585d8e8d1fb",
+      "published_hash": "2441d095f13e750703a0b6baa78788e17abadcf461fc07bb5f561bde488ea0c4",
       "image_hashes": {
         "Ghul-elementary-cellular-automaton-space-time.png": "80f7a40027a802d612117cfe7088c14eced25754"
       }
@@ -1622,7 +1622,7 @@
       "title": "Emirp primes",
       "slug": "emirp-primes",
       "state": "published",
-      "published_hash": "8d112e8865d9afde86b9923447d62a997000a91e4e791428a46e0fd67965133f"
+      "published_hash": "5dd124238e4beb0cc7bf7e90536d000cd5ac0bb7c01b9b08c50120659460545f"
     },
     {
       "title": "Empty program",
@@ -1634,19 +1634,19 @@
       "title": "Empty string",
       "slug": "empty-string",
       "state": "published",
-      "published_hash": "0310e74ce14e2fccf536c4ead7e952b2ebfad9eff4be404bec2119d5262154fe"
+      "published_hash": "6dd02768f951c0b95c8f7363e81b32bfdaaa98ba77d1223227a6293f5c732a27"
     },
     {
       "title": "Endless maze",
       "slug": "endless-maze",
       "state": "published",
-      "published_hash": "cf6025a5e12aeac49a3f28501613cc163d7a845a14d122025bd4b06e512b02e1"
+      "published_hash": "79eee6f60c3cbcc60c67b3d1a6abd3c3a6c2262a322d86393405f987376a4fac"
     },
     {
       "title": "Engel expansion",
       "slug": "engel-expansion",
       "state": "published",
-      "published_hash": "310421329e5ceb94622279ad0f85188da2fbdc6a88c9ff5999b03a1c62a9587d"
+      "published_hash": "6153a9596237e392ecd71081c75af5aa7dfdada91b0183e2733782a28ab01250"
     },
     {
       "title": "Entropy",
@@ -1658,19 +1658,19 @@
       "title": "Enumerations",
       "slug": "enumerations",
       "state": "published",
-      "published_hash": "9d0003d8674e8e42338cca7c3edf9334450b665003e95d3de6025473c54991ba"
+      "published_hash": "1b8f6d21016ebc5ff9a16a24af527c346174d953ca64175dcdab2e81dc5ad302"
     },
     {
       "title": "Environment variables",
       "slug": "environment-variables",
       "state": "published",
-      "published_hash": "1f449caa5ab89e2b493f980514db802f09eb5243c565437400b8a63a27d591af"
+      "published_hash": "d4a746d9342ec019f863e067f5a4be6f98130816a7e6899ddf796cf8fbe5d69a"
     },
     {
       "title": "Equal prime and composite sums",
       "slug": "equal-prime-and-composite-sums",
       "state": "published",
-      "published_hash": "c93b2c92341482b9a1e33b30f4ffa3c67400d8224366761f054640e95e3419a1"
+      "published_hash": "0ba238842e7308b1245c8f2c67e419a359fb52ba7303adc61512c1240a3457ac"
     },
     {
       "title": "Equilibrium index",
@@ -1688,7 +1688,7 @@
       "title": "Erd\u0151s-primes",
       "slug": "erdos-primes",
       "state": "published",
-      "published_hash": "dfb0cc7ae172ed68f84f4c05abb23b38137469c24a0ed411ec3d4d8a2f579f5e"
+      "published_hash": "48b68185f8af071263fb0df29c1a92b05a1f43b8bd277ce6320538759cf001d2"
     },
     {
       "title": "Erd\u0151s\u2013Woods numbers",
@@ -1698,19 +1698,19 @@
       "title": "Esthetic numbers",
       "slug": "esthetic-numbers",
       "state": "published",
-      "published_hash": "9c45b342afa7d38840951b6d08d3db74871937cc00aab05a273eab2ee98ec99a"
+      "published_hash": "35c7f450a9fe0fc953854cff6e24039fd92144d8e9391d19b22029fd24d93026"
     },
     {
       "title": "Ethiopian multiplication",
       "slug": "ethiopian-multiplication",
       "state": "published",
-      "published_hash": "e33e25067d9ba8dae3bcdb53a77338f255945caf81cb644e6ec8e7450538d191"
+      "published_hash": "331cd2a4bad3017264c2afe3d0a0fa27661dd91fc661b09687270a31e26d5fb9"
     },
     {
       "title": "Euclid-Mullin sequence",
       "slug": "euclid-mullin-sequence",
       "state": "published",
-      "published_hash": "71b5cf951bf2fefdecb1a236246054e90d90376e7a46184e0bd30157dc9a1026"
+      "published_hash": "c52905940d3b47cb7ba7f0e1f271981be635e05b6bbba2016721cc8f70b63637"
     },
     {
       "title": "Euclidean rhythm",
@@ -1728,19 +1728,19 @@
       "title": "Evaluate binomial coefficients",
       "slug": "evaluate-binomial-coefficients",
       "state": "published",
-      "published_hash": "69f85a8c9b6aa7834a76d2caec0f21db785c880aa7dd3c3703e1a97e8661e497"
+      "published_hash": "cc5efeeb68a9942117c8bb16e90bfe0f00c3f0a2016565aa34cb8eea93bb42ef"
     },
     {
       "title": "Even or odd",
       "slug": "even-or-odd",
       "state": "published",
-      "published_hash": "877f6913b1ad7e11105a57c726055df9b037f9f0d409afcbb4b9cbfcaf2ced76"
+      "published_hash": "36c8af60341bb3e28a038949704f45dba9ad6fca67fde8b067994785019ada7b"
     },
     {
       "title": "Events",
       "slug": "events",
       "state": "published",
-      "published_hash": "b2fee79f4706b0d6b8673cc0521ee72ef3e40a5ba5c721af80794b5ac3628b9c"
+      "published_hash": "075df0a0702bdd5af9c564cd607af4b6e787fc7c8e0ad0122699ccb5e8e7c2f8"
     },
     {
       "title": "Evolutionary algorithm",
