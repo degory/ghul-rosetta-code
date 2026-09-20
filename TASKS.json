@@ -294,6 +294,11 @@
       }
     },
     {
+      "title": "Arena storage pool",
+      "state": "rejected",
+      "reason": "no-equivalent"
+    },
+    {
       "title": "Argument destructuring",
       "slug": "argument-destructuring",
       "state": "published",
