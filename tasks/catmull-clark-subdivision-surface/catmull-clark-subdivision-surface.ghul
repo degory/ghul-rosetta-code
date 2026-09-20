@@ -33,7 +33,9 @@ subdivided(mesh: Mesh) -> Mesh is
         let face = faces[face_index]
 
         for corner in 0..face.count do
-            let key = edge_key(face[corner], face[(corner + 1) % face.count])
+            let next = face[(corner + 1) % face.count]
+
+            let key = edge_key(face[corner], next)
 
             if !edge_faces.contains_key(key) then
                 edge_faces[key] = LIST[int]()
