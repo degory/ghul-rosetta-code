@@ -771,6 +771,11 @@
       "published_hash": "82c9c92476562ef497de3e5762d1576d1e44e4eb75567c4485925c3b6423b530"
     },
     {
+      "title": "Call an object method",
+      "slug": "call-an-object-method",
+      "state": "solved"
+    },
+    {
       "title": "Camel case and snake case",
       "slug": "camel-case-and-snake-case",
       "state": "published",
@@ -1266,6 +1271,11 @@
       "published_hash": "82488b790ad7d46c365c3ee435370af9208ba0be8991ea0ed0edcafce7d15fdc"
     },
     {
+      "title": "Currying",
+      "slug": "currying",
+      "state": "solved"
+    },
+    {
       "title": "Curve that touches three points",
       "slug": "curve-that-touches-three-points",
       "state": "published",
@@ -1348,6 +1358,11 @@
       "slug": "define-a-primitive-data-type",
       "state": "published",
       "published_hash": "c24a11ac9359304cb392231bc1bbbdb7af9832b4d1c5f8fcb9e31c5e7da57a9f"
+    },
+    {
+      "title": "Delegates",
+      "slug": "delegates",
+      "state": "solved"
     },
     {
       "title": "Department numbers",
@@ -4065,6 +4080,11 @@
       "published_hash": "8a589c9ac0529e8259df467f2c3fb4c0fbe2c2f88dfbe466d6bf35e078e5fbb8"
     },
     {
+      "title": "Polymorphism",
+      "slug": "polymorphism",
+      "state": "solved"
+    },
+    {
       "title": "Polynomial long division",
       "slug": "polynomial-long-division",
       "state": "published",
@@ -4486,6 +4506,11 @@
       "published_hash": "26a9199df576bdc9c3e09e3310a0c5107ff6a1a341a72c424e7edab7310f4fd8"
     },
     {
+      "title": "Sealed classes and methods",
+      "slug": "sealed-classes-and-methods",
+      "state": "solved"
+    },
+    {
       "title": "Search a list",
       "slug": "search-a-list",
       "state": "published",
@@ -4559,6 +4584,11 @@
       "slug": "shape-machine",
       "state": "published",
       "published_hash": "ac18f9bc62e3f09663156d49a6047812a27fb1a1a2bcbe331c0256db74053a27"
+    },
+    {
+      "title": "Short-circuit evaluation",
+      "slug": "short-circuit-evaluation",
+      "state": "solved"
     },
     {
       "title": "Shortest common supersequence",
@@ -4674,6 +4704,11 @@
       "title": "Simple windowed application",
       "state": "rejected",
       "reason": "needs-gui"
+    },
+    {
+      "title": "Singleton",
+      "slug": "singleton",
+      "state": "solved"
     },
     {
       "title": "Singly-linked list/Element definition",
@@ -5720,6 +5755,11 @@
       "slug": "vigenere-cipher-cryptanalysis",
       "state": "published",
       "published_hash": "f7374b77763d284938c376e076e80adfbdc28e8b68131308e69cdb7a62b5a641"
+    },
+    {
+      "title": "Visitor pattern",
+      "slug": "visitor-pattern",
+      "state": "solved"
     },
     {
       "title": "Visualize a tree",

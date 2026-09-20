@@ -1,0 +1,52 @@
+use default
+
+class Shape abstract is
+    x: double
+    y: double
+
+    init(x: double, y: double) is
+        self.x = x
+        self.y = y
+    si
+
+    describe() -> string
+
+    copy() -> Shape
+si
+
+class POINT: Shape is
+    init(x: double, y: double) is super.init(x, y) si
+
+    describe() -> string => "a point at ({x}, {y})"
+
+    copy() -> Shape => POINT(x, y)
+si
+
+class CIRCLE: Shape is
+    r: double
+
+    init(x: double, y: double, r: double) is
+        super.init(x, y)
+
+        self.r = r
+    si
+
+    describe() -> string => "a circle of radius {r} at ({x}, {y})"
+
+    copy() -> Shape => CIRCLE(x, y, r)
+si
+
+let shapes = [POINT(1.0, 2.0), CIRCLE(3.0, 4.0, 5.0)]
+
+shapes |> each(shape => write_line(shape.describe()))
+
+shapes |> each(shape =>
+    let copy = shape.copy() in
+    write_line("{copy.describe()}, the same object as the original: {copy == shape}"))
+
+shapes |> each(shape =>
+    write_line(
+        case shape
+        when circle: CIRCLE then "radius {circle.r}"
+        when _: POINT then "no radius: a point has none"
+        esac))

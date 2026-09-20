@@ -1,0 +1,6 @@
+add(2)(3) = 5
+add_ten(5) = 15
+add_ten(32) = 42
+curried("ab")(3) = ababab
+uncurry(curried)("-", 5) = -----
+plus(7)(8) = 15

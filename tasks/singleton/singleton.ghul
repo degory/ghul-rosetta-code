@@ -1,0 +1,30 @@
+use default
+
+class COUNTER is
+    instance: COUNTER static
+
+    init() static is
+        instance = COUNTER()
+    si
+
+    _count: int
+
+    init() is
+        _count = 0
+    si
+
+    bump() -> int is
+        _count = _count + 1
+
+        _count
+    si
+si
+
+write_line("first:  {COUNTER.instance.bump()}")
+write_line("second: {COUNTER.instance.bump()}")
+write_line("third:  {COUNTER.instance.bump()}")
+
+let here = COUNTER.instance
+let there = COUNTER.instance
+
+write_line("the same instance: {here == there}")
