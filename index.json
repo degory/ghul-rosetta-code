@@ -3437,6 +3437,37 @@
       ]
     },
     {
+      "slug": "catmull-clark-subdivision-surface",
+      "title": "Catmull–Clark subdivision surface",
+      "url": "https://rosettacode.org/wiki/Catmull–Clark_subdivision_surface",
+      "tags": [
+        "graphics",
+        "algorithms",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/catmull-clark-subdivision-surface/subdivided.png.expected"
+      ],
+      "lines": 208,
+      "parts": [
+        {
+          "id": "catmull-clark-subdivision-surface",
+          "heading": null,
+          "source": "tasks/catmull-clark-subdivision-surface/catmull-clark-subdivision-surface.ghul",
+          "output": "tasks/catmull-clark-subdivision-surface/run.expected",
+          "lines": 208,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/catmull-clark-subdivision-surface/subdivided.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "chaos-game",
       "title": "Chaos game",
       "url": "https://rosettacode.org/wiki/Chaos_game",
@@ -3520,6 +3551,37 @@
           "input": false,
           "images": [
             "tasks/check-if-a-polygon-overlaps-with-a-rectangle/overlap.png.expected"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "check-if-two-polygons-overlap",
+      "title": "Check if two polygons overlap",
+      "url": "https://rosettacode.org/wiki/Check_if_two_polygons_overlap",
+      "tags": [
+        "maths",
+        "graphics",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/check-if-two-polygons-overlap/polygons.png.expected"
+      ],
+      "lines": 97,
+      "parts": [
+        {
+          "id": "check-if-two-polygons-overlap",
+          "heading": null,
+          "source": "tasks/check-if-two-polygons-overlap/check-if-two-polygons-overlap.ghul",
+          "output": "tasks/check-if-two-polygons-overlap/run.expected",
+          "lines": 97,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/check-if-two-polygons-overlap/polygons.png.expected"
           ]
         }
       ]
@@ -7757,6 +7819,33 @@
       ]
     },
     {
+      "slug": "faces-from-a-mesh",
+      "title": "Faces from a mesh",
+      "url": "https://rosettacode.org/wiki/Faces_from_a_mesh",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 86,
+      "parts": [
+        {
+          "id": "faces-from-a-mesh",
+          "heading": null,
+          "source": "tasks/faces-from-a-mesh/faces-from-a-mesh.ghul",
+          "output": "tasks/faces-from-a-mesh/run.expected",
+          "lines": 86,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "factorial",
       "title": "Factorial",
       "url": "https://rosettacode.org/wiki/Factorial",
@@ -8419,6 +8508,63 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "find-the-intersection-of-a-line-with-a-plane",
+      "title": "Find the intersection of a line with a plane",
+      "url": "https://rosettacode.org/wiki/Find_the_intersection_of_a_line_with_a_plane",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 28,
+      "parts": [
+        {
+          "id": "find-the-intersection-of-a-line-with-a-plane",
+          "heading": null,
+          "source": "tasks/find-the-intersection-of-a-line-with-a-plane/find-the-intersection-of-a-line-with-a-plane.ghul",
+          "output": "tasks/find-the-intersection-of-a-line-with-a-plane/run.expected",
+          "lines": 28,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "find-the-intersection-of-two-lines",
+      "title": "Find the intersection of two lines",
+      "url": "https://rosettacode.org/wiki/Find_the_intersection_of_two_lines",
+      "tags": [
+        "maths",
+        "graphics",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/find-the-intersection-of-two-lines/crossing.png.expected"
+      ],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "find-the-intersection-of-two-lines",
+          "heading": null,
+          "source": "tasks/find-the-intersection-of-two-lines/find-the-intersection-of-two-lines.ghul",
+          "output": "tasks/find-the-intersection-of-two-lines/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/find-the-intersection-of-two-lines/crossing.png.expected"
+          ]
         }
       ]
     },
@@ -10579,6 +10725,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "honeycombs",
+      "title": "Honeycombs",
+      "url": "https://rosettacode.org/wiki/Honeycombs",
+      "tags": [
+        "graphics",
+        "game",
+        "interactive"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": true,
+      "images": [
+        "tasks/honeycombs/honeycomb.png.expected"
+      ],
+      "lines": 112,
+      "parts": [
+        {
+          "id": "honeycombs",
+          "heading": null,
+          "source": "tasks/honeycombs/honeycombs.ghul",
+          "output": "tasks/honeycombs/run.expected",
+          "lines": 112,
+          "playground": true,
+          "input": true,
+          "images": [
+            "tasks/honeycombs/honeycomb.png.expected"
+          ]
         }
       ]
     },
@@ -17465,6 +17642,38 @@
       ]
     },
     {
+      "slug": "quickhull",
+      "title": "Quickhull",
+      "url": "https://rosettacode.org/wiki/Quickhull",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/quickhull/hull.png.expected"
+      ],
+      "lines": 184,
+      "parts": [
+        {
+          "id": "quickhull",
+          "heading": null,
+          "source": "tasks/quickhull/quickhull.ghul",
+          "output": "tasks/quickhull/run.expected",
+          "lines": 184,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/quickhull/hull.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "quickselect-algorithm",
       "title": "Quickselect algorithm",
       "url": "https://rosettacode.org/wiki/Quickselect_algorithm",
@@ -17761,6 +17970,37 @@
           "playground": true,
           "input": true,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "ray-casting-algorithm",
+      "title": "Ray-casting algorithm",
+      "url": "https://rosettacode.org/wiki/Ray-casting_algorithm",
+      "tags": [
+        "algorithms",
+        "graphics",
+        "maths"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/ray-casting-algorithm/inside.png.expected"
+      ],
+      "lines": 126,
+      "parts": [
+        {
+          "id": "ray-casting-algorithm",
+          "heading": null,
+          "source": "tasks/ray-casting-algorithm/ray-casting-algorithm.ghul",
+          "output": "tasks/ray-casting-algorithm/run.expected",
+          "lines": 126,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/ray-casting-algorithm/inside.png.expected"
+          ]
         }
       ]
     },
