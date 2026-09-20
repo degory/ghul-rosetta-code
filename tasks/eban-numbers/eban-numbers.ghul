@@ -21,15 +21,14 @@ si
 is_eban(n: int) -> bool => groups(n) |> all(eban_group)
 
 eban_up_to(limit: int) -> Pipe[int] =>
-    from(1) |> take(limit) |> filter(is_eban)
+    1::limit |> filter(is_eban)
 
 let up_to_1000 = eban_up_to(1000) |> collect()
 write_line("eban numbers up to and including 1000:")
 write_line(up_to_1000 |> join(" "))
 write_line("count: {up_to_1000.count}")
 
-let in_1000_to_4000 = from(1000)
-    |> take(3001)
+let in_1000_to_4000 = 1000::4000
     |> filter(is_eban)
     |> collect()
 write_line("eban numbers between 1000 and 4000 inclusive:")

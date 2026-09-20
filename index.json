@@ -6844,14 +6844,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 42,
+      "lines": 41,
       "parts": [
         {
           "id": "eban-numbers",
           "heading": null,
           "source": "tasks/eban-numbers/eban-numbers.ghul",
           "output": "tasks/eban-numbers/run.expected",
-          "lines": 42,
+          "lines": 41,
           "playground": true,
           "input": false,
           "images": []
@@ -8096,14 +8096,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 29,
+      "lines": 28,
       "parts": [
         {
           "id": "factorions",
           "heading": null,
           "source": "tasks/factorions/factorions.ghul",
           "output": "tasks/factorions/run.expected",
-          "lines": 29,
+          "lines": 28,
           "playground": true,
           "input": false,
           "images": []
