@@ -1,0 +1,3 @@
+use default
+
+IO.Std.write("{cast char(7)}")
