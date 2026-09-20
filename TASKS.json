@@ -4927,17 +4927,20 @@
     {
       "title": "SHA-1",
       "slug": "sha-1",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "38f5860b5b7cb26e2fa56e16bfe81539c6b93dff0c9c469c0092867fcd57efa5"
     },
     {
       "title": "SHA-256",
       "slug": "sha-256",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d120df9996e1ece728e02c87a0878ff6c501b81ba4ede3d541c98ba558e24637"
     },
     {
       "title": "SHA-256 Merkle tree",
       "slug": "sha-256-merkle-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0ae45735daf4397a9627fa92ea821a932aacc679a30e9e01b702d5c853a1af23"
     },
     {
       "title": "Safe primes and unsafe primes",
@@ -5065,7 +5068,8 @@
     {
       "title": "Short-circuit evaluation",
       "slug": "short-circuit-evaluation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c322c26b576fb60c1ccbaf11a96605796717e53d4c361e116578d03a6829f27c"
     },
     {
       "title": "Shortest common supersequence",
@@ -5166,8 +5170,9 @@
     {
       "title": "Simple database",
       "slug": "simple-database",
-      "state": "solved",
-      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args"
+      "state": "published",
+      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args",
+      "published_hash": "69932125ba90bda02b78b51feac0228d59bfc1fb3ae4cf6d3e5c115d4cf5f28b"
     },
     {
       "title": "Simple turtle graphics",
@@ -5186,7 +5191,8 @@
     {
       "title": "Singleton",
       "slug": "singleton",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6bc77e8894c6caab9a47ceab6998d9ca79a5cc8d1b025b966a677d262fe39022"
     },
     {
       "title": "Singly-linked list/Element definition",
@@ -5254,7 +5260,8 @@
     {
       "title": "Sockets",
       "slug": "sockets",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "627801ef7cb25ae804f71a8e07cf05a7e20280f552a66f2ead89a8a99fc72231"
     },
     {
       "title": "Sokoban",
@@ -5554,7 +5561,8 @@
     {
       "title": "Stack traces",
       "slug": "stack-traces",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "19e9073b7cb692f1c9012e357d662c5369bbd5944856b63094db1f65e708efb6"
     },
     {
       "title": "Start from a main routine",
@@ -5739,7 +5747,8 @@
     {
       "title": "Suffix tree",
       "slug": "suffix-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4b871de8e63b37db6f866f6bced06e363d133678fb92e3a81f71555c12bb6fb8"
     },
     {
       "title": "Sum and product of an array",
@@ -5860,7 +5869,8 @@
     {
       "title": "Szyma\u0144ski\u0027s algorithm",
       "slug": "szymanskis-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0431bd6bc3104e0237fff5fb5abd1a1dbd085788f2809bbbd80bec9fdfebf859"
     },
     {
       "title": "Table creation/Postal addresses",
