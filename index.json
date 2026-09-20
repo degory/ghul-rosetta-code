@@ -2274,58 +2274,6 @@
       ]
     },
     {
-      "slug": "bitcoin-address-validation",
-      "title": "Bitcoin/address validation",
-      "url": "https://rosettacode.org/wiki/Bitcoin/address_validation",
-      "tags": [
-        "algorithms",
-        "dotnet-interop"
-      ],
-      "interest": 3,
-      "playground": true,
-      "input": false,
-      "images": [],
-      "lines": 45,
-      "parts": [
-        {
-          "id": "bitcoin-address-validation",
-          "heading": null,
-          "source": "tasks/bitcoin-address-validation/bitcoin-address-validation.ghul",
-          "output": "tasks/bitcoin-address-validation/run.expected",
-          "lines": 45,
-          "playground": true,
-          "input": false,
-          "images": []
-        }
-      ]
-    },
-    {
-      "slug": "bitcoin-public-point-to-address",
-      "title": "Bitcoin/public point to address",
-      "url": "https://rosettacode.org/wiki/Bitcoin/public_point_to_address",
-      "tags": [
-        "algorithms",
-        "pipes"
-      ],
-      "interest": 3,
-      "playground": true,
-      "input": false,
-      "images": [],
-      "lines": 192,
-      "parts": [
-        {
-          "id": "bitcoin-public-point-to-address",
-          "heading": null,
-          "source": "tasks/bitcoin-public-point-to-address/bitcoin-public-point-to-address.ghul",
-          "output": "tasks/bitcoin-public-point-to-address/run.expected",
-          "lines": 192,
-          "playground": true,
-          "input": false,
-          "images": []
-        }
-      ]
-    },
-    {
       "slug": "bitmap",
       "title": "Bitmap",
       "url": "https://rosettacode.org/wiki/Bitmap",

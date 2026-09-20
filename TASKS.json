@@ -565,14 +565,14 @@
     {
       "title": "Bitcoin/address validation",
       "slug": "bitcoin-address-validation",
-      "state": "published",
-      "published_hash": "21f52b52ab63f5aad0105a13dc31f79970cb5eacf0609ac25d7510046810528b"
+      "state": "rejected",
+      "reason": "excluded"
     },
     {
       "title": "Bitcoin/public point to address",
       "slug": "bitcoin-public-point-to-address",
-      "state": "published",
-      "published_hash": "16582ddf7dcdbfea319f0d2764d0607799e31c1e1e834bd78a81f652e83cd609"
+      "state": "rejected",
+      "reason": "excluded"
     },
     {
       "title": "Bitmap",
