@@ -5991,7 +5991,8 @@
     {
       "title": "Terminal control/Unicode output",
       "slug": "terminal-control-unicode-output",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4013c7458177b757a4e8d891ffbf77dedaa7dd4aae6a5e465a5e1b474f05aa8f"
     },
     {
       "title": "Ternary logic",
@@ -6060,7 +6061,8 @@
     {
       "title": "Top rank per group",
       "slug": "top-rank-per-group",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a677940929b0daed9a0656da89825a31b8cbe3a02d752975b143bb6496f56adf"
     },
     {
       "title": "Topic variable",
@@ -6230,7 +6232,8 @@
     {
       "title": "Undefined values",
       "slug": "undefined-values",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c0632deacf3c7c01a7bb24fd2ef0c7c8f4e73fe17e875263c87304c3858fe427"
     },
     {
       "title": "Undulating numbers",
@@ -6277,7 +6280,8 @@
     {
       "title": "User defined pipe and redirection operators",
       "slug": "user-defined-pipe-and-redirection-operators",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a27db4c6eb12f9badffbe6f701877e01726fac23ceb0fd572ec30eb393c8df82"
     },
     {
       "title": "User input/Text",
@@ -6310,7 +6314,8 @@
     {
       "title": "Variable size/Get",
       "slug": "variable-size-get",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5d4883ffe0b1c36e5dd1438ecfff9d09619c3a0031b8716fd1690e5745a6f270"
     },
     {
       "title": "Variable size/Set",
@@ -6378,7 +6383,8 @@
     {
       "title": "Visitor pattern",
       "slug": "visitor-pattern",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9135cb4dd72cd88cc636bda3ba70d264969f7e814c07850215255053e9bca305"
     },
     {
       "title": "Visualize a tree",
@@ -6524,12 +6530,14 @@
     {
       "title": "Write entire file",
       "slug": "write-entire-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f07423678329439fdd75fbbbfc4558b745ab5111553f55425e536d11ce57912b"
     },
     {
       "title": "Write float arrays to a text file",
       "slug": "write-float-arrays-to-a-text-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "293a909b2c72f7fb95bfd472874a75a7983572b9f3d0c2813819c0e4da990eda"
     },
     {
       "title": "Write language name in 3D ASCII",
@@ -6540,12 +6548,14 @@
     {
       "title": "XML/DOM serialization",
       "slug": "xml-dom-serialization",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d6b15a7649294eed94f73b54c8efbc42c693452de974de679610112335901167"
     },
     {
       "title": "XML/Input",
       "slug": "xml-input",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e18b3cbd808786f536721ddaf765f3f64850cfc61423688c1697b77f935b1543"
     },
     {
       "title": "XML/Output",
