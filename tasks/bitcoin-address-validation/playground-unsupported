@@ -1,1 +1,1 @@
-it reads addresses from the command line and hashes them with System.Security.Cryptography, neither of which the playground offers
+it reads the addresses to check from the command line, which the playground does not supply

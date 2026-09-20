@@ -1,1 +1,1 @@
-it uses System.Security.Cryptography to check its own digests, which the playground does not include
+it checks its digests against the .NET implementation of MD5, which the browser runtime does not provide
