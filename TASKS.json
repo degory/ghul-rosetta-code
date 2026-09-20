@@ -2311,7 +2311,7 @@
       "title": "Greed",
       "slug": "greed",
       "state": "published",
-      "published_hash": "1b73da7c0b17f58bb0328df59ce3245fa3ad61052783b80811100fec4ef92a19"
+      "published_hash": "d14f42c299d4029648c8a063e7d1dc88843e9c13d72064f37a16f09bca76a771"
     },
     {
       "title": "Greedy algorithm for Egyptian fractions",
@@ -2332,13 +2332,13 @@
       "title": "Guess the number",
       "slug": "guess-the-number",
       "state": "published",
-      "published_hash": "4cbbe65b7499b5a52448e91d2a414e0031baae9a0a349c3839ac1f29a6fb6665"
+      "published_hash": "0bce5191ed11b10a3f9836f5dc4f4d0606566fa929dbb9e0cf0ec7454c9ff1da"
     },
     {
       "title": "Guess the number/With feedback",
       "slug": "guess-the-number-with-feedback",
       "state": "published",
-      "published_hash": "ab21d3070593ab461ee304135e554ec2b71146fdfc3fe2bc4ab7343f8acbe003"
+      "published_hash": "318a39c2e888e5f4e0800b5dd97fd29e7e4cd62dc8608a90f130ab1e84b5505b"
     },
     {
       "title": "Guess the number/With feedback (player)",
@@ -2365,7 +2365,7 @@
       "title": "Hailstone sequence",
       "slug": "hailstone-sequence",
       "state": "published",
-      "published_hash": "9321921b3ccffb08e782474f84c3ecf42dcd7143f14ee3880325dd2ead4d6086",
+      "published_hash": "15c8abe324896f88d0df964e210a01dd8017edc54c6598f716ca760b04d7e04c",
       "image_hashes": {
         "Ghul-hailstone-sequence-hailstone.png": "ae850d3c01810bbcfc61f0f7f205c82179729ee0"
       }
@@ -2413,7 +2413,7 @@
       "title": "Haversine formula",
       "slug": "haversine-formula",
       "state": "published",
-      "published_hash": "8884e3f83c7cf7a1025444dfd8080ff061da4ae3fd898314cd2ad7a5dd76dc76"
+      "published_hash": "21a63aa30424fff03ac41bbd21cdcc971d29a8eadbea8227f3faca146ec73157"
     },
     {
       "title": "Hello world/Graphical",
@@ -2424,7 +2424,7 @@
       "title": "Hello world/Newbie",
       "slug": "hello-world-newbie",
       "state": "published",
-      "published_hash": "16bd88523d72b8804e0a360d201d9308dcef2c4f7a6719f75e6b2096260933af"
+      "published_hash": "adc3afe83888ee153c15ced5af63d626399506a8820572d0edaa5b4d13da221c"
     },
     {
       "title": "Hello world/Newline omission",
@@ -2460,19 +2460,19 @@
       "title": "Hex dump",
       "slug": "hex-dump",
       "state": "published",
-      "published_hash": "11aed746bee092277644248f0554bb4b1f87ec4a3635ca511a6f933ba22b0385"
+      "published_hash": "ae310cef69636a79b660dd184e2cef6a6e6ed45d817922b992cb2fc2d49a40ff"
     },
     {
       "title": "Hexapawn",
       "slug": "hexapawn",
       "state": "published",
-      "published_hash": "fb3962b8942f817affe76bd2ffa28da04a09bdb661433f26c56785232902519a"
+      "published_hash": "c4eaa33fecb64b60a5ec9568cc269c65201951cb926ef705574d3e54025cfe13"
     },
     {
       "title": "Higher-order functions",
       "slug": "higher-order-functions",
       "state": "published",
-      "published_hash": "733f9b738023869e812615a36661fa95114eea81fbada68388712e5a936cb20d"
+      "published_hash": "d84e95e69c93ddeb4dcbcabb90a753c83c60e91188b5e65f6df40211c760519a"
     },
     {
       "title": "Hilbert curve",
@@ -2487,7 +2487,7 @@
       "title": "Hofstadter Figure-Figure sequences",
       "slug": "hofstadter-figure-figure-sequences",
       "state": "published",
-      "published_hash": "6d05a8cf47ec06208914f6ee8266f177db710d3cdfd77e4b7ecd7ebcacb337a4"
+      "published_hash": "198059f276cf907343f0add77a932763aa868c6e7e901cd332d42379f6f03dc4"
     },
     {
       "title": "Hofstadter Q sequence",
@@ -2499,13 +2499,13 @@
       "title": "Home primes",
       "slug": "home-primes",
       "state": "published",
-      "published_hash": "53e4e30a2678beb505806a89058aecd8b30ce83f3b848904f90d2be5b52d8528"
+      "published_hash": "a43325e70b34a5cbf00498de4cfff35485956723f3a119804d3766db83159fff"
     },
     {
       "title": "Honaker primes",
       "slug": "honaker-primes",
       "state": "published",
-      "published_hash": "e240e27be76ee2b0c2dc94aaec33e923e64743c4a5ca37c1c98547cc059d5d18"
+      "published_hash": "4e376562dde4b68e554174ac6892abd2ce1d7edf2360a7fcf7794557c129a99a"
     },
     {
       "title": "Horizontal sundial calculations",
@@ -2528,7 +2528,7 @@
       "title": "Hough transform",
       "slug": "hough-transform",
       "state": "published",
-      "published_hash": "7b72ba1b9ace96741f754ea89478ed8f982a12cfc9effc480ebf2ae495efefe2",
+      "published_hash": "a51c32ebbb18a34ba7485a166d93ef33ce1cf867971f96932f0809fc3d34743e",
       "image_hashes": {
         "Ghul-hough-transform-pentagon.png": "494f1c9d221c9b5a7600d95f74fe994218959128",
         "Ghul-hough-transform-hough.png": "01706ca6b7465606e64a90e60074d86f6a76db14"
@@ -2538,7 +2538,7 @@
       "title": "Hourglass puzzle",
       "slug": "hourglass-puzzle",
       "state": "published",
-      "published_hash": "20c9e9ad7a8789d8ebc0682f2cde6496178a423f897090a0056745dc2039d37f"
+      "published_hash": "886215d8df5c6f156a8fe71436047492e12331dd8a2b46d069060fb4fc386501"
     },
     {
       "title": "Huffman coding",
@@ -2553,7 +2553,7 @@
       "title": "Humble numbers",
       "slug": "humble-numbers",
       "state": "published",
-      "published_hash": "550d7e586d31b8b3ab0cfa099bfefa136ee5017f2fc6df6fed74821daef0df03"
+      "published_hash": "592ae42fc667ecb9ff818d80415ae8080263effa2653c647f0f14c21188f7298"
     },
     {
       "title": "Hunt the Wumpus",
@@ -2572,7 +2572,7 @@
       "title": "IBAN",
       "slug": "iban",
       "state": "published",
-      "published_hash": "103d1d5529d88f4c4252fa6767ba2dec3aac62e999d0612ea90e9bbdf7b7be30"
+      "published_hash": "a97c3904e8794fe5b2d7f973479652559f02204a5d52ad627f4fa5541ea7b5f2"
     },
     {
       "title": "ISBN13 check digit",
@@ -2602,7 +2602,7 @@
       "title": "Idoneal numbers",
       "slug": "idoneal-numbers",
       "state": "published",
-      "published_hash": "48f5661b9cc8f37c24d8245587389f92893d879ca75c47bc98d19014e4e3720d"
+      "published_hash": "5bb47ea6de1306ed3084bee0ba363dbf661ded9a0e62b482ff0400a63bc8f211"
     },
     {
       "title": "Image convolution",
@@ -2629,13 +2629,13 @@
       "title": "Implicit type conversion",
       "slug": "implicit-type-conversion",
       "state": "published",
-      "published_hash": "6240db2447a80d0051265410a869f9e6b73ed73d3b573d0280d5d7c9984ded02"
+      "published_hash": "acbba301ef9a4f9cf1b8ae3a0045c28cf9a5a68016e9c1475cec7b3ba8569b9b"
     },
     {
       "title": "Include a file",
       "slug": "include-a-file",
       "state": "published",
-      "published_hash": "b389f567336969c5c2f641ea4de8c725cbe1f0e2c3c1593220b20cd42a318c43"
+      "published_hash": "72aa0224c7ecf18c6885920aa00df73b247d05c66e7738e12c782432571da741"
     },
     {
       "title": "Increasing gaps between consecutive Niven numbers",
@@ -2647,37 +2647,37 @@
       "title": "Increment a numerical string",
       "slug": "increment-a-numerical-string",
       "state": "published",
-      "published_hash": "0ffb5067d31a2e5674b471d02afb3ef668dd6bd2a8f35d378d00fe589ca7f884"
+      "published_hash": "fa5bdfcf5abffc3e3fc8ec09877347f0f1d82a4219f9338890b200ad8c8bf19d"
     },
     {
       "title": "Index finite lists of positive integers",
       "slug": "index-finite-lists-of-positive-integers",
       "state": "published",
-      "published_hash": "5bf9bc847f9e05d7af230eca5d1a755103dcd57580e25777b7c2dfb6feaf5358"
+      "published_hash": "986fe4ecfa6e2e61652f8c5fc13a031774e8b5862a861adc802ce5afeeede17c"
     },
     {
       "title": "Infinity",
       "slug": "infinity",
       "state": "published",
-      "published_hash": "faa45b40d6a552ebbd9fba32fbac5909a6fd0a217c5cb73c4ddac11898a80e2f"
+      "published_hash": "bb90c4ea2a87c83c0b8c85749fb87238540e3d9a1b25a94a5f7ed154682174f3"
     },
     {
       "title": "Inheritance/Multiple",
       "slug": "inheritance-multiple",
       "state": "published",
-      "published_hash": "1b622ebbd7e758019228182992b3373567ffa0a572bc3bb0c79b570b8b542701"
+      "published_hash": "c1c500d77cbd67d7dfd46feff9dc0bacc528a9105ed077a916d7a4d44e5d3b46"
     },
     {
       "title": "Inheritance/Single",
       "slug": "inheritance-single",
       "state": "published",
-      "published_hash": "130fdc00685912f0dfbab51cbb9b42be0ce4e7c1f032398e14befb493cc9a9a7"
+      "published_hash": "85a2986b86518701fc1ac1cf1df873af229de55a68315b42671d66b967eda5d9"
     },
     {
       "title": "Input loop",
       "slug": "input-loop",
       "state": "published",
-      "published_hash": "7e1c5c4121e8424644e3c3234a257e97e5373d1e83cf48beca527e4968c53c45"
+      "published_hash": "eea341c6be07b891633dcdc86b098c2ac7019a1ea580313ded46946ef4640bb9"
     },
     {
       "title": "Integer comparison",
