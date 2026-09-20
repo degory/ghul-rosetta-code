@@ -23023,6 +23023,33 @@
       ]
     },
     {
+      "slug": "suffix-tree",
+      "title": "Suffix tree",
+      "url": "https://rosettacode.org/wiki/Suffix_tree",
+      "tags": [
+        "data-structures",
+        "strings",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 85,
+      "parts": [
+        {
+          "id": "suffix-tree",
+          "heading": null,
+          "source": "tasks/suffix-tree/suffix-tree.ghul",
+          "output": "tasks/suffix-tree/run.expected",
+          "lines": 85,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sum-and-product-of-an-array",
       "title": "Sum and product of an array",
       "url": "https://rosettacode.org/wiki/Sum_and_product_of_an_array",

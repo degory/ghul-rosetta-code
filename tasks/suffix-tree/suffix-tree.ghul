@@ -1,0 +1,85 @@
+use default
+
+class NODE is
+    _label: string field;
+    _edges: MAP[char, NODE] field;
+
+    init(label: string) is
+        _label = label
+        _edges = MAP[char, NODE]()
+    si
+
+    label: string => _label;
+
+    children: Collections.List[NODE] =>
+        _edges.values
+        |> sort((a, b) => a.label <> b.label)
+        |> collect_list();
+
+    add(suffix: string) is
+        if suffix.length == 0 then
+            return
+        fi
+
+        let first = suffix[0]
+
+        if !_edges.contains_key(first) then
+            _edges[first] = NODE(suffix)
+
+            return
+        fi
+
+        let child = _edges[first]
+        let shared = _shared_prefix(child.label, suffix)
+
+        if shared < child.label.length then
+            child._split(shared)
+        fi
+
+        child.add(suffix[shared..<0])
+    si
+
+    // Breaking an edge in two leaves the new node holding the tail, so
+    // everything already below stays where it is.
+    _split(at: int) is
+        let tail = NODE(_label[at..<0])
+
+        tail._edges = _edges
+
+        _label = _label[0..at]
+        _edges = MAP[char, NODE]()
+        _edges[tail.label[0]] = tail
+    si
+
+    _shared_prefix(left: string, right: string) -> int is
+        let limit = System.Math.min(left.length, right.length)
+        let at mut = 0
+
+        while at < limit /\ left[at] == right[at] do
+            at = at + 1
+        od
+
+        at
+    si
+si
+
+show(node: NODE, depth: int) is
+    let indent = repeat(" ", depth * 2) |> join("")
+
+    for child in node.children do
+        write_line("{indent}{child.label}")
+
+        show(child, depth + 1)
+    od
+si
+
+let text = "banana$"
+let root = NODE("")
+
+for at in 0..text.length do
+    root.add(text[at..<0])
+od
+
+write_line("suffix tree of {text}")
+
+show(root, 1)
