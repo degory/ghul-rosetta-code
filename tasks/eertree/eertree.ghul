@@ -34,7 +34,8 @@ class EERTREE(text: string) is
                 _nodes[parent].edges[letter] = node
 
                 if _nodes[node].length > 1 then
-                    let link = _extend_from(_nodes[parent].suffix, at, letter)
+                    let link =
+                        _extend_from(_nodes[parent].suffix, at, letter)
 
                     _nodes[node].suffix = _nodes[link].edges[letter]
                 fi

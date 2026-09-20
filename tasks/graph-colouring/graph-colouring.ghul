@@ -29,7 +29,9 @@ parse(description: string) -> GRAPH is
 
     for token in description.split([' ']) do
         let ends =
-            token.split(['-']) |> map(end => int.parse(end)) |> collect_list()
+            token.split(['-'])
+            |> map(end => int.parse(end))
+            |> collect_list()
 
         for end in ends do
             nodes.add(end)
