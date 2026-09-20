@@ -503,6 +503,44 @@ self_test() is
             write_line("{if held then "  ok  " else "  FAIL" fi}  {expectation}")
         lav
 
+    // A control character cannot survive a wiki page, so the published output
+    // block shows Unicode's picture of it instead. The test still asserts the
+    // real bytes, which is why only this rendering knows about the pictures.
+    let escaped = "[7minverse[0m normal\n"
+
+    check_that(
+        "an escape character is shown as its picture",
+        CONTROL_PICTURES.render(escaped) =~ "␛[7minverse␛[0m normal\n"
+    )
+
+    check_that(
+        "a tab and a newline are left as they are",
+        CONTROL_PICTURES.render("a\tb\n") =~ "a\tb\n"
+    )
+
+    check_that("a bell is shown as its picture", CONTROL_PICTURES.render("") =~ "␇")
+
+    check_that("delete is shown as its picture", CONTROL_PICTURES.render("") =~ "␡")
+
+    check_that("text with no control characters is unchanged", CONTROL_PICTURES.render("plain") =~ "plain")
+
+    check_that("output holding one is recognised", CONTROL_PICTURES.has_any(escaped))
+
+    check_that("output holding none is recognised", !CONTROL_PICTURES.has_any("a\tb\nc"))
+
+    check_that(
+        "the legend names each picture it shows, once",
+        CONTROL_PICTURES.legend(escaped) =~ "In the output above, ␛ stands for the escape character."
+    )
+
+    check_that(
+        "a legend over several pictures reads as a sentence",
+        CONTROL_PICTURES.legend("") =~
+            "In the output above, ␛ stands for the escape character and ␇ for the bell."
+    )
+
+    check_that("output with no control characters has no legend", !CONTROL_PICTURES.legend("plain")?)
+
     let spliced = splice.splice(page, "ghul", section)
 
     check_that("a good splice keeps every section", splice.keeps_every_other_section(page, spliced, "ghul"))
@@ -1132,6 +1170,22 @@ else
         self_test()
     when "adopt" then
         adopt(root, arguments)
+    when "render-output" then
+        if arguments.count < 1 then
+            error.write_line("usage: rosetta render-output <path-to-output> [--legend]")
+        else
+            let text = IO.File.read_all_text(arguments[0])
+
+            // `--legend` asks for the sentence alone, since the caller puts it
+            // under the output block rather than inside it.
+            if arguments.contains("--legend") then
+                if let legend = CONTROL_PICTURES.legend(text) then
+                    write_line(legend)
+                fi
+            else
+                IO.Std.write(CONTROL_PICTURES.render(text))
+            fi
+        fi
     when "render-notes" then
         if arguments.count < 1 then
             error.write_line("usage: rosetta render-notes <path-to-notes.md>")

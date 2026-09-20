@@ -92,6 +92,12 @@ away with nothing to update in between. Where that output differs from the test'
 the entry is still emitted and the difference is reported on stderr - the test needs recapturing,
 which is worth knowing but is not a reason to withhold the markup.
 
+A control character in that output is shown as its Unicode picture - the escape character as
+␛, the bell as ␇ - with a line under the block saying what they stand for. A wiki page cannot
+carry a control character: what comes back is a replacement character, so a section holding one
+never matches what was sent and can never be recognised as this repository's again. The test is
+unaffected and still asserts the real bytes in `run.expected`. Tab and newline are left alone.
+
 A task that reads standard input is the exception. The test runner paces what it sends against
 what the program has printed, so running the task here with nothing on standard input produces a
 transcript of prompts with no answers in it. For those the captured `run.expected` is the output,
