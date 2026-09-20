@@ -1,0 +1,101 @@
+use default
+
+trait Visitor is
+    visit_number(number: NUMBER)
+    visit_add(add: ADD)
+    visit_multiply(multiply: MULTIPLY)
+    visit_negate(negate: NEGATE)
+si
+
+class Expression abstract is
+    accept(visitor: Visitor)
+si
+
+class NUMBER(value: double): Expression is
+    accept(visitor: Visitor) is visitor.visit_number(self) si
+si
+
+class ADD(left: Expression, right: Expression): Expression is
+    accept(visitor: Visitor) is visitor.visit_add(self) si
+si
+
+class MULTIPLY(left: Expression, right: Expression): Expression is
+    accept(visitor: Visitor) is visitor.visit_multiply(self) si
+si
+
+class NEGATE(inner: Expression): Expression is
+    accept(visitor: Visitor) is visitor.visit_negate(self) si
+si
+
+class EVALUATOR: Visitor is
+    value: double public
+
+    init() is value = 0.0 si
+
+    of(expression: Expression) -> double is
+        expression.accept(self)
+
+        value
+    si
+
+    visit_number(number: NUMBER) is
+        value = number.value
+    si
+
+    visit_add(add: ADD) is
+        value = of(add.left) + of(add.right)
+    si
+
+    visit_multiply(multiply: MULTIPLY) is
+        value = of(multiply.left) * of(multiply.right)
+    si
+
+    visit_negate(negate: NEGATE) is
+        value = -of(negate.inner)
+    si
+si
+
+class PRINTER: Visitor is
+    text: string public
+
+    init() is text = "" si
+
+    of(expression: Expression) -> string is
+        expression.accept(self)
+
+        text
+    si
+
+    visit_number(number: NUMBER) is
+        text = "{number.value}"
+    si
+
+    visit_add(add: ADD) is
+        text = "({of(add.left)} + {of(add.right)})"
+    si
+
+    visit_multiply(multiply: MULTIPLY) is
+        text = "({of(multiply.left)} × {of(multiply.right)})"
+    si
+
+    visit_negate(negate: NEGATE) is
+        text = "-{of(negate.inner)}"
+    si
+si
+
+let evaluator = EVALUATOR()
+let printer = PRINTER()
+
+let expression =
+    ADD(MULTIPLY(NUMBER(3.0), NUMBER(4.0)), NEGATE(NUMBER(5.0)))
+
+write_line("{printer.of(expression)} = {evaluator.of(expression)}")
+
+let expressions: LIST[Expression] = _()
+
+expressions.add(expression)
+expressions.add(NUMBER(1.5))
+expressions.add(NEGATE(expression))
+
+expressions |> each(each =>
+    write_line("{printer.of(each),-28} {evaluator.of(each)}"))

@@ -11,15 +11,18 @@ value_of(expression: Expression) -> double =>
     case expression
     when number: Expression.NUMBER then number.value
     when add: Expression.ADD then value_of(add.left) + value_of(add.right)
-    when multiply: Expression.MULTIPLY then value_of(multiply.left) * value_of(multiply.right)
+    when multiply: Expression.MULTIPLY then
+        value_of(multiply.left) * value_of(multiply.right)
     when negate: Expression.NEGATE then -value_of(negate.inner)
     esac
 
 text_of(expression: Expression) -> string =>
     case expression
     when number: Expression.NUMBER then "{number.value}"
-    when add: Expression.ADD then "({text_of(add.left)} + {text_of(add.right)})"
-    when multiply: Expression.MULTIPLY then "({text_of(multiply.left)} × {text_of(multiply.right)})"
+    when add: Expression.ADD then
+        "({text_of(add.left)} + {text_of(add.right)})"
+    when multiply: Expression.MULTIPLY then
+        "({text_of(multiply.left)} × {text_of(multiply.right)})"
     when negate: Expression.NEGATE then "-{text_of(negate.inner)}"
     esac
 
@@ -30,6 +33,11 @@ let expression =
 
 write_line("{text_of(expression)} = {value_of(expression)}")
 
-let expressions = [expression, Expression.NUMBER(1.5), Expression.NEGATE(expression)]
+let expressions = [
+    expression,
+    Expression.NUMBER(1.5),
+    Expression.NEGATE(expression)
+]
 
-expressions |> each(each => write_line("{text_of(each),-28} {value_of(each)}"))
+expressions |> each(each =>
+    write_line("{text_of(each),-28} {value_of(each)}"))

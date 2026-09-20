@@ -25510,6 +25510,8 @@
       "title": "Visitor pattern",
       "url": "https://rosettacode.org/wiki/Visitor_pattern",
       "tags": [
+        "classes",
+        "traits",
         "unions",
         "pattern-matching"
       ],
@@ -25517,14 +25519,24 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 35,
+      "lines": 144,
       "parts": [
         {
-          "id": "visitor-pattern",
-          "heading": null,
-          "source": "tasks/visitor-pattern/visitor-pattern.ghul",
-          "output": "tasks/visitor-pattern/run.expected",
-          "lines": 35,
+          "id": "visitor-pattern/01-the-visitor-pattern",
+          "heading": "The visitor pattern",
+          "source": "tasks/visitor-pattern/01-the-visitor-pattern/01-the-visitor-pattern.ghul",
+          "output": "tasks/visitor-pattern/01-the-visitor-pattern/run.expected",
+          "lines": 101,
+          "playground": true,
+          "input": false,
+          "images": []
+        },
+        {
+          "id": "visitor-pattern/02-a-union-and-a-case",
+          "heading": "A union and a case",
+          "source": "tasks/visitor-pattern/02-a-union-and-a-case/02-a-union-and-a-case.ghul",
+          "output": "tasks/visitor-pattern/02-a-union-and-a-case/run.expected",
+          "lines": 43,
           "playground": true,
           "input": false,
           "images": []
