@@ -5625,14 +5625,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 78,
+      "lines": 75,
       "parts": [
         {
           "id": "cyk-algorithm",
           "heading": null,
           "source": "tasks/cyk-algorithm/cyk-algorithm.ghul",
           "output": "tasks/cyk-algorithm/run.expected",
-          "lines": 78,
+          "lines": 75,
           "playground": true,
           "input": false,
           "images": []
@@ -6897,14 +6897,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 87,
+      "lines": 85,
       "parts": [
         {
           "id": "eertree",
           "heading": null,
           "source": "tasks/eertree/eertree.ghul",
           "output": "tasks/eertree/run.expected",
-          "lines": 87,
+          "lines": 85,
           "playground": true,
           "input": false,
           "images": []
@@ -9506,14 +9506,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 118,
+      "lines": 115,
       "parts": [
         {
           "id": "gabows-algorithm",
           "heading": null,
           "source": "tasks/gabows-algorithm/gabows-algorithm.ghul",
           "output": "tasks/gabows-algorithm/run.expected",
-          "lines": 118,
+          "lines": 115,
           "playground": true,
           "input": false,
           "images": []
@@ -9967,14 +9967,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 125,
+      "lines": 123,
       "parts": [
         {
           "id": "graph-colouring",
           "heading": null,
           "source": "tasks/graph-colouring/graph-colouring.ghul",
           "output": "tasks/graph-colouring/run.expected",
-          "lines": 125,
+          "lines": 123,
           "playground": true,
           "input": false,
           "images": []
@@ -11092,14 +11092,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 143,
+      "lines": 138,
       "parts": [
         {
           "id": "hopcroft-karp-algorithm",
           "heading": null,
           "source": "tasks/hopcroft-karp-algorithm/hopcroft-karp-algorithm.ghul",
           "output": "tasks/hopcroft-karp-algorithm/run.expected",
-          "lines": 143,
+          "lines": 138,
           "playground": true,
           "input": false,
           "images": []
@@ -12172,14 +12172,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 149,
+      "lines": 144,
       "parts": [
         {
           "id": "johnsons-algorithm",
           "heading": null,
           "source": "tasks/johnsons-algorithm/johnsons-algorithm.ghul",
           "output": "tasks/johnsons-algorithm/run.expected",
-          "lines": 149,
+          "lines": 144,
           "playground": true,
           "input": false,
           "images": []
@@ -12432,14 +12432,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 97,
+      "lines": 95,
       "parts": [
         {
           "id": "k-d-tree",
           "heading": null,
           "source": "tasks/k-d-tree/k-d-tree.ghul",
           "output": "tasks/k-d-tree/run.expected",
-          "lines": 97,
+          "lines": 95,
           "playground": true,
           "input": false,
           "images": []
@@ -23035,14 +23035,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 85,
+      "lines": 83,
       "parts": [
         {
           "id": "suffix-tree",
           "heading": null,
           "source": "tasks/suffix-tree/suffix-tree.ghul",
           "output": "tasks/suffix-tree/run.expected",
-          "lines": 85,
+          "lines": 83,
           "playground": true,
           "input": false,
           "images": []
