@@ -166,13 +166,26 @@ emit_body() {
     # A task judged by run.check prints something different every time, so a
     # fresh run would change the published entry on every generation. Its
     # run.expected is the recorded sample, and that is what is shown.
-    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || [ -f "$DIR/run.check" ] ; then
+    #
+    # The same holds for a task the runner starts with a command line, or
+    # whose subject is what it writes to standard error or the status it ends
+    # with: run here with no arguments it prints its usage, or crashes, or
+    # says nothing at all. Its recorded expectation is the run worth showing.
+    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || [ -f "$DIR/run.check" ] \
+        || [ -f "$DIR/run.args" ] || [ -f "$DIR/run.err.expected" ] \
+        || [ -f "$DIR/run.exit.expected" ] ; then
         if [ ! -f "$EXPECTED" ] ; then
             echo "$DIR: reads standard input or varies from run to run, and has no run.expected - run the test first" >&2
             return 1
         fi
 
         OUTPUT=$(cat "$EXPECTED")
+
+        # What a reader sees at a terminal is both streams, in that order.
+        if [ -f "$DIR/run.err.expected" ] ; then
+            OUTPUT="$OUTPUT
+$(cat "$DIR/run.err.expected")"
+        fi
     else
         if ! OUTPUT=$(run_task "$DIR" "$NAME") ; then
             echo "$DIR: does not build or run" >&2
