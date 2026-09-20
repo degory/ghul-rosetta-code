@@ -7,9 +7,9 @@ let arguments = System.Environment.get_command_line_args()
 if arguments |> skip(1) |> any(argument => argument =~ "child") then
     write_line("child: running on my own now")
 else
-    let start =
-        ProcessStartInfo(System.Environment.process_path ?? "dotnet")
+    let start = ProcessStartInfo("dotnet")
 
+    start.argument_list.add(arguments[0])
     start.argument_list.add("child")
     start.redirect_standard_output = true
 
