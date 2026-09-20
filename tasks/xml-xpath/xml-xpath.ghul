@@ -1,0 +1,51 @@
+use default
+use System.Xml.Linq
+use System.Xml.XPath.Extensions.xpath_select_element
+use System.Xml.XPath.Extensions.xpath_select_elements
+
+let source =
+    "<inventory title=\"OmniCorp Store #45x10^3\">"
+    "  <section name=\"health\">"
+    "    <item upc=\"123456789\" stock=\"12\">"
+    "      <name>Invisibility Cream</name>"
+    "      <price>14.50</price>"
+    "      <description>Makes you invisible</description>"
+    "    </item>"
+    "    <item upc=\"445322344\" stock=\"18\">"
+    "      <name>Levitation Salve</name>"
+    "      <price>23.99</price>"
+    "      <description>Levitate yourself for up to 3 hours</description>"
+    "    </item>"
+    "  </section>"
+    "  <section name=\"food\">"
+    "    <item upc=\"485672034\" stock=\"653\">"
+    "      <name>Blork and Freen Instameal</name>"
+    "      <price>4.95</price>"
+    "      <description>A tasty meal in a tablet; just add water</description>"
+    "    </item>"
+    "    <item upc=\"132957764\" stock=\"44\">"
+    "      <name>Grob winglets</name>"
+    "      <price>3.56</price>"
+    "      <description>Tender winglets of Grob. Just add water</description>"
+    "    </item>"
+    "  </section>"
+    "</inventory>"
+
+let inventory = XDocument.parse(source)
+
+write_line("first item:")
+write_line("{inventory |> xpath_select_element("//item[1]")}")
+
+write_line("prices:")
+
+inventory
+    |> xpath_select_elements("//price")
+    |> each(price => write_line("  {price.value}"))
+
+let names =
+    inventory
+        |> xpath_select_elements("//name")
+        |> map(name => name.value)
+        |> collect_array()
+
+write_line("names: {$names}")
