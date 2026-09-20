@@ -2770,14 +2770,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 38,
+      "lines": 30,
       "parts": [
         {
           "id": "break-oo-privacy",
           "heading": null,
           "source": "tasks/break-oo-privacy/break-oo-privacy.ghul",
           "output": "tasks/break-oo-privacy/run.expected",
-          "lines": 38,
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []
@@ -13535,14 +13535,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 48,
+      "lines": 30,
       "parts": [
         {
           "id": "memory-layout-of-a-data-structure",
           "heading": null,
           "source": "tasks/memory-layout-of-a-data-structure/memory-layout-of-a-data-structure.ghul",
           "output": "tasks/memory-layout-of-a-data-structure/run.expected",
-          "lines": 48,
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []
@@ -14885,14 +14885,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 48,
+      "lines": 32,
       "parts": [
         {
           "id": "object-serialization",
           "heading": null,
           "source": "tasks/object-serialization/object-serialization.ghul",
           "output": "tasks/object-serialization/run.expected",
-          "lines": 48,
+          "lines": 32,
           "playground": false,
           "input": false,
           "images": []
@@ -17519,14 +17519,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 41,
+      "lines": 37,
       "parts": [
         {
           "id": "reflection-list-properties",
           "heading": null,
           "source": "tasks/reflection-list-properties/reflection-list-properties.ghul",
           "output": "tasks/reflection-list-properties/run.expected",
-          "lines": 41,
+          "lines": 37,
           "playground": true,
           "input": false,
           "images": []
@@ -23551,14 +23551,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 32,
+      "lines": 23,
       "parts": [
         {
           "id": "variable-size-get",
           "heading": null,
           "source": "tasks/variable-size-get/variable-size-get.ghul",
           "output": "tasks/variable-size-get/run.expected",
-          "lines": 32,
+          "lines": 23,
           "playground": true,
           "input": false,
           "images": []

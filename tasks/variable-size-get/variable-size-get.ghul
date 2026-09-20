@@ -1,15 +1,7 @@
 use default
 use System.Runtime.InteropServices.Marshal
 
-struct POINT is
-    x: double
-    y: double
-
-    init(x: double, y: double) is
-        self.x = x
-        self.y = y
-    si
-si
+struct POINT(x: double, y: double);
 
 size_of[T: struct](name: string) is
     write_line("{name,-32} {Marshal.size_of[T](),2}")
@@ -23,7 +15,6 @@ size_of[long]("long")
 size_of[double]("double")
 size_of[decimal]("decimal")
 size_of[POINT]("POINT")
-size_of[word]("word, the width of a pointer")
 
 let text = "hello"
 let numbers = [1, 2, 3, 4]

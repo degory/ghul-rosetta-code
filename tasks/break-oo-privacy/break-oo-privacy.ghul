@@ -1,15 +1,7 @@
 use default
 use System.Reflection.BindingFlags
 
-class SAFE is
-    _combination: string
-    contents: string
-
-    init(combination: string, contents: string) is
-        _combination = combination
-        self.contents = contents
-    si
-
+class SAFE(combination: string private, contents: string) is
     open(attempt: string) -> string =>
         if attempt =~ _combination then contents else "it stays shut" fi
 si

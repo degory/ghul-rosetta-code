@@ -1,14 +1,10 @@
 use default
 use System.Reflection.BindingFlags
 
-class BOOK is
-    title: string
-    pages: int
+class BOOK(title: string, pages: int) is
     borrowed: bool public
 
-    init(title: string, pages: int) is
-        self.title = title
-        self.pages = pages
+    init(..) is
         borrowed = false
     si
 

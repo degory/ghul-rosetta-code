@@ -147,6 +147,35 @@ annotation has not gained anything, and the original spelling stays. Keep one so
 with itself - `LIST[int]()` on one line and `LIST()` a few lines down, for no reason a reader can
 see, is worse than either alone.
 
+## A constructor that only captures its parameters is a primary constructor
+
+A class or struct whose `init` does nothing but copy its parameters into members is written with a
+primary constructor, which declares the same members and the same constructor in one line:
+
+```ghul
+struct POINT(x: double, y: double);
+
+class CIRCLE(x: double, y: double, r: double): Shape is
+    super(x, y);
+
+    area() -> double => r * r * 3.14159
+si
+```
+
+The forms for the cases around it:
+
+- `init(..)` for a body that does more once the captures are done.
+- `init(.., extra)` for a second constructor taking further arguments.
+- `x: T private`, or naming the parameter `_x`, for state that is not public.
+- `x: T field` for a real field rather than an auto-property, which is what a struct with a
+  declared memory layout wants.
+- `x: T init` for a parameter the constructor consumes rather than stores.
+
+An explicit `init` stays where it does work the primary form cannot express, and where the task is
+about constructors or member declarations themselves - say which in the pull request where it is
+not obvious from the task. A task about reflection is not one of those unless listing the declared
+members is its point, and the primary form declares the same members anyway.
+
 ## Arithmetic on a type of your own uses operators
 
 Where a solution has vectors, points, matrices, complex or modular numbers, polynomials,
