@@ -6869,14 +6869,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 86,
+      "lines": 87,
       "parts": [
         {
           "id": "eertree",
           "heading": null,
           "source": "tasks/eertree/eertree.ghul",
           "output": "tasks/eertree/run.expected",
-          "lines": 86,
+          "lines": 87,
           "playground": true,
           "input": false,
           "images": []
@@ -9913,14 +9913,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 123,
+      "lines": 125,
       "parts": [
         {
           "id": "graph-colouring",
           "heading": null,
           "source": "tasks/graph-colouring/graph-colouring.ghul",
           "output": "tasks/graph-colouring/run.expected",
-          "lines": 123,
+          "lines": 125,
           "playground": true,
           "input": false,
           "images": []
@@ -11022,6 +11022,33 @@
           "images": [
             "tasks/honeycombs/honeycomb.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "hopcroft-karp-algorithm",
+      "title": "Hopcroft-Karp Algorithm",
+      "url": "https://rosettacode.org/wiki/Hopcroft-Karp_Algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 143,
+      "parts": [
+        {
+          "id": "hopcroft-karp-algorithm",
+          "heading": null,
+          "source": "tasks/hopcroft-karp-algorithm/hopcroft-karp-algorithm.ghul",
+          "output": "tasks/hopcroft-karp-algorithm/run.expected",
+          "lines": 143,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
