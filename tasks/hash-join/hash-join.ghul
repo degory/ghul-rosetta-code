@@ -1,0 +1,37 @@
+use default
+
+let ages =
+    [
+        (age = 27, name = "Jonah"),
+        (age = 18, name = "Alan"),
+        (age = 28, name = "Glory"),
+        (age = 18, name = "Popeye"),
+        (age = 28, name = "Alan")
+    ]
+
+let nemeses =
+    [
+        (character = "Jonah", nemesis = "Whales"),
+        (character = "Jonah", nemesis = "Spiders"),
+        (character = "Alan", nemesis = "Ghosts"),
+        (character = "Alan", nemesis = "Zombies"),
+        (character = "Glory", nemesis = "Buffy")
+    ]
+
+let by_character = MAP[string, LIST[string]]()
+
+for (character, nemesis) in nemeses do
+    if !by_character.contains_key(character) then
+        by_character[character] = LIST[string]()
+    fi
+
+    by_character[character].add(nemesis)
+od
+
+ages
+    |> filter(row => by_character.contains_key(row.name))
+    |> flat_map(row =>
+        by_character[row.name]
+            |> map(nemesis =>
+                "{row.age}, {row.name}, {row.name}, {nemesis}"))
+    |> each(row => write_line(row))
