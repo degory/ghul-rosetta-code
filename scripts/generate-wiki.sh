@@ -183,8 +183,12 @@ emit_body() {
 
         # What a reader sees at a terminal is both streams, in that order.
         if [ -f "$DIR/run.err.expected" ] ; then
-            OUTPUT="$OUTPUT
+            if [ -n "$OUTPUT" ] ; then
+                OUTPUT="$OUTPUT
 $(cat "$DIR/run.err.expected")"
+            else
+                OUTPUT=$(cat "$DIR/run.err.expected")
+            fi
         fi
     else
         if ! OUTPUT=$(run_task "$DIR" "$NAME") ; then
