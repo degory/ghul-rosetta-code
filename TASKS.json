@@ -738,7 +738,7 @@
       "title": "CRC-32",
       "slug": "crc-32",
       "state": "published",
-      "published_hash": "504c8e5eab516c0f188bb98769120dae08bc378010eee440269807230fc4a225"
+      "published_hash": "9e76cef737d52988365c4348470e611ab7f422a3c6f755657e48704a71081532"
     },
     {
       "title": "Caesar cipher",
@@ -1198,7 +1198,7 @@
       "title": "Convex hull",
       "slug": "convex-hull",
       "state": "published",
-      "published_hash": "0973fb59e2eda8d7c824f9df4459069fd94e4887db07ead6610db1823097f17e",
+      "published_hash": "90ba379bc0f8f3f6af7da0a182066b34e1953dd31a00d1d675b573b02301b1e8",
       "image_hashes": {
         "Ghul-convex-hull-hull.png": "8db84ad1e86ff4a51db9fe87802431f0ad53a00d"
       }
@@ -1216,7 +1216,7 @@
       "title": "Copy a string",
       "slug": "copy-a-string",
       "state": "published",
-      "published_hash": "7864e95ee72bec48606adab7a2c75bbfabb0157ca514441a8cd9f2fc2743cf29"
+      "published_hash": "00fdabd43eb830a0ee351b77252295bdb2ca7de335d98142cb94166305e96064"
     },
     {
       "title": "Count in factors",
@@ -1228,19 +1228,19 @@
       "title": "Count in octal",
       "slug": "count-in-octal",
       "state": "published",
-      "published_hash": "952d86085261692f53cafe7c06ed9297fc6612a62279831d4ff61a186580de73"
+      "published_hash": "f429c522a961de5dc75f8bea21307aaf21cb17661ec8b9b21dbbae643ed77c30"
     },
     {
       "title": "Count occurrences of a substring",
       "slug": "count-occurrences-of-a-substring",
       "state": "published",
-      "published_hash": "ec845360f04212d9d0a3c5bfeaf9aac07498f99ed89c595edd60731650dc0695"
+      "published_hash": "de82c253faca2ba53ed723291a93d9f1bb6fa33310091880ef0974b811e0923c"
     },
     {
       "title": "Countdown",
       "slug": "countdown",
       "state": "published",
-      "published_hash": "51d63317808a2a56af3f2d7a74f6f968782868df4bfa98a281f839c9b62a412a"
+      "published_hash": "e04f2d6b877de697a1cb9ae3b5bcc4b8b22f5add3a817daa88b7bde02b5044ea"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -1251,25 +1251,25 @@
       "title": "Create a two-dimensional array at runtime",
       "slug": "create-a-two-dimensional-array-at-runtime",
       "state": "published",
-      "published_hash": "369508bdd42e954caf6edad721c8a1b584b2550e955a4eb2f5a3d6cbeb4c2795"
+      "published_hash": "a97b4fab8a1bd930c4bcf8b1e3216bea1e720ed26ebae81f3a0b380de55c54db"
     },
     {
       "title": "Cuban primes",
       "slug": "cuban-primes",
       "state": "published",
-      "published_hash": "3609e145b33534237bb29acf01ca191af82d1f5855a4f8e3e5a68531ddd12a58"
+      "published_hash": "0cc8e949c44edbab6019373dcab9d2093b666bb1c8f04b62420e975d5c6af3a6"
     },
     {
       "title": "Cumulative standard deviation",
       "slug": "cumulative-standard-deviation",
       "state": "published",
-      "published_hash": "d96fd1967a79be40a2e4fefae4d77a0cd8b508b1b1e71f1d3d33260f97b4fc17"
+      "published_hash": "82488b790ad7d46c365c3ee435370af9208ba0be8991ea0ed0edcafce7d15fdc"
     },
     {
       "title": "Curve that touches three points",
       "slug": "curve-that-touches-three-points",
       "state": "published",
-      "published_hash": "22d50cc0d2901673aa80c4dc739c210a06ba0530cff2af70490c2b8715f01ae6",
+      "published_hash": "03bacd4406c76b0e4085149bc626637c466d5f7cd04114d0ddee60502e0f8992",
       "image_hashes": {
         "Ghul-curve-that-touches-three-points-curve.png": "f63593a811c0bab02af2c56901255a423d41e860"
       }
@@ -1296,13 +1296,13 @@
       "title": "Cyclops numbers",
       "slug": "cyclops-numbers",
       "state": "published",
-      "published_hash": "2dcfeec05cc2e2f1364b65696b4f33661d0f0ac9d2dfd3a880f40357a8270786"
+      "published_hash": "f3f6bb47442588812057bd74275212aae9897053096f7cda167a5bf3d40d64fa"
     },
     {
       "title": "Damm algorithm",
       "slug": "damm-algorithm",
       "state": "published",
-      "published_hash": "28cd3404209e92d00fbf3b9a16dae94985182aa2c0c631ed1c1fd21f5fa094cc"
+      "published_hash": "04ab4144f94ee1af73491a2bfb8c1135d574003796b3bc5ddd3d69805be2c36f"
     },
     {
       "title": "Day of the week",
@@ -1314,7 +1314,7 @@
       "title": "Deal cards for FreeCell",
       "slug": "deal-cards-for-freecell",
       "state": "published",
-      "published_hash": "69857b2691d44f60f6e632e9cacff48e0dc654d42f1f446b833e31b220fe4fe7"
+      "published_hash": "b1995ecebef796ada1bda9676d60ee5c04d2b95e48d305fef1959e8e58bf0669"
     },
     {
       "title": "Death Star",
@@ -1347,13 +1347,13 @@
       "title": "Define a primitive data type",
       "slug": "define-a-primitive-data-type",
       "state": "published",
-      "published_hash": "86d5ea273fc0189c974a97d72c50d3ce49511eca25a327247e2ca2df97b15db9"
+      "published_hash": "c24a11ac9359304cb392231bc1bbbdb7af9832b4d1c5f8fcb9e31c5e7da57a9f"
     },
     {
       "title": "Department numbers",
       "slug": "department-numbers",
       "state": "published",
-      "published_hash": "a6e9d642df07d985a060dc0e25a226dabaa654b538ec050ec70c98ab25c56e63"
+      "published_hash": "3533764224f4d91219d0fd33b6a5aa267cf2fd9fcb78ec31245bc8145b137dde"
     },
     {
       "title": "Descending primes",
@@ -1365,31 +1365,31 @@
       "title": "Detect division by zero",
       "slug": "detect-division-by-zero",
       "state": "published",
-      "published_hash": "5e48e6d5fdf9b43af6c04c3a7501d3ea92c46692bb0c135ecd90061c8cda3bbd"
+      "published_hash": "6a92ca98f2404ff12c90f8bfc264933bacd2730f7eb29b9753f86bfb7e6f649d"
     },
     {
       "title": "Determine if a string is collapsible",
       "slug": "determine-if-a-string-is-collapsible",
       "state": "published",
-      "published_hash": "7756792f935066e5f55fe7008b5fba7bd1966540440a66c548a6267399bc435c"
+      "published_hash": "93e0aab361d9f9a256802108eb4364508a1bda71eaa9e14eebb2f808b80810bd"
     },
     {
       "title": "Determine if a string is numeric",
       "slug": "determine-if-a-string-is-numeric",
       "state": "published",
-      "published_hash": "433290993c35d23fceae74be5c6fa21cac013d51786cb10b555e1f907e3d2410"
+      "published_hash": "a2709822d5ba64d0de0d83e5b332b0fc271954f46aa45841b10fe1dbdab08308"
     },
     {
       "title": "Determine if a string is squeezable",
       "slug": "determine-if-a-string-is-squeezable",
       "state": "published",
-      "published_hash": "6621686d1981d8b84ea898c22ecdd7fcff03f51ee1607b7798d35249effea521"
+      "published_hash": "d4bc76717d9b2fa250a180cd5e687cb1ab93db501d9288130c6e42966cc8c8a7"
     },
     {
       "title": "Determine if two triangles overlap",
       "slug": "determine-if-two-triangles-overlap",
       "state": "published",
-      "published_hash": "5c28201f010fdf3343f3b76aa8d2d1bde4c801241a5c2565123fe77c052d67cd",
+      "published_hash": "17099307528274b5d3f22573815bd811fe6bd2a861661af48a1b0fc7906d584a",
       "image_hashes": {
         "Ghul-determine-if-two-triangles-overlap-triangles.png": "d37d6fc7b16e157b2d31ec570d54c13edf1845ba"
       }
@@ -1404,7 +1404,7 @@
       "title": "Digital root",
       "slug": "digital-root",
       "state": "published",
-      "published_hash": "d34c49131c034c907e8597159937558f6b441477c60b4a1f043dcd7df1f11c40"
+      "published_hash": "07bc2080a05ff5f3245523edadfaa1ef3d1a66f451b890676a4f4e01de1907f9"
     },
     {
       "title": "Dijkstra\u0027s algorithm",
@@ -1425,13 +1425,13 @@
       "title": "Dining philosophers",
       "slug": "dining-philosophers",
       "state": "published",
-      "published_hash": "a9de8b963f52aedc7adc1232305785efdb4d63e981d4bc849751d6a724fd3982"
+      "published_hash": "16c0dc874084fe9e891f6f5255601fc8935c81a2619ec123c9d50fa5ca5a3b5e"
     },
     {
       "title": "Display an outline as a nested table",
       "slug": "display-an-outline-as-a-nested-table",
       "state": "published",
-      "published_hash": "f63a175fc187cf29ff30e2a403ff11fa5c842046953dce422be2db1eb67cbcf5"
+      "published_hash": "16cda83bb3341cbe23e0b31d476af4eae60597213e8b593ccd1b20cff7c5483a"
     },
     {
       "title": "Diversity prediction theorem",
@@ -1443,7 +1443,7 @@
       "title": "Divide a rectangle into a number of unequal triangles",
       "slug": "divide-a-rectangle-into-a-number-of-unequal-triangles",
       "state": "published",
-      "published_hash": "a838e983c5f49e06ab396f114eecd25760aff86a820df537adcbdbedcc551153",
+      "published_hash": "27d21f81ae6502ea43bb56a6f4e355bf4911279876c196181ca5eaba9588ad30",
       "image_hashes": {
         "Ghul-divide-a-rectangle-into-a-number-of-unequal-triangles-triangles.png": "1f362351c7b2a745a82180b3784855e9fc84a431"
       }
@@ -1452,7 +1452,7 @@
       "title": "Doomsday rule",
       "slug": "doomsday-rule",
       "state": "published",
-      "published_hash": "04a14a6549431cdc1760f0f3107c388e0c462e2ed6a83430b171691776bd32d8"
+      "published_hash": "cf519400d5e6fd194f9fef9d74d2dd2a49704646cd216a5ea35cc46d48928532"
     },
     {
       "title": "Dot product",
