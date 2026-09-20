@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Whoever runs this can write in the current directory, so those two lines are
+# fixed. The filesystem root is writable for some users and not for others, so
+# each root line is allowed either outcome.
+
+out=$1
+
+expect() {
+    if ! grep -qxE "$1" "$out" ; then
+        echo "no line matching: $1"
+        cat "$out"
+        exit 1
+    fi
+}
+
+expect 'output\.txt: created'
+expect 'docs: created'
+expect '/output\.txt: (created|refused)'
+expect '/docs: (created|refused)'
+
+if [ "$(wc -l < "$out")" != 4 ] ; then
+    echo "expected four lines"
+    cat "$out"
+    exit 1
+fi
