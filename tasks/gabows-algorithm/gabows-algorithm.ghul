@@ -38,9 +38,6 @@ for vertex in 0..size do
     write_line("{vertex,2}: {adjacent[vertex] |> join(" ")}")
 od
 
-// Gabow keeps two stacks and no low-link array: the second stack holds the
-// vertices that could still open a component, and an edge back into the
-// current path pops every candidate discovered after its target.
 let preorder = LIST[int?]()
 let component = LIST[int?]()
 

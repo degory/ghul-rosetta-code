@@ -1,7 +1,5 @@
 use default
 
-// An unmatched vertex is an absent partner rather than a sentinel index,
-// and an unreached vertex is an absent distance.
 class BIPARTITE(left: int, right: int) is
     _adjacent: LIST[LIST[int]];
     _partner_of_left: LIST[int?];
@@ -43,9 +41,6 @@ class BIPARTITE(left: int, right: int) is
         size
     si
 
-    // Breadth-first over free left vertices, recording how deep each one
-    // sits in the alternating forest; false once no free right vertex is
-    // reachable and no augmenting path is left.
     _layer() -> bool is
         let waiting = Queue[int]()
 

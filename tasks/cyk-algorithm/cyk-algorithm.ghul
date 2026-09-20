@@ -25,9 +25,6 @@ let grammar =
         Rule.WORD("A", "muscular")
     ]
 
-// The table holds, for each span of the sentence, every symbol that can
-// derive it; a span of several words is built from the pairs of shorter
-// spans already in the table.
 parses(sentence: string, start: string) -> bool is
     let words = sentence.split([' '])
     let length = words.count

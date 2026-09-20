@@ -45,8 +45,6 @@ parse(description: string) -> GRAPH is
     GRAPH(nodes |> sort() |> collect_list(), edges)
 si
 
-// DSATUR: colour the vertex whose neighbours already show the most distinct
-// colours, so the hardest choices are made while the palette is still open.
 colour(graph: GRAPH) -> MAP[int, int] is
     let colours = MAP[int, int]()
 

@@ -45,8 +45,6 @@ class EERTREE(text: string) is
         od
     si
 
-    // Follow suffix links until the palindrome at hand can be grown by
-    // one copy of the new letter at each end.
     _extend_from(node: int, at: int, letter: char) -> int is
         let current mut = node
 

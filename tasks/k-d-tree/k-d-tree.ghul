@@ -29,8 +29,6 @@ separation(a: Point, b: Point) -> double =>
     |> zip(b, (x, y) => (x - y) * (x - y))
     |> reduce(0.0, (sum, d) => sum + d)
 
-// The count is a local the search closes over, so every recursive call
-// updates the one variable the caller reads afterwards.
 use Found = (point: Point, distance: double, visited: int)
 
 nearest(tree: Tree, target: Point) -> Found is

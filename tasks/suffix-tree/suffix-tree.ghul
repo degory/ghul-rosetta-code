@@ -39,8 +39,6 @@ class NODE is
         child.add(suffix[shared..<0])
     si
 
-    // Breaking an edge in two leaves the new node holding the tail, so
-    // everything already below stays where it is.
     _split(at: int) is
         let tail = NODE(_label[at..<0])
 
