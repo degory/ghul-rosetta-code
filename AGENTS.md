@@ -411,8 +411,12 @@ dotnet run --project tools/rosetta -- set "Animate a pendulum" rejected needs-gu
 ```
 
 The reasons are a fixed set - `needs-gui`, `needs-network`, `needs-interaction`,
-`nondeterministic`, `needs-native-lib`, `output-unbounded`, `task-unclear` - and `blocked` is the one state that
+`nondeterministic`, `needs-native-lib`, `output-unbounded`, `no-equivalent`, `task-unclear` - and `blocked` is the one state that
 comes back: it names a compiler or runtime issue and is retried when that closes.
+
+`no-equivalent` is for a task that asks how the language spells a feature it does not have - a
+topic variable, a macro, a nested type. The honest entry would be a sentence of prose saying so,
+and entries here carry code.
 
 A rejection can also be reversed, when what made the task impossible stops being true. That is
 `reopen`, and it takes the reason for the reversal rather than being a bare undo:

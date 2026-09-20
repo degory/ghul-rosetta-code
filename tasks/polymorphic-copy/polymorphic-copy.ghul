@@ -1,0 +1,64 @@
+use default
+
+trait Copyable[T] is
+    copy() -> T
+si
+
+class Animal: Copyable[Animal] abstract is
+    name: string
+
+    init(name: string) is
+        self.name = name
+    si
+
+    speak() -> string
+si
+
+class CAT: Animal is
+    init(name: string) is super.init(name) si
+
+    speak() -> string => "{name} says meow"
+
+    copy() -> Animal => CAT(name)
+si
+
+class DOG: Animal is
+    tricks: LIST[string]
+
+    init(name: string, tricks: LIST[string]) is
+        super.init(name)
+
+        self.tricks = tricks
+    si
+
+    speak() -> string =>
+        "{name} says woof, and can {string.join(" and ", tricks)}"
+
+    copy() -> Animal =>
+        DOG(name, tricks |> collect_list())
+si
+
+duplicate[T: Copyable[T]](value: T) -> T => value.copy()
+
+let animals: LIST[Animal] = _()
+
+animals.add(CAT("Ada"))
+animals.add(DOG("Rex", LIST[string](["sit", "roll over"])))
+
+for original in animals do
+    let copy = duplicate(original)
+
+    write_line(copy.speak())
+    write_line("  same object: {copy == original}")
+    write_line("  same type:   {copy.get_type() == original.get_type()}")
+od
+
+let original = animals[1]
+let copy = duplicate(original)
+
+if let dog: DOG = original then
+    dog.tricks.add("play dead")
+fi
+
+write_line(original.speak())
+write_line(copy.speak())

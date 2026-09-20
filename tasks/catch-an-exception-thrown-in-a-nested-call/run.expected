@@ -1,0 +1,3 @@
+foo caught U0: thrown from baz
+foo returned without throwing
+the caller caught U1: thrown from baz

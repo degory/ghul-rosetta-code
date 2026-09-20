@@ -1,0 +1,57 @@
+use default
+
+if2(
+    first: bool,
+    second: bool,
+    both: () -> void,
+    first_only: () -> void,
+    second_only: () -> void,
+    neither: () -> void
+) is
+    if first /\ second then
+        both()
+    elif first then
+        first_only()
+    elif second then
+        second_only()
+    else
+        neither()
+    fi
+si
+
+unless(condition: bool, body: () -> void) is
+    if !condition then
+        body()
+    fi
+si
+
+repeat_until(body: () -> bool) is
+    do
+        if body() then
+            break
+        fi
+    od
+si
+
+for pair in [(true, true), (true, false), (false, true), (false, false)] do
+    if2(
+        pair.`0,
+        pair.`1,
+        () => write_line("{pair}: both"),
+        () => write_line("{pair}: the first only"),
+        () => write_line("{pair}: the second only"),
+        () => write_line("{pair}: neither"))
+od
+
+unless(false, () => write_line("unless false, this runs"))
+unless(true, () => write_line("this does not"))
+
+let n mut = 0
+
+repeat_until(() => (
+    n = n + 1
+
+    write_line("pass {n}")
+
+    n == 3
+))

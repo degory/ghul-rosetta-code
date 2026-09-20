@@ -1,0 +1,42 @@
+use default
+
+class HISTORIC[T] is
+    _past: LIST[T]
+
+    init(initial: T) is
+        _past = LIST[T]([initial])
+    si
+
+    value: T public => _past[_past.count - 1],
+        = new_value is
+            _past.add(new_value)
+        si
+
+    history: Collections.List[T] => _past
+
+    rollback() is
+        if _past.count > 1 then
+            _past.remove_at(_past.count - 1)
+        fi
+    si
+si
+
+let temperature = HISTORIC[int](20)
+
+temperature.value = 21
+temperature.value = 25
+temperature.value = 23
+
+write_line("now: {temperature.value}")
+write_line("history: {temperature.history |> join(", ")}")
+
+temperature.rollback()
+
+write_line("after a rollback: {temperature.value}")
+write_line("history: {temperature.history |> join(", ")}")
+
+let name = HISTORIC[string]("draft")
+
+name.value = "final"
+
+write_line("{name.history |> join(" then ")}")

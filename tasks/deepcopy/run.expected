@@ -1,0 +1,5 @@
+original: a, renamed -> b
+copy:     a -> b
+the cycle is a cycle: true
+the self link too:    true
+and nothing is shared: false

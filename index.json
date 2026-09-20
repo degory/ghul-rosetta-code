@@ -3303,6 +3303,31 @@
       ]
     },
     {
+      "slug": "catch-an-exception-thrown-in-a-nested-call",
+      "title": "Catch an exception thrown in a nested call",
+      "url": "https://rosettacode.org/wiki/Catch_an_exception_thrown_in_a_nested_call",
+      "tags": [
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "catch-an-exception-thrown-in-a-nested-call",
+          "heading": null,
+          "source": "tasks/catch-an-exception-thrown-in-a-nested-call/catch-an-exception-thrown-in-a-nested-call.ghul",
+          "output": "tasks/catch-an-exception-thrown-in-a-nested-call/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "catenoid-surface",
       "title": "Catenoid surface",
       "url": "https://rosettacode.org/wiki/Catenoid_surface",
@@ -5331,6 +5356,32 @@
       ]
     },
     {
+      "slug": "deepcopy",
+      "title": "Deepcopy",
+      "url": "https://rosettacode.org/wiki/Deepcopy",
+      "tags": [
+        "data-structures",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "deepcopy",
+          "heading": null,
+          "source": "tasks/deepcopy/deepcopy.ghul",
+          "output": "tasks/deepcopy/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "define-a-primitive-data-type",
       "title": "Define a primitive data type",
       "url": "https://rosettacode.org/wiki/Define_a_primitive_data_type",
@@ -6553,6 +6604,32 @@
       ]
     },
     {
+      "slug": "enforced-immutability",
+      "title": "Enforced immutability",
+      "url": "https://rosettacode.org/wiki/Enforced_immutability",
+      "tags": [
+        "classes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "enforced-immutability",
+          "heading": null,
+          "source": "tasks/enforced-immutability/enforced-immutability.ghul",
+          "output": "tasks/enforced-immutability/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "engel-expansion",
       "title": "Engel expansion",
       "url": "https://rosettacode.org/wiki/Engel_expansion",
@@ -7232,6 +7309,32 @@
           "source": "tasks/exponentiation-operator/exponentiation-operator.ghul",
           "output": "tasks/exponentiation-operator/run.expected",
           "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "extend-your-language",
+      "title": "Extend your language",
+      "url": "https://rosettacode.org/wiki/Extend_your_language",
+      "tags": [
+        "closures",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "extend-your-language",
+          "heading": null,
+          "source": "tasks/extend-your-language/extend-your-language.ghul",
+          "output": "tasks/extend-your-language/run.expected",
+          "lines": 57,
           "playground": true,
           "input": false,
           "images": []
@@ -8176,6 +8279,32 @@
           "lines": 88,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "flow-control-structures",
+      "title": "Flow-control structures",
+      "url": "https://rosettacode.org/wiki/Flow-control_structures",
+      "tags": [
+        "basics",
+        "pattern-matching"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 73,
+      "parts": [
+        {
+          "id": "flow-control-structures",
+          "heading": null,
+          "source": "tasks/flow-control-structures/flow-control-structures.ghul",
+          "output": "tasks/flow-control-structures/run.expected",
+          "lines": 73,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
@@ -9927,6 +10056,32 @@
           "images": [
             "tasks/hilbert-curve/hilbert.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "history-variables",
+      "title": "History variables",
+      "url": "https://rosettacode.org/wiki/History_variables",
+      "tags": [
+        "generics",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "history-variables",
+          "heading": null,
+          "source": "tasks/history-variables/history-variables.ghul",
+          "output": "tasks/history-variables/run.expected",
+          "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -16278,6 +16433,32 @@
       ]
     },
     {
+      "slug": "polymorphic-copy",
+      "title": "Polymorphic copy",
+      "url": "https://rosettacode.org/wiki/Polymorphic_copy",
+      "tags": [
+        "classes",
+        "generics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 64,
+      "parts": [
+        {
+          "id": "polymorphic-copy",
+          "heading": null,
+          "source": "tasks/polymorphic-copy/polymorphic-copy.ghul",
+          "output": "tasks/polymorphic-copy/run.expected",
+          "lines": 64,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "polymorphism",
       "title": "Polymorphism",
       "url": "https://rosettacode.org/wiki/Polymorphism",
@@ -18017,6 +18198,32 @@
           "source": "tasks/sattolo-cycle/sattolo-cycle.ghul",
           "output": "tasks/sattolo-cycle/run.expected",
           "lines": 28,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "scope-modifiers",
+      "title": "Scope modifiers",
+      "url": "https://rosettacode.org/wiki/Scope_modifiers",
+      "tags": [
+        "classes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "scope-modifiers",
+          "heading": null,
+          "source": "tasks/scope-modifiers/scope-modifiers.ghul",
+          "output": "tasks/scope-modifiers/run.expected",
+          "lines": 46,
           "playground": true,
           "input": false,
           "images": []
@@ -22552,6 +22759,32 @@
           "images": [
             "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/ulam.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "undefined-values",
+      "title": "Undefined values",
+      "url": "https://rosettacode.org/wiki/Undefined_values",
+      "tags": [
+        "optionals",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "undefined-values",
+          "heading": null,
+          "source": "tasks/undefined-values/undefined-values.ghul",
+          "output": "tasks/undefined-values/run.expected",
+          "lines": 35,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
