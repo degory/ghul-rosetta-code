@@ -21822,6 +21822,185 @@
       ]
     },
     {
+      "slug": "terminal-control-clear-the-screen",
+      "title": "Terminal control/Clear the screen",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Clear_the_screen",
+      "tags": [
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 5,
+      "parts": [
+        {
+          "id": "terminal-control-clear-the-screen",
+          "heading": null,
+          "source": "tasks/terminal-control-clear-the-screen/terminal-control-clear-the-screen.ghul",
+          "output": "tasks/terminal-control-clear-the-screen/run.expected",
+          "lines": 5,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-coloured-text",
+      "title": "Terminal control/Coloured text",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Coloured_text",
+      "tags": [
+        "basics",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "terminal-control-coloured-text",
+          "heading": null,
+          "source": "tasks/terminal-control-coloured-text/terminal-control-coloured-text.ghul",
+          "output": "tasks/terminal-control-coloured-text/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-cursor-movement",
+      "title": "Terminal control/Cursor movement",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Cursor_movement",
+      "tags": [
+        "basics",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 20,
+      "parts": [
+        {
+          "id": "terminal-control-cursor-movement",
+          "heading": null,
+          "source": "tasks/terminal-control-cursor-movement/terminal-control-cursor-movement.ghul",
+          "output": "tasks/terminal-control-cursor-movement/run.expected",
+          "lines": 20,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-cursor-positioning",
+      "title": "Terminal control/Cursor positioning",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Cursor_positioning",
+      "tags": [
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 7,
+      "parts": [
+        {
+          "id": "terminal-control-cursor-positioning",
+          "heading": null,
+          "source": "tasks/terminal-control-cursor-positioning/terminal-control-cursor-positioning.ghul",
+          "output": "tasks/terminal-control-cursor-positioning/run.expected",
+          "lines": 7,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-dimensions",
+      "title": "Terminal control/Dimensions",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Dimensions",
+      "tags": [
+        "basics",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "terminal-control-dimensions",
+          "heading": null,
+          "source": "tasks/terminal-control-dimensions/terminal-control-dimensions.ghul",
+          "output": "tasks/terminal-control-dimensions/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-display-an-extended-character",
+      "title": "Terminal control/Display an extended character",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Display_an_extended_character",
+      "tags": [
+        "basics",
+        "strings"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 3,
+      "parts": [
+        {
+          "id": "terminal-control-display-an-extended-character",
+          "heading": null,
+          "source": "tasks/terminal-control-display-an-extended-character/terminal-control-display-an-extended-character.ghul",
+          "output": "tasks/terminal-control-display-an-extended-character/run.expected",
+          "lines": 3,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-hiding-the-cursor",
+      "title": "Terminal control/Hiding the cursor",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Hiding_the_cursor",
+      "tags": [
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "terminal-control-hiding-the-cursor",
+          "heading": null,
+          "source": "tasks/terminal-control-hiding-the-cursor/terminal-control-hiding-the-cursor.ghul",
+          "output": "tasks/terminal-control-hiding-the-cursor/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "terminal-control-inverse-video",
       "title": "Terminal control/Inverse video",
       "url": "https://rosettacode.org/wiki/Terminal_control/Inverse_video",
@@ -21840,6 +22019,82 @@
           "source": "tasks/terminal-control-inverse-video/terminal-control-inverse-video.ghul",
           "output": "tasks/terminal-control-inverse-video/run.expected",
           "lines": 6,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-preserve-screen",
+      "title": "Terminal control/Preserve screen",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Preserve_screen",
+      "tags": [
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "terminal-control-preserve-screen",
+          "heading": null,
+          "source": "tasks/terminal-control-preserve-screen/terminal-control-preserve-screen.ghul",
+          "output": "tasks/terminal-control-preserve-screen/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-ringing-the-terminal-bell",
+      "title": "Terminal control/Ringing the terminal bell",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Ringing_the_terminal_bell",
+      "tags": [
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 3,
+      "parts": [
+        {
+          "id": "terminal-control-ringing-the-terminal-bell",
+          "heading": null,
+          "source": "tasks/terminal-control-ringing-the-terminal-bell/terminal-control-ringing-the-terminal-bell.ghul",
+          "output": "tasks/terminal-control-ringing-the-terminal-bell/run.expected",
+          "lines": 3,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "terminal-control-unicode-output",
+      "title": "Terminal control/Unicode output",
+      "url": "https://rosettacode.org/wiki/Terminal_control/Unicode_output",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 9,
+      "parts": [
+        {
+          "id": "terminal-control-unicode-output",
+          "heading": null,
+          "source": "tasks/terminal-control-unicode-output/terminal-control-unicode-output.ghul",
+          "output": "tasks/terminal-control-unicode-output/run.expected",
+          "lines": 9,
           "playground": true,
           "input": false,
           "images": []

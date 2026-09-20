@@ -5403,10 +5403,75 @@
       "published_hash": "6dea16c6c7cac648b0042943cb5bcb55cf1a662e1e035259c3b62d4af54f8fd3"
     },
     {
+      "title": "Terminal control/Clear the screen",
+      "slug": "terminal-control-clear-the-screen",
+      "state": "solved"
+    },
+    {
+      "title": "Terminal control/Coloured text",
+      "slug": "terminal-control-coloured-text",
+      "state": "solved"
+    },
+    {
+      "title": "Terminal control/Cursor movement",
+      "slug": "terminal-control-cursor-movement",
+      "state": "solved"
+    },
+    {
+      "title": "Terminal control/Cursor positioning",
+      "slug": "terminal-control-cursor-positioning",
+      "state": "solved"
+    },
+    {
+      "title": "Terminal control/Dimensions",
+      "slug": "terminal-control-dimensions",
+      "state": "solved"
+    },
+    {
+      "title": "Terminal control/Display an extended character",
+      "slug": "terminal-control-display-an-extended-character",
+      "state": "solved"
+    },
+    {
+      "title": "Terminal control/Hiding the cursor",
+      "slug": "terminal-control-hiding-the-cursor",
+      "state": "solved"
+    },
+    {
       "title": "Terminal control/Inverse video",
       "slug": "terminal-control-inverse-video",
       "state": "published",
       "published_hash": "301c7caf68d9e6bf724e4a51c2f7f813c8759724ea12e6e9e3c40b2d0391b0bd"
+    },
+    {
+      "title": "Terminal control/Positional read",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "Terminal control/Preserve screen",
+      "slug": "terminal-control-preserve-screen",
+      "state": "solved"
+    },
+    {
+      "title": "Terminal control/Restricted width positional input/No wrapping",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "Terminal control/Restricted width positional input/With wrapping",
+      "state": "rejected",
+      "reason": "needs-interaction"
+    },
+    {
+      "title": "Terminal control/Ringing the terminal bell",
+      "slug": "terminal-control-ringing-the-terminal-bell",
+      "state": "solved"
+    },
+    {
+      "title": "Terminal control/Unicode output",
+      "slug": "terminal-control-unicode-output",
+      "state": "solved"
     },
     {
       "title": "Ternary logic",
