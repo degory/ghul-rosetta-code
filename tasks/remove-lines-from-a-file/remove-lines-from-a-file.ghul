@@ -1,0 +1,45 @@
+use default
+
+let scratch =
+    IO.Path.combine(IO.Path.get_temp_path(), "rosetta-remove-lines")
+
+IO.Directory.create_directory(scratch)
+
+let path = IO.Path.combine(scratch, "foobar.txt")
+
+write_file() is
+    IO.File.write_all_lines(
+        path, 1..7 |> map(number => "line {number}") |> collect_array()
+    )
+si
+
+remove_lines(path: string, start: int, count: int) is
+    let lines = IO.File.read_all_lines(path)
+
+    if start < 1 \/ start + count - 1 > lines.count then
+        write_line(
+            "{path |> IO.Path.get_file_name()} has {lines.count} lines, so "
+            "lines {start} to {start + count - 1} cannot be removed"
+        )
+
+        return
+    fi
+
+    IO.File.write_all_lines(
+        path,
+        lines
+            |> index()
+            |> filter(l => l.index < start - 1 \/ l.index >= start + count - 1)
+            |> map(l => l.value)
+            |> collect_array()
+    )
+si
+
+write_file()
+remove_lines(path, 1, 2)
+write_line(IO.File.read_all_lines(path) |> join(" "))
+
+write_file()
+remove_lines(path, 5, 4)
+
+IO.Directory.delete(scratch, true)

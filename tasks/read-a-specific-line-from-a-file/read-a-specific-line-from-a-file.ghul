@@ -1,0 +1,36 @@
+use default
+
+let scratch =
+    IO.Path.combine(
+        IO.Path.get_temp_path(), "rosetta-read-a-specific-line-from-a-file"
+    )
+
+IO.Directory.create_directory(scratch)
+
+let path = IO.Path.combine(scratch, "lines.txt")
+
+IO.File.write_all_lines(
+    path, 1..11 |> map(number => "line {number}") |> collect_array()
+)
+
+line(path: string, wanted: int) -> string? =>
+    IO.File.read_lines(path)
+        |> skip(wanted - 1)
+        |> first()
+
+report(path: string, wanted: int) is
+    if let text = line(path, wanted) then
+        if text.length == 0 then
+            write_line("line {wanted} is empty")
+        else
+            write_line("line {wanted}: {text}")
+        fi
+    else
+        write_line("there is no line {wanted}")
+    fi
+si
+
+report(path, 7)
+report(path, 70)
+
+IO.Directory.delete(scratch, true)

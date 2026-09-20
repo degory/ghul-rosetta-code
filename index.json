@@ -1039,6 +1039,32 @@
       ]
     },
     {
+      "slug": "append-a-record-to-the-end-of-a-text-file",
+      "title": "Append a record to the end of a text file",
+      "url": "https://rosettacode.org/wiki/Append_a_record_to_the_end_of_a_text_file",
+      "tags": [
+        "text-processing",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "append-a-record-to-the-end-of-a-text-file",
+          "heading": null,
+          "source": "tasks/append-a-record-to-the-end-of-a-text-file/append-a-record-to-the-end-of-a-text-file.ghul",
+          "output": "tasks/append-a-record-to-the-end-of-a-text-file/run.expected",
+          "lines": 57,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "apply-a-callback-to-an-array",
       "title": "Apply a callback to an array",
       "url": "https://rosettacode.org/wiki/Apply_a_callback_to_an_array",
@@ -3447,6 +3473,31 @@
       ]
     },
     {
+      "slug": "check-input-device-is-a-terminal",
+      "title": "Check input device is a terminal",
+      "url": "https://rosettacode.org/wiki/Check_input_device_is_a_terminal",
+      "tags": [
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 9,
+      "parts": [
+        {
+          "id": "check-input-device-is-a-terminal",
+          "heading": null,
+          "source": "tasks/check-input-device-is-a-terminal/check-input-device-is-a-terminal.ghul",
+          "output": "tasks/check-input-device-is-a-terminal/run.expected",
+          "lines": 9,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "check-machin-like-formulas",
       "title": "Check Machin-like formulas",
       "url": "https://rosettacode.org/wiki/Check_Machin-like_formulas",
@@ -3467,6 +3518,31 @@
           "source": "tasks/check-machin-like-formulas/check-machin-like-formulas.ghul",
           "output": "tasks/check-machin-like-formulas/run.expected",
           "lines": 90,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "check-output-device-is-a-terminal",
+      "title": "Check output device is a terminal",
+      "url": "https://rosettacode.org/wiki/Check_output_device_is_a_terminal",
+      "tags": [
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 9,
+      "parts": [
+        {
+          "id": "check-output-device-is-a-terminal",
+          "heading": null,
+          "source": "tasks/check-output-device-is-a-terminal/check-output-device-is-a-terminal.ghul",
+          "output": "tasks/check-output-device-is-a-terminal/run.expected",
+          "lines": 9,
           "playground": true,
           "input": false,
           "images": []
@@ -4809,6 +4885,32 @@
       ]
     },
     {
+      "slug": "copy-stdin-to-stdout",
+      "title": "Copy stdin to stdout",
+      "url": "https://rosettacode.org/wiki/Copy_stdin_to_stdout",
+      "tags": [
+        "basics",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 5,
+      "parts": [
+        {
+          "id": "copy-stdin-to-stdout",
+          "heading": null,
+          "source": "tasks/copy-stdin-to-stdout/copy-stdin-to-stdout.ghul",
+          "output": "tasks/copy-stdin-to-stdout/run.expected",
+          "lines": 5,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "count-in-factors",
       "title": "Count in factors",
       "url": "https://rosettacode.org/wiki/Count_in_factors",
@@ -4935,6 +5037,32 @@
           "source": "tasks/crc-32/crc-32.ghul",
           "output": "tasks/crc-32/run.expected",
           "lines": 19,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "create-a-file",
+      "title": "Create a file",
+      "url": "https://rosettacode.org/wiki/Create_a_file",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "create-a-file",
+          "heading": null,
+          "source": "tasks/create-a-file/create-a-file.ghul",
+          "output": "tasks/create-a-file/run.expected",
+          "lines": 39,
           "playground": true,
           "input": false,
           "images": []
@@ -5453,6 +5581,32 @@
           "source": "tasks/delegates/delegates.ghul",
           "output": "tasks/delegates/run.expected",
           "lines": 35,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "delete-a-file",
+      "title": "Delete a file",
+      "url": "https://rosettacode.org/wiki/Delete_a_file",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "delete-a-file",
+          "heading": null,
+          "source": "tasks/delete-a-file/delete-a-file.ghul",
+          "output": "tasks/delete-a-file/run.expected",
+          "lines": 44,
           "playground": true,
           "input": false,
           "images": []
@@ -6547,6 +6701,32 @@
           "source": "tasks/emirp-primes/emirp-primes.ghul",
           "output": "tasks/emirp-primes/run.expected",
           "lines": 68,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "empty-directory",
+      "title": "Empty directory",
+      "url": "https://rosettacode.org/wiki/Empty_directory",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 24,
+      "parts": [
+        {
+          "id": "empty-directory",
+          "heading": null,
+          "source": "tasks/empty-directory/empty-directory.ghul",
+          "output": "tasks/empty-directory/run.expected",
+          "lines": 24,
           "playground": true,
           "input": false,
           "images": []
@@ -17455,6 +17635,59 @@
       ]
     },
     {
+      "slug": "read-a-specific-line-from-a-file",
+      "title": "Read a specific line from a file",
+      "url": "https://rosettacode.org/wiki/Read_a_specific_line_from_a_file",
+      "tags": [
+        "text-processing",
+        "pipes",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 36,
+      "parts": [
+        {
+          "id": "read-a-specific-line-from-a-file",
+          "heading": null,
+          "source": "tasks/read-a-specific-line-from-a-file/read-a-specific-line-from-a-file.ghul",
+          "output": "tasks/read-a-specific-line-from-a-file/run.expected",
+          "lines": 36,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "read-entire-file",
+      "title": "Read entire file",
+      "url": "https://rosettacode.org/wiki/Read_entire_file",
+      "tags": [
+        "basics",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 20,
+      "parts": [
+        {
+          "id": "read-entire-file",
+          "heading": null,
+          "source": "tasks/read-entire-file/read-entire-file.ghul",
+          "output": "tasks/read-entire-file/run.expected",
+          "lines": 20,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "real-constants-and-functions",
       "title": "Real constants and functions",
       "url": "https://rosettacode.org/wiki/Real_constants_and_functions",
@@ -17603,6 +17836,58 @@
           "source": "tasks/remove-duplicate-elements/remove-duplicate-elements.ghul",
           "output": "tasks/remove-duplicate-elements/run.expected",
           "lines": 9,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "remove-lines-from-a-file",
+      "title": "Remove lines from a file",
+      "url": "https://rosettacode.org/wiki/Remove_lines_from_a_file",
+      "tags": [
+        "text-processing",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "remove-lines-from-a-file",
+          "heading": null,
+          "source": "tasks/remove-lines-from-a-file/remove-lines-from-a-file.ghul",
+          "output": "tasks/remove-lines-from-a-file/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "rename-a-file",
+      "title": "Rename a file",
+      "url": "https://rosettacode.org/wiki/Rename_a_file",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "rename-a-file",
+          "heading": null,
+          "source": "tasks/rename-a-file/rename-a-file.ghul",
+          "output": "tasks/rename-a-file/run.expected",
+          "lines": 50,
           "playground": true,
           "input": false,
           "images": []
@@ -24408,6 +24693,58 @@
           "source": "tasks/words-containing-the-substring/words-containing-the-substring.ghul",
           "output": "tasks/words-containing-the-substring/run.expected",
           "lines": 7,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "write-entire-file",
+      "title": "Write entire file",
+      "url": "https://rosettacode.org/wiki/Write_entire_file",
+      "tags": [
+        "basics",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "write-entire-file",
+          "heading": null,
+          "source": "tasks/write-entire-file/write-entire-file.ghul",
+          "output": "tasks/write-entire-file/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "write-float-arrays-to-a-text-file",
+      "title": "Write float arrays to a text file",
+      "url": "https://rosettacode.org/wiki/Write_float_arrays_to_a_text_file",
+      "tags": [
+        "text-processing",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "write-float-arrays-to-a-text-file",
+          "heading": null,
+          "source": "tasks/write-float-arrays-to-a-text-file/write-float-arrays-to-a-text-file.ghul",
+          "output": "tasks/write-float-arrays-to-a-text-file/run.expected",
+          "lines": 35,
           "playground": true,
           "input": false,
           "images": []

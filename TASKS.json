@@ -261,6 +261,11 @@
       "published_hash": "8e25437f12ba065aa82ca83aa39b4f94aa3ed7cd703209893f835d4ca04ef8c0"
     },
     {
+      "title": "Append a record to the end of a text file",
+      "slug": "append-a-record-to-the-end-of-a-text-file",
+      "state": "solved"
+    },
+    {
       "title": "Apply a callback to an array",
       "slug": "apply-a-callback-to-an-array",
       "state": "published",
@@ -882,6 +887,16 @@
       }
     },
     {
+      "title": "Check input device is a terminal",
+      "slug": "check-input-device-is-a-terminal",
+      "state": "solved"
+    },
+    {
+      "title": "Check output device is a terminal",
+      "slug": "check-output-device-is-a-terminal",
+      "state": "solved"
+    },
+    {
       "title": "Check that file exists",
       "slug": "check-that-file-exists",
       "state": "published",
@@ -1230,6 +1245,11 @@
       "published_hash": "00fdabd43eb830a0ee351b77252295bdb2ca7de335d98142cb94166305e96064"
     },
     {
+      "title": "Copy stdin to stdout",
+      "slug": "copy-stdin-to-stdout",
+      "state": "solved"
+    },
+    {
       "title": "Count in factors",
       "slug": "count-in-factors",
       "state": "published",
@@ -1252,6 +1272,11 @@
       "slug": "countdown",
       "state": "published",
       "published_hash": "e04f2d6b877de697a1cb9ae3b5bcc4b8b22f5add3a817daa88b7bde02b5044ea"
+    },
+    {
+      "title": "Create a file",
+      "slug": "create-a-file",
+      "state": "solved"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -1373,6 +1398,11 @@
     {
       "title": "Delegates",
       "slug": "delegates",
+      "state": "solved"
+    },
+    {
+      "title": "Delete a file",
+      "slug": "delete-a-file",
       "state": "solved"
     },
     {
@@ -1649,6 +1679,11 @@
       "slug": "emirp-primes",
       "state": "published",
       "published_hash": "5dd124238e4beb0cc7bf7e90536d000cd5ac0bb7c01b9b08c50120659460545f"
+    },
+    {
+      "title": "Empty directory",
+      "slug": "empty-directory",
+      "state": "solved"
     },
     {
       "title": "Empty program",
@@ -4383,6 +4418,16 @@
       "published_hash": "0202b02c5de25a14bb26fc992d184bfef8af75ba9307554aa16d09c457a74e38"
     },
     {
+      "title": "Read a specific line from a file",
+      "slug": "read-a-specific-line-from-a-file",
+      "state": "solved"
+    },
+    {
+      "title": "Read entire file",
+      "slug": "read-entire-file",
+      "state": "solved"
+    },
+    {
       "title": "Real constants and functions",
       "slug": "real-constants-and-functions",
       "state": "published",
@@ -4414,6 +4459,16 @@
       "slug": "remove-duplicate-elements",
       "state": "published",
       "published_hash": "421bb13fea8bb6d393d7b9e6d081c1651e3a076113d9a6f37eb82382897b5269"
+    },
+    {
+      "title": "Remove lines from a file",
+      "slug": "remove-lines-from-a-file",
+      "state": "solved"
+    },
+    {
+      "title": "Rename a file",
+      "slug": "rename-a-file",
+      "state": "solved"
     },
     {
       "title": "Rendezvous",
@@ -6043,6 +6098,16 @@
       "slug": "words-containing-the-substring",
       "state": "published",
       "published_hash": "bf31c3cf73f1c405659b48df6a962afcb02dd02e0d3966d08e50836cce3448ae"
+    },
+    {
+      "title": "Write entire file",
+      "slug": "write-entire-file",
+      "state": "solved"
+    },
+    {
+      "title": "Write float arrays to a text file",
+      "slug": "write-float-arrays-to-a-text-file",
+      "state": "solved"
     },
     {
       "title": "Write language name in 3D ASCII",

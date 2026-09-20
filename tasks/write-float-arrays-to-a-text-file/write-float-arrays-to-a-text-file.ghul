@@ -1,0 +1,35 @@
+use default
+
+let scratch =
+    IO.Path.combine(IO.Path.get_temp_path(), "rosetta-write-float-arrays")
+
+IO.Directory.create_directory(scratch)
+
+write_columns(
+    path: string,
+    x: double[], x_precision: int,
+    y: double[], y_precision: int
+) is
+    IO.File.write_all_lines(
+        path,
+        x
+            |> zip(y)
+            |> map(
+                pair =>
+                    "{pair.`0.to_string("G{x_precision}")}\t"
+                    "{pair.`1.to_string("G{y_precision}")}"
+            )
+            |> collect_array()
+    )
+si
+
+let x = [1.0, 2.0, 3.0, 1.0e11]
+let y = x |> map(value => System.Math.sqrt(value)) |> collect_array()
+
+let path = IO.Path.combine(scratch, "filename")
+
+write_columns(path, x, 3, y, 5)
+
+IO.Std.write(IO.File.read_all_text(path))
+
+IO.Directory.delete(scratch, true)

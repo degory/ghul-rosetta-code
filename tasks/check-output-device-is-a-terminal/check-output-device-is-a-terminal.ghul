@@ -1,0 +1,9 @@
+use default
+
+write_line(
+    if IO.Std.is_output_redirected then
+        "standard output is redirected"
+    else
+        "standard output is a terminal"
+    fi
+)
