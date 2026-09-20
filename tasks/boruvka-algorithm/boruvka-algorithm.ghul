@@ -69,4 +69,6 @@ chosen
     |> each(edge =>
         write_line("{edge.from}--{edge.to} weight {edge.weight}"))
 
-write_line("total weight {chosen |> reduce(0, (total, e) => total + e.weight)}")
+let total = chosen |> reduce(0, (sum, edge) => sum + edge.weight)
+
+write_line("total weight {total}")
