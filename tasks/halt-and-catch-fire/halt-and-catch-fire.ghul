@@ -1,7 +1,7 @@
 use default
 
-// The shortest crash the language allows: reading past the end of an array is
-// checked by the runtime, so this throws where C would corrupt memory.
+// The shortest crash the language allows: an array index is checked, so
+// reading past the end throws.
 let nothing = [0]
 
 write_line("about to fall over")
