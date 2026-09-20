@@ -227,6 +227,16 @@ question from how the rows are made.
 The loop stays where the body does more than add one element, where each element depends on the
 ones already added, or where the list is being appended to rather than built.
 
+A count whose two ends are known is a range, `a..b` or `a::b`, choosing `::` where the task's
+wording includes the last value. `from(start)` is for a count nothing bounds, which something
+downstream ends - `take_while`, `find`, `first`, or a `take` counting results rather than
+candidates.
+
+```ghul
+let eban = 1::limit |> filter(is_eban)
+let first_twenty = from(1) |> filter(is_eban) |> take(20)
+```
+
 ## Output that has to line up is ASCII
 
 The wiki's monospace font has no box-drawing, geometric or most mathematical characters, so a
