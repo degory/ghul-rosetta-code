@@ -1,0 +1,35 @@
+use default
+
+trait Delegate is
+    thing() -> string? => null
+si
+
+class QUIET: Delegate is
+    init() is si
+si
+
+class TALKATIVE: Delegate is
+    init() is si
+
+    thing() -> string? => "delegate implementation"
+si
+
+class DELEGATOR is
+    delegate: Delegate? public
+
+    init() is si
+
+    operation() -> string => delegate?.thing() ?? "default implementation"
+si
+
+let delegator = DELEGATOR()
+
+write_line("with no delegate:        {delegator.operation()}")
+
+delegator.delegate = QUIET()
+
+write_line("with a quiet delegate:   {delegator.operation()}")
+
+delegator.delegate = TALKATIVE()
+
+write_line("with a talkative one:    {delegator.operation()}")

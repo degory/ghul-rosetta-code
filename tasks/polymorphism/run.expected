@@ -1,0 +1,6 @@
+a point at (1, 2)
+a circle of radius 5 at (3, 4)
+a point at (1, 2), the same object as the original: false
+a circle of radius 5 at (3, 4), the same object as the original: false
+no radius: a point has none
+radius 5

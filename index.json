@@ -3026,6 +3026,32 @@
       ]
     },
     {
+      "slug": "call-an-object-method",
+      "title": "Call an object method",
+      "url": "https://rosettacode.org/wiki/Call_an_object_method",
+      "tags": [
+        "classes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 33,
+      "parts": [
+        {
+          "id": "call-an-object-method",
+          "heading": null,
+          "source": "tasks/call-an-object-method/call-an-object-method.ghul",
+          "output": "tasks/call-an-object-method/run.expected",
+          "lines": 33,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "camel-case-and-snake-case",
       "title": "Camel case and snake case",
       "url": "https://rosettacode.org/wiki/Camel_case_and_snake_case",
@@ -4944,6 +4970,32 @@
       ]
     },
     {
+      "slug": "currying",
+      "title": "Currying",
+      "url": "https://rosettacode.org/wiki/Currying",
+      "tags": [
+        "closures",
+        "generics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "currying",
+          "heading": null,
+          "source": "tasks/currying/currying.ghul",
+          "output": "tasks/currying/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "curve-that-touches-three-points",
       "title": "Curve that touches three points",
       "url": "https://rosettacode.org/wiki/Curve_that_touches_three_points",
@@ -5298,6 +5350,32 @@
           "source": "tasks/define-a-primitive-data-type/define-a-primitive-data-type.ghul",
           "output": "tasks/define-a-primitive-data-type/run.expected",
           "lines": 49,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "delegates",
+      "title": "Delegates",
+      "url": "https://rosettacode.org/wiki/Delegates",
+      "tags": [
+        "classes",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "delegates",
+          "heading": null,
+          "source": "tasks/delegates/delegates.ghul",
+          "output": "tasks/delegates/run.expected",
+          "lines": 35,
           "playground": true,
           "input": false,
           "images": []
@@ -16200,6 +16278,32 @@
       ]
     },
     {
+      "slug": "polymorphism",
+      "title": "Polymorphism",
+      "url": "https://rosettacode.org/wiki/Polymorphism",
+      "tags": [
+        "classes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 52,
+      "parts": [
+        {
+          "id": "polymorphism",
+          "heading": null,
+          "source": "tasks/polymorphism/polymorphism.ghul",
+          "output": "tasks/polymorphism/run.expected",
+          "lines": 52,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "polynomial-long-division",
       "title": "Polynomial long division",
       "url": "https://rosettacode.org/wiki/Polynomial_long_division",
@@ -17920,6 +18024,32 @@
       ]
     },
     {
+      "slug": "sealed-classes-and-methods",
+      "title": "Sealed classes and methods",
+      "url": "https://rosettacode.org/wiki/Sealed_classes_and_methods",
+      "tags": [
+        "classes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 36,
+      "parts": [
+        {
+          "id": "sealed-classes-and-methods",
+          "heading": null,
+          "source": "tasks/sealed-classes-and-methods/sealed-classes-and-methods.ghul",
+          "output": "tasks/sealed-classes-and-methods/run.expected",
+          "lines": 36,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "search-a-list",
       "title": "Search a list",
       "url": "https://rosettacode.org/wiki/Search_a_list",
@@ -18232,6 +18362,32 @@
           "lines": 25,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "short-circuit-evaluation",
+      "title": "Short-circuit evaluation",
+      "url": "https://rosettacode.org/wiki/Short-circuit_evaluation",
+      "tags": [
+        "basics",
+        "operators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "short-circuit-evaluation",
+          "heading": null,
+          "source": "tasks/short-circuit-evaluation/short-circuit-evaluation.ghul",
+          "output": "tasks/short-circuit-evaluation/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
@@ -18635,6 +18791,32 @@
           "images": [
             "tasks/simple-turtle-graphics/turtle.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "singleton",
+      "title": "Singleton",
+      "url": "https://rosettacode.org/wiki/Singleton",
+      "tags": [
+        "classes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "singleton",
+          "heading": null,
+          "source": "tasks/singleton/singleton.ghul",
+          "output": "tasks/singleton/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -23023,6 +23205,32 @@
           "source": "tasks/vigenere-cipher-cryptanalysis/vigenere-cipher-cryptanalysis.ghul",
           "output": "tasks/vigenere-cipher-cryptanalysis/run.expected",
           "lines": 96,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "visitor-pattern",
+      "title": "Visitor pattern",
+      "url": "https://rosettacode.org/wiki/Visitor_pattern",
+      "tags": [
+        "unions",
+        "pattern-matching"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "visitor-pattern",
+          "heading": null,
+          "source": "tasks/visitor-pattern/visitor-pattern.ghul",
+          "output": "tasks/visitor-pattern/run.expected",
+          "lines": 35,
           "playground": true,
           "input": false,
           "images": []

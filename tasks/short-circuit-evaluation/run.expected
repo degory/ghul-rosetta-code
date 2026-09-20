@@ -1,0 +1,28 @@
+a(false) /\ b(false):
+  a(false) was called
+  = false
+a(false) \/ b(false):
+  a(false) was called
+  b(false) was called
+  = false
+a(false) /\ b(true):
+  a(false) was called
+  = false
+a(false) \/ b(true):
+  a(false) was called
+  b(true) was called
+  = true
+a(true) /\ b(false):
+  a(true) was called
+  b(false) was called
+  = false
+a(true) \/ b(false):
+  a(true) was called
+  = true
+a(true) /\ b(true):
+  a(true) was called
+  b(true) was called
+  = true
+a(true) \/ b(true):
+  a(true) was called
+  = true

@@ -1,0 +1,24 @@
+use default
+
+a(value: bool) -> bool is
+    write_line("  a({value}) was called")
+
+    value
+si
+
+b(value: bool) -> bool is
+    write_line("  b({value}) was called")
+
+    value
+si
+
+for left in [false, true] do
+    for right in [false, true] do
+        write_line("a({left}) /\\ b({right}):")
+        write_line("  = {a(left) /\ b(right)}")
+
+        write_line("a({left}) \\/ b({right}):")
+        write_line("  = {a(left) \/ b(right)}")
+    od
+od
+
