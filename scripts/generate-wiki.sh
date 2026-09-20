@@ -249,6 +249,22 @@ emit_output() {
     local DIR=$2
     local OUTPUT=$3
 
+    local LEGEND=
+
+    # A control character has no glyph and cannot survive a wiki page - what
+    # comes back is a replacement character, so the published section stops
+    # matching what was sent and can never be recognised as ours again. The
+    # published block shows Unicode's picture of each one instead, with a line
+    # saying what they stand for. The test still asserts the real bytes.
+    if printf '%s' "$OUTPUT" | grep -qP '[\x00-\x08\x0b-\x1f\x7f]' ; then
+        local RAW
+        RAW=$(mktemp)
+        printf '%s' "$OUTPUT" > "$RAW"
+        OUTPUT=$(dotnet run --project "$ROOT/tools/rosetta" -- render-output "$RAW" 2>/dev/null)
+        LEGEND=$(dotnet run --project "$ROOT/tools/rosetta" -- render-output "$RAW" --legend 2>/dev/null)
+        rm -f "$RAW"
+    fi
+
     local OPEN=no
 
     while IFS= read -r LINE ; do
@@ -278,7 +294,13 @@ emit_output() {
     if [ "$OPEN" = yes ] ; then
         echo "</pre>"
     fi
+
+    if [ -n "$LEGEND" ] ; then
+        echo
+        echo "$LEGEND"
+    fi
 }
+
 
 # What an image is called on the wiki. The File: namespace is shared with
 # every other language there, so a name like Spiral.png would collide; the

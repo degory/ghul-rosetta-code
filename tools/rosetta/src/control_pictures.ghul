@@ -1,0 +1,65 @@
+namespace Rosetta is
+    use default
+
+    // A control character has no glyph, and a wiki page cannot carry one: the
+    // wiki replaces it, so what is published is not what was sent and a section
+    // holding one can never be recognised as ours again. Unicode has a printable
+    // picture for each of them, so that is what the published output block
+    // shows. The test still asserts the real bytes.
+    //
+    // Tab and newline are left alone: they lay the output out, they survive the
+    // wiki, and a page full of ␉ would be worse than the thing it replaced.
+    class CONTROL_PICTURES is
+        // U+2400 upwards, one picture a control character in code order, so
+        // ESC (0x1B) is U+241B. DEL has its own at U+2421.
+        picture(c: char) -> char static =>
+            if c == '' then '␡' else cast char(0x2400 + cast int(c)) fi
+
+        is_pictured(c: char) -> bool static =>
+            (c < ' ' /\ c != '\t' /\ c != '\n') \/ c == ''
+
+        has_any(text: string) -> bool static => text |> any(c => is_pictured(c))
+
+        render(text: string) -> string static =>
+            string(text |> map(c => if is_pictured(c) then picture(c) else c fi) |> collect_array())
+
+        // What the entry says under an output block that holds them, naming
+        // each one it actually shows.
+        legend(text: string) -> string? static is
+            let named = LIST[string]()
+
+            for c in text do
+                if is_pictured(c) /\ !(named |> any(n => n[0] == picture(c))) then
+                    let stands = if named.count == 0 then " stands for " else " for " fi
+
+                    named.add("{picture(c)}{stands}{name(c)}")
+                fi
+            od
+
+            if named.count == 0 then
+                return null
+            fi
+
+            if named.count == 1 then
+                return "In the output above, {named[0]}."
+            fi
+
+            let all_but_last = named |> take(named.count - 1) |> join(", ")
+
+            "In the output above, {all_but_last} and {named[named.count - 1]}."
+        si
+
+        name(c: char) -> string static =>
+            case cast int(c)
+            when 0 then "the null character"
+            when 7 then "the bell"
+            when 8 then "backspace"
+            when 11 then "the vertical tab"
+            when 12 then "the form feed"
+            when 13 then "the carriage return"
+            when 27 then "the escape character"
+            when 127 then "delete"
+            else "control character {cast int(c)}"
+            esac
+    si
+si
