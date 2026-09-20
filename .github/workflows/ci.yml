@@ -65,6 +65,12 @@ jobs:
     - name: Check index.json is current
       run: dotnet run --project tools/rosetta -- index --check
 
+    # The ledger is a merge conflict away from being unreadable, and nothing
+    # else in the build reads it: index.json comes from the task directories.
+    # Listing it fails on anything the reader cannot parse.
+    - name: Check the ledger is readable
+      run: dotnet run --project tools/rosetta -- show > /dev/null
+
 
   # The required status check. A shard's own job carries the matrix leg in
   # its name, so the name changes whenever the shard count does; this job's
