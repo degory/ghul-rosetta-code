@@ -17601,6 +17601,34 @@
       ]
     },
     {
+      "slug": "priority-queue",
+      "title": "Priority queue",
+      "url": "https://rosettacode.org/wiki/Priority_queue",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "generics",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 93,
+      "parts": [
+        {
+          "id": "priority-queue",
+          "heading": null,
+          "source": "tasks/priority-queue/priority-queue.ghul",
+          "output": "tasks/priority-queue/run.expected",
+          "lines": 93,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "problem-of-apollonius",
       "title": "Problem of Apollonius",
       "url": "https://rosettacode.org/wiki/Problem_of_Apollonius",
