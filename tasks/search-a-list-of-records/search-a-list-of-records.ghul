@@ -33,6 +33,9 @@ if let sparse = first_where(cities, city => city.population < 5.0D) then
     write_line("{sparse.name}")
 fi
 
-if let initial = first_where(cities, city => city.name.starts_with("A")) then
+let initial =
+    first_where(cities, city => city.name.starts_with("A"))
+
+if initial? then
     write_line("{initial.population}")
 fi
