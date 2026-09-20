@@ -3733,19 +3733,19 @@
       "title": "Ormiston pairs",
       "slug": "ormiston-pairs",
       "state": "published",
-      "published_hash": "ac5fa470af330f99ecaef7139ff853c5a763002d36474a2bf66d19156fcb8ed9"
+      "published_hash": "533bec7399ee36d4d5368893e8e7e51ab05fa4de8ba1d6af730aceda0fb793fd"
     },
     {
       "title": "Ormiston triples",
       "slug": "ormiston-triples",
       "state": "published",
-      "published_hash": "4b5ae882f6d738999794202e97649ea6c145d2fe7a31fc02c54b3250524c5057"
+      "published_hash": "965242eb037ac652a4d58c5f973e5e63eb5b9123fef922e9ca8526a3ad81e08a"
     },
     {
       "title": "Own digits power sum",
       "slug": "own-digits-power-sum",
       "state": "published",
-      "published_hash": "d367d62c9f4d0240fd8ffd95b260dd144224bb78c2f7b92019eea2e197f4ce2f"
+      "published_hash": "d97da0f3d5e3edfcb0ffdbb3f0e4215752fc54c5bb72310e103035e02c68c692"
     },
     {
       "title": "Padovan n-step number sequences",
@@ -3757,13 +3757,13 @@
       "title": "Padovan sequence",
       "slug": "padovan-sequence",
       "state": "published",
-      "published_hash": "e7c89e9791a6e17b025b1bdc25ff6bc3f668269ce59f84fa07781e2b5e5bc1d2"
+      "published_hash": "e1ea217d9c9a2e95c83a05d93dc0e37d635d0145fb1ba2b4bc5d0bbbb6345546"
     },
     {
       "title": "Pairs with common factors",
       "slug": "pairs-with-common-factors",
       "state": "published",
-      "published_hash": "35667eee87efc0632df80841dc1188160ca962b289880e2d903b30453d653f16"
+      "published_hash": "0463f7eea172641481a2d0e3b75640f7b62f2feec6a675c572ce969a5eb207e2"
     },
     {
       "title": "Palindrome detection",
@@ -3775,7 +3775,7 @@
       "title": "Pangram checker",
       "slug": "pangram-checker",
       "state": "published",
-      "published_hash": "c9aeefba15662cf2ff1e4caca1a1565bf9c62d4a4ea141abff9ffe853deeb4b3"
+      "published_hash": "b7d0ab71008be6ea3ea8a640f5edaea459eb1438d89db68a9c0b01303388c01f"
     },
     {
       "title": "Parametric polymorphism",
@@ -3787,7 +3787,7 @@
       "title": "Parse EBNF",
       "slug": "parse-ebnf",
       "state": "published",
-      "published_hash": "367be632d7e144830ba20e7b1b177c0d7b61b1fb8b13a1cf99693c93f76d447e"
+      "published_hash": "0099b7ccc5f2d684f54318d7149383a933b9a2a17304efcf9535d80751caea0a"
     },
     {
       "title": "Parsing/RPN calculator algorithm",
@@ -3799,7 +3799,7 @@
       "title": "Parsing/RPN to infix conversion",
       "slug": "parsing-rpn-to-infix-conversion",
       "state": "published",
-      "published_hash": "55a26d39062e7dac271f686401b539ad7e7476a9d24cae7526b8c620ab892ae0"
+      "published_hash": "652e3297d71906f9f5ea0e6f00edee291c8103475c89345b338a88966ab5b780"
     },
     {
       "title": "Parsing/Shunting-yard algorithm",
@@ -3826,7 +3826,7 @@
       "title": "Particle swarm optimization",
       "slug": "particle-swarm-optimization",
       "state": "published",
-      "published_hash": "3a71dd98ae0a4dcc4798682c35f7bd80b2cae63456b6e80ebb2ecad1f62ba6eb",
+      "published_hash": "93191542998408dc0e452668655037c8f02256efcb30ae974ac83263a8a21c88",
       "image_hashes": {
         "Ghul-particle-swarm-optimization-mccormick.png": "a3ca8bafed6c466d9199b86cd029b0eca7e657df",
         "Ghul-particle-swarm-optimization-michalewicz.png": "158b6ebd2869bce481af2c112718645d455a86ed"
@@ -3842,7 +3842,7 @@
       "title": "Peaceful chess queen armies",
       "slug": "peaceful-chess-queen-armies",
       "state": "published",
-      "published_hash": "283bfe37dc2f9f1da66703885ebb0fae2def1caf129cf85fc17b193bb87b50dd",
+      "published_hash": "0b2d06eccf2226e7c3d7477278464eb20b670b8a1a6f0c12a18323044fa9766d",
       "image_hashes": {
         "Ghul-peaceful-chess-queen-armies-queens-4-5.png": "8a3d6ad424202191aa60402aa9fed18a86931f3e",
         "Ghul-peaceful-chess-queen-armies-queens-9-8.png": "7e62ca1eccd999627171493e399aa816bf232025"
@@ -3873,7 +3873,7 @@
       "title": "Penrose tiling",
       "slug": "penrose-tiling",
       "state": "published",
-      "published_hash": "11e1a8cd1b1e3001afe3c981199a2aaf6f030d14f624bf9210f70e506f835a09",
+      "published_hash": "c8e5f81347b44d1b1633df13c2cd8b74c21265475d57ab47ae3dd779ac91fd5f",
       "image_hashes": {
         "Ghul-penrose-tiling-penrose.png": "ec62e4a868b38db4207db1550d35f9c8fe8de1ae"
       }
@@ -3882,7 +3882,7 @@
       "title": "Pentagram",
       "slug": "pentagram",
       "state": "published",
-      "published_hash": "d3148edd3dadc0e9e5ab1122545547985f529788698123af77488aa11ae84073",
+      "published_hash": "d44757f27cef608b212dacd8d40f87df4d4d17df09c08c32a71d2d98817bbf8a",
       "image_hashes": {
         "Ghul-pentagram-pentagram.png": "24c12e43a4f01d7ed7d0402f9c58d5312bb296e5"
       }
@@ -3891,7 +3891,7 @@
       "title": "Pentomino tiling",
       "slug": "pentomino-tiling",
       "state": "published",
-      "published_hash": "d9fbeaac2824e16a6d85c71576e2ef5822ce159249a6ba0bc6897f3337b82aa5",
+      "published_hash": "c9602c69c0242992019909b496b0481626084e278cc81e3fd3c0c494860aa011",
       "image_hashes": {
         "Ghul-pentomino-tiling-pentominoes.png": "d7e34048b89e98d91ee91a66ad706a2a7c24dfac"
       }
@@ -3919,7 +3919,7 @@
       "title": "Percolation/Bond percolation",
       "slug": "percolation-bond-percolation",
       "state": "published",
-      "published_hash": "afac54e50527614df23f717451d449692e79a0f4633cc4ee73baba355b87a8a5",
+      "published_hash": "77c0343344970df31d74c5ea718e375346e0733c6e20b02dc1a16fc2d992c409",
       "image_hashes": {
         "Ghul-percolation-bond-percolation-bonds.png": "889b29fe75e6f46da632fb5bb9ad0a6db674ca6b"
       }
@@ -3928,7 +3928,7 @@
       "title": "Percolation/Mean cluster density",
       "slug": "percolation-mean-cluster-density",
       "state": "published",
-      "published_hash": "d12859ad3d3b3c33b9d13c8d125b3f4c49abe365c269489c397e3eafcd394684",
+      "published_hash": "7704b06716083e0be62254f7305024e95308202e817e65c7a8a3f069befd5756",
       "image_hashes": {
         "Ghul-percolation-mean-cluster-density-clusters.png": "06f8a9bbb6647b7419a14ac5d9cde5833d66ca00"
       }
@@ -3937,7 +3937,7 @@
       "title": "Percolation/Site percolation",
       "slug": "percolation-site-percolation",
       "state": "published",
-      "published_hash": "6d29e8770b73e6442f786f4dae2ecadf6d5f94ec2e5d8142a40f25aefff2b4ed",
+      "published_hash": "150c349e3ecd235c6754319fc3638d45e0b3d1c4dd7480d2369f2ee6bf25f882",
       "image_hashes": {
         "Ghul-percolation-site-percolation-sites.png": "96e23278655bcb6edf7e9ee50f7451cc3108394e"
       }
@@ -3946,7 +3946,7 @@
       "title": "Perfect numbers",
       "slug": "perfect-numbers",
       "state": "published",
-      "published_hash": "55c2ca98002144038e9a85ddb4c4b0810d4c9012409f9ff1db8183d81349aaae"
+      "published_hash": "c0c082ae4c5700182ca1c95c45a5332b07d30b6aca561807dbb2ba30f3d1b4c6"
     },
     {
       "title": "Perfect totient numbers",
@@ -3976,25 +3976,25 @@
       "title": "Permutations",
       "slug": "permutations",
       "state": "published",
-      "published_hash": "dd4d776e8fb1ce8dcf560685efe5eb1f4155a5db78183a3472ea44dbce04635d"
+      "published_hash": "26ec2f0a6e7195b9ec37ab7433495a43f3973a6719baa43907f698ac1f362d79"
     },
     {
       "title": "Permutations by swapping",
       "slug": "permutations-by-swapping",
       "state": "published",
-      "published_hash": "1549dcfbc110fe805cdaacb31680895e27d2b71881ed1d7cb637d8778ba11c5d"
+      "published_hash": "7a6891bbd7b35425eb51f17c08294e89cfcc8b01048453e2c7b4c614746a0fce"
     },
     {
       "title": "Permutations/Derangements",
       "slug": "permutations-derangements",
       "state": "published",
-      "published_hash": "6184adc82eb96a59c1fb53e4d59483127d3ac81dcee46f4838537d9296f7a47e"
+      "published_hash": "a61d71132dae5d6f256db07f8b5509643e2546aa666e4ab7b19e75a4aea67933"
     },
     {
       "title": "Pernicious numbers",
       "slug": "pernicious-numbers",
       "state": "published",
-      "published_hash": "97ce1cfd1402f3f62432dc798ba0583aec3146e8eb382aa0d95592c42d309456"
+      "published_hash": "486a40de17e80752e3388851d5d7561f7948f7a40550fc7b717826a2ec466664"
     },
     {
       "title": "Pi",
@@ -4005,19 +4005,19 @@
       "title": "Pick random element",
       "slug": "pick-random-element",
       "state": "published",
-      "published_hash": "cd7068f18291c8ad4b12ac4af9be873adabeee334860c45d9c8c9aeac327361a"
+      "published_hash": "8cb022a03c152381efa79f9a4b647c2a0d58505c212128cf29e44fb3b3883b8e"
     },
     {
       "title": "Pierpont primes",
       "slug": "pierpont-primes",
       "state": "published",
-      "published_hash": "c685a534cdbb8fbd30d6131a480285e52d05ae86f1bf5b53d1e9c6d43481db45"
+      "published_hash": "6a1ef28cc2f84e4361ac9a08bcb30f1d27b3ff0454d5192c5f56e4dcc0605583"
     },
     {
       "title": "Pig the dice game/Player",
       "slug": "pig-the-dice-game-player",
       "state": "published",
-      "published_hash": "90d7d33046a8477aeb3f91476eecb0be5a4d914259e6c708925f395c75a7d6ee"
+      "published_hash": "d5d9146f4ae7f4c021dc70357134a722b9669c2b19f77027a47f0f013e20ad8a"
     },
     {
       "title": "Pinstripe/Display",
@@ -4032,7 +4032,7 @@
       "title": "Pisano period",
       "slug": "pisano-period",
       "state": "published",
-      "published_hash": "7d8fe56c8be8eb99b3eac2fba326eb103ab408d29440784f79e9c9a942921660"
+      "published_hash": "6892b49c1e5dc8eff96ca66d1979cb4720ae0572ce6f3983fe9518d0420a1996"
     },
     {
       "title": "Plasma effect",
