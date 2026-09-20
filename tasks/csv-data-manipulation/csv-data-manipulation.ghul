@@ -1,0 +1,27 @@
+use default
+
+with_sum_column(line: string, index: int) -> string =>
+    if index == 0 then
+        "{line},SUM"
+    else
+        let total =
+            line.split([','])
+                |> map(number => int.parse(number))
+                |> reduce(0, (running, value) => running + value)
+
+        "{line},{total}"
+    fi
+
+let rows =
+    IO.File.read_all_lines("input.csv")
+        |> index()
+        |> map(((position, line)) => with_sum_column(line, position))
+        |> collect_array()
+
+let output = IO.Path.combine(IO.Path.get_temp_path(), "rosetta-sums.csv")
+
+IO.File.write_all_lines(output, rows)
+
+IO.File.read_all_lines(output) |> each(line => write_line(line))
+
+IO.File.delete(output)
