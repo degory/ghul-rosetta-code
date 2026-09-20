@@ -1,7 +1,7 @@
 {
     "task": "Hello world/Web server",
     "url": "https://rosettacode.org/wiki/Hello_world/Web_server",
-    "status": "queued",
+    "status": "solved",
     "tags": ["concurrency", "dotnet-interop"],
     "interest": 4
 }

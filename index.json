@@ -8786,6 +8786,32 @@
       ]
     },
     {
+      "slug": "fork",
+      "title": "Fork",
+      "url": "https://rosettacode.org/wiki/Fork",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "fork",
+          "heading": null,
+          "source": "tasks/fork/fork.ghul",
+          "output": "tasks/fork/run.expected",
+          "lines": 29,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "formal-power-series",
       "title": "Formal power series",
       "url": "https://rosettacode.org/wiki/Formal_power_series",
@@ -10006,6 +10032,32 @@
       ]
     },
     {
+      "slug": "handle-a-signal",
+      "title": "Handle a signal",
+      "url": "https://rosettacode.org/wiki/Handle_a_signal",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "handle-a-signal",
+          "heading": null,
+          "source": "tasks/handle-a-signal/handle-a-signal.ghul",
+          "output": "tasks/handle-a-signal/run.expected",
+          "lines": 42,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "happy-numbers",
       "title": "Happy numbers",
       "url": "https://rosettacode.org/wiki/Happy_numbers",
@@ -10279,6 +10331,32 @@
           "output": "tasks/hello-world-text/run.expected",
           "lines": 1,
           "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "hello-world-web-server",
+      "title": "Hello world/Web server",
+      "url": "https://rosettacode.org/wiki/Hello_world/Web_server",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 90,
+      "parts": [
+        {
+          "id": "hello-world-web-server",
+          "heading": null,
+          "source": "tasks/hello-world-web-server/hello-world-web-server.ghul",
+          "output": "tasks/hello-world-web-server/run.expected",
+          "lines": 90,
+          "playground": false,
           "input": false,
           "images": []
         }
@@ -15784,6 +15862,32 @@
       ]
     },
     {
+      "slug": "parallel-calculations",
+      "title": "Parallel calculations",
+      "url": "https://rosettacode.org/wiki/Parallel_calculations",
+      "tags": [
+        "concurrency",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "parallel-calculations",
+          "heading": null,
+          "source": "tasks/parallel-calculations/parallel-calculations.ghul",
+          "output": "tasks/parallel-calculations/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "parametric-polymorphism",
       "title": "Parametric polymorphism",
       "url": "https://rosettacode.org/wiki/Parametric_polymorphism",
@@ -20002,6 +20106,32 @@
           "lines": 63,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sockets",
+      "title": "Sockets",
+      "url": "https://rosettacode.org/wiki/Sockets",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "sockets",
+          "heading": null,
+          "source": "tasks/sockets/sockets.ghul",
+          "output": "tasks/sockets/run.expected",
+          "lines": 66,
+          "playground": false,
+          "input": false,
           "images": []
         }
       ]
