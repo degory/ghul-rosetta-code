@@ -3691,7 +3691,8 @@
     {
       "title": "Memory layout of a data structure",
       "slug": "memory-layout-of-a-data-structure",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "57a24106c296e3bb3194c26b61f57280a8687e1937c0b3137033a43fffcdd515"
     },
     {
       "title": "Merge and aggregate datasets",
@@ -4019,7 +4020,8 @@
     {
       "title": "Object serialization",
       "slug": "object-serialization",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3daf3ea15af4569a30b8d717141fad50600be479f85470db5fc428515aa1e962"
     },
     {
       "title": "Odd and square numbers",
@@ -4126,7 +4128,8 @@
     {
       "title": "Parallel calculations",
       "slug": "parallel-calculations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6ea6c3c16f82323db263d151f34cdf8657d90ded2bb2d76316d912ebf2f5e816"
     },
     {
       "title": "Parameterized SQL statement",
@@ -4423,12 +4426,14 @@
     {
       "title": "Polymorphic copy",
       "slug": "polymorphic-copy",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1dc718c3b964be6516a31db51a733fe503b413a94d7ac7158fb55e28dab1deef"
     },
     {
       "title": "Polymorphism",
       "slug": "polymorphism",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d251995b86b1c3d29fd8d76467b59d3ceed1c256937263382186592c3e441bb1"
     },
     {
       "title": "Polynomial long division",
@@ -4496,7 +4501,8 @@
     {
       "title": "Priority queue",
       "slug": "priority-queue",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e0be8b5593195f6a1b40a8f290d9337c5c1740273c1d29c132b2d387b0c239d3"
     },
     {
       "title": "Problem of Apollonius",
@@ -4510,8 +4516,9 @@
     {
       "title": "Program name",
       "slug": "program-name",
-      "state": "solved",
-      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args"
+      "state": "published",
+      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args",
+      "published_hash": "420d94198531c43e4846c91d0fcd183c206f993928e53d710abf66176ba42227"
     },
     {
       "title": "Program termination",
@@ -4573,7 +4580,11 @@
     {
       "title": "Quickhull",
       "slug": "quickhull",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "587eb593f8827a2225ca4c230ce535c05114a706c9bdfdfb2303e8f3d0685ff9",
+      "image_hashes": {
+        "Ghul-quickhull-hull.png": "484c67a709bf7516db11f8ddf64a3bbc33ee3a3c"
+      }
     },
     {
       "title": "Quickselect algorithm",
@@ -4675,7 +4686,11 @@
     {
       "title": "Ray-casting algorithm",
       "slug": "ray-casting-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0d6b218c434e88881894efc2f8a4f87dbb6dbfb5b9e7f9e032f779281abfad93",
+      "image_hashes": {
+        "Ghul-ray-casting-algorithm-inside.png": "842188b312caf1d5c63f9b4bd07324d0f04c4e4b"
+      }
     },
     {
       "title": "Read a configuration file",
@@ -4692,7 +4707,8 @@
     {
       "title": "Read a specific line from a file",
       "slug": "read-a-specific-line-from-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "665f969bb740479141519a318f5bc93aa3de2cee29fda50de81140ed89024283"
     },
     {
       "title": "Read entire file",
