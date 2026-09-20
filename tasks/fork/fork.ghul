@@ -1,0 +1,29 @@
+use default
+use System.Diagnostics.Process
+use System.Diagnostics.ProcessStartInfo
+
+let arguments = System.Environment.get_command_line_args()
+
+if arguments |> skip(1) |> any(argument => argument =~ "child") then
+    write_line("child: running on my own now")
+else
+    let start =
+        ProcessStartInfo(System.Environment.process_path ?? "dotnet")
+
+    start.argument_list.add("child")
+    start.redirect_standard_output = true
+
+    let child = Process.start(start)
+
+    if !child? then
+        write_line("parent: could not start a child")
+    else
+        write_line("parent: the child has started")
+
+        IO.Std.write(child.standard_output.read_to_end())
+
+        child.wait_for_exit()
+
+        write_line("parent: the child ended with status {child.exit_code}")
+    fi
+fi
