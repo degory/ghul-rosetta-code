@@ -12285,6 +12285,34 @@
       ]
     },
     {
+      "slug": "k-d-tree",
+      "title": "K-d tree",
+      "url": "https://rosettacode.org/wiki/K-d_tree",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "unions",
+        "closures"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 97,
+      "parts": [
+        {
+          "id": "k-d-tree",
+          "heading": null,
+          "source": "tasks/k-d-tree/k-d-tree.ghul",
+          "output": "tasks/k-d-tree/run.expected",
+          "lines": 97,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "k-means-clustering",
       "title": "K-means++ clustering",
       "url": "https://rosettacode.org/wiki/K-means++_clustering",

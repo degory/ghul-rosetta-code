@@ -1,0 +1,97 @@
+use default
+
+use Point = Collections.List[double]
+
+union Tree is
+    EMPTY;
+    NODE(left: Tree, point: Point, axis: int, right: Tree);
+si
+
+build(points: Collections.List[Point], depth: int) -> Tree is
+    if points.count == 0 then
+        return Tree.EMPTY
+    fi
+
+    let axis = depth % points[0].count
+    let sorted =
+        points |> sort((a, b) => a[axis] <> b[axis]) |> collect_list()
+    let middle = sorted.count / 2
+
+    Tree.NODE(
+        build(sorted[0..middle], depth + 1),
+        sorted[middle],
+        axis,
+        build(sorted[middle + 1..<0], depth + 1))
+si
+
+separation(a: Point, b: Point) -> double =>
+    a
+    |> zip(b, (x, y) => (x - y) * (x - y))
+    |> reduce(0.0, (sum, d) => sum + d)
+
+// The count is a local the search closes over, so every recursive call
+// updates the one variable the caller reads afterwards.
+use Found = (point: Point, distance: double, visited: int)
+
+nearest(tree: Tree, target: Point) -> Found is
+    let visited mut = 0
+    let best: Point? mut = null
+    let best_distance mut = double.positive_infinity
+
+    search(node: Tree) is
+        if let n: Tree.NODE = node then
+            visited = visited + 1
+
+            let here = separation(n.point, target)
+
+            if here < best_distance then
+                best_distance = here
+                best = n.point
+            fi
+
+            let offset = target[n.axis] - n.point[n.axis]
+            let near = if offset < 0.0 then n.left else n.right fi
+            let far = if offset < 0.0 then n.right else n.left fi
+
+            search(near)
+
+            if offset * offset < best_distance then
+                search(far)
+            fi
+        fi
+    si
+
+    search(tree)
+
+    (
+        point = best!,
+        distance = System.Math.sqrt(best_distance),
+        visited = visited)
+si
+
+place(p: Point) -> string => p |> map(c => "{c:F6}") |> join(", ")
+
+show(name: string, points: Collections.List[Point], target: Point) is
+    let (point, distance, visited) = nearest(build(points, 0), target)
+
+    write_line("{name}")
+    write_line("  searching for ({place(target)})")
+    write_line("  nearest is ({place(point)})")
+    write_line("  distance {distance:F6}, {visited} nodes visited")
+si
+
+let wikipedia =
+    [[2.0, 3.0], [5.0, 4.0], [9.0, 6.0], [4.0, 7.0], [8.0, 1.0], [7.0, 2.0]]
+    |> map(p => cast Point(p))
+    |> collect_list()
+
+show("Wikipedia example", wikipedia, [9.0, 2.0])
+
+let random = System.Random(42)
+
+random_point() -> Point =>
+    repeat(0, 3) |> map(_ => random.next_double()) |> collect_list()
+
+let cloud = repeat(0, 1000) |> map(_ => random_point()) |> collect_list()
+
+show("1000 random points in the unit cube", cloud, random_point())
