@@ -9467,6 +9467,32 @@
       ]
     },
     {
+      "slug": "gabows-algorithm",
+      "title": "Gabow's algorithm",
+      "url": "https://rosettacode.org/wiki/Gabow's_algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 118,
+      "parts": [
+        {
+          "id": "gabows-algorithm",
+          "heading": null,
+          "source": "tasks/gabows-algorithm/gabows-algorithm.ghul",
+          "output": "tasks/gabows-algorithm/run.expected",
+          "lines": 118,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "galton-box-animation",
       "title": "Galton box animation",
       "url": "https://rosettacode.org/wiki/Galton_box_animation",

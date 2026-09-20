@@ -1,0 +1,31 @@
+Constructed digraph:
+Digraph has 13 vertices and 22 edges
+Adjacency lists:
+ 0: 1 5 6
+ 1: 
+ 2: 0 3
+ 3: 2 5
+ 4: 2
+ 5: 3 4
+ 6: 0 4 9
+ 7: 6 8
+ 8: 7 9
+ 9: 10 11
+10: 12
+11: 12
+12: 9
+
+It has 4 strongly connected components.
+
+Components:
+Component 0: 1
+Component 1: 9 10 11 12
+Component 2: 0 2 3 4 5 6
+Component 3: 7 8
+
+Example connectivity checks:
+Vertices 0 and 3 strongly connected? true
+Vertices 0 and 7 strongly connected? false
+Vertices 9 and 12 strongly connected? true
+Component ID of vertex 5: 2
+Component ID of vertex 8: 3
