@@ -415,8 +415,8 @@ The reasons are a fixed set - `needs-gui`, `needs-network`, `needs-interaction`,
 comes back: it names a compiler or runtime issue and is retried when that closes.
 
 `no-equivalent` is for a task that asks how the language spells a feature it does not have - a
-topic variable, a macro, a nested type. The honest entry would be a sentence of prose saying so,
-and entries here carry code.
+topic variable, a macro, a nested type. The only honest wiki entry is a sentence saying the
+language has no such thing, and a sentence of prose is not what a solution here is.
 
 A rejection can also be reversed, when what made the task impossible stops being true. That is
 `reopen`, and it takes the reason for the reversal rather than being a bare undo:
