@@ -1,0 +1,66 @@
+use default
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Sockets.TcpClient
+use System.Net.Sockets.TcpListener
+use System.Threading.Thread
+
+listen_on(port: int) -> TcpListener? is
+    let listener = TcpListener(IPAddress.loopback, port)
+
+    try
+        listener.start()
+        return listener
+    catch e: System.Net.Sockets.SocketException
+        return null
+    yrt
+si
+
+let wanted = 256
+
+let listener =
+    if let privileged = listen_on(wanted) then
+        write_line("listening on port {wanted}")
+        privileged
+    else
+        write_line("port {wanted} needs privileges, taking any free port")
+
+        let any = listen_on(0)
+
+        assert any? else "no port could be listened on" in any
+    fi
+
+let bound =
+    if let endpoint: IPEndPoint = listener.local_endpoint then
+        endpoint
+    else
+        throw System.Exception("the listener has no address")
+    fi
+
+let port = bound.port
+
+let receiving =
+    Thread(
+        () is
+            let server = listener.accept_tcp_client()
+
+            let reading = IO.StreamReader(server.get_stream())
+
+            write_line("server read: {reading.read_line()}")
+
+            server.dispose()
+        si
+    )
+
+receiving.start()
+
+let client = TcpClient("127.0.0.1", port)
+let writer = IO.StreamWriter(client.get_stream())
+
+writer.auto_flush = true
+writer.write("hello socket world\n")
+
+client.dispose()
+
+receiving.join()
+listener.stop()
