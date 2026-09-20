@@ -1670,6 +1670,34 @@
       ]
     },
     {
+      "slug": "avl-tree",
+      "title": "AVL tree",
+      "url": "https://rosettacode.org/wiki/AVL_tree",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "unions",
+        "pattern-matching"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 97,
+      "parts": [
+        {
+          "id": "avl-tree",
+          "heading": null,
+          "source": "tasks/avl-tree/avl-tree.ghul",
+          "output": "tasks/avl-tree/run.expected",
+          "lines": 97,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "b-spline",
       "title": "B-spline",
       "url": "https://rosettacode.org/wiki/B-spline",

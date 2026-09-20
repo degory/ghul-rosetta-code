@@ -1,0 +1,97 @@
+use default
+
+union Tree is
+    EMPTY
+    NODE(left: Tree, key: int, right: Tree, height: int)
+si
+
+height(tree: Tree) -> int =>
+    case tree
+    when node: Tree.NODE then node.height
+    else 0
+    esac
+
+node(left: Tree, key: int, right: Tree) -> Tree =>
+    Tree.NODE(
+        left,
+        key,
+        right,
+        1 + int.max(height(left), height(right)))
+
+balance(tree: Tree) -> int =>
+    case tree
+    when n: Tree.NODE then height(n.left) - height(n.right)
+    else 0
+    esac
+
+rotate_right(tree: Tree) -> Tree =>
+    if let n: Tree.NODE = tree, pivot: Tree.NODE = n.left then
+        node(pivot.left, pivot.key, node(pivot.right, n.key, n.right))
+    else
+        tree
+    fi
+
+rotate_left(tree: Tree) -> Tree =>
+    if let n: Tree.NODE = tree, pivot: Tree.NODE = n.right then
+        node(node(n.left, n.key, pivot.left), pivot.key, pivot.right)
+    else
+        tree
+    fi
+
+rebalance(tree: Tree) -> Tree =>
+    case tree
+    when n: Tree.NODE then
+        (let tilt = balance(n)
+
+         if tilt > 1 /\ balance(n.left) < 0 then
+             rotate_right(node(rotate_left(n.left), n.key, n.right))
+         elif tilt > 1 then
+             rotate_right(tree)
+         elif tilt < -1 /\ balance(n.right) > 0 then
+             rotate_left(node(n.left, n.key, rotate_right(n.right)))
+         elif tilt < -1 then
+             rotate_left(tree)
+         else
+             tree
+         fi)
+    else tree
+    esac
+
+insert(tree: Tree, key: int) -> Tree =>
+    case tree
+    when n: Tree.NODE then
+        if key < n.key then
+            rebalance(node(insert(n.left, key), n.key, n.right))
+        elif key > n.key then
+            rebalance(node(n.left, n.key, insert(n.right, key)))
+        else
+            tree
+        fi
+    else node(Tree.EMPTY, key, Tree.EMPTY)
+    esac
+
+in_order(tree: Tree) -> Pipe[int] is
+    if let n: Tree.NODE = tree then
+        yield in in_order(n.left)
+        yield n.key
+        yield in in_order(n.right)
+    fi
+si
+
+draw(tree: Tree, indent: string) is
+    if let n: Tree.NODE = tree then
+        draw(n.right, "{indent}    ")
+        write_line("{indent}{n.key}")
+        draw(n.left, "{indent}    ")
+    fi
+si
+
+let tree =
+    [5, 2, 8, 1, 3, 9, 7, 4, 6]
+        |> reduce(Tree.EMPTY, (built, key) => insert(built, key))
+
+write_line("in order: {in_order(tree) |> join(" ")}")
+write_line("height:   {height(tree)}")
+write_line("")
+
+draw(tree, "")
