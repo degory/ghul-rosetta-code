@@ -1,11 +1,11 @@
 use default
 
 class U0(message: string): System.Exception is
-    super(message);
+    super(message)
 si
 
 class U1(message: string): System.Exception is
-    super(message);
+    super(message)
 si
 
 baz(which: int) is
