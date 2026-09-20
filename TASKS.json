@@ -4654,7 +4654,7 @@
       "title": "Sign of an integer (signum)",
       "slug": "sign-of-an-integer-signum",
       "state": "published",
-      "published_hash": "07fd6e33fe95e24344e23d26014be93f8b21bdf6fa33ab5264f9d611a875f660"
+      "published_hash": "c1f50e5ba0b0dd56403206ce681e7a3800ae2658b8f364faf47f3211a7bc5869"
     },
     {
       "title": "Simple database",
@@ -4679,19 +4679,19 @@
       "title": "Singly-linked list/Element definition",
       "slug": "singly-linked-list-element-definition",
       "state": "published",
-      "published_hash": "dd272e738ee7e037c16b48cf2fe324239e1793e7c863d7a90281b173db8ba99e"
+      "published_hash": "80fe108c888bcec982741442a1333c5f1056051f3192939bdce78dc9ec3a3d18"
     },
     {
       "title": "Singly-linked list/Element insertion",
       "slug": "singly-linked-list-element-insertion",
       "state": "published",
-      "published_hash": "bc8dd36fc0747a5347a0580f9c3e70ebf56cd982e5d9a4fff83259423e99e6ff"
+      "published_hash": "f1d33dbbf292cc03c2152624210a8816e3c5e4e16740278ab26a15a358b099ef"
     },
     {
       "title": "Singly-linked list/Traversal",
       "slug": "singly-linked-list-traversal",
       "state": "published",
-      "published_hash": "830cec9741833dd4f755e12d01002f3ab80787e314a238394ac65accc2924be0"
+      "published_hash": "60f0cd4b0e68408f0ee8eb8ec2c4ddc22576a9f2488302f80926d30a3baf1890"
     },
     {
       "title": "Sisyphus sequence",
@@ -4703,7 +4703,7 @@
       "title": "Sleeping Beauty problem",
       "slug": "sleeping-beauty-problem",
       "state": "published",
-      "published_hash": "6ce1ca763dec7f118bdbec3c691822fab92ddc0e8c2f414e9519310a257e92bf"
+      "published_hash": "68a084fc3938ff20a48aa4c6e86c6ec6d5f002183061cf927a0e512b21feecf9"
     },
     {
       "title": "Smallest enclosing circle problem",
@@ -4724,37 +4724,37 @@
       "title": "Smith\u2013Waterman algorithm",
       "slug": "smith-waterman-algorithm",
       "state": "published",
-      "published_hash": "1bf76d3cc1afbf2c60ee6c74ab02cadbddb1d579c15c9a75e5aae036be1913eb"
+      "published_hash": "b7b7fe3b1442f5376268412a2ca0daed59fb1327d09deb049187e5d05f9ab573"
     },
     {
       "title": "Snake",
       "slug": "snake",
       "state": "published",
-      "published_hash": "d9b033cdd83994e381be774537e090e557876e10508870d86e3b87e294281c45"
+      "published_hash": "40f6ce3d53683ba96c8b8c62212e6ad2702a01d569ca99d7313f556e5edd8b5d"
     },
     {
       "title": "Snake and ladder",
       "slug": "snake-and-ladder",
       "state": "published",
-      "published_hash": "5a2be163a94add2fb9272c22b71073a7e5f3c933cd5b3249b5e1dabc30a31217"
+      "published_hash": "692b25b13c8e172e2d97506390710a5c5349518a660268521817d3edc52d432e"
     },
     {
       "title": "Sokoban",
       "slug": "sokoban",
       "state": "published",
-      "published_hash": "c34d89d28236572da17b70591b31400c0edf61275fbcf7e697943ba6fec2d43f"
+      "published_hash": "9f523f2cceebea2bde7c9e75b82878623dcd673003dab2fd4b3091167ffd723c"
     },
     {
       "title": "Solve a Hidato puzzle",
       "slug": "solve-a-hidato-puzzle",
       "state": "published",
-      "published_hash": "cd4000d3a53934ed8b0e52ca8755d4fc5f8eb090e45181994d5675e96e7e1525"
+      "published_hash": "a7806c2e67d47a75ee44f3fae7c1716ff3931832f68874f4075198c03f9911b3"
     },
     {
       "title": "Solve a Holy Knight\u0027s tour",
       "slug": "solve-a-holy-knight-s-tour",
       "state": "published",
-      "published_hash": "21a6292c761792120558376b094bb5868eb5cea3b96c8a3752bd89a4b1fcb008",
+      "published_hash": "3036a4b6b3e669392aa478de35d840aabd21e028afeab8fc7f3e102e4670ce5d",
       "image_hashes": {
         "Ghul-solve-a-holy-knight-s-tour-tour.png": "e492a3a2a3b7bb80872ef275eb03541387d3c1a2"
       }
@@ -4763,7 +4763,7 @@
       "title": "Solve a Hopido puzzle",
       "slug": "solve-a-hopido-puzzle",
       "state": "published",
-      "published_hash": "1e285e56615790983069b68196a59961ae1daa2158483962a08305c272bb1372",
+      "published_hash": "b1b6caf3269e13b1068f487984e01652b041fab4bc767d10c905e4a3450cb831",
       "image_hashes": {
         "Ghul-solve-a-hopido-puzzle-hopido.png": "8f7f3ea964239fe5472e7f755cc39c8ea22c5e26"
       }
@@ -4772,20 +4772,20 @@
       "title": "Solve a Rubik\u0027s cube",
       "slug": "solve-a-rubik-s-cube",
       "state": "published",
-      "published_hash": "816157a4815168c67b202e17f3594a2d52a10c37fe62acad7849b330919bc8d6"
+      "published_hash": "7635545ed6ed6128eddb17d0c8420376675e7a9fa97c299c4bd875734555b864"
     },
     {
       "title": "Solve the no connection puzzle",
       "slug": "solve-the-no-connection-puzzle",
       "state": "published",
-      "published_hash": "4e90263fc0ef3f5af19b97ed843ffab218ba07531b817ae4913b723730e280a8"
+      "published_hash": "281907084b8ed47599bcb6e8cb3d0d679a3c84338cac766760a49e3f8163a6d8"
     },
     {
       "title": "Sorensen\u2013Dice coefficient",
       "slug": "sorensen-dice-coefficient",
       "state": "published",
       "note": "reopened, was rejected/needs-network: the word list ships with the repository instead of being fetched",
-      "published_hash": "b4875c76c97cca88e0152ac6ece3357ed76b35622d5a41147a7123c510f046f6"
+      "published_hash": "f61bc4d788a86048367869473aa12e340b99da1907704de79e64d97f2095545f"
     },
     {
       "title": "Sort a list of object identifiers",
@@ -4809,7 +4809,7 @@
       "title": "Sort an outline at every level",
       "slug": "sort-an-outline-at-every-level",
       "state": "published",
-      "published_hash": "7fcc35f1eca96b938d2d245ab0109c7197a01004e50c144dc55443b47ec9d992"
+      "published_hash": "83772612186259fd0ac2328f68612cb58659669025ff291bd3e49dd000fc1ad9"
     },
     {
       "title": "Sort disjoint sublist",
@@ -4875,7 +4875,7 @@
       "title": "Sorting algorithms/Counting sort",
       "slug": "sorting-algorithms-counting-sort",
       "state": "published",
-      "published_hash": "6f6d7dfdc24e35a991b66f45fbcfa99bd31a2b8c1ee3806af6e344e6b1eb5629"
+      "published_hash": "816dcd6b3d8c9486fc8d69354b760402760e43035635b52960e6929d1429c727"
     },
     {
       "title": "Sorting algorithms/Cycle sort",
@@ -4917,7 +4917,7 @@
       "title": "Sorting algorithms/Patience sort",
       "slug": "sorting-algorithms-patience-sort",
       "state": "published",
-      "published_hash": "c21ae680aedf2a281a39e79ad92e403cec083af6b27f7ea351abde7877f21f22"
+      "published_hash": "2349268339da13cdc8f92dd3a38f39c9270f90f093ab59e2190980df71bd9369"
     },
     {
       "title": "Sorting algorithms/Permutation sort",
@@ -4947,7 +4947,7 @@
       "title": "Sorting algorithms/Sleep sort",
       "slug": "sorting-algorithms-sleep-sort",
       "state": "published",
-      "published_hash": "e98be2327c82b29e06e0720cb29657c71807ed0e2e52964f9f7185d93f026a09"
+      "published_hash": "544163f02bbf60cec344a762fb5be5ea7f949987b9eda2e35b5847395d898d56"
     },
     {
       "title": "Sorting algorithms/Stooge sort",
@@ -4959,13 +4959,13 @@
       "title": "Sorting algorithms/Strand sort",
       "slug": "sorting-algorithms-strand-sort",
       "state": "published",
-      "published_hash": "7e6803d14eace25c2e8a3d2c422bfc9bf07faa8add9409e1d02facb20b31fb95"
+      "published_hash": "5a754436104af3b8572a407653febbef0c36dc27db41c5a72e323066fe5d515e"
     },
     {
       "title": "Sorting algorithms/Tree sort on a linked list",
       "slug": "sorting-algorithms-tree-sort-on-a-linked-list",
       "state": "published",
-      "published_hash": "49891d4d7f93e5f6f4975d62b1a6987b9b566a075bedb9f5fb3b88092ee0a4c2"
+      "published_hash": "3b4fbcf3d45e60e291a6a1c5c473a9341196b4b7829248957021dd222b292ec6"
     },
     {
       "title": "Sparkline in unicode",
@@ -4977,25 +4977,25 @@
       "title": "Special characters",
       "slug": "special-characters",
       "state": "published",
-      "published_hash": "e0f528338965b1026d744b26b2a47741405e05f38abf028c095bddbb36627f97"
+      "published_hash": "1803e30aabb33e333c2ae3b80af0e0251745a6660f70dc746eee123d4f31b139"
     },
     {
       "title": "Special variables",
       "slug": "special-variables",
       "state": "published",
-      "published_hash": "8da57239ccfc059c4032e245d0172d84f9d2e76496e6ddd9b78d878b786415d8"
+      "published_hash": "f8c12e7d4ee46f32f0f8c0cba54a8c10be936972a83d3279d1f68ff930c7e4c4"
     },
     {
       "title": "Spelling of ordinal numbers",
       "slug": "spelling-of-ordinal-numbers",
       "state": "published",
-      "published_hash": "d02c436dd35a20e827fd7f7c8191660fc2b4b7c0c1896fc20941b8ace0a230cd"
+      "published_hash": "0b8f4664196aedc4da306e50728a4c69a597c1cc5f83703cf5720e23bdeafbfd"
     },
     {
       "title": "Sphenic numbers",
       "slug": "sphenic-numbers",
       "state": "published",
-      "published_hash": "6291dbc9e9b09de5218dd8e624e87b5d7b7a6aa7332ee1963d740f87162d85dd"
+      "published_hash": "2c7ac41c109184d83577741a96da04e874d428abd8e472301558e884ccd1713c"
     },
     {
       "title": "Spinning rod animation/Text",
