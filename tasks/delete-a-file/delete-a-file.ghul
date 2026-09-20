@@ -1,0 +1,44 @@
+use default
+
+let scratch =
+    IO.Path.combine(IO.Path.get_temp_path(), "rosetta-delete-a-file")
+
+IO.Directory.create_directory(scratch)
+IO.Directory.set_current_directory(scratch)
+
+IO.File.write_all_text("input.txt", "")
+IO.Directory.create_directory("docs")
+
+delete_file(path: string) -> string is
+    if !IO.File.exists(path) then
+        return "not there"
+    fi
+
+    try
+        IO.File.delete(path)
+        return "deleted"
+    catch e: System.Exception
+        return "refused"
+    yrt
+si
+
+delete_directory(path: string) -> string is
+    if !IO.Directory.exists(path) then
+        return "not there"
+    fi
+
+    try
+        IO.Directory.delete(path)
+        return "deleted"
+    catch e: System.Exception
+        return "refused"
+    yrt
+si
+
+for where in ["", "/"] do
+    write_line("{where}input.txt: {delete_file("{where}input.txt")}")
+    write_line("{where}docs: {delete_directory("{where}docs")}")
+od
+
+IO.Directory.set_current_directory(IO.Path.get_temp_path())
+IO.Directory.delete(scratch, true)
