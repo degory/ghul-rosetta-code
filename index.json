@@ -2282,7 +2282,7 @@
         "dotnet-interop"
       ],
       "interest": 3,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 45,
@@ -2293,7 +2293,7 @@
           "source": "tasks/bitcoin-address-validation/bitcoin-address-validation.ghul",
           "output": "tasks/bitcoin-address-validation/run.expected",
           "lines": 45,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
