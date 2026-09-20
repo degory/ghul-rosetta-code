@@ -23106,6 +23106,32 @@
       ]
     },
     {
+      "slug": "szymanskis-algorithm",
+      "title": "Szymański's algorithm",
+      "url": "https://rosettacode.org/wiki/Szymański's_algorithm",
+      "tags": [
+        "concurrency",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "szymanskis-algorithm",
+          "heading": null,
+          "source": "tasks/szymanskis-algorithm/szymanskis-algorithm.ghul",
+          "output": "tasks/szymanskis-algorithm/run.expected",
+          "lines": 96,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "tamagotchi-emulator",
       "title": "Tamagotchi emulator",
       "url": "https://rosettacode.org/wiki/Tamagotchi_emulator",
