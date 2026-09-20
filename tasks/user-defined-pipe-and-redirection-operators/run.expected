@@ -1,0 +1,13 @@
+the ALGOL pioneers, sorted and deduplicated:
+  Edsger Dijkstra, ALGOL
+  John Backus, FORTRAN and ALGOL
+  Peter Naur, ALGOL
+  Tony Hoare, ALGOL and quicksort
+
+the first two, captured into a value:
+  Edsger Dijkstra, ALGOL, John Backus, FORTRAN and ALGOL
+lines redirected into a file: 2
+lines appended: 1
+the file now holds: Peter Naur, ALGOL, Peter Naur, ALGOL, Alan Turing, computability
+its last line: Alan Turing, computability
+from a here-document: one, two
