@@ -3799,6 +3799,11 @@
       "published_hash": "b7d0ab71008be6ea3ea8a640f5edaea459eb1438d89db68a9c0b01303388c01f"
     },
     {
+      "title": "Parameterized SQL statement",
+      "state": "rejected",
+      "reason": "needs-native-lib"
+    },
+    {
       "title": "Parametric polymorphism",
       "slug": "parametric-polymorphism",
       "state": "published",
@@ -5371,6 +5376,11 @@
       "title": "System time",
       "state": "rejected",
       "reason": "nondeterministic"
+    },
+    {
+      "title": "Table creation/Postal addresses",
+      "state": "rejected",
+      "reason": "needs-native-lib"
     },
     {
       "title": "Tamagotchi emulator",

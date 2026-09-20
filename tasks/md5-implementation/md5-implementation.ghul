@@ -11,7 +11,8 @@ let sines =
         |> map(step =>
             cast uint(
                 System.Math.floor(
-                    System.Math.abs(System.Math.sin(cast double(step + 1))) *
+                    System.Math.abs(
+                        System.Math.sin(cast double(step + 1))) *
                     4294967296.0D)))
         |> collect_array()
 
@@ -93,7 +94,8 @@ md5(message: ubyte[]) -> string is
     return
         state
             |> flat_map(value =>
-                0..4 |> map(byte_index => (value >>> (8 * byte_index)) & 0xFFu))
+                0..4
+                    |> map(index => (value >>> (8 * index)) & 0xFFu))
             |> map(byte_value => "{byte_value:x2}")
             |> join("")
 si
@@ -110,7 +112,10 @@ hex(digest: ubyte[]) -> string =>
 for message in messages do
     let octets = System.Text.Encoding.utf8.get_bytes(message)
 
-    assert md5(octets) =~ hex(System.Security.Cryptography.MD5.hash_data(octets))
+    let expected =
+        hex(System.Security.Cryptography.MD5.hash_data(octets))
+
+    assert md5(octets) =~ expected
     else "does not agree with the digest .NET computes"
 
     write_line("{md5(octets)}  \"{message}\"")
