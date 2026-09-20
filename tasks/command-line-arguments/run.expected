@@ -1,5 +1,5 @@
 4 arguments:
-  0: -c
-  1: alpha beta
-  2: -h
-  3: gamma
+  0: first
+  1: second argument
+  2: --flag
+  3: last
