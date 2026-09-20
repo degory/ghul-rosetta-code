@@ -1,8 +1,10 @@
 use default
 use System.DateTime
+use System.Environment
+use System.Environment_SpecialFolder.USER_PROFILE
 
 let default_file = IO.Path.combine(
-    System.Environment.get_folder_path(System.Environment_SpecialFolder.USER_PROFILE),
+    Environment.get_folder_path(USER_PROFILE),
     ".simple-database")
 
 class ENTRY(date: DateTime, category: string, description: string) is
@@ -18,7 +20,8 @@ class ENTRY(date: DateTime, category: string, description: string) is
         ENTRY(DateTime.parse(parts[0]), parts[1], parts[2])
     si
 
-    to_string() -> string => "{date:yyyy-MM-dd}  {category,-10}  {description}"
+    to_string() -> string =>
+        "{date:yyyy-MM-dd}  {category,-10}  {description}"
 si
 
 read_all(file: string) -> LIST[ENTRY] =>
@@ -37,7 +40,9 @@ add(file: string, category: string, description: string, date: DateTime) is
 
     entries.add(ENTRY(date, category, description))
 
-    IO.File.write_all_lines(file, entries |> map(entry => entry.line) |> collect_array())
+    IO.File.write_all_lines(
+        file,
+        entries |> map(entry => entry.line) |> collect_array())
 si
 
 latest(file: string) -> ENTRY? =>
@@ -49,7 +54,8 @@ latest_by_category(file: string) -> LIST[ENTRY] is
         |> map(group => group.value |> max_by(entry => entry.date)!)
         |> collect_list()
 
-    newest.sort((left: ENTRY, right: ENTRY) -> int => string.compare(left.category, right.category))
+    newest.sort((left: ENTRY, right: ENTRY) -> int =>
+        string.compare(left.category, right.category))
 
     newest
 si
@@ -70,20 +76,23 @@ si
 
 usage() is
     write_line("usage: simple-database <command> [arguments]")
-    write_line("  add <category> <description> [yyyy-MM-dd]  remember something")
-    write_line("  latest                                     the newest entry")
-    write_line("  latest-each                                the newest of each category")
-    write_line("  all                                        every entry, oldest first")
-    write_line("  demo                                       all of the above, on a file of its own")
+    write_line("  add <category> <description> [date]")
+    write_line("  latest")
+    write_line("  latest-each")
+    write_line("  all")
+    write_line("  demo")
 si
 
 demo() is
-    let file = IO.Path.combine(IO.Path.get_temp_path(), "simple-database-{System.Guid.new_guid()}")
+    let name = "simple-database-{System.Guid.new_guid()}"
+    let file = IO.Path.combine(IO.Path.get_temp_path(), name)
 
     try
-        add(file, "book", "The Go Programming Language", DateTime.parse("2026-01-14"))
+        add(file, "book", "The Go Programming Language",
+            DateTime.parse("2026-01-14"))
         add(file, "film", "Solaris", DateTime.parse("2026-02-02"))
-        add(file, "book", "Programming in Lua", DateTime.parse("2026-03-21"))
+        add(file, "book", "Programming in Lua",
+            DateTime.parse("2026-03-21"))
 
         write_line("latest: {latest(file)}")
         write_line()
@@ -96,7 +105,8 @@ demo() is
 si
 
 entry(args: string[]) -> int is
-    let file = System.Environment.get_environment_variable("SIMPLE_DATABASE") ?? default_file
+    let stored = Environment.get_environment_variable("SIMPLE_DATABASE")
+    let file = stored ?? default_file
 
     if args.count == 0 then
         usage()
@@ -112,7 +122,12 @@ entry(args: string[]) -> int is
             return 1
         fi
 
-        let date = if args.count > 3 then DateTime.parse(args[3]) else DateTime.now fi
+        let date =
+            if args.count > 3 then
+                DateTime.parse(args[3])
+            else
+                DateTime.now
+            fi
 
         add(file, args[1], args[2], date)
     when "latest" then
