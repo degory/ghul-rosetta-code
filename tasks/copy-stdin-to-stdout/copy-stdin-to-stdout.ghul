@@ -1,0 +1,5 @@
+use default
+
+while let line = IO.Std.`in.read_line() do
+    write_line(line)
+od
