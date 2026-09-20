@@ -5007,7 +5007,7 @@
       "title": "Spiral matrix",
       "slug": "spiral-matrix",
       "state": "published",
-      "published_hash": "6b144bce81034ed034ad2abda5e899fdcd0d4e4047890d3561b214a465cc2e62"
+      "published_hash": "483f7da13f754d1e11580abd9410cab3073d3c262cb491f5045385fa31698fd0"
     },
     {
       "title": "Split a character string based on change of character",
@@ -5019,31 +5019,31 @@
       "title": "Spoof game",
       "slug": "spoof-game",
       "state": "published",
-      "published_hash": "6f4ce6729481ff1fb8b90a931a57e63d6b6bf3b317000c0672b3f0d76f6163a1"
+      "published_hash": "ff555f3f42fe2dc8c69eaf72c01a7668d0b863c21c37600c9a3ac9f8759950d8"
     },
     {
       "title": "Stable marriage problem",
       "slug": "stable-marriage-problem",
       "state": "published",
-      "published_hash": "a3e3a03cd3b2d7ffd2b4f0e35e0510d7ffa6fcd511823e2f13b7e63e42916e57"
+      "published_hash": "bf025ab16225a2397fc5af42909dd6ad0473242ed4c2184988c923ef114e2184"
     },
     {
       "title": "Stack",
       "slug": "stack",
       "state": "published",
-      "published_hash": "0562f54c00ccd1d763db6f796dbeef865e6df67d75f30eeb2967cdf17c9c6a8a"
+      "published_hash": "50c3a5556de1d7e48fe66ca86a9ba977e3686d0799f975e61a2401c65bea56db"
     },
     {
       "title": "Start from a main routine",
       "slug": "start-from-a-main-routine",
       "state": "published",
-      "published_hash": "6a3c51438b294da687e1fd1f473c2fcadf584f47696021ae404f80cebfe2ae1c"
+      "published_hash": "2cfffbda0ecb67d6a74a86ae9c654f5907a6c0bec5c5b1bb3bc74cc851b942ad"
     },
     {
       "title": "Statistics/Basic",
       "slug": "statistics-basic",
       "state": "published",
-      "published_hash": "62d940372a27bf7a44a8c030569e8fdf5f48edbb167a6d6af27330f2f9243c1b",
+      "published_hash": "ed361de51743ce767725604f1599acc7594ac5d967e4002f0b5857404ef12b42",
       "image_hashes": {
         "Ghul-statistics-basic-histograms.png": "5c2bc25afd90f97c146350118b9c6121c41ae740"
       }
@@ -5085,37 +5085,37 @@
       "title": "Stream merge",
       "slug": "stream-merge",
       "state": "published",
-      "published_hash": "7f70743c4b9bb439376ef134f3ecb210ef0d1746a0604b6bed291388d8ac3d06"
+      "published_hash": "d2b41e4bf0d694060b0203876099c06445253c099136de605ecf4ff3878589a2"
     },
     {
       "title": "String append",
       "slug": "string-append",
       "state": "published",
-      "published_hash": "f7c375ff1d4a8f0a632fb4e1261387bd01d696fa553ba8544db69472e2fd9b7d"
+      "published_hash": "faf60cac62ea208a00f6313a2de320567e6627a031787dec70235ed8ba63a36b"
     },
     {
       "title": "String case",
       "slug": "string-case",
       "state": "published",
-      "published_hash": "7b82d4755f790bdc1fdfa33f49493c7c68de0a3f51f55f28cf4ef6cb7b0f3f4a"
+      "published_hash": "ef89035ab0e3fba969488321e5a5f28134c9866fee646351f29c8da154c2312a"
     },
     {
       "title": "String comparison",
       "slug": "string-comparison",
       "state": "published",
-      "published_hash": "c8efcccaed761cd4b2a5d9e216e7ec9577276bb742c469739a9c38f49b8075f3"
+      "published_hash": "2f0383ebe4174cb1039e3bb1ad3e0aebf3f37e1bad87170afb5dee1952ac91ba"
     },
     {
       "title": "String concatenation",
       "slug": "string-concatenation",
       "state": "published",
-      "published_hash": "edd8d8de7e7b8d970accecfaf4bc343cd1adf5890b97e60bdf6d1911bda893b5"
+      "published_hash": "e8a46f9baa9a63313dd38eff567a2976e846ebb0eb21a388860da2a31482f0df"
     },
     {
       "title": "String interpolation (included)",
       "slug": "string-interpolation-included",
       "state": "published",
-      "published_hash": "47dd8c4a20f4382653af999087138e16277e69032892940d8e5ee3d1a65baba8"
+      "published_hash": "2812989fabdb404a74f55d3440081caa8d6f72b1834692af81cdbef1fb8fe9d5"
     },
     {
       "title": "String length",
@@ -5127,13 +5127,13 @@
       "title": "String matching",
       "slug": "string-matching",
       "state": "published",
-      "published_hash": "cb33069df88ab9453dd7c5897ac8ad065494c73d673835332996352da8b1d701"
+      "published_hash": "9827681eede50ac3672ee5f555eb43cc7b8431d6fef08cd72df157b95f897ae4"
     },
     {
       "title": "String prepend",
       "slug": "string-prepend",
       "state": "published",
-      "published_hash": "1d146e8426ac1f69a0719c695e0aad0e321e807da809e8928e92077585a48a7c"
+      "published_hash": "20ec07857f791cb98aa4c27b872f97eee8fe5e86e8711708d5fb53567fca621c"
     },
     {
       "title": "Strip a set of characters from a string",
@@ -5151,7 +5151,7 @@
       "title": "Strip comments from a string",
       "slug": "strip-comments-from-a-string",
       "state": "published",
-      "published_hash": "48b951f5d5a3ad3761253c825a684d1eda21a02a2f9647df6329cfae6c94a7f0"
+      "published_hash": "2055a194612f7f37657932c01384f5c1bfb1f965d3006266d3eb063a0be02f7d"
     },
     {
       "title": "Strip control codes and extended characters from a string",
@@ -5163,25 +5163,25 @@
       "title": "Strip whitespace from a string/Top and tail",
       "slug": "strip-whitespace-from-a-string-top-and-tail",
       "state": "published",
-      "published_hash": "469b2b77756773ac9b99ef984ef5fb34e2b60abed14392122815f60c99383ced"
+      "published_hash": "2347c8d65b42e825d7260f57ccb153b65539771dc216a1753efc476512c16c94"
     },
     {
       "title": "Strong and weak primes",
       "slug": "strong-and-weak-primes",
       "state": "published",
-      "published_hash": "34d26d2e67c318a16fbbb1f4de6850053c0ca927014a58788def0db3b6971064"
+      "published_hash": "58ba7eef3305dfd763365af22a667bc79c876f00aa68437668d7b0675b0bc849"
     },
     {
       "title": "Subleq",
       "slug": "subleq",
       "state": "published",
-      "published_hash": "969618a00e3e20f229980ad653593ff4661a1ff3b98090355b0553021404b540"
+      "published_hash": "ac9c6e574597a9d7468c9a8e0852913b8f42cb3c415f295a6e1b832190a16ec8"
     },
     {
       "title": "Substitution cipher",
       "slug": "substitution-cipher",
       "state": "published",
-      "published_hash": "da4f46b3ccec3b787ae0b4a9c9ed559fd9912432b468445801a85f8df7c46153"
+      "published_hash": "96539440ddfb2dd48beadf13ba986c4456d9f13d27a35e0f41e63131352366c8"
     },
     {
       "title": "Substring",
@@ -5193,25 +5193,25 @@
       "title": "Substring/Top and tail",
       "slug": "substring-top-and-tail",
       "state": "published",
-      "published_hash": "aaf68cd8a6f11f179e12474dd78403151dd95a61b412314dbe5e37af73096ede"
+      "published_hash": "469ca32a1bd3bff420349d975eafc49527a48472606dd4dcd53cba1c33cec592"
     },
     {
       "title": "Successive prime differences",
       "slug": "successive-prime-differences",
       "state": "published",
-      "published_hash": "8fb912a5d3b669e3af1884e3bb8db88bd7144e0d3b90801793e1f87c5ba3f849"
+      "published_hash": "a8aae75c37c0b2343e79757e8db280e1af13183f3a4085ac5172299463633d35"
     },
     {
       "title": "Sudan function",
       "slug": "sudan-function",
       "state": "published",
-      "published_hash": "7970872ed4487da928001640c336064dcb536acb7034be480e90cea15f5ab884"
+      "published_hash": "f7b07ae06d9bd3f171a679b62f28b9b017c1fc1034550e1a041da5c5875416b1"
     },
     {
       "title": "Sudoku",
       "slug": "sudoku",
       "state": "published",
-      "published_hash": "0e7d35987511e984534e45be71538d52588d0ca0d4eb44b7af14485d6f2e041d"
+      "published_hash": "6117f64ad36d70e3e924813b8a6d566ecd0a20110ad572cfdf208e42744d5d1e"
     },
     {
       "title": "Sum and product of an array",
@@ -5223,13 +5223,13 @@
       "title": "Sum and product puzzle",
       "slug": "sum-and-product-puzzle",
       "state": "published",
-      "published_hash": "37f1a37bb496e59130cc967275eb7fe240b25a03b37b3a9fb5a8727127387b5f"
+      "published_hash": "2c65c7e632be4f271e5ff048318a64dfd31d395a12953ad1840f6c472c89deca"
     },
     {
       "title": "Sum data type",
       "slug": "sum-data-type",
       "state": "published",
-      "published_hash": "225dbfa52ab517d65e150d31c69ac4a80780ac6d0dcf14b19730dd2d65bdf41d"
+      "published_hash": "e9c4dc3f7738d634602d85b9859ee8d3f454cc3760dff6e940333c8f42b8f81b"
     },
     {
       "title": "Sum digits of an integer",
