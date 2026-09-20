@@ -554,14 +554,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 60,
+      "lines": 40,
       "parts": [
         {
           "id": "abstract-type",
           "heading": null,
           "source": "tasks/abstract-type/abstract-type.ghul",
           "output": "tasks/abstract-type/run.expected",
-          "lines": 60,
+          "lines": 40,
           "playground": true,
           "input": false,
           "images": []
@@ -1796,14 +1796,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 126,
+      "lines": 120,
       "parts": [
         {
           "id": "balanced-ternary",
           "heading": null,
           "source": "tasks/balanced-ternary/balanced-ternary.ghul",
           "output": "tasks/balanced-ternary/run.expected",
-          "lines": 126,
+          "lines": 120,
           "playground": true,
           "input": false,
           "images": []
@@ -2658,14 +2658,14 @@
       "images": [
         "tasks/boids/boids.png.expected"
       ],
-      "lines": 198,
+      "lines": 190,
       "parts": [
         {
           "id": "boids",
           "heading": null,
           "source": "tasks/boids/boids.ghul",
           "output": "tasks/boids/run.expected",
-          "lines": 198,
+          "lines": 190,
           "playground": true,
           "input": false,
           "images": [
@@ -3115,14 +3115,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 33,
+      "lines": 27,
       "parts": [
         {
           "id": "call-an-object-method",
           "heading": null,
           "source": "tasks/call-an-object-method/call-an-object-method.ghul",
           "output": "tasks/call-an-object-method/run.expected",
-          "lines": 33,
+          "lines": 27,
           "playground": true,
           "input": false,
           "images": []
@@ -5652,14 +5652,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 58,
+      "lines": 55,
       "parts": [
         {
           "id": "deepcopy",
           "heading": null,
           "source": "tasks/deepcopy/deepcopy.ghul",
           "output": "tasks/deepcopy/run.expected",
-          "lines": 58,
+          "lines": 55,
           "playground": true,
           "input": false,
           "images": []
@@ -14628,14 +14628,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 88,
+      "lines": 86,
       "parts": [
         {
           "id": "multiton",
           "heading": null,
           "source": "tasks/multiton/multiton.ghul",
           "output": "tasks/multiton/run.expected",
-          "lines": 88,
+          "lines": 86,
           "playground": true,
           "input": false,
           "images": []
@@ -16884,14 +16884,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 64,
+      "lines": 52,
       "parts": [
         {
           "id": "polymorphic-copy",
           "heading": null,
           "source": "tasks/polymorphic-copy/polymorphic-copy.ghul",
           "output": "tasks/polymorphic-copy/run.expected",
-          "lines": 64,
+          "lines": 52,
           "playground": true,
           "input": false,
           "images": []
@@ -16910,14 +16910,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 52,
+      "lines": 38,
       "parts": [
         {
           "id": "polymorphism",
           "heading": null,
           "source": "tasks/polymorphism/polymorphism.ghul",
           "output": "tasks/polymorphism/run.expected",
-          "lines": 52,
+          "lines": 38,
           "playground": true,
           "input": false,
           "images": []
@@ -18813,14 +18813,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 46,
+      "lines": 43,
       "parts": [
         {
           "id": "scope-modifiers",
           "heading": null,
           "source": "tasks/scope-modifiers/scope-modifiers.ghul",
           "output": "tasks/scope-modifiers/run.expected",
-          "lines": 46,
+          "lines": 43,
           "playground": true,
           "input": false,
           "images": []

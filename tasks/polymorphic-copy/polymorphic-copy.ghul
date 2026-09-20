@@ -4,32 +4,20 @@ trait Copyable[T] is
     copy() -> T
 si
 
-class Animal: Copyable[Animal] abstract is
-    name: string
-
-    init(name: string) is
-        self.name = name
-    si
-
+class Animal(name: string): Copyable[Animal] abstract is
     speak() -> string
 si
 
-class CAT: Animal is
-    init(name: string) is super.init(name) si
+class CAT(name: string): Animal is
+    super(name);
 
     speak() -> string => "{name} says meow"
 
     copy() -> Animal => CAT(name)
 si
 
-class DOG: Animal is
-    tricks: LIST[string]
-
-    init(name: string, tricks: LIST[string]) is
-        super.init(name)
-
-        self.tricks = tricks
-    si
+class DOG(name: string, tricks: LIST[string]): Animal is
+    super(name);
 
     speak() -> string =>
         "{name} says woof, and can {string.join(" and ", tricks)}"

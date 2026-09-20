@@ -20,15 +20,7 @@ struct VEC(x: double, y: double) is
         fi
 si
 
-class BOID is
-    position: VEC public
-    velocity: VEC public
-
-    init(position: VEC, velocity: VEC) is
-        self.position = position
-        self.velocity = velocity
-    si
-si
+class BOID(position: VEC public, velocity: VEC public);
 
 let cave = IO.File.read_all_lines("cave.txt")
 

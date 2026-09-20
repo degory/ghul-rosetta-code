@@ -1,12 +1,6 @@
 use default
 
-struct BT is
-    digits: string
-
-    init(digits: string) is
-        self.digits = digits
-    si
-
+struct BT(digits: string) is
     to_string() -> string => digits
 si
 
