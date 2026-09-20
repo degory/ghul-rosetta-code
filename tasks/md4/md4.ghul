@@ -1,0 +1,94 @@
+use default
+
+let round_two_order =
+    [0, 4, 8, 12, 1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15]
+
+let round_three_order =
+    [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
+
+rotate_left(value: uint, count: int) -> uint =>
+    (value << count) | (value >>> (32 - count))
+
+padded(message: ubyte[]) -> LIST[ubyte] is
+    let bits = cast ulong(message.count) * 8ul
+
+    let block = LIST[ubyte](message)
+
+    block.add(0x80ub)
+
+    while block.count % 64 != 56 do
+        block.add(0ub)
+    od
+
+    for index in 0..8 do
+        block.add(cast ubyte((bits >>> (8 * index)) & 0xFFul))
+    od
+
+    return block
+si
+
+word(block: LIST[ubyte], at: int) -> uint =>
+    0..4
+        |> map(index => cast uint(block[at + index]) << (8 * index))
+        |> reduce(0u, (packed, part) => packed | part)
+
+md4(message: ubyte[]) -> string is
+    let block = padded(message)
+
+    let state = LIST([0x67452301u, 0xEFCDAB89u, 0x98BADCFEu, 0x10325476u])
+
+    let start mut = 0
+
+    while start < block.count do
+        let words =
+            0..16
+                |> map(index => word(block, start + index * 4))
+                |> collect_array()
+
+        let registers = LIST(state)
+
+        for step in 0..48 do
+            let target = (4 - step % 4) % 4
+
+            let x = registers[(target + 1) % 4]
+            let y = registers[(target + 2) % 4]
+            let z = registers[(target + 3) % 4]
+
+            let (mixed, constant, index, shift) =
+                if step < 16 then
+                    ((x & y) | (\x & z), 0u, step,
+                     [3, 7, 11, 19][step % 4])
+                elif step < 32 then
+                    ((x & y) | (x & z) | (y & z), 0x5A827999u,
+                     round_two_order[step - 16], [3, 5, 9, 13][step % 4])
+                else
+                    (x ^ y ^ z, 0x6ED9EBA1u,
+                     round_three_order[step - 32], [3, 9, 11, 15][step % 4])
+                fi
+
+            registers[target] =
+                rotate_left(
+                    registers[target] + mixed + words[index] + constant,
+                    shift)
+        od
+
+        for index in 0..4 do
+            state[index] = state[index] + registers[index]
+        od
+
+        start = start + 64
+    od
+
+    return
+        state
+            |> flat_map(value =>
+                0..4 |> map(index => (value >>> (8 * index)) & 0xFFu))
+            |> map(byte_value => "{byte_value:x2}")
+            |> join("")
+si
+
+for message in ["", "a", "abc", "Rosetta Code"] do
+    let octets = System.Text.Encoding.utf8.get_bytes(message)
+
+    write_line("{md4(octets)}  \"{message}\"")
+od
