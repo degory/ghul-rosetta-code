@@ -4607,7 +4607,8 @@
     {
       "title": "RIPEMD-160",
       "slug": "ripemd-160",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "317eb8bf1725e72df1d242c3cb5e802aeeef4ccd7cb02e9b47e29b6542c36efc"
     },
     {
       "title": "RPG attributes generator",
@@ -4713,7 +4714,8 @@
     {
       "title": "Read entire file",
       "slug": "read-entire-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b0952ef80a5782a0cd83ca4266a51c9067f38d7da33245a00769c95787c4eec3"
     },
     {
       "title": "Real constants and functions",
@@ -4745,12 +4747,14 @@
     {
       "title": "Reflection/List methods",
       "slug": "reflection-list-methods",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5f5650b2b7bd5620eb10ec94bcc109c09927122f6108a9af1620a2517ca27d4b"
     },
     {
       "title": "Reflection/List properties",
       "slug": "reflection-list-properties",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "22267976a9b77b34436d2783adca6a45b50e1ed4d8faa9e0d0dcbda0a7dd21b5"
     },
     {
       "title": "Regular expressions",
@@ -4767,12 +4771,14 @@
     {
       "title": "Remove lines from a file",
       "slug": "remove-lines-from-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "be3b1255a64a4de31e88032cb792ea4497047c1c6c54c0ecc7284638db5e38ed"
     },
     {
       "title": "Rename a file",
       "slug": "rename-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "eb090725912f2bd08db272f514b1be9fcf5c71c7a4dcaf90c79c23e82d511d23"
     },
     {
       "title": "Rendezvous",
@@ -4960,12 +4966,14 @@
     {
       "title": "Scope modifiers",
       "slug": "scope-modifiers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "755e0756b62853900a85f793fe4c44d02d408147ca59ce7566b9da72e57516c3"
     },
     {
       "title": "Sealed classes and methods",
       "slug": "sealed-classes-and-methods",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4979bc356860c2f9991d844869af9aedb54ac860f88a56d5b40775211db0ad8e"
     },
     {
       "title": "Search a list",
@@ -4976,7 +4984,8 @@
     {
       "title": "Search a list of records",
       "slug": "search-a-list-of-records",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e23894e393d375b377748b3940ae18970b1fd0f483c30c3ee0c6f9a3cb3088a9"
     },
     {
       "title": "Secure temporary file",
@@ -5011,7 +5020,8 @@
     {
       "title": "Send an unknown method call",
       "slug": "send-an-unknown-method-call",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f9b396b28dcadb78127bd560f385dc1885dbdc9b6ca95fed8d1ac4a56993e51a"
     },
     {
       "title": "Set",
