@@ -1,0 +1,15 @@
+use default
+
+let escape = cast char(27)
+
+let hide = "{escape}[?25l"
+let show = "{escape}[?25h"
+
+IO.Std.write(hide)
+write_line("the cursor is hidden while this line is written")
+
+if !IO.Std.is_output_redirected then
+    System.Threading.Thread.sleep(2000)
+fi
+
+IO.Std.write(show)

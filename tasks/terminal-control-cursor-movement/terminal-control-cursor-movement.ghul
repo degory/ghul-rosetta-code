@@ -1,0 +1,20 @@
+use default
+
+let escape = cast char(27)
+
+let moves = [
+    (what = "left one position", sequence = "[D"),
+    (what = "right one position", sequence = "[C"),
+    (what = "up one line", sequence = "[A"),
+    (what = "down one line", sequence = "[B"),
+    (what = "to the start of the line", sequence = "[G"),
+    (what = "to the end of the line", sequence = "[999C"),
+    (what = "to the top left corner", sequence = "[H"),
+    (what = "to the bottom right corner", sequence = "[999;999H")
+]
+
+for move in moves do
+    IO.Std.write("{escape}{move.sequence}")
+od
+
+write_line(moves |> map(m => m.what) |> join(", "))

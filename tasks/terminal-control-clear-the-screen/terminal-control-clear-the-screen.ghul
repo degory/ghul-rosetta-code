@@ -1,0 +1,5 @@
+use default
+
+let escape = cast char(27)
+
+IO.Std.write("{escape}[2J{escape}[H")
