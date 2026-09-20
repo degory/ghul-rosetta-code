@@ -1,0 +1,37 @@
+use default
+
+class U0(message: string): System.Exception is
+    super(message)
+si
+
+class U1(message: string): System.Exception is
+    super(message)
+si
+
+baz(which: int) is
+    if which == 0 then
+        throw U0("thrown from baz")
+    else
+        throw U1("thrown from baz")
+    fi
+si
+
+bar(which: int) is baz(which) si
+
+foo(which: int) is
+    try
+        bar(which)
+    catch e: U0
+        write_line("foo caught U0: {e.message}")
+    yrt
+si
+
+for which in [0, 1] do
+    try
+        foo(which)
+
+        write_line("foo returned without throwing")
+    catch e: U1
+        write_line("the caller caught U1: {e.message}")
+    yrt
+od

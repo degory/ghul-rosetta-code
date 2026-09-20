@@ -1,0 +1,46 @@
+use default
+
+counter: int
+
+class COUNTER is
+    made: int static
+
+    _step: int
+
+    limit: int public
+
+    init(step: int) is
+        _step = step
+        limit = 100
+
+        made = made + 1
+    si
+
+    advance() -> int is
+        counter = counter + _step
+
+        counter
+    si
+si
+
+let first = COUNTER(2)
+let second = COUNTER(5)
+
+write_line("first:  {first.advance()}")
+write_line("second: {second.advance()}")
+write_line("counters made: {COUNTER.made}")
+
+second.limit = 50
+
+write_line("second's limit is assignable from here: {second.limit}")
+
+if counter > 0 then
+    let inner = "visible only inside this if"
+
+    write_line(inner)
+fi
+
+let outer = "captured"
+let show = () => write_line("the closure sees {outer}")
+
+show()

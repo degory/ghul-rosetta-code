@@ -1,0 +1,31 @@
+use default
+
+class ACCOUNT(owner: string, balance: int) pure is
+    with_deposit(amount: int) -> ACCOUNT =>
+        ACCOUNT(owner, balance + amount)
+
+    to_string() -> string => "{owner}: {balance}"
+si
+
+let fixed = 42
+let account = ACCOUNT("Ada", 100)
+let richer = account.with_deposit(50)
+
+write_line("{account}")
+write_line("{richer}")
+
+let names = LIST[string](["Ada", "Grace"])
+let readable: Collections.List[string] = names
+
+write_line("through the read-only view: {readable |> join(", ")}")
+
+names.add("Alan")
+
+write_line("the view sees the change: {readable |> join(", ")}")
+
+let frozen = names |> collect_array()
+
+names.add("Edsger")
+
+write_line("the copy does not: {frozen |> join(", ")}")
+write_line("the number stays {fixed}")

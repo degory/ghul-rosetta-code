@@ -1,0 +1,6 @@
+Ada: 100
+Ada: 150
+through the read-only view: Ada, Grace
+the view sees the change: Ada, Grace, Alan
+the copy does not: Ada, Grace, Alan
+the number stays 42

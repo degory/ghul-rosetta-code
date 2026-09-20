@@ -833,6 +833,11 @@
       "published_hash": "781f145529d0cc99838ce6c549393e84ff43581227bb8cad5bce644a751ced2c"
     },
     {
+      "title": "Catch an exception thrown in a nested call",
+      "slug": "catch-an-exception-thrown-in-a-nested-call",
+      "state": "solved"
+    },
+    {
       "title": "Catenoid surface",
       "slug": "catenoid-surface",
       "state": "published",
@@ -1355,6 +1360,11 @@
       "published_hash": "6d88e5e8b65938efa6f0928248b12549a434cf5cdd6648d69ded53aa6ed6a563"
     },
     {
+      "title": "Deepcopy",
+      "slug": "deepcopy",
+      "state": "solved"
+    },
+    {
       "title": "Define a primitive data type",
       "slug": "define-a-primitive-data-type",
       "state": "published",
@@ -1659,6 +1669,11 @@
       "published_hash": "79eee6f60c3cbcc60c67b3d1a6abd3c3a6c2262a322d86393405f987376a4fac"
     },
     {
+      "title": "Enforced immutability",
+      "slug": "enforced-immutability",
+      "state": "solved"
+    },
+    {
       "title": "Engel expansion",
       "slug": "engel-expansion",
       "state": "published",
@@ -1817,6 +1832,11 @@
       "slug": "exponentiation-operator",
       "state": "published",
       "published_hash": "d843c9ec2583a8b33d6e61e5e0f698478b0e3f0714d9679a57898ea08d7338db"
+    },
+    {
+      "title": "Extend your language",
+      "slug": "extend-your-language",
+      "state": "solved"
     },
     {
       "title": "Extensible prime generator",
@@ -2048,6 +2068,11 @@
       "slug": "flipping-bits-game",
       "state": "published",
       "published_hash": "87c130a14c3228d355af545d23e6ca8df21c21c6fdefdc969aa7920020ab9b9e"
+    },
+    {
+      "title": "Flow-control structures",
+      "slug": "flow-control-structures",
+      "state": "solved"
     },
     {
       "title": "Floyd\u0027s triangle",
@@ -2505,6 +2530,11 @@
       }
     },
     {
+      "title": "History variables",
+      "slug": "history-variables",
+      "state": "solved"
+    },
+    {
       "title": "Hofstadter Figure-Figure sequences",
       "slug": "hofstadter-figure-figure-sequences",
       "state": "published",
@@ -2695,6 +2725,12 @@
       "published_hash": "85a2986b86518701fc1ac1cf1df873af229de55a68315b42671d66b967eda5d9"
     },
     {
+      "title": "Inner classes",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "types are declared at namespace scope only, so there is nothing to show but the absence"
+    },
+    {
       "title": "Input loop",
       "slug": "input-loop",
       "state": "published",
@@ -2735,6 +2771,12 @@
       "slug": "inverted-index",
       "state": "published",
       "published_hash": "22f8b307029a8f217074dcdf4653d41a6be513364e32c269b45824c5446dd8a6"
+    },
+    {
+      "title": "Inverted syntax",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "ghul has no inverted statement form: a condition follows if, and nothing reverses it"
     },
     {
       "title": "Isqrt (integer square root) of X",
@@ -3390,6 +3432,12 @@
       "slug": "mertens-function",
       "state": "published",
       "published_hash": "cb1ade7eb2543dd10a952a25e5e96ed926a71a671705c174f00004cad1830d64"
+    },
+    {
+      "title": "Metaprogramming",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "ghul has no macros or compile-time code generation"
     },
     {
       "title": "Metered concurrency",
@@ -4086,6 +4134,11 @@
       "published_hash": "8a589c9ac0529e8259df467f2c3fb4c0fbe2c2f88dfbe466d6bf35e078e5fbb8"
     },
     {
+      "title": "Polymorphic copy",
+      "slug": "polymorphic-copy",
+      "state": "solved"
+    },
+    {
       "title": "Polymorphism",
       "slug": "polymorphism",
       "state": "solved"
@@ -4511,6 +4564,11 @@
       "slug": "sattolo-cycle",
       "state": "published",
       "published_hash": "26a9199df576bdc9c3e09e3310a0c5107ff6a1a341a72c424e7edab7310f4fd8"
+    },
+    {
+      "title": "Scope modifiers",
+      "slug": "scope-modifiers",
+      "state": "solved"
     },
     {
       "title": "Sealed classes and methods",
@@ -5538,6 +5596,12 @@
       "published_hash": "ff960b13f642135c78ad3b9b70aa289d990fb7a88fe244eebcfae5683a0923db"
     },
     {
+      "title": "Topic variable",
+      "state": "rejected",
+      "reason": "no-equivalent",
+      "note": "the task asks how the language spells a feature it does not have"
+    },
+    {
       "title": "Topological sort",
       "slug": "topological-sort",
       "state": "published",
@@ -5695,6 +5759,11 @@
       "image_hashes": {
         "Ghul-ulam-spiral-for-primes-ulam.png": "4663fe1db02ff66b23844686d6f1774e06107873"
       }
+    },
+    {
+      "title": "Undefined values",
+      "slug": "undefined-values",
+      "state": "solved"
     },
     {
       "title": "Undulating numbers",
