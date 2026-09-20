@@ -103,6 +103,11 @@
       "published_hash": "36d665b0c8d67c80ddd1758b7153668e67abd50fa73b9993b79f70f5fbd3bd8b"
     },
     {
+      "title": "AVL tree",
+      "slug": "avl-tree",
+      "state": "solved"
+    },
+    {
       "title": "Abbreviations, easy",
       "slug": "abbreviations-easy",
       "state": "published",
@@ -684,6 +689,11 @@
       "published_hash": "0dc836f4c9ebf286f1c15cc0afc6dd3bcfae053d044ea3442d13498c4358478a"
     },
     {
+      "title": "Bor\u016Fvka algorithm",
+      "slug": "boruvka-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Boustrophedon transform",
       "slug": "boustrophedon-transform",
       "state": "published",
@@ -723,6 +733,11 @@
       "slug": "brilliant-numbers",
       "state": "published",
       "published_hash": "7ac9621052afc03aba0b6af6b4d8f25571a9bf573147a2009fccceaf10d1c301"
+    },
+    {
+      "title": "Bron-Kerbosch algorithm",
+      "slug": "bron-kerbosch-algorithm",
+      "state": "solved"
     },
     {
       "title": "Brownian tree",
@@ -1046,6 +1061,11 @@
       "slug": "closures-value-capture",
       "state": "published",
       "published_hash": "e59819401c40058b0efdfb096de2b94db3df98cff821d2cd45f9121545da4824"
+    },
+    {
+      "title": "Cocke\u2013Younger\u2013Kasami (CYK) Algorithm",
+      "slug": "cyk-algorithm",
+      "state": "solved"
     },
     {
       "title": "Code Golf",
@@ -1701,6 +1721,11 @@
       "state": "solved"
     },
     {
+      "title": "Eertree",
+      "slug": "eertree",
+      "state": "solved"
+    },
+    {
       "title": "Egyptian division",
       "slug": "egyptian-division",
       "state": "published",
@@ -2312,6 +2337,11 @@
       "reason": "needs-gui"
     },
     {
+      "title": "Gabow\u0027s algorithm",
+      "slug": "gabows-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Galton box animation",
       "slug": "galton-box-animation",
       "state": "published",
@@ -2418,6 +2448,11 @@
       "slug": "gospers-hack",
       "state": "published",
       "published_hash": "38024a1fa5ab1f89ae7cd61cfd81416e45b45fb93a37543d6c861615f19361e4"
+    },
+    {
+      "title": "Graph colouring",
+      "slug": "graph-colouring",
+      "state": "solved"
     },
     {
       "title": "Gray code",
@@ -2572,6 +2607,11 @@
       "published_hash": "ccf01cf4962ff9b85e17d3fee9c956755f347c729fc20b3bd3a029e2a3454537"
     },
     {
+      "title": "Hash join",
+      "slug": "hash-join",
+      "state": "solved"
+    },
+    {
       "title": "Haversine formula",
       "slug": "haversine-formula",
       "state": "published",
@@ -2680,8 +2720,13 @@
       "published_hash": "4e376562dde4b68e554174ac6892abd2ce1d7edf2360a7fcf7794557c129a99a"
     },
     {
+<<<<<<< HEAD
       "title": "Honeycombs",
       "slug": "honeycombs",
+=======
+      "title": "Hopcroft-Karp Algorithm",
+      "slug": "hopcroft-karp-algorithm",
+>>>>>>> 009fd617 (Mark the batch solved in the ledger)
       "state": "solved"
     },
     {
@@ -2982,6 +3027,11 @@
       "published_hash": "0ea85c964d581f58243ca8afe7bae27d71a9671cc3f0d2a346dd222345ef65fe"
     },
     {
+      "title": "Johnson\u0027s algorithm",
+      "slug": "johnsons-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Jordan-P\u00F3lya numbers",
       "slug": "jordan-polya-numbers",
       "state": "published",
@@ -3025,6 +3075,11 @@
       "slug": "jump-anywhere",
       "state": "published",
       "published_hash": "3de2ba06c1467f27da8b5f0264783285cccae184c2a75513032b6c6b98891fc4"
+    },
+    {
+      "title": "K-d tree",
+      "slug": "k-d-tree",
+      "state": "solved"
     },
     {
       "title": "K-means\u002B\u002B clustering",
@@ -3139,6 +3194,11 @@
       "slug": "kolakoski-sequence",
       "state": "published",
       "published_hash": "dba21254b0dbb786a021512d32d2a6fcf77d47a321376a7c9180851b5b998815"
+    },
+    {
+      "title": "Kosaraju",
+      "slug": "kosaraju",
+      "state": "solved"
     },
     {
       "title": "Kronecker product",
@@ -4374,6 +4434,11 @@
       "published_hash": "a8823090fe3a107eb91356b21c9dae0812ed615b11cc2087f124039ac8064168"
     },
     {
+      "title": "Priority queue",
+      "slug": "priority-queue",
+      "state": "solved"
+    },
+    {
       "title": "Problem of Apollonius",
       "slug": "problem-of-apollonius",
       "state": "published",
@@ -4831,6 +4896,11 @@
       "slug": "search-a-list",
       "state": "published",
       "published_hash": "265304ca9ac902c9aded7f0f0fe58a2762cf34285970b90151e5eeccc5cd77fe"
+    },
+    {
+      "title": "Search a list of records",
+      "slug": "search-a-list-of-records",
+      "state": "solved"
     },
     {
       "title": "Secure temporary file",
@@ -5581,6 +5651,11 @@
       "published_hash": "6117f64ad36d70e3e924813b8a6d566ecd0a20110ad572cfdf208e42744d5d1e"
     },
     {
+      "title": "Suffix tree",
+      "slug": "suffix-tree",
+      "state": "solved"
+    },
+    {
       "title": "Sum and product of an array",
       "slug": "sum-and-product-of-an-array",
       "state": "published",
@@ -5711,6 +5786,11 @@
       "slug": "tamagotchi-emulator",
       "state": "published",
       "published_hash": "43469d5065e94e6782860f5483ec74a99e556fd330e4d2226858d3664202e625"
+    },
+    {
+      "title": "Tarjan",
+      "slug": "tarjan",
+      "state": "solved"
     },
     {
       "title": "Tau function",
@@ -5870,6 +5950,11 @@
       "slug": "tokenize-a-string-with-escaping",
       "state": "published",
       "published_hash": "ff960b13f642135c78ad3b9b70aa289d990fb7a88fe244eebcfae5683a0923db"
+    },
+    {
+      "title": "Top rank per group",
+      "slug": "top-rank-per-group",
+      "state": "solved"
     },
     {
       "title": "Topic variable",
