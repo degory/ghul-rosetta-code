@@ -10684,13 +10684,23 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 90,
+      "lines": 115,
       "parts": [
         {
-          "id": "hello-world-web-server",
-          "heading": null,
-          "source": "tasks/hello-world-web-server/hello-world-web-server.ghul",
-          "output": "tasks/hello-world-web-server/run.expected",
+          "id": "hello-world-web-server/01-an-asp-net-service",
+          "heading": "An ASP.NET service, built with the Web SDK",
+          "source": "tasks/hello-world-web-server/01-an-asp-net-service/01-an-asp-net-service.ghul",
+          "output": "tasks/hello-world-web-server/01-an-asp-net-service/run.expected",
+          "lines": 25,
+          "playground": false,
+          "input": false,
+          "images": []
+        },
+        {
+          "id": "hello-world-web-server/02-a-socket-server",
+          "heading": "A socket server",
+          "source": "tasks/hello-world-web-server/02-a-socket-server/02-a-socket-server.ghul",
+          "output": "tasks/hello-world-web-server/02-a-socket-server/run.expected",
           "lines": 90,
           "playground": false,
           "input": false,
