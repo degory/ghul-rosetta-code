@@ -30,6 +30,9 @@ wiki-out/
 **/*.pdb
 *.png
 
+# an image a task reads rather than writes
+!tasks/sha-256-merkle-tree/title.png
+
 # images a task wrote in a format nothing here asserts
 *.ppm
 tasks/file-input-output/output.txt
