@@ -1,0 +1,123 @@
+use default
+
+use Edge = (from: int, to: int)
+
+class GRAPH(nodes: Collections.List[int], edges: Collections.List[Edge]) is
+    _neighbours: MAP[int, SET[int]];
+
+    init(..) is
+        _neighbours = MAP[int, SET[int]]()
+
+        for node in nodes do
+            _neighbours[node] = SET[int]()
+        od
+
+        for (from, to) in edges do
+            _neighbours[from].add(to)
+            _neighbours[to].add(from)
+        od
+    si
+
+    neighbours(node: int) -> SET[int] => _neighbours[node]
+
+    degree(node: int) -> int => _neighbours[node].count
+si
+
+parse(description: string) -> GRAPH is
+    let nodes = SET[int]()
+    let edges = LIST[Edge]()
+
+    for token in description.split([' ']) do
+        let ends =
+            token.split(['-'])
+            |> map(end => int.parse(end))
+            |> collect_list()
+
+        for end in ends do
+            nodes.add(end)
+        od
+
+        if ends.count == 2 then
+            edges.add((from = ends[0], to = ends[1]))
+        fi
+    od
+
+    GRAPH(nodes |> sort() |> collect_list(), edges)
+si
+
+colour(graph: GRAPH) -> MAP[int, int] is
+    let colours = MAP[int, int]()
+
+    while colours.count < graph.nodes.count do
+        let candidates =
+            graph.nodes
+            |> filter(node => !colours.contains_key(node))
+            |> map(node =>
+                (
+                    saturation =
+                        graph.neighbours(node)
+                        |> filter(other => colours.contains_key(other))
+                        |> map(other => colours[other])
+                        |> collect_set()
+                        .count,
+                    degree = graph.degree(node),
+                    node = node
+                ))
+            |> collect_list()
+
+        let best mut = candidates[0]
+
+        for candidate in candidates do
+            if candidate.saturation > best.saturation \/
+                candidate.saturation == best.saturation /\
+                candidate.degree > best.degree
+            then
+                best = candidate
+            fi
+        od
+
+        let taken =
+            graph.neighbours(best.node)
+            |> filter(other => colours.contains_key(other))
+            |> map(other => colours[other])
+            |> collect_set()
+
+        let next mut = 0
+
+        while taken.contains(next) do
+            next = next + 1
+        od
+
+        colours[best.node] = next
+    od
+
+    colours
+si
+
+report(name: string, description: string) is
+    let graph = parse(description)
+    let colours = colour(graph)
+
+    write_line("{name}:")
+
+    for (from, to) in graph.edges do
+        write_line("  {from}-{to} coloured {colours[from]}-{colours[to]}")
+    od
+
+    for node in graph.nodes do
+        if graph.degree(node) == 0 then
+            write_line("  {node} isolated, coloured {colours[node]}")
+        fi
+    od
+
+    let used = colours.values |> collect_set()
+
+    write_line(
+        "  {graph.nodes.count} nodes, {graph.edges.count} edges, "
+        "{used.count} colours")
+si
+
+report("Ex1", "0-1 1-2 2-0 3")
+report("Ex2", "1-6 1-7 1-8 2-5 2-7 2-8 3-5 3-6 3-8 4-5 4-6 4-7")
+report("Ex3", "1-4 1-6 1-8 3-2 3-6 3-8 5-2 5-4 5-8 7-2 7-4 7-6")
+report("Ex4", "1-6 7-1 8-1 5-2 2-7 2-8 3-5 6-3 3-8 4-5 4-6 4-7")

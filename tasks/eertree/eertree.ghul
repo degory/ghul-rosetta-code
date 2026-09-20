@@ -1,0 +1,85 @@
+use default
+
+class NODE is
+    length: int;
+    suffix: int public;
+    edges: MAP[char, int] field;
+
+    init(length: int, suffix: int) is
+        self.length = length
+        self.suffix = suffix
+
+        edges = MAP[char, int]()
+    si
+si
+
+class EERTREE(text: string) is
+    _nodes: LIST[NODE];
+
+    init(..) is
+        _nodes = LIST[NODE]([NODE(-1, 0), NODE(0, 0)])
+
+        let longest mut = 1
+
+        for at in 0..text.length do
+            let letter = text[at]
+            let parent = _extend_from(longest, at, letter)
+
+            if _nodes[parent].edges.contains_key(letter) then
+                longest = _nodes[parent].edges[letter]
+            else
+                let node = _nodes.count
+
+                _nodes.add(NODE(_nodes[parent].length + 2, 1))
+                _nodes[parent].edges[letter] = node
+
+                if _nodes[node].length > 1 then
+                    let link =
+                        _extend_from(_nodes[parent].suffix, at, letter)
+
+                    _nodes[node].suffix = _nodes[link].edges[letter]
+                fi
+
+                longest = node
+            fi
+        od
+    si
+
+    _extend_from(node: int, at: int, letter: char) -> int is
+        let current mut = node
+
+        while at - _nodes[current].length - 1 < 0 \/
+            text[at - _nodes[current].length - 1] != letter
+        do
+            current = _nodes[current].suffix
+        od
+
+        current
+    si
+
+    palindromes: Collections.List[string] is
+        let found = LIST[string]()
+
+        walk(node: int, palindrome: string) is
+            for (letter, child) in _nodes[node].edges do
+                let grown =
+                    if node == 0 then "{letter}"
+                    else "{letter}{palindrome}{letter}"
+                    fi
+
+                found.add(grown)
+
+                walk(child, grown)
+            od
+        si
+
+        walk(0, "")
+        walk(1, "")
+
+        found |> sort() |> collect_list()
+    si
+si
+
+let tree = EERTREE("eertree")
+
+write_line("[{tree.palindromes |> join(", ")}]")

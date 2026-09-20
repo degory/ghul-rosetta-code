@@ -1,0 +1,74 @@
+use default
+
+use Edge = (from: int, to: int, weight: int)
+
+let vertices = 4
+
+let edges: List[Edge] =
+    [
+        (0, 1, 10),
+        (0, 2, 6),
+        (0, 3, 5),
+        (1, 3, 15),
+        (2, 3, 4)
+    ]
+
+let tree = repeat(0, vertices) |> collect_list()
+
+for vertex in 0..vertices do
+    tree[vertex] = vertex
+od
+
+root(vertex: int) -> int is
+    if tree[vertex] != vertex then
+        tree[vertex] = root(tree[vertex])
+    fi
+
+    return tree[vertex]
+si
+
+let chosen = LIST[Edge]()
+
+let forests mut = vertices
+
+while forests > 1 do
+    let cheapest = MAP[int, Edge]()
+
+    for edge in edges do
+        let left = root(edge.from)
+        let right = root(edge.to)
+
+        if left == right then
+            continue
+        fi
+
+        for side in [left, right] do
+            if !cheapest.contains_key(side) \/
+               edge.weight < cheapest[side].weight
+            then
+                cheapest[side] = edge
+            fi
+        od
+    od
+
+    for entry in cheapest.values do
+        let left = root(entry.from)
+        let right = root(entry.to)
+
+        if left != right then
+            tree[left] = right
+
+            chosen.add(entry)
+
+            forests = forests - 1
+        fi
+    od
+od
+
+chosen
+    |> each(edge =>
+        write_line("{edge.from}--{edge.to} weight {edge.weight}"))
+
+let total = chosen |> reduce(0, (sum, edge) => sum + edge.weight)
+
+write_line("total weight {total}")

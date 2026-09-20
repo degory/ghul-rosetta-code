@@ -1,0 +1,138 @@
+use default
+
+class BIPARTITE(left: int, right: int) is
+    _adjacent: LIST[LIST[int]];
+    _partner_of_left: LIST[int?];
+    _partner_of_right: LIST[int?];
+    _distance: LIST[int?];
+
+    init(..) is
+        _adjacent = LIST[LIST[int]]()
+        _partner_of_left = LIST[int?]()
+        _partner_of_right = LIST[int?]()
+        _distance = LIST[int?]()
+
+        for _ in 0..left do
+            _adjacent.add(LIST[int]())
+            _partner_of_left.add(null)
+            _distance.add(null)
+        od
+
+        for _ in 0..right do
+            _partner_of_right.add(null)
+        od
+    si
+
+    add_edge(u: int, v: int) is
+        _adjacent[u - 1].add(v - 1)
+    si
+
+    maximum_matching: int is
+        let size mut = 0
+
+        while _layer() do
+            for u in 0..left do
+                if !_partner_of_left[u]? /\ _augment(u) then
+                    size = size + 1
+                fi
+            od
+        od
+
+        size
+    si
+
+    _layer() -> bool is
+        let waiting = Queue[int]()
+
+        for u in 0..left do
+            if _partner_of_left[u]? then
+                _distance[u] = null
+            else
+                _distance[u] = 0
+
+                waiting.enqueue(u)
+            fi
+        od
+
+        let reached mut = false
+
+        while waiting.count > 0 do
+            let u = waiting.dequeue()
+            let depth = _distance[u] ?? 0
+
+            for v in _adjacent[u] do
+                if let partner = _partner_of_right[v] then
+                    if !_distance[partner]? then
+                        _distance[partner] = depth + 1
+
+                        waiting.enqueue(partner)
+                    fi
+                else
+                    reached = true
+                fi
+            od
+        od
+
+        reached
+    si
+
+    _augment(u: int) -> bool is
+        let depth = _distance[u] ?? 0
+
+        for v in _adjacent[u] do
+            let taken =
+                if let partner = _partner_of_right[v] then
+                    (_distance[partner] ?? -1) == depth + 1 /\
+                        _augment(partner)
+                else
+                    true
+                fi
+
+            if taken then
+                _partner_of_right[v] = u
+                _partner_of_left[u] = v
+
+                return true
+            fi
+        od
+
+        _distance[u] = null
+
+        false
+    si
+si
+
+use Edge = (from: int, to: int)
+
+check(number: int, left: int, right: int,
+    edges: Collections.List[Edge], expected: int) is
+    let graph = BIPARTITE(left, right)
+
+    for (from, to) in edges do
+        graph.add_edge(from, to)
+    od
+
+    let result = graph.maximum_matching
+
+    write_line("Test {number}: Result = {result}, Expected = {expected}")
+si
+
+check(1, 3, 5, [(from = 1, to = 4)], 1)
+
+check(2, 6, 6,
+    [(from = 1, to = 4), (from = 1, to = 5), (from = 5, to = 1)], 2)
+
+check(3, 3, 3,
+    1::3
+    |> flat_map(i => 1::3 |> map(j => (from = i, to = j)))
+    |> collect_list(),
+    3)
+
+check(4, 2, 2, [], 0)
+
+check(5, 4, 4,
+    [
+        (from = 1, to = 1), (from = 1, to = 3), (from = 2, to = 3),
+        (from = 3, to = 4), (from = 4, to = 3), (from = 4, to = 2)
+    ],
+    4)

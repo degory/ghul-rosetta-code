@@ -1670,6 +1670,34 @@
       ]
     },
     {
+      "slug": "avl-tree",
+      "title": "AVL tree",
+      "url": "https://rosettacode.org/wiki/AVL_tree",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "unions",
+        "pattern-matching"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 97,
+      "parts": [
+        {
+          "id": "avl-tree",
+          "heading": null,
+          "source": "tasks/avl-tree/avl-tree.ghul",
+          "output": "tasks/avl-tree/run.expected",
+          "lines": 97,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "b-spline",
       "title": "B-spline",
       "url": "https://rosettacode.org/wiki/B-spline",
@@ -2701,6 +2729,32 @@
       ]
     },
     {
+      "slug": "boruvka-algorithm",
+      "title": "Borůvka algorithm",
+      "url": "https://rosettacode.org/wiki/Borůvka_algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 74,
+      "parts": [
+        {
+          "id": "boruvka-algorithm",
+          "heading": null,
+          "source": "tasks/boruvka-algorithm/boruvka-algorithm.ghul",
+          "output": "tasks/boruvka-algorithm/run.expected",
+          "lines": 74,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "boustrophedon-transform",
       "title": "Boustrophedon transform",
       "url": "https://rosettacode.org/wiki/Boustrophedon_transform",
@@ -2884,6 +2938,33 @@
           "source": "tasks/brilliant-numbers/brilliant-numbers.ghul",
           "output": "tasks/brilliant-numbers/run.expected",
           "lines": 72,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "bron-kerbosch-algorithm",
+      "title": "Bron-Kerbosch algorithm",
+      "url": "https://rosettacode.org/wiki/Bron-Kerbosch_algorithm",
+      "tags": [
+        "algorithms",
+        "pipes",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 85,
+      "parts": [
+        {
+          "id": "bron-kerbosch-algorithm",
+          "heading": null,
+          "source": "tasks/bron-kerbosch-algorithm/bron-kerbosch-algorithm.ghul",
+          "output": "tasks/bron-kerbosch-algorithm/run.expected",
+          "lines": 85,
           "playground": true,
           "input": false,
           "images": []
@@ -5531,6 +5612,34 @@
       ]
     },
     {
+      "slug": "cyk-algorithm",
+      "title": "Cocke–Younger–Kasami (CYK) Algorithm",
+      "url": "https://rosettacode.org/wiki/Cocke%E2%80%93Younger%E2%80%93Kasami_(CYK)_Algorithm",
+      "tags": [
+        "algorithms",
+        "parsing",
+        "unions",
+        "pattern-matching"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 75,
+      "parts": [
+        {
+          "id": "cyk-algorithm",
+          "heading": null,
+          "source": "tasks/cyk-algorithm/cyk-algorithm.ghul",
+          "output": "tasks/cyk-algorithm/run.expected",
+          "lines": 75,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "damm-algorithm",
       "title": "Damm algorithm",
       "url": "https://rosettacode.org/wiki/Damm_algorithm",
@@ -6770,6 +6879,33 @@
           "output": "tasks/echo-server/run.expected",
           "lines": 93,
           "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "eertree",
+      "title": "Eertree",
+      "url": "https://rosettacode.org/wiki/Eertree",
+      "tags": [
+        "data-structures",
+        "strings",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 85,
+      "parts": [
+        {
+          "id": "eertree",
+          "heading": null,
+          "source": "tasks/eertree/eertree.ghul",
+          "output": "tasks/eertree/run.expected",
+          "lines": 85,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -9359,6 +9495,32 @@
       ]
     },
     {
+      "slug": "gabows-algorithm",
+      "title": "Gabow's algorithm",
+      "url": "https://rosettacode.org/wiki/Gabow's_algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 115,
+      "parts": [
+        {
+          "id": "gabows-algorithm",
+          "heading": null,
+          "source": "tasks/gabows-algorithm/gabows-algorithm.ghul",
+          "output": "tasks/gabows-algorithm/run.expected",
+          "lines": 115,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "galton-box-animation",
       "title": "Galton box animation",
       "url": "https://rosettacode.org/wiki/Galton_box_animation",
@@ -9786,6 +9948,33 @@
           "source": "tasks/gospers-hack/gospers-hack.ghul",
           "output": "tasks/gospers-hack/run.expected",
           "lines": 25,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "graph-colouring",
+      "title": "Graph colouring",
+      "url": "https://rosettacode.org/wiki/Graph_colouring",
+      "tags": [
+        "algorithms",
+        "data-structures",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 123,
+      "parts": [
+        {
+          "id": "graph-colouring",
+          "heading": null,
+          "source": "tasks/graph-colouring/graph-colouring.ghul",
+          "output": "tasks/graph-colouring/run.expected",
+          "lines": 123,
           "playground": true,
           "input": false,
           "images": []
@@ -10364,6 +10553,33 @@
       ]
     },
     {
+      "slug": "hash-join",
+      "title": "Hash join",
+      "url": "https://rosettacode.org/wiki/Hash_join",
+      "tags": [
+        "algorithms",
+        "pipes",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "hash-join",
+          "heading": null,
+          "source": "tasks/hash-join/hash-join.ghul",
+          "output": "tasks/hash-join/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "haversine-formula",
       "title": "Haversine formula",
       "url": "https://rosettacode.org/wiki/Haversine_formula",
@@ -10860,6 +11076,33 @@
           "images": [
             "tasks/honeycombs/honeycomb.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "hopcroft-karp-algorithm",
+      "title": "Hopcroft-Karp Algorithm",
+      "url": "https://rosettacode.org/wiki/Hopcroft-Karp_Algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 138,
+      "parts": [
+        {
+          "id": "hopcroft-karp-algorithm",
+          "heading": null,
+          "source": "tasks/hopcroft-karp-algorithm/hopcroft-karp-algorithm.ghul",
+          "output": "tasks/hopcroft-karp-algorithm/run.expected",
+          "lines": 138,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -11918,6 +12161,32 @@
       ]
     },
     {
+      "slug": "johnsons-algorithm",
+      "title": "Johnson's algorithm",
+      "url": "https://rosettacode.org/wiki/Johnson's_algorithm",
+      "tags": [
+        "algorithms",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 144,
+      "parts": [
+        {
+          "id": "johnsons-algorithm",
+          "heading": null,
+          "source": "tasks/johnsons-algorithm/johnsons-algorithm.ghul",
+          "output": "tasks/johnsons-algorithm/run.expected",
+          "lines": 144,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "jordan-polya-numbers",
       "title": "Jordan-Pólya numbers",
       "url": "https://rosettacode.org/wiki/Jordan-Pólya_numbers",
@@ -12143,6 +12412,34 @@
           "source": "tasks/jump-anywhere/jump-anywhere.ghul",
           "output": "tasks/jump-anywhere/run.expected",
           "lines": 98,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "k-d-tree",
+      "title": "K-d tree",
+      "url": "https://rosettacode.org/wiki/K-d_tree",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "unions",
+        "closures"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 95,
+      "parts": [
+        {
+          "id": "k-d-tree",
+          "heading": null,
+          "source": "tasks/k-d-tree/k-d-tree.ghul",
+          "output": "tasks/k-d-tree/run.expected",
+          "lines": 95,
           "playground": true,
           "input": false,
           "images": []
@@ -12508,6 +12805,32 @@
           "source": "tasks/kolakoski-sequence/kolakoski-sequence.ghul",
           "output": "tasks/kolakoski-sequence/run.expected",
           "lines": 67,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "kosaraju",
+      "title": "Kosaraju",
+      "url": "https://rosettacode.org/wiki/Kosaraju",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "kosaraju",
+          "heading": null,
+          "source": "tasks/kosaraju/kosaraju.ghul",
+          "output": "tasks/kosaraju/run.expected",
+          "lines": 58,
           "playground": true,
           "input": false,
           "images": []
@@ -17601,6 +17924,34 @@
       ]
     },
     {
+      "slug": "priority-queue",
+      "title": "Priority queue",
+      "url": "https://rosettacode.org/wiki/Priority_queue",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "generics",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 93,
+      "parts": [
+        {
+          "id": "priority-queue",
+          "heading": null,
+          "source": "tasks/priority-queue/priority-queue.ghul",
+          "output": "tasks/priority-queue/run.expected",
+          "lines": 93,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "problem-of-apollonius",
       "title": "Problem of Apollonius",
       "url": "https://rosettacode.org/wiki/Problem_of_Apollonius",
@@ -19400,6 +19751,33 @@
           "source": "tasks/search-a-list/search-a-list.ghul",
           "output": "tasks/search-a-list/run.expected",
           "lines": 22,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "search-a-list-of-records",
+      "title": "Search a list of records",
+      "url": "https://rosettacode.org/wiki/Search_a_list_of_records",
+      "tags": [
+        "pipes",
+        "generics",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "search-a-list-of-records",
+          "heading": null,
+          "source": "tasks/search-a-list-of-records/search-a-list-of-records.ghul",
+          "output": "tasks/search-a-list-of-records/run.expected",
+          "lines": 41,
           "playground": true,
           "input": false,
           "images": []
@@ -22645,6 +23023,33 @@
       ]
     },
     {
+      "slug": "suffix-tree",
+      "title": "Suffix tree",
+      "url": "https://rosettacode.org/wiki/Suffix_tree",
+      "tags": [
+        "data-structures",
+        "strings",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 83,
+      "parts": [
+        {
+          "id": "suffix-tree",
+          "heading": null,
+          "source": "tasks/suffix-tree/suffix-tree.ghul",
+          "output": "tasks/suffix-tree/run.expected",
+          "lines": 83,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sum-and-product-of-an-array",
       "title": "Sum and product of an array",
       "url": "https://rosettacode.org/wiki/Sum_and_product_of_an_array",
@@ -23155,6 +23560,32 @@
           "lines": 126,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "tarjan",
+      "title": "Tarjan",
+      "url": "https://rosettacode.org/wiki/Tarjan",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "tarjan",
+          "heading": null,
+          "source": "tasks/tarjan/tarjan.ghul",
+          "output": "tasks/tarjan/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
@@ -23774,6 +24205,32 @@
           "source": "tasks/tokenize-a-string-with-escaping/tokenize-a-string-with-escaping.ghul",
           "output": "tasks/tokenize-a-string-with-escaping/run.expected",
           "lines": 26,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "top-rank-per-group",
+      "title": "Top rank per group",
+      "url": "https://rosettacode.org/wiki/Top_rank_per_group",
+      "tags": [
+        "pipes",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 49,
+      "parts": [
+        {
+          "id": "top-rank-per-group",
+          "heading": null,
+          "source": "tasks/top-rank-per-group/top-rank-per-group.ghul",
+          "output": "tasks/top-rank-per-group/run.expected",
+          "lines": 49,
           "playground": true,
           "input": false,
           "images": []
