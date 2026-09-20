@@ -92,8 +92,16 @@ task_parts() {
 }
 
 # 01-using-map becomes "Using map": the number orders the parts and does not belong in the
-# heading, and the rest is the heading with its hyphens opened out.
+# heading, and the rest is the heading with its hyphens opened out. A part whose heading a
+# directory name cannot spell carries it in a `heading` file, used as it stands.
 part_heading() {
+    local DIR=$2
+
+    if [ -n "$DIR" ] && [ -f "$DIR/heading" ] ; then
+        head -1 "$DIR/heading"
+        return 0
+    fi
+
     local NAME=${1#*-}
 
     NAME=${NAME//-/ }
@@ -380,7 +388,7 @@ emit() {
 
         FIRST=no
 
-        echo "===$(part_heading "$PART")==="
+        echo "===$(part_heading "$PART" "$ROOT/tasks/$SLUG/$PART")==="
 
         emit_body "$ROOT/tasks/$SLUG/$PART" "$PART" || return 1
     done

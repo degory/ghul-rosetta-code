@@ -1,0 +1,25 @@
+use default
+use Microsoft.AspNetCore.Builder.WebApplication
+use Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.map_get
+use System.Net.Http.HttpClient
+use System.Threading.CancellationToken
+
+let no_arguments: string[] = []
+
+let builder = WebApplication.create_builder(no_arguments)
+
+builder.configuration["Logging:LogLevel:Default"] = "None"
+
+let app = builder.build()
+
+app.urls.add("http://127.0.0.1:8080")
+
+app |> map_get("/", () => "Goodbye, World!")
+
+app.start_async(CancellationToken.none).wait()
+
+let client = HttpClient()
+
+write_line(client.get_string_async("http://127.0.0.1:8080/").result)
+
+app.stop_async(CancellationToken.none).wait()

@@ -239,7 +239,9 @@ namespace Rosetta is
                 for part_directory in numbered do
                     let name = IO.Path.get_file_name(part_directory) ?? ""
 
-                    if let part = part_of(part_directory, "{slug}/{name}", heading_of(name)) then
+                    let heading = heading_for(part_directory, name)
+
+                    if let part = part_of(part_directory, "{slug}/{name}", heading) then
                         parts.add(part)
                     else
                         _problems.add("{slug}/{name}: no source")
@@ -278,6 +280,18 @@ namespace Rosetta is
                         IO.File.exists(IO.Path.combine(directory, "run.session")),
                     images
                 )
+        si
+
+        // A part whose heading a directory name cannot spell carries it in a
+        // `heading` file, as generate-wiki.sh reads it.
+        heading_for(directory: string, name: string) -> string is
+            let written = IO.Path.combine(directory, "heading")
+
+            if IO.File.exists(written) then
+                return IO.File.read_all_lines(written)[0]
+            fi
+
+            heading_of(name)
         si
 
         // 01-using-map is "Using map", as generate-wiki.sh heads the part.
