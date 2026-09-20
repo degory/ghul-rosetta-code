@@ -1752,7 +1752,8 @@
     {
       "title": "Eertree",
       "slug": "eertree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7b3da99862b906299f74b86bdd401174bf61f1639407611a194010ee801c1fa7"
     },
     {
       "title": "Egyptian division",
@@ -1793,7 +1794,8 @@
     {
       "title": "Empty directory",
       "slug": "empty-directory",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "22f502048fbe6cb73c26228f29c0bc76b6267db70c759ab8953ee7daeb515f92"
     },
     {
       "title": "Empty program",
@@ -1816,7 +1818,8 @@
     {
       "title": "Enforced immutability",
       "slug": "enforced-immutability",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3b9834528abdf2d8af0cd70fccb9d5716708a8a7fddeae205cddf5df22bae775"
     },
     {
       "title": "Engel expansion",
@@ -1981,7 +1984,8 @@
     {
       "title": "Extend your language",
       "slug": "extend-your-language",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "10c6081d1455ff078098f0b263d0d27a1097c0de36b4d12772d1bcafc67b0e4d"
     },
     {
       "title": "Extensible prime generator",
@@ -2009,7 +2013,8 @@
     {
       "title": "Faces from a mesh",
       "slug": "faces-from-a-mesh",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0cfea83b6403d18c60d5ec85a7126a330448c119f68ea03113012b1b3b37c279"
     },
     {
       "title": "Factorial",
@@ -2171,12 +2176,17 @@
     {
       "title": "Find the intersection of a line with a plane",
       "slug": "find-the-intersection-of-a-line-with-a-plane",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d9c6564741bb4fd1f938958b012a4cc1a177ddf27349faf4af5a14b9485899e9"
     },
     {
       "title": "Find the intersection of two lines",
       "slug": "find-the-intersection-of-two-lines",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bc0bc675f0e90acee3fe32488d4d356ffcf951ae6f538aff6823f7199b8c02bc",
+      "image_hashes": {
+        "Ghul-find-the-intersection-of-two-lines-crossing.png": "f074b0ea25db288e26708a3ba3940aaeaabcc7dd"
+      }
     },
     {
       "title": "Finite state machine",
@@ -2232,7 +2242,8 @@
     {
       "title": "Flow-control structures",
       "slug": "flow-control-structures",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bd11aa673a384f631d23aab7d24e18efca942d616bc732056101828b98522536"
     },
     {
       "title": "Floyd\u0027s triangle",
@@ -2268,7 +2279,8 @@
     {
       "title": "Fork",
       "slug": "fork",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a3685e09c2129ab3c28e6883ceb4e178df6027c53c0382238429be449d2caf5e"
     },
     {
       "title": "Formal power series",
@@ -2368,7 +2380,8 @@
     {
       "title": "Gabow\u0027s algorithm",
       "slug": "gabows-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2ddafea1e22f8e6bbaa4f3a66e9c5ea79ed1deedeba9570f3d1d3bcbc02400cc"
     },
     {
       "title": "Galton box animation",
