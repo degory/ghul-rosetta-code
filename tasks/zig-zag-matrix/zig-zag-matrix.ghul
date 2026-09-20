@@ -1,14 +1,9 @@
 use default
 
 zigzag(n: int) -> LIST[LIST[int]] is
-    let cells = LIST()
-
-    for _ in 0..n do
-        cells.add(stream(0, v => v || v + 1)
-            |> take(n)
-            |> map(_ => 0)
-            |> collect_list())
-    od
+    let cells = 0..n
+        |> map(_ => repeat(0, n) |> collect_list())
+        |> collect_list()
 
     let row mut = 0
     let column mut = 0

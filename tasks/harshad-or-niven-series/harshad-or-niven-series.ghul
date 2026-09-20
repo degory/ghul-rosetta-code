@@ -8,7 +8,7 @@ digit_sum(value: int) -> int =>
     fi
 
 harshad() -> Pipe[int] =>
-    stream(1, number => number || number + 1)
+    from(1)
         |> filter(number => number % digit_sum(number) == 0)
 
 let first_twenty = harshad()

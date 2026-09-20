@@ -8,7 +8,7 @@ si
 
 permutations(size: int) -> Pipe[STEP] is
     let values = 1::size |> collect_list()
-    let facing = 1::size |> map(_ => -1) |> collect_list()
+    let facing = repeat(-1, size) |> collect_list()
     let sign mut = 1
 
     do

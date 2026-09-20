@@ -53,11 +53,10 @@ for character in text do
     weights[character] = seen + 1
 od
 
-let leaves = LIST()
-
-for symbol in weights.keys |> sort() do
-    leaves.add(LEAF(symbol, weights[symbol]))
-od
+let leaves = weights.keys
+    |> sort()
+    |> map(symbol => LEAF(symbol, weights[symbol]))
+    |> collect_list()
 
 let tree = build_tree(leaves)
 

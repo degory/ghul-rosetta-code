@@ -23,7 +23,7 @@ is_prime(number: int) -> bool =>
         |> take_while(divisor => divisor * divisor <= number)
         |> all(divisor => number % divisor != 0))
 
-from_one() -> Pipe[int] => stream(1, number => number || number + 1)
+from_one() -> Pipe[int] => from(1)
 
 show(description: string, candidates: Pipe[int]) is
     write_line("first 20 {description}Brazilian numbers:")

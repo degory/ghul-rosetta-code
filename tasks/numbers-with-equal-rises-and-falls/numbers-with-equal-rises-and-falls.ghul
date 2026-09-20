@@ -20,7 +20,7 @@ balanced(n: int) -> bool => (
     balance == 0
 )
 
-sequence() -> Pipe[int] => stream(1, n => n || n + 1) |> filter(balanced)
+sequence() -> Pipe[int] => from(1) |> filter(balanced)
 
 write_line("the first 200 numbers with equal rises and falls:")
 

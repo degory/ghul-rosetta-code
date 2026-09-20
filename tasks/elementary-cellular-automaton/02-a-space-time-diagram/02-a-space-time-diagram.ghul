@@ -19,11 +19,9 @@ neighbourhood(cells: List[bool], at: int) -> int is
 si
 
 step(rule: int, cells: List[bool]) -> List[bool] is
-    let next = LIST(cells.count)
-
-    for at in 0..cells.count do
-        next.add((rule >> neighbourhood(cells, at)) & 1 == 1)
-    od
+    let next = 0..cells.count
+        |> map(at => (rule >> neighbourhood(cells, at)) & 1 == 1)
+        |> collect_list()
 
     return next
 si

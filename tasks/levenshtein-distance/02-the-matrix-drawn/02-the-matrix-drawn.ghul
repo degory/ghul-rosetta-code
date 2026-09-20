@@ -14,11 +14,7 @@ let top = 58
 
 distances(source: string, target: string) -> LIST[LIST[int]] is
     let rows = LIST[LIST[int]]()
-    let first = LIST[int]()
-
-    for j in 0::target.length do
-        first.add(j)
-    od
+    let first = 0::target.length |> collect_list()
 
     rows.add(first)
 

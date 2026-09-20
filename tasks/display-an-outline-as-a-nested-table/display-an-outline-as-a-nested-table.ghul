@@ -96,11 +96,7 @@ let bottom = deepest(tree)
 
 pad(tree, 0, bottom)
 
-let rows = LIST[LIST[CELL]]()
-
-for _ in 0::bottom do
-    rows.add(LIST())
-od
+let rows = 0::bottom |> map(_ => LIST[CELL]()) |> collect_list()
 
 gather(tree, 0, root_colour, rows)
 

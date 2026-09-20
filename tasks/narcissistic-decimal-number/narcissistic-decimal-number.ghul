@@ -24,7 +24,7 @@ digit_count(number: int) -> int =>
 is_narcissistic(number: int) -> bool =>
     digit_powers(number, digit_count(number)) == number
 
-let narcissistic = stream(0, number => number || number + 1)
+let narcissistic = from(0)
     |> filter(is_narcissistic)
     |> take(25)
     |> map(number => "{number}")

@@ -940,14 +940,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 46,
+      "lines": 42,
       "parts": [
         {
           "id": "anaprimes",
           "heading": null,
           "source": "tasks/anaprimes/anaprimes.ghul",
           "output": "tasks/anaprimes/run.expected",
-          "lines": 46,
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []
@@ -2657,14 +2657,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 53,
+      "lines": 49,
       "parts": [
         {
           "id": "blum-integer",
           "heading": null,
           "source": "tasks/blum-integer/blum-integer.ghul",
           "output": "tasks/blum-integer/run.expected",
-          "lines": 53,
+          "lines": 49,
           "playground": true,
           "input": false,
           "images": []
@@ -2930,14 +2930,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 72,
+      "lines": 68,
       "parts": [
         {
           "id": "brilliant-numbers",
           "heading": null,
           "source": "tasks/brilliant-numbers/brilliant-numbers.ghul",
           "output": "tasks/brilliant-numbers/run.expected",
-          "lines": 72,
+          "lines": 68,
           "playground": true,
           "input": false,
           "images": []
@@ -4883,14 +4883,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 51,
+      "lines": 47,
       "parts": [
         {
           "id": "consecutive-primes-with-ascending-or-descending-differences",
           "heading": null,
           "source": "tasks/consecutive-primes-with-ascending-or-descending-differences/consecutive-primes-with-ascending-or-descending-differences.ghul",
           "output": "tasks/consecutive-primes-with-ascending-or-descending-differences/run.expected",
-          "lines": 51,
+          "lines": 47,
           "playground": true,
           "input": false,
           "images": []
@@ -5053,14 +5053,14 @@
       "images": [
         "tasks/conways-game-of-life/02-a-glider-gun/gun.png.expected"
       ],
-      "lines": 184,
+      "lines": 180,
       "parts": [
         {
           "id": "conways-game-of-life/01-a-blinker",
           "heading": "A blinker",
           "source": "tasks/conways-game-of-life/01-a-blinker/01-a-blinker.ghul",
           "output": "tasks/conways-game-of-life/01-a-blinker/run.expected",
-          "lines": 82,
+          "lines": 78,
           "playground": true,
           "input": false,
           "images": []
@@ -5301,14 +5301,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 23,
+      "lines": 17,
       "parts": [
         {
           "id": "create-a-two-dimensional-array-at-runtime",
           "heading": null,
           "source": "tasks/create-a-two-dimensional-array-at-runtime/create-a-two-dimensional-array-at-runtime.ghul",
           "output": "tasks/create-a-two-dimensional-array-at-runtime/run.expected",
-          "lines": 23,
+          "lines": 17,
           "playground": true,
           "input": false,
           "images": []
@@ -5569,14 +5569,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 146,
+      "lines": 140,
       "parts": [
         {
           "id": "cycles-of-a-permutation",
           "heading": null,
           "source": "tasks/cycles-of-a-permutation/cycles-of-a-permutation.ghul",
           "output": "tasks/cycles-of-a-permutation/run.expected",
-          "lines": 146,
+          "lines": 140,
           "playground": true,
           "input": false,
           "images": []
@@ -5597,14 +5597,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 112,
+      "lines": 108,
       "parts": [
         {
           "id": "cyclops-numbers",
           "heading": null,
           "source": "tasks/cyclops-numbers/cyclops-numbers.ghul",
           "output": "tasks/cyclops-numbers/run.expected",
-          "lines": 112,
+          "lines": 108,
           "playground": true,
           "input": false,
           "images": []
@@ -6286,14 +6286,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 125,
+      "lines": 121,
       "parts": [
         {
           "id": "display-an-outline-as-a-nested-table",
           "heading": null,
           "source": "tasks/display-an-outline-as-a-nested-table/display-an-outline-as-a-nested-table.ghul",
           "output": "tasks/display-an-outline-as-a-nested-table/run.expected",
-          "lines": 125,
+          "lines": 121,
           "playground": true,
           "input": false,
           "images": []
@@ -7010,14 +7010,14 @@
       "images": [
         "tasks/elementary-cellular-automaton/02-a-space-time-diagram/space-time.png.expected"
       ],
-      "lines": 110,
+      "lines": 106,
       "parts": [
         {
           "id": "elementary-cellular-automaton/01-three-rules",
           "heading": "Three rules",
           "source": "tasks/elementary-cellular-automaton/01-three-rules/01-three-rules.ghul",
           "output": "tasks/elementary-cellular-automaton/01-three-rules/run.expected",
-          "lines": 38,
+          "lines": 36,
           "playground": true,
           "input": false,
           "images": []
@@ -7027,7 +7027,7 @@
           "heading": "A space time diagram",
           "source": "tasks/elementary-cellular-automaton/02-a-space-time-diagram/02-a-space-time-diagram.ghul",
           "output": "tasks/elementary-cellular-automaton/02-a-space-time-diagram/run.expected",
-          "lines": 72,
+          "lines": 70,
           "playground": true,
           "input": false,
           "images": [
@@ -9878,14 +9878,14 @@
       "images": [
         "tasks/goldbachs-comet/02-the-comet/comet.png.expected"
       ],
-      "lines": 130,
+      "lines": 126,
       "parts": [
         {
           "id": "goldbachs-comet/01-the-g-numbers",
           "heading": "The g numbers",
           "source": "tasks/goldbachs-comet/01-the-g-numbers/01-the-g-numbers.ghul",
           "output": "tasks/goldbachs-comet/01-the-g-numbers/run.expected",
-          "lines": 38,
+          "lines": 34,
           "playground": true,
           "input": false,
           "images": []
@@ -11260,14 +11260,14 @@
       "images": [
         "tasks/huffman-coding/02-the-tree-drawn/huffman.png.expected"
       ],
-      "lines": 225,
+      "lines": 223,
       "parts": [
         {
           "id": "huffman-coding/01-the-code-table",
           "heading": "The code table",
           "source": "tasks/huffman-coding/01-the-code-table/01-the-code-table.ghul",
           "output": "tasks/huffman-coding/01-the-code-table/run.expected",
-          "lines": 87,
+          "lines": 86,
           "playground": true,
           "input": false,
           "images": []
@@ -11277,7 +11277,7 @@
           "heading": "The tree drawn",
           "source": "tasks/huffman-coding/02-the-tree-drawn/02-the-tree-drawn.ghul",
           "output": "tasks/huffman-coding/02-the-tree-drawn/run.expected",
-          "lines": 138,
+          "lines": 137,
           "playground": true,
           "input": false,
           "images": [
@@ -11299,14 +11299,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 61,
+      "lines": 57,
       "parts": [
         {
           "id": "humble-numbers",
           "heading": null,
           "source": "tasks/humble-numbers/humble-numbers.ghul",
           "output": "tasks/humble-numbers/run.expected",
-          "lines": 61,
+          "lines": 57,
           "playground": true,
           "input": false,
           "images": []
@@ -12629,14 +12629,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 101,
+      "lines": 93,
       "parts": [
         {
           "id": "knapsack-problem-0-1",
           "heading": null,
           "source": "tasks/knapsack-problem-0-1/knapsack-problem-0-1.ghul",
           "output": "tasks/knapsack-problem-0-1/run.expected",
-          "lines": 101,
+          "lines": 93,
           "playground": true,
           "input": false,
           "images": []
@@ -13210,14 +13210,14 @@
       "images": [
         "tasks/levenshtein-distance/02-the-matrix-drawn/levenshtein.png.expected"
       ],
-      "lines": 185,
+      "lines": 177,
       "parts": [
         {
           "id": "levenshtein-distance/01-the-distance",
           "heading": "The distance",
           "source": "tasks/levenshtein-distance/01-the-distance/01-the-distance.ghul",
           "output": "tasks/levenshtein-distance/01-the-distance/run.expected",
-          "lines": 33,
+          "lines": 29,
           "playground": true,
           "input": false,
           "images": []
@@ -13227,7 +13227,7 @@
           "heading": "The matrix drawn",
           "source": "tasks/levenshtein-distance/02-the-matrix-drawn/02-the-matrix-drawn.ghul",
           "output": "tasks/levenshtein-distance/02-the-matrix-drawn/run.expected",
-          "lines": 152,
+          "lines": 148,
           "playground": true,
           "input": false,
           "images": [
@@ -15174,14 +15174,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 61,
+      "lines": 59,
       "parts": [
         {
           "id": "move-to-front-algorithm",
           "heading": null,
           "source": "tasks/move-to-front-algorithm/move-to-front-algorithm.ghul",
           "output": "tasks/move-to-front-algorithm/run.expected",
-          "lines": 61,
+          "lines": 59,
           "playground": true,
           "input": false,
           "images": []
@@ -15669,14 +15669,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 54,
+      "lines": 50,
       "parts": [
         {
           "id": "nested-function/01-a-named-function-inside-a-named-function",
           "heading": "A named function inside a named function",
           "source": "tasks/nested-function/01-a-named-function-inside-a-named-function/01-a-named-function-inside-a-named-function.ghul",
           "output": "tasks/nested-function/01-a-named-function-inside-a-named-function/run.expected",
-          "lines": 20,
+          "lines": 18,
           "playground": true,
           "input": false,
           "images": []
@@ -15686,7 +15686,7 @@
           "heading": "A function literal inside a named function",
           "source": "tasks/nested-function/02-a-function-literal-inside-a-named-function/02-a-function-literal-inside-a-named-function.ghul",
           "output": "tasks/nested-function/02-a-function-literal-inside-a-named-function/run.expected",
-          "lines": 20,
+          "lines": 18,
           "playground": true,
           "input": false,
           "images": []
@@ -20870,14 +20870,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 129,
+      "lines": 125,
       "parts": [
         {
           "id": "smith-waterman-algorithm",
           "heading": null,
           "source": "tasks/smith-waterman-algorithm/smith-waterman-algorithm.ghul",
           "output": "tasks/smith-waterman-algorithm/run.expected",
-          "lines": 129,
+          "lines": 125,
           "playground": true,
           "input": false,
           "images": []
@@ -26646,14 +26646,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 46,
+      "lines": 41,
       "parts": [
         {
           "id": "zig-zag-matrix",
           "heading": null,
           "source": "tasks/zig-zag-matrix/zig-zag-matrix.ghul",
           "output": "tasks/zig-zag-matrix/run.expected",
-          "lines": 46,
+          "lines": 41,
           "playground": true,
           "input": false,
           "images": []
@@ -26699,14 +26699,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 86,
+      "lines": 82,
       "parts": [
         {
           "id": "zumkeller-numbers",
           "heading": null,
           "source": "tasks/zumkeller-numbers/zumkeller-numbers.ghul",
           "output": "tasks/zumkeller-numbers/run.expected",
-          "lines": 86,
+          "lines": 82,
           "playground": false,
           "input": false,
           "images": []

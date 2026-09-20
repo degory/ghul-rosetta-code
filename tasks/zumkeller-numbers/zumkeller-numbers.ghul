@@ -28,11 +28,7 @@ is_zumkeller(n: int) -> bool is
     fi
 
     let half = total / 2
-    let reachable = LIST(half + 1)
-
-    for _ in 0::half do
-        reachable.add(false)
-    od
+    let reachable = repeat(false, half + 1) |> collect_list()
 
     reachable[0] = true
 
@@ -63,7 +59,7 @@ show(heading: string, numbers: Pipe[int], per_line: int, width: int) is
     write_line("")
 si
 
-let counting = stream(1, n => n || n + 1)
+let counting = from(1)
 
 show(
     "first 220 Zumkeller numbers:",
