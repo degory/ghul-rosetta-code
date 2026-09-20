@@ -15,6 +15,7 @@ size_of[long]("long")
 size_of[double]("double")
 size_of[decimal]("decimal")
 size_of[POINT]("POINT")
+size_of[word]("word, the width of a pointer")
 
 let text = "hello"
 let numbers = [1, 2, 3, 4]

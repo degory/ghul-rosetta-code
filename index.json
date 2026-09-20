@@ -10169,6 +10169,32 @@
       ]
     },
     {
+      "slug": "host-introspection",
+      "title": "Host introspection",
+      "url": "https://rosettacode.org/wiki/Host_introspection",
+      "tags": [
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 12,
+      "parts": [
+        {
+          "id": "host-introspection",
+          "heading": null,
+          "source": "tasks/host-introspection/host-introspection.ghul",
+          "output": "tasks/host-introspection/run.expected",
+          "lines": 12,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hough-transform",
       "title": "Hough transform",
       "url": "https://rosettacode.org/wiki/Hough_transform",
@@ -23551,14 +23577,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 23,
+      "lines": 24,
       "parts": [
         {
           "id": "variable-size-get",
           "heading": null,
           "source": "tasks/variable-size-get/variable-size-get.ghul",
           "output": "tasks/variable-size-get/run.expected",
-          "lines": 23,
+          "lines": 24,
           "playground": true,
           "input": false,
           "images": []

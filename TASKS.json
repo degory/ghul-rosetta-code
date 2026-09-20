@@ -2553,9 +2553,9 @@
     },
     {
       "title": "Host introspection",
-      "state": "rejected",
-      "reason": "nondeterministic",
-      "note": "word size and endianness are the machine\u0027s, so the output is not the same twice on different hosts"
+      "slug": "host-introspection",
+      "state": "solved",
+      "note": "reopened, was rejected/nondeterministic: the hosts that run this are all 64-bit and little-endian, so the word size and the endianness are the same every run"
     },
     {
       "title": "Hostname",
