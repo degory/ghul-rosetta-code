@@ -1,17 +1,10 @@
 use default
 use System.DateTime
 
-// Where the entries live. A real invocation keeps them in the user's home
-// directory; the demo below points this at a file of its own so a run leaves
-// nothing behind.
 let default_file = IO.Path.combine(
     System.Environment.get_folder_path(System.Environment_SpecialFolder.USER_PROFILE),
     ".simple-database")
 
-// One record a line, tab separated, oldest first: a format a person can read
-// and any other tool can parse, which is what the task asks structured storage
-// to be. A tab cannot appear in a field because the fields are read from the
-// command line and checked on the way in.
 class ENTRY(date: DateTime, category: string, description: string) is
     line: string => "{date:yyyy-MM-dd}\t{category}\t{description}"
 
@@ -50,8 +43,6 @@ si
 latest(file: string) -> ENTRY? =>
     read_all(file) |> max_by(entry => entry.date)
 
-// The newest entry of each category, in category order, which is what makes
-// the category worth storing.
 latest_by_category(file: string) -> LIST[ENTRY] is
     let newest = read_all(file)
         |> group_by(entry => entry.category)
@@ -86,9 +77,6 @@ usage() is
     write_line("  demo                                       all of the above, on a file of its own")
 si
 
-// Everything the tool does, against a database that exists for the length of
-// this run: the entry a reader of the wiki wants to see without a session of
-// their own.
 demo() is
     let file = IO.Path.combine(IO.Path.get_temp_path(), "simple-database-{System.Guid.new_guid()}")
 

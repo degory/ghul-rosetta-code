@@ -1,7 +1,5 @@
 use default
 
-// The name the program was invoked by, which for a .NET program is the host's
-// path to the assembly rather than anything the shell typed.
 let invoked = System.Environment.get_command_line_args()[0]
 
 write_line("invoked as: {IO.Path.get_file_name(invoked)}")
