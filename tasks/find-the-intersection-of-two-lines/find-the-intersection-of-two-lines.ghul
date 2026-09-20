@@ -1,0 +1,59 @@
+use default
+use Raster.IMAGE
+use Point = (x: double, y: double)
+
+-(a: Point, b: Point) -> Point => (x = a.x - b.x, y = a.y - b.y)
++(a: Point, b: Point) -> Point => (x = a.x + b.x, y = a.y + b.y)
+*(p: Point, k: double) -> Point => (x = p.x * k, y = p.y * k)
+×(a: Point, b: Point) -> double => a.x * b.y - a.y * b.x
+
+crossing(a: Point, b: Point, c: Point, d: Point) -> Point? is
+    let along = b - a
+    let across = d - c
+
+    let divisor = along × across
+
+    if divisor == 0.0D then
+        return null
+    fi
+
+    return a + along * ((c - a) × across / divisor)
+si
+
+let (a, b) = ((x = 4.0D, y = 0.0D), (x = 6.0D, y = 10.0D))
+let (c, d) = ((x = 0.0D, y = 3.0D), (x = 10.0D, y = 7.0D))
+
+let meeting = crossing(a, b, c, d)
+
+write_line("{meeting}")
+
+let image = IMAGE(480, 360)
+
+image.view(-1.0D, -1.0D, 11.0D, 11.0D)
+image.clear(252ub, 250ub, 245ub)
+image.stroke(2.0D)
+
+drawn(image: IMAGE, from: Point, to: Point) is
+    let along = to - from
+
+    let start = from - along
+    let end = to + along
+
+    image.line(start.x, start.y, end.x, end.y)
+si
+
+image.colour(20ub, 60ub, 200ub)
+drawn(image, a, b)
+
+image.colour(200ub, 60ub, 20ub)
+drawn(image, c, d)
+
+if let point = meeting then
+    image.colour(20ub, 120ub, 40ub)
+    image.dot(point.x, point.y, 5.0D)
+    image.text(point.x + 0.3D, point.y + 0.3D, 16.0D, "{point}")
+fi
+
+image.write("crossing.png")
+
+image.show("crossing.png")

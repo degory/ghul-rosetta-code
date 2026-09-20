@@ -1,0 +1,25 @@
+square
+  (5, 5): in
+  (5, 8): in
+  (-10, 5): out
+  (0, 5): in
+  (10, 5): out
+  (8, 5): in
+  (10, 10): out
+square with hole
+  (5, 5): out
+  (5, 8): in
+  (-10, 5): out
+  (0, 5): in
+  (10, 5): out
+  (8, 5): in
+  (10, 10): out
+hexagon
+  (5, 5): in
+  (5, 8): in
+  (-10, 5): out
+  (0, 5): in
+  (10, 5): out
+  (8, 5): in
+  (10, 10): out
+<<image inside.png>>

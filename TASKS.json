@@ -883,6 +883,11 @@
       }
     },
     {
+      "title": "Catmull\u2013Clark subdivision surface",
+      "slug": "catmull-clark-subdivision-surface",
+      "state": "solved"
+    },
+    {
       "title": "Chaos game",
       "slug": "chaos-game",
       "state": "published",
@@ -916,6 +921,11 @@
       "image_hashes": {
         "Ghul-check-if-a-polygon-overlaps-with-a-rectangle-overlap.png": "8876509285b7150c2318093602b506259e4a759b"
       }
+    },
+    {
+      "title": "Check if two polygons overlap",
+      "slug": "check-if-two-polygons-overlap",
+      "state": "solved"
     },
     {
       "title": "Check input device is a terminal",
@@ -1938,6 +1948,11 @@
       "reason": "needs-network"
     },
     {
+      "title": "Faces from a mesh",
+      "slug": "faces-from-a-mesh",
+      "state": "solved"
+    },
+    {
       "title": "Factorial",
       "slug": "factorial",
       "state": "published",
@@ -2093,6 +2108,16 @@
       "slug": "find-square-difference",
       "state": "published",
       "published_hash": "735a73b51a8813002b08638bc84d52b35d3a8cd170df787ab66eafe625783e4b"
+    },
+    {
+      "title": "Find the intersection of a line with a plane",
+      "slug": "find-the-intersection-of-a-line-with-a-plane",
+      "state": "solved"
+    },
+    {
+      "title": "Find the intersection of two lines",
+      "slug": "find-the-intersection-of-two-lines",
+      "state": "solved"
     },
     {
       "title": "Finite state machine",
@@ -2633,6 +2658,11 @@
       "slug": "honaker-primes",
       "state": "published",
       "published_hash": "4e376562dde4b68e554174ac6892abd2ce1d7edf2360a7fcf7794557c129a99a"
+    },
+    {
+      "title": "Honeycombs",
+      "slug": "honeycombs",
+      "state": "solved"
     },
     {
       "title": "Horizontal sundial calculations",
@@ -4391,6 +4421,11 @@
       "published_hash": "4848583d2f94aef6c3ccddf0e88863b0c0140f33297cee582a6e3aba4019dfa2"
     },
     {
+      "title": "Quickhull",
+      "slug": "quickhull",
+      "state": "solved"
+    },
+    {
       "title": "Quickselect algorithm",
       "slug": "quickselect-algorithm",
       "state": "published",
@@ -4486,6 +4521,11 @@
       "slug": "rational-calculator",
       "state": "published",
       "published_hash": "df30403756c1041cc5b6b3c8bed02fe4572b28390b81bc1513dce43a2b00d5f1"
+    },
+    {
+      "title": "Ray-casting algorithm",
+      "slug": "ray-casting-algorithm",
+      "state": "solved"
     },
     {
       "title": "Read a configuration file",

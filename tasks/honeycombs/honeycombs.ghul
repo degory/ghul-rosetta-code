@@ -1,0 +1,112 @@
+use default
+use Raster.IMAGE
+use Raster.SHAPES
+use Raster.Anchor
+
+let radius = 1.0D
+let rise = System.Math.sqrt(3.0D)
+
+let pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" |> collect_list()
+
+let seed mut = 20260920u
+
+next_letter() -> char is
+    seed = seed * 1103515245u + 12345u
+
+    let drawn = cast int(seed >>> 16) % pool.count
+
+    let letter = pool[drawn]
+
+    pool.remove_at(drawn)
+
+    return letter
+si
+
+let letters = 0..20 |> map(_ => next_letter()) |> collect_list()
+
+let cells =
+    0..20
+        |> map(index =>
+            let column = index / 4 in
+            let row = index % 4 in
+            (letter = letters[index],
+             x = cast double(column) * 1.5D * radius,
+             y = cast double(row) * rise * radius -
+                 (if column % 2 == 1 then rise * radius / 2.0D
+                  else 0.0D fi)))
+        |> collect_list()
+
+let chosen = LIST[char]()
+
+corners(x: double, y: double) -> LIST[(double, double)] =>
+    0..6
+        |> map(corner =>
+            let angle = cast double(corner) * System.Math.pi / 3.0D in
+            (x + radius * 0.92D * System.Math.cos(angle),
+             y + radius * 0.92D * System.Math.sin(angle)))
+        |> collect_list()
+
+draw() is
+    let image = IMAGE(420, 300)
+
+    image.view(-1.5D, -1.5D, 8.0D, 7.0D)
+    image.clear(252ub, 250ub, 245ub)
+
+    let comb = SHAPES()
+
+    for cell in cells do
+        if chosen |> any(letter => letter == cell.letter) then
+            comb.add(corners(cell.x, cell.y), 230ub, 170ub, 60ub)
+        else
+            comb.add(corners(cell.x, cell.y), 120ub, 170ub, 220ub)
+        fi
+    od
+
+    image.fill(comb)
+
+    image.colour(30ub, 30ub, 50ub)
+
+    for cell in cells do
+        image.text(cell.x, cell.y - 0.3D, 20.0D, "{cell.letter}",
+                   Anchor.CENTRE)
+    od
+
+    image.write("honeycomb.png")
+
+    image.show("honeycomb.png")
+si
+
+draw()
+
+while chosen.count < cells.count do
+    write_line("letter:")
+
+    let typed = IO.Std.read_line()
+
+    if !typed? then
+        break
+    fi
+
+    let letter = typed.trim().to_upper()
+
+    if letter.length != 1 then
+        write_line("  type one letter")
+        continue
+    fi
+
+    let wanted = letter[0]
+
+    if !(cells |> any(cell => cell.letter == wanted)) then
+        write_line("  {wanted} is not in the honeycomb")
+    elif chosen |> any(already => already == wanted) then
+        write_line("  {wanted} was already chosen")
+    else
+        chosen.add(wanted)
+
+        write_line("  chose {wanted}")
+
+        draw()
+    fi
+od
+
+write_line("chosen: {chosen |> join("")}")
