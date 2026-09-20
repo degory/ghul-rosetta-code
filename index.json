@@ -14885,14 +14885,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 32,
+      "lines": 36,
       "parts": [
         {
           "id": "object-serialization",
           "heading": null,
           "source": "tasks/object-serialization/object-serialization.ghul",
           "output": "tasks/object-serialization/run.expected",
-          "lines": 32,
+          "lines": 36,
           "playground": false,
           "input": false,
           "images": []

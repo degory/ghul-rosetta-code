@@ -1,7 +1,11 @@
 use default
 use System.Text.Json.JsonSerializer
 
-class ENTRY(name: string public, legs: int public, tags: LIST[string] public) is
+class ENTRY(
+    name: string public,
+    legs: int public,
+    tags: LIST[string] public
+) is
     to_string() -> string =>
         "{name}, {legs} legs, tagged {tags |> join(" and ")}"
 si
