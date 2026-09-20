@@ -21935,14 +21935,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 15,
+      "lines": 16,
       "parts": [
         {
           "id": "terminal-control-dimensions",
           "heading": null,
           "source": "tasks/terminal-control-dimensions/terminal-control-dimensions.ghul",
           "output": "tasks/terminal-control-dimensions/run.expected",
-          "lines": 15,
+          "lines": 16,
           "playground": true,
           "input": false,
           "images": []
@@ -22087,14 +22087,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 9,
+      "lines": 11,
       "parts": [
         {
           "id": "terminal-control-unicode-output",
           "heading": null,
           "source": "tasks/terminal-control-unicode-output/terminal-control-unicode-output.ghul",
           "output": "tasks/terminal-control-unicode-output/run.expected",
-          "lines": 9,
+          "lines": 11,
           "playground": true,
           "input": false,
           "images": []
