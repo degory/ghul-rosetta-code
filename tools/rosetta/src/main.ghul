@@ -398,6 +398,15 @@ si
 image_file(root: string, slug: string, name: string) -> string is
     let written = task_file(root, slug, name)
 
+    // a task the runner drives is not run when its markup is generated, so
+    // fall back to the captured expectation, which the test asserts is the
+    // same image
+    let captured = "{written}.expected"
+
+    if !IO.File.exists(written) /\ IO.File.exists(captured) then
+        return captured
+    fi
+
     if !name.ends_with(".gif") \/ IO.File.exists(written) then
         return written
     fi

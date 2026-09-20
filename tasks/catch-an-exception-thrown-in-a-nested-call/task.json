@@ -1,7 +1,9 @@
 {
-    "task": "Catch an exception thrown in a nested call",
-    "url": "https://rosettacode.org/wiki/Catch_an_exception_thrown_in_a_nested_call",
+    "task": "Exceptions/Catch an exception thrown in a nested call",
+    "url": "https://rosettacode.org/wiki/Exceptions/Catch_an_exception_thrown_in_a_nested_call",
     "status": "solved",
-    "tags": ["basics"],
+    "tags": [
+        "basics"
+    ],
     "interest": 2
 }

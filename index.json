@@ -2282,7 +2282,7 @@
         "dotnet-interop"
       ],
       "interest": 3,
-      "playground": false,
+      "playground": true,
       "input": false,
       "images": [],
       "lines": 45,
@@ -2293,7 +2293,7 @@
           "source": "tasks/bitcoin-address-validation/bitcoin-address-validation.ghul",
           "output": "tasks/bitcoin-address-validation/run.expected",
           "lines": 45,
-          "playground": false,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -2946,8 +2946,8 @@
     },
     {
       "slug": "bron-kerbosch-algorithm",
-      "title": "Bron-Kerbosch algorithm",
-      "url": "https://rosettacode.org/wiki/Bron-Kerbosch_algorithm",
+      "title": "Bron–Kerbosch algorithm",
+      "url": "https://rosettacode.org/wiki/Bron–Kerbosch_algorithm",
       "tags": [
         "algorithms",
         "pipes",
@@ -3489,8 +3489,8 @@
     },
     {
       "slug": "catch-an-exception-thrown-in-a-nested-call",
-      "title": "Catch an exception thrown in a nested call",
-      "url": "https://rosettacode.org/wiki/Catch_an_exception_thrown_in_a_nested_call",
+      "title": "Exceptions/Catch an exception thrown in a nested call",
+      "url": "https://rosettacode.org/wiki/Exceptions/Catch_an_exception_thrown_in_a_nested_call",
       "tags": [
         "basics"
       ],

@@ -105,7 +105,8 @@
     {
       "title": "AVL tree",
       "slug": "avl-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8230aae2984f6eb295e5b250aad24f2a5cd7ae934a644e32ef423d09252c51fa"
     },
     {
       "title": "Abbreviations, easy",
@@ -274,7 +275,8 @@
     {
       "title": "Append a record to the end of a text file",
       "slug": "append-a-record-to-the-end-of-a-text-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fd6b83eeeae928edf715da92321b165fab38e274cd3aa5f02a0e79c271952429"
     },
     {
       "title": "Apply a callback to an array",
@@ -563,12 +565,14 @@
     {
       "title": "Bitcoin/address validation",
       "slug": "bitcoin-address-validation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "21f52b52ab63f5aad0105a13dc31f79970cb5eacf0609ac25d7510046810528b"
     },
     {
       "title": "Bitcoin/public point to address",
       "slug": "bitcoin-public-point-to-address",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "16582ddf7dcdbfea319f0d2764d0607799e31c1e1e834bd78a81f652e83cd609"
     },
     {
       "title": "Bitmap",
@@ -691,7 +695,8 @@
     {
       "title": "Bor\u016Fvka algorithm",
       "slug": "boruvka-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "709d99c5b79d1eef3b9918da40fc6116aee53f5cfff8c836658420d479caa810"
     },
     {
       "title": "Boustrophedon transform",
@@ -726,7 +731,8 @@
     {
       "title": "Break OO privacy",
       "slug": "break-oo-privacy",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c835feaf5e6c4ea110bfbf2853958506e6b7d8feb854c0e8e48ee29ff8da98c1"
     },
     {
       "title": "Brilliant numbers",
@@ -735,9 +741,10 @@
       "published_hash": "7ac9621052afc03aba0b6af6b4d8f25571a9bf573147a2009fccceaf10d1c301"
     },
     {
-      "title": "Bron-Kerbosch algorithm",
+      "title": "Bron\u2013Kerbosch algorithm",
       "slug": "bron-kerbosch-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "362408ca8ccf8342b9a42bc359e8a79541b0bc1cc64302f84280b8de7030a241"
     },
     {
       "title": "Brownian tree",
@@ -789,12 +796,14 @@
     {
       "title": "CSV data manipulation",
       "slug": "csv-data-manipulation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2ee62f591f4a5f89bd4a66af7a575770c0236ce34eb1fdbf884737e1d23a3b69"
     },
     {
       "title": "CSV to HTML translation",
       "slug": "csv-to-html-translation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a6ae2d8c487f64cbd1a4388f096db4c6705b3956ab0a852f54ba4722b251fd52"
     },
     {
       "title": "Caesar cipher",
@@ -829,7 +838,8 @@
     {
       "title": "Call an object method",
       "slug": "call-an-object-method",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4f72805214f57d637fd4b53adbc60f56456ed73990d1682628b69528b01f58b9"
     },
     {
       "title": "Camel case and snake case",
@@ -889,11 +899,6 @@
       "published_hash": "781f145529d0cc99838ce6c549393e84ff43581227bb8cad5bce644a751ced2c"
     },
     {
-      "title": "Catch an exception thrown in a nested call",
-      "slug": "catch-an-exception-thrown-in-a-nested-call",
-      "state": "solved"
-    },
-    {
       "title": "Catenoid surface",
       "slug": "catenoid-surface",
       "state": "published",
@@ -905,7 +910,11 @@
     {
       "title": "Catmull\u2013Clark subdivision surface",
       "slug": "catmull-clark-subdivision-surface",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9dccdcd26de3385e6077a5b730ecc3cb31fbc3b3ec6eb8accc491184445f54ab",
+      "image_hashes": {
+        "Ghul-catmull-clark-subdivision-surface-subdivided.png": "d5bbca1f97c9835d9aa7126010fbd1e73366396d"
+      }
     },
     {
       "title": "Chaos game",
@@ -945,17 +954,23 @@
     {
       "title": "Check if two polygons overlap",
       "slug": "check-if-two-polygons-overlap",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4e2dfa3e95de921b885ce29a0c189862b84f56795290929d7821b9e7b41a51db",
+      "image_hashes": {
+        "Ghul-check-if-two-polygons-overlap-polygons.png": "bf5f51d5e480786b4e8679184a9b0628e8ae063a"
+      }
     },
     {
       "title": "Check input device is a terminal",
       "slug": "check-input-device-is-a-terminal",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b38150e098dfbbe6f3c5e128c6b22f96337fe00e3740beada8c672df8a7c649d"
     },
     {
       "title": "Check output device is a terminal",
       "slug": "check-output-device-is-a-terminal",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d36acdc2c6378e1b1d10f15f9a715c9bf91325d88206949501b77336ac547214"
     },
     {
       "title": "Check that file exists",
@@ -1065,7 +1080,8 @@
     {
       "title": "Cocke\u2013Younger\u2013Kasami (CYK) Algorithm",
       "slug": "cyk-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "590845906957987119d03e649892bc0094909ad87a7458707c7b7a66571b3cde"
     },
     {
       "title": "Code Golf",
@@ -1162,8 +1178,9 @@
     {
       "title": "Command-line arguments",
       "slug": "command-line-arguments",
-      "state": "solved",
-      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args"
+      "state": "published",
+      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args",
+      "published_hash": "74c234d9b3e0e7ec0cd94bb6d4cbba7a7ea4f5f6cfd2313b16158418e0e7fb56"
     },
     {
       "title": "Comments",
@@ -1313,7 +1330,8 @@
     {
       "title": "Copy stdin to stdout",
       "slug": "copy-stdin-to-stdout",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bb7cb1948b446d4be2090752554adbf77cdbad61be043b5c73e82b3d2922f78d"
     },
     {
       "title": "Count in factors",
@@ -1342,7 +1360,8 @@
     {
       "title": "Create a file",
       "slug": "create-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "68685264c187657a25f1a3d83f8e44fe7e04ad91712013cb182e3b2c01bbf458"
     },
     {
       "title": "Create a file on magnetic tape",
@@ -1358,7 +1377,8 @@
     {
       "title": "Create an HTML table",
       "slug": "create-an-html-table",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ee0af45cbe9697a461885f6c45215226cfeba5425600461413863955a1cbecd6"
     },
     {
       "title": "Cuban primes",
@@ -1375,7 +1395,8 @@
     {
       "title": "Currying",
       "slug": "currying",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f2575425a732096800e8bdd88234063c5bfecf329388d07310024b2bf9d1b6d0"
     },
     {
       "title": "Curve that touches three points",
@@ -1458,7 +1479,8 @@
     {
       "title": "Deepcopy",
       "slug": "deepcopy",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "398589bcdd6b363309508fcdad0f8a10a3a4e101be9b090930514c5e2ee44de9"
     },
     {
       "title": "Define a primitive data type",
@@ -1469,12 +1491,14 @@
     {
       "title": "Delegates",
       "slug": "delegates",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "07bd3fd751e76934e7317d180e285c867feac1c7703a9f366cd32a9ac0d8b2b7"
     },
     {
       "title": "Delete a file",
       "slug": "delete-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3a76bf406c0870bd1ac395febb2b37f83d69b5ed1fae8551524cc5ddfe327a7d"
     },
     {
       "title": "Department numbers",
@@ -1718,12 +1742,14 @@
     {
       "title": "Echo server",
       "slug": "echo-server",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "06babde145fc75ad495dae8ac65a194475d1cc2f73ad98c37135c139f712f2ca"
     },
     {
       "title": "Eertree",
       "slug": "eertree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7b3da99862b906299f74b86bdd401174bf61f1639407611a194010ee801c1fa7"
     },
     {
       "title": "Egyptian division",
@@ -1764,7 +1790,8 @@
     {
       "title": "Empty directory",
       "slug": "empty-directory",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "22f502048fbe6cb73c26228f29c0bc76b6267db70c759ab8953ee7daeb515f92"
     },
     {
       "title": "Empty program",
@@ -1787,7 +1814,8 @@
     {
       "title": "Enforced immutability",
       "slug": "enforced-immutability",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3b9834528abdf2d8af0cd70fccb9d5716708a8a7fddeae205cddf5df22bae775"
     },
     {
       "title": "Engel expansion",
@@ -1902,6 +1930,12 @@
       "published_hash": "e979b069002dce6899b688a11e9c37525b77ee8197b92004f0ed08535fc9b986"
     },
     {
+      "title": "Exceptions/Catch an exception thrown in a nested call",
+      "slug": "catch-an-exception-thrown-in-a-nested-call",
+      "state": "published",
+      "published_hash": "98ed74d636972328ebd7f8e260324d9f1fd21c73553fb720fb9e3b4b93a36d9b"
+    },
+    {
       "title": "Execute Brain****",
       "slug": "execute-brain",
       "state": "published",
@@ -1952,7 +1986,8 @@
     {
       "title": "Extend your language",
       "slug": "extend-your-language",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "10c6081d1455ff078098f0b263d0d27a1097c0de36b4d12772d1bcafc67b0e4d"
     },
     {
       "title": "Extensible prime generator",
@@ -1980,7 +2015,8 @@
     {
       "title": "Faces from a mesh",
       "slug": "faces-from-a-mesh",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0cfea83b6403d18c60d5ec85a7126a330448c119f68ea03113012b1b3b37c279"
     },
     {
       "title": "Factorial",
@@ -2142,12 +2178,17 @@
     {
       "title": "Find the intersection of a line with a plane",
       "slug": "find-the-intersection-of-a-line-with-a-plane",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d9c6564741bb4fd1f938958b012a4cc1a177ddf27349faf4af5a14b9485899e9"
     },
     {
       "title": "Find the intersection of two lines",
       "slug": "find-the-intersection-of-two-lines",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bc0bc675f0e90acee3fe32488d4d356ffcf951ae6f538aff6823f7199b8c02bc",
+      "image_hashes": {
+        "Ghul-find-the-intersection-of-two-lines-crossing.png": "f074b0ea25db288e26708a3ba3940aaeaabcc7dd"
+      }
     },
     {
       "title": "Finite state machine",
@@ -2203,7 +2244,8 @@
     {
       "title": "Flow-control structures",
       "slug": "flow-control-structures",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bd11aa673a384f631d23aab7d24e18efca942d616bc732056101828b98522536"
     },
     {
       "title": "Floyd\u0027s triangle",
@@ -2239,7 +2281,8 @@
     {
       "title": "Fork",
       "slug": "fork",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a3685e09c2129ab3c28e6883ceb4e178df6027c53c0382238429be449d2caf5e"
     },
     {
       "title": "Formal power series",
@@ -2339,7 +2382,8 @@
     {
       "title": "Gabow\u0027s algorithm",
       "slug": "gabows-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2ddafea1e22f8e6bbaa4f3a66e9c5ea79ed1deedeba9570f3d1d3bcbc02400cc"
     },
     {
       "title": "Galton box animation",
@@ -2452,7 +2496,8 @@
     {
       "title": "Graph colouring",
       "slug": "graph-colouring",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6e9a32ef278c5989fdb7e658db2942b2c49c26d4cc80dfb2b36fb8be8dc4de95"
     },
     {
       "title": "Gray code",
@@ -2560,7 +2605,8 @@
     {
       "title": "Halt and catch fire",
       "slug": "halt-and-catch-fire",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d56dec71d5e645496df03ecf0305310c71ef1cfde69b0da3c6f35a12542dca31"
     },
     {
       "title": "Hamming numbers",
@@ -2571,7 +2617,8 @@
     {
       "title": "Handle a signal",
       "slug": "handle-a-signal",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fc0287e097502628acd9f09c4b33ae47c11321651a8ce9feab6002e5c4da913e"
     },
     {
       "title": "Happy numbers",
@@ -2609,7 +2656,8 @@
     {
       "title": "Hash join",
       "slug": "hash-join",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "70ca070564c902bfdfbf3f8643722aa49790837ab1a0f70f33409493ef434300"
     },
     {
       "title": "Haversine formula",
@@ -2649,7 +2697,8 @@
     {
       "title": "Hello world/Web server",
       "slug": "hello-world-web-server",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1e6f77b797ecd8d579b20ded756aa949feebe23f3d96ee02e462c7ea1e8c5fa8"
     },
     {
       "title": "Here document",
@@ -2693,7 +2742,8 @@
     {
       "title": "History variables",
       "slug": "history-variables",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e5f1a968f3d13fb4bfb64bd23fd7523f14d1f0033e52a97c268ad056282e02d2"
     },
     {
       "title": "Hofstadter Figure-Figure sequences",
@@ -2722,12 +2772,17 @@
     {
       "title": "Honeycombs",
       "slug": "honeycombs",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "808a9c220f12636a16e614b04293e8415291f7d767e223467441eec137da4e7f",
+      "image_hashes": {
+        "Ghul-honeycombs-honeycomb.png": "3a2359d87dbf48abca59e2be77fb18c62880b8b7"
+      }
     },
     {
       "title": "Hopcroft-Karp Algorithm",
       "slug": "hopcroft-karp-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8381f19156d6a299e8b1f50aada38df0e8fedc1a4261267d4e6d5570a134a49c"
     },
     {
       "title": "Horizontal sundial calculations",
@@ -2744,8 +2799,9 @@
     {
       "title": "Host introspection",
       "slug": "host-introspection",
-      "state": "solved",
-      "note": "reopened, was rejected/nondeterministic: the hosts that run this are all 64-bit and little-endian, so the word size and the endianness are the same every run"
+      "state": "published",
+      "note": "reopened, was rejected/nondeterministic: the hosts that run this are all 64-bit and little-endian, so the word size and the endianness are the same every run",
+      "published_hash": "2e9dc9b4c7ec32208d9b96482278259a4fbe8b5de2b8518ad5a86e6ad9bb60f4"
     },
     {
       "title": "Hostname",
@@ -2940,7 +2996,8 @@
     {
       "title": "Introspection",
       "slug": "introspection",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e2c13f1656677a52a9cdab8fccf205ac4c76c9d33028a549e0835ecbb9f9af37"
     },
     {
       "title": "Inventory sequence",
@@ -3029,7 +3086,8 @@
     {
       "title": "Johnson\u0027s algorithm",
       "slug": "johnsons-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fc32e23be7acfef671c1a4e11d582deef8c5e57aae776fc51ec885aa6267b1de"
     },
     {
       "title": "Jordan-P\u00F3lya numbers",
@@ -3079,7 +3137,8 @@
     {
       "title": "K-d tree",
       "slug": "k-d-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fa81f73e7f5e36f26bbd0c03224cb81d08072918a0f626d9d62306649c1e8aa6"
     },
     {
       "title": "K-means\u002B\u002B clustering",
@@ -3198,7 +3257,8 @@
     {
       "title": "Kosaraju",
       "slug": "kosaraju",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1fc4514e3e5758c65e3b9842cbc1c59ddf67b4e07909bb06041508fb1138e0ed"
     },
     {
       "title": "Kronecker product",
@@ -3503,12 +3563,14 @@
     {
       "title": "MD4",
       "slug": "md4",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0f3ea04b24d2e45b0bc59cfe7485d871e7f4dec5c4a56b4dbbe631b646d68637"
     },
     {
       "title": "MD5/Implementation",
       "slug": "md5-implementation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0109448c5c5dfa7b3ce25ecdbf8ed06396e0777fbfa14fb4e6f3fedbb6785d8c"
     },
     {
       "title": "Mad Libs",
@@ -3631,7 +3693,8 @@
     {
       "title": "Memory layout of a data structure",
       "slug": "memory-layout-of-a-data-structure",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "57a24106c296e3bb3194c26b61f57280a8687e1937c0b3137033a43fffcdd515"
     },
     {
       "title": "Merge and aggregate datasets",
@@ -3959,7 +4022,8 @@
     {
       "title": "Object serialization",
       "slug": "object-serialization",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3daf3ea15af4569a30b8d717141fad50600be479f85470db5fc428515aa1e962"
     },
     {
       "title": "Odd and square numbers",
@@ -4066,7 +4130,8 @@
     {
       "title": "Parallel calculations",
       "slug": "parallel-calculations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6ea6c3c16f82323db263d151f34cdf8657d90ded2bb2d76316d912ebf2f5e816"
     },
     {
       "title": "Parameterized SQL statement",
@@ -4363,12 +4428,14 @@
     {
       "title": "Polymorphic copy",
       "slug": "polymorphic-copy",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1dc718c3b964be6516a31db51a733fe503b413a94d7ac7158fb55e28dab1deef"
     },
     {
       "title": "Polymorphism",
       "slug": "polymorphism",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d251995b86b1c3d29fd8d76467b59d3ceed1c256937263382186592c3e441bb1"
     },
     {
       "title": "Polynomial long division",
@@ -4436,7 +4503,8 @@
     {
       "title": "Priority queue",
       "slug": "priority-queue",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e0be8b5593195f6a1b40a8f290d9337c5c1740273c1d29c132b2d387b0c239d3"
     },
     {
       "title": "Problem of Apollonius",
@@ -4450,8 +4518,9 @@
     {
       "title": "Program name",
       "slug": "program-name",
-      "state": "solved",
-      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args"
+      "state": "published",
+      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args",
+      "published_hash": "420d94198531c43e4846c91d0fcd183c206f993928e53d710abf66176ba42227"
     },
     {
       "title": "Program termination",
@@ -4513,7 +4582,11 @@
     {
       "title": "Quickhull",
       "slug": "quickhull",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "587eb593f8827a2225ca4c230ce535c05114a706c9bdfdfb2303e8f3d0685ff9",
+      "image_hashes": {
+        "Ghul-quickhull-hull.png": "484c67a709bf7516db11f8ddf64a3bbc33ee3a3c"
+      }
     },
     {
       "title": "Quickselect algorithm",
@@ -4536,7 +4609,8 @@
     {
       "title": "RIPEMD-160",
       "slug": "ripemd-160",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "317eb8bf1725e72df1d242c3cb5e802aeeef4ccd7cb02e9b47e29b6542c36efc"
     },
     {
       "title": "RPG attributes generator",
@@ -4615,7 +4689,11 @@
     {
       "title": "Ray-casting algorithm",
       "slug": "ray-casting-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0d6b218c434e88881894efc2f8a4f87dbb6dbfb5b9e7f9e032f779281abfad93",
+      "image_hashes": {
+        "Ghul-ray-casting-algorithm-inside.png": "842188b312caf1d5c63f9b4bd07324d0f04c4e4b"
+      }
     },
     {
       "title": "Read a configuration file",
@@ -4632,12 +4710,14 @@
     {
       "title": "Read a specific line from a file",
       "slug": "read-a-specific-line-from-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "665f969bb740479141519a318f5bc93aa3de2cee29fda50de81140ed89024283"
     },
     {
       "title": "Read entire file",
       "slug": "read-entire-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b0952ef80a5782a0cd83ca4266a51c9067f38d7da33245a00769c95787c4eec3"
     },
     {
       "title": "Real constants and functions",
@@ -4669,12 +4749,14 @@
     {
       "title": "Reflection/List methods",
       "slug": "reflection-list-methods",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5f5650b2b7bd5620eb10ec94bcc109c09927122f6108a9af1620a2517ca27d4b"
     },
     {
       "title": "Reflection/List properties",
       "slug": "reflection-list-properties",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "22267976a9b77b34436d2783adca6a45b50e1ed4d8faa9e0d0dcbda0a7dd21b5"
     },
     {
       "title": "Regular expressions",
@@ -4691,12 +4773,14 @@
     {
       "title": "Remove lines from a file",
       "slug": "remove-lines-from-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "be3b1255a64a4de31e88032cb792ea4497047c1c6c54c0ecc7284638db5e38ed"
     },
     {
       "title": "Rename a file",
       "slug": "rename-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "eb090725912f2bd08db272f514b1be9fcf5c71c7a4dcaf90c79c23e82d511d23"
     },
     {
       "title": "Rendezvous",
@@ -4845,17 +4929,20 @@
     {
       "title": "SHA-1",
       "slug": "sha-1",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "38f5860b5b7cb26e2fa56e16bfe81539c6b93dff0c9c469c0092867fcd57efa5"
     },
     {
       "title": "SHA-256",
       "slug": "sha-256",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d120df9996e1ece728e02c87a0878ff6c501b81ba4ede3d541c98ba558e24637"
     },
     {
       "title": "SHA-256 Merkle tree",
       "slug": "sha-256-merkle-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0ae45735daf4397a9627fa92ea821a932aacc679a30e9e01b702d5c853a1af23"
     },
     {
       "title": "Safe primes and unsafe primes",
@@ -4884,12 +4971,14 @@
     {
       "title": "Scope modifiers",
       "slug": "scope-modifiers",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "755e0756b62853900a85f793fe4c44d02d408147ca59ce7566b9da72e57516c3"
     },
     {
       "title": "Sealed classes and methods",
       "slug": "sealed-classes-and-methods",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4979bc356860c2f9991d844869af9aedb54ac860f88a56d5b40775211db0ad8e"
     },
     {
       "title": "Search a list",
@@ -4900,7 +4989,8 @@
     {
       "title": "Search a list of records",
       "slug": "search-a-list-of-records",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e23894e393d375b377748b3940ae18970b1fd0f483c30c3ee0c6f9a3cb3088a9"
     },
     {
       "title": "Secure temporary file",
@@ -4935,7 +5025,8 @@
     {
       "title": "Send an unknown method call",
       "slug": "send-an-unknown-method-call",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f9b396b28dcadb78127bd560f385dc1885dbdc9b6ca95fed8d1ac4a56993e51a"
     },
     {
       "title": "Set",
@@ -4979,7 +5070,8 @@
     {
       "title": "Short-circuit evaluation",
       "slug": "short-circuit-evaluation",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c322c26b576fb60c1ccbaf11a96605796717e53d4c361e116578d03a6829f27c"
     },
     {
       "title": "Shortest common supersequence",
@@ -5080,8 +5172,9 @@
     {
       "title": "Simple database",
       "slug": "simple-database",
-      "state": "solved",
-      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args"
+      "state": "published",
+      "note": "reopened, was blocked/ghul#2487: ghul#2487 is fixed: ghul.test 4.3.0 supplies a command line with run.args",
+      "published_hash": "69932125ba90bda02b78b51feac0228d59bfc1fb3ae4cf6d3e5c115d4cf5f28b"
     },
     {
       "title": "Simple turtle graphics",
@@ -5100,7 +5193,8 @@
     {
       "title": "Singleton",
       "slug": "singleton",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6bc77e8894c6caab9a47ceab6998d9ca79a5cc8d1b025b966a677d262fe39022"
     },
     {
       "title": "Singly-linked list/Element definition",
@@ -5168,7 +5262,8 @@
     {
       "title": "Sockets",
       "slug": "sockets",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "627801ef7cb25ae804f71a8e07cf05a7e20280f552a66f2ead89a8a99fc72231"
     },
     {
       "title": "Sokoban",
@@ -5468,7 +5563,8 @@
     {
       "title": "Stack traces",
       "slug": "stack-traces",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "19e9073b7cb692f1c9012e357d662c5369bbd5944856b63094db1f65e708efb6"
     },
     {
       "title": "Start from a main routine",
@@ -5653,7 +5749,8 @@
     {
       "title": "Suffix tree",
       "slug": "suffix-tree",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4b871de8e63b37db6f866f6bced06e363d133678fb92e3a81f71555c12bb6fb8"
     },
     {
       "title": "Sum and product of an array",
@@ -5774,7 +5871,8 @@
     {
       "title": "Szyma\u0144ski\u0027s algorithm",
       "slug": "szymanskis-algorithm",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "0431bd6bc3104e0237fff5fb5abd1a1dbd085788f2809bbbd80bec9fdfebf859"
     },
     {
       "title": "Table creation/Postal addresses",
@@ -5790,7 +5888,8 @@
     {
       "title": "Tarjan",
       "slug": "tarjan",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "64a895f06cf53b4c13b89bcb4bb43be333fea874eef5cdbae9306763edbcdda4"
     },
     {
       "title": "Tau function",
@@ -5819,37 +5918,44 @@
     {
       "title": "Terminal control/Clear the screen",
       "slug": "terminal-control-clear-the-screen",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "88a39be375a1f13d8e41220082616cc564548e225f425bb5d1d88d35bf4ea3d1"
     },
     {
       "title": "Terminal control/Coloured text",
       "slug": "terminal-control-coloured-text",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fe208e75f11916fbe45edcfda3197d9dfd33d91fd1aa4bc26163b6957762bf19"
     },
     {
       "title": "Terminal control/Cursor movement",
       "slug": "terminal-control-cursor-movement",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9c283d36fbda3774710c14d2fe273b2e05d6160f64652e1155ba17900df96721"
     },
     {
       "title": "Terminal control/Cursor positioning",
       "slug": "terminal-control-cursor-positioning",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f95f5a78f9c5f14ccf893539090f76515a49051d0bf73c54a003310150b81fa8"
     },
     {
       "title": "Terminal control/Dimensions",
       "slug": "terminal-control-dimensions",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "ab7b2f8a4f7e1f2c31b5da3f05bbbbd8f0578e3633bd3b08da07c937b296288c"
     },
     {
       "title": "Terminal control/Display an extended character",
       "slug": "terminal-control-display-an-extended-character",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f70914256541af8fe501cd4693208bbba9c6c81e06198de67abfde4eb3dc07a5"
     },
     {
       "title": "Terminal control/Hiding the cursor",
       "slug": "terminal-control-hiding-the-cursor",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e665cd982742a03c684ea8bcb73afaca11b95de2756ef686afb134cb4fff4c0b"
     },
     {
       "title": "Terminal control/Inverse video",
@@ -5865,7 +5971,8 @@
     {
       "title": "Terminal control/Preserve screen",
       "slug": "terminal-control-preserve-screen",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "74b9ec69348a1da431a25f8e86f351cab2a3a7c847f015930c367d9adcda1b59"
     },
     {
       "title": "Terminal control/Restricted width positional input/No wrapping",
@@ -5880,12 +5987,14 @@
     {
       "title": "Terminal control/Ringing the terminal bell",
       "slug": "terminal-control-ringing-the-terminal-bell",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e1477083fd0d08e96ced31eb99d5624ac6bcae9f734a4536a551d486102e232e"
     },
     {
       "title": "Terminal control/Unicode output",
       "slug": "terminal-control-unicode-output",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4013c7458177b757a4e8d891ffbf77dedaa7dd4aae6a5e465a5e1b474f05aa8f"
     },
     {
       "title": "Ternary logic",
@@ -5954,7 +6063,8 @@
     {
       "title": "Top rank per group",
       "slug": "top-rank-per-group",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a677940929b0daed9a0656da89825a31b8cbe3a02d752975b143bb6496f56adf"
     },
     {
       "title": "Topic variable",
@@ -6124,7 +6234,8 @@
     {
       "title": "Undefined values",
       "slug": "undefined-values",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "c0632deacf3c7c01a7bb24fd2ef0c7c8f4e73fe17e875263c87304c3858fe427"
     },
     {
       "title": "Undulating numbers",
@@ -6171,7 +6282,8 @@
     {
       "title": "User defined pipe and redirection operators",
       "slug": "user-defined-pipe-and-redirection-operators",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a27db4c6eb12f9badffbe6f701877e01726fac23ceb0fd572ec30eb393c8df82"
     },
     {
       "title": "User input/Text",
@@ -6204,7 +6316,8 @@
     {
       "title": "Variable size/Get",
       "slug": "variable-size-get",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "5d4883ffe0b1c36e5dd1438ecfff9d09619c3a0031b8716fd1690e5745a6f270"
     },
     {
       "title": "Variable size/Set",
@@ -6272,7 +6385,8 @@
     {
       "title": "Visitor pattern",
       "slug": "visitor-pattern",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9135cb4dd72cd88cc636bda3ba70d264969f7e814c07850215255053e9bca305"
     },
     {
       "title": "Visualize a tree",
@@ -6418,12 +6532,14 @@
     {
       "title": "Write entire file",
       "slug": "write-entire-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "f07423678329439fdd75fbbbfc4558b745ab5111553f55425e536d11ce57912b"
     },
     {
       "title": "Write float arrays to a text file",
       "slug": "write-float-arrays-to-a-text-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "293a909b2c72f7fb95bfd472874a75a7983572b9f3d0c2813819c0e4da990eda"
     },
     {
       "title": "Write language name in 3D ASCII",
@@ -6434,22 +6550,26 @@
     {
       "title": "XML/DOM serialization",
       "slug": "xml-dom-serialization",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d6b15a7649294eed94f73b54c8efbc42c693452de974de679610112335901167"
     },
     {
       "title": "XML/Input",
       "slug": "xml-input",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e18b3cbd808786f536721ddaf765f3f64850cfc61423688c1697b77f935b1543"
     },
     {
       "title": "XML/Output",
       "slug": "xml-output",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b65bd29bcd1ee8305dfa59a48be332b66434a1b1847ba82a4674dc10d88f0a51"
     },
     {
       "title": "XML/XPath",
       "slug": "xml-xpath",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "dbd4f41b36f8a3f788d3cc96de7c58a8053f8ea4142a53b3abb852a59b78be00"
     },
     {
       "title": "Xiaolin Wu\u0027s line algorithm",
