@@ -39,5 +39,7 @@ valid(address: string) -> bool =>
     fi
 
 for address in args do
-    write_line("{address}: {if valid(address) then "valid" else "not valid" fi}")
+    let verdict = if valid(address) then "valid" else "not valid" fi
+
+    write_line("{address}: {verdict}")
 od
