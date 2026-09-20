@@ -5612,6 +5612,34 @@
       ]
     },
     {
+      "slug": "cyk-algorithm",
+      "title": "Cocke–Younger–Kasami (CYK) Algorithm",
+      "url": "https://rosettacode.org/wiki/Cocke%E2%80%93Younger%E2%80%93Kasami_(CYK)_Algorithm",
+      "tags": [
+        "algorithms",
+        "parsing",
+        "unions",
+        "pattern-matching"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "cyk-algorithm",
+          "heading": null,
+          "source": "tasks/cyk-algorithm/cyk-algorithm.ghul",
+          "output": "tasks/cyk-algorithm/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "damm-algorithm",
       "title": "Damm algorithm",
       "url": "https://rosettacode.org/wiki/Damm_algorithm",
