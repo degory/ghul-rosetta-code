@@ -1,0 +1,23 @@
+use default
+
+let colours = [
+    (name = "black", code = 30),
+    (name = "red", code = 31),
+    (name = "green", code = 32),
+    (name = "yellow", code = 33),
+    (name = "blue", code = 34),
+    (name = "magenta", code = 35),
+    (name = "cyan", code = 36),
+    (name = "white", code = 37)
+]
+
+let escape = cast char(27)
+let reset = "{escape}[0m"
+
+paint(text: string, attributes: string) -> string =>
+    "{escape}[{attributes}m{text}{reset}"
+
+write_line(colours |> map(c => paint(c.name, "{c.code}")) |> join(" "))
+write_line(colours |> map(c => paint(c.name, "1;{c.code}")) |> join(" "))
+write_line(colours |> map(c => paint("  ", "{c.code + 10}")) |> join(""))
+write_line(paint("blinking", "5;31"))
