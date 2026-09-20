@@ -37,7 +37,7 @@ weird(n: int) -> bool =>
      divisors |> reduce(0, (total, d) => total + d) > n /\
          !sums_to(divisors, 0, n))
 
-stream(2, n => n || n + 1)
+from(2)
     |> filter(weird)
     |> take(25)
     |> chunk(5)

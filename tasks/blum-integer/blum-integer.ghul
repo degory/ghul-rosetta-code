@@ -1,11 +1,7 @@
 use default
 
 let limit = 8_900_000
-let smallest_factor = LIST(limit + 1)
-
-for _ in 0::limit do
-    smallest_factor.add(0)
-od
+let smallest_factor = repeat(0, limit + 1) |> collect_list()
 
 for candidate in 2::limit do
     if smallest_factor[candidate] == 0 then

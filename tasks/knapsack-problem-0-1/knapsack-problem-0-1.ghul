@@ -3,17 +3,9 @@ use default
 use ITEM = (name: string, weight: int, value: int)
 
 best_value(items: List[ITEM], limit: int) -> List[List[int]] is
-    let table = LIST(items.count + 1)
-
-    for _ in 0::items.count do
-        let row = LIST(limit + 1)
-
-        for _ in 0::limit do
-            row.add(0)
-        od
-
-        table.add(row)
-    od
+    let table = 0::items.count
+        |> map(_ => repeat(0, limit + 1) |> collect_list())
+        |> collect_list()
 
     for at in 0..items.count do
         let item = items[at]

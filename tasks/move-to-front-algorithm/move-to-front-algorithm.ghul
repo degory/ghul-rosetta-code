@@ -2,11 +2,9 @@ use default
 use System.Text.StringBuilder
 
 symbol_table() -> LIST[char] is
-    let symbols = LIST(26)
-
-    for code in cast int('a')::cast int('z') do
-        symbols.add(cast char(code))
-    od
+    let symbols = cast int('a')::cast int('z')
+        |> map(code => cast char(code))
+        |> collect_list()
 
     return symbols
 si

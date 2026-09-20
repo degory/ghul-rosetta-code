@@ -2,7 +2,7 @@ use default
 
 magic_square(n: int) -> LIST[int] is
     let cells =
-        stream(0, v => v || v + 1) |> take(n * n) |> map(_ => 0) |> collect_list()
+        repeat(0, n * n) |> collect_list()
 
     let row mut = 0
     let column mut = n / 2

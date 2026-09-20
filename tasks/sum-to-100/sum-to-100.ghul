@@ -77,7 +77,7 @@ assert most? else "some sum has the most expressions"
 write_line("")
 write_line("{most} has the most expressions, {counts[most]} of them")
 
-let unreachable = stream(1, sum => sum || sum + 1)
+let unreachable = from(1)
     |> filter(sum => !counts.contains_key(sum))
     |> first()
 

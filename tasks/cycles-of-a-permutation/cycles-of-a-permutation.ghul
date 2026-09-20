@@ -1,11 +1,9 @@
 use default
 
 permutation_between(before: string, after: string) -> LIST[int] is
-    let one_line = LIST()
-
-    for letter in after do
-        one_line.add(before.index_of(letter) + 1)
-    od
+    let one_line = after
+        |> map(letter => before.index_of(letter) + 1)
+        |> collect_list()
 
     return one_line
 si
@@ -30,11 +28,7 @@ compose(first: Collections.List[int], second: Collections.List[int])
 cycles(one_line: Collections.List[int]) -> LIST[LIST[int]] is
     let destination = inverse(one_line)
     let found = LIST()
-    let seen = LIST()
-
-    for _ in one_line do
-        seen.add(false)
-    od
+    let seen = repeat(false, one_line.count) |> collect_list()
 
     for start in 0..one_line.count do
         if !seen[start] then

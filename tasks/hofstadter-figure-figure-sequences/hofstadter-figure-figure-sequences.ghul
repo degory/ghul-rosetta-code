@@ -27,7 +27,7 @@ s_sequence() -> Pipe[int] is
 
     assert in_r.move_next() else "the R sequence never runs out"
 
-    for candidate in stream(1, n => n || n + 1) do
+    for candidate in from(1) do
         if candidate == in_r.current then
             assert in_r.move_next() else "the R sequence never runs out"
         else

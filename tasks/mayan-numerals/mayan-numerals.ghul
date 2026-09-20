@@ -39,7 +39,7 @@ si
 
 cartouche(n: int) -> List[string] is
     let glyphs = vigesimal(n) |> map(glyph) |> collect_list()
-    let across = glyphs |> map(_ => "----") |> collect_list()
+    let across = repeat("----", glyphs.count) |> collect_list()
 
     let lines = LIST(["+{across |> join("+")}+"])
 

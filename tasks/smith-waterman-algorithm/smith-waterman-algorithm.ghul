@@ -10,13 +10,9 @@ highest(values: int[]) -> int =>
     |> reduce(0, (best, value) => if value > best then value else best fi)
 
 matrix(first: string, second: string) -> LIST[LIST[int]] is
-    let scores = LIST()
-
-    for i in 0::first.length do
-        let row = 0::second.length |> map(j => 0) |> collect_list()
-
-        scores.add(row)
-    od
+    let scores = 0::first.length
+        |> map(_ => repeat(0, second.length + 1) |> collect_list())
+        |> collect_list()
 
     for i in 1::first.length do
         for j in 1::second.length do

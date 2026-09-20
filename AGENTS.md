@@ -202,6 +202,31 @@ does not name `System.Linq`. A list of `n` copies of a value is `repeat(value, n
 not `LIST[T](System.Linq.Enumerable.repeat(value, n))`; `repeat(value)`, `from(start)` and
 `from(start, step)` are the unbounded forms.
 
+## A collection is built by a pipe, not by a loop
+
+A list whose elements are a function of what it is built from is built by a pipe ending in a
+`collect_*`, not by declaring an empty `LIST` and adding to it in a `for`:
+
+```ghul
+let doubled = values |> map(value => value * 2) |> collect_list()
+let flags = repeat(false, limit) |> collect_list()
+```
+
+A grid is the same shape twice, with one rule: the outer level is `map` and never `repeat`, because
+`repeat` evaluates its argument once and would hand every row the same list.
+
+```ghul
+let cells = 0..rows
+    |> map(_ => repeat(0, columns) |> collect_list())
+    |> collect_list()
+```
+
+Filling the grid by index afterwards does not change that: how the elements get there is a separate
+question from how the rows are made.
+
+The loop stays where the body does more than add one element, where each element depends on the
+ones already added, or where the list is being appended to rather than built.
+
 ## Output that has to line up is ASCII
 
 The wiki's monospace font has no box-drawing, geometric or most mathematical characters, so a
