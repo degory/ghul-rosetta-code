@@ -24012,6 +24012,33 @@
       ]
     },
     {
+      "slug": "user-defined-pipe-and-redirection-operators",
+      "title": "User defined pipe and redirection operators",
+      "url": "https://rosettacode.org/wiki/User_defined_pipe_and_redirection_operators",
+      "tags": [
+        "pipes",
+        "operators",
+        "generators"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 147,
+      "parts": [
+        {
+          "id": "user-defined-pipe-and-redirection-operators",
+          "heading": null,
+          "source": "tasks/user-defined-pipe-and-redirection-operators/user-defined-pipe-and-redirection-operators.ghul",
+          "output": "tasks/user-defined-pipe-and-redirection-operators/run.expected",
+          "lines": 147,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "user-input-text",
       "title": "User input/Text",
       "url": "https://rosettacode.org/wiki/User_input/Text",

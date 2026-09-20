@@ -1,0 +1,147 @@
+use default
+use Stream = Ghul.Pipes.Pipe[string]
+use Filter = (Ghul.Pipes.Pipe[string]) -> Ghul.Pipes.Pipe[string]
+
+|(source: Stream, next: Filter) -> Stream => next(source)
+
+◀(next: Filter, path: string) -> Stream => next(cat(path))
+
+<<(next: Filter, text: string) -> Stream =>
+    next(pipe(text.split(['\n'])))
+
+▶(source: Stream, path: string) -> int is
+    let lines = source |> collect_array()
+
+    IO.File.write_all_lines(path, lines)
+
+    lines.count
+si
+
+▶▶(source: Stream, path: string) -> int is
+    let lines = source |> collect_array()
+
+    IO.File.append_all_lines(path, lines)
+
+    lines.count
+si
+
+capture(source: Stream) -> string => source |> join(", ")
+
+cat(path: string) -> Stream is
+    let reader = IO.File.open_text(path)
+
+    try
+        while let line = reader.read_line() do
+            yield line
+        od
+    finally
+        reader.dispose()
+    yrt
+si
+
+grep(pattern: string) -> Filter =>
+    source => source |> filter(line => line.contains(pattern))
+
+head(count: int) -> Filter => source => source |> take(count)
+
+tail(count: int) -> Filter => source => last(source, count)
+
+last(source: Stream, count: int) -> Stream is
+    let held = LIST[string]()
+
+    for line in source do
+        held.add(line)
+
+        if held.count > count then
+            held.remove_at(0)
+        fi
+    od
+
+    pipe(held)
+si
+
+tee(path: string) -> Filter => source => copy_through(source, path)
+
+copy_through(source: Stream, path: string) -> Stream is
+    let writer = IO.File.create_text(path)
+
+    try
+        for line in source do
+            writer.write_line(line)
+
+            yield line
+        od
+    finally
+        writer.dispose()
+    yrt
+si
+
+uniq() -> Filter => source => dedupe(source)
+
+dedupe(source: Stream) -> Stream is
+    let seen = SET[string]()
+
+    for line in source do
+        if seen.add(line) then
+            yield line
+        fi
+    od
+si
+
+sorted() -> Filter => source => in_order(source)
+
+in_order(source: Stream) -> Stream is
+    let lines = source |> collect_list()
+
+    lines.sort((a: string, b: string) -> int => string.compare(a, b))
+
+    pipe(lines)
+si
+
+let work = IO.Path.combine(
+    IO.Path.get_temp_path(),
+    "pipes-{System.Guid.new_guid()}")
+
+IO.Directory.create_directory(work)
+
+let scientists = IO.Path.combine(work, "scientists.lst")
+let pioneers = IO.Path.combine(work, "algol-pioneers.lst")
+let important = IO.Path.combine(work, "important.lst")
+let naur = IO.Path.combine(work, "naur.lst")
+
+try
+    IO.File.write_all_lines(scientists, [
+        "John Backus, FORTRAN and ALGOL",
+        "Grace Hopper, COBOL",
+        "Peter Naur, ALGOL",
+        "Edsger Dijkstra, ALGOL",
+        "Ada Lovelace, the first programmer",
+        "Alan Turing, computability",
+        "Peter Naur, ALGOL",
+        "Tony Hoare, ALGOL and quicksort"
+    ])
+
+    let pioneer_lines =
+        cat(scientists) | grep("ALGOL") | tee(pioneers) | sorted() | uniq()
+
+    write_line("the ALGOL pioneers, sorted and deduplicated:")
+
+    pioneer_lines | tee(important) |> each(line => write_line("  {line}"))
+
+    write_line("")
+    write_line("the first two, captured into a value:")
+    write_line("  {capture(head(2) ◀ important)}")
+
+    let written = cat(scientists) | grep("Peter") ▶ naur
+
+    write_line("lines redirected into a file: {written}")
+
+    let appended = cat(scientists) | grep("Turing") ▶▶ naur
+
+    write_line("lines appended: {appended}")
+    write_line("the file now holds: {capture(cat(naur))}")
+    write_line("its last line: {capture(tail(1) ◀ naur)}")
+    write_line("from a here-document: {capture(uniq() << "one\ntwo\ntwo")}")
+finally
+    IO.Directory.delete(work, true)
+yrt
