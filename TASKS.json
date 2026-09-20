@@ -6560,12 +6560,14 @@
     {
       "title": "XML/Output",
       "slug": "xml-output",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "b65bd29bcd1ee8305dfa59a48be332b66434a1b1847ba82a4674dc10d88f0a51"
     },
     {
       "title": "XML/XPath",
       "slug": "xml-xpath",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "dbd4f41b36f8a3f788d3cc96de7c58a8053f8ea4142a53b3abb852a59b78be00"
     },
     {
       "title": "Xiaolin Wu\u0027s line algorithm",
