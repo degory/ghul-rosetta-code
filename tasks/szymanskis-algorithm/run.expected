@@ -1,0 +1,4 @@
+workers: 4, rounds each: 500
+counter: 2000, expected 2000
+most workers inside at once: 1
+every flag back to zero: true

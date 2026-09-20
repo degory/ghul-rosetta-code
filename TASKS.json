@@ -5692,6 +5692,11 @@
       "reason": "nondeterministic"
     },
     {
+      "title": "Szyma\u0144ski\u0027s algorithm",
+      "slug": "szymanskis-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Table creation/Postal addresses",
       "state": "rejected",
       "reason": "needs-native-lib"
