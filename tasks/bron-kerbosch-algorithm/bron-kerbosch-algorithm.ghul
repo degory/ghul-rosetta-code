@@ -1,0 +1,85 @@
+use default
+
+let edges =
+    [
+        ("a", "b"), ("a", "c"), ("b", "c"),
+        ("d", "e"), ("d", "f"), ("e", "f")
+    ]
+
+let neighbours = MAP[string, SET[string]]()
+
+link(from: string, to: string) is
+    if !neighbours.contains_key(from) then
+        neighbours[from] = SET[string]()
+    fi
+
+    neighbours[from].add(to)
+si
+
+for (from, to) in edges do
+    link(from, to)
+    link(to, from)
+od
+
+let cliques = LIST[List[string]]()
+
+report(clique: SET[string]) is
+    let members = clique |> collect_list()
+
+    members.sort()
+
+    cliques.add(members)
+si
+
+search(
+    clique: SET[string],
+    candidates: SET[string],
+    excluded: SET[string]
+) is
+    if candidates.count == 0 /\ excluded.count == 0 then
+        report(clique)
+        return
+    fi
+
+    let pivot =
+        candidates
+            |> cat(excluded)
+            |> reduce("", (best, vertex) =>
+                if best =~ "" \/
+                   neighbours[vertex].count > neighbours[best].count
+                then
+                    vertex
+                else
+                    best
+                fi)
+
+    let branches =
+        candidates
+            |> filter(v => !neighbours[pivot].contains(v))
+            |> collect_list()
+
+    for vertex in branches do
+        let adjacent = neighbours[vertex]
+
+        search(
+            clique |> cat([vertex]) |> collect_set(),
+            candidates
+                |> filter(v => adjacent.contains(v))
+                |> collect_set(),
+            excluded
+                |> filter(v => adjacent.contains(v))
+                |> collect_set())
+
+        candidates.remove(vertex)
+        excluded.add(vertex)
+    od
+si
+
+search(
+    SET[string](),
+    neighbours.keys |> collect_set(),
+    SET[string]())
+
+cliques.sort((a, b) => a[0] <> b[0])
+
+cliques |> each(clique => write_line("{clique |> join(", ")}"))
