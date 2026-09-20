@@ -1,0 +1,42 @@
+use default
+use System.Runtime.InteropServices.PosixSignal
+use System.Runtime.InteropServices.PosixSignalRegistration
+use System.Threading.Thread
+
+let interrupted = System.Threading.ManualResetEventSlim(false)
+
+let registration =
+    PosixSignalRegistration.create(
+        PosixSignal.SIGINT,
+        context is
+            context.cancel = true
+            interrupted.set()
+        si
+    )
+
+interrupt_this_program() is
+    let sender = System.Diagnostics.ProcessStartInfo("/bin/kill")
+
+    sender.argument_list.add("-INT")
+    sender.argument_list.add("{System.Environment.process_id}")
+
+    System.Diagnostics.Process.start(sender)
+si
+
+let ticks mut = 0
+
+while !interrupted.is_set do
+    ticks = ticks + 1
+
+    write_line("{ticks}")
+
+    if ticks == 3 then
+        interrupt_this_program()
+    fi
+
+    Thread.sleep(500)
+od
+
+write_line("interrupted after {ticks} ticks")
+
+registration.dispose()

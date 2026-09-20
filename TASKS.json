@@ -2207,6 +2207,11 @@
       }
     },
     {
+      "title": "Fork",
+      "slug": "fork",
+      "state": "solved"
+    },
+    {
       "title": "Formal power series",
       "slug": "formal-power-series",
       "state": "published",
@@ -2524,6 +2529,11 @@
       "published_hash": "5ab94119047eb69d08788f7026f8786c6d4d2c0e130436716c16f2e119053a22"
     },
     {
+      "title": "Handle a signal",
+      "slug": "handle-a-signal",
+      "state": "solved"
+    },
+    {
       "title": "Happy numbers",
       "slug": "happy-numbers",
       "state": "published",
@@ -2590,6 +2600,11 @@
       "slug": "hello-world-text",
       "state": "published",
       "published_hash": "35dc663bd2d8807f24062cc70684f39fffc2e213fa42a90eb274067aac31525e"
+    },
+    {
+      "title": "Hello world/Web server",
+      "slug": "hello-world-web-server",
+      "state": "solved"
     },
     {
       "title": "Here document",
@@ -3984,6 +3999,11 @@
       "published_hash": "b7d0ab71008be6ea3ea8a640f5edaea459eb1438d89db68a9c0b01303388c01f"
     },
     {
+      "title": "Parallel calculations",
+      "slug": "parallel-calculations",
+      "state": "solved"
+    },
+    {
       "title": "Parameterized SQL statement",
       "state": "rejected",
       "reason": "needs-native-lib"
@@ -5069,6 +5089,11 @@
       "slug": "snake-and-ladder",
       "state": "published",
       "published_hash": "692b25b13c8e172e2d97506390710a5c5349518a660268521817d3edc52d432e"
+    },
+    {
+      "title": "Sockets",
+      "slug": "sockets",
+      "state": "solved"
     },
     {
       "title": "Sokoban",

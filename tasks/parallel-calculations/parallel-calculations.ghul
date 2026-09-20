@@ -1,0 +1,59 @@
+use default
+use Tasks.TASK
+
+let numbers = [
+    12757923L, 12878611L, 12878893L, 12757923L, 15808973L, 15780709L,
+    197622519L
+]
+
+factors(number: long) -> Collections.LIST[long] is
+    let found = Collections.LIST[long]()
+    let rest mut = number
+    let divisor mut = 2L
+
+    while divisor * divisor <= rest do
+        while rest % divisor == 0L do
+            found.add(divisor)
+            rest = rest / divisor
+        od
+
+        divisor = divisor + 1L
+    od
+
+    if rest > 1L then
+        found.add(rest)
+    fi
+
+    return found
+si
+
+let factorisations =
+    numbers
+        |> map(number => TASK.run(() => factors(number)))
+        |> collect_list()
+        |> map(running => running.result)
+        |> collect_list()
+
+let best =
+    factorisations
+        |> index()
+        |> reduce(
+            0,
+            (best, entry) =>
+                if entry.value[0] > factorisations[best][0] then
+                    entry.index
+                else
+                    best
+                fi
+        )
+
+for at in 0..numbers.count do
+    write_line(
+        "{numbers[at]} = "
+        "{factorisations[at] |> map(factor => "{factor}") |> join(" x ")}"
+    )
+od
+
+write_line(
+    "largest minimal factor {factorisations[best][0]}, in {numbers[best]}"
+)

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Port 256 is privileged, so whether the program gets it depends on who is
+# running it. Either way it then sends the message to itself and reads it back.
+
+out=$1
+
+if ! head -1 "$out" | grep -qxE 'listening on port 256|port 256 needs privileges, taking any free port' ; then
+    echo "the first line says neither outcome for port 256"
+    cat "$out"
+    exit 1
+fi
+
+if [ "$(tail -1 "$out")" != "server read: hello socket world" ] ; then
+    echo "the message did not arrive"
+    cat "$out"
+    exit 1
+fi
