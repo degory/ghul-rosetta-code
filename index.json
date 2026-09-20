@@ -2729,6 +2729,32 @@
       ]
     },
     {
+      "slug": "boruvka-algorithm",
+      "title": "Borůvka algorithm",
+      "url": "https://rosettacode.org/wiki/Borůvka_algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 74,
+      "parts": [
+        {
+          "id": "boruvka-algorithm",
+          "heading": null,
+          "source": "tasks/boruvka-algorithm/boruvka-algorithm.ghul",
+          "output": "tasks/boruvka-algorithm/run.expected",
+          "lines": 74,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "boustrophedon-transform",
       "title": "Boustrophedon transform",
       "url": "https://rosettacode.org/wiki/Boustrophedon_transform",
@@ -2912,6 +2938,33 @@
           "source": "tasks/brilliant-numbers/brilliant-numbers.ghul",
           "output": "tasks/brilliant-numbers/run.expected",
           "lines": 72,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "bron-kerbosch-algorithm",
+      "title": "Bron-Kerbosch algorithm",
+      "url": "https://rosettacode.org/wiki/Bron-Kerbosch_algorithm",
+      "tags": [
+        "algorithms",
+        "pipes",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 85,
+      "parts": [
+        {
+          "id": "bron-kerbosch-algorithm",
+          "heading": null,
+          "source": "tasks/bron-kerbosch-algorithm/bron-kerbosch-algorithm.ghul",
+          "output": "tasks/bron-kerbosch-algorithm/run.expected",
+          "lines": 85,
           "playground": true,
           "input": false,
           "images": []
@@ -9821,6 +9874,33 @@
       ]
     },
     {
+      "slug": "graph-colouring",
+      "title": "Graph colouring",
+      "url": "https://rosettacode.org/wiki/Graph_colouring",
+      "tags": [
+        "algorithms",
+        "data-structures",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 123,
+      "parts": [
+        {
+          "id": "graph-colouring",
+          "heading": null,
+          "source": "tasks/graph-colouring/graph-colouring.ghul",
+          "output": "tasks/graph-colouring/run.expected",
+          "lines": 123,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "gray-code",
       "title": "Gray code",
       "url": "https://rosettacode.org/wiki/Gray_code",
@@ -10385,6 +10465,33 @@
           "source": "tasks/hash-from-two-arrays/hash-from-two-arrays.ghul",
           "output": "tasks/hash-from-two-arrays/run.expected",
           "lines": 13,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "hash-join",
+      "title": "Hash join",
+      "url": "https://rosettacode.org/wiki/Hash_join",
+      "tags": [
+        "algorithms",
+        "pipes",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "hash-join",
+          "heading": null,
+          "source": "tasks/hash-join/hash-join.ghul",
+          "output": "tasks/hash-join/run.expected",
+          "lines": 37,
           "playground": true,
           "input": false,
           "images": []
@@ -12536,6 +12643,32 @@
           "source": "tasks/kolakoski-sequence/kolakoski-sequence.ghul",
           "output": "tasks/kolakoski-sequence/run.expected",
           "lines": 67,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "kosaraju",
+      "title": "Kosaraju",
+      "url": "https://rosettacode.org/wiki/Kosaraju",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "kosaraju",
+          "heading": null,
+          "source": "tasks/kosaraju/kosaraju.ghul",
+          "output": "tasks/kosaraju/run.expected",
+          "lines": 58,
           "playground": true,
           "input": false,
           "images": []
@@ -19463,6 +19596,33 @@
       ]
     },
     {
+      "slug": "search-a-list-of-records",
+      "title": "Search a list of records",
+      "url": "https://rosettacode.org/wiki/Search_a_list_of_records",
+      "tags": [
+        "pipes",
+        "generics",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "search-a-list-of-records",
+          "heading": null,
+          "source": "tasks/search-a-list-of-records/search-a-list-of-records.ghul",
+          "output": "tasks/search-a-list-of-records/run.expected",
+          "lines": 41,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "secure-temporary-file",
       "title": "Secure temporary file",
       "url": "https://rosettacode.org/wiki/Secure_temporary_file",
@@ -23216,6 +23376,32 @@
       ]
     },
     {
+      "slug": "tarjan",
+      "title": "Tarjan",
+      "url": "https://rosettacode.org/wiki/Tarjan",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "tarjan",
+          "heading": null,
+          "source": "tasks/tarjan/tarjan.ghul",
+          "output": "tasks/tarjan/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "tau-function",
       "title": "Tau function",
       "url": "https://rosettacode.org/wiki/Tau_function",
@@ -23830,6 +24016,32 @@
           "source": "tasks/tokenize-a-string-with-escaping/tokenize-a-string-with-escaping.ghul",
           "output": "tasks/tokenize-a-string-with-escaping/run.expected",
           "lines": 26,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "top-rank-per-group",
+      "title": "Top rank per group",
+      "url": "https://rosettacode.org/wiki/Top_rank_per_group",
+      "tags": [
+        "pipes",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 49,
+      "parts": [
+        {
+          "id": "top-rank-per-group",
+          "heading": null,
+          "source": "tasks/top-rank-per-group/top-rank-per-group.ghul",
+          "output": "tasks/top-rank-per-group/run.expected",
+          "lines": 49,
           "playground": true,
           "input": false,
           "images": []
