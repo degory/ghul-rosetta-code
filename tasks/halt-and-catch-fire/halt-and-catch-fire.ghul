@@ -1,0 +1,6 @@
+use default
+
+let nothing = [0]
+
+write_line("about to fall over")
+write_line("{nothing[1]}")

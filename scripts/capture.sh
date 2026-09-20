@@ -44,4 +44,28 @@ else
     echo >$CASE/fail.expected
 fi
 
+# What the program wrote to standard error, and the status it ended with, are
+# expectations only where a task is about them: carrying neither file says
+# nothing about either, which is what nearly every task wants. So each is
+# promoted when the run produced something worth asserting - anything on
+# standard error, or an abnormal exit - or when the task already carries it.
+if [ -f $CASE/run.err ] ; then
+    if [ -s $CASE/run.err ] || [ -f $CASE/run.err.expected ] ; then
+        # A stack frame names the source by the path the run happened to use,
+        # and the runner compares frames with that path taken out, so the
+        # snapshot is written the same way rather than holding local paths.
+        sed -E 's| in [^ ]*/([^/]+):line | in \1:line |' $CASE/run.err > $CASE/run.err.expected
+    fi
+
+    rm -f $CASE/run.err
+fi
+
+if [ -f $CASE/run.exit ] ; then
+    if [ "$(cat $CASE/run.exit)" != 0 ] || [ -f $CASE/run.exit.expected ] ; then
+        mv $CASE/run.exit $CASE/run.exit.expected
+    else
+        rm -f $CASE/run.exit
+    fi
+fi
+
 exit 0
