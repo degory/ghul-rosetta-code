@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+      <th align="right"></th>
+      <th align="right">X</th>
+      <th align="right">Y</th>
+      <th align="right">Z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="right">1</td>
+      <td align="right">100</td>
+      <td align="right">101</td>
+      <td align="right">102</td>
+    </tr>
+    <tr>
+      <td align="right">2</td>
+      <td align="right">200</td>
+      <td align="right">201</td>
+      <td align="right">202</td>
+    </tr>
+    <tr>
+      <td align="right">3</td>
+      <td align="right">300</td>
+      <td align="right">301</td>
+      <td align="right">302</td>
+    </tr>
+  </tbody>
+</table>

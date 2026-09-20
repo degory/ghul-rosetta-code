@@ -1,0 +1,109 @@
+use default
+
+rotate_left(value: uint, count: int) -> uint =>
+    (value << count) | (value >>> (32 - count))
+
+padded(message: ubyte[]) -> LIST[ubyte] is
+    let bits = cast ulong(message.count) * 8ul
+
+    let block = LIST[ubyte](message)
+
+    block.add(0x80ub)
+
+    while block.count % 64 != 56 do
+        block.add(0ub)
+    od
+
+    for index in 0..8 do
+        block.add(cast ubyte((bits >>> (56 - 8 * index)) & 0xFFul))
+    od
+
+    return block
+si
+
+word(block: LIST[ubyte], at: int) -> uint =>
+    0..4
+        |> map(index =>
+            cast uint(block[at + index]) << (24 - 8 * index))
+        |> reduce(0u, (packed, part) => packed | part)
+
+sha1(message: ubyte[]) -> string is
+    let block = padded(message)
+
+    let state =
+        LIST([0x67452301u, 0xEFCDAB89u, 0x98BADCFEu, 0x10325476u,
+              0xC3D2E1F0u])
+
+    let start mut = 0
+
+    while start < block.count do
+        let schedule =
+            0..16
+                |> map(index => word(block, start + index * 4))
+                |> collect_list()
+
+        for index in 16..80 do
+            schedule.add(
+                rotate_left(
+                    schedule[index - 3] ^ schedule[index - 8] ^
+                    schedule[index - 14] ^ schedule[index - 16],
+                    1))
+        od
+
+        let a mut = state[0]
+        let b mut = state[1]
+        let c mut = state[2]
+        let d mut = state[3]
+        let e mut = state[4]
+
+        for step in 0..80 do
+            let (mixed, constant) =
+                if step < 20 then
+                    ((b & c) | (\b & d), 0x5A827999u)
+                elif step < 40 then
+                    (b ^ c ^ d, 0x6ED9EBA1u)
+                elif step < 60 then
+                    ((b & c) | (b & d) | (c & d), 0x8F1BBCDCu)
+                else
+                    (b ^ c ^ d, 0xCA62C1D6u)
+                fi
+
+            let rotated =
+                rotate_left(a, 5) + mixed + e + constant + schedule[step]
+
+            e = d
+            d = c
+            c = rotate_left(b, 30)
+            b = a
+            a = rotated
+        od
+
+        let round = [a, b, c, d, e]
+
+        for index in 0..5 do
+            state[index] = state[index] + round[index]
+        od
+
+        start = start + 64
+    od
+
+    return state |> map(value => "{value:x8}") |> join("")
+si
+
+hex(digest: ubyte[]) -> string =>
+    digest |> map(byte_value => "{byte_value:x2}") |> join("")
+
+let messages =
+    ["", "abc", "Rosetta Code",
+     "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"]
+
+for message in messages do
+    let octets = System.Text.Encoding.utf8.get_bytes(message)
+
+    let expected = hex(System.Security.Cryptography.SHA1.hash_data(octets))
+
+    assert sha1(octets) =~ expected
+    else "does not agree with the digest .NET computes"
+
+    write_line("{sha1(octets)}  \"{message}\"")
+od

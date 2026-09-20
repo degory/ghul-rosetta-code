@@ -1,0 +1,42 @@
+use default
+use System.Security.Cryptography.SHA256
+
+let block_size = 1024
+
+paired(hashes: List[ubyte[]]) -> Pipe[ubyte[]] =>
+    0..(hashes.count + 1) / 2
+        |> map(index =>
+            if 2 * index + 1 < hashes.count then
+                SHA256.hash_data(
+                    hashes[2 * index]
+                        |> cat(hashes[2 * index + 1])
+                        |> collect_array())
+            else
+                hashes[2 * index]
+            fi)
+
+merkle_root(content: ubyte[]) -> ubyte[] is
+    let hashes mut =
+        0..(content.count + block_size - 1) / block_size
+            |> map(index =>
+                let at = index * block_size
+                in
+                SHA256.hash_data(
+                    content[at..System.Math.min(at + block_size,
+                                                content.count)]
+                        |> collect_array()))
+            |> collect_list()
+
+    while hashes.count > 1 do
+        hashes = paired(hashes) |> collect_list()
+    od
+
+    return hashes[0]
+si
+
+let image = IO.File.read_all_bytes("title.png")
+
+write_line(
+    merkle_root(image)
+        |> map(byte_value => "{byte_value:x2}")
+        |> join(""))
