@@ -17,8 +17,7 @@ digit_factorial_sum(n: int, base_value: int) -> int =>
         |> reduce(0, (sum, f) => sum + f)
 
 factorions(base_value: int) -> List[int] =>
-    from(1)
-        |> take(1499999)
+    1..1_500_000
         |> filter(n => digit_factorial_sum(n, base_value) == n)
         |> collect()
 
