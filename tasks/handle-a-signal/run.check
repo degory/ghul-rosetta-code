@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# The program counts until the signal it sent itself arrives, so how many ticks
+# it gets through depends on how quickly the machine delivers it: at least the
+# three before the signal is sent, and whatever the loop reaches after that.
+
+out=$1
+
+ticks=$(($(wc -l < "$out") - 1))
+
+if [ "$ticks" -lt 3 ] ; then
+    echo "expected at least three ticks, counted $ticks"
+    cat "$out"
+    exit 1
+fi
+
+for tick in $(seq 1 "$ticks") ; do
+    if [ "$(sed -n "${tick}p" "$out")" != "$tick" ] ; then
+        echo "line $tick is not the tick count"
+        cat "$out"
+        exit 1
+    fi
+done
+
+if [ "$(tail -1 "$out")" != "interrupted after $ticks ticks" ] ; then
+    echo "the last line does not report the interruption"
+    cat "$out"
+    exit 1
+fi
