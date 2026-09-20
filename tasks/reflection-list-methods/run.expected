@@ -1,0 +1,8 @@
+charge() -> Void
+walk(Int32 steps) -> Int32
+
+inherited from object:
+  GetType
+  ToString
+  Equals
+  GetHashCode

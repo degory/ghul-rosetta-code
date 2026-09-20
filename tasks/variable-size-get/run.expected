@@ -1,0 +1,10 @@
+type                             bytes
+byte                              1
+int                               4
+long                              8
+double                            8
+decimal                          16
+POINT                            16
+word, the width of a pointer      8
+the string holds 5 chars
+the array holds 4 ints

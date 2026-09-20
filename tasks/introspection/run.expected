@@ -1,0 +1,6 @@
+runtime major version: 10
+bloop exists: true
+abs exists: true
+abs(bloop) = 17
+integer globals: blip, bloop
+their sum: 8

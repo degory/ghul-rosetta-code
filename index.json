@@ -2837,6 +2837,32 @@
       ]
     },
     {
+      "slug": "break-oo-privacy",
+      "title": "Break OO privacy",
+      "url": "https://rosettacode.org/wiki/Break_OO_privacy",
+      "tags": [
+        "dotnet-interop",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "break-oo-privacy",
+          "heading": null,
+          "source": "tasks/break-oo-privacy/break-oo-privacy.ghul",
+          "output": "tasks/break-oo-privacy/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "brilliant-numbers",
       "title": "Brilliant numbers",
       "url": "https://rosettacode.org/wiki/Brilliant_numbers",
@@ -10635,6 +10661,32 @@
       ]
     },
     {
+      "slug": "host-introspection",
+      "title": "Host introspection",
+      "url": "https://rosettacode.org/wiki/Host_introspection",
+      "tags": [
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 12,
+      "parts": [
+        {
+          "id": "host-introspection",
+          "heading": null,
+          "source": "tasks/host-introspection/host-introspection.ghul",
+          "output": "tasks/host-introspection/run.expected",
+          "lines": 12,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hough-transform",
       "title": "Hough transform",
       "url": "https://rosettacode.org/wiki/Hough_transform",
@@ -11263,6 +11315,32 @@
           "source": "tasks/intersecting-number-wheels/intersecting-number-wheels.ghul",
           "output": "tasks/intersecting-number-wheels/run.expected",
           "lines": 79,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "introspection",
+      "title": "Introspection",
+      "url": "https://rosettacode.org/wiki/Introspection",
+      "tags": [
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "introspection",
+          "heading": null,
+          "source": "tasks/introspection/introspection.ghul",
+          "output": "tasks/introspection/run.expected",
+          "lines": 47,
           "playground": true,
           "input": false,
           "images": []
@@ -14016,6 +14094,32 @@
       ]
     },
     {
+      "slug": "memory-layout-of-a-data-structure",
+      "title": "Memory layout of a data structure",
+      "url": "https://rosettacode.org/wiki/Memory_layout_of_a_data_structure",
+      "tags": [
+        "dotnet-interop",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "memory-layout-of-a-data-structure",
+          "heading": null,
+          "source": "tasks/memory-layout-of-a-data-structure/memory-layout-of-a-data-structure.ghul",
+          "output": "tasks/memory-layout-of-a-data-structure/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "merge-and-aggregate-datasets",
       "title": "Merge and aggregate datasets",
       "url": "https://rosettacode.org/wiki/Merge_and_aggregate_datasets",
@@ -15334,6 +15438,32 @@
           "output": "tasks/o-halloran-numbers/run.expected",
           "lines": 29,
           "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "object-serialization",
+      "title": "Object serialization",
+      "url": "https://rosettacode.org/wiki/Object_serialization",
+      "tags": [
+        "dotnet-interop",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 36,
+      "parts": [
+        {
+          "id": "object-serialization",
+          "heading": null,
+          "source": "tasks/object-serialization/object-serialization.ghul",
+          "output": "tasks/object-serialization/run.expected",
+          "lines": 36,
+          "playground": false,
           "input": false,
           "images": []
         }
@@ -18001,6 +18131,58 @@
       ]
     },
     {
+      "slug": "reflection-list-methods",
+      "title": "Reflection/List methods",
+      "url": "https://rosettacode.org/wiki/Reflection/List_methods",
+      "tags": [
+        "dotnet-interop",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "reflection-list-methods",
+          "heading": null,
+          "source": "tasks/reflection-list-methods/reflection-list-methods.ghul",
+          "output": "tasks/reflection-list-methods/run.expected",
+          "lines": 46,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "reflection-list-properties",
+      "title": "Reflection/List properties",
+      "url": "https://rosettacode.org/wiki/Reflection/List_properties",
+      "tags": [
+        "dotnet-interop",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "reflection-list-properties",
+          "heading": null,
+          "source": "tasks/reflection-list-properties/reflection-list-properties.ghul",
+          "output": "tasks/reflection-list-properties/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "regular-expressions",
       "title": "Regular expressions",
       "url": "https://rosettacode.org/wiki/Regular_expressions",
@@ -19003,6 +19185,32 @@
           "source": "tasks/semiprime/semiprime.ghul",
           "output": "tasks/semiprime/run.expected",
           "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "send-an-unknown-method-call",
+      "title": "Send an unknown method call",
+      "url": "https://rosettacode.org/wiki/Send_an_unknown_method_call",
+      "tags": [
+        "dotnet-interop",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 33,
+      "parts": [
+        {
+          "id": "send-an-unknown-method-call",
+          "heading": null,
+          "source": "tasks/send-an-unknown-method-call/send-an-unknown-method-call.ghul",
+          "output": "tasks/send-an-unknown-method-call/run.expected",
+          "lines": 33,
           "playground": true,
           "input": false,
           "images": []
@@ -21256,6 +21464,32 @@
           "source": "tasks/stack/stack.ghul",
           "output": "tasks/stack/run.expected",
           "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "stack-traces",
+      "title": "Stack traces",
+      "url": "https://rosettacode.org/wiki/Stack_traces",
+      "tags": [
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "stack-traces",
+          "heading": null,
+          "source": "tasks/stack-traces/stack-traces.ghul",
+          "output": "tasks/stack-traces/run.expected",
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []
@@ -24161,6 +24395,32 @@
           "source": "tasks/variable-length-quantity/variable-length-quantity.ghul",
           "output": "tasks/variable-length-quantity/run.expected",
           "lines": 28,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "variable-size-get",
+      "title": "Variable size/Get",
+      "url": "https://rosettacode.org/wiki/Variable_size/Get",
+      "tags": [
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 24,
+      "parts": [
+        {
+          "id": "variable-size-get",
+          "heading": null,
+          "source": "tasks/variable-size-get/variable-size-get.ghul",
+          "output": "tasks/variable-size-get/run.expected",
+          "lines": 24,
           "playground": true,
           "input": false,
           "images": []

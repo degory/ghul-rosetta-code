@@ -1,0 +1,37 @@
+use default
+use System.Reflection.BindingFlags
+
+class BOOK(title: string, pages: int) is
+    borrowed: bool public
+
+    init(..) is
+        borrowed = false
+    si
+
+    words: int => pages * 300
+si
+
+let book = BOOK("Solaris", 204)
+let flags = BindingFlags.INSTANCE | BindingFlags.PUBLIC
+
+let properties = book.get_type().get_properties(flags)
+    |> filter(p => p.declaring_type == book.get_type())
+    |> collect_list()
+
+properties.sort((left: System.Reflection.PropertyInfo,
+        right: System.Reflection.PropertyInfo) ->
+    int => string.compare(left.name, right.name))
+
+for property in properties do
+    let access =
+        if property.can_write then "read and write" else "read only" fi
+
+    write_line("{property.name}: {property.property_type.name}, {access}")
+    write_line("  value now: {property.get_value(book)}")
+od
+
+let borrowed = book.get_type().get_property("borrowed")!
+
+borrowed.set_value(book, cast object(true))
+
+write_line("after setting it through reflection: {book.borrowed}")

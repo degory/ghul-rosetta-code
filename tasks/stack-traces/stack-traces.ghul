@@ -1,0 +1,30 @@
+use default
+use System.Diagnostics.StackTrace
+
+show_trace() is
+    let trace = StackTrace(true)
+
+    for frame in trace.get_frames() do
+        let method = frame.get_method()
+
+        if method? then
+            write_line("  {method.declaring_type?.name}.{method.name}")
+        fi
+    od
+si
+
+inner() is
+    write_line("from inner:")
+
+    show_trace()
+si
+
+outer() is
+    write_line("from outer:")
+
+    inner()
+si
+
+outer()
+
+write_line("and the program carries on")

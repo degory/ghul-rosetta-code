@@ -1,0 +1,46 @@
+use default
+use System.Reflection.BindingFlags
+
+class ROBOT is
+    _charge: int
+
+    init() is
+        _charge = 100
+    si
+
+    walk(steps: int) -> int is
+        _charge = _charge - steps
+
+        _charge
+    si
+
+    charge() is
+        _charge = 100
+    si
+
+    _diagnose() -> string => "charge {_charge}"
+si
+
+let robot = ROBOT()
+let flags = BindingFlags.INSTANCE | BindingFlags.PUBLIC
+
+let declared = robot.get_type().get_methods(flags)
+    |> filter(m => m.declaring_type == robot.get_type())
+    |> map(m => "{m.name}({m.get_parameters()
+        |> map(p => "{p.parameter_type.name} {p.name}")
+        |> join(", ")}) -> {m.return_type.name}")
+    |> collect_list()
+
+declared.sort((left: string, right: string) -> int =>
+    string.compare(left, right))
+
+declared |> each(line => write_line(line))
+
+write_line("")
+write_line("inherited from object:")
+
+robot.get_type().get_methods(flags)
+    |> filter(m => m.declaring_type != robot.get_type())
+    |> map(m => m.name)
+    |> collect_list()
+    |> each(name => write_line("  {name}"))
