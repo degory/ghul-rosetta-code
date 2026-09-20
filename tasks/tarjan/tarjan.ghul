@@ -1,0 +1,62 @@
+use default
+
+let edges =
+    [
+        [1], [2], [0], [1, 2, 4], [3, 5], [2, 6], [5], [4, 6, 7]
+    ]
+
+let index = repeat(-1, edges.count) |> collect_list()
+let low = repeat(0, edges.count) |> collect_list()
+let on_stack = repeat(false, edges.count) |> collect_list()
+
+let stack = STACK[int]()
+let components = LIST[List[int]]()
+
+let next_index mut = 0
+
+visit(vertex: int) is
+    index[vertex] = next_index
+    low[vertex] = next_index
+    next_index = next_index + 1
+
+    stack.push(vertex)
+    on_stack[vertex] = true
+
+    for next in edges[vertex] do
+        if index[next] < 0 then
+            visit(next)
+            low[vertex] = int.min(low[vertex], low[next])
+        elif on_stack[next] then
+            low[vertex] = int.min(low[vertex], index[next])
+        fi
+    od
+
+    if low[vertex] == index[vertex] then
+        let component = LIST[int]()
+
+        while true do
+            let member = stack.pop()
+
+            on_stack[member] = false
+            component.add(member)
+
+            if member == vertex then
+                break
+            fi
+        od
+
+        component.sort()
+
+        components.add(component)
+    fi
+si
+
+for vertex in 0..edges.count do
+    if index[vertex] < 0 then
+        visit(vertex)
+    fi
+od
+
+components
+    |> each(component =>
+        write_line("{component |> join(" ")}"))
