@@ -16557,14 +16557,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 6,
+      "lines": 8,
       "parts": [
         {
           "id": "program-name",
           "heading": null,
           "source": "tasks/program-name/program-name.ghul",
           "output": "tasks/program-name/run.expected",
-          "lines": 6,
+          "lines": 8,
           "playground": true,
           "input": false,
           "images": []
@@ -18700,14 +18700,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 133,
+      "lines": 148,
       "parts": [
         {
           "id": "simple-database",
           "heading": null,
           "source": "tasks/simple-database/simple-database.ghul",
           "output": "tasks/simple-database/run.expected",
-          "lines": 133,
+          "lines": 148,
           "playground": true,
           "input": false,
           "images": []
