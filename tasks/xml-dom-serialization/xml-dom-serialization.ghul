@@ -1,0 +1,28 @@
+use default
+use System.Xml
+
+let document = XmlDocument()
+
+document.append_child(document.create_xml_declaration("1.0", null, null))
+
+let root = document.create_element("root")
+
+document.append_child(root)
+
+let element = document.create_element("element")
+
+element.append_child(document.create_text_node("Some text here"))
+root.append_child(element)
+
+let writer = IO.StringWriter()
+
+let settings = XmlWriterSettings()
+
+settings.indent = true
+
+let xml_writer = XmlWriter.create(writer, settings)
+
+document.write_to(xml_writer)
+xml_writer.flush()
+
+write_line("{writer}")
