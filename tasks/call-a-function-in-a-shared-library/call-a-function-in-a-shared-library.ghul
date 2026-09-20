@@ -1,0 +1,33 @@
+use default
+use System.Runtime.InteropServices.NativeLibrary
+
+class LIBC is
+    @System.Runtime.InteropServices.DllImport("libc")
+    abs(value: int) -> int static;
+
+    init() is si
+si
+
+own_abs(value: int) -> int => if value < 0 then -value else value fi
+
+use Choice = (source: string, absolute: (int) -> int)
+
+// The import is bound at the first call rather than at build time, so
+// asking whether the library is there is what decides which to use.
+chosen(library: string) -> Choice =>
+    if NativeLibrary.try_load(library, _) then
+        (source = "the shared library", absolute = LIBC.abs)
+    else
+        (source = "an internal equivalent", absolute = own_abs)
+    fi
+
+report(library: string) is
+    let (source, absolute) = chosen(library)
+
+    write_line("{library}: {source}")
+
+    [-7, 0, 42] |> each(v => write_line("  abs({v}) = {absolute(v)}"))
+si
+
+report("libc")
+report("libnosuchthing")
