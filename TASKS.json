@@ -2494,7 +2494,8 @@
     {
       "title": "Graph colouring",
       "slug": "graph-colouring",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6e9a32ef278c5989fdb7e658db2942b2c49c26d4cc80dfb2b36fb8be8dc4de95"
     },
     {
       "title": "Gray code",
@@ -2602,7 +2603,8 @@
     {
       "title": "Halt and catch fire",
       "slug": "halt-and-catch-fire",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d56dec71d5e645496df03ecf0305310c71ef1cfde69b0da3c6f35a12542dca31"
     },
     {
       "title": "Hamming numbers",
@@ -2613,7 +2615,8 @@
     {
       "title": "Handle a signal",
       "slug": "handle-a-signal",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "fc0287e097502628acd9f09c4b33ae47c11321651a8ce9feab6002e5c4da913e"
     },
     {
       "title": "Happy numbers",
@@ -2651,7 +2654,8 @@
     {
       "title": "Hash join",
       "slug": "hash-join",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "70ca070564c902bfdfbf3f8643722aa49790837ab1a0f70f33409493ef434300"
     },
     {
       "title": "Haversine formula",
@@ -2691,7 +2695,8 @@
     {
       "title": "Hello world/Web server",
       "slug": "hello-world-web-server",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1e6f77b797ecd8d579b20ded756aa949feebe23f3d96ee02e462c7ea1e8c5fa8"
     },
     {
       "title": "Here document",
@@ -2735,7 +2740,8 @@
     {
       "title": "History variables",
       "slug": "history-variables",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e5f1a968f3d13fb4bfb64bd23fd7523f14d1f0033e52a97c268ad056282e02d2"
     },
     {
       "title": "Hofstadter Figure-Figure sequences",
