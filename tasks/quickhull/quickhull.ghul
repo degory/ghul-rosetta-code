@@ -1,0 +1,184 @@
+use default
+use Raster.IMAGE
+use Point = (x: double, y: double, z: double)
+
+-(a: Point, b: Point) -> Point =>
+    (x = a.x - b.x, y = a.y - b.y, z = a.z - b.z)
+
++(a: Point, b: Point) -> Point =>
+    (x = a.x + b.x, y = a.y + b.y, z = a.z + b.z)
+
+*(p: Point, k: double) -> Point => (x = p.x * k, y = p.y * k, z = p.z * k)
+
+⋅(a: Point, b: Point) -> double => a.x * b.x + a.y * b.y + a.z * b.z
+
+×(a: Point, b: Point) -> Point =>
+    (x = a.y * b.z - a.z * b.y,
+     y = a.z * b.x - a.x * b.z,
+     z = a.x * b.y - a.y * b.x)
+
+length(p: Point) -> double => System.Math.sqrt(p ⋅ p)
+
+class FACE(a: Point, b: Point, c: Point) is
+    normal: Point => (b - a) × (c - a)
+
+    area: double => length(normal) / 2.0D
+
+    outside(p: Point) -> bool => normal ⋅ (p - a) > 0.000000001D
+
+    edges: Pipe[(from: Point, to: Point)] =>
+        [(from = a, to = b), (from = b, to = c), (from = c, to = a)]
+            |> collect_list()
+            |> pipe()
+si
+
+same_edge(one: (from: Point, to: Point),
+          other: (from: Point, to: Point)) -> bool =>
+    one.from =~ other.to /\ one.to =~ other.from
+
+hull(points: List[Point]) -> LIST[FACE] is
+    let furthest = (from: Point, along: Point) -> Point =>
+        points |> reduce(points[0], (best, candidate) =>
+            if (candidate - from) ⋅ along > (best - from) ⋅ along then
+                candidate
+            else
+                best
+            fi)
+
+    let low = furthest((x = 0.0D, y = 0.0D, z = 0.0D),
+                       (x = -1.0D, y = 0.0D, z = 0.0D))
+
+    let high = furthest((x = 0.0D, y = 0.0D, z = 0.0D),
+                        (x = 1.0D, y = 0.0D, z = 0.0D))
+
+    let apex =
+        points |> reduce(points[0], (best, candidate) =>
+            if length((candidate - low) × (high - low)) >
+               length((best - low) × (high - low)) then
+                candidate
+            else
+                best
+            fi)
+
+    let face = FACE(low, high, apex)
+
+    let peak =
+        points |> reduce(points[0], (best, candidate) =>
+            if System.Math.abs(face.normal ⋅ (candidate - low)) >
+               System.Math.abs(face.normal ⋅ (best - low)) then
+                candidate
+            else
+                best
+            fi)
+
+    let faces =
+        if face.outside(peak) then
+            LIST([FACE(low, apex, high), FACE(low, high, peak),
+                  FACE(high, apex, peak), FACE(apex, low, peak)])
+        else
+            LIST([FACE(low, high, apex), FACE(low, apex, peak),
+                  FACE(apex, high, peak), FACE(high, low, peak)])
+        fi
+
+    for point in points do
+        let visible =
+            faces |> filter(face => face.outside(point)) |> collect_list()
+
+        if visible.count == 0 then
+            continue
+        fi
+
+        let horizon =
+            visible
+                |> flat_map(face => face.edges)
+                |> filter(edge =>
+                    !(visible
+                        |> flat_map(face => face.edges)
+                        |> any(other => same_edge(edge, other))))
+                |> collect_list()
+
+        for gone in visible do
+            faces.remove(gone)
+        od
+
+        for (from, to) in horizon do
+            faces.add(FACE(from, to, point))
+        od
+    od
+
+    return faces
+si
+
+let cloud =
+    let seed mut = 1u
+    in
+    0..60
+        |> map(_ =>
+            let next = () -> double is
+                seed = seed * 1103515245u + 12345u
+
+                let drawn = cast int(seed >>> 16) % 1000
+
+                return cast double(drawn) / 500.0D - 1.0D
+            si
+            in
+            (x = next(), y = next(), z = next()))
+        |> collect_list()
+
+let shapes =
+    [(name = "tetrahedron",
+      points = [(x = 0.0D, y = 0.0D, z = 0.0D),
+                (x = 1.0D, y = 0.0D, z = 0.0D),
+                (x = 0.0D, y = 1.0D, z = 0.0D),
+                (x = 0.0D, y = 0.0D, z = 1.0D)]
+                   |> collect_list()),
+     (name = "cube with points inside",
+      points =
+          0..8
+              |> map(corner =>
+                  (x = cast double(corner % 2) * 2.0D - 1.0D,
+                   y = cast double(corner / 2 % 2) * 2.0D - 1.0D,
+                   z = cast double(corner / 4) * 2.0D - 1.0D))
+              |> cat([(x = 0.0D, y = 0.0D, z = 0.0D),
+                      (x = 0.5D, y = -0.25D, z = 0.125D)])
+              |> collect_list()),
+     (name = "cloud of 60 points", points = cloud)]
+
+for (name, points) in shapes do
+    let faces = hull(points)
+
+    let outlier =
+        points |> any(point => faces |> any(face => face.outside(point)))
+
+    assert !outlier else "a point lies outside the hull"
+
+    let area =
+        faces
+            |> map(face => face.area)
+            |> reduce(0.0D, (running: double, part: double) =>
+                running + part)
+
+    write_line("{name}: {faces.count} faces, area {area:F6}")
+od
+
+let image = IMAGE(420, 420)
+
+let turned = (p: Point) -> (x: double, y: double) =>
+    (x = p.x * 0.8D + p.z * 0.6D, y = p.y * 0.9D + p.z * 0.3D)
+
+image.view(-2.2D, -2.2D, 2.2D, 2.2D)
+image.clear(252ub, 250ub, 245ub)
+image.stroke(1.2D)
+image.colour(60ub, 90ub, 170ub)
+
+for face in hull(cloud) do
+    for (from, to) in face.edges do
+        let (a, z) = (turned(from), turned(to))
+
+        image.line(a.x, a.y, z.x, z.y)
+    od
+od
+
+image.write("hull.png")
+
+image.show("hull.png")
