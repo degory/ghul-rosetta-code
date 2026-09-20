@@ -1,0 +1,58 @@
+use default
+
+let edges =
+    [
+        [1], [2], [0], [1, 2, 4], [3, 5], [2, 6], [5], [4, 6, 7]
+    ]
+
+let reversed =
+    0..edges.count |> map(_ => LIST[int]()) |> collect_list()
+
+for vertex in 0..edges.count do
+    for next in edges[vertex] do
+        reversed[next].add(vertex)
+    od
+od
+
+let visited = repeat(false, edges.count) |> collect_list()
+let order = LIST[int]()
+
+visit(vertex: int) is
+    if visited[vertex] then
+        return
+    fi
+
+    visited[vertex] = true
+
+    for next in edges[vertex] do
+        visit(next)
+    od
+
+    order.add(vertex)
+si
+
+let root = repeat(-1, edges.count) |> collect_list()
+
+assign(vertex: int, component: int) is
+    if root[vertex] >= 0 then
+        return
+    fi
+
+    root[vertex] = component
+
+    for previous in reversed[vertex] do
+        assign(previous, component)
+    od
+si
+
+for vertex in 0..edges.count do
+    visit(vertex)
+od
+
+for at in 0..order.count do
+    let vertex = order[order.count - 1 - at]
+
+    assign(vertex, vertex)
+od
+
+write_line("[{root |> join(", ")}]")
