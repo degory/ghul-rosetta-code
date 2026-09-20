@@ -2220,6 +2220,58 @@
       ]
     },
     {
+      "slug": "bitcoin-address-validation",
+      "title": "Bitcoin/address validation",
+      "url": "https://rosettacode.org/wiki/Bitcoin/address_validation",
+      "tags": [
+        "algorithms",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "bitcoin-address-validation",
+          "heading": null,
+          "source": "tasks/bitcoin-address-validation/bitcoin-address-validation.ghul",
+          "output": "tasks/bitcoin-address-validation/run.expected",
+          "lines": 45,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "bitcoin-public-point-to-address",
+      "title": "Bitcoin/public point to address",
+      "url": "https://rosettacode.org/wiki/Bitcoin/public_point_to_address",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 192,
+      "parts": [
+        {
+          "id": "bitcoin-public-point-to-address",
+          "heading": null,
+          "source": "tasks/bitcoin-public-point-to-address/bitcoin-public-point-to-address.ghul",
+          "output": "tasks/bitcoin-public-point-to-address/run.expected",
+          "lines": 192,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "bitmap",
       "title": "Bitmap",
       "url": "https://rosettacode.org/wiki/Bitmap",
@@ -4935,6 +4987,85 @@
           "source": "tasks/create-a-two-dimensional-array-at-runtime/create-a-two-dimensional-array-at-runtime.ghul",
           "output": "tasks/create-a-two-dimensional-array-at-runtime/run.expected",
           "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "create-an-html-table",
+      "title": "Create an HTML table",
+      "url": "https://rosettacode.org/wiki/Create_an_HTML_table",
+      "tags": [
+        "text-processing",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 28,
+      "parts": [
+        {
+          "id": "create-an-html-table",
+          "heading": null,
+          "source": "tasks/create-an-html-table/create-an-html-table.ghul",
+          "output": "tasks/create-an-html-table/run.expected",
+          "lines": 28,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "csv-data-manipulation",
+      "title": "CSV data manipulation",
+      "url": "https://rosettacode.org/wiki/CSV_data_manipulation",
+      "tags": [
+        "text-processing",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "csv-data-manipulation",
+          "heading": null,
+          "source": "tasks/csv-data-manipulation/csv-data-manipulation.ghul",
+          "output": "tasks/csv-data-manipulation/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "csv-to-html-translation",
+      "title": "CSV to HTML translation",
+      "url": "https://rosettacode.org/wiki/CSV_to_HTML_translation",
+      "tags": [
+        "text-processing",
+        "pipes",
+        "strings"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "csv-to-html-translation",
+          "heading": null,
+          "source": "tasks/csv-to-html-translation/csv-to-html-translation.ghul",
+          "output": "tasks/csv-to-html-translation/run.expected",
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []
@@ -13440,6 +13571,58 @@
       ]
     },
     {
+      "slug": "md4",
+      "title": "MD4",
+      "url": "https://rosettacode.org/wiki/MD4",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 94,
+      "parts": [
+        {
+          "id": "md4",
+          "heading": null,
+          "source": "tasks/md4/md4.ghul",
+          "output": "tasks/md4/run.expected",
+          "lines": 94,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "md5-implementation",
+      "title": "MD5/Implementation",
+      "url": "https://rosettacode.org/wiki/MD5/Implementation",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 122,
+      "parts": [
+        {
+          "id": "md5-implementation",
+          "heading": null,
+          "source": "tasks/md5-implementation/md5-implementation.ghul",
+          "output": "tasks/md5-implementation/run.expected",
+          "lines": 122,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "median-filter",
       "title": "Median filter",
       "url": "https://rosettacode.org/wiki/Median_filter",
@@ -17688,6 +17871,32 @@
       ]
     },
     {
+      "slug": "ripemd-160",
+      "title": "RIPEMD-160",
+      "url": "https://rosettacode.org/wiki/RIPEMD-160",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 138,
+      "parts": [
+        {
+          "id": "ripemd-160",
+          "heading": null,
+          "source": "tasks/ripemd-160/ripemd-160.ghul",
+          "output": "tasks/ripemd-160/run.expected",
+          "lines": 138,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "robots",
       "title": "Robots",
       "url": "https://rosettacode.org/wiki/Robots",
@@ -18415,6 +18624,89 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sha-1",
+      "title": "SHA-1",
+      "url": "https://rosettacode.org/wiki/SHA-1",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 109,
+      "parts": [
+        {
+          "id": "sha-1",
+          "heading": null,
+          "source": "tasks/sha-1/sha-1.ghul",
+          "output": "tasks/sha-1/run.expected",
+          "lines": 109,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sha-256",
+      "title": "SHA-256",
+      "url": "https://rosettacode.org/wiki/SHA-256",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 134,
+      "parts": [
+        {
+          "id": "sha-256",
+          "heading": null,
+          "source": "tasks/sha-256/sha-256.ghul",
+          "output": "tasks/sha-256/run.expected",
+          "lines": 134,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sha-256-merkle-tree",
+      "title": "SHA-256 Merkle tree",
+      "url": "https://rosettacode.org/wiki/SHA-256_Merkle_tree",
+      "tags": [
+        "algorithms",
+        "data-structures",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [
+        "tasks/sha-256-merkle-tree/title.png.expected"
+      ],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "sha-256-merkle-tree",
+          "heading": null,
+          "source": "tasks/sha-256-merkle-tree/sha-256-merkle-tree.ghul",
+          "output": "tasks/sha-256-merkle-tree/run.expected",
+          "lines": 42,
+          "playground": false,
+          "input": false,
+          "images": [
+            "tasks/sha-256-merkle-tree/title.png.expected"
+          ]
         }
       ]
     },
@@ -24261,6 +24553,112 @@
           "images": [
             "tasks/xiaolin-wus-line-algorithm/wu.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "xml-dom-serialization",
+      "title": "XML/DOM serialization",
+      "url": "https://rosettacode.org/wiki/XML/DOM_serialization",
+      "tags": [
+        "text-processing",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 28,
+      "parts": [
+        {
+          "id": "xml-dom-serialization",
+          "heading": null,
+          "source": "tasks/xml-dom-serialization/xml-dom-serialization.ghul",
+          "output": "tasks/xml-dom-serialization/run.expected",
+          "lines": 28,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "xml-input",
+      "title": "XML/Input",
+      "url": "https://rosettacode.org/wiki/XML/Input",
+      "tags": [
+        "text-processing",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 20,
+      "parts": [
+        {
+          "id": "xml-input",
+          "heading": null,
+          "source": "tasks/xml-input/xml-input.ghul",
+          "output": "tasks/xml-input/run.expected",
+          "lines": 20,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "xml-output",
+      "title": "XML/Output",
+      "url": "https://rosettacode.org/wiki/XML/Output",
+      "tags": [
+        "text-processing",
+        "dotnet-interop",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 26,
+      "parts": [
+        {
+          "id": "xml-output",
+          "heading": null,
+          "source": "tasks/xml-output/xml-output.ghul",
+          "output": "tasks/xml-output/run.expected",
+          "lines": 26,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "xml-xpath",
+      "title": "XML/XPath",
+      "url": "https://rosettacode.org/wiki/XML/XPath",
+      "tags": [
+        "text-processing",
+        "dotnet-interop",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 53,
+      "parts": [
+        {
+          "id": "xml-xpath",
+          "heading": null,
+          "source": "tasks/xml-xpath/xml-xpath.ghul",
+          "output": "tasks/xml-xpath/run.expected",
+          "lines": 53,
+          "playground": false,
+          "input": false,
+          "images": []
         }
       ]
     },

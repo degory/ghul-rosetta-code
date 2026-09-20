@@ -540,6 +540,16 @@
       }
     },
     {
+      "title": "Bitcoin/address validation",
+      "slug": "bitcoin-address-validation",
+      "state": "solved"
+    },
+    {
+      "title": "Bitcoin/public point to address",
+      "slug": "bitcoin-public-point-to-address",
+      "state": "solved"
+    },
+    {
       "title": "Bitmap",
       "slug": "bitmap",
       "state": "published",
@@ -739,6 +749,16 @@
       "slug": "crc-32",
       "state": "published",
       "published_hash": "9e76cef737d52988365c4348470e611ab7f422a3c6f755657e48704a71081532"
+    },
+    {
+      "title": "CSV data manipulation",
+      "slug": "csv-data-manipulation",
+      "state": "solved"
+    },
+    {
+      "title": "CSV to HTML translation",
+      "slug": "csv-to-html-translation",
+      "state": "solved"
     },
     {
       "title": "Caesar cipher",
@@ -1258,6 +1278,11 @@
       "slug": "create-a-two-dimensional-array-at-runtime",
       "state": "published",
       "published_hash": "a97b4fab8a1bd930c4bcf8b1e3216bea1e720ed26ebae81f3a0b380de55c54db"
+    },
+    {
+      "title": "Create an HTML table",
+      "slug": "create-an-html-table",
+      "state": "solved"
     },
     {
       "title": "Cuban primes",
@@ -3262,6 +3287,16 @@
       "published_hash": "95406c9c93a2c4e45b94b99e3fe6b805c73fe96a7fd0ee7389cf0a8d28546b71"
     },
     {
+      "title": "MD4",
+      "slug": "md4",
+      "state": "solved"
+    },
+    {
+      "title": "MD5/Implementation",
+      "slug": "md5-implementation",
+      "state": "solved"
+    },
+    {
       "title": "Mad Libs",
       "slug": "mad-libs",
       "state": "published",
@@ -4249,6 +4284,11 @@
       "published_hash": "f7a67b1e4f0c2464e7e1c576d06fc83f56ede36e3c50ef9c2cc04b58ce463549"
     },
     {
+      "title": "RIPEMD-160",
+      "slug": "ripemd-160",
+      "state": "solved"
+    },
+    {
       "title": "RPG attributes generator",
       "slug": "rpg-attributes-generator",
       "state": "published",
@@ -4492,6 +4532,21 @@
       "slug": "s-expressions",
       "state": "published",
       "published_hash": "37fea0814a45776db69eb04e5dc1537887bc672e50b63d0fe57c6ff9dd48b34b"
+    },
+    {
+      "title": "SHA-1",
+      "slug": "sha-1",
+      "state": "solved"
+    },
+    {
+      "title": "SHA-256",
+      "slug": "sha-256",
+      "state": "solved"
+    },
+    {
+      "title": "SHA-256 Merkle tree",
+      "slug": "sha-256-merkle-tree",
+      "state": "solved"
     },
     {
       "title": "Safe primes and unsafe primes",
@@ -5990,6 +6045,26 @@
       "slug": "write-language-name-in-3d-ascii",
       "state": "published",
       "published_hash": "8c67e83d83fe577e0d95df3adf94504889f14fe4ba2b7be92216d6e8d72f3c72"
+    },
+    {
+      "title": "XML/DOM serialization",
+      "slug": "xml-dom-serialization",
+      "state": "solved"
+    },
+    {
+      "title": "XML/Input",
+      "slug": "xml-input",
+      "state": "solved"
+    },
+    {
+      "title": "XML/Output",
+      "slug": "xml-output",
+      "state": "solved"
+    },
+    {
+      "title": "XML/XPath",
+      "slug": "xml-xpath",
+      "state": "solved"
     },
     {
       "title": "Xiaolin Wu\u0027s line algorithm",
