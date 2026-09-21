@@ -3729,6 +3729,11 @@
       }
     },
     {
+      "title": "Markov chain text generator",
+      "slug": "markov-chain-text-generator",
+      "state": "solved"
+    },
+    {
       "title": "Mastermind",
       "slug": "mastermind",
       "state": "published",
@@ -4500,6 +4505,11 @@
       "slug": "pierpont-primes",
       "state": "published",
       "published_hash": "6a1ef28cc2f84e4361ac9a08bcb30f1d27b3ff0454d5192c5f56e4dcc0605583"
+    },
+    {
+      "title": "Pig the dice game",
+      "slug": "pig-the-dice-game",
+      "state": "solved"
     },
     {
       "title": "Pig the dice game/Player",
@@ -5732,6 +5742,11 @@
       "slug": "stack-traces",
       "state": "published",
       "published_hash": "19e9073b7cb692f1c9012e357d662c5369bbd5944856b63094db1f65e708efb6"
+    },
+    {
+      "title": "Stair-climbing puzzle",
+      "slug": "stair-climbing-puzzle",
+      "state": "solved"
     },
     {
       "title": "Start from a main routine",

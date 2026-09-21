@@ -1,0 +1,68 @@
+use default
+
+// The robot climbs on success and falls on failure. Seeded, so the
+// same run of luck happens every time.
+class ROBOT(seed: int init, chance: double) is
+    _random: System.Random
+    position: int
+    attempts: int
+
+    init(..) is
+        _random = System.Random(seed)
+    si
+
+    step() -> bool is
+        attempts = attempts + 1
+
+        if _random.next_double() < chance then
+            position = position + 1
+
+            return true
+        fi
+
+        position = position - 1
+
+        false
+    si
+si
+
+// No variables and no numbers: a failed step is undone by climbing
+// twice, and each of those climbs is the same problem again.
+step_up_recursive(robot: ROBOT) is
+    if !robot.step() then
+        step_up_recursive(robot)
+        step_up_recursive(robot)
+    fi
+si
+
+// The second call is a tail call, so it can be a loop instead.
+step_up_iterative(robot: ROBOT) is
+    while !robot.step() do
+        step_up_iterative(robot)
+    od
+si
+
+plural(count: int, noun: string) -> string =>
+    "{count} {noun}{if count == 1 then "" else "s" fi}"
+
+report(name: string, climb: (ROBOT) -> void, chance: double) is
+    write_line("{name}, stepping up with chance {chance:F2}")
+
+    for seed in 1::4 do
+        let robot = ROBOT(seed, chance)
+
+        climb(robot)
+
+        let tries = plural(robot.attempts, "attempt")
+
+        write_line("  seed {seed}: at step {robot.position} after {tries}")
+    od
+
+    write_line("")
+si
+
+entry() is
+    report("recursive", step_up_recursive, 0.75)
+    report("iterative", step_up_iterative, 0.75)
+    report("recursive", step_up_recursive, 0.55)
+si

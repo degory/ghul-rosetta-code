@@ -14785,6 +14785,33 @@
       ]
     },
     {
+      "slug": "markov-chain-text-generator",
+      "title": "Markov chain text generator",
+      "url": "https://rosettacode.org/wiki/Markov_chain_text_generator",
+      "tags": [
+        "text-processing",
+        "generators",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 108,
+      "parts": [
+        {
+          "id": "markov-chain-text-generator",
+          "heading": null,
+          "source": "tasks/markov-chain-text-generator/markov-chain-text-generator.ghul",
+          "output": "tasks/markov-chain-text-generator/run.expected",
+          "lines": 108,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "mastermind",
       "title": "Mastermind",
       "url": "https://rosettacode.org/wiki/Mastermind",
@@ -17968,6 +17995,32 @@
           "lines": 79,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pig-the-dice-game",
+      "title": "Pig the dice game",
+      "url": "https://rosettacode.org/wiki/Pig_the_dice_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 65,
+      "parts": [
+        {
+          "id": "pig-the-dice-game",
+          "heading": null,
+          "source": "tasks/pig-the-dice-game/pig-the-dice-game.ghul",
+          "output": "tasks/pig-the-dice-game/run.expected",
+          "lines": 65,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
@@ -23007,6 +23060,32 @@
           "source": "tasks/stack-traces/stack-traces.ghul",
           "output": "tasks/stack-traces/run.expected",
           "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "stair-climbing-puzzle",
+      "title": "Stair-climbing puzzle",
+      "url": "https://rosettacode.org/wiki/Stair-climbing_puzzle",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 68,
+      "parts": [
+        {
+          "id": "stair-climbing-puzzle",
+          "heading": null,
+          "source": "tasks/stair-climbing-puzzle/stair-climbing-puzzle.ghul",
+          "output": "tasks/stair-climbing-puzzle/run.expected",
+          "lines": 68,
           "playground": true,
           "input": false,
           "images": []
