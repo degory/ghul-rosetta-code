@@ -25948,8 +25948,12 @@
       "slug": "upc",
       "title": "UPC",
       "url": "https://rosettacode.org/wiki/UPC",
-      "tags": [],
-      "interest": 0,
+      "tags": [
+        "parsing",
+        "algorithms",
+        "text-processing"
+      ],
+      "interest": 4,
       "playground": true,
       "input": false,
       "images": [],
