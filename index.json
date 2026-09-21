@@ -26497,14 +26497,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 96,
+      "lines": 95,
       "parts": [
         {
           "id": "vigenere-cipher-cryptanalysis",
           "heading": null,
           "source": "tasks/vigenere-cipher-cryptanalysis/vigenere-cipher-cryptanalysis.ghul",
           "output": "tasks/vigenere-cipher-cryptanalysis/run.expected",
-          "lines": 96,
+          "lines": 95,
           "playground": true,
           "input": false,
           "images": []
