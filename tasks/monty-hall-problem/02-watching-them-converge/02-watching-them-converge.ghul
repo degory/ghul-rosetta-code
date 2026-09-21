@@ -23,7 +23,8 @@ for trial in 1::rounds do
         opened = random.next(3)
     od
 
-    let switched = 3 - chosen - opened
+    let switched =
+        (0::2 |> find(door => door != chosen /\ door != opened))!
 
     if chosen == car then
         stay_wins = stay_wins + 1

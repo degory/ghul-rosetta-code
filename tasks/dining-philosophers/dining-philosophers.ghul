@@ -1,6 +1,3 @@
-// Each philosopher takes the lower-numbered of its two forks first, so
-// the table cannot deadlock.
-
 use default
 use Ghul.Coroutines
 

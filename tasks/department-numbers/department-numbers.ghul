@@ -1,8 +1,5 @@
 use default
 
-// Police, sanitation and fire each take a different number from 1 to 7, the
-// police number is even, and the three sum to 12.
-
 write_line("police sanitation fire")
 
 for police in [2, 4, 6] do

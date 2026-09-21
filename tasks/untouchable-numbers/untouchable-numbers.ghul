@@ -2,11 +2,6 @@ use default
 
 let top = 100_000
 
-// A composite with three or more prime factors has a smallest one no
-// larger than its cube root, so its aliquot sum is at least the
-// number raised to two thirds. The only shapes that escape that
-// bound are a prime, a prime squared, and a product of two distinct
-// primes, and those are marked directly rather than sieved for.
 let sieved = cast int(System.Math.pow(cast(top), 1.5D))
 
 let aliquot = repeat(0, sieved + 1) |> collect_list()

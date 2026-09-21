@@ -16,8 +16,6 @@ let coefficients = [
     -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
 ]
 
-// log(gamma(x)) for x >= 1, the Lanczos series without exponentiating -
-// a magnitude far beyond a double's range never overflows this way.
 log_gamma(x: double) -> double is
     let xm = x - 1.0
     let t = xm + g + 0.5
@@ -30,7 +28,7 @@ log_gamma(x: double) -> double is
 si
 
 // A value too large for a double is shown as a mantissa and a decimal
-// exponent, both read off the natural log rather than the value itself.
+// exponent, both taken from the natural log rather than from the value itself.
 scientific(ln_value: double) -> string is
     let log10 = ln_value / System.Math.log(10.0)
     let exponent = System.Math.floor(log10)
