@@ -8,7 +8,7 @@ is_perfect(n: int) -> bool is
     let divisors =
         (1::n / 2)
             |> filter(d => n % d == 0)
-            |> reduce(0, (running, d) => running + d)
+            |> sum()
 
     return divisors == n
 si
