@@ -16609,6 +16609,32 @@
       ]
     },
     {
+      "slug": "one-of-n-lines-in-a-file",
+      "title": "One of n lines in a file",
+      "url": "https://rosettacode.org/wiki/One_of_n_lines_in_a_file",
+      "tags": [
+        "algorithms",
+        "simulation"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 32,
+      "parts": [
+        {
+          "id": "one-of-n-lines-in-a-file",
+          "heading": null,
+          "source": "tasks/one-of-n-lines-in-a-file/one-of-n-lines-in-a-file.ghul",
+          "output": "tasks/one-of-n-lines-in-a-file/run.expected",
+          "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "operator-precedence",
       "title": "Operator precedence",
       "url": "https://rosettacode.org/wiki/Operator_precedence",
