@@ -17355,6 +17355,32 @@
       ]
     },
     {
+      "slug": "periodic-table",
+      "title": "Periodic table",
+      "url": "https://rosettacode.org/wiki/Periodic_table",
+      "tags": [
+        "text-processing",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 90,
+      "parts": [
+        {
+          "id": "periodic-table",
+          "heading": null,
+          "source": "tasks/periodic-table/periodic-table.ghul",
+          "output": "tasks/periodic-table/run.expected",
+          "lines": 90,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "peripheral-drift-illusion",
       "title": "Peripheral drift illusion",
       "url": "https://rosettacode.org/wiki/Peripheral_drift_illusion",
