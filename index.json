@@ -3711,6 +3711,32 @@
       ]
     },
     {
+      "slug": "chat-server",
+      "title": "Chat server",
+      "url": "https://rosettacode.org/wiki/Chat_server",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 156,
+      "parts": [
+        {
+          "id": "chat-server",
+          "heading": null,
+          "source": "tasks/chat-server/chat-server.ghul",
+          "output": "tasks/chat-server/run.expected",
+          "lines": 156,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "check-if-a-polygon-overlaps-with-a-rectangle",
       "title": "Check if a polygon overlaps with a rectangle",
       "url": "https://rosettacode.org/wiki/Check_if_a_polygon_overlaps_with_a_rectangle",

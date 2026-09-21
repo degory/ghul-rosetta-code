@@ -1,0 +1,156 @@
+use default
+use IO.StreamReader
+use IO.StreamWriter
+use System.Net.IPAddress
+use System.Net.Sockets.TcpClient
+use System.Net.Sockets.TcpListener
+use System.Threading.Monitor
+use System.Threading.Thread
+
+let port = 12345
+
+class MEMBER(nickname: string, writer: StreamWriter);
+
+let members = LIST[MEMBER]()
+
+tell(who: MEMBER, what: string) is
+    try
+        who.writer.write_line(what)
+    catch _: System.Exception
+        // A member that has gone away is dropped when its own thread ends.
+    yrt
+si
+
+announce(except: string, what: string) is
+    Monitor.enter(members)
+
+    let listening =
+        members |> filter(m => m.nickname !~ except) |> collect_list()
+
+    Monitor.exit(members)
+
+    listening |> each(m => tell(m, what))
+si
+
+attend(client: TcpClient) is
+    let stream = client.get_stream()
+    let reader = StreamReader(stream)
+    let writer = StreamWriter(stream)
+
+    writer.auto_flush = true
+    writer.write_line("sign on with a nickname")
+
+    if let nickname = reader.read_line() then
+        let joining = MEMBER(nickname, writer)
+
+        Monitor.enter(members)
+        members.add(joining)
+        Monitor.exit(members)
+
+        announce(nickname, "* {nickname} has joined")
+
+        // The joiner is told it is in before anything else happens, so a
+        // second visitor cannot arrive while this one is half registered.
+        tell(joining, "welcome {nickname}")
+
+        while let said = reader.read_line() do
+            announce(nickname, "{nickname}: {said}")
+        od
+
+        Monitor.enter(members)
+        let _ = members.remove(joining)
+        Monitor.exit(members)
+
+        announce(nickname, "* {nickname} has left")
+    fi
+
+    client.dispose()
+si
+
+let listener = TcpListener(IPAddress.loopback, port)
+
+listener.start()
+
+let door =
+    Thread(
+        () is
+            for _ in 0..2 do
+                let client = listener.accept_tcp_client()
+                let attending = Thread(() => attend(client))
+
+                attending.is_background = true
+
+                attending.start()
+            od
+        si
+    )
+
+door.is_background = true
+
+door.start()
+
+// Each client is driven from here rather than from a thread of its own, so
+// every read below waits for the line the step before it caused.
+class VISITOR(nickname: string public) is
+    _client: TcpClient
+    _reader: StreamReader
+    _writer: StreamWriter
+    heard: LIST[string] public
+
+    init(..) is
+        _client = TcpClient("127.0.0.1", port)
+
+        let stream = _client.get_stream()
+
+        _reader = StreamReader(stream)
+        _writer = StreamWriter(stream)
+        heard = LIST[string]()
+
+        _writer.auto_flush = true
+
+        heard.add(_reader.read_line()!)
+
+        _writer.write_line(nickname)
+
+        heard.add(_reader.read_line()!)
+    si
+
+    say(what: string) is
+        _writer.write_line(what)
+    si
+
+    listen() is
+        heard.add(_reader.read_line()!)
+    si
+
+    leave() is
+        _client.dispose()
+    si
+si
+
+let alice = VISITOR("alice")
+let bob = VISITOR("bob")
+
+alice.listen()
+
+alice.say("hello bob")
+
+bob.listen()
+
+bob.say("hi alice")
+
+alice.listen()
+
+alice.leave()
+
+bob.listen()
+
+bob.leave()
+
+[alice, bob]
+    |> each(
+        visitor is
+            write_line("{visitor.nickname} saw")
+
+            visitor.heard |> each(line => write_line("  {line}"))
+        si)

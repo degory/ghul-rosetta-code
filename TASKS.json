@@ -961,8 +961,9 @@
     },
     {
       "title": "Chat server",
-      "state": "rejected",
-      "reason": "needs-network"
+      "slug": "chat-server",
+      "state": "solved",
+      "note": "reopened, was rejected/needs-network: loopback sockets and threads let one program host the server and its own clients"
     },
     {
       "title": "Check Machin-like formulas",
