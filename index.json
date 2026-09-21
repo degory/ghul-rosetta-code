@@ -20767,6 +20767,33 @@
       ]
     },
     {
+      "slug": "show-the-epoch",
+      "title": "Show the epoch",
+      "url": "https://rosettacode.org/wiki/Show_the_epoch",
+      "tags": [
+        "date-time",
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "show-the-epoch",
+          "heading": null,
+          "source": "tasks/show-the-epoch/show-the-epoch.ghul",
+          "output": "tasks/show-the-epoch/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sierpinski-arrowhead-curve",
       "title": "Sierpinski arrowhead curve",
       "url": "https://rosettacode.org/wiki/Sierpinski_arrowhead_curve",
