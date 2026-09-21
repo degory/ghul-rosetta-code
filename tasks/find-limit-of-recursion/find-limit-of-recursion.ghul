@@ -1,0 +1,23 @@
+use default
+use System.Runtime.CompilerServices.RuntimeHelpers
+
+// A stack overflow on .NET ends the process rather than raising something a
+// program can catch, so each level asks the runtime whether enough stack is
+// left and stops at the last depth that still had some.
+let reached mut = 0
+
+deepen(depth: int) is
+    RuntimeHelpers.ensure_sufficient_execution_stack()
+
+    reached = depth
+
+    deepen(depth + 1)
+si
+
+try
+    deepen(1)
+catch _: System.InsufficientExecutionStackException
+    write_line("the runtime stopped it short of overflowing the stack")
+yrt
+
+write_line("reached depth {reached}")

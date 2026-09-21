@@ -8882,6 +8882,32 @@
       ]
     },
     {
+      "slug": "find-limit-of-recursion",
+      "title": "Find limit of recursion",
+      "url": "https://rosettacode.org/wiki/Find_limit_of_recursion",
+      "tags": [
+        "basics",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "find-limit-of-recursion",
+          "heading": null,
+          "source": "tasks/find-limit-of-recursion/find-limit-of-recursion.ghul",
+          "output": "tasks/find-limit-of-recursion/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "find-square-difference",
       "title": "Find square difference",
       "url": "https://rosettacode.org/wiki/Find_square_difference",
@@ -25105,6 +25131,32 @@
           "lines": 117,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "time-a-function",
+      "title": "Time a function",
+      "url": "https://rosettacode.org/wiki/Time_a_function",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "time-a-function",
+          "heading": null,
+          "source": "tasks/time-a-function/time-a-function.ghul",
+          "output": "tasks/time-a-function/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]

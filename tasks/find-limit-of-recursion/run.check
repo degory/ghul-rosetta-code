@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# How deep the stack goes is a property of the machine, so what is asserted
+# is that the recursion was stopped rather than crashing, and that it got
+# somewhere worth reporting first.
+
+if [ "$(wc -l < "$1")" != "2" ]; then
+    echo "expected two lines, got $(wc -l < "$1")"
+    cat "$1"
+
+    exit 1
+fi
+
+if ! grep -q '^the runtime stopped it short of overflowing the stack$' "$1"
+then
+    echo "the recursion should have been stopped by the runtime:"
+    cat "$1"
+
+    exit 1
+fi
+
+depth=$(sed -n 's/^reached depth \([0-9]\{1,\}\)$/\1/p' "$1")
+
+if [ -z "$depth" ]; then
+    echo "the second line should read 'reached depth <number>':"
+    cat "$1"
+
+    exit 1
+fi
+
+if [ "$depth" -lt 1000 ]; then
+    echo "a depth of $depth is too shallow to be the stack running out"
+
+    exit 1
+fi
