@@ -69,5 +69,7 @@ Thread.sleep(500)
 
 integrator.stop()
 
-write_line("output half way through the sine is above 0.5: {half_way > 0.5D}")
-write_line("output is within 0.01 of zero: {abs(integrator.output) < 0.01D}")
+write_line("output half way through is above 0.5: {half_way > 0.5D}")
+let final = abs(integrator.output)
+
+write_line("output is within 0.01 of zero: {final < 0.01D}")

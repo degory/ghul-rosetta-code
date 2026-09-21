@@ -697,14 +697,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 73,
+      "lines": 75,
       "parts": [
         {
           "id": "active-object",
           "heading": null,
           "source": "tasks/active-object/active-object.ghul",
           "output": "tasks/active-object/run.expected",
-          "lines": 73,
+          "lines": 75,
           "playground": true,
           "input": false,
           "images": []
