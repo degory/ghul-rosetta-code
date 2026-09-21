@@ -27068,14 +27068,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 170,
+      "lines": 165,
       "parts": [
         {
           "id": "wavelet-matrix",
           "heading": null,
           "source": "tasks/wavelet-matrix/wavelet-matrix.ghul",
           "output": "tasks/wavelet-matrix/run.expected",
-          "lines": 170,
+          "lines": 165,
           "playground": true,
           "input": false,
           "images": []

@@ -60,9 +60,6 @@ class WAVELET(values: List[int] init) is
         od
     si
 
-    // The k-th smallest value in [from, until), counting from zero. At each
-    // level the range is carried down to whichever half the answer lies in,
-    // and the bit that says which half is the next bit of the answer.
     quantile(k: int, from: int, until: int) -> int is
         let low mut = from
         let high mut = until
@@ -87,7 +84,6 @@ class WAVELET(values: List[int] init) is
         found
     si
 
-    // How many times `value` occurs in [from, until).
     count_of(value: int, from: int, until: int) -> int is
         if value < 0 \/ value >= (1 << _width) then
             return 0
@@ -111,7 +107,6 @@ class WAVELET(values: List[int] init) is
         high - low
     si
 
-    // How many values below `limit` occur in [from, until).
     count_below(limit: int, from: int, until: int) -> int is
         if limit >= (1 << _width) then
             return until - from
