@@ -8609,6 +8609,32 @@
       ]
     },
     {
+      "slug": "fibonacci-heap",
+      "title": "Fibonacci heap",
+      "url": "https://rosettacode.org/wiki/Fibonacci_heap",
+      "tags": [
+        "data-structures",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 289,
+      "parts": [
+        {
+          "id": "fibonacci-heap",
+          "heading": null,
+          "source": "tasks/fibonacci-heap/fibonacci-heap.ghul",
+          "output": "tasks/fibonacci-heap/run.expected",
+          "lines": 289,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "fibonacci-n-step-number-sequences",
       "title": "Fibonacci n-step number sequences",
       "url": "https://rosettacode.org/wiki/Fibonacci_n-step_number_sequences",

@@ -1,0 +1,289 @@
+use default
+
+class NODE(key: int public, value: string public) is
+    left: NODE public
+    right: NODE public
+    parent: NODE? public
+    child: NODE? public
+    degree: int public
+    marked: bool public
+
+    init(..) is
+        left = self
+        right = self
+    si
+si
+
+class HEAP is
+    _min: NODE?
+    _count: int
+
+    init() is si
+
+    count: int => _count
+
+    minimum: NODE? => _min
+
+    is_empty: bool => !_min?
+
+    insert(key: int, value: string) -> NODE is
+        let node = NODE(key, value)
+
+        _take_in(node)
+
+        _count = _count + 1
+
+        node
+    si
+
+    merge(other: HEAP) is
+        if let taking = other._min then
+            _take_in(taking)
+
+            _count = _count + other._count
+        fi
+
+        other._min = null
+        other._count = 0
+    si
+
+    extract_minimum() -> NODE? is
+        let taken = _min
+
+        if let least = taken then
+            if let first = least.child then
+                for child in _ring(first) do
+                    child.parent = null
+                od
+
+                _take_in(first)
+            fi
+
+            least.child = null
+
+            _unlink(least)
+
+            if least.right == least then
+                _min = null
+            else
+                _min = least.right
+
+                _consolidate()
+            fi
+
+            least.left = least
+            least.right = least
+
+            _count = _count - 1
+        fi
+
+        taken
+    si
+
+    decrease_key(node: NODE, key: int) is
+        assert key <= node.key else "a key can only decrease"
+
+        node.key = key
+
+        if let above = node.parent then
+            if node.key < above.key then
+                _cut(node, above)
+                _cascade(above)
+            fi
+        fi
+
+        if let least = _min then
+            if node.key < least.key then
+                _min = node
+            fi
+        fi
+    si
+
+    delete(node: NODE) is
+        decrease_key(node, int.min_value)
+
+        let _ = extract_minimum()
+    si
+
+    // The root list and each child list are circular and doubly linked, so
+    // a node is spliced in or out without knowing which list it is in.
+    _ring(from: NODE) -> List[NODE] is
+        let seen = LIST[NODE]()
+        let at mut = from
+
+        seen.add(from)
+
+        at = at.right
+
+        while at != from do
+            seen.add(at)
+
+            at = at.right
+        od
+
+        seen
+    si
+
+    _take_in(node: NODE) is
+        if let least = _min then
+            let a = least.right
+            let b = node.left
+
+            least.right = node
+            node.left = least
+            b.right = a
+            a.left = b
+
+            if node.key < least.key then
+                _min = node
+            fi
+        else
+            _min = node
+        fi
+    si
+
+    _unlink(node: NODE) is
+        node.left.right = node.right
+        node.right.left = node.left
+    si
+
+    _link(child: NODE, under: NODE) is
+        _unlink(child)
+
+        child.left = child
+        child.right = child
+        child.parent = under
+        child.marked = false
+
+        if let first = under.child then
+            let a = first.right
+
+            first.right = child
+            child.left = first
+            child.right = a
+            a.left = child
+        else
+            under.child = child
+        fi
+
+        under.degree = under.degree + 1
+    si
+
+    _consolidate() is
+        let least = _min
+
+        if !least? then
+            return
+        fi
+
+        let by_degree = LIST[NODE?]()
+
+        for _ in 0::64 do
+            by_degree.add(null)
+        od
+
+        for root in _ring(least) do
+            let carried mut = root
+            let rank mut = carried.degree
+
+            while let taken = by_degree[rank] do
+                let other mut = taken
+
+                if other.key < carried.key then
+                    let swap = carried
+
+                    carried = other
+                    other = swap
+                fi
+
+                _link(other, carried)
+
+                by_degree[rank] = null
+                rank = rank + 1
+            od
+
+            by_degree[rank] = carried
+        od
+
+        _min = null
+
+        for slot in by_degree do
+            if let root = slot then
+                root.left = root
+                root.right = root
+                root.parent = null
+
+                _take_in(root)
+            fi
+        od
+    si
+
+    _cut(node: NODE, above: NODE) is
+        if above.child == node then
+            above.child = if node.right == node then null else node.right fi
+        fi
+
+        _unlink(node)
+
+        above.degree = above.degree - 1
+
+        node.left = node
+        node.right = node
+        node.parent = null
+        node.marked = false
+
+        _take_in(node)
+    si
+
+    _cascade(node: NODE) is
+        if let above = node.parent then
+            if node.marked then
+                _cut(node, above)
+                _cascade(above)
+            else
+                node.marked = true
+            fi
+        fi
+    si
+si
+
+drain(heap: HEAP) -> string is
+    let taken = LIST[string]()
+
+    while let least = heap.extract_minimum() do
+        taken.add("{least.key}")
+    od
+
+    taken |> join(" ")
+si
+
+let first = HEAP()
+
+[23, 7, 21, 3, 17, 24] |> each(key => first.insert(key, "a{key}"))
+
+write_line("first holds {first.count}, least {first.minimum!.key}")
+
+let second = HEAP()
+
+[18, 52, 38, 39, 41] |> each(key => second.insert(key, "b{key}"))
+
+write_line("second holds {second.count}, least {second.minimum!.key}")
+
+first.merge(second)
+
+write_line("merged holds {first.count}, least {first.minimum!.key}")
+
+let watched = first.insert(46, "watched")
+
+first.decrease_key(watched, 5)
+
+write_line("46 decreased to {watched.key}, least {first.minimum!.key}")
+
+let doomed = first.insert(99, "doomed")
+
+first.delete(doomed)
+
+write_line("after deleting 99, {first.count} left")
+
+write_line("drained: {drain(first)}")
+write_line("empty: {first.is_empty}")
