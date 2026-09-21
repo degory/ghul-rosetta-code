@@ -9979,7 +9979,7 @@
         "text-processing"
       ],
       "interest": 3,
-      "playground": true,
+      "playground": false,
       "input": false,
       "images": [],
       "lines": 30,
@@ -9990,7 +9990,7 @@
           "source": "tasks/get-system-command-output/get-system-command-output.ghul",
           "output": "tasks/get-system-command-output/run.expected",
           "lines": 30,
-          "playground": true,
+          "playground": false,
           "input": false,
           "images": []
         }
@@ -25617,7 +25617,7 @@
         "dotnet-interop"
       ],
       "interest": 2,
-      "playground": true,
+      "playground": false,
       "input": false,
       "images": [],
       "lines": 34,
@@ -25628,7 +25628,7 @@
           "source": "tasks/unix-ls/unix-ls.ghul",
           "output": "tasks/unix-ls/run.expected",
           "lines": 34,
-          "playground": true,
+          "playground": false,
           "input": false,
           "images": []
         }
