@@ -1512,6 +1512,29 @@
       ]
     },
     {
+      "slug": "ascii-art-diagram-converter",
+      "title": "ASCII art diagram converter",
+      "url": "https://rosettacode.org/wiki/ASCII_art_diagram_converter",
+      "tags": [],
+      "interest": 0,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 129,
+      "parts": [
+        {
+          "id": "ascii-art-diagram-converter",
+          "heading": null,
+          "source": "tasks/ascii-art-diagram-converter/ascii-art-diagram-converter.ghul",
+          "output": "tasks/ascii-art-diagram-converter/run.expected",
+          "lines": 129,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "assertions",
       "title": "Assertions",
       "url": "https://rosettacode.org/wiki/Assertions",

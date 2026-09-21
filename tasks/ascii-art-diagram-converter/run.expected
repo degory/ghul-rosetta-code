@@ -1,0 +1,18 @@
+13 fields, 16 bits a row
+
+name      bits  binary            value
+ID          16  0111100001000111  30791
+QR           1  0                 0
+Opcode       4  1111              15
+AA           1  0                 0
+TC           1  1                 1
+RD           1  1                 1
+RA           1  1                 1
+Z            3  011               3
+RCODE        4  1111              15
+QDCOUNT     16  0101010010010110  21654
+ANCOUNT     16  1110000100101110  57646
+NSCOUNT     16  0001101111110001  7153
+ARCOUNT     16  0110100110100100  27044
+
+rejected: a cell 7 characters wide is not a whole number of bits
