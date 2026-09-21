@@ -8,11 +8,10 @@ run(program: string, input: string) is
         cells.add(0)
     od
 
-    // Jump targets, so a loop does not rescan the source for its partner.
-    let partner = LIST()
+    let matching_bracket = LIST()
 
     for _ in 0..program.length do
-        partner.add(0)
+        matching_bracket.add(0)
     od
 
     let open = LIST()
@@ -25,8 +24,8 @@ run(program: string, input: string) is
 
             open.remove_at(open.count - 1)
 
-            partner[start] = at
-            partner[at] = start
+            matching_bracket[start] = at
+            matching_bracket[at] = start
         fi
     od
 
@@ -49,11 +48,11 @@ run(program: string, input: string) is
             read = read + 1
         when '[' then
             if cells[cell] == 0 then
-                at = partner[at]
+                at = matching_bracket[at]
             fi
         when ']' then
             if cells[cell] != 0 then
-                at = partner[at]
+                at = matching_bracket[at]
             fi
         esac
 

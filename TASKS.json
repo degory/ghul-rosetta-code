@@ -1716,12 +1716,9 @@
     {
       "title": "Draw a pixel",
       "slug": "draw-a-pixel",
-      "state": "published",
-      "note": "reopened, was rejected/needs-gui: a 320 x 240 image with one red pixel, shown in the entry and the playground",
-      "published_hash": "db4485651bb0bc1968f8024ff71351c4ebe028971669b31d8afa4c0510d29861",
-      "image_hashes": {
-        "Ghul-draw-a-pixel-pixel.png": "0cb9a20de0b2f99bb76efcb04e9b0b018470aa71"
-      }
+      "state": "rejected",
+      "reason": "needs-gui",
+      "note": "The task asks for a pixel set in a window; ours wrote a PNG instead"
     },
     {
       "title": "Draw a rotating cube",

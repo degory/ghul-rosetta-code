@@ -1,74 +1,68 @@
-// Time is simulated: each scheduler turn advances the clock by one
-// step, and nothing reads a real one.
-
 use default
-use Ghul.Coroutines
+use System.Diagnostics.Stopwatch
+use System.Math.abs
 use System.Math.pi
 use System.Math.sin
+use System.Threading.Thread
 
-let step = 0.001D
 let frequency = 0.5D
 
 class INTEGRATOR is
+    _clock: Stopwatch
+    _worker: Thread
     _input: (double) -> double
     _output: double
     _previous: double
-    _time: double
+    _last: double
     _running: bool
 
     init() is
         _input = t => 0.0D
+        _clock = Stopwatch.start_new()
         _running = true
+        _worker = Thread(() => _integrate())
+
+        _worker.is_background = true
+        _worker.start()
     si
 
-    integrate() -> COROUTINE is
+    _integrate() is
         while _running do
-            await pause()
+            Thread.sleep(1)
 
-            let now = _time + step
+            let now = _clock.elapsed.total_seconds
             let sample = _input(now)
 
-            _output = _output + (sample + _previous) * step / 2.0D
+            _output = _output + (sample + _previous) * (now - _last) / 2.0D
             _previous = sample
-            _time = now
+            _last = now
         od
     si
 
     input(k: (double) -> double) is
+        _previous = k(_clock.elapsed.total_seconds)
         _input = k
-        _previous = k(_time)
     si
 
     output: double => _output
 
     stop() is
         _running = false
+
+        _worker.join()
     si
 si
 
 let integrator = INTEGRATOR()
 
-wait(seconds: double) -> COROUTINE is
-    for _ in 1::cast int(seconds / step) do
-        await pause()
-    od
-si
+integrator.input(t => sin(2.0D * pi * frequency * t))
 
-drive() -> COROUTINE is
-    integrator.input(t => sin(2.0D * pi * frequency * t))
+Thread.sleep(2000)
 
-    await wait(2.0D)
+integrator.input(t => 0.0D)
 
-    integrator.input(t => 0.0D)
+Thread.sleep(500)
 
-    await wait(0.5D)
+integrator.stop()
 
-    write_line("output {integrator.output:F6}")
-
-    integrator.stop()
-si
-
-integrator.integrate()
-drive()
-
-run()
+write_line("output is within 0.01 of zero: {abs(integrator.output) < 0.01D}")

@@ -3,12 +3,12 @@ use default
 balanced(brackets: string) -> bool => (
     let level mut = 0
 
-    let matched = for bracket in brackets do
-        if bracket == ']' /\ level == 0 then break false fi
+    for bracket in brackets do
+        if bracket == ']' /\ level == 0 then return false fi
         level = level + (if bracket == '[' then 1 else -1 fi)
     od
 
-    matched ?? (level == 0)
+    level == 0
 )
 
 arrangements(opens: int, closes: int) -> Pipe[string] is

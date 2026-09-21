@@ -4,13 +4,7 @@ use Raster.IMAGE
 let size = 240
 let particles = 8000
 
-let state mut = 987654321L
-
-next(limit: int) -> int is
-    state = (state * 1103515245L + 12345L) % 2147483648L
-
-    return cast int(state % cast long(limit))
-si
+let random = System.Random(987654321)
 
 let tree = SET()
 
@@ -33,12 +27,12 @@ image.set_pixel(size / 2, size / 2, 0ub, 0ub, 0ub)
 tree.add((x = size / 2, y = size / 2))
 
 for particle in 0..particles do
-    let x mut = next(size)
-    let y mut = next(size)
+    let x mut = random.next(size)
+    let y mut = random.next(size)
 
     while !touches(x, y) do
-        x = (x + next(3) - 1 + size) % size
-        y = (y + next(3) - 1 + size) % size
+        x = (x + random.next(3) - 1 + size) % size
+        y = (y + random.next(3) - 1 + size) % size
     od
 
     tree.add((x = x, y = y))
