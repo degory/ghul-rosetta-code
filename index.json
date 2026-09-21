@@ -15047,6 +15047,33 @@
       ]
     },
     {
+      "slug": "menu",
+      "title": "Menu",
+      "url": "https://rosettacode.org/wiki/Menu",
+      "tags": [
+        "interactive",
+        "basics",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "menu",
+          "heading": null,
+          "source": "tasks/menu/menu.ghul",
+          "output": "tasks/menu/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "merge-and-aggregate-datasets",
       "title": "Merge and aggregate datasets",
       "url": "https://rosettacode.org/wiki/Merge_and_aggregate_datasets",
