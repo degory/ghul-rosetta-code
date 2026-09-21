@@ -1,0 +1,33 @@
+use default
+
+double_in_place(value: int ref) is
+    value! = value! * 2
+si
+
+read_through(value: int ref) -> int => value!
+
+let first mut = 21
+let second mut = 100
+
+double_in_place(first ref)
+double_in_place(second ref)
+
+write_line("first is {first}, second is {second}")
+write_line("read through a reference: {read_through(first ref)}")
+
+let held mut = 7
+
+swap(left: int ref, right: int ref) is
+    let kept = left!
+
+    left! = right!
+    right! = kept
+si
+
+swap(first ref, held ref)
+
+write_line("after swapping through two references: {first} and {held}")
+
+if System.Version.try_parse("1.2", _) then
+    write_line("a reference the caller has no use for goes to a discard")
+fi

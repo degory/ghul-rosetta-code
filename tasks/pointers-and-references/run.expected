@@ -1,0 +1,4 @@
+one object, two names: box is 2
+a struct argument is a copy: count is 1
+through a reference: count is 2
+elements are the objects themselves: 11, 21

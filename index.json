@@ -739,6 +739,32 @@
       ]
     },
     {
+      "slug": "address-of-a-variable",
+      "title": "Address of a variable",
+      "url": "https://rosettacode.org/wiki/Address_of_a_variable",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 33,
+      "parts": [
+        {
+          "id": "address-of-a-variable",
+          "heading": null,
+          "source": "tasks/address-of-a-variable/address-of-a-variable.ghul",
+          "output": "tasks/address-of-a-variable/run.expected",
+          "lines": 33,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "adfgvx-cipher",
       "title": "ADFGVX cipher",
       "url": "https://rosettacode.org/wiki/ADFGVX_cipher",
@@ -17561,6 +17587,32 @@
           "images": [
             "tasks/plot-coordinate-pairs/plot.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "pointers-and-references",
+      "title": "Pointers and references",
+      "url": "https://rosettacode.org/wiki/Pointers_and_references",
+      "tags": [
+        "basics",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "pointers-and-references",
+          "heading": null,
+          "source": "tasks/pointers-and-references/pointers-and-references.ghul",
+          "output": "tasks/pointers-and-references/run.expected",
+          "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
