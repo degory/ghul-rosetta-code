@@ -12,7 +12,7 @@ ord(c: char) -> int => cast int(c) - cast int('A')
 chr(n: int) -> char => cast char(cast int('A') + (n % 26 + 26) % 26)
 
 sum(values: Iterable[double]) -> double =>
-    values |> reduce(0.0, (a, b) => a + b)
+    values |> sum()
 
 counts(text: string) -> int[] =>
     (0..26)

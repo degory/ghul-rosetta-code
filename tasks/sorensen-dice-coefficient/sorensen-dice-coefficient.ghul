@@ -25,10 +25,10 @@ shared(
         |> filter(entry => right.contains_key(entry.key))
         |> map(entry =>
             System.Math.min(entry.value, right[entry.key]))
-        |> reduce(0, (running, count) => running + count)
+        |> sum()
 
 size(counted: MAP[string, int]) -> int =>
-    counted.values |> reduce(0, (running, count) => running + count)
+    counted.values |> sum()
 
 coefficient(
     left: MAP[string, int],

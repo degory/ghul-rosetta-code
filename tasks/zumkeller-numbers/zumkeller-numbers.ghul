@@ -21,7 +21,7 @@ si
 
 is_zumkeller(n: int) -> bool is
     let parts = divisors(n)
-    let total = parts |> reduce(0, (running, part) => running + part)
+    let total = parts |> sum()
 
     if total % 2 != 0 \/ total < 2 * n then
         return false

@@ -23173,14 +23173,14 @@
       "images": [
         "tasks/statistics-normal-distribution/normal.png.expected"
       ],
-      "lines": 88,
+      "lines": 89,
       "parts": [
         {
           "id": "statistics-normal-distribution",
           "heading": null,
           "source": "tasks/statistics-normal-distribution/statistics-normal-distribution.ghul",
           "output": "tasks/statistics-normal-distribution/run.expected",
-          "lines": 88,
+          "lines": 89,
           "playground": true,
           "input": false,
           "images": [

@@ -19,7 +19,7 @@ water(heights: int[]) -> int => (
 
     (0..heights.count)
     |> map(i => Math.min(left[i], right[last - i]) - heights[i])
-    |> reduce(0, (total, depth) => total + depth)
+    |> sum()
 )
 
 let series =

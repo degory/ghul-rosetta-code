@@ -61,7 +61,7 @@ si
 density(size: int) -> double =>
     let total = (0..runs)
         |> map(_ => cast double(CLUSTERS(size).count))
-        |> reduce(0.0D, (a, b) => a + b) in
+        |> sum() in
     total / cast double(runs) / cast double(size * size)
 
 write_line("mean cluster density at p = {p}, averaged over {runs} runs")
