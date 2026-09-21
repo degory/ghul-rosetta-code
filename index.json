@@ -19897,6 +19897,32 @@
       ]
     },
     {
+      "slug": "scope-function-names-and-labels",
+      "title": "Scope/Function names and labels",
+      "url": "https://rosettacode.org/wiki/Scope/Function_names_and_labels",
+      "tags": [
+        "basics",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "scope-function-names-and-labels",
+          "heading": null,
+          "source": "tasks/scope-function-names-and-labels/scope-function-names-and-labels.ghul",
+          "output": "tasks/scope-function-names-and-labels/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "scope-modifiers",
       "title": "Scope modifiers",
       "url": "https://rosettacode.org/wiki/Scope_modifiers",
