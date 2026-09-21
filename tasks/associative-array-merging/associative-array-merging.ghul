@@ -1,0 +1,40 @@
+use default
+
+merged(base: MAP[string, object], update: MAP[string, object])
+    -> MAP[string, object]
+is
+    let result = MAP[string, object]()
+
+    for (key, value) in base do
+        result[key] = value
+    od
+
+    for (key, value) in update do
+        result[key] = value
+    od
+
+    result
+si
+
+let base = MAP[string, object]()
+
+base["name"] = "Rocket Skates"
+base["price"] = 12.75
+base["color"] = "yellow"
+
+let update = MAP[string, object]()
+
+update["price"] = 15.25
+update["color"] = "red"
+update["year"] = 1974
+
+let result = merged(base, update)
+
+result.keys
+    |> sort()
+    |> each(key => write_line("{key,-6} {result[key]}"))
+
+write_line("")
+write_line("the sources are untouched:")
+write_line("base price is still {base["price"]}")
+write_line("update still has no name: {!update.contains_key("name")}")

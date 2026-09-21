@@ -1,0 +1,6 @@
+4 dimensions, extents 2 by 3 by 4 by 5
+cells[1][2][3][4] = 42
+cells[0][0][0][0] = 0
+stored row-major in one list of 120
+offset 119 holds 42
+its neighbour 118 holds 0

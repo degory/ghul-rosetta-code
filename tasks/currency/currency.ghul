@@ -1,0 +1,38 @@
+use default
+
+class MONEY(cents: bigint) is
+    +(other: MONEY) -> MONEY => MONEY(cents + other.cents)
+
+    *(quantity: bigint) -> MONEY => MONEY(cents * quantity)
+
+    taxed(rate_per_10000: bigint) -> MONEY is
+        let raw = cents * rate_per_10000
+        let rounded = (raw + 5000n) / 10000n
+
+        MONEY(rounded)
+    si
+
+    to_string() -> string is
+        let whole = cents / 100n
+        let part = cents % 100n
+
+        "{whole}.{part,2:00}"
+    si
+si
+
+dollars(units: int, cents: int) -> MONEY =>
+    MONEY(cast bigint(units) * 100n + cast bigint(cents))
+
+let hamburger = dollars(5, 50)
+let milkshake = dollars(2, 86)
+
+let burgers = 4_000_000_000_000_000n
+let shakes = 2n
+
+let before_tax = hamburger * burgers + milkshake * shakes
+let tax = before_tax.taxed(765n)
+let total = before_tax + tax
+
+write_line("before tax: {before_tax}")
+write_line("tax:        {tax}")
+write_line("total:      {total}")

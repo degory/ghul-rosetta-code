@@ -1,0 +1,40 @@
+use default
+
+let extents = [2, 3, 4, 5]
+
+let cells = 0..extents[0]
+    |> map(_ => 0..extents[1]
+        |> map(_ => 0..extents[2]
+            |> map(_ => repeat(0, extents[3]) |> collect_list())
+            |> collect_list())
+        |> collect_list())
+    |> collect_list()
+
+write_line("{extents.count} dimensions, extents {extents |> join(" by ")}")
+
+cells[1][2][3][4] = 42
+
+write_line("cells[1][2][3][4] = {cells[1][2][3][4]}")
+write_line("cells[0][0][0][0] = {cells[0][0][0][0]}")
+
+let size = extents |> reduce(1, (a, b) => a * b)
+let flat = repeat(0, size) |> collect_list()
+
+at(index: int[]) -> int is
+    let offset mut = 0
+
+    for dimension in 0..extents.count do
+        offset = offset * extents[dimension] + index[dimension]
+    od
+
+    offset
+si
+
+flat[at([1, 2, 3, 4])] = 42
+
+let offset = at([1, 2, 3, 4])
+let neighbour = at([1, 2, 3, 3])
+
+write_line("stored row-major in one list of {size}")
+write_line("offset {offset} holds {flat[offset]}")
+write_line("its neighbour {neighbour} holds {flat[neighbour]}")

@@ -1128,6 +1128,32 @@
       ]
     },
     {
+      "slug": "approximate-equality",
+      "title": "Approximate equality",
+      "url": "https://rosettacode.org/wiki/Approximate_equality",
+      "tags": [
+        "maths",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "approximate-equality",
+          "heading": null,
+          "source": "tasks/approximate-equality/approximate-equality.ghul",
+          "output": "tasks/approximate-equality/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "arbitrary-precision-integers",
       "title": "Arbitrary-precision integers (included)",
       "url": "https://rosettacode.org/wiki/Arbitrary-precision_integers_(included)",
@@ -1555,6 +1581,32 @@
           "source": "tasks/associative-array-iteration/associative-array-iteration.ghul",
           "output": "tasks/associative-array-iteration/run.expected",
           "lines": 14,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "associative-array-merging",
+      "title": "Associative array/Merging",
+      "url": "https://rosettacode.org/wiki/Associative_array/Merging",
+      "tags": [
+        "data-structures",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "associative-array-merging",
+          "heading": null,
+          "source": "tasks/associative-array-merging/associative-array-merging.ghul",
+          "output": "tasks/associative-array-merging/run.expected",
+          "lines": 40,
           "playground": true,
           "input": false,
           "images": []
@@ -5416,6 +5468,32 @@
           "source": "tasks/cumulative-standard-deviation/cumulative-standard-deviation.ghul",
           "output": "tasks/cumulative-standard-deviation/run.expected",
           "lines": 21,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "currency",
+      "title": "Currency",
+      "url": "https://rosettacode.org/wiki/Currency",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "currency",
+          "heading": null,
+          "source": "tasks/currency/currency.ghul",
+          "output": "tasks/currency/run.expected",
+          "lines": 38,
           "playground": true,
           "input": false,
           "images": []
@@ -15192,6 +15270,32 @@
           "source": "tasks/move-to-front-algorithm/move-to-front-algorithm.ghul",
           "output": "tasks/move-to-front-algorithm/run.expected",
           "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "multi-dimensional-array",
+      "title": "Multi-dimensional array",
+      "url": "https://rosettacode.org/wiki/Multi-dimensional_array",
+      "tags": [
+        "data-structures",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "multi-dimensional-array",
+          "heading": null,
+          "source": "tasks/multi-dimensional-array/multi-dimensional-array.ghul",
+          "output": "tasks/multi-dimensional-array/run.expected",
+          "lines": 40,
           "playground": true,
           "input": false,
           "images": []

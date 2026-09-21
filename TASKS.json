@@ -290,6 +290,11 @@
       "published_hash": "54bf7c97d6c1eedc2f714d9c88eee652b693e8f7a65a0f59ac3c81e932dca4f4"
     },
     {
+      "title": "Approximate equality",
+      "slug": "approximate-equality",
+      "state": "solved"
+    },
+    {
       "title": "Arbitrary-precision integers (included)",
       "slug": "arbitrary-precision-integers",
       "state": "published",
@@ -392,6 +397,11 @@
       "slug": "associative-array-iteration",
       "state": "published",
       "published_hash": "38349e6b0a14f51550d211010fb99ae2826f9d1fec1ca3e9f6af83fa25e913d5"
+    },
+    {
+      "title": "Associative array/Merging",
+      "slug": "associative-array-merging",
+      "state": "solved"
     },
     {
       "title": "Atomic updates",
@@ -1401,6 +1411,11 @@
       "slug": "cumulative-standard-deviation",
       "state": "published",
       "published_hash": "82488b790ad7d46c365c3ee435370af9208ba0be8991ea0ed0edcafce7d15fdc"
+    },
+    {
+      "title": "Currency",
+      "slug": "currency",
+      "state": "solved"
     },
     {
       "title": "Currying",
@@ -3822,6 +3837,11 @@
       "slug": "move-to-front-algorithm",
       "state": "published",
       "published_hash": "03af75f96f0d8a1f815a7f7cb8b783367d12b54eefca7f56307476059221befb"
+    },
+    {
+      "title": "Multi-dimensional array",
+      "slug": "multi-dimensional-array",
+      "state": "solved"
     },
     {
       "title": "Multiline shebang",
