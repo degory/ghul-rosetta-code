@@ -27057,6 +27057,32 @@
       ]
     },
     {
+      "slug": "wavelet-matrix",
+      "title": "Wavelet Matrix",
+      "url": "https://rosettacode.org/wiki/Wavelet_Matrix",
+      "tags": [
+        "data-structures",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 165,
+      "parts": [
+        {
+          "id": "wavelet-matrix",
+          "heading": null,
+          "source": "tasks/wavelet-matrix/wavelet-matrix.ghul",
+          "output": "tasks/wavelet-matrix/run.expected",
+          "lines": 165,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "weiler-atherton-polygon-clipping",
       "title": "Weiler-Atherton polygon clipping",
       "url": "https://rosettacode.org/wiki/Weiler-Atherton_polygon_clipping",

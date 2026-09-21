@@ -1,0 +1,165 @@
+use default
+
+class BITS(flags: List[bool] init) is
+    _ones_before: LIST[int]
+
+    init(..) is
+        _ones_before = LIST[int]()
+
+        let running mut = 0
+
+        _ones_before.add(0)
+
+        for flag in flags do
+            if flag then
+                running = running + 1
+            fi
+
+            _ones_before.add(running)
+        od
+    si
+
+    ones(before: int) -> int => _ones_before[before]
+
+    zeros(before: int) -> int => before - _ones_before[before]
+si
+
+class WAVELET(values: List[int] init) is
+    _levels: LIST[BITS]
+    _below: LIST[int]
+    _width: int
+
+    init(..) is
+        _levels = LIST[BITS]()
+        _below = LIST[int]()
+        _width = 1
+
+        let largest =
+            values |> reduce(0, (a, b) => if a > b then a else b fi)
+
+        while (1 << _width) <= largest do
+            _width = _width + 1
+        od
+
+        let holding mut = values |> collect_list()
+
+        for level in 0.._width do
+            let bit = _width - 1 - level
+            let set = (v: int) => ((v >> bit) & 1) == 1
+
+            _levels.add(BITS(holding |> map(set) |> collect_list()))
+
+            let zeros = holding |> filter(v => !set(v)) |> collect_list()
+            let ones = holding |> filter(set) |> collect_list()
+
+            _below.add(zeros.count)
+
+            ones |> each(v => zeros.add(v))
+
+            holding = zeros
+        od
+    si
+
+    quantile(k: int, from: int, until: int) -> int is
+        let low mut = from
+        let high mut = until
+        let rank mut = k
+        let found mut = 0
+
+        for level in 0.._width do
+            let bits = _levels[level]
+            let zeros = bits.zeros(high) - bits.zeros(low)
+
+            if rank < zeros then
+                low = bits.zeros(low)
+                high = bits.zeros(high)
+            else
+                rank = rank - zeros
+                found = found | (1 << (_width - 1 - level))
+                low = _below[level] + bits.ones(low)
+                high = _below[level] + bits.ones(high)
+            fi
+        od
+
+        found
+    si
+
+    count_of(value: int, from: int, until: int) -> int is
+        if value < 0 \/ value >= (1 << _width) then
+            return 0
+        fi
+
+        let low mut = from
+        let high mut = until
+
+        for level in 0.._width do
+            let bits = _levels[level]
+
+            if ((value >> (_width - 1 - level)) & 1) == 1 then
+                low = _below[level] + bits.ones(low)
+                high = _below[level] + bits.ones(high)
+            else
+                low = bits.zeros(low)
+                high = bits.zeros(high)
+            fi
+        od
+
+        high - low
+    si
+
+    count_below(limit: int, from: int, until: int) -> int is
+        if limit >= (1 << _width) then
+            return until - from
+        fi
+
+        if limit <= 0 then
+            return 0
+        fi
+
+        let low mut = from
+        let high mut = until
+        let found mut = 0
+
+        for level in 0.._width do
+            let bits = _levels[level]
+
+            if ((limit >> (_width - 1 - level)) & 1) == 1 then
+                found = found + bits.zeros(high) - bits.zeros(low)
+                low = _below[level] + bits.ones(low)
+                high = _below[level] + bits.ones(high)
+            else
+                low = bits.zeros(low)
+                high = bits.zeros(high)
+            fi
+        od
+
+        found
+    si
+si
+
+let sequence = [3374, 956, 2114, 3415, 3437]
+let matrix = WAVELET(sequence)
+
+write_line("{sequence |> map(v => "{v}") |> join(" ")}")
+write_line()
+write_line("the k-th smallest of a range")
+
+let asked = [
+    (from = 2, until = 2, k = 1),
+    (from = 3, until = 4, k = 1),
+    (from = 4, until = 5, k = 1),
+    (from = 1, until = 2, k = 2),
+    (from = 4, until = 4, k = 1)
+]
+
+for ask in asked do
+    let answer = matrix.quantile(ask.k - 1, ask.from - 1, ask.until)
+
+    write_line("  [{ask.from}, {ask.until}] k={ask.k}  {answer}")
+od
+
+write_line()
+write_line("3415 occurs {matrix.count_of(3415, 0, 5)} time in the sequence")
+write_line("{matrix.count_below(3400, 0, 5)} values are below 3400")
+write_line(
+    "{matrix.count_below(3400, 2, 5)} of the last three are below 3400")
