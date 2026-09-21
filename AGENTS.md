@@ -104,6 +104,8 @@ let total = (let acc mut = 0
              acc)
 ```
 
+- **Open with `use default`.** It brings in `write_line`, the pipes and the collections, which is
+  what almost every solution wants; name anything further on its own line after it.
 - **Reach for what has no equivalent in the language next door.** `let x = e in`
   and `assert c else "..." in` as expressions, `if let` and `while let` in place
   of a test followed by a cast, unions with `case` pattern matching in place of
@@ -173,7 +175,9 @@ The forms for the cases around it:
 - `x: T private`, or naming the parameter `_x`, for state that is not public.
 - `x: T field` for a real field rather than an auto-property, which is what a struct with a
   declared memory layout wants.
-- `x: T init` for a parameter the constructor consumes rather than stores.
+- `x: T init` for a parameter the constructor consumes rather than stores. A parameter whose value
+  is stored is `private` or `_x`; writing `init` and then capturing it in the body says both
+  things at once and means neither.
 
 An explicit `init` stays where it does work the primary form cannot express, and where the task is
 about constructors or member declarations themselves - say which in the pull request where it is
@@ -196,14 +200,24 @@ use Point = (x: double, y: double, z: double)
 
 and then `p + q * 2.0D` reads the way the mathematics does. The Unicode operator characters are
 ordinary operators with sensible precedence, so a dot product is `a ⋅ b` and a cross product
-`a × b` (GHUL.md, "operators"). Keep a named function where there is no accepted symbol, and do not
-invent notation.
+`a × b` (GHUL.md, "operators"). An identifier can be written in any script too, so a solution
+whose task is stated in one may use it; everything else stays ASCII. Keep a named function where
+there is no accepted symbol, and do not invent notation.
 
-## No `System.Linq`
+An operator declared this way is also a value, so ``points |> reduce(origin, `+)`` passes it to a
+combinator by name, backtick-escaped so the operator reads as an identifier. The built-in
+operators on the scalar types are instructions rather than methods and cannot be named that way,
+so a fold over numbers takes a function literal, or `sum()`.
+
+## Names a solution does not write
 
 The pipe functions in `Ghul.Pipes` cover what a solution would reach into LINQ for, so a solution
-does not name `System.Linq`. A list of `n` copies of a value is `repeat(value, n) |> collect_list()`,
-not `LIST[T](System.Linq.Enumerable.repeat(value, n))`; `repeat(value)`, `from(start)` and
+does not name `System.Linq`. Nor `Ghul.Internal`, which holds the attributes carrying language
+facts between assemblies and is not reachable from source; nor `MAYBE`, which is one of the three
+carriers behind `T?` and is spelled `T?` wherever it is written.
+
+A list of `n` copies of a value is `repeat(value, n) |> collect_list()`, not
+`LIST[T](System.Linq.Enumerable.repeat(value, n))`; `repeat(value)`, `from(start)` and
 `from(start, step)` are the unbounded forms.
 
 ## A collection is built by a pipe, not by a loop
@@ -231,6 +245,10 @@ question from how the rows are made.
 The loop stays where the body does more than add one element, where each element depends on the
 ones already added, or where the list is being appended to rather than built.
 
+A `for` disposes nothing it iterated, so a sequence holding a resource - a file being read a line
+at a time - names its iterator and lets `let use` close it: `let use lines =
+IO.File.read_lines(path).iterator`, then `for line in lines do`.
+
 A count whose two ends are known is a range, `a..b` or `a::b`, choosing `::` where the task's
 wording includes the last value. `from(start)` is for a count nothing bounds, which something
 downstream ends - `take_while`, `find`, `first`, or a `take` counting results rather than
@@ -241,6 +259,15 @@ let eban = 1::limit |> filter(is_eban)
 let first_twenty = from(1) |> filter(is_eban) |> take(20)
 ```
 
+A fold that adds or multiplies is `sum()` or `product()`, and a sort into natural order is
+`sort()` with no comparator. Both `sum` and `product` are global functions, so a local of either
+name shadows the one being called and draws `shadowed-non-callable`: inline the expression, or
+name the local for what the value is.
+
+Swapping two values is one assignment, `(a, b) = (b, a)`, rather than three through a temporary.
+Wrapping one that runs long goes after the `=`, because a continuation line opening with `(` reads
+as a new statement.
+
 ## Output that has to line up is ASCII
 
 The wiki's monospace font has no box-drawing, geometric or most mathematical characters, so a
@@ -248,6 +275,10 @@ browser draws them from a fallback font where they are not the width of a space,
 from them come out ragged. Where output depends on alignment - a board, a box, a tree's guide
 lines, a table - draw it in ASCII (`+--+`, `|`, `\-`, `o`, `#`), or draw a picture instead.
 Non-ASCII output is fine where nothing has to line up with it.
+
+Columns are laid out by the interpolation itself, `"{name,-12}{score,5:F2}"`, rather than by
+padding a string by hand. The alignment is part of what the entry shows a reader, and the test
+will not catch it changing: see "Test requirements".
 
 ## Solutions are not marked `pure`
 
@@ -347,10 +378,11 @@ output is better built than written out.
 ## Reaching shared state from a function
 
 A solution with no `namespace` runs its top-level statements as the entry point,
-and a `let` written there is visible to the named functions declared in the same
-file as well as to the statements after it. A function can be written above or
-below the `let` it reads, since it runs only when called; the statements run in
-order, so one placed above the `let` cannot read it.
+and a `let` written there is visible to whatever is written below it: the
+statements that follow, and the named functions declared after it. A function
+written above the `let` it reads is an error, `global variable ... is used
+before its declaration`, however late it is called, so a helper that reads one
+goes below it.
 
 ```ghul
 let rows = ["one", "three", "seventeen"]
@@ -376,10 +408,11 @@ function can reach it without being passed anything. Passing what a function
 needs as an argument is usually shorter, and always clearer.
 
 The case that tempts hardest is a helper that has to carry state from one call
-to the next - a cursor into a buffer - because ghūl has no nested function
-definitions and there is nowhere obvious to put it. There is: a function
-literal in a local variable. A `let ... mut` is captured by reference, so the
-helper reads and writes the enclosing function's own state directly.
+to the next - a cursor into a buffer. It belongs inside the function whose state
+it is: a named function written among that body's statements is a local like
+any other, and a `let ... mut` is captured by reference, so the helper reads and
+writes the enclosing function's own state directly. A function literal in a
+local variable is the same thing spelled another way.
 
 ```ghul
 read_ppm(path: string) -> BITMAP is
@@ -387,7 +420,7 @@ read_ppm(path: string) -> BITMAP is
 
     let at mut = 0
 
-    let token = () -> string is
+    token() -> string is
         let from = at
 
         while at < raw.count /\ !space(raw[at]) do
@@ -513,8 +546,15 @@ language has no such thing, and a sentence of prose is not what a solution here 
 
 `excluded` is for a task this repository does not solve.
 
-`nondeterministic` is for a task whose output no check can judge, rather than one that merely
-varies from run to run: a varying output is asserted with `run.check`.
+Four of the reasons are narrower than they read. `nondeterministic` is for a task whose output no
+check can judge, rather than one that merely varies from run to run: a varying output is asserted
+with `run.check`. `needs-native-lib` is for a library .NET does not have, not for calling into
+one: a shared library is reached with `DllImport` on a bodyless static, so a task whose point is
+that call is solvable. `needs-interaction` is for a task with no
+output worth reading rather than one that prompts: a prompting program is driven by `run.session`
+and a program reading a stream by `run.in`. `needs-network` is for a task whose own point is
+reaching another machine; a client and server talking over the loopback address inside one program
+are not that.
 
 A rejection can also be reversed, when what made the task impossible stops being true. That is
 `reopen`, and it takes the reason for the reversal rather than being a bare undo:
@@ -640,6 +680,20 @@ stray statement terminator, so it is worth running, but it produces none of the 
   the source. `scripts/new-task.sh` and `scripts/new-part.sh` scaffold them.
 - Tests assert the program's output. There are deliberately no IL snapshots - a test folder with
   no `il.expected` has its IL ignored, and `capture.sh` will not create one.
+- **The output comparison ignores changes in whitespace.** `run.expected` is diffed with `-b`, so
+  a change to how columns line up passes a test that was captured before it, and `capture.sh`
+  then has nothing to promote. Read the run, and where alignment is the point write the file
+  rather than relying on a capture to notice.
+- Which file a test asserts with depends on what the program does: `run.expected` for output that
+  is the same every time; `run.check`, an executable judging `run.out` and passing by exiting
+  zero, where it is not; `run.err.expected` for what the program wrote to standard error;
+  `run.exit.expected` where a non-zero status is the subject, since without it any non-zero status
+  fails; `run.args` for a command line; `run.in` for input sent and the stream closed;
+  `run.session` for a program that prompts, answered a line at a time and echoed into the
+  transcript; `<name>.png.expected` for an image, compared by bytes and then by pixels. A test
+  carrying both `run.in` and `run.session` fails.
+- A compiler pass that throws writes an `exception:` line, and a test whose compiler output holds
+  one fails on that alone, whatever it asserts.
 - A failing test is your change. This repository's tests are pinned to output that was read and
   captured deliberately, so a failure means either the solution changed or the compiler did. Find
   out which before touching an expectation file.
