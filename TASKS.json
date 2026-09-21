@@ -200,7 +200,8 @@
     {
       "title": "Address of a variable",
       "slug": "address-of-a-variable",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2a6a0250c9a420aaa4166938b1c83d73b3cd2375a98193fb716d199465779921"
     },
     {
       "title": "Algebraic data types",
@@ -858,7 +859,8 @@
     {
       "title": "Call a function in a shared library",
       "slug": "call-a-function-in-a-shared-library",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "72360768053f458c895687c50af9bac23a668aa78409a10a2381d1fbb29328e7"
     },
     {
       "title": "Call an object method",
@@ -3491,7 +3493,8 @@
     {
       "title": "Long literals, with continuations",
       "slug": "long-literals-with-continuations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3553bf09beb9dd8689f824f9444e325badf27ed84c3e45b87535ddbbf90722d8"
     },
     {
       "title": "Long multiplication",
@@ -3928,7 +3931,8 @@
     {
       "title": "Multi-dimensional array",
       "slug": "multi-dimensional-array",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e0d81f9da44082132393c049d516a553198c3baa10dc6b29737ba3a75aa52ba6"
     },
     {
       "title": "Multiline shebang",
@@ -4216,7 +4220,8 @@
     {
       "title": "Overloaded operators",
       "slug": "overloaded-operators",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e2d81b16daca618180d9356289131c4bb7902bc7069b7b50a95e6b0d4ec8c9a8"
     },
     {
       "title": "Own digits power sum",
@@ -4609,7 +4614,8 @@
     {
       "title": "Pragmatic directives",
       "slug": "pragmatic-directives",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1c19d2d3548290ef6fbeb6fbae0ddd37c36d117cf7608813a95a51a43ef0d98b"
     },
     {
       "title": "Price fraction",
@@ -4750,7 +4756,8 @@
     {
       "title": "Quoting constructs",
       "slug": "quoting-constructs",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "60c310581b52e12b87173b68d211f90e725f8f0313ac19ad042c97d10217e696"
     },
     {
       "title": "RCRPG",
@@ -5134,7 +5141,8 @@
     {
       "title": "Scope/Function names and labels",
       "slug": "scope-function-names-and-labels",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8ccce048ff67d58ff37115492ccdb57a9785870002d0cf62593028675e6e74e3"
     },
     {
       "title": "Sealed classes and methods",
