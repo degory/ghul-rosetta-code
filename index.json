@@ -21334,6 +21334,32 @@
       ]
     },
     {
+      "slug": "sleep",
+      "title": "Sleep",
+      "url": "https://rosettacode.org/wiki/Sleep",
+      "tags": [
+        "concurrency",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "sleep",
+          "heading": null,
+          "source": "tasks/sleep/sleep.ghul",
+          "output": "tasks/sleep/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sleeping-beauty-problem",
       "title": "Sleeping Beauty problem",
       "url": "https://rosettacode.org/wiki/Sleeping_Beauty_problem",
