@@ -12602,6 +12602,82 @@
       ]
     },
     {
+      "slug": "knapsack-problem-bounded",
+      "title": "Knapsack problem/Bounded",
+      "url": "https://rosettacode.org/wiki/Knapsack_problem/Bounded",
+      "tags": [
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "knapsack-problem-bounded",
+          "heading": null,
+          "source": "tasks/knapsack-problem-bounded/knapsack-problem-bounded.ghul",
+          "output": "tasks/knapsack-problem-bounded/run.expected",
+          "lines": 96,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "knapsack-problem-continuous",
+      "title": "Knapsack problem/Continuous",
+      "url": "https://rosettacode.org/wiki/Knapsack_problem/Continuous",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "knapsack-problem-continuous",
+          "heading": null,
+          "source": "tasks/knapsack-problem-continuous/knapsack-problem-continuous.ghul",
+          "output": "tasks/knapsack-problem-continuous/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "knapsack-problem-unbounded",
+      "title": "Knapsack problem/Unbounded",
+      "url": "https://rosettacode.org/wiki/Knapsack_problem/Unbounded",
+      "tags": [
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 69,
+      "parts": [
+        {
+          "id": "knapsack-problem-unbounded",
+          "heading": null,
+          "source": "tasks/knapsack-problem-unbounded/knapsack-problem-unbounded.ghul",
+          "output": "tasks/knapsack-problem-unbounded/run.expected",
+          "lines": 69,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "knight-s-tour",
       "title": "Knight's tour",
       "url": "https://rosettacode.org/wiki/Knight's_tour",

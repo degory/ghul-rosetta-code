@@ -1,0 +1,96 @@
+use default
+
+use Item = (name: string, weight: int, value: int, pieces: int)
+
+let items =
+    [
+        (name = "map", weight = 9, value = 150, pieces = 1),
+        (name = "compass", weight = 13, value = 35, pieces = 1),
+        (name = "water", weight = 153, value = 200, pieces = 2),
+        (name = "sandwich", weight = 50, value = 60, pieces = 2),
+        (name = "glucose", weight = 15, value = 60, pieces = 2),
+        (name = "tin", weight = 68, value = 45, pieces = 3),
+        (name = "banana", weight = 27, value = 60, pieces = 3),
+        (name = "apple", weight = 39, value = 40, pieces = 3),
+        (name = "cheese", weight = 23, value = 30, pieces = 1),
+        (name = "beer", weight = 52, value = 10, pieces = 3),
+        (name = "suntan cream", weight = 11, value = 70, pieces = 1),
+        (name = "camera", weight = 32, value = 30, pieces = 1),
+        (name = "trousers", weight = 48, value = 10, pieces = 2),
+        (name = "umbrella", weight = 73, value = 40, pieces = 1),
+        (name = "waterproof trousers", weight = 42, value = 70, pieces = 1),
+        (
+            name = "waterproof overclothes",
+            weight = 43,
+            value = 75,
+            pieces = 1),
+        (name = "note-case", weight = 22, value = 80, pieces = 1),
+        (name = "sunglasses", weight = 7, value = 20, pieces = 1),
+        (name = "towel", weight = 18, value = 12, pieces = 2),
+        (name = "socks", weight = 4, value = 50, pieces = 1),
+        (name = "book", weight = 30, value = 10, pieces = 2)
+    ]
+
+let capacity = 400
+
+let copies = LIST[Item]()
+
+for item in items do
+    for _ in 0..item.pieces do
+        copies.add(item)
+    od
+od
+
+let best = LIST[LIST[int]]()
+
+for _ in 0::copies.count do
+    best.add(repeat(0, capacity + 1) |> collect_list())
+od
+
+for at in 0..copies.count do
+    let copy = copies[at]
+
+    for room in 0::capacity do
+        let without = best[at][room]
+
+        best[at + 1][room] =
+            if room >= copy.weight then
+                System.Math.max(
+                    without, best[at][room - copy.weight] + copy.value)
+            else
+                without
+            fi
+    od
+od
+
+let counts = MAP[string, int]()
+let room mut = capacity
+
+for back in 0..copies.count do
+    let at = copies.count - 1 - back
+    let copy = copies[at]
+
+    if best[at + 1][room] != best[at][room] then
+        let already =
+            if counts.contains_key(copy.name) then
+                counts[copy.name]
+            else
+                0
+            fi
+
+        counts[copy.name] = already + 1
+
+        room = room - copy.weight
+    fi
+od
+
+let packed = counts |> sort((a, b) => a.key <> b.key) |> collect_list()
+
+for entry in packed do
+    write_line("{entry.value} {entry.key}")
+od
+
+let total_weight = capacity - room
+let total_value = best[copies.count][capacity]
+
+write_line("Total weight: {total_weight} Value: {total_value}")
