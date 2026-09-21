@@ -9060,6 +9060,33 @@
       ]
     },
     {
+      "slug": "fixed-length-records",
+      "title": "Fixed length records",
+      "url": "https://rosettacode.org/wiki/Fixed_length_records",
+      "tags": [
+        "text-processing",
+        "strings",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "fixed-length-records",
+          "heading": null,
+          "source": "tasks/fixed-length-records/fixed-length-records.ghul",
+          "output": "tasks/fixed-length-records/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "fizzbuzz",
       "title": "FizzBuzz",
       "url": "https://rosettacode.org/wiki/FizzBuzz",

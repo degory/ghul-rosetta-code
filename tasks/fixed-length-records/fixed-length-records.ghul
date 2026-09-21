@@ -1,0 +1,62 @@
+use default
+use IO.File
+use Ghul.Pipes.Pipe
+use System.Text.Encoding
+use IO.Directory
+use IO.Path
+use System.Guid
+
+let record_length = 80
+let block_length = 1024
+let block_line_length = 64
+
+records(path: string, length: int) -> Pipe[string] is
+    let bytes = File.read_all_bytes(path)
+    let whole = bytes.count / length
+
+    for record in 0..whole do
+        yield Encoding.ascii.get_string(bytes, record * length, length)
+    od
+si
+
+reverse(record: string) -> string is
+    let characters = record |> collect_array()
+
+    System.Array.reverse(characters)
+
+    return string(characters)
+si
+
+let scratch =
+    Path.combine(Path.get_temp_path(), "records-{Guid.new_guid()}")
+
+Directory.create_directory(scratch)
+
+let reversed =
+    records("infile.dat", record_length)
+        |> map(record => reverse(record))
+        |> collect_list()
+
+let joined = reversed |> join("")
+
+File.write_all_text(Path.combine(scratch, "outfile.dat"), joined)
+
+write_line("reversed records, shown with their padding:")
+
+reversed |> each(record => write_line("[{record}]"))
+
+let block = joined.pad_right(block_length).substring(0, block_length)
+
+File.write_all_text(Path.combine(scratch, "block.dat"), block)
+
+write_line()
+let block_lines = block_length / block_line_length
+
+write_line("the same bytes as {block_lines} lines of {block_line_length}:")
+
+0..block_lines
+    |> map(line =>
+        block.substring(line * block_line_length, block_line_length))
+    |> each(line => write_line("[{line.trim_end()}]"))
+
+Directory.delete(scratch, true)
