@@ -40,7 +40,7 @@ class MATRIX(cells: double[][]) is
 
     to_string() -> string =>
         _cells
-        |> map(row => row |> map(c => "{c,8:F3}") |> join(""))
+        |> map(row => row |> map(c => "{c,11:F3}") |> join(""))
         |> join("\n")
 si
 
