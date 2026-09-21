@@ -12612,14 +12612,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 96,
+      "lines": 92,
       "parts": [
         {
           "id": "knapsack-problem-bounded",
           "heading": null,
           "source": "tasks/knapsack-problem-bounded/knapsack-problem-bounded.ghul",
           "output": "tasks/knapsack-problem-bounded/run.expected",
-          "lines": 96,
+          "lines": 92,
           "playground": true,
           "input": false,
           "images": []

@@ -33,19 +33,15 @@ let items =
 
 let capacity = 400
 
-let copies = LIST[Item]()
+let copies =
+    items
+    |> flat_map(item => repeat(item, item.pieces) |> collect_list())
+    |> collect_list()
 
-for item in items do
-    for _ in 0..item.pieces do
-        copies.add(item)
-    od
-od
-
-let best = LIST[LIST[int]]()
-
-for _ in 0::copies.count do
-    best.add(repeat(0, capacity + 1) |> collect_list())
-od
+let best =
+    0::copies.count
+    |> map(_ => repeat(0, capacity + 1) |> collect_list())
+    |> collect_list()
 
 for at in 0..copies.count do
     let copy = copies[at]
