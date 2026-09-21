@@ -1,7 +1,8 @@
 use default
 
-// Keeping the subtrees in non-increasing text order gives each
-// configuration exactly once.
+// A bag is a root over a forest of the bags inside it. The bags are
+// identical, so the forest is a multiset: keeping the subtrees in
+// non-increasing text order gives each configuration exactly once.
 trees(bags: int) -> Pipe[string] is
     if bags == 1 then
         yield "()"

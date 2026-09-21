@@ -17,6 +17,9 @@ symbols() -> string[] => [
     "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv",
     "Ts", "Og"]
 
+// Rows 1 to 3 have a gap in the middle, rows 6 and 7 send their
+// fifteen inner elements down to rows 8 and 9, and the rest fill
+// left to right.
 position(z: int) -> (row: int, column: int) is
     if z <= 2 then
         (row = 1, column = if z == 1 then 1 else 18 fi)
