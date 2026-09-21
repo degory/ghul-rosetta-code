@@ -1,0 +1,8 @@
+a five-cycle: 2 edges
+  0-1  2-3
+a triangle on a tail: 2 edges
+  0-1  2-3
+the Petersen graph: 5 edges
+  0-1  2-3  4-9  5-7  6-8
+two triangles joined by a bridge: 3 edges
+  0-1  2-3  4-5

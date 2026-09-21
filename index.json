@@ -2725,6 +2725,32 @@
       ]
     },
     {
+      "slug": "blossom-algorithm",
+      "title": "Blossom algorithm",
+      "url": "https://rosettacode.org/wiki/Blossom_algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 203,
+      "parts": [
+        {
+          "id": "blossom-algorithm",
+          "heading": null,
+          "source": "tasks/blossom-algorithm/blossom-algorithm.ghul",
+          "output": "tasks/blossom-algorithm/run.expected",
+          "lines": 203,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "blum-integer",
       "title": "Blum integer",
       "url": "https://rosettacode.org/wiki/Blum_integer",
