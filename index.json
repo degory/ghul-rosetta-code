@@ -6762,36 +6762,6 @@
       ]
     },
     {
-      "slug": "draw-a-pixel",
-      "title": "Draw a pixel",
-      "url": "https://rosettacode.org/wiki/Draw_a_pixel",
-      "tags": [
-        "graphics",
-        "basics"
-      ],
-      "interest": 1,
-      "playground": true,
-      "input": false,
-      "images": [
-        "tasks/draw-a-pixel/pixel.png.expected"
-      ],
-      "lines": 14,
-      "parts": [
-        {
-          "id": "draw-a-pixel",
-          "heading": null,
-          "source": "tasks/draw-a-pixel/draw-a-pixel.ghul",
-          "output": "tasks/draw-a-pixel/run.expected",
-          "lines": 14,
-          "playground": true,
-          "input": false,
-          "images": [
-            "tasks/draw-a-pixel/pixel.png.expected"
-          ]
-        }
-      ]
-    },
-    {
       "slug": "draw-a-rotating-cube",
       "title": "Draw a rotating cube",
       "url": "https://rosettacode.org/wiki/Draw_a_rotating_cube",
