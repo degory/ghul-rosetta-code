@@ -7022,6 +7022,33 @@
       ]
     },
     {
+      "slug": "element-wise-operations",
+      "title": "Element-wise operations",
+      "url": "https://rosettacode.org/wiki/Element-wise_operations",
+      "tags": [
+        "maths",
+        "operators",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 81,
+      "parts": [
+        {
+          "id": "element-wise-operations",
+          "heading": null,
+          "source": "tasks/element-wise-operations/element-wise-operations.ghul",
+          "output": "tasks/element-wise-operations/run.expected",
+          "lines": 81,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "elementary-cellular-automaton",
       "title": "Elementary cellular automaton",
       "url": "https://rosettacode.org/wiki/Elementary_cellular_automaton",
