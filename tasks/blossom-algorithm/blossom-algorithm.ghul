@@ -28,10 +28,6 @@ class GRAPH(order: int public) is
             |> map(a => (a = a, b = _match[a]!))
             |> collect_list()
 
-    // Edmonds' algorithm. A blossom is an odd cycle met while growing the
-    // alternating tree; contracting it onto one base lets the search go on
-    // as though the cycle were a single vertex, and the path through it is
-    // recovered when the augmenting path is walked back.
     maximise() is
         for root in 0..order do
             if !_match[root]? then

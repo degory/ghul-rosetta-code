@@ -2736,14 +2736,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 203,
+      "lines": 199,
       "parts": [
         {
           "id": "blossom-algorithm",
           "heading": null,
           "source": "tasks/blossom-algorithm/blossom-algorithm.ghul",
           "output": "tasks/blossom-algorithm/run.expected",
-          "lines": 203,
+          "lines": 199,
           "playground": true,
           "input": false,
           "images": []
