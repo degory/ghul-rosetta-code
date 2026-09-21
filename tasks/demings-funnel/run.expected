@@ -1,0 +1,18 @@
+rule 1: the funnel stays over the target
+  x mean    0.000  deviation    0.715
+  y mean    0.070  deviation    0.646
+
+rule 2: shift by the last miss
+  x mean    0.001  deviation    1.037
+  y mean   -0.010  deviation    0.900
+
+rule 3: shift from the target by the last miss
+  x mean    0.044  deviation    7.987
+  y mean   -0.006  deviation    4.778
+
+rule 4: follow the last marble
+  x mean    3.134  deviation    1.587
+  y mean    5.421  deviation    3.930
+
+all four on one scale, the widest drop reaching the frame
+<<image funnel.png>>
