@@ -41,8 +41,12 @@ rather than restating them here.
   three functions would do, `is` ... `si` where an expression body fits, a type
   written where inference already has it. An entry that a reader could reach from
   the C# entry by swapping keywords had no reason to be written.
-- **Comments.** Solutions carry none. The bar for an exception is that the
-  maintainer could defend it on the talk page by pointing at the code beneath it.
+- **Words that AGENTS.md does not earn.** Most solutions carry none. A note in
+  `notes.md` or a comment at a line is legitimate only for what the language is
+  doing, a design choice a reader would otherwise infer, or an explanation the
+  task asks for - never mathematics, the task restated, the code narrated, a
+  standard technique named, a fixed seed, or jargon. A fix or a clearer line
+  comes first. See 'When a solution carries words, and when it does not'.
 - **A compiler bug worked around rather than reported.** A solution reshaped to
   avoid a bug ships the workaround to the wiki, where it outlives the bug. The
   task is marked blocked against an issue in `degory/ghul` instead.
