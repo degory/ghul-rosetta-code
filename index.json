@@ -4980,8 +4980,11 @@
       "slug": "consistent-overhead-byte-stuffing",
       "title": "Consistent overhead byte stuffing",
       "url": "https://rosettacode.org/wiki/Consistent_overhead_byte_stuffing",
-      "tags": [],
-      "interest": 0,
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 4,
       "playground": true,
       "input": false,
       "images": [],
