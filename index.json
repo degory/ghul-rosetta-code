@@ -579,14 +579,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 39,
+      "lines": 37,
       "parts": [
         {
           "id": "abundant-deficient-and-perfect-number-classifications",
           "heading": null,
           "source": "tasks/abundant-deficient-and-perfect-number-classifications/abundant-deficient-and-perfect-number-classifications.ghul",
           "output": "tasks/abundant-deficient-and-perfect-number-classifications/run.expected",
-          "lines": 39,
+          "lines": 37,
           "playground": true,
           "input": false,
           "images": []
@@ -697,14 +697,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 74,
+      "lines": 68,
       "parts": [
         {
           "id": "active-object",
           "heading": null,
           "source": "tasks/active-object/active-object.ghul",
           "output": "tasks/active-object/run.expected",
-          "lines": 74,
+          "lines": 68,
           "playground": true,
           "input": false,
           "images": []
@@ -995,14 +995,14 @@
       "images": [
         "tasks/animate-a-pendulum/pendulum.png.expected"
       ],
-      "lines": 77,
+      "lines": 80,
       "parts": [
         {
           "id": "animate-a-pendulum",
           "heading": null,
           "source": "tasks/animate-a-pendulum/animate-a-pendulum.ghul",
           "output": "tasks/animate-a-pendulum/run.expected",
-          "lines": 77,
+          "lines": 80,
           "playground": true,
           "input": false,
           "images": [
@@ -3038,14 +3038,14 @@
       "images": [
         "tasks/brownian-tree/brownian.png.expected"
       ],
-      "lines": 53,
+      "lines": 47,
       "parts": [
         {
           "id": "brownian-tree",
           "heading": null,
           "source": "tasks/brownian-tree/brownian-tree.ghul",
           "output": "tasks/brownian-tree/run.expected",
-          "lines": 53,
+          "lines": 47,
           "playground": true,
           "input": false,
           "images": [
@@ -4512,14 +4512,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 99,
+      "lines": 97,
       "parts": [
         {
           "id": "combinations-and-permutations",
           "heading": null,
           "source": "tasks/combinations-and-permutations/combinations-and-permutations.ghul",
           "output": "tasks/combinations-and-permutations/run.expected",
-          "lines": 99,
+          "lines": 97,
           "playground": true,
           "input": false,
           "images": []
@@ -6083,14 +6083,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 19,
+      "lines": 16,
       "parts": [
         {
           "id": "department-numbers",
           "heading": null,
           "source": "tasks/department-numbers/department-numbers.ghul",
           "output": "tasks/department-numbers/run.expected",
-          "lines": 19,
+          "lines": 16,
           "playground": true,
           "input": false,
           "images": []
@@ -6416,14 +6416,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 42,
+      "lines": 39,
       "parts": [
         {
           "id": "dining-philosophers",
           "heading": null,
           "source": "tasks/dining-philosophers/dining-philosophers.ghul",
           "output": "tasks/dining-philosophers/run.expected",
-          "lines": 42,
+          "lines": 39,
           "playground": true,
           "input": false,
           "images": []
@@ -7932,14 +7932,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 171,
+      "lines": 170,
       "parts": [
         {
           "id": "execute-brain/01-hello-world",
           "heading": "Hello world",
           "source": "tasks/execute-brain/01-hello-world/01-hello-world.ghul",
           "output": "tasks/execute-brain/01-hello-world/run.expected",
-          "lines": 69,
+          "lines": 68,
           "playground": true,
           "input": false,
           "images": []
@@ -13682,14 +13682,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 53,
+      "lines": 50,
       "parts": [
         {
           "id": "list-rooted-trees",
           "heading": null,
           "source": "tasks/list-rooted-trees/list-rooted-trees.ghul",
           "output": "tasks/list-rooted-trees/run.expected",
-          "lines": 53,
+          "lines": 50,
           "playground": true,
           "input": false,
           "images": []
@@ -15544,14 +15544,14 @@
       "images": [
         "tasks/monty-hall-problem/02-watching-them-converge/monty-hall.png.expected"
       ],
-      "lines": 137,
+      "lines": 151,
       "parts": [
         {
           "id": "monty-hall-problem/01-two-strategies",
           "heading": "Two strategies",
           "source": "tasks/monty-hall-problem/01-two-strategies/01-two-strategies.ghul",
           "output": "tasks/monty-hall-problem/01-two-strategies/run.expected",
-          "lines": 40,
+          "lines": 53,
           "playground": true,
           "input": false,
           "images": []
@@ -15561,7 +15561,7 @@
           "heading": "Watching them converge",
           "source": "tasks/monty-hall-problem/02-watching-them-converge/02-watching-them-converge.ghul",
           "output": "tasks/monty-hall-problem/02-watching-them-converge/run.expected",
-          "lines": 97,
+          "lines": 98,
           "playground": true,
           "input": false,
           "images": [
@@ -16710,14 +16710,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 132,
+      "lines": 120,
       "parts": [
         {
           "id": "operator-precedence",
           "heading": null,
           "source": "tasks/operator-precedence/operator-precedence.ghul",
           "output": "tasks/operator-precedence/run.expected",
-          "lines": 132,
+          "lines": 120,
           "playground": true,
           "input": false,
           "images": []
@@ -17768,14 +17768,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 88,
+      "lines": 85,
       "parts": [
         {
           "id": "periodic-table",
           "heading": null,
           "source": "tasks/periodic-table/periodic-table.ghul",
           "output": "tasks/periodic-table/run.expected",
-          "lines": 88,
+          "lines": 85,
           "playground": true,
           "input": false,
           "images": []
@@ -25919,14 +25919,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 95,
+      "lines": 90,
       "parts": [
         {
           "id": "untouchable-numbers",
           "heading": null,
           "source": "tasks/untouchable-numbers/untouchable-numbers.ghul",
           "output": "tasks/untouchable-numbers/run.expected",
-          "lines": 95,
+          "lines": 90,
           "playground": false,
           "input": false,
           "images": []

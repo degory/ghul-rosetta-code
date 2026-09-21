@@ -1,33 +1,46 @@
-use IO.Std.write_line
+use default
 
-// Seeded, so the run reproduces - the point is the two-thirds, not the
-// particular sequence of doors.
 let random = System.Random(2026)
 
 let rounds = 100000
 
-let stay_wins mut = 0
-let switch_wins mut = 0
-
-for _ in 1::rounds do
+play() -> (car: int, chosen: int, opened: int, switched: int) is
     let car = random.next(3)
     let chosen = random.next(3)
 
-    // Monty opens a door that is neither the player's nor the car's.
     let opened mut = random.next(3)
 
     while opened == chosen \/ opened == car do
         opened = random.next(3)
     od
 
-    // The one door left is the only other door the player could switch to.
-    let switched = 3 - chosen - opened
+    let switched =
+        (0::2 |> find(door => door != chosen /\ door != opened))!
 
-    if chosen == car then
+    (car = car, chosen = chosen, opened = opened, switched = switched)
+si
+
+write_line("the first three games")
+
+for _ in 1::3 do
+    let game = play()
+
+    write_line(
+        "  car behind {game.car}, player picks {game.chosen}, "
+        "host opens {game.opened}, switching gives {game.switched}")
+od
+
+let stay_wins mut = 0
+let switch_wins mut = 0
+
+for _ in 1::rounds do
+    let game = play()
+
+    if game.chosen == game.car then
         stay_wins = stay_wins + 1
     fi
 
-    if switched == car then
+    if game.switched == game.car then
         switch_wins = switch_wins + 1
     fi
 od
