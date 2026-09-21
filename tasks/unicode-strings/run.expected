@@ -1,0 +1,23 @@
+source is UTF-8, and a literal holds what it says
+  héllo wörld
+  日本語
+  Ελληνικά
+
+identifiers are ASCII, but operators need not be
+  6 × 7 = 42
+  evens ∪ odds = [1, 2, 3, 4]
+
+a char is a UTF-16 code unit, so this one is two
+  😀: 2 chars, 1 point
+  escaped and literal agree: true
+  \u20AC is €, \u0041cat is Acat
+
+every .NET encoding is reachable, here for né
+  UTF-8    6E C3 A9
+  UTF-16   6E 00 E9 00
+  UTF-32   6E 00 00 00 E9 00 00 00
+
+normalization comes from .NET too
+  é is one char, é is two
+  composed =~ decomposed is false
+  after NFC it is true

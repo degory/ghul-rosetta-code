@@ -1,0 +1,6 @@
+0101011101010 (13 bits) -> 57 50
+
+20 ASCII bytes pack into 18
+packed: 91 97 66 CD EB 10 52 DF CF 2F 4E 98 50 43 DF 93 2A 10
+unpacked: Hello, Rosetta Code!
+round trip: true

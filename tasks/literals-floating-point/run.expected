@@ -1,0 +1,26 @@
+plain literals
+1.5           Double   1.5
+123.456       Double   123.456
+0.0           Double   0
+
+suffixes, in either case
+123.456s      Single   123.456
+123.456S      Single   123.456
+123.456d      Double   123.456
+19.99m        Decimal  19.99
+100m          Decimal  100
+
+exponents
+1.5e3         Double   1500
+1.5E-3        Double   0.0015
+2.5e10s       Single   2.5E+10
+(a decimal literal takes no exponent)
+
+digits group with _ wherever they fall
+1_000.000_1   Double   1000.0001
+1_2_3.4_5     Double   123.45
+
+there is no hexadecimal floating-point literal, and
+no implicit conversion, so a mixed expression is a
+compile error until one side is cast
+1.0 + cast(1) Double   2

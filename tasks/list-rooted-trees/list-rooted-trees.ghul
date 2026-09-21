@@ -1,0 +1,55 @@
+use default
+
+// A bag is a root over a forest of the bags inside it. The bags are
+// identical, so the forest is a multiset: keeping the subtrees in
+// non-increasing text order gives each configuration exactly once.
+trees(bags: int) -> Pipe[string] is
+    if bags == 1 then
+        yield "()"
+        return
+    fi
+
+    for forest in forests(bags - 1, null) do
+        yield "({forest})"
+    od
+si
+
+forests(bags: int, largest: string?) -> Pipe[string] is
+    if bags == 0 then
+        yield ""
+        return
+    fi
+
+    for size in 1::bags do
+        for first in trees(size) do
+            if largest? /\ first > largest then
+                continue
+            fi
+
+            for rest in forests(bags - size, first) do
+                yield "{first}{rest}"
+            od
+        od
+    od
+si
+
+plural(count: int, noun: string) -> string =>
+    "{count} {noun}{if count == 1 then "" else "s" fi}"
+
+entry() is
+    for bags in 1::5 do
+        let ways = trees(bags) |> collect_list()
+
+        write_line("{plural(bags, "bag")}, {plural(ways.count, "way")}")
+
+        for way in ways do
+            write_line("  {way}")
+        od
+
+        write_line("")
+    od
+
+    let counts = 1::9 |> map(n => trees(n) |> count())
+
+    write_line("ways for 1 to 9 bags: {counts |> collect_list()}")
+si

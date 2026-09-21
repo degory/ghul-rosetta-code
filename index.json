@@ -2618,6 +2618,33 @@
       ]
     },
     {
+      "slug": "bitwise-io",
+      "title": "Bitwise IO",
+      "url": "https://rosettacode.org/wiki/Bitwise_IO",
+      "tags": [
+        "text-processing",
+        "classes",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 102,
+      "parts": [
+        {
+          "id": "bitwise-io",
+          "heading": null,
+          "source": "tasks/bitwise-io/bitwise-io.ghul",
+          "output": "tasks/bitwise-io/run.expected",
+          "lines": 102,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "bitwise-operations",
       "title": "Bitwise operations",
       "url": "https://rosettacode.org/wiki/Bitwise_operations",
@@ -7073,6 +7100,33 @@
       ]
     },
     {
+      "slug": "element-wise-operations",
+      "title": "Element-wise operations",
+      "url": "https://rosettacode.org/wiki/Element-wise_operations",
+      "tags": [
+        "maths",
+        "operators",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 81,
+      "parts": [
+        {
+          "id": "element-wise-operations",
+          "heading": null,
+          "source": "tasks/element-wise-operations/element-wise-operations.ghul",
+          "output": "tasks/element-wise-operations/run.expected",
+          "lines": 81,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "elementary-cellular-automaton",
       "title": "Elementary cellular automaton",
       "url": "https://rosettacode.org/wiki/Elementary_cellular_automaton",
@@ -9296,6 +9350,32 @@
           "source": "tasks/forward-difference/forward-difference.ghul",
           "output": "tasks/forward-difference/run.expected",
           "lines": 17,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "four-bit-adder",
+      "title": "Four bit adder",
+      "url": "https://rosettacode.org/wiki/Four_bit_adder",
+      "tags": [
+        "simulation",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 77,
+      "parts": [
+        {
+          "id": "four-bit-adder",
+          "heading": null,
+          "source": "tasks/four-bit-adder/four-bit-adder.ghul",
+          "output": "tasks/four-bit-adder/run.expected",
+          "lines": 77,
           "playground": true,
           "input": false,
           "images": []
@@ -13475,6 +13555,59 @@
       ]
     },
     {
+      "slug": "list-rooted-trees",
+      "title": "List rooted trees",
+      "url": "https://rosettacode.org/wiki/List_rooted_trees",
+      "tags": [
+        "data-structures",
+        "generators",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 55,
+      "parts": [
+        {
+          "id": "list-rooted-trees",
+          "heading": null,
+          "source": "tasks/list-rooted-trees/list-rooted-trees.ghul",
+          "output": "tasks/list-rooted-trees/run.expected",
+          "lines": 55,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "literals-floating-point",
+      "title": "Literals/Floating point",
+      "url": "https://rosettacode.org/wiki/Literals/Floating_point",
+      "tags": [
+        "basics",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "literals-floating-point",
+          "heading": null,
+          "source": "tasks/literals-floating-point/literals-floating-point.ghul",
+          "output": "tasks/literals-floating-point/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "literals-integer",
       "title": "Literals/Integer",
       "url": "https://rosettacode.org/wiki/Literals/Integer",
@@ -17422,6 +17555,32 @@
           "source": "tasks/perfect-totient-numbers/perfect-totient-numbers.ghul",
           "output": "tasks/perfect-totient-numbers/run.expected",
           "lines": 56,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "periodic-table",
+      "title": "Periodic table",
+      "url": "https://rosettacode.org/wiki/Periodic_table",
+      "tags": [
+        "text-processing",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 90,
+      "parts": [
+        {
+          "id": "periodic-table",
+          "heading": null,
+          "source": "tasks/periodic-table/periodic-table.ghul",
+          "output": "tasks/periodic-table/run.expected",
+          "lines": 90,
           "playground": true,
           "input": false,
           "images": []
@@ -25229,6 +25388,33 @@
           "source": "tasks/undulating-numbers/undulating-numbers.ghul",
           "output": "tasks/undulating-numbers/run.expected",
           "lines": 82,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "unicode-strings",
+      "title": "Unicode strings",
+      "url": "https://rosettacode.org/wiki/Unicode_strings",
+      "tags": [
+        "strings",
+        "basics",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "unicode-strings",
+          "heading": null,
+          "source": "tasks/unicode-strings/unicode-strings.ghul",
+          "output": "tasks/unicode-strings/run.expected",
+          "lines": 66,
           "playground": true,
           "input": false,
           "images": []

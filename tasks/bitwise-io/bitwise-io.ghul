@@ -1,0 +1,102 @@
+use default
+
+// Bits arrive most significant first and leave the same way. Both
+// ends quantize to a byte: the writer pads the last one with zeros.
+class BIT_WRITER(target: IO.Stream) is
+    _target;
+    _accumulator: int
+    _filled: int
+
+    write(bits: int, count: int) is
+        for at in 0..count do
+            _accumulator = _accumulator * 2 + (bits >> (count - 1 - at)) % 2
+            _filled = _filled + 1
+
+            if _filled == 8 then
+                flush()
+            fi
+        od
+    si
+
+    flush() is
+        if _filled > 0 then
+            _target.write_byte(cast ubyte(_accumulator << (8 - _filled)))
+
+            _accumulator = 0
+            _filled = 0
+        fi
+    si
+si
+
+class BIT_READER(source: IO.Stream) is
+    _source;
+    _accumulator: int
+    _available: int
+
+    read(count: int) -> int is
+        let value mut = 0
+
+        for _ in 0..count do
+            if _available == 0 then
+                _accumulator = _source.read_byte()
+                _available = 8
+            fi
+
+            _available = _available - 1
+            value = value * 2 + (_accumulator >> _available) % 2
+        od
+
+        value
+    si
+si
+
+hex(bytes: ubyte[]) -> string =>
+    bytes |> map(b => "{b:X2}") |> join(" ")
+
+pack(text: string) -> ubyte[] is
+    let packed = IO.MemoryStream()
+    let writer = BIT_WRITER(packed)
+
+    for c in text do
+        writer.write(cast int(c), 7)
+    od
+
+    writer.flush()
+
+    packed.to_array()
+si
+
+unpack(packed: ubyte[], count: int) -> string is
+    let reader = BIT_READER(IO.MemoryStream(packed))
+    let text = System.Text.StringBuilder()
+
+    for _ in 0..count do
+        text.append(cast char(reader.read(7)))
+    od
+
+    text.to_string()
+si
+
+entry() is
+    let bits = "0101011101010"
+    let quantized = IO.MemoryStream()
+    let writer = BIT_WRITER(quantized)
+
+    for bit in bits do
+        writer.write(if bit == '1' then 1 else 0 fi, 1)
+    od
+
+    writer.flush()
+
+    write_line("{bits} ({bits.length} bits) -> {hex(quantized.to_array())}")
+    write_line("")
+
+    let text = "Hello, Rosetta Code!"
+    let packed = pack(text)
+    let restored = unpack(packed, text.length)
+
+    write_line("{text.length} ASCII bytes pack into {packed.count}")
+    write_line("packed: {hex(packed)}")
+    write_line("unpacked: {restored}")
+    write_line("round trip: {restored =~ text}")
+si
