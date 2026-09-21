@@ -561,12 +561,15 @@ stays one argument a line.
 ## Running in the playground
 
 Every entry links to the solution in the ghūl playground, which fetches the source from this
-repository and runs it in the reader's browser. That rules out standard input, the filesystem,
-threads and any package reference such as `ghul.raster`. Deciding whether a solution needs one of
-those takes reading it, so it is part of writing it: a program that cannot run there carries a
-`playground-unsupported` file beside its source, one line saying why, written for the reader who
-opens the link anyway. `scripts/generate-wiki.sh` writes no link for it. The link itself
-transcludes the wiki's `Template:Ghul playground` and passes only the program's path, so the
+repository and runs it in the reader's browser. It compiles one source file against the ghūl
+runtime, `ghul.raster` and the parts of .NET that work in a browser, reads standard input from a
+box under the output, shows the images a program draws, runs threads, and holds the files a task
+ships in a filesystem of its own. What it rules out is the network, a child process,
+`Environment.exit`, a second source file, and anything that takes minutes there. Deciding whether
+a solution needs one of those takes reading it, so it is part of writing it: a program that
+cannot run there carries a `playground-unsupported` file beside its source, one line saying why,
+written for the reader who opens the link anyway. `scripts/generate-wiki.sh` writes no link for
+it. The link itself transcludes the wiki's `Template:Ghul playground` and passes only the program's path, so the
 wording is the template's rather than each entry's. README.md's 'running a solution in the
 playground' has the detail.
 
