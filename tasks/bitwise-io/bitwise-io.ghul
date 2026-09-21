@@ -1,7 +1,6 @@
 use default
 
-// Bits arrive most significant first and leave the same way. Both
-// ends quantize to a byte: the writer pads the last one with zeros.
+// Bits are written most significant first and read back the same way.
 class BIT_WRITER(target: IO.Stream) is
     _target;
     _accumulator: int

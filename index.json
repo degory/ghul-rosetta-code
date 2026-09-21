@@ -2630,14 +2630,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 100,
+      "lines": 99,
       "parts": [
         {
           "id": "bitwise-io",
           "heading": null,
           "source": "tasks/bitwise-io/bitwise-io.ghul",
           "output": "tasks/bitwise-io/run.expected",
-          "lines": 100,
+          "lines": 99,
           "playground": true,
           "input": false,
           "images": []
@@ -7134,14 +7134,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 79,
+      "lines": 76,
       "parts": [
         {
           "id": "element-wise-operations",
           "heading": null,
           "source": "tasks/element-wise-operations/element-wise-operations.ghul",
           "output": "tasks/element-wise-operations/run.expected",
-          "lines": 79,
+          "lines": 76,
           "playground": true,
           "input": false,
           "images": []
@@ -13678,14 +13678,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 36,
+      "lines": 35,
       "parts": [
         {
           "id": "literals-floating-point",
           "heading": null,
           "source": "tasks/literals-floating-point/literals-floating-point.ghul",
           "output": "tasks/literals-floating-point/run.expected",
-          "lines": 36,
+          "lines": 35,
           "playground": true,
           "input": false,
           "images": []
@@ -14777,14 +14777,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 106,
+      "lines": 102,
       "parts": [
         {
           "id": "markov-chain-text-generator",
           "heading": null,
           "source": "tasks/markov-chain-text-generator/markov-chain-text-generator.ghul",
           "output": "tasks/markov-chain-text-generator/run.expected",
-          "lines": 106,
+          "lines": 102,
           "playground": true,
           "input": false,
           "images": []
@@ -18006,14 +18006,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 63,
+      "lines": 61,
       "parts": [
         {
           "id": "pig-the-dice-game",
           "heading": null,
           "source": "tasks/pig-the-dice-game/pig-the-dice-game.ghul",
           "output": "tasks/pig-the-dice-game/run.expected",
-          "lines": 63,
+          "lines": 61,
           "playground": true,
           "input": true,
           "images": []
@@ -23073,14 +23073,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 66,
+      "lines": 62,
       "parts": [
         {
           "id": "stair-climbing-puzzle",
           "heading": null,
           "source": "tasks/stair-climbing-puzzle/stair-climbing-puzzle.ghul",
           "output": "tasks/stair-climbing-puzzle/run.expected",
-          "lines": 66,
+          "lines": 62,
           "playground": true,
           "input": false,
           "images": []
