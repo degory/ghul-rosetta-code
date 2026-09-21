@@ -1515,8 +1515,12 @@
       "slug": "ascii-art-diagram-converter",
       "title": "ASCII art diagram converter",
       "url": "https://rosettacode.org/wiki/ASCII_art_diagram_converter",
-      "tags": [],
-      "interest": 0,
+      "tags": [
+        "parsing",
+        "text-processing",
+        "unions"
+      ],
+      "interest": 4,
       "playground": true,
       "input": false,
       "images": [],

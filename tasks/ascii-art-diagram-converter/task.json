@@ -2,6 +2,10 @@
     "task": "ASCII art diagram converter",
     "url": "https://rosettacode.org/wiki/ASCII_art_diagram_converter",
     "status": "solved",
-    "tags": [],
-    "interest": 0
+    "tags": [
+        "parsing",
+        "text-processing",
+        "unions"
+    ],
+    "interest": 4
 }
