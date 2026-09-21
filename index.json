@@ -26525,14 +26525,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 144,
+      "lines": 118,
       "parts": [
         {
           "id": "visitor-pattern/01-the-visitor-pattern",
           "heading": "The visitor pattern",
           "source": "tasks/visitor-pattern/01-the-visitor-pattern/01-the-visitor-pattern.ghul",
           "output": "tasks/visitor-pattern/01-the-visitor-pattern/run.expected",
-          "lines": 101,
+          "lines": 75,
           "playground": true,
           "input": false,
           "images": []
