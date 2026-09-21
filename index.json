@@ -17731,24 +17731,39 @@
       "title": "Periodic table",
       "url": "https://rosettacode.org/wiki/Periodic_table",
       "tags": [
+        "graphics",
         "text-processing",
         "algorithms"
       ],
-      "interest": 3,
+      "interest": 4,
       "playground": true,
       "input": false,
-      "images": [],
-      "lines": 85,
+      "images": [
+        "tasks/periodic-table/02-the-picture/periodic-table.png.expected"
+      ],
+      "lines": 294,
       "parts": [
         {
-          "id": "periodic-table",
-          "heading": null,
-          "source": "tasks/periodic-table/periodic-table.ghul",
-          "output": "tasks/periodic-table/run.expected",
+          "id": "periodic-table/01-the-table",
+          "heading": "The table",
+          "source": "tasks/periodic-table/01-the-table/01-the-table.ghul",
+          "output": "tasks/periodic-table/01-the-table/run.expected",
           "lines": 85,
           "playground": true,
           "input": false,
           "images": []
+        },
+        {
+          "id": "periodic-table/02-the-picture",
+          "heading": "The picture",
+          "source": "tasks/periodic-table/02-the-picture/02-the-picture.ghul",
+          "output": "tasks/periodic-table/02-the-picture/run.expected",
+          "lines": 209,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/periodic-table/02-the-picture/periodic-table.png.expected"
+          ]
         }
       ]
     },
