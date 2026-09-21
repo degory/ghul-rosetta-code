@@ -17973,6 +17973,32 @@
       ]
     },
     {
+      "slug": "pig-the-dice-game",
+      "title": "Pig the dice game",
+      "url": "https://rosettacode.org/wiki/Pig_the_dice_game",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 65,
+      "parts": [
+        {
+          "id": "pig-the-dice-game",
+          "heading": null,
+          "source": "tasks/pig-the-dice-game/pig-the-dice-game.ghul",
+          "output": "tasks/pig-the-dice-game/run.expected",
+          "lines": 65,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pig-the-dice-game-player",
       "title": "Pig the dice game/Player",
       "url": "https://rosettacode.org/wiki/Pig_the_dice_game/Player",

@@ -1,0 +1,107 @@
+player 1 (safe 0, turn 0) roll? y  rolled 1, turn lost
+player 2 (safe 0, turn 0) roll? y  rolled 2, turn now 2
+player 2 (safe 0, turn 2) roll? y  rolled 6, turn now 8
+player 2 (safe 0, turn 8) roll? n  holds on 8
+player 1 (safe 0, turn 0) roll? y  rolled 6, turn now 6
+player 1 (safe 0, turn 6) roll? y  rolled 6, turn now 12
+player 1 (safe 0, turn 12) roll? y  rolled 1, turn lost
+player 2 (safe 8, turn 0) roll? n  holds on 8
+player 1 (safe 0, turn 0) roll? y  rolled 5, turn now 5
+player 1 (safe 0, turn 5) roll? y  rolled 6, turn now 11
+player 1 (safe 0, turn 11) roll? y  rolled 4, turn now 15
+player 1 (safe 0, turn 15) roll? n  holds on 15
+player 2 (safe 8, turn 0) roll? y  rolled 3, turn now 3
+player 2 (safe 8, turn 3) roll? y  rolled 6, turn now 9
+player 2 (safe 8, turn 9) roll? y  rolled 2, turn now 11
+player 2 (safe 8, turn 11) roll? n  holds on 19
+player 1 (safe 15, turn 0) roll? y  rolled 3, turn now 3
+player 1 (safe 15, turn 3) roll? y  rolled 4, turn now 7
+player 1 (safe 15, turn 7) roll? y  rolled 1, turn lost
+player 2 (safe 19, turn 0) roll? n  holds on 19
+player 1 (safe 15, turn 0) roll? y  rolled 2, turn now 2
+player 1 (safe 15, turn 2) roll? y  rolled 4, turn now 6
+player 1 (safe 15, turn 6) roll? y  rolled 1, turn lost
+player 2 (safe 19, turn 0) roll? n  holds on 19
+player 1 (safe 15, turn 0) roll? y  rolled 4, turn now 4
+player 1 (safe 15, turn 4) roll? y  rolled 5, turn now 9
+player 1 (safe 15, turn 9) roll? y  rolled 1, turn lost
+player 2 (safe 19, turn 0) roll? n  holds on 19
+player 1 (safe 15, turn 0) roll? y  rolled 6, turn now 6
+player 1 (safe 15, turn 6) roll? y  rolled 3, turn now 9
+player 1 (safe 15, turn 9) roll? y  rolled 5, turn now 14
+player 1 (safe 15, turn 14) roll? n  holds on 29
+player 2 (safe 19, turn 0) roll? y  rolled 2, turn now 2
+player 2 (safe 19, turn 2) roll? y  rolled 4, turn now 6
+player 2 (safe 19, turn 6) roll? y  rolled 5, turn now 11
+player 2 (safe 19, turn 11) roll? n  holds on 30
+player 1 (safe 29, turn 0) roll? y  rolled 1, turn lost
+player 2 (safe 30, turn 0) roll? y  rolled 1, turn lost
+player 1 (safe 29, turn 0) roll? y  rolled 5, turn now 5
+player 1 (safe 29, turn 5) roll? n  holds on 34
+player 2 (safe 30, turn 0) roll? y  rolled 1, turn lost
+player 1 (safe 34, turn 0) roll? y  rolled 1, turn lost
+player 2 (safe 30, turn 0) roll? y  rolled 1, turn lost
+player 1 (safe 34, turn 0) roll? n  holds on 34
+player 2 (safe 30, turn 0) roll? y  rolled 5, turn now 5
+player 2 (safe 30, turn 5) roll? y  rolled 1, turn lost
+player 1 (safe 34, turn 0) roll? y  rolled 4, turn now 4
+player 1 (safe 34, turn 4) roll? n  holds on 38
+player 2 (safe 30, turn 0) roll? y  rolled 2, turn now 2
+player 2 (safe 30, turn 2) roll? y  rolled 1, turn lost
+player 1 (safe 38, turn 0) roll? y  rolled 2, turn now 2
+player 1 (safe 38, turn 2) roll? n  holds on 40
+player 2 (safe 30, turn 0) roll? y  rolled 2, turn now 2
+player 2 (safe 30, turn 2) roll? y  rolled 6, turn now 8
+player 2 (safe 30, turn 8) roll? y  rolled 4, turn now 12
+player 2 (safe 30, turn 12) roll? n  holds on 42
+player 1 (safe 40, turn 0) roll? y  rolled 2, turn now 2
+player 1 (safe 40, turn 2) roll? y  rolled 4, turn now 6
+player 1 (safe 40, turn 6) roll? y  rolled 1, turn lost
+player 2 (safe 42, turn 0) roll? n  holds on 42
+player 1 (safe 40, turn 0) roll? y  rolled 6, turn now 6
+player 1 (safe 40, turn 6) roll? y  rolled 4, turn now 10
+player 1 (safe 40, turn 10) roll? y  rolled 2, turn now 12
+player 1 (safe 40, turn 12) roll? n  holds on 52
+player 2 (safe 42, turn 0) roll? y  rolled 1, turn lost
+player 1 (safe 52, turn 0) roll? y  rolled 6, turn now 6
+player 1 (safe 52, turn 6) roll? y  rolled 5, turn now 11
+player 1 (safe 52, turn 11) roll? n  holds on 63
+player 2 (safe 42, turn 0) roll? y  rolled 6, turn now 6
+player 2 (safe 42, turn 6) roll? y  rolled 1, turn lost
+player 1 (safe 63, turn 0) roll? y  rolled 2, turn now 2
+player 1 (safe 63, turn 2) roll? n  holds on 65
+player 2 (safe 42, turn 0) roll? y  rolled 6, turn now 6
+player 2 (safe 42, turn 6) roll? y  rolled 2, turn now 8
+player 2 (safe 42, turn 8) roll? y  rolled 6, turn now 14
+player 2 (safe 42, turn 14) roll? n  holds on 56
+player 1 (safe 65, turn 0) roll? y  rolled 1, turn lost
+player 2 (safe 56, turn 0) roll? y  rolled 5, turn now 5
+player 2 (safe 56, turn 5) roll? y  rolled 2, turn now 7
+player 2 (safe 56, turn 7) roll? n  holds on 63
+player 1 (safe 65, turn 0) roll? y  rolled 2, turn now 2
+player 1 (safe 65, turn 2) roll? y  rolled 4, turn now 6
+player 1 (safe 65, turn 6) roll? y  rolled 5, turn now 11
+player 1 (safe 65, turn 11) roll? n  holds on 76
+player 2 (safe 63, turn 0) roll? y  rolled 6, turn now 6
+player 2 (safe 63, turn 6) roll? y  rolled 2, turn now 8
+player 2 (safe 63, turn 8) roll? y  rolled 5, turn now 13
+player 2 (safe 63, turn 13) roll? n  holds on 76
+player 1 (safe 76, turn 0) roll? y  rolled 2, turn now 2
+player 1 (safe 76, turn 2) roll? y  rolled 4, turn now 6
+player 1 (safe 76, turn 6) roll? y  rolled 3, turn now 9
+player 1 (safe 76, turn 9) roll? n  holds on 85
+player 2 (safe 76, turn 0) roll? y  rolled 4, turn now 4
+player 2 (safe 76, turn 4) roll? y  rolled 1, turn lost
+player 1 (safe 85, turn 0) roll? y  rolled 3, turn now 3
+player 1 (safe 85, turn 3) roll? n  holds on 88
+player 2 (safe 76, turn 0) roll? y  rolled 5, turn now 5
+player 2 (safe 76, turn 5) roll? y  rolled 2, turn now 7
+player 2 (safe 76, turn 7) roll? y  rolled 6, turn now 13
+player 2 (safe 76, turn 13) roll? n  holds on 89
+player 1 (safe 88, turn 0) roll? y  rolled 3, turn now 3
+player 1 (safe 88, turn 3) roll? y  rolled 4, turn now 7
+player 1 (safe 88, turn 7) roll? y  rolled 6, turn now 13
+player 1 (safe 88, turn 13) roll? n  holds on 101
+
+player 1 101, player 2 89
+player 1 wins

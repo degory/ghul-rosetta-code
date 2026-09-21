@@ -1,0 +1,65 @@
+use default
+
+// The die is seeded, so the same game is played every time. The
+// answers come from standard input, one to each prompt.
+class DIE(seed: int init) is
+    _random: System.Random
+
+    init(..) is
+        _random = System.Random(seed)
+    si
+
+    roll() -> int => _random.next(1, 7)
+si
+
+entry() is
+    let die = DIE(2026)
+    let safe = repeat(0, 2) |> collect_list()
+    let player mut = 0
+    let turn mut = 0
+
+    while safe |> all(total => total < 100) do
+        IO.Std.write(
+            "player {player + 1} (safe {safe[player]}, turn {turn})"
+            " roll? ")
+
+        let answer = IO.Std.read_line()
+
+        if !answer? then
+            write_line("")
+            write_line("input ran out")
+
+            break
+        fi
+
+        let reply = answer.trim().to_lower()
+
+        if reply =~ "y" then
+            let rolled = die.roll()
+
+            if rolled == 1 then
+                turn = 0
+                player = (player + 1) % 2
+
+                write_line("{reply}  rolled 1, turn lost")
+            else
+                turn = turn + rolled
+
+                write_line("{reply}  rolled {rolled}, turn now {turn}")
+            fi
+        else
+            safe[player] = safe[player] + turn
+            turn = 0
+
+            write_line("{reply}  holds on {safe[player]}")
+
+            player = (player + 1) % 2
+        fi
+    od
+
+    let winner = if safe[0] >= 100 then 1 else 2 fi
+
+    write_line("")
+    write_line("player 1 {safe[0]}, player 2 {safe[1]}")
+    write_line("player {winner} wins")
+si
