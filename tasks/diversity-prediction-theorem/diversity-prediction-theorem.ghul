@@ -3,7 +3,7 @@ use default
 square(value: double) -> double => value * value
 
 mean(values: double[]) -> double =>
-    (values |> reduce(0.0D, (total, v) => total + v)) /
+    (values |> sum()) /
     cast(values.count)
 
 report(truth: double, estimates: double[]) is

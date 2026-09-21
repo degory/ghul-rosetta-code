@@ -6,10 +6,7 @@ sattolo_cycle(items: LIST[int], random: Random) is
 
     while i >= 1 do
         let j = random.next(0, i)
-        let value = items[i]
-
-        items[i] = items[j]
-        items[j] = value
+        (items[i], items[j]) = (items[j], items[i])
 
         i = i - 1
     od

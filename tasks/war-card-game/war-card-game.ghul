@@ -17,10 +17,7 @@ play(seed: int) -> (winner: int, rounds: int) is
 
     for i in 0..51 do
         let other = i + random.next(52 - i)
-        let held = deck[i]
-
-        deck[i] = deck[other]
-        deck[other] = held
+        (deck[i], deck[other]) = (deck[other], deck[i])
     od
 
     let hands = [Collections.Queue(), Collections.Queue()]
@@ -65,10 +62,7 @@ play(seed: int) -> (winner: int, rounds: int) is
 
         for i in 0..pot.count - 1 do
             let other = i + random.next(pot.count - i)
-            let held = pot[i]
-
-            pot[i] = pot[other]
-            pot[other] = held
+            (pot[i], pot[other]) = (pot[other], pot[i])
         od
 
         for card in pot do

@@ -5,7 +5,7 @@ root_mean_square(values: Collections.List[double]) -> double is
     let squares =
         values
             |> map(v => v * v)
-            |> reduce(0.0, (running, square) => running + square)
+            |> sum()
 
     return Math.sqrt(squares / cast(values.count))
 si

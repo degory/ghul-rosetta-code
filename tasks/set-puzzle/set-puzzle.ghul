@@ -42,10 +42,7 @@ let random = System.Random(81)
 deal(size: int) -> List[CARD] is
     for i in 0..size do
         let other = i + random.next(deck.count - i)
-        let held = deck[i]
-
-        deck[i] = deck[other]
-        deck[other] = held
+        (deck[i], deck[other]) = (deck[other], deck[i])
     od
 
     return deck |> take(size) |> collect_list()

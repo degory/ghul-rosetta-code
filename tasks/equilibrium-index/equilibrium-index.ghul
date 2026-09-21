@@ -1,7 +1,7 @@
 use default
 
 equilibrium_indices(values: int[]) -> Pipe[int] is
-    let total = values |> reduce(0, (sum, value) => sum + value)
+    let total = values |> sum()
     let below mut = 0
 
     for index in 0..values.count do

@@ -27,7 +27,7 @@ si
 separation(a: Point, b: Point) -> double =>
     a
     |> zip(b, (x, y) => (x - y) * (x - y))
-    |> reduce(0.0, (sum, d) => sum + d)
+    |> sum()
 
 use Found = (point: Point, distance: double, visited: int)
 

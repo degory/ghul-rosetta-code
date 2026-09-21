@@ -15,9 +15,7 @@ shuffled_cards() -> LIST[int] =>
     (let cards = 1::prisoners |> collect_list()
      for i in 0..cards.count do
          let j = i + random.next(cards.count - i)
-         let held = cards[i]
-         cards[i] = cards[j]
-         cards[j] = held
+         (cards[i], cards[j]) = (cards[j], cards[i])
      od
      cards)
 

@@ -44,4 +44,4 @@ let values = integers |> map(f => cast int(f.get_value(null)!))
 let named = integers |> map(f => f.name.trim_start(['$']))
 
 write_line("integer globals: {named |> join(", ")}")
-write_line("their sum: {values |> reduce(0, (a, b) => a + b)}")
+write_line("their sum: {values |> sum()}")

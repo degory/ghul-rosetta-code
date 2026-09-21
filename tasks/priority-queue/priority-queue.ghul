@@ -67,10 +67,7 @@ class PRIORITY_QUEUE[T: Ghul.Comparable[T]] is
     si
 
     _swap(a: int, b: int) is
-        let held = _heap[a]
-
-        _heap[a] = _heap[b]
-        _heap[b] = held
+        (_heap[a], _heap[b]) = (_heap[b], _heap[a])
     si
 si
 

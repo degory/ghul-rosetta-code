@@ -8,10 +8,7 @@ shuffled() -> LIST[int] is
 
     for i in 0..8 do
         let other = i + random.next(9 - i)
-        let held = digits[i]
-
-        digits[i] = digits[other]
-        digits[other] = held
+        (digits[i], digits[other]) = (digits[other], digits[i])
     od
 
     digits

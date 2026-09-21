@@ -70,7 +70,7 @@ width(node: NODE) -> int =>
     else
         node.children
             |> map(width)
-            |> reduce(0, (running, part) => running + part)
+            |> sum()
     fi
 
 gather(node: NODE, level: int, colour: string,
