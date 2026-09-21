@@ -1,0 +1,24 @@
+use default
+
+let values = [1, 2, 2, 3, 4, 4, 5]
+
+for index in 0..values.count do
+    let previous =
+        if index == 0 then values[index] - 1 else values[index - 1] fi
+
+    if values[index] == previous then
+        write_line("{index}")
+    fi
+od
+
+write_line("")
+
+let carried mut = 0
+
+for index in 0..values.count do
+    if index > 0 /\ values[index] == carried then
+        write_line("{index}")
+    fi
+
+    carried = values[index]
+od

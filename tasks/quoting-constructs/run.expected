@@ -1,0 +1,10 @@
+a string literal
+hello, world
+the length of world is 5
+a tab	between, a quote ", a backslash \, euro €
+literal braces: { and }
+[     world] [world     ] [3.14]
+adjacent literals join, across lines, and one of them may be world
+a character: c, and its code: 99
+a newline's code: 10
+a keyword as an identifier, escaped with a backtick

@@ -1,0 +1,9 @@
+@@precedence places an operator: composed(5) = 12
+@suppress silences one diagnostic, for one declaration:
+  declared with a name the convention rejects
+a pragma naming no built-in is a .NET attribute:
+  carrying a .NET attribute
+@equality asks for =~ and a hash:
+  true
+without it they compare by identity:
+  false

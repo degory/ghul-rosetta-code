@@ -1,0 +1,15 @@
+use default
+
+let elements =
+    "hydrogen helium lithium beryllium boron carbon nitrogen oxygen "
+    "fluorine neon sodium magnesium aluminium silicon phosphorus "
+    "sulfur chlorine argon potassium calcium scandium titanium "
+    "vanadium chromium manganese iron cobalt nickel copper zinc "
+    "gallium germanium arsenic selenium bromine krypton"
+
+let names = elements.split([' '])
+
+write_line("{names.count} elements")
+write_line("first: {names[0]}")
+write_line("last: {names[names.count - 1]}")
+write_line("the 26th is {names[25]}")

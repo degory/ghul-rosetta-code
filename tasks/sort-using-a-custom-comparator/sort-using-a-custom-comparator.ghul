@@ -1,0 +1,17 @@
+use default
+
+let words = LIST[string]([
+    "Here", "are", "some", "sample", "strings", "to", "be", "sorted"
+])
+
+compare(left: string, right: string) -> int is
+    if left.length != right.length then
+        return right.length - left.length
+    fi
+
+    string.compare(left, right, System.StringComparison.ORDINAL_IGNORE_CASE)
+si
+
+words.sort(compare)
+
+words |> each(word => write_line(word))

@@ -13401,6 +13401,32 @@
       ]
     },
     {
+      "slug": "long-literals-with-continuations",
+      "title": "Long literals, with continuations",
+      "url": "https://rosettacode.org/wiki/Long_literals,_with_continuations",
+      "tags": [
+        "strings",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "long-literals-with-continuations",
+          "heading": null,
+          "source": "tasks/long-literals-with-continuations/long-literals-with-continuations.ghul",
+          "output": "tasks/long-literals-with-continuations/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "long-multiplication",
       "title": "Long multiplication",
       "url": "https://rosettacode.org/wiki/Long_multiplication",
@@ -16320,6 +16346,32 @@
       ]
     },
     {
+      "slug": "overloaded-operators",
+      "title": "Overloaded operators",
+      "url": "https://rosettacode.org/wiki/Overloaded_operators",
+      "tags": [
+        "operators",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "overloaded-operators",
+          "heading": null,
+          "source": "tasks/overloaded-operators/overloaded-operators.ghul",
+          "output": "tasks/overloaded-operators/run.expected",
+          "lines": 46,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "own-digits-power-sum",
       "title": "Own digits power sum",
       "url": "https://rosettacode.org/wiki/Own_digits_power_sum",
@@ -17779,6 +17831,32 @@
       ]
     },
     {
+      "slug": "pragmatic-directives",
+      "title": "Pragmatic directives",
+      "url": "https://rosettacode.org/wiki/Pragmatic_directives",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "pragmatic-directives",
+          "heading": null,
+          "source": "tasks/pragmatic-directives/pragmatic-directives.ghul",
+          "output": "tasks/pragmatic-directives/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "price-fraction",
       "title": "Price fraction",
       "url": "https://rosettacode.org/wiki/Price_fraction",
@@ -18314,6 +18392,32 @@
           "source": "tasks/quine/quine.ghul",
           "output": "tasks/quine/run.expected",
           "lines": 1,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "quoting-constructs",
+      "title": "Quoting constructs",
+      "url": "https://rosettacode.org/wiki/Quoting_constructs",
+      "tags": [
+        "strings",
+        "basics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "quoting-constructs",
+          "heading": null,
+          "source": "tasks/quoting-constructs/quoting-constructs.ghul",
+          "output": "tasks/quoting-constructs/run.expected",
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []
@@ -21342,6 +21446,32 @@
           "source": "tasks/sort-stability/sort-stability.ghul",
           "output": "tasks/sort-stability/run.expected",
           "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sort-using-a-custom-comparator",
+      "title": "Sort using a custom comparator",
+      "url": "https://rosettacode.org/wiki/Sort_using_a_custom_comparator",
+      "tags": [
+        "basics",
+        "closures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 17,
+      "parts": [
+        {
+          "id": "sort-using-a-custom-comparator",
+          "heading": null,
+          "source": "tasks/sort-using-a-custom-comparator/sort-using-a-custom-comparator.ghul",
+          "output": "tasks/sort-using-a-custom-comparator/run.expected",
+          "lines": 17,
           "playground": true,
           "input": false,
           "images": []
@@ -25259,6 +25389,31 @@
           "source": "tasks/van-eck-sequence/van-eck-sequence.ghul",
           "output": "tasks/van-eck-sequence/run.expected",
           "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "variable-declaration-reset",
+      "title": "Variable declaration reset",
+      "url": "https://rosettacode.org/wiki/Variable_declaration_reset",
+      "tags": [
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 24,
+      "parts": [
+        {
+          "id": "variable-declaration-reset",
+          "heading": null,
+          "source": "tasks/variable-declaration-reset/variable-declaration-reset.ghul",
+          "output": "tasks/variable-declaration-reset/run.expected",
+          "lines": 24,
           "playground": true,
           "input": false,
           "images": []
