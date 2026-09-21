@@ -1,0 +1,10 @@
+{
+    "task": "Call a function in a shared library",
+    "url": "https://rosettacode.org/wiki/Call_a_function_in_a_shared_library",
+    "status": "solved",
+    "tags": [
+        "dotnet-interop",
+        "closures"
+    ],
+    "interest": 3
+}

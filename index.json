@@ -3185,6 +3185,32 @@
       ]
     },
     {
+      "slug": "call-a-function-in-a-shared-library",
+      "title": "Call a function in a shared library",
+      "url": "https://rosettacode.org/wiki/Call_a_function_in_a_shared_library",
+      "tags": [
+        "dotnet-interop",
+        "closures"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "call-a-function-in-a-shared-library",
+          "heading": null,
+          "source": "tasks/call-a-function-in-a-shared-library/call-a-function-in-a-shared-library.ghul",
+          "output": "tasks/call-a-function-in-a-shared-library/run.expected",
+          "lines": 31,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "call-an-object-method",
       "title": "Call an object method",
       "url": "https://rosettacode.org/wiki/Call_an_object_method",
