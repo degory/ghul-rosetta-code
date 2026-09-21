@@ -118,7 +118,7 @@ si
 move_items(from: LIST[string], to: LIST[string], what: string) -> bool is
     let chosen =
         if what =~ "all" then from |> collect_list()
-        elif from.contains(what) then LIST([what])
+        elif from.contains(what) then [what]
         else LIST()
         fi
 

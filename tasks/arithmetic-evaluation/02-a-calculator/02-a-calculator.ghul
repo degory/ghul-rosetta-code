@@ -132,13 +132,13 @@ node(expression: Expression)
     when (value): NUMBER then
         (label = "{value}", children = LIST[Expression]())
     when (left, right): ADD then
-        (label = "+", children = LIST([left, right]))
+        (label = "+", children = [left, right])
     when (left, right): SUBTRACT then
-        (label = "-", children = LIST([left, right]))
+        (label = "-", children = [left, right])
     when (left, right): MULTIPLY then
-        (label = "*", children = LIST([left, right]))
+        (label = "*", children = [left, right])
     when (left, right): DIVIDE then
-        (label = "/", children = LIST([left, right]))
+        (label = "/", children = [left, right])
     esac
 
 draw(expression: Expression, prefix: string, stem: string) is

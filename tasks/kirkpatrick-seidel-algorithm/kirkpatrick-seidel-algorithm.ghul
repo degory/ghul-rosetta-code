@@ -81,20 +81,20 @@ si
 
 upper(points: List[P], first: P, last: P) -> List[P] is
     if points.count <= 1 /\ first =~ last then
-        return LIST([first])
+        return [first]
     fi
 
     let (left, right) = bridge(points, median(points |> map(p => p.x)))
 
     let before =
-        if left =~ first then LIST([first])
+        if left =~ first then [first]
         else
             let part = points |> filter(p => p.x <= left.x) in
             upper(part |> collect_list(), first, left)
         fi
 
     let after =
-        if right =~ last then LIST([last])
+        if right =~ last then [last]
         else
             let part = points |> filter(p => p.x >= right.x) in
             upper(part |> collect_list(), right, last)

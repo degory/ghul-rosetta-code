@@ -6,7 +6,7 @@ grid(rows: int, columns: int) -> LIST[LIST[int]] is
         |> collect_list()
 si
 
-let dimensions = LIST([3, 4])
+let dimensions = [3, 4]
 
 let values = grid(dimensions[0], dimensions[1])
 

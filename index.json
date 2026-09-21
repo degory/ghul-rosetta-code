@@ -17741,7 +17741,7 @@
       "images": [
         "tasks/periodic-table/02-the-picture/periodic-table.png.expected"
       ],
-      "lines": 294,
+      "lines": 293,
       "parts": [
         {
           "id": "periodic-table/01-the-table",
@@ -17758,7 +17758,7 @@
           "heading": "The picture",
           "source": "tasks/periodic-table/02-the-picture/02-the-picture.ghul",
           "output": "tasks/periodic-table/02-the-picture/run.expected",
-          "lines": 209,
+          "lines": 208,
           "playground": true,
           "input": false,
           "images": [

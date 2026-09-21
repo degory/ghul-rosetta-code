@@ -11,9 +11,9 @@ si
 use Polygon = List[P]
 
 rectangle(x: double, y: double, width: double, height: double) -> Polygon =>
-    LIST([
+    [
         P(x, y), P(x, y + height),
-        P(x + width, y + height), P(x + width, y)])
+        P(x + width, y + height), P(x + width, y)]
 
 edges(shape: Polygon) -> Pipe[P] =>
     0..shape.count |> map(i => shape[(i + 1) % shape.count] - shape[i])
@@ -34,10 +34,10 @@ overlap(a: Polygon, b: Polygon) -> bool =>
 show(shape: Polygon) -> string =>
     "[{shape |> map(p => "[{p.x}, {p.y}]") |> join(", ")}]"
 
-let polygon: Polygon = LIST([
+let polygon: Polygon = [
     P(0.0D, 0.0D), P(0.0D, 2.0D), P(1.0D, 4.0D),
     P(2.0D, 2.0D), P(2.0D, 0.0D)
-])
+]
 let first = rectangle(4.0D, 0.0D, 2.0D, 2.0D)
 let second = rectangle(1.0D, 0.0D, 8.0D, 2.0D)
 

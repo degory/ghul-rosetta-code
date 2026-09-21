@@ -13,7 +13,7 @@ show(caption: string, values: Iterable[int]) is
 si
 
 show("array", [3, 1, 2])
-show("list", LIST([3, 1, 2]))
+show("list", [3, 1, 2])
 show("set", SET([3, 1, 2]))
 show("range", 1::4)
 show("generator", squares(4))

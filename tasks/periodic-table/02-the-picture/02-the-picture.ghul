@@ -1,5 +1,4 @@
 use default
-use Collections.LIST
 use Raster.Anchor
 use Raster.IMAGE
 use Raster.SHAPES
@@ -76,13 +75,13 @@ row_y(row: int) -> double =>
 column_x(column: int) -> double => left + cast double(column - 1) * cell
 
 box(x: double, y: double, width: double, height: double)
-    -> Collections.List[(x: double, y: double)]
+    -> List[(x: double, y: double)]
 =>
-    LIST([
+    [
         (x = x, y = y),
         (x = x + width, y = y),
         (x = x + width, y = y + height),
-        (x = x, y = y + height)])
+        (x = x, y = y + height)]
 
 glyph(image: IMAGE, at: (row: int, column: int), letters: string) is
     image.text(
