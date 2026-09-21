@@ -14,13 +14,12 @@ exponents
 1.5e3         Double   1500
 1.5E-3        Double   0.0015
 2.5e10s       Single   2.5E+10
-(a decimal literal takes no exponent)
+a decimal literal takes no exponent
 
 digits group with _ wherever they fall
 1_000.000_1   Double   1000.0001
 1_2_3.4_5     Double   123.45
 
-there is no hexadecimal floating-point literal, and
-no implicit conversion, so a mixed expression is a
-compile error until one side is cast
+an integer is not converted to a double
+1.0 + 1.0     Double   2
 1.0 + cast(1) Double   2
