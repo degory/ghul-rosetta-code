@@ -61,7 +61,7 @@ split(path: string) -> List[string] is
         fi
     si
 
-    let source = StreamReader(path)
+    let use source = StreamReader(path)
 
     while let line = source.read_line() do
         held.add(int.parse(line))
@@ -71,8 +71,6 @@ split(path: string) -> List[string] is
         fi
     od
 
-    source.dispose()
-
     spill()
 
     parts
@@ -80,7 +78,7 @@ si
 
 merge(parts: List[string], into: string) is
     let runs = parts |> map(part => RUN(part)) |> collect_list()
-    let writer = File.create_text(into)
+    let use writer = File.create_text(into)
 
     do
         let live = runs |> filter(run => run.head?) |> collect_list()
@@ -98,8 +96,6 @@ merge(parts: List[string], into: string) is
 
         writer.write_line("{taking.take()!}")
     od
-
-    writer.dispose()
 
     runs |> each(run => run.dispose())
     parts |> each(part => File.delete(part))

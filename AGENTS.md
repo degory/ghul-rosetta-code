@@ -307,7 +307,7 @@ nothing about the task, in a repository that does not apply it anywhere else. It
 that might store is put into a slot declared pure, and something downstream is then entitled to
 trust it. If one appears, fix the code.
 
-## A precedence trap, and two the compiler has
+## A precedence trap
 
 **A shift mixed with a bitwise operator needs parentheses.** `&`, `|` and `^` bind tighter than
 `<<` and `>>` in ghūl, the opposite of C, so `nibble >> (3 - b) & 1` is
@@ -315,12 +315,6 @@ trust it. If one appears, fix the code.
 output, which is the worst way to be wrong. Write `(nibble >> (3 - b)) & 1`. Mixing a bitwise
 operator with a comparison needs no parentheses and is right as it reads, since bitwise binds
 tighter than relational: `flags & bit == 0` is `(flags & bit) == 0`, unlike C.
-
-**Until degory/ghul#2940 and #2941 ship, a nested named function cannot carry a bare `return` and
-cannot share a body with `let use`.** Either emits IL the runtime rejects, with no compile error:
-the enclosing function throws `System.InvalidProgramException` on entry. Write the guard as
-`if condition then ... fi` rather than an early return, and close the resource with an explicit
-`dispose()` after the loop. Remove this paragraph when both have shipped and the pin has moved.
 
 ## A suspected bug is not a reason to change the solution
 
