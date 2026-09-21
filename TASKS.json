@@ -200,7 +200,8 @@
     {
       "title": "Address of a variable",
       "slug": "address-of-a-variable",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2a6a0250c9a420aaa4166938b1c83d73b3cd2375a98193fb716d199465779921"
     },
     {
       "title": "Algebraic data types",
@@ -677,7 +678,8 @@
     {
       "title": "Bitwise IO",
       "slug": "bitwise-io",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1d1d8e9e4006504f03457cb82bb84bba0d59f966715a1958329a3c07a08f8075"
     },
     {
       "title": "Bitwise operations",
@@ -858,7 +860,8 @@
     {
       "title": "Call a function in a shared library",
       "slug": "call-a-function-in-a-shared-library",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "72360768053f458c895687c50af9bac23a668aa78409a10a2381d1fbb29328e7"
     },
     {
       "title": "Call an object method",
@@ -1425,7 +1428,8 @@
     {
       "title": "Currency",
       "slug": "currency",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6aa344f862722ea9a67dd6e86b95667d912137857a16fa1dc0c0490c54be4300"
     },
     {
       "title": "Currying",
@@ -1475,7 +1479,8 @@
     {
       "title": "Date format",
       "slug": "date-format",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "280281fc0d390ad0643a8001f91d3f710429b44719bf82f4d9b992fbe5199169"
     },
     {
       "title": "Day of the week",
@@ -1579,7 +1584,8 @@
     {
       "title": "Determine if only one instance is running",
       "slug": "determine-if-only-one-instance-is-running",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "4f38b7ce4d9c9df9c8201c5e1638a68c199da8a826cf2b6ba72d31c7e8ce15a9"
     },
     {
       "title": "Determine if two triangles overlap",
@@ -1814,7 +1820,8 @@
     {
       "title": "Element-wise operations",
       "slug": "element-wise-operations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a010f74f85dde106d5716d5e211acb223114f2d63cc7000df11c1f00e7ceea33"
     },
     {
       "title": "Elementary cellular automaton",
@@ -2362,7 +2369,8 @@
     {
       "title": "Four bit adder",
       "slug": "four-bit-adder",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d9707394f5053dbfcb637b18f937037335c23a0586f7b742aed42a704dd9c69b"
     },
     {
       "title": "Four is magic",
@@ -2518,7 +2526,8 @@
     {
       "title": "Get system command output",
       "slug": "get-system-command-output",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9bc9c959a84e0143681dfb98997027586fbfd87f525b0585ca61483e30263a1d"
     },
     {
       "title": "Giuga numbers",
@@ -3454,12 +3463,14 @@
     {
       "title": "List rooted trees",
       "slug": "list-rooted-trees",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8258b7efd367c395e08970a0d4cf71748c24a5fd1ab85999957a7fef69b8ffe9"
     },
     {
       "title": "Literals/Floating point",
       "slug": "literals-floating-point",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "cf53b31b7adcd92ef0df6766070bc4f01cca988f99329df8e09c04ad4e519c59"
     },
     {
       "title": "Literals/Integer",
@@ -3491,7 +3502,8 @@
     {
       "title": "Long literals, with continuations",
       "slug": "long-literals-with-continuations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3553bf09beb9dd8689f824f9444e325badf27ed84c3e45b87535ddbbf90722d8"
     },
     {
       "title": "Long multiplication",
@@ -3731,7 +3743,8 @@
     {
       "title": "Markov chain text generator",
       "slug": "markov-chain-text-generator",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "3a6076a49e6508e4e10b36b98f369a069ff6806fbc4e7b3cb89742ef52ff1076"
     },
     {
       "title": "Mastermind",
@@ -3800,7 +3813,8 @@
     {
       "title": "Menu",
       "slug": "menu",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "bd989bfe7ad471664393503d075e5530b93ae3847bd68c873a9168b01848486f"
     },
     {
       "title": "Merge and aggregate datasets",
@@ -3928,7 +3942,8 @@
     {
       "title": "Multi-dimensional array",
       "slug": "multi-dimensional-array",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e0d81f9da44082132393c049d516a553198c3baa10dc6b29737ba3a75aa52ba6"
     },
     {
       "title": "Multiline shebang",
@@ -4163,7 +4178,8 @@
     {
       "title": "One of n lines in a file",
       "slug": "one-of-n-lines-in-a-file",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "7422cece818e52b19f4ec4342ad5e6f79db11346b55cda59181941d1c8acb045"
     },
     {
       "title": "One-dimensional cellular automata",
@@ -4216,7 +4232,8 @@
     {
       "title": "Overloaded operators",
       "slug": "overloaded-operators",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e2d81b16daca618180d9356289131c4bb7902bc7069b7b50a95e6b0d4ec8c9a8"
     },
     {
       "title": "Own digits power sum",
@@ -4445,7 +4462,8 @@
     {
       "title": "Periodic table",
       "slug": "periodic-table",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "67a876e04f1fa0ae06e1a4d3705c7541f519be55b9eefd4052bf266903b1f5e2"
     },
     {
       "title": "Peripheral drift illusion",
@@ -4609,7 +4627,8 @@
     {
       "title": "Pragmatic directives",
       "slug": "pragmatic-directives",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1c19d2d3548290ef6fbeb6fbae0ddd37c36d117cf7608813a95a51a43ef0d98b"
     },
     {
       "title": "Price fraction",
@@ -4750,7 +4769,8 @@
     {
       "title": "Quoting constructs",
       "slug": "quoting-constructs",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "60c310581b52e12b87173b68d211f90e725f8f0313ac19ad042c97d10217e696"
     },
     {
       "title": "RCRPG",
@@ -4856,7 +4876,8 @@
     {
       "title": "Read a file character by character/UTF8",
       "slug": "read-a-file-character-by-character-utf8",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "2769e860d5a6573b9a7dd2dcce21a8ea273dd214125be44fdc9ddb1a4f3e079a"
     },
     {
       "title": "Read a file line by line",
@@ -5134,7 +5155,8 @@
     {
       "title": "Scope/Function names and labels",
       "slug": "scope-function-names-and-labels",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8ccce048ff67d58ff37115492ccdb57a9785870002d0cf62593028675e6e74e3"
     },
     {
       "title": "Sealed classes and methods",
@@ -5250,7 +5272,8 @@
     {
       "title": "Show the epoch",
       "slug": "show-the-epoch",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "855fb4cd6c7c490f8cca6f60925468386da53f4d974edf55f16ae9ed851d51d7"
     },
     {
       "title": "Sierpinski arrowhead curve",
@@ -6193,7 +6216,8 @@
     {
       "title": "Text processing/2",
       "slug": "text-processing-2",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "e58aa693b13559596139aba8636f52282af941968d8de7cb642f6516806f3e46"
     },
     {
       "title": "Text processing/Max licenses in use",
@@ -6433,7 +6457,8 @@
     {
       "title": "Unicode strings",
       "slug": "unicode-strings",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9a74c0dcdfabe707c6569d8993d412183a0b238b317769736d386107472eb67c"
     },
     {
       "title": "Universal Lambda Machine",
