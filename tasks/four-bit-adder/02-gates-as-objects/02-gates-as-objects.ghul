@@ -1,0 +1,137 @@
+use default
+
+trait Component is
+    output: bool
+si
+
+class PIN(value: bool public): Component is
+    output: bool => value
+si
+
+class NOT(input: Component init): Component is
+    _input;
+
+    output: bool => !_input.output
+si
+
+class AND(left: Component init, right: Component init): Component is
+    _left;
+    _right;
+
+    output: bool => _left.output /\ _right.output
+si
+
+class OR(left: Component init, right: Component init): Component is
+    _left;
+    _right;
+
+    output: bool => _left.output \/ _right.output
+si
+
+class XOR(left: Component init, right: Component init): Component is
+    _gate: Component
+
+    init(..) is
+        _gate = OR(AND(left, NOT(right)), AND(NOT(left), right))
+    si
+
+    output: bool => _gate.output
+si
+
+class HALF_ADDER(left: Component init, right: Component init) is
+    sum: Component
+    carry: Component
+
+    init(..) is
+        sum = XOR(left, right)
+        carry = AND(left, right)
+    si
+si
+
+class FULL_ADDER(
+    left: Component init,
+    right: Component init,
+    carry_in: Component init
+) is
+    sum: Component
+    carry: Component
+
+    init(..) is
+        let lower = HALF_ADDER(left, right)
+        let upper = HALF_ADDER(lower.sum, carry_in)
+
+        sum = upper.sum
+        carry = OR(lower.carry, upper.carry)
+    si
+si
+
+class FOUR_BIT_ADDER is
+    left: LIST[PIN]
+    right: LIST[PIN]
+    sum: LIST[Component]
+    carry: Component
+
+    init() is
+        left = repeat(0, 4) |> map(_ => PIN(false)) |> collect_list()
+        right = repeat(0, 4) |> map(_ => PIN(false)) |> collect_list()
+
+        let bits = LIST[Component]()
+        let carried: Component mut = PIN(false)
+
+        for at in 0..4 do
+            let bit = 3 - at
+            let stage = FULL_ADDER(left[bit], right[bit], carried)
+
+            bits.add(stage.sum)
+            carried = stage.carry
+        od
+
+        bits.reverse()
+
+        sum = bits
+        carry = carried
+    si
+
+    drive(a: int, b: int) is
+        for at in 0..4 do
+            left[at].value = (a >> (3 - at)) % 2 == 1
+            right[at].value = (b >> (3 - at)) % 2 == 1
+        od
+    si
+
+    total: int =>
+        sum
+        |> reduce(
+            if carry.output then 1 else 0 fi,
+            (running, c) => running * 2 + if c.output then 1 else 0 fi)
+si
+
+text(pins: List[Component]) -> string =>
+    pins |> map(c => if c.output then "1" else "0" fi) |> join("")
+
+let circuit = FOUR_BIT_ADDER()
+
+for (first, second) in [(9, 5), (7, 1), (15, 15), (8, 8), (3, 12)] do
+    circuit.drive(first, second)
+
+    let carry = if circuit.carry.output then "1" else "0" fi
+
+    write_line(
+        "{text(circuit.left)} + {text(circuit.right)}"
+        " = {carry}{text(circuit.sum)}")
+od
+
+let wrong mut = 0
+
+for a in 0::15 do
+    for b in 0::15 do
+        circuit.drive(a, b)
+
+        if circuit.total != a + b then
+            wrong = wrong + 1
+        fi
+    od
+od
+
+write_line("")
+write_line("sums disagreeing with integer addition: {wrong}")
