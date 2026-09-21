@@ -2566,6 +2566,33 @@
       ]
     },
     {
+      "slug": "bitwise-io",
+      "title": "Bitwise IO",
+      "url": "https://rosettacode.org/wiki/Bitwise_IO",
+      "tags": [
+        "text-processing",
+        "classes",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 102,
+      "parts": [
+        {
+          "id": "bitwise-io",
+          "heading": null,
+          "source": "tasks/bitwise-io/bitwise-io.ghul",
+          "output": "tasks/bitwise-io/run.expected",
+          "lines": 102,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "bitwise-operations",
       "title": "Bitwise operations",
       "url": "https://rosettacode.org/wiki/Bitwise_operations",
