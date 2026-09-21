@@ -6178,6 +6178,36 @@
       ]
     },
     {
+      "slug": "demings-funnel",
+      "title": "Deming's funnel",
+      "url": "https://rosettacode.org/wiki/Deming's_funnel",
+      "tags": [
+        "simulation",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/demings-funnel/funnel.png.expected"
+      ],
+      "lines": 138,
+      "parts": [
+        {
+          "id": "demings-funnel",
+          "heading": null,
+          "source": "tasks/demings-funnel/demings-funnel.ghul",
+          "output": "tasks/demings-funnel/run.expected",
+          "lines": 138,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/demings-funnel/funnel.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "department-numbers",
       "title": "Department numbers",
       "url": "https://rosettacode.org/wiki/Department_numbers",
@@ -7318,6 +7348,36 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "elliptic-curve-arithmetic",
+      "title": "Elliptic curve arithmetic",
+      "url": "https://rosettacode.org/wiki/Elliptic_curve_arithmetic",
+      "tags": [
+        "number-theory",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/elliptic-curve-arithmetic/elliptic-curve.png.expected"
+      ],
+      "lines": 153,
+      "parts": [
+        {
+          "id": "elliptic-curve-arithmetic",
+          "heading": null,
+          "source": "tasks/elliptic-curve-arithmetic/elliptic-curve-arithmetic.ghul",
+          "output": "tasks/elliptic-curve-arithmetic/run.expected",
+          "lines": 153,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/elliptic-curve-arithmetic/elliptic-curve.png.expected"
+          ]
         }
       ]
     },
@@ -9675,6 +9735,37 @@
           "playground": false,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "four-rings-or-four-squares-puzzle",
+      "title": "4-rings or 4-squares puzzle",
+      "url": "https://rosettacode.org/wiki/4-rings_or_4-squares_puzzle",
+      "tags": [
+        "puzzles",
+        "graphics",
+        "number-theory"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/four-rings-or-four-squares-puzzle/four-squares.png.expected"
+      ],
+      "lines": 154,
+      "parts": [
+        {
+          "id": "four-rings-or-four-squares-puzzle",
+          "heading": null,
+          "source": "tasks/four-rings-or-four-squares-puzzle/four-rings-or-four-squares-puzzle.ghul",
+          "output": "tasks/four-rings-or-four-squares-puzzle/run.expected",
+          "lines": 154,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/four-rings-or-four-squares-puzzle/four-squares.png.expected"
+          ]
         }
       ]
     },
@@ -15560,6 +15651,36 @@
       ]
     },
     {
+      "slug": "minkowski-question-mark-function",
+      "title": "Minkowski question-mark function",
+      "url": "https://rosettacode.org/wiki/Minkowski_question-mark_function",
+      "tags": [
+        "number-theory",
+        "graphics"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/minkowski-question-mark-function/question-mark.png.expected"
+      ],
+      "lines": 166,
+      "parts": [
+        {
+          "id": "minkowski-question-mark-function",
+          "heading": null,
+          "source": "tasks/minkowski-question-mark-function/minkowski-question-mark-function.ghul",
+          "output": "tasks/minkowski-question-mark-function/run.expected",
+          "lines": 166,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/minkowski-question-mark-function/question-mark.png.expected"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "mobius-function",
       "title": "Möbius function",
       "url": "https://rosettacode.org/wiki/Möbius_function",
@@ -20106,6 +20227,37 @@
           "playground": true,
           "input": false,
           "images": []
+        }
+      ]
+    },
+    {
+      "slug": "riemann-surface",
+      "title": "Riemann surface",
+      "url": "https://rosettacode.org/wiki/Riemann_surface",
+      "tags": [
+        "graphics",
+        "maths",
+        "operators"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [
+        "tasks/riemann-surface/riemann.png.expected"
+      ],
+      "lines": 103,
+      "parts": [
+        {
+          "id": "riemann-surface",
+          "heading": null,
+          "source": "tasks/riemann-surface/riemann-surface.ghul",
+          "output": "tasks/riemann-surface/run.expected",
+          "lines": 103,
+          "playground": true,
+          "input": false,
+          "images": [
+            "tasks/riemann-surface/riemann.png.expected"
+          ]
         }
       ]
     },
