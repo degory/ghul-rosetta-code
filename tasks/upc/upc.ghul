@@ -1,0 +1,94 @@
+use default
+
+let patterns = [
+    "0001101", "0011001", "0010011", "0111101", "0100011",
+    "0110001", "0101111", "0111011", "0110111", "0001011"
+]
+
+let rows = [
+    "# #   # ##  #  ## #   ## ### ## ### ## #### # # "
+    "# ## ##  #   #  ##  ## ###  # ##  ## ### #  # #",
+    "# # #   ##   ## # #### #   # ## #   ## #   ## # "
+    "# # ###  # ###  ##  ## ###  # #  ### ###  # # #",
+    "# #    # # #  ###  #   #    # #  #   #    # # # "
+    "# ## #   ## #   ## #   ##   # # #### ### ## # #",
+    "# # ##  ## ##  ##   #  #   #  # ###  # ##  ## # "
+    "# #   ## ##  #  ### ## ## #   # #### ## #   # #",
+    "# # ### ## #   ## ## ###  ##  # ##   #   # ## # "
+    "# ### #  ## ##  #    # ### #  ## ##  #      # #",
+    "# #  #   # ##  ##  #   #   #  # ##  ##  #   # # "
+    "# # #### #  ##  # #### #### # #  ##  # #### # #",
+    "# #  #  ##  ##  # #   ## ##   # ### ## ##   # # "
+    "# #  #   #   #  #  ### # #    ###  # #  #   # #",
+    "# # #    # ##  ##   #  # ##  ##  ### #   #  # # "
+    "# ### ## ## ### ## ### ### ## #  ##  ### ## # #",
+    "# # ### ##   ## # # #### #   ## # #### # #### # "
+    "# #   #  # ###  #    # ###  # #    # ###  # # #",
+    "# # # #### ##   # #### # #   ## ## ### #### # # "
+    "# #  ### # ###  ###  # # ###  #    # #  ### # #"
+]
+
+bits(row: string) -> string =>
+    string(
+        row
+            |> map(c => if c == '#' then '1' else '0' fi)
+            |> collect_array())
+
+flipped(seven: string) -> string =>
+    string(
+        seven
+            |> map(c => if c == '1' then '0' else '1' fi)
+            |> collect_array())
+
+digit(seven: string, right: bool) -> int? =>
+    let wanted = if right then flipped(seven) else seven fi in
+    0..10 |> find(d => patterns[d] =~ wanted)
+
+read(scan: string) -> List[int]? is
+    if scan[0..3] !~ "101" \/
+        scan[45..50] !~ "01010" \/
+        scan[92..95] !~ "101"
+    then
+        return null
+    fi
+
+    let found = LIST[int]()
+
+    for place in 0..12 do
+        let at = if place < 6 then 3 + place * 7 else 8 + place * 7 fi
+
+        if let read = digit(scan[at..at + 7], place >= 6) then
+            found.add(read)
+        else
+            return null
+        fi
+    od
+
+    found
+si
+
+sound(found: List[int]) -> bool =>
+    (found
+        |> index()
+        |> map(d => d.value * (if d.index % 2 == 0 then 3 else 1 fi))
+        |> sum()) % 10 == 0
+
+turned(scan: string) -> string =>
+    string(
+        0..scan.length
+            |> map(at => scan[scan.length - 1 - at])
+            |> collect_array())
+
+for row in rows do
+    let scan = bits(row)
+
+    if let found = read(scan) /\ sound(found) then
+        write_line("{found |> map(d => "{d}") |> join("")}")
+    elif let turn = read(turned(scan)) /\ sound(turn) then
+        let shown = turn |> map(d => "{d}") |> join("")
+
+        write_line("{shown}  read upside down")
+    else
+        write_line("rejected")
+    fi
+od

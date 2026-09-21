@@ -25945,6 +25945,33 @@
       ]
     },
     {
+      "slug": "upc",
+      "title": "UPC",
+      "url": "https://rosettacode.org/wiki/UPC",
+      "tags": [
+        "parsing",
+        "algorithms",
+        "text-processing"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 94,
+      "parts": [
+        {
+          "id": "upc",
+          "heading": null,
+          "source": "tasks/upc/upc.ghul",
+          "output": "tasks/upc/run.expected",
+          "lines": 94,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "upside-down-numbers",
       "title": "Upside-down numbers",
       "url": "https://rosettacode.org/wiki/Upside-down_numbers",
