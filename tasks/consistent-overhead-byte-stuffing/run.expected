@@ -1,0 +1,16 @@
+unencoded                              encoded
+00                                     01 01
+00 00                                  01 01 01
+11 22 00 33                            03 11 22 02 33
+11 22 33 44                            05 11 22 33 44
+11 00 00 00                            02 11 01 01 01
+01 02 03 04 ... FD FE (254 bytes)      FF 01 02 03 ... FD FE (255 bytes)
+00 01 02 03 ... FD FE (255 bytes)      01 FF 01 02 ... FD FE (256 bytes)
+01 02 03 04 ... FE FF (255 bytes)      FF 01 02 03 ... 02 FF (257 bytes)
+
+every example decodes back to itself: true
+a frame whose milestone runs past the end: rejected
+
+with 2F as the marker
+2F 11 2F 22                            01 02 11 02 22
+decodes back to itself: true
