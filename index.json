@@ -3170,14 +3170,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 33,
+      "lines": 31,
       "parts": [
         {
           "id": "call-a-function-in-a-shared-library",
           "heading": null,
           "source": "tasks/call-a-function-in-a-shared-library/call-a-function-in-a-shared-library.ghul",
           "output": "tasks/call-a-function-in-a-shared-library/run.expected",
-          "lines": 33,
+          "lines": 31,
           "playground": false,
           "input": false,
           "images": []

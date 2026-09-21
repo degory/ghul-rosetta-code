@@ -12,8 +12,6 @@ own_abs(value: int) -> int => if value < 0 then -value else value fi
 
 use Choice = (source: string, absolute: (int) -> int)
 
-// The import is bound at the first call rather than at build time, so
-// asking whether the library is there is what decides which to use.
 chosen(library: string) -> Choice =>
     if NativeLibrary.try_load(library, _) then
         (source = "the shared library", absolute = LIBC.abs)
