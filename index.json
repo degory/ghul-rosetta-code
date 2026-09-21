@@ -750,14 +750,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 33,
+      "lines": 30,
       "parts": [
         {
           "id": "address-of-a-variable",
           "heading": null,
           "source": "tasks/address-of-a-variable/address-of-a-variable.ghul",
           "output": "tasks/address-of-a-variable/run.expected",
-          "lines": 33,
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []

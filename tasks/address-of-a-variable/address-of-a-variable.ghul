@@ -18,10 +18,7 @@ write_line("read through a reference: {read_through(first ref)}")
 let held mut = 7
 
 swap(left: int ref, right: int ref) is
-    let kept = left!
-
-    left! = right!
-    right! = kept
+    (left!, right!) = (right!, left!)
 si
 
 swap(first ref, held ref)

@@ -33,6 +33,6 @@ let before_tax = hamburger * burgers + milkshake * shakes
 let tax = before_tax.taxed(765n)
 let total = before_tax + tax
 
-write_line("before tax: {before_tax}")
-write_line("tax:        {tax}")
-write_line("total:      {total}")
+write_line("before tax: {before_tax,20}")
+write_line("tax:        {tax,20}")
+write_line("total:      {total,20}")
