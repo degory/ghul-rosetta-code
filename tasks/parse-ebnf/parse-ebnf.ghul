@@ -208,7 +208,7 @@ class MATCHER(grammar: GRAMMAR, text: string) is
         i
     si
 
-    ends(rule: Rule, at: int) -> LIST[int] is
+    ends(rule: Rule, at: int) -> List[int] is
         let result = LIST()
 
         case rule
@@ -222,7 +222,7 @@ class MATCHER(grammar: GRAMMAR, text: string) is
         when (called): Rule.NAME then
             result.add_range(ends(grammar.rules[called], at))
         when (parts): Rule.SEQUENCE then
-            let reached mut = LIST([at])
+            let reached mut = [at]
 
             for part in parts do
                 let next = LIST()

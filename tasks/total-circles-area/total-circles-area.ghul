@@ -60,7 +60,7 @@ crossings(c: Circle, o: Circle) -> List[double] is
     let cosine = (c.r * c.r + d * d - o.r * o.r) / (2.0D * c.r * d)
     let spread = Math.acos(cosine)
 
-    LIST([base - spread, base + spread])
+    [base - spread, base + spread]
 si
 
 outer_arcs(c: Circle, others: List[Circle]) -> List[Arc] is
@@ -71,7 +71,7 @@ outer_arcs(c: Circle, others: List[Circle]) -> List[Arc] is
             |> map(wrap))
 
     if angles.count == 0 then
-        return LIST([(circle = c, from = 0.0D, to = 2.0D * Math.pi)])
+        return [(circle = c, from = 0.0D, to = 2.0D * Math.pi)]
     fi
 
     angles.sort()

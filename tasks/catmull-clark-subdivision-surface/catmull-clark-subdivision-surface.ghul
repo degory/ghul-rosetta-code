@@ -1,8 +1,8 @@
 use default
 use Raster.IMAGE
 use Point = (x: double, y: double, z: double)
-use Face = Collections.List[int]
-use Mesh = (points: Collections.List[Point], faces: Collections.List[Face])
+use Face = List[int]
+use Mesh = (points: List[Point], faces: List[Face])
 
 +(a: Point, b: Point) -> Point =>
     (x = a.x + b.x, y = a.y + b.y, z = a.z + b.z)
@@ -135,10 +135,10 @@ subdivided(mesh: Mesh) -> Mesh is
             let previous = face[(corner + face.count - 1) % face.count]
 
             new_faces.add(
-                LIST([vertex,
+                [vertex,
                       edge_points[edge_key(vertex, next)],
                       face_indices[face_index],
-                      edge_points[edge_key(previous, vertex)]]))
+                      edge_points[edge_key(previous, vertex)]])
         od
     od
 

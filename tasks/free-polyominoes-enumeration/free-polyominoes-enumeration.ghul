@@ -79,7 +79,7 @@ art(shapes: List[Shape]) -> Pipe[string] =>
         |> map(row => shapes |> map(s => row_of(s, row)) |> join("  "))
         |> map(line => line.trim_end())
 
-let levels = LIST[List[Shape]]([LIST([LIST([at(0, 0)])])])
+let levels = LIST[List[Shape]]([[[at(0, 0)]]])
 
 while levels.count < 10 do
     levels.add(grow(levels[levels.count - 1]))

@@ -46,9 +46,9 @@ brightness(quad: Quad) -> double =>
     fi
 
 quad(i: int, j: int) -> Quad =>
-    LIST([
+    [
         corner(i, j), corner(i + 1, j),
-        corner(i + 1, j + 1), corner(i, j + 1)])
+        corner(i + 1, j + 1), corner(i, j + 1)]
 
 let quads =
     (0..around)
