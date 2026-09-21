@@ -1,0 +1,16 @@
+the curve is y^2 = x^3 + 7
+
+P         (-1.800000, 1.080740)
+Q         (4.000000, 8.426150)
+P + Q     (-0.596105, -2.605414)
+-(P + Q)  (-0.596105, 2.605414)
+
+-(P + Q) is where the line through P and Q meets the curve again
+  aligned with P and Q: true
+
+P + P     (23.822260, -116.301912)
+P * 5     (0.027985, 2.645755)
+P + zero  (-1.800000, 1.080740)
+P + (-P)  zero
+
+<<image elliptic-curve.png>>
