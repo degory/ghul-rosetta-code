@@ -57,7 +57,11 @@ let integrator = INTEGRATOR()
 
 integrator.input(t => sin(2.0D * pi * frequency * t))
 
-Thread.sleep(2000)
+Thread.sleep(1000)
+
+let half_way = integrator.output
+
+Thread.sleep(1000)
 
 integrator.input(t => 0.0D)
 
@@ -65,4 +69,5 @@ Thread.sleep(500)
 
 integrator.stop()
 
+write_line("output half way through the sine is above 0.5: {half_way > 0.5D}")
 write_line("output is within 0.01 of zero: {abs(integrator.output) < 0.01D}")
