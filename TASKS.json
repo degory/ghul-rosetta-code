@@ -1866,10 +1866,6 @@
       "published_hash": "48b68185f8af071263fb0df29c1a92b05a1f43b8bd277ce6320538759cf001d2"
     },
     {
-      "title": "Erd\u0151s\u2013Woods numbers",
-      "state": "queued"
-    },
-    {
       "title": "Esthetic numbers",
       "slug": "esthetic-numbers",
       "state": "published",
@@ -2847,12 +2843,6 @@
       "published_hash": "8652d0257daed6297200c5ff1d2f1097970923409108afa28847be41920d5ac9"
     },
     {
-      "title": "I\u0027m a software engineer, get me out of here",
-      "state": "queued",
-      "reason": "",
-      "note": "not interactive at all: Dijkstra and Floyd-Warshall over a fixed map, reading no input. The needs-interaction rejection and the run.session reopen were both wrong about it"
-    },
-    {
       "title": "IBAN",
       "slug": "iban",
       "state": "published",
@@ -3401,6 +3391,11 @@
       "image_hashes": {
         "Ghul-logistic-curve-fitting-in-epidemiology-fit.png": "384ae0e0e32c9f885f9e111ef30f0e6736c48371"
       }
+    },
+    {
+      "title": "Long literals, with continuations",
+      "slug": "long-literals-with-continuations",
+      "state": "solved"
     },
     {
       "title": "Long multiplication",
@@ -4092,6 +4087,11 @@
       "published_hash": "965242eb037ac652a4d58c5f973e5e63eb5b9123fef922e9ca8526a3ad81e08a"
     },
     {
+      "title": "Overloaded operators",
+      "slug": "overloaded-operators",
+      "state": "solved"
+    },
+    {
       "title": "Own digits power sum",
       "slug": "own-digits-power-sum",
       "state": "published",
@@ -4465,6 +4465,11 @@
       "published_hash": "7fc5500583a3a1bcdebbdfc3037b1c9a2988f837b3ceed88c2b827f86dc66d0e"
     },
     {
+      "title": "Pragmatic directives",
+      "slug": "pragmatic-directives",
+      "state": "solved"
+    },
+    {
       "title": "Price fraction",
       "slug": "price-fraction",
       "state": "published",
@@ -4599,6 +4604,11 @@
       "slug": "quine",
       "state": "published",
       "published_hash": "b821707b0d31db13c56e436129e143a7cbeed7e4881c6020596f3d03d864d840"
+    },
+    {
+      "title": "Quoting constructs",
+      "slug": "quoting-constructs",
+      "state": "solved"
     },
     {
       "title": "RCRPG",
@@ -5355,6 +5365,11 @@
       "slug": "sort-stability",
       "state": "published",
       "published_hash": "e16453616bf2083b8cf02259d9b5ed23ec5683071e0d64dd7be5ef74d8c0696a"
+    },
+    {
+      "title": "Sort using a custom comparator",
+      "slug": "sort-using-a-custom-comparator",
+      "state": "solved"
     },
     {
       "title": "Sorting algorithms/Bead sort",
@@ -6312,6 +6327,11 @@
       "slug": "van-der-corput-sequence",
       "state": "published",
       "published_hash": "1fa7457ef994124b181c9ef7bf8c6490aa540df3f1c0be7a564ae03e87bb5fb7"
+    },
+    {
+      "title": "Variable declaration reset",
+      "slug": "variable-declaration-reset",
+      "state": "solved"
     },
     {
       "title": "Variable size/Get",

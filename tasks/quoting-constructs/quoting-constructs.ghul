@@ -1,0 +1,30 @@
+use default
+
+let plain = "a string literal"
+let name = "world"
+let interpolated = "hello, {name}"
+let nested = "the length of {"{name}"} is {name.length}"
+let escaped = "a tab\tbetween, a quote \", a backslash \\, euro €"
+let braces = "literal braces: {{ and }}"
+let aligned = "[{name,10}] [{name,-10}] [{3.14159:F2}]"
+
+let chained =
+    "adjacent literals join, "
+    "across lines, "
+    "and one of them may be {name}"
+
+let character = 'c'
+let newline = '\n'
+
+let `class = "a keyword as an identifier, escaped with a backtick"
+
+write_line(plain)
+write_line(interpolated)
+write_line(nested)
+write_line(escaped)
+write_line(braces)
+write_line(aligned)
+write_line(chained)
+write_line("a character: {character}, and its code: {cast int(character)}")
+write_line("a newline's code: {cast int(newline)}")
+write_line(`class)
