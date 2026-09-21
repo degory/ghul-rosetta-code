@@ -36,7 +36,7 @@ is
     do
         let ready = pending.keys
             |> filter(name => pending[name].count == 0)
-            |> sort((left, right) => left <> right)
+            |> sort()
             |> collect()
 
         if ready.count == 0 then
@@ -55,7 +55,7 @@ is
         od
     od
 
-    let blocked = pending.keys |> sort((left, right) => left <> right) |> collect()
+    let blocked = pending.keys |> sort() |> collect()
 
     return (ordered = ordered, blocked = blocked)
 si

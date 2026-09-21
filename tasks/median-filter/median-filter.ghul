@@ -60,7 +60,7 @@ median_filter(source: IMAGE) -> IMAGE is
 
             let middle = (pick: RGB -> ubyte) =>
                 let sorted =
-                    window |> map(pick) |> sort((a, b) => a <> b) in
+                    window |> map(pick) |> sort() in
                 (sorted |> collect_list())[4]
 
             result.set_pixel(
