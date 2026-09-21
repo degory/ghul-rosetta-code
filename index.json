@@ -6226,6 +6226,32 @@
       ]
     },
     {
+      "slug": "determine-if-only-one-instance-is-running",
+      "title": "Determine if only one instance is running",
+      "url": "https://rosettacode.org/wiki/Determine_if_only_one_instance_is_running",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "determine-if-only-one-instance-is-running",
+          "heading": null,
+          "source": "tasks/determine-if-only-one-instance-is-running/determine-if-only-one-instance-is-running.ghul",
+          "output": "tasks/determine-if-only-one-instance-is-running/run.expected",
+          "lines": 66,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "determine-if-two-triangles-overlap",
       "title": "Determine if two triangles overlap",
       "url": "https://rosettacode.org/wiki/Determine_if_two_triangles_overlap",
