@@ -61,8 +61,8 @@ si
 
 for n in 3::9 do
     let (m, factors) = smallest_chernick(n)
-    let product = factors |> reduce(1n, (a, b) => a * b)
+    let carmichael = factors |> product()
 
-    write_line("a({n}) = U({n}, {m}) = {product}")
+    write_line("a({n}) = U({n}, {m}) = {carmichael}")
     write_line("     = {factors |> map(f => "{f}") |> join(" * ")}")
 od

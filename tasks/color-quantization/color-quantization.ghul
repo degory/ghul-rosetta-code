@@ -107,7 +107,7 @@ split(box: List[Weighted]) -> (List[Weighted], List[Weighted]) is
                 channel(a.colour, axis) - channel(b.colour, axis))
             |> collect_list()
 
-    let total = sorted |> map(w => w.count) |> reduce(0, (a, b) => a + b)
+    let total = sorted |> map(w => w.count) |> sum()
     let cut mut = 1
     let seen mut = sorted[0].count
 
@@ -122,11 +122,11 @@ split(box: List[Weighted]) -> (List[Weighted], List[Weighted]) is
 si
 
 average(box: List[Weighted]) -> Colour is
-    let n = box |> map(w => w.count) |> reduce(0, (a, b) => a + b)
+    let n = box |> map(w => w.count) |> sum()
 
     weighted(axis) =>
         (box |> map(w => channel(w.colour, axis) * w.count)
-            |> reduce(0, (a, b) => a + b)) / n
+            |> sum()) / n
 
     (red = weighted(0), green = weighted(1), blue = weighted(2))
 si

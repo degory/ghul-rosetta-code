@@ -71,14 +71,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 62,
+      "lines": 60,
       "parts": [
         {
           "id": "100-prisoners",
           "heading": null,
           "source": "tasks/100-prisoners/100-prisoners.ghul",
           "output": "tasks/100-prisoners/run.expected",
-          "lines": 62,
+          "lines": 60,
           "playground": true,
           "input": false,
           "images": []
@@ -1707,14 +1707,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 32,
+      "lines": 29,
       "parts": [
         {
           "id": "averages-pythagorean-means",
           "heading": null,
           "source": "tasks/averages-pythagorean-means/averages-pythagorean-means.ghul",
           "output": "tasks/averages-pythagorean-means/run.expected",
-          "lines": 32,
+          "lines": 29,
           "playground": true,
           "input": false,
           "images": []
@@ -6950,14 +6950,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 70,
+      "lines": 61,
       "parts": [
         {
           "id": "dutch-national-flag-problem",
           "heading": null,
           "source": "tasks/dutch-national-flag-problem/dutch-national-flag-problem.ghul",
           "output": "tasks/dutch-national-flag-problem/run.expected",
-          "lines": 70,
+          "lines": 61,
           "playground": true,
           "input": false,
           "images": []
@@ -12298,14 +12298,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 44,
+      "lines": 41,
       "parts": [
         {
           "id": "jacobi-symbol",
           "heading": null,
           "source": "tasks/jacobi-symbol/jacobi-symbol.ghul",
           "output": "tasks/jacobi-symbol/run.expected",
-          "lines": 44,
+          "lines": 41,
           "playground": true,
           "input": false,
           "images": []
@@ -13071,14 +13071,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 28,
+      "lines": 25,
       "parts": [
         {
           "id": "knuth-shuffle",
           "heading": null,
           "source": "tasks/knuth-shuffle/knuth-shuffle.ghul",
           "output": "tasks/knuth-shuffle/run.expected",
-          "lines": 28,
+          "lines": 25,
           "playground": true,
           "input": false,
           "images": []
@@ -14978,14 +14978,14 @@
       "images": [
         "tasks/maze-generation/maze.png.expected"
       ],
-      "lines": 107,
+      "lines": 104,
       "parts": [
         {
           "id": "maze-generation",
           "heading": null,
           "source": "tasks/maze-generation/maze-generation.ghul",
           "output": "tasks/maze-generation/run.expected",
-          "lines": 107,
+          "lines": 104,
           "playground": true,
           "input": false,
           "images": [
@@ -15009,14 +15009,14 @@
       "images": [
         "tasks/maze-solving/solved.png.expected"
       ],
-      "lines": 162,
+      "lines": 159,
       "parts": [
         {
           "id": "maze-solving",
           "heading": null,
           "source": "tasks/maze-solving/maze-solving.ghul",
           "output": "tasks/maze-solving/run.expected",
-          "lines": 162,
+          "lines": 159,
           "playground": true,
           "input": false,
           "images": [
@@ -16444,14 +16444,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 59,
+      "lines": 56,
       "parts": [
         {
           "id": "number-reversal-game",
           "heading": null,
           "source": "tasks/number-reversal-game/number-reversal-game.ghul",
           "output": "tasks/number-reversal-game/run.expected",
-          "lines": 59,
+          "lines": 56,
           "playground": true,
           "input": true,
           "images": []
@@ -18159,14 +18159,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 77,
+      "lines": 74,
       "parts": [
         {
           "id": "playing-cards",
           "heading": null,
           "source": "tasks/playing-cards/playing-cards.ghul",
           "output": "tasks/playing-cards/run.expected",
-          "lines": 77,
+          "lines": 74,
           "playground": true,
           "input": false,
           "images": []
@@ -18611,14 +18611,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 93,
+      "lines": 90,
       "parts": [
         {
           "id": "priority-queue",
           "heading": null,
           "source": "tasks/priority-queue/priority-queue.ghul",
           "output": "tasks/priority-queue/run.expected",
-          "lines": 93,
+          "lines": 90,
           "playground": true,
           "input": false,
           "images": []
@@ -20391,14 +20391,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 28,
+      "lines": 25,
       "parts": [
         {
           "id": "sattolo-cycle",
           "heading": null,
           "source": "tasks/sattolo-cycle/sattolo-cycle.ghul",
           "output": "tasks/sattolo-cycle/run.expected",
-          "lines": 28,
+          "lines": 25,
           "playground": true,
           "input": false,
           "images": []
@@ -20786,14 +20786,14 @@
       "images": [
         "tasks/set-puzzle/set.png.expected"
       ],
-      "lines": 160,
+      "lines": 157,
       "parts": [
         {
           "id": "set-puzzle",
           "heading": null,
           "source": "tasks/set-puzzle/set-puzzle.ghul",
           "output": "tasks/set-puzzle/run.expected",
-          "lines": 160,
+          "lines": 157,
           "playground": true,
           "input": false,
           "images": [
@@ -21622,14 +21622,14 @@
       "images": [
         "tasks/smallest-enclosing-circle-problem/circle.png.expected"
       ],
-      "lines": 117,
+      "lines": 114,
       "parts": [
         {
           "id": "smallest-enclosing-circle-problem",
           "heading": null,
           "source": "tasks/smallest-enclosing-circle-problem/smallest-enclosing-circle-problem.ghul",
           "output": "tasks/smallest-enclosing-circle-problem/run.expected",
-          "lines": 117,
+          "lines": 114,
           "playground": true,
           "input": false,
           "images": [
@@ -22388,14 +22388,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 55,
+      "lines": 52,
       "parts": [
         {
           "id": "sorting-algorithms-cycle-sort",
           "heading": null,
           "source": "tasks/sorting-algorithms-cycle-sort/sorting-algorithms-cycle-sort.ghul",
           "output": "tasks/sorting-algorithms-cycle-sort/run.expected",
-          "lines": 55,
+          "lines": 52,
           "playground": true,
           "input": false,
           "images": []
@@ -22568,14 +22568,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 48,
+      "lines": 45,
       "parts": [
         {
           "id": "sorting-algorithms-permutation-sort",
           "heading": null,
           "source": "tasks/sorting-algorithms-permutation-sort/sorting-algorithms-permutation-sort.ghul",
           "output": "tasks/sorting-algorithms-permutation-sort/run.expected",
-          "lines": 48,
+          "lines": 45,
           "playground": true,
           "input": false,
           "images": []
@@ -23011,14 +23011,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 111,
+      "lines": 110,
       "parts": [
         {
           "id": "stable-marriage-problem",
           "heading": null,
           "source": "tasks/stable-marriage-problem/stable-marriage-problem.ghul",
           "output": "tasks/stable-marriage-problem/run.expected",
-          "lines": 111,
+          "lines": 110,
           "playground": true,
           "input": false,
           "images": []
@@ -25160,14 +25160,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 61,
+      "lines": 52,
       "parts": [
         {
           "id": "topswops",
           "heading": null,
           "source": "tasks/topswops/topswops.ghul",
           "output": "tasks/topswops/run.expected",
-          "lines": 61,
+          "lines": 52,
           "playground": false,
           "input": false,
           "images": []
@@ -26721,14 +26721,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 91,
+      "lines": 85,
       "parts": [
         {
           "id": "war-card-game",
           "heading": null,
           "source": "tasks/war-card-game/war-card-game.ghul",
           "output": "tasks/war-card-game/run.expected",
-          "lines": 91,
+          "lines": 85,
           "playground": true,
           "input": false,
           "images": []

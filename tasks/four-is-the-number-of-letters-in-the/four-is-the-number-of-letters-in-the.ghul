@@ -124,7 +124,7 @@ sentence_length(word_count: int) -> int is
     let characters = words
         |> take(word_count)
         |> map(w => w.length)
-        |> reduce(0, (a, b) => a + b)
+        |> sum()
 
     return characters + word_count - 1
 si

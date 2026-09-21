@@ -8,7 +8,7 @@ n_step(initial: int[]) -> Pipe[int] is
     od
 
     do
-        let next = window |> reduce(0, (sum, value) => sum + value)
+        let next = window |> sum()
 
         yield next
 

@@ -42,10 +42,7 @@ class DECK is
 
         while i >= 1 do
             let j = random.next(0, i + 1)
-            let value = _cards[i]
-
-            _cards[i] = _cards[j]
-            _cards[j] = value
+            (_cards[i], _cards[j]) = (_cards[j], _cards[i])
 
             i = i - 1
         od

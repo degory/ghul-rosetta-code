@@ -7,7 +7,7 @@ with_sum_column(line: string, index: int) -> string =>
         let total =
             line.split([','])
                 |> map(number => int.parse(number))
-                |> reduce(0, (running, value) => running + value)
+                |> sum()
 
         "{line},{total}"
     fi

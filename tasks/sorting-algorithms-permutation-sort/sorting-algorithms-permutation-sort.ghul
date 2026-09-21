@@ -25,10 +25,7 @@ next_permutation[T: Ghul.Comparable[T]](values: LIST[T]) is
     let high mut = values.count - 1
 
     while low < high do
-        let temp = values[low]
-
-        values[low] = values[high]
-        values[high] = temp
+        (values[low], values[high]) = (values[high], values[low])
 
         low = low + 1
         high = high - 1

@@ -14,10 +14,7 @@ shuffle(balls: LIST[COLOR], random: System.Random) is
 
     while i > 0 do
         let j = random.next(i + 1)
-        let tmp = balls[i]
-
-        balls[i] = balls[j]
-        balls[j] = tmp
+        (balls[i], balls[j]) = (balls[j], balls[i])
         i = i - 1
     od
 si
@@ -30,19 +27,13 @@ dutch_flag_sort(balls: LIST[COLOR]) is
     while mid <= high do
         case balls[mid]
         when COLOR.RED then
-            let tmp = balls[low]
-
-            balls[low] = balls[mid]
-            balls[mid] = tmp
+            (balls[low], balls[mid]) = (balls[mid], balls[low])
             low = low + 1
             mid = mid + 1
         when COLOR.WHITE then
             mid = mid + 1
         when COLOR.BLUE then
-            let tmp = balls[high]
-
-            balls[high] = balls[mid]
-            balls[mid] = tmp
+            (balls[high], balls[mid]) = (balls[mid], balls[high])
             high = high - 1
         esac
     od

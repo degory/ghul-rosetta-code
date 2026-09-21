@@ -5,7 +5,7 @@ use System.Math
 struct VEC(x: double, y: double, z: double) is
     -(other: VEC) -> VEC => VEC(x - other.x, y - other.y, z - other.z)
 
-    cross(o: VEC) -> VEC =>
+    ×(o: VEC) -> VEC =>
         VEC(y * o.z - z * o.y, z * o.x - x * o.z, x * o.y - y * o.x)
 
     length: double => Math.sqrt(x * x + y * y + z * z)
@@ -37,10 +37,10 @@ corner(i: int, j: int) -> VEC =>
     turned(surface(u, v))
 
 depth(quad: Quad) -> double =>
-    quad |> map(c => c.z) |> reduce(0.0D, (a, b) => a + b)
+    quad |> map(c => c.z) |> sum()
 
 brightness(quad: Quad) -> double =>
-    let n = (quad[1] - quad[0]).cross(quad[3] - quad[0]) in
+    let n = (quad[1] - quad[0]) × (quad[3] - quad[0]) in
     if n.length == 0.0D then 0.5D
     else 0.25D + 0.75D * Math.abs(n.z) / n.length
     fi

@@ -38,10 +38,7 @@ enclose(given: List[P]) -> CIRCLE is
 
     for i in 0..points.count do
         let other = i + random.next(points.count - i)
-        let held = points[i]
-
-        points[i] = points[other]
-        points[other] = held
+        (points[i], points[other]) = (points[other], points[i])
     od
 
     let circle mut = CIRCLE(points[0], 0.0D)

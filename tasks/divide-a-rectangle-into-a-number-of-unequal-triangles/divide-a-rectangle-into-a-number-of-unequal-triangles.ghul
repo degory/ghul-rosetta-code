@@ -97,7 +97,7 @@ write_line("")
 
 for count in [3, 5, 8] do
     let triangles = divide(8.0D, 5.0D, count)
-    let total = triangles |> map(area) |> reduce(0.0D, (a, b) => a + b)
+    let total = triangles |> map(area) |> sum()
 
     write_line("{count} triangles covering an area of {total:F2}:")
 

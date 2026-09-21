@@ -15,7 +15,7 @@ class BUCKETS is
 
     values: List[int] => _values
 
-    total: int => _values |> reduce(0, (running, v) => running + v)
+    total: int => _values |> sum()
 
     get(index: int) -> int => _values[index]
 

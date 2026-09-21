@@ -28,7 +28,7 @@ class SOLVER is
                 |> index()
                 |> filter(t => t.value != 0)
                 |> map(t => distance(t.value, t.index))
-                |> reduce(0, (a, b) => a + b)
+                |> sum()
     si
 
     solve() is

@@ -294,7 +294,7 @@ evaluate(position: POSITION) -> int =>
             let bonus = if minor then 2 * centrality(s) else 0 fi in
             let worth = value(piece) + bonus in
             if position.mine(piece) then worth else -worth fi)
-        |> reduce(0, (a, b) => a + b)
+        |> sum()
 
 let mate = 100000
 
