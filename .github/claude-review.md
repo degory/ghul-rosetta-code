@@ -35,8 +35,11 @@ rather than restating them here.
 - **`run.expected` is what the task asks for.** It is captured from whatever the
   program printed, so a wrong answer becomes the permanent expectation and every
   later run agrees with it. Read it as output, not as a fixture.
-- **A test that is not deterministic.** A clock, a local path, an unseeded
-  generator, or an input fetched over the network at build time.
+- **A test with nothing holding it.** An unseeded generator, or an input fetched
+  over the network at build time. A program whose output legitimately varies, by
+  reading a clock or a path or measuring a duration, is not itself a fault: such
+  a test judges the run with `run.check` rather than a captured `run.expected`,
+  and the fault is having neither.
 - **C# with odd syntax.** A pipe chain written as nested calls, a class where
   three functions would do, `is` ... `si` where an expression body fits, a type
   written where inference already has it. An entry that a reader could reach from
