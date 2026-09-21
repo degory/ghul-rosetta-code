@@ -171,10 +171,10 @@ implementations in fifty other languages.
 ## writing explanatory text
 
 Most tasks need nothing beyond the code and its output - the two together are the entry, and
-that is the default here. Some tasks genuinely read better with a sentence or two ahead of the
-code: what the approach is, or why one of two readings of the task was chosen. Where that is
-true, and only when the user has asked for it, a task may carry `notes.md` beside its source (or
-beside a part's, for a task with parts):
+that is the default here. Some read better with a sentence or two ahead of the code, for what the
+language is doing, a design choice a reader would otherwise infer, or an explanation the task
+itself asks for. `AGENTS.md` has the rule, including what does not earn one. Where a task carries
+such a note, it goes in `notes.md` beside its source (or beside a part's, for a task with parts):
 
 ```
 tasks/binary-digits/

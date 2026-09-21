@@ -55,9 +55,9 @@ Read it before writing a solution or editing this repository's prose. What it as
 Three of its sections do not apply, because this repository's own rules are stricter or its
 programs are shaped differently:
 
-- **Code comments.** The guide says when to comment and how; "Solutions carry no comments" below
-  says not to, and that wins. The guide's comment rules apply to this file, `README.md`, and the
-  tooling under `tools/` and `scripts/`.
+- **Code comments.** The guide says when to comment and how; "When a solution carries words, and
+  when it does not" below says when an entry here carries any, and that wins. The guide's comment rules
+  apply to this file, `README.md`, and the tooling under `tools/` and `scripts/`.
 - **`entry()` first, with the work in named subroutines.** That is the shape of a tour file in
   `ghul-examples`. A solution here is a program with top-level statements.
 - **Its "imitate these" and "flag these" lists.** Both name files in other repositories.
@@ -410,33 +410,53 @@ of one function - a bitmap that is filled, written and read back - a class says
 so more plainly than either, and is the right answer. The preference for
 functions is a lean, not a rule; see "Lean towards functions" above.
 
-## Solutions carry no comments
+## When a solution carries words, and when it does not
 
-**The default is no comments at all.** Look at the Go entries on any task page:
-they carry none, and they are none the worse for it. A solution here is a short
-program a reader is already looking straight at, so a comment has to displace
-code that is right there in front of them to be worth its space, and almost
-none do.
+Most solutions carry none, and that is the shape a reader of the wiki expects.
+When a reader would be left with a question, the first three answers are not
+words at all, in this order:
 
-That is the rule, not a starting position to argue against. Do not explain what
-the task is, do not narrate the algorithm, do not name the technique, and do not
-justify why the code is shaped the way it is. If the code needs a sentence to be
-followed, the fix is usually to write the code more plainly.
+1. **Fix the solution**, where the question is that it does something other
+   than the task asks.
+2. **Make the code say it**, where the question is a trick: rewrite the
+   expression or rename the thing so it carries its own meaning.
+3. **Retire or rework** a solution that does not really answer the task.
 
-The bar for the rare exception is high, because everything here goes on a public
-wiki under the account of the person who posts it. They will be taken to have
-written it, and if a contributor disputes a claim on the talk page, they are the
-one who has to answer. So a comment must be something they could defend,
-unprompted, by pointing at the code beneath it - never a claim about the field,
-its history, or what another language does, and never a term whose only job is
-to show the term is known.
+Only then:
 
-Two failures are worth naming because they keep recurring. A comment that
-apologises for the language - explaining why the code is contorted, or what it
-would look like if the compiler could express the thing directly - means the
-entry should not be posted at all: park the task against the issue instead. And
-mathematical notation is not neutral: `a^b` reads as the xor operator, so write
-what the code actually spells.
+4. A **note before the source**, `notes.md` beside it, for a general fact about
+   the whole solution that a reader will recognise when they reach the code.
+5. A **comment at a line**, for something local to that line.
+
+What earns either:
+
+- What the ghūl language is doing, where that is interesting or opaque to a
+  programmer coming from another language and matters to the task. This is the
+  main legitimate case. It states what happens; it never justifies or
+  apologises for the language.
+- A design choice of the program that a reader would otherwise have to infer:
+  why a measurement is taken over a quarter of a swing, why a puzzle is
+  shuffled by playing legal moves backwards. A few words.
+- An explanation the task itself asks for. It has to carry the key fact rather
+  than gesture at it, and the fact has to be taken from the code.
+
+What does not:
+
+- **Mathematics.** This is a site about programming languages. A reader either
+  knows the mathematics and needs nothing, or does not and does not care. A
+  note that would surprise a competent mathematician is the only exception.
+- **The task restated**, the code narrated, or a standard technique named.
+- **A fixed seed.** Everyone knows that seeding makes a run reproducible.
+- **Jargon** that leaves the reader no wiser.
+- A comment that **apologises for the language**. An entry that needs one
+  should not be posted: park the task against the issue instead.
+
+Everything here goes on a public wiki under the account of the person who posts
+it, so anything written has to be something they could defend by pointing at
+the code beneath it. Write plainly: a fact or a reason, never a sale. A value
+comes from a computation rather than being read off one, and nothing
+"leverages" anything. Mathematical notation is not neutral either: `a^b` reads
+as the xor operator, so write what the code spells.
 
 ## Tasks that are not solved
 
@@ -502,27 +522,26 @@ sets the task up to be rejected again.
 
 ## Explanatory text
 
-The default is code and output, nothing else - that is the shape of nearly every entry here, and
-it is what a reader of the wiki expects. Do not add explanatory prose to a task unless the user
-asks for it for that task.
-
-When asked, write it as Markdown in `tasks/<slug>/notes.md` (or beside a part's source, for a task
-with parts): paragraphs, `#`/`##` headings, bullet and numbered lists, `**bold**`, `*italic*`, and
-`[text](url)` links are the supported subset. `scripts/generate-wiki.sh` converts it to wiki markup
-and places it ahead of the code. Render it on its own and read the result before doing anything
-else with it:
+A note before the source is written as Markdown in `tasks/<slug>/notes.md`, or
+beside a part's source for a task with parts: paragraphs, `#`/`##` headings,
+bullet and numbered lists, `**bold**`, `*italic*`, and `[text](url)` links are
+the supported subset. `scripts/generate-wiki.sh` converts it to wiki markup and
+places it ahead of the code. Render it on its own and read the result before
+doing anything else with it:
 
 ```sh
 dotnet run --project tools/rosetta -- render-notes tasks/<slug>/notes.md
 ```
 
-**Show the user the rendered text and get it read before the branch is raised for merge, and do
-not arm auto-merge on it.** The code in a task is covered by a captured test; the prose is not,
-and unlike the code it makes a claim to the reader rather than an assertion the test can check
-automatically. Follow `raise-pr` as usual to open the pull request, but stop short of the auto-merge
-step `land-pr` would otherwise arm immediately, and say plainly that the PR is waiting on a
-person because it carries prose. This is independent of publishing, which is already gated on an
-explicit request from the user - README.md's 'writing explanatory text' has the detail.
+**Show the user the rendered text and get it read before the branch is raised
+for merge, and do not arm auto-merge on it.** The code in a task is covered by a
+captured test; the prose is not, and unlike the code it makes a claim to the
+reader rather than an assertion the test can check automatically. Follow
+`raise-pr` as usual to open the pull request, but stop short of the auto-merge
+step `land-pr` would otherwise arm immediately, and say plainly that the PR is
+waiting on a person because it carries prose. This is independent of
+publishing, which is already gated on an explicit request from the user -
+README.md's 'writing explanatory text' has the detail.
 
 ## A command line a reader sees
 
