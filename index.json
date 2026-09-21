@@ -25751,14 +25751,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 66,
+      "lines": 73,
       "parts": [
         {
           "id": "unicode-strings",
           "heading": null,
           "source": "tasks/unicode-strings/unicode-strings.ghul",
           "output": "tasks/unicode-strings/run.expected",
-          "lines": 66,
+          "lines": 73,
           "playground": true,
           "input": false,
           "images": []
