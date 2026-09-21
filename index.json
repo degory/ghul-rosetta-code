@@ -19227,6 +19227,33 @@
       ]
     },
     {
+      "slug": "read-a-file-character-by-character-utf8",
+      "title": "Read a file character by character/UTF8",
+      "url": "https://rosettacode.org/wiki/Read_a_file_character_by_character/UTF8",
+      "tags": [
+        "generators",
+        "strings",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 28,
+      "parts": [
+        {
+          "id": "read-a-file-character-by-character-utf8",
+          "heading": null,
+          "source": "tasks/read-a-file-character-by-character-utf8/read-a-file-character-by-character-utf8.ghul",
+          "output": "tasks/read-a-file-character-by-character-utf8/run.expected",
+          "lines": 28,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "read-a-file-line-by-line",
       "title": "Read a file line by line",
       "url": "https://rosettacode.org/wiki/Read_a_file_line_by_line",
