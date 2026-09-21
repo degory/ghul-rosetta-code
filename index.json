@@ -23014,6 +23014,32 @@
       ]
     },
     {
+      "slug": "stair-climbing-puzzle",
+      "title": "Stair-climbing puzzle",
+      "url": "https://rosettacode.org/wiki/Stair-climbing_puzzle",
+      "tags": [
+        "puzzles",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 68,
+      "parts": [
+        {
+          "id": "stair-climbing-puzzle",
+          "heading": null,
+          "source": "tasks/stair-climbing-puzzle/stair-climbing-puzzle.ghul",
+          "output": "tasks/stair-climbing-puzzle/run.expected",
+          "lines": 68,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "start-from-a-main-routine",
       "title": "Start from a main routine",
       "url": "https://rosettacode.org/wiki/Start_from_a_main_routine",
