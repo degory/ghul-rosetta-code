@@ -5771,6 +5771,32 @@
       ]
     },
     {
+      "slug": "date-format",
+      "title": "Date format",
+      "url": "https://rosettacode.org/wiki/Date_format",
+      "tags": [
+        "date-time",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 9,
+      "parts": [
+        {
+          "id": "date-format",
+          "heading": null,
+          "source": "tasks/date-format/date-format.ghul",
+          "output": "tasks/date-format/run.expected",
+          "lines": 9,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "day-of-the-week",
       "title": "Day of the week",
       "url": "https://rosettacode.org/wiki/Day_of_the_week",
