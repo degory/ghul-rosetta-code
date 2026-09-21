@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# The times differ on every run, so what is asserted is what the task is
+# about: both functions were timed, and the bigger job took longer.
+
+if [ "$(wc -l < "$1")" != "2" ]; then
+    echo "expected two lines, got $(wc -l < "$1")"
+    cat "$1"
+
+    exit 1
+fi
+
+if ! grep -q '^primes below 100000  *9592 ' "$1" ; then
+    echo "the first line should count 9592 primes:"
+    cat "$1"
+
+    exit 1
+fi
+
+if ! grep -q '^primes below 1000000  *78498 ' "$1" ; then
+    echo "the second line should count 78498 primes:"
+    cat "$1"
+
+    exit 1
+fi
+
+times=$(grep -oE '[0-9]+\.[0-9]+ ms' "$1" | grep -oE '^[0-9]+\.[0-9]+')
+
+if [ "$(echo "$times" | wc -l)" != "4" ]; then
+    echo "expected an elapsed and a processor time on each line:"
+    cat "$1"
+
+    exit 1
+fi
+
+if echo "$times" | grep -qE '^0\.00$'; then
+    echo "every time should be above zero:"
+    cat "$1"
+
+    exit 1
+fi
+
+small=$(echo "$times" | sed -n 2p)
+large=$(echo "$times" | sed -n 4p)
+
+if ! awk -v a="$small" -v b="$large" 'BEGIN { exit !(b > a) }'; then
+    echo "the bigger job used $large ms of processor time against $small ms"
+    cat "$1"
+
+    exit 1
+fi

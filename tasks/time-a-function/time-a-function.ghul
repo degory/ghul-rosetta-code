@@ -1,0 +1,44 @@
+use default
+use System.Diagnostics.Stopwatch
+
+// Process time rather than wall-clock time, so another program running at the
+// same time does not show up as this one taking longer.
+spent() -> double =>
+    System.Diagnostics.Process.get_current_process()
+        .total_processor_time
+        .total_milliseconds
+
+timed(name: string, work: () -> int) is
+    let clock = Stopwatch.start_new()
+    let before = spent()
+    let answer = work()
+    let elapsed = clock.elapsed.total_milliseconds
+    let processor = spent() - before
+
+    write_line(
+        "{name,-22} {answer,12}  {elapsed,8:F2} ms elapsed  "
+        "{processor,8:F2} ms processor")
+si
+
+count_primes(limit: int) -> int is
+    let sieve = repeat(true, limit) |> collect_list()
+    let found mut = 0
+
+    for candidate in 2..limit do
+        if sieve[candidate] then
+            found = found + 1
+
+            let multiple mut = candidate * 2
+
+            while multiple < limit do
+                sieve[multiple] = false
+                multiple = multiple + candidate
+            od
+        fi
+    od
+
+    found
+si
+
+timed("primes below 100000", () => count_primes(100_000))
+timed("primes below 1000000", () => count_primes(1_000_000))

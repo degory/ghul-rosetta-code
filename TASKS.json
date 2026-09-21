@@ -2216,8 +2216,9 @@
     },
     {
       "title": "Find limit of recursion",
-      "state": "rejected",
-      "reason": "nondeterministic"
+      "slug": "find-limit-of-recursion",
+      "state": "solved",
+      "note": "reopened, was rejected/nondeterministic: run.check can judge a plausible depth and that the program survived"
     },
     {
       "title": "Find square difference",
@@ -6257,8 +6258,9 @@
     },
     {
       "title": "Time a function",
-      "state": "rejected",
-      "reason": "nondeterministic"
+      "slug": "time-a-function",
+      "state": "solved",
+      "note": "reopened, was rejected/nondeterministic: run.check can judge that the slower function measures slower"
     },
     {
       "title": "Tokenize a string",
