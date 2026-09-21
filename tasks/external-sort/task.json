@@ -2,6 +2,10 @@
     "task": "External sort",
     "url": "https://rosettacode.org/wiki/External_sort",
     "status": "solved",
-    "tags": [],
-    "interest": 0
+    "tags": [
+        "sorting",
+        "algorithms",
+        "data-structures"
+    ],
+    "interest": 4
 }
