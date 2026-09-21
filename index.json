@@ -1707,14 +1707,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 32,
+      "lines": 29,
       "parts": [
         {
           "id": "averages-pythagorean-means",
           "heading": null,
           "source": "tasks/averages-pythagorean-means/averages-pythagorean-means.ghul",
           "output": "tasks/averages-pythagorean-means/run.expected",
-          "lines": 32,
+          "lines": 29,
           "playground": true,
           "input": false,
           "images": []

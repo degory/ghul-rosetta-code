@@ -7,11 +7,8 @@ arithmetic(values: double[]) -> double is
     return total / cast(values.count)
 si
 
-geometric(values: double[]) -> double is
-    let total = values |> product()
-
-    return Math.pow(total, 1.0 / cast(values.count))
-si
+geometric(values: double[]) -> double =>
+    Math.pow(values |> product(), 1.0 / cast(values.count))
 
 harmonic(values: double[]) -> double is
     let reciprocals =
