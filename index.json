@@ -25110,6 +25110,33 @@
       ]
     },
     {
+      "slug": "unicode-strings",
+      "title": "Unicode strings",
+      "url": "https://rosettacode.org/wiki/Unicode_strings",
+      "tags": [
+        "strings",
+        "basics",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "unicode-strings",
+          "heading": null,
+          "source": "tasks/unicode-strings/unicode-strings.ghul",
+          "output": "tasks/unicode-strings/run.expected",
+          "lines": 66,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "universal-lambda-machine",
       "title": "Universal Lambda Machine",
       "url": "https://rosettacode.org/wiki/Universal_Lambda_Machine",
