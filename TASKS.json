@@ -678,7 +678,8 @@
     {
       "title": "Bitwise IO",
       "slug": "bitwise-io",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "1d1d8e9e4006504f03457cb82bb84bba0d59f966715a1958329a3c07a08f8075"
     },
     {
       "title": "Bitwise operations",
@@ -1427,7 +1428,8 @@
     {
       "title": "Currency",
       "slug": "currency",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "6aa344f862722ea9a67dd6e86b95667d912137857a16fa1dc0c0490c54be4300"
     },
     {
       "title": "Currying",
@@ -1816,7 +1818,8 @@
     {
       "title": "Element-wise operations",
       "slug": "element-wise-operations",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "a010f74f85dde106d5716d5e211acb223114f2d63cc7000df11c1f00e7ceea33"
     },
     {
       "title": "Elementary cellular automaton",
@@ -2364,7 +2367,8 @@
     {
       "title": "Four bit adder",
       "slug": "four-bit-adder",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "d9707394f5053dbfcb637b18f937037335c23a0586f7b742aed42a704dd9c69b"
     },
     {
       "title": "Four is magic",
@@ -3456,12 +3460,14 @@
     {
       "title": "List rooted trees",
       "slug": "list-rooted-trees",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "8258b7efd367c395e08970a0d4cf71748c24a5fd1ab85999957a7fef69b8ffe9"
     },
     {
       "title": "Literals/Floating point",
       "slug": "literals-floating-point",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "cf53b31b7adcd92ef0df6766070bc4f01cca988f99329df8e09c04ad4e519c59"
     },
     {
       "title": "Literals/Integer",
@@ -5258,7 +5264,8 @@
     {
       "title": "Show the epoch",
       "slug": "show-the-epoch",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "855fb4cd6c7c490f8cca6f60925468386da53f4d974edf55f16ae9ed851d51d7"
     },
     {
       "title": "Sierpinski arrowhead curve",
@@ -6441,7 +6448,8 @@
     {
       "title": "Unicode strings",
       "slug": "unicode-strings",
-      "state": "solved"
+      "state": "published",
+      "published_hash": "9a74c0dcdfabe707c6569d8993d412183a0b238b317769736d386107472eb67c"
     },
     {
       "title": "Universal Lambda Machine",
