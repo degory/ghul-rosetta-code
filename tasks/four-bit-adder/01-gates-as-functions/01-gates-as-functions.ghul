@@ -49,29 +49,23 @@ value(added: (sum: bool[], carry: bool)) -> int =>
         if added.carry then 1 else 0 fi,
         (total, bit) => total * 2 + if bit then 1 else 0 fi)
 
-entry() is
-    for pair in [(9, 5), (7, 1), (15, 15), (8, 8), (3, 12)] do
-        let a = nibble(pair.`0)
-        let b = nibble(pair.`1)
-        let added = four_bit_adder(a, b, false)
-        let carry = if added.carry then "1" else "0" fi
-        let out = "{carry}{binary(added.sum)}"
+adds_correctly(a: int, b: int) -> bool =>
+    value(four_bit_adder(nibble(a), nibble(b), false)) == a + b
 
-        write_line("{binary(a)} + {binary(b)} = {out}")
-    od
+for (first, second) in [(9, 5), (7, 1), (15, 15), (8, 8), (3, 12)] do
+    let a = nibble(first)
+    let b = nibble(second)
+    let added = four_bit_adder(a, b, false)
+    let carry = if added.carry then "1" else "0" fi
+    let out = "{carry}{binary(added.sum)}"
 
-    let wrong mut = 0
+    write_line("{binary(a)} + {binary(b)} = {out}")
+od
 
-    for a in 0::15 do
-        for b in 0::15 do
-            let added = four_bit_adder(nibble(a), nibble(b), false)
+let wrong =
+    0::15
+    |> flat_map(a => 0::15 |> map(b => (a = a, b = b)))
+    |> count(pair => !adds_correctly(pair.a, pair.b))
 
-            if value(added) != a + b then
-                wrong = wrong + 1
-            fi
-        od
-    od
-
-    write_line("")
-    write_line("sums disagreeing with integer addition: {wrong}")
-si
+write_line("")
+write_line("sums disagreeing with integer addition: {wrong}")

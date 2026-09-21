@@ -61,8 +61,6 @@ report(name: string, climb: (ROBOT) -> void, chance: double) is
     write_line("")
 si
 
-entry() is
-    report("recursive", step_up_recursive, 0.75)
-    report("iterative", step_up_iterative, 0.75)
-    report("recursive", step_up_recursive, 0.55)
-si
+report("recursive", step_up_recursive, 0.75)
+report("iterative", step_up_iterative, 0.75)
+report("recursive", step_up_recursive, 0.55)

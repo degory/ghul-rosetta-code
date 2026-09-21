@@ -36,20 +36,18 @@ si
 plural(count: int, noun: string) -> string =>
     "{count} {noun}{if count == 1 then "" else "s" fi}"
 
-entry() is
-    for bags in 1::5 do
-        let ways = trees(bags) |> collect_list()
+for bags in 1::5 do
+    let ways = trees(bags) |> collect_list()
 
-        write_line("{plural(bags, "bag")}, {plural(ways.count, "way")}")
+    write_line("{plural(bags, "bag")}, {plural(ways.count, "way")}")
 
-        for way in ways do
-            write_line("  {way}")
-        od
-
-        write_line("")
+    for way in ways do
+        write_line("  {way}")
     od
 
-    let counts = 1::9 |> map(n => trees(n) |> count())
+    write_line("")
+od
 
-    write_line("ways for 1 to 9 bags: {counts |> collect_list()}")
-si
+let counts = 1::9 |> map(n => trees(n) |> count())
+
+write_line("ways for 1 to 9 bags: {counts |> collect_list()}")

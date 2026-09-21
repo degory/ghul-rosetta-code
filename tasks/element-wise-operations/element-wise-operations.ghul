@@ -56,26 +56,24 @@ show(label: string, m: MATRIX) is
     write_line("")
 si
 
-entry() is
-    let a = MATRIX([[1.0, 2.0], [3.0, 4.0]])
-    let b = MATRIX([[5.0, 6.0], [7.0, 8.0]])
+let a = MATRIX([[1.0, 2.0], [3.0, 4.0]])
+let b = MATRIX([[5.0, 6.0], [7.0, 8.0]])
 
-    show("a", a)
-    show("b", b)
+show("a", a)
+show("b", b)
 
-    show("a + b", a + b)
-    show("a - b", a - b)
-    show("a * b", a * b)
-    show("a / b", a / b)
-    show("a ^ b", a ^ b)
+show("a + b", a + b)
+show("a - b", a - b)
+show("a * b", a * b)
+show("a / b", a / b)
+show("a ^ b", a ^ b)
 
-    show("a + 10", a + 10.0)
-    show("a - 10", a - 10.0)
-    show("a * 10", a * 10.0)
-    show("a / 10", a / 10.0)
-    show("a ^ 2", a ^ 2.0)
+show("a + 10", a + 10.0)
+show("a - 10", a - 10.0)
+show("a * 10", a * 10.0)
+show("a / 10", a / 10.0)
+show("a ^ 2", a ^ 2.0)
 
-    show("10 - a", 10.0 - a)
-    show("10 / a", 10.0 / a)
-    show("2 ^ a", 2.0 ^ a)
-si
+show("10 - a", 10.0 - a)
+show("10 / a", 10.0 / a)
+show("2 ^ a", 2.0 ^ a)
