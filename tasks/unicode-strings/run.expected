@@ -3,7 +3,8 @@ source is UTF-8, and a literal holds what it says
   日本語
   Ελληνικά
 
-identifiers are ASCII, but operators need not be
+a name is written in any script, and so is an operator
+  héllo wörld, 日本語 テキスト, ελληνικά κείμενο
   6 × 7 = 42
   evens ∪ odds = [1, 2, 3, 4]
 
