@@ -1,0 +1,44 @@
+use default
+
+visible_everywhere() -> string =>
+    "a namespace-scope function, visible to the whole assembly"
+
+_visible_in_this_assembly() -> string =>
+    "an underscore name, private to the assembly"
+
+class HOLDER is
+    init() is si
+
+    public_method() -> string => "a method, public by its name"
+
+    _private_method() -> string =>
+        "an underscore method, private to its class"
+
+    reaches_its_own() -> string => _private_method()
+si
+
+outer() -> string is
+    inner() -> string => "a named function inside a body, local to it"
+
+    inner()
+si
+
+write_line(visible_everywhere())
+write_line(_visible_in_this_assembly())
+write_line(HOLDER().public_method())
+write_line(HOLDER().reaches_its_own())
+write_line(outer())
+
+let first = for row in 0..3 do
+    rows: for column in 0..3 do
+        if column == 2 then
+            continue rows
+        fi
+
+        if row == 2 then
+            break 42
+        fi
+    od
+od
+
+write_line("a label names a loop, and break carries a value out: {first}")

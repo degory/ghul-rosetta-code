@@ -1,0 +1,6 @@
+a namespace-scope function, visible to the whole assembly
+an underscore name, private to the assembly
+a method, public by its name
+an underscore method, private to its class
+a named function inside a body, local to it
+a label names a loop, and break carries a value out: 42
