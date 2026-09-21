@@ -1,7 +1,5 @@
 use default
 
-// The robot climbs on success and falls on failure. Seeded, so the
-// same run of luck happens every time.
 class ROBOT(seed: int init, chance: double) is
     _random: System.Random
     position: int
@@ -26,8 +24,6 @@ class ROBOT(seed: int init, chance: double) is
     si
 si
 
-// No variables and no numbers: a failed step is undone by climbing
-// twice, and each of those climbs is the same problem again.
 step_up_recursive(robot: ROBOT) is
     if !robot.step() then
         step_up_recursive(robot)
