@@ -13401,6 +13401,32 @@
       ]
     },
     {
+      "slug": "literals-floating-point",
+      "title": "Literals/Floating point",
+      "url": "https://rosettacode.org/wiki/Literals/Floating_point",
+      "tags": [
+        "basics",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "literals-floating-point",
+          "heading": null,
+          "source": "tasks/literals-floating-point/literals-floating-point.ghul",
+          "output": "tasks/literals-floating-point/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "literals-integer",
       "title": "Literals/Integer",
       "url": "https://rosettacode.org/wiki/Literals/Integer",

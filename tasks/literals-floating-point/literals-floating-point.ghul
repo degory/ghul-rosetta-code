@@ -1,0 +1,40 @@
+use default
+
+// A fractional literal is a double unless a suffix says otherwise,
+// and the suffix is what picks the type rather than the context.
+show(literal: string, value: object) is
+    write_line("{literal,-14}{value.get_type().name,-9}{value}")
+si
+
+entry() is
+    write_line("plain literals")
+    show("1.5", 1.5)
+    show("123.456", 123.456)
+    show("0.0", 0.0)
+    write_line("")
+
+    write_line("suffixes, in either case")
+    show("123.456s", 123.456s)
+    show("123.456S", 123.456S)
+    show("123.456d", 123.456d)
+    show("19.99m", 19.99m)
+    show("100m", 100m)
+    write_line("")
+
+    write_line("exponents")
+    show("1.5e3", 1.5e3)
+    show("1.5E-3", 1.5E-3)
+    show("2.5e10s", 2.5e10s)
+    write_line("(a decimal literal takes no exponent)")
+    write_line("")
+
+    write_line("digits group with _ wherever they fall")
+    show("1_000.000_1", 1_000.000_1)
+    show("1_2_3.4_5", 1_2_3.4_5)
+    write_line("")
+
+    write_line("there is no hexadecimal floating-point literal, and")
+    write_line("no implicit conversion, so a mixed expression is a")
+    write_line("compile error until one side is cast")
+    show("1.0 + cast(1)", 1.0 + cast double(1))
+si
