@@ -19,12 +19,12 @@ si
 
 brilliant_numbers(max_digits: int) -> LIST[long] is
     let found = LIST()
-    let limit = 0..max_digits |> reduce(1, (acc, _) => acc * 10)
+    let limit = repeat(10, max_digits) |> product()
     let primes = primes_below(limit) |> collect_list()
     let start mut = 0
 
     for digits in 1::max_digits do
-        let low = 1..digits |> reduce(1, (acc, _) => acc * 10)
+        let low = repeat(10, digits - 1) |> product()
         let group = primes
             |> skip(start)
             |> take_while(p => p < low * 10)
