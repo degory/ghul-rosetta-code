@@ -1,0 +1,40 @@
+use default
+use IO.Std.write
+use IO.Std.read_line
+
+choose(items: List[string]) -> string is
+    if items.count == 0 then
+        return ""
+    fi
+
+    do
+        for (index, item) in items |> index() do
+            write_line("{index + 1}. {item}")
+        od
+
+        write("choose: ")
+
+        let entered = read_line()
+
+        if !entered? then
+            return ""
+        fi
+
+        let chosen mut = 0
+
+        if
+            int.try_parse(entered, chosen ref) /\
+            chosen >= 1 /\
+            chosen <= items.count
+        then
+            return items[chosen - 1]
+        fi
+
+        write_line("that is not one of them")
+    od
+si
+
+let phrases = ["fee fie", "huff and puff", "mirror mirror", "tick tock"]
+
+write_line("you chose: {choose(phrases)}")
+write_line("empty list gives: [{choose([])}]")

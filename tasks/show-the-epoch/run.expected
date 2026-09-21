@@ -1,0 +1,8 @@
+System.DateTime       0001-01-01 00:00:00   Unspecified
+System.DateTimeOffset 0001-01-01 00:00:00   Utc
+Unix time             1970-01-01 00:00:00   Utc
+Windows file time     1601-01-01 00:00:00   Utc
+
+a tick is 100ns since the type's own epoch, so
+2026-09-21 12:00:00 is 639255888000000000 ticks
+and 1789992000 seconds of Unix time

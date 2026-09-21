@@ -1,0 +1,37 @@
+#!/bin/bash
+
+out=$1
+
+if [ "$(wc -l < "$out")" != 2 ] ; then
+    echo "expected two lines"
+    cat "$out"
+    exit 1
+fi
+
+iso=$(sed -n 1p "$out")
+long=$(sed -n 2p "$out")
+
+if ! grep -qxE '[0-9]{4}-[0-9]{2}-[0-9]{2}' <<<"$iso" ; then
+    echo "first line is not an ISO date: $iso"
+    exit 1
+fi
+
+for day in "$(date +%F)" "$(date -d yesterday +%F)" "$(date -d tomorrow +%F)" ; do
+    if [ "$iso" = "$day" ] ; then
+        found=yes
+    fi
+done
+
+if [ -z "$found" ] ; then
+    echo "first line is not today: $iso"
+    exit 1
+fi
+
+expected=$(LC_ALL=C date -d "$iso" '+%A, %B %-d, %Y')
+
+if [ "$long" != "$expected" ] ; then
+    echo "second line describes a different day"
+    echo "  read:     $long"
+    echo "  expected: $expected"
+    exit 1
+fi

@@ -1,0 +1,21 @@
+use default
+use IO.Std.read_line
+use System.Diagnostics.Stopwatch
+use System.Threading.Thread
+
+let requested = int.parse(read_line()!)
+
+write_line("Sleeping...")
+
+let elapsed = Stopwatch.start_new()
+
+Thread.sleep(requested)
+
+elapsed.stop()
+
+write_line("Awake!")
+
+assert elapsed.elapsed_milliseconds >= cast long(requested)
+    else "the thread woke early"
+
+write_line("slept for at least {requested} milliseconds")

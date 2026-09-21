@@ -1473,6 +1473,11 @@
       "published_hash": "04ab4144f94ee1af73491a2bfb8c1135d574003796b3bc5ddd3d69805be2c36f"
     },
     {
+      "title": "Date format",
+      "slug": "date-format",
+      "state": "solved"
+    },
+    {
       "title": "Day of the week",
       "slug": "day-of-the-week",
       "state": "published",
@@ -3773,6 +3778,11 @@
       "published_hash": "57a24106c296e3bb3194c26b61f57280a8687e1937c0b3137033a43fffcdd515"
     },
     {
+      "title": "Menu",
+      "slug": "menu",
+      "state": "solved"
+    },
+    {
       "title": "Merge and aggregate datasets",
       "slug": "merge-and-aggregate-datasets",
       "state": "published",
@@ -5203,6 +5213,11 @@
       "published_hash": "ac645bd10a99be8c95c8dfc0fc92cd506c9b7e6c95117e37c38ba91b5be00409"
     },
     {
+      "title": "Show the epoch",
+      "slug": "show-the-epoch",
+      "state": "solved"
+    },
+    {
       "title": "Sierpinski arrowhead curve",
       "slug": "sierpinski-arrowhead-curve",
       "state": "published",
@@ -5336,6 +5351,11 @@
       "slug": "sisyphus-sequence",
       "state": "published",
       "published_hash": "ca9c528d8a1bfecaef56a310e2d8d71b0e7296831e103397d5e2f13838d3df4d"
+    },
+    {
+      "title": "Sleep",
+      "slug": "sleep",
+      "state": "solved"
     },
     {
       "title": "Sleeping Beauty problem",

@@ -5771,6 +5771,32 @@
       ]
     },
     {
+      "slug": "date-format",
+      "title": "Date format",
+      "url": "https://rosettacode.org/wiki/Date_format",
+      "tags": [
+        "date-time",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 9,
+      "parts": [
+        {
+          "id": "date-format",
+          "heading": null,
+          "source": "tasks/date-format/date-format.ghul",
+          "output": "tasks/date-format/run.expected",
+          "lines": 9,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "day-of-the-week",
       "title": "Day of the week",
       "url": "https://rosettacode.org/wiki/Day_of_the_week",
@@ -15021,6 +15047,33 @@
       ]
     },
     {
+      "slug": "menu",
+      "title": "Menu",
+      "url": "https://rosettacode.org/wiki/Menu",
+      "tags": [
+        "interactive",
+        "basics",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "menu",
+          "heading": null,
+          "source": "tasks/menu/menu.ghul",
+          "output": "tasks/menu/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "merge-and-aggregate-datasets",
       "title": "Merge and aggregate datasets",
       "url": "https://rosettacode.org/wiki/Merge_and_aggregate_datasets",
@@ -20767,6 +20820,33 @@
       ]
     },
     {
+      "slug": "show-the-epoch",
+      "title": "Show the epoch",
+      "url": "https://rosettacode.org/wiki/Show_the_epoch",
+      "tags": [
+        "date-time",
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "show-the-epoch",
+          "heading": null,
+          "source": "tasks/show-the-epoch/show-the-epoch.ghul",
+          "output": "tasks/show-the-epoch/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sierpinski-arrowhead-curve",
       "title": "Sierpinski arrowhead curve",
       "url": "https://rosettacode.org/wiki/Sierpinski_arrowhead_curve",
@@ -21276,6 +21356,32 @@
           "lines": 82,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sleep",
+      "title": "Sleep",
+      "url": "https://rosettacode.org/wiki/Sleep",
+      "tags": [
+        "concurrency",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "sleep",
+          "heading": null,
+          "source": "tasks/sleep/sleep.ghul",
+          "output": "tasks/sleep/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
