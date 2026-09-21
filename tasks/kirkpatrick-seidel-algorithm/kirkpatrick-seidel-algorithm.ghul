@@ -11,7 +11,7 @@ si
 slope(p: P, q: P) -> double => (q.y - p.y) / (q.x - p.x)
 
 median(values: Iterable[double]) -> double =>
-    let sorted = values |> sort((a, b) => a <> b) |> collect_list() in
+    let sorted = values |> sort() |> collect_list() in
     sorted[(sorted.count - 1) / 2]
 
 leftmost(points: List[P]) -> P =>

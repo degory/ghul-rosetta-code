@@ -4,7 +4,7 @@ let n = 13
 
 let sorted = (1::n)
     |> map(i => "{i}")
-    |> sort((a, b) => a <> b)
+    |> sort()
     |> map(int.parse)
     |> collect_list()
 
