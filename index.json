@@ -9225,6 +9225,32 @@
       ]
     },
     {
+      "slug": "four-bit-adder",
+      "title": "Four bit adder",
+      "url": "https://rosettacode.org/wiki/Four_bit_adder",
+      "tags": [
+        "simulation",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 77,
+      "parts": [
+        {
+          "id": "four-bit-adder",
+          "heading": null,
+          "source": "tasks/four-bit-adder/four-bit-adder.ghul",
+          "output": "tasks/four-bit-adder/run.expected",
+          "lines": 77,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "four-is-magic",
       "title": "Four is magic",
       "url": "https://rosettacode.org/wiki/Four_is_magic",

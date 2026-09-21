@@ -3811,6 +3811,11 @@
       }
     },
     {
+      "title": "Morse code",
+      "state": "rejected",
+      "reason": "needs-gui"
+    },
+    {
       "title": "Moser\u0027s circle problem",
       "slug": "moser-s-circle-problem",
       "state": "published",
