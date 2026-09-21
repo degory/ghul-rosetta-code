@@ -316,11 +316,17 @@ output, which is the worst way to be wrong. Write `(nibble >> (3 - b)) & 1`. Mix
 operator with a comparison needs no parentheses and is right as it reads, since bitwise binds
 tighter than relational: `flags & bit == 0` is `(flags & bit) == 0`, unlike C.
 
-**Until degory/ghul#2940 and #2941 ship, a nested named function cannot carry a bare `return` and
-cannot share a body with `let use`.** Either emits IL the runtime rejects, with no compile error:
-the enclosing function throws `System.InvalidProgramException` on entry. Write the guard as
-`if condition then ... fi` rather than an early return, and close the resource with an explicit
-`dispose()` after the loop. Remove this paragraph when both have shipped and the pin has moved.
+**Until degory/ghul#2940 ships, a function literal that captures a local cannot carry a bare
+`return`**, whether it is written as a named function among a body's statements or as
+`let f = () is ... si`. It emits IL the runtime rejects, with no compile error: the enclosing
+function throws `System.InvalidProgramException` on entry, which is why the nested one looks
+innocent. Either half alone is fine, so write the guard as `if condition then ... fi` rather than
+an early return.
+
+**And until the pin passes 62.5.2, a body that ends on a tail value cannot hold a resource with
+`let use`**, which fails the same way. Close it with an explicit `dispose()` instead. That one is
+fixed upstream already, so it goes at the next pin bump; remove the paragraph above when #2940 has
+shipped too.
 
 ## A suspected bug is not a reason to change the solution
 
