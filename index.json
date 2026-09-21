@@ -25582,6 +25582,33 @@
       ]
     },
     {
+      "slug": "unix-ls",
+      "title": "Unix/ls",
+      "url": "https://rosettacode.org/wiki/Unix/ls",
+      "tags": [
+        "text-processing",
+        "pipes",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "unix-ls",
+          "heading": null,
+          "source": "tasks/unix-ls/unix-ls.ghul",
+          "output": "tasks/unix-ls/run.expected",
+          "lines": 34,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "uno-card-game",
       "title": "Uno (card game)",
       "url": "https://rosettacode.org/wiki/Uno_(card_game)",
