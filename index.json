@@ -2630,14 +2630,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 102,
+      "lines": 100,
       "parts": [
         {
           "id": "bitwise-io",
           "heading": null,
           "source": "tasks/bitwise-io/bitwise-io.ghul",
           "output": "tasks/bitwise-io/run.expected",
-          "lines": 102,
+          "lines": 100,
           "playground": true,
           "input": false,
           "images": []
@@ -7164,14 +7164,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 81,
+      "lines": 79,
       "parts": [
         {
           "id": "element-wise-operations",
           "heading": null,
           "source": "tasks/element-wise-operations/element-wise-operations.ghul",
           "output": "tasks/element-wise-operations/run.expected",
-          "lines": 81,
+          "lines": 79,
           "playground": true,
           "input": false,
           "images": []
@@ -9447,14 +9447,24 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 77,
+      "lines": 208,
       "parts": [
         {
-          "id": "four-bit-adder",
-          "heading": null,
-          "source": "tasks/four-bit-adder/four-bit-adder.ghul",
-          "output": "tasks/four-bit-adder/run.expected",
-          "lines": 77,
+          "id": "four-bit-adder/01-gates-as-functions",
+          "heading": "Gates as functions",
+          "source": "tasks/four-bit-adder/01-gates-as-functions/01-gates-as-functions.ghul",
+          "output": "tasks/four-bit-adder/01-gates-as-functions/run.expected",
+          "lines": 71,
+          "playground": true,
+          "input": false,
+          "images": []
+        },
+        {
+          "id": "four-bit-adder/02-gates-as-objects",
+          "heading": "Gates as objects",
+          "source": "tasks/four-bit-adder/02-gates-as-objects/02-gates-as-objects.ghul",
+          "output": "tasks/four-bit-adder/02-gates-as-objects/run.expected",
+          "lines": 137,
           "playground": true,
           "input": false,
           "images": []
@@ -13672,14 +13682,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 55,
+      "lines": 53,
       "parts": [
         {
           "id": "list-rooted-trees",
           "heading": null,
           "source": "tasks/list-rooted-trees/list-rooted-trees.ghul",
           "output": "tasks/list-rooted-trees/run.expected",
-          "lines": 55,
+          "lines": 53,
           "playground": true,
           "input": false,
           "images": []
@@ -13698,14 +13708,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 40,
+      "lines": 36,
       "parts": [
         {
           "id": "literals-floating-point",
           "heading": null,
           "source": "tasks/literals-floating-point/literals-floating-point.ghul",
           "output": "tasks/literals-floating-point/run.expected",
-          "lines": 40,
+          "lines": 36,
           "playground": true,
           "input": false,
           "images": []
@@ -14797,14 +14807,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 108,
+      "lines": 106,
       "parts": [
         {
           "id": "markov-chain-text-generator",
           "heading": null,
           "source": "tasks/markov-chain-text-generator/markov-chain-text-generator.ghul",
           "output": "tasks/markov-chain-text-generator/run.expected",
-          "lines": 108,
+          "lines": 106,
           "playground": true,
           "input": false,
           "images": []
@@ -17758,14 +17768,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 90,
+      "lines": 88,
       "parts": [
         {
           "id": "periodic-table",
           "heading": null,
           "source": "tasks/periodic-table/periodic-table.ghul",
           "output": "tasks/periodic-table/run.expected",
-          "lines": 90,
+          "lines": 88,
           "playground": true,
           "input": false,
           "images": []
@@ -18011,14 +18021,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 65,
+      "lines": 63,
       "parts": [
         {
           "id": "pig-the-dice-game",
           "heading": null,
           "source": "tasks/pig-the-dice-game/pig-the-dice-game.ghul",
           "output": "tasks/pig-the-dice-game/run.expected",
-          "lines": 65,
+          "lines": 63,
           "playground": true,
           "input": true,
           "images": []
@@ -23078,14 +23088,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 68,
+      "lines": 66,
       "parts": [
         {
           "id": "stair-climbing-puzzle",
           "heading": null,
           "source": "tasks/stair-climbing-puzzle/stair-climbing-puzzle.ghul",
           "output": "tasks/stair-climbing-puzzle/run.expected",
-          "lines": 68,
+          "lines": 66,
           "playground": true,
           "input": false,
           "images": []
@@ -25751,14 +25761,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 73,
+      "lines": 61,
       "parts": [
         {
           "id": "unicode-strings",
           "heading": null,
           "source": "tasks/unicode-strings/unicode-strings.ghul",
           "output": "tasks/unicode-strings/run.expected",
-          "lines": 73,
+          "lines": 61,
           "playground": true,
           "input": false,
           "images": []
