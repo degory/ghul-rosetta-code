@@ -1,0 +1,34 @@
+use default
+use IO.Directory
+use IO.File
+use IO.Path
+use System.Environment
+use System.Guid
+
+list_here() =>
+    Directory.get_file_system_entries(".")
+        |> map(entry => Path.get_file_name(entry) ?? entry)
+        |> sort()
+        |> each(name => write_line(name))
+
+let scratch = Path.combine(Path.get_temp_path(), "ls-{Guid.new_guid()}")
+
+Directory.create_directory(scratch)
+
+let here = Environment.current_directory
+
+try
+    Environment.current_directory = scratch
+
+    for name in ["b", "a", "2", "1"] do
+        File.write_all_text(name, "")
+    od
+
+    Directory.create_directory("bar")
+
+    list_here()
+finally
+    Environment.current_directory = here
+
+    Directory.delete(scratch, true)
+yrt

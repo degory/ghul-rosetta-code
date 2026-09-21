@@ -1,0 +1,66 @@
+use default
+use IO.File
+use IO.FileMode
+use IO.FileShare
+use IO.FileAccess
+use IO.Path
+use System.Diagnostics.Process
+use System.Diagnostics.ProcessStartInfo
+use System.Environment
+use System.Guid
+
+take(lock_path: string) -> IO.FileStream? is
+    try
+        return
+            File.open(
+                lock_path,
+                FileMode.OPEN_OR_CREATE,
+                FileAccess.READ_WRITE,
+                FileShare.NONE)
+    catch e: IO.IOException
+        return null
+    yrt
+si
+
+run_second_instance(lock_path: string) is
+    let how = ProcessStartInfo(Environment.process_path!)
+
+    how.redirect_standard_output = true
+
+    for argument in Environment.get_command_line_args() do
+        how.argument_list.add(argument)
+    od
+
+    how.argument_list.add(lock_path)
+
+    let child = Process.start(how)!
+
+    while let line = child.standard_output.read_line() do
+        write_line("  second instance says: {line}")
+    od
+
+    child.wait_for_exit()
+si
+
+let arguments = Environment.get_command_line_args()
+let is_second = arguments.count > 1
+let lock_path =
+    if is_second then
+        arguments[arguments.count - 1]
+    else
+        Path.combine(Path.get_temp_path(), "one-instance-{Guid.new_guid()}")
+    fi
+
+if let held = take(lock_path) then
+    let use held_while_running = held
+
+    write_line("this is the only instance")
+
+    run_second_instance(lock_path)
+else
+    write_line("another instance is already running")
+fi
+
+if !is_second then
+    File.delete(lock_path)
+fi

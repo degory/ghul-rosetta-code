@@ -1,0 +1,28 @@
+use default
+use Ghul.Pipes.Pipe
+use IO.File
+
+characters(path: string) -> Pipe[string] is
+    let use reader = File.open_text(path)
+
+    while reader.peek() >= 0 do
+        let first = cast char(reader.read())
+
+        if char.is_high_surrogate(first) /\ reader.peek() >= 0 then
+            let second = cast char(reader.read())
+
+            yield "{first}{second}"
+        else
+            yield "{first}"
+        fi
+    od
+si
+
+let shown =
+    characters("sample.txt")
+        |> map(character =>
+            if character =~ "\n" then "\\n" else character fi)
+        |> collect_list()
+
+write_line("{shown.count} characters")
+write_line(shown |> join(" "))

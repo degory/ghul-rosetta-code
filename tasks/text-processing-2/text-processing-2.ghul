@@ -1,0 +1,54 @@
+use default
+use IO.File
+use System.StringSplitOptions
+
+let fields_per_record = 49
+let instruments = fields_per_record / 2
+
+let records =
+    File.read_lines("readings.txt")
+        |> map(line =>
+            line.split(
+                [' ', '\t'],
+                StringSplitOptions.REMOVE_EMPTY_ENTRIES))
+        |> collect_list()
+
+let wrong_width =
+    records
+        |> filter(fields => fields.count != fields_per_record)
+        |> count()
+
+let all_good =
+    records
+        |> filter(fields =>
+            1::instruments
+                |> all(reading => int.parse(fields[reading * 2]) >= 1))
+        |> count()
+
+let times_seen = MAP[string, int]()
+let duplicates = LIST[string]()
+
+for fields in records do
+    let date = fields[0]
+    let before =
+        if times_seen.contains_key(date) then times_seen[date] else 0 fi
+
+    times_seen[date] = before + 1
+
+    if before == 1 then
+        duplicates.add(date)
+    fi
+od
+
+write_line("{records.count} records read")
+
+if wrong_width == 0 then
+    write_line("every record has {fields_per_record} fields")
+else
+    write_line("{wrong_width} records have some other number of fields")
+fi
+
+write_line("{all_good} records have every instrument working")
+write_line("{duplicates.count} datestamps appear more than once:")
+
+duplicates |> each(date => write_line("  {date}"))

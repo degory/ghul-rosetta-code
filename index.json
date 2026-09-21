@@ -6226,6 +6226,32 @@
       ]
     },
     {
+      "slug": "determine-if-only-one-instance-is-running",
+      "title": "Determine if only one instance is running",
+      "url": "https://rosettacode.org/wiki/Determine_if_only_one_instance_is_running",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "determine-if-only-one-instance-is-running",
+          "heading": null,
+          "source": "tasks/determine-if-only-one-instance-is-running/determine-if-only-one-instance-is-running.ghul",
+          "output": "tasks/determine-if-only-one-instance-is-running/run.expected",
+          "lines": 66,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "determine-if-two-triangles-overlap",
       "title": "Determine if two triangles overlap",
       "url": "https://rosettacode.org/wiki/Determine_if_two_triangles_overlap",
@@ -9034,6 +9060,33 @@
       ]
     },
     {
+      "slug": "fixed-length-records",
+      "title": "Fixed length records",
+      "url": "https://rosettacode.org/wiki/Fixed_length_records",
+      "tags": [
+        "text-processing",
+        "strings",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "fixed-length-records",
+          "heading": null,
+          "source": "tasks/fixed-length-records/fixed-length-records.ghul",
+          "output": "tasks/fixed-length-records/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "fizzbuzz",
       "title": "FizzBuzz",
       "url": "https://rosettacode.org/wiki/FizzBuzz",
@@ -9967,6 +10020,32 @@
           "images": [
             "tasks/geocentric-model/geocentric.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "get-system-command-output",
+      "title": "Get system command output",
+      "url": "https://rosettacode.org/wiki/Get_system_command_output",
+      "tags": [
+        "dotnet-interop",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "get-system-command-output",
+          "heading": null,
+          "source": "tasks/get-system-command-output/get-system-command-output.ghul",
+          "output": "tasks/get-system-command-output/run.expected",
+          "lines": 30,
+          "playground": false,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -16557,6 +16636,32 @@
       ]
     },
     {
+      "slug": "one-of-n-lines-in-a-file",
+      "title": "One of n lines in a file",
+      "url": "https://rosettacode.org/wiki/One_of_n_lines_in_a_file",
+      "tags": [
+        "algorithms",
+        "simulation"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 32,
+      "parts": [
+        {
+          "id": "one-of-n-lines-in-a-file",
+          "heading": null,
+          "source": "tasks/one-of-n-lines-in-a-file/one-of-n-lines-in-a-file.ghul",
+          "output": "tasks/one-of-n-lines-in-a-file/run.expected",
+          "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "operator-precedence",
       "title": "Operator precedence",
       "url": "https://rosettacode.org/wiki/Operator_precedence",
@@ -19168,6 +19273,33 @@
           "source": "tasks/read-a-configuration-file/read-a-configuration-file.ghul",
           "output": "tasks/read-a-configuration-file/run.expected",
           "lines": 34,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "read-a-file-character-by-character-utf8",
+      "title": "Read a file character by character/UTF8",
+      "url": "https://rosettacode.org/wiki/Read_a_file_character_by_character/UTF8",
+      "tags": [
+        "generators",
+        "strings",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 28,
+      "parts": [
+        {
+          "id": "read-a-file-character-by-character-utf8",
+          "heading": null,
+          "source": "tasks/read-a-file-character-by-character-utf8/read-a-file-character-by-character-utf8.ghul",
+          "output": "tasks/read-a-file-character-by-character-utf8/run.expected",
+          "lines": 28,
           "playground": true,
           "input": false,
           "images": []
@@ -24664,6 +24796,33 @@
       ]
     },
     {
+      "slug": "text-processing-2",
+      "title": "Text processing/2",
+      "url": "https://rosettacode.org/wiki/Text_processing/2",
+      "tags": [
+        "text-processing",
+        "pipes",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "text-processing-2",
+          "heading": null,
+          "source": "tasks/text-processing-2/text-processing-2.ghul",
+          "output": "tasks/text-processing-2/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "the-name-game",
       "title": "The Name Game",
       "url": "https://rosettacode.org/wiki/The_Name_Game",
@@ -25575,6 +25734,33 @@
           "source": "tasks/universal-turing-machine/universal-turing-machine.ghul",
           "output": "tasks/universal-turing-machine/run.expected",
           "lines": 106,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "unix-ls",
+      "title": "Unix/ls",
+      "url": "https://rosettacode.org/wiki/Unix/ls",
+      "tags": [
+        "text-processing",
+        "pipes",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "unix-ls",
+          "heading": null,
+          "source": "tasks/unix-ls/unix-ls.ghul",
+          "output": "tasks/unix-ls/run.expected",
+          "lines": 34,
           "playground": false,
           "input": false,
           "images": []

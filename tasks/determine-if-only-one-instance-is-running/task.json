@@ -1,0 +1,10 @@
+{
+    "task": "Determine if only one instance is running",
+    "url": "https://rosettacode.org/wiki/Determine_if_only_one_instance_is_running",
+    "status": "solved",
+    "tags": [
+        "concurrency",
+        "dotnet-interop"
+    ],
+    "interest": 3
+}

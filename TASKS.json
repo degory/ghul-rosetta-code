@@ -1577,6 +1577,11 @@
       "published_hash": "d4bc76717d9b2fa250a180cd5e687cb1ab93db501d9288130c6e42966cc8c8a7"
     },
     {
+      "title": "Determine if only one instance is running",
+      "slug": "determine-if-only-one-instance-is-running",
+      "state": "solved"
+    },
+    {
       "title": "Determine if two triangles overlap",
       "slug": "determine-if-two-triangles-overlap",
       "state": "published",
@@ -2265,6 +2270,11 @@
       }
     },
     {
+      "title": "Fixed length records",
+      "slug": "fixed-length-records",
+      "state": "solved"
+    },
+    {
       "title": "FizzBuzz",
       "slug": "fizzbuzz",
       "state": "published",
@@ -2504,6 +2514,11 @@
       "image_hashes": {
         "Ghul-geocentric-model-geocentric.gif": "a8dd5ab22bdf66eb6a0032b69e5c568c4854c9d1"
       }
+    },
+    {
+      "title": "Get system command output",
+      "slug": "get-system-command-output",
+      "state": "solved"
     },
     {
       "title": "Giuga numbers",
@@ -4141,6 +4156,11 @@
       "published_hash": "6f55d0d9107b37d9e7811a34c480642d185d68ef7581cbd363e7569f03c67c76"
     },
     {
+      "title": "One of n lines in a file",
+      "slug": "one-of-n-lines-in-a-file",
+      "state": "solved"
+    },
+    {
       "title": "One-dimensional cellular automata",
       "slug": "one-dimensional-cellular-automata",
       "state": "published",
@@ -4822,6 +4842,11 @@
       "slug": "read-a-configuration-file",
       "state": "published",
       "published_hash": "6249e81122926471d258bd044ade68d9d0089c81ee64a4950219845a54193300"
+    },
+    {
+      "title": "Read a file character by character/UTF8",
+      "slug": "read-a-file-character-by-character-utf8",
+      "state": "solved"
     },
     {
       "title": "Read a file line by line",
@@ -6151,6 +6176,11 @@
       "published_hash": "86a9dcf9a5c4edecd9a08158295e9699f4c7b8a99cf5bab8e575c21b3c58c959"
     },
     {
+      "title": "Text processing/2",
+      "slug": "text-processing-2",
+      "state": "solved"
+    },
+    {
       "title": "Text processing/Max licenses in use",
       "state": "rejected",
       "reason": "needs-network"
@@ -6401,6 +6431,11 @@
       "slug": "universal-turing-machine",
       "state": "published",
       "published_hash": "5dab736a389177c52621479f8c3a0eb2cd0b74a54452febac6051dca7596e3d3"
+    },
+    {
+      "title": "Unix/ls",
+      "slug": "unix-ls",
+      "state": "solved"
     },
     {
       "title": "Uno (card game)",

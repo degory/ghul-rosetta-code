@@ -1,0 +1,10 @@
+{
+    "task": "Get system command output",
+    "url": "https://rosettacode.org/wiki/Get_system_command_output",
+    "status": "solved",
+    "tags": [
+        "dotnet-interop",
+        "text-processing"
+    ],
+    "interest": 3
+}
