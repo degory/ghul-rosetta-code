@@ -14785,6 +14785,33 @@
       ]
     },
     {
+      "slug": "markov-chain-text-generator",
+      "title": "Markov chain text generator",
+      "url": "https://rosettacode.org/wiki/Markov_chain_text_generator",
+      "tags": [
+        "text-processing",
+        "generators",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 108,
+      "parts": [
+        {
+          "id": "markov-chain-text-generator",
+          "heading": null,
+          "source": "tasks/markov-chain-text-generator/markov-chain-text-generator.ghul",
+          "output": "tasks/markov-chain-text-generator/run.expected",
+          "lines": 108,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "mastermind",
       "title": "Mastermind",
       "url": "https://rosettacode.org/wiki/Mastermind",

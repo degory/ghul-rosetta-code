@@ -1,0 +1,108 @@
+use default
+use Collections
+
+// Every window of `size` words is a prefix, and the word after it is
+// one of that prefix's suffixes. The last prefix has none, which is
+// where generation stops.
+rules(words: string[], size: int)
+    -> (table: MAP[string, LIST[string]], prefixes: LIST[string])
+is
+    let table = MAP[string, LIST[string]]()
+    let prefixes = LIST[string]()
+
+    for at in size::words.count do
+        let key = words[(at - size)..at] |> join(" ")
+
+        if !table.contains_key(key) then
+            table[key] = LIST[string]()
+            prefixes.add(key)
+        fi
+
+        if at < words.count then
+            table[key].add(words[at])
+        fi
+    od
+
+    (table = table, prefixes = prefixes)
+si
+
+generate(
+    table: Map[string, LIST[string]],
+    start: string,
+    length: int,
+    random: System.Random
+) -> string
+is
+    let out = LIST[string](start.split([' ']))
+    let size = out.count
+
+    while out.count < length do
+        let key = out[(out.count - size)..out.count] |> join(" ")
+
+        if !table.contains_key(key) \/ table[key].count == 0 then
+            break
+        fi
+
+        let choices = table[key]
+
+        out.add(choices[random.next(0, choices.count)])
+    od
+
+    out |> join(" ")
+si
+
+wrap(text: string, width: int) -> Pipe[string] is
+    let line = System.Text.StringBuilder()
+
+    for word in text.split([' ']) do
+        if line.length > 0 /\ line.length + 1 + word.length > width then
+            yield line.to_string()
+
+            line.clear()
+        fi
+
+        if line.length > 0 then
+            line.append(' ')
+        fi
+
+        line.append(word)
+    od
+
+    if line.length > 0 then
+        yield line.to_string()
+    fi
+si
+
+entry(args: string[]) is
+    let example = "now he is gone she said he is gone for good"
+    let built = rules(example.split([' ']), 2)
+
+    write_line("prefixes of \"{example}\", key 2")
+    write_line("")
+
+    for prefix in built.prefixes do
+        let suffixes = built.table[prefix] |> join(", ")
+
+        write_line("  {prefix,-10} {suffixes}".trim_end())
+    od
+
+    let path = if args.count > 0 then args[0] else "alice.txt" fi
+    let size = if args.count > 1 then int.parse(args[1]) else 2 fi
+    let length = if args.count > 2 then int.parse(args[2]) else 60 fi
+
+    let words = IO.File.read_all_text(path).split([' ', '\n', '\r', '\t'])
+    let corpus = words |> filter(w => w.length > 0) |> collect_array()
+    let source = rules(corpus, size)
+    let random = System.Random(2026)
+    let start = source.prefixes[random.next(0, source.prefixes.count)]
+
+    write_line("")
+    write_line(
+        "{length} words from {path}, key {size},"
+        " starting \"{start}\"")
+    write_line("")
+
+    for line in wrap(generate(source.table, start, length, random), 68) do
+        write_line("  {line}")
+    od
+si
