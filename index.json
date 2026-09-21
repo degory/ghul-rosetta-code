@@ -8162,6 +8162,33 @@
       ]
     },
     {
+      "slug": "external-sort",
+      "title": "External sort",
+      "url": "https://rosettacode.org/wiki/External_sort",
+      "tags": [
+        "sorting",
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 136,
+      "parts": [
+        {
+          "id": "external-sort",
+          "heading": null,
+          "source": "tasks/external-sort/external-sort.ghul",
+          "output": "tasks/external-sort/run.expected",
+          "lines": 136,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "extreme-floating-point-values",
       "title": "Extreme floating point values",
       "url": "https://rosettacode.org/wiki/Extreme_floating_point_values",

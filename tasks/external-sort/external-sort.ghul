@@ -1,0 +1,136 @@
+use default
+use IO
+
+let values = 20_000
+let chunk = 2_000
+
+class RUN(path: string) is
+    _reader: StreamReader
+    _head: int?
+
+    init(..) is
+        _reader = StreamReader(path)
+
+        take()
+    si
+
+    head: int? => _head
+
+    take() -> int? is
+        let taken = _head
+
+        if let line = _reader.read_line() then
+            _head = int.parse(line)
+        else
+            _head = null
+        fi
+
+        taken
+    si
+
+    dispose() is
+        _reader.dispose()
+    si
+si
+
+write_source(path: string) is
+    let random = System.Random(2026)
+
+    File.write_all_lines(
+        path,
+        0..values
+            |> map(_ => "{random.next(1_000_000)}")
+            |> collect_array())
+si
+
+split(path: string) -> List[string] is
+    let parts = LIST[string]()
+    let held = LIST[int]()
+
+    spill() is
+        if held.count > 0 then
+            held.sort()
+
+            let part = "run-{parts.count}.txt"
+
+            File.write_all_lines(
+                part, held |> map(v => "{v}") |> collect_array())
+
+            parts.add(part)
+            held.clear()
+        fi
+    si
+
+    let source = StreamReader(path)
+
+    while let line = source.read_line() do
+        held.add(int.parse(line))
+
+        if held.count == chunk then
+            spill()
+        fi
+    od
+
+    source.dispose()
+
+    spill()
+
+    parts
+si
+
+merge(parts: List[string], into: string) is
+    let runs = parts |> map(part => RUN(part)) |> collect_list()
+    let writer = File.create_text(into)
+
+    do
+        let live = runs |> filter(run => run.head?) |> collect_list()
+
+        if live.count == 0 then
+            break
+        fi
+
+        let taking =
+            live
+                |> reduce(
+                    live[0],
+                    (best, run) =>
+                        if run.head! < best.head! then run else best fi)
+
+        writer.write_line("{taking.take()!}")
+    od
+
+    writer.dispose()
+
+    runs |> each(run => run.dispose())
+    parts |> each(part => File.delete(part))
+si
+
+write_source("unsorted.txt")
+
+let parts = split("unsorted.txt")
+
+write_line("{values} values in runs of {chunk}: {parts.count} runs")
+
+merge(parts, "sorted.txt")
+
+let sorted =
+    File.read_all_lines("sorted.txt") |> map(int.parse) |> collect_list()
+
+let in_memory =
+    File.read_all_lines("unsorted.txt") |> map(int.parse) |> collect_list()
+
+in_memory.sort()
+
+write_line("merged {sorted.count} values")
+let ordered = 0..sorted.count - 1 |> all(at => sorted[at] <= sorted[at + 1])
+
+write_line("in order: {ordered}")
+write_line("same as sorting it in memory: {sorted =~ in_memory}")
+let first = sorted[0..3] |> map(v => "{v}") |> join(" ")
+let last = sorted[sorted.count - 3..<0] |> map(v => "{v}") |> join(" ")
+
+write_line("first three: {first}")
+write_line("last three:  {last}")
+
+File.delete("unsorted.txt")
+File.delete("sorted.txt")
