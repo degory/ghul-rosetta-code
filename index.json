@@ -8286,14 +8286,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 136,
+      "lines": 132,
       "parts": [
         {
           "id": "external-sort",
           "heading": null,
           "source": "tasks/external-sort/external-sort.ghul",
           "output": "tasks/external-sort/run.expected",
-          "lines": 136,
+          "lines": 132,
           "playground": true,
           "input": false,
           "images": []
