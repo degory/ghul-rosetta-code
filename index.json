@@ -13401,6 +13401,33 @@
       ]
     },
     {
+      "slug": "list-rooted-trees",
+      "title": "List rooted trees",
+      "url": "https://rosettacode.org/wiki/List_rooted_trees",
+      "tags": [
+        "data-structures",
+        "generators",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 55,
+      "parts": [
+        {
+          "id": "list-rooted-trees",
+          "heading": null,
+          "source": "tasks/list-rooted-trees/list-rooted-trees.ghul",
+          "output": "tasks/list-rooted-trees/run.expected",
+          "lines": 55,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "literals-floating-point",
       "title": "Literals/Floating point",
       "url": "https://rosettacode.org/wiki/Literals/Floating_point",
