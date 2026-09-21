@@ -1,0 +1,4 @@
+first is 42, second is 200
+read through a reference: 42
+after swapping through two references: 7 and 42
+a reference the caller has no use for goes to a discard
