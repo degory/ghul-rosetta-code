@@ -24,12 +24,16 @@ it is run. So:
   natural way to express the task, use it - that is the reason for the entry existing.
 - Comment only where a reader who does not know ghūl would otherwise misread the code. A comment
   explaining what the task is, or narrating the algorithm line by line, is noise.
-- The test has to be deterministic, which is not the same as the task being deterministic. A task
-  built on randomness seeds its generator, or asserts the invariant the task is about - a cipher
-  round-tripping, a generated position being legal - and prints that. A task whose input is a
-  remote file ships the file here instead of fetching it: a fetched input makes the build depend
-  on somebody else's uptime, and silently pins a wrong answer when the file changes.
-- No clocks and no local paths, which have no reproducible form at all.
+- The test has to hold the solution to something, which is not the same as the task being
+  deterministic. A task built on randomness seeds its generator, or asserts the invariant the
+  task is about - a cipher round-tripping, a generated position being legal - and prints that.
+  A task whose input is a remote file ships the file here instead of fetching it: a fetched
+  input makes the build depend on somebody else's uptime, and silently pins a wrong answer
+  when the file changes.
+- A task about time, a clock, a path or anything else whose output legitimately differs from one
+  run to the next is solved as the task asks, and its test judges the run with `run.check` rather
+  than a captured `run.expected` - with `run.args`, `run.session` and `run.exit.expected` where
+  they apply. Output that can be made the same every time still should be.
 
 ## The style guide applies here
 
@@ -508,6 +512,9 @@ topic variable, a macro, a nested type. The only honest wiki entry is a sentence
 language has no such thing, and a sentence of prose is not what a solution here is.
 
 `excluded` is for a task this repository does not solve.
+
+`nondeterministic` is for a task whose output no check can judge, rather than one that merely
+varies from run to run: a varying output is asserted with `run.check`.
 
 A rejection can also be reversed, when what made the task impossible stops being true. That is
 `reopen`, and it takes the reason for the reversal rather than being a bare undo:
