@@ -24769,6 +24769,33 @@
       ]
     },
     {
+      "slug": "text-processing-2",
+      "title": "Text processing/2",
+      "url": "https://rosettacode.org/wiki/Text_processing/2",
+      "tags": [
+        "text-processing",
+        "pipes",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "text-processing-2",
+          "heading": null,
+          "source": "tasks/text-processing-2/text-processing-2.ghul",
+          "output": "tasks/text-processing-2/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "the-name-game",
       "title": "The Name Game",
       "url": "https://rosettacode.org/wiki/The_Name_Game",
