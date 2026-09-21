@@ -200,9 +200,10 @@ use Point = (x: double, y: double, z: double)
 
 and then `p + q * 2.0D` reads the way the mathematics does. The Unicode operator characters are
 ordinary operators with sensible precedence, so a dot product is `a ⋅ b` and a cross product
-`a × b` (GHUL.md, "operators"). An identifier can be written in any script too, so a solution
-whose task is stated in one may use it; everything else stays ASCII. Keep a named function where
-there is no accepted symbol, and do not invent notation.
+`a × b` (GHUL.md, "operators"). A function can carry a non-ASCII name where that is the standard
+mathematical one - `π`, `φ`, `ζ` - and every other identifier stays ASCII. A capital Greek letter
+reads as non-snake-case, so `Σ` and `Γ` draw `non-snake-case-name` and need it suppressed to keep.
+Keep a named function where there is no accepted symbol, and do not invent notation.
 
 An operator declared this way is also a value, so ``points |> reduce(origin, `+)`` passes it to a
 combinator by name, backtick-escaped so the operator reads as an identifier. The built-in
