@@ -9971,6 +9971,32 @@
       ]
     },
     {
+      "slug": "get-system-command-output",
+      "title": "Get system command output",
+      "url": "https://rosettacode.org/wiki/Get_system_command_output",
+      "tags": [
+        "dotnet-interop",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "get-system-command-output",
+          "heading": null,
+          "source": "tasks/get-system-command-output/get-system-command-output.ghul",
+          "output": "tasks/get-system-command-output/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "giuga-numbers",
       "title": "Giuga numbers",
       "url": "https://rosettacode.org/wiki/Giuga_numbers",
