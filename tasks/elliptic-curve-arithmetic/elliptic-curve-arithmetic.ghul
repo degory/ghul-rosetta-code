@@ -1,0 +1,153 @@
+use default
+use Raster.Anchor
+use Raster.AXES
+use Raster.IMAGE
+use System.Math.cbrt
+use System.Math.sqrt
+
+let b = 7.0D
+
+union Point is
+    ZERO;
+    AT(x: double, y: double);
+si
+
+on_curve(x: double) -> Point => Point.AT(x, sqrt(x * x * x + b))
+
+-(p: Point) -> Point =>
+    if let (x, y): Point.AT = p then Point.AT(x, -y) else p fi
+
++(p: Point, q: Point) -> Point is
+    if let (px, py): Point.AT = p then
+        if let (qx, qy): Point.AT = q then
+            if px == qx /\ py == -qy then
+                return Point.ZERO
+            fi
+
+            let slope =
+                if px == qx then 3.0D * px * px / (2.0D * py)
+                else (qy - py) / (qx - px)
+                fi
+
+            let x = slope * slope - px - qx
+
+            Point.AT(x, slope * (px - x) - py)
+        else
+            p
+        fi
+    else
+        q
+    fi
+si
+
+*(p: Point, n: int) -> Point is
+    let total mut = Point.ZERO
+
+    for _ in 0..n do
+        total = total + p
+    od
+
+    total
+si
+
+show(p: Point) -> string =>
+    if let (x, y): Point.AT = p then "({x:F6}, {y:F6})" else "zero" fi
+
+aligned(p: Point, q: Point, r: Point) -> bool =>
+    if
+        let (px, py): Point.AT = p,
+            (qx, qy): Point.AT = q,
+            (rx, ry): Point.AT = r
+    then
+        System.Math.abs(
+            (qx - px) * (ry - py) - (rx - px) * (qy - py)) < 1.0e-9
+    else
+        false
+    fi
+
+draw(p: Point, q: Point, r: Point, s: Point) is
+    if
+        let (px, py): Point.AT = p,
+            (qx, qy): Point.AT = q,
+            (rx, ry): Point.AT = r,
+            (sx, sy): Point.AT = s
+    then
+        let image = IMAGE(700, 520)
+        let least = -cbrt(b)
+        let most = 4.9D
+        let reach = sqrt(most * most * most + b)
+
+        let axes = AXES(image)
+
+        axes.x_title = "x"
+        axes.y_title = "y"
+        axes.fit(least - 0.4D, -reach - 0.6D, most, reach + 0.6D)
+
+        image.colour(150ub, 150ub, 150ub)
+        image.stroke(1.0D)
+        axes.draw()
+
+        let curve = 0..401
+            |> map(
+                step =>
+                    least + (most - least) * cast double(step) / 400.0D)
+            |> map(x => (x = x, y = sqrt(x * x * x + b)))
+            |> collect_list()
+
+        image.colour(30ub, 70ub, 160ub)
+        image.stroke(1.6D)
+        image.line(curve)
+        image.line(
+            curve |> map(at => (x = at.x, y = -at.y)) |> collect_list())
+
+        let slope = (qy - py) / (qx - px)
+        let chord = (x: double) => (x = x, y = py + slope * (x - px))
+
+        image.colour(200ub, 90ub, 40ub)
+        image.stroke(1.2D)
+        image.line([chord(least - 0.4D), chord(most)])
+        image.line([(x = rx, y = ry), (x = sx, y = sy)])
+
+        image.colour(40ub, 40ub, 40ub)
+
+        for marked in [
+            (x = px, y = py, name = "P"),
+            (x = qx, y = qy, name = "Q"),
+            (x = rx, y = ry, name = "R"),
+            (x = sx, y = sy, name = "S = P + Q")]
+        do
+            image.dot(marked.x, marked.y, 4.0D)
+            image.text(
+                marked.x + 0.14D, marked.y - 0.22D, 14.0D,
+                marked.name, Anchor.LEFT)
+        od
+
+        image.write("elliptic-curve.png")
+
+        image.show("elliptic-curve.png")
+    fi
+si
+
+let p = on_curve(-1.8D)
+let q = on_curve(4.0D)
+let s = p + q
+let r = -s
+
+write_line("the curve is y^2 = x^3 + {b:F0}")
+write_line("")
+write_line("P         {show(p)}")
+write_line("Q         {show(q)}")
+write_line("P + Q     {show(s)}")
+write_line("-(P + Q)  {show(r)}")
+write_line("")
+write_line(
+    "-(P + Q) is where the line through P and Q meets the curve again")
+write_line("  aligned with P and Q: {aligned(p, q, r)}")
+write_line("")
+write_line("P + P     {show(p + p)}")
+write_line("P * 5     {show(p * 5)}")
+write_line("P + zero  {show(p + Point.ZERO)}")
+write_line("P + (-P)  {show(p + -p)}")
+write_line("")
+
+draw(p, q, r, s)

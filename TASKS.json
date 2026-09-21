@@ -69,6 +69,11 @@
       }
     },
     {
+      "title": "4-rings or 4-squares puzzle",
+      "slug": "four-rings-or-four-squares-puzzle",
+      "state": "solved"
+    },
+    {
       "title": "99 bottles of beer",
       "slug": "99-bottles-of-beer",
       "state": "published",
@@ -1562,6 +1567,11 @@
       "published_hash": "3a76bf406c0870bd1ac395febb2b37f83d69b5ed1fae8551524cc5ddfe327a7d"
     },
     {
+      "title": "Deming\u0027s funnel",
+      "slug": "demings-funnel",
+      "state": "solved"
+    },
+    {
       "title": "Department numbers",
       "slug": "department-numbers",
       "state": "published",
@@ -1850,6 +1860,11 @@
       "slug": "elementary-cellular-automaton-infinite-length",
       "state": "published",
       "published_hash": "0eadcc0e0e6a507b1b3044928aa886aebdeb9f72bc13992fdd8612c50d2af759"
+    },
+    {
+      "title": "Elliptic curve arithmetic",
+      "slug": "elliptic-curve-arithmetic",
+      "state": "solved"
     },
     {
       "title": "Emirp primes",
@@ -3895,6 +3910,11 @@
       "published_hash": "93d5ef012144ad85966e24ca39422dd943344086edb35ecc446691a0de15c476"
     },
     {
+      "title": "Minkowski question-mark function",
+      "slug": "minkowski-question-mark-function",
+      "state": "solved"
+    },
+    {
       "title": "Monads/List monad",
       "slug": "monads-list-monad",
       "state": "published",
@@ -5047,6 +5067,11 @@
       "slug": "rhonda-numbers",
       "state": "published",
       "published_hash": "1f8a6b9bb0a5d991592a22fc0518cd7392413aba80f221e5db273964dd769537"
+    },
+    {
+      "title": "Riemann surface",
+      "slug": "riemann-surface",
+      "state": "solved"
     },
     {
       "title": "Riordan numbers",
