@@ -105,7 +105,12 @@ let total = (let acc mut = 0
 ```
 
 - **Open with `use default`.** It brings in `write_line`, the pipes and the collections, which is
-  what almost every solution wants; name anything further on its own line after it.
+  what almost every solution wants; name anything further on its own line after it. A `use` for
+  something it already covers, such as `Collections.LIST`, says nothing and goes. Import a whole
+  namespace where a solution uses more than a couple of its names, unless that collides with
+  something the file already has; a name as common as `List`, `LIST`, `MAP` or `SET` is imported
+  and written bare rather than reached through its namespace. Something uncommon that a solution
+  names once, a static method in particular, is written with its namespace instead.
 - **Reach for what has no equivalent in the language next door.** `let x = e in`
   and `assert c else "..." in` as expressions, `if let` and `while let` in place
   of a test followed by a cast, unions with `case` pattern matching in place of
@@ -242,6 +247,14 @@ let cells = 0..rows
 
 Filling the grid by index afterwards does not change that: how the elements get there is a separate
 question from how the rows are made.
+
+An array literal is already a `List[T]`, so `LIST(...)` around one builds a second collection to
+hold the same elements: write the literal on its own where nothing mutates the value, and keep
+`LIST` for a list something adds to, removes from, sorts in place or assigns by index. A type that
+is written follows the same rule - a return type, parameter or field is `List[T]` where nothing
+downstream mutates it, and `MAP` and `SET` give way to `Map` and `Set` on the same terms. A
+function that builds its result by mutation keeps a `LIST` local and returns it as a `List[T]`,
+which needs no conversion.
 
 The loop stays where the body does more than add one element, where each element depends on the
 ones already added, or where the list is being appended to rather than built.
