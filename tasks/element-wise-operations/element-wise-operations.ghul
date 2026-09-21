@@ -3,9 +3,6 @@ use default
 class MATRIX(cells: double[][]) is
     _cells;
 
-    // Every operation below is one of these two: a cell paired with
-    // the cell in the same place of another matrix, or a cell on its
-    // own.
     _both(other: MATRIX, op: (double, double) -> double pure) -> MATRIX =>
         MATRIX(
             _cells

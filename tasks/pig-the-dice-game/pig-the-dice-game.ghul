@@ -1,7 +1,5 @@
 use default
 
-// The die is seeded, so the same game is played every time. The
-// answers come from standard input, one to each prompt.
 class DIE(seed: int init) is
     _random: System.Random
 
