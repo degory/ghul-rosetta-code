@@ -1,0 +1,12 @@
+3374 956 2114 3415 3437
+
+the k-th smallest of a range
+  [2, 2] k=1  956
+  [3, 4] k=1  2114
+  [4, 5] k=1  3415
+  [1, 2] k=2  3374
+  [4, 4] k=1  3415
+
+3415 occurs 1 time in the sequence
+3 values are below 3400
+1 of the last three are below 3400
