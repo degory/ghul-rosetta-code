@@ -23011,14 +23011,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 109,
+      "lines": 110,
       "parts": [
         {
           "id": "stable-marriage-problem",
           "heading": null,
           "source": "tasks/stable-marriage-problem/stable-marriage-problem.ghul",
           "output": "tasks/stable-marriage-problem/run.expected",
-          "lines": 109,
+          "lines": 110,
           "playground": true,
           "input": false,
           "images": []
