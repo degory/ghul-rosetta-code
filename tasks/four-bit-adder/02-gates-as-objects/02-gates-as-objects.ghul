@@ -8,23 +8,15 @@ class PIN(value: bool public): Component is
     output: bool => value
 si
 
-class NOT(input: Component init): Component is
-    _input;
-
+class NOT(input: Component private): Component is
     output: bool => !_input.output
 si
 
-class AND(left: Component init, right: Component init): Component is
-    _left;
-    _right;
-
+class AND(left: Component private, right: Component private): Component is
     output: bool => _left.output /\ _right.output
 si
 
-class OR(left: Component init, right: Component init): Component is
-    _left;
-    _right;
-
+class OR(left: Component private, right: Component private): Component is
     output: bool => _left.output \/ _right.output
 si
 

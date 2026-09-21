@@ -9447,7 +9447,7 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 208,
+      "lines": 200,
       "parts": [
         {
           "id": "four-bit-adder/01-gates-as-functions",
@@ -9464,7 +9464,7 @@
           "heading": "Gates as objects",
           "source": "tasks/four-bit-adder/02-gates-as-objects/02-gates-as-objects.ghul",
           "output": "tasks/four-bit-adder/02-gates-as-objects/run.expected",
-          "lines": 137,
+          "lines": 129,
           "playground": true,
           "input": false,
           "images": []
