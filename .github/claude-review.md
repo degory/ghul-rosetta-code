@@ -11,9 +11,9 @@ Not loaded by local Claude Code; only the cloud reviewer reads this.
 ## What this repo is
 
 `ghul-rosetta-code` holds ghūl solutions to [Rosetta Code](https://rosettacode.org)
-tasks. Each is a runnable project under `tasks/<slug>/` with a `run.expected`
-snapshot of what the program prints, so a compiler change that breaks a posted
-solution fails a test here rather than leaving a wrong answer on a public page.
+tasks. Each is a runnable project under `tasks/<slug>/` whose test asserts what
+the program prints, so a compiler change that breaks a posted solution fails a
+test here rather than leaving a wrong answer on a public page.
 `TASKS.json` is the ledger recording every task that has been solved, queued,
 rejected or blocked, and why.
 
