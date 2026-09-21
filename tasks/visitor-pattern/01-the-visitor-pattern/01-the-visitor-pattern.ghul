@@ -1,86 +1,60 @@
 use default
 
-trait Visitor is
-    visit_number(number: NUMBER)
-    visit_add(add: ADD)
-    visit_multiply(multiply: MULTIPLY)
-    visit_negate(negate: NEGATE)
+trait Visitor[T] is
+    visit_number(number: NUMBER) -> T
+    visit_add(add: ADD) -> T
+    visit_multiply(multiply: MULTIPLY) -> T
+    visit_negate(negate: NEGATE) -> T
 si
 
 class Expression abstract is
-    accept(visitor: Visitor)
+    accept[T](visitor: Visitor[T]) -> T
 si
 
 class NUMBER(value: double): Expression is
-    accept(visitor: Visitor) is visitor.visit_number(self) si
+    accept[T](visitor: Visitor[T]) -> T => visitor.visit_number(self)
 si
 
 class ADD(left: Expression, right: Expression): Expression is
-    accept(visitor: Visitor) is visitor.visit_add(self) si
+    accept[T](visitor: Visitor[T]) -> T => visitor.visit_add(self)
 si
 
 class MULTIPLY(left: Expression, right: Expression): Expression is
-    accept(visitor: Visitor) is visitor.visit_multiply(self) si
+    accept[T](visitor: Visitor[T]) -> T => visitor.visit_multiply(self)
 si
 
 class NEGATE(inner: Expression): Expression is
-    accept(visitor: Visitor) is visitor.visit_negate(self) si
+    accept[T](visitor: Visitor[T]) -> T => visitor.visit_negate(self)
 si
 
-class EVALUATOR: Visitor is
-    value: double public
+class EVALUATOR: Visitor[double] is
+    init() is si
 
-    init() is value = 0.0 si
+    of(expression: Expression) -> double => expression.accept(self)
 
-    of(expression: Expression) -> double is
-        expression.accept(self)
+    visit_number(number: NUMBER) -> double => number.value
 
-        value
-    si
+    visit_add(add: ADD) -> double => of(add.left) + of(add.right)
 
-    visit_number(number: NUMBER) is
-        value = number.value
-    si
+    visit_multiply(multiply: MULTIPLY) -> double =>
+        of(multiply.left) * of(multiply.right)
 
-    visit_add(add: ADD) is
-        value = of(add.left) + of(add.right)
-    si
-
-    visit_multiply(multiply: MULTIPLY) is
-        value = of(multiply.left) * of(multiply.right)
-    si
-
-    visit_negate(negate: NEGATE) is
-        value = -of(negate.inner)
-    si
+    visit_negate(negate: NEGATE) -> double => -of(negate.inner)
 si
 
-class PRINTER: Visitor is
-    text: string public
+class PRINTER: Visitor[string] is
+    init() is si
 
-    init() is text = "" si
+    of(expression: Expression) -> string => expression.accept(self)
 
-    of(expression: Expression) -> string is
-        expression.accept(self)
+    visit_number(number: NUMBER) -> string => "{number.value}"
 
-        text
-    si
+    visit_add(add: ADD) -> string => "({of(add.left)} + {of(add.right)})"
 
-    visit_number(number: NUMBER) is
-        text = "{number.value}"
-    si
+    visit_multiply(multiply: MULTIPLY) -> string =>
+        "({of(multiply.left)} × {of(multiply.right)})"
 
-    visit_add(add: ADD) is
-        text = "({of(add.left)} + {of(add.right)})"
-    si
-
-    visit_multiply(multiply: MULTIPLY) is
-        text = "({of(multiply.left)} × {of(multiply.right)})"
-    si
-
-    visit_negate(negate: NEGATE) is
-        text = "-{of(negate.inner)}"
-    si
+    visit_negate(negate: NEGATE) -> string => "-{of(negate.inner)}"
 si
 
 let evaluator = EVALUATOR()
