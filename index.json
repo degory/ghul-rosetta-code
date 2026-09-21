@@ -4977,6 +4977,29 @@
       ]
     },
     {
+      "slug": "consistent-overhead-byte-stuffing",
+      "title": "Consistent overhead byte stuffing",
+      "url": "https://rosettacode.org/wiki/Consistent_overhead_byte_stuffing",
+      "tags": [],
+      "interest": 0,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 109,
+      "parts": [
+        {
+          "id": "consistent-overhead-byte-stuffing",
+          "heading": null,
+          "source": "tasks/consistent-overhead-byte-stuffing/consistent-overhead-byte-stuffing.ghul",
+          "output": "tasks/consistent-overhead-byte-stuffing/run.expected",
+          "lines": 109,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "constrained-genericity",
       "title": "Constrained genericity",
       "url": "https://rosettacode.org/wiki/Constrained_genericity",

@@ -1300,6 +1300,11 @@
       "published_hash": "34a0f7b5b003dbb7576ab27164a61a92f2f0fddf7e385c58d33890a2f0de62a0"
     },
     {
+      "title": "Consistent overhead byte stuffing",
+      "slug": "consistent-overhead-byte-stuffing",
+      "state": "solved"
+    },
+    {
       "title": "Constrained genericity",
       "slug": "constrained-genericity",
       "state": "published",
