@@ -56,7 +56,7 @@ Three of its sections do not apply, because this repository's own rules are stri
 programs are shaped differently:
 
 - **Code comments.** The guide says when to comment and how; "When a solution carries words, and
-  when it does not" below says when an entry here may, and that wins. The guide's comment rules
+  when it does not" below says when an entry here carries any, and that wins. The guide's comment rules
   apply to this file, `README.md`, and the tooling under `tools/` and `scripts/`.
 - **`entry()` first, with the work in named subroutines.** That is the shape of a tour file in
   `ghul-examples`. A solution here is a program with top-level statements.
