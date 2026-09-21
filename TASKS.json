@@ -665,6 +665,11 @@
       "published_hash": "baea2f41bb402d98953d8dbc250070b892f7a419adb7e6df4aa886139d575314"
     },
     {
+      "title": "Bitwise IO",
+      "slug": "bitwise-io",
+      "state": "solved"
+    },
+    {
       "title": "Bitwise operations",
       "slug": "bitwise-operations",
       "state": "published",
@@ -1782,6 +1787,11 @@
       }
     },
     {
+      "title": "Element-wise operations",
+      "slug": "element-wise-operations",
+      "state": "solved"
+    },
+    {
       "title": "Elementary cellular automaton",
       "slug": "elementary-cellular-automaton",
       "state": "published",
@@ -2318,6 +2328,11 @@
       "slug": "forward-difference",
       "state": "published",
       "published_hash": "7319d473a3f1705ca1496941ec96ec507033947c867c3b38ef5f0f9eabedbcd5"
+    },
+    {
+      "title": "Four bit adder",
+      "slug": "four-bit-adder",
+      "state": "solved"
     },
     {
       "title": "Four is magic",
@@ -3381,6 +3396,16 @@
       "published_hash": "a83ea1df5fbcdcc4a8121160ab355a8910489b6175f98288aa1349d40750dfe7"
     },
     {
+      "title": "List rooted trees",
+      "slug": "list-rooted-trees",
+      "state": "solved"
+    },
+    {
+      "title": "Literals/Floating point",
+      "slug": "literals-floating-point",
+      "state": "solved"
+    },
+    {
       "title": "Literals/Integer",
       "slug": "literals-integer",
       "state": "published",
@@ -4339,6 +4364,11 @@
       "slug": "perfect-totient-numbers",
       "state": "published",
       "published_hash": "36b63cc4ff27ac26d74be6202db71367ad3f52e920b456605cf1fff70dd27b84"
+    },
+    {
+      "title": "Periodic table",
+      "slug": "periodic-table",
+      "state": "solved"
     },
     {
       "title": "Peripheral drift illusion",
@@ -6287,6 +6317,11 @@
       "slug": "undulating-numbers",
       "state": "published",
       "published_hash": "ca84f23579c4c8733e2582f87426bce7627a5f1cf68e58270d3962e95d0fb0da"
+    },
+    {
+      "title": "Unicode strings",
+      "slug": "unicode-strings",
+      "state": "solved"
     },
     {
       "title": "Universal Lambda Machine",
