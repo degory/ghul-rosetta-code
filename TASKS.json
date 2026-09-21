@@ -198,6 +198,11 @@
       "published_hash": "a21a6de2f3f5799317fcb5ec2592a365cd67bad92f93f48377eb1a9509df2e48"
     },
     {
+      "title": "Address of a variable",
+      "slug": "address-of-a-variable",
+      "state": "solved"
+    },
+    {
       "title": "Algebraic data types",
       "slug": "algebraic-data-types",
       "state": "published",
@@ -1379,6 +1384,11 @@
       "slug": "create-an-html-table",
       "state": "published",
       "published_hash": "ee0af45cbe9697a461885f6c45215226cfeba5425600461413863955a1cbecd6"
+    },
+    {
+      "title": "Create an object at a given address",
+      "state": "rejected",
+      "reason": "excluded"
     },
     {
       "title": "Cuban primes",
@@ -3573,6 +3583,11 @@
       "published_hash": "0109448c5c5dfa7b3ce25ecdbf8ed06396e0777fbfa14fb4e6f3fedbb6785d8c"
     },
     {
+      "title": "Machine code",
+      "state": "rejected",
+      "reason": "excluded"
+    },
+    {
       "title": "Mad Libs",
       "slug": "mad-libs",
       "state": "published",
@@ -4418,6 +4433,11 @@
       "image_hashes": {
         "Ghul-plot-coordinate-pairs-plot.png": "b407ce0c753e116a841c77acb631763da0f816a8"
       }
+    },
+    {
+      "title": "Pointers and references",
+      "slug": "pointers-and-references",
+      "state": "solved"
     },
     {
       "title": "Poker hand analyser",

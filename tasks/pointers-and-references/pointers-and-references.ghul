@@ -1,0 +1,42 @@
+use default
+
+class BOX(value: int public);
+
+struct COUNT(value: int public);
+
+bump_box(box: BOX) is
+    box.value = box.value + 1
+si
+
+bump_count(count: COUNT) is
+    count.value = count.value + 1
+si
+
+bump_count_by_reference(count: COUNT ref) is
+    count!.value = count!.value + 1
+si
+
+let box = BOX(1)
+let same_box = box
+
+bump_box(same_box)
+
+write_line("one object, two names: box is {box.value}")
+
+let count mut = COUNT(1)
+
+bump_count(count)
+
+write_line("a struct argument is a copy: count is {count.value}")
+
+bump_count_by_reference(count ref)
+
+write_line("through a reference: count is {count.value}")
+
+let boxes = [BOX(10), BOX(20)]
+
+boxes |> each(b => bump_box(b))
+
+let values = boxes |> map(b => b.value) |> join(", ")
+
+write_line("elements are the objects themselves: {values}")
