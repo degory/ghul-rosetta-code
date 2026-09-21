@@ -17,7 +17,7 @@ cells[1][2][3][4] = 42
 write_line("cells[1][2][3][4] = {cells[1][2][3][4]}")
 write_line("cells[0][0][0][0] = {cells[0][0][0][0]}")
 
-let size = extents |> reduce(1, (a, b) => a * b)
+let size = extents |> product()
 let flat = repeat(0, size) |> collect_list()
 
 at(index: int[]) -> int is

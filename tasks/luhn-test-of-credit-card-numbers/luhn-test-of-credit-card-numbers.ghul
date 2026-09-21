@@ -17,7 +17,7 @@ luhn(number: string) -> bool is
                         if doubled > 9 then doubled - 9 else doubled fi
                     fi
                 ))
-            |> reduce(0, (running, digit) => running + digit)
+            |> sum()
 
     return total % 10 == 0
 si

@@ -46,7 +46,7 @@ patients |> each(patient => (
             |> filter(visit => visit.score?)
             |> map(visit => visit.score!)
 
-    let total = scores |> reduce(0.0D, (running, score) => running + score)
+    let total = scores |> sum()
     let seen = scores |> count()
 
     let sum_cell = if seen > 0 then "{total:F1}" else "" fi

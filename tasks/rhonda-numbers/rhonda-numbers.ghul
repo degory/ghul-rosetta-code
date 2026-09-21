@@ -30,7 +30,7 @@ prime_factor_sum(value: int) -> int is
 si
 
 is_rhonda(value: int, base: int) -> bool =>
-    digits(value, base) |> reduce(1, (product, d) => product * d) ==
+    digits(value, base) |> product() ==
     base * prime_factor_sum(value)
 
 rhondas(base: int) -> Pipe[int] is

@@ -37,7 +37,7 @@ let gap = 2.5
 
 let span =
     (series |> map(towers => cast double(towers.count) + gap)
-            |> reduce(0.0, (total, width) => total + width)) - gap
+            |> sum()) - gap
 
 let tallest =
     series
@@ -75,7 +75,7 @@ let at mut = 0.0
 
 for towers in series do
     let depth = depths(towers)
-    let volume = depth |> reduce(0, (total, units) => total + units)
+    let volume = depth |> sum()
 
     for column in 0..towers.count do
         let left = at + cast double(column)

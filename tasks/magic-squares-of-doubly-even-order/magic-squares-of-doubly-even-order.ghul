@@ -27,7 +27,7 @@ check(square: List[List[int]]) -> bool is
                 0..n |> map(i => square[i][n - 1 - i]) |> collect_list()
             ])
 
-    lines |> all(line => line |> reduce(0, (a, b) => a + b) == target)
+    lines |> all(line => line |> sum() == target)
 si
 
 let square = magic(8)

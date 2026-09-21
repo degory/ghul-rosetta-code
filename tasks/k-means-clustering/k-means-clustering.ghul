@@ -49,7 +49,7 @@ seeded_centres() -> Collections.List[Point] is
                 |> map(at => nearest(centres, at).distance)
                 |> collect_list()
 
-        let total = weights |> reduce(0.0D, (a, b) => a + b)
+        let total = weights |> sum()
 
         let target mut = random.next_double() * total
         let chosen mut = 0

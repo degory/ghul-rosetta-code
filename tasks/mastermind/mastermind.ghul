@@ -41,7 +41,7 @@ score(code: string, guess: string, palette: string) -> string is
     let common =
         palette
             |> map(c => Math.min(tally(code, c), tally(guess, c)))
-            |> reduce(0, (a, b) => a + b)
+            |> sum()
 
     ""
         .pad_right(exact, 'X')

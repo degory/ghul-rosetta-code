@@ -34,7 +34,7 @@ sums_to(divisors: List[int], from: int, target: int) -> bool =>
 weird(n: int) -> bool =>
     (let divisors = proper_divisors(n) |> sort_descending() |> collect()
 
-     divisors |> reduce(0, (total, d) => total + d) > n /\
+     divisors |> sum() > n /\
          !sums_to(divisors, 0, n))
 
 from(2)

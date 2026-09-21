@@ -22,7 +22,7 @@ signed_value(numeral: string, index: int) -> int =>
 decode(numeral: string) -> int =>
     (0..numeral.length)
         |> map(index => signed_value(numeral, index))
-        |> reduce(0, (total, part) => total + part)
+        |> sum()
 
 for numeral in ["MCMXC", "MMVIII", "MDCLXVI"] do
     write_line("{numeral} = {decode(numeral)}")

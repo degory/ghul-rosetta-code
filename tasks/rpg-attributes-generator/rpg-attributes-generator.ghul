@@ -7,7 +7,7 @@ attribute() -> int is
 
     let lowest = rolls |> min_by(roll => roll)
 
-    let total = rolls |> reduce(0, (running, roll) => running + roll)
+    let total = rolls |> sum()
 
     return total - (lowest ?? 0)
 si
@@ -26,14 +26,14 @@ while !acceptable(rolled) do
 od
 
 acceptable(values: LIST[int]) -> bool is
-    let total = values |> reduce(0, (running, value) => running + value)
+    let total = values |> sum()
 
     let strong = values |> filter(value => value >= 15) |> count()
 
     return total >= 75 /\ strong >= 2
 si
 
-let total = rolled |> reduce(0, (running, value) => running + value)
+let total = rolled |> sum()
 
 write_line("attributes: {rolled |> map(value => "{value}") |> join(", ")}")
 write_line("total: {total}")

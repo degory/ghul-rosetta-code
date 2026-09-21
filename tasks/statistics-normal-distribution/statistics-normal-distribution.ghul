@@ -18,12 +18,13 @@ let size = 100000
 let samples = normal() |> take(size) |> collect_list()
 
 let mean =
-    (samples |> reduce(0.0D, (a, b) => a + b)) / cast double(size)
+    samples |> sum() / cast double(size)
 
 let deviation =
     Math.sqrt(
-        (samples |> map(x => (x - mean) * (x - mean))
-            |> reduce(0.0D, (a, b) => a + b)) / cast double(size))
+        samples
+        |> map(x => (x - mean) * (x - mean))
+        |> sum() / cast double(size))
 
 write_line("{size:N0} samples by the Box-Muller transform")
 write_line("mean {mean:F6}, standard deviation {deviation:F6}")

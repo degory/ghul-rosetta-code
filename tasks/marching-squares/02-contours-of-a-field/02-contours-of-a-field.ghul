@@ -19,7 +19,7 @@ height_at(x: double, y: double) -> double =>
 
              peak.height *
              Math.exp(-away / (2.0D * peak.spread * peak.spread))))
-        |> reduce(0.0D, (total, part) => total + part)
+        |> sum()
 
 let left = -3.0D
 let bottom = -2.4D
