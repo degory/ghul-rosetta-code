@@ -1,7 +1,7 @@
 use default
 use System.Math
 
-approximately(left: double, right: double) -> bool is
+≈(left: double, right: double) -> bool is
     if left == right then
         return true
     fi
@@ -25,5 +25,5 @@ let pairs = [
 ]
 
 for (left, right) in pairs do
-    write_line("{left,26} {right,26}  {approximately(left, right)}")
+    write_line("{left,26} {right,26}  {left ≈ right}")
 od
