@@ -6,6 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches: [ main ]
+  merge_group:
 
 jobs:
   # Every task is its own project, so the suite is a few hundred separate
