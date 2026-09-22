@@ -23409,14 +23409,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 62,
+      "lines": 61,
       "parts": [
         {
           "id": "stair-climbing-puzzle",
           "heading": null,
           "source": "tasks/stair-climbing-puzzle/stair-climbing-puzzle.ghul",
           "output": "tasks/stair-climbing-puzzle/run.expected",
-          "lines": 62,
+          "lines": 61,
           "playground": true,
           "input": false,
           "images": []

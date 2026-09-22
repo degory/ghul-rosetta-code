@@ -31,7 +31,6 @@ step_up_recursive(robot: ROBOT) is
     fi
 si
 
-// The second call is a tail call, so it can be a loop instead.
 step_up_iterative(robot: ROBOT) is
     while !robot.step() do
         step_up_iterative(robot)
