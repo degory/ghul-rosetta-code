@@ -204,11 +204,11 @@ before it is published.
 
 ## running a solution in the playground
 
-Each entry opens with a link that runs it in the
-[ghūl playground](https://ghul.dev/playground/), at `/playground/rosetta-code/<slug>`, or
-`/playground/rosetta-code/<slug>/<NN-part>` for one part of a task with parts. The
+Each entry opens with a link to the task's page on ghul.dev, at `/rosetta/<slug>`, which
+frames the [ghūl playground](https://ghul.dev/playground/) with the solution and runs it. The
 playground fetches the source from this repository's `main` branch, so a link
-needs nothing but the task being here under that name.
+needs nothing but the task being here under that name. The parameter names a part for a task
+with parts (`<slug>/<NN-part>`), and the template keeps only the slug: the page shows every part.
 
 The link is written as `{{ghul playground|<slug>}}`, transcluding the wiki's
 [Template:Ghul playground](https://rosettacode.org/wiki/Template:Ghul_playground).
