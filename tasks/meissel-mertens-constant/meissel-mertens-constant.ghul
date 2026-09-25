@@ -1,0 +1,44 @@
+use default
+
+// M = γ + the sum over primes p of (ln(1 - 1/p) + 1/p). The terms fall off
+// as 1/p², so primes below ten million leave an error of about 3e-9.
+
+let gamma = 0.57721566490153286
+
+let limit = 10_000_000
+
+let prime = (
+    let sieve = repeat(true, limit) |> collect_list()
+
+    sieve[0] = false
+    sieve[1] = false
+
+    for p in 2..limit |> take_while(p => p * p < limit) do
+        if sieve[p] then
+            for multiple in from(p * p, p) |> take_while(m => m < limit) do
+                sieve[multiple] = false
+            od
+        fi
+    od
+
+    sieve
+)
+
+term(p: int) -> double =>
+    let reciprocal = 1.0 / cast double(p) in
+    double.log(1.0 - reciprocal) + reciprocal
+
+let total mut = gamma
+let bound mut = 1000
+
+for p in 2..limit do
+    if prime[p] then
+        total = total + term(p)
+    fi
+
+    if p + 1 == bound then
+        write_line("primes below {bound,10:N0}: M = {total:F10}")
+
+        bound = bound * 10
+    fi
+od
