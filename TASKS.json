@@ -4892,6 +4892,11 @@
       }
     },
     {
+      "title": "Playfair cipher",
+      "slug": "playfair-cipher",
+      "state": "solved"
+    },
+    {
       "title": "Playing cards",
       "slug": "playing-cards",
       "state": "published",
@@ -4937,6 +4942,11 @@
       "published_hash": "13349449761f505016b53a926395d68255f47bdb74f77e48b6e3bbdb3e3ff947"
     },
     {
+      "title": "Polynomial regression",
+      "slug": "polynomial-regression",
+      "state": "solved"
+    },
+    {
       "title": "Polyspiral",
       "slug": "polyspiral",
       "state": "published",
@@ -4970,10 +4980,20 @@
       "published_hash": "c91b1fb784baa19d10f687d4aecec2bf28de488ee1fbb1c47a0322b4beddd05f"
     },
     {
+      "title": "Primality by Wilson\u0027s theorem",
+      "slug": "primality-by-wilson-s-theorem",
+      "state": "solved"
+    },
+    {
       "title": "Primality by trial division",
       "slug": "primality-by-trial-division",
       "state": "published",
       "published_hash": "0e8e603b5d0c006caff084a84876e0f61176e2aef5dc6d0d102e2fb429173e4d"
+    },
+    {
+      "title": "Prime conspiracy",
+      "slug": "prime-conspiracy",
+      "state": "solved"
     },
     {
       "title": "Prime decomposition",
@@ -4982,10 +5002,30 @@
       "published_hash": "b3ef0d95af3931a3b9afc3df02c3928849f7aebae1863c2db1fb20d117865f1b"
     },
     {
+      "title": "Prime numbers whose neighboring pairs are tetraprimes",
+      "slug": "prime-numbers-whose-neighboring-pairs-are-tetraprimes",
+      "state": "solved"
+    },
+    {
+      "title": "Prime reciprocal sum",
+      "slug": "prime-reciprocal-sum",
+      "state": "solved"
+    },
+    {
       "title": "Prime triangle",
       "slug": "prime-triangle",
       "state": "published",
       "published_hash": "c993f8b1eae7579f202f4c16a355e9c13e686ba2b4a36041024fd75833d34beb"
+    },
+    {
+      "title": "Primes - allocate descendants to their ancestors",
+      "slug": "primes-allocate-descendants-to-their-ancestors",
+      "state": "solved"
+    },
+    {
+      "title": "Primes: n*2^m\u002B1",
+      "slug": "primes-n-2-m-1",
+      "state": "solved"
     },
     {
       "title": "Primorial numbers",
@@ -5006,6 +5046,11 @@
       "published_hash": "a108f2120a38f9e90f988504e8aa0ee18c25a9046d3c39baace7f275e4407e5d"
     },
     {
+      "title": "Probabilistic choice",
+      "slug": "probabilistic-choice",
+      "state": "solved"
+    },
+    {
       "title": "Problem of Apollonius",
       "slug": "problem-of-apollonius",
       "state": "published",
@@ -5013,6 +5058,11 @@
       "image_hashes": {
         "Ghul-problem-of-apollonius-apollonius.png": "33d9e234867910e965e785f09fb80cf3b2a0eb22"
       }
+    },
+    {
+      "title": "Product of min and max prime factors",
+      "slug": "product-of-min-and-max-prime-factors",
+      "state": "solved"
     },
     {
       "title": "Program name",
