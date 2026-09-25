@@ -23941,6 +23941,32 @@
       ]
     },
     {
+      "slug": "soloway-s-recurring-rainfall",
+      "title": "Soloway's recurring rainfall",
+      "url": "https://rosettacode.org/wiki/Soloway's_recurring_rainfall",
+      "tags": [
+        "basics",
+        "interactive"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "soloway-s-recurring-rainfall",
+          "heading": null,
+          "source": "tasks/soloway-s-recurring-rainfall/soloway-s-recurring-rainfall.ghul",
+          "output": "tasks/soloway-s-recurring-rainfall/run.expected",
+          "lines": 34,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "solve-a-hidato-puzzle",
       "title": "Solve a Hidato puzzle",
       "url": "https://rosettacode.org/wiki/Solve_a_Hidato_puzzle",
@@ -24025,6 +24051,33 @@
           "images": [
             "tasks/solve-a-hopido-puzzle/hopido.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "solve-a-numbrix-puzzle",
+      "title": "Solve a Numbrix puzzle",
+      "url": "https://rosettacode.org/wiki/Solve_a_Numbrix_puzzle",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 144,
+      "parts": [
+        {
+          "id": "solve-a-numbrix-puzzle",
+          "heading": null,
+          "source": "tasks/solve-a-numbrix-puzzle/solve-a-numbrix-puzzle.ghul",
+          "output": "tasks/solve-a-numbrix-puzzle/run.expected",
+          "lines": 144,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -24283,6 +24336,33 @@
           "source": "tasks/sort-stability/sort-stability.ghul",
           "output": "tasks/sort-stability/run.expected",
           "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sort-three-variables",
+      "title": "Sort three variables",
+      "url": "https://rosettacode.org/wiki/Sort_three_variables",
+      "tags": [
+        "sorting",
+        "generics",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 26,
+      "parts": [
+        {
+          "id": "sort-three-variables",
+          "heading": null,
+          "source": "tasks/sort-three-variables/sort-three-variables.ghul",
+          "output": "tasks/sort-three-variables/run.expected",
+          "lines": 26,
           "playground": true,
           "input": false,
           "images": []
@@ -24755,6 +24835,33 @@
       ]
     },
     {
+      "slug": "sorting-algorithms-radix-sort",
+      "title": "Sorting algorithms/Radix sort",
+      "url": "https://rosettacode.org/wiki/Sorting_algorithms/Radix_sort",
+      "tags": [
+        "sorting",
+        "algorithms",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "sorting-algorithms-radix-sort",
+          "heading": null,
+          "source": "tasks/sorting-algorithms-radix-sort/sorting-algorithms-radix-sort.ghul",
+          "output": "tasks/sorting-algorithms-radix-sort/run.expected",
+          "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sorting-algorithms-selection-sort",
       "title": "Sorting algorithms/Selection sort",
       "url": "https://rosettacode.org/wiki/Sorting_algorithms/Selection_sort",
@@ -24911,6 +25018,32 @@
       ]
     },
     {
+      "slug": "soundex",
+      "title": "Soundex",
+      "url": "https://rosettacode.org/wiki/Soundex",
+      "tags": [
+        "strings",
+        "pattern-matching"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "soundex",
+          "heading": null,
+          "source": "tasks/soundex/soundex.ghul",
+          "output": "tasks/soundex/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sparkline-in-unicode",
       "title": "Sparkline in unicode",
       "url": "https://rosettacode.org/wiki/Sparkline_in_unicode",
@@ -24982,6 +25115,32 @@
           "source": "tasks/special-variables/special-variables.ghul",
           "output": "tasks/special-variables/run.expected",
           "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "specific-characters",
+      "title": "Specific characters",
+      "url": "https://rosettacode.org/wiki/Specific_characters",
+      "tags": [
+        "strings",
+        "data-structures"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 36,
+      "parts": [
+        {
+          "id": "specific-characters",
+          "heading": null,
+          "source": "tasks/specific-characters/specific-characters.ghul",
+          "output": "tasks/specific-characters/run.expected",
+          "lines": 36,
           "playground": true,
           "input": false,
           "images": []
@@ -25146,6 +25305,84 @@
       ]
     },
     {
+      "slug": "square-but-not-cube",
+      "title": "Square but not cube",
+      "url": "https://rosettacode.org/wiki/Square_but_not_cube",
+      "tags": [
+        "maths",
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 24,
+      "parts": [
+        {
+          "id": "square-but-not-cube",
+          "heading": null,
+          "source": "tasks/square-but-not-cube/square-but-not-cube.ghul",
+          "output": "tasks/square-but-not-cube/run.expected",
+          "lines": 24,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "square-form-factorization",
+      "title": "Square form factorization",
+      "url": "https://rosettacode.org/wiki/Square_form_factorization",
+      "tags": [
+        "number-theory",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 128,
+      "parts": [
+        {
+          "id": "square-form-factorization",
+          "heading": null,
+          "source": "tasks/square-form-factorization/square-form-factorization.ghul",
+          "output": "tasks/square-form-factorization/run.expected",
+          "lines": 128,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "square-free-integers",
+      "title": "Square-free integers",
+      "url": "https://rosettacode.org/wiki/Square-free_integers",
+      "tags": [
+        "number-theory",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 65,
+      "parts": [
+        {
+          "id": "square-free-integers",
+          "heading": null,
+          "source": "tasks/square-free-integers/square-free-integers.ghul",
+          "output": "tasks/square-free-integers/run.expected",
+          "lines": 65,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "stable-marriage-problem",
       "title": "Stable marriage problem",
       "url": "https://rosettacode.org/wiki/Stable_marriage_problem",
@@ -25266,6 +25503,33 @@
           "source": "tasks/start-from-a-main-routine/start-from-a-main-routine.ghul",
           "output": "tasks/start-from-a-main-routine/run.expected",
           "lines": 10,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "state-name-puzzle",
+      "title": "State name puzzle",
+      "url": "https://rosettacode.org/wiki/State_name_puzzle",
+      "tags": [
+        "puzzles",
+        "strings",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 64,
+      "parts": [
+        {
+          "id": "state-name-puzzle",
+          "heading": null,
+          "source": "tasks/state-name-puzzle/state-name-puzzle.ghul",
+          "output": "tasks/state-name-puzzle/run.expected",
+          "lines": 64,
           "playground": true,
           "input": false,
           "images": []

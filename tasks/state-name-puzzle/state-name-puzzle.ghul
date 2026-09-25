@@ -1,0 +1,64 @@
+use default
+
+let real = [
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
+    "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
+    "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
+    "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
+    "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
+    "New Hampshire", "New Jersey", "New Mexico", "New York",
+    "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon",
+    "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
+    "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
+    "West Virginia", "Wisconsin", "Wyoming"
+]
+
+let fictitious = [
+    "New Kory", "Wen Kory", "York New", "Kory New", "New Kory"
+]
+
+letters(s: string) -> string =>
+    string(
+        s.to_lower().to_char_array()
+            |> filter(char.is_letter)
+            |> sort()
+            |> collect_array())
+
+solve(names: Iterable[string]) is
+    let states = names |> collect_set() |> sort() |> collect_list()
+    let groups = MAP[string, LIST[(int, int)]]()
+
+    for i in 0..states.count do
+        for j in i + 1..states.count do
+            let key = letters("{states[i]}{states[j]}")
+
+            if !groups.contains_key(key) then
+                groups[key] = LIST[(int, int)]()
+            fi
+
+            groups[key].add((i, j))
+        od
+    od
+
+    for group in groups.values do
+        for a in 0..group.count do
+            for b in a + 1..group.count do
+                let (i, j) = group[a]
+                let (k, l) = group[b]
+
+                if i != k /\ i != l /\ j != k /\ j != l then
+                    let left = "{states[i]} + {states[j]}"
+
+                    write_line("{left} = {states[k]} + {states[l]}")
+                fi
+            od
+        od
+    od
+si
+
+write_line("Real states:")
+solve(real)
+
+write_line("")
+write_line("With the fictitious states:")
+solve(cat(real, fictitious))

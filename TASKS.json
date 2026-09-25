@@ -5905,6 +5905,11 @@
       "published_hash": "9f523f2cceebea2bde7c9e75b82878623dcd673003dab2fd4b3091167ffd723c"
     },
     {
+      "title": "Soloway\u0027s recurring rainfall",
+      "slug": "soloway-s-recurring-rainfall",
+      "state": "solved"
+    },
+    {
       "title": "Solve a Hidato puzzle",
       "slug": "solve-a-hidato-puzzle",
       "state": "published",
@@ -5927,6 +5932,11 @@
       "image_hashes": {
         "Ghul-solve-a-hopido-puzzle-hopido.png": "8f7f3ea964239fe5472e7f755cc39c8ea22c5e26"
       }
+    },
+    {
+      "title": "Solve a Numbrix puzzle",
+      "slug": "solve-a-numbrix-puzzle",
+      "state": "solved"
     },
     {
       "title": "Solve a Rubik\u0027s cube",
@@ -5988,6 +5998,11 @@
       "slug": "sort-stability",
       "state": "published",
       "published_hash": "e16453616bf2083b8cf02259d9b5ed23ec5683071e0d64dd7be5ef74d8c0696a"
+    },
+    {
+      "title": "Sort three variables",
+      "slug": "sort-three-variables",
+      "state": "solved"
     },
     {
       "title": "Sort using a custom comparator",
@@ -6098,6 +6113,11 @@
       "published_hash": "15aad6fa509b101cea23bde14eb3e8ae78ba184f5befd7f6927ecf7e1d778fe4"
     },
     {
+      "title": "Sorting algorithms/Radix sort",
+      "slug": "sorting-algorithms-radix-sort",
+      "state": "solved"
+    },
+    {
       "title": "Sorting algorithms/Selection sort",
       "slug": "sorting-algorithms-selection-sort",
       "state": "published",
@@ -6134,6 +6154,11 @@
       "published_hash": "3b4fbcf3d45e60e291a6a1c5c473a9341196b4b7829248957021dd222b292ec6"
     },
     {
+      "title": "Soundex",
+      "slug": "soundex",
+      "state": "solved"
+    },
+    {
       "title": "Sparkline in unicode",
       "slug": "sparkline-in-unicode",
       "state": "published",
@@ -6150,6 +6175,11 @@
       "slug": "special-variables",
       "state": "published",
       "published_hash": "f8c12e7d4ee46f32f0f8c0cba54a8c10be936972a83d3279d1f68ff930c7e4c4"
+    },
+    {
+      "title": "Specific characters",
+      "slug": "specific-characters",
+      "state": "solved"
     },
     {
       "title": "Spelling of ordinal numbers",
@@ -6188,6 +6218,21 @@
       "published_hash": "ff555f3f42fe2dc8c69eaf72c01a7668d0b863c21c37600c9a3ac9f8759950d8"
     },
     {
+      "title": "Square but not cube",
+      "slug": "square-but-not-cube",
+      "state": "solved"
+    },
+    {
+      "title": "Square form factorization",
+      "slug": "square-form-factorization",
+      "state": "solved"
+    },
+    {
+      "title": "Square-free integers",
+      "slug": "square-free-integers",
+      "state": "solved"
+    },
+    {
       "title": "Stable marriage problem",
       "slug": "stable-marriage-problem",
       "state": "published",
@@ -6216,6 +6261,11 @@
       "slug": "start-from-a-main-routine",
       "state": "published",
       "published_hash": "2cfffbda0ecb67d6a74a86ae9c654f5907a6c0bec5c5b1bb3bc74cc851b942ad"
+    },
+    {
+      "title": "State name puzzle",
+      "slug": "state-name-puzzle",
+      "state": "solved"
     },
     {
       "title": "Statistics/Basic",

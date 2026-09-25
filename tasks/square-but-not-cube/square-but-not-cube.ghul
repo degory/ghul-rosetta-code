@@ -1,0 +1,24 @@
+use default
+
+is_cube(n: long) -> bool is
+    let estimate = System.Math.cbrt(cast double(n))
+    let root = cast long(System.Math.round(estimate))
+
+    root * root * root == n
+si
+
+let shown mut = 0
+let n mut = 1L
+
+while shown < 30 do
+    let square = n * n
+
+    if is_cube(square) then
+        write_line("{square,5} is a square and a cube")
+    else
+        write_line("{square,5}")
+        shown = shown + 1
+    fi
+
+    n = n + 1L
+od
