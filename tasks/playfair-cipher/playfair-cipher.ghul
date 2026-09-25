@@ -1,0 +1,89 @@
+use default
+
+enum Alphabet is
+    J_IS_I,
+    NO_Q
+si
+
+class PLAYFAIR(key: string, alphabet: Alphabet) is
+    _grid: string
+
+    init(..) is
+        _grid =
+            "{key}ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            |> clean()
+            |> distinct()
+            |> map(c => "{c}")
+            |> join("")
+    si
+
+    clean(text: string) -> Pipe[char] =>
+        text.to_upper_invariant()
+        |> filter(c => c >= 'A' /\ c <= 'Z')
+        |> filter(c => alphabet != Alphabet.NO_Q \/ c != 'Q')
+        |> map(c =>
+            if alphabet == Alphabet.J_IS_I /\ c == 'J' then 'I' else c fi)
+
+    digraphs(text: string) -> Pipe[(char, char)] is
+        let letters = clean(text) |> collect()
+        let i mut = 0
+
+        while i < letters.count do
+            let first = letters[i]
+
+            if i + 1 < letters.count /\ letters[i + 1] != first then
+                yield (first, letters[i + 1])
+                i = i + 2
+            else
+                yield (first, 'X')
+                i = i + 1
+            fi
+        od
+    si
+
+    shift(pair: (char, char), step: int) -> string is
+        let (a, b) = pair
+        let (row_a, col_a) = position(a)
+        let (row_b, col_b) = position(b)
+
+        return
+            if row_a == row_b then
+                "{at(row_a, col_a + step)}{at(row_b, col_b + step)}"
+            elif col_a == col_b then
+                "{at(row_a + step, col_a)}{at(row_b + step, col_b)}"
+            else
+                "{at(row_a, col_b)}{at(row_b, col_a)}"
+            fi
+    si
+
+    position(c: char) -> (int, int) is
+        let index = _grid.index_of(c)
+        return (index / 5, index % 5)
+    si
+
+    at(row: int, col: int) -> char =>
+        _grid[(row + 5) % 5 * 5 + (col + 5) % 5]
+
+    encrypt(text: string) -> string =>
+        digraphs(text) |> map(pair => shift(pair, 1)) |> join(" ")
+
+    decrypt(text: string) -> string =>
+        digraphs(text) |> map(pair => shift(pair, -1)) |> join(" ")
+
+    prepared(text: string) -> string =>
+        digraphs(text) |> map(((a, b)) => "{a}{b}") |> join(" ")
+si
+
+let key = "Playfair example"
+let message = "Hide the gold in the tree stump!"
+
+for alphabet in [Alphabet.J_IS_I, Alphabet.NO_Q] do
+    let cipher = PLAYFAIR(key, alphabet)
+    let encrypted = cipher.encrypt(message)
+
+    write_line("alphabet:  {alphabet}")
+    write_line("prepared:  {cipher.prepared(message)}")
+    write_line("encrypted: {encrypted}")
+    write_line("decrypted: {cipher.decrypt(encrypted)}")
+    write_line("")
+od
