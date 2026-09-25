@@ -1,0 +1,81 @@
+use default
+
+trait Clock is
+    now: System.DateTime;
+    wait_until(time: System.DateTime);
+si
+
+class SYSTEM_CLOCK: Clock is
+    init() is si
+
+    now: System.DateTime => System.DateTime.utc_now
+
+    wait_until(time: System.DateTime) is
+        let delay = time - now
+
+        if delay > System.TimeSpan.zero then
+            System.Threading.Thread.sleep(delay)
+        fi
+    si
+si
+
+class SIMULATED_CLOCK(start: System.DateTime): Clock is
+    _time: System.DateTime
+
+    init(..) is _time = start si
+
+    now: System.DateTime => _time
+
+    wait_until(time: System.DateTime) is
+        _time = time
+    si
+si
+
+watch(time: System.DateTime) -> string is
+    let hour = time.add_minutes(-1.0).hour
+
+    return
+        if hour < 4 then "Middle watch"
+        elif hour < 8 then "Morning watch"
+        elif hour < 12 then "Forenoon watch"
+        elif hour < 16 then "Afternoon watch"
+        elif hour < 18 then "First dog watch"
+        elif hour < 20 then "Last dog watch"
+        else "First watch"
+        fi
+si
+
+ring(bells: int) -> string =>
+    (0..bells / 2)
+    |> map(_ => "ding-dong")
+    |> cat(if bells % 2 == 1 then ["ding"] else [] fi)
+    |> join(" ")
+
+keep_watch(clock: Clock, until: System.DateTime) is
+    let now = clock.now
+    let half_hours = cast int(now.time_of_day.total_minutes) / 30 + 1
+    let next mut = now.date.add_minutes(30.0 * cast double(half_hours))
+
+    while next <= until do
+        clock.wait_until(next)
+
+        let count = next.hour % 4 * 2 + next.minute / 30
+        let bells = if count == 0 then 8 else count fi
+        let plural = if bells == 1 then " " else "s" fi
+
+        write_line(
+            "{next:HH:mm}  {bells} bell{plural}  "
+            "{watch(next),-15}  {ring(bells)}")
+
+        next = next.add_minutes(30.0)
+    od
+si
+
+if args.count > 0 /\ args[0] =~ "--live" then
+    keep_watch(SYSTEM_CLOCK(), System.DateTime.max_value)
+else
+    let midnight =
+        System.DateTime(2026, 1, 1, 0, 0, 0, System.DateTimeKind.UTC)
+
+    keep_watch(SIMULATED_CLOCK(midnight), midnight.add_days(1.0))
+fi
