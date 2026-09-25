@@ -22172,6 +22172,32 @@
       ]
     },
     {
+      "slug": "rsa-code",
+      "title": "RSA code",
+      "url": "https://rosettacode.org/wiki/RSA_code",
+      "tags": [
+        "number-theory",
+        "strings"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "rsa-code",
+          "heading": null,
+          "source": "tasks/rsa-code/rsa-code.ghul",
+          "output": "tasks/rsa-code/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rubik-s-cube",
       "title": "Rubik's cube",
       "url": "https://rosettacode.org/wiki/Rubik's_cube",
