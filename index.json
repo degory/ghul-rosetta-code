@@ -16547,6 +16547,32 @@
       ]
     },
     {
+      "slug": "modified-random-distribution",
+      "title": "Modified random distribution",
+      "url": "https://rosettacode.org/wiki/Modified_random_distribution",
+      "tags": [
+        "simulation",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "modified-random-distribution",
+          "heading": null,
+          "source": "tasks/modified-random-distribution/modified-random-distribution.ghul",
+          "output": "tasks/modified-random-distribution/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "modular-arithmetic",
       "title": "Modular arithmetic",
       "url": "https://rosettacode.org/wiki/Modular_arithmetic",
