@@ -19,7 +19,7 @@ class SPLITMIX64 is
     si
 
     next_float() -> double =>
-        cast double(next_int() >> 11) / 9_007_199_254_740_992.0
+        cast double(next_int()) / 18_446_744_073_709_551_616.0
 si
 
 let first = SPLITMIX64(1234567ul)

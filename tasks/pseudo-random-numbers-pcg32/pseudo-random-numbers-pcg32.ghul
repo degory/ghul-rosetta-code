@@ -20,7 +20,7 @@ class PCG32 is
     si
 
     next_float() -> double =>
-        cast double(cast ulong(next_int())) / 4_294_967_296.0
+        cast double(next_int()) / 4_294_967_296.0
 si
 
 let first = PCG32(42ul, 54ul)
