@@ -1,0 +1,7 @@
+sending:
+  MAIL FROM:<sender@example.com>
+  RCPT TO:<recipient@example.com>
+  RCPT TO:<copy@example.com>
+  | Subject: Rosetta Code
+  | Hello from the task.
+sent
