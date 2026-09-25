@@ -26913,6 +26913,32 @@
       ]
     },
     {
+      "slug": "smith-numbers",
+      "title": "Smith numbers",
+      "url": "https://rosettacode.org/wiki/Smith_numbers",
+      "tags": [
+        "number-theory",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "smith-numbers",
+          "heading": null,
+          "source": "tasks/smith-numbers/smith-numbers.ghul",
+          "output": "tasks/smith-numbers/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "smith-waterman-algorithm",
       "title": "Smith–Waterman algorithm",
       "url": "https://rosettacode.org/wiki/Smith–Waterman_algorithm",
