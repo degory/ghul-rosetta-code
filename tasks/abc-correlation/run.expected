@@ -1,0 +1,8 @@
+'abc' is an ABC string
+'aabbcc' is an ABC string
+'abbc' is not an ABC string
+'a' is not an ABC string
+'' is an ABC string
+'the quick brown fox jumps over the lazy dog' is an ABC string
+'rosetta code' is not an ABC string
+'hello, world!' is an ABC string
