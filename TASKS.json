@@ -1279,6 +1279,11 @@
       "state": "solved"
     },
     {
+      "title": "Christofides algorithm",
+      "slug": "christofides-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Chrome simulated search",
       "state": "rejected",
       "reason": "needs-gui"
@@ -1298,6 +1303,11 @@
       "image_hashes": {
         "Ghul-circles-of-given-radius-through-two-points-circles.png": "492765aad8c5a5b41089fcfb3fc2ccae3b00078f"
       }
+    },
+    {
+      "title": "Circular primes",
+      "slug": "circular-primes",
+      "state": "solved"
     },
     {
       "title": "Cistercian numerals",
@@ -1441,10 +1451,20 @@
       "published_hash": "1c0f1994a6592a0c41c95dc88f2860b656562d3a37ad3826419b2fa97e575766"
     },
     {
+      "title": "Commatizing numbers",
+      "slug": "commatizing-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Comments",
       "slug": "comments",
       "state": "published",
       "published_hash": "ae605a0aef6843f793e799b70a14fd33add3989d09d9d301b89acdd9ad7daf2a"
+    },
+    {
+      "title": "Compare a list of strings",
+      "slug": "compare-a-list-of-strings",
+      "state": "solved"
     },
     {
       "title": "Compare length of two strings",
@@ -1468,6 +1488,11 @@
       "slug": "compiler-preprocessor",
       "state": "published",
       "published_hash": "dae770cd860301a498c21c88902f5918e1864771a41824a5f5ee416b4d064109"
+    },
+    {
+      "title": "Compiler/Simple file inclusion pre processor",
+      "slug": "compiler-simple-file-inclusion-pre-processor",
+      "state": "solved"
     },
     {
       "title": "Compiler/Verifying syntax",
@@ -1500,6 +1525,11 @@
       "published_hash": "5e8948b6dc27c046d59560c341b70edbc18bf67456911d846c3f9ba66129ff45"
     },
     {
+      "title": "Composite numbers k with no single digit factors whose factors are all substrings of k",
+      "slug": "composite-numbers-k-with-no-single-digit-factors-whose-factors-are-all-substrings-of-k",
+      "state": "solved"
+    },
+    {
       "title": "Compound data type",
       "slug": "compound-data-type",
       "state": "published",
@@ -1522,6 +1552,11 @@
       "slug": "conjugate-a-latin-verb",
       "state": "published",
       "published_hash": "27403ed101e7838f3c243b19b1b6ae0826927cce97722d940ad20c978cda9dfe"
+    },
+    {
+      "title": "Conjugate transpose",
+      "slug": "conjugate-transpose",
+      "state": "solved"
     },
     {
       "title": "Consecutive primes with ascending or descending differences",
@@ -1555,6 +1590,21 @@
       "slug": "continued-fraction",
       "state": "published",
       "published_hash": "908a5435540c4b560a24453b72f3b06400ab05293ac9f0b71b1698d7e0d116a4"
+    },
+    {
+      "title": "Continued fraction/Arithmetic/Construct from rational number",
+      "slug": "continued-fraction-arithmetic-construct-from-rational-number",
+      "state": "solved"
+    },
+    {
+      "title": "Continued fraction/Arithmetic/G(matrix ng, continued fraction n)",
+      "slug": "continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n",
+      "state": "solved"
+    },
+    {
+      "title": "Continued fraction/Arithmetic/G(matrix ng, continued fraction n1, continued fraction n2)",
+      "slug": "continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n1-continued-fraction-n2",
+      "state": "solved"
     },
     {
       "title": "Convert decimal number to rational",

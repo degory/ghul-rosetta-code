@@ -1,0 +1,76 @@
+use default
+
+let limit = 1_000_000
+
+let prime = (
+    let sieve = repeat(true, limit) |> collect_list()
+
+    sieve[0] = false
+    sieve[1] = false
+
+    for p in 2..limit |> take_while(p => p * p < limit) do
+        if sieve[p] then
+            for multiple in from(p * p, p) |> take_while(m => m < limit) do
+                sieve[multiple] = false
+            od
+        fi
+    od
+
+    sieve
+)
+
+rotations(n: int) -> Pipe[int] =>
+    let digits = "{n}" in
+    0..digits.length
+        |> map(i =>
+            int.parse("{digits.substring(i)}{digits.substring(0, i)}"))
+
+is_circular(n: int) -> bool =>
+    rotations(n) |> all(rotation => rotation >= n /\ prime[rotation])
+
+probably_prime(n: bigint) -> bool is
+    let d mut = n - 1n
+    let s mut = 0
+
+    while d.is_even do
+        d = d / 2n
+        s = s + 1
+    od
+
+    witness(base: bigint) -> bool is
+        let x mut = bigint.mod_pow(base, d, n)
+
+        if x =~ 1n \/ x =~ n - 1n then
+            return false
+        fi
+
+        for _ in 1..s do
+            x = bigint.mod_pow(x, 2n, n)
+
+            if x =~ n - 1n then
+                return false
+            fi
+        od
+
+        true
+    si
+
+    [2n, 3n, 5n, 7n, 11n, 13n, 17n, 19n, 23n]
+        |> all(base => base >= n \/ !witness(base))
+si
+
+repunit(n: int) -> bigint => (bigint.pow(10n, n) - 1n) / 9n
+
+let circular = 2..limit |> filter(is_circular) |> take(19) |> collect_list()
+
+write_line("The first 19 circular primes:")
+write_line("{circular}")
+
+let repunits =
+    from(7)
+        |> filter(n => prime[n] /\ probably_prime(repunit(n)))
+        |> take(4)
+        |> map(n => "R({n})")
+
+write_line("\nThe next 4 circular primes, all repunits:")
+write_line(repunits |> join(", "))

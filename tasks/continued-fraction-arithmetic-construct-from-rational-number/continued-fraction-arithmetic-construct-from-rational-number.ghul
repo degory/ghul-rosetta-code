@@ -1,0 +1,42 @@
+use default
+
+r2cf(numerator: long, denominator: long) -> Pipe[long] is
+    let n1 mut = numerator
+    let n2 mut = denominator
+
+    while n2 != 0L do
+        let whole = n1 / n2
+
+        (n1, n2) = (n2, n1 - whole * n2)
+
+        yield whole
+    od
+si
+
+show(terms: Iterable[long]) -> string =>
+    let all = terms |> collect_list() in
+    let rest = all |> skip(1) |> join(", ") in
+    if all.count == 1 then "[{all[0]}]" else "[{all[0]}; {rest}]" fi
+
+let examples = [
+    [(1L, 2L), (3L, 1L), (23L, 8L), (13L, 11L), (22L, 7L), (-151L, 77L)],
+    [
+        (14142L, 10000L), (141421L, 100000L), (1414214L, 1000000L),
+        (14142136L, 10000000L)
+    ],
+    [
+        (31L, 10L), (314L, 100L), (3142L, 1000L), (31428L, 10000L),
+        (314285L, 100000L), (3142857L, 1000000L), (31428571L, 10000000L),
+        (314285714L, 100000000L)
+    ]
+]
+
+for group in examples do
+    for (numerator, denominator) in group do
+        let fraction = "{numerator}/{denominator}"
+
+        write_line("{fraction,20} = {show(r2cf(numerator, denominator))}")
+    od
+
+    write_line("")
+od

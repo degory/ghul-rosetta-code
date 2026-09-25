@@ -5184,6 +5184,32 @@
       ]
     },
     {
+      "slug": "christofides-algorithm",
+      "title": "Christofides algorithm",
+      "url": "https://rosettacode.org/wiki/Christofides_algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 110,
+      "parts": [
+        {
+          "id": "christofides-algorithm",
+          "heading": null,
+          "source": "tasks/christofides-algorithm/christofides-algorithm.ghul",
+          "output": "tasks/christofides-algorithm/run.expected",
+          "lines": 110,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "church-numerals",
       "title": "Church numerals",
       "url": "https://rosettacode.org/wiki/Church_numerals",
@@ -5239,6 +5265,32 @@
           "images": [
             "tasks/circles-of-given-radius-through-two-points/circles.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "circular-primes",
+      "title": "Circular primes",
+      "url": "https://rosettacode.org/wiki/Circular_primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 76,
+      "parts": [
+        {
+          "id": "circular-primes",
+          "heading": null,
+          "source": "tasks/circular-primes/circular-primes.ghul",
+          "output": "tasks/circular-primes/run.expected",
+          "lines": 76,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -5730,6 +5782,32 @@
       ]
     },
     {
+      "slug": "commatizing-numbers",
+      "title": "Commatizing numbers",
+      "url": "https://rosettacode.org/wiki/Commatizing_numbers",
+      "tags": [
+        "strings",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 77,
+      "parts": [
+        {
+          "id": "commatizing-numbers",
+          "heading": null,
+          "source": "tasks/commatizing-numbers/commatizing-numbers.ghul",
+          "output": "tasks/commatizing-numbers/run.expected",
+          "lines": 77,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "comments",
       "title": "Comments",
       "url": "https://rosettacode.org/wiki/Comments",
@@ -5748,6 +5826,32 @@
           "source": "tasks/comments/comments.ghul",
           "output": "tasks/comments/run.expected",
           "lines": 10,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "compare-a-list-of-strings",
+      "title": "Compare a list of strings",
+      "url": "https://rosettacode.org/wiki/Compare_a_list_of_strings",
+      "tags": [
+        "strings",
+        "pipes"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "compare-a-list-of-strings",
+          "heading": null,
+          "source": "tasks/compare-a-list-of-strings/compare-a-list-of-strings.ghul",
+          "output": "tasks/compare-a-list-of-strings/run.expected",
+          "lines": 23,
           "playground": true,
           "input": false,
           "images": []
@@ -5888,6 +5992,33 @@
       ]
     },
     {
+      "slug": "compiler-simple-file-inclusion-pre-processor",
+      "title": "Compiler/Simple file inclusion pre processor",
+      "url": "https://rosettacode.org/wiki/Compiler/Simple_file_inclusion_pre_processor",
+      "tags": [
+        "text-processing",
+        "generators",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 32,
+      "parts": [
+        {
+          "id": "compiler-simple-file-inclusion-pre-processor",
+          "heading": null,
+          "source": "tasks/compiler-simple-file-inclusion-pre-processor/compiler-simple-file-inclusion-pre-processor.ghul",
+          "output": "tasks/compiler-simple-file-inclusion-pre-processor/run.expected",
+          "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "compiler-syntax-analyzer",
       "title": "Compiler/syntax analyzer",
       "url": "https://rosettacode.org/wiki/Compiler/syntax_analyzer",
@@ -5962,6 +6093,32 @@
           "lines": 134,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "composite-numbers-k-with-no-single-digit-factors-whose-factors-are-all-substrings-of-k",
+      "title": "Composite numbers k with no single digit factors whose factors are all substrings of k",
+      "url": "https://rosettacode.org/wiki/Composite_numbers_k_with_no_single_digit_factors_whose_factors_are_all_substrings_of_k",
+      "tags": [
+        "number-theory",
+        "primes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 53,
+      "parts": [
+        {
+          "id": "composite-numbers-k-with-no-single-digit-factors-whose-factors-are-all-substrings-of-k",
+          "heading": null,
+          "source": "tasks/composite-numbers-k-with-no-single-digit-factors-whose-factors-are-all-substrings-of-k/composite-numbers-k-with-no-single-digit-factors-whose-factors-are-all-substrings-of-k.ghul",
+          "output": "tasks/composite-numbers-k-with-no-single-digit-factors-whose-factors-are-all-substrings-of-k/run.expected",
+          "lines": 53,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
@@ -6065,6 +6222,33 @@
           "source": "tasks/conjugate-a-latin-verb/conjugate-a-latin-verb.ghul",
           "output": "tasks/conjugate-a-latin-verb/run.expected",
           "lines": 18,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "conjugate-transpose",
+      "title": "Conjugate transpose",
+      "url": "https://rosettacode.org/wiki/Conjugate_transpose",
+      "tags": [
+        "maths",
+        "operators",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 80,
+      "parts": [
+        {
+          "id": "conjugate-transpose",
+          "heading": null,
+          "source": "tasks/conjugate-transpose/conjugate-transpose.ghul",
+          "output": "tasks/conjugate-transpose/run.expected",
+          "lines": 80,
           "playground": true,
           "input": false,
           "images": []
@@ -6201,6 +6385,85 @@
           "source": "tasks/continued-fraction/continued-fraction.ghul",
           "output": "tasks/continued-fraction/run.expected",
           "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "continued-fraction-arithmetic-construct-from-rational-number",
+      "title": "Continued fraction/Arithmetic/Construct from rational number",
+      "url": "https://rosettacode.org/wiki/Continued_fraction/Arithmetic/Construct_from_rational_number",
+      "tags": [
+        "maths",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "continued-fraction-arithmetic-construct-from-rational-number",
+          "heading": null,
+          "source": "tasks/continued-fraction-arithmetic-construct-from-rational-number/continued-fraction-arithmetic-construct-from-rational-number.ghul",
+          "output": "tasks/continued-fraction-arithmetic-construct-from-rational-number/run.expected",
+          "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n",
+      "title": "Continued fraction/Arithmetic/G(matrix ng, continued fraction n)",
+      "url": "https://rosettacode.org/wiki/Continued_fraction/Arithmetic/G(matrix_ng,_continued_fraction_n)",
+      "tags": [
+        "maths",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 65,
+      "parts": [
+        {
+          "id": "continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n",
+          "heading": null,
+          "source": "tasks/continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n/continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n.ghul",
+          "output": "tasks/continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n/run.expected",
+          "lines": 65,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n1-continued-fraction-n2",
+      "title": "Continued fraction/Arithmetic/G(matrix ng, continued fraction n1, continued fraction n2)",
+      "url": "https://rosettacode.org/wiki/Continued_fraction/Arithmetic/G(matrix_ng,_continued_fraction_n1,_continued_fraction_n2)",
+      "tags": [
+        "maths",
+        "generators",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 130,
+      "parts": [
+        {
+          "id": "continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n1-continued-fraction-n2",
+          "heading": null,
+          "source": "tasks/continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n1-continued-fraction-n2/continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n1-continued-fraction-n2.ghul",
+          "output": "tasks/continued-fraction-arithmetic-g-matrix-ng-continued-fraction-n1-continued-fraction-n2/run.expected",
+          "lines": 130,
           "playground": true,
           "input": false,
           "images": []

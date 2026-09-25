@@ -1,0 +1,5 @@
+[AA, AA, AA, AA]       equal: true   ascending: false
+[AA, ACB, BB, CC]      equal: false  ascending: true
+[AA, CC, BB]           equal: false  ascending: false
+[single]               equal: true   ascending: true
+[]                     equal: true   ascending: true
