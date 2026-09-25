@@ -1,0 +1,43 @@
+use default
+
+use System.DateTime
+
+let seasons =
+    ["Chaos", "Discord", "Confusion", "Bureaucracy", "The Aftermath"]
+
+let weekdays = [
+    "Sweetmorn", "Boomtime", "Pungenday", "Prickle-Prickle",
+    "Setting Orange"
+]
+
+let apostle_days = ["Mungday", "Mojoday", "Syaday", "Zaraday", "Maladay"]
+let flux_days = ["Chaoflux", "Discoflux", "Confuflux", "Bureflux", "Afflux"]
+
+discordian(date: DateTime) -> string =>
+    let year = date.year + 1166 in
+    if date.month == 2 /\ date.day == 29 then
+        "St. Tib's Day, YOLD {year}"
+    else
+        let leap = DateTime.is_leap_year(date.year) in
+        let leap_shift = if leap /\ date.month > 2 then 1 else 0 fi in
+        let day = date.day_of_year - 1 - leap_shift in
+        let season = day / 73, day_of_season = day % 73 + 1 in
+        let holyday =
+            case day_of_season
+            when 5 then ", celebrate {apostle_days[season]}"
+            when 50 then ", celebrate {flux_days[season]}"
+            else ""
+            esac
+        in
+        "{weekdays[day % 5]}, {seasons[season]} {day_of_season}, "
+        "YOLD {year}{holyday}"
+    fi
+
+let dates = [
+    "2010-07-22", "2012-02-28", "2012-02-29", "2012-03-01", "2010-01-05",
+    "2011-05-03", "2015-10-19", "2020-12-31"
+]
+
+for text in dates do
+    write_line("{text}  {discordian(DateTime.parse(text))}")
+od
