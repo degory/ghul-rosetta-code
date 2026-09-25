@@ -28,7 +28,8 @@ for where in ["", "/"] do
 
     write_line("{file}: {outcome(() => IO.File.write_all_text(file, ""))}")
     write_line(
-        "{directory}: {outcome(() => IO.Directory.create_directory(directory))}"
+        "{directory}: "
+        "{outcome(() => IO.Directory.create_directory(directory))}"
     )
 
     discard(() => IO.File.delete(file))

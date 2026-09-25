@@ -63,7 +63,8 @@ cardinal(value: long) -> string is
         if parts[at] != 0 then
             let name = below_thousand(parts[at])
 
-            named.add(if at == 0 then name else "{name} {scales[at - 1]}" fi)
+            named.add(
+                if at == 0 then name else "{name} {scales[at - 1]}" fi)
         fi
 
         at = at - 1

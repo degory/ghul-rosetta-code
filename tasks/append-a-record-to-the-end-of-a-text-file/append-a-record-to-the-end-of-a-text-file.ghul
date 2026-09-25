@@ -24,12 +24,14 @@ let path = IO.Path.combine(scratch, "passwd")
 let first = [
     ACCOUNT(
         "jsmith", "x", 1001, 1000,
-        "Joe Smith,Room 1007,(234)555-8917,(234)555-0077,jsmith@rosettacode.org",
+        "Joe Smith,Room 1007,(234)555-8917,"
+        "(234)555-0077,jsmith@rosettacode.org",
         "/home/jsmith", "/bin/bash"
     ),
     ACCOUNT(
         "jdoe", "x", 1002, 1000,
-        "Jane Doe,Room 1004,(234)555-8914,(234)555-0044,jdoe@rosettacode.org",
+        "Jane Doe,Room 1004,(234)555-8914,"
+        "(234)555-0044,jdoe@rosettacode.org",
         "/home/jdoe", "/bin/bash"
     )
 ]

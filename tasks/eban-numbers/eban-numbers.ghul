@@ -37,5 +37,6 @@ write_line("count: {in_1000_to_4000.count}")
 
 for limit in [10000, 100000, 1000000, 10000000] do
     write_line(
-        "count of eban numbers up to {limit}: {eban_up_to(limit) |> count()}")
+        "count of eban numbers up to {limit}: "
+        "{eban_up_to(limit) |> count()}")
 od

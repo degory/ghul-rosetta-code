@@ -49,9 +49,9 @@ draw(image: IMAGE, angle: double) is
     image.dot(x, y, 12.0D)
 si
 
-// The pendulum passing vertical is easy to detect and comes a quarter of a
-// period after release, so that interval is timed and scaled to a frame time
-// that divides the period exactly.
+// The pendulum passing vertical is easy to detect and comes a
+// quarter of a period after release, so that interval is timed and
+// scaled to a frame time that divides the period exactly.
 let period = 4.0D * quarter_period(0.0002D)
 
 let tick = period / cast double(frames * substeps)

@@ -53,4 +53,5 @@ let strings = l_system() |> take(32) |> collect()
 let lengths_match = strings |> index()
     |> all((n, s) => s.length == by_recurrence[n])
 write_line(
-    "L-system string lengths are the Padovan sequence to term 31: {lengths_match}")
+    "L-system string lengths are the Padovan sequence "
+    "to term 31: {lengths_match}")

@@ -99,9 +99,12 @@ show_cycles(one_line: Collections.List[int]) -> string =>
         |> join(" ")
 
 let days = [
-    (name = "Mon", letters = "HANDYCOILSERUPT"), (name = "Tue", letters = "SPOILUNDERYACHT"),
-    (name = "Wed", letters = "DRAINSTYLEPOUCH"), (name = "Thu", letters = "DITCHSYRUPALONE"),
-    (name = "Fri", letters = "SOAPYTHIRDUNCLE"), (name = "Sat", letters = "SHINEPARTYCLOUD"),
+    (name = "Mon", letters = "HANDYCOILSERUPT"),
+    (name = "Tue", letters = "SPOILUNDERYACHT"),
+    (name = "Wed", letters = "DRAINSTYLEPOUCH"),
+    (name = "Thu", letters = "DITCHSYRUPALONE"),
+    (name = "Fri", letters = "SOAPYTHIRDUNCLE"),
+    (name = "Sat", letters = "SHINEPARTYCLOUD"),
     (name = "Sun", letters = "RADIOLUNCHTYPES")
 ]
 

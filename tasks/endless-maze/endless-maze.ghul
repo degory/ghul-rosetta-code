@@ -98,7 +98,8 @@ let high_y =
     visited |> map(v => v.`1) |> reduce(0, (a, b) => Math.max(a, b))
 
 known(column: int, row: int, side: int) -> bool =>
-    decided.contains_key((column, row, side)) /\ decided[(column, row, side)]
+    decided.contains_key((column, row, side)) /\
+        decided[(column, row, side)]
 
 write_line()
 write_line("the part explored, E the entrance, @ where you stopped:")

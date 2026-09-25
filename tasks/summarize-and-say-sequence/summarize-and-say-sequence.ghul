@@ -29,7 +29,8 @@ sequence(seed: int) -> LIST[string] is
     return terms
 si
 
-canonical(seed: int) -> string => string("{seed}" |> sort() |> collect_array())
+canonical(seed: int) -> string =>
+    string("{seed}" |> sort() |> collect_array())
 
 let lengths = MAP()
 

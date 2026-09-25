@@ -24,5 +24,6 @@ factorions(base_value: int) -> List[int] =>
 for base_value in [9, 10, 11, 12] do
     let found = factorions(base_value)
     write_line(
-        "base {base_value}: {found |> join(" ")} ({found.count} factorions)")
+        "base {base_value}: {found |> join(" ")} "
+        "({found.count} factorions)")
 od

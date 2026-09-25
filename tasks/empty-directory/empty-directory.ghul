@@ -18,7 +18,8 @@ IO.File.write_all_text(IO.Path.combine(occupied, "note.txt"), "something\n")
 for path in [empty, occupied] do
     let name = IO.Path.get_file_name(path)
 
-    write_line("{name}: {if is_empty(path) then "empty" else "not empty" fi}")
+    write_line(
+        "{name}: {if is_empty(path) then "empty" else "not empty" fi}")
 od
 
 IO.Directory.delete(scratch, true)

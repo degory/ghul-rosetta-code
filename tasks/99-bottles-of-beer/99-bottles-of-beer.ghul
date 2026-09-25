@@ -9,7 +9,8 @@ bottles(n: int) -> string =>
 
 verse(n: int) -> string =>
     "{bottles(n)} of beer on the wall, {bottles(n)} of beer.\n"
-    "Take one down and pass it around, {bottles(n - 1)} of beer on the wall.\n"
+    "Take one down and pass it around, "
+    "{bottles(n - 1)} of beer on the wall.\n"
 
 (1::99)
     |> reverse()
