@@ -3,7 +3,7 @@ use default
 let first = [1, 2, 3]
 let second = [4, 5, 6]
 
-write_line("{$(first |> cat(second) |> collect_array())}")
+write_line("{$(first |> cat(second) |> collect())}")
 
 let grown = LIST(first)
 

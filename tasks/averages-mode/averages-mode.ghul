@@ -6,7 +6,7 @@ modes[T](values: Iterable[T]) -> List[T] =>
     groups
         |> filter(((_, group)) => group.count == most)
         |> map(((value, _)) => value)
-        |> collect_list()
+        |> collect_mutable()
 
 show[T](values: List[T]) =>
     write_line("mode of {values} is {modes(values)}")

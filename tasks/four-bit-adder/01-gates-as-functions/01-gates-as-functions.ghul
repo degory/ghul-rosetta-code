@@ -23,7 +23,7 @@ si
 four_bit_adder(a: bool[], b: bool[], carry_in: bool)
     -> (sum: bool[], carry: bool)
 is
-    let wires = repeat(false, 4) |> collect_list()
+    let wires = repeat(false, 4) |> collect_mutable()
     let carry mut = carry_in
 
     for at in 0..4 do
@@ -34,11 +34,11 @@ is
         carry = stage.carry
     od
 
-    (sum = wires |> collect_array(), carry = carry)
+    (sum = wires |> collect(), carry = carry)
 si
 
 nibble(value: int) -> bool[] =>
-    0..4 |> map(at => (value >> (3 - at)) % 2 == 1) |> collect_array()
+    0..4 |> map(at => (value >> (3 - at)) % 2 == 1) |> collect()
 
 binary(bits: bool[]) -> string =>
     bits |> map(bit => if bit then "1" else "0" fi) |> join("")

@@ -31,7 +31,7 @@ in_base(value: long, base: long) -> string =>
     string(
         to_digits(value, base)
             |> map(digit => "0123456789"[digit])
-            |> collect_array())
+            |> collect())
 
 ternary_palindromes() -> Ghul.Pipes.Pipe[long] is
     yield 0L

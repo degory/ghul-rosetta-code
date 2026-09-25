@@ -44,11 +44,11 @@ perfect_matching(vertices: List[int]) -> List[Edge] =>
                         |> index()
                         |> filter(((at, _)) => at != 0 /\ at != partner)
                         |> map(((_, vertex)) => vertex)
-                        |> collect_list()
+                        |> collect_mutable()
                 in
                 [(from = vertices[0], to = vertices[partner])]
                     |> cat(perfect_matching(rest))
-                    |> collect_list())
+                    |> collect_mutable())
             |> min_by(matching => length(matching))!
     fi
 
@@ -56,8 +56,8 @@ eulerian_circuit(n: int, edges: List[Edge]) -> List[int] is
     let unused =
         0..n
             |> map(_ => LIST[(edge: int, other: int)]())
-            |> collect_list()
-    let used = repeat(false, edges.count) |> collect_list()
+            |> collect_mutable()
+    let used = repeat(false, edges.count) |> collect_mutable()
 
     for (edge, (from, to)) in edges |> index() do
         unused[from].add((edge, other = to))
@@ -88,13 +88,14 @@ let tree = spanning_tree(n)
 let odd = 0..n
     |> filter(v =>
         tree |> count(((from, to)) => from == v \/ to == v) % 2 == 1)
-    |> collect_list()
+    |> collect_mutable()
 
 let matching = perfect_matching(odd)
-let circuit = eulerian_circuit(n, tree |> cat(matching) |> collect_list())
+let circuit =
+    eulerian_circuit(n, tree |> cat(matching) |> collect_mutable())
 
 let visited = SET[int]()
-let tour = circuit |> filter(v => visited.add(v)) |> collect_list()
+let tour = circuit |> filter(v => visited.add(v)) |> collect_mutable()
 
 tour.add(tour[0])
 

@@ -2,8 +2,8 @@ use default
 
 let limit = 1_400_000
 
-let divisor_sum = repeat(0, limit + 1) |> collect_list()
-let divisor_count = repeat(0, limit + 1) |> collect_list()
+let divisor_sum = repeat(0, limit + 1) |> collect_mutable()
+let divisor_count = repeat(0, limit + 1) |> collect_mutable()
 
 for divisor in 1::limit do
     let multiple mut = divisor

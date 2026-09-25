@@ -4,7 +4,7 @@ mean_angle(degrees: List[double]) -> double =>
     let radians =
         degrees
             |> map(d => double.degrees_to_radians(d))
-            |> collect_list()
+            |> collect_mutable()
     in
     let sines = radians |> map(r => double.sin(r)) |> sum() in
     let cosines = radians |> map(r => double.cos(r)) |> sum() in

@@ -40,7 +40,7 @@ triangle(text: string) -> Triangle is
 
     (0..3)
         |> map(i => P(numbers[2 * i], numbers[2 * i + 1]))
-        |> collect_array()
+        |> collect()
 si
 
 let pairs = [

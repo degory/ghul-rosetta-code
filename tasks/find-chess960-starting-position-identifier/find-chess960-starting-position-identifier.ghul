@@ -5,7 +5,7 @@ positions(pieces: string, piece: char) -> List[int] =>
         |> index()
         |> filter(((_, p)) => p == piece)
         |> map(((i, _)) => i)
-        |> collect_list()
+        |> collect_mutable()
 
 without(pieces: string, removed: string) -> string =>
     pieces |> filter(p => removed.index_of(p) < 0) |> join("")
@@ -13,7 +13,7 @@ without(pieces: string, removed: string) -> string =>
 let knight_pairs =
     0::4
         |> flat_map(first => first + 1::4 |> map(second => (first, second)))
-        |> collect_list()
+        |> collect_mutable()
 
 sp_id(pieces: string) -> int =>
     let knights = positions(without(pieces, "QB"), 'N') in

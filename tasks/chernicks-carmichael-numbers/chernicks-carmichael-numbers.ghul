@@ -49,7 +49,7 @@ smallest_chernick(n: int) -> (m: long, factors: LIST[bigint]) is
     let m mut = step
 
     do
-        let factors = chernick_factors(n, m) |> collect_list()
+        let factors = chernick_factors(n, m) |> collect_mutable()
 
         if factors |> all(is_prime) then
             return (m, factors)

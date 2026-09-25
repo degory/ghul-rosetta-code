@@ -4,7 +4,7 @@ cholesky(a: List[List[double]]) -> List[List[double]] is
     let size = a.count
     let l =
         0..size
-            |> map(_ => repeat(0.0, size) |> collect_list())
+            |> map(_ => repeat(0.0, size) |> collect_mutable())
             |> collect()
 
     for i in 0..size do

@@ -28,8 +28,8 @@ advance(left: LIST[char], right: LIST[char], index: int) is
 si
 
 chao(text: string, encrypting: bool) -> string is
-    let left = "HXUCZVAMDSLKPEFJRIGTWOBNYQ" |> collect_list()
-    let right = "PTLNBQDEOYSFAVZKGJRIHWXUMC" |> collect_list()
+    let left = "HXUCZVAMDSLKPEFJRIGTWOBNYQ" |> collect_mutable()
+    let right = "PTLNBQDEOYSFAVZKGJRIHWXUMC" |> collect_mutable()
     let out = LIST[char]()
 
     for letter in text do
@@ -45,7 +45,7 @@ chao(text: string, encrypting: bool) -> string is
         advance(left, right, index)
     od
 
-    return string(out |> collect_array())
+    return string(out |> collect())
 si
 
 let plain = "WELLDONEISBETTERTHANWELLSAID"

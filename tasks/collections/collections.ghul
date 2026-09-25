@@ -6,4 +6,4 @@ planets.add("Mercury")
 planets.add("Venus")
 planets.add("Earth")
 
-write_line(planets |> join(", "))
+write_line(planets |> join())

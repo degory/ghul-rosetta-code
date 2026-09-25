@@ -120,5 +120,5 @@ for line in 0..(moves.count + 7) / 8 do
             |> skip(line * 8)
             |> take(8)
             |> map(m => names[m])
-            |> join(", "))
+            |> join())
 od

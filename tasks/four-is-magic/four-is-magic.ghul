@@ -73,7 +73,7 @@ magic(value: long) -> string is
 
     phrases.add("four is magic")
 
-    let sentence = phrases |> join(", ")
+    let sentence = phrases |> join()
 
     return "{sentence[0..1].to_upper_invariant()}{sentence[1..<0]}."
 si

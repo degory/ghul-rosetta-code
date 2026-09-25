@@ -59,7 +59,7 @@ let countdown = (
         fi
     od
 
-    said |> join(", ")
+    said |> join()
 )
 
 write_line("counting down: {countdown}")

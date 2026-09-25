@@ -1,7 +1,7 @@
 use default
 
 sorted_letters(word: string) -> string =>
-    string(word |> sort() |> collect_array())
+    string(word |> sort() |> collect())
 
 let sets = IO.File.read_all_lines("unixdict.txt")
     |> group_by(word => sorted_letters(word))

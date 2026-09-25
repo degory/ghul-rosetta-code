@@ -74,7 +74,7 @@ embed(tensor: Tensor, strides: List[int]) -> List[int] is
         |> map((extent, stride) => (extent - 1) * stride)
         |> sum()
 
-    let values = repeat(0, size + 1) |> collect_list()
+    let values = repeat(0, size + 1) |> collect_mutable()
 
     place(t: Tensor, level: int, offset: int) is
         case t

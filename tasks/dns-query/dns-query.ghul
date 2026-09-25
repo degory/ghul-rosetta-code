@@ -20,7 +20,7 @@ query(server: IPEndPoint, name: string, kind: int) -> List[IPAddress] is
     packet.add_range([0ub, 0ub, cast ubyte(kind), 0ub, 1ub])
 
     let client = UdpClient()
-    let sent = packet |> collect_array()
+    let sent = packet |> collect()
 
     client.send(sent, sent.count, server)
 
@@ -48,7 +48,7 @@ query(server: IPEndPoint, name: string, kind: int) -> List[IPAddress] is
 
         if word(at) == kind then
             let data =
-                reply |> skip(at + 10) |> take(length) |> collect_array()
+                reply |> skip(at + 10) |> take(length) |> collect()
 
             found.add(IPAddress(data))
         fi
@@ -84,7 +84,7 @@ stand_in() -> IPEndPoint is
             reply.add_range([0ub, cast ubyte(data.count)])
             reply.add_range(data)
 
-            let bytes = reply |> collect_array()
+            let bytes = reply |> collect()
 
             server.send(bytes, bytes.count, from)
         od

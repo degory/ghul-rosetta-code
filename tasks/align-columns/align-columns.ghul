@@ -34,7 +34,7 @@ let text = [
 let rows =
     text
     |> map(line => line.trim_end('$').split(['$']))
-    |> collect_array()
+    |> collect()
 
 let columns =
     rows
@@ -52,7 +52,7 @@ let widths =
             else
                 widest
             fi))
-    |> collect_array()
+    |> collect()
 
 for alignment in [Alignment.LEFT, Alignment.RIGHT, Alignment.CENTRE] do
     rows |> each(row => write_line(line(row, widths, alignment)))

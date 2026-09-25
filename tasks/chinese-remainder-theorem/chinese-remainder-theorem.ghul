@@ -38,8 +38,8 @@ si
 
 demo(ns: LIST[long], as: LIST[long]) is
     let result = crt(ns, as)
-    let n_text = ns |> map(n => "{n}") |> join(", ")
-    let a_text = as |> map(a => "{a}") |> join(", ")
+    let n_text = ns |> map(n => "{n}") |> join()
+    let a_text = as |> map(a => "{a}") |> join()
 
     write_line("n = [{n_text}], a = [{a_text}]")
 

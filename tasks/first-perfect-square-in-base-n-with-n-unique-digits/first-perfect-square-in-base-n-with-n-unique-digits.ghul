@@ -29,7 +29,7 @@ in_base(value: long, base: int) -> string is
         remaining = remaining / radix
     od
 
-    return string(digits |> collect_array())
+    return string(digits |> collect())
 si
 
 smallest_root(base: int) -> int is

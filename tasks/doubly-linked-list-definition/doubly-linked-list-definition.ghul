@@ -102,4 +102,4 @@ list.add_to_tail(4)
 list.add_to_head(1)
 list.add_after(two, 3)
 
-write_line(list.values() |> join(", "))
+write_line(list.values() |> join())

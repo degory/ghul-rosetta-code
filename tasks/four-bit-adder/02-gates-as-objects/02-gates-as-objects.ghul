@@ -64,8 +64,8 @@ class FOUR_BIT_ADDER is
     carry: Component
 
     init() is
-        left = repeat(0, 4) |> map(_ => PIN(false)) |> collect_list()
-        right = repeat(0, 4) |> map(_ => PIN(false)) |> collect_list()
+        left = repeat(0, 4) |> map(_ => PIN(false)) |> collect_mutable()
+        right = repeat(0, 4) |> map(_ => PIN(false)) |> collect_mutable()
 
         let bits = LIST[Component]()
         let carried: Component mut = PIN(false)

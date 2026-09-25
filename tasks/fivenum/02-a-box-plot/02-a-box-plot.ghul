@@ -4,7 +4,7 @@ use Raster.AXES
 use Raster.IMAGE
 
 fivenum(xs_raw: double[]) -> double[] is
-    let xs = xs_raw |> sort() |> collect_array()
+    let xs = xs_raw |> sort() |> collect()
     let n = xs.count
     let n4 = System.Math.floor((cast double(n) + 3.0) / 2.0) / 2.0
     let d = [
@@ -18,7 +18,7 @@ fivenum(xs_raw: double[]) -> double[] is
         0.5 * (lo + hi)
     si
 
-    d |> map(midpoint) |> collect_array()
+    d |> map(midpoint) |> collect()
 si
 
 let datasets = [

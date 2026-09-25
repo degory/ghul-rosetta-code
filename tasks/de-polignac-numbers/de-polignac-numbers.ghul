@@ -1,7 +1,7 @@
 use default
 
 let limit = 300_000
-let composite = repeat(false, limit) |> collect_list()
+let composite = repeat(false, limit) |> collect_mutable()
 
 let root = cast int(System.Math.sqrt(cast double(limit)))
 

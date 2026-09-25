@@ -14,7 +14,7 @@ while fusc.count <= limit do
     fi
 od
 
-write_line(fusc |> take(61) |> join(", "))
+write_line(fusc |> take(61) |> join())
 
 let longest mut = 0
 

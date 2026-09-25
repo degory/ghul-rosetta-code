@@ -3,7 +3,7 @@ use default
 let limit = 30_000_000
 
 let prime = (
-    let sieve = repeat(true, limit) |> collect_list()
+    let sieve = repeat(true, limit) |> collect_mutable()
 
     sieve[0] = false
     sieve[1] = false
@@ -46,7 +46,7 @@ let found =
         |> filter(k => k % 2 != 0 /\ k % 3 != 0 /\ k % 5 != 0 /\ k % 7 != 0)
         |> filter(k => !prime[k] /\ factors_are_substrings(k))
         |> take(20)
-        |> collect_list()
+        |> collect_mutable()
 
 for row in found |> chunk(10) do
     write_line(row |> map(k => "{k,11:N0}") |> join(""))

@@ -8,7 +8,7 @@ let earth_radius = 6371.0 / 1.852
 fields(line: string) -> List[string] =>
     csv_field.matches(line)
         |> map(found => found.value.trim('"'))
-        |> collect_list()
+        |> collect_mutable()
 
 use Airport =
     (name: string, country: string, icao: string, at: (double, double))

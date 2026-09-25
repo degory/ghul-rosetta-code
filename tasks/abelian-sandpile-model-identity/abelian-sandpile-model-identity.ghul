@@ -8,7 +8,7 @@ class SANDPILE is
 
     init(size: int, cells: Iterable[int]) is
         self.size = size
-        self.cells = cells |> collect_list()
+        self.cells = cells |> collect_mutable()
         topple()
     si
 

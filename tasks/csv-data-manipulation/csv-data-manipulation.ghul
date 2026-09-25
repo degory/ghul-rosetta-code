@@ -16,7 +16,7 @@ let rows =
     IO.File.read_all_lines("input.csv")
         |> index()
         |> map(((position, line)) => with_sum_column(line, position))
-        |> collect_array()
+        |> collect()
 
 let output = IO.Path.combine(IO.Path.get_temp_path(), "rosetta-sums.csv")
 
