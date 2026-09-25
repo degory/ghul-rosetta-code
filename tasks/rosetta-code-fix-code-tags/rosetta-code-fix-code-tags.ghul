@@ -2,7 +2,7 @@ use default
 
 use System.Text.RegularExpressions.Regex
 
-let tag = "syntax" "highlight"
+let tag = "syntaxhighlight"
 
 let rules = [
     ("<lang\\s+([\\w-]+)\\s*>", "<{tag} lang=$1>"),
