@@ -22122,6 +22122,32 @@
       ]
     },
     {
+      "slug": "runge-kutta-method",
+      "title": "Runge-Kutta method",
+      "url": "https://rosettacode.org/wiki/Runge-Kutta_method",
+      "tags": [
+        "maths",
+        "closures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "runge-kutta-method",
+          "heading": null,
+          "source": "tasks/runge-kutta-method/runge-kutta-method.ghul",
+          "output": "tasks/runge-kutta-method/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "ruth-aaron-numbers",
       "title": "Ruth-Aaron numbers",
       "url": "https://rosettacode.org/wiki/Ruth-Aaron_numbers",
