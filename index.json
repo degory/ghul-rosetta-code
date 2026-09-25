@@ -6441,6 +6441,32 @@
       ]
     },
     {
+      "slug": "cullen-and-woodall-numbers",
+      "title": "Cullen and Woodall numbers",
+      "url": "https://rosettacode.org/wiki/Cullen_and_Woodall_numbers",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "cullen-and-woodall-numbers",
+          "heading": null,
+          "source": "tasks/cullen-and-woodall-numbers/cullen-and-woodall-numbers.ghul",
+          "output": "tasks/cullen-and-woodall-numbers/run.expected",
+          "lines": 88,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "cumulative-standard-deviation",
       "title": "Cumulative standard deviation",
       "url": "https://rosettacode.org/wiki/Cumulative_standard_deviation",
