@@ -1,0 +1,91 @@
+use default
+
+struct RATIONAL is
+    numerator: bigint
+    denominator: bigint
+
+    init(n: bigint, d: bigint) is
+        let divisor = bigint.greatest_common_divisor(n, d) * bigint(d.sign)
+        numerator = n / divisor
+        denominator = d / divisor
+    si
+
+    +(other: RATIONAL) -> RATIONAL =>
+        RATIONAL(
+            numerator * other.denominator + other.numerator * denominator,
+            denominator * other.denominator)
+
+    -(other: RATIONAL) -> RATIONAL =>
+        RATIONAL(
+            numerator * other.denominator - other.numerator * denominator,
+            denominator * other.denominator)
+
+    *(other: RATIONAL) -> RATIONAL =>
+        RATIONAL(
+            numerator * other.numerator,
+            denominator * other.denominator)
+
+    /(other: RATIONAL) -> RATIONAL =>
+        RATIONAL(
+            numerator * other.denominator,
+            denominator * other.numerator)
+
+    decimal(places: int) -> string is
+        let sign = if numerator.sign < 0 then "-" else "" fi
+        let n = bigint.abs(numerator)
+        let whole = n / denominator
+        let scaled = (n % denominator) * bigint.pow(10n, places)
+        let fraction = scaled / denominator
+        let digits = fraction.to_string().pad_left(places, '0')
+
+        return "{sign}{whole}.{digits}"
+    si
+si
+
+whole(n: bigint) -> RATIONAL => RATIONAL(n, 1n)
+
+write_line("Task 1: the sequence v")
+
+let v = LIST[RATIONAL]([whole(0n), whole(2n), whole(-4n)])
+
+for n in 3::100 do
+    let a = v[n - 1]
+    let b = v[n - 2]
+    v.add(whole(111n) - whole(1130n) / a + whole(3000n) / (a * b))
+od
+
+for n in [3, 4, 5, 6, 7, 8, 20, 30, 50, 100] do
+    write_line("  n = {n,3}  {v[n].decimal(20)}")
+od
+
+write_line()
+write_line("Task 2: the Chaotic Bank Society")
+
+let e = 0::40
+    |> map(k => RATIONAL(1n, 1::k |> reduce(1n, (f, i) => f * bigint(i))))
+    |> reduce(whole(0n), (total, term) => total + term)
+
+let balance mut = e - whole(1n)
+
+for year in 1::25 do
+    balance = balance * whole(bigint(year)) - whole(1n)
+od
+
+write_line("  balance after 25 years: ${balance.decimal(16)}")
+
+write_line()
+write_line("Task 3: Siegfried Rump's example")
+
+let a = whole(77617n)
+let b = whole(33096n)
+let b2 = b * b
+let b4 = b2 * b2
+let b6 = b4 * b2
+let b8 = b4 * b4
+
+let f = RATIONAL(1335n, 4n) * b6 +
+    a * a * (whole(11n) * a * a * b2 - b6 - whole(121n) * b4 - whole(2n)) +
+    RATIONAL(11n, 2n) * b8 +
+    a / (whole(2n) * b)
+
+write_line("  f(77617, 33096) = {f.decimal(30)}")

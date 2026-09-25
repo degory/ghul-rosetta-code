@@ -22122,6 +22122,32 @@
       ]
     },
     {
+      "slug": "pathological-floating-point-problems",
+      "title": "Pathological floating point problems",
+      "url": "https://rosettacode.org/wiki/Pathological_floating_point_problems",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "pathological-floating-point-problems",
+          "heading": null,
+          "source": "tasks/pathological-floating-point-problems/pathological-floating-point-problems.ghul",
+          "output": "tasks/pathological-floating-point-problems/run.expected",
+          "lines": 91,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "peaceful-chess-queen-armies",
       "title": "Peaceful chess queen armies",
       "url": "https://rosettacode.org/wiki/Peaceful_chess_queen_armies",
