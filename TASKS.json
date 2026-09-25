@@ -542,6 +542,11 @@
       }
     },
     {
+      "title": "Bin given limits",
+      "slug": "bin-given-limits",
+      "state": "solved"
+    },
+    {
       "title": "Binary digits",
       "slug": "binary-digits",
       "state": "published",
@@ -576,6 +581,11 @@
       "slug": "bioinformatics-global-alignment",
       "state": "published",
       "published_hash": "24ed4384bb1298e1a369cc59de8eff824fa9b79b466d51de700580b2e5439905"
+    },
+    {
+      "title": "Bioinformatics/Sequence mutation",
+      "slug": "bioinformatics-sequence-mutation",
+      "state": "solved"
     },
     {
       "title": "Biorhythms",
@@ -863,6 +873,11 @@
       "published_hash": "95767df7ec5cc4715d101a753f3c5da6488ca37b20f2f7e1786c9b856bffbc71"
     },
     {
+      "title": "Calendar",
+      "slug": "calendar",
+      "state": "solved"
+    },
+    {
       "title": "Calkin-Wilf sequence",
       "slug": "calkin-wilf-sequence",
       "state": "published",
@@ -908,6 +923,11 @@
       }
     },
     {
+      "title": "Canonicalize CIDR",
+      "slug": "canonicalize-cidr",
+      "state": "solved"
+    },
+    {
       "title": "Cantor set",
       "slug": "cantor-set",
       "state": "published",
@@ -918,6 +938,11 @@
       "slug": "card-shuffles",
       "state": "published",
       "published_hash": "10ef39f63c6b6b4c0b47df1e4c5efd26577f90603ba7d1b3327653f804293c06"
+    },
+    {
+      "title": "Carmichael 3 strong pseudoprimes",
+      "slug": "carmichael-3-strong-pseudoprimes",
+      "state": "solved"
     },
     {
       "title": "Cartesian product of two or more lists",
@@ -944,6 +969,11 @@
       "published_hash": "12c92d39061b9abbcb32b8b3390b9bf9776593c46645110fbd39c2af9fcab163"
     },
     {
+      "title": "Catalan numbers/Pascal\u0027s triangle",
+      "slug": "catalan-numbers-pascals-triangle",
+      "state": "solved"
+    },
+    {
       "title": "Catamorphism",
       "slug": "catamorphism",
       "state": "published",
@@ -966,6 +996,16 @@
       "image_hashes": {
         "Ghul-catmull-clark-subdivision-surface-subdivided.png": "d5bbca1f97c9835d9aa7126010fbd1e73366396d"
       }
+    },
+    {
+      "title": "Centre and radius of a circle passing through 3 points in a plane",
+      "slug": "centre-and-radius-of-a-circle-passing-through-3-points-in-a-plane",
+      "state": "solved"
+    },
+    {
+      "title": "Chaocipher",
+      "slug": "chaocipher",
+      "state": "solved"
     },
     {
       "title": "Chaos game",
@@ -1072,6 +1112,16 @@
       "slug": "chinese-zodiac",
       "state": "published",
       "published_hash": "0b11872ed05840ac8e70146c8dd036af72e395277fa1aaf4f46712e1379aedd0"
+    },
+    {
+      "title": "Cholesky decomposition",
+      "slug": "cholesky-decomposition",
+      "state": "solved"
+    },
+    {
+      "title": "Chowla numbers",
+      "slug": "chowla-numbers",
+      "state": "solved"
     },
     {
       "title": "Chrome simulated search",
