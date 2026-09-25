@@ -16870,6 +16870,32 @@
       ]
     },
     {
+      "slug": "multifactorial",
+      "title": "Multifactorial",
+      "url": "https://rosettacode.org/wiki/Multifactorial",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 13,
+      "parts": [
+        {
+          "id": "multifactorial",
+          "heading": null,
+          "source": "tasks/multifactorial/multifactorial.ghul",
+          "output": "tasks/multifactorial/run.expected",
+          "lines": 13,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "multiline-shebang",
       "title": "Multiline shebang",
       "url": "https://rosettacode.org/wiki/Multiline_shebang",
