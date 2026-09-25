@@ -1,0 +1,15 @@
+penalty  4: E-Z(50)
+penalty  3: C-W(50)
+penalty 35: E-X(10)
+penalty  7: C-X(20)
+penalty  5: A-X(30)
+penalty 23: D-Y(30)
+penalty 19: B-Y(20)
+
+     A  B  C  D  E
+W         50
+X   30    20    10
+Y      20    30
+Z               50
+
+total cost: 3100

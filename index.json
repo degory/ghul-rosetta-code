@@ -29847,6 +29847,32 @@
       ]
     },
     {
+      "slug": "vogel-s-approximation-method",
+      "title": "Vogel's approximation method",
+      "url": "https://rosettacode.org/wiki/Vogel's_approximation_method",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 83,
+      "parts": [
+        {
+          "id": "vogel-s-approximation-method",
+          "heading": null,
+          "source": "tasks/vogel-s-approximation-method/vogel-s-approximation-method.ghul",
+          "output": "tasks/vogel-s-approximation-method/run.expected",
+          "lines": 83,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "voronoi-diagram",
       "title": "Voronoi diagram",
       "url": "https://rosettacode.org/wiki/Voronoi_diagram",
