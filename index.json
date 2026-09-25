@@ -20244,6 +20244,32 @@
       ]
     },
     {
+      "slug": "primes-n-2-m-1",
+      "title": "Primes: n*2^m+1",
+      "url": "https://rosettacode.org/wiki/Primes:_n*2^m+1",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "primes-n-2-m-1",
+          "heading": null,
+          "source": "tasks/primes-n-2-m-1/primes-n-2-m-1.ghul",
+          "output": "tasks/primes-n-2-m-1/run.expected",
+          "lines": 63,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "primorial-numbers",
       "title": "Primorial numbers",
       "url": "https://rosettacode.org/wiki/Primorial_numbers",
