@@ -21,7 +21,8 @@ depths(heights: int[]) -> List[int] => (
 
     (0..heights.count)
     |> map(i => Math.min(left[i], right[last - i]) - heights[i])
-    |> collect())
+    |> collect()
+)
 
 let series =
     [[1, 5, 3, 7, 2],
@@ -55,8 +56,7 @@ box(left: double, bottom: double, right: double, top: double) is
         [(x = left, y = bottom),
          (x = right, y = bottom),
          (x = right, y = top),
-         (x = left, y = top)]
-)
+         (x = left, y = top)])
 si
 
 let stone = (red = 110ub, green = 105ub, blue = 100ub)
