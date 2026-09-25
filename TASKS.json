@@ -6284,6 +6284,12 @@
       "published_hash": "ac18f9bc62e3f09663156d49a6047812a27fb1a1a2bcbe331c0256db74053a27"
     },
     {
+      "title": "Shell one-liner",
+      "state": "rejected",
+      "reason": "excluded",
+      "note": "the answer is a shell command line, not a program with a testable output; with ghul.cli it is: echo \u0027write_line(\u0022hello\u0022)\u0027 \u003E h.ghul \u0026\u0026 ghul h.ghul"
+    },
+    {
       "title": "Short-circuit evaluation",
       "slug": "short-circuit-evaluation",
       "state": "published",
