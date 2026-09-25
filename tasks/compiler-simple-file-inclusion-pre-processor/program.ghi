@@ -1,0 +1,7 @@
+use default
+
+#include "greeting.ghi"
+#include "maths/operations.ghi"
+
+greet("world")
+write_line("{square(7)} {cube(3)}")

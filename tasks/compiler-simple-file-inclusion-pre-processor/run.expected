@@ -1,0 +1,9 @@
+use default
+
+greet(name: string) => write_line("hello, {name}")
+square(n: int) -> int => n * n
+
+cube(n: int) -> int => square(n) * n
+
+greet("world")
+write_line("{square(7)} {cube(3)}")

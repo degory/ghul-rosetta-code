@@ -1,0 +1,3 @@
+#include "square.ghi"
+
+cube(n: int) -> int => square(n) * n

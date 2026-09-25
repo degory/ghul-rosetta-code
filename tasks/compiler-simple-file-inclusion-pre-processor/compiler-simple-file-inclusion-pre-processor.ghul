@@ -1,0 +1,33 @@
+use default
+
+use IO.Path
+
+// A line of the form #include "path" is replaced by the lines of that file,
+// with the path taken relative to the including file. Includes nest to any
+// depth; a file that includes itself, directly or indirectly, is an error.
+
+expand(path: string, active: List[string]) -> Pipe[string] is
+    let full = Path.get_full_path(path)
+
+    assert !(active |> any(open => open =~ full))
+    else "include cycle through {path}"
+
+    let nested = active |> cat([full]) |> collect_list()
+
+    for line in IO.File.read_all_lines(path) do
+        let directive = line.trim()
+
+        if directive.starts_with("#include ") then
+            let target = directive.substring(9).trim().trim('"')
+            let directory = Path.get_directory_name(path) ?? ""
+
+            yield in expand(Path.combine(directory, target), nested)
+        else
+            yield line
+        fi
+    od
+si
+
+for line in expand("program.ghi", []) do
+    write_line(line)
+od
