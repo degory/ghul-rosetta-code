@@ -6230,6 +6230,32 @@
       ]
     },
     {
+      "slug": "cramer-s-rule",
+      "title": "Cramer's rule",
+      "url": "https://rosettacode.org/wiki/Cramer's_rule",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "cramer-s-rule",
+          "heading": null,
+          "source": "tasks/cramer-s-rule/cramer-s-rule.ghul",
+          "output": "tasks/cramer-s-rule/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "crc-32",
       "title": "CRC-32",
       "url": "https://rosettacode.org/wiki/CRC-32",
