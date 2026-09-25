@@ -1,0 +1,38 @@
+use default
+
+ascending_number(mask: int) -> int is
+    let value mut = 0
+
+    for digit in 1::9 do
+        if (mask >> (digit - 1)) & 1 == 1 then
+            value = value * 10 + digit
+        fi
+    od
+
+    return value
+si
+
+is_prime(n: int) -> bool is
+    if n < 2 then
+        return false
+    fi
+
+    let factor mut = 2
+
+    while factor * factor <= n do
+        if n % factor == 0 then
+            return false
+        fi
+
+        factor = factor + 1
+    od
+
+    return true
+si
+
+1::511
+    |> map(ascending_number)
+    |> filter(is_prime)
+    |> sort()
+    |> chunk(8)
+    |> each(row => write_line(row |> map(n => "{n,10}") |> join("")))
