@@ -1,0 +1,44 @@
+use default
+
+magic_numbers() -> Pipe[bigint] is
+    let current = 1::9 |> map(d => bigint(d)) |> collect_list()
+    let length mut = 1
+
+    yield 0n
+
+    while current.count > 0 do
+        yield in current
+
+        length = length + 1
+
+        let next =
+            current
+                |> flat_map(n => 0::9 |> map(d => n * 10n + bigint(d)))
+                |> filter(n => n % bigint(length) =~ 0n)
+                |> collect_list()
+
+        current.clear()
+        current.add_range(next)
+    od
+si
+
+let magic = magic_numbers() |> collect_list()
+
+write_line("There are {magic.count} magic numbers, counting zero.")
+write_line("The largest is {magic[magic.count - 1]}.\n")
+
+write_line("Digits  count")
+
+for (digits, group) in magic |> group_by(n => "{n}".length) do
+    write_line("{digits,6}  {group.count,5}")
+od
+
+pandigital(n: bigint, digits: string) -> bool =>
+    let text = "{n}" in
+    text.length == digits.length /\ digits |> all(d => text.contains(d))
+
+for digits in ["123456789", "0123456789"] do
+    let found = magic |> filter(n => pandigital(n, digits)) |> join(", ")
+
+    write_line("\nMinimally pandigital in {digits}: {found}")
+od
