@@ -27,7 +27,8 @@ solve(matrix: LIST[LIST[double]], rhs: LIST[double]) -> LIST[double] is
 
             if factor != 0.0 then
                 for k in column..n do
-                    matrix[row][k] = matrix[row][k] - factor * matrix[column][k]
+                    matrix[row][k] =
+                        matrix[row][k] - factor * matrix[column][k]
                 od
 
                 rhs[row] = rhs[row] - factor * rhs[column]

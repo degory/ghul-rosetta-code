@@ -47,7 +47,8 @@ routh_array(
         fi
 
         if rows[r - 1][0] == 0.0 then
-            write_line("  zero in the first column of row s{degree - r + 1}: "
+            write_line(
+                "  zero in the first column of row s{degree - r + 1}: "
                 "replaced by a small positive number")
             rows[r - 1][0] = epsilon
         fi
@@ -63,7 +64,8 @@ sign_changes(column: Collections.List[double]) -> int =>
     |> count(i => (column[i - 1] < 0.0) != (column[i] < 0.0))
 
 test(coefficients: double[]) is
-    write_line("coefficients {coefficients |> map(c => "{c}") |> join(", ")}:")
+    let listed = coefficients |> map(c => "{c}") |> join(", ")
+    write_line("coefficients {listed}:")
 
     let (rows, on_axis) = routh_array(coefficients)
     let degree = coefficients.count - 1

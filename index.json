@@ -21678,14 +21678,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 82,
+      "lines": 83,
       "parts": [
         {
           "id": "resistor-mesh",
           "heading": null,
           "source": "tasks/resistor-mesh/resistor-mesh.ghul",
           "output": "tasks/resistor-mesh/run.expected",
-          "lines": 82,
+          "lines": 83,
           "playground": true,
           "input": false,
           "images": []
@@ -22115,6 +22115,32 @@
       ]
     },
     {
+      "slug": "rosetta-code-fix-code-tags",
+      "title": "Rosetta Code/Fix code tags",
+      "url": "https://rosettacode.org/wiki/Rosetta_Code/Fix_code_tags",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 20,
+      "parts": [
+        {
+          "id": "rosetta-code-fix-code-tags",
+          "heading": null,
+          "source": "tasks/rosetta-code-fix-code-tags/rosetta-code-fix-code-tags.ghul",
+          "output": "tasks/rosetta-code-fix-code-tags/run.expected",
+          "lines": 20,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rot-13",
       "title": "Rot-13",
       "url": "https://rosettacode.org/wiki/Rot-13",
@@ -22183,14 +22209,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 36,
+      "lines": 39,
       "parts": [
         {
           "id": "round-robin-tournament-schedule",
           "heading": null,
           "source": "tasks/round-robin-tournament-schedule/round-robin-tournament-schedule.ghul",
           "output": "tasks/round-robin-tournament-schedule/run.expected",
-          "lines": 36,
+          "lines": 39,
           "playground": true,
           "input": false,
           "images": []
@@ -22209,14 +22235,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 93,
+      "lines": 95,
       "parts": [
         {
           "id": "routh-hurwitz-stability-criterion",
           "heading": null,
           "source": "tasks/routh-hurwitz-stability-criterion/routh-hurwitz-stability-criterion.ghul",
           "output": "tasks/routh-hurwitz-stability-criterion/run.expected",
-          "lines": 93,
+          "lines": 95,
           "playground": true,
           "input": false,
           "images": []
