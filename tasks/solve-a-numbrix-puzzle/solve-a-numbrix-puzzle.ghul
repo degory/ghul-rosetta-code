@@ -1,0 +1,144 @@
+use default
+
+class NUMBRIX is
+    _size: int
+    _grid: LIST[int]
+    _given: LIST[int]
+    _last: int
+
+    init(rows: int[][]) is
+        _size = rows.count
+        _grid = rows |> flat_map(row => row) |> collect_list()
+        _last = _size * _size
+        _given = repeat(-1, _last + 1) |> collect_list()
+
+        for cell in 0.._last do
+            if _grid[cell] > 0 then
+                _given[_grid[cell]] = cell
+            fi
+        od
+    si
+
+    _neighbours(cell: int) -> List[int] is
+        let row = cell / _size
+        let column = cell % _size
+        let result = LIST[int]()
+
+        if row > 0 then result.add(cell - _size) fi
+        if row < _size - 1 then result.add(cell + _size) fi
+        if column > 0 then result.add(cell - 1) fi
+        if column < _size - 1 then result.add(cell + 1) fi
+
+        result
+    si
+
+    _distance(a: int, b: int) -> int =>
+        System.Math.abs(a / _size - b / _size) +
+        System.Math.abs(a % _size - b % _size)
+
+    // The next given number further on has to stay within reach.
+    _reachable(cell: int, n: int) -> bool is
+        for k in n + 1::_last do
+            if _given[k] >= 0 then
+                return _distance(cell, _given[k]) <= k - n
+            fi
+        od
+
+        true
+    si
+
+    _place(cell: int, n: int) -> bool is
+        if n == _last then
+            return true
+        fi
+
+        let next = n + 1
+
+        if _given[next] >= 0 then
+            return
+                _neighbours(cell) |> any(c => c == _given[next]) /\
+                _place(_given[next], next)
+        fi
+
+        for c in _neighbours(cell) do
+            if _grid[c] == 0 /\ _reachable(c, next) then
+                _grid[c] = next
+
+                if _place(c, next) then
+                    return true
+                fi
+
+                _grid[c] = 0
+            fi
+        od
+
+        false
+    si
+
+    solve() -> bool is
+        if _given[1] >= 0 then
+            return _place(_given[1], 1)
+        fi
+
+        for cell in 0.._last do
+            if _grid[cell] == 0 then
+                _grid[cell] = 1
+                _given[1] = cell
+
+                if _place(cell, 1) then
+                    return true
+                fi
+
+                _given[1] = -1
+                _grid[cell] = 0
+            fi
+        od
+
+        false
+    si
+
+    show() is
+        for row in 0.._size do
+            let cells = _grid |> skip(row * _size) |> take(_size)
+
+            write_line(cells |> map(v => "{v,3}") |> join(""))
+        od
+    si
+si
+
+let puzzles = [
+    [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 46, 45, 0, 55, 74, 0, 0],
+        [0, 38, 0, 0, 43, 0, 0, 78, 0],
+        [0, 35, 0, 0, 0, 0, 0, 71, 0],
+        [0, 0, 33, 0, 0, 0, 59, 0, 0],
+        [0, 17, 0, 0, 0, 0, 0, 67, 0],
+        [0, 18, 0, 0, 11, 0, 0, 64, 0],
+        [0, 0, 24, 21, 0, 1, 2, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 11, 12, 15, 18, 21, 62, 61, 0],
+        [0, 6, 0, 0, 0, 0, 0, 60, 0],
+        [0, 33, 0, 0, 0, 0, 0, 57, 0],
+        [0, 32, 0, 0, 0, 0, 0, 56, 0],
+        [0, 37, 0, 1, 0, 0, 0, 73, 0],
+        [0, 38, 0, 0, 0, 0, 0, 72, 0],
+        [0, 43, 44, 47, 48, 51, 76, 77, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]
+]
+
+for puzzle in puzzles do
+    let numbrix = NUMBRIX(puzzle)
+
+    if numbrix.solve() then
+        numbrix.show()
+    else
+        write_line("no solution")
+    fi
+
+    write_line("")
+od

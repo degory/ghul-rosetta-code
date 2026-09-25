@@ -1,0 +1,34 @@
+use default
+
+let total mut = 0L
+let count mut = 0
+
+while true do
+    let line = IO.Std.read_line()
+
+    if !line? then
+        break
+    fi
+
+    let value mut = 0L
+
+    if !long.try_parse(line.trim(), value ref) then
+        write_line("skipping {line.trim()}: not an integer")
+        continue
+    fi
+
+    if value == 99999L then
+        break
+    fi
+
+    total = total + value
+    count = count + 1
+od
+
+if count == 0 then
+    write_line("no values were entered")
+else
+    let average = cast double(total) / cast double(count)
+
+    write_line("average of {count} values: {average:F4}")
+fi
