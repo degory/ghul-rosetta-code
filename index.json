@@ -16460,6 +16460,32 @@
       ]
     },
     {
+      "slug": "minimum-multiple-of-m-where-digital-sum-equals-m",
+      "title": "Minimum multiple of m where digital sum equals m",
+      "url": "https://rosettacode.org/wiki/Minimum_multiple_of_m_where_digital_sum_equals_m",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "minimum-multiple-of-m-where-digital-sum-equals-m",
+          "heading": null,
+          "source": "tasks/minimum-multiple-of-m-where-digital-sum-equals-m/minimum-multiple-of-m-where-digital-sum-equals-m.ghul",
+          "output": "tasks/minimum-multiple-of-m-where-digital-sum-equals-m/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "minkowski-question-mark-function",
       "title": "Minkowski question-mark function",
       "url": "https://rosettacode.org/wiki/Minkowski_question-mark_function",
