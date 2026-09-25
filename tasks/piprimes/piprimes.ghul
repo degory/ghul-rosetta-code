@@ -1,0 +1,28 @@
+use default
+
+is_prime(n: int) -> bool =>
+    n >= 2 /\ (2::n |> take_while(d => d * d <= n) |> all(d => n % d != 0))
+
+let counts = LIST[int]()
+let pi mut = 0
+
+for n in from(1) do
+    if is_prime(n) then
+        pi = pi + 1
+    fi
+
+    if pi >= 22 then
+        break
+    fi
+
+    counts.add(pi)
+od
+
+for row in 0..(counts.count + 9) / 10 do
+    let cells = counts |> skip(row * 10) |> take(10) |> map(c => "{c,3}")
+
+    write_line(cells |> join(""))
+od
+
+write_line("")
+write_line("pi(n) < 22 for n from 1 to {counts.count}")

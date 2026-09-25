@@ -1,0 +1,92 @@
+use default
+
+let symbols = "0123456789ABCDEF"
+
+in_base(n: long, base: int) -> string is
+    let digits = LIST[char]()
+    let rest mut = n
+
+    while rest > 0L do
+        digits.add(symbols[cast int(rest % cast long(base))])
+        rest = rest / cast long(base)
+    od
+
+    string(digits |> reverse() |> collect_array())
+si
+
+value_of(digits: string, base: int) -> long =>
+    digits |> reduce(0L, (total, c) =>
+        total * cast long(base) + cast long(symbols.index_of(c)))
+
+is_penholodigital(square: long, base: int) -> bool is
+    let wanted = (1 << base) - 2
+    let seen mut = 0
+    let rest mut = square
+
+    while rest > 0L do
+        let digit = cast int(rest % cast long(base))
+
+        if digit == 0 \/ seen & (1 << digit) != 0 then
+            return false
+        fi
+
+        seen = seen | (1 << digit)
+        rest = rest / cast long(base)
+    od
+
+    seen == wanted
+si
+
+roots(base: int) -> List[long] is
+    let smallest = value_of(symbols.substring(1, base - 1), base)
+    let largest = value_of(reversed(symbols.substring(1, base - 1)), base)
+    let modulus = cast long(base - 1)
+    let residue = cast long(base * (base - 1) / 2) % modulus
+    let low mut = cast long(System.Math.sqrt(cast double(smallest)))
+    let found = LIST[long]()
+
+    while low * low < smallest do
+        low = low + 1L
+    od
+
+    let n mut = low
+
+    while n * n <= largest do
+        let square = n * n
+
+        let possible = square % modulus == residue
+
+        if possible /\ is_penholodigital(square, base) then
+            found.add(n)
+        fi
+
+        n = n + 1L
+    od
+
+    found
+si
+
+reversed(s: string) -> string =>
+    string(s.to_char_array() |> reverse() |> collect_array())
+
+show(n: long, base: int) -> string =>
+    "{in_base(n, base)}² = {in_base(n * n, base)}"
+
+for base in 9::15 do
+    let found = roots(base)
+    let shown =
+        if base <= 12 \/ found.count < 2 then found
+        else LIST([found[0], found[found.count - 1]])
+        fi
+
+    write_line(
+        "There are {found.count} penholodigital squares in base {base}:")
+
+    for row in 0..(shown.count + 2) / 3 do
+        let cells = shown |> skip(row * 3) |> take(3)
+
+        write_line(cells |> map(n => show(n, base)) |> join("  "))
+    od
+
+    write_line("")
+od

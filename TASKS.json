@@ -5287,6 +5287,11 @@
       "published_hash": "0f005f35bcb3092cb449ac9b6eef4190ed2a9c6ddd4c5884cba5dcfd6dd53e54"
     },
     {
+      "title": "Penholodigital squares",
+      "slug": "penholodigital-squares",
+      "state": "solved"
+    },
+    {
       "title": "Penney\u0027s game",
       "slug": "penneys-game",
       "state": "published",
@@ -5300,6 +5305,11 @@
       "image_hashes": {
         "Ghul-penrose-tiling-penrose.png": "ec62e4a868b38db4207db1550d35f9c8fe8de1ae"
       }
+    },
+    {
+      "title": "Penta-power prime seeds",
+      "slug": "penta-power-prime-seeds",
+      "state": "solved"
     },
     {
       "title": "Pentagram",
@@ -5357,6 +5367,11 @@
       }
     },
     {
+      "title": "Percolation/Mean run density",
+      "slug": "percolation-mean-run-density",
+      "state": "solved"
+    },
+    {
       "title": "Percolation/Site percolation",
       "slug": "percolation-site-percolation",
       "state": "published",
@@ -5370,6 +5385,11 @@
       "slug": "perfect-numbers",
       "state": "published",
       "published_hash": "da3ff9bf8f0fd74d4be8cd643448b0252ea6dd1a6b31591cd8bcdd08275ef817"
+    },
+    {
+      "title": "Perfect shuffle",
+      "slug": "perfect-shuffle",
+      "state": "solved"
     },
     {
       "title": "Perfect totient numbers",
@@ -5405,6 +5425,11 @@
       }
     },
     {
+      "title": "Permutation test",
+      "slug": "permutation-test",
+      "state": "solved"
+    },
+    {
       "title": "Permutations",
       "slug": "permutations",
       "state": "published",
@@ -5423,15 +5448,30 @@
       "published_hash": "a61d71132dae5d6f256db07f8b5509643e2546aa666e4ab7b19e75a4aea67933"
     },
     {
+      "title": "Permutations/Rank of a permutation",
+      "slug": "permutations-rank-of-a-permutation",
+      "state": "solved"
+    },
+    {
       "title": "Pernicious numbers",
       "slug": "pernicious-numbers",
       "state": "published",
       "published_hash": "486a40de17e80752e3388851d5d7561f7948f7a40550fc7b717826a2ec466664"
     },
     {
+      "title": "Phrase reversals",
+      "slug": "phrase-reversals",
+      "state": "solved"
+    },
+    {
       "title": "Pi",
       "state": "rejected",
       "reason": "output-unbounded"
+    },
+    {
+      "title": "Pi to 1 million digits",
+      "slug": "pi-to-1-million-digits",
+      "state": "solved"
     },
     {
       "title": "Pick random element",
@@ -5465,6 +5505,17 @@
       "image_hashes": {
         "Ghul-pinstripe-display-pinstripe.png": "726fb7ff680aab89f346dab2718eeba5332a634f"
       }
+    },
+    {
+      "title": "Pinstripe/Printer",
+      "state": "rejected",
+      "reason": "needs-gui",
+      "note": "needs a printer"
+    },
+    {
+      "title": "Piprimes",
+      "slug": "piprimes",
+      "state": "solved"
     },
     {
       "title": "Pisano period",
