@@ -1,0 +1,26 @@
+use default
+use System.Text.RegularExpressions.Regex
+
+let keywords =
+    [
+        "if", "elif", "while", "for", "case", "when", "return", "cast",
+        "assert", "let", "use", "isa", "typeof", "yield", "await", "break"
+    ]
+
+let source = IO.File.read_all_text("function-frequency.ghul")
+
+let calls = Regex.matches(source, "([A-Za-z_][A-Za-z_0-9]*)[ ]*\\(")
+
+let most_used =
+    calls
+        |> map(call => call.groups[1].value)
+        |> filter(name => !(keywords |> any(keyword => keyword =~ name)))
+        |> group_by(name => name)
+        |> map(uses => (name = uses.key, uses = uses.value.count))
+        |> sort((a, b) => b.uses <> a.uses)
+        |> take(10)
+        |> collect()
+
+for used in most_used do
+    write_line("{used.uses,4}  {used.name}")
+od
