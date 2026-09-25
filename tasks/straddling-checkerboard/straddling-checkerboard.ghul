@@ -1,0 +1,90 @@
+use default
+
+// The top row holds the eight most frequent letters, leaving two blank
+// columns whose digits prefix the letters in the two rows below. '/' is
+// the escape that marks a digit carried through unencrypted.
+class CHECKERBOARD is
+    _encode: MAP[char, string]
+    _rows: string[]
+    _header: string
+    _blanks: string
+
+    init(header: string, rows: string[]) is
+        _header = header
+        _rows = rows
+        _encode = MAP[char, string]()
+
+        let blanks = System.Text.StringBuilder()
+
+        for column in 0..10 do
+            let c = rows[0][column]
+
+            if c == ' ' then
+                blanks.append(header[column])
+            else
+                _encode[c] = "{header[column]}"
+            fi
+        od
+
+        _blanks = blanks.to_string()
+
+        for row in 1::2 do
+            for column in 0..10 do
+                let code = "{_blanks[row - 1]}{header[column]}"
+
+                _encode[rows[row][column]] = code
+            od
+        od
+    si
+
+    encrypt(text: string) -> string is
+        let result = System.Text.StringBuilder()
+
+        for c in text.to_upper() do
+            if char.is_digit(c) then
+                result.append(_encode['/']).append(c)
+            elif _encode.contains_key(c) then
+                result.append(_encode[c])
+            fi
+        od
+
+        result.to_string()
+    si
+
+    decrypt(digits: string) -> string is
+        let result = System.Text.StringBuilder()
+        let i mut = 0
+
+        while i < digits.length do
+            let row mut = 0
+
+            if _blanks.index_of(digits[i]) >= 0 then
+                row = _blanks.index_of(digits[i]) + 1
+                i = i + 1
+            fi
+
+            let c = _rows[row][_header.index_of(digits[i])]
+
+            i = i + 1
+
+            if c == '/' then
+                result.append(digits[i])
+                i = i + 1
+            else
+                result.append(c)
+            fi
+        od
+
+        result.to_string()
+    si
+si
+
+let board = CHECKERBOARD(
+    "8752390146", ["ET AON RIS", "BC/FGHJKLM", "PQD.VWXYZU"])
+
+let message = "you have put on 7.5 pounds since I saw you."
+let encrypted = board.encrypt(message)
+
+write_line(message)
+write_line(encrypted)
+write_line(board.decrypt(encrypted))

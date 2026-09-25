@@ -1,0 +1,41 @@
+use default
+
+class SUBTRACTIVE is
+    _state: LIST[int]
+    _index: int
+
+    init(seed: int) is
+        let modulus = 1_000_000_000
+        let s = LIST([seed, 1])
+
+        for n in 2..55 do
+            s.add((s[n - 2] - s[n - 1] + modulus) % modulus)
+        od
+
+        _state = 0..55 |> map(n => s[34 * (n + 1) % 55]) |> collect_list()
+        _index = 0
+
+        for _ in 55..220 do
+            next()
+        od
+    si
+
+    // A ring of the last 55 values: the oldest, r(n - 55), sits at the
+    // index being replaced, and r(n - 24) is 31 places after it.
+    next() -> int is
+        let value =
+            (_state[_index] - _state[(_index + 31) % 55] + 1_000_000_000) %
+            1_000_000_000
+
+        _state[_index] = value
+        _index = (_index + 1) % 55
+
+        value
+    si
+si
+
+let generator = SUBTRACTIVE(292929)
+
+for n in 220..230 do
+    write_line("r({n}) = {generator.next()}")
+od

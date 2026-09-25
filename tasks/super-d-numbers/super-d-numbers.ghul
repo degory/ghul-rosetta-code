@@ -1,0 +1,15 @@
+use default
+
+super_d(d: int) -> Pipe[long] =>
+    let run = "".pad_left(d, cast char(cast int('0') + d)) in
+    from(1)
+        |> map(n => cast long(n))
+        |> filter(n =>
+            let value = bigint(d) * bigint.pow(bigint(n), d) in
+            value.to_string().contains(run))
+
+for d in 2::6 do
+    write_line("First 10 super-{d} numbers:")
+    write_line(super_d(d) |> take(10) |> join(" "))
+    write_line("")
+od

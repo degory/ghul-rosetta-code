@@ -1,0 +1,64 @@
+use default
+use System.Globalization.CultureInfo
+
+let suffixes = [
+    "", "K", "M", "G", "T", "P", "E", "Z", "Y", "X", "W", "V", "U"
+]
+
+let invariant = CultureInfo.invariant_culture
+
+suffize(text: string, digits: int?, base: int) -> string is
+    let cleaned = text.trim().replace(",", "")
+    let signed = cleaned[0] == '+' \/ cleaned[0] == '-'
+    let sign = if signed then "{cleaned[0]}" else "" fi
+    let value = double.parse(cleaned.substring(sign.length), invariant)
+    let step = if base == 2 then 1024.0 else 1000.0 fi
+    let number mut = value
+    let index mut = 0
+    let suffix mut = ""
+
+    if base == 10 /\ number >= 1.0e100 then
+        number = number / 1.0e100
+        suffix = "googol"
+    else
+        while number >= step /\ index < suffixes.count - 1 do
+            number = number / step
+            index = index + 1
+        od
+
+        let binary = base == 2 /\ index > 0
+
+        suffix = "{suffixes[index]}{if binary then "i" else "" fi}"
+    fi
+
+    let shown =
+        if let places = digits then
+            number.to_string("F{places}", invariant)
+        else
+            number.to_string("0.###############", invariant)
+        fi
+
+    "{sign}{shown}{suffix}"
+si
+
+let tests: (string, int?, int)[] = [
+    ("87,654,321", null, 10),
+    ("-998,877,665,544,332,211,000", 3, 10),
+    ("+112,233", 0, 10),
+    ("16,777,216", 1, 10),
+    ("456,789,100,000,000", 2, 10),
+    ("456,789,100,000,000", 5, 2),
+    ("456,789,100,000.000e+00", 0, 10),
+    ("+16777216", null, 2),
+    ("1.2e101", null, 10)
+]
+
+write_line("number                          digits  suffix  result")
+
+for (text, digits, base) in tests do
+    let places = if let d = digits then "{d}" else "all" fi
+    let kind = if base == 2 then "binary" else "metric" fi
+
+    write_line(
+        "{text,-31} {places,-7} {kind,-7} {suffize(text, digits, base)}")
+od
