@@ -15,7 +15,7 @@ normal() -> Pipe[double] is
 si
 
 let size = 100000
-let samples = normal() |> take(size) |> collect_list()
+let samples = normal() |> take(size) |> collect()
 
 let mean =
     samples |> sum() / cast double(size)
@@ -74,7 +74,7 @@ let curve =
             let x = low + cast double(i) * 0.05D in
             let y = Math.exp(-x * x / 2.0D) / Math.sqrt(2.0D * Math.pi) in
             (x = x, y = y))
-        |> collect_list()
+        |> collect()
 
 image.colour(220ub, 60ub, 40ub)
 image.stroke(2.5D)

@@ -50,7 +50,7 @@ let program = [
 
 for line in program do
     let punched =
-        0..line.length |> map(i => holes(line[i])) |> collect_list()
+        0..line.length |> map(i => holes(line[i])) |> collect()
 
     write_line(" {line}")
 

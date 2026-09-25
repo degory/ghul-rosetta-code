@@ -56,7 +56,7 @@ let shown mut = null
 
 for step in 0::10 do
     let p = cast double(step) / 10.0D
-    let grids = 0..trials |> map(_ => GRID(p)) |> collect_list()
+    let grids = 0..trials |> map(_ => GRID(p)) |> collect()
     let through = grids |> filter(g => g.percolates()) |> count()
 
     write_line("{p:F1}    {cast double(through) / cast double(trials):F3}")

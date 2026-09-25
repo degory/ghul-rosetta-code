@@ -11,7 +11,7 @@ let records =
             line.split(
                 [' ', '\t'],
                 StringSplitOptions.REMOVE_EMPTY_ENTRIES))
-        |> collect_list()
+        |> collect()
 
 let wrong_width =
     records

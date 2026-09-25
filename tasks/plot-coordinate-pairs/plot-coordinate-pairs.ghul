@@ -14,7 +14,7 @@ let points =
     xs
     |> zip(ys)
     |> map(pair => (x = pair.`0, y = pair.`1))
-    |> collect_list()
+    |> collect()
 
 marker(at: POINT) -> List[POINT] =>
     [(x = at.x - 0.14, y = at.y),

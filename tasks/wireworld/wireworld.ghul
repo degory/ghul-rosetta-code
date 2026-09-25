@@ -12,7 +12,7 @@ read(path: string) -> Grid is
     let lines = IO.File.read_all_lines(path)
     let width = lines |> map(line => line.length) |> reduce(0, int.max)
 
-    lines |> map(line => line.pad_right(width)) |> collect_list()
+    lines |> map(line => line.pad_right(width)) |> collect()
 si
 
 heads_around(grid: Grid, row: int, column: int) -> int =>
@@ -39,7 +39,7 @@ step(grid: Grid) -> Grid =>
             (0..grid[row].length)
                 |> map(column => next(grid, row, column))
                 |> join(""))
-        |> collect_list()
+        |> collect()
 
 draw(image: IMAGE, grid: Grid) is
     image.clear(30ub, 30ub, 34ub)

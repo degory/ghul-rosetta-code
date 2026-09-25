@@ -211,7 +211,7 @@ while let line = read_line() do
             parts
                 |> skip(2)
                 |> take(parts.count - 3)
-                |> collect_list()
+                |> collect()
 
         binary(name, called(parts[0]), alternatives(body))
     else

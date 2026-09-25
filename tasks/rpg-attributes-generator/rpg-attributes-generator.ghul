@@ -3,7 +3,7 @@ use default
 let dice = System.Random(20260909)
 
 attribute() -> int is
-    let rolls = 1::4 |> map(_ => dice.next(1, 7)) |> collect_list()
+    let rolls = 1::4 |> map(_ => dice.next(1, 7)) |> collect()
 
     let lowest = rolls |> min_by(roll => roll)
 

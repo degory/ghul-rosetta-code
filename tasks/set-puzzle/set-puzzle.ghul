@@ -45,7 +45,7 @@ deal(size: int) -> List[CARD] is
         (deck[i], deck[other]) = (deck[other], deck[i])
     od
 
-    return deck |> take(size) |> collect_list()
+    return deck |> take(size) |> collect()
 si
 
 puzzle(size: int, wanted: int) -> List[CARD] is
@@ -106,7 +106,7 @@ outline(symbol: int, x: double, y: double)
                 let k = 1.0D / (Math.abs(s) + Math.abs(c)) in
                 (x = x + 9.0D * c * k, y = y + 19.0D * s * k)
             esac)
-        |> collect_list()
+        |> collect()
 
 let card_width = 120.0D
 let card_height = 72.0D
@@ -148,7 +148,7 @@ for (card, place) in
 
         image.colour(red, green, blue)
         image.stroke(2.0D)
-        image.line(shape |> cat([shape[0]]) |> collect_list())
+        image.line(shape |> cat([shape[0]]) |> collect())
     od
 od
 

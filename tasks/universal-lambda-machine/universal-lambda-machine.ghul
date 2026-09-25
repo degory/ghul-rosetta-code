@@ -200,13 +200,13 @@ bit_of(thunk: THUNK) -> int =>
 bits_of(bytes: List[int]) -> List[bool] =>
     bytes
         |> flat_map(b => 0..8 |> map(i => (b >> (7 - i)) & 1 == 1))
-        |> collect_list()
+        |> collect()
 
 run_bits(program: string, limit: int) -> string is
-    let bits = program |> map(c => c == '1') |> collect_list()
+    let bits = program |> map(c => c == '1') |> collect()
     let reader = READER(bits)
     let term = reader.term()
-    let input = list(bits |> skip(reader.at) |> map(bit) |> collect_list())
+    let input = list(bits |> skip(reader.at) |> map(bit) |> collect())
 
     items(THUNK(Term.APP(term, input), null), limit)
         |> map(t => "{bit_of(t)}")
@@ -217,7 +217,7 @@ run_bytes(bytes: List[int], limit: int) -> string is
     let reader = READER(bits_of(bytes))
     let term = reader.term()
     let used = (reader.at + 7) / 8
-    let rest = bytes |> skip(used) |> map(byte) |> collect_list()
+    let rest = bytes |> skip(used) |> map(byte) |> collect()
 
     items(THUNK(Term.APP(term, list(rest)), null), limit)
         |> map(b =>
@@ -270,12 +270,12 @@ let symbolic =
     IO.File.read_all_bytes("symbolic.Blc")
         |> map(b => cast int(b))
         |> cat(query |> map(c => cast int(c)))
-        |> collect_list()
+        |> collect()
 
 let hilbert =
     IO.File.read_all_bytes("hilbert.Blc")
         |> map(b => cast int(b))
-        |> collect_list()
+        |> collect()
 
 write_line()
 write_line("byte mode")

@@ -41,16 +41,16 @@ class WAVELET(values: List[int] init) is
             _width = _width + 1
         od
 
-        let holding mut = values |> collect_list()
+        let holding mut = values |> collect()
 
         for level in 0.._width do
             let bit = _width - 1 - level
             let set = (v: int) => ((v >> bit) & 1) == 1
 
-            _levels.add(BITS(holding |> map(set) |> collect_list()))
+            _levels.add(BITS(holding |> map(set) |> collect()))
 
             let zeros = holding |> filter(v => !set(v)) |> collect_list()
-            let ones = holding |> filter(set) |> collect_list()
+            let ones = holding |> filter(set) |> collect()
 
             _below.add(zeros.count)
 

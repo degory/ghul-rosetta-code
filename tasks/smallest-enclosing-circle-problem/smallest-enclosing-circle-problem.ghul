@@ -81,7 +81,7 @@ let scattered =
             let angle = 2.0D * Math.pi * random.next_double() in
             let r = 4.0D * Math.sqrt(random.next_double()) in
             P(1.5D * r * Math.cos(angle), r * Math.sin(angle)))
-        |> collect_list()
+        |> collect()
 
 let circle = enclose(scattered)
 

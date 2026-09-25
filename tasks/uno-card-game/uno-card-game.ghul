@@ -193,7 +193,7 @@ automatic_choice(hand: List[Card]) -> Choice is
             (0..hand.count)
                 |> filter(i => i != index)
                 |> map(i => hand[i])
-                |> collect_list()
+                |> collect()
 
         return (
             index = index,

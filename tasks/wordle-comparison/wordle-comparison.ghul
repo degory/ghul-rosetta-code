@@ -21,7 +21,7 @@ marks(answer: string, guess: string) -> List[Mark] is
             elif unmatched.remove(guess[i]) then Mark.YELLOW
             else Mark.GREY
             fi)
-        |> collect_list()
+        |> collect()
 si
 
 let pairs = [

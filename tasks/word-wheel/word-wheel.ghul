@@ -35,7 +35,7 @@ let found =
     IO.File.read_all_lines("unixdict.txt")
     |> filter(word =>
         word.length >= 3 /\ word.contains(centre) /\ spellable(word))
-    |> collect_list()
+    |> collect()
 
 write_line(found |> join("\n"))
 write_line("")

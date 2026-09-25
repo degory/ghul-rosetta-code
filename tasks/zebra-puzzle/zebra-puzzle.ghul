@@ -108,7 +108,7 @@ row_text(house: int, solution: SOLUTION) -> string =>
         "{pad(solution.drink[house], 8)}"
         "{pad(solution.smoke[house], 12)}{solution.pet[house]}"
 
-let found = solutions() |> collect_list()
+let found = solutions() |> collect()
 
 write_line("{pad("no", 3)}{pad("colour", 8)}{pad("nation", 11)}"
     "{pad("drink", 8)}{pad("smoke", 12)}pet")

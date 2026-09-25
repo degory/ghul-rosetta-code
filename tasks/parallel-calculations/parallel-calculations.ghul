@@ -32,7 +32,7 @@ let factorisations =
         |> map(number => TASK.run(() => factors(number)))
         |> collect_list()
         |> map(running => running.result)
-        |> collect_list()
+        |> collect()
 
 let best =
     factorisations

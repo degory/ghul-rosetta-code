@@ -21,7 +21,7 @@ let places =
              red = cast ubyte(80 + next(160)),
              green = cast ubyte(80 + next(160)),
              blue = cast ubyte(80 + next(160))))
-        |> collect_list()
+        |> collect()
 
 nearest(x: int, y: int) -> int =>
     (let best mut = 0

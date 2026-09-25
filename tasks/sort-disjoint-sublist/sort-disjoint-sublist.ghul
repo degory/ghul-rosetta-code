@@ -1,9 +1,9 @@
 use default
 
 sort_disjoint_sublist(values: LIST[int], indices: SET[int]) is
-    let positions = indices |> sort() |> collect_list()
+    let positions = indices |> sort() |> collect()
     let picked = positions |> map(i => values[i]) |> sort()
-        |> collect_list()
+        |> collect()
 
     for i in 0..positions.count do
         values[positions[i]] = picked[i]
