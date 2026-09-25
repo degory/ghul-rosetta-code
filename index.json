@@ -17598,6 +17598,32 @@
       ]
     },
     {
+      "slug": "numerical-integration",
+      "title": "Numerical integration",
+      "url": "https://rosettacode.org/wiki/Numerical_integration",
+      "tags": [
+        "maths",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "numerical-integration",
+          "heading": null,
+          "source": "tasks/numerical-integration/numerical-integration.ghul",
+          "output": "tasks/numerical-integration/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "o-halloran-numbers",
       "title": "O'Halloran numbers",
       "url": "https://rosettacode.org/wiki/O'Halloran_numbers",
