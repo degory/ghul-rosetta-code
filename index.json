@@ -11397,6 +11397,58 @@
       ]
     },
     {
+      "slug": "gauss-jordan-matrix-inversion",
+      "title": "Gauss-Jordan matrix inversion",
+      "url": "https://rosettacode.org/wiki/Gauss-Jordan_matrix_inversion",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "gauss-jordan-matrix-inversion",
+          "heading": null,
+          "source": "tasks/gauss-jordan-matrix-inversion/gauss-jordan-matrix-inversion.ghul",
+          "output": "tasks/gauss-jordan-matrix-inversion/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "gaussian-elimination",
+      "title": "Gaussian elimination",
+      "url": "https://rosettacode.org/wiki/Gaussian_elimination",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 56,
+      "parts": [
+        {
+          "id": "gaussian-elimination",
+          "heading": null,
+          "source": "tasks/gaussian-elimination/gaussian-elimination.ghul",
+          "output": "tasks/gaussian-elimination/run.expected",
+          "lines": 56,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "gaussian-primes",
       "title": "Gaussian primes",
       "url": "https://rosettacode.org/wiki/Gaussian_primes",
@@ -11444,6 +11496,32 @@
           "lines": 20,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "generate-chess960-starting-position",
+      "title": "Generate Chess960 starting position",
+      "url": "https://rosettacode.org/wiki/Generate_Chess960_starting_position",
+      "tags": [
+        "game",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "generate-chess960-starting-position",
+          "heading": null,
+          "source": "tasks/generate-chess960-starting-position/generate-chess960-starting-position.ghul",
+          "output": "tasks/generate-chess960-starting-position/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
@@ -12072,6 +12150,33 @@
       ]
     },
     {
+      "slug": "gstrans-string-conversion",
+      "title": "GSTrans string conversion",
+      "url": "https://rosettacode.org/wiki/GSTrans_string_conversion",
+      "tags": [
+        "strings",
+        "unions",
+        "parsing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 114,
+      "parts": [
+        {
+          "id": "gstrans-string-conversion",
+          "heading": null,
+          "source": "tasks/gstrans-string-conversion/gstrans-string-conversion.ghul",
+          "output": "tasks/gstrans-string-conversion/run.expected",
+          "lines": 114,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "guess-the-number",
       "title": "Guess the number",
       "url": "https://rosettacode.org/wiki/Guess_the_number",
@@ -12209,6 +12314,32 @@
           "source": "tasks/halt-and-catch-fire/halt-and-catch-fire.ghul",
           "output": "tasks/halt-and-catch-fire/run.expected",
           "lines": 6,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "hamiltonian-cycle-via-chvatal-closure",
+      "title": "Hamiltonian Cycle via Chvátal Closure",
+      "url": "https://rosettacode.org/wiki/Hamiltonian_Cycle_via_Chvátal_Closure",
+      "tags": [
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 102,
+      "parts": [
+        {
+          "id": "hamiltonian-cycle-via-chvatal-closure",
+          "heading": null,
+          "source": "tasks/hamiltonian-cycle-via-chvatal-closure/hamiltonian-cycle-via-chvatal-closure.ghul",
+          "output": "tasks/hamiltonian-cycle-via-chvatal-closure/run.expected",
+          "lines": 102,
           "playground": true,
           "input": false,
           "images": []
@@ -12428,6 +12559,32 @@
       ]
     },
     {
+      "slug": "hashtron-inference",
+      "title": "Hashtron inference",
+      "url": "https://rosettacode.org/wiki/Hashtron_inference",
+      "tags": [
+        "algorithms",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 64,
+      "parts": [
+        {
+          "id": "hashtron-inference",
+          "heading": null,
+          "source": "tasks/hashtron-inference/hashtron-inference.ghul",
+          "output": "tasks/hashtron-inference/run.expected",
+          "lines": 64,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "haversine-formula",
       "title": "Haversine formula",
       "url": "https://rosettacode.org/wiki/Haversine_formula",
@@ -12446,6 +12603,31 @@
           "source": "tasks/haversine-formula/haversine-formula.ghul",
           "output": "tasks/haversine-formula/run.expected",
           "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "held-karp-algorithm",
+      "title": "Held–Karp algorithm",
+      "url": "https://rosettacode.org/wiki/Held–Karp_algorithm",
+      "tags": [
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "held-karp-algorithm",
+          "heading": null,
+          "source": "tasks/held-karp-algorithm/held-karp-algorithm.ghul",
+          "output": "tasks/held-karp-algorithm/run.expected",
+          "lines": 63,
           "playground": true,
           "input": false,
           "images": []
@@ -12688,6 +12870,32 @@
       ]
     },
     {
+      "slug": "hex-words",
+      "title": "Hex words",
+      "url": "https://rosettacode.org/wiki/Hex_words",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "hex-words",
+          "heading": null,
+          "source": "tasks/hex-words/hex-words.ghul",
+          "output": "tasks/hex-words/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hexapawn",
       "title": "Hexapawn",
       "url": "https://rosettacode.org/wiki/Hexapawn",
@@ -12710,6 +12918,31 @@
           "lines": 187,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "hickerson-series-of-almost-integers",
+      "title": "Hickerson series of almost integers",
+      "url": "https://rosettacode.org/wiki/Hickerson_series_of_almost_integers",
+      "tags": [
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 19,
+      "parts": [
+        {
+          "id": "hickerson-series-of-almost-integers",
+          "heading": null,
+          "source": "tasks/hickerson-series-of-almost-integers/hickerson-series-of-almost-integers.ghul",
+          "output": "tasks/hickerson-series-of-almost-integers/run.expected",
+          "lines": 19,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]

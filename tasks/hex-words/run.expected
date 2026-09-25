@@ -1,0 +1,45 @@
+Hex words of 4 or more letters, by digital root:
+ababa        703,162   1
+abbe          43,966   1
+dada          56,026   1
+deaf          57,007   1
+decade    14,600,926   1
+cede          52,958   2
+feed          65,261   2
+abed          44,013   3
+added        712,173   3
+bade          47,838   3
+beebe        782,014   4
+decca        912,586   4
+dade          56,030   5
+bead          48,813   6
+deface    14,613,198   6
+babe          47,806   7
+fade          64,222   7
+dead          57,005   8
+efface    15,727,310   8
+facade    16,435,934   8
+accede    11,325,150   9
+beef          48,879   9
+cafe          51,966   9
+dacca        896,202   9
+deed          57,069   9
+face          64,206   9
+Total: 26
+
+With at least 4 distinct letters, largest first:
+facade    16,435,934   8
+efface    15,727,310   8
+deface    14,613,198   6
+decade    14,600,926   1
+accede    11,325,150   9
+decca        912,586   4
+fade          64,222   7
+face          64,206   9
+deaf          57,007   1
+cafe          51,966   9
+bead          48,813   6
+bade          47,838   3
+abed          44,013   3
+Total: 13
+

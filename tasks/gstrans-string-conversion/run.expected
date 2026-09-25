@@ -1,0 +1,12 @@
+[12]Hello[7][10][13] -> |LHello|G|J|M
+ALERT|G -> ALERT||G
+"quoted|text" -> |"quoted||text|"
+[13][10][0][5][244][13][255] -> |M|J|@|E|!t|M|!|?
+
+|LHello|G|J|M -> [12]Hello[7][10][13]
+"|m|j|@|e|!t|m|!|?" -> [13][10][0][5][244][13][255]
+abc| -> error: '|' at the end
+abc|! -> error: '|!' at the end
+|1 -> error: '|1' at 0
+
+all 256 values round-trip: true

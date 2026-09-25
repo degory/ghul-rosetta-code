@@ -1,0 +1,54 @@
+use default
+
+let knight_pairs = 0..5
+    |> flat_map(lower => lower + 1..5 |> map(higher => (lower, higher)))
+    |> collect()
+
+position(number: int) -> string is
+    let squares = repeat('.', 8) |> collect_list()
+
+    place(piece: char, among_empty: int) is
+        let square = 0..8
+            |> filter(s => squares[s] == '.')
+            |> skip(among_empty)
+            |> first()!
+
+        squares[square] = piece
+    si
+
+    squares[2 * (number % 4) + 1] = 'B'
+    squares[2 * (number / 4 % 4)] = 'B'
+
+    let rest = number / 16
+
+    place('Q', rest % 6)
+
+    let (lower, higher) = knight_pairs[rest / 6]
+
+    place('N', higher)
+    place('N', lower)
+
+    for piece in "RKR" do
+        place(piece, 0)
+    od
+
+    string(squares |> collect_array())
+si
+
+is_legal(rank: string) -> bool =>
+    let bishops = 0..8 |> filter(s => rank[s] == 'B') |> collect() in
+    let rooks = 0..8 |> filter(s => rank[s] == 'R') |> collect() in
+    let king = rank.index_of('K') in
+    (bishops[0] + bishops[1]) % 2 == 1 /\ rooks[0] < king /\ king < rooks[1]
+
+let random = System.Random(960)
+
+for _ in 1::5 do
+    write_line(position(random.next(960)))
+od
+
+let positions = 0..960 |> map(position) |> collect()
+
+write_line()
+write_line("distinct positions: {positions |> distinct() |> count()}")
+write_line("all legal: {positions |> all(is_legal)}")
