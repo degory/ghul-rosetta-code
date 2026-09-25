@@ -20114,6 +20114,32 @@
       ]
     },
     {
+      "slug": "primality-by-wilson-s-theorem",
+      "title": "Primality by Wilson's theorem",
+      "url": "https://rosettacode.org/wiki/Primality_by_Wilson's_theorem",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "primality-by-wilson-s-theorem",
+          "heading": null,
+          "source": "tasks/primality-by-wilson-s-theorem/primality-by-wilson-s-theorem.ghul",
+          "output": "tasks/primality-by-wilson-s-theorem/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "prime-decomposition",
       "title": "Prime decomposition",
       "url": "https://rosettacode.org/wiki/Prime_decomposition",
