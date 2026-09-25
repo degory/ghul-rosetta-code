@@ -6245,6 +6245,11 @@
       "state": "solved"
     },
     {
+      "title": "Sequence: smallest number with exactly n divisors",
+      "slug": "sequence-smallest-number-with-exactly-n-divisors",
+      "state": "solved"
+    },
+    {
       "title": "Set",
       "slug": "set",
       "state": "published",
@@ -6272,6 +6277,21 @@
       }
     },
     {
+      "title": "Set right-adjacent bits",
+      "slug": "set-right-adjacent-bits",
+      "state": "solved"
+    },
+    {
+      "title": "Set, the card game",
+      "slug": "set-the-card-game",
+      "state": "solved"
+    },
+    {
+      "title": "Seven-sided dice from five-sided dice",
+      "slug": "seven-sided-dice-from-five-sided-dice",
+      "state": "solved"
+    },
+    {
       "title": "Sexy primes",
       "slug": "sexy-primes",
       "state": "published",
@@ -6288,6 +6308,11 @@
       "state": "rejected",
       "reason": "excluded",
       "note": "the answer is a shell command line, not a program with a testable output; with ghul.cli it is: echo \u0027write_line(\u0022hello\u0022)\u0027 \u003E h.ghul \u0026\u0026 ghul h.ghul"
+    },
+    {
+      "title": "Shoelace formula for polygonal area",
+      "slug": "shoelace-formula-for-polygonal-area",
+      "state": "solved"
     },
     {
       "title": "Short-circuit evaluation",
@@ -6443,6 +6468,11 @@
       "published_hash": "60f0cd4b0e68408f0ee8eb8ec2c4ddc22576a9f2488302f80926d30a3baf1890"
     },
     {
+      "title": "Singular value decomposition",
+      "slug": "singular-value-decomposition",
+      "state": "solved"
+    },
+    {
       "title": "Sisyphus sequence",
       "slug": "sisyphus-sequence",
       "state": "published",
@@ -6470,10 +6500,25 @@
       }
     },
     {
+      "title": "Smallest number k such that k\u002B2^m is composite for all m less than k",
+      "slug": "smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k",
+      "state": "solved"
+    },
+    {
       "title": "Smarandache prime-digital sequence",
       "slug": "smarandache-prime-digital-sequence",
       "state": "published",
       "published_hash": "d42fa69514baf622ab833f702811eac49dd3dda89782030fcbbe314b514f26f0"
+    },
+    {
+      "title": "Smarandache-Wellin primes",
+      "slug": "smarandache-wellin-primes",
+      "state": "solved"
+    },
+    {
+      "title": "Smith numbers",
+      "slug": "smith-numbers",
+      "state": "solved"
     },
     {
       "title": "Smith\u2013Waterman algorithm",

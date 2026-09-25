@@ -25940,6 +25940,32 @@
       ]
     },
     {
+      "slug": "sequence-smallest-number-with-exactly-n-divisors",
+      "title": "Sequence: smallest number with exactly n divisors",
+      "url": "https://rosettacode.org/wiki/Sequence:_smallest_number_with_exactly_n_divisors",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "sequence-smallest-number-with-exactly-n-divisors",
+          "heading": null,
+          "source": "tasks/sequence-smallest-number-with-exactly-n-divisors/sequence-smallest-number-with-exactly-n-divisors.ghul",
+          "output": "tasks/sequence-smallest-number-with-exactly-n-divisors/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "set",
       "title": "Set",
       "url": "https://rosettacode.org/wiki/Set",
