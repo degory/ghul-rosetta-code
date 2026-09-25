@@ -1,0 +1,144 @@
+use default
+
+use Cell = (row: int, column: int)
+
+let country = [
+    "         00000         ",
+    "      00003130000      ",
+    "    000321322221000    ",
+    "   00231222432132200   ",
+    "  0041433223233211100  ",
+    "  0232231612142618530  ",
+    " 003152122326114121200 ",
+    " 031252235216111132210 ",
+    " 022211246332311115210 ",
+    "00113232262121317213200",
+    "03152118212313211411110",
+    "03231234121132221411410",
+    "03513213411311414112320",
+    "00427534125412213211400",
+    " 013322444412122123210 ",
+    " 015132331312411123120 ",
+    " 003333612214233913300 ",
+    "  0219126511415312570  ",
+    "  0021321524341325100  ",
+    "   00211415413523200   ",
+    "    000122111322000    ",
+    "      00001120000      ",
+    "         00000         "
+]
+
+let cells =
+    0..country.count
+        |> flat_map(row =>
+            0..country[row].length
+                |> filter(column => char.is_digit(country[row][column]))
+                |> map(column => (row, column)))
+        |> collect_list()
+
+let number =
+    cells |> index() |> map(((i, cell)) => (cell, i)) |> collect_map()
+
+moves(cell: Cell) -> Pipe[Cell] =>
+    let (row, column) = cell in
+    let step = cast int(country[row][column] - '0') in
+    [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        |> map(((dr, dc)) => (row + dr * step, column + dc * step))
+        |> filter(target => step > 0 /\ number.contains_key(target))
+
+let size = cells.count
+let unreachable = size
+
+let distance =
+    0..size
+        |> map(i =>
+            0..size
+                |> map(j => if i == j then 0 else unreachable fi)
+                |> collect_list())
+        |> collect_list()
+
+let next =
+    0..size
+        |> map(i => 0..size |> map(j => j) |> collect_list())
+        |> collect_list()
+
+for (i, cell) in cells |> index() do
+    for target in moves(cell) do
+        distance[i][number[target]] = 1
+    od
+od
+
+for k in 0..size do
+    for i in 0..size do
+        if distance[i][k] < unreachable then
+            for j in 0..size do
+                let through = distance[i][k] + distance[k][j]
+
+                if through < distance[i][j] then
+                    distance[i][j] = through
+                    next[i][j] = next[i][k]
+                fi
+            od
+        fi
+    od
+od
+
+route(from: Cell, to: Cell) -> string is
+    let target = number[to]
+    let at mut = number[from]
+    let steps = LIST([cells[at]])
+
+    while at != target do
+        at = next[at][target]
+        steps.add(cells[at])
+    od
+
+    steps |> map(((row, column)) => "({row}, {column})") |> join(" -> ")
+si
+
+let hq: Cell = (11, 11)
+let start = number[hq]
+
+let safe = cells |> filter(((row, column)) => country[row][column] == '0')
+
+let days =
+    safe
+        |> map(cell => distance[start][number[cell]])
+        |> min()!
+
+let nearest = safe |> filter(cell => distance[start][number[cell]] == days)
+
+write_line("Part 1: {nearest |> count()} routes of {days} days to safety:")
+
+for cell in nearest do
+    write_line("    {route(hq, cell)}")
+od
+
+write_line("\nPart 2:")
+write_line("    {route((21, 11), (1, 11))}")
+write_line("    {route((1, 11), (21, 11))}")
+
+let (longest, from, to) =
+    0..size
+        |> flat_map(i => 0..size |> map(j => (distance[i][j], i, j)))
+        |> filter(((d, _, _)) => d < unreachable)
+        |> max_by(((d, _, _)) => d)!
+
+write_line("    the longest shortest route takes {longest} days:")
+write_line("    {route(cells[from], cells[to])}")
+
+let unreached =
+    cells |> filter(cell => distance[start][number[cell]] == unreachable)
+
+write_line("\nCells that cannot be reached from HQ: {unreached}")
+
+let furthest =
+    cells
+        |> filter(cell => distance[start][number[cell]] < unreachable)
+        |> map(cell => distance[start][number[cell]])
+        |> max()!
+
+let slowest =
+    cells |> filter(cell => distance[start][number[cell]] == furthest)
+
+write_line("Cells furthest from HQ, at {furthest} days: {slowest}")
