@@ -1,0 +1,61 @@
+use default
+
+// Counts free trees of carbon atoms with at most four bonds each, rooting
+// each at its centroid so that no molecule is counted twice. A molecule
+// with two central atoms is counted separately, by pairing two halves.
+
+let limit = 33
+let bonds = 4
+
+let rooted = repeat(0L, limit + 1) |> collect_list()
+let unrooted = repeat(0L, limit + 1) |> collect_list()
+
+rooted[0] = 1L
+rooted[1] = 1L
+unrooted[0] = 1L
+unrooted[1] = 1L
+
+tree(branches: int, n: int, largest: int, size: int, count: long) is
+    let total mut = size
+    let ways mut = 0L
+
+    for b in branches + 1::bonds do
+        total = total + n
+
+        if total > limit \/ (largest * 2 >= total /\ b >= bonds) then
+            return
+        fi
+
+        ways =
+            if b == branches + 1 then
+                rooted[n] * count
+            else
+                let extra = cast long(b - branches - 1) in
+                ways * (rooted[n] + extra) / (extra + 1L)
+            fi
+
+        if largest * 2 < total then
+            unrooted[total] = unrooted[total] + ways
+        fi
+
+        if b < bonds then
+            rooted[total] = rooted[total] + ways
+        fi
+
+        for m in 1..n |> reverse() do
+            tree(b, m, largest, total, ways)
+        od
+    od
+si
+
+for n in 1::limit do
+    tree(0, n, n, 1, 1L)
+
+    if n % 2 == 0 then
+        let half = rooted[n / 2]
+
+        unrooted[n] = unrooted[n] + half * (half + 1L) / 2L
+    fi
+
+    write_line("{n,2}: {unrooted[n]}")
+od
