@@ -14962,6 +14962,31 @@
       ]
     },
     {
+      "slug": "long-year",
+      "title": "Long year",
+      "url": "https://rosettacode.org/wiki/Long_year",
+      "tags": [
+        "date-time"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "long-year",
+          "heading": null,
+          "source": "tasks/long-year/long-year.ghul",
+          "output": "tasks/long-year/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "longest-common-subsequence",
       "title": "Longest common subsequence",
       "url": "https://rosettacode.org/wiki/Longest_common_subsequence",
