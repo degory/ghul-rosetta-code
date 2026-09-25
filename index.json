@@ -16922,6 +16922,32 @@
       ]
     },
     {
+      "slug": "multi-base-primes",
+      "title": "Multi-base primes",
+      "url": "https://rosettacode.org/wiki/Multi-base_primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 69,
+      "parts": [
+        {
+          "id": "multi-base-primes",
+          "heading": null,
+          "source": "tasks/multi-base-primes/multi-base-primes.ghul",
+          "output": "tasks/multi-base-primes/run.expected",
+          "lines": 69,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "multi-dimensional-array",
       "title": "Multi-dimensional array",
       "url": "https://rosettacode.org/wiki/Multi-dimensional_array",
