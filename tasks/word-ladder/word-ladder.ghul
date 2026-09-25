@@ -1,0 +1,53 @@
+use default
+
+let words = IO.File.read_lines("unixdict.txt") |> collect_set()
+
+neighbours(word: string) -> Pipe[string] =>
+    (0..word.length)
+    |> flat_map(i =>
+        ('a'::'z')
+        |> filter(c => c != word[i])
+        |> map(c => "{word[0..i]}{c}{word[i + 1..<0]}"))
+    |> filter(candidate => words.contains(candidate))
+
+ladder(start: string, goal: string) -> Collections.List[string]? is
+    let previous = MAP[string, string]()
+    let queue = Collections.Queue[string]()
+
+    previous[start] = start
+    queue.enqueue(start)
+
+    while queue.count > 0 do
+        let word = queue.dequeue()
+
+        if word =~ goal then
+            let path = LIST[string]([goal])
+
+            while path[0] !~ start do
+                path.insert(0, previous[path[0]])
+            od
+
+            return path
+        fi
+
+        for next in neighbours(word) do
+            if !previous.contains_key(next) then
+                previous[next] = word
+                queue.enqueue(next)
+            fi
+        od
+    od
+
+    return null
+si
+
+for (start, goal) in [
+    ("boy", "man"), ("girl", "lady"), ("john", "jane"), ("child", "adult"),
+    ("cat", "dog"), ("lead", "gold"), ("white", "black")
+] do
+    if let path = ladder(start, goal) then
+        write_line(path |> join(" -> "))
+    else
+        write_line("{start} cannot be turned into {goal}")
+    fi
+od

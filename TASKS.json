@@ -7734,6 +7734,11 @@
       "published_hash": "f46b902002cce0abdec4a8d6f408935cff660a4eb7fcb582e71a3297b071948a"
     },
     {
+      "title": "Verify distribution uniformity/Naive",
+      "slug": "verify-distribution-uniformity-naive",
+      "state": "solved"
+    },
+    {
       "title": "Vibrating rectangles",
       "slug": "vibrating-rectangles",
       "state": "published",
@@ -7765,6 +7770,11 @@
       "slug": "visualize-a-tree",
       "state": "published",
       "published_hash": "bed5d3616486391794c475c6d2f0c08446c0ea5c659000bb25f1aec4d7bc5549"
+    },
+    {
+      "title": "Vogel\u0027s approximation method",
+      "slug": "vogel-s-approximation-method",
+      "state": "solved"
     },
     {
       "title": "Voronoi diagram",
@@ -7857,6 +7867,11 @@
       "published_hash": "098f27e2e06a4576a9e80029888302883f3c8a87c702900748061721634cf1c7"
     },
     {
+      "title": "Wilson primes of order n",
+      "slug": "wilson-primes-of-order-n",
+      "state": "solved"
+    },
+    {
       "title": "Wireworld",
       "slug": "wireworld",
       "state": "published",
@@ -7870,6 +7885,16 @@
       "slug": "wolstenholme-numbers",
       "state": "published",
       "published_hash": "ed64168d8c73f4ffe1529f8d7d85b8c1b9b3ef5d5f5cfe1fff109001c6e44cd9"
+    },
+    {
+      "title": "Word frequency",
+      "slug": "word-frequency",
+      "state": "solved"
+    },
+    {
+      "title": "Word ladder",
+      "slug": "word-ladder",
+      "state": "solved"
     },
     {
       "title": "Word search",
@@ -7906,6 +7931,16 @@
       "slug": "words-containing-the-substring",
       "state": "published",
       "published_hash": "bf31c3cf73f1c405659b48df6a962afcb02dd02e0d3966d08e50836cce3448ae"
+    },
+    {
+      "title": "World Cup group stage",
+      "slug": "world-cup-group-stage",
+      "state": "solved"
+    },
+    {
+      "title": "Worthwhile task shaving",
+      "slug": "worthwhile-task-shaving",
+      "state": "solved"
     },
     {
       "title": "Write entire file",

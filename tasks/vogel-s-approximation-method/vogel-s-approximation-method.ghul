@@ -1,0 +1,83 @@
+use default
+
+use Cell = (row: int, column: int)
+use Line = (penalty: int, cheapest: int, cells: Collections.List[Cell])
+
+let tasks = ["A", "B", "C", "D", "E"]
+let contractors = ["W", "X", "Y", "Z"]
+
+let costs = [
+    [16, 16, 13, 22, 17],
+    [14, 14, 13, 19, 15],
+    [19, 19, 20, 23, 50],
+    [50, 12, 50, 15, 11]
+]
+
+let supply = [50, 60, 50, 50] |> collect_list()
+let demand = [30, 20, 70, 30, 60] |> collect_list()
+
+let allocation =
+    (0..contractors.count)
+    |> map(_ => repeat(0, tasks.count) |> collect_list())
+    |> collect()
+
+line(cells: Collections.List[Cell]) -> Line is
+    let prices =
+        cells |> map(((r, c)) => costs[r][c]) |> sort() |> collect()
+    let penalty =
+        if prices.count > 1 then prices[1] - prices[0] else prices[0] fi
+
+    return (penalty, prices[0], cells)
+si
+
+active_lines() -> Pipe[Line] is
+    let rows = (0..contractors.count) |> filter(r => supply[r] > 0)
+    let columns = (0..tasks.count) |> filter(c => demand[c] > 0)
+
+    for r in rows do
+        yield line(columns |> map(c => (r, c)) |> collect())
+    od
+
+    for c in columns do
+        yield line(rows |> map(r => (r, c)) |> collect())
+    od
+si
+
+while demand |> any(d => d > 0) do
+    let chosen =
+        active_lines()
+        |> sort_by(l => l.cheapest)
+        |> max_by(l => l.penalty)!
+
+    let (row, column) = chosen.cells |> min_by(((r, c)) => costs[r][c])!
+    let amount = System.Math.min(supply[row], demand[column])
+
+    allocation[row][column] = amount
+    supply[row] = supply[row] - amount
+    demand[column] = demand[column] - amount
+
+    write_line(
+        "penalty {chosen.penalty,2}: "
+        "{tasks[column]}-{contractors[row]}({amount})")
+od
+
+write_line("")
+write_line("   {tasks |> map(t => "{t,3}") |> join("")}")
+
+for (row, amounts) in allocation |> index() do
+    let cells =
+        amounts
+        |> map(a => if a > 0 then "{a,3}" else "   " fi)
+        |> join("")
+
+    write_line("{contractors[row]}  {cells}".trim_end())
+od
+
+let total =
+    (0..contractors.count)
+    |> flat_map(r =>
+        (0..tasks.count) |> map(c => allocation[r][c] * costs[r][c]))
+    |> sum()
+
+write_line("")
+write_line("total cost: {total}")

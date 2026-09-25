@@ -32258,6 +32258,32 @@
       ]
     },
     {
+      "slug": "verify-distribution-uniformity-naive",
+      "title": "Verify distribution uniformity/Naive",
+      "url": "https://rosettacode.org/wiki/Verify_distribution_uniformity/Naive",
+      "tags": [
+        "simulation",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "verify-distribution-uniformity-naive",
+          "heading": null,
+          "source": "tasks/verify-distribution-uniformity-naive/verify-distribution-uniformity-naive.ghul",
+          "output": "tasks/verify-distribution-uniformity-naive/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "vibrating-rectangles",
       "title": "Vibrating rectangles",
       "url": "https://rosettacode.org/wiki/Vibrating_rectangles",
@@ -32398,6 +32424,32 @@
           "source": "tasks/visualize-a-tree/visualize-a-tree.ghul",
           "output": "tasks/visualize-a-tree/run.expected",
           "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "vogel-s-approximation-method",
+      "title": "Vogel's approximation method",
+      "url": "https://rosettacode.org/wiki/Vogel's_approximation_method",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 83,
+      "parts": [
+        {
+          "id": "vogel-s-approximation-method",
+          "heading": null,
+          "source": "tasks/vogel-s-approximation-method/vogel-s-approximation-method.ghul",
+          "output": "tasks/vogel-s-approximation-method/run.expected",
+          "lines": 83,
           "playground": true,
           "input": false,
           "images": []
@@ -32773,6 +32825,32 @@
       ]
     },
     {
+      "slug": "wilson-primes-of-order-n",
+      "title": "Wilson primes of order n",
+      "url": "https://rosettacode.org/wiki/Wilson_primes_of_order_n",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 51,
+      "parts": [
+        {
+          "id": "wilson-primes-of-order-n",
+          "heading": null,
+          "source": "tasks/wilson-primes-of-order-n/wilson-primes-of-order-n.ghul",
+          "output": "tasks/wilson-primes-of-order-n/run.expected",
+          "lines": 51,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "wireworld",
       "title": "Wireworld",
       "url": "https://rosettacode.org/wiki/Wireworld",
@@ -32824,6 +32902,59 @@
           "output": "tasks/wolstenholme-numbers/run.expected",
           "lines": 99,
           "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "word-frequency",
+      "title": "Word frequency",
+      "url": "https://rosettacode.org/wiki/Word_frequency",
+      "tags": [
+        "text-processing",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "word-frequency",
+          "heading": null,
+          "source": "tasks/word-frequency/word-frequency.ghul",
+          "output": "tasks/word-frequency/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "word-ladder",
+      "title": "Word ladder",
+      "url": "https://rosettacode.org/wiki/Word_ladder",
+      "tags": [
+        "algorithms",
+        "strings",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 53,
+      "parts": [
+        {
+          "id": "word-ladder",
+          "heading": null,
+          "source": "tasks/word-ladder/word-ladder.ghul",
+          "output": "tasks/word-ladder/run.expected",
+          "lines": 53,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -32981,6 +33112,58 @@
           "source": "tasks/words-containing-the-substring/words-containing-the-substring.ghul",
           "output": "tasks/words-containing-the-substring/run.expected",
           "lines": 7,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "world-cup-group-stage",
+      "title": "World Cup group stage",
+      "url": "https://rosettacode.org/wiki/World_Cup_group_stage",
+      "tags": [
+        "generators",
+        "pattern-matching"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "world-cup-group-stage",
+          "heading": null,
+          "source": "tasks/world-cup-group-stage/world-cup-group-stage.ghul",
+          "output": "tasks/world-cup-group-stage/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "worthwhile-task-shaving",
+      "title": "Worthwhile task shaving",
+      "url": "https://rosettacode.org/wiki/Worthwhile_task_shaving",
+      "tags": [
+        "date-time",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 51,
+      "parts": [
+        {
+          "id": "worthwhile-task-shaving",
+          "heading": null,
+          "source": "tasks/worthwhile-task-shaving/worthwhile-task-shaving.ghul",
+          "output": "tasks/worthwhile-task-shaving/run.expected",
+          "lines": 51,
           "playground": true,
           "input": false,
           "images": []
