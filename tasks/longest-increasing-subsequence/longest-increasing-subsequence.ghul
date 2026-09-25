@@ -2,8 +2,8 @@ use default
 
 lis(xs: int[]) -> Collections.List[int] is
     let n = xs.count
-    let lengths = repeat(1, n + 1) |> collect_list()
-    let prev = repeat(-1, n + 1) |> collect_list()
+    let lengths = repeat(1, n + 1) |> collect_mutable()
+    let prev = repeat(-1, n + 1) |> collect_mutable()
 
     for i in 0..n do
         for j in 0..i do
@@ -39,8 +39,8 @@ let sequences = [
 ]
 
 for xs in sequences do
-    let xs_text = xs |> map(x => "{x}") |> join(", ")
-    let lis_text = lis(xs) |> map(x => "{x}") |> join(", ")
+    let xs_text = xs |> map(x => "{x}") |> join()
+    let lis_text = lis(xs) |> map(x => "{x}") |> join()
 
     write_line("{xs_text}")
     write_line("  -> {lis_text}")

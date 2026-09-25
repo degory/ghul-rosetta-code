@@ -7,7 +7,7 @@ use default
 let limit = 500_000
 
 let divisor_count = (
-    let counts = repeat(0, limit + 1) |> collect_list()
+    let counts = repeat(0, limit + 1) |> collect_mutable()
 
     for d in 1::limit do
         for multiple in from(d, d) |> take_while(m => m <= limit) do
@@ -21,7 +21,7 @@ let divisor_count = (
 let found =
     1::limit
         |> filter(n => n == 1 \/ divisor_count[n] == 8)
-        |> collect_list()
+        |> collect_mutable()
 
 write_line("The first 50:")
 

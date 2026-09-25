@@ -51,7 +51,7 @@ one_two_numbers(digits: int) -> Pipe[string] =>
         |> map(bits =>
             string(0..digits
                 |> map(i => digit_at(bits, digits - 1 - i))
-                |> collect_array()))
+                |> collect()))
 
 smallest_prime(digits: int) -> string =>
     one_two_numbers(digits) |> find(text => is_prime(bigint.parse(text)))!

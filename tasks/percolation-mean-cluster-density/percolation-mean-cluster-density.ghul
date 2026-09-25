@@ -20,9 +20,9 @@ class CLUSTERS is
         filled =
             (0..size * size)
                 |> map(_ => random.next_double() < p)
-                |> collect_array()
+                |> collect()
 
-        labels = repeat(0, size * size) |> collect_list()
+        labels = repeat(0, size * size) |> collect_mutable()
         count = 0
 
         for cell in 0..size * size do

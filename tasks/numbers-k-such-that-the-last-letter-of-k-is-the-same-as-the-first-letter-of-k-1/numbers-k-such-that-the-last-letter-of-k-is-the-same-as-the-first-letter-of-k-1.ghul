@@ -55,7 +55,7 @@ for size in [1_000, 10_000, 100_000, 1_000_000] do
     IO.Std.write("\nspelling out numbers until {size:N0} of them match: ")
     IO.Std.out.flush()
 
-    let first = found |> take(size) |> collect_list()
+    let first = found |> take(size) |> collect_mutable()
 
     write_line("done")
     let breakdown =

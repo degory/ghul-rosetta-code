@@ -27,14 +27,14 @@ fresh_room() -> int =>
      chosen)
 
 let wumpus mut = fresh_room()
-let bats = [fresh_room(), fresh_room()] |> collect_list()
-let pits = [fresh_room(), fresh_room()] |> collect_list()
+let bats = [fresh_room(), fresh_room()] |> collect_mutable()
+let pits = [fresh_room(), fresh_room()] |> collect_mutable()
 
 let player mut = fresh_room()
 
 let arrows mut = 5
 
-tunnels(room: int) -> LIST[int] => caves[room - 1] |> collect_list()
+tunnels(room: int) -> LIST[int] => caves[room - 1] |> collect_mutable()
 
 deadly(room: int) -> bool =>
     room == wumpus \/ bats.contains(room) \/ pits.contains(room)

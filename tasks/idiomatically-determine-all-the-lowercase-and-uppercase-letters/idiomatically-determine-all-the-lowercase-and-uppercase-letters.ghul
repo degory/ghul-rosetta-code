@@ -5,7 +5,7 @@ letters(matches: (char) -> bool) -> string =>
         (0..65536)
         |> map(code => cast char(code))
         |> filter(matches)
-        |> collect_array()
+        |> collect()
     )
 
 write_line("lowercase {letters(char.is_ascii_letter_lower)}")

@@ -43,7 +43,7 @@ let primes_under_100 =
 let count = primes_under_100.count
 let listing = primes_under_100
     |> map(p => "{p.a}{if p.b >= 0 then "+" else "" fi}{p.b}i")
-    |> join(", ")
+    |> join()
 
 write_line("gaussian primes with norm < 100 ({count} total):")
 write_line(listing)

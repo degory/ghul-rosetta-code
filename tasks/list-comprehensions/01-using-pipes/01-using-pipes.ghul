@@ -7,4 +7,4 @@ triples(n: int) -> Pipe[(int, int, int)] =>
                 |> filter(c => a * a + b * b == c * c)
                 |> map(c => (a, b, c))))
 
-write_line(triples(20) |> join(", "))
+write_line(triples(20) |> join())

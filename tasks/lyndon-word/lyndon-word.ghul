@@ -21,5 +21,5 @@ lyndon_words(alphabet: string, n: int) -> Pipe[string] is
     od
 si
 
-write_line(lyndon_words("01", 5) |> join(", "))
-write_line(lyndon_words("012", 3) |> join(", "))
+write_line(lyndon_words("01", 5) |> join())
+write_line(lyndon_words("012", 3) |> join())

@@ -29,7 +29,7 @@ classify(hand: string) -> string is
     if tokens.count != 5 then
         "invalid"
     else
-        let cards = tokens |> map(parse) |> collect_array()
+        let cards = tokens |> map(parse) |> collect()
         let seen = SET[(int, char)]()
 
         if !(cards |> all(c => seen.add(c))) then
@@ -38,8 +38,8 @@ classify(hand: string) -> string is
             let faces = cards
                 |> map(c => c.face)
                 |> sort()
-                |> collect_array()
-            let suits = cards |> map(c => c.suit) |> collect_array()
+                |> collect()
+            let suits = cards |> map(c => c.suit) |> collect()
 
             let counts = MAP()
 
@@ -50,7 +50,7 @@ classify(hand: string) -> string is
                     fi
             od
 
-            let groups = counts.values |> sort() |> collect_array()
+            let groups = counts.values |> sort() |> collect()
             let is_flush = suits |> all(s => s =~ suits[0])
 
             let is_straight =

@@ -5,7 +5,7 @@ align(a: string, b: string)
     let d = 0::a.length
         |> map(i => 0::b.length
             |> map(j => if i == 0 then j elif j == 0 then i else 0 fi)
-            |> collect_list())
+            |> collect_mutable())
         |> collect()
 
     for i in 1::a.length do

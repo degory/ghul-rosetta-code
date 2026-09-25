@@ -4,7 +4,7 @@ use System.Text.StringBuilder
 symbol_table() -> LIST[char] is
     let symbols = cast int('a')::cast int('z')
         |> map(code => cast char(code))
-        |> collect_list()
+        |> collect_mutable()
 
     return symbols
 si

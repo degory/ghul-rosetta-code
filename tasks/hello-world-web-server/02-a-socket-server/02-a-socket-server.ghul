@@ -69,7 +69,7 @@ fetch(path: string) is
     let lines =
         IO.StreamReader(stream).read_to_end().split(['\n'])
             |> map(line => line.trim_end())
-            |> collect_array()
+            |> collect()
 
     write_line(lines[0])
 

@@ -32,7 +32,7 @@ let pieces = multisplit("a!===b=!=c", ["==", "!=", "="])
 
 write_line(pieces
     |> map(piece => "\"{piece.text}\"")
-    |> join(", "))
+    |> join())
 
 pieces
     |> filter(piece => piece.separator.length > 0)

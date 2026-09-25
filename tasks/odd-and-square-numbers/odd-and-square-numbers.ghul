@@ -7,4 +7,4 @@ write_line(
         |> skip_while(square => square < 100)
         |> take_while(square => square < 1000)
         |> filter(square => square % 2 == 1)
-        |> join(", "))
+        |> join())

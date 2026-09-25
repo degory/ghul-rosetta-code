@@ -42,7 +42,7 @@ show(digits: List[bigint], exponent: int) -> string =>
     fi
 
 to_digits(n: bigint, p: bigint, k: int) -> List[bigint] =>
-    0..k |> map(i => n / bigint.pow(p, i) % p) |> collect_list()
+    0..k |> map(i => n / bigint.pow(p, i) % p) |> collect_mutable()
 
 // the rational a/b nearest to n modulo p^k, by Gauss lattice reduction
 
@@ -79,7 +79,7 @@ square_roots(u: bigint, p: bigint, digits: int) -> List[bigint] is
         0..cast int(modulus)
             |> map(r => bigint(r))
             |> filter(r => modulo(r * r - u, modulus) =~ 0n)
-            |> collect_list()
+            |> collect_mutable()
 
     for _ in start..digits do
         let step = modulus
@@ -93,7 +93,7 @@ square_roots(u: bigint, p: bigint, digits: int) -> List[bigint] is
                 |> filter(r => modulo(r * r - u, modulus) =~ 0n)
                 |> collect_set()
                 |> sort()
-                |> collect_list()
+                |> collect_mutable()
     od
 
     roots

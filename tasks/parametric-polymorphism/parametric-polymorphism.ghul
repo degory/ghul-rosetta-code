@@ -27,5 +27,5 @@ let tree =
 
 let doubled = map(tree, x => x * 2)
 
-write_line(in_order(tree) |> join(", "))
-write_line(in_order(doubled) |> join(", "))
+write_line(in_order(tree) |> join())
+write_line(in_order(doubled) |> join())
