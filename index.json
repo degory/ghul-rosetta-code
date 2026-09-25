@@ -22211,14 +22211,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 91,
+      "lines": 118,
       "parts": [
         {
           "id": "pathological-floating-point-problems",
           "heading": null,
           "source": "tasks/pathological-floating-point-problems/pathological-floating-point-problems.ghul",
           "output": "tasks/pathological-floating-point-problems/run.expected",
-          "lines": 91,
+          "lines": 118,
           "playground": true,
           "input": false,
           "images": []
