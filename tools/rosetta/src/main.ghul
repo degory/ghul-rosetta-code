@@ -680,6 +680,26 @@ self_test() is
     )
 
     check_that(
+        "a backtick span becomes a code element",
+        markdown.render("the `previous` variable") =~ "the <code>previous</code> variable"
+    )
+
+    check_that(
+        "emphasis markers inside a code span are left alone",
+        markdown.render("`a_b` and `*c*`") =~ "<code>a_b</code> and <code>*c*</code>"
+    )
+
+    check_that(
+        "an operator that would start a tag is escaped",
+        markdown.render("`a <> b`") =~ "<code>a &lt;> b</code>"
+    )
+
+    check_that(
+        "emphasis outside a code span still applies",
+        markdown.render("**bold** then `code`") =~ "'''bold''' then <code>code</code>"
+    )
+
+    check_that(
         "a wrapped list item's continuation line joins the item",
         markdown.render("1. one\n   still one\n2. two") =~ "# one still one\n# two"
     )
