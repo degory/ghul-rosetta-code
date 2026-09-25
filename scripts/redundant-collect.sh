@@ -18,6 +18,11 @@
 # happens not to tell. Those are reported as `flagged` for a person to
 # judge; narrowing still runs there, since collect() is still a list.
 #
+# The test only sees output, so a removal that changes when work runs
+# rather than what it produces passes unnoticed: a collect that starts
+# every task or thread before any result is awaited is one. Read each
+# removal before keeping it.
+#
 # Tasks run N at a time (default 4) under nice. Writes one line per
 # site to stdout, tab-separated: file, line, call, outcome. The outcome
 # is one of removed, narrowed, kept, flagged, or baseline-red for a task
