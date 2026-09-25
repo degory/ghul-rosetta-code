@@ -1697,6 +1697,83 @@
       ]
     },
     {
+      "slug": "average-loop-length",
+      "title": "Average loop length",
+      "url": "https://rosettacode.org/wiki/Average_loop_length",
+      "tags": [
+        "simulation",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "average-loop-length",
+          "heading": null,
+          "source": "tasks/average-loop-length/average-loop-length.ghul",
+          "output": "tasks/average-loop-length/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "averages-mean-angle",
+      "title": "Averages/Mean angle",
+      "url": "https://rosettacode.org/wiki/Averages/Mean_angle",
+      "tags": [
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 17,
+      "parts": [
+        {
+          "id": "averages-mean-angle",
+          "heading": null,
+          "source": "tasks/averages-mean-angle/averages-mean-angle.ghul",
+          "output": "tasks/averages-mean-angle/run.expected",
+          "lines": 17,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "averages-mean-time-of-day",
+      "title": "Averages/Mean time of day",
+      "url": "https://rosettacode.org/wiki/Averages/Mean_time_of_day",
+      "tags": [
+        "date-time",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 22,
+      "parts": [
+        {
+          "id": "averages-mean-time-of-day",
+          "heading": null,
+          "source": "tasks/averages-mean-time-of-day/averages-mean-time-of-day.ghul",
+          "output": "tasks/averages-mean-time-of-day/run.expected",
+          "lines": 22,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "averages-median",
       "title": "Averages/Median",
       "url": "https://rosettacode.org/wiki/Averages/Median",
@@ -1716,6 +1793,32 @@
           "source": "tasks/averages-median/averages-median.ghul",
           "output": "tasks/averages-median/run.expected",
           "lines": 19,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "averages-mode",
+      "title": "Averages/Mode",
+      "url": "https://rosettacode.org/wiki/Averages/Mode",
+      "tags": [
+        "generics",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 16,
+      "parts": [
+        {
+          "id": "averages-mode",
+          "heading": null,
+          "source": "tasks/averages-mode/averages-mode.ghul",
+          "output": "tasks/averages-mode/run.expected",
+          "lines": 16,
           "playground": true,
           "input": false,
           "images": []
@@ -1768,6 +1871,31 @@
           "source": "tasks/averages-root-mean-square/averages-root-mean-square.ghul",
           "output": "tasks/averages-root-mean-square/run.expected",
           "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "averages-simple-moving-average",
+      "title": "Averages/Simple moving average",
+      "url": "https://rosettacode.org/wiki/Averages/Simple_moving_average",
+      "tags": [
+        "closures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 25,
+      "parts": [
+        {
+          "id": "averages-simple-moving-average",
+          "heading": null,
+          "source": "tasks/averages-simple-moving-average/averages-simple-moving-average.ghul",
+          "output": "tasks/averages-simple-moving-average/run.expected",
+          "lines": 25,
           "playground": true,
           "input": false,
           "images": []
@@ -1974,6 +2102,32 @@
       ]
     },
     {
+      "slug": "base64-decode-data",
+      "title": "Base64 decode data",
+      "url": "https://rosettacode.org/wiki/Base64_decode_data",
+      "tags": [
+        "strings",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 32,
+      "parts": [
+        {
+          "id": "base64-decode-data",
+          "heading": null,
+          "source": "tasks/base64-decode-data/base64-decode-data.ghul",
+          "output": "tasks/base64-decode-data/run.expected",
+          "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "bell-numbers",
       "title": "Bell numbers",
       "url": "https://rosettacode.org/wiki/Bell_numbers",
@@ -2043,6 +2197,58 @@
       ]
     },
     {
+      "slug": "berlekamp-massey-algorithm",
+      "title": "Berlekamp–Massey algorithm",
+      "url": "https://rosettacode.org/wiki/Berlekamp–Massey_algorithm",
+      "tags": [
+        "algorithms",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "berlekamp-massey-algorithm",
+          "heading": null,
+          "source": "tasks/berlekamp-massey-algorithm/berlekamp-massey-algorithm.ghul",
+          "output": "tasks/berlekamp-massey-algorithm/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "bernoulli-numbers",
+      "title": "Bernoulli numbers",
+      "url": "https://rosettacode.org/wiki/Bernoulli_numbers",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 36,
+      "parts": [
+        {
+          "id": "bernoulli-numbers",
+          "heading": null,
+          "source": "tasks/bernoulli-numbers/bernoulli-numbers.ghul",
+          "output": "tasks/bernoulli-numbers/run.expected",
+          "lines": 36,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "bernoullis-triangle",
       "title": "Bernoulli's triangle",
       "url": "https://rosettacode.org/wiki/Bernoulli's_triangle",
@@ -2063,6 +2269,58 @@
           "source": "tasks/bernoullis-triangle/bernoullis-triangle.ghul",
           "output": "tasks/bernoullis-triangle/run.expected",
           "lines": 25,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "bernstein-basis-polynomials",
+      "title": "Bernstein basis polynomials",
+      "url": "https://rosettacode.org/wiki/Bernstein_basis_polynomials",
+      "tags": [
+        "maths",
+        "recursion"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 82,
+      "parts": [
+        {
+          "id": "bernstein-basis-polynomials",
+          "heading": null,
+          "source": "tasks/bernstein-basis-polynomials/bernstein-basis-polynomials.ghul",
+          "output": "tasks/bernstein-basis-polynomials/run.expected",
+          "lines": 82,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "best-shuffle",
+      "title": "Best shuffle",
+      "url": "https://rosettacode.org/wiki/Best_shuffle",
+      "tags": [
+        "strings",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "best-shuffle",
+          "heading": null,
+          "source": "tasks/best-shuffle/best-shuffle.ghul",
+          "output": "tasks/best-shuffle/run.expected",
+          "lines": 27,
           "playground": true,
           "input": false,
           "images": []
