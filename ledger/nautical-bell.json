@@ -2,5 +2,5 @@
   "title": "Nautical bell",
   "slug": "nautical-bell",
   "state": "solved",
-  "note": "reopened, was queued: the clock is injected: the test keeps watch over one simulated day, and --live keeps it on the system clock"
+  "note": "the clock is injected: the test keeps watch over one simulated day, and --live keeps it on the system clock"
 }
