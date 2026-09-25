@@ -17,7 +17,7 @@ ties(entries: List[ENTRY]) -> Pipe[List[ENTRY]] is
 
     for entry in entries do
         if tied.count > 0 /\ tied[0].score != entry.score then
-            yield tied |> collect()
+            yield tied
 
             tied.clear()
         fi
@@ -26,7 +26,7 @@ ties(entries: List[ENTRY]) -> Pipe[List[ENTRY]] is
     od
 
     if tied.count > 0 then
-        yield tied |> collect()
+        yield tied
     fi
 si
 

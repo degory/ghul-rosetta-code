@@ -45,7 +45,6 @@ coefficient(
 let tasks =
     IO.File.read_all_lines("rosetta-tasks.txt")
         |> map(name => (name = name, grams = bigrams(name)))
-        |> collect_list()
 
 closest(term: string) -> LIST[(name: string, score: double)] =>
     (let wanted = bigrams(term)

@@ -11,7 +11,7 @@ extend(chosen: LIST[int], taken: LIST[bool],
        size: int) -> Pipe[List[int]]
 is
     if chosen.count == size then
-        yield chosen |> collect()
+        yield chosen
     else
         let final = chosen.count == size - 1
 

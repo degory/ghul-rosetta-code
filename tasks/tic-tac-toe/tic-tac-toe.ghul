@@ -28,7 +28,7 @@ score(board: LIST[char], player: char) -> int is
 
     let best mut = if full(board) then 0 else -1 fi
 
-    for cell in free(board) |> collect_list() do
+    for cell in free(board) do
         board[cell] = player
         let result = -score(board, other(player))
         board[cell] = ' '
@@ -45,7 +45,7 @@ best_move(board: LIST[char]) -> int is
     let move mut = -1
     let best mut = -2
 
-    for cell in free(board) |> collect_list() do
+    for cell in free(board) do
         board[cell] = 'O'
         let result = -score(board, 'X')
         board[cell] = ' '

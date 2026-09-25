@@ -2,7 +2,7 @@ use default
 
 extend(prefix: LIST[int], size: int) -> Pipe[List[int]] is
     if prefix.count == size then
-        yield prefix |> collect()
+        yield prefix
     else
         for candidate in 0..size do
             if candidate != prefix.count /\

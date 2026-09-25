@@ -49,7 +49,7 @@ is
             pending.remove(name)
         od
 
-        for name in pending.keys |> collect() do
+        for name in pending.keys do
             for done in ready do
                 pending[name].remove(done)
             od

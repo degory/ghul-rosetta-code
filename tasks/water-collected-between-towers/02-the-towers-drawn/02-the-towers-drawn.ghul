@@ -57,7 +57,7 @@ box(left: double, bottom: double, right: double, top: double) is
          (x = right, y = bottom),
          (x = right, y = top),
          (x = left, y = top)]
-        |> collect_list())
+)
 si
 
 let stone = (red = 110ub, green = 105ub, blue = 100ub)

@@ -34,7 +34,7 @@ attempt() -> List[int]? is
 
     for _ in 0..grid * grid do
         let open =
-            0..grid * grid |> filter(i => placed[i] < 0) |> collect_list()
+            0..grid * grid |> filter(i => placed[i] < 0)
 
         let least =
             open |> map(i => options[i].count) |> reduce(99, int.min)

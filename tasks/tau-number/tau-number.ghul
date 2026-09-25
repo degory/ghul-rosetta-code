@@ -24,7 +24,6 @@ is_tau(n: int) -> bool => n % divisor_count(n) == 0
 let first_hundred = from(1)
     |> filter(is_tau)
     |> take(100)
-    |> collect()
 
 first_hundred |> chunk(10)
     |> each(row => write_line(row |> map(n => "{n,6}") |> join("")))

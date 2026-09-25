@@ -12,7 +12,7 @@ permutations(size: int) -> Pipe[STEP] is
     let sign mut = 1
 
     do
-        yield (order = values |> collect(), sign = sign)
+        yield (order = values, sign = sign)
 
         let mobile mut = 0
         let position mut = -1

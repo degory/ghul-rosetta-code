@@ -28,7 +28,6 @@ class FACE(a: Point, b: Point, c: Point) is
 
     edges: Pipe[(from: Point, to: Point)] =>
         [(from = a, to = b), (from = b, to = c), (from = c, to = a)]
-            |> collect_list()
             |> pipe()
 si
 
@@ -95,7 +94,6 @@ hull(points: List[Point]) -> LIST[FACE] is
                     !(visible
                         |> flat_map(face => face.edges)
                         |> any(other => same_edge(edge, other))))
-                |> collect_list()
 
         for gone in visible do
             faces.remove(gone)
@@ -131,7 +129,7 @@ let shapes =
                 (x = 1.0D, y = 0.0D, z = 0.0D),
                 (x = 0.0D, y = 1.0D, z = 0.0D),
                 (x = 0.0D, y = 0.0D, z = 1.0D)]
-                   |> collect_list()),
+),
      (name = "cube with points inside",
       points =
           0..8

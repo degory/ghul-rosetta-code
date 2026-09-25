@@ -9,7 +9,6 @@ let countries = [
 
 let by_city = countries
     |> sort((a, b) => a.city <> b.city)
-    |> collect_list()
 
 for row in by_city do
     write_line("{row.country} {row.city}")

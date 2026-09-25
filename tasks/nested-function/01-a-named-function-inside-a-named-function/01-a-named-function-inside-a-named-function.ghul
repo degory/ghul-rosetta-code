@@ -10,7 +10,6 @@ make_list(separator: string) -> string is
 
     let items = ["first", "second", "third"]
         |> map(item => make_item(item))
-        |> collect_list()
 
     return items |> join("\n")
 si

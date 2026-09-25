@@ -34,6 +34,6 @@ print_all(["one", 2, 3.5])
 
 herd([CAT("felix"), DOG("rex")])
 
-let animals = [CAT("tom"), DOG("spot")] |> collect_list()
+let animals = [CAT("tom"), DOG("spot")]
 
 herd(animals |> collect_array())

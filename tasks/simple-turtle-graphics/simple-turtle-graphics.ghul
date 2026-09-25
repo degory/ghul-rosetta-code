@@ -72,7 +72,7 @@ image.colour(40ub, 90ub, 160ub)
 pen.move_to(370.0, 30.0)
 pen.face(0.0)
 
-bar_chart([3.0, 7.0, 1.0, 5.0, 9.0, 4.0] |> collect_list(), 220.0)
+bar_chart([3.0, 7.0, 1.0, 5.0, 9.0, 4.0], 220.0)
 
 image.write("turtle.png")
 
