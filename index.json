@@ -26912,6 +26912,32 @@
       ]
     },
     {
+      "slug": "smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k",
+      "title": "Smallest number k such that k+2^m is composite for all m less than k",
+      "url": "https://rosettacode.org/wiki/Smallest_number_k_such_that_k+2^m_is_composite_for_all_m_less_than_k",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 70,
+      "parts": [
+        {
+          "id": "smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k",
+          "heading": null,
+          "source": "tasks/smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k/smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k.ghul",
+          "output": "tasks/smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k/run.expected",
+          "lines": 70,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "smarandache-prime-digital-sequence",
       "title": "Smarandache prime-digital sequence",
       "url": "https://rosettacode.org/wiki/Smarandache_prime-digital_sequence",
