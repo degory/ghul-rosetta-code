@@ -26579,14 +26579,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 24,
+      "lines": 28,
       "parts": [
         {
           "id": "variable-declaration-reset",
           "heading": null,
           "source": "tasks/variable-declaration-reset/variable-declaration-reset.ghul",
           "output": "tasks/variable-declaration-reset/run.expected",
-          "lines": 24,
+          "lines": 28,
           "playground": true,
           "input": false,
           "images": []
