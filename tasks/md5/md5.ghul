@@ -1,0 +1,22 @@
+use default
+
+use System.Security.Cryptography.MD5
+
+md5(text: string) -> string =>
+    System.Convert.to_hex_string_lower(
+        MD5.hash_data(System.Text.Encoding.utf8.get_bytes(text)))
+
+let test_values = [
+    "",
+    "a",
+    "abc",
+    "message digest",
+    "abcdefghijklmnopqrstuvwxyz",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+    "12345678901234567890123456789012345678901234567890"
+    "123456789012345678901234567890"
+]
+
+for text in test_values do
+    write_line("{md5(text)}  \"{text}\"")
+od
