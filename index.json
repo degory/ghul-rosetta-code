@@ -21219,6 +21219,32 @@
       ]
     },
     {
+      "slug": "order-two-numerical-lists",
+      "title": "Order two numerical lists",
+      "url": "https://rosettacode.org/wiki/Order_two_numerical_lists",
+      "tags": [
+        "basics",
+        "recursion"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "order-two-numerical-lists",
+          "heading": null,
+          "source": "tasks/order-two-numerical-lists/order-two-numerical-lists.ghul",
+          "output": "tasks/order-two-numerical-lists/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "ordered-partitions",
       "title": "Ordered partitions",
       "url": "https://rosettacode.org/wiki/Ordered_partitions",
@@ -21238,6 +21264,32 @@
           "source": "tasks/ordered-partitions/ordered-partitions.ghul",
           "output": "tasks/ordered-partitions/run.expected",
           "lines": 61,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "ordered-words",
+      "title": "Ordered words",
+      "url": "https://rosettacode.org/wiki/Ordered_words",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 13,
+      "parts": [
+        {
+          "id": "ordered-words",
+          "heading": null,
+          "source": "tasks/ordered-words/ordered-words.ghul",
+          "output": "tasks/ordered-words/run.expected",
+          "lines": 13,
           "playground": true,
           "input": false,
           "images": []
@@ -21350,6 +21402,58 @@
       ]
     },
     {
+      "slug": "p-adic-numbers-basic",
+      "title": "P-Adic numbers, basic",
+      "url": "https://rosettacode.org/wiki/P-Adic_numbers,_basic",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 163,
+      "parts": [
+        {
+          "id": "p-adic-numbers-basic",
+          "heading": null,
+          "source": "tasks/p-adic-numbers-basic/p-adic-numbers-basic.ghul",
+          "output": "tasks/p-adic-numbers-basic/run.expected",
+          "lines": 163,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "p-adic-square-roots",
+      "title": "P-Adic square roots",
+      "url": "https://rosettacode.org/wiki/P-Adic_square_roots",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 149,
+      "parts": [
+        {
+          "id": "p-adic-square-roots",
+          "heading": null,
+          "source": "tasks/p-adic-square-roots/p-adic-square-roots.ghul",
+          "output": "tasks/p-adic-square-roots/run.expected",
+          "lines": 149,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "padovan-n-step-number-sequences",
       "title": "Padovan n-step number sequences",
       "url": "https://rosettacode.org/wiki/Padovan_n-step_number_sequences",
@@ -21428,6 +21532,32 @@
       ]
     },
     {
+      "slug": "palindrome-dates",
+      "title": "Palindrome dates",
+      "url": "https://rosettacode.org/wiki/Palindrome_dates",
+      "tags": [
+        "date-time",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "palindrome-dates",
+          "heading": null,
+          "source": "tasks/palindrome-dates/palindrome-dates.ghul",
+          "output": "tasks/palindrome-dates/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "palindrome-detection",
       "title": "Palindrome detection",
       "url": "https://rosettacode.org/wiki/Palindrome_detection",
@@ -21454,6 +21584,110 @@
       ]
     },
     {
+      "slug": "palindromic-gapful-numbers",
+      "title": "Palindromic gapful numbers",
+      "url": "https://rosettacode.org/wiki/Palindromic_gapful_numbers",
+      "tags": [
+        "number-theory",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "palindromic-gapful-numbers",
+          "heading": null,
+          "source": "tasks/palindromic-gapful-numbers/palindromic-gapful-numbers.ghul",
+          "output": "tasks/palindromic-gapful-numbers/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "palindromic-primes-in-base-16",
+      "title": "Palindromic primes in base 16",
+      "url": "https://rosettacode.org/wiki/Palindromic_primes_in_base_16",
+      "tags": [
+        "primes",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 16,
+      "parts": [
+        {
+          "id": "palindromic-primes-in-base-16",
+          "heading": null,
+          "source": "tasks/palindromic-primes-in-base-16/palindromic-primes-in-base-16.ghul",
+          "output": "tasks/palindromic-primes-in-base-16/run.expected",
+          "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pan-base-non-primes",
+      "title": "Pan base non-primes",
+      "url": "https://rosettacode.org/wiki/Pan_base_non-primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "pan-base-non-primes",
+          "heading": null,
+          "source": "tasks/pan-base-non-primes/pan-base-non-primes.ghul",
+          "output": "tasks/pan-base-non-primes/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pancake-numbers",
+      "title": "Pancake numbers",
+      "url": "https://rosettacode.org/wiki/Pancake_numbers",
+      "tags": [
+        "puzzles",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "pancake-numbers",
+          "heading": null,
+          "source": "tasks/pancake-numbers/pancake-numbers.ghul",
+          "output": "tasks/pancake-numbers/run.expected",
+          "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pangram-checker",
       "title": "Pangram checker",
       "url": "https://rosettacode.org/wiki/Pangram_checker",
@@ -21473,6 +21707,32 @@
           "source": "tasks/pangram-checker/pangram-checker.ghul",
           "output": "tasks/pangram-checker/run.expected",
           "lines": 11,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "paraffins",
+      "title": "Paraffins",
+      "url": "https://rosettacode.org/wiki/Paraffins",
+      "tags": [
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 61,
+      "parts": [
+        {
+          "id": "paraffins",
+          "heading": null,
+          "source": "tasks/paraffins/paraffins.ghul",
+          "output": "tasks/paraffins/run.expected",
+          "lines": 61,
           "playground": true,
           "input": false,
           "images": []

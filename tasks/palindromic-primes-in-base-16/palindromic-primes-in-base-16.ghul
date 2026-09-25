@@ -1,0 +1,16 @@
+use default
+
+is_prime(n: int) -> bool =>
+    n >= 2 /\ 2..n |> all(d => d * d > n \/ n % d != 0)
+
+is_palindrome(text: string) -> bool => text |> reverse() |> join("") =~ text
+
+let found =
+    2..500
+        |> filter(is_prime)
+        |> map(n => "{n:x}")
+        |> filter(is_palindrome)
+        |> collect_list()
+
+write_line("{found.count} palindromic primes below 500, in base 16:")
+write_line(found |> join(" "))
