@@ -10,8 +10,8 @@ minor(m: Matrix, column: int) -> Matrix =>
                 |> index()
                 |> filter(((j, _)) => j != column)
                 |> map(((_, value)) => value)
-                |> collect_mutable())
-        |> collect_mutable()
+                |> collect())
+        |> collect()
 
 expand(m: Matrix, alternating: bool) -> long =>
     if m.count == 0 then

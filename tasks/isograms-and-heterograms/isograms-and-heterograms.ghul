@@ -13,13 +13,11 @@ let words =
     IO.File.read_all_lines("unixdict.txt")
         |> map(word => word.to_lower())
         |> map(word => (word, n = isogram_order(word)))
-        |> collect_mutable()
 
 let isograms =
     words
         |> filter(((_, n)) => n > 1)
         |> sort_by(((word, n)) => (-n, -word.length, word))
-        |> collect_mutable()
 
 write_line("n-isograms with n > 1:")
 

@@ -19,7 +19,7 @@ proper_divisors(n: int) -> List[int] is
     od
 
     cat(small, large |> reverse()) |> filter(d => d != n)
-        |> collect_mutable()
+        |> collect()
 si
 
 for n in 1::10 do

@@ -9,8 +9,8 @@ conjugate_transpose(m: Matrix) -> Matrix =>
         |> map(j =>
             0..m.count
                 |> map(i => Complex.conjugate(m[i][j]))
-                |> collect_mutable())
-        |> collect_mutable()
+                |> collect())
+        |> collect()
 
 *(a: Matrix, b: Matrix) -> Matrix =>
     0..a.count
@@ -20,8 +20,8 @@ conjugate_transpose(m: Matrix) -> Matrix =>
                     0..b.count
                         |> map(k => a[i][k] * b[k][j])
                         |> reduce(Complex.zero, (x, y) => x + y))
-                |> collect_mutable())
-        |> collect_mutable()
+                |> collect())
+        |> collect()
 
 ≈(a: Matrix, b: Matrix) -> bool =>
     0..a.count
@@ -34,8 +34,8 @@ identity(n: int) -> Matrix =>
         |> map(i =>
             0..n
                 |> map(j => if i == j then Complex.one else Complex.zero fi)
-                |> collect_mutable())
-        |> collect_mutable()
+                |> collect())
+        |> collect()
 
 show(c: Complex) -> string =>
     let sign = if c.imaginary < 0.0 then "-" else "+" fi in

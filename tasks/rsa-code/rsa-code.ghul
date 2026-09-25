@@ -33,7 +33,6 @@ for message in [
         Encoding.utf8.get_bytes(message)
         |> chunk(block_size)
         |> map(encode)
-        |> collect()
 
     let decrypted = LIST[ubyte]()
 

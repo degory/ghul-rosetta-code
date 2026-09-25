@@ -18,8 +18,8 @@ let n = p_values.count
 let ascending =
     0..n
         |> sort((a, b) => p_values[a] <> p_values[b])
-        |> collect_mutable()
-let descending = ascending |> reverse() |> collect_mutable()
+        |> collect()
+let descending = ascending |> reverse() |> collect()
 
 running(
     order: List[int],
@@ -58,7 +58,7 @@ benjamini_yekutieli() -> List[double] =>
 bonferroni() -> List[double] =>
     p_values
         |> map(p => System.Math.min(1.0, cast double(n) * p))
-        |> collect_mutable()
+        |> collect()
 
 hochberg() -> List[double] =>
     running(descending, rank => cast double(rank + 1), true)
@@ -67,7 +67,7 @@ holm() -> List[double] =>
     running(ascending, rank => cast double(n - rank), false)
 
 hommel() -> List[double] is
-    let sorted = ascending |> map(i => p_values[i]) |> collect_mutable()
+    let sorted = ascending |> map(i => p_values[i]) |> collect()
     let smallest =
         0..n
             |> map(i => cast double(n) * sorted[i] / cast double(i + 1))

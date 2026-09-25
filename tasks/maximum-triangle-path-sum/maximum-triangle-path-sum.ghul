@@ -26,19 +26,19 @@ let triangle =
         |> map(line =>
             line.split([' '], StringSplitOptions.REMOVE_EMPTY_ENTRIES)
                 |> map(number => int.parse(number))
-                |> collect_mutable())
-        |> collect_mutable()
+                |> collect())
+        |> collect()
 
 let best =
     triangle
         |> reverse()
         |> reduce(
-            repeat(0, triangle.count + 1) |> collect_mutable(),
+            repeat(0, triangle.count + 1) |> collect(),
             (below: List[int], row: List[int]) -> List[int] =>
                 row
                     |> index()
                     |> map(((i, value)) =>
                         value + int.max(below[i], below[i + 1]))
-                    |> collect_mutable())
+                    |> collect())
 
 write_line("The maximum total is {best[0]}")

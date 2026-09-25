@@ -6,10 +6,9 @@ best_shuffle(text: string) -> string is
             |> group_by(i => text[i])
             |> map(((_, positions)) => positions)
             |> sort_by_descending(positions => positions.count)
-            |> collect_mutable()
 
     let order =
-        groups |> flat_map(positions => positions) |> collect_mutable()
+        groups |> flat_map(positions => positions) |> collect()
     let shift = groups |> map(positions => positions.count) |> max() ?? 0
     let shuffled = repeat(' ', text.length) |> collect_mutable()
 

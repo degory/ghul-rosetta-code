@@ -4,7 +4,7 @@ balanced(text: string) -> bool =>
     let counts =
         "abc"
             |> map(letter => text |> count(c => c == letter))
-            |> collect_mutable()
+            |> collect()
     in
     counts |> all(n => n == counts[0])
 

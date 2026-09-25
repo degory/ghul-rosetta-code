@@ -7,9 +7,9 @@ is_palindrome(text: string) -> bool is
     let letters =
         text.to_lower().to_char_array()
             |> filter(char.is_letter_or_digit)
-            |> collect_mutable()
+            |> collect()
 
-    letters =~ (letters |> reverse() |> collect_mutable())
+    letters =~ (letters |> reverse() |> collect())
 si
 
 // MSTest 4 records the text of the checked expression through trailing
@@ -51,7 +51,7 @@ let tests = typeof PALINDROME_TESTS
 let fixture = System.Activator.create_instance(tests)
 let flags = BindingFlags.PUBLIC | BindingFlags.INSTANCE
 let methods = tests.get_methods(flags) |> filter(is_test)
-    |> collect_mutable()
+    |> collect()
 let passed mut = 0
 
 for method in methods do

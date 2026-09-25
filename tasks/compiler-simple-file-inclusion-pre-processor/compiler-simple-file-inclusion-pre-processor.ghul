@@ -11,7 +11,7 @@ expand(path: string, active: List[string]) -> Pipe[string] is
     assert !(active |> any(open => open =~ full))
     else "include cycle through {path}"
 
-    let nested = active |> cat([full]) |> collect_mutable()
+    let nested = active |> cat([full]) |> collect()
 
     for line in IO.File.read_all_lines(path) do
         let directive = line.trim()

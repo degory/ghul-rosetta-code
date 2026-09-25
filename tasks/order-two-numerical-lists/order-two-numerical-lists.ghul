@@ -12,7 +12,7 @@ precedes(a: List[int], b: List[int]) -> bool =>
         a[0] < b[0]
     else
         let rest = (list: List[int]) => list |> skip(1)
-            |> collect_mutable() in
+            |> collect() in
         precedes(rest(a), rest(b))
     fi
 

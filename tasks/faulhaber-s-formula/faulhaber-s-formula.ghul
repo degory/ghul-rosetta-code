@@ -55,7 +55,6 @@ faulhaber(p: int) -> string =>
                         bernoulli(j),
                  power = p + 1 - j))
             |> filter(t => t.coefficient.numerator != 0L)
-            |> collect_mutable()
     in
     terms
         |> index()

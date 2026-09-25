@@ -20,7 +20,6 @@ is_set(a: CARD, b: CARD, c: CARD) -> bool =>
 let pack =
     (0..81)
     |> map(i => CARD(i / 27, i / 9 % 3, i / 3 % 3, i % 3))
-    |> collect_mutable()
 
 let random = System.Random(2026)
 

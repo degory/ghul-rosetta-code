@@ -6,7 +6,6 @@ is_ordered(word: string) -> bool =>
 let ordered =
     IO.File.read_all_lines("unixdict.txt")
         |> filter(is_ordered)
-        |> collect_mutable()
 
 let longest = ordered |> map(word => word.length) |> max()!
 

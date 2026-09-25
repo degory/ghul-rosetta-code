@@ -22,7 +22,7 @@ let consummate = (
 )
 
 let inconsummate = 1..limit |> filter(n => !consummate[n])
-    |> collect_mutable()
+    |> collect()
 
 write_line("The first 50 inconsummate numbers:")
 

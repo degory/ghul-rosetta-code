@@ -3,7 +3,7 @@ use default
 rotations(word: string) -> List[string] =>
     0..word.length
         |> map(i => "{word.substring(i)}{word.substring(0, i)}")
-        |> collect_mutable()
+        |> collect()
 
 let words = SET(IO.File.read_all_lines("unixdict.txt"))
 let shown = SET[string]()

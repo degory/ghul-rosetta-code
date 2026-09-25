@@ -18,7 +18,6 @@ let deranged =
                     i + 1::set.count - 1
                         |> map(j => (first = set[i], second = set[j]))))
         |> filter(pair => is_deranged(pair.first, pair.second))
-        |> collect()
 
 if let longest = deranged |> max_by(pair => pair.first.length) then
     write_line("{longest.first} {longest.second}")

@@ -50,7 +50,6 @@ let starts_and_ends =
                     square_endings
                         |> any(e => e == (last - first + 10) % 10))
                 |> map(last => (first = first, last = last)))
-        |> collect()
 
 let limit = 2_100_000_000L
 

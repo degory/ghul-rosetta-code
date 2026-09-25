@@ -9,7 +9,7 @@ linear_combination(scalars: List[int]) -> string =>
         scalars
             |> index()
             |> filter(((_, c)) => c != 0)
-            |> collect_mutable()
+            |> collect()
     in
     if terms.count == 0 then
         "0"

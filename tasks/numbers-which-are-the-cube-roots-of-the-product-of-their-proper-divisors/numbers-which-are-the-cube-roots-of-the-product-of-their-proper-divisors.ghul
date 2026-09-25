@@ -21,7 +21,7 @@ let divisor_count = (
 let found =
     1::limit
         |> filter(n => n == 1 \/ divisor_count[n] == 8)
-        |> collect_mutable()
+        |> collect()
 
 write_line("The first 50:")
 

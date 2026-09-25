@@ -34,7 +34,7 @@ let cells =
             0..country[row].length
                 |> filter(column => char.is_digit(country[row][column]))
                 |> map(column => (row, column)))
-        |> collect_mutable()
+        |> collect()
 
 let number =
     cells |> index() |> map(((i, cell)) => (cell, i)) |> collect_map()
@@ -55,12 +55,12 @@ let distance =
             0..size
                 |> map(j => if i == j then 0 else unreachable fi)
                 |> collect_mutable())
-        |> collect_mutable()
+        |> collect()
 
 let next =
     0..size
         |> map(i => 0..size |> map(j => j) |> collect_mutable())
-        |> collect_mutable()
+        |> collect()
 
 for (i, cell) in cells |> index() do
     for target in moves(cell) do

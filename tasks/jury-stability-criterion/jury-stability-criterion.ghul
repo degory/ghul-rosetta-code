@@ -14,7 +14,7 @@ next_row(row: Polynomial) -> Polynomial =>
     let n = row.count - 1 in
     0..n
         |> map(i => row[0] * row[i] - row[n] * row[n - i])
-        |> collect_mutable()
+        |> collect()
 
 rows(p: Polynomial) -> Pipe[Polynomial] is
     let row mut = p
