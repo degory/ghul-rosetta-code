@@ -1,30 +1,22 @@
 use default
 
-use System.ComponentModel.DescriptionAttribute
-
-// ghūl has no documentation comments: the compiler ignores every comment.
-// Documentation that a program or a tool can read back is written as a
-// .NET attribute, which the compiler emits into the assembly.
-
-@Description("A point in the plane.")
+/// A point in the plane.
+///
+/// - x: the distance along the horizontal axis
+/// - y: the distance along the vertical axis
 class POINT(x: double, y: double) is
-    @Description("How far the point is from the origin.")
+    /// How far the point is from the origin.
     length() -> double => double.sqrt(x * x + y * y)
 si
 
-describe(member: System.Reflection.MemberInfo) -> string =>
-    let found =
-        System.Attribute.get_custom_attribute(
-            member, typeof DescriptionAttribute)
-    in
-    if let description: DescriptionAttribute = found then
-        description.description
-    else
-        "(undocumented)"
-    fi
+/// The point halfway between `a` and `b`.
+///
+/// - a: one end of the line
+/// - b: the other end
+midpoint(a: POINT, b: POINT) -> POINT =>
+    POINT((a.x + b.x) / 2.0, (a.y + b.y) / 2.0)
 
-let point = typeof POINT
-
-write_line("{point.name}: {describe(point)}")
-write_line("{point.name}.length: {describe(point.get_method("length")!)}")
 write_line("{POINT(3.0, 4.0).length()}")
+let middle = midpoint(POINT(0.0, 0.0), POINT(6.0, 8.0))
+
+write_line("{middle.x}, {middle.y}")
