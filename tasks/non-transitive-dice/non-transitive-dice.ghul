@@ -1,0 +1,62 @@
+use default
+
+use Die = List[int]
+
+beats(x: Die, y: Die) -> int =>
+    let wins =
+        x |> flat_map(a => y |> map(b => a <> b)) |> collect_list()
+    in
+    (wins |> count(w => w > 0)) - (wins |> count(w => w < 0))
+
+let dice =
+    1::4
+        |> flat_map(a =>
+            a::4 |> flat_map(b =>
+                b::4 |> flat_map(c =>
+                    c::4 |> map(d => [a, b, c, d]))))
+        |> collect_list()
+
+// chains of distinct dice, each beaten by the one after it, whose first die
+// beats the last
+
+extend(chain: List[Die], length: int) -> Pipe[List[Die]] is
+    if chain.count == length then
+        if beats(chain[0], chain[length - 1]) > 0 then
+            yield chain
+        fi
+    else
+        let last = chain[chain.count - 1]
+
+        for die in dice do
+            let fresh = !(chain |> any(used => used =~ die))
+
+            if fresh /\ beats(last, die) < 0 then
+                let longer = chain |> cat([die]) |> collect_list()
+
+                yield in extend(longer, length)
+            fi
+        od
+    fi
+si
+
+chains(length: int) -> Pipe[List[Die]] is
+    for die in dice do
+        yield in extend([die], length)
+    od
+si
+
+write_line(
+    "There are {dice.count} four-faced dice with faces from 1 to 4.\n")
+
+for length in [3, 4] do
+    let found = chains(length) |> collect_list()
+
+    write_line(
+        "{found.count} ordered lists of {length} non-transitive dice:")
+
+    for chain in found do
+        write_line("    {chain}")
+    od
+
+    write_line("")
+od
