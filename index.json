@@ -17704,6 +17704,32 @@
       ]
     },
     {
+      "slug": "old-lady-swallowed-a-fly",
+      "title": "Old lady swallowed a fly",
+      "url": "https://rosettacode.org/wiki/Old_lady_swallowed_a_fly",
+      "tags": [
+        "strings",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "old-lady-swallowed-a-fly",
+          "heading": null,
+          "source": "tasks/old-lady-swallowed-a-fly/old-lady-swallowed-a-fly.ghul",
+          "output": "tasks/old-lady-swallowed-a-fly/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "old-russian-measure-of-length",
       "title": "Old Russian measure of length",
       "url": "https://rosettacode.org/wiki/Old_Russian_measure_of_length",
