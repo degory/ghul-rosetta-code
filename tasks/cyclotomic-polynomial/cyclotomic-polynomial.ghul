@@ -1,0 +1,108 @@
+use default
+
+mobius(n: int) -> int is
+    let remaining mut = n
+    let sign mut = 1
+    let p mut = 2
+
+    while p * p <= remaining do
+        if remaining % p == 0 then
+            remaining = remaining / p
+
+            if remaining % p == 0 then
+                return 0
+            fi
+
+            sign = -sign
+        fi
+
+        p = p + 1
+    od
+
+    if remaining > 1 then -sign else sign fi
+si
+
+cyclotomic(n: int) -> List[long] is
+    let factors = 1::n
+        |> filter(d => n % d == 0)
+        |> map(d => (power = d, exponent = mobius(n / d)))
+        |> filter(f => f.exponent != 0)
+        |> collect()
+
+    let degree = factors |> map(f => f.power * f.exponent) |> sum()
+    let series = repeat(0L, degree + 1) |> collect_list()
+    series[0] = 1L
+
+    for (power, exponent) in factors do
+        if exponent > 0 then
+            for k in 0..degree - power + 1 do
+                let i = degree - k
+                series[i] = series[i] - series[i - power]
+            od
+        else
+            for i in power::degree do
+                series[i] = series[i] + series[i - power]
+            od
+        fi
+    od
+
+    if n == 1 then series |> map(c => -c) |> collect() else series fi
+si
+
+term(coefficient: long, power: int) -> string =>
+    let magnitude = System.Math.abs(coefficient) in
+    let digits =
+        if magnitude == 1L /\ power > 0 then "" else "{magnitude}" fi in
+    case power
+    when 0 then digits
+    when 1 then "{digits}x"
+    else "{digits}x^{power}"
+    esac
+
+sign(leading: bool, coefficient: long) -> string =>
+    case (leading, coefficient < 0L)
+    when (true, true) then "-"
+    when (true, false) then ""
+    when (false, true) then " - "
+    when (false, false) then " + "
+    esac
+
+show(coefficients: List[long]) -> string =>
+    coefficients
+        |> index()
+        |> filter(t => t.value != 0L)
+        |> reverse()
+        |> index()
+        |> map(((position, (power, coefficient))) =>
+            "{sign(position == 0, coefficient)}{term(coefficient, power)}")
+        |> join("")
+
+write_line("The first 30 cyclotomic polynomials:")
+
+for n in 1::30 do
+    write_line("CP[{n}] = {show(cyclotomic(n))}")
+od
+
+let first_order = MAP[long, int]()
+let n mut = 0
+
+while first_order.count < 10 do
+    n = n + 1
+
+    let heights = cyclotomic(n)
+        |> map(c => System.Math.abs(c))
+        |> filter(h => h >= 1L /\ h <= 10L)
+
+    for height in heights do
+        if !first_order.contains_key(height) then
+            first_order[height] = n
+        fi
+    od
+od
+
+write_line()
+write_line("Smallest order with a coefficient of n or -n:")
+
+for k in 1L::10L do
+    write_line("{k,2}: {first_order[k]}")
+od
