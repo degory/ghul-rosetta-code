@@ -671,9 +671,12 @@ needs. The playground runs five to ten times slower than the same program does n
 - Over that, it prints something as it goes, and keeps printing: a line before the work saying it
   will take a while, a line per step, a count against an estimated total. That output is part of
   what the test captures, so it has to be the same on every run - a line per item rather than a
-  timer, and no elapsed times.
-- `playground-unsupported` is for what genuinely cannot run there: memory the browser will not
-  give, or many minutes even with the progress showing.
+  timer. A figure that genuinely varies, an elapsed time among them, is allowed where a
+  `run.check` asserts the part that does not vary and only that the rest was reported;
+  `pi-to-1-million-digits` does exactly that.
+- `playground-unsupported` is for what genuinely cannot run there: the network, a child process,
+  a filesystem, memory the browser will not give, or more than about a minute natively, which is
+  ten minutes there even with the progress showing.
 
 Thirty seconds of silence is the most a page should ever ask of someone; several minutes of
 visible progress asks nothing at all.
