@@ -4,6 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
 
     <AssemblyName>binary</AssemblyName>
+    <PackageId>hailstone-library</PackageId>
     <GhulCompiler>dotnet ghul-compiler --test-run</GhulCompiler>
   </PropertyGroup>
 

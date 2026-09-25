@@ -4,12 +4,13 @@
     <TargetFramework>net10.0</TargetFramework>
 
     <AssemblyName>binary</AssemblyName>
+    <PackageId>hailstone-program</PackageId>
     <GhulCompiler>dotnet ghul-compiler --test-run</GhulCompiler>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="../01-the-library/01-the-library.ghulproj"
-                      AdditionalProperties="AssemblyName=hailstone" />
+                      AdditionalProperties="AssemblyName=hailstone;IntermediateOutputPath=obj/hailstone/;OutDir=bin/hailstone/" />
     <GhulSources Include="**/*.ghul" />
   </ItemGroup>
 </Project>
