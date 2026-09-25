@@ -17939,6 +17939,32 @@
       ]
     },
     {
+      "slug": "one-two-primes",
+      "title": "One-two primes",
+      "url": "https://rosettacode.org/wiki/One-two_primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 61,
+      "parts": [
+        {
+          "id": "one-two-primes",
+          "heading": null,
+          "source": "tasks/one-two-primes/one-two-primes.ghul",
+          "output": "tasks/one-two-primes/run.expected",
+          "lines": 61,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "operator-precedence",
       "title": "Operator precedence",
       "url": "https://rosettacode.org/wiki/Operator_precedence",
