@@ -22070,6 +22070,32 @@
       ]
     },
     {
+      "slug": "pascal-s-triangle-puzzle",
+      "title": "Pascal's triangle/Puzzle",
+      "url": "https://rosettacode.org/wiki/Pascal's_triangle/Puzzle",
+      "tags": [
+        "puzzles",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "pascal-s-triangle-puzzle",
+          "heading": null,
+          "source": "tasks/pascal-s-triangle-puzzle/pascal-s-triangle-puzzle.ghul",
+          "output": "tasks/pascal-s-triangle-puzzle/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pascals-triangle",
       "title": "Pascal's triangle",
       "url": "https://rosettacode.org/wiki/Pascal's_triangle",
