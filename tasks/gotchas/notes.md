@@ -5,7 +5,7 @@ been tested, a variable declared with `let` cannot be reassigned unless it says
 and run, and do something other than what they look like they do. Four of them
 follow, each with what to do instead.
 
-`==` on two strings asks whether they are the same object. Two literals with the
+A string is an ordinary object, and `==` on any object asks whether the two sides are the same object. Two literals with the
 same spelling usually are, so the comparison looks right until one side is read
 from a file or built at run time. `=~` compares the characters.
 
