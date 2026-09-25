@@ -22342,6 +22342,32 @@
       ]
     },
     {
+      "slug": "pell-s-equation",
+      "title": "Pell's equation",
+      "url": "https://rosettacode.org/wiki/Pell's_equation",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "pell-s-equation",
+          "heading": null,
+          "source": "tasks/pell-s-equation/pell-s-equation.ghul",
+          "output": "tasks/pell-s-equation/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "penholodigital-squares",
       "title": "Penholodigital squares",
       "url": "https://rosettacode.org/wiki/Penholodigital_squares",
