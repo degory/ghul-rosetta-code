@@ -17570,6 +17570,32 @@
       ]
     },
     {
+      "slug": "numeric-error-propagation",
+      "title": "Numeric error propagation",
+      "url": "https://rosettacode.org/wiki/Numeric_error_propagation",
+      "tags": [
+        "operators",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "numeric-error-propagation",
+          "heading": null,
+          "source": "tasks/numeric-error-propagation/numeric-error-propagation.ghul",
+          "output": "tasks/numeric-error-propagation/run.expected",
+          "lines": 47,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "numerical-and-alphabetical-suffixes",
       "title": "Numerical and alphabetical suffixes",
       "url": "https://rosettacode.org/wiki/Numerical_and_alphabetical_suffixes",
