@@ -1,0 +1,70 @@
+use default
+
+to_reduced_row_echelon_form(m: LIST[LIST[double]]) is
+    let columns = m[0].count
+
+    let lead mut = 0
+
+    for r in 0..m.count do
+        if lead >= columns then
+            return
+        fi
+
+        let pivot mut = r
+
+        while m[pivot][lead] == 0.0 do
+            pivot = pivot + 1
+
+            if pivot < m.count then
+                continue
+            fi
+
+            pivot = r
+            lead = lead + 1
+
+            if lead == columns then
+                return
+            fi
+        od
+
+        let swap = m[pivot]
+
+        m[pivot] = m[r]
+        m[r] = swap
+
+        let divisor = m[r][lead]
+
+        for column in 0..columns do
+            m[r][column] = m[r][column] / divisor
+        od
+
+        for other in 0..m.count do
+            if other == r then
+                continue
+            fi
+
+            let factor = m[other][lead]
+
+            for column in 0..columns do
+                m[other][column] = m[other][column] - factor * m[r][column]
+            od
+        od
+
+        lead = lead + 1
+    od
+si
+
+let matrix =
+    [
+        [1.0, 2.0, -1.0, -4.0],
+        [2.0, 3.0, -1.0, -11.0],
+        [-2.0, 0.0, -3.0, 22.0]
+    ]
+        |> map(row => row |> collect_list())
+        |> collect_list()
+
+to_reduced_row_echelon_form(matrix)
+
+for row in matrix do
+    write_line(row |> map(value => "{value + 0.0,8:F3}") |> join(""))
+od
