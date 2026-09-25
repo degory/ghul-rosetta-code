@@ -35,7 +35,10 @@ classify(hand: string) -> string is
         if !(cards |> all(c => seen.add(c))) then
             "invalid"
         else
-            let faces = cards |> map(c => c.face) |> sort() |> collect_array()
+            let faces = cards
+                |> map(c => c.face)
+                |> sort()
+                |> collect_array()
             let suits = cards |> map(c => c.suit) |> collect_array()
 
             let counts = MAP()

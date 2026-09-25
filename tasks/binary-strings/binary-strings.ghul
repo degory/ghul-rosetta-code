@@ -6,7 +6,9 @@ to_text(bytes: List[ubyte]) -> string =>
 replace_byte(
     bytes: List[ubyte], old: ubyte, replacement: ubyte
 ) -> LIST[ubyte] is
-    let result = bytes |> map(b => if b == old then replacement else b fi) |> collect_list()
+    let result = bytes
+        |> map(b => if b == old then replacement else b fi)
+        |> collect_list()
 
     result
 si

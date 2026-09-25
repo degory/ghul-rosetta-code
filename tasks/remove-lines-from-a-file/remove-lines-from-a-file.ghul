@@ -29,7 +29,8 @@ remove_lines(path: string, start: int, count: int) is
         path,
         lines
             |> index()
-            |> filter(l => l.index < start - 1 \/ l.index >= start + count - 1)
+
+                |> filter(l => l.index < start - 1 \/ l.index >= start + count - 1)
             |> map(l => l.value)
             |> collect_array()
     )

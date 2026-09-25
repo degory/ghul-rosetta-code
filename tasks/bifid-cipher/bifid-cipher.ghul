@@ -20,7 +20,9 @@ encrypt(text: string, square: SQUARE) -> string is
     let cols = letters |> map(square.col)
     let coords = rows |> cat(cols) |> collect_list()
 
-    0..n |> map(i => square.at(coords[i * 2], coords[i * 2 + 1])) |> join("")
+    0..n
+        |> map(i => square.at(coords[i * 2], coords[i * 2 + 1]))
+        |> join("")
 si
 
 decrypt(text: string, square: SQUARE) -> string is
