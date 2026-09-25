@@ -1,0 +1,25 @@
+use default
+
+prime_factor_count(n: int) -> int is
+    let remaining mut = n
+    let count mut = 0
+    let factor mut = 2
+
+    while factor * factor <= remaining do
+        while remaining % factor == 0 do
+            remaining = remaining / factor
+            count = count + 1
+        od
+
+        factor = factor + 1
+    od
+
+    return if remaining > 1 then count + 1 else count fi
+si
+
+is_prime(n: int) -> bool => n > 1 /\ 2::n / 2 |> all(d => n % d != 0)
+
+4::120
+    |> filter(n => is_prime(prime_factor_count(n)))
+    |> chunk(10)
+    |> each(row => write_line(row |> map(n => "{n,4}") |> join("")))

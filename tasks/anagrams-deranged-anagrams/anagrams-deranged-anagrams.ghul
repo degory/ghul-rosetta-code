@@ -1,0 +1,25 @@
+use default
+
+sorted_letters(word: string) -> string =>
+    string(word |> sort() |> collect_array())
+
+is_deranged(first: string, second: string) -> bool =>
+    0..first.length |> all(i => first[i] != second[i])
+
+let words = IO.File.read_all_lines("unixdict.txt")
+
+let deranged =
+    words
+        |> group_by(sorted_letters)
+        |> map(set => set.value)
+        |> flat_map(set =>
+            0..set.count
+                |> flat_map(i =>
+                    i + 1::set.count - 1
+                        |> map(j => (first = set[i], second = set[j]))))
+        |> filter(pair => is_deranged(pair.first, pair.second))
+        |> collect()
+
+if let longest = deranged |> max_by(pair => pair.first.length) then
+    write_line("{longest.first} {longest.second}")
+fi

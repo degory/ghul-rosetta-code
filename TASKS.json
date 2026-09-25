@@ -249,6 +249,11 @@
       "published_hash": "6198566abba67f7ebb55152b121b03a345a6a0ea470ec94c34e0ccf3baaeb5fd"
     },
     {
+      "title": "Anagram generator",
+      "slug": "anagram-generator",
+      "state": "solved"
+    },
+    {
       "title": "Anagrams",
       "slug": "anagrams",
       "state": "published",
@@ -256,10 +261,25 @@
       "published_hash": "944b03754deb7ec9ccfecfadfc00797d6c029cd4392561d2d8bb4048fe12fa4c"
     },
     {
+      "title": "Anagrams/Deranged anagrams",
+      "slug": "anagrams-deranged-anagrams",
+      "state": "solved"
+    },
+    {
       "title": "Anaprimes",
       "slug": "anaprimes",
       "state": "published",
       "published_hash": "2ee807fe1043929cf6a68e9e823ed8fd7b335b4739ff50cc1afe28c85de18102"
+    },
+    {
+      "title": "Angle difference between two bearings",
+      "slug": "angle-difference-between-two-bearings",
+      "state": "solved"
+    },
+    {
+      "title": "Angles (geometric), normalization and conversion",
+      "slug": "angles-geometric-normalization-and-conversion",
+      "state": "solved"
     },
     {
       "title": "Animate a pendulum",
@@ -306,10 +326,20 @@
       "published_hash": "54bf7c97d6c1eedc2f714d9c88eee652b693e8f7a65a0f59ac3c81e932dca4f4"
     },
     {
+      "title": "Apply a digital filter (direct form II transposed)",
+      "slug": "apply-a-digital-filter-direct-form-ii-transposed",
+      "state": "solved"
+    },
+    {
       "title": "Approximate equality",
       "slug": "approximate-equality",
       "state": "published",
       "published_hash": "990d75c95ef78cda6d10cffa5f3b282ab594eb9fb8bd233abc2f01151d809b66"
+    },
+    {
+      "title": "Ap\u00E9ry\u0027s constant",
+      "slug": "aperys-constant",
+      "state": "solved"
     },
     {
       "title": "Arbitrary-precision integers (included)",
@@ -351,10 +381,20 @@
       "published_hash": "b9dd505d9492a37819fa572cd3c9c58d5bb64f98202ba82a4e7458c980e03f70"
     },
     {
+      "title": "Arithmetic numbers",
+      "slug": "arithmetic-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Arithmetic-geometric mean",
       "slug": "arithmetic-geometric-mean",
       "state": "published",
       "published_hash": "47b2c348d70226d384126df7766b2137a618f7d9d386e53ca25842bd851c272c"
+    },
+    {
+      "title": "Arithmetic-geometric mean/Calculate Pi",
+      "slug": "arithmetic-geometric-mean-calculate-pi",
+      "state": "solved"
     },
     {
       "title": "Arithmetic/Complex",
@@ -398,6 +438,11 @@
       "published_hash": "f95285deaceb3cce8852d2a26196f3858e40273695b9dae7bb227ca168f3a9fc"
     },
     {
+      "title": "Ascending primes",
+      "slug": "ascending-primes",
+      "state": "solved"
+    },
+    {
       "title": "Assertions",
       "slug": "assertions",
       "state": "published",
@@ -426,6 +471,11 @@
       "slug": "atomic-updates",
       "state": "published",
       "published_hash": "a5937e05bb023b0264efcd36b7116f8c1e031198b64ffe054fdabf6ff8694812"
+    },
+    {
+      "title": "Attractive numbers",
+      "slug": "attractive-numbers",
+      "state": "solved"
     },
     {
       "title": "Autogram checker",

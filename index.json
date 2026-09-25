@@ -927,6 +927,33 @@
       ]
     },
     {
+      "slug": "anagram-generator",
+      "title": "Anagram generator",
+      "url": "https://rosettacode.org/wiki/Anagram_generator",
+      "tags": [
+        "strings",
+        "recursion",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 76,
+      "parts": [
+        {
+          "id": "anagram-generator",
+          "heading": null,
+          "source": "tasks/anagram-generator/anagram-generator.ghul",
+          "output": "tasks/anagram-generator/run.expected",
+          "lines": 76,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "anagrams",
       "title": "Anagrams",
       "url": "https://rosettacode.org/wiki/Anagrams",
@@ -954,6 +981,33 @@
       ]
     },
     {
+      "slug": "anagrams-deranged-anagrams",
+      "title": "Anagrams/Deranged anagrams",
+      "url": "https://rosettacode.org/wiki/Anagrams/Deranged_anagrams",
+      "tags": [
+        "strings",
+        "pipes",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 25,
+      "parts": [
+        {
+          "id": "anagrams-deranged-anagrams",
+          "heading": null,
+          "source": "tasks/anagrams-deranged-anagrams/anagrams-deranged-anagrams.ghul",
+          "output": "tasks/anagrams-deranged-anagrams/run.expected",
+          "lines": 25,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "anaprimes",
       "title": "Anaprimes",
       "url": "https://rosettacode.org/wiki/Anaprimes",
@@ -974,6 +1028,58 @@
           "source": "tasks/anaprimes/anaprimes.ghul",
           "output": "tasks/anaprimes/run.expected",
           "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "angle-difference-between-two-bearings",
+      "title": "Angle difference between two bearings",
+      "url": "https://rosettacode.org/wiki/Angle_difference_between_two_bearings",
+      "tags": [
+        "maths",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 24,
+      "parts": [
+        {
+          "id": "angle-difference-between-two-bearings",
+          "heading": null,
+          "source": "tasks/angle-difference-between-two-bearings/angle-difference-between-two-bearings.ghul",
+          "output": "tasks/angle-difference-between-two-bearings/run.expected",
+          "lines": 24,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "angles-geometric-normalization-and-conversion",
+      "title": "Angles (geometric), normalization and conversion",
+      "url": "https://rosettacode.org/wiki/Angles_(geometric),_normalization_and_conversion",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 43,
+      "parts": [
+        {
+          "id": "angles-geometric-normalization-and-conversion",
+          "heading": null,
+          "source": "tasks/angles-geometric-normalization-and-conversion/angles-geometric-normalization-and-conversion.ghul",
+          "output": "tasks/angles-geometric-normalization-and-conversion/run.expected",
+          "lines": 43,
           "playground": true,
           "input": false,
           "images": []
@@ -1065,6 +1171,32 @@
       ]
     },
     {
+      "slug": "aperys-constant",
+      "title": "Apéry's constant",
+      "url": "https://rosettacode.org/wiki/Apéry's_constant",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "aperys-constant",
+          "heading": null,
+          "source": "tasks/aperys-constant/aperys-constant.ghul",
+          "output": "tasks/aperys-constant/run.expected",
+          "lines": 96,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "append-a-record-to-the-end-of-a-text-file",
       "title": "Append a record to the end of a text file",
       "url": "https://rosettacode.org/wiki/Append_a_record_to_the_end_of_a_text_file",
@@ -1121,6 +1253,32 @@
           "source": "tasks/apply-a-callback-to-an-array/02-writing-apply/02-writing-apply.ghul",
           "output": "tasks/apply-a-callback-to-an-array/02-writing-apply/run.expected",
           "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "apply-a-digital-filter-direct-form-ii-transposed",
+      "title": "Apply a digital filter (direct form II transposed)",
+      "url": "https://rosettacode.org/wiki/Apply_a_digital_filter_(direct_form_II_transposed)",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 33,
+      "parts": [
+        {
+          "id": "apply-a-digital-filter-direct-form-ii-transposed",
+          "heading": null,
+          "source": "tasks/apply-a-digital-filter-direct-form-ii-transposed/apply-a-digital-filter-direct-form-ii-transposed.ghul",
+          "output": "tasks/apply-a-digital-filter-direct-form-ii-transposed/run.expected",
+          "lines": 33,
           "playground": true,
           "input": false,
           "images": []
@@ -1354,6 +1512,33 @@
       ]
     },
     {
+      "slug": "arithmetic-geometric-mean-calculate-pi",
+      "title": "Arithmetic-geometric mean/Calculate Pi",
+      "url": "https://rosettacode.org/wiki/Arithmetic-geometric_mean/Calculate_Pi",
+      "tags": [
+        "maths",
+        "number-theory",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 56,
+      "parts": [
+        {
+          "id": "arithmetic-geometric-mean-calculate-pi",
+          "heading": null,
+          "source": "tasks/arithmetic-geometric-mean-calculate-pi/arithmetic-geometric-mean-calculate-pi.ghul",
+          "output": "tasks/arithmetic-geometric-mean-calculate-pi/run.expected",
+          "lines": 56,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "arithmetic-integer",
       "title": "Arithmetic/Integer",
       "url": "https://rosettacode.org/wiki/Arithmetic/Integer",
@@ -1401,6 +1586,32 @@
           "source": "tasks/arithmetic-mean/arithmetic-mean.ghul",
           "output": "tasks/arithmetic-mean/run.expected",
           "lines": 7,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "arithmetic-numbers",
+      "title": "Arithmetic numbers",
+      "url": "https://rosettacode.org/wiki/Arithmetic_numbers",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "arithmetic-numbers",
+          "heading": null,
+          "source": "tasks/arithmetic-numbers/arithmetic-numbers.ghul",
+          "output": "tasks/arithmetic-numbers/run.expected",
+          "lines": 44,
           "playground": true,
           "input": false,
           "images": []
@@ -1505,6 +1716,33 @@
           "source": "tasks/arrays/arrays.ghul",
           "output": "tasks/arrays/run.expected",
           "lines": 14,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "ascending-primes",
+      "title": "Ascending primes",
+      "url": "https://rosettacode.org/wiki/Ascending_primes",
+      "tags": [
+        "primes",
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "ascending-primes",
+          "heading": null,
+          "source": "tasks/ascending-primes/ascending-primes.ghul",
+          "output": "tasks/ascending-primes/run.expected",
+          "lines": 38,
           "playground": true,
           "input": false,
           "images": []
@@ -1662,6 +1900,33 @@
           "source": "tasks/atomic-updates/atomic-updates.ghul",
           "output": "tasks/atomic-updates/run.expected",
           "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "attractive-numbers",
+      "title": "Attractive numbers",
+      "url": "https://rosettacode.org/wiki/Attractive_numbers",
+      "tags": [
+        "primes",
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 25,
+      "parts": [
+        {
+          "id": "attractive-numbers",
+          "heading": null,
+          "source": "tasks/attractive-numbers/attractive-numbers.ghul",
+          "output": "tasks/attractive-numbers/run.expected",
+          "lines": 25,
           "playground": true,
           "input": false,
           "images": []
