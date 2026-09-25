@@ -8,6 +8,7 @@ namespace Rosetta is
     use System.Text.Json.JsonDocument
     use System.Text.Json.JsonElement
     use Collections
+    use Ghul.Pipes
 
     // A read and write client for the Rosetta Code MediaWiki API.
     //
@@ -136,6 +137,67 @@ namespace Rosetta is
             fi
 
             return parse.get_property("wikitext").get_string()
+        si
+
+        // The raw wikitext of many pages, keyed by the title asked for. A page that does not
+        // exist is left out. The API takes fifty titles a request, so a thousand pages are
+        // twenty requests rather than a thousand.
+        pages_wikitext(titles: List[string]) -> MAP[string, string] is
+            let result = MAP[string, string]()
+            let first mut = 0
+
+            while first < titles.count do
+                let batch = titles |> skip(first) |> take(50) |> collect_list()
+
+                let joined =
+                    batch |> map(title => System.Uri.escape_data_string(title)) |> join("%7C")
+
+                let document =
+                    _get("action=query&prop=revisions&rvprop=content&rvslots=main&titles={joined}")
+
+                let query = document.root_element.get_property("query")
+
+                // The API answers under its own spelling of a title, so map that back to the
+                // one asked for.
+                let asked = MAP[string, string]()
+
+                for title in batch do
+                    asked[title] = title
+                od
+
+                let normalized: JsonElement mut
+
+                if query.try_get_property("normalized", normalized ref) then
+                    for pair in normalized.enumerate_array() do
+                        asked[pair.get_property("to").get_string() ?? ""] =
+                            pair.get_property("from").get_string() ?? ""
+                    od
+                fi
+
+                for page in query.get_property("pages").enumerate_array() do
+                    let revisions: JsonElement mut
+
+                    if page.try_get_property("revisions", revisions ref) then
+                        let title = page.get_property("title").get_string() ?? ""
+
+                        for revision in revisions.enumerate_array() do
+                            let content =
+                                revision
+                                    .get_property("slots")
+                                    .get_property("main")
+                                    .get_property("content")
+                                    .get_string() ?? ""
+
+                            result[if asked.contains_key(title) then asked[title] else title fi] =
+                                content
+                        od
+                    fi
+                od
+
+                first = first + 50
+            od
+
+            result
         si
 
         _token(kind: string) -> string is
@@ -304,8 +366,9 @@ namespace Rosetta is
             fi
         si
 
-        // Replaces a page's whole text. `log_in` must have run first.
-        edit(title: string, text: string, summary: string) is
+        // Replaces a page's whole text. `log_in` must have run first. A minor edit is marked
+        // as one in the page history, where readers who watch the page can filter it out.
+        edit(title: string, text: string, summary: string, minor: bool) is
             assert _csrf_token? else "log_in has not run, so there is no edit token"
 
             let token = _csrf_token
@@ -316,6 +379,11 @@ namespace Rosetta is
             fields["title"] = title
             fields["text"] = text
             fields["summary"] = summary
+
+            if minor then
+                fields["minor"] = "1"
+            fi
+
             fields["token"] = token
             fields["format"] = "json"
             fields["formatversion"] = "2"

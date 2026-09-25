@@ -27,7 +27,7 @@ use Rosetta
 
 usage() is
     error.write_line(
-        "usage: rosetta <sync|candidates|show|set|reopen|check|self-test|publish|adopt|render-notes|index|edit-page> "
+        "usage: rosetta <sync|candidates|show|set|reopen|check|diff|self-test|publish|adopt|render-notes|index|edit-page> "
         "[arguments]"
     )
 si
@@ -767,7 +767,7 @@ edit_page(title: string, path: string, summary: string, dry_run: bool) is
     let account = credentials()
 
     wiki.log_in(account.user, account.password)
-    wiki.edit(title, text, summary)
+    wiki.edit(title, text, summary, false)
 
     write_line("edited {title}")
 si
@@ -892,7 +892,74 @@ pace_ms() -> int => 30000
 // `rehearse` reads and writes one page instead of a task page: the section is spliced into
 // whatever that page already holds, and the result written back. Running it twice replaces the
 // section rather than adding a second one, which is the same path a corrected solution takes.
-publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?, rehearse: bool, replace: bool, note: string?) is
+// What a publish run would change, found without signing in or writing anything to the wiki.
+// One line a task, tab-separated: the status, the slug and the title. `new` has no ghul section
+// on the wiki yet; `same` and `differs` compare the live section with wiki-out/<slug>.wiki, and
+// `differs` leaves the live one beside it as wiki-out/<slug>.live. `edited` marks a live section
+// that is not the one published from here, and `unrecorded` one with no record of what was
+// published: publish refuses both, and `rosetta adopt` records an unrecorded one that is ours.
+// `no-markup` and `no-page` say which side is missing.
+diff(root: string, slugs: LIST[string]) is
+    let ledger = LEDGER(IO.Path.combine(root, "ledger"))
+    let splice = SECTION_SPLICE()
+    let wiki = WIKI(SITE.api)
+
+    let wanted =
+        ledger.entries()
+            |> filter(entry =>
+                entry.slug? /\
+                if slugs.count > 0 then
+                    slugs.contains(entry.slug ?? "")
+                else
+                    entry.state =~ "published" \/ entry.state =~ "solved"
+                fi)
+            |> collect_list()
+
+    let pages = wiki.pages_wikitext(wanted |> map(entry => entry.title) |> collect_list())
+
+    for entry in wanted do
+        let slug = entry.slug ?? ""
+        let markup = IO.Path.combine(root, "wiki-out", "{slug}.wiki")
+
+        if !IO.File.exists(markup) then
+            write_line("no-markup\t{slug}\t{entry.title}")
+            continue
+        fi
+
+        if !pages.contains_key(entry.title) then
+            write_line("no-page\t{slug}\t{entry.title}")
+            continue
+        fi
+
+        let page = pages[entry.title]
+
+        if let replaced: PLACEMENT.REPLACES = splice.placement(page, SITE.language) then
+            let live = page.substring(replaced.start, replaced.end - replaced.start).trim()
+            let section = IO.File.read_all_text(markup).trim()
+
+            let status =
+                if live =~ section then
+                    "same"
+                elif !entry.published_hash? then
+                    "unrecorded"
+                elif digest(live) !~ entry.published_hash then
+                    "edited"
+                else
+                    "differs"
+                fi
+
+            if live !~ section then
+                IO.File.write_all_text(IO.Path.combine(root, "wiki-out", "{slug}.live"), live)
+            fi
+
+            write_line("{status}\t{slug}\t{entry.title}")
+        else
+            write_line("new\t{slug}\t{entry.title}")
+        fi
+    od
+si
+
+publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?, rehearse: bool, replace: bool, note: string?, minor: bool) is
     let ledger = LEDGER(IO.Path.combine(root, "ledger"))
     let splice = SECTION_SPLICE()
 
@@ -1097,7 +1164,8 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
                 destination.edit(
                     sandbox,
                     spliced,
-                    "Testing a ghūl solution's placement on {entry.title}"
+                    "Testing a ghūl solution's placement on {entry.title}",
+                    false
                 )
 
                 write_line("{entry.title}: written to {sandbox}, would have gone {where}")
@@ -1107,7 +1175,7 @@ publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: 
                 // narrowing across a try block even though nothing here reassigns it.
                 upload_images(root, wiki, entry, slug!, section)
 
-                wiki.edit(entry.title, spliced, edit_summary(placement, note))
+                wiki.edit(entry.title, spliced, edit_summary(placement, note), minor)
 
                 entry.state = "published"
                 entry.published_hash = digest(section.trim())
@@ -1224,6 +1292,8 @@ else
         else
             edit_page(arguments[0], arguments[1], arguments[2], dry_run)
         fi
+    when "diff" then
+        diff(root, arguments |> filter(argument => argument !~ "--all") |> collect_list())
     when "check" then
         check(if arguments.count > 1 /\ arguments[0] =~ "--api" then arguments[1] else null fi)
     when "publish" then
@@ -1233,6 +1303,7 @@ else
         let note: string? mut = null
         let rehearse mut = false
         let replace = arguments.contains("--replace")
+        let minor = arguments.contains("--minor")
         let solved = arguments.contains("--solved")
         let slugs = LIST[string]()
         let unknown = LIST[string]()
@@ -1259,7 +1330,7 @@ else
                 awaiting = argument
             elif
                 argument =~ "--dry-run" \/ argument =~ "--replace" \/
-                argument =~ "--solved"
+                argument =~ "--solved" \/ argument =~ "--minor"
             then
                 // Already read above.
             elif argument.starts_with("--") then
@@ -1280,7 +1351,7 @@ else
             error.write_line(
                 "publish needs one or more slugs, or --solved for every solved task")
         else
-            publish(root, slugs, dry_run, target, api, rehearse, replace, note)
+            publish(root, slugs, dry_run, target, api, rehearse, replace, note, minor)
         fi
     else
         usage()

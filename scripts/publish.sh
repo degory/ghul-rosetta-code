@@ -6,7 +6,7 @@
 #   scripts/publish.sh --solved       publish every task not yet on the wiki
 #
 # Any other argument is passed through to `rosetta publish`, so --dry-run,
-# --replace and --note <text> work as they do there, in any position.
+# --replace, --minor and --note <text> work as they do there, in any position.
 #
 # The record is the point of this script. `rosetta publish` writes each page's
 # new digest into ledger/ as it goes, and that digest is the only thing a
