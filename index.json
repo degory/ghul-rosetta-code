@@ -20296,6 +20296,33 @@
       ]
     },
     {
+      "slug": "primes-allocate-descendants-to-their-ancestors",
+      "title": "Primes - allocate descendants to their ancestors",
+      "url": "https://rosettacode.org/wiki/Primes_-_allocate_descendants_to_their_ancestors",
+      "tags": [
+        "primes",
+        "number-theory",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 77,
+      "parts": [
+        {
+          "id": "primes-allocate-descendants-to-their-ancestors",
+          "heading": null,
+          "source": "tasks/primes-allocate-descendants-to-their-ancestors/primes-allocate-descendants-to-their-ancestors.ghul",
+          "output": "tasks/primes-allocate-descendants-to-their-ancestors/run.expected",
+          "lines": 77,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "primes-n-2-m-1",
       "title": "Primes: n*2^m+1",
       "url": "https://rosettacode.org/wiki/Primes:_n*2^m+1",
