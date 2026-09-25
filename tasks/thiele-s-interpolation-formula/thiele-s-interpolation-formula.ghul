@@ -1,0 +1,61 @@
+use default
+
+// The reciprocal differences are memoised by their order and starting
+// row, since the continued fraction asks for the same ones repeatedly.
+class THIELE is
+    _x: double[]
+    _y: double[]
+    _rho: MAP[(int, int), double]
+
+    init(x: double[], y: double[]) is
+        _x = x
+        _y = y
+        _rho = MAP[(int, int), double]()
+    si
+
+    _reciprocal(order: int, i: int) -> double is
+        if order < 0 then
+            return 0.0
+        elif order == 0 then
+            return _y[i]
+        fi
+
+        let key = (order, i)
+
+        if !_rho.contains_key(key) then
+            let before = _reciprocal(order - 1, i)
+            let after = _reciprocal(order - 1, i + 1)
+
+            _rho[key] =
+                (_x[i] - _x[i + order]) / (before - after) +
+                _reciprocal(order - 2, i + 1)
+        fi
+
+        _rho[key]
+    si
+
+    at(value: double) -> double =>
+        _y[0] + _fraction(value, 1)
+
+    _fraction(value: double, order: int) -> double =>
+        if order >= _x.count - 1 then 0.0
+        else
+            (value - _x[order - 1]) /
+            (_reciprocal(order, 0) - _reciprocal(order - 2, 0) +
+                _fraction(value, order + 1))
+        fi
+si
+
+let xs = 0..32 |> map(i => cast double(i) * 0.05) |> collect_array()
+let sines = xs |> map(System.Math.sin) |> collect_array()
+let cosines = xs |> map(System.Math.cos) |> collect_array()
+let tangents = xs |> map(System.Math.tan) |> collect_array()
+
+let inverse_sin = THIELE(sines, xs)
+let inverse_cos = THIELE(cosines, xs)
+let inverse_tan = THIELE(tangents, xs)
+
+write_line("6 × asin(0.5) = {6.0 * inverse_sin.at(0.5):F14}")
+write_line("3 × acos(0.5) = {3.0 * inverse_cos.at(0.5):F14}")
+write_line("4 × atan(1.0) = {4.0 * inverse_tan.at(1.0):F14}")
+write_line("π             = {System.Math.pi:F14}")

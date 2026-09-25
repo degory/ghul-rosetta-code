@@ -1,0 +1,43 @@
+use default
+
+totient(n: int) -> int is
+    let result mut = n
+    let rest mut = n
+    let p mut = 2
+
+    while p * p <= rest do
+        if rest % p == 0 then
+            while rest % p == 0 do
+                rest = rest / p
+            od
+
+            result = result - result / p
+        fi
+
+        p = p + 1
+    od
+
+    if rest > 1 then
+        result = result - result / rest
+    fi
+
+    result
+si
+
+is_prime(n: int) -> bool => n > 1 /\ totient(n) == n - 1
+
+write_line(" n  phi  prime")
+
+for n in 1::25 do
+    let prime = if is_prime(n) then "  yes" else "" fi
+
+    write_line("{n,2}  {totient(n),3}{prime}")
+od
+
+write_line("")
+
+for limit in [100, 1_000, 10_000, 100_000] do
+    let primes = 1::limit |> count(is_prime)
+
+    write_line("{primes,5:N0} primes up to {limit:N0}")
+od

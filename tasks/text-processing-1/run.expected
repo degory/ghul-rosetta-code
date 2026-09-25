@@ -1,0 +1,10 @@
+Line: 2004-12-29  Reject:  1  Accept: 23  Line_tot:     56.300  Line_avg:      2.448
+Line: 2004-12-30  Reject:  1  Accept: 23  Line_tot:     65.300  Line_avg:      2.839
+Line: 2004-12-31  Reject:  1  Accept: 23  Line_tot:     47.300  Line_avg:      2.057
+
+File     = readings.txt
+Total    = 1358393.400
+Readings = 129403
+Average  =     10.497
+
+Maximum run of 589 consecutive false readings ends at the line starting with 1993-03-05
