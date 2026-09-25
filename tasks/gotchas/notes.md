@@ -1,6 +1,4 @@
-These are constructs that compile
-and run, and do something other than what they look like they do. Four of them
-follow, each with what to do instead.
+These are constructs that compile and run, but do something that may be surprising.
 
 A string is an ordinary object, and `==` on any object asks whether the two sides are the same object. Two literals with the
 same spelling usually are, so the comparison looks right until one side is read
