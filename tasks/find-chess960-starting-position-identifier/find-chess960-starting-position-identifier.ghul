@@ -1,0 +1,29 @@
+use default
+
+positions(pieces: string, piece: char) -> List[int] =>
+    pieces
+        |> index()
+        |> filter(((_, p)) => p == piece)
+        |> map(((i, _)) => i)
+        |> collect_list()
+
+without(pieces: string, removed: string) -> string =>
+    pieces |> filter(p => removed.index_of(p) < 0) |> join("")
+
+let knight_pairs =
+    0::4
+        |> flat_map(first => first + 1::4 |> map(second => (first, second)))
+        |> collect_list()
+
+sp_id(pieces: string) -> int =>
+    let knights = positions(without(pieces, "QB"), 'N') in
+    let n = knight_pairs.index_of((knights[0], knights[1])) in
+    let q = without(pieces, "B").index_of('Q') in
+    let bishops = positions(pieces, 'B') in
+    let dark = bishops |> find(b => b % 2 == 0)! / 2 in
+    let light = bishops |> find(b => b % 2 == 1)! / 2 in
+    96 * n + 16 * q + 4 * dark + light
+
+for pieces in ["QNRBBNKR", "RNBQKBNR", "RQNBBKRN", "RNQBBKRN"] do
+    write_line("{pieces}: {sp_id(pieces)}")
+od
