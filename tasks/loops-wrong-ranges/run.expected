@@ -1,0 +1,18 @@
+Normal
+    from(-2, 1) up to 2: [-2, -1, 0, 1, 2]
+Zero increment
+    from(-2, 0) up to 2: [-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, ...]
+Increments away from stop value
+    from(-2, -1) up to 2: [-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, ...]
+First increment is beyond stop value
+    from(-2, 10) up to 2: [-2]
+Start more than stop: positive increment
+    from(2, 1) up to -2: []
+Start equal stop: positive increment
+    from(2, 1) up to 2: [2]
+Start equal stop: negative increment
+    from(2, -1) up to 2: [2, 1, 0, -1, -2, -3, -4, -5, -6, -7, ...]
+Start equal stop: zero increment
+    from(2, 0) up to 2: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, ...]
+Start equal stop equal zero: zero increment
+    from(0, 0) up to 0: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]
