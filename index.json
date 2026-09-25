@@ -10980,6 +10980,32 @@
       ]
     },
     {
+      "slug": "generate-chess960-starting-position",
+      "title": "Generate Chess960 starting position",
+      "url": "https://rosettacode.org/wiki/Generate_Chess960_starting_position",
+      "tags": [
+        "game",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "generate-chess960-starting-position",
+          "heading": null,
+          "source": "tasks/generate-chess960-starting-position/generate-chess960-starting-position.ghul",
+          "output": "tasks/generate-chess960-starting-position/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "generate-lower-case-ascii-alphabet",
       "title": "Generate lower case ASCII alphabet",
       "url": "https://rosettacode.org/wiki/Generate_lower_case_ASCII_alphabet",
