@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# The name depends on the machine running the test, so it is compared with the
+# name the kernel reports for that machine.
+
+out=$1
+expected=$(uname -n)
+
+if [ "$(cat "$out")" != "$expected" ] ; then
+    echo "expected $expected, got:"
+    cat "$out"
+    exit 1
+fi

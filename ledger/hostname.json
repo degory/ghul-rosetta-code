@@ -1,5 +1,6 @@
 {
   "title": "Hostname",
-  "state": "rejected",
-  "reason": "nondeterministic"
+  "slug": "hostname",
+  "state": "solved",
+  "note": "reopened, was rejected/nondeterministic: the name depends on the machine, so the test compares it with the one the kernel reports"
 }
