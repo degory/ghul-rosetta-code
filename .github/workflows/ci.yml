@@ -46,9 +46,13 @@ jobs:
         set -euo pipefail
 
         # The queue runs the whole suite, unless the group changes nothing but
-        # the ledger, which no task reads.
+        # the ledger, which no task reads. The test is the base commit's copy:
+        # the one in the group could be part of the change it is judging.
         if [ "$EVENT" != pull_request ] ; then
-            if git diff --name-only "$BASE" "$HEAD" | scripts/ledger-only.sh ; then
+            TEST=$(mktemp)
+
+            if git show "$BASE:scripts/ledger-only.sh" > "$TEST" 2>/dev/null \
+                && git diff --name-only "$BASE" "$HEAD" | bash "$TEST" ; then
                 echo "full=false" >>"$GITHUB_OUTPUT"
                 echo "tasks=" >>"$GITHUB_OUTPUT"
                 echo "queue run of a ledger-only group: no tasks"
