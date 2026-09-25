@@ -17,6 +17,21 @@ if [ ! -f $CASE/failed ] ; then
     exit 1
 fi
 
+# A solution that does not compile has no output worth capturing, and its
+# errors are not an expectation: promoted, they become the thing the test
+# asserts, and it passes from then on by continuing to fail to build.
+if [ -s $CASE/err.sort ] ; then
+    echo "$CASE did not compile:"
+    echo
+    sed 's/^/    /' $CASE/err.sort
+    echo
+    echo "compiler errors are not an expectation to capture. Fix the solution, or"
+    echo "record the task as blocked against the issue that stops it:"
+    echo
+    echo "    dotnet run --project tools/rosetta -- set \"<task title>\" blocked <issue>"
+    exit 1
+fi
+
 if [ -f $CASE/err.sort ] ; then
     mv $CASE/err.sort $CASE/err.expected
 fi
