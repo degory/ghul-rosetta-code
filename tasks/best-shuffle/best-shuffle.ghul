@@ -1,0 +1,27 @@
+use default
+
+best_shuffle(text: string) -> string is
+    let groups =
+        0..text.length
+            |> group_by(i => text[i])
+            |> map(((_, positions)) => positions)
+            |> sort_by_descending(positions => positions.count)
+            |> collect_list()
+
+    let order = groups |> flat_map(positions => positions) |> collect_list()
+    let shift = groups |> map(positions => positions.count) |> max() ?? 0
+    let shuffled = repeat(' ', text.length) |> collect_list()
+
+    for (at, position) in order |> index() do
+        shuffled[position] = text[order[(at + shift) % order.count]]
+    od
+
+    shuffled |> join("")
+si
+
+for text in ["abracadabra", "seesaw", "elk", "grrrrrr", "up", "a"] do
+    let shuffled = best_shuffle(text)
+    let score = 0..text.length |> count(i => text[i] == shuffled[i])
+
+    write_line("{text}, {shuffled}, ({score})")
+od
