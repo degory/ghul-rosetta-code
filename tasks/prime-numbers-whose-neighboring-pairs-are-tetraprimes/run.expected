@@ -1,0 +1,34 @@
+Primes below 100000 preceded by a tetraprime pair:
+  8647 15107 20407 20771 21491 23003 23531 24767 24971 27967
+ 29147 33287 34847 36779 42187 42407 42667 43331 43991 46807
+ 46867 51431 52691 52747 53891 54167 58567 63247 63367 69379
+ 71711 73607 73867 74167 76507 76631 76847 80447 83591 84247
+ 86243 87187 87803 89387 93887 97547 97847 98347 99431
+Found 49 such primes, of which 31 have 7 as a factor of one of the pair
+gaps between the primes: min 56, median 1208, max 6460
+
+Primes below 100000 followed by a tetraprime pair:
+  8293 16553 17389 18289 22153 26893 29209 33409 35509 36293
+ 39233 39829 40493 41809 45589 48109 58393 59629 59753 59981
+ 60493 60913 64013 64921 65713 66169 69221 71329 74093 75577
+ 75853 77689 77933 79393 79609 82913 84533 85853 87589 87701
+ 88681 91153 93889 96017 97381 98453
+Found 46 such primes, of which 36 have 7 as a factor of one of the pair
+gaps between the primes: min 112, median 1460, max 10284
+
+Primes below 1000000 preceded by a tetraprime pair:
+Found 885 such primes, of which 503 have 7 as a factor of one of the pair
+gaps between the primes: min 4, median 756, max 7712
+
+Primes below 1000000 followed by a tetraprime pair:
+Found 866 such primes, of which 492 have 7 as a factor of one of the pair
+gaps between the primes: min 4, median 832, max 10284
+
+Primes below 10000000 preceded by a tetraprime pair:
+Found 10815 such primes, of which 5176 have 7 as a factor of one of the pair
+gaps between the primes: min 4, median 648, max 9352
+
+Primes below 10000000 followed by a tetraprime pair:
+Found 10551 such primes, of which 5069 have 7 as a factor of one of the pair
+gaps between the primes: min 4, median 660, max 10284
+

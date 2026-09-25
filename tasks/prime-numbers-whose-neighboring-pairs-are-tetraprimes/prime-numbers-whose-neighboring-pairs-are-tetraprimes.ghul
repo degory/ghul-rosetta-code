@@ -1,0 +1,79 @@
+use default
+
+let limit = 10_000_000
+let distinct_factors = repeat(0, limit + 3) |> collect_list()
+let square_free = repeat(true, limit + 3) |> collect_list()
+
+for p in 2..limit + 3 do
+    if distinct_factors[p] == 0 then
+        let multiple mut = p
+
+        while multiple < limit + 3 do
+            distinct_factors[multiple] = distinct_factors[multiple] + 1
+            multiple = multiple + p
+        od
+
+        if p <= (limit + 3) / p then
+            let square mut = p * p
+
+            while square < limit + 3 do
+                square_free[square] = false
+                square = square + p * p
+            od
+        fi
+    fi
+od
+
+is_prime(n: int) -> bool =>
+    n > 1 /\ distinct_factors[n] == 1 /\ square_free[n]
+
+is_tetraprime(n: int) -> bool =>
+    distinct_factors[n] == 4 /\ square_free[n]
+
+median(sorted: Collections.List[int]) -> int =>
+    if sorted.count % 2 == 1 then
+        sorted[sorted.count / 2]
+    else
+        (sorted[sorted.count / 2 - 1] + sorted[sorted.count / 2]) / 2
+    fi
+
+report(below: int, direction: string, offset: int, show: bool) is
+    let found =
+        (2..below)
+        |> filter(p =>
+            is_prime(p) /\
+            is_tetraprime(p + offset) /\
+            is_tetraprime(p + offset + 1))
+        |> collect()
+
+    write_line("Primes below {below} {direction} by a tetraprime pair:")
+
+    if show then
+        for row in found |> chunk(10) do
+            write_line(row |> map(p => "{p,6}") |> join(""))
+        od
+    fi
+
+    let sevens =
+        found
+        |> count(p => (p + offset) % 7 == 0 \/ (p + offset + 1) % 7 == 0)
+
+    let gaps =
+        (1..found.count)
+        |> map(i => found[i] - found[i - 1])
+        |> sort()
+        |> collect()
+
+    write_line(
+        "Found {found.count} such primes, of which {sevens} have 7 "
+        "as a factor of one of the pair")
+    write_line(
+        "gaps between the primes: min {gaps[0]}, "
+        "median {median(gaps)}, max {gaps[gaps.count - 1]}")
+    write_line("")
+si
+
+for below in [100_000, 1_000_000, 10_000_000] do
+    report(below, "preceded", -2, below == 100_000)
+    report(below, "followed", 1, below == 100_000)
+od
