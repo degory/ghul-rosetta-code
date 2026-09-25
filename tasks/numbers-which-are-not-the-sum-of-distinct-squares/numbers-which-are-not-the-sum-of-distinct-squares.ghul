@@ -1,0 +1,41 @@
+use default
+
+// Squares are added one at a time, tracking every sum of distinct squares
+// seen so far. If a missing number m is followed by a run of reachable
+// numbers at least as long as the next square, adding that square extends
+// the run by the square itself, which keeps it longer than every square
+// still to come: nothing above m is ever missing, and m is the last.
+
+let reachable = LIST([true])
+let root mut = 0
+
+run_after(start: int) -> int =>
+    start + 1..reachable.count |> take_while(n => reachable[n]) |> count()
+
+do
+    root = root + 1
+
+    let square = root * root
+    let before = reachable.count
+
+    for _ in 0..square do
+        reachable.add(false)
+    od
+
+    for n in 0..before |> reverse() do
+        if reachable[n] then
+            reachable[n + square] = true
+        fi
+    od
+
+    let next = (root + 1) * (root + 1)
+    let gaps =
+        1..reachable.count |> filter(n => !reachable[n]) |> collect_list()
+
+    if let last = gaps |> find(gap => run_after(gap) >= next) then
+        write_line("Numbers that are not the sum of distinct squares:")
+        write_line(gaps |> take_while(gap => gap <= last) |> join(" "))
+
+        break
+    fi
+od

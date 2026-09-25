@@ -1,0 +1,34 @@
+use default
+
+// The divisors of n pair off into products of n, so their product is
+// n^(d/2) for d divisors, and the proper divisors multiply to n^(d/2 - 1).
+// That is n cubed exactly when n has eight divisors.
+
+let limit = 500_000
+
+let divisor_count = (
+    let counts = repeat(0, limit + 1) |> collect_list()
+
+    for d in 1::limit do
+        for multiple in from(d, d) |> take_while(m => m <= limit) do
+            counts[multiple] = counts[multiple] + 1
+        od
+    od
+
+    counts
+)
+
+let found =
+    1::limit
+        |> filter(n => n == 1 \/ divisor_count[n] == 8)
+        |> collect_list()
+
+write_line("The first 50:")
+
+for row in found |> take(50) |> chunk(10) do
+    write_line(row |> map(n => "{n,5}") |> join(""))
+od
+
+for position in [500, 5_000, 50_000] do
+    write_line("\nThe {position:N0}th: {found[position - 1]:N0}")
+od
