@@ -1,0 +1,81 @@
+use default
+use System.DateTime
+use System.Net.Http.HttpClient
+use System.Net.HttpListener
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Sockets.TcpListener
+use System.Text.Encoding
+
+// The task: fetch the last ten days of the Tcl chatroom's logs and print
+// the lines that mention a string, under the address of the log each came
+// from. The logs are named for the day in the server's own time zone, so
+// the days are counted back from today there rather than here.
+search(base: string, today: DateTime, wanted: string) is
+    let client = HttpClient()
+
+    for back in (0..10) |> reverse() do
+        let url =
+            "{base}"
+            "{today.add_days(cast double(-back)):yyyy-MM-dd}.tcl"
+        let log = client.get_string_async(url).result
+
+        write_line(url)
+        write_line("------")
+
+        for line in log.split(['\n']) |> filter(l => l.contains(wanted)) do
+            write_line(line)
+        od
+
+        write_line("------")
+    od
+si
+
+// Given only the string, the entry serves the logs as they stood on the
+// day logs/CAPTURED.txt names, on the loopback interface, and searches
+// back from that day.
+stand_in() -> string is
+    let probe = TcpListener(IPAddress.loopback, 0)
+
+    probe.start()
+
+    let port =
+        if let bound: IPEndPoint = probe.local_endpoint then bound.port
+        else throw System.Exception("the probe has no address")
+        fi
+
+    probe.stop()
+
+    let prefix = "http://127.0.0.1:{port}/conferences/tcl/"
+    let listener = HttpListener()
+
+    listener.prefixes.add(prefix)
+    listener.start()
+
+    Tasks.TASK.run(() is
+        while true do
+            let context = listener.get_context()
+            let path = context.request.url?.absolute_path ?? ""
+            let name = IO.Path.get_file_name(path) ?? ""
+            let body = IO.File.read_all_bytes(IO.Path.combine("logs", name))
+
+            context.response.output_stream.write(body, 0, body.count)
+            context.response.close()
+        od
+    si)
+
+    prefix
+si
+
+let wanted = args[0]
+
+if args.count > 1 then
+    let berlin =
+        System.TimeZoneInfo.find_system_time_zone_by_id("Europe/Berlin")
+    let now =
+        System.TimeZoneInfo.convert_time_from_utc(DateTime.utc_now, berlin)
+
+    search(args[1], now, wanted)
+else
+    search(stand_in(), DateTime(2026, 9, 25), wanted)
+fi

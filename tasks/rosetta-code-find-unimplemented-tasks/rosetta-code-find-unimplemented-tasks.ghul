@@ -1,0 +1,111 @@
+use default
+use System.Net.Http.HttpClient
+use System.Net.HttpListener
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Sockets.TcpListener
+use System.Text.Encoding
+use System.Text.Json.JsonDocument
+use System.Text.Json.JsonDocumentOptions
+
+// The task: list the tasks a language has not solved. That is every member
+// of Category:Programming Tasks that is not also in the language's own
+// category. The API returns a category's members a batch at a time, and
+// says where to continue from until there are no more.
+members(client: HttpClient, api: string, category: string) -> SET[string] is
+    let titles = SET[string]()
+    let query =
+        "{api}?action=query&list=categorymembers"
+        "&cmtitle=Category:{category}"
+        "&cmlimit=500&cmprop=title&format=json&formatversion=2"
+    let next mut = ""
+
+    do
+        let text = client.get_string_async("{query}{next}").result
+        let reply = JsonDocument.parse(text, _[JsonDocumentOptions])
+        let root = reply.root_element
+        let listed =
+            root.get_property("query")
+                .get_property("categorymembers")
+
+        for member in listed.enumerate_array() do
+            titles.add(member.get_property("title").get_string() ?? "")
+        od
+
+        let more: System.Text.Json.JsonElement mut = _
+
+        if !root.try_get_property("continue", more ref) then
+            break
+        fi
+
+        let token = more.get_property("cmcontinue").get_string() ?? ""
+
+        next =
+            "&cmcontinue={System.Uri.escape_data_string(token)}"
+            "&continue=-||"
+    od
+
+    titles
+si
+
+unimplemented(api: string, language: string) -> List[string] is
+    let client = HttpClient()
+
+    // The wiki refuses a request that does not say what is making it.
+    client.default_request_headers.user_agent
+        .parse_add("ghul-rosetta-code/1.0")
+
+    let tasks = members(client, api, "Programming_Tasks")
+    let solved = members(client, api, language)
+
+    tasks
+        |> filter(t => !solved.contains(t))
+        |> sort((a, b) => string.compare_ordinal(a, b))
+        |> collect_list()
+si
+// Given no API, the entry answers from replies the wiki gave on the date
+// the file names, one reply a request, served on the loopback interface.
+stand_in() -> string is
+    let replies =
+        IO.File.read_all_lines("api-replies.txt")
+            |> skip(1) |> collect_list()
+    let probe = TcpListener(IPAddress.loopback, 0)
+
+    probe.start()
+
+    let port =
+        if let bound: IPEndPoint = probe.local_endpoint then bound.port
+        else throw System.Exception("the probe has no address")
+        fi
+
+    probe.stop()
+
+    let prefix = "http://127.0.0.1:{port}/"
+    let listener = HttpListener()
+
+    listener.prefixes.add(prefix)
+    listener.start()
+
+    Tasks.TASK.run(() is
+        for reply in replies do
+            let context = listener.get_context()
+            let body = Encoding.utf8.get_bytes(reply)
+
+            context.response.output_stream.write(body, 0, body.count)
+            context.response.close()
+        od
+    si)
+
+    "{prefix}w/api.php"
+si
+
+let api = if args.count > 0 then args[0] else stand_in() fi
+let language = if args.count > 1 then args[1] else "Ghul" fi
+
+let missing = unimplemented(api, language)
+
+write_line("{missing.count} tasks are not implemented in {language}:")
+
+for title in missing do
+    write_line("    {title}")
+od
