@@ -2,9 +2,8 @@ use default
 
 use IO.Path
 
-// A line of the form #include "path" is replaced by the lines of that file,
-// with the path taken relative to the including file. Includes nest to any
-// depth; a file that includes itself, directly or indirectly, is an error.
+// directive: #include "path", relative to the including file
+// includes nest to any depth; an include cycle is an error
 
 expand(path: string, active: List[string]) -> Pipe[string] is
     let full = Path.get_full_path(path)
