@@ -17624,6 +17624,32 @@
       ]
     },
     {
+      "slug": "numerical-integration-gauss-legendre-quadrature",
+      "title": "Numerical integration/Gauss-Legendre Quadrature",
+      "url": "https://rosettacode.org/wiki/Numerical_integration/Gauss-Legendre_Quadrature",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "numerical-integration-gauss-legendre-quadrature",
+          "heading": null,
+          "source": "tasks/numerical-integration-gauss-legendre-quadrature/numerical-integration-gauss-legendre-quadrature.ghul",
+          "output": "tasks/numerical-integration-gauss-legendre-quadrature/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "numerical-integration-romberg-integration",
       "title": "Numerical integration/Romberg integration",
       "url": "https://rosettacode.org/wiki/Numerical_integration/Romberg_integration",
