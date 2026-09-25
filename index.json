@@ -16486,6 +16486,32 @@
       ]
     },
     {
+      "slug": "minimum-positive-multiple-in-base-10-using-only-0-and-1",
+      "title": "Minimum positive multiple in base 10 using only 0 and 1",
+      "url": "https://rosettacode.org/wiki/Minimum_positive_multiple_in_base_10_using_only_0_and_1",
+      "tags": [
+        "algorithms",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 56,
+      "parts": [
+        {
+          "id": "minimum-positive-multiple-in-base-10-using-only-0-and-1",
+          "heading": null,
+          "source": "tasks/minimum-positive-multiple-in-base-10-using-only-0-and-1/minimum-positive-multiple-in-base-10-using-only-0-and-1.ghul",
+          "output": "tasks/minimum-positive-multiple-in-base-10-using-only-0-and-1/run.expected",
+          "lines": 56,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "minkowski-question-mark-function",
       "title": "Minkowski question-mark function",
       "url": "https://rosettacode.org/wiki/Minkowski_question-mark_function",
