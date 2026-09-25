@@ -17965,6 +17965,32 @@
       ]
     },
     {
+      "slug": "openwebnet-password",
+      "title": "OpenWebNet password",
+      "url": "https://rosettacode.org/wiki/OpenWebNet_password",
+      "tags": [
+        "algorithms",
+        "pattern-matching"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "openwebnet-password",
+          "heading": null,
+          "source": "tasks/openwebnet-password/openwebnet-password.ghul",
+          "output": "tasks/openwebnet-password/run.expected",
+          "lines": 47,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "operator-precedence",
       "title": "Operator precedence",
       "url": "https://rosettacode.org/wiki/Operator_precedence",
