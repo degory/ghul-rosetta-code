@@ -29,7 +29,8 @@ si
 compile_order(graph: MAP[string, SET[string]])
     -> (ordered: List[string], blocked: List[string])
 is
-    let pending = graph.keys |> collect_map(name => name, name => SET(graph[name]))
+    let pending = graph.keys
+        |> collect_map(name => name, name => SET(graph[name]))
 
     let ordered = LIST()
 
@@ -73,7 +74,8 @@ si
 
 let libraries = [
     (library = "des_system_lib",
-        dependencies = "std synopsys std_cell_lib des_system_lib dw02 dw01 ramlib ieee"),
+        dependencies = "std synopsys std_cell_lib des_system_lib "
+            "dw02 dw01 ramlib ieee"),
     (library = "dw01", dependencies = "ieee dw01 dware gtech"),
     (library = "dw02", dependencies = "ieee dw02 dware"),
     (library = "dw03",
@@ -92,7 +94,8 @@ let libraries = [
 let with_cycle = libraries
     |> map(row =>
         if row.library =~ "dw01" then
-            (library = row.library, dependencies = "{row.dependencies} dw04")
+            (library = row.library,
+                dependencies = "{row.dependencies} dw04")
         else
             row
         fi)

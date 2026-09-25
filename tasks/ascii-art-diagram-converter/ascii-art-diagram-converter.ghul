@@ -1,10 +1,10 @@
 use default
 
-class FIELD(name: string, offset: int, width: int);
+class FIELD(name: string, offset: int, width: int)
 
 union Diagram is
-    HEADER(fields: List[FIELD], width: int) default;
-    REJECTED(why: string);
+    HEADER(fields: List[FIELD], width: int) default
+    REJECTED(why: string)
 si
 
 cells(row: string) -> List[string]? is

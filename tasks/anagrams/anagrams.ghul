@@ -3,7 +3,8 @@ use default
 sorted_letters(word: string) -> string =>
     string(word |> sort() |> collect_array())
 
-let sets = IO.File.read_all_lines("unixdict.txt") |> group_by(word => sorted_letters(word))
+let sets = IO.File.read_all_lines("unixdict.txt")
+    |> group_by(word => sorted_letters(word))
 
 let largest =
     sets.values

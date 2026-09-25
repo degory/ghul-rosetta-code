@@ -18,6 +18,11 @@
          reference. A task adding a package adds it here as well. -->
     <PackageReference Include="ghul.raster" />
 
+    <!-- Hello world/Web server's ASP.NET part builds under the Web SDK,
+         which carries the framework rather than a package. This project
+         builds under the plain SDK, so it asks for the reference. -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+
     <GhulSources Include="tasks/**/*.ghul" />
     <GhulSources Include="root/**/*.ghul" />
 

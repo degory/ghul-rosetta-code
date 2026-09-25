@@ -9,7 +9,7 @@ class Animal(name: string): Copyable[Animal] abstract is
 si
 
 class CAT(name: string): Animal is
-    super(name);
+    super(name)
 
     speak() -> string => "{name} says meow"
 
@@ -17,7 +17,7 @@ class CAT(name: string): Animal is
 si
 
 class DOG(name: string, tricks: LIST[string]): Animal is
-    super(name);
+    super(name)
 
     speak() -> string =>
         "{name} says woof, and can {string.join(" and ", tricks)}"

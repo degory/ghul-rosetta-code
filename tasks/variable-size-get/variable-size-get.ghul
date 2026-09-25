@@ -1,7 +1,7 @@
 use default
 use System.Runtime.InteropServices.Marshal
 
-struct POINT(x: double, y: double);
+struct POINT(x: double, y: double)
 
 size_of[T: struct](name: string) is
     write_line("{name,-32} {Marshal.size_of[T](),2}")

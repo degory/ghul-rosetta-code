@@ -49,5 +49,6 @@ strand_sort(values: List[int]) -> List[int] is
 si
 
 for values in [[5, 3, 1, 7, 4, 1, 1, 20], [2, 1], [8]] do
-    write_line("{values |> join(" ")} -> {strand_sort(values) |> join(" ")}")
+    write_line(
+        "{values |> join(" ")} -> {strand_sort(values) |> join(" ")}")
 od

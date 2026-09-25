@@ -3,7 +3,7 @@ use default
 use Edge = (from: int, to: int)
 
 class GRAPH(nodes: Collections.List[int], edges: Collections.List[Edge]) is
-    _neighbours: MAP[int, SET[int]];
+    _neighbours: MAP[int, SET[int]]
 
     init(..) is
         _neighbours = MAP[int, SET[int]]()

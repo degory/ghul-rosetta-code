@@ -27,8 +27,9 @@ log_gamma(x: double) -> double is
     half_log_2pi + (xm + 0.5) * System.Math.log(t) - t + System.Math.log(a)
 si
 
-// A value too large for a double is shown as a mantissa and a decimal
-// exponent, both taken from the natural log rather than from the value itself.
+// A value too large for a double is shown as a mantissa and a
+// decimal exponent, both taken from the natural log rather than
+// from the value itself.
 scientific(ln_value: double) -> string is
     let log10 = ln_value / System.Math.log(10.0)
     let exponent = System.Math.floor(log10)

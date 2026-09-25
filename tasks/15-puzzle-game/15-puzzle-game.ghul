@@ -48,8 +48,9 @@ solved() -> bool =>
     (0..squares)
         |> all(square => board[square] == (square + 1) % squares)
 
-// Shuffling by playing legal moves leaves the puzzle solvable, which half of
-// all tile arrangements are not. Twelve moves keeps the printed game short.
+// Shuffling by playing legal moves leaves the puzzle solvable,
+// which half of all tile arrangements are not. Twelve moves keeps
+// the printed game short.
 for _ in 0..12 do
     let choices = neighbours(blank())
 

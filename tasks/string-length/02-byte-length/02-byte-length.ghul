@@ -5,6 +5,7 @@ let subjects = ["møøse", "𝔘𝔫𝔦𝔠𝔬𝔡𝔢", "J̲o̲s̲é̲"]
 
 for subject in subjects do
     write_line(
-        "{subject}: {Encoding.utf8.get_byte_count(subject)} bytes in UTF-8, "
+        "{subject}: "
+        "{Encoding.utf8.get_byte_count(subject)} bytes in UTF-8, "
         "{Encoding.unicode.get_byte_count(subject)} in UTF-16")
 od

@@ -1,8 +1,8 @@
 use default
 
 union Rule is
-    WORD(head: string, word: string);
-    PAIR(head: string, left: string, right: string);
+    WORD(head: string, word: string)
+    PAIR(head: string, left: string, right: string)
 si
 
 let grammar =

@@ -18,13 +18,13 @@ class Polygon(sides: int private): Shape, Described abstract is
 si
 
 class SQUARE(side: double private): Polygon is
-    super(4);
+    super(4)
 
     area() -> double => _side * _side
 si
 
 class TRIANGLE(base: double private, height: double private): Polygon is
-    super(3);
+    super(3)
 
     area() -> double => _base * _height / 2.0D
 

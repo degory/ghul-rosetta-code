@@ -29,7 +29,8 @@ overhand_shuffle(deck: LIST[int], random: Random) -> LIST[int] is
 
     while remaining.count > 0 do
         let wanted = random.next(1, cast(remaining.count / 5) + 2)
-        let group = if wanted < remaining.count then wanted else remaining.count fi
+        let group =
+            if wanted < remaining.count then wanted else remaining.count fi
         let taken = LIST(remaining[0..group])
 
         taken.add_range(stacked)

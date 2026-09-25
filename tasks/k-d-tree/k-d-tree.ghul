@@ -3,8 +3,8 @@ use default
 use Point = Collections.List[double]
 
 union Tree is
-    EMPTY;
-    NODE(left: Tree, point: Point, axis: int, right: Tree);
+    EMPTY
+    NODE(left: Tree, point: Point, axis: int, right: Tree)
 si
 
 build(points: Collections.List[Point], depth: int) -> Tree is

@@ -40,7 +40,8 @@ expressions() -> Pipe[(value: int, text: string)] is
                         text.append("-")
                     fi
                 else
-                    text.append(if operators[at] == minus then " - " else " + " fi)
+                    text.append(
+                        if operators[at] == minus then " - " else " + " fi)
                 fi
             fi
 

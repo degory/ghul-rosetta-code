@@ -1,9 +1,9 @@
 use default
 
 class NODE is
-    length: int;
-    suffix: int public;
-    edges: MAP[char, int] field;
+    length: int
+    suffix: int public
+    edges: MAP[char, int] field
 
     init(length: int, suffix: int) is
         self.length = length
@@ -14,7 +14,7 @@ class NODE is
 si
 
 class EERTREE(text: string) is
-    _nodes: LIST[NODE];
+    _nodes: LIST[NODE]
 
     init(..) is
         _nodes = LIST[NODE]([NODE(-1, 0), NODE(0, 0)])
