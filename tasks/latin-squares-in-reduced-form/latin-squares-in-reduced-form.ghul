@@ -10,7 +10,7 @@ completions(
     square: Square, cells: List[(int, int)], index: int
 ) -> Pipe[List[List[int]]] is
     if index == cells.count then
-        yield square |> map(row => row)
+        yield square |> collect()
         return
     fi
 
