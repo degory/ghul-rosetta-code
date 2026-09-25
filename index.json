@@ -12089,6 +12089,31 @@
       ]
     },
     {
+      "slug": "held-karp-algorithm",
+      "title": "Held–Karp algorithm",
+      "url": "https://rosettacode.org/wiki/Held–Karp_algorithm",
+      "tags": [
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "held-karp-algorithm",
+          "heading": null,
+          "source": "tasks/held-karp-algorithm/held-karp-algorithm.ghul",
+          "output": "tasks/held-karp-algorithm/run.expected",
+          "lines": 63,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hello-world-newbie",
       "title": "Hello world/Newbie",
       "url": "https://rosettacode.org/wiki/Hello_world/Newbie",
