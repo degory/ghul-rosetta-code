@@ -20298,6 +20298,32 @@
       ]
     },
     {
+      "slug": "probabilistic-choice",
+      "title": "Probabilistic choice",
+      "url": "https://rosettacode.org/wiki/Probabilistic_choice",
+      "tags": [
+        "simulation",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "probabilistic-choice",
+          "heading": null,
+          "source": "tasks/probabilistic-choice/probabilistic-choice.ghul",
+          "output": "tasks/probabilistic-choice/run.expected",
+          "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "problem-of-apollonius",
       "title": "Problem of Apollonius",
       "url": "https://rosettacode.org/wiki/Problem_of_Apollonius",
