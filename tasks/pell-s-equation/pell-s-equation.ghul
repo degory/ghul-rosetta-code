@@ -1,0 +1,29 @@
+use default
+
+pell(n: int) -> (x: bigint, y: bigint) is
+    let root = cast int(System.Math.sqrt(cast double(n)))
+    let (y, z, r) mut = (root, 1, root * 2)
+    let (e1, e2) mut = (1n, 0n)
+    let (f1, f2) mut = (0n, 1n)
+
+    do
+        y = r * z - y
+        z = (n - y * y) / z
+        r = (root + y) / z
+
+        (e1, e2) = (e2, e1 + e2 * bigint(r))
+        (f1, f2) = (f2, f1 + f2 * bigint(r))
+
+        let x = e2 + f2 * bigint(root)
+        let b = f2
+
+        if x * x - bigint(n) * b * b =~ 1n then
+            return (x = x, y = b)
+        fi
+    od
+si
+
+for n in [61, 109, 181, 277] do
+    let (x, y) = pell(n)
+    write_line("n = {n}: x = {x}, y = {y}")
+od
