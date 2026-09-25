@@ -4368,10 +4368,35 @@
       "published_hash": "2ed72429cfeb643a5baf5d844b71aceb6ad2e574bcab76630ef13bc8f644f03a"
     },
     {
+      "title": "Numeric error propagation",
+      "slug": "numeric-error-propagation",
+      "state": "solved"
+    },
+    {
       "title": "Numerical and alphabetical suffixes",
       "slug": "numerical-and-alphabetical-suffixes",
       "state": "published",
       "published_hash": "8583cbbb39aba75d4223dae4135fd4f29ce2f298448086fc3057b285028e1d32"
+    },
+    {
+      "title": "Numerical integration",
+      "slug": "numerical-integration",
+      "state": "solved"
+    },
+    {
+      "title": "Numerical integration/Gauss-Legendre Quadrature",
+      "slug": "numerical-integration-gauss-legendre-quadrature",
+      "state": "solved"
+    },
+    {
+      "title": "Numerical integration/Romberg integration",
+      "slug": "numerical-integration-romberg-integration",
+      "state": "solved"
+    },
+    {
+      "title": "Numerical integration/Tanh-Sinh Quadrature",
+      "slug": "numerical-integration-tanh-sinh-quadrature",
+      "state": "solved"
     },
     {
       "title": "O\u0027Halloran numbers",
@@ -4404,6 +4429,11 @@
       "published_hash": "6f55d0d9107b37d9e7811a34c480642d185d68ef7581cbd363e7569f03c67c76"
     },
     {
+      "title": "Old lady swallowed a fly",
+      "slug": "old-lady-swallowed-a-fly",
+      "state": "solved"
+    },
+    {
       "title": "One of n lines in a file",
       "slug": "one-of-n-lines-in-a-file",
       "state": "published",
@@ -4414,6 +4444,26 @@
       "slug": "one-dimensional-cellular-automata",
       "state": "published",
       "published_hash": "2d54ac0db42e09a48ff53c2a0b6ccda251c3558389b8815505006741ea22bee7"
+    },
+    {
+      "title": "One-time pad",
+      "slug": "one-time-pad",
+      "state": "solved"
+    },
+    {
+      "title": "One-two primes",
+      "slug": "one-two-primes",
+      "state": "solved"
+    },
+    {
+      "title": "OpenGL",
+      "state": "rejected",
+      "reason": "needs-gui"
+    },
+    {
+      "title": "OpenWebNet password",
+      "slug": "openwebnet-password",
+      "state": "solved"
     },
     {
       "title": "Operator precedence",
