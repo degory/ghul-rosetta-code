@@ -12377,6 +12377,31 @@
       ]
     },
     {
+      "slug": "hickerson-series-of-almost-integers",
+      "title": "Hickerson series of almost integers",
+      "url": "https://rosettacode.org/wiki/Hickerson_series_of_almost_integers",
+      "tags": [
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 19,
+      "parts": [
+        {
+          "id": "hickerson-series-of-almost-integers",
+          "heading": null,
+          "source": "tasks/hickerson-series-of-almost-integers/hickerson-series-of-almost-integers.ghul",
+          "output": "tasks/hickerson-series-of-almost-integers/run.expected",
+          "lines": 19,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "higher-order-functions",
       "title": "Higher-order functions",
       "url": "https://rosettacode.org/wiki/Higher-order_functions",
