@@ -1,0 +1,82 @@
+use default
+
+to_bernstein_2(a: List[double]) -> List[double] =>
+    [a[0], a[0] + a[1] / 2.0, a[0] + a[1] + a[2]]
+
+to_bernstein_3(a: List[double]) -> List[double] =>
+    [
+        a[0],
+        a[0] + a[1] / 3.0,
+        a[0] + 2.0 * a[1] / 3.0 + a[2] / 3.0,
+        a[0] + a[1] + a[2] + a[3]
+    ]
+
+raise_degree(q: List[double]) -> List[double] =>
+    [
+        q[0],
+        q[0] / 3.0 + 2.0 * q[1] / 3.0,
+        2.0 * q[1] / 3.0 + q[2] / 3.0,
+        q[2]
+    ]
+
+de_casteljau(b: List[double], t: double) -> double =>
+    if b.count == 1 then
+        b[0]
+    else
+        de_casteljau(
+            1..b.count
+                |> map(i => (1.0 - t) * b[i - 1] + t * b[i])
+                |> collect_list(),
+            t)
+    fi
+
+horner(a: List[double], x: double) -> double =>
+    a |> reverse() |> reduce(0.0, (total, c) => total * x + c)
+
+let p = [1.0, 0.0, 0.0, 0.0]
+let q = [1.0, 2.0, 3.0, 0.0]
+let r = [1.0, 2.0, 3.0, 4.0]
+
+let quadratics = [("p", p), ("q", q)]
+let cubics = [("p", p), ("q", q), ("r", r)]
+
+write_line("Subprogram (1):")
+
+for (name, a) in quadratics do
+    write_line("  {name}: mono {a |> take(3)} -> bern {to_bernstein_2(a)}")
+od
+
+write_line("Subprogram (2):")
+
+for (name, a) in quadratics do
+    for x in [0.25, 7.5] do
+        let value = de_casteljau(to_bernstein_2(a), x)
+
+        write_line("  {name}({x}) = {value} (mono {horner(a, x)})")
+    od
+od
+
+write_line("Subprogram (3):")
+
+for (name, a) in cubics do
+    write_line("  {name}: mono {a} -> bern {to_bernstein_3(a)}")
+od
+
+write_line("Subprogram (4):")
+
+for (name, a) in cubics do
+    for x in [0.25, 7.5] do
+        let value = de_casteljau(to_bernstein_3(a), x)
+
+        write_line("  {name}({x}) = {value} (mono {horner(a, x)})")
+    od
+od
+
+write_line("Subprogram (5):")
+
+for (name, a) in quadratics do
+    let quadratic = to_bernstein_2(a)
+    let cubic = raise_degree(quadratic)
+
+    write_line("  {name}: bern {quadratic} -> bern {cubic}")
+od
