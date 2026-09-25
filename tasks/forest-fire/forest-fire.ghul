@@ -50,8 +50,8 @@ step(forest: Forest) -> Forest =>
         |> map(row =>
             (0..columns)
                 |> map(column => next(forest, row, column))
-                |> collect_list())
-        |> collect_list()
+                |> collect())
+        |> collect()
 
 census(forest: Forest, state: Cell) -> int =>
     forest |> flat_map(row => row) |> filter(c => c == state) |> count()
@@ -85,8 +85,8 @@ let forest mut =
                     then Cell.TREE
                     else Cell.EMPTY
                     fi)
-                |> collect_list())
-        |> collect_list()
+                |> collect())
+        |> collect()
 
 let image = IMAGE(columns * cell, rows * cell)
 let animation = ANIMATION(columns * cell, rows * cell)

@@ -40,7 +40,7 @@ si
 
 let sample = [1, 2, 3, 10, 100, 987654321, 1]
     |> map(v => cast bigint(v))
-    |> collect_list()
+    |> collect()
 
 let index = rank(sample)
 let restored = unrank(index)

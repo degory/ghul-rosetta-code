@@ -89,10 +89,10 @@ my_choice() -> int =>
             |> collect_list()
 
      let known =
-         mine |> filter(rank => you_hold.contains(rank)) |> collect_list()
+         mine |> filter(rank => you_hold.contains(rank)) |> collect()
 
      let untried =
-         mine |> filter(rank => !you_lack.contains(rank)) |> collect_list()
+         mine |> filter(rank => !you_lack.contains(rank)) |> collect()
 
      let pool =
          if known.count > 0 then known

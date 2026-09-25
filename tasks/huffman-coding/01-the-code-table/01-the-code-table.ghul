@@ -65,7 +65,7 @@ od
 let leaves = weights.keys
     |> sort()
     |> map(symbol => LEAF(symbol, weights[symbol]))
-    |> collect_list()
+    |> collect()
 
 let table =
     codes(build_tree(leaves), "")

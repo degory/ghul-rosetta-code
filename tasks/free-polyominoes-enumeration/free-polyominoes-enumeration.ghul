@@ -19,14 +19,14 @@ width(shape: Shape) -> int =>
     shape |> map(c => c.column) |> reduce(0, int.max) + 1
 
 normalised(cells: Iterable[Cell]) -> Shape is
-    let list = cells |> collect_list()
+    let list = cells |> collect()
     let top = list |> map(c => c.row) |> reduce(list[0].row, int.min)
     let left = list |> map(c => c.column) |> reduce(list[0].column, int.min)
 
     list
         |> map(c => at(c.row - top, c.column - left))
         |> sort(reading_order)
-        |> collect_list()
+        |> collect()
 si
 
 key(shape: Shape) -> string =>
@@ -55,7 +55,7 @@ grow(shapes: List[Shape]) -> List[Shape] is
                 let next = at(cell.row + dr, cell.column + dc)
 
                 if !has(shape, next) then
-                    let cells = shape |> cat([next]) |> collect_list()
+                    let cells = shape |> cat([next]) |> collect()
                     let bigger = canonical(cells)
 
                     seen[key(bigger)] = bigger
@@ -64,7 +64,7 @@ grow(shapes: List[Shape]) -> List[Shape] is
         od
     od
 
-    seen.values |> sort((a, b) => key(a) <> key(b)) |> collect_list()
+    seen.values |> sort((a, b) => key(a) <> key(b)) |> collect()
 si
 
 row_of(shape: Shape, row: int) -> string =>

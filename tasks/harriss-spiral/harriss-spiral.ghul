@@ -34,7 +34,7 @@ quarter_arc(image: IMAGE, from: Point, to: Point) is
                 let a = start + sweep * cast double(i) / 24.0D in
                 (x = centre.x + radius * Math.cos(a),
                  y = centre.y + radius * Math.sin(a)))
-            |> collect_list())
+            |> collect())
 si
 
 harriss(

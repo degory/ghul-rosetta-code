@@ -10,8 +10,8 @@ kronecker(left: MATRIX, right: MATRIX) -> MATRIX =>
                 |> map(column =>
                     left[row / right.count][column / right[0].count] *
                     right[row % right.count][column % right[0].count])
-                |> collect_list())
-        |> collect_list()
+                |> collect())
+        |> collect()
 
 power(seed: MATRIX, order: int) -> MATRIX =>
     (let result mut = seed

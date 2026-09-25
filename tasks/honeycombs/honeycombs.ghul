@@ -22,7 +22,7 @@ next_letter() -> char is
     return letter
 si
 
-let letters = 0..20 |> map(_ => next_letter()) |> collect_list()
+let letters = 0..20 |> map(_ => next_letter()) |> collect()
 
 let cells =
     0..20
@@ -34,7 +34,7 @@ let cells =
              y = cast double(row) * rise * radius -
                  (if column % 2 == 1 then rise * radius / 2.0D
                   else 0.0D fi)))
-        |> collect_list()
+        |> collect()
 
 let chosen = LIST[char]()
 

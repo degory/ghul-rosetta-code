@@ -101,7 +101,7 @@ image.stroke(2.4)
 image.line(
     alignment()
         |> map(step => centre(step.row, step.column))
-        |> collect_list())
+        |> collect())
 
 for row in 0::source.length do
     for column in 0::target.length do

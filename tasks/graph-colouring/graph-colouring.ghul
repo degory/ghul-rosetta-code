@@ -31,7 +31,7 @@ parse(description: string) -> GRAPH is
         let ends =
             token.split(['-'])
             |> map(end => int.parse(end))
-            |> collect_list()
+            |> collect()
 
         for end in ends do
             nodes.add(end)
@@ -42,7 +42,7 @@ parse(description: string) -> GRAPH is
         fi
     od
 
-    GRAPH(nodes |> sort() |> collect_list(), edges)
+    GRAPH(nodes |> sort() |> collect(), edges)
 si
 
 colour(graph: GRAPH) -> MAP[int, int] is
@@ -63,7 +63,7 @@ colour(graph: GRAPH) -> MAP[int, int] is
                     degree = graph.degree(node),
                     node = node
                 ))
-            |> collect_list()
+            |> collect()
 
         let best mut = candidates[0]
 

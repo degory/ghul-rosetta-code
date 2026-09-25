@@ -6,9 +6,9 @@ let cells = 0..extents[0]
     |> map(_ => 0..extents[1]
         |> map(_ => 0..extents[2]
             |> map(_ => repeat(0, extents[3]) |> collect_list())
-            |> collect_list())
-        |> collect_list())
-    |> collect_list()
+            |> collect())
+        |> collect())
+    |> collect()
 
 write_line("{extents.count} dimensions, extents {extents |> join(" by ")}")
 

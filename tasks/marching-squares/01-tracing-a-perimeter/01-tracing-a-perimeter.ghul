@@ -59,7 +59,7 @@ let inked =
             (0..grid[row].length)
                 |> map(column => (column = column, row = row)))
         |> filter(cell => filled(cell.column, cell.row))
-        |> collect_list()
+        |> collect()
 
 assert inked.count > 0 else "the grid has no filled cell"
 

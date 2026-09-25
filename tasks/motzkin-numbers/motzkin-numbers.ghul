@@ -67,7 +67,7 @@ is_prime(value: bigint) -> bool is
     true
 si
 
-let terms = motzkin(42) |> collect_list()
+let terms = motzkin(42) |> collect()
 
 for index in 0..terms.count do
     let mark = if is_prime(terms[index]) then "  prime" else "" fi

@@ -12,7 +12,7 @@ parse(text: string) -> List[Fraction] =>
         |> map(parts => (
             numerator = bigint.parse(parts[0]),
             denominator = bigint.parse(parts[1])))
-        |> collect_list()
+        |> collect()
 
 run(program: List[Fraction], start: bigint) -> Pipe[bigint] is
     let n mut = start

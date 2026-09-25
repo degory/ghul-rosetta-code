@@ -43,7 +43,7 @@ curve(rates: List[double]) -> List[(x: double, y: double)] =>
         |> index()
         |> map(rate =>
             (x = log10(cast double(rate.index + 1)), y = rate.value))
-        |> collect_list()
+        |> collect()
 
 let stay_colour = (red = 210ub, green = 130ub, blue = 40ub)
 let switch_colour = (red = 40ub, green = 85ub, blue = 165ub)
@@ -63,7 +63,7 @@ axes.x_ticks(
         |> map(decade =>
             (value = cast double(decade),
              label = "{System.Math.pow(10.0, cast double(decade))}"))
-        |> collect_list())
+        |> collect())
 
 axes.y_ticks([
     (value = 0.0, label = "0"),

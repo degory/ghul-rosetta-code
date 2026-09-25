@@ -14,7 +14,7 @@ killings(n: int, k: int) -> Pipe[int] is
 si
 
 show(n: int, k: int) is
-    let killed = killings(n, k) |> collect_list()
+    let killed = killings(n, k) |> collect()
 
     write_line("n = {n}, k = {k}: killed {killed |> join(", ")}")
 si

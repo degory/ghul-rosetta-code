@@ -21,7 +21,7 @@ moves(board: string, side: char) -> List[Move] =>
                     else board[to] == other(side)
                     fi)
                 |> map(to => (from = from, to = to)))
-        |> collect_list()
+        |> collect()
 
 play(board: string, move: Move) -> string =>
     string(

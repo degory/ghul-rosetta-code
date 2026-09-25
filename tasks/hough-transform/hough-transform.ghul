@@ -17,7 +17,7 @@ pentagon() -> IMAGE is
                 let a = Math.pi * (0.5D + 0.4D * cast double(i)) in
                 let x = 100.0D + 70.0D * Math.cos(a) in
                 (x = x, y = 105.0D - 70.0D * Math.sin(a)))
-            |> collect_list())
+            |> collect())
 
     image
 si

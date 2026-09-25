@@ -5,7 +5,7 @@ use ITEM = (name: string, weight: int, value: int)
 best_value(items: List[ITEM], limit: int) -> List[List[int]] is
     let table = 0::items.count
         |> map(_ => repeat(0, limit + 1) |> collect_list())
-        |> collect_list()
+        |> collect()
 
     for at in 0..items.count do
         let item = items[at]

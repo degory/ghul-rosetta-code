@@ -45,7 +45,7 @@ while !sorted(digits) do
         (0..flips)
             |> map(i => digits[flips - 1 - i])
             |> cat(digits |> skip(flips))
-            |> collect_list()
+            |> collect()
 
     score = score + 1
 od
