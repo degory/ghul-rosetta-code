@@ -27,7 +27,7 @@ descendants[0].add(1L)
 
 for p in (2::top) |> filter(is_prime) do
     for sum in p::top do
-        for d in descendants[sum - p] |> collect() do
+        for d in descendants[sum - p] do
             descendants[sum].add(d * cast long(p))
         od
     od

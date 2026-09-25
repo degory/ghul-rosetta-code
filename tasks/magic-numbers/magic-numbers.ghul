@@ -15,14 +15,14 @@ magic_numbers() -> Pipe[bigint] is
             current
                 |> flat_map(n => 0::9 |> map(d => n * 10n + bigint(d)))
                 |> filter(n => n % bigint(length) =~ 0n)
-                |> collect_mutable()
+                |> collect()
 
         current.clear()
         current.add_range(next)
     od
 si
 
-let magic = magic_numbers() |> collect_mutable()
+let magic = magic_numbers() |> collect()
 
 write_line("There are {magic.count} magic numbers, counting zero.")
 write_line("The largest is {magic[magic.count - 1]}.\n")

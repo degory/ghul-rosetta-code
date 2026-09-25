@@ -8,8 +8,8 @@ use Grid = List[List[int]]
 parse(lines: List[string]) -> Grid =>
     lines
         |> map(line =>
-            line |> map(c => cast int(c - '0')) |> collect_mutable())
-        |> collect_mutable()
+            line |> map(c => cast int(c - '0')) |> collect())
+        |> collect()
 
 solve(grid: Grid) -> List[int]? is
     let partner = repeat(-1, rows * columns) |> collect_mutable()
@@ -94,12 +94,11 @@ shuffled_tableau(random: System.Random) -> Grid is
         0::6
             |> flat_map(a => a::6 |> map(b => (a, b)))
             |> sort_by(_ => random.next())
-            |> collect_mutable()
 
     let grid =
         0..rows
             |> map(_ => repeat(0, columns) |> collect_mutable())
-            |> collect_mutable()
+            |> collect()
 
     for (i, (a, b)) in tiles |> index() do
         let row = i / 4, column = (i % 4) * 2

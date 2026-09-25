@@ -61,7 +61,6 @@ let coefficients = fit(x, y, 2)
 write_line("coefficients, highest power first:")
 write_line(
     coefficients
-    |> collect_mutable()
     |> reverse()
     |> map(c => "{c:F6}")
     |> join())

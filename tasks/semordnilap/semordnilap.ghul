@@ -9,7 +9,7 @@ let pairs =
     words
         |> filter(w => let r = reversed(w) in w < r /\ words.contains(r))
         |> sort()
-        |> collect_mutable()
+        |> collect()
 
 write_line("{pairs.count} semordnilap pairs, including:")
 

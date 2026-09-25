@@ -61,7 +61,7 @@ add(x: PAdic, y: PAdic, p: bigint, k: int) -> PAdic is
         repeat(0n, z.exponent - exponent)
             |> cat(z.digits)
             |> take(k)
-            |> collect_mutable()
+            |> collect()
 
     let a = aligned(x), b = aligned(y)
     let digits = LIST[bigint]()

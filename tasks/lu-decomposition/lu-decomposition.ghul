@@ -8,8 +8,8 @@ use Matrix = List[List[double]]
             0..b[0].count
                 |> map(j =>
                     0..b.count |> map(k => a[i][k] * b[k][j]) |> sum())
-                |> collect_mutable())
-        |> collect_mutable()
+                |> collect())
+        |> collect()
 
 square(n: int, cell: (int, int) -> double) -> LIST[LIST[double]] =>
     0..n

@@ -27,7 +27,6 @@ let counts =
     |> group_by(bucket)
     |> map(entry => (bucket = entry.key, count = entry.value.count))
     |> sort_by(entry => entry.bucket)
-    |> collect()
 
 write_line("{sizes.count} files under {root}")
 write_line("")

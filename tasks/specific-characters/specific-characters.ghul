@@ -11,12 +11,12 @@ counts(s: string) -> Map[char, int] is
 si
 
 show(strings: string[]) is
-    let tallies = strings |> map(counts) |> collect_mutable()
+    let tallies = strings |> map(counts) |> collect()
     let specific = LIST[int]()
     let others = LIST[int]()
 
     for i in 0..strings.count do
-        let chars = tallies[i].keys |> collect_mutable()
+        let chars = tallies[i].keys |> collect()
         let elsewhere = (c: char) =>
             0..strings.count
                 |> any(j => j != i /\ tallies[j].contains_key(c))

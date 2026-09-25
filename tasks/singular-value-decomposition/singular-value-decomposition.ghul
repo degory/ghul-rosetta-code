@@ -40,7 +40,7 @@ svd(a: Matrix) -> (u: Matrix, sigma: double[], v: Matrix) is
     fi
 
     let n = a[0].count
-    let u = a |> map(row => row |> collect_mutable()) |> collect_mutable()
+    let u = a |> map(row => row) |> collect_mutable()
     let v = identity(n)
     let converged mut = false
 

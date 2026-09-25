@@ -46,7 +46,7 @@ si
 
 regress(y: List[double], x: Matrix) -> List[double] =>
     let xt = transpose(x) in
-    let xty = xt * (y |> map(v => [v] |> collect()) |> collect()) in
+    let xty = xt * (y |> map(v => [v]) |> collect()) in
     solve(xt * x, xty |> map(row => row[0]) |> collect())
 
 let heights = [1.47, 1.50, 1.52, 1.55, 1.57, 1.60, 1.63, 1.65, 1.68,
@@ -55,7 +55,7 @@ let heights = [1.47, 1.50, 1.52, 1.55, 1.57, 1.60, 1.63, 1.65, 1.68,
 let weights = [52.21, 53.12, 54.48, 55.84, 57.20, 58.57, 59.93, 61.29,
                63.11, 64.47, 66.28, 68.10, 69.92, 72.19, 74.46]
 
-let x = heights |> map(h => [1.0, h, h * h] |> collect()) |> collect()
+let x = heights |> map(h => [1.0, h, h * h]) |> collect()
 
 let beta = regress(weights, x)
 

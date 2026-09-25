@@ -103,7 +103,7 @@ combine(
 si
 
 show(terms: Iterable[bigint]) -> string =>
-    let shown = terms |> take(21) |> collect_mutable() in
+    let shown = terms |> take(21) |> collect() in
     let rest = shown |> skip(1) |> take(19) |> join() in
     let more = if shown.count > 20 then ", ..." else "" fi in
     if shown.count == 1 then "[{shown[0]}]"

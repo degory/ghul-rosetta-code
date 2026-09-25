@@ -47,7 +47,7 @@ let finishers =
             (horse, time = time + adjustment(horse)))
         |> cat([(horse = "J", time = 95.8)])
         |> sort_by(((_, time)) => time)
-        |> collect_mutable()
+        |> collect()
 
 write_line("Race 4\n")
 write_line("Pos Horse  Weight  Dist  Sex")

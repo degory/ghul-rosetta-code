@@ -64,7 +64,7 @@ repunit(n: int) -> bigint => (bigint.pow(10n, n) - 1n) / 9n
 write_line("sieving to {limit:N0}")
 
 let circular =
-    2..limit |> filter(is_circular) |> take(19) |> collect_mutable()
+    2..limit |> filter(is_circular) |> take(19)
 
 write_line("The first 19 circular primes:")
 write_line("{circular}")

@@ -17,8 +17,8 @@ trial() -> (black_in_black: int, red_in_red: int) is
     od
 
     let swap = random.next(int.min(black.count, red.count) + 1)
-    let black_bunch = shuffled(black) |> take(swap) |> collect_mutable()
-    let red_bunch = shuffled(red) |> take(swap) |> collect_mutable()
+    let black_bunch = shuffled(black) |> take(swap) |> collect()
+    let red_bunch = shuffled(red) |> take(swap) |> collect()
 
     for card in black_bunch do black.remove(card) od
     for card in red_bunch do red.remove(card) od

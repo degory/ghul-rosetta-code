@@ -37,7 +37,7 @@ duplicates(root: string, minimum: long) -> List[Group] =>
         |> flat_map(((size, files)) =>
             same_contents(root, size, files |> map(((path, _)) => path)))
         |> sort_by_descending(((size, _)) => size)
-        |> collect_mutable()
+        |> collect()
 
 let root =
     Path.combine(

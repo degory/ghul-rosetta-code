@@ -106,7 +106,7 @@ microseconds(sort: LIST[int] -> void, data: int[]) -> double =>
 log2(x: double) -> double => Math.log2(Math.max(x, 1.0))
 
 for (name, make) in inputs do
-    let data = powers |> map(p => make(1 << p)) |> collect()
+    let data = powers |> map(p => make(1 << p))
 
     let times =
         sorts

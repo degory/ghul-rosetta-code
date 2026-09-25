@@ -38,13 +38,13 @@ transpose(a: Rows) -> Table =>
 
 householder(a: Rows, k: int) -> Table is
     let m = a.count
-    let column = k..m |> map(i => a[i][k]) |> collect_mutable()
+    let column = k..m |> map(i => a[i][k]) |> collect()
     let norm = System.Math.sqrt(column |> map(x => x * x) |> sum())
     let sign = if column[0] < 0.0 then -1.0 else 1.0 fi
     let first = column[0] + sign * norm
     let v = 0..column.count
         |> map(i => if i == 0 then 1.0 else column[i] / first fi)
-        |> collect_mutable()
+        |> collect()
     let beta = 2.0 / (v |> map(x => x * x) |> sum())
     let h = identity(m)
 
@@ -76,7 +76,7 @@ si
 least_squares(a: Rows, b: List[double]) -> List[double] is
     let (q, r) = decompose(a)
     let n = a[0].count
-    let column = b |> map(y => LIST([y])) |> collect_mutable()
+    let column = b |> map(y => LIST([y])) |> collect()
     let qtb = multiply(transpose(q), column)
     let x = repeat(0.0, n) |> collect_mutable()
 
@@ -100,7 +100,7 @@ show(name: string, matrix: Rows) is
 si
 
 let a = [[12.0, -51.0, 4.0], [6.0, 167.0, -68.0], [-4.0, 24.0, -41.0]]
-    |> map(row => LIST(row)) |> collect_mutable()
+    |> map(row => LIST(row)) |> collect()
 
 let (q, r) = decompose(a)
 
@@ -108,11 +108,11 @@ show("Q", q)
 show("R", r)
 show("Q R", multiply(q, r))
 
-let xs = 0::10 |> map(x => cast double(x)) |> collect_mutable()
+let xs = 0::10 |> map(x => cast double(x))
 let ys = [
     1.0, 6.0, 17.0, 34.0, 57.0, 86.0, 121.0, 162.0, 209.0, 262.0, 321.0
 ]
-let design = xs |> map(x => LIST([1.0, x, x * x])) |> collect_mutable()
+let design = xs |> map(x => LIST([1.0, x, x * x])) |> collect()
 
 let fit = least_squares(design, LIST(ys))
 

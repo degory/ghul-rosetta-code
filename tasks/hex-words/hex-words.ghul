@@ -18,7 +18,6 @@ let entries = IO.File.read_all_lines("unixdict.txt")
             root = digital_root(value),
             distinct = word |> distinct() |> count()
         ))
-    |> collect()
 
 show(title: string, rows: List[Entry]) is
     write_line(title)
