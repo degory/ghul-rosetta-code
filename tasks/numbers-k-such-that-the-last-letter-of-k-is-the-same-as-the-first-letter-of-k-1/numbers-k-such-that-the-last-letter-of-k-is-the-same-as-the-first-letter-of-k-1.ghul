@@ -1,0 +1,64 @@
+use default
+
+let small = [
+    "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+    "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+    "sixteen", "seventeen", "eighteen", "nineteen"
+]
+
+let tens = [
+    "", "", "twenty", "thirty", "forty", "fifty",
+    "sixty", "seventy", "eighty", "ninety"
+]
+
+let scales = [
+    (1_000_000_000L, "billion"),
+    (1_000_000L, "million"),
+    (1_000L, "thousand")
+]
+
+english(n: long) -> string =>
+    if n < 20L then
+        small[cast int(n)]
+    elif n < 100L then
+        let rest = n % 10L in
+        if rest == 0L then tens[cast int(n / 10L)]
+        else "{tens[cast int(n / 10L)]}-{small[cast int(rest)]}"
+        fi
+    elif n < 1000L then
+        let rest = n % 100L in
+        let hundreds = "{small[cast int(n / 100L)]} hundred" in
+        if rest == 0L then hundreds else "{hundreds} and {english(rest)}" fi
+    else
+        let (size, name) = scales |> find(((size, _)) => n >= size)! in
+        let rest = n % size in
+        let head = "{english(n / size)} {name}" in
+        if rest == 0L then head
+        elif rest < 100L then "{head} and {english(rest)}"
+        else "{head} {english(rest)}"
+        fi
+    fi
+
+qualifies(k: long) -> bool =>
+    let name = english(k) in
+    name[name.length - 1] == english(k + 1L)[0]
+
+let found = from(0L) |> filter(qualifies)
+
+write_line("The first 50 qualifying numbers:")
+
+for row in found |> take(50) |> chunk(10) do
+    write_line(row |> map(k => "{k,5}") |> join(""))
+od
+
+for size in [1_000, 10_000, 100_000, 1_000_000] do
+    let first = found |> take(size) |> collect_list()
+    let breakdown =
+        0..10
+            |> map(digit =>
+                first |> count(k => k % 10L == cast long(digit)))
+            |> join(" ")
+
+    write_line("\nThe {size:N0}th is {first[size - 1]:N0}")
+    write_line("    counts by last digit, 0 to 9: {breakdown}")
+od
