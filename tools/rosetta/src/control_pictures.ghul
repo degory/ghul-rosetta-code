@@ -21,7 +21,7 @@ namespace Rosetta is
         has_any(text: string) -> bool static => text |> any(c => is_pictured(c))
 
         render(text: string) -> string static =>
-            string(text |> map(c => if is_pictured(c) then picture(c) else c fi) |> collect_array())
+            string(text |> map(c => if is_pictured(c) then picture(c) else c fi) |> collect())
 
         // What the entry says under an output block that holds them, naming
         // each one it actually shows.
@@ -44,7 +44,7 @@ namespace Rosetta is
                 return "In the output above, {named[0]}."
             fi
 
-            let all_but_last = named |> take(named.count - 1) |> join(", ")
+            let all_but_last = named |> take(named.count - 1) |> join()
 
             "In the output above, {all_but_last} and {named[named.count - 1]}."
         si

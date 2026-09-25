@@ -81,7 +81,7 @@ So, in rough order of how often it comes up:
 - **Thread with `|>` and the global pipe functions.** They are global
   functions and `Pipe[T]` declares none of its own, so a chain of them either
   threads or nests, and here it threads:
-  `xs |> map(f) |> filter(p) |> join(", ")`, never
+  `xs |> map(f) |> filter(p) |> join()`, never
   `join(filter(map(xs, f), p), ", ")`.
 - **Lean towards functions, but use the right tool.** A class earns its place
   when the task is itself about objects, when state and the operations on it
@@ -222,7 +222,7 @@ does not name `System.Linq`. Nor `Ghul.Internal`, which holds the attributes car
 facts between assemblies and is not reachable from source; nor `MAYBE`, which is one of the three
 carriers behind `T?` and is spelled `T?` wherever it is written.
 
-A list of `n` copies of a value is `repeat(value, n) |> collect_list()`, not
+A list of `n` copies of a value is `repeat(value, n) |> collect_mutable()`, not
 `LIST[T](System.Linq.Enumerable.repeat(value, n))`; `repeat(value)`, `from(start)` and
 `from(start, step)` are the unbounded forms.
 
@@ -232,8 +232,8 @@ A list whose elements are a function of what it is built from is built by a pipe
 `collect_*`, not by declaring an empty `LIST` and adding to it in a `for`:
 
 ```ghul
-let doubled = values |> map(value => value * 2) |> collect_list()
-let flags = repeat(false, limit) |> collect_list()
+let doubled = values |> map(value => value * 2) |> collect_mutable()
+let flags = repeat(false, limit) |> collect_mutable()
 ```
 
 A grid is the same shape twice, with one rule: the outer level is `map` and never `repeat`, because
@@ -241,8 +241,8 @@ A grid is the same shape twice, with one rule: the outer level is `map` and neve
 
 ```ghul
 let cells = 0..rows
-    |> map(_ => repeat(0, columns) |> collect_list())
-    |> collect_list()
+    |> map(_ => repeat(0, columns) |> collect_mutable())
+    |> collect_mutable()
 ```
 
 Filling the grid by index afterwards does not change that: how the elements get there is a separate
@@ -453,7 +453,7 @@ read_ppm(path: string) -> BITMAP is
         return string(
             (from..at)
                 |> map(index => cast char(raw[index]))
-                |> collect_array()
+                |> collect()
         )
     si
 
