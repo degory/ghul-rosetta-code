@@ -1,0 +1,59 @@
+use default
+
+let random = System.Random(2024)
+
+// a base between 2 and n - 2
+
+random_base(n: bigint) -> bigint =>
+    bigint(random.next_int64(0L, long.max_value)) % (n - 3n) + 2n
+
+is_probably_prime(n: bigint, rounds: int) -> bool is
+    if n < 4n then
+        return n > 1n
+    fi
+
+    if n.is_even then
+        return false
+    fi
+
+    let d mut = n - 1n
+    let s mut = 0
+
+    while d.is_even do
+        d = d / 2n
+        s = s + 1
+    od
+
+    witness(a: bigint) -> bool is
+        let x mut = bigint.mod_pow(a, d, n)
+
+        if x =~ 1n \/ x =~ n - 1n then
+            return false
+        fi
+
+        for _ in 1..s do
+            x = bigint.mod_pow(x, 2n, n)
+
+            if x =~ n - 1n then
+                return false
+            fi
+        od
+
+        true
+    si
+
+    1::rounds |> all(_ => !witness(random_base(n)))
+si
+
+let numbers = [
+    2n, 3n, 4n, 9n, 97n, 561n, 7919n, 1_000_003n, 1_000_001n,
+    2147483647n, 2305843009213693951n, 2305843009213693953n,
+    bigint.pow(2n, 127) - 1n
+]
+
+for n in numbers do
+    let prime = is_probably_prime(n, 20)
+    let verdict = if prime then "probably prime" else "composite" fi
+
+    write_line("{n,40}  {verdict}")
+od
