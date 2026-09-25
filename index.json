@@ -22146,6 +22146,32 @@
       ]
     },
     {
+      "slug": "routh-hurwitz-stability-criterion",
+      "title": "Routh–Hurwitz stability criterion",
+      "url": "https://rosettacode.org/wiki/Routh–Hurwitz_stability_criterion",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 93,
+      "parts": [
+        {
+          "id": "routh-hurwitz-stability-criterion",
+          "heading": null,
+          "source": "tasks/routh-hurwitz-stability-criterion/routh-hurwitz-stability-criterion.ghul",
+          "output": "tasks/routh-hurwitz-stability-criterion/run.expected",
+          "lines": 93,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rpg-attributes-generator",
       "title": "RPG attributes generator",
       "url": "https://rosettacode.org/wiki/RPG_attributes_generator",
