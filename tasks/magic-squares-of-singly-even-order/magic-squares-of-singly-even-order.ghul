@@ -21,8 +21,8 @@ odd_magic_square(n: int) -> Square is
     square
 si
 
-// Strachey's method: four odd magic squares of half the size fill the
-// quadrants, then some columns swap between the top and bottom halves.
+// four odd magic squares of half the size fill the quadrants, then some
+// columns swap between the top and bottom halves
 
 singly_even_magic_square(n: int) -> Square is
     let half = n / 2, cells = half * half, k = (n - 2) / 4

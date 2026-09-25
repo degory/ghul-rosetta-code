@@ -20,8 +20,8 @@ substitute(x: uint) -> uint =>
             cast uint(s_boxes[i][nibble]) << (4 * i))
         |> reduce(0ui, (a: uint, b: uint) => a | b)
 
-// one round of the Feistel network: the left half is combined with the key
-// element, substituted, rotated left 11 bits and mixed into the right half
+// the left half is combined with the key element, substituted, rotated
+// left 11 bits and mixed into the right half
 
 main_step(block: ulong, key: uint) -> ulong =>
     let low = cast uint(block & 0xFFFF_FFFFul) in
