@@ -14555,6 +14555,33 @@
       ]
     },
     {
+      "slug": "latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique",
+      "title": "Latin Squares in reduced form/Randomizing using Jacobson and Matthews' technique",
+      "url": "https://rosettacode.org/wiki/Latin_Squares_in_reduced_form/Randomizing_using_Jacobson_and_Matthews'_technique",
+      "tags": [
+        "algorithms",
+        "classes",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 173,
+      "parts": [
+        {
+          "id": "latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique",
+          "heading": null,
+          "source": "tasks/latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique/latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique.ghul",
+          "output": "tasks/latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique/run.expected",
+          "lines": 173,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "law-of-cosines-triples",
       "title": "Law of cosines - triples",
       "url": "https://rosettacode.org/wiki/Law_of_cosines_-_triples",

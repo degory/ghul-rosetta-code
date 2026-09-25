@@ -1,0 +1,173 @@
+use default
+
+use Square = List[List[int]]
+
+class INCIDENCE_CUBE is
+    _n: int
+    _cells: LIST[byte]
+    _random: System.Random
+    _improper: (int, int, int)?
+
+    init(square: Square, random: System.Random) is
+        _n = square.count
+        _cells = repeat(0b, _n * _n * _n) |> collect_list()
+        _random = random
+        _improper = null
+
+        for r in 0.._n do
+            for c in 0.._n do
+                _set(r, c, square[r][c] - 1, 1b)
+            od
+        od
+    si
+
+    _index(r: int, c: int, s: int) -> int => (r * _n + c) * _n + s
+
+    _at(r: int, c: int, s: int) -> byte => _cells[_index(r, c, s)]
+
+    _set(r: int, c: int, s: int, value: byte) is
+        _cells[_index(r, c, s)] = value
+    si
+
+    _add(r: int, c: int, s: int, delta: byte) is
+        _set(r, c, s, cast byte(_at(r, c, s) + delta))
+    si
+
+    _pick(choices: List[int]) -> int => choices[_random.next(choices.count)]
+
+    _ones_in_rows(c: int, s: int) -> List[int] =>
+        0.._n |> filter(r => _at(r, c, s) == 1b) |> collect()
+
+    _ones_in_columns(r: int, s: int) -> List[int] =>
+        0.._n |> filter(c => _at(r, c, s) == 1b) |> collect()
+
+    _ones_in_symbols(r: int, c: int) -> List[int] =>
+        0.._n |> filter(s => _at(r, c, s) == 1b) |> collect()
+
+    _move(r: int, c: int, s: int) is
+        let r2 = _pick(_ones_in_rows(c, s))
+        let c2 = _pick(_ones_in_columns(r, s))
+        let s2 = _pick(_ones_in_symbols(r, c))
+
+        _add(r, c, s, 1b)
+        _add(r, c2, s2, 1b)
+        _add(r2, c, s2, 1b)
+        _add(r2, c2, s, 1b)
+        _add(r, c, s2, -1b)
+        _add(r, c2, s, -1b)
+        _add(r2, c, s, -1b)
+        _add(r2, c2, s2, -1b)
+
+        _improper = if _at(r2, c2, s2) == -1b then (r2, c2, s2) else null fi
+    si
+
+    next() is
+        let r mut = 0
+        let c mut = 0
+        let s mut = 0
+
+        do
+            r = _random.next(_n)
+            c = _random.next(_n)
+            s = _random.next(_n)
+
+            if _at(r, c, s) == 0b then
+                break
+            fi
+        od
+
+        _move(r, c, s)
+
+        while let (row, column, symbol) = _improper do
+            _move(row, column, symbol)
+        od
+    si
+
+    square: Square =>
+        0.._n
+            |> map(r => 0.._n
+                |> map(c => 1 + (0.._n |> find(s => _at(r, c, s) == 1b)!))
+                |> collect())
+            |> collect()
+si
+
+reduced(square: Square) -> Square =>
+    let n = square.count in
+    let by_column = 1::n
+        |> map(v => 0..n |> find(c => square[0][c] == v)!)
+        |> map(c => 0..n |> map(r => square[r][c]) |> collect())
+        |> collect() in
+    1::n
+        |> map(v => 0..n |> find(r => by_column[0][r] == v)!)
+        |> map(r => 0..n |> map(c => by_column[c][r]) |> collect())
+        |> collect()
+
+text(square: Square) -> string =>
+    square |> map(row => row |> map(v => "{v,3}") |> join("")) |> join("\n")
+
+is_latin(square: Square) -> bool =>
+    let n = square.count in
+    0..n |> all(i =>
+        (square[i] |> distinct() |> count()) == n /\
+        (0..n |> map(r => square[r][i]) |> distinct() |> count()) == n)
+
+cyclic(n: int) -> Square =>
+    0..n
+        |> map(r => 0..n |> map(c => (r + c) % n + 1) |> collect())
+        |> collect()
+
+tally(n: int, squares: int, random: System.Random)
+    -> Pipe[(square: string, times: int)] is
+    let cube = INCIDENCE_CUBE(cyclic(n), random)
+    let counts = MAP[string, int]()
+
+    for _ in 0..squares do
+        cube.next()
+        let key = text(reduced(cube.square))
+        let seen = if counts.contains_key(key) then counts[key] else 0 fi
+        counts[key] = seen + 1
+    od
+
+    counts
+        |> map(entry => (square = entry.key, times = entry.value))
+        |> sort_by(e => e.square)
+si
+
+let random = System.Random(42)
+
+write_line("Part 1: 10,000 squares of order 4, in reduced form:")
+
+for (square, times) in tally(4, 10_000, random) do
+    write_line()
+    write_line(square)
+    write_line("  produced {times} times")
+od
+
+let order_5 = tally(5, 10_000, random) |> collect()
+
+write_line()
+write_line("Part 2: 10,000 squares of order 5:")
+write_line("{order_5.count} reduced forms produced, each this many times:")
+for row in order_5 |> chunk(14) do
+    write_line(row |> map(e => "{e.times,4}") |> join(""))
+od
+
+let cube_42 = INCIDENCE_CUBE(cyclic(42), random)
+
+for _ in 0..750 do
+    cube_42.next()
+od
+
+write_line()
+write_line("Part 3: the 750th square of order 42:")
+write_line(text(cube_42.square))
+
+let cube_256 = INCIDENCE_CUBE(cyclic(256), random)
+
+for _ in 0..1000 do
+    cube_256.next()
+od
+
+write_line()
+write_line("Part 4: 1,000 squares of order 256 generated")
+write_line("The last is a Latin square: {is_latin(cube_256.square)}")
