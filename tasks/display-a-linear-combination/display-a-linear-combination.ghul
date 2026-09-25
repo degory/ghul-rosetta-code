@@ -1,0 +1,41 @@
+use default
+
+term(coefficient: int, index: int) -> string =>
+    let size = int.abs(coefficient) in
+    if size == 1 then "e({index})" else "{size}*e({index})" fi
+
+linear_combination(scalars: List[int]) -> string =>
+    let terms =
+        scalars
+            |> index()
+            |> filter(((_, c)) => c != 0)
+            |> collect_list()
+    in
+    if terms.count == 0 then
+        "0"
+    else
+        let (first_index, first) = terms[0] in
+        let lead = if first < 0 then "-" else "" fi in
+        let rest =
+            terms
+                |> skip(1)
+                |> map(((i, c)) =>
+                    let sign = if c < 0 then " - " else " + " fi in
+                    "{sign}{term(c, i + 1)}")
+                |> join("")
+        in
+        "{lead}{term(first, first_index + 1)}{rest}"
+    fi
+
+let lists = [
+    [1, 2, 3], [0, 1, 2, 3], [1, 0, 3, 4], [1, 2, 0], [0, 0, 0], [0],
+    [1, 1, 1], [-1, -1, -1], [-1, -2, 0, -3], [-1]
+]
+
+for (number, scalars) in lists |> index() do
+    let shown = $(scalars)
+
+    let combination = linear_combination(scalars)
+
+    write_line("{number + 1,2}) {shown,-16} -> {combination}")
+od

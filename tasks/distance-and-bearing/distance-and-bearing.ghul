@@ -1,0 +1,59 @@
+use default
+
+use System.Text.RegularExpressions.Regex
+
+let csv_field = Regex("(?<=^|,)(\"[^\"]*\"|[^,]*)")
+let earth_radius = 6371.0 / 1.852
+
+fields(line: string) -> List[string] =>
+    csv_field.matches(line)
+        |> map(found => found.value.trim('"'))
+        |> collect_list()
+
+use Airport =
+    (name: string, country: string, icao: string, at: (double, double))
+
+airport(line: string) -> Airport =>
+    let f = fields(line) in
+    (f[1], f[3], f[5], (double.parse(f[6]), double.parse(f[7])))
+
+distance_and_bearing(
+    from: (double, double), to: (double, double)
+) -> (distance: double, bearing: double) =>
+    let (phi1, lambda1) = from, (phi2, lambda2) = to in
+    let p1 = double.degrees_to_radians(phi1) in
+    let p2 = double.degrees_to_radians(phi2) in
+    let dp = p2 - p1 in
+    let dl = double.degrees_to_radians(lambda2 - lambda1) in
+    let a =
+        double.sin(dp / 2.0) * double.sin(dp / 2.0) +
+        double.cos(p1) * double.cos(p2) *
+        double.sin(dl / 2.0) * double.sin(dl / 2.0)
+    in
+    let c = 2.0 * double.atan2(double.sqrt(a), double.sqrt(1.0 - a)) in
+    let y = double.sin(dl) * double.cos(p2) in
+    let x =
+        double.cos(p1) * double.sin(p2) -
+        double.sin(p1) * double.cos(p2) * double.cos(dl)
+    in
+    let angle = double.radians_to_degrees(double.atan2(y, x)) in
+    (earth_radius * c, if angle < 0.0 then angle + 360.0 else angle fi)
+
+let plane = (51.514669, 2.198581)
+
+let nearest =
+    IO.File.read_lines("airports.dat")
+        |> map(airport)
+        |> map(a =>
+            (airport = a, course = distance_and_bearing(plane, a.at)))
+        |> sort_by(entry => entry.course.distance)
+        |> take(20)
+
+write_line("Distance  Bearing  ICAO  Country         Airport")
+write_line("--------  -------  ----  --------------  -------")
+
+for (a, (distance, bearing)) in nearest do
+    let columns = "{distance,8:F1}  {bearing,7:F0}  {a.icao,-4}"
+
+    write_line("{columns}  {a.country,-14}  {a.name}")
+od

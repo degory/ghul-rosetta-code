@@ -1,0 +1,62 @@
+use default
+
+let base = 1_000_000_000L
+
+zeros_in(limb: long, width: int) -> int is
+    let rest mut = limb
+    let zeros mut = 0
+
+    for _ in 0..width do
+        if rest % 10L == 0L then
+            zeros = zeros + 1
+        fi
+
+        rest = rest / 10L
+    od
+
+    zeros
+si
+
+digit_count(n: long) -> int => "{n}".length
+
+mean_zero_proportion(limit: int) -> double is
+    let limbs = LIST([1L])
+    let total mut = 0.0
+
+    for n in 1::limit do
+        let carry mut = 0L
+
+        for i in 0..limbs.count do
+            let product = limbs[i] * cast long(n) + carry
+
+            limbs[i] = product % base
+            carry = product / base
+        od
+
+        while carry > 0L do
+            limbs.add(carry % base)
+            carry = carry / base
+        od
+
+        let top = limbs[limbs.count - 1]
+        let top_digits = digit_count(top)
+
+        let lower_zeros =
+            limbs
+                |> take(limbs.count - 1)
+                |> map(limb => zeros_in(limb, 9))
+                |> sum()
+
+        let zeros = zeros_in(top, top_digits) + lower_zeros
+
+        let digits = top_digits + 9 * (limbs.count - 1)
+
+        total = total + cast double(zeros) / cast double(digits)
+    od
+
+    total / cast double(limit)
+si
+
+for limit in [100, 1000, 10000] do
+    write_line("{limit,6:N0}: {mean_zero_proportion(limit):F10}")
+od

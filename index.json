@@ -7327,6 +7327,84 @@
       ]
     },
     {
+      "slug": "determinant-and-permanent",
+      "title": "Determinant and permanent",
+      "url": "https://rosettacode.org/wiki/Determinant_and_permanent",
+      "tags": [
+        "maths",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "determinant-and-permanent",
+          "heading": null,
+          "source": "tasks/determinant-and-permanent/determinant-and-permanent.ghul",
+          "output": "tasks/determinant-and-permanent/run.expected",
+          "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "determine-if-a-string-has-all-the-same-characters",
+      "title": "Determine if a string has all the same characters",
+      "url": "https://rosettacode.org/wiki/Determine_if_a_string_has_all_the_same_characters",
+      "tags": [
+        "strings",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 18,
+      "parts": [
+        {
+          "id": "determine-if-a-string-has-all-the-same-characters",
+          "heading": null,
+          "source": "tasks/determine-if-a-string-has-all-the-same-characters/determine-if-a-string-has-all-the-same-characters.ghul",
+          "output": "tasks/determine-if-a-string-has-all-the-same-characters/run.expected",
+          "lines": 18,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "determine-if-a-string-has-all-unique-characters",
+      "title": "Determine if a string has all unique characters",
+      "url": "https://rosettacode.org/wiki/Determine_if_a_string_has_all_unique_characters",
+      "tags": [
+        "strings",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 24,
+      "parts": [
+        {
+          "id": "determine-if-a-string-has-all-unique-characters",
+          "heading": null,
+          "source": "tasks/determine-if-a-string-has-all-unique-characters/determine-if-a-string-has-all-unique-characters.ghul",
+          "output": "tasks/determine-if-a-string-has-all-unique-characters/run.expected",
+          "lines": 24,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "determine-if-a-string-is-collapsible",
       "title": "Determine if a string is collapsible",
       "url": "https://rosettacode.org/wiki/Determine_if_a_string_is_collapsible",
@@ -7488,6 +7566,32 @@
       ]
     },
     {
+      "slug": "dice-game-probabilities",
+      "title": "Dice game probabilities",
+      "url": "https://rosettacode.org/wiki/Dice_game_probabilities",
+      "tags": [
+        "maths",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "dice-game-probabilities",
+          "heading": null,
+          "source": "tasks/dice-game-probabilities/dice-game-probabilities.ghul",
+          "output": "tasks/dice-game-probabilities/run.expected",
+          "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "digital-root",
       "title": "Digital root",
       "url": "https://rosettacode.org/wiki/Digital_root",
@@ -7507,6 +7611,32 @@
           "source": "tasks/digital-root/digital-root.ghul",
           "output": "tasks/digital-root/run.expected",
           "lines": 26,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "digital-root-multiplicative-digital-root",
+      "title": "Digital root/Multiplicative digital root",
+      "url": "https://rosettacode.org/wiki/Digital_root/Multiplicative_digital_root",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 36,
+      "parts": [
+        {
+          "id": "digital-root-multiplicative-digital-root",
+          "heading": null,
+          "source": "tasks/digital-root-multiplicative-digital-root/digital-root-multiplicative-digital-root.ghul",
+          "output": "tasks/digital-root-multiplicative-digital-root/run.expected",
+          "lines": 36,
           "playground": true,
           "input": false,
           "images": []
@@ -7609,6 +7739,83 @@
       ]
     },
     {
+      "slug": "disarium-numbers",
+      "title": "Disarium numbers",
+      "url": "https://rosettacode.org/wiki/Disarium_numbers",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 10,
+      "parts": [
+        {
+          "id": "disarium-numbers",
+          "heading": null,
+          "source": "tasks/disarium-numbers/disarium-numbers.ghul",
+          "output": "tasks/disarium-numbers/run.expected",
+          "lines": 10,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "discordian-date",
+      "title": "Discordian date",
+      "url": "https://rosettacode.org/wiki/Discordian_date",
+      "tags": [
+        "date-time"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 43,
+      "parts": [
+        {
+          "id": "discordian-date",
+          "heading": null,
+          "source": "tasks/discordian-date/discordian-date.ghul",
+          "output": "tasks/discordian-date/run.expected",
+          "lines": 43,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "display-a-linear-combination",
+      "title": "Display a linear combination",
+      "url": "https://rosettacode.org/wiki/Display_a_linear_combination",
+      "tags": [
+        "strings",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "display-a-linear-combination",
+          "heading": null,
+          "source": "tasks/display-a-linear-combination/display-a-linear-combination.ghul",
+          "output": "tasks/display-a-linear-combination/run.expected",
+          "lines": 41,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "display-an-outline-as-a-nested-table",
       "title": "Display an outline as a nested table",
       "url": "https://rosettacode.org/wiki/Display_an_outline_as_a_nested_table",
@@ -7629,6 +7836,59 @@
           "source": "tasks/display-an-outline-as-a-nested-table/display-an-outline-as-a-nested-table.ghul",
           "output": "tasks/display-an-outline-as-a-nested-table/run.expected",
           "lines": 121,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "distance-and-bearing",
+      "title": "Distance and Bearing",
+      "url": "https://rosettacode.org/wiki/Distance_and_Bearing",
+      "tags": [
+        "maths",
+        "parsing",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "distance-and-bearing",
+          "heading": null,
+          "source": "tasks/distance-and-bearing/distance-and-bearing.ghul",
+          "output": "tasks/distance-and-bearing/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "distribution-of-0-digits-in-factorial-series",
+      "title": "Distribution of 0 digits in factorial series",
+      "url": "https://rosettacode.org/wiki/Distribution_of_0_digits_in_factorial_series",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "distribution-of-0-digits-in-factorial-series",
+          "heading": null,
+          "source": "tasks/distribution-of-0-digits-in-factorial-series/distribution-of-0-digits-in-factorial-series.ghul",
+          "output": "tasks/distribution-of-0-digits-in-factorial-series/run.expected",
+          "lines": 62,
           "playground": true,
           "input": false,
           "images": []

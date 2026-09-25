@@ -1,0 +1,8 @@
+[[1, 2], [3, 4]]
+    determinant -2, permanent 10
+[[2, 9, 4], [7, 5, 3], [6, 1, 8]]
+    determinant -360, permanent 900
+[[0, 1, 0], [0, 0, 1], [1, 0, 0]]
+    determinant 1, permanent 1
+[[0, 1, 0], [1, 0, 0], [0, 0, 1]]
+    determinant -1, permanent 1

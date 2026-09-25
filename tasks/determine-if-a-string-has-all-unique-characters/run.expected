@@ -1,0 +1,10 @@
+"" has length 0:
+    all unique
+"." has length 1:
+    all unique
+"abcABC" has length 6:
+    all unique
+"XYZ ZYX" has length 7:
+    not unique: 'X' (0x58) is at positions 1 and 7
+"1234567890ABCDEFGHIJKLMN0PQRSTUVWXYZ" has length 36:
+    not unique: '0' (0x30) is at positions 10 and 25

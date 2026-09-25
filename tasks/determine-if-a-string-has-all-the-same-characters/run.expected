@@ -1,0 +1,14 @@
+"" has length 0:
+    all the same
+"   " has length 3:
+    all the same
+"2" has length 1:
+    all the same
+"333" has length 3:
+    all the same
+".55" has length 3:
+    not all the same: '5' (0x35) differs at position 2
+"tttTTT" has length 6:
+    not all the same: 'T' (0x54) differs at position 4
+"4444 444k" has length 9:
+    not all the same: ' ' (0x20) differs at position 5
