@@ -1,0 +1,51 @@
+use default
+
+let minute = 60.0
+let hour = 60.0 * minute
+let day = 24.0 * hour
+let week = 7.0 * day
+let year = 365.25 * day
+let month = year / 12.0
+
+let shaved = [
+    ("1 second", 1.0), ("5 seconds", 5.0), ("30 seconds", 30.0),
+    ("1 minute", minute), ("5 minutes", 5.0 * minute),
+    ("30 minutes", 30.0 * minute), ("1 hour", hour),
+    ("6 hours", 6.0 * hour), ("1 day", day)
+]
+
+let per_year = [
+    ("50/day", 50.0 * 365.25), ("5/day", 5.0 * 365.25), ("daily", 365.25),
+    ("weekly", 365.25 / 7.0), ("monthly", 12.0), ("yearly", 1.0)
+]
+
+let units = [
+    ("second", 1.0, minute), ("minute", minute, hour), ("hour", hour, day),
+    ("day", day, 14.0 * day), ("week", week, 9.0 * week),
+    ("month", month, year)
+]
+
+describe(seconds: double) -> string =>
+    units
+    |> filter(((_, _, below)) => seconds < below)
+    |> map(((name, size, _)) =>
+        let count = cast int(seconds / size) in
+        "{count} {name}{if count == 1 then "" else "s" fi}")
+    |> first() ?? ""
+
+
+write_line("{"",-13}how often you do the task (over five years)")
+let headings = per_year |> map(((name, _)) => "{name,-11}") |> join("")
+
+write_line("{"shaved off",-11}| {headings}".trim_end())
+write_line(string('-', 13 + 11 * per_year.count))
+
+for (label, seconds) in shaved do
+    let cells =
+        per_year
+        |> map(((_, times)) => describe(seconds * times * 5.0))
+        |> map(cell => "{cell,-11}")
+        |> join("")
+
+    write_line("{label,-11}| {cells}".trim_end())
+od

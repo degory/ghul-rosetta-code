@@ -30535,6 +30535,32 @@
       ]
     },
     {
+      "slug": "worthwhile-task-shaving",
+      "title": "Worthwhile task shaving",
+      "url": "https://rosettacode.org/wiki/Worthwhile_task_shaving",
+      "tags": [
+        "date-time",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 51,
+      "parts": [
+        {
+          "id": "worthwhile-task-shaving",
+          "heading": null,
+          "source": "tasks/worthwhile-task-shaving/worthwhile-task-shaving.ghul",
+          "output": "tasks/worthwhile-task-shaving/run.expected",
+          "lines": 51,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "write-entire-file",
       "title": "Write entire file",
       "url": "https://rosettacode.org/wiki/Write_entire_file",
