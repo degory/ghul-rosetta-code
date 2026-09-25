@@ -21,9 +21,43 @@ on:
         type: string
 
 jobs:
+  # A ledger-only change records what is already on the wiki; ledger.yml
+  # approves it, and there is nothing in it for a reviewer to read.
+  scope:
+    name: Review scope
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      ledger_only: ${{ steps.scope.outputs.ledger_only }}
+    steps:
+    - uses: actions/checkout@v7
+      with:
+        ref: ${{ github.event.pull_request.base.sha }}
+
+    - id: scope
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR: ${{ github.event.pull_request.number }}
+        REPO: ${{ github.repository }}
+      run: |
+        set -eu
+
+        gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[].filename' > files.txt
+
+        if [ -x scripts/ledger-only.sh ] && scripts/ledger-only.sh < files.txt ; then
+            echo "ledger_only=true" >> "$GITHUB_OUTPUT"
+        else
+            echo "ledger_only=false" >> "$GITHUB_OUTPUT"
+        fi
+
   code_review:
     name: Code review
-    if: ${{ github.event_name == 'workflow_dispatch' || ((github.event.action != 'edited' || github.event.changes.body != null) && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository) }}
+    needs: scope
+    if: ${{ !cancelled() && needs.scope.outputs.ledger_only != 'true' && (github.event_name == 'workflow_dispatch' || ((github.event.action != 'edited' || github.event.changes.body != null) && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository)) }}
     permissions:
       contents: read
       pull-requests: write

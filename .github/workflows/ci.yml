@@ -14,7 +14,7 @@ jobs:
   # What a pull request has to run. A change confined to task directories
   # needs only those tasks; anything else - a package version, the root
   # project, a script, the workflow - can reach every task, so it runs the
-  # lot. The queue always runs the lot, whatever it contains.
+  # lot. The queue runs the lot too, unless the group touches only the ledger.
   #
   # The test is "outside tasks/" rather than a list of shared paths, so a
   # shared input added later is covered without this job being taught about
@@ -40,14 +40,23 @@ jobs:
     - id: pick
       env:
         EVENT: ${{ github.event_name }}
-        BASE: ${{ github.event.pull_request.base.sha }}
-        HEAD: ${{ github.event.pull_request.head.sha }}
+        BASE: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+        HEAD: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha }}
       run: |
         set -euo pipefail
 
+        # The queue runs the whole suite, unless the group changes nothing but
+        # the ledger, which no task reads.
         if [ "$EVENT" != pull_request ] ; then
-            echo "full=true" >>"$GITHUB_OUTPUT"
-            echo "queue run: the whole suite"
+            if git diff --name-only "$BASE" "$HEAD" | scripts/ledger-only.sh ; then
+                echo "full=false" >>"$GITHUB_OUTPUT"
+                echo "tasks=" >>"$GITHUB_OUTPUT"
+                echo "queue run of a ledger-only group: no tasks"
+            else
+                echo "full=true" >>"$GITHUB_OUTPUT"
+                echo "queue run: the whole suite"
+            fi
+
             exit 0
         fi
 
