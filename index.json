@@ -20412,6 +20412,32 @@
       ]
     },
     {
+      "slug": "numeric-error-propagation",
+      "title": "Numeric error propagation",
+      "url": "https://rosettacode.org/wiki/Numeric_error_propagation",
+      "tags": [
+        "operators",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "numeric-error-propagation",
+          "heading": null,
+          "source": "tasks/numeric-error-propagation/numeric-error-propagation.ghul",
+          "output": "tasks/numeric-error-propagation/run.expected",
+          "lines": 47,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "numerical-and-alphabetical-suffixes",
       "title": "Numerical and alphabetical suffixes",
       "url": "https://rosettacode.org/wiki/Numerical_and_alphabetical_suffixes",
@@ -20433,6 +20459,110 @@
           "source": "tasks/numerical-and-alphabetical-suffixes/numerical-and-alphabetical-suffixes.ghul",
           "output": "tasks/numerical-and-alphabetical-suffixes/run.expected",
           "lines": 170,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "numerical-integration",
+      "title": "Numerical integration",
+      "url": "https://rosettacode.org/wiki/Numerical_integration",
+      "tags": [
+        "maths",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "numerical-integration",
+          "heading": null,
+          "source": "tasks/numerical-integration/numerical-integration.ghul",
+          "output": "tasks/numerical-integration/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "numerical-integration-gauss-legendre-quadrature",
+      "title": "Numerical integration/Gauss-Legendre Quadrature",
+      "url": "https://rosettacode.org/wiki/Numerical_integration/Gauss-Legendre_Quadrature",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "numerical-integration-gauss-legendre-quadrature",
+          "heading": null,
+          "source": "tasks/numerical-integration-gauss-legendre-quadrature/numerical-integration-gauss-legendre-quadrature.ghul",
+          "output": "tasks/numerical-integration-gauss-legendre-quadrature/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "numerical-integration-romberg-integration",
+      "title": "Numerical integration/Romberg integration",
+      "url": "https://rosettacode.org/wiki/Numerical_integration/Romberg_integration",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 49,
+      "parts": [
+        {
+          "id": "numerical-integration-romberg-integration",
+          "heading": null,
+          "source": "tasks/numerical-integration-romberg-integration/numerical-integration-romberg-integration.ghul",
+          "output": "tasks/numerical-integration-romberg-integration/run.expected",
+          "lines": 49,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "numerical-integration-tanh-sinh-quadrature",
+      "title": "Numerical integration/Tanh-Sinh Quadrature",
+      "url": "https://rosettacode.org/wiki/Numerical_integration/Tanh-Sinh_Quadrature",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "numerical-integration-tanh-sinh-quadrature",
+          "heading": null,
+          "source": "tasks/numerical-integration-tanh-sinh-quadrature/numerical-integration-tanh-sinh-quadrature.ghul",
+          "output": "tasks/numerical-integration-tanh-sinh-quadrature/run.expected",
+          "lines": 41,
           "playground": true,
           "input": false,
           "images": []
@@ -20546,6 +20676,32 @@
       ]
     },
     {
+      "slug": "old-lady-swallowed-a-fly",
+      "title": "Old lady swallowed a fly",
+      "url": "https://rosettacode.org/wiki/Old_lady_swallowed_a_fly",
+      "tags": [
+        "strings",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "old-lady-swallowed-a-fly",
+          "heading": null,
+          "source": "tasks/old-lady-swallowed-a-fly/old-lady-swallowed-a-fly.ghul",
+          "output": "tasks/old-lady-swallowed-a-fly/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "old-russian-measure-of-length",
       "title": "Old Russian measure of length",
       "url": "https://rosettacode.org/wiki/Old_Russian_measure_of_length",
@@ -20618,6 +20774,84 @@
           "source": "tasks/one-of-n-lines-in-a-file/one-of-n-lines-in-a-file.ghul",
           "output": "tasks/one-of-n-lines-in-a-file/run.expected",
           "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "one-time-pad",
+      "title": "One-time pad",
+      "url": "https://rosettacode.org/wiki/One-time_pad",
+      "tags": [
+        "strings",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "one-time-pad",
+          "heading": null,
+          "source": "tasks/one-time-pad/one-time-pad.ghul",
+          "output": "tasks/one-time-pad/run.expected",
+          "lines": 96,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "one-two-primes",
+      "title": "One-two primes",
+      "url": "https://rosettacode.org/wiki/One-two_primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 61,
+      "parts": [
+        {
+          "id": "one-two-primes",
+          "heading": null,
+          "source": "tasks/one-two-primes/one-two-primes.ghul",
+          "output": "tasks/one-two-primes/run.expected",
+          "lines": 61,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "openwebnet-password",
+      "title": "OpenWebNet password",
+      "url": "https://rosettacode.org/wiki/OpenWebNet_password",
+      "tags": [
+        "algorithms",
+        "pattern-matching"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "openwebnet-password",
+          "heading": null,
+          "source": "tasks/openwebnet-password/openwebnet-password.ghul",
+          "output": "tasks/openwebnet-password/run.expected",
+          "lines": 47,
           "playground": true,
           "input": false,
           "images": []

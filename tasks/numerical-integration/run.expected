@@ -1,0 +1,28 @@
+x cubed on [0, 1], 100 steps:
+  left rectangle                  0.245025
+  right rectangle                 0.255025
+  midpoint rectangle              0.249988
+  trapezium                       0.250025
+  Simpson                         0.250000
+
+1/x on [1, 100], 1,000 steps:
+  left rectangle                  4.654991
+  right rectangle                 4.556981
+  midpoint rectangle              4.604763
+  trapezium                       4.605986
+  Simpson                         4.605170
+
+x on [0, 5000], 5,000,000 steps:
+  left rectangle           12499997.500000
+  right rectangle          12500002.500000
+  midpoint rectangle       12500000.000000
+  trapezium                12500000.000000
+  Simpson                  12500000.000000
+
+x on [0, 6000], 6,000,000 steps:
+  left rectangle           17999997.000000
+  right rectangle          18000003.000000
+  midpoint rectangle       18000000.000000
+  trapezium                18000000.000000
+  Simpson                  18000000.000000
+

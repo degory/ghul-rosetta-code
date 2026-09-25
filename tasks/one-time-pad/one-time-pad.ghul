@@ -1,0 +1,96 @@
+use default
+
+use IO.File
+use IO.Path
+use System.Security.Cryptography.RandomNumberGenerator
+
+letters(text: string) -> string =>
+    string(text
+        |> filter(c => char.is_letter(c))
+        |> map(c => char.to_upper(c))
+        |> collect_array())
+
+random_group() -> string =>
+    string(1::6
+        |> map(_ => cast char(65 + RandomNumberGenerator.get_int32(26)))
+        |> collect_array())
+
+random_line() -> string => 1::6 |> map(_ => random_group()) |> join(" ")
+
+generate(path: string, lines: int) =>
+    File.write_all_lines(
+        path,
+        ["# generated one-time pad"]
+            |> cat(1::lines |> map(_ => random_line())))
+
+is_unused(line: string) -> bool =>
+    !line.starts_with("#") /\ !line.starts_with("-")
+
+take_key(path: string, length: int) -> string is
+    let lines = File.read_all_lines(path) |> collect_list()
+    let key = System.Text.StringBuilder()
+
+    for i in 0..lines.count do
+        if key.length < length /\ is_unused(lines[i]) then
+            key.append(letters(lines[i]))
+            lines[i] = "-{lines[i]}"
+        fi
+    od
+
+    assert key.length >= length else "the pad has run out"
+
+    File.write_all_lines(path, lines)
+    key.to_string().substring(0, length)
+si
+
+position(c: char) -> int => cast int(c) - cast int('A')
+
+shift(text: string, key: string, direction: int) -> string =>
+    string(0..text.length
+        |> map(i =>
+            let moved = position(text[i]) + direction * position(key[i]) in
+            cast char(cast int('A') + (moved + 26) % 26))
+        |> collect_array())
+
+round_trip(
+    message: string, sender: string, receiver: string
+) -> (sent: string, received: string) =>
+    let sent = shift(message, take_key(sender, message.length), 1) in
+    let key = take_key(receiver, sent.length) in
+    (sent = sent, received = shift(sent, key, -1))
+
+let folder =
+    Path.combine(Path.get_temp_path(), "otp-{System.Guid.new_guid()}")
+IO.Directory.create_directory(folder)
+
+pad(name: string) -> string => Path.combine(folder, name)
+
+File.copy("wikipedia.1tp", pad("sender.1tp"))
+File.copy("wikipedia.1tp", pad("receiver.1tp"))
+
+let message = letters("Hello, World")
+let (sent, received) =
+    round_trip(message, pad("sender.1tp"), pad("receiver.1tp"))
+
+let used = File.read_all_lines(pad("sender.1tp"))
+    |> count(l => l.starts_with("-"))
+
+write_line("With the Wikipedia pad:")
+write_line("  message:    {message}")
+write_line("  encrypted:  {sent}")
+write_line("  decrypted:  {received}")
+write_line("  lines used: {used}")
+
+generate(pad("fresh.1tp"), 5)
+File.copy(pad("fresh.1tp"), pad("fresh-copy.1tp"))
+
+let secret = letters("A one-time pad is only as secret as its pad")
+let trip = round_trip(secret, pad("fresh.1tp"), pad("fresh-copy.1tp"))
+let unused = File.read_all_lines(pad("fresh.1tp")) |> count(is_unused)
+
+write_line()
+write_line("With a freshly generated pad of 5 lines:")
+write_line("  round trip recovers the message: {trip.received =~ secret}")
+write_line("  lines left unused: {unused}")
+
+IO.Directory.delete(folder, true)
