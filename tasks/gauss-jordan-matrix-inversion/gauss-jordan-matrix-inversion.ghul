@@ -1,0 +1,54 @@
+use default
+
+invert(a: List[List[double]]) -> List[List[double]] is
+    let n = a.count
+
+    let rows = 0..n
+        |> map(i =>
+            a[i]
+                |> cat(0..n |> map(j => if i == j then 1.0 else 0.0 fi))
+                |> collect_list())
+        |> collect_list()
+
+    for k in 0..n do
+        let pivot = k..n |> max_by(i => System.Math.abs(rows[i][k]))!
+
+        assert rows[pivot][k] != 0.0 else "the matrix is singular"
+
+        (rows[k], rows[pivot]) = (rows[pivot], rows[k])
+
+        let divisor = rows[k][k]
+
+        for j in 0..2 * n do
+            rows[k][j] = rows[k][j] / divisor
+        od
+
+        for i in 0..n |> filter(i => i != k) do
+            let factor = rows[i][k]
+
+            for j in 0..2 * n do
+                rows[i][j] = rows[i][j] - factor * rows[k][j]
+            od
+        od
+    od
+
+    rows |> map(row => row |> skip(n) |> collect()) |> collect()
+si
+
+show(matrix: List[List[double]]) =>
+    for row in matrix do
+        write_line(row |> map(v => "{v,10:F5}") |> join(""))
+    od
+
+let examples = [
+    [[1.0, 2.0, 3.0], [4.0, 1.0, 6.0], [7.0, 8.0, 9.0]],
+    [[2.0, -1.0, 0.0], [-1.0, 2.0, -1.0], [0.0, -1.0, 2.0]]
+]
+
+for matrix in examples do
+    write_line("Matrix:")
+    show(matrix)
+    write_line("Inverse:")
+    show(invert(matrix))
+    write_line()
+od

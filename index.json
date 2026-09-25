@@ -10876,6 +10876,32 @@
       ]
     },
     {
+      "slug": "gauss-jordan-matrix-inversion",
+      "title": "Gauss-Jordan matrix inversion",
+      "url": "https://rosettacode.org/wiki/Gauss-Jordan_matrix_inversion",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "gauss-jordan-matrix-inversion",
+          "heading": null,
+          "source": "tasks/gauss-jordan-matrix-inversion/gauss-jordan-matrix-inversion.ghul",
+          "output": "tasks/gauss-jordan-matrix-inversion/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "gaussian-elimination",
       "title": "Gaussian elimination",
       "url": "https://rosettacode.org/wiki/Gaussian_elimination",
