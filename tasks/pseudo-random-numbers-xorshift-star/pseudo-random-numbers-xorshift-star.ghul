@@ -19,7 +19,7 @@ class XORSHIFT_STAR is
     si
 
     next_float() -> double =>
-        cast double(cast ulong(next_int())) / 4_294_967_296.0
+        cast double(next_int()) / 4_294_967_296.0
 si
 
 let first = XORSHIFT_STAR(1234567ul)
