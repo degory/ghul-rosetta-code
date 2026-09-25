@@ -1,0 +1,31 @@
+use default
+
+use System.Threading.Thread
+
+// There is no portable way to play a sound from .NET, so the beat is shown
+// rather than heard: the first beat of each bar is TICK, the others tock.
+
+metronome(beats_per_minute: int, beats_per_bar: int, bars: int) is
+    let interval = 60_000 / beats_per_minute
+    let clock = System.Diagnostics.Stopwatch.start_new()
+
+    write_line(
+        "{beats_per_minute} beats a minute, {beats_per_bar} to the bar")
+
+    for beat in 0..beats_per_bar * bars do
+        let due = cast long(beat * interval)
+        let wait = cast int(due - clock.elapsed_milliseconds)
+
+        if wait > 0 then
+            Thread.sleep(wait)
+        fi
+
+        let accent = beat % beats_per_bar == 0
+        let bar = beat / beats_per_bar + 1
+
+        write_line(if accent then "bar {bar}: TICK" else "        tock" fi)
+    od
+si
+
+metronome(240, 4, 2)
+metronome(360, 3, 2)
