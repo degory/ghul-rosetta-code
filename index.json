@@ -30456,6 +30456,32 @@
       ]
     },
     {
+      "slug": "world-cup-group-stage",
+      "title": "World Cup group stage",
+      "url": "https://rosettacode.org/wiki/World_Cup_group_stage",
+      "tags": [
+        "generators",
+        "pattern-matching"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "world-cup-group-stage",
+          "heading": null,
+          "source": "tasks/world-cup-group-stage/world-cup-group-stage.ghul",
+          "output": "tasks/world-cup-group-stage/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "write-entire-file",
       "title": "Write entire file",
       "url": "https://rosettacode.org/wiki/Write_entire_file",
