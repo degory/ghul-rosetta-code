@@ -1,0 +1,29 @@
+use default
+
+power_mod(base: bigint, exponent: bigint, modulus: bigint) -> bigint is
+    let result mut = 1n % modulus
+    let square mut = base % modulus
+    let remaining mut = exponent
+
+    while remaining > 0n do
+        if !remaining.is_even then
+            result = result * square % modulus
+        fi
+
+        square = square * square % modulus
+        remaining = remaining >> 1
+    od
+
+    result
+si
+
+let a =
+    2988348162058574136915891421498819466320163312926952423791023078876139n
+let b =
+    2351399303373464486466122544523690094744975233415544072992656881240319n
+let m = bigint.pow(10n, 40)
+
+let digits = power_mod(a, b, m)
+
+write_line(digits)
+write_line("same as mod_pow: {digits =~ bigint.mod_pow(a, b, m)}")
