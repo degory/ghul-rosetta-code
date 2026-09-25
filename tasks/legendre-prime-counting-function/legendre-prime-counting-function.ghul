@@ -1,0 +1,39 @@
+use default
+
+let limit = 40_000
+let composite = repeat(false, limit) |> collect_list()
+
+for p in 2..200 do
+    if !composite[p] then
+        for multiple in from(p * p, p) |> take_while(m => m < limit) do
+            composite[multiple] = true
+        od
+    fi
+od
+
+let primes = 2..limit
+    |> filter(n => !composite[n])
+    |> map(p => cast long(p))
+    |> collect()
+
+phi(x: long, a: int) -> long =>
+    if a == 0 then
+        x
+    elif x < primes[a] then
+        if x >= 1L then 1L else 0L fi
+    else
+        phi(x, a - 1) - phi(x / primes[a - 1], a - 1)
+    fi
+
+prime_count(n: long) -> long =>
+    if n < 2L then
+        0L
+    else
+        let a = prime_count(cast long(System.Math.sqrt(cast double(n)))) in
+        phi(n, cast int(a)) + a - 1L
+    fi
+
+for exponent in 0::9 do
+    let n = cast long(System.Math.pow(10.0, cast double(exponent)))
+    write_line("10^{exponent} {prime_count(n),12:N0}")
+od

@@ -4007,6 +4007,11 @@
       "published_hash": "4e31d7b03e70759530402aae2ed29806331ab13ce4c3a6e10cbd3e448e6140d9"
     },
     {
+      "title": "Largest number divisible by its digits",
+      "slug": "largest-number-divisible-by-its-digits",
+      "state": "solved"
+    },
+    {
       "title": "Largest proper divisor of n",
       "slug": "largest-proper-divisor-of-n",
       "state": "published",
@@ -4017,6 +4022,26 @@
       "slug": "last-friday-of-each-month",
       "state": "published",
       "published_hash": "0794e0450f9ce2d2e6b242626d48a2c350bae44006f2b7121d9610ea37b59745"
+    },
+    {
+      "title": "Last letter-first letter",
+      "slug": "last-letter-first-letter",
+      "state": "solved"
+    },
+    {
+      "title": "Latin Squares in reduced form",
+      "slug": "latin-squares-in-reduced-form",
+      "state": "solved"
+    },
+    {
+      "title": "Latin Squares in reduced form/Randomizing using Jacobson and Matthews\u0027 technique",
+      "slug": "latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique",
+      "state": "solved"
+    },
+    {
+      "title": "Law of cosines - triples",
+      "slug": "law-of-cosines-triples",
+      "state": "solved"
     },
     {
       "title": "Leap year",
@@ -4031,10 +4056,20 @@
       "published_hash": "7480901608e6c992928bba97ac902db2f32c818d4e1e29967fa12afb2ffd267f"
     },
     {
+      "title": "Least m such that n! \u002B m is prime",
+      "slug": "least-m-such-that-n-m-is-prime",
+      "state": "solved"
+    },
+    {
       "title": "Left factorials",
       "slug": "left-factorials",
       "state": "published",
       "published_hash": "3ddaf442bc53f406a75a4ffb494913294d5e9febdd62a1b81fb0672d2eb1ccb7"
+    },
+    {
+      "title": "Legendre prime counting function",
+      "slug": "legendre-prime-counting-function",
+      "state": "solved"
     },
     {
       "title": "Leonardo numbers",
@@ -4056,6 +4091,11 @@
       "image_hashes": {
         "Ghul-levenshtein-distance-levenshtein.png": "aeb1e354a603a8cd22f07d241f39cfc16dba9a47"
       }
+    },
+    {
+      "title": "Levenshtein distance/Alignment",
+      "slug": "levenshtein-distance-alignment",
+      "state": "solved"
     },
     {
       "title": "Linear congruential generator",
@@ -4127,6 +4167,11 @@
       "published_hash": "7ae7340cb57a785bc76ad30562c451e80e454523b034b7d5d1b7af3ebc10e663"
     },
     {
+      "title": "Long year",
+      "slug": "long-year",
+      "state": "solved"
+    },
+    {
       "title": "Longest common subsequence",
       "slug": "longest-common-subsequence",
       "state": "published",
@@ -4143,6 +4188,11 @@
       "slug": "longest-increasing-subsequence",
       "state": "published",
       "published_hash": "b0c00d78efca71dafb75e10f0d0e7f39348fab9b611e1d00492bdab07f45db21"
+    },
+    {
+      "title": "Longest string challenge",
+      "slug": "longest-string-challenge",
+      "state": "solved"
     },
     {
       "title": "Look-and-say sequence",

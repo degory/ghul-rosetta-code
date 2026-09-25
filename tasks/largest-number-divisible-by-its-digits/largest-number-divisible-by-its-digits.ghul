@@ -1,0 +1,29 @@
+use default
+
+digits(n: long, base: long) -> List[long] is
+    let result = LIST[long]()
+    let rest mut = n
+
+    while rest > 0L do
+        result.add(rest % base)
+        rest = rest / base
+    od
+
+    result
+si
+
+is_lynch_bell(n: long, base: long) -> bool =>
+    let digit_list = digits(n, base) in
+    digit_list |> all(d => d != 0L /\ n % d == 0L) /\
+    digit_list |> distinct() |> count() == digit_list.count
+
+largest(base: long, step: long, highest: long) -> long =>
+    from(0L)
+        |> map(k => highest / step * step - k * step)
+        |> find(n => is_lynch_bell(n, base))!
+
+let decimal = largest(10L, 504L, 98764321L)
+let hexadecimal = largest(16L, 360360L, 0xFEDCBA987654321L)
+
+write_line("Largest decimal: {decimal}")
+write_line("Largest hexadecimal: {hexadecimal:X} ({hexadecimal})")

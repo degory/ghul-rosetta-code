@@ -16484,6 +16484,32 @@
       ]
     },
     {
+      "slug": "largest-number-divisible-by-its-digits",
+      "title": "Largest number divisible by its digits",
+      "url": "https://rosettacode.org/wiki/Largest_number_divisible_by_its_digits",
+      "tags": [
+        "number-theory",
+        "puzzles"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "largest-number-divisible-by-its-digits",
+          "heading": null,
+          "source": "tasks/largest-number-divisible-by-its-digits/largest-number-divisible-by-its-digits.ghul",
+          "output": "tasks/largest-number-divisible-by-its-digits/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "largest-proper-divisor-of-n",
       "title": "Largest proper divisor of n",
       "url": "https://rosettacode.org/wiki/Largest_proper_divisor_of_n",
@@ -16530,6 +16556,112 @@
           "source": "tasks/last-friday-of-each-month/last-friday-of-each-month.ghul",
           "output": "tasks/last-friday-of-each-month/run.expected",
           "lines": 24,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "last-letter-first-letter",
+      "title": "Last letter-first letter",
+      "url": "https://rosettacode.org/wiki/Last_letter-first_letter",
+      "tags": [
+        "recursion",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "last-letter-first-letter",
+          "heading": null,
+          "source": "tasks/last-letter-first-letter/last-letter-first-letter.ghul",
+          "output": "tasks/last-letter-first-letter/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "latin-squares-in-reduced-form",
+      "title": "Latin Squares in reduced form",
+      "url": "https://rosettacode.org/wiki/Latin_Squares_in_reduced_form",
+      "tags": [
+        "generators",
+        "recursion",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 65,
+      "parts": [
+        {
+          "id": "latin-squares-in-reduced-form",
+          "heading": null,
+          "source": "tasks/latin-squares-in-reduced-form/latin-squares-in-reduced-form.ghul",
+          "output": "tasks/latin-squares-in-reduced-form/run.expected",
+          "lines": 65,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique",
+      "title": "Latin Squares in reduced form/Randomizing using Jacobson and Matthews' technique",
+      "url": "https://rosettacode.org/wiki/Latin_Squares_in_reduced_form/Randomizing_using_Jacobson_and_Matthews'_technique",
+      "tags": [
+        "algorithms",
+        "classes",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 173,
+      "parts": [
+        {
+          "id": "latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique",
+          "heading": null,
+          "source": "tasks/latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique/latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique.ghul",
+          "output": "tasks/latin-squares-in-reduced-form-randomizing-using-jacobson-and-matthews-technique/run.expected",
+          "lines": 173,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "law-of-cosines-triples",
+      "title": "Law of cosines - triples",
+      "url": "https://rosettacode.org/wiki/Law_of_cosines_-_triples",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "law-of-cosines-triples",
+          "heading": null,
+          "source": "tasks/law-of-cosines-triples/law-of-cosines-triples.ghul",
+          "output": "tasks/law-of-cosines-triples/run.expected",
+          "lines": 35,
           "playground": true,
           "input": false,
           "images": []
@@ -16589,6 +16721,32 @@
       ]
     },
     {
+      "slug": "least-m-such-that-n-m-is-prime",
+      "title": "Least m such that n! + m is prime",
+      "url": "https://rosettacode.org/wiki/Least_m_such_that_n!_+_m_is_prime",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "least-m-such-that-n-m-is-prime",
+          "heading": null,
+          "source": "tasks/least-m-such-that-n-m-is-prime/least-m-such-that-n-m-is-prime.ghul",
+          "output": "tasks/least-m-such-that-n-m-is-prime/run.expected",
+          "lines": 63,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "left-factorials",
       "title": "Left factorials",
       "url": "https://rosettacode.org/wiki/Left_factorials",
@@ -16609,6 +16767,32 @@
           "source": "tasks/left-factorials/left-factorials.ghul",
           "output": "tasks/left-factorials/run.expected",
           "lines": 25,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "legendre-prime-counting-function",
+      "title": "Legendre prime counting function",
+      "url": "https://rosettacode.org/wiki/Legendre_prime_counting_function",
+      "tags": [
+        "primes",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "legendre-prime-counting-function",
+          "heading": null,
+          "source": "tasks/legendre-prime-counting-function/legendre-prime-counting-function.ghul",
+          "output": "tasks/legendre-prime-counting-function/run.expected",
+          "lines": 39,
           "playground": true,
           "input": false,
           "images": []
@@ -16707,6 +16891,32 @@
           "images": [
             "tasks/levenshtein-distance/02-the-matrix-drawn/levenshtein.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "levenshtein-distance-alignment",
+      "title": "Levenshtein distance/Alignment",
+      "url": "https://rosettacode.org/wiki/Levenshtein_distance/Alignment",
+      "tags": [
+        "strings",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "levenshtein-distance-alignment",
+          "heading": null,
+          "source": "tasks/levenshtein-distance-alignment/levenshtein-distance-alignment.ghul",
+          "output": "tasks/levenshtein-distance-alignment/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -17023,6 +17233,31 @@
       ]
     },
     {
+      "slug": "long-year",
+      "title": "Long year",
+      "url": "https://rosettacode.org/wiki/Long_year",
+      "tags": [
+        "date-time"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "long-year",
+          "heading": null,
+          "source": "tasks/long-year/long-year.ghul",
+          "output": "tasks/long-year/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "longest-common-subsequence",
       "title": "Longest common subsequence",
       "url": "https://rosettacode.org/wiki/Longest_common_subsequence",
@@ -17096,6 +17331,32 @@
           "lines": 47,
           "playground": true,
           "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "longest-string-challenge",
+      "title": "Longest string challenge",
+      "url": "https://rosettacode.org/wiki/Longest_string_challenge",
+      "tags": [
+        "strings",
+        "recursion"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "longest-string-challenge",
+          "heading": null,
+          "source": "tasks/longest-string-challenge/longest-string-challenge.ghul",
+          "output": "tasks/longest-string-challenge/run.expected",
+          "lines": 35,
+          "playground": true,
+          "input": true,
           "images": []
         }
       ]
