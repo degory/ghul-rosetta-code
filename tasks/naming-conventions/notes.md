@@ -26,8 +26,8 @@ warning for each:
 - `non-snake_case name 'CountItems'`
 
 Names imported from .NET are read in the same conventions. Method, property and
-field names become `snake_case`, and enum members become `UPPER_SNAKE_CASE`,
-while class, struct and interface names keep their .NET spelling, apart
-from a few common types that are renamed: `IEnumerable<T>` is `Iterable[T]`.
-So `DateTime.DaysInMonth` is called as `DateTime.days_in_month`. An identifier
-that is also a ghūl keyword is written with a leading backtick.
+field names become `snake_case`, so `DateTime.DaysInMonth` is called as
+`DateTime.days_in_month`, and enum members become `UPPER_SNAKE_CASE`. Class,
+struct and interface names keep their .NET spelling, apart from a few common
+types that are renamed: `IEnumerable<T>` is `Iterable[T]`. An identifier that
+is also a ghūl keyword is written with a leading backtick.
