@@ -21983,6 +21983,32 @@
       ]
     },
     {
+      "slug": "roots-of-unity",
+      "title": "Roots of unity",
+      "url": "https://rosettacode.org/wiki/Roots_of_unity",
+      "tags": [
+        "maths",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "roots-of-unity",
+          "heading": null,
+          "source": "tasks/roots-of-unity/roots-of-unity.ghul",
+          "output": "tasks/roots-of-unity/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rot-13",
       "title": "Rot-13",
       "url": "https://rosettacode.org/wiki/Rot-13",
