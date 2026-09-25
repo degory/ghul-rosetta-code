@@ -6894,6 +6894,33 @@
       ]
     },
     {
+      "slug": "de-bruijn-sequences",
+      "title": "de Bruijn sequences",
+      "url": "https://rosettacode.org/wiki/de_Bruijn_sequences",
+      "tags": [
+        "algorithms",
+        "recursion",
+        "strings"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 61,
+      "parts": [
+        {
+          "id": "de-bruijn-sequences",
+          "heading": null,
+          "source": "tasks/de-bruijn-sequences/de-bruijn-sequences.ghul",
+          "output": "tasks/de-bruijn-sequences/run.expected",
+          "lines": 61,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "deal-cards-for-freecell",
       "title": "Deal cards for FreeCell",
       "url": "https://rosettacode.org/wiki/Deal_cards_for_FreeCell",
