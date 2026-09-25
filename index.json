@@ -14423,6 +14423,32 @@
       ]
     },
     {
+      "slug": "largest-number-divisible-by-its-digits",
+      "title": "Largest number divisible by its digits",
+      "url": "https://rosettacode.org/wiki/Largest_number_divisible_by_its_digits",
+      "tags": [
+        "number-theory",
+        "puzzles"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "largest-number-divisible-by-its-digits",
+          "heading": null,
+          "source": "tasks/largest-number-divisible-by-its-digits/largest-number-divisible-by-its-digits.ghul",
+          "output": "tasks/largest-number-divisible-by-its-digits/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "largest-proper-divisor-of-n",
       "title": "Largest proper divisor of n",
       "url": "https://rosettacode.org/wiki/Largest_proper_divisor_of_n",
