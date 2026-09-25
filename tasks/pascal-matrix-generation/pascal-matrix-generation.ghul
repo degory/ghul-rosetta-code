@@ -1,0 +1,35 @@
+use default
+
+choose(n: int, k: int) -> long =>
+    if k < 0 \/ k > n then
+        0L
+    else
+        1::k
+            |> reduce(1L, (c, i) => c * cast long(n - k + i) / cast long(i))
+    fi
+
+matrix(size: int, entry: (int, int) -> long) -> List[List[long]] =>
+    0..size
+        |> map(i => 0..size |> map(j => entry(i, j)) |> collect())
+        |> collect()
+
+upper(size: int) -> List[List[long]] => matrix(size, (i, j) => choose(j, i))
+
+lower(size: int) -> List[List[long]] => matrix(size, (i, j) => choose(i, j))
+
+symmetric(size: int) -> List[List[long]] =>
+    matrix(size, (i, j) => choose(i + j, i))
+
+show(title: string, m: List[List[long]]) is
+    write_line("{title}:")
+
+    for row in m do
+        write_line(row |> map(v => "{v,4}") |> join(""))
+    od
+
+    write_line()
+si
+
+show("Upper", upper(5))
+show("Lower", lower(5))
+show("Symmetric", symmetric(5))
