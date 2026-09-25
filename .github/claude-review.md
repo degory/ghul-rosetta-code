@@ -57,6 +57,17 @@ rather than restating them here.
   the code in a fixed-width block and ghul.dev in a narrower prose column.
 - **Statement terminators.** Sources here carry none: the line break is the
   terminator, and a `;` at the end of a line is a finding.
+- **A playground link that cannot work.** A part that imports `Raster`,
+  references a package outside the playground's fixed set, or writes to the
+  filesystem cannot run in the browser, and needs a `playground-unsupported`
+  file saying why. Without one the entry publishes a link that throws.
+- **A task's status out of step with the ledger.** `task.json`'s `status` is
+  written by `rosetta sync` and never by hand, so one left at `queued` while
+  `TASKS.json` says `solved` means it was edited rather than synced.
+- **An annotation that is the point of the example.** A type inference
+  recovers is usually noise, but a task demonstrating abstraction, or a
+  variable whose declared type is what the reader came for, keeps it. Ask what
+  the task is for before calling one redundant.
 
 ## Versioning
 

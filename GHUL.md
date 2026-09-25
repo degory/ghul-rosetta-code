@@ -34,6 +34,10 @@ The compiler warns when a ghūl-source declaration doesn't match the convention 
 - `non-pascal-case-name` — abstract classes, traits, unions, enums.
 - `non-upper-snake-case-name` — concrete classes, structs, variants, enum members.
 
+An identifier is written in whatever script its author writes in. A letter of any script starts one, and a letter, a digit, a combining mark or a connecting punctuation mark continues one, which is the set C# admits less the format characters: a zero-width joiner or a bidirectional control renders as nothing, so a name carrying one reads as a name it is not, and one inside an identifier is an error naming the character. Only the basic plane is covered, since a character above it is written as a surrogate pair and the scanner reads that as two characters. A symbol is an operator character and a letter is an identifier character, so no character is ever both, and an operator spelled `×` and an identifier spelled `naïve` are each what they look like.
+
+The conventions above are read with Unicode case. A character that has an upper and a lower form is checked whatever script it is in, so `ТИП` is a concrete class and `μέγεθος` a property. A character with neither form says nothing about case, so a name written entirely in a script that has none — Chinese, Japanese, Arabic, Hebrew — is correct as any kind and draws no warning.
+
 A class with only `static` members (and no primary-constructor parameters) is a static-utility container — never constructed — and accepts either PascalCase or UPPER_SNAKE_CASE.
 
 ## namespaces and `use`
@@ -56,9 +60,17 @@ A source file with no namespace declarations has its definitions placed in a com
 
 A namespace-less file may also carry bare statements at the file root. They run, in source order, as the program's entry point — so a short program needs no `entry` function — and may be interleaved with global definitions, which are visible regardless of where they appear. A file cannot both carry top-level statements and declare a namespace.
 
-The top-level statements are collected into a synthesised entry-point function, and a `let` among them declares a global variable: readable inside the functions and types defined in the same file, as well as by the top-level statements after it. Its type is inferred exactly as a local variable's is. A bare `let` stays unassignable everywhere; a `let ... mut` can be reassigned from later top-level statements and from functions alike, so it is genuinely shared state. Reading or assigning one from a top-level statement above its `let` is an error — the statements run in order, so the value would not exist yet; a function may mention it wherever the function is defined, since the function runs only when called. A `let` inside a nested block among the top-level statements stays an ordinary local of that block. It shares the file's namespace with the file's other definitions, so a top-level `let` and a global function, global variable or type of the same name are a redefinition error.
+The top-level statements are collected into a synthesised entry-point function, and a `let` among them declares a global variable: readable by the top-level statements after it, and inside the functions and types the file defines below it. The entry takes the two shapes the runtime can hand an entry point (see [functions](#functions)): the statements can read the command-line arguments as `args` and the process environment as `env`, and a private `_entry(args: string[])` wrapper is what actually carries them in. Those two names are the entry's own parameters, so a `let` declaring a global variable named `args` or `env` is rejected — use another name. A `let` of either name inside a nested block among the statements is an ordinary local and shadows the parameter as anywhere else. Its type is inferred exactly as a local variable's is. A bare `let` stays unassignable everywhere; a `let ... mut` can be reassigned from later top-level statements and from functions alike, so it is genuinely shared state. A `let` among the top-level statements is a statement, so it is in scope from where it is written and no earlier: reading or assigning one anywhere above its `let` is an error, whether from another top-level statement, from a function literal one of them writes, from inside the `let`'s own initializer, or from the body of a function or type the file defines above it. The statements run in order, so above the `let` the value would not exist yet. Writing the reader below the `let` is what says it is meant to see one. This is a rule about where the name is written rather than a guarantee about when the code runs — a function written below the `let` can still be called from above it — but it is the same rule for every reader, and it says what the `let` was for. State the whole file is meant to see regardless of order is a namespace-scope declaration (`count: int;`), which is a definition rather than a statement and so has no position to be read above. A `let` inside a nested block among the top-level statements stays an ordinary local of that block. It shares the file's namespace with the file's other definitions, so a top-level `let` and a global function, global variable or type of the same name are a redefinition error.
 
 The synthesised entry point is a file-private definition like any other, so more than one file in a project may carry top-level statements — an umbrella project globbing a directory of one-file examples, say. Only one of them can be the program's entry point, and what picks it is the same thing that picks any other: an `@entry` pragma first, then a function the `--entry` name matches (`entry` when the flag is not given), then a file's top-level statements. Naming an entry point with `--entry` takes top-level statements out of the running altogether, since a build that asks for one by name does not want statements from some other file instead.
+
+Compiling with `--submission <name>` treats the file as one step of an interactive session, the unit a read-eval-print loop compiles. The file's namespace is `<name>` rather than one private to the file, so a later step, compiled separately against this one's assembly, reaches its definitions with `use <name>.thing`. The session reads as one file across its steps: a step compiled with `--reference` naming an earlier step's assembly sees that step's underscore-named globals and types as well as its public ones, as a later part of the same file would, and an underscore member stays private to its class. That needs a `ghul.runtime` of 21.4.0 or later; with an older one the underscore names of earlier steps are not visible at all. The synthesised entry returns the value of the file's final expression, or nothing where the file ends on a statement with no value, to whatever ran it. A class or trait the file declares is closed as it is anywhere else, so a hierarchy declared across a session narrows and is checked for exhaustiveness exactly as one declared in a file does - an `isa` test's else edge reaches the sibling, and a `case` covering every subclass needs no `else`. What a session adds is that a later step may extend such a type anyway, where an ordinary consumer may not: a step compiled with `--reference` naming an earlier step's assembly can subclass a closed class it declared and implement a closed trait it declared, since the two steps are one program written a piece at a time. Unions are unaffected and always were, as a union cannot be extended at all.
+
+That leaves an earlier step's compiled code holding a view of the hierarchy that a later step has made incomplete, and a submission build guards the two places where that matters. A narrowing that reached its type by eliminating every other alternative is checked where it is used, so a value of a type added later raises `System.InvalidCastException` naming both types rather than being read as the type it is not. A `case` that covered every alternative and so carries no `else` raises `Ghul.AssertFailedException` rather than running no arm and carrying on. Both are emitted only under `--submission`; an ordinary build knows every alternative and emits neither.
+
+The guards say what went wrong rather than making the earlier step right: its compiled code still assumes the hierarchy it was compiled against, and what makes it correct again is running that step again against the hierarchy as it now stands.
+
+A top-level `let` whose initializer names the variable it declares, as `let total = total + 1` does, reads the variable of that name an earlier step declared, where the file imports one; it is how a step redefines a name in terms of what it held. Anywhere else, and in a submission with no such import, the name does not exist yet inside its own initializer and the read is an error. A submission is built with `--library`: the session's host, not the runtime, decides when its entry runs.
 
 Every file whose top-level statements are left unselected is told so, as a `top-level-statements-not-run` warning at its first statement — the statements do not run, so a `let` among them never initializes. Suppress it project-wide with `--suppress top-level-statements-not-run`, or take it as a hint with `--warn-as-hint`, in a project where several script files under one build is the intended shape. Where several files carry top-level statements and nothing names an entry point, none is chosen, every one of them warns, and an executable build reports that it has no entry point.
 
@@ -72,6 +84,8 @@ use IO.Std.write_line;
 write_line("hello");
 ```
 
+A file's first two bytes may be a `#!...` line, in the style of a Linux shebang naming an interpreter. The compiler recognises the line only there, as the very first thing in the file, and skips it, so a file carrying one still compiles; it is otherwise invisible to parsing, including to the rule above that a file-level `@@` pragma must be the first thing in the file, so a `@@` pragma is written immediately after the shebang line rather than instead of it.
+
 The `use` statement brings names into scope so they can be referred to without qualification. Applied to a namespace it imports every public symbol; applied to a single symbol it imports just that one:
 
 ```ghul
@@ -81,6 +95,21 @@ use Console = IO.Std;             // import under a different name
 ```
 
 A `use` applies only within the current namespace block — if a namespace is split across blocks or files, each block needs its own `use` statements.
+
+`use X.*` imports every usable member of `X` at once, where `X` names a namespace, a class, a struct, a union or an enum. On a namespace this is the same import a bare `use X;` already gives, since a namespace's members are reachable unqualified either way. On a class, struct or union it imports every static field, property, method and operator, and — for a union — every variant; instance members and constructors are never imported, since neither means anything without a receiver. On an enum it imports every member. Each name comes into scope exactly as if it had been `use`d on its own, so a name a wildcard import happens to collide with is the ordinary duplicate-use error:
+
+```ghul
+use Collections.*;               // every public symbol in the namespace - same as `use Collections;`
+use MATH_CONSTANTS.*;            // every static member of a class
+use Suit.*;                      // every member of an enum
+use Result.*;                    // every variant (and static member) of a union
+```
+
+An alias cannot name a wildcard import — `use name = X.*;` is rejected, since a wildcard stands for several imports rather than one value a name could be given.
+
+One namespace needs no `use` anywhere: `Ghul.Intrinsics` holds the names the language itself supplies — the built-in types such as `int` and `string`, the function and tuple shapes, and the operators on them — and every namespace block sees it as if it had written `use Ghul.Intrinsics;` first. Everything else the runtime provides is declared in `Ghul` and its nested namespaces and is imported like any other library: `use Ghul;` for the functional combinators such as `apply`, `use Ghul.Pipes;` for the pipe combinators. A definition of your own that shares a name with one of those — an `apply` of your own, say — is simply the one in scope, with nothing to import around.
+
+One namespace cannot be named at all. `Ghul.Internal` holds the attributes that carry language facts, such as whether a class is closed or which variant of a union a type is, from the assembly that was compiled to the one that reads it. They state what the compiler established rather than something a program chooses, so naming one from source reports that the symbol is not found, and none of them is offered in completion. The assembly that declares them sees its own declarations as ordinary symbols.
 
 A `use` with a type expression on the right names a type rather than importing a symbol — a *type alias*:
 
@@ -92,7 +121,7 @@ use MaybeName = string?;
 use Numbers = Collections.LIST[int];
 ```
 
-An alias is a spelling for the type it names, not a type of its own, so the two are interchangeable in both directions: a `(index: int, value: string)` value is an `IndexedString` and an `IndexedString` is accepted wherever the tuple type is. That holds for every kind of target, so nothing that already accepts the underlying type has to learn about the alias. Constructing through an alias constructs what it names, so `Numbers()` builds a `Collections.LIST[int]`.
+An alias is a spelling for the type it names, not a type of its own, so the two are interchangeable in both directions: a `(index: int, value: string)` value is an `IndexedString` and an `IndexedString` is accepted wherever the tuple type is. That holds for every kind of target, so nothing that already accepts the underlying type has to learn about the alias. Constructing through an alias constructs what it names, so `Numbers()` builds a `Collections.LIST[int]`. A generic alias is constructed with its type arguments written, `StringMap[int]()`, and with them left off only when it passes its own type parameters straight through to a class, as `use Box[T] = BOX[T]` does, where `Box(42)` infers them as `BOX(42)` would. A tuple has no constructor, so neither does an alias of one.
 
 An alias can take type parameters, which its target uses like any other type parameter:
 
@@ -109,6 +138,22 @@ Because an alias is transparent, it cannot be defined in terms of itself — dir
 
 An alias is scoped like any other `use`: it belongs to the namespace block it is written in, and a block elsewhere that wants the same shorthand declares it again. Consumers are unaffected either way, since a signature written with an alias is a signature written in the type it names.
 
+`use default` stands for a set of imports rather than naming one: the clause expands to the imports most files want before they want anything specific, which by default are `IO.Std.write_line`, `Ghul.Pipes` and `Collections`. It is an ordinary `use` in every other respect, so it applies to the namespace block it is written in and imports nothing implicitly: a file that does not write it gets none of them.
+
+```ghul
+use default
+
+entry() is
+    let totals = LIST[int]([1, 2, 3, 4])
+
+    write_line("{totals |> filter(x => x % 2 == 0) |> reduce(0, (a, b) => a + b)}")
+si
+```
+
+Importing something the set already carries is how a file adds to the set rather than a duplicate, so `use default` and `use Ghul.Pipes` together are accepted, and a declaration of your own named like one of the set's is simply the one in scope. A project replaces the set with its own with `--default-use`, which takes a comma-separated list and can be written more than once; naming any name at all leaves the curated set out entirely, so a project that wants the collections and nothing else asks for exactly that. A project built by MSBuild names them in one property: `<GhulDefaultUses>Collections;IO.Std.write_line</GhulDefaultUses>`.
+
+Compiling with `--implicit-default-use` gives every file that declares no namespace an implicit `use default`, placed after the file's pragmas and before everything else, which is how a one-file script run directly gets `write_line`, the pipes and the collections without asking for them. A file that declares a namespace gets nothing implicit, since its namespace blocks choose their own imports. A `use default` the file writes as well is harmless, and a definition of its own still wins over one the set brings in.
+
 ## statement terminators
 
 A `;` separates two statements or simple declarations written on one line. At the end of a line it is not needed: wherever the grammar could accept a `;` and the next token opens a new line, the boundary is inferred. End of file ends a line too, so the last construct in a file needs no terminator either.
@@ -124,7 +169,7 @@ A handful of rules keep multi-line expressions unambiguous, and they codify the 
 - A postfix marker attaches on the same line as what it marks, never from the line below: a line-start modifier (`pure`, `static`, …) belongs to the next definition rather than the header above, and a line-start `rec` is the recursive self-reference call, never a rec-lambda marker — the marker sits on the line with its formal parameters.
 - An `else` opening the line after a bare `assert` is the assert's message clause when its line is indented at least as far as the assert's, and otherwise the `else` of the enclosing `if` or `case` arm. So `assert x` / `else "message"` wraps as one statement, level or deeper, while a conventionally dedented `else` after an arm ending in an assert closes the arm. Only the indentation decides: an assert sharing its line with the `if` (`if c then assert x` / `else y fi`) takes an `else` written level with the `if` as its own; a `;` after the assert gives the `else` to the `if`.
 - A bare `return` at the end of a line is a void return when the next line opens with a closing keyword (`fi`, `si`, `od`, …), and otherwise takes the next line's expression as its value. The two readings never compete: a statement written directly after a `return` in the same block would be unreachable, so a following line that starts an expression can only sensibly be the return's value, and a `return` that ends its branch is followed by the closing keyword, which keeps it void.
-- In a parenthesised group, a top-level `,` commits the tuple reading and an inferred boundary commits the block reading, exactly as a written `;` does. An operator-headed line after a compound statement keeps the expression reading, as it does with terminators written; give the block reading a `;` after the closing keyword.
+- In a parenthesised group, a top-level `,` commits the tuple reading and an inferred boundary commits the block reading, exactly as a written `;` does. A compound statement that ends a line is complete, so the boundary falls after it whatever opens the next line — an operator there begins a new statement, as it does anywhere else. The expression reading needs the operator on the same line: `(if c then 2 else 5 fi - 1)` is 1 when `c` is true, where the same tail written on its own line is a second statement and the group's value.
 
 Statement terminators carry no meaning beyond the boundary: in particular, whether a body's final statement ends with `;` never changes what the body returns — the tail is judged by its type (see functions below). The one boundary only a written `;` can make is between two string literals, which otherwise chain into a single literal across the line break (see the string-literal section below).
 
@@ -151,7 +196,33 @@ result = compute();
 
 A deferred-init local is still covered by definite-assignment analysis: reading it on a path that has not assigned it draws a `definite-assignment` warning, so the default value is a backstop rather than something to lean on.
 
-A `mut` variable still cannot change type. Either form can also take its value from `_`, the default-value expression — `let i = _` takes its type from the local's own annotation or from later use, with `_[T]` to pin it explicitly. A bare `_` in a call-argument position infers the parameter type from the callee, provided the call resolves to a single unambiguous overload; if the parameter has a declared .NET default value, `_` takes that value rather than the type's zero value, so writing it out positionally behaves exactly like omitting the same argument by name. A `_` argument is never itself used to infer a generic type variable — one pinned only by the `_` slot, or a call left ambiguous between overloads, is still an error (`cannot infer type of default here`). `_[T]` always means the literal zero value of `T`, in every position — it never picks up a callee's declared default.
+`null` says a local can be absent without saying what it holds when present, so an initializer or an assignment of `null` does not settle the local's type. The type comes from the other values assigned to it, or from the fallback a later `??` supplies, and is the optional of that type:
+
+```ghul
+let root mut = null;       // NODE?, from the assignment below
+root = NODE("first");
+
+let unknown = null;        // bool?, from the fallback
+if unknown ?? false then
+    ...
+fi
+```
+
+A local whose initializer, assignments and uses give it no type at all is reported as `cannot infer type here` where it is declared, and needs an annotation.
+
+A `mut` local with an initializer and no written type holds everything assigned to it, so its type is the join of the initializer and every value assigned later: a union variant or a subclass as the initializer does not stop a sibling being assigned.
+
+```ghul
+let tree mut = Tree.EMPTY;     // Tree, from the assignment below
+tree = Tree.NODE(tree, 1, Tree.EMPTY);
+
+let pet mut = CAT();           // Animal
+pet = DOG();
+```
+
+The join is only taken where the author wrote a type for the values to share. Where it would be `object`, `System.ValueType`, or a trait neither the initializer nor any assigned value is typed as, or where any of them is a value type, the local keeps its initializer's type and the assignment is reported: `let i mut = 0; i = 1L` is an error, as is assigning an unrelated class. Writing the type out (`let pet: Animal mut = CAT()`) always fixes it.
+
+A `mut` variable still cannot change type once it has one. Either form can also take its value from `_`, the default-value expression — `let i = _` takes its type from the local's own annotation or from later use, with `_[T]` to pin it explicitly. A bare `_` in a call-argument position infers the parameter type from the callee, provided the call resolves to a single unambiguous overload; if the parameter has a declared .NET default value, `_` takes that value rather than the type's zero value, so writing it out positionally behaves exactly like omitting the same argument by name. For a `T ref` parameter, `_` discards what the callee writes: the callee is handed the address of a fresh local holding the default of `T`, so `System.Version.try_parse("1.2", _)` tests the text without keeping the result. A `_` argument is never itself used to infer a generic type variable — one pinned only by the `_` slot, or a call left ambiguous between overloads, is still an error (`cannot infer type of default here`). `_[T]` always means the literal zero value of `T`, in every position — it never picks up a callee's declared default.
 
 Applied to an argument list, `_(...)` *constructs* the type the context expects instead of taking its zero value, so a value can be built without naming its type a second time:
 
@@ -160,7 +231,7 @@ let xs: LIST[int] = _();
 let b: BOX[int] = _(42);
 ```
 
-The type comes from the same places the bare `_` takes it from: the annotation on a `let`, the left-hand side of an assignment, or the formal type of a call argument. An optional context is unwrapped first — `let b: BOX? = _(1)` constructs a `BOX`, which then widens to the optional — and with nothing to infer from, it is an error (`cannot infer the type to construct here`). `_[T](...)` is not accepted: with the type written out, `T(...)` already says it.
+The type comes from the same places the bare `_` takes it from: the annotation on a `let`, the left-hand side of an assignment, or the formal type of a call argument. An untyped immutable `let` initialized with `_()` takes it from how the local is used later in the body, as a local initialized with `[]` does: `let result = _()` followed by `return result` builds the declared return type. An optional context is unwrapped first — `let b: BOX? = _(1)` constructs a `BOX`, which then widens to the optional — and with nothing to infer from, it is an error (`cannot infer the type to construct here`). `_[T](...)` is not accepted: with the type written out, `T(...)` already says it.
 
 `_` in a binding or pattern position — `let _ = expr`, a destructure leaf `(_, b)`, a `for _`, an `if let _`, a lambda discard formal `_ => ...` or `(_, y) => ...`, a typed discard `(_: T)` — is the discard placeholder, a different meaning from the default-value expression above; the positions are syntactically distinct so the two meanings never collide. `_[T]` has no reading as a lambda formal — a formal's type comes from `_: T`, not `_[T]` — so writing `_[T]` where a formal is expected is a compile error rather than a silently-dropped type argument.
 
@@ -200,8 +271,8 @@ let count = 12_345;            // int
 let hex = 0x1234_ABCD;         // int, hexadecimal
 let big = 1_000_000_000L;      // long
 let b = 99b;                   // byte
-let ratio = 123.456;           // single
-let precise = 123.456D;        // double
+let ratio = 123.456;           // double
+let coarse = 123.456s;         // single
 let price = 19.99m;            // decimal
 let huge = 900719925474099n;   // bigint
 let letter = 'c';              // char
@@ -234,13 +305,13 @@ write_line("{factorial}");     // 265252859812191058636308480000000
 
 Mixed operands stay an error, exactly as `1.0D + 1` is: `total * 2` is rejected where `total` is a `bigint`, and `total * 2n` is what to write. `==` is rejected on it as on every other struct; compare with `=~`.
 
-A fractional literal is a `single` unless suffixed — `s` single, `d` double, `m` decimal, in either case. The `m` suffix is also accepted on a digit-only literal to write an integral decimal (`100m`). Exponent notation is accepted: `1.5e3`, `1.5E-3`.
+A fractional literal is a `double` unless suffixed — `s` single, `d` double, `m` decimal, in either case. The `m` suffix is also accepted on a digit-only literal to write an integral decimal (`100m`). Exponent notation is accepted: `1.5e3`, `1.5E-3`.
 
 ghūl does not convert between scalar types implicitly — a mixed-type arithmetic expression is a compile-time error, and a `cast` is required. Upcasting is implicit: a value is assignment-compatible with any ancestor type, so a `string` can be assigned to an `object` with no cast.
 
 ```ghul
-let a = 1.0D + 1.0D;             // ok, both double
-let b = 1.0D + cast double(1);   // ok, explicit cast
+let a = 1.0 + 1.0;               // ok, both double
+let b = 1.0 + cast double(1);    // ok, explicit cast
 let o: object = "hello";         // ok, string is an object
 ```
 
@@ -283,6 +354,20 @@ An interpolated expression can carry an alignment and a format specifier, as in 
 let padded = "[{value,12:F3}]";     // [    1500.000]
 ```
 
+How a value reads depends on its static type. A string, a number, an enum, and any type that declares its own `to_string` read as they always have, through that `to_string`, and so does any value given an alignment or a format. A `bool` reads `true` or `false`, as ghūl spells it. An optional reads as the value it holds, by these same rules, or as `null` when it holds nothing. Anything else - an array, a list, a tuple, a struct or class that declares no `to_string`, a value held as `object`, a trait or a type parameter - would otherwise read as its .NET type name, so the runtime's `$` writes it instead: a sequence as its elements in brackets, a tuple as its parts, and a record as its type and members.
+
+```ghul
+struct POINT(x: int public, y: int public);
+
+let xs = [1, 2, 3];
+let found: string? = null;
+
+"{xs} {(1, "one")} {POINT(3, 4)} {true} {found}"
+                                     // [1, 2, 3] (1, one) POINT(x = 3, y = 4) true null
+```
+
+A pipe declares a `to_string` of its own that reads as its elements in brackets, the same text `$` gives it. A type's own `to_string` always wins, so the way to change how a value interpolates is to give its type one.
+
 Adjacent string literals concatenate, so a long string can be split across lines — plain and interpolated literals mix freely. Comments count as the whitespace they sit in, so a commented fragment chains like an uncommented one; only a `;` separates two otherwise-adjacent literals. That `;` is the one statement terminator that carries meaning — where a statement ends on a string literal and the next begins with one, it keeps them from chaining into a single literal, so `redundant-semicolon` never reports it:
 
 ```ghul
@@ -303,7 +388,7 @@ let mixed = ["frog", 1234, 12.5];       // object[]
 let p = primes[2];                      // indexing, 0-based
 ```
 
-The empty array literal `[]` is accepted wherever the element type comes from context — an explicitly-typed `let`, a `return`, or a call argument's parameter type.
+The empty array literal `[]` is accepted wherever the element type comes from context — an explicitly-typed `let`, a `return`, a call argument's parameter type, a sibling element of an enclosing array literal, or the other arms of an `if` or `case` expression it is an arm of. An untyped immutable local initialized with `[]` takes its element type from its later uses in the same body, such as being passed where an array is expected or placed in an array literal that is; when nothing uses it that way, its element type is `object`.
 
 Indexing with a **range** takes a slice of the source rather than a single element. `..` and `::` count both endpoints from the start, as they do everywhere else; `..<` and `::<` count the end back from the end of the source, and `..<<` and `::<<` count both endpoints back. The number of `<` says how many endpoints are counted back, filling from the right. `<0` is the length, so `a..<0` runs from `a` to the end:
 
@@ -329,6 +414,8 @@ let x = point.x;
 let first = pair.`0;                       // positional access
 let (name, age) = ("alice", 30);           // destructuring
 ```
+
+A tuple is assignable to a tuple type whose elements each accept its own, so a `(CAT, Shape.DOT)` value goes wherever a `(Animal, Shape)` is expected, and an `(int, string)` wherever an `(int, object)` is. The .NET tuple type is invariant, so the value is rebuilt at the wider type where it crosses into it, converting each element as it would be converted on its own, boxing and optional widening included. The rule is for tuple values: a function type returning a tuple is not made assignable by it, so a `(int) -> (int, int)` value is not a `(int) -> (object, object)`.
 
 When an unnamed tuple-literal element is a bare identifier, it takes its name from the identifier: `(a, b)` constructs the same tuple as `(a = a, b = b)`. When the identifier resolves to a field whose name carries the single-underscore private-member convention, the leading `_` is stripped from the inferred element name: `(_count, _total)` packed from private fields surfaces as `(count: ..., total: ...)` to consumers. Locals are not affected, and only a single leading underscore is ever stripped.
 
@@ -382,7 +469,7 @@ A named function's signature is fully explicit: every argument has a written typ
 
 A block body produces its value with an explicit `return`, or by ending on an expression: the final statement of a non-void body is the function's return value on the fall-through path whenever its type is assignable to the declared return type, terminated with `;` or not — the tail is judged by its type, never by its terminator. An expression qualifies, and so do an `if`/`case` expression and a parenthesised block. A tail of an incompatible non-void type is an error at the tail; to genuinely discard such a value, write `let _ = expr`. A void tail — an effect-only call, or an `if`/`case` whose arms diverge or do only effects — is the statement it is: the body falls off the end, returns the default value of the return type, and draws a `definite-return` warning. An asynchronous function accepts a bare-`T` value as its tail exactly where it accepts `return T`. Loops, `let`, assignments and `assert` never provide a tail value, and neither do labelled statements or `try` blocks (until `try` has an expression form). Void bodies tolerate any tail: whatever is left standing at the end of a void method is discarded, and an expression body follows the same rule, so `f(x: int) -> void => g(x);` discards `g`'s result rather than returning it. Generators are exempt from all of this: their fall-through signals end of stream.
 
-Functions are declared at namespace scope — there are no nested function definitions — and may be overloaded on their argument types. There are no default argument values. Execution of a program begins at a function named `entry`, or — in a file with no namespace — at the bare statements written at its file root, which are collected in source order into that entry point. An `entry` function takes either no parameters or a single `string[]` of the command-line arguments, and returns either nothing or an `int` exit status. It should not be asynchronous: an async `entry` returns a task rather than one of those, which draws a warning and leaves the program without an entry point — to run asynchronous work, read `.result` on the returned task. The name can be changed with `--entry <name>`, and an `@entry` pragma marks any function as the entry point regardless of name.
+A function declared at namespace scope may be overloaded on its argument types. There are no default argument values. Execution of a program begins at a function named `entry`, or — in a file with no namespace — at the bare statements written at its file root, which are collected in source order into that entry point. An `entry` function takes any subset of two recognised parameters, matched by declared type rather than by name: a `string[]` for the command-line arguments, and a `Ghul.Environment` — a ghul-runtime trait giving read/write access to the process's environment variables — for the process environment. So `entry()`, `entry(args: string[])`, `entry(env: Ghul.Environment)` and `entry(args: string[], env: Ghul.Environment)` are all accepted, in either parameter order — and the environment parameter is recognised equally when reached through a `use`: `use Ghul;` then `entry(env: Environment)`, `use Ghul.Environment;` then `entry(env: Environment)`, or an aliasing `use X = Ghul.Environment;` then `entry(env: X)`. It returns either nothing or an `int` exit status. Only declaring the environment parameter changes anything about how the program starts: the compiler then synthesises a private wrapper carrying the real entry-point shape — no parameters, or a lone `string[]` when `args` is also declared — which resolves `Ghul.Environment` and calls through to `entry`; without it, `entry` compiles straight to the program's real entry point exactly as before. This recognition only applies to a global function reached by name — the default `entry`, or the name `--entry` gives — not to a class's static method serving as the entry point, which keeps its plain `string[]`-or-nothing shape. A function of the name the build starts at whose shape is none of those is an error at the function, saying which part of it rules the function out: a return type that is neither `int` nor `void` - which is what an asynchronous `entry` has, since it returns a task, so to run asynchronous work read `.result` on the returned task - more than one parameter, or a parameter of any other type. The file's top-level statements are not run in its place: a program that declares where it starts has said so, and starting somewhere else would be as surprising as not starting at all. The name can be changed with `--entry <name>`, and an `@entry` pragma marks any function as the entry point regardless of name.
 
 A formal parameter can be a tuple-destructure pattern instead of a plain name. It is still one physical parameter, at the written tuple type — the pattern is unpacked into its named elements on entry, the same way a `let (a, b) = pair;` local is:
 
@@ -392,7 +479,7 @@ add_pair((a: int, b: int): (int, int)) -> int => a + b;
 add_pair((3, 4));    // 7
 ```
 
-Nesting and mixing with ordinary parameters both work: `f(x: int, (a: int, b: int): (int, int), y: int)`. Because a named function's signature is always fully explicit, the aggregate type ascription is required — there is no context to infer it from — and per-element types are optional, exactly as in a `let (a, b) = pair;` local. The aggregate type can be any positionally-destructurable type — a tuple, or a type with a matching `deconstruct(...)` method. The by-name group form (`(x = field, ...)`) is not supported in a formal argument list.
+Nesting and mixing with ordinary parameters both work: `f(x: int, (a: int, b: int): (int, int), y: int)`. Because a namespace-scope function's signature is always fully explicit, the aggregate type ascription is required — there is no context to infer it from — and per-element types are optional, exactly as in a `let (a, b) = pair;` local. The aggregate type can be any positionally-destructurable type — a tuple, or a type with a matching `deconstruct(...)` method. The by-name group form (`(x = field, ...)`) is not supported in a formal argument list.
 
 Functions are first-class values. A function literal has the same shape without a name, but its argument and return types are generally *inferred* — from the body and from the context the literal is used in — so they are usually written without annotations (though either can be given explicitly). With a single argument the parentheses are optional. `A -> B` is the type of a function from `A` to `B`. A function *type* — and so a function literal, or a named function referred to as a value — has at most 16 parameters; a named function itself has no such limit, since it need never be represented as a function-type value. Function literals capture references from the enclosing scope, forming closures: an immutable `let` is captured by value (a snapshot at the point the literal is constructed); a `let mut` is captured by reference, so the closure and the outer scope share one live variable that either side can read or reassign. An anonymous function refers to itself through the `rec` keyword:
 
@@ -431,7 +518,41 @@ entries |> each(((key, value): Collections.KeyValuePair[string, int]) =>
 
 Patterns nest and take discards, so `(((a, b), c)) => …` and `((_, b)) => …` both work, on plain and asynchronous function literals alike.
 
-A bare name in call position (`foo(args)`) normally resolves to the nearest enclosing binding of that name, the same as any other reference. When that binding is not callable — a local variable, field, or property holding no function — and an enclosing scope has a function or a function-typed value of the same name, the call reaches that one instead, with a `shadowed-non-callable` warning at the call site:
+A function can also be written among the statements of a body, with a name. It is a function literal that the name is a local variable for, so it captures, compiles and is called exactly as the equivalent `let` would be, and the two spellings are interchangeable:
+
+```ghul
+process(xs: Collections.List[int]) -> int is
+    score(x: int) -> int is
+        if x < 0 then
+            return 0;
+        fi
+
+        x * 2
+    si
+
+    xs |> map(score) |> reduce(0, (a, b) => a + b)
+si
+```
+
+Argument and return types are optional, as they are on any other literal and unlike a namespace-scope function, whose uses are not all in view. Either body form works, and the name may be written wherever a value of its function type is expected, not only in a call:
+
+```ghul
+    halve(x) => x / 2;
+
+    let apply_to_ten = (f: (int) -> int) => f(10);
+
+    apply_to_ten(halve);
+```
+
+The function refers to itself by its own name, so it needs no `rec`, and a literal written inside its body reaches it the same way:
+
+```ghul
+    fact(n: int) -> int => if n <= 1 then 1 else n * fact(n - 1) fi;
+```
+
+Being a local, it is defined from its own definition onward: a reference above it, and mutual recursion between two of them, are both reported. Write one of the pair as a `let mut` literal and assign it afterwards where that is what is wanted. A file's bare top-level statements are not a body, so a named function written among those is a namespace-scope function and its argument types are required.
+
+A bare name in call position (`foo(args)`) normally resolves to the nearest enclosing declaration of that name, the same as any other reference. When that declaration is not callable — a local variable, field, or property holding no function — and an enclosing scope has a function or a function-typed value of the same name, the call reaches that one instead, with a `shadowed-non-callable` warning at the call site:
 
 ```ghul
 tally(xs: int[]) -> int => xs.count;
@@ -442,7 +563,9 @@ use_tally(xs: int[]) is
 si
 ```
 
-The fallback only applies when the nearest binding cannot be called at all — a function whose overloads reject the supplied arguments still reports the ordinary argument-mismatch error rather than reaching for something else. A name that refers to itself from inside its own initializer's function literal (rather than directly, as above) keeps reporting the reference as one to a value that does not exist yet:
+A bare name written with type arguments (`foo[int]`, whether or not it is then called) follows the same rule, since a name applied to type arguments can only mean a type or a function.
+
+The fallback only applies when the nearest declaration cannot be called at all — a function whose overloads reject the supplied arguments still reports the ordinary argument-mismatch error rather than reaching for something else. A name that refers to itself from inside its own initializer's function literal (rather than directly, as above) keeps reporting the reference as one to a value that does not exist yet:
 
 ```ghul
 let f = (x: int) -> int => f(x);   // error: variable is not defined here
@@ -558,7 +681,13 @@ si
 
 The two modifiers are independent: `open` controls who can extend, `abstract` controls who can be instantiated. They can be combined (`class Animal abstract open is ... si` is an extensible abstract base) or stand alone.
 
-A class is **implicitly abstract** when it has any user-written body-less instance method — `foo();` or `foo() -> int;` with no `is … si` body. The user clearly wrote the method as a contract for subclasses to satisfy, and a bare instance of the class would have nothing useful to do on calling it, so the constructor is rejected the same way `abstract` rejects it. Property accessors, `init`, and static methods are excluded — a write-only property leaves its synthesised getter body-less without making the enclosing class abstract.
+A method written with no body at all — `foo();` or `foo() -> int;` with no `is … si` — is **abstract**: a contract for a subclass to satisfy rather than a method that does nothing. The class that declares one is abstract too, so constructing it is rejected exactly as `abstract` on the header rejects it, and a concrete subclass that does not implement the method is an error naming the method and the class it came from. Property accessors, `init`, and static methods are excluded — a write-only property leaves its synthesised getter body-less, and its accessors read and write the backing field rather than declaring anything.
+
+The rule holds whether or not a trait behind the class supplies a default for the member. A class writing the member again with no body withdraws that default: the class is abstract, its subclasses owe an implementation, and `super` cannot reach the member, since there is nothing in the class chain to reach. A class that wants the default does not mention the member.
+
+`super.foo()` cannot reach an abstract method: a super call names the base implementation directly, and there is none.
+
+A body-less method that overrides a **class** method with a body is the one case that cannot become an abstract slot, because a caller holding the base type would still reach it. Such a method is given a body that throws `System.NotImplementedException` naming it, so the call says what the declaration says. It is not a contract, so subclasses owe it nothing. A trait's default is not this case: a class redeclaring one withdraws it, as above, and the redeclaration is a contract like any other.
 
 ### structs
 
@@ -733,6 +862,8 @@ si
 
 Nothing changes inside the declaring assembly, where a closed trait is implemented and derived from exactly as an open one is. A trait imported from an assembly built before the closure existed is treated as open.
 
+An override or trait implementation can narrow its return type to a subtype of the overridden member's, as `make() -> CIRCLE` narrows `make() -> SHAPE`: it is still the override, so a caller holding the base class or the trait reaches it and a caller holding the narrower type gets the narrower return. Only a reference type narrows this way - a value type in place of a reference is a different representation rather than a narrower one - and any other difference in return type is an error at the member.
+
 An override or trait implementation must keep the overridden member's optionality contract. It may strengthen it - a non-optional return or property where the base declares optional, an optional parameter where the base declares non-optional - but weakening it in either position is a compile error: returning `T?` where the base promises `T` would hand null to callers that use the base type, and requiring a non-optional parameter where the base accepts `T?` would receive null from them. A property with an assign accessor faces both directions at once, so its type must match the base's optionality exactly. The equality and order operators `=~` and `<>` are the one exception on the parameter side: presence is settled where the operator is used and the body is only handed present values, so an implementation may declare its parameter non-optional even where the overridden member spells it optional.
 
 ### unions
@@ -776,7 +907,7 @@ elif let leaf: Tree.LEAF = tree then
 fi
 ```
 
-Both `isa V(x)` and `if let v: V = x` narrow `x` itself inside the then-arm and inside guard-then-return tails, and on a two-variant union narrow the `else` branch to the other variant — member access on the scrutinee in the else arm resolves against the complement variant. A `case` over a union scrutinee is checked for exhaustiveness: missing variants draw a `non-exhaustive-case` warning on the statement form, and are an error on the expression form, which has to produce a value. A `redundant-case-arm` arm fires when a later arm matches nothing the prior arms didn't already cover, and `dead-case-else` fires when the `else` arm is unreachable because the preceding arms cover the domain. The warnings also fire on `bool` and `bool?` scrutinees, on `T?` of a union, on closed class hierarchies (the in-assembly subclasses are the closed set — plus the root type itself when the root is concrete, since it is then constructible) and on enums.
+Both `isa V(x)` and `if let v: V = x` narrow `x` itself inside the then-arm and inside guard-then-return tails, and on a two-variant union narrow the `else` branch to the other variant — member access on the scrutinee in the else arm resolves against the complement variant. A `case` over a union scrutinee is checked for exhaustiveness: missing variants draw a `non-exhaustive-case` warning on the statement form, and are an error on the expression form, which has to produce a value. A `redundant-case-arm` arm fires when a later arm matches nothing the prior arms didn't already cover, and `dead-case-else` fires when the `else` arm is unreachable because the preceding arms cover the domain. The warnings also fire on `bool` and `bool?` scrutinees, on `T?` of a union, on closed class hierarchies (the in-assembly subclasses are the closed set — plus the root type itself when the root is concrete, since it is then constructible) and on enums. An arm that names a unit variant by value (`when Color.RED then`) covers that variant exactly as `when _: Color.RED then` does, since a unit variant has a single shared instance; and a label in a `case` takes its type from the scrutinee, so a generic union's unit variant needs no type arguments there (`when Option.NONE then` over an `Option[int]`).
 
 Exhaustiveness also reaches through a destructure. A scrutinee that destructures — a tuple, or any type with a `deconstruct` — is covered when the arms cover the *combinations* its elements can take, for as long as every element sits in a closed domain of its own; the same rule applies again to a nested destructure. So four arms cover a `(bool, bool)` with no `else`, and two arms cover it when each leaves one element unmatched. Coverage is over the combinations rather than each element separately, so `when (true, _)` and `when (_, true)` together leave `(false, false)` open. An element drawn from a domain that cannot be enumerated (`int`, `string`, an open class hierarchy) leaves the whole scrutinee open, and so does a field the arms only test rather than bind — `when (0): WHOLE` reaches part of `WHOLE`, not all of it.
 
@@ -847,6 +978,25 @@ si
 ```
 
 Enum values compare with the relational operators as well as for equality (`=~` and `==`), so they order by their underlying integer. `=~` works over an optional enum too, as it does over any other optional. An individual member can be imported by name — `use Some.Namespace.Suit.HEARTS;` — as well as reached through the type.
+
+An enum carrying `System.FlagsAttribute` — via the ordinary .NET-attribute pragma, see [.NET interop](#net-interop) — additionally gets the bitwise operators `&`, `|`, `^`, and the unary `\`, for combining and testing flag-shaped values. Each takes and returns the enum's own type — there is no coercion to or from the underlying integer, and combining two different enum types is a compile error, the ordinary overload-resolution failure. An enum without the attribute has none of the four: an ordinal enum's members were never meant to combine, so `Suit.SPADES & Suit.HEARTS` is rejected the same way as any other undefined operator.
+
+```ghul
+@System.Flags()
+enum Access is
+    READ = 1,
+    WRITE = 2,
+    EXECUTE = 4,
+si
+
+let read_write = Access.READ | Access.WRITE;
+
+if read_write & Access.READ == Access.READ then
+    write_line("can read");
+fi
+```
+
+Unlike C#, where `[Flags]` changes nothing about which operators an enum has — `&`/`|`/`^`/`~` there work on any enum, built into the language — `System.FlagsAttribute` in ghūl gates the four operators as well as its usual effect on `to_string()`: it makes the default rendering of a combined value list its constituent names (`READ, WRITE`) instead of the raw number, exactly as it does in C#. ghūl has no attribute for naming a combined value as a member (`ALL = A | B | C`): an enum member's initializer is restricted to a plain integer literal.
 
 ### partial and impl blocks
 
@@ -934,10 +1084,11 @@ Precedence comes from the operator's first character rather than from anything w
 | bitwise | `&` `\|` `¦` `^` `∩` `∪` `⊻` `⊼` `⊽` |
 | shift | `<` or `>` doubled |
 | range | `..` `::` |
+| thread-first | `\|>` `~>` |
 | relational | `=` `!` `~` `<` `>` `≠` `≤` `≥` `≈` `≉` `≡` `≢` `∈` `∉` `∋` `⊂` `⊃` `⊆` `⊇` |
 | boolean | `∧` `∨`, and `/\` and `\/` |
 
-An operator opening with `?` sits looser than all of those, and everything the table does not name sits between shift and bitwise. Associativity is left, except for an operator opening with `?`, which is right so that a chain of them stays open to the one after it.
+The thread-first row is the two operators themselves rather than a first character: see [collections and pipes](#collections-and-pipes). An operator opening with `?` sits looser than all of those, and everything the table does not name sits between shift and bitwise. Associativity is left, except for an operator opening with `?`, which is right so that a chain of them stays open to the one after it.
 
 Where the first character does not say what is meant, a `@precedence` pragma places the operator explicitly. It takes the operator and a level: one of the eight `user-1` to `user-8`, which interleave with the levels above, or one of those levels by name. The pragma written before a definition covers that definition; the file-level `@@precedence` covers the rest of the file.
 
@@ -946,6 +1097,35 @@ Where the first character does not say what is meant, a `@precedence` pragma pla
 
 ∘(f: (int) -> int, g: (int) -> int) -> (int) -> int => x => f(g(x));
 ```
+
+An operator is an ordinary function, so its name is a value wherever a function
+of its shape is expected. The name is written with the backtick escape, since
+an operator is not an identifier:
+
+```ghul
+struct N(v: int public);
+
+⊕(a: N, b: N) -> N => N(a.v + b.v);
+
+let totals = values |> reduce(N(0), `⊕);
+```
+
+A static member operator is named through its type, and reads the same way:
+
+```ghul
+struct V(x: int public) is
+    +(a: V, b: V) -> V static pure => V(a.x + b.x)
+si
+
+let total = vectors |> reduce(V(0), V.`+);
+```
+
+The built-in operators on the scalar types are the exception. They are
+instructions rather than methods, so there is no function to take the value of,
+and naming one is an error: `cannot take the value of built-in operator '+'`.
+An instance member is not a value either, operator or not, since it needs a
+receiver. What that rules out is ``int.`+`` and ``string.`=~``; a function literal
+says the same thing and is what to write instead.
 
 ## equality
 
@@ -1180,6 +1360,8 @@ else
 fi
 ```
 
+A value type can be the type tested for. Over an `object`, `if let i: int = o` matches a boxed `int`, and over an `int?` it matches a present value. Over a plain `int` or `long` there is nothing to test, and the ascription is an error.
+
 With no type, `if let` simply tests that the value is present — the natural way to consume an optional, since the variable has the non-optional type within the branch. The `let` can also destructure:
 
 ```ghul
@@ -1284,7 +1466,7 @@ for (key, value) in dictionary do
 od
 ```
 
-Every loop supports `break` to exit and `continue` to skip to the next iteration. The range operators work in any expression: `..` is inclusive of its start and exclusive of its end (`0..3` is 0, 1, 2), and `::` is inclusive of both (`1::5` is 1 through 5). The from-the-end forms (`..<`, `::<`, `..<<`, `::<<`) are for indexing rather than iteration — see [arrays](#types-and-literals).
+Every loop supports `break` to exit and `continue` to skip to the next iteration. A loop disposes nothing it iterated: for a sequence holding a resource, see [collections and pipes](#collections-and-pipes). The range operators work in any expression: `..` is inclusive of its start and exclusive of its end (`0..3` is 0, 1, 2), and `::` is inclusive of both (`1::5` is 1 through 5). The from-the-end forms (`..<`, `::<`, `..<<`, `::<<`) are for indexing rather than iteration — see [arrays](#types-and-literals).
 
 Any loop (`for`, `while`, `do`) can be labelled by prefixing it with an identifier and a colon, and `break` and `continue` can then name the loop they act on, letting an inner loop exit or advance an outer one:
 
@@ -1385,7 +1567,7 @@ A `when` arm can also carry a binding pattern instead of an equality list. The p
 - `when (a, b) then` — destructure a tuple scrutinee into bound names. Per-element ascription works (`when (c: CAT, d: DOG) then`); discards are `_`; literal leaves like `when (1, label) then` or `when (Color.RED, label) then` add a value-equality test at that position, and a `~`-marked leaf like `when (~expected, label) then` tests against the value that name holds rather than binding it.
 - `when _: T then` — type-test only, no binding.
 
-Pattern arms share `if let`'s contract on refutability — an option-shaped scrutinee binds to the unwrapped value, and an impossible value-type narrow is rejected with one error and ERROR-typed recovery on the bound names:
+Pattern arms share `if let`'s contract on refutability — an option-shaped scrutinee binds to the unwrapped value, and a value-type ascription over a plain value-type scrutinee, which has nothing to test, is rejected with one error and ERROR-typed recovery on the bound names:
 
 ```ghul
 case animal
@@ -1432,7 +1614,9 @@ let box = BOX();
 let m = (box.v = 7; box.v * 2);             // assignment statement, then the value
 ```
 
-A parenthesised group commits to the block reading at the first top-level `;` — or immediately, on a token that can only open a statement (`let`, `try`, `return`, ...) — and stays a tuple, a parenthesised expression, or a lambda's formal parameters otherwise. A compound statement (`if`, `case`, `for`, `while`, `do`) opening the group commits the block reading the same way when what follows cannot continue its expression: `(for x in xs do f(x) od 0)` is a block whose tail is `0`, no `;` needed. An operator-headed tail is the one exception: any operator can also open an expression as a unary prefix, so the group keeps the expression reading there and the compound statement is the operator's left operand (`(if c then 2 else 5 fi - 1)` is 1 when `c` is true); write `;` after the closing keyword for the block reading (`(if c then 2 else 5 fi; -1)`). So `(a = f(x), b = g(y))` constructs a named tuple while `(a = f(x); b = g(y); a + b)` runs two assignments and yields the sum; the `,`/`;` is the whole difference, and the elements themselves can be any expression in both. A statement whose expression form already exists keeps it: `(let x = 5 in x * 2)` is the `let ... in` expression, unchanged, while `(let x = 5; x * 2)` is a block with a `let` statement and a tail.
+A parenthesised group commits to the block reading at the first top-level `;` — or immediately, on a token that can only open a statement (`let`, `try`, `return`, ...) — and stays a tuple, a parenthesised expression, or a lambda's formal parameters otherwise. A compound statement (`if`, `case`, `for`, `while`, `do`) opening the group commits the block reading the same way when what follows cannot continue its expression: `(for x in xs do f(x) od 0)` is a block whose tail is `0`, no `;` needed. An operator-headed tail on the same line is the one exception: any operator can also continue the expression, so the group keeps the expression reading there and the compound statement is the operator's left operand (`(if c then 2 else 5 fi - 1)` is 1 when `c` is true). Only the same line does that — the compound statement ends the line it is written on, so an operator opening the next line begins a new statement like any other, and `(if c then 2 else 5 fi` / `-1)` is a block whose tail is `-1` with no `;` needed. So `(a = f(x), b = g(y))` constructs a named tuple while `(a = f(x); b = g(y); a + b)` runs two assignments and yields the sum; the `,`/`;` is the whole difference, and the elements themselves can be any expression in both. A statement whose expression form already exists keeps it: `(let x = 5 in x * 2)` is the `let ... in` expression, unchanged, while `(let x = 5; x * 2)` is a block with a `let` statement and a tail.
+
+A `let use` written directly in a block is rejected: the block has no disposal region to close it in. One written in a statement list nested inside the block - the body of an `if`, of a loop, of a `try` - has a region of its own and is unaffected.
 
 A common use is loop-as-expression — fold an iterable into a value with the loop body updating a `mut` accumulator and the tail expression handing back the result:
 
@@ -1635,24 +1819,53 @@ A generator's return type has to be `Pipe[T]` — `yield` in a function declared
 
 See <https://ghul.dev/functional-programming.html>.
 
-`Collections.List[T]` is the read-only list trait (the .NET `IReadOnlyList<T>`); `Collections.LIST[T]` is the mutable list. `MAP`/`Map` pair the same way for dictionaries, and `SET` is the mutable hash set. `MutableList`, `MutableMap`, `Bag`, `MutableBag` and `STACK` round out the mapping. There is no map literal — construct a `MAP`:
+`Collections.List[T]` is the read-only list trait (the .NET `IReadOnlyList<T>`); `Collections.LIST[T]` is the mutable list. `MAP`/`Map` pair the same way for dictionaries, and `SET` is the mutable hash set. `MutableList`, `MutableMap`, `Bag`, `MutableBag` and `STACK` round out the mapping. There is no map literal syntax. A map with fixed contents is written as a list literal of key and value pairs, collected with `collect_map()`, which throws if a key is given twice:
 
 ```ghul
-let scores = MAP[string, int]();
-scores.add("alice", 1);
+let scores = [("alice", 1), ("bob", 2)] |> collect_map();
 let total = scores["alice"];
 ```
 
-The sequence combinators are global functions in `Ghul.Pipes`, each taking the sequence as its first argument, so the thread-first operator `|>` chains them. ghūl provides the usual set, in the manner of LINQ, and none of them mutate the source. They split into lazy stages that return a new sequence — `map`, `filter`, `flat_map`, `skip`, `take`, `cat`, `index`, `zip`, `sort` — and terminals that consume it and produce a value: `reduce`, `collect` / `collect_list` / `collect_array`, `count`, `find`, `find_map`, `first`, `only`, `any`, `all`, `each`, `join`, `append_to`.
+A map computed from a sequence takes a key and a value function instead, `words |> collect_map(w => w, w => w.length)`, and one that starts empty and is filled later is constructed with no arguments, `MAP()`, its types taken from how it is used.
+
+The sequence combinators are global functions in `Ghul.Pipes`, each taking the sequence as its first argument, so the thread-first operator `|>` chains them. ghūl provides the usual set, in the manner of LINQ, and none of them mutate the source. They split into lazy stages that return a new sequence — `map`, `filter`, `flat_map`, `skip`, `take`, `cat`, `index`, `zip`, `sort` — and terminals that consume it and produce a value: `reduce`, `sum`, `product`, `collect` / `collect_list` / `collect_array` / `collect_set` / `collect_map`, `count`, `find`, `find_map`, `first`, `only`, `any`, `all`, `each`, `join`, `append_to`.
 
 ```ghul
 let numbers = [1, 2, 3, 4, 5];
 let evens = numbers |> filter(x => x % 2 == 0);
 let doubled = numbers |> map(x => x * 2);
-let sum = numbers |> reduce(0, (acc, x) => acc + x);
+let total = numbers |> sum();                       // 15
+let folded = numbers |> reduce(1, (acc, x) => acc * x);
+let odd = numbers |> count(x => x % 2 == 1);        // 3, the elements the predicate accepts
 ```
 
+`sum` and `product` total a sequence of any of the numeric types, taking the
+element type from the sequence, so neither needs a seed. Addition and
+multiplication each have an identity, so the total of an empty sequence is `0`
+or `1` rather than an absent value, which is where the two differ from `min` and
+`max`: those answer with a `MAYBE[T]`, since there is no least element of
+nothing.
+
 A pipe is a cursor over its source. Read part way and then read again — by the same consumer or another, through `for`, a combinator, a terminal or interpolation — it carries on from wherever the last read stopped; nothing distinguishes those cases. Once it has run out it rewinds itself, so the next read starts from the beginning: `for x in p` twice sees every element twice, and `p |> count()` followed by `p |> only()` walks the whole sequence both times. A stage reaching its own end counts as the end of everything below it, so `p |> take(2)` yields the first two elements every time it is read, and `skip` is how to page. The rewind is in place, so every holder of the pipe sees it start over. `p.reset()` rewinds early. Nothing disposes on its own: `p.dispose()` on a combinator chain releases every iterator its stages hold, file readers included, while a generator's `dispose()` releases nothing - it does not run the body's `finally` clauses or dispose an iterator the body is walking with `yield in`. `memo` is the one stage whose rewind never asks its source again — it replays what it cached.
+
+A `for` loop does not dispose what it iterated, so a sequence that holds a resource is disposed by naming its iterator and letting `let use` close it. That covers the few that hold one: file and directory enumeration, a database reader, a PLINQ query, and a .NET iterator written with a `using`. It matters where the loop can be left early, since the iterator is then still open.
+
+```ghul
+let use lines = IO.File.read_lines(path).iterator
+
+for line in lines do
+    if line.starts_with(wanted) then
+        return line
+    fi
+od
+```
+
+A pipe can also be started from nothing. `repeat(value)` yields `value` without end and `repeat(value, count)` yields it `count` times; `from(start)` counts upwards from `start` without end, and `from(start, step)` counts in steps of `step`. Collected, a bounded `repeat` is how a list of a given size is made:
+
+```ghul
+let seen = repeat(false, 100) |> collect_list();      // LIST[bool], a hundred of them
+let squares = from(1) |> map(n => n * n) |> take(5);  // 1, 4, 9, 16, 25
+```
 
 Lazy and infinite sequences are built with `Ghul.Pipes.stream(initial, advance)`, where `advance` steps from the current state to the next element and state. Nothing forces `advance` to be free of side effects, but it is called lazily and on demand, so it is much easier to reason about when it is. The `||` infix is the step expression — `value || next_state`. A `stream(...)` is an ordinary `Pipe[T]`, so the pipe combinators chain onto it with `|>`. See <https://ghul.dev/functional-programming.html#lazy-sequences>.
 
@@ -1667,6 +1880,12 @@ let b = 5 |> add(3);             // add(5, 3) is 8
 let c = 5 |> double() |> add(1); // add(double(5), 1) is 11
 ```
 
+`|>` and `~>` are a precedence level of their own, below range and above relational (see [operators](#operators)), so the subject is everything to the left that binds tighter: `1 + 2 |> double()` is `double(1 + 2)`, and `0..n |> map(f)` maps the whole range. A comparison or a boolean operator stays outside the chain, so `xs |> count() > 3` compares the count and `ready /\ xs |> any(p)` tests `ready` first.
+
+A prefix operator applies to its operand before the chain does, so `!xs |> any(p)` negates `xs` rather than the answer, and `await t |> f()` is `f(await t)`. Parenthesise the chain for the other reading: `!(xs |> any(p))`.
+
+The subject goes into the last call written on the right-hand side, so `x |> box.combine(a)` is `box.combine(x, a)` and `x |> BOX(1).combine(a)` is `BOX(1).combine(x, a)`. Member access, indexing, `!` and `?` written after that call apply to its result, as they would after any call: `xs |> collect_list()[0]` is the first element and `xs |> collect_list().count` the count. An operator written after the call applies to the result of the whole chain, so `xs |> count() % 2` is `count(xs) % 2`.
+
 A function named with an operator is the one right-hand side that can be written without an argument list, since there is nothing else the bare name could mean. The threaded value is then the only argument, and an argument list is still accepted alongside it:
 
 ```ghul
@@ -1678,7 +1897,68 @@ let e = 5 |> $();                // the same call, written out
 
 The operator and the `|>` have to be separated by a space. A run of operator characters scans as a single token, so `5 |>$` is one operator named `|>$` rather than two.
 
-A `|>` at the end of a line carries the chain onto the next one, which is how a long chain is wrapped. Only a name continues it that way, so a line beginning with anything else leaves the `|>` without a right side and is reported as one — the next statement is never read as the call.
+The propagating thread-first operator `~>` is `|>` combined with absence propagation, the way `?.` is member access combined with it. The left value has to be optional; an absent one skips the call — argument expressions included, as `?.` skips them — and yields the absent value, while a present one is threaded in unwrapped, exactly as `|>` threads a value. The result is always optional: a callee returning a non-optional `U` is widened to `U?` as `?.` widens a member's type, and a void callee is simply skipped:
+
+```ghul
+parse_port(s: string) -> int?;
+clamp_port(n: int) -> int?;
+label(n: int) -> string;
+
+let port = text |> trim() |> parse_port() ~> clamp_port() ~> label() ?? "closed";
+```
+
+The two operators chain together — a `|>` stage runs unconditionally, a `~>` stage propagates — and `~>` works over every optional kind, including an unconstrained `T?` in a generic. The diagnostics are `?.`'s: a `~>` whose subject was never optional is an error on a value type (`receiver is not optional`) and stays legal as a defensive null test on a reference, and where flow analysis has proven the subject present the operator draws a `redundant-coalesce` warning. Inside a generic the callee sees the unwrapped `T` and its result widens back to the optional of whatever it returns.
+
+A `|>` or `~>` at the end of a line carries the chain onto the next one, which is how a long chain is wrapped. Only a name continues it that way, so a line beginning with anything else leaves the operator without a right side and is reported as one — the next statement is never read as the call.
+
+## displaying values
+
+The runtime formats any value as text in two ways. `$(value)` gives the text a program shows its user, and is what string interpolation uses for a value its type gives no text of its own (see [types and literals](#types-and-literals)). `inspect(value)` gives the detailed form a REPL or a debugging session wants: the same structure, with strings and characters quoted wherever they appear inside a value. Both take anything, including an absent value, which reads `null`. `$` needs no `use`; `inspect` is in `Ghul`.
+
+```ghul
+use Ghul.inspect
+
+struct POINT(x: int public, y: int public)
+
+$(["one", "two"])                 // [one, two]
+inspect(["one", "two"])           // ["one", "two"]
+inspect("top")                    // top
+$(POINT(3, 4))                    // POINT(x = 3, y = 4)
+inspect((1, "one", 'c', true))    // (1, "one", 'c', true)
+```
+
+A string or character is quoted only inside a value, and only by `inspect`: at the top it is the whole answer, and reads as itself. `$` and `inspect` write a value by these rules, in order:
+
+- `null` for an absent value, and `true` or `false` for a `bool`
+- a type that implements `Ghul.Displayable` writes itself, as below
+- a tuple as its parts in parentheses, and a map entry as `(key, value)`
+- a type that declares its own `to_string` reads as that `to_string`, even when it is also a sequence. The runtime's own pipes, and generators, are the exception: their `to_string` writes their elements, and they are written as sequences
+- a sequence, such as an array, a list or a pipe, as its elements in brackets
+- a class, struct or union variant ghūl compiled, with no `to_string` of its own, as its type and members: `POINT(x = 3, y = 4)`, `Shape.DOT(size = 2)`
+- a value of a type from another language, with no `to_string` of its own, as its .NET type name. Its members are not read, since a property getter can do anything - a task's result waits for the task
+
+A sequence stops after 100 elements with `, ...]`, so an unbounded pipe is written too; a pipe left part way through by that is rewound, as reading it to the end would have left it. A value that contains itself reads `<cycle>` where it recurs, and the same value in two places is written in full both times.
+
+A type chooses how it is displayed by implementing `Ghul.Displayable`, whose one method writes the value through a `Ghul.DISPLAY_STATE`. Write a child value with `state.render(child)` rather than with `$(child)`: the state carries the element limit and the values already being written, which a fresh call to `$` starts without. `state.mode` says whether the text is for `$`, `DisplayMode.CLEAN`, or for `inspect`, `DisplayMode.DETAILED`:
+
+```ghul
+use Ghul
+
+class SCORE(points: int): Displayable is
+    display(state: DISPLAY_STATE) is
+        state.append("[")
+        state.render(points)
+        state.append(if state.mode == DisplayMode.DETAILED then " points]" else "]" fi)
+    si
+si
+
+$(SCORE(3))                       // [3]
+inspect(SCORE(3))                 // [3 points]
+```
+
+A `DISPLAY_STATE` can also be made directly, with a mode and a different element limit, and written into: `DISPLAY_STATE(DisplayMode.CLEAN, 3)` writes `[1, 2, 3, 4, 5]` as `[1, 2, 3, ...]`, read back with `to_string()`.
+
+`Displayable` customises the text `$` and `inspect` produce for a value. `Ghul.Renderable` offers other media for the same value, such as an image, which a host like a notebook can show in place of that text: its `representations()` gives each as a MIME type and its content, best first. The host chooses which MIME types it shows, and the text `$` writes is the fallback. A host showing output in a web page does not insert `text/html` or `image/svg+xml` from a value into its own document.
 
 ## generics
 
@@ -1713,6 +1993,8 @@ use System.IParsable;
 parse[T: IParsable[T]](s: string) -> T => T.parse(s, null);
 ```
 
+Consuming such a member is all that is supported. A type cannot *implement* one: nothing binds a type's static to the interface's static slot, and the runtime refuses to load a type that leaves one unfilled, so naming an interface that declares a static member on a concrete type is an error at the declaration. That covers the generic-math interfaces above, which is why a bound on one of them is satisfied by the built-in numeric types and not by a type of your own.
+
 Some of those interfaces declare an **operator** as a static member — `IAdditionOperators[TSelf, TOther, TResult]` declares addition, and `INumber[T]` extends it. Such an operator is written as an operator rather than reached through the type parameter, but only once it has been imported by name:
 
 ```ghul
@@ -1746,7 +2028,7 @@ build[T: Named class init](name: string) -> T;
 build[T: Named /\ Sized class init](name: string) -> T;   // two bounds plus kinds
 ```
 
-The CLR kind constraints on an imported generic (`where T : class`, `struct`, `new()`) are enforced too, at the point a type argument is resolved. Type arguments can be given explicitly (`print_something[int](1234)`) but are usually inferred — from the call arguments of a function or method, from the constructor arguments of a generic class, struct, or variant, from the enclosing context (return type, let-init type, assignment LHS, or the argument slot the call itself fills) when the arguments alone don't pin every slot, and — for a generic function referred to as a value — from the function type of the slot it goes into:
+The CLR kind constraints on an imported generic (`where T : class`, `struct`, `new()`) are enforced too, at the point a type argument is resolved. Type arguments can be given explicitly (`print_something[int](1234)`) but are usually inferred — from the call arguments of a function or method, from the constructor arguments of a generic class, struct, or variant, from the enclosing context (return type, let-init type, assignment LHS, or the argument slot the call itself fills) when the arguments alone don't pin every slot, from how an untyped immutable local initialized with the call is used later in the body, and — for a generic function referred to as a value — from the function type of the slot it goes into:
 
 ```ghul
 print_something(1234);                       // T inferred as int
@@ -1757,9 +2039,13 @@ takes_int(zero_of(1));                       // zero_of[T](n: int) -> T:
                                              // the slot pins T = int
 ```
 
-When neither the arguments nor any later use pins a type argument, the construction is an error (`cannot infer type here`) — give the type argument explicitly (`BOX[int]()`).
+When neither the arguments nor any later use pins a type argument, the construction or call is an error (`cannot infer type here`, or `cannot infer the type of` the local it initializes) — give the type argument explicitly (`BOX[int]()`).
 
-A type parameter written with a trailing `..` is an **argument pack**: it stands for the arguments of a call, held as a positional tuple. The `..` is that parameter's bound — it says what `T` ranges over — so a type bound cannot be written alongside it.
+A type parameter written with a trailing `..` is an **argument pack**. `[T..]` in the type parameter list says that where `T` appears in the signature it may, if it is marked with `..` there, be implicitly wrapped and unwrapped, so that the calling code does not have to wrap or unwrap it by hand. It still can: a caller is free to write the tuple out, and a single argument is the value itself rather than a one-element tuple. Writing `T..` within the signature then says that the wrap or unwrap is wanted for that specific argument, should it be needed at the call site.
+
+So the two markers do different jobs. The one on the type parameter is the permission, and nothing is spread because of it alone; the one on a formal is the request. A formal over a pack that is left unmarked takes the pack as the tuple it is.
+
+The pack stands for the arguments of a call, held as a positional tuple. The `..` on the type parameter is that parameter's bound — it says what `T` ranges over — so a type bound cannot be written alongside it.
 
 A formal argument then writes `..` on its own type to say which of the pack's readings it wants. `f: T.. -> U` takes the arguments spread out, as a function of as many parameters as the call supplies; `v: T..` takes them as the call's own remaining arguments; a plain `T` is the tuple. So a function taking a function and the values to call it with declares one of each, and callers write the call out rather than assembling the tuple by hand:
 
@@ -1775,6 +2061,39 @@ apply(double, 123);                      // T is int, as for any parameter
 ```
 
 A spread formal has to be the last one, since it leaves nothing for the arguments after it. One argument is the value itself rather than a one-element tuple, which is what makes `apply(double, 123)` read the way it does; two or more are the tuple they are spread into. Writing the tuple out goes into the same formal, so both spellings are available and the written-out one is what a caller reaches for when it already holds the tuple.
+
+The pack is the last parameter of the function the formal takes, and that function can take parameters of its own before it. `f: (A, T..) -> A` is the shape a fold's callback has: the running value comes first and is passed as it is, and the rest of the parameters are the pack's elements.
+
+```ghul
+fold[A, T..](source: Collections.Iterable[T], seed: A, f: (A, T..) -> A) -> A is
+    let running mut = seed
+
+    for element in source do
+        running = f(running, element)
+    od
+
+    return running
+si
+
+let pairs = [(1, 2), (3, 4)]
+
+fold(pairs, 0, (total, a, b) => total + a * b)      // 14
+fold(pairs, 0, (total, pair) => total + pair.`0)    // the tuple, written out
+```
+
+Only the last parameter can be the pack, and a parameter list holds one pack: `(A.., B) -> C` and `(T.., T..) -> int` are both errors.
+
+The pack binds to whatever the call supplies, and the function written at its own formal is one of the things that supplies it — its parameters are the tuple. So a call that passes nothing but the function still infers, as long as the function says what its parameters are:
+
+```ghul
+n_ary[A.., B](f: A.. -> B) -> (A -> B) => f;
+
+add(a: int, b: int) -> int => a + b;
+
+n_ary(add);                        // A is (int, int)
+n_ary((a: int, b: int) => a + b);  // the same, written out
+n_ary((a, b) => a + b);            // error - nothing says what a and b are
+```
 
 Nothing about the parameter itself changes: `T` binds to whatever the call supplies, `f(v)` passes one value, and a consumer in another language sees a method taking a tuple. What the marker on `f` licenses is a **function of two or more parameters written where that formal expects one**. A function literal there is read as destructuring the tuple, and a function named there is wrapped so that it is. A one-parameter function needs no adaptation and is passed as it stands.
 
@@ -1792,6 +2111,24 @@ e.subscribe((n, s) => write_line("{n} {s}"));
 e.raise(7, "seven");
 ```
 
+Inside the type, a formal holding the handler has its tuple-in type, `T -> void`. That type is what the handler is stored as, since a type argument can't carry the marker:
+
+```ghul
+class EVENT[T..] is
+    _handlers: Collections.LIST[T -> void]
+
+    init() is _handlers = Collections.LIST[T -> void](); si
+
+    subscribe(handler: T.. -> void) is _handlers.add(handler); si
+
+    raise(v: T..) is
+        for handler in _handlers do
+            handler(v);
+        od
+    si
+si
+```
+
 The marker can sit on the parameter of any function type along the formal's return spine, not only the outermost. `f: X -> T.. -> U` asks for a function the caller's own lambda returns, which is how a higher-order function takes an N-ary one:
 
 ```ghul
@@ -1800,9 +2137,26 @@ run[T.., U](make: (int) -> T.. -> U, v: T) -> U => make(10)(v);
 run(n => (a, b) => a + b + n, (1, 2));   // 13
 ```
 
-The marker reads only as a formal's own type, or as the parameter of a function type on that type's return spine. Written anywhere else — inside a bigger type, reached through a parameter rather than a return, or on a type parameter that no `[T..]` declares — it is an error. The tuple limit is the pack's limit too: past seven arguments there is no tuple to bind to, and the call is reported as it stands. A pack is not `params`: a homogeneous variable-length list is a different thing.
+A literal written there can spell its types out. Its return is written as the N-ary function type the marker licenses, and the literal is presented in the tuple-in shape the formal takes, exactly as the inferred one is - at whatever depth the marker sits. The tuple-in shape itself is not a type an N-ary literal can be returned as, there or anywhere else:
+
+```ghul
+run((n: int) -> (int, int) -> int => (a: int, b: int) -> int => a + b + n, (1, 2));   // 13
+
+run((n: int) -> ((int, int)) -> int => (a: int, b: int) -> int => a + b + n, (1, 2)); // error
+```
+
+The marker reads only as a formal's own type, as the last parameter of a function type on that type's return spine, or as the last parameter of a function type in a declared return type. Written anywhere else — inside a bigger type, reached through a parameter rather than a return, or on a type parameter that no `[T..]` declares — it is an error. The tuple limit is the pack's limit too: past seven arguments there is no tuple to bind to, and the call is reported as it stands. A pack is not `params`: a homogeneous variable-length list is a different thing.
 
 What each formal asks for survives into the assembly, so a pack declared in one assembly reads the same way from another.
+
+A return type marked that way hands the pack back out, which is how a combinator preserves the arity of a function it takes:
+
+```ghul
+retry[T.., U](f: T.. -> U, attempts: int) -> T.. -> U =>
+    v => ( ... call f(v) with retries ... );
+```
+
+Inside `retry`, the declared return type still names the tuple-in shape the body's `v => ...` literal has. The presentation happens at each call that binds the pack to a concrete tuple: `retry(parse, 3)` evaluates once, where the call stands, and its value is the N-ary function `f`'s own arity suggests — `let safe = retry(parse, 3); safe("2a", 10)` calls it as a two-argument function. A call that binds the pack to a single argument needs no presentation and returns the function as it is. The same rule applies one level up: a generic whose own return type carries the marker returns the tuple-in value its declaration names, and the call of *that* function does the presenting.
 
 
 A generic function or method named with no argument list is a *value*, the same way a non-generic name in value position is. Written with its type arguments it is the value at that instantiation; written bare, the type arguments are inferred from the function type of the slot it goes into — from the parameter positions, and from the return slot for a variable that appears only there. It converts wherever a function type or a named delegate is expected, and where the name is overloaded the expected type picks the member:
@@ -1831,7 +2185,7 @@ let closed = typeof BOX[int];   // BOX[int]
 typeof PAIR[_, _];              // a two-argument open generic
 ```
 
-`open` is the type `closed.get_generic_type_definition()` returns. Because nothing but reflection can hold such a type, `FOO[_]` is accepted only as the whole operand of a `typeof` — not as a declared type, not nested inside another type argument, and not with some arguments supplied and others left as `_`.
+`open` is the type `closed.get_generic_type_definition()` returns. Because nothing but reflection can hold such a type, `FOO[_]` is accepted only as the whole operand of a `typeof` — not as a declared type, not nested inside another type argument, and not with some arguments supplied and others left as `_`. Where a name has no sibling taking no type arguments, a bare name in a `typeof` yields the open generic too, so `typeof List` is ``IReadOnlyList`1[T]``; `X[_]` is the spelling that means it whatever siblings exist, and the only one accepted anywhere a sibling could be meant instead.
 
 The main use for it is an attribute that names a generic type, where the type it names shares its name with a sibling — a task-like whose builder is generic, for instance (see [asynchronous code](#asynchronous-code)):
 
@@ -1840,11 +2194,13 @@ The main use for it is an attribute that names a generic type, where the type it
 class COROUTINE[T] is ... si
 ```
 
+Everywhere else a type is required, a generic named with none of its type arguments is an error saying how many it takes: what the name stands for is the open generic, and an assembly naming one is refused by the runtime at load rather than at compile time. That covers a declared type, a parameter, a cast target, an `isa` test and a type argument alike. Two positions are not affected, because each takes its arguments from somewhere else: a union's variant, whose arguments come from the union and so from the value the variant is tested against or assigned to (`isa Option.NONE(o)` over an `Option[int]`), and a call whose type arguments are inferred (`LIST()`).
+
 ## type inference
 
 See <https://ghul.dev/type-inference.html>.
 
-ghūl infers types pervasively, but inference is **function-local**: a function's signature — its parameter and return types — is always written out, and inference works only within the body. Within a body, types are inferred for local variables, loop variables, destructured variables, anonymous function parameters and return types, and generic type arguments on calls.
+ghūl infers types pervasively, but inference is **function-local**: a namespace-scope function's signature — its parameter and return types — is always written out, and inference works only within the body. Within a body, types are inferred for local variables, loop variables, destructured variables, the parameters and return types of function literals and of nested named functions, and generic type arguments on calls.
 
 Inference also works from later use: a variable with no immediate clue takes its type from how it is used further down the same body — including from operations the body performs on it, and from its own recursive calls if it is a function. The compiler narrows local variables, fields and store-free properties (see Type narrowing above for how long each kind of fact lasts), and a `let` variable's inferred type does not escape the function it is declared in.
 
@@ -1881,6 +2237,8 @@ A tuple takes the same route. `EqualityComparer[T].Default` for a `ValueTuple` i
 
 A member `=~` or `<>` must be `pure` — declared or provably store-free — a compile error otherwise. Both operators are trusted on an operand whose type isn't known until later — a lambda parameter, for instance — and `=~` is trusted again through the `EqualityComparer[T].Default` route above. Nothing at either of those call sites can check what the implementation actually does, so an implementation that could store would make that trust unsound rather than merely unproven. Most bodies — field and property comparisons, delegating to another type's `=~`/`<>` — are provably store-free without any annotation; add `pure` when the body itself is more than the analysis can trace (a loop, a call the analysis doesn't otherwise bound). Overriding a pure `=~`/`<>` requires the override to be pure too, the same rule that governs overriding any other [pure function](#type-narrowing).
 
+A type implementing `Collections.Iterator[T]` that declares no `reset` is given one that throws `System.NotSupportedException`, which is what `IEnumerator.Reset` is documented to do and what .NET's own generated iterators answer with; a `reset` the type declares is left alone. `dispose` is not supplied, since what a type holds and must release is its author's to say.
+
 An identifier that collides with a ghūl keyword is escaped with a backtick — `` `class `` is the identifier `class`.
 
 An operator is an ordinary member and can be called as one, which is occasionally clearer than the operator spelling and is how a completion list offers it. The dot needs separating from the operator's name, because a run of operator characters is scanned as a single token and `.` is one of them — so `a.=~(b)` is read as an operator named `.=~` rather than as a member access. A space does it, and so does the backtick escape:
@@ -1890,7 +2248,7 @@ a. =~(b)
 a.`=~(b)
 ```
 
-Both are the same call, and both are a plain method call rather than another spelling of the operator. Where the two differ, they differ quietly. The null handling around `a =~ b` is written around the *operator*, so the member call receives an absent operand instead of being answered before it is reached. And an operator that lowers to an IL instruction has no .NET method behind it: on the scalar types the arithmetic operators are instructions, declared as static members of the type, so `a. +(b)` on an `int` finds no overload taking one operand, and `int.`+(a, b)` is the call — while `=~` and `<>` on those types, and on `string`, do reach the .NET method the name maps to, which is not the same thing the operator does. Member syntax is fine to use on a type whose operators you wrote; it is not a general substitute for writing the operator.
+Both are the same call, and both are a plain method call rather than another spelling of the operator. Where the two differ, they differ quietly. The null handling around `a =~ b` is written around the *operator*, so the member call receives an absent operand instead of being answered before it is reached. And an operator that lowers to an IL instruction has no .NET method behind it: on the scalar types the arithmetic operators are instructions, declared as static members of the type, so `a. +(b)` on an `int` finds no overload taking one operand, and `int.`+(a, b)` is the call — while `=~` and `<>` on those types, and on `string`, do reach the .NET method the name maps to, which is not the same thing the operator does. Member syntax is fine to use on a type whose operators you wrote; it is not a general substitute for writing the operator. Naming one of those instruction-backed operators as a *value* rather than calling it - `int.`+`` passed where a function is expected - is rejected, since there is no method to take the address of; an operator you declared yourself is an ordinary static or global function and is named as a value like any other. An instance member named through its type, `BOX.plus` or `int.`<>``, is rejected too: a member reached through a receiver needs one.
 
 A static property or field takes `snake_case` however constant-like it reads, since only enum members become `MACRO_CASE` — `CancellationToken.None` is `System.Threading.CancellationToken.none`.
 
@@ -1962,7 +2320,7 @@ An overloaded name is resolved against whichever function or delegate type the r
 A .NET **user-defined conversion operator** (`op_Implicit` / `op_Explicit`) declared on either the source or the target type is reachable through `cast`, alongside the subtype and scalar conversions `cast` already performs:
 
 ```ghul
-let h = cast System.Half(1.5);      // System.Half declares `explicit operator Half(float)`
+let h = cast System.Half(1.5);      // System.Half declares `explicit operator Half(double)`
 let f = cast single(h);             // and `implicit operator float(Half)`
 ```
 
@@ -1976,7 +2334,7 @@ Because ghūl has no default argument values, a .NET **optional parameter** has 
 let text = await IO.File.read_all_text_async(path, System.Threading.CancellationToken.none);
 ```
 
-A pragma whose name doesn't match a compiler built-in is taken to name a .NET **attribute**, and emits the attribute on whatever it's written against: a class, trait, struct, union, variant, or enum; a function or method; or a single parameter in a function or method's parameter list, including a lambda literal's. The `Foo` short form resolves to `FooAttribute` when no plain `Foo` exists. Arguments are positional, named (`name = value`), array-valued, or `typeof`:
+A pragma whose name doesn't match a compiler built-in is taken to name a .NET **attribute**, and emits the attribute on whatever it's written against: a class, trait, struct, union, variant, or enum; a function or method; or a single parameter in a function or method's parameter list, including a lambda literal's. The `Foo` short form resolves to `FooAttribute` when no plain `Foo` exists, in a `use` clause as well as in the pragma — so `use System.Obsolete` brings `System.ObsoleteAttribute` into scope, and `use Marker = System.Obsolete` brings it in as `Marker`. Arguments are positional, named (`name = value`), array-valued, or `typeof`:
 
 ```ghul
 @System.Obsolete("use PRODUCT instead")
@@ -2000,3 +2358,21 @@ app.map_get(
 ```
 
 A parameter attribute is recognised only where a formal parameter can appear: a named function or method's parameter list, or a lambda literal's — not on a `let` or a primary-constructor parameter. Written on an element of a parenthesised expression that turns out not to be a lambda (an ordinary value tuple), it's rejected with an error rather than silently ignored.
+
+`System.Runtime.InteropServices.DllImport` on a static method with no body declares a call into a shared library. The method is emitted as the call itself rather than as a method carrying an attribute, so it needs no body and cannot have one:
+
+```ghul
+class LIBC is
+    @System.Runtime.InteropServices.DllImport("libc")
+    abs(value: int) -> int static;
+
+    @System.Runtime.InteropServices.DllImport("libc", entry_point = "getpid")
+    process_id() -> int static;
+
+    init() is si
+si
+```
+
+The name looked up in the library is the method's own, spelled as written, unless `entry_point` gives another: a native symbol is matched exactly, so none of the case conversion that applies to a .NET name applies here. `char_set`, `set_last_error`, `exact_spelling` and `calling_convention` are carried through as written.
+
+What can cross the boundary is what the machine lays out the same way on both sides: the scalar types, a pointer, a `ref` to a scalar, and a `string` argument, which is marshalled to a null-terminated buffer for the duration of the call. A returned `string` is not accepted, since freeing the buffer the library returned is the library's business rather than the runtime's. Anything else, such as a class, a tuple, an array or a function, is reported at the declaration rather than emitted.

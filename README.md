@@ -264,7 +264,8 @@ Rosetta Code title.
 
 A rejection is a decision, not a note to self, so it carries one of a fixed set of reasons:
 `needs-gui`, `needs-network`, `needs-interaction`, `nondeterministic`, `needs-native-lib`,
-`output-unbounded`, `task-unclear`. The point of writing it down is that the same task is never assessed twice.
+`output-unbounded`, `no-equivalent`, `excluded`, `task-unclear`. The point of writing it down is
+that the same task is never assessed twice.
 
 `rosetta reopen <title> <why>` reverses one, for when what made the task impossible stops being
 true. It records the verdict it overturned in the entry's note, so the reversal is readable rather
