@@ -125,6 +125,12 @@ scripts/generate-wiki.sh y-combinator | xclip -selection clipboard
 A task whose test carries a `disabled` marker is skipped rather than emitted, as is one that
 fails to build or run - an entry that does not run should not be posted.
 
+`rosetta diff` shows what a publish would change, without signing in: one line a task, `new`
+where the page has no ghul section yet, `same` or `differs` against the live section, and
+`edited` where the live section is not the one published from here. It reads every published
+and solved task, or only the slugs given, and leaves each differing live section beside its
+markup as `wiki-out/<slug>.live`.
+
 `rosetta publish` puts these on the wiki. To paste one by hand instead, it goes in alphabetical
 position among the language headers: `ghul` sorts after `Genie` and before `Go`. Either way, run
 `rosetta sync` afterwards so the ledger records it.
