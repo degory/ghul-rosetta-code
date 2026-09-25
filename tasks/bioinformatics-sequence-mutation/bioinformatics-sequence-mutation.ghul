@@ -1,0 +1,57 @@
+use default
+
+let bases = ['A', 'C', 'G', 'T']
+let random = System.Random(1969)
+
+show(label: string, sequence: List[char]) is
+    write_line(label)
+
+    for (row, line) in sequence |> chunk(50) |> index() do
+        write_line("{row * 50,5}  {string(line |> collect_array())}")
+    od
+
+    let tally =
+        bases |> map(base => "{base} {sequence |> count(b => b == base)}")
+
+    write_line("  {sequence.count} bases: {tally |> join("  ")}")
+    write_line("")
+si
+
+mutate(sequence: LIST[char]) -> string is
+    let at = random.next(0, sequence.count)
+    let base = bases[random.next(0, 4)]
+
+    case random.next(0, 3)
+    when 0 then
+        let old = sequence[at]
+
+        sequence[at] = base
+
+        return "swap {old} for {base} at {at}"
+    when 1 then
+        let old = sequence[at]
+
+        sequence.remove_at(at)
+
+        return "delete {old} at {at}"
+    else
+        sequence.insert(at, base)
+
+        return "insert {base} at {at}"
+    esac
+si
+
+let sequence =
+    0..200 |> map(_ => bases[random.next(0, 4)]) |> collect_list()
+
+show("original sequence:", sequence)
+
+write_line("mutations:")
+
+for _ in 0..10 do
+    write_line("  {mutate(sequence)}")
+od
+
+write_line("")
+
+show("mutated sequence:", sequence)

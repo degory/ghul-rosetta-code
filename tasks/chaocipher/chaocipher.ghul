@@ -1,0 +1,56 @@
+use default
+
+let nadir = 13
+
+rotate(alphabet: LIST[char], by: int) is
+    for _ in 0..by do
+        let first = alphabet[0]
+
+        alphabet.remove_at(0)
+        alphabet.add(first)
+    od
+si
+
+advance(left: LIST[char], right: LIST[char], index: int) is
+    rotate(left, index)
+
+    let from_left = left[1]
+
+    left.remove_at(1)
+    left.insert(nadir, from_left)
+
+    rotate(right, index + 1)
+
+    let from_right = right[2]
+
+    right.remove_at(2)
+    right.insert(nadir, from_right)
+si
+
+chao(text: string, encrypting: bool) -> string is
+    let left = "HXUCZVAMDSLKPEFJRIGTWOBNYQ" |> collect_list()
+    let right = "PTLNBQDEOYSFAVZKGJRIHWXUMC" |> collect_list()
+    let out = LIST[char]()
+
+    for letter in text do
+        let index =
+            if encrypting then
+                right.index_of(letter)
+            else
+                left.index_of(letter)
+            fi
+
+        out.add(if encrypting then left[index] else right[index] fi)
+
+        advance(left, right, index)
+    od
+
+    return string(out |> collect_array())
+si
+
+let plain = "WELLDONEISBETTERTHANWELLSAID"
+let cipher = chao(plain, true)
+
+write_line("plaintext  {plain}")
+write_line("ciphertext {cipher}")
+write_line("recovered  {chao(cipher, false)}")

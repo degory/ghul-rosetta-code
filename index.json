@@ -2683,6 +2683,32 @@
       ]
     },
     {
+      "slug": "bin-given-limits",
+      "title": "Bin given limits",
+      "url": "https://rosettacode.org/wiki/Bin_given_limits",
+      "tags": [
+        "pipes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "bin-given-limits",
+          "heading": null,
+          "source": "tasks/bin-given-limits/bin-given-limits.ghul",
+          "output": "tasks/bin-given-limits/run.expected",
+          "lines": 63,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "binary-digits",
       "title": "Binary digits",
       "url": "https://rosettacode.org/wiki/Binary_digits",
@@ -2834,6 +2860,32 @@
           "source": "tasks/bioinformatics-global-alignment/bioinformatics-global-alignment.ghul",
           "output": "tasks/bioinformatics-global-alignment/run.expected",
           "lines": 95,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "bioinformatics-sequence-mutation",
+      "title": "Bioinformatics/Sequence mutation",
+      "url": "https://rosettacode.org/wiki/Bioinformatics/Sequence_mutation",
+      "tags": [
+        "strings",
+        "simulation"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "bioinformatics-sequence-mutation",
+          "heading": null,
+          "source": "tasks/bioinformatics-sequence-mutation/bioinformatics-sequence-mutation.ghul",
+          "output": "tasks/bioinformatics-sequence-mutation/run.expected",
+          "lines": 57,
           "playground": true,
           "input": false,
           "images": []
@@ -3762,6 +3814,32 @@
       ]
     },
     {
+      "slug": "calendar",
+      "title": "Calendar",
+      "url": "https://rosettacode.org/wiki/Calendar",
+      "tags": [
+        "date-time",
+        "text-processing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "calendar",
+          "heading": null,
+          "source": "tasks/calendar/calendar.ghul",
+          "output": "tasks/calendar/run.expected",
+          "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "calkin-wilf-sequence",
       "title": "Calkin-Wilf sequence",
       "url": "https://rosettacode.org/wiki/Calkin-Wilf_sequence",
@@ -3951,6 +4029,32 @@
       ]
     },
     {
+      "slug": "canonicalize-cidr",
+      "title": "Canonicalize CIDR",
+      "url": "https://rosettacode.org/wiki/Canonicalize_CIDR",
+      "tags": [
+        "strings",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "canonicalize-cidr",
+          "heading": null,
+          "source": "tasks/canonicalize-cidr/canonicalize-cidr.ghul",
+          "output": "tasks/canonicalize-cidr/run.expected",
+          "lines": 34,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "cantor-set",
       "title": "Cantor set",
       "url": "https://rosettacode.org/wiki/Cantor_set",
@@ -3996,6 +4100,32 @@
           "source": "tasks/card-shuffles/card-shuffles.ghul",
           "output": "tasks/card-shuffles/run.expected",
           "lines": 53,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "carmichael-3-strong-pseudoprimes",
+      "title": "Carmichael 3 strong pseudoprimes",
+      "url": "https://rosettacode.org/wiki/Carmichael_3_strong_pseudoprimes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 60,
+      "parts": [
+        {
+          "id": "carmichael-3-strong-pseudoprimes",
+          "heading": null,
+          "source": "tasks/carmichael-3-strong-pseudoprimes/carmichael-3-strong-pseudoprimes.ghul",
+          "output": "tasks/carmichael-3-strong-pseudoprimes/run.expected",
+          "lines": 60,
           "playground": true,
           "input": false,
           "images": []
@@ -4098,6 +4228,32 @@
           "heading": null,
           "source": "tasks/catalan-numbers/catalan-numbers.ghul",
           "output": "tasks/catalan-numbers/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "catalan-numbers-pascals-triangle",
+      "title": "Catalan numbers/Pascal's triangle",
+      "url": "https://rosettacode.org/wiki/Catalan_numbers/Pascal's_triangle",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "catalan-numbers-pascals-triangle",
+          "heading": null,
+          "source": "tasks/catalan-numbers-pascals-triangle/catalan-numbers-pascals-triangle.ghul",
+          "output": "tasks/catalan-numbers-pascals-triangle/run.expected",
           "lines": 27,
           "playground": true,
           "input": false,
@@ -4226,6 +4382,57 @@
           "images": [
             "tasks/catmull-clark-subdivision-surface/subdivided.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "centre-and-radius-of-a-circle-passing-through-3-points-in-a-plane",
+      "title": "Centre and radius of a circle passing through 3 points in a plane",
+      "url": "https://rosettacode.org/wiki/Centre_and_radius_of_a_circle_passing_through_3_points_in_a_plane",
+      "tags": [
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "centre-and-radius-of-a-circle-passing-through-3-points-in-a-plane",
+          "heading": null,
+          "source": "tasks/centre-and-radius-of-a-circle-passing-through-3-points-in-a-plane/centre-and-radius-of-a-circle-passing-through-3-points-in-a-plane.ghul",
+          "output": "tasks/centre-and-radius-of-a-circle-passing-through-3-points-in-a-plane/run.expected",
+          "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "chaocipher",
+      "title": "Chaocipher",
+      "url": "https://rosettacode.org/wiki/Chaocipher",
+      "tags": [
+        "strings",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 56,
+      "parts": [
+        {
+          "id": "chaocipher",
+          "heading": null,
+          "source": "tasks/chaocipher/chaocipher.ghul",
+          "output": "tasks/chaocipher/run.expected",
+          "lines": 56,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -4657,6 +4864,58 @@
           "source": "tasks/chinese-zodiac/chinese-zodiac.ghul",
           "output": "tasks/chinese-zodiac/run.expected",
           "lines": 36,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "cholesky-decomposition",
+      "title": "Cholesky decomposition",
+      "url": "https://rosettacode.org/wiki/Cholesky_decomposition",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 43,
+      "parts": [
+        {
+          "id": "cholesky-decomposition",
+          "heading": null,
+          "source": "tasks/cholesky-decomposition/cholesky-decomposition.ghul",
+          "output": "tasks/cholesky-decomposition/run.expected",
+          "lines": 43,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "chowla-numbers",
+      "title": "Chowla numbers",
+      "url": "https://rosettacode.org/wiki/Chowla_numbers",
+      "tags": [
+        "number-theory",
+        "primes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "chowla-numbers",
+          "heading": null,
+          "source": "tasks/chowla-numbers/chowla-numbers.ghul",
+          "output": "tasks/chowla-numbers/run.expected",
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []

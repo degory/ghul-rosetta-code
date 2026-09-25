@@ -1,0 +1,54 @@
+use default
+
+let year = 1969
+let column = 20
+
+let month_names =
+    [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+
+centre(text: string, width: int) -> string =>
+    "{string(' ', (width - text.length) / 2)}{text}".pad_right(width)
+
+month_block(month: int) -> List[string] is
+    let offset = cast int(System.DateTime(year, month, 1).day_of_week)
+    let days = System.DateTime.days_in_month(year, month)
+
+    let cells =
+        repeat("  ", offset)
+            |> cat(1::days |> map(day => "{day,2}"))
+            |> collect()
+
+    let lines = LIST[string]()
+
+    lines.add(centre(month_names[month - 1], column))
+    lines.add("Su Mo Tu We Th Fr Sa")
+
+    cells
+        |> chunk(7)
+        |> each(week => lines.add((week |> join(" ")).pad_right(column)))
+
+    while lines.count < 8 do
+        lines.add(string(' ', column))
+    od
+
+    return lines
+si
+
+write_line(centre("[ Snoopy ]", 64))
+write_line(centre("{year}", 64))
+
+for row in 0..4 do
+    let blocks =
+        1::3 |> map(month => month_block(row * 3 + month)) |> collect()
+
+    write_line("")
+
+    for line in 0..8 do
+        let across = blocks |> map(block => block[line]) |> join("  ")
+
+        write_line(across.trim_end())
+    od
+od

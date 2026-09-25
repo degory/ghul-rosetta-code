@@ -1,0 +1,43 @@
+use default
+
+cholesky(a: List[List[double]]) -> List[List[double]] is
+    let size = a.count
+    let l =
+        0..size
+            |> map(_ => repeat(0.0, size) |> collect_list())
+            |> collect()
+
+    for i in 0..size do
+        for k in 0::i do
+            let overlap = 0..k |> map(j => l[i][j] * l[k][j]) |> sum()
+
+            l[i][k] =
+                if i == k then
+                    System.Math.sqrt(a[i][i] - overlap)
+                else
+                    (a[i][k] - overlap) / l[k][k]
+                fi
+        od
+    od
+
+    return l
+si
+
+show(a: List[List[double]]) is
+    for row in a do
+        write_line(row |> map(value => "{value,10:F5}") |> join(""))
+    od
+
+    write_line("")
+si
+
+show(cholesky([[25.0, 15.0, -5.0], [15.0, 18.0, 0.0], [-5.0, 0.0, 11.0]]))
+
+show(
+    cholesky(
+        [
+            [18.0, 22.0, 54.0, 42.0],
+            [22.0, 70.0, 86.0, 62.0],
+            [54.0, 86.0, 174.0, 134.0],
+            [42.0, 62.0, 134.0, 106.0]
+        ]))
