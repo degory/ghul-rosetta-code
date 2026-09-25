@@ -546,7 +546,7 @@ Then record it in the ledger:
 dotnet run --project tools/rosetta -- sync
 ```
 
-`TASKS.json` is the authority on what has been done and what has been decided against. Never
+`ledger/` is the authority on what has been done and what has been decided against. Never
 edit a `task.json` status by hand - `sync` writes it. `sync` records the tasks in `tasks/` as
 solved, but it never writes `published`: a section on the wiki that this ledger did not publish
 came from another run of the repository, and `sync` reports those and exits non-zero rather than
@@ -650,7 +650,7 @@ scripts/publish.sh <slug>...      # or --solved, for everything not yet on the w
 ```
 
 That one command generates the markup, makes the edits, commits the digests the run wrote into
-`TASKS.json`, pushes, and opens the pull request. Do not run `rosetta publish` directly, and do not
+`ledger/`, pushes, and opens the pull request. Do not run `rosetta publish` directly, and do not
 publish and leave the record to be committed afterwards.
 
 The digest is the whole reason. `publish` writes each page's new digest into the ledger as it goes,
@@ -661,7 +661,7 @@ unpublishable, and the refusal that follows months later reads as though a stran
 hundred pages at once.
 
 The pull request needs nothing from anybody. `.github/workflows/ledger.yml` approves a change that
-touches only `TASKS.json` and `tasks/*/task.json`, and auto-merge lands it when the shards pass.
+touches only `ledger/` and `tasks/*/task.json`, and auto-merge lands it when the shards pass.
 That path test is the whole distinction between what lands unread and what does not, so a
 ledger-only pull request must carry nothing else - not a compiler pin, not a recaptured
 expectation, not a solution. Raise those separately.

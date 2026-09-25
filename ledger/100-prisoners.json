@@ -1,0 +1,7 @@
+{
+  "title": "100 prisoners",
+  "slug": "100-prisoners",
+  "state": "published",
+  "note": "reopened, was rejected/nondeterministic: a seeded generator makes the simulation reproducible, and the ~31% answer is the point",
+  "published_hash": "e7e6c9d03f067645a0fc05b460e20f5a6244622dccc11946acb8c1e7b06d5c03"
+}

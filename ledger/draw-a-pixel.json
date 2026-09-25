@@ -1,0 +1,7 @@
+{
+  "title": "Draw a pixel",
+  "slug": "draw-a-pixel",
+  "state": "rejected",
+  "reason": "needs-gui",
+  "note": "The task asks for a pixel set in a window; ours wrote a PNG instead"
+}

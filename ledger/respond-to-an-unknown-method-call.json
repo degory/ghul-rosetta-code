@@ -1,0 +1,6 @@
+{
+  "title": "Respond to an unknown method call",
+  "state": "rejected",
+  "reason": "no-equivalent",
+  "note": "there is no hook a call to a missing method reaches"
+}

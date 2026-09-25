@@ -38,6 +38,12 @@ jobs:
       github.event.pull_request.draft == false
 
     steps:
+    # The base commit, not the pull request's head: the test that decides what
+    # lands unread must not come from the change it is judging.
+    - uses: actions/checkout@v7
+      with:
+        ref: ${{ github.event.pull_request.base.sha }}
+
     - name: Decide whether the change is ledger-only
       id: scope
       env:
@@ -52,15 +58,13 @@ jobs:
         echo "changed:"
         sed 's/^/  /' files.txt
 
-        # TASKS.json is the ledger, and a task.json carries the same task's
-        # state. Anything else - a solution, a test expectation, the tooling,
-        # this file - is out of scope and the job stops here.
-        if [ ! -s files.txt ] ; then
-            echo "ledger_only=false" >> "$GITHUB_OUTPUT"
-        elif grep -qvE '^(TASKS\.json|tasks/[^/]+/task\.json)$' files.txt ; then
-            echo "ledger_only=false" >> "$GITHUB_OUTPUT"
-        else
+        # A ledger entry, or a task.json carrying the same task's state.
+        # Anything else - a solution, a test expectation, the tooling, this
+        # file - is out of scope and the job stops here.
+        if [ -x scripts/ledger-only.sh ] && scripts/ledger-only.sh < files.txt ; then
             echo "ledger_only=true" >> "$GITHUB_OUTPUT"
+        else
+            echo "ledger_only=false" >> "$GITHUB_OUTPUT"
         fi
 
     - name: Approve and enable auto-merge

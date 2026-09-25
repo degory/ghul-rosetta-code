@@ -443,8 +443,8 @@ generate_to_out() {
 # than on whichever line happens to come next.
 slugs_in_state() {
     jq -r --arg state "$1" \
-        '.tasks[] | select(.state == $state and .slug != null) | .slug' \
-        "$ROOT/TASKS.json"
+        'select(.state == $state and .slug != null) | .slug' \
+        "$ROOT"/ledger/*.json
 }
 
 if [ "$1" = "--all" ] || [ "$1" = "--solved" ] || [ "$1" = "--out" ] ; then

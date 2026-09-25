@@ -1,0 +1,6 @@
+{
+  "title": "Inner classes",
+  "state": "rejected",
+  "reason": "no-equivalent",
+  "note": "types are declared at namespace scope only, so there is nothing to show but the absence"
+}

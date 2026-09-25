@@ -1,0 +1,6 @@
+{
+  "title": "Bitmap/Read an image through a pipe",
+  "state": "rejected",
+  "reason": "needs-native-lib",
+  "note": "same delegation as the conversion task, in the other direction"
+}

@@ -1,0 +1,6 @@
+{
+  "title": "Reflection/Get source",
+  "state": "rejected",
+  "reason": "no-equivalent",
+  "note": "an assembly carries no source, and nothing recovers the text of a method"
+}

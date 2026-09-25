@@ -1,0 +1,6 @@
+{
+  "title": "Joystick position",
+  "state": "rejected",
+  "reason": "needs-native-lib",
+  "note": "joystick hardware, not standard input"
+}
