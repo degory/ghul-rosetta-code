@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# The device gives different numbers every run, so what is asserted is the
+# shape: four lines, each a number the whole 32-bit range can hold.
+
+out=$1
+
+if [ "$(wc -l < "$out")" != 4 ] ; then
+    echo "expected four lines"
+    cat "$out"
+    exit 1
+fi
+
+while read -r line ; do
+    if ! [[ "$line" =~ ^[0-9]+$ ]] || [ "$line" -gt 4294967295 ] ; then
+        echo "not a 32-bit number: $line"
+        exit 1
+    fi
+done < "$out"

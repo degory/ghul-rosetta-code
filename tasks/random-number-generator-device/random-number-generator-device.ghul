@@ -1,0 +1,25 @@
+use default
+
+random_32_bits() -> uint is
+    let use device = IO.File.open_read("/dev/urandom")
+
+    let bytes = repeat(0ub, 4) |> collect_array()
+
+    let read mut = 0
+
+    while read < bytes.count do
+        let got = device.read(bytes, read, bytes.count - read)
+
+        assert got > 0 else "/dev/urandom gave nothing"
+
+        read = read + got
+    od
+
+    return
+        (cast uint(bytes[0]) << 24) | (cast uint(bytes[1]) << 16) |
+        (cast uint(bytes[2]) << 8) | cast uint(bytes[3])
+si
+
+for _ in 0..4 do
+    write_line("{random_32_bits()}")
+od
