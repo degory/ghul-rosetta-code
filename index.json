@@ -20218,6 +20218,32 @@
       ]
     },
     {
+      "slug": "prime-reciprocal-sum",
+      "title": "Prime reciprocal sum",
+      "url": "https://rosettacode.org/wiki/Prime_reciprocal_sum",
+      "tags": [
+        "primes",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "prime-reciprocal-sum",
+          "heading": null,
+          "source": "tasks/prime-reciprocal-sum/prime-reciprocal-sum.ghul",
+          "output": "tasks/prime-reciprocal-sum/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "prime-triangle",
       "title": "Prime triangle",
       "url": "https://rosettacode.org/wiki/Prime_triangle",
