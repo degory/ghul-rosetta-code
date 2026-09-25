@@ -22120,6 +22120,32 @@
       ]
     },
     {
+      "slug": "round-robin-tournament-schedule",
+      "title": "Round-robin tournament schedule",
+      "url": "https://rosettacode.org/wiki/Round-robin_tournament_schedule",
+      "tags": [
+        "algorithms",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 36,
+      "parts": [
+        {
+          "id": "round-robin-tournament-schedule",
+          "heading": null,
+          "source": "tasks/round-robin-tournament-schedule/round-robin-tournament-schedule.ghul",
+          "output": "tasks/round-robin-tournament-schedule/run.expected",
+          "lines": 36,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rpg-attributes-generator",
       "title": "RPG attributes generator",
       "url": "https://rosettacode.org/wiki/RPG_attributes_generator",
