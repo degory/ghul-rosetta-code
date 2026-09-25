@@ -1,0 +1,8 @@
+curve:      y^2 = x^3 + 355x + 671 (mod 1073741789)
+base point: (13693, 10088), order 1073807281
+private:    1049376250
+public:     (396329158, 882559476)
+hash:       0x789ABCDE
+signature:  (474883549, 598954123)
+verified:   true
+tampered:   0x788ABCDE verified: false

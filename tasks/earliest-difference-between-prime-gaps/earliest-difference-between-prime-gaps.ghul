@@ -1,0 +1,57 @@
+use default
+
+let limit = 20_000_000
+
+let composite = (
+    let sieve = repeat(false, limit) |> collect_list()
+
+    for p in 2..limit |> take_while(p => p * p < limit) do
+        if !sieve[p] then
+            for multiple in from(p * p, p) |> take_while(m => m < limit) do
+                sieve[multiple] = true
+            od
+        fi
+    od
+
+    sieve
+)
+
+let first_start = MAP[int, int]()
+
+(
+    let previous mut = 3
+
+    for n in from(5, 2) |> take_while(n => n < limit) do
+        if !composite[n] then
+            let gap = n - previous
+
+            if !first_start.contains_key(gap) then
+                first_start[gap] = previous
+            fi
+
+            previous = n
+        fi
+    od
+)
+
+for m in [10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000] do
+
+    let found =
+        from(2, 2)
+            |> take_while(gap =>
+                first_start.contains_key(gap) /\
+                first_start.contains_key(gap + 2))
+            |> find(gap =>
+                int.abs(first_start[gap + 2] - first_start[gap]) > m)
+
+    write_line("Earliest difference > {m:N0}:")
+
+    if let gap = found then
+        let start = first_start[gap], next = first_start[gap + 2]
+        let difference = int.abs(next - start)
+
+        write_line(
+            "    gap {gap} starts at {start:N0}, gap {gap + 2} "
+            "starts at {next:N0}, difference {difference:N0}")
+    fi
+od

@@ -1,0 +1,14 @@
+Earliest difference > 10:
+    gap 4 starts at 7, gap 6 starts at 23, difference 16
+Earliest difference > 100:
+    gap 14 starts at 113, gap 16 starts at 1,831, difference 1,718
+Earliest difference > 1,000:
+    gap 14 starts at 113, gap 16 starts at 1,831, difference 1,718
+Earliest difference > 10,000:
+    gap 36 starts at 9,551, gap 38 starts at 30,593, difference 21,042
+Earliest difference > 100,000:
+    gap 70 starts at 173,359, gap 72 starts at 31,397, difference 141,962
+Earliest difference > 1,000,000:
+    gap 100 starts at 396,733, gap 102 starts at 1,444,309, difference 1,047,576
+Earliest difference > 10,000,000:
+    gap 148 starts at 2,010,733, gap 150 starts at 13,626,257, difference 11,615,524
