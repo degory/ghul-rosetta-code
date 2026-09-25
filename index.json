@@ -20140,6 +20140,32 @@
       ]
     },
     {
+      "slug": "prime-conspiracy",
+      "title": "Prime conspiracy",
+      "url": "https://rosettacode.org/wiki/Prime_conspiracy",
+      "tags": [
+        "primes",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 43,
+      "parts": [
+        {
+          "id": "prime-conspiracy",
+          "heading": null,
+          "source": "tasks/prime-conspiracy/prime-conspiracy.ghul",
+          "output": "tasks/prime-conspiracy/run.expected",
+          "lines": 43,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "prime-decomposition",
       "title": "Prime decomposition",
       "url": "https://rosettacode.org/wiki/Prime_decomposition",
