@@ -1,0 +1,58 @@
+use default
+
+let numbers = ["one", "two", "three"]
+let shadings = ["solid", "striped", "open"]
+let colours = ["red", "green", "purple"]
+let symbols = ["diamond", "oval", "squiggle"]
+
+struct CARD(number: int, shading: int, colour: int, symbol: int) is
+    features: int[] => [number, shading, colour, symbol]
+
+    to_string() -> string =>
+        "{numbers[number]} {shadings[shading]} {colours[colour]} "
+        "{symbols[symbol]}{if number > 0 then "s" else "" fi}"
+si
+
+is_set(a: CARD, b: CARD, c: CARD) -> bool =>
+    (0..4)
+    |> all(i => (a.features[i] + b.features[i] + c.features[i]) % 3 == 0)
+
+let pack =
+    (0..81)
+    |> map(i => CARD(i / 27, i / 9 % 3, i / 3 % 3, i % 3))
+    |> collect_list()
+
+let random = System.Random(2026)
+
+deal(count: int) -> Collections.List[CARD] =>
+    pack |> sort_by(_ => random.next()) |> take(count) |> collect()
+
+for count in [9, 12] do
+    let cards = deal(count)
+
+    write_line("{count} cards dealt:")
+
+    for card in cards do
+        write_line("  {card}")
+    od
+
+    let sets =
+        (0..count)
+        |> flat_map(i =>
+            (i + 1..count)
+            |> flat_map(j =>
+                (j + 1..count)
+                |> filter(k => is_set(cards[i], cards[j], cards[k]))
+                |> map(k => (cards[i], cards[j], cards[k]))))
+        |> collect()
+
+    write_line("")
+    write_line("sets found: {sets.count}")
+
+    for (a, b, c) in sets do
+        write_line("  {a}")
+        write_line("  {b}")
+        write_line("  {c}")
+        write_line("")
+    od
+od

@@ -26076,6 +26076,32 @@
       ]
     },
     {
+      "slug": "set-the-card-game",
+      "title": "Set, the card game",
+      "url": "https://rosettacode.org/wiki/Set,_the_card_game",
+      "tags": [
+        "game",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "set-the-card-game",
+          "heading": null,
+          "source": "tasks/set-the-card-game/set-the-card-game.ghul",
+          "output": "tasks/set-the-card-game/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "seven-sided-dice-from-five-sided-dice",
       "title": "Seven-sided dice from five-sided dice",
       "url": "https://rosettacode.org/wiki/Seven-sided_dice_from_five-sided_dice",
