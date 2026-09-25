@@ -1,0 +1,20 @@
+dice7, 1000000 calls, delta 1%:
+  1:  142931   0.05% off
+  2:  142437   0.29% off
+  3:  142796   0.04% off
+  4:  142499   0.25% off
+  5:  143062   0.14% off
+  6:  143489   0.44% off
+  7:  142786   0.05% off
+  flat enough
+
+loaded7, 1000000 calls, delta 1%:
+  1:  135375   5.24% off  <- too far from flat
+  2:  135838   4.91% off  <- too far from flat
+  3:  134765   5.66% off  <- too far from flat
+  4:  136136   4.70% off  <- too far from flat
+  5:  135742   4.98% off  <- too far from flat
+  6:  136173   4.68% off  <- too far from flat
+  7:  185971  30.18% off  <- too far from flat
+  error: the distribution is not flat enough
+

@@ -29674,6 +29674,32 @@
       ]
     },
     {
+      "slug": "verify-distribution-uniformity-naive",
+      "title": "Verify distribution uniformity/Naive",
+      "url": "https://rosettacode.org/wiki/Verify_distribution_uniformity/Naive",
+      "tags": [
+        "simulation",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "verify-distribution-uniformity-naive",
+          "heading": null,
+          "source": "tasks/verify-distribution-uniformity-naive/verify-distribution-uniformity-naive.ghul",
+          "output": "tasks/verify-distribution-uniformity-naive/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "vibrating-rectangles",
       "title": "Vibrating rectangles",
       "url": "https://rosettacode.org/wiki/Vibrating_rectangles",
