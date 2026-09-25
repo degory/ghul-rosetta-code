@@ -26880,6 +26880,32 @@
       ]
     },
     {
+      "slug": "singular-value-decomposition",
+      "title": "Singular value decomposition",
+      "url": "https://rosettacode.org/wiki/Singular_value_decomposition",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 146,
+      "parts": [
+        {
+          "id": "singular-value-decomposition",
+          "heading": null,
+          "source": "tasks/singular-value-decomposition/singular-value-decomposition.ghul",
+          "output": "tasks/singular-value-decomposition/run.expected",
+          "lines": 146,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sisyphus-sequence",
       "title": "Sisyphus sequence",
       "url": "https://rosettacode.org/wiki/Sisyphus_sequence",
