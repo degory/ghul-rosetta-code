@@ -22148,6 +22148,32 @@
       ]
     },
     {
+      "slug": "passphrase-generator",
+      "title": "Passphrase generator",
+      "url": "https://rosettacode.org/wiki/Passphrase_generator",
+      "tags": [
+        "strings",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "passphrase-generator",
+          "heading": null,
+          "source": "tasks/passphrase-generator/passphrase-generator.ghul",
+          "output": "tasks/passphrase-generator/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pathological-floating-point-problems",
       "title": "Pathological floating point problems",
       "url": "https://rosettacode.org/wiki/Pathological_floating_point_problems",
