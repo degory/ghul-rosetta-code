@@ -1,5 +1,8 @@
 use default
 
+write_line("testing numbers for the super-Poulet property")
+write_line("")
+
 mod_pow(base: long, exponent: long, modulus: long) -> long is
     let result mut = 1L
     let factor mut = base % modulus

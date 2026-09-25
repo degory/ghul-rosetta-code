@@ -1,5 +1,8 @@
 use default
 
+write_line("sieving for numbers no other number generates")
+write_line("")
+
 let limit = 1_030_000_000
 let words = limit / 64 + 1
 let generated = LIST[ulong](words + 1)

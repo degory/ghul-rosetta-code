@@ -1,5 +1,8 @@
 use default
 
+write_line("summing the harmonic numerators")
+write_line("")
+
 let one = 1n
 let two = 2n
 

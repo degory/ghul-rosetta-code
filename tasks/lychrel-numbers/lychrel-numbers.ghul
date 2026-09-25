@@ -1,6 +1,9 @@
 use default
 use RESULT = (is_lychrel: bool, values: LIST[bigint])
 
+write_line("reversing and adding, which takes a moment")
+write_line("")
+
 reverse_digits(n: bigint) -> bigint =>
     bigint.parse("{n}" |> reverse() |> join(""))
 

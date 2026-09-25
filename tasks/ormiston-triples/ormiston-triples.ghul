@@ -1,5 +1,8 @@
 use default
 
+write_line("looking for runs of three primes sharing their digits")
+write_line("")
+
 let top = 1_000_000_000
 let segment_size = 1 << 20
 

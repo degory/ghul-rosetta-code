@@ -1,5 +1,8 @@
 use default
 
+write_line("sieving the divisor sums up to the limit")
+write_line("")
+
 let top = 100_000
 
 let sieved = cast int(System.Math.pow(cast(top), 1.5D))
