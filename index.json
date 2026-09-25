@@ -9939,6 +9939,32 @@
       ]
     },
     {
+      "slug": "euler-s-sum-of-powers-conjecture",
+      "title": "Euler's sum of powers conjecture",
+      "url": "https://rosettacode.org/wiki/Euler's_sum_of_powers_conjecture",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "euler-s-sum-of-powers-conjecture",
+          "heading": null,
+          "source": "tasks/euler-s-sum-of-powers-conjecture/euler-s-sum-of-powers-conjecture.ghul",
+          "output": "tasks/euler-s-sum-of-powers-conjecture/run.expected",
+          "lines": 34,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "eulers-identity",
       "title": "Euler's identity",
       "url": "https://rosettacode.org/wiki/Euler's_identity",
@@ -10088,6 +10114,42 @@
           "output": "tasks/exceptions/run.expected",
           "lines": 21,
           "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "executable-library",
+      "title": "Executable library",
+      "url": "https://rosettacode.org/wiki/Executable_library",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 55,
+      "parts": [
+        {
+          "id": "executable-library/01-the-library",
+          "heading": "The library",
+          "source": "tasks/executable-library/01-the-library/01-the-library.ghul",
+          "output": "tasks/executable-library/01-the-library/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        },
+        {
+          "id": "executable-library/02-a-program-using-it",
+          "heading": "A program using it",
+          "source": "tasks/executable-library/02-a-program-using-it/02-a-program-using-it.ghul",
+          "output": "tasks/executable-library/02-a-program-using-it/run.expected",
+          "lines": 18,
+          "playground": false,
           "input": false,
           "images": []
         }
@@ -10306,6 +10368,58 @@
           "source": "tasks/exponentiation-operator/exponentiation-operator.ghul",
           "output": "tasks/exponentiation-operator/run.expected",
           "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "exponentiation-order",
+      "title": "Exponentiation order",
+      "url": "https://rosettacode.org/wiki/Exponentiation_order",
+      "tags": [
+        "operators",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 13,
+      "parts": [
+        {
+          "id": "exponentiation-order",
+          "heading": null,
+          "source": "tasks/exponentiation-order/exponentiation-order.ghul",
+          "output": "tasks/exponentiation-order/run.expected",
+          "lines": 13,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "exponentiation-with-infix-operators-in-or-operating-on-the-base",
+      "title": "Exponentiation with infix operators in (or operating on) the base",
+      "url": "https://rosettacode.org/wiki/Exponentiation_with_infix_operators_in_(or_operating_on)_the_base",
+      "tags": [
+        "operators",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 19,
+      "parts": [
+        {
+          "id": "exponentiation-with-infix-operators-in-or-operating-on-the-base",
+          "heading": null,
+          "source": "tasks/exponentiation-with-infix-operators-in-or-operating-on-the-base/exponentiation-with-infix-operators-in-or-operating-on-the-base.ghul",
+          "output": "tasks/exponentiation-with-infix-operators-in-or-operating-on-the-base/run.expected",
+          "lines": 19,
           "playground": true,
           "input": false,
           "images": []
@@ -10732,6 +10846,32 @@
       ]
     },
     {
+      "slug": "faulhaber-s-formula",
+      "title": "Faulhaber's formula",
+      "url": "https://rosettacode.org/wiki/Faulhaber's_formula",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 73,
+      "parts": [
+        {
+          "id": "faulhaber-s-formula",
+          "heading": null,
+          "source": "tasks/faulhaber-s-formula/faulhaber-s-formula.ghul",
+          "output": "tasks/faulhaber-s-formula/run.expected",
+          "lines": 73,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "faulhabers-triangle",
       "title": "Faulhaber's triangle",
       "url": "https://rosettacode.org/wiki/Faulhaber's_triangle",
@@ -10752,6 +10892,31 @@
           "source": "tasks/faulhabers-triangle/faulhabers-triangle.ghul",
           "output": "tasks/faulhabers-triangle/run.expected",
           "lines": 94,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "feigenbaum-constant-calculation",
+      "title": "Feigenbaum constant calculation",
+      "url": "https://rosettacode.org/wiki/Feigenbaum_constant_calculation",
+      "tags": [
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "feigenbaum-constant-calculation",
+          "heading": null,
+          "source": "tasks/feigenbaum-constant-calculation/feigenbaum-constant-calculation.ghul",
+          "output": "tasks/feigenbaum-constant-calculation/run.expected",
+          "lines": 29,
           "playground": true,
           "input": false,
           "images": []
@@ -11085,6 +11250,32 @@
       ]
     },
     {
+      "slug": "find-chess960-starting-position-identifier",
+      "title": "Find Chess960 starting position identifier",
+      "url": "https://rosettacode.org/wiki/Find_Chess960_starting_position_identifier",
+      "tags": [
+        "puzzles",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "find-chess960-starting-position-identifier",
+          "heading": null,
+          "source": "tasks/find-chess960-starting-position-identifier/find-chess960-starting-position-identifier.ghul",
+          "output": "tasks/find-chess960-starting-position-identifier/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "find-common-directory-path",
       "title": "Find common directory path",
       "url": "https://rosettacode.org/wiki/Find_common_directory_path",
@@ -11104,6 +11295,58 @@
           "source": "tasks/find-common-directory-path/find-common-directory-path.ghul",
           "output": "tasks/find-common-directory-path/run.expected",
           "lines": 26,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "find-duplicate-files",
+      "title": "Find duplicate files",
+      "url": "https://rosettacode.org/wiki/Find_duplicate_files",
+      "tags": [
+        "text-processing",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 68,
+      "parts": [
+        {
+          "id": "find-duplicate-files",
+          "heading": null,
+          "source": "tasks/find-duplicate-files/find-duplicate-files.ghul",
+          "output": "tasks/find-duplicate-files/run.expected",
+          "lines": 68,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "find-if-a-point-is-within-a-triangle",
+      "title": "Find if a point is within a triangle",
+      "url": "https://rosettacode.org/wiki/Find_if_a_point_is_within_a_triangle",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "find-if-a-point-is-within-a-triangle",
+          "heading": null,
+          "source": "tasks/find-if-a-point-is-within-a-triangle/find-if-a-point-is-within-a-triangle.ghul",
+          "output": "tasks/find-if-a-point-is-within-a-triangle/run.expected",
+          "lines": 31,
           "playground": true,
           "input": false,
           "images": []
