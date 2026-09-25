@@ -21740,6 +21740,32 @@
       ]
     },
     {
+      "slug": "parallel-brute-force",
+      "title": "Parallel brute force",
+      "url": "https://rosettacode.org/wiki/Parallel_brute_force",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "parallel-brute-force",
+          "heading": null,
+          "source": "tasks/parallel-brute-force/parallel-brute-force.ghul",
+          "output": "tasks/parallel-brute-force/run.expected",
+          "lines": 50,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "parallel-calculations",
       "title": "Parallel calculations",
       "url": "https://rosettacode.org/wiki/Parallel_calculations",
