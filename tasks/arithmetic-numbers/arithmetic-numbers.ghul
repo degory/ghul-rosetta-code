@@ -1,0 +1,44 @@
+use default
+
+let limit = 1_400_000
+
+let divisor_sum = repeat(0, limit + 1) |> collect_list()
+let divisor_count = repeat(0, limit + 1) |> collect_list()
+
+for divisor in 1::limit do
+    let multiple mut = divisor
+
+    while multiple <= limit do
+        divisor_sum[multiple] = divisor_sum[multiple] + divisor
+        divisor_count[multiple] = divisor_count[multiple] + 1
+
+        multiple = multiple + divisor
+    od
+od
+
+let arithmetic =
+    1::limit
+        |> filter(n => divisor_sum[n] % divisor_count[n] == 0)
+        |> collect()
+
+write_line("the first 100 arithmetic numbers:")
+
+arithmetic
+    |> take(100)
+    |> chunk(10)
+    |> each(row => write_line(row |> map(n => "{n,5}") |> join("")))
+
+write_line("")
+
+for x in [1000, 10000, 100000, 1000000] do
+    let nth = arithmetic[x - 1]
+
+    let composite =
+        arithmetic
+            |> take(x)
+            |> count(n => n > 1 /\ divisor_count[n] > 2)
+
+    write_line(
+        "the {x}th arithmetic number is {nth}, and {composite} of the "
+        "first {x} are composite")
+od
