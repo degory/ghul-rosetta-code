@@ -2,7 +2,7 @@ use default
 
 // Bits are written most significant first and read back the same way.
 class BIT_WRITER(target: IO.Stream) is
-    _target;
+    _target
     _accumulator: int
     _filled: int
 
@@ -28,7 +28,7 @@ class BIT_WRITER(target: IO.Stream) is
 si
 
 class BIT_READER(source: IO.Stream) is
-    _source;
+    _source
     _accumulator: int
     _available: int
 

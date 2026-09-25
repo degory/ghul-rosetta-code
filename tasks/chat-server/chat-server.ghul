@@ -9,7 +9,7 @@ use System.Threading.Thread
 
 let port = 12345
 
-class MEMBER(nickname: string, writer: StreamWriter);
+class MEMBER(nickname: string, writer: StreamWriter)
 
 let members = LIST[MEMBER]()
 

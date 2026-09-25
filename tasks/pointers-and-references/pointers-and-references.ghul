@@ -1,8 +1,8 @@
 use default
 
-class BOX(value: int public);
+class BOX(value: int public)
 
-struct COUNT(value: int public);
+struct COUNT(value: int public)
 
 bump_box(box: BOX) is
     box.value = box.value + 1

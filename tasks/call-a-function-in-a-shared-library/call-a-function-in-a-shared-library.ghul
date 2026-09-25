@@ -3,7 +3,7 @@ use System.Runtime.InteropServices.NativeLibrary
 
 class LIBC is
     @System.Runtime.InteropServices.DllImport("libc")
-    abs(value: int) -> int static;
+    abs(value: int) -> int static
 
     init() is si
 si

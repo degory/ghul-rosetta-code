@@ -1,20 +1,20 @@
 use default
 
 class NODE is
-    _label: string field;
-    _edges: MAP[char, NODE] field;
+    _label: string field
+    _edges: MAP[char, NODE] field
 
     init(label: string) is
         _label = label
         _edges = MAP[char, NODE]()
     si
 
-    label: string => _label;
+    label: string => _label
 
     children: Collections.List[NODE] =>
         _edges.values
         |> sort((a, b) => a.label <> b.label)
-        |> collect_list();
+        |> collect_list()
 
     add(suffix: string) is
         if suffix.length == 0 then

@@ -8,8 +8,8 @@ use System.Math.sqrt
 let b = 7.0D
 
 union Point is
-    ZERO;
-    AT(x: double, y: double);
+    ZERO
+    AT(x: double, y: double)
 si
 
 on_curve(x: double) -> Point => Point.AT(x, sqrt(x * x * x + b))

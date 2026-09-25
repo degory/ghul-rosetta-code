@@ -7,7 +7,7 @@ class Shape(x: double, y: double) abstract is
 si
 
 class POINT(x: double, y: double): Shape is
-    super(x, y);
+    super(x, y)
 
     describe() -> string => "a point at ({x}, {y})"
 
@@ -15,7 +15,7 @@ class POINT(x: double, y: double): Shape is
 si
 
 class CIRCLE(x: double, y: double, r: double): Shape is
-    super(x, y);
+    super(x, y)
 
     describe() -> string => "a circle of radius {r} at ({x}, {y})"
 
