@@ -1,14 +1,94 @@
 name: CI
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     types: [opened, synchronize, reopened]
     branches: [ main ]
   merge_group:
 
+# There is no run on a push to main. The merge queue tests the pull request
+# merged with main and main is fast-forwarded to the commit it tested, so a
+# run afterwards tests that same tree a second time.
+
 jobs:
+  # What a pull request has to run. A change confined to task directories
+  # needs only those tasks; anything else - a package version, the root
+  # project, a script, the workflow - can reach every task, so it runs the
+  # lot. The queue always runs the lot, whatever it contains.
+  #
+  # The test is "outside tasks/" rather than a list of shared paths, so a
+  # shared input added later is covered without this job being taught about
+  # it. A task project that referenced another task would break the
+  # same assumption from inside tasks/, so that is checked for rather than
+  # assumed against, and falls back to the full suite if one ever appears.
+  changes:
+    name: What to test
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 5
+
+    outputs:
+      full: ${{ steps.pick.outputs.full }}
+      tasks: ${{ steps.pick.outputs.tasks }}
+
+    steps:
+    - uses: actions/checkout@v7
+      with:
+        fetch-depth: 0
+
+    - id: pick
+      env:
+        EVENT: ${{ github.event_name }}
+        BASE: ${{ github.event.pull_request.base.sha }}
+        HEAD: ${{ github.event.pull_request.head.sha }}
+      run: |
+        set -euo pipefail
+
+        if [ "$EVENT" != pull_request ] ; then
+            echo "full=true" >>"$GITHUB_OUTPUT"
+            echo "queue run: the whole suite"
+            exit 0
+        fi
+
+        CHANGED=$(git diff --name-only "$BASE" "$HEAD")
+        echo "changed:"; echo "$CHANGED" | sed 's/^/  /'
+
+        # A task project reaching outside its own directory would make a
+        # task's result depend on a directory the diff does not name.
+        REFERRING=$(grep -rl ProjectReference tasks \
+            --include='*.ghulproj' --include='*.csproj' || true)
+
+        if [ -n "$REFERRING" ] ; then
+            echo "full=true" >>"$GITHUB_OUTPUT"
+            echo "a task project carries a ProjectReference: the whole suite"
+            exit 0
+        fi
+
+        # Tested for a non-empty result rather than by grep's exit status:
+        # -q with -v does not mean the same thing in every grep.
+        OUTSIDE=$(echo "$CHANGED" | grep -v '^tasks/' || true)
+
+        if [ -n "$OUTSIDE" ] ; then
+            echo "full=true" >>"$GITHUB_OUTPUT"
+            echo "a change outside tasks/: the whole suite"
+            exit 0
+        fi
+
+        TASKS=$(echo "$CHANGED" | cut -d/ -f1,2 | sort -u | tr '\n' ' ')
+
+        if [ -z "${TASKS// /}" ] ; then
+            echo "full=false" >>"$GITHUB_OUTPUT"
+            echo "tasks=" >>"$GITHUB_OUTPUT"
+            echo "no task changed"
+            exit 0
+        fi
+
+        echo "full=false" >>"$GITHUB_OUTPUT"
+        echo "tasks=$TASKS" >>"$GITHUB_OUTPUT"
+        echo "tasks to run: $TASKS"
+
+
   # Every task is its own project, so the suite is a few hundred separate
   # builds and grows with each batch of solutions. `--shard` divides it
   # between runners, striped by discovery order so no shard collects a
@@ -20,6 +100,10 @@ jobs:
   # therefore a change to this file alone.
   task_shards:
     name: Task shard
+
+    needs: changes
+
+    if: needs.changes.outputs.full == 'true'
 
     runs-on: ubuntu-latest
     container:
@@ -43,6 +127,41 @@ jobs:
     # editor-only stub and is deliberately not built here.
     - name: Run Integration Tests
       run: dotnet ghul-test --use-dotnet-build --shard ${{ matrix.shard }}/10 tasks
+
+
+  # The other half of the pair: the tasks a pull request actually touched,
+  # in one job, because a handful of tasks does not want ten runners.
+  touched_tasks:
+    name: Touched tasks
+
+    needs: changes
+
+    if: needs.changes.outputs.full != 'true'
+
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:10.0
+
+    timeout-minutes: 15
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Restore .NET tools
+      run: dotnet tool restore
+
+    - name: Run the touched tasks
+      env:
+        TASKS: ${{ needs.changes.outputs.tasks }}
+      run: |
+        set -euo pipefail
+
+        if [ -z "${TASKS// /}" ] ; then
+            echo "no task changed"
+            exit 0
+        fi
+
+        dotnet ghul-test --use-dotnet-build $TASKS
 
 
   # index.json is what ghul.dev's explorer reads, and is generated from the
@@ -73,6 +192,35 @@ jobs:
       run: dotnet run --project tools/rosetta -- show > /dev/null
 
 
+  # The two rules a machine can settle: no statement terminators, and no line
+  # past the limit. Both had a check before this job existed and neither was
+  # run by anything, so both drifted - 39 terminators and 76 over-width lines
+  # had accumulated by the time it was added. A shard builds each task through
+  # its own project, which carries neither check.
+  hygiene:
+    name: Solution hygiene
+
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:10.0
+
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Restore .NET tools
+      run: dotnet tool restore
+
+    # The root project is the only one that reports a stray `;`, and it
+    # type-checks every task's source on the way.
+    - name: Build the root project
+      run: dotnet build
+
+    - name: Check the line width
+      run: scripts/check-width.sh --hard
+
+
   # The required status check. A shard's own job carries the matrix leg in
   # its name, so the name changes whenever the shard count does; this job's
   # does not, which keeps the shard count out of branch protection.
@@ -80,7 +228,7 @@ jobs:
   # `always()` is load-bearing: a skipped job satisfies a required check, so
   # without it anything that skipped the shards would show green here.
   build:
-    needs: [task_shards, index]
+    needs: [changes, task_shards, touched_tasks, index, hygiene]
 
     if: always()
 
@@ -91,11 +239,37 @@ jobs:
     steps:
     - name: Check every shard passed
       env:
+        FULL: ${{ needs.changes.outputs.full }}
+        CHANGES: ${{ needs.changes.result }}
         RESULT: ${{ needs.task_shards.result }}
+        TOUCHED: ${{ needs.touched_tasks.result }}
         INDEX: ${{ needs.index.result }}
+        HYGIENE: ${{ needs.hygiene.result }}
       run: |
+        set -uo pipefail
+
+        echo "changes: $CHANGES (full=$FULL)"
         echo "shards: $RESULT"
+        echo "touched: $TOUCHED"
         echo "index: $INDEX"
-        [ "$RESULT" = success ] && [ "$INDEX" = success ]
+        echo "hygiene: $HYGIENE"
+
+        # Exactly one of the two test jobs runs, and the other must have
+        # been skipped rather than merely not failed: a skipped job
+        # satisfies a required check, so naming the expected pair is what
+        # keeps a run that tested nothing from reading as green.
+        if [ "$FULL" = true ] ; then
+            WANTED=$RESULT
+            OTHER=$TOUCHED
+        else
+            WANTED=$TOUCHED
+            OTHER=$RESULT
+        fi
+
+        [ "$CHANGES" = success ] \
+            && [ "$WANTED" = success ] \
+            && [ "$OTHER" = skipped ] \
+            && [ "$INDEX" = success ] \
+            && [ "$HYGIENE" = success ]
 
 
