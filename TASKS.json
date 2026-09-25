@@ -4278,6 +4278,11 @@
       "published_hash": "22cb813dbf02d9c5cc93d3ccf61097ab32042bdd0d0b0c72881167e66a56cb1d"
     },
     {
+      "title": "Narcissist",
+      "slug": "narcissist",
+      "state": "solved"
+    },
+    {
       "title": "Narcissistic decimal number",
       "slug": "narcissistic-decimal-number",
       "state": "published",
@@ -4332,6 +4337,31 @@
       "published_hash": "2852e41743b479eab522bf010f1d59cb762459128e99f067508a0971f8e30ec4"
     },
     {
+      "title": "Non-decimal radices/Convert",
+      "slug": "non-decimal-radices-convert",
+      "state": "solved"
+    },
+    {
+      "title": "Non-decimal radices/Input",
+      "slug": "non-decimal-radices-input",
+      "state": "solved"
+    },
+    {
+      "title": "Non-decimal radices/Output",
+      "slug": "non-decimal-radices-output",
+      "state": "solved"
+    },
+    {
+      "title": "Non-transitive dice",
+      "slug": "non-transitive-dice",
+      "state": "solved"
+    },
+    {
+      "title": "Nonoblock",
+      "slug": "nonoblock",
+      "state": "solved"
+    },
+    {
       "title": "Nonogram solver",
       "slug": "nonogram-solver",
       "state": "published",
@@ -4360,6 +4390,26 @@
       "slug": "number-reversal-game",
       "state": "published",
       "published_hash": "1298b55333dcc86d3ed235335c77736561ec1934ff2375e2c60c69cdfcbca965"
+    },
+    {
+      "title": "Numbers divisible by their individual digits, but not by the product of their digits",
+      "slug": "numbers-divisible-by-their-individual-digits-but-not-by-the-product-of-their-digits",
+      "state": "solved"
+    },
+    {
+      "title": "Numbers k such that the last letter of k is the same as the first letter of k\u002B1",
+      "slug": "numbers-k-such-that-the-last-letter-of-k-is-the-same-as-the-first-letter-of-k-1",
+      "state": "solved"
+    },
+    {
+      "title": "Numbers which are not the sum of distinct squares",
+      "slug": "numbers-which-are-not-the-sum-of-distinct-squares",
+      "state": "solved"
+    },
+    {
+      "title": "Numbers which are the cube roots of the product of their proper divisors",
+      "slug": "numbers-which-are-the-cube-roots-of-the-product-of-their-proper-divisors",
+      "state": "solved"
     },
     {
       "title": "Numbers with equal rises and falls",

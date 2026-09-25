@@ -17156,6 +17156,32 @@
       ]
     },
     {
+      "slug": "narcissist",
+      "title": "Narcissist",
+      "url": "https://rosettacode.org/wiki/Narcissist",
+      "tags": [
+        "strings",
+        "basics"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 1,
+      "parts": [
+        {
+          "id": "narcissist",
+          "heading": null,
+          "source": "tasks/narcissist/narcissist.ghul",
+          "output": "tasks/narcissist/run.expected",
+          "lines": 1,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "narcissistic-decimal-number",
       "title": "Narcissistic decimal number",
       "url": "https://rosettacode.org/wiki/Narcissistic_decimal_number",
@@ -17413,6 +17439,137 @@
       ]
     },
     {
+      "slug": "non-decimal-radices-convert",
+      "title": "Non-decimal radices/Convert",
+      "url": "https://rosettacode.org/wiki/Non-decimal_radices/Convert",
+      "tags": [
+        "strings",
+        "recursion"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 25,
+      "parts": [
+        {
+          "id": "non-decimal-radices-convert",
+          "heading": null,
+          "source": "tasks/non-decimal-radices-convert/non-decimal-radices-convert.ghul",
+          "output": "tasks/non-decimal-radices-convert/run.expected",
+          "lines": 25,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "non-decimal-radices-input",
+      "title": "Non-decimal radices/Input",
+      "url": "https://rosettacode.org/wiki/Non-decimal_radices/Input",
+      "tags": [
+        "parsing",
+        "dotnet-interop"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "non-decimal-radices-input",
+          "heading": null,
+          "source": "tasks/non-decimal-radices-input/non-decimal-radices-input.ghul",
+          "output": "tasks/non-decimal-radices-input/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "non-decimal-radices-output",
+      "title": "Non-decimal radices/Output",
+      "url": "https://rosettacode.org/wiki/Non-decimal_radices/Output",
+      "tags": [
+        "strings",
+        "dotnet-interop"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 11,
+      "parts": [
+        {
+          "id": "non-decimal-radices-output",
+          "heading": null,
+          "source": "tasks/non-decimal-radices-output/non-decimal-radices-output.ghul",
+          "output": "tasks/non-decimal-radices-output/run.expected",
+          "lines": 11,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "non-transitive-dice",
+      "title": "Non-transitive dice",
+      "url": "https://rosettacode.org/wiki/Non-transitive_dice",
+      "tags": [
+        "puzzles",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "non-transitive-dice",
+          "heading": null,
+          "source": "tasks/non-transitive-dice/non-transitive-dice.ghul",
+          "output": "tasks/non-transitive-dice/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "nonoblock",
+      "title": "Nonoblock",
+      "url": "https://rosettacode.org/wiki/Nonoblock",
+      "tags": [
+        "puzzles",
+        "generators",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 48,
+      "parts": [
+        {
+          "id": "nonoblock",
+          "heading": null,
+          "source": "tasks/nonoblock/nonoblock.ghul",
+          "output": "tasks/nonoblock/run.expected",
+          "lines": 48,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "nonogram-solver",
       "title": "Nonogram solver",
       "url": "https://rosettacode.org/wiki/Nonogram_solver",
@@ -17538,6 +17695,108 @@
           "lines": 56,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "numbers-divisible-by-their-individual-digits-but-not-by-the-product-of-their-digits",
+      "title": "Numbers divisible by their individual digits, but not by the product of their digits",
+      "url": "https://rosettacode.org/wiki/Numbers_divisible_by_their_individual_digits,_but_not_by_the_product_of_their_digits",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 16,
+      "parts": [
+        {
+          "id": "numbers-divisible-by-their-individual-digits-but-not-by-the-product-of-their-digits",
+          "heading": null,
+          "source": "tasks/numbers-divisible-by-their-individual-digits-but-not-by-the-product-of-their-digits/numbers-divisible-by-their-individual-digits-but-not-by-the-product-of-their-digits.ghul",
+          "output": "tasks/numbers-divisible-by-their-individual-digits-but-not-by-the-product-of-their-digits/run.expected",
+          "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "numbers-k-such-that-the-last-letter-of-k-is-the-same-as-the-first-letter-of-k-1",
+      "title": "Numbers k such that the last letter of k is the same as the first letter of k+1",
+      "url": "https://rosettacode.org/wiki/Numbers_k_such_that_the_last_letter_of_k_is_the_same_as_the_first_letter_of_k+1",
+      "tags": [
+        "strings",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 64,
+      "parts": [
+        {
+          "id": "numbers-k-such-that-the-last-letter-of-k-is-the-same-as-the-first-letter-of-k-1",
+          "heading": null,
+          "source": "tasks/numbers-k-such-that-the-last-letter-of-k-is-the-same-as-the-first-letter-of-k-1/numbers-k-such-that-the-last-letter-of-k-is-the-same-as-the-first-letter-of-k-1.ghul",
+          "output": "tasks/numbers-k-such-that-the-last-letter-of-k-is-the-same-as-the-first-letter-of-k-1/run.expected",
+          "lines": 64,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "numbers-which-are-not-the-sum-of-distinct-squares",
+      "title": "Numbers which are not the sum of distinct squares",
+      "url": "https://rosettacode.org/wiki/Numbers_which_are_not_the_sum_of_distinct_squares",
+      "tags": [
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "numbers-which-are-not-the-sum-of-distinct-squares",
+          "heading": null,
+          "source": "tasks/numbers-which-are-not-the-sum-of-distinct-squares/numbers-which-are-not-the-sum-of-distinct-squares.ghul",
+          "output": "tasks/numbers-which-are-not-the-sum-of-distinct-squares/run.expected",
+          "lines": 41,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "numbers-which-are-the-cube-roots-of-the-product-of-their-proper-divisors",
+      "title": "Numbers which are the cube roots of the product of their proper divisors",
+      "url": "https://rosettacode.org/wiki/Numbers_which_are_the_cube_roots_of_the_product_of_their_proper_divisors",
+      "tags": [
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "numbers-which-are-the-cube-roots-of-the-product-of-their-proper-divisors",
+          "heading": null,
+          "source": "tasks/numbers-which-are-the-cube-roots-of-the-product-of-their-proper-divisors/numbers-which-are-the-cube-roots-of-the-product-of-their-proper-divisors.ghul",
+          "output": "tasks/numbers-which-are-the-cube-roots-of-the-product-of-their-proper-divisors/run.expected",
+          "lines": 34,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
