@@ -41,7 +41,7 @@ class WAVELET(values: List[int] init) is
             _width = _width + 1
         od
 
-        let holding mut = values |> collect()
+        let holding: List[int] mut = values |> collect()
 
         for level in 0.._width do
             let bit = _width - 1 - level
