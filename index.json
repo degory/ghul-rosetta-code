@@ -6921,6 +6921,33 @@
       ]
     },
     {
+      "slug": "de-polignac-numbers",
+      "title": "De Polignac numbers",
+      "url": "https://rosettacode.org/wiki/De_Polignac_numbers",
+      "tags": [
+        "primes",
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "de-polignac-numbers",
+          "heading": null,
+          "source": "tasks/de-polignac-numbers/de-polignac-numbers.ghul",
+          "output": "tasks/de-polignac-numbers/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "deal-cards-for-freecell",
       "title": "Deal cards for FreeCell",
       "url": "https://rosettacode.org/wiki/Deal_cards_for_FreeCell",

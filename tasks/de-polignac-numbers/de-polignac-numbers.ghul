@@ -1,0 +1,40 @@
+use default
+
+let limit = 300_000
+let composite = repeat(false, limit) |> collect_list()
+
+let root = cast int(System.Math.sqrt(cast double(limit)))
+
+for p in 2::root do
+    if !composite[p] then
+        for multiple in from(p * p, p) |> take_while(m => m < limit) do
+            composite[multiple] = true
+        od
+    fi
+od
+
+is_prime(n: int) -> bool => n >= 2 /\ !composite[n]
+
+is_de_polignac(n: int) -> bool =>
+    from(0)
+        |> map(k => 1 << k)
+        |> take_while(power => power < n)
+        |> all(power => !is_prime(n - power))
+
+de_polignac_numbers() -> Pipe[int] => from(1, 2) |> filter(is_de_polignac)
+
+write_line("First 50 de Polignac numbers:")
+
+for row in de_polignac_numbers() |> take(50) |> chunk(10) do
+    write_line(row |> map(n => "{n,6:N0}") |> join(""))
+od
+
+write_line()
+
+for position in [1_000, 10_000] do
+    let found = de_polignac_numbers()
+        |> skip(position - 1)
+        |> first_or_throw()
+
+    write_line("{position:N0}th: {found:N0}")
+od
