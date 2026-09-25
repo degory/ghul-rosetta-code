@@ -1,0 +1,37 @@
+use default
+
+constant(n: bigint) -> bigint => n * (n * n + 1n) / 2n
+
+let first = 3::22 |> map(n => constant(bigint(n))) |> join(" ")
+
+write_line("The first 20 magic constants: {first}")
+write_line("The 1000th magic constant: {constant(1002n)}")
+
+smallest_order_above(limit: bigint) -> bigint is
+    let low mut = 1n
+    let high mut = 1n
+
+    while constant(high) <= limit do
+        high = high * 2n
+    od
+
+    while low < high do
+        let middle = (low + high) / 2n
+
+        if constant(middle) > limit then
+            high = middle
+        else
+            low = middle + 1n
+        fi
+    od
+
+    low
+si
+
+write_line("\nSmallest order with a magic constant greater than:")
+
+for power in 1::20 do
+    let order = smallest_order_above(bigint.pow(10n, power))
+
+    write_line("    10^{power,-2} {order,10}")
+od

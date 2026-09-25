@@ -4036,6 +4036,10 @@
       }
     },
     {
+      "title": "LU decomposition",
+      "state": "solved"
+    },
+    {
       "title": "LZW compression",
       "slug": "lzw-compression",
       "state": "published",
@@ -4340,6 +4344,10 @@
       "published_hash": "be1124d9bb5c3d759fc5d5c4a89ab6fd1d25fa02eb40d414428a5715f7467310"
     },
     {
+      "title": "Loops/Wrong ranges",
+      "state": "solved"
+    },
+    {
       "title": "Lorenz attractor",
       "slug": "lorenz-attractor",
       "state": "published",
@@ -4347,6 +4355,10 @@
       "image_hashes": {
         "Ghul-lorenz-attractor-lorenz.png": "58b872c96b135f5a1014a27808a78da362ae8ef2"
       }
+    },
+    {
+      "title": "Lucas-Lehmer test",
+      "state": "solved"
     },
     {
       "title": "Lucky and even lucky numbers",
@@ -4407,6 +4419,18 @@
       "published_hash": "8456ace91b2d76a81ae316aa618aa0fcbf9ce98d516291e28e3292766029d194"
     },
     {
+      "title": "Magic 8-ball",
+      "state": "solved"
+    },
+    {
+      "title": "Magic constant",
+      "state": "solved"
+    },
+    {
+      "title": "Magic numbers",
+      "state": "solved"
+    },
+    {
       "title": "Magic squares of doubly even order",
       "slug": "magic-squares-of-doubly-even-order",
       "state": "published",
@@ -4419,10 +4443,18 @@
       "published_hash": "ac3a426f5ebb3ad040e6a62be0db53e1e0315c72d776ac3750fd13666c260208"
     },
     {
+      "title": "Magic squares of singly even order",
+      "state": "solved"
+    },
+    {
       "title": "Magnanimous numbers",
       "slug": "magnanimous-numbers",
       "state": "published",
       "published_hash": "7cf53421dbc1472fade771b4731b21a869242e54274f8c3dba4d6d2e22ce742b"
+    },
+    {
+      "title": "Main step of GOST 28147-89",
+      "state": "solved"
     },
     {
       "title": "Make directory path",
@@ -4473,6 +4505,10 @@
       "published_hash": "60d4c0feb05126e06738d626f7f35bd4dc27b9ecf45386a65390076c343e283e"
     },
     {
+      "title": "Matrix chain multiplication",
+      "state": "solved"
+    },
+    {
       "title": "Matrix multiplication",
       "slug": "matrix-multiplication",
       "state": "published",
@@ -4483,6 +4519,10 @@
       "slug": "matrix-transposition",
       "state": "published",
       "published_hash": "fb04f051e0d70a8dd2d077250f6cd0de894e13be6f0a2b33a4d11169852f4736"
+    },
+    {
+      "title": "Matrix-exponentiation operator",
+      "state": "solved"
     },
     {
       "title": "Maximum triangle path sum",

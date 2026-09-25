@@ -1,0 +1,46 @@
+use default
+
+use Matrix = List[List[bigint]]
+
+*(a: Matrix, b: Matrix) -> Matrix =>
+    0..a.count
+        |> map(i =>
+            0..b[0].count
+                |> map(j =>
+                    0..b.count |> map(k => a[i][k] * b[k][j]) |> sum())
+                |> collect_list())
+        |> collect_list()
+
+identity(n: int) -> Matrix =>
+    0..n
+        |> map(i =>
+            0..n
+                |> map(j => if i == j then 1n else 0n fi)
+                |> collect_list())
+        |> collect_list()
+
+// ghūl has no exponentiation operator, so ^ is declared here for a
+// matrix raised to an integer power, by repeated squaring.
+
+^(m: Matrix, power: int) -> Matrix is
+    let result mut = identity(m.count)
+    let base mut = m
+    let rest mut = power
+
+    while rest > 0 do
+        if rest % 2 == 1 then
+            result = result * base
+        fi
+
+        base = base * base
+        rest = rest / 2
+    od
+
+    result
+si
+
+let fibonacci: Matrix = [[1n, 1n], [1n, 0n]]
+
+for power in [0, 1, 2, 10, 50, 100] do
+    write_line("[[1, 1], [1, 0]] ^ {power} = {fibonacci ^ power}")
+od

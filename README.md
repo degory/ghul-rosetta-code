@@ -28,6 +28,8 @@ nobody re-reads.
   by trying each task without them and keeping only what its test still passes. A collect that
   starts work, such as launching tasks or threads, changes timing the test cannot see, so read
   each removal before keeping it.
+- `scripts/rebase-on-main.sh` - rebases a branch onto main, resolving the conflicts in `TASKS.json`
+  and `index.json` that any two branches in flight have with each other.
 - `tools/rosetta/` - the ledger and the wiki client.
 - `GHUL.md` - language reference, a copy of the master in the
   [`ghul`](https://github.com/degory/ghul) repo. Refresh it when it falls behind; never edit it

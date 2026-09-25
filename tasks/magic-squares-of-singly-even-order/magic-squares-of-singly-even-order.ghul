@@ -1,0 +1,82 @@
+use default
+
+use Square = List[List[int]]
+
+odd_magic_square(n: int) -> Square is
+    let square =
+        0..n |> map(_ => repeat(0, n) |> collect_list()) |> collect_list()
+    let (row, column) mut = (0, n / 2)
+
+    for value in 1::n * n do
+        square[row][column] = value
+
+        let (up, right) = ((row + n - 1) % n, (column + 1) % n)
+
+        let free = square[up][right] == 0
+
+        (row, column) =
+            if free then (up, right) else ((row + 1) % n, column) fi
+    od
+
+    square
+si
+
+// four odd magic squares of half the size fill the quadrants, then some
+// columns swap between the top and bottom halves
+
+singly_even_magic_square(n: int) -> Square is
+    let half = n / 2, cells = half * half, k = (n - 2) / 4
+    let small = odd_magic_square(half)
+    let offset = [0, 2, 3, 1]
+
+    let square =
+        0..n
+            |> map(row =>
+                0..n
+                    |> map(column =>
+                        let quadrant = (row / half) * 2 + column / half in
+                        let value = small[row % half][column % half] in
+                        value + offset[quadrant] * cells)
+                    |> collect_list())
+            |> collect_list()
+
+    for row in 0..half do
+        let middle = row == half / 2
+
+        for column in 0..n do
+            let left =
+                if middle then column >= 1 /\ column <= k else column < k fi
+            let right = column > n - k
+
+            if left \/ right then
+                (square[row][column], square[row + half][column]) =
+                    (square[row + half][column], square[row][column])
+            fi
+        od
+    od
+
+    square
+si
+
+is_magic(square: Square) -> bool =>
+    let n = square.count in
+    let target = n * (n * n + 1) / 2 in
+    let lines =
+        (0..n |> map(i => square[i] |> sum()))
+            |> cat(
+                0..n |> map(j => 0..n |> map(i => square[i][j]) |> sum()))
+            |> cat([
+                0..n |> map(i => square[i][i]) |> sum(),
+                0..n |> map(i => square[i][n - 1 - i]) |> sum()])
+    in
+    lines |> all(total => total == target)
+
+let square = singly_even_magic_square(6)
+
+for row in square do
+    write_line(row |> map(v => "{v,3}") |> join(""))
+od
+
+let magic = is_magic(square)
+
+write_line("\nevery row, column and diagonal sums to 111: {magic}")

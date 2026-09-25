@@ -1,0 +1,32 @@
+use default
+
+// ghūl's ranges, a..b and a::b, have no increment: they always count up by
+// one. A sequence with an increment is from(start, step), bounded here by
+// take_while. With a zero or negative step that bound is never reached, so
+// only the first ten values are shown.
+
+let cases = [
+    (-2, 2, 1, "Normal"),
+    (-2, 2, 0, "Zero increment"),
+    (-2, 2, -1, "Increments away from stop value"),
+    (-2, 2, 10, "First increment is beyond stop value"),
+    (2, -2, 1, "Start more than stop: positive increment"),
+    (2, 2, 1, "Start equal stop: positive increment"),
+    (2, 2, -1, "Start equal stop: negative increment"),
+    (2, 2, 0, "Start equal stop: zero increment"),
+    (0, 0, 0, "Start equal stop equal zero: zero increment")
+]
+
+for (start, stop, step, comment) in cases do
+    let values =
+        from(start, step)
+            |> take_while(v => v <= stop)
+            |> take(11)
+            |> collect_list()
+
+    let shown = values |> take(10) |> join(", ")
+    let more = if values.count > 10 then ", ..." else "" fi
+
+    write_line("{comment}")
+    write_line("    from({start}, {step}) up to {stop}: [{shown}{more}]")
+od
