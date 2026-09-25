@@ -3,22 +3,26 @@ use default
 let values = [1, 2, 2, 3, 4, 4, 5]
 
 for index in 0..values.count do
-    let previous =
-        if index == 0 then values[index] - 1 else values[index - 1] fi
+    let current = values[index]
+    let previous: int mut
 
-    if values[index] == previous then
+    if index > 0 /\ current == previous then
         write_line("{index}")
     fi
+
+    previous = current
 od
 
 write_line("")
 
-let carried mut = 0
+let previous mut = 0
 
 for index in 0..values.count do
-    if index > 0 /\ values[index] == carried then
+    let current = values[index]
+
+    if index > 0 /\ current == previous then
         write_line("{index}")
     fi
 
-    carried = values[index]
+    previous = current
 od
