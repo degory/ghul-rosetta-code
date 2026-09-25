@@ -17720,6 +17720,32 @@
       ]
     },
     {
+      "slug": "loops-wrong-ranges",
+      "title": "Loops/Wrong ranges",
+      "url": "https://rosettacode.org/wiki/Loops/Wrong_ranges",
+      "tags": [
+        "basics",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 32,
+      "parts": [
+        {
+          "id": "loops-wrong-ranges",
+          "heading": null,
+          "source": "tasks/loops-wrong-ranges/loops-wrong-ranges.ghul",
+          "output": "tasks/loops-wrong-ranges/run.expected",
+          "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "lorenz-attractor",
       "title": "Lorenz attractor",
       "url": "https://rosettacode.org/wiki/Lorenz_attractor",
@@ -17748,6 +17774,58 @@
           "images": [
             "tasks/lorenz-attractor/lorenz.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "lu-decomposition",
+      "title": "LU decomposition",
+      "url": "https://rosettacode.org/wiki/LU_decomposition",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "lu-decomposition",
+          "heading": null,
+          "source": "tasks/lu-decomposition/lu-decomposition.ghul",
+          "output": "tasks/lu-decomposition/run.expected",
+          "lines": 88,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "lucas-lehmer-test",
+      "title": "Lucas-Lehmer test",
+      "url": "https://rosettacode.org/wiki/Lucas-Lehmer_test",
+      "tags": [
+        "primes",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 32,
+      "parts": [
+        {
+          "id": "lucas-lehmer-test",
+          "heading": null,
+          "source": "tasks/lucas-lehmer-test/lucas-lehmer-test.ghul",
+          "output": "tasks/lucas-lehmer-test/run.expected",
+          "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -17938,6 +18016,83 @@
       ]
     },
     {
+      "slug": "magic-8-ball",
+      "title": "Magic 8-ball",
+      "url": "https://rosettacode.org/wiki/Magic_8-ball",
+      "tags": [
+        "game",
+        "interactive"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "magic-8-ball",
+          "heading": null,
+          "source": "tasks/magic-8-ball/magic-8-ball.ghul",
+          "output": "tasks/magic-8-ball/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "magic-constant",
+      "title": "Magic constant",
+      "url": "https://rosettacode.org/wiki/Magic_constant",
+      "tags": [
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "magic-constant",
+          "heading": null,
+          "source": "tasks/magic-constant/magic-constant.ghul",
+          "output": "tasks/magic-constant/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "magic-numbers",
+      "title": "Magic numbers",
+      "url": "https://rosettacode.org/wiki/Magic_numbers",
+      "tags": [
+        "number-theory",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "magic-numbers",
+          "heading": null,
+          "source": "tasks/magic-numbers/magic-numbers.ghul",
+          "output": "tasks/magic-numbers/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "magic-squares-of-doubly-even-order",
       "title": "Magic squares of doubly even order",
       "url": "https://rosettacode.org/wiki/Magic_squares_of_doubly_even_order",
@@ -17991,6 +18146,32 @@
       ]
     },
     {
+      "slug": "magic-squares-of-singly-even-order",
+      "title": "Magic squares of singly even order",
+      "url": "https://rosettacode.org/wiki/Magic_squares_of_singly_even_order",
+      "tags": [
+        "puzzles",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 82,
+      "parts": [
+        {
+          "id": "magic-squares-of-singly-even-order",
+          "heading": null,
+          "source": "tasks/magic-squares-of-singly-even-order/magic-squares-of-singly-even-order.ghul",
+          "output": "tasks/magic-squares-of-singly-even-order/run.expected",
+          "lines": 82,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "magnanimous-numbers",
       "title": "Magnanimous numbers",
       "url": "https://rosettacode.org/wiki/Magnanimous_numbers",
@@ -18012,6 +18193,31 @@
           "source": "tasks/magnanimous-numbers/magnanimous-numbers.ghul",
           "output": "tasks/magnanimous-numbers/run.expected",
           "lines": 65,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "main-step-of-gost-28147-89",
+      "title": "Main step of GOST 28147-89",
+      "url": "https://rosettacode.org/wiki/Main_step_of_GOST_28147-89",
+      "tags": [
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "main-step-of-gost-28147-89",
+          "heading": null,
+          "source": "tasks/main-step-of-gost-28147-89/main-step-of-gost-28147-89.ghul",
+          "output": "tasks/main-step-of-gost-28147-89/run.expected",
+          "lines": 46,
           "playground": true,
           "input": false,
           "images": []
@@ -18219,6 +18425,58 @@
           "lines": 109,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "matrix-chain-multiplication",
+      "title": "Matrix chain multiplication",
+      "url": "https://rosettacode.org/wiki/Matrix_chain_multiplication",
+      "tags": [
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 47,
+      "parts": [
+        {
+          "id": "matrix-chain-multiplication",
+          "heading": null,
+          "source": "tasks/matrix-chain-multiplication/matrix-chain-multiplication.ghul",
+          "output": "tasks/matrix-chain-multiplication/run.expected",
+          "lines": 47,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "matrix-exponentiation-operator",
+      "title": "Matrix-exponentiation operator",
+      "url": "https://rosettacode.org/wiki/Matrix-exponentiation_operator",
+      "tags": [
+        "operators",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "matrix-exponentiation-operator",
+          "heading": null,
+          "source": "tasks/matrix-exponentiation-operator/matrix-exponentiation-operator.ghul",
+          "output": "tasks/matrix-exponentiation-operator/run.expected",
+          "lines": 46,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
