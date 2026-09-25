@@ -21992,6 +21992,32 @@
       ]
     },
     {
+      "slug": "partition-function-p",
+      "title": "Partition function P",
+      "url": "https://rosettacode.org/wiki/Partition_function_P",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "partition-function-p",
+          "heading": null,
+          "source": "tasks/partition-function-p/partition-function-p.ghul",
+          "output": "tasks/partition-function-p/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pascal-matrix-generation",
       "title": "Pascal matrix generation",
       "url": "https://rosettacode.org/wiki/Pascal_matrix_generation",
