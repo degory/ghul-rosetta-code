@@ -1,0 +1,34 @@
+use default
+
+has_five_weekends(year: int, month: int) -> bool =>
+    System.DateTime.days_in_month(year, month) == 31 /\
+    System.DateTime(year, month, 1).day_of_week == System.DayOfWeek.FRIDAY
+
+let years = 1900::2100
+
+let months =
+    years
+        |> flat_map(year =>
+            1::12
+                |> filter(month => has_five_weekends(year, month))
+                |> map(month => System.DateTime(year, month, 1)))
+        |> collect()
+
+show(label: string, dates: Collections.Iterable[System.DateTime]) is
+    write_line(label)
+
+    dates |> each(date => write_line("  {date.to_string("yyyy-MM")}"))
+si
+
+write_line("{months.count} months have five full weekends")
+write_line("")
+
+show("first five:", months |> take(5))
+show("last five:", months |> skip(months.count - 5))
+
+let barren =
+    years
+        |> filter(year =>
+            1::12 |> all(month => !has_five_weekends(year, month)))
+
+write_line("{barren |> count()} years have none")

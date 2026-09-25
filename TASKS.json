@@ -2671,11 +2671,21 @@
       "published_hash": "a08c92c39b5c5250d4a5dea405c808c9107ede55e0ee4b272fb4b4725d03ca4e"
     },
     {
+      "title": "Find largest left truncatable prime in a given base",
+      "slug": "find-largest-left-truncatable-prime-in-a-given-base",
+      "state": "solved"
+    },
+    {
       "title": "Find limit of recursion",
       "slug": "find-limit-of-recursion",
       "state": "published",
       "note": "reopened, was rejected/nondeterministic: run.check can judge a plausible depth and that the program survived",
       "published_hash": "27accafaa4cf775c53109160bacb63c50852b1b55026081f63a4bbb0dda88bec"
+    },
+    {
+      "title": "Find palindromic numbers in both binary and ternary bases",
+      "slug": "find-palindromic-numbers-in-both-binary-and-ternary-bases",
+      "state": "solved"
     },
     {
       "title": "Find square difference",
@@ -2699,6 +2709,16 @@
       }
     },
     {
+      "title": "Find the last Sunday of each month",
+      "slug": "find-the-last-sunday-of-each-month",
+      "state": "solved"
+    },
+    {
+      "title": "Find the missing permutation",
+      "slug": "find-the-missing-permutation",
+      "state": "solved"
+    },
+    {
       "title": "Finite state machine",
       "slug": "finite-state-machine",
       "state": "published",
@@ -2711,6 +2731,16 @@
       "published_hash": "835f4f39c5a870ccc0d28443a7f423acd7683bfb30ebeb8d49d3cc1020f39583"
     },
     {
+      "title": "First perfect square in base n with n unique digits",
+      "slug": "first-perfect-square-in-base-n-with-n-unique-digits",
+      "state": "solved"
+    },
+    {
+      "title": "First power of 2 that has leading decimal digits of 12",
+      "slug": "first-power-of-2-that-has-leading-decimal-digits-of-12",
+      "state": "solved"
+    },
+    {
       "title": "First-class functions",
       "slug": "first-class-functions",
       "state": "published",
@@ -2721,6 +2751,11 @@
       "slug": "first-class-functions-use-numbers-analogously",
       "state": "published",
       "published_hash": "735ed81f2d6c9848e73addc35856fe5d71dea8070394a2f86832f5888fd71fe7"
+    },
+    {
+      "title": "Five weekends",
+      "slug": "five-weekends",
+      "state": "solved"
     },
     {
       "title": "Fivenum",
@@ -2782,6 +2817,11 @@
       "slug": "floyd-warshall-algorithm",
       "state": "published",
       "published_hash": "0600ed1f8265584b9e6350df3dde623d2df48e0362a27ec936c018711814c9c7"
+    },
+    {
+      "title": "Forbidden numbers",
+      "slug": "forbidden-numbers",
+      "state": "solved"
     },
     {
       "title": "Forest fire",
@@ -2850,6 +2890,11 @@
       }
     },
     {
+      "title": "Fraction reduction",
+      "slug": "fraction-reduction",
+      "state": "solved"
+    },
+    {
       "title": "Fractran",
       "slug": "fractran",
       "state": "published",
@@ -2881,6 +2926,11 @@
       "slug": "function-definition",
       "state": "published",
       "published_hash": "85c065939fe648d67a3bca29be452c54b89e8c8b07d00cc3b9f8f1a7016f8e88"
+    },
+    {
+      "title": "Function frequency",
+      "slug": "function-frequency",
+      "state": "solved"
     },
     {
       "title": "Function prototype",

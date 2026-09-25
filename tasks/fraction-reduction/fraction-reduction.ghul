@@ -1,0 +1,91 @@
+use default
+
+use Candidate = (value: int, mask: int, reduced: List[int])
+
+describe(value: int) -> Candidate is
+    let reduced = repeat(0, 10) |> collect_list()
+    let digits = LIST[int]()
+
+    let remaining mut = value
+
+    while remaining > 0 do
+        digits.insert(0, remaining % 10)
+
+        remaining = remaining / 10
+    od
+
+    let mask mut = 0
+
+    for digit in digits do
+        if digit == 0 \/ (mask >> digit) & 1 == 1 then
+            return (value = value, mask = 0, reduced = reduced)
+        fi
+
+        mask = mask | (1 << digit)
+    od
+
+    for i in 0..digits.count do
+        reduced[digits[i]] =
+            0..digits.count
+                |> filter(j => j != i)
+                |> reduce(0, (kept, j) => kept * 10 + digits[j])
+    od
+
+    return (value = value, mask = mask, reduced = reduced)
+si
+
+candidates(size: int) -> List[Candidate] is
+    let lowest =
+        repeat(10, size - 1) |> reduce(1, (value, ten) => value * ten)
+
+    return
+        lowest..lowest * 10
+            |> map(describe)
+            |> filter(candidate => candidate.mask != 0)
+            |> collect()
+si
+
+for size in 2::5 do
+    let entries = candidates(size)
+    let shown = LIST[string]()
+
+    let found mut = 0
+
+    for i in 0..entries.count do
+        let numerator = entries[i]
+
+        for j in i + 1..entries.count do
+            let denominator = entries[j]
+            let shared = numerator.mask & denominator.mask
+
+            for digit in 1::9 do
+                if (shared >> digit) & 1 == 0 then
+                    continue
+                fi
+
+                let top = numerator.reduced[digit]
+                let bottom = denominator.reduced[digit]
+
+                let matches =
+                    bottom != 0 /\
+                    numerator.value * bottom == denominator.value * top
+
+                if matches then
+                    found = found + 1
+
+                    if shown.count < 12 then
+                        shown.add(
+                            "{numerator.value}/{denominator.value} = "
+                            "{top}/{bottom} by omitting {digit}'s")
+                    fi
+                fi
+            od
+        od
+    od
+
+    write_line("{size}-digit fractions: {found} found")
+
+    shown |> each(line => write_line("  {line}"))
+
+    write_line("")
+od
