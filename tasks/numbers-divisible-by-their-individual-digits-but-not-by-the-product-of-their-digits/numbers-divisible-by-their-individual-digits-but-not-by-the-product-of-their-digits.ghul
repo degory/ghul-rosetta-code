@@ -1,0 +1,16 @@
+use default
+
+digits(n: int) -> List[int] =>
+    "{n}" |> map(c => cast int(c - '0')) |> collect_list()
+
+qualifies(n: int) -> bool =>
+    let ds = digits(n) in
+    ds |> all(d => d != 0 /\ n % d == 0) /\ n % (ds |> product()) != 0
+
+let found = 1..1000 |> filter(qualifies) |> collect_list()
+
+write_line("{found.count} numbers below 1,000:")
+
+for row in found |> chunk(10) do
+    write_line(row |> map(n => "{n,4}") |> join(""))
+od
