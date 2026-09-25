@@ -21,7 +21,7 @@ is_semiprime(n: int) -> bool => (
     count == 2
 )
 
-let up_to_100 = 2::100 |> filter(is_semiprime) |> join(", ")
+let up_to_100 = 2::100 |> filter(is_semiprime) |> join()
 
 write_line("semiprimes up to 100: {up_to_100}")
 

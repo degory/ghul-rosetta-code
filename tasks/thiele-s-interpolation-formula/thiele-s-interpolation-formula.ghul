@@ -46,10 +46,10 @@ class THIELE is
         fi
 si
 
-let xs = 0..32 |> map(i => cast double(i) * 0.05) |> collect_array()
-let sines = xs |> map(System.Math.sin) |> collect_array()
-let cosines = xs |> map(System.Math.cos) |> collect_array()
-let tangents = xs |> map(System.Math.tan) |> collect_array()
+let xs = 0..32 |> map(i => cast double(i) * 0.05) |> collect()
+let sines = xs |> map(System.Math.sin) |> collect()
+let cosines = xs |> map(System.Math.cos) |> collect()
+let tangents = xs |> map(System.Math.tan) |> collect()
 
 let inverse_sin = THIELE(sines, xs)
 let inverse_cos = THIELE(cosines, xs)

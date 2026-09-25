@@ -131,7 +131,7 @@ engaged_to.keys
 
 write_line("stable: {is_stable(engaged_to)}")
 
-let first = engaged_to.keys |> sort() |> collect_array()
+let first = engaged_to.keys |> sort() |> collect()
 (engaged_to[first[0]], engaged_to[first[1]]) =
     (engaged_to[first[1]], engaged_to[first[0]])
 

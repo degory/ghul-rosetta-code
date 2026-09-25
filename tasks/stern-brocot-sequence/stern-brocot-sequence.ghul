@@ -10,7 +10,7 @@ while sequence.count < 1200 do
 od
 
 write_line("first 15 members:")
-write_line(sequence |> take(15) |> join(", "))
+write_line(sequence |> take(15) |> join())
 
 write_line("first appearances:")
 

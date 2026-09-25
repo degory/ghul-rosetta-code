@@ -7,7 +7,7 @@ let top = 100_000
 
 let sieved = cast int(System.Math.pow(cast(top), 1.5D))
 
-let aliquot = repeat(0, sieved + 1) |> collect_list()
+let aliquot = repeat(0, sieved + 1) |> collect_mutable()
 
 let sieve_milestone mut = sieved / 10
 
@@ -26,7 +26,7 @@ for divisor in 1::sieved / 2 do
     od
 od
 
-let touched = repeat(false, top + 1) |> collect_list()
+let touched = repeat(false, top + 1) |> collect_mutable()
 
 for value in 2::sieved do
     let sum = aliquot[value]
@@ -36,7 +36,7 @@ for value in 2::sieved do
     fi
 od
 
-let composite = repeat(false, top + 1) |> collect_list()
+let composite = repeat(false, top + 1) |> collect_mutable()
 
 let factor mut = 2
 

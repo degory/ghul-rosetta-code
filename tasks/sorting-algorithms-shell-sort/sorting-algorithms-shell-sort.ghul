@@ -24,10 +24,10 @@ let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
 
 shell_sort(numbers)
 
-write_line(numbers |> join(", "))
+write_line(numbers |> join())
 
 let words = LIST(["pear", "apple", "quince", "banana"])
 
 shell_sort(words)
 
-write_line(words |> join(", "))
+write_line(words |> join())

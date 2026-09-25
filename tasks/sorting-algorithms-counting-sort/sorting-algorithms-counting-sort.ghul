@@ -1,7 +1,7 @@
 use default
 
 counting_sort(values: List[int], low: int, high: int) -> List[int] is
-    let counts = low..high + 1 |> map(_ => 0) |> collect_list()
+    let counts = low..high + 1 |> map(_ => 0) |> collect_mutable()
 
     for value in values do
         counts[value - low] = counts[value - low] + 1
@@ -20,4 +20,4 @@ si
 
 let numbers = [5, 3, 8, 1, 9, 2, 7, 1, 9]
 
-write_line(counting_sort(numbers, 1, 9) |> join(", "))
+write_line(counting_sort(numbers, 1, 9) |> join())

@@ -1,7 +1,7 @@
 use default
 
 let limit = 1_000_000
-let composite = repeat(false, limit + 1) |> collect_list()
+let composite = repeat(false, limit + 1) |> collect_mutable()
 
 let factor mut = 2
 
@@ -44,7 +44,7 @@ render(group: LIST[int]) -> string =>
 
 report(differences: int[]) is
     let found = groups(differences) |> collect()
-    let shown = differences |> map(d => "{d}") |> join(", ")
+    let shown = differences |> map(d => "{d}") |> join()
 
     write_line("differences of {shown}:")
 

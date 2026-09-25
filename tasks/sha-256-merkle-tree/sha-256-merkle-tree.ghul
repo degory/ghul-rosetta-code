@@ -10,7 +10,7 @@ paired(hashes: List[ubyte[]]) -> Pipe[ubyte[]] =>
                 SHA256.hash_data(
                     hashes[2 * index]
                         |> cat(hashes[2 * index + 1])
-                        |> collect_array())
+                        |> collect())
             else
                 hashes[2 * index]
             fi)
@@ -24,7 +24,7 @@ merkle_root(content: ubyte[]) -> ubyte[] is
                 SHA256.hash_data(
                     content[at..System.Math.min(at + block_size,
                                                 content.count)]
-                        |> collect_array()))
+                        |> collect()))
             |> collect()
 
     while hashes.count > 1 do

@@ -40,5 +40,5 @@ merge[T: Ghul.Comparable[T]](left: List[T], right: List[T]) -> List[T] is
     return merged
 si
 
-write_line(merge_sort([5, 3, 8, 1, 9, 2, 7]) |> join(", "))
-write_line(merge_sort(["pear", "apple", "quince", "banana"]) |> join(", "))
+write_line(merge_sort([5, 3, 8, 1, 9, 2, 7]) |> join())
+write_line(merge_sort(["pear", "apple", "quince", "banana"]) |> join())

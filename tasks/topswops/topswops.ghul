@@ -1,7 +1,7 @@
 use default
 
 swaps(deck: int[]) -> int => (
-    let cards = deck |> collect_list()
+    let cards = deck |> collect_mutable()
 
     let count mut = 0
 
@@ -20,7 +20,7 @@ swaps(deck: int[]) -> int => (
 )
 
 topswops(n: int) -> int => (
-    let deck = 1::n |> collect_list()
+    let deck = 1::n |> collect_mutable()
 
     let best mut = 0
 

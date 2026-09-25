@@ -44,7 +44,7 @@ si
 show(ranges: List[RANGE]) -> string =>
     ranges
         |> map(bounds => "[{bounds.low}, {bounds.high}]")
-        |> join(", ")
+        |> join()
 
 let inputs = [
     [(low = 1.1D, high = 2.2D)],

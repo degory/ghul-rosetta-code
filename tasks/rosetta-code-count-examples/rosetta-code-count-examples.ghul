@@ -72,7 +72,7 @@ si
 stand_in() -> string is
     let replies =
         IO.File.read_all_lines("api-replies.txt")
-            |> skip(1) |> collect_list()
+            |> skip(1) |> collect_mutable()
     let probe = TcpListener(IPAddress.loopback, 0)
 
     probe.start()

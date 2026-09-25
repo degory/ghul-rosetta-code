@@ -17,4 +17,4 @@ for move in moves do
     IO.Std.write("{escape}{move.sequence}")
 od
 
-write_line(moves |> map(m => m.what) |> join(", "))
+write_line(moves |> map(m => m.what) |> join())

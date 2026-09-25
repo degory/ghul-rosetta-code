@@ -28,7 +28,7 @@ let board =
             elif cell =~ "__" then blank
             else int.parse(cell)
             fi)
-        |> collect_list()
+        |> collect_mutable()
 
 let given = SET(board |> filter(n => n > 0))
 let last = given |> reduce(0, (a, b) => System.Math.max(a, b))

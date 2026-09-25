@@ -7,7 +7,7 @@ let size = 401
 let centre = size / 2
 let limit = size * size
 
-let is_prime = 0::limit |> map(_ => true) |> collect_list()
+let is_prime = 0::limit |> map(_ => true) |> collect_mutable()
 
 is_prime[0] = false
 is_prime[1] = false

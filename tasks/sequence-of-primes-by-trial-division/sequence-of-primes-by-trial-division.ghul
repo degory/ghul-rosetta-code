@@ -20,7 +20,7 @@ primes() -> Pipe[int] is
     od
 si
 
-let first = primes() |> take(100) |> collect_list()
+let first = primes() |> take(100) |> collect_mutable()
 
 for row in 0..10 do
     let cells = first |> skip(row * 10) |> take(10)

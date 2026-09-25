@@ -10,7 +10,7 @@ use Filter = (Ghul.Pipes.Pipe[string]) -> Ghul.Pipes.Pipe[string]
     next(pipe(text.split(['\n'])))
 
 ▶(source: Stream, path: string) -> int is
-    let lines = source |> collect_array()
+    let lines = source |> collect()
 
     IO.File.write_all_lines(path, lines)
 
@@ -18,14 +18,14 @@ use Filter = (Ghul.Pipes.Pipe[string]) -> Ghul.Pipes.Pipe[string]
 si
 
 ▶▶(source: Stream, path: string) -> int is
-    let lines = source |> collect_array()
+    let lines = source |> collect()
 
     IO.File.append_all_lines(path, lines)
 
     lines.count
 si
 
-capture(source: Stream) -> string => source |> join(", ")
+capture(source: Stream) -> string => source |> join()
 
 cat(path: string) -> Stream is
     let reader = IO.File.open_text(path)
@@ -91,7 +91,7 @@ si
 sorted() -> Filter => source => in_order(source)
 
 in_order(source: Stream) -> Stream is
-    let lines = source |> collect_list()
+    let lines = source |> collect_mutable()
 
     lines.sort((a: string, b: string) -> int => string.compare(a, b))
 

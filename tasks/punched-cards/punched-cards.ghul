@@ -10,7 +10,7 @@ row_of(label: string) -> int =>
     0..12 |> find(i => labels[i] =~ label) ?? -1
 
 punch(c: char, holes: string) is
-    codes[c] = holes.split([' ']) |> map(row_of) |> collect_list()
+    codes[c] = holes.split([' ']) |> map(row_of) |> collect_mutable()
 si
 
 for d in 0..10 do

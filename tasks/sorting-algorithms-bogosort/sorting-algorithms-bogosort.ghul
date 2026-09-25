@@ -28,4 +28,4 @@ let numbers = LIST([5, 3, 8, 1, 9])
 
 bogosort(numbers)
 
-write_line(numbers |> join(", "))
+write_line(numbers |> join())

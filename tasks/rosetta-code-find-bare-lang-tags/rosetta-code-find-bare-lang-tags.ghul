@@ -31,7 +31,7 @@ report(pages: string[], show_pages: bool) is
             tags
             |> map(tag => "[[{tag.page}]]")
             |> distinct()
-            |> join(", ")
+            |> join()
 
         write_line(
             "{tags.count} in {language}"

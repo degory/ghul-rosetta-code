@@ -13,7 +13,7 @@ attribute() -> int is
 si
 
 character() -> LIST[int] =>
-    1::6 |> map(_ => attribute()) |> collect_list()
+    1::6 |> map(_ => attribute()) |> collect_mutable()
 
 let rolled mut = character()
 

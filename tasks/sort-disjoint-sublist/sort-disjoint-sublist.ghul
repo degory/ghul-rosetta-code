@@ -15,4 +15,4 @@ let indices = SET([6, 1, 7])
 
 sort_disjoint_sublist(values, indices)
 
-write_line(values |> join(", "))
+write_line(values |> join())

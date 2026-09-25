@@ -47,8 +47,8 @@ si
 
 let numbers = LIST([6, 7, 8, 9, 2, 5, 3, 4, 1])
 
-write_line(numbers |> join(", "))
+write_line(numbers |> join())
 
 circle_sort(numbers)
 
-write_line(numbers |> join(", "))
+write_line(numbers |> join())

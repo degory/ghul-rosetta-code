@@ -16,4 +16,4 @@ split(text: string) -> LIST[string] is
     runs
 si
 
-write_line(split("gHHH5YY++///\\") |> Ghul.Pipes.join(", "))
+write_line(split("gHHH5YY++///\\") |> Ghul.Pipes.join())

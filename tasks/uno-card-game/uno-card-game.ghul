@@ -143,7 +143,7 @@ human_choice(hand: List[Card]) -> Choice? is
         let cards =
             (row * 4..System.Math.min(row * 4 + 4, hand.count))
                 |> map(i => "{i + 1}: {name(hand[i])}")
-                |> join(", ")
+                |> join()
 
         write_line("  {cards}")
     od
@@ -414,7 +414,7 @@ while scores |> all(s => s < 500) do
     verbose = false
 
     let standings =
-        0..4 |> map(s => "{names[s]} {scores[s]}") |> join(", ")
+        0..4 |> map(s => "{names[s]} {scores[s]}") |> join()
 
     write_line(
         "hand {hand_number}: {names[winner]} went out for {won} points; "

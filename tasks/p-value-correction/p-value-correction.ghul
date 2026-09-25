@@ -18,15 +18,15 @@ let n = p_values.count
 let ascending =
     0..n
         |> sort((a, b) => p_values[a] <> p_values[b])
-        |> collect_list()
-let descending = ascending |> reverse() |> collect_list()
+        |> collect_mutable()
+let descending = ascending |> reverse() |> collect_mutable()
 
 running(
     order: List[int],
     factor: (int) -> double,
     keep_lower: bool
 ) -> List[double] is
-    let adjusted = repeat(0.0, n) |> collect_list()
+    let adjusted = repeat(0.0, n) |> collect_mutable()
     let bound mut = if keep_lower then 1.0 else 0.0 fi
 
     for rank in 0..n do
@@ -58,7 +58,7 @@ benjamini_yekutieli() -> List[double] =>
 bonferroni() -> List[double] =>
     p_values
         |> map(p => System.Math.min(1.0, cast double(n) * p))
-        |> collect_list()
+        |> collect_mutable()
 
 hochberg() -> List[double] =>
     running(descending, rank => cast double(rank + 1), true)
@@ -67,13 +67,13 @@ holm() -> List[double] =>
     running(ascending, rank => cast double(n - rank), false)
 
 hommel() -> List[double] is
-    let sorted = ascending |> map(i => p_values[i]) |> collect_list()
+    let sorted = ascending |> map(i => p_values[i]) |> collect_mutable()
     let smallest =
         0..n
             |> map(i => cast double(n) * sorted[i] / cast double(i + 1))
             |> min() ?? 1.0
-    let q = repeat(smallest, n) |> collect_list()
-    let floor = repeat(smallest, n) |> collect_list()
+    let q = repeat(smallest, n) |> collect_mutable()
+    let floor = repeat(smallest, n) |> collect_mutable()
 
     for m in (2::n - 1) |> reverse() do
         let tail = n - m + 1
@@ -96,7 +96,7 @@ hommel() -> List[double] is
         od
     od
 
-    let adjusted = repeat(0.0, n) |> collect_list()
+    let adjusted = repeat(0.0, n) |> collect_mutable()
 
     for rank in 0..n do
         adjusted[ascending[rank]] =

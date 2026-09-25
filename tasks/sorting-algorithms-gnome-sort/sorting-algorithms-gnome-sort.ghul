@@ -18,4 +18,4 @@ let numbers = LIST([5, 3, 8, 1, 9, 2, 7])
 
 gnome_sort(numbers)
 
-write_line(numbers |> join(", "))
+write_line(numbers |> join())

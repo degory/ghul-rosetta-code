@@ -22,7 +22,7 @@ outcomes(count: int) -> Pipe[Collections.List[Result]] is
 si
 
 standings(results: Collections.List[Result]) -> Collections.List[int] is
-    let points = repeat(0, 4) |> collect_list()
+    let points = repeat(0, 4) |> collect_mutable()
 
     for ((home, away), result) in zip(games, results) do
         let (home_points, away_points) =
@@ -40,7 +40,7 @@ standings(results: Collections.List[Result]) -> Collections.List[int] is
 si
 
 let histogram =
-    (0..4) |> map(_ => repeat(0, 10) |> collect_list()) |> collect()
+    (0..4) |> map(_ => repeat(0, 10) |> collect_mutable()) |> collect()
 
 for results in outcomes(games.count) do
     for (place, points) in standings(results) |> index() do

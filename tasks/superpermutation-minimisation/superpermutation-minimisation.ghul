@@ -47,7 +47,7 @@ permutations(letters: string) -> List[string] =>
             |> flat_map(i =>
                 permutations(letters.remove(i, 1))
                     |> map(rest => "{letters[i]}{rest}"))
-            |> collect_list()
+            |> collect_mutable()
     fi
 
 contains_all(s: string, n: int) -> bool =>

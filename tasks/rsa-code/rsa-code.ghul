@@ -20,7 +20,7 @@ decode(number: bigint) -> ubyte[] is
         remaining = remaining / 256n
     od
 
-    return bytes |> collect_array()
+    return bytes |> collect()
 si
 
 for message in [
@@ -48,7 +48,7 @@ for message in [
         decrypted.add_range(decode(restored))
     od
 
-    let text = Encoding.utf8.get_string(decrypted |> collect_array())
+    let text = Encoding.utf8.get_string(decrypted |> collect())
     write_line("decrypted: {text}")
     write_line("")
 od
