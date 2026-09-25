@@ -30324,6 +30324,32 @@
       ]
     },
     {
+      "slug": "word-frequency",
+      "title": "Word frequency",
+      "url": "https://rosettacode.org/wiki/Word_frequency",
+      "tags": [
+        "text-processing",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "word-frequency",
+          "heading": null,
+          "source": "tasks/word-frequency/word-frequency.ghul",
+          "output": "tasks/word-frequency/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "word-ladder",
       "title": "Word ladder",
       "url": "https://rosettacode.org/wiki/Word_ladder",
