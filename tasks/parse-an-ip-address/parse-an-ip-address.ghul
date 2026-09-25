@@ -1,0 +1,57 @@
+use default
+
+use System.Net.IPAddress
+
+use Parsed = (address: IPAddress, port: int?)
+
+after(text: string, index: int) -> string => text[index + 1..<0]
+
+bracketed(text: string) -> Parsed =>
+    let close = text.index_of(']') in
+    let has_port = close + 1 < text.length in
+    let port =
+        if has_port then int.parse(after(text, close + 1)) else null fi in
+    (address = IPAddress.parse(text[1..close]), port = port)
+
+with_port(text: string) -> Parsed =>
+    let colon = text.index_of(':') in
+    (
+        address = IPAddress.parse(text[0..colon]),
+        port = int.parse(after(text, colon))
+    )
+
+split_port(text: string) -> Parsed =>
+    if text.starts_with("[") then
+        bracketed(text)
+    elif text |> count(c => c == ':') == 1 then
+        with_port(text)
+    else
+        (address = IPAddress.parse(text), port = null)
+    fi
+
+hex(bytes: ubyte[]) -> string =>
+    let number = bytes
+        |> reduce(0n, (n, b) => n * 256n + bigint(cast int(b))) in
+    let digits = "{number:X}".trim_start('0') in
+    if digits.length == 0 then "0" else digits fi
+
+describe(text: string) -> string =>
+    let (address, port) = split_port(text) in
+    let bytes = address.get_address_bytes() in
+    let space = if bytes.count == 4 then "IPv4" else "IPv6" fi in
+    let port_text = if let p = port then "{p}" else "none" fi in
+    "{text,-30}{hex(bytes),-34}{space} port {port_text}"
+
+let inputs = [
+    "127.0.0.1",
+    "127.0.0.1:80",
+    "::1",
+    "[::1]:80",
+    "2605:2700:0:3::4713:93e3",
+    "[2605:2700:0:3::4713:93e3]:80",
+    "::ffff:127.0.0.1"
+]
+
+for text in inputs do
+    write_line(describe(text))
+od

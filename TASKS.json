@@ -5291,6 +5291,11 @@
       "state": "solved"
     },
     {
+      "title": "Parallel brute force",
+      "slug": "parallel-brute-force",
+      "state": "solved"
+    },
+    {
       "title": "Parallel calculations",
       "slug": "parallel-calculations",
       "state": "published",
@@ -5312,6 +5317,11 @@
       "slug": "parse-ebnf",
       "state": "published",
       "published_hash": "1fccc67b29610f27719dc5307a3d7b1710287a12684a409a46ebfbd281a61f91"
+    },
+    {
+      "title": "Parse an IP Address",
+      "slug": "parse-an-ip-address",
+      "state": "solved"
     },
     {
       "title": "Parsing/RPN calculator algorithm",
@@ -5357,10 +5367,45 @@
       }
     },
     {
+      "title": "Partition an integer x into n primes",
+      "slug": "partition-an-integer-x-into-n-primes",
+      "state": "solved"
+    },
+    {
+      "title": "Partition function P",
+      "slug": "partition-function-p",
+      "state": "solved"
+    },
+    {
+      "title": "Pascal matrix generation",
+      "slug": "pascal-matrix-generation",
+      "state": "solved"
+    },
+    {
       "title": "Pascal\u0027s triangle",
       "slug": "pascals-triangle",
       "state": "published",
       "published_hash": "ce06e1367620574acad1ee9afb5895781b241232ae3e88aaa68e7ee30056e718"
+    },
+    {
+      "title": "Pascal\u0027s triangle/Puzzle",
+      "slug": "pascal-s-triangle-puzzle",
+      "state": "solved"
+    },
+    {
+      "title": "Passphrase generator",
+      "slug": "passphrase-generator",
+      "state": "solved"
+    },
+    {
+      "title": "Password generator",
+      "slug": "password-generator",
+      "state": "solved"
+    },
+    {
+      "title": "Pathological floating point problems",
+      "slug": "pathological-floating-point-problems",
+      "state": "solved"
     },
     {
       "title": "Peaceful chess queen armies",
@@ -5386,6 +5431,11 @@
       "slug": "pell-numbers",
       "state": "published",
       "published_hash": "0f005f35bcb3092cb449ac9b6eef4190ed2a9c6ddd4c5884cba5dcfd6dd53e54"
+    },
+    {
+      "title": "Pell\u0027s equation",
+      "slug": "pell-s-equation",
+      "state": "solved"
     },
     {
       "title": "Penholodigital squares",

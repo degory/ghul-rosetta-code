@@ -22241,6 +22241,32 @@
       ]
     },
     {
+      "slug": "parallel-brute-force",
+      "title": "Parallel brute force",
+      "url": "https://rosettacode.org/wiki/Parallel_brute_force",
+      "tags": [
+        "concurrency",
+        "dotnet-interop"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "parallel-brute-force",
+          "heading": null,
+          "source": "tasks/parallel-brute-force/parallel-brute-force.ghul",
+          "output": "tasks/parallel-brute-force/run.expected",
+          "lines": 50,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "parallel-calculations",
       "title": "Parallel calculations",
       "url": "https://rosettacode.org/wiki/Parallel_calculations",
@@ -22288,6 +22314,32 @@
           "source": "tasks/parametric-polymorphism/parametric-polymorphism.ghul",
           "output": "tasks/parametric-polymorphism/run.expected",
           "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "parse-an-ip-address",
+      "title": "Parse an IP Address",
+      "url": "https://rosettacode.org/wiki/Parse_an_IP_Address",
+      "tags": [
+        "parsing",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "parse-an-ip-address",
+          "heading": null,
+          "source": "tasks/parse-an-ip-address/parse-an-ip-address.ghul",
+          "output": "tasks/parse-an-ip-address/run.expected",
+          "lines": 57,
           "playground": true,
           "input": false,
           "images": []
@@ -22493,6 +22545,110 @@
       ]
     },
     {
+      "slug": "partition-an-integer-x-into-n-primes",
+      "title": "Partition an integer x into n primes",
+      "url": "https://rosettacode.org/wiki/Partition_an_integer_x_into_n_primes",
+      "tags": [
+        "primes",
+        "recursion"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 48,
+      "parts": [
+        {
+          "id": "partition-an-integer-x-into-n-primes",
+          "heading": null,
+          "source": "tasks/partition-an-integer-x-into-n-primes/partition-an-integer-x-into-n-primes.ghul",
+          "output": "tasks/partition-an-integer-x-into-n-primes/run.expected",
+          "lines": 48,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "partition-function-p",
+      "title": "Partition function P",
+      "url": "https://rosettacode.org/wiki/Partition_function_P",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "partition-function-p",
+          "heading": null,
+          "source": "tasks/partition-function-p/partition-function-p.ghul",
+          "output": "tasks/partition-function-p/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pascal-matrix-generation",
+      "title": "Pascal matrix generation",
+      "url": "https://rosettacode.org/wiki/Pascal_matrix_generation",
+      "tags": [
+        "maths",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "pascal-matrix-generation",
+          "heading": null,
+          "source": "tasks/pascal-matrix-generation/pascal-matrix-generation.ghul",
+          "output": "tasks/pascal-matrix-generation/run.expected",
+          "lines": 35,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pascal-s-triangle-puzzle",
+      "title": "Pascal's triangle/Puzzle",
+      "url": "https://rosettacode.org/wiki/Pascal's_triangle/Puzzle",
+      "tags": [
+        "puzzles",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "pascal-s-triangle-puzzle",
+          "heading": null,
+          "source": "tasks/pascal-s-triangle-puzzle/pascal-s-triangle-puzzle.ghul",
+          "output": "tasks/pascal-s-triangle-puzzle/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pascals-triangle",
       "title": "Pascal's triangle",
       "url": "https://rosettacode.org/wiki/Pascal's_triangle",
@@ -22512,6 +22668,84 @@
           "source": "tasks/pascals-triangle/pascals-triangle.ghul",
           "output": "tasks/pascals-triangle/run.expected",
           "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "passphrase-generator",
+      "title": "Passphrase generator",
+      "url": "https://rosettacode.org/wiki/Passphrase_generator",
+      "tags": [
+        "strings",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "passphrase-generator",
+          "heading": null,
+          "source": "tasks/passphrase-generator/passphrase-generator.ghul",
+          "output": "tasks/passphrase-generator/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "password-generator",
+      "title": "Password generator",
+      "url": "https://rosettacode.org/wiki/Password_generator",
+      "tags": [
+        "strings",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 80,
+      "parts": [
+        {
+          "id": "password-generator",
+          "heading": null,
+          "source": "tasks/password-generator/password-generator.ghul",
+          "output": "tasks/password-generator/run.expected",
+          "lines": 80,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pathological-floating-point-problems",
+      "title": "Pathological floating point problems",
+      "url": "https://rosettacode.org/wiki/Pathological_floating_point_problems",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 118,
+      "parts": [
+        {
+          "id": "pathological-floating-point-problems",
+          "heading": null,
+          "source": "tasks/pathological-floating-point-problems/pathological-floating-point-problems.ghul",
+          "output": "tasks/pathological-floating-point-problems/run.expected",
+          "lines": 118,
           "playground": true,
           "input": false,
           "images": []
@@ -22602,6 +22836,32 @@
           "source": "tasks/pell-numbers/pell-numbers.ghul",
           "output": "tasks/pell-numbers/run.expected",
           "lines": 124,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pell-s-equation",
+      "title": "Pell's equation",
+      "url": "https://rosettacode.org/wiki/Pell's_equation",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "pell-s-equation",
+          "heading": null,
+          "source": "tasks/pell-s-equation/pell-s-equation.ghul",
+          "output": "tasks/pell-s-equation/run.expected",
+          "lines": 29,
           "playground": true,
           "input": false,
           "images": []
