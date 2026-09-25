@@ -26050,6 +26050,32 @@
       ]
     },
     {
+      "slug": "set-right-adjacent-bits",
+      "title": "Set right-adjacent bits",
+      "url": "https://rosettacode.org/wiki/Set_right-adjacent_bits",
+      "tags": [
+        "strings",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "set-right-adjacent-bits",
+          "heading": null,
+          "source": "tasks/set-right-adjacent-bits/set-right-adjacent-bits.ghul",
+          "output": "tasks/set-right-adjacent-bits/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sexy-primes",
       "title": "Sexy primes",
       "url": "https://rosettacode.org/wiki/Sexy_primes",
