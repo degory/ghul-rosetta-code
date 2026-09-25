@@ -42,7 +42,7 @@ let samples = 400
 let curve =
     (0::samples)
         |> map(s => de_boor(cast double(spans * s) / cast double(samples)))
-        |> collect_list()
+        |> collect()
 
 let image = IMAGE(400, 400)
 

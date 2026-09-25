@@ -21,7 +21,7 @@ si
 step(rule: int, cells: List[bool]) -> List[bool] is
     let next = 0..cells.count
         |> map(at => (rule >> neighbourhood(cells, at)) & 1 == 1)
-        |> collect_list()
+        |> collect()
 
     return next
 si

@@ -22,7 +22,7 @@ si
 for base in [2, 4, 6, 8, 10] do
     write_line("generalized Curzon numbers with base {base}:")
 
-    let first_50 = curzon_numbers(base) |> take(50) |> collect_list()
+    let first_50 = curzon_numbers(base) |> take(50) |> collect()
 
     for row in 0..5 do
         let cells = (0..10)

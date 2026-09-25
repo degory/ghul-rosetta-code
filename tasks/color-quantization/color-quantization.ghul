@@ -105,7 +105,7 @@ split(box: List[Weighted]) -> (List[Weighted], List[Weighted]) is
         box
             |> sort((a, b) =>
                 channel(a.colour, axis) - channel(b.colour, axis))
-            |> collect_list()
+            |> collect()
 
     let total = sorted |> map(w => w.count) |> sum()
     let cut mut = 1
@@ -117,8 +117,8 @@ split(box: List[Weighted]) -> (List[Weighted], List[Weighted]) is
     od
 
     (
-        sorted |> take(cut) |> collect_list(),
-        sorted |> skip(cut) |> collect_list())
+        sorted |> take(cut) |> collect(),
+        sorted |> skip(cut) |> collect())
 si
 
 average(box: List[Weighted]) -> Colour is
@@ -145,7 +145,7 @@ median_cut(colours: List[Weighted], count: int) -> List[Colour] is
         boxes.add(high)
     od
 
-    boxes |> map(average) |> collect_list()
+    boxes |> map(average) |> collect()
 si
 
 distance(a: Colour, b: Colour) -> int =>
@@ -164,7 +164,7 @@ let pixels =
     (0..input.height)
         |> flat_map(y => 0..input.width |> map(x => input.pixel(x, y)))
         |> map(of)
-        |> collect_list()
+        |> collect()
 
 let counts = MAP()
 
@@ -175,7 +175,7 @@ od
 let colours =
     counts
         |> map(kv => (colour = kv.key, count = kv.value))
-        |> collect_list()
+        |> collect()
 
 let palette = median_cut(colours, 16)
 

@@ -28,7 +28,7 @@ brilliant_numbers(max_digits: int) -> LIST[long] is
         let group = primes
             |> skip(start)
             |> take_while(p => p < low * 10)
-            |> collect_list()
+            |> collect()
 
         for (i, p) in group |> index() do
             for q in group |> skip(i) do

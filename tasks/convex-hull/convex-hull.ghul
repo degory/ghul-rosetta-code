@@ -39,12 +39,12 @@ let ordered =
     points
         |> sort((a, b) =>
             if a.x != b.x then a.x - b.x else a.y - b.y fi)
-        |> collect_list()
+        |> collect()
 
 let backwards =
     (0..ordered.count)
         |> map(step => ordered[ordered.count - 1 - step])
-        |> collect_list()
+        |> collect()
 
 let hull = half_hull(ordered)
 

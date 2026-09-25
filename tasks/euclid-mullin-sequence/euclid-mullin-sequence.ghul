@@ -90,7 +90,7 @@ euclid_mullin(count: int) -> Pipe[bigint] is
     od
 si
 
-let sequence = euclid_mullin(16) |> collect_list()
+let sequence = euclid_mullin(16) |> collect()
 
 render(terms: Collections.List[bigint]) -> string is
     let texts = terms |> map(term => "{term}") |> collect_list()

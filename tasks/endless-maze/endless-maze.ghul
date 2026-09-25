@@ -41,7 +41,7 @@ write_line("go ahead, right, back or left; exit at the entrance, or quit")
 
 do
     let paths =
-        0..4 |> filter(t => passage(x, y, toward(t))) |> collect_list()
+        0..4 |> filter(t => passage(x, y, toward(t))) |> collect()
 
     write_line()
 

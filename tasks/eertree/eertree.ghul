@@ -76,7 +76,7 @@ class EERTREE(text: string) is
         walk(0, "")
         walk(1, "")
 
-        found |> sort() |> collect_list()
+        found |> sort() |> collect()
     si
 si
 

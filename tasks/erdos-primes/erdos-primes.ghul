@@ -36,9 +36,9 @@ is_erdos(prime: int) -> bool =>
 
 let erdos = 2::limit |> filter(is_prime)
                        |> filter(is_erdos)
-                       |> collect_list()
+                       |> collect()
 
-let below_2500 = erdos |> filter(p => p < 2_500) |> collect_list()
+let below_2500 = erdos |> filter(p => p < 2_500) |> collect()
 
 write_line("the Erdos primes below 2500:")
 

@@ -31,8 +31,8 @@ start() -> Grid =>
         |> map(row =>
             (0..columns)
                 |> map(column => in_gun(row - 4, column - 4))
-                |> collect_list())
-        |> collect_list()
+                |> collect())
+        |> collect()
 
 live_neighbours(grid: Grid, row: int, column: int) -> int is
     let count mut = 0
@@ -64,8 +64,8 @@ step(grid: Grid) -> Grid =>
         |> map(row =>
             (0..columns)
                 |> map(column => survives(grid, row, column))
-                |> collect_list())
-        |> collect_list()
+                |> collect())
+        |> collect()
 
 draw(image: IMAGE, grid: Grid) is
     image.clear(250ub, 250ub, 247ub)

@@ -38,7 +38,7 @@ longest_run(primes: Collections.List[int], keeps_going: (int, int) -> bool)
     return primes[best.start..best.start + best.length]
 si
 
-let primes = primes_below(1_000_000) |> collect_list()
+let primes = primes_below(1_000_000) |> collect()
 
 show(name: string, run: Collections.List[int]) =>
     write_line("{name}: {run |> map(p => "{p}") |> join(" ")}")

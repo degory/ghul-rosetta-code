@@ -54,7 +54,7 @@ show_range(low: long, high: long) is
         |> filter(value => value >= low)
         |> take_while(value => value <= high)
         |> map(value => "{value}")
-        |> collect_list()
+        |> collect()
 
     write_line("")
     write_line("base 10 esthetic numbers between {low} and {high}:")

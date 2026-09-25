@@ -14,7 +14,7 @@ si
 use Triangle = P[]
 
 shadow(t: Triangle, axis: P) -> (low: double, high: double) =>
-    let lengths = t |> map(p => p ⋅ axis) |> collect_list() in
+    let lengths = t |> map(p => p ⋅ axis) |> collect() in
     (
         low = lengths |> reduce(lengths[0], Math.min),
         high = lengths |> reduce(lengths[0], Math.max))
@@ -36,7 +36,7 @@ triangle(text: string) -> Triangle is
     let numbers =
         text.split(['(', ')', ','], StringSplitOptions.REMOVE_EMPTY_ENTRIES)
             |> map(double.parse)
-            |> collect_list()
+            |> collect()
 
     (0..3)
         |> map(i => P(numbers[2 * i], numbers[2 * i + 1]))
@@ -53,7 +53,7 @@ let pairs = [
     ("(0,0),(1,0),(0,1)", "(1,0),(2,0),(1,1)")
 ]
     |> map(((a, b)) => (triangle(a), triangle(b)))
-    |> collect_list()
+    |> collect()
 
 show(t: Triangle) -> string => t |> map(p => p.show) |> join(",")
 
@@ -77,7 +77,7 @@ image.clear(252ub, 250ub, 245ub)
 
 for (i, (a, b)) in pairs |> index() do
     let left = cast double(i % 4 * panel), top = cast double(i / 4 * panel)
-    let all = a |> cat(b) |> collect_list()
+    let all = a |> cat(b) |> collect()
     let low_x = all |> map(p => p.x) |> reduce(all[0].x, Math.min)
     let high_x = all |> map(p => p.x) |> reduce(all[0].x, Math.max)
     let low_y = all |> map(p => p.y) |> reduce(all[0].y, Math.min)
@@ -94,7 +94,7 @@ for (i, (a, b)) in pairs |> index() do
     for (shape, r, g, blue) in [first, second] do
         image.colour(r, g, blue)
         image.stroke(2.0D)
-        image.line(shape |> cat([shape[0]]) |> map(place) |> collect_list())
+        image.line(shape |> cat([shape[0]]) |> map(place) |> collect())
     od
 od
 

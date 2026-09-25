@@ -67,7 +67,7 @@ steer(boid: BOID, flock: List[BOID]) -> VEC is
             |> filter(other =>
                 !(other == boid) /\
                 (other.position - boid.position).length < sight)
-            |> collect_list()
+            |> collect()
 
     let force mut = VEC(0.04D, 0.0D) + wall_push(boid.position) * 1.5D
 
@@ -157,7 +157,7 @@ let flock =
         |> map(position => BOID(
             position,
             VEC(0.3D, random.next_double() * 0.4D - 0.2D)))
-        |> collect_list()
+        |> collect()
 
 let image = IMAGE(240, 90)
 

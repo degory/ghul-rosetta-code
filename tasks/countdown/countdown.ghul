@@ -78,7 +78,7 @@ play(numbers: int[], target: int) is
     let start =
         numbers
             |> map(n => (value = n, steps = LIST()))
-            |> collect_list()
+            |> collect()
 
     let nothing = (value = 0, steps = LIST())
     let result = solve(start, target, nothing)

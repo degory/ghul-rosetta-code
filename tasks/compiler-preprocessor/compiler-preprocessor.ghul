@@ -17,7 +17,7 @@ split(list: string) -> List[string] =>
     list.split([','])
         |> map(s => s.trim())
         |> filter(s => s.length > 0)
-        |> collect_list()
+        |> collect()
 
 class PREPROCESSOR(debug: bool) is
     defines: MAP[string, MACRO]

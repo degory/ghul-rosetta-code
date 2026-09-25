@@ -26,7 +26,7 @@ class GRAPH(order: int public) is
         0..order
             |> filter(a => (_match[a] ?? -1) > a)
             |> map(a => (a = a, b = _match[a]!))
-            |> collect_list()
+            |> collect()
 
     maximise() is
         for root in 0..order do

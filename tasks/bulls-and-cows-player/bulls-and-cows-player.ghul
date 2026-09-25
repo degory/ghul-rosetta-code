@@ -15,7 +15,7 @@ let candidates mut =
         |> filter(s =>
             s.index_of('0') < 0 /\
             0..4 |> all(i => s.last_index_of(s[i]) == i))
-        |> collect_list()
+        |> collect()
 
 let random = System.Random(4)
 
@@ -56,5 +56,5 @@ do
     candidates =
         candidates
             |> filter(c => score(guess, c) =~ given)
-            |> collect_list()
+            |> collect()
 od

@@ -14,7 +14,7 @@ around(radius: double) -> List[POINT] =>
 
              (x = 150.0D + radius * Math.cos(angle),
               y = 150.0D + radius * Math.sin(angle))))
-        |> collect_list()
+        |> collect()
 
 let image = IMAGE(300, 300)
 

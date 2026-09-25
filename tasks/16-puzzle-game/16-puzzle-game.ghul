@@ -14,7 +14,7 @@ si
 solved() -> bool => board |> index() |> all(c => c.value == c.index + 1)
 
 rotate(cells: List[int], forward: bool) is
-    let values = cells |> map(i => board[i]) |> collect_list()
+    let values = cells |> map(i => board[i]) |> collect()
     let count = values.count
 
     for (k, cell) in cells |> index() do
@@ -36,8 +36,8 @@ apply(command: string) -> bool is
         return false
     fi
 
-    let row = 0..size |> map(c => n * size + c) |> collect_list()
-    let column = 0..size |> map(r => r * size + n) |> collect_list()
+    let row = 0..size |> map(c => n * size + c) |> collect()
+    let column = 0..size |> map(r => r * size + n) |> collect()
 
     case char.to_upper(command[0])
     when 'R' then rotate(row, true)

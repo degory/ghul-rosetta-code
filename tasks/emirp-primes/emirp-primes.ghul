@@ -62,7 +62,7 @@ let in_range_text = in_range |> map(n => "{n}") |> join(", ")
 
 write_line("emirps between 7700 and 8000: {in_range_text}")
 
-let first_ten_thousand = emirps() |> take(10000) |> collect_list()
+let first_ten_thousand = emirps() |> take(10000) |> collect()
 let ten_thousandth = first_ten_thousand[first_ten_thousand.count - 1]
 
 write_line("10000th emirp: {ten_thousandth}")

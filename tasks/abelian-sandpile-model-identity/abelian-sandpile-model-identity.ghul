@@ -48,7 +48,7 @@ class SANDPILE is
     rows: List[string] =>
         (0..size)
             |> map(r => cells |> skip(r * size) |> take(size) |> join(" "))
-            |> collect_list()
+            |> collect()
 si
 
 +(a: SANDPILE, b: SANDPILE) -> SANDPILE =>

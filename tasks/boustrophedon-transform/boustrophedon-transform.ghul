@@ -66,7 +66,7 @@ report(name: string, term: (int) -> bigint) is
     let transformed = boustrophedon(term, 15) |> collect_list()
     let texts = transformed |> map(value => "{value}") |> collect_list()
 
-    let stretched = boustrophedon(term, 1_000) |> collect_list()
+    let stretched = boustrophedon(term, 1_000) |> collect()
     let digits = stretched[999].to_string()
 
     write_line("{name}:")
