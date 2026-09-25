@@ -1,7 +1,7 @@
 use default
 
-// M = γ + the sum over primes p of (ln(1 - 1/p) + 1/p). The terms fall off
-// as 1/p², so primes below ten million leave an error of about 3e-9.
+// the terms fall off as 1/p², so stopping at ten million leaves an error
+// of about 3e-9
 
 let gamma = 0.57721566490153286
 
