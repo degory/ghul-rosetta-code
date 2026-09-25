@@ -1,0 +1,27 @@
+use default
+
+use System.Numerics.BitOperations
+
+// 64 cells in a ring, held as the bits of one ulong, starting from a
+// single live cell at bit 0; rule 30 is left XOR (centre OR right).
+
+rule_30(cells: ulong) -> ulong =>
+    BitOperations.rotate_right(cells, 1) ^
+        (cells | BitOperations.rotate_left(cells, 1))
+
+random_bytes() -> Pipe[int] is
+    let cells mut = 1UL
+
+    for _ in from(0) do
+        let byte mut = 0
+
+        for _ in 0..8 do
+            byte = (byte << 1) | cast int(cells & 1UL)
+            cells = rule_30(cells)
+        od
+
+        yield byte
+    od
+si
+
+write_line(random_bytes() |> take(10) |> join(" "))
