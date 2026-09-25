@@ -1,0 +1,7 @@
+{
+  "title": "ADFGVX cipher",
+  "slug": "adfgvx-cipher",
+  "state": "published",
+  "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key",
+  "published_hash": "36d665b0c8d67c80ddd1758b7153668e67abd50fa73b9993b79f70f5fbd3bd8b"
+}

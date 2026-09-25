@@ -1,0 +1,6 @@
+{
+  "title": "Add a variable to a class instance at runtime",
+  "state": "rejected",
+  "reason": "no-equivalent",
+  "note": "an instance has the members its type declares and no others"
+}

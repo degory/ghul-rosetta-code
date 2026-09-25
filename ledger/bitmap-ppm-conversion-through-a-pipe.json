@@ -1,0 +1,6 @@
+{
+  "title": "Bitmap/PPM conversion through a pipe",
+  "state": "rejected",
+  "reason": "needs-native-lib",
+  "note": "the task is the delegation itself, to cjpeg or convert, which is a binary the build would have to find"
+}

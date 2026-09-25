@@ -82,7 +82,7 @@ si
 // what is published, and tasks/ says what has a solution. Anything the ledger knows that neither
 // of them can see - a rejection and its reason, a task blocked on a compiler fix - is left alone.
 sync(root: string) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let ledger = LEDGER(IO.Path.combine(root, "ledger"))
     let wiki = WIKI(SITE.api)
 
     let published = wiki.category_members(SITE.category)
@@ -199,7 +199,7 @@ si
 // Tasks the ledger says nothing about. Everything else has either been done or been decided
 // against, and neither needs looking at again.
 candidates(root: string, count: int, category: string?) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let ledger = LEDGER(IO.Path.combine(root, "ledger"))
     let wiki = WIKI(SITE.api)
 
     let shown mut = 0
@@ -218,7 +218,7 @@ candidates(root: string, count: int, category: string?) is
 si
 
 show(root: string, state: string?) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let ledger = LEDGER(IO.Path.combine(root, "ledger"))
 
     let entries =
         if let wanted = state then
@@ -235,7 +235,7 @@ show(root: string, state: string?) is
 si
 
 set(root: string, title: string, state: string, reason: string?, note: string?) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let ledger = LEDGER(IO.Path.combine(root, "ledger"))
     let entry = ledger.entry(title)
 
     entry.state = state
@@ -257,7 +257,7 @@ si
 // written into the note rather than dropped: without it the next run has nothing to read and
 // re-reaches the conclusion the rejection recorded.
 reopen(root: string, title: string, why: string) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let ledger = LEDGER(IO.Path.combine(root, "ledger"))
     let entry = ledger.entry(title)
 
     let was =
@@ -815,7 +815,7 @@ adopt(root: string, slugs: LIST[string]) is
         return
     fi
 
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let ledger = LEDGER(IO.Path.combine(root, "ledger"))
     let splice = SECTION_SPLICE()
     let wiki = WIKI(SITE.api)
 
@@ -898,7 +898,7 @@ pace_ms() -> int => 30000
 // whatever that page already holds, and the result written back. Running it twice replaces the
 // section rather than adding a second one, which is the same path a corrected solution takes.
 publish(root: string, slugs: LIST[string], dry_run: bool, target: string?, api: string?, rehearse: bool, replace: bool, note: string?) is
-    let ledger = LEDGER(IO.Path.combine(root, "TASKS.json"))
+    let ledger = LEDGER(IO.Path.combine(root, "ledger"))
     let splice = SECTION_SPLICE()
 
     // Reading always comes from Rosetta Code: the point of a run against another wiki is to

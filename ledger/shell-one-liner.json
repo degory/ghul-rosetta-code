@@ -1,0 +1,6 @@
+{
+  "title": "Shell one-liner",
+  "state": "rejected",
+  "reason": "excluded",
+  "note": "the answer is a shell command line, not a program with a testable output; with ghul.cli it is: echo 'write_line(\"hello\")' > h.ghul && ghul h.ghul"
+}

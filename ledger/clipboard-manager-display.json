@@ -1,0 +1,6 @@
+{
+  "title": "Clipboard manager/display",
+  "state": "rejected",
+  "reason": "needs-gui",
+  "note": "the system clipboard, not standard input"
+}

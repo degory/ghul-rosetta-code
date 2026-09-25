@@ -36,17 +36,13 @@ namespace Rosetta is
         si
     si
 
-    class LEDGER_FILE is
-        tasks: LIST[TASK_ENTRY] public
-
-        init() is
-            tasks = LIST[TASK_ENTRY]()
-        si
-    si
-
+    // One file per entry under ledger/, so that work on different tasks never touches the same
+    // file. An entry lives at its slug, or at a key made from its title while it has none, and
+    // moves when it gains one.
     class LEDGER is
-        _path: string
+        _directory: string
         _by_title: MAP[string, TASK_ENTRY]
+        _loaded_from: MAP[string, string]
 
         _options: JsonSerializerOptions? static
 
@@ -56,6 +52,7 @@ namespace Rosetta is
 
                 o.write_indented = true
                 o.default_ignore_condition = JsonIgnoreCondition.WHEN_WRITING_NULL
+                o.encoder = System.Text.Encodings.Web.JavaScriptEncoder.unsafe_relaxed_json_escaping
 
                 _options = o
             fi
@@ -63,21 +60,43 @@ namespace Rosetta is
             return _options
         si
 
-        init(path: string) is
-            _path = path
+        init(directory: string) is
+            _directory = directory
             _by_title = MAP[string, TASK_ENTRY]()
+            _loaded_from = MAP[string, string]()
 
-            if IO.File.exists(path) then
-                let text = IO.File.read_all_text(path)
-                let file = JsonSerializer.deserialize[LEDGER_FILE](text, options)
+            if IO.Directory.exists(directory) then
+                for path in IO.Directory.get_files(directory, "*.json") do
+                    let text = IO.File.read_all_text(path)
 
-                if file? then
-                    for entry in file.tasks do
+                    if let entry = JsonSerializer.deserialize[TASK_ENTRY](text, options) then
                         _by_title[entry.title] = entry
-                    od
-                fi
+                        _loaded_from[entry.title] = path
+                    fi
+                od
             fi
         si
+
+        // A title as a file name: accents dropped, anything but a letter or digit a hyphen.
+        key(title: string) -> string is
+            let result = System.Text.StringBuilder()
+            let decomposed = title.to_lower().normalize(System.Text.NormalizationForm.FORM_D)
+
+            for c in decomposed do
+                if (c >= 'a' /\ c <= 'z') \/ (c >= '0' /\ c <= '9') then
+                    result.append(c)
+                elif c < '\u0300' \/ c > '\u036F' then
+                    if result.length > 0 /\ result[result.length - 1] != '-' then
+                        result.append('-')
+                    fi
+                fi
+            od
+
+            result.to_string().trim_end('-')
+        si
+
+        path_of(entry: TASK_ENTRY) -> string =>
+            IO.Path.combine(_directory, "{entry.slug ?? key(entry.title)}.json")
 
         count: int => _by_title.count
 
@@ -129,14 +148,39 @@ namespace Rosetta is
             return result
         si
 
+        // Writes only the entries whose file would change, and fails rather than let two
+        // entries share a file.
         save() is
-            let file = LEDGER_FILE()
+            IO.Directory.create_directory(_directory)
+
+            let claimed = MAP[string, string]()
 
             for e in entries() do
-                file.tasks.add(e)
-            od
+                let path = path_of(e)
+                let other: string mut
 
-            IO.File.write_all_text(_path, "{JsonSerializer.serialize[LEDGER_FILE](file, options)}\n")
+                if claimed.try_get_value(path, other ref) then
+                    throw System.InvalidOperationException(
+                        "ledger entries '{other}' and '{e.title}' would share {path}")
+                fi
+
+                claimed[path] = e.title
+
+                let text = "{JsonSerializer.serialize[TASK_ENTRY](e, options)}\n"
+                let current = if IO.File.exists(path) then IO.File.read_all_text(path) else "" fi
+
+                if text !~ current then
+                    IO.File.write_all_text(path, text)
+                fi
+
+                let previous: string mut
+
+                if _loaded_from.try_get_value(e.title, previous ref) /\ previous !~ path then
+                    IO.File.delete(previous)
+                fi
+
+                _loaded_from[e.title] = path
+            od
         si
     si
 si

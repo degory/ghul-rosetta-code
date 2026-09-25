@@ -1,0 +1,6 @@
+{
+  "title": "Morse code",
+  "state": "rejected",
+  "reason": "needs-gui",
+  "note": "the task is to send the string as audible morse to an audio device, and the page carries requires|Sound; printing the dots and dashes is not what it asks for"
+}

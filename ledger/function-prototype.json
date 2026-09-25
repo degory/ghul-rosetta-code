@@ -1,0 +1,6 @@
+{
+  "title": "Function prototype",
+  "state": "rejected",
+  "reason": "no-equivalent",
+  "note": "the task asks for varargs, optional arguments and named parameters, none of which the language has; a body-less member is a contract in a trait rather than a forward declaration"
+}
