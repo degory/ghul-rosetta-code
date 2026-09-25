@@ -1,5 +1,8 @@
 use default
 
+write_line("factorising to find consecutive Ruth-Aaron pairs")
+write_line("")
+
 let factor_limit = 10_000
 let composite = LIST(factor_limit)
 

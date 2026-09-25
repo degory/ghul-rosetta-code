@@ -1,5 +1,8 @@
 use default
 
+write_line("testing numbers for the super-Poulet property")
+write_line("")
+
 mod_pow(base: long, exponent: long, modulus: long) -> long is
     let result mut = 1L
     let factor mut = base % modulus
@@ -45,8 +48,17 @@ is_super_poulet(value: int) -> bool =>
         !is_prime(value) /\
         (divisors(value) |> all(splits_repeated_doubling))
 
+report(value: int) -> bool is
+    if value % 1_000_000 == 1 then
+        write_line("  past {value - 1:N0}")
+    fi
+
+    return true
+si
+
 let found =
     from(3, 2)
+        |> filter(report)
         |> filter(is_super_poulet)
         |> take_while(value => value < 10_100_000)
         |> collect()

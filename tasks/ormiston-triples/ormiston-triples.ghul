@@ -1,5 +1,8 @@
 use default
 
+write_line("looking for runs of three primes sharing their digits")
+write_line("")
+
 let top = 1_000_000_000
 let segment_size = 1 << 20
 
@@ -80,7 +83,15 @@ let one_back mut = 0
 let two_back_signature mut = 0L
 let one_back_signature mut = 0L
 
+let milestone mut = 10_000_000
+
 for prime in primes_below(top) do
+    if prime >= milestone then
+        write_line("  past {milestone:N0}")
+
+        milestone = milestone + 10_000_000
+    fi
+
     let mark = signature(prime)
 
     if two_back > 0 /\ one_back_signature == mark /\

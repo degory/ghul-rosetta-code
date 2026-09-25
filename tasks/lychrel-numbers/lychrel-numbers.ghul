@@ -1,6 +1,9 @@
 use default
 use RESULT = (is_lychrel: bool, values: LIST[bigint])
 
+write_line("reversing and adding, which takes a moment")
+write_line("")
+
 reverse_digits(n: bigint) -> bigint =>
     bigint.parse("{n}" |> reverse() |> join(""))
 
@@ -32,6 +35,10 @@ let related_count mut = 0
 let palindromic_starts = LIST()
 
 for n in 1::10000 do
+    if n % 1000 == 0 then
+        write_line("  tested {n:N0} of 10,000")
+    fi
+
     if is_palindrome(bigint(n)) then
         palindromic_starts.add(n)
     fi

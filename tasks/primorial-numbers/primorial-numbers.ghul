@@ -1,5 +1,8 @@
 use default
 
+write_line("multiplying primes to find the primorial primes")
+write_line("")
+
 let sieve_limit = 1_300_000
 let composite = LIST(sieve_limit)
 

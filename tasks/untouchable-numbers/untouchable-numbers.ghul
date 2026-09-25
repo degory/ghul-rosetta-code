@@ -1,12 +1,23 @@
 use default
 
+write_line("sieving the divisor sums up to the limit")
+write_line("")
+
 let top = 100_000
 
 let sieved = cast int(System.Math.pow(cast(top), 1.5D))
 
 let aliquot = repeat(0, sieved + 1) |> collect_list()
 
+let sieve_milestone mut = sieved / 10
+
 for divisor in 1::sieved / 2 do
+    if divisor >= sieve_milestone then
+        write_line("  summing divisors past {sieve_milestone:N0}")
+
+        sieve_milestone = sieve_milestone + sieved / 10
+    fi
+
     let multiple mut = divisor * 2
 
     while multiple <= sieved do

@@ -1,5 +1,8 @@
 use default
 
+write_line("testing Wagstaff candidates for primality")
+write_line("")
+
 let one = 1n
 let two = 2n
 
@@ -51,7 +54,15 @@ probably_prime(value: bigint) -> bool is
 si
 
 wagstaff(top: int) -> Pipe[(exponent: int, value: bigint)] is
+    let reported mut = 0
+
     for exponent in 3::top do
+        if exponent - reported >= 2000 then
+            write_line("  past exponent {exponent:N0}")
+
+            reported = exponent
+        fi
+
         if is_odd_prime(exponent) then
             let value =
                 (bigint.pow(two, exponent) + one) / 3n

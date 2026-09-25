@@ -4,6 +4,9 @@ use System.Numerics.BitOperations
 
 use Armies = (black: ulong, white: ulong)
 
+write_line("placing armies on boards of increasing size")
+write_line("")
+
 attack_masks(n: int) -> ulong[] is
     let masks = LIST()
 
