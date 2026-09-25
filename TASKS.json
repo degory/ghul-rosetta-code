@@ -4090,6 +4090,16 @@
       "published_hash": "93d5ef012144ad85966e24ca39422dd943344086edb35ecc446691a0de15c476"
     },
     {
+      "title": "Minimum multiple of m where digital sum equals m",
+      "slug": "minimum-multiple-of-m-where-digital-sum-equals-m",
+      "state": "solved"
+    },
+    {
+      "title": "Minimum positive multiple in base 10 using only 0 and 1",
+      "slug": "minimum-positive-multiple-in-base-10-using-only-0-and-1",
+      "state": "solved"
+    },
+    {
       "title": "Minkowski question-mark function",
       "slug": "minkowski-question-mark-function",
       "state": "published",
@@ -4097,6 +4107,26 @@
       "image_hashes": {
         "Ghul-minkowski-question-mark-function-question-mark.png": "3352c9b9e106781e770cec3a7fdd308896fd9bdf"
       }
+    },
+    {
+      "title": "Modified random distribution",
+      "slug": "modified-random-distribution",
+      "state": "solved"
+    },
+    {
+      "title": "Modular arithmetic",
+      "slug": "modular-arithmetic",
+      "state": "solved"
+    },
+    {
+      "title": "Modular exponentiation",
+      "slug": "modular-exponentiation",
+      "state": "solved"
+    },
+    {
+      "title": "Modular inverse",
+      "slug": "modular-inverse",
+      "state": "solved"
     },
     {
       "title": "Monads/List monad",
@@ -4168,10 +4198,20 @@
       "published_hash": "81d9520a0cd8d34de3246d6dcb9e9780b452560ac3faca7b0164ade9694d36ac"
     },
     {
+      "title": "Multi-base primes",
+      "slug": "multi-base-primes",
+      "state": "solved"
+    },
+    {
       "title": "Multi-dimensional array",
       "slug": "multi-dimensional-array",
       "state": "published",
       "published_hash": "368e0abd76d9a0b3db3d77b3ee8be27ce086506714cb2d11768d0079d4918af6"
+    },
+    {
+      "title": "Multifactorial",
+      "slug": "multifactorial",
+      "state": "solved"
     },
     {
       "title": "Multiline shebang",
@@ -4186,10 +4226,20 @@
       "published_hash": "b8ac38e4963a288740d51e7f918c705a2bd04dc618b454b9ebdb7363f950ae3f"
     },
     {
+      "title": "Multiple regression",
+      "slug": "multiple-regression",
+      "state": "solved"
+    },
+    {
       "title": "Multiplication tables",
       "slug": "multiplication-tables",
       "state": "published",
       "published_hash": "f460cda427bd551e6d5624883c1001b2496b86ffb6c41b4d7d30ef96fa58882c"
+    },
+    {
+      "title": "Multiplicative order",
+      "slug": "multiplicative-order",
+      "state": "solved"
     },
     {
       "title": "Multisplit",
