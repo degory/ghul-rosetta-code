@@ -1,0 +1,96 @@
+use default
+
+let digits = 60
+let shown = 40
+let guard = 20
+
+power_of_ten(n: int) -> bigint is
+    let value mut = 1n
+
+    for _ in 0..n do
+        value = value * 10n
+    od
+
+    return value
+si
+
+let scale = power_of_ten(digits + guard)
+
+integer_sqrt(n: bigint) -> bigint is
+    if n < 2n then
+        return n
+    fi
+
+    let root mut = n
+    let next mut = (root + 1n) / 2n
+
+    while next < root do
+        root = next
+        next = (root + n / root) / 2n
+    od
+
+    return root
+si
+
+pi() -> bigint is
+    let a mut = scale
+    let g mut = integer_sqrt(scale * scale / 2n)
+    let total mut = 0n
+    let weight mut = 4n
+
+    for _ in 1::12 do
+        let next_a = (a + g) / 2n
+        let next_g = integer_sqrt(a * g)
+
+        a = next_a
+        g = next_g
+
+        total = total + weight * (a * a - g * g) / scale
+        weight = weight * 2n
+    od
+
+    return 4n * a * a / (scale - total)
+si
+
+// The series converges quickly only for a small exponent, so the argument is
+// halved until it is, and the result squared back the same number of times.
+let halvings = 8
+
+exp(x: bigint) -> bigint is
+    let small = x / bigint(1 << halvings)
+
+    let total mut = scale
+    let term mut = scale
+
+    let n mut = 1
+
+    while term !~ 0n do
+        term = term * small / scale / bigint(n)
+        total = total + term
+        n = n + 1
+    od
+
+    let value mut = total
+
+    for _ in 0..halvings do
+        value = value * value / scale
+    od
+
+    return value
+si
+
+// The working scale carries more digits than are shown, because each squaring
+// in exp doubles the error in the last of them.
+show(heegner: int, value: bigint) is
+    let rounded = value / power_of_ten(guard + digits - shown)
+    let whole = rounded / power_of_ten(shown)
+    let fraction = (rounded % power_of_ten(shown)).to_string()
+
+    write_line("{heegner,5}  {whole}.{fraction.pad_left(shown, '0')}")
+si
+
+let pi_value = pi()
+
+for heegner in [19, 43, 67, 163] do
+    show(heegner, exp(pi_value * integer_sqrt(bigint(heegner) * scale * scale) / scale))
+od
