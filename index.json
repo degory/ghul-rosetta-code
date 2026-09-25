@@ -6241,14 +6241,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 54,
+      "lines": 55,
       "parts": [
         {
           "id": "cramer-s-rule",
           "heading": null,
           "source": "tasks/cramer-s-rule/cramer-s-rule.ghul",
           "output": "tasks/cramer-s-rule/run.expected",
-          "lines": 54,
+          "lines": 55,
           "playground": true,
           "input": false,
           "images": []
