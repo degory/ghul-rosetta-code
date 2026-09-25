@@ -30,7 +30,9 @@ draw(cells: int, blocks: List[int], starts: List[int]) -> string =>
             |> flat_map(((i, start)) => start..start + blocks[i])
             |> collect_set()
     in
-    let row = 0..cells |> map(c => if filled.contains(c) then "#" else "_" fi) in
+    let row =
+        0..cells |> map(c => if filled.contains(c) then "#" else "_" fi)
+    in
     "|{row |> join("|")}|"
 
 let cases: List[(cells: int, blocks: List[int])] = [
