@@ -15248,6 +15248,32 @@
       ]
     },
     {
+      "slug": "longest-string-challenge",
+      "title": "Longest string challenge",
+      "url": "https://rosettacode.org/wiki/Longest_string_challenge",
+      "tags": [
+        "strings",
+        "recursion"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "longest-string-challenge",
+          "heading": null,
+          "source": "tasks/longest-string-challenge/longest-string-challenge.ghul",
+          "output": "tasks/longest-string-challenge/run.expected",
+          "lines": 35,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "look-and-say-sequence",
       "title": "Look-and-say sequence",
       "url": "https://rosettacode.org/wiki/Look-and-say_sequence",
