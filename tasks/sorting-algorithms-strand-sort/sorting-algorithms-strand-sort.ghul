@@ -42,7 +42,7 @@ strand_sort(values: List[int]) -> List[int] is
             fi
         od
 
-        sorted = merge(sorted, strand) |> collect_list()
+        sorted = merge(sorted, strand) |> collect_mutable()
     od
 
     return sorted

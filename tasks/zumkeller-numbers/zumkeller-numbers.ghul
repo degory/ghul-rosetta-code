@@ -31,7 +31,7 @@ is_zumkeller(n: int) -> bool is
     fi
 
     let half = total / 2
-    let reachable = repeat(false, half + 1) |> collect_list()
+    let reachable = repeat(false, half + 1) |> collect_mutable()
 
     reachable[0] = true
 

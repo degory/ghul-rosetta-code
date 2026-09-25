@@ -13,12 +13,12 @@ let costs = [
     [50, 12, 50, 15, 11]
 ]
 
-let supply = [50, 60, 50, 50] |> collect_list()
-let demand = [30, 20, 70, 30, 60] |> collect_list()
+let supply = [50, 60, 50, 50] |> collect_mutable()
+let demand = [30, 20, 70, 30, 60] |> collect_mutable()
 
 let allocation =
     (0..contractors.count)
-    |> map(_ => repeat(0, tasks.count) |> collect_list())
+    |> map(_ => repeat(0, tasks.count) |> collect_mutable())
     |> collect()
 
 line(cells: Collections.List[Cell]) -> Line is

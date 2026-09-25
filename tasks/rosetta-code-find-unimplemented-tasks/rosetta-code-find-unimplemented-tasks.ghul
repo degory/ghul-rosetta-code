@@ -61,14 +61,14 @@ unimplemented(api: string, language: string) -> List[string] is
     tasks
         |> filter(t => !solved.contains(t))
         |> sort((a, b) => string.compare_ordinal(a, b))
-        |> collect_list()
+        |> collect_mutable()
 si
 // Given no API, the entry answers from replies the wiki gave on the date
 // the file names, one reply a request, served on the loopback interface.
 stand_in() -> string is
     let replies =
         IO.File.read_all_lines("api-replies.txt")
-            |> skip(1) |> collect_list()
+            |> skip(1) |> collect_mutable()
     let probe = TcpListener(IPAddress.loopback, 0)
 
     probe.start()

@@ -14,7 +14,7 @@ chr(n: int) -> char => cast char(cast int('A') + (n % 26 + 26) % 26)
 counts(text: string) -> int[] =>
     (0..26)
         |> map(letter => text |> filter(c => ord(c) == letter) |> count())
-        |> collect_array()
+        |> collect()
 
 column(text: string, length: int, start: int) -> string =>
     text

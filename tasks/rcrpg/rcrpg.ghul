@@ -71,9 +71,9 @@ describe() is
         write_line("here: {current.items |> join(", ")}")
     fi
 
-    let exits = current.exits |> collect_list()
+    let exits = current.exits |> collect_mutable()
     exits.sort()
-    let listed = if exits.count == 0 then "none" else exits |> join(", ") fi
+    let listed = if exits.count == 0 then "none" else exits |> join() fi
     write_line("exits: {listed}")
 si
 
@@ -173,7 +173,7 @@ while let line = read_line() do
     elif command =~ "inventory" then
         let held =
             if carrying.count == 0 then "nothing"
-            else carrying |> join(", ")
+            else carrying |> join()
             fi
 
         write_line("you are carrying {held}")

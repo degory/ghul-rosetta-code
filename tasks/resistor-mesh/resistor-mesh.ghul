@@ -36,7 +36,7 @@ solve(matrix: LIST[LIST[double]], rhs: LIST[double]) -> LIST[double] is
         od
     od
 
-    let result = repeat(0.0, n) |> collect_list()
+    let result = repeat(0.0, n) |> collect_mutable()
 
     for row in (0..n) |> reverse() do
         let known =
@@ -52,9 +52,9 @@ resistance(a: Node, b: Node) -> double is
     let count = size * size
     let matrix =
         (0..count)
-        |> map(_ => repeat(0.0, count) |> collect_list())
-        |> collect_list()
-    let current = repeat(0.0, count) |> collect_list()
+        |> map(_ => repeat(0.0, count) |> collect_mutable())
+        |> collect_mutable()
+    let current = repeat(0.0, count) |> collect_mutable()
 
     for row in 0..size do
         for col in 0..size do

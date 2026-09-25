@@ -15,7 +15,7 @@ fix_star(makers: Maker[]) -> Sequence[] =>
                 makers
                     |> map((make: Maker) -> Sequence =>
                             (n: int) => make(r.apply(r))(n))
-                    |> collect_array())
+                    |> collect())
     in wrap.apply(wrap)
 
 show(label: string, f: Sequence) is

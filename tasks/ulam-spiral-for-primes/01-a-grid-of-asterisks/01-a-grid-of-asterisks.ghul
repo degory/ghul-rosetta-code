@@ -49,7 +49,7 @@ let size = 21
 let centre = size / 2
 
 let grid = (0..size)
-    |> map(row => 0..size |> map(column => " ") |> collect_list())
+    |> map(row => 0..size |> map(column => " ") |> collect_mutable())
     |> collect()
 
 for placed in spiral() |> index() |> take(size * size) do

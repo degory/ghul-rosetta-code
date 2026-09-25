@@ -2,4 +2,4 @@ use default
 
 let numbers = [2, 4, 3, 1, 2]
 
-write_line(numbers |> sort() |> join(", "))
+write_line(numbers |> sort() |> join())

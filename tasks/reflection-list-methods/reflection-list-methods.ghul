@@ -29,7 +29,7 @@ let declared = robot.get_type().get_methods(flags)
     |> map(m => "{m.name}({m.get_parameters()
         |> map(p => "{p.parameter_type.name} {p.name}")
         |> join(", ")}) -> {m.return_type.name}")
-    |> collect_list()
+    |> collect_mutable()
 
 declared.sort((left: string, right: string) -> int =>
     string.compare(left, right))

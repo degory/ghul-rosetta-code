@@ -21,7 +21,7 @@ read_numbers(prompt: string) -> int[]? is
 
     return line.split([' '], System.StringSplitOptions.REMOVE_EMPTY_ENTRIES)
         |> map(int.parse)
-        |> collect_array()
+        |> collect()
 si
 
 computer_guess(coins: int, other: int?) -> int is

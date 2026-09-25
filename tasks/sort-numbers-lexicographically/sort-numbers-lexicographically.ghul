@@ -7,4 +7,4 @@ let sorted = (1::n)
     |> sort()
     |> map(int.parse)
 
-write_line(sorted |> join(", "))
+write_line(sorted |> join())

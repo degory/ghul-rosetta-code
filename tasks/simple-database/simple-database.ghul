@@ -30,7 +30,7 @@ read_all(file: string) -> LIST[ENTRY] =>
             |> map(line => ENTRY.read(line))
             |> filter(entry => entry?)
             |> map(entry => entry!)
-            |> collect_list()
+            |> collect_mutable()
     else
         LIST[ENTRY]()
     fi
@@ -42,7 +42,7 @@ add(file: string, category: string, description: string, date: DateTime) is
 
     IO.File.write_all_lines(
         file,
-        entries |> map(entry => entry.line) |> collect_array())
+        entries |> map(entry => entry.line) |> collect())
 si
 
 latest(file: string) -> ENTRY? =>
@@ -52,7 +52,7 @@ latest_by_category(file: string) -> LIST[ENTRY] is
     let newest = read_all(file)
         |> group_by(entry => entry.category)
         |> map(group => group.value |> max_by(entry => entry.date)!)
-        |> collect_list()
+        |> collect_mutable()
 
     newest.sort((left: ENTRY, right: ENTRY) -> int =>
         string.compare(left.category, right.category))

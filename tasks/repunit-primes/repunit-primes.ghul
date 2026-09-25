@@ -52,7 +52,7 @@ is_probable_prime(n: bigint) -> bool is
 si
 
 primes_to(limit: int) -> List[int] is
-    let composite = repeat(false, limit + 1) |> collect_list()
+    let composite = repeat(false, limit + 1) |> collect_mutable()
 
     let factor mut = 2
 

@@ -13,6 +13,6 @@ let places =
     (0..text.length - wanted.length + 1)
         |> filter(at => text[at..at + wanted.length] =~ wanted)
         |> map(at => "{at}")
-        |> join(", ")
+        |> join()
 
 write_line("all at: {places}")

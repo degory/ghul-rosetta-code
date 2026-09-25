@@ -3,7 +3,7 @@ use default
 random_32_bits() -> uint is
     let use device = IO.File.open_read("/dev/urandom")
 
-    let bytes = repeat(0ub, 4) |> collect_array()
+    let bytes = repeat(0ub, 4) |> collect()
 
     let read mut = 0
 

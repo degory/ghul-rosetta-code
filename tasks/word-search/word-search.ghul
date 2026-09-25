@@ -24,7 +24,7 @@ class GRID is
     placed: LIST[Placed]
 
     init() is
-        cells = repeat(' ', size * size) |> collect_list()
+        cells = repeat(' ', size * size) |> collect_mutable()
         placed = LIST()
     si
 

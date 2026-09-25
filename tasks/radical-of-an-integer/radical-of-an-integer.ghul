@@ -38,7 +38,7 @@ for n in [99999, 499999, 999999] do
     write_line("radical[{n}] = {radical[n]}")
 od
 
-let distribution = repeat(0, 8) |> collect_list()
+let distribution = repeat(0, 8) |> collect_mutable()
 
 for n in 1..(limit + 1) do
     let count = factor_counts[n]

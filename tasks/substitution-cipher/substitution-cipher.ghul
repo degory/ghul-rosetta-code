@@ -17,7 +17,7 @@ substitute(text: string, from: string, to: string) -> string =>
                 else
                     c
                 fi)
-            |> collect_array())
+            |> collect())
 
 encrypt(text: string) -> string =>
     substitute(text, plain_alphabet, cipher_alphabet)

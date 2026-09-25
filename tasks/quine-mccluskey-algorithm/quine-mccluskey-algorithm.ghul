@@ -33,7 +33,7 @@ render(implicant: Implicant, variables: int) -> string is
             fi)
     od
 
-    return string(glyphs |> collect_array())
+    return string(glyphs |> collect())
 si
 
 prime_implicants(minterms: List[int], variables: int) -> List[Implicant] is
@@ -47,7 +47,7 @@ prime_implicants(minterms: List[int], variables: int) -> List[Implicant] is
 
     while current.count > 0 do
         let combined = LIST[Implicant]()
-        let used = repeat(false, current.count) |> collect_list()
+        let used = repeat(false, current.count) |> collect_mutable()
 
         for i in 0..current.count do
             for j in i + 1..current.count do

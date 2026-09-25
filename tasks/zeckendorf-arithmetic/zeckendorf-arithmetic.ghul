@@ -3,7 +3,7 @@ use default
 let width = 48
 
 blank() -> LIST[int] is
-    let digits = repeat(0, width) |> collect_list()
+    let digits = repeat(0, width) |> collect_mutable()
 
     digits
 si

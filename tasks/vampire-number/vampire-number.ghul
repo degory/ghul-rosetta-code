@@ -1,7 +1,7 @@
 use default
 
 sorted_string(s: string) -> string is
-    let chars = s |> collect_list()
+    let chars = s |> collect_mutable()
 
     chars.sort((x, y) =>
         if x < y then -1 elif x == y then 0 else 1 fi)

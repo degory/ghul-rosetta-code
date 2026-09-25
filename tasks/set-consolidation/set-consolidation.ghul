@@ -27,7 +27,7 @@ render(sets: LIST[SET[string]]) -> string is
     let parts = LIST()
 
     for one in sets do
-        let items = one |> collect_list()
+        let items = one |> collect_mutable()
         items.sort()
 
         parts.add("\{{items |> join(", ")}\}")
@@ -37,7 +37,7 @@ render(sets: LIST[SET[string]]) -> string is
 si
 
 show(groups: string[][]) is
-    let sets = groups |> map(group => SET(group)) |> collect_list()
+    let sets = groups |> map(group => SET(group)) |> collect_mutable()
 
     write_line("{render(sets)}")
     write_line("  consolidates to {render(consolidate(sets))}")

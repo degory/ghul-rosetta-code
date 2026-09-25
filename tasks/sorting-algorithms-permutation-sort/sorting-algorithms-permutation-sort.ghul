@@ -43,4 +43,4 @@ let numbers = LIST([3, 5, 1, 4, 2])
 
 permutation_sort(numbers)
 
-write_line(numbers |> join(", "))
+write_line(numbers |> join())

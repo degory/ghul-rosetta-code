@@ -22,10 +22,10 @@ letters(s: string) -> string =>
         s.to_lower().to_char_array()
             |> filter(char.is_letter)
             |> sort()
-            |> collect_array())
+            |> collect())
 
 solve(names: Iterable[string]) is
-    let states = names |> collect_set() |> sort() |> collect_list()
+    let states = names |> collect_set() |> sort() |> collect_mutable()
     let groups = MAP[string, LIST[(int, int)]]()
 
     for i in 0..states.count do

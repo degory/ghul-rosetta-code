@@ -31,7 +31,8 @@ for word in IO.File.read_all_lines("unixdict.txt") do
     fi
 od
 
-let textonyms = groups |> filter(g => g.value.count > 1) |> collect_list()
+let textonyms = groups |> filter(g => g.value.count > 1)
+    |> collect_mutable()
 
 write_line(
     "There are {representable} words in unixdict.txt which can be "

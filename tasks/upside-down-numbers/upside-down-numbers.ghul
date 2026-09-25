@@ -28,7 +28,7 @@ upside_down(index: int) -> string is
 
     half.reverse()
 
-    let text = half |> map(digit => "{digit}") |> collect_list()
+    let text = half |> map(digit => "{digit}") |> collect_mutable()
 
     if length % 2 == 1 then
         text.add("5")

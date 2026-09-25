@@ -54,7 +54,7 @@ closest(term: string) -> LIST[(name: string, score: double)] =>
              |> map(task =>
                  (name = task.name,
                   score = coefficient(wanted, task.grams)))
-             |> collect_list()
+             |> collect_mutable()
 
      scored.sort((left, right) =>
          (let by_score = right.score <> left.score
@@ -65,7 +65,7 @@ closest(term: string) -> LIST[(name: string, score: double)] =>
               left.name <> right.name
           fi))
 
-     scored[0..5] |> collect_list())
+     scored[0..5] |> collect_mutable())
 
 for term in ["Primordial primes",
              "Sunkist-Giuliani formula",

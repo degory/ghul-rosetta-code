@@ -10,12 +10,12 @@ next_row(above: LIST[double], row: LIST[double]) -> LIST[double] =>
         else
             0.0
         fi)
-    |> collect_list()
+    |> collect_mutable()
 
 derivative(row: LIST[double], order: int) -> LIST[double] =>
     (0..row.count)
     |> map(k => row[k] * cast double(order - 2 * k))
-    |> collect_list()
+    |> collect_mutable()
 
 routh_array(
     coefficients: double[]
@@ -31,7 +31,7 @@ routh_array(
             else
                 0.0
             fi)
-        |> collect_list()
+        |> collect_mutable()
 
     let rows = LIST[LIST[double]]([row_from(0), row_from(1)])
     let on_axis mut = false
@@ -64,7 +64,7 @@ sign_changes(column: Collections.List[double]) -> int =>
     |> count(i => (column[i - 1] < 0.0) != (column[i] < 0.0))
 
 test(coefficients: double[]) is
-    let listed = coefficients |> map(c => "{c}") |> join(", ")
+    let listed = coefficients |> map(c => "{c}") |> join()
     write_line("coefficients {listed}:")
 
     let (rows, on_axis) = routh_array(coefficients)

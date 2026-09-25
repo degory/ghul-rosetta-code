@@ -1,7 +1,7 @@
 use default
 
 render(s: SET[int]) -> string is
-    let items = s |> collect_list()
+    let items = s |> collect_mutable()
     items.sort()
 
     "{{{items |> join(", ")}}}"

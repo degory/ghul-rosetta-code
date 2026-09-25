@@ -13,7 +13,7 @@ marks(answer: string, guess: string) -> List[Mark] is
         positions
             |> filter(i => guess[i] != answer[i])
             |> map(i => answer[i])
-            |> collect_list()
+            |> collect_mutable()
 
     positions
         |> map(i =>
@@ -36,7 +36,7 @@ for (answer, guess) in pairs do
     let shown =
         marks(answer, guess)
             |> map(m => m.to_string().to_lower())
-            |> join(", ")
+            |> join()
 
     write_line("{answer} v {guess} => ({shown})")
 od

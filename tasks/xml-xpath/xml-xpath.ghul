@@ -48,6 +48,6 @@ let names =
     inventory
         |> xpath_select_elements("//name")
         |> map(name => name.value)
-        |> collect_array()
+        |> collect()
 
 write_line("names: {$names}")

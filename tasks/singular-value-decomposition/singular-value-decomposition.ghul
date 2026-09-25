@@ -4,8 +4,8 @@ use Matrix = LIST[LIST[double]]
 
 zeros(rows: int, columns: int) -> Matrix =>
     (0..rows)
-    |> map(_ => repeat(0.0, columns) |> collect_list())
-    |> collect_list()
+    |> map(_ => repeat(0.0, columns) |> collect_mutable())
+    |> collect_mutable()
 
 identity(n: int) -> Matrix is
     let result = zeros(n, n)
@@ -19,8 +19,8 @@ si
 
 transpose(a: Matrix) -> Matrix =>
     (0..a[0].count)
-    |> map(j => (0..a.count) |> map(i => a[i][j]) |> collect_list())
-    |> collect_list()
+    |> map(j => (0..a.count) |> map(i => a[i][j]) |> collect_mutable())
+    |> collect_mutable()
 
 column_dot(a: Matrix, p: int, q: int) -> double =>
     a |> map(row => row[p] * row[q]) |> sum()
@@ -40,7 +40,7 @@ svd(a: Matrix) -> (u: Matrix, sigma: double[], v: Matrix) is
     fi
 
     let n = a[0].count
-    let u = a |> map(row => row |> collect_list()) |> collect_list()
+    let u = a |> map(row => row |> collect_mutable()) |> collect_mutable()
     let v = identity(n)
     let converged mut = false
 
@@ -87,15 +87,16 @@ svd(a: Matrix) -> (u: Matrix, sigma: double[], v: Matrix) is
     let sorted_u =
         u
         |> map(row =>
-            order |> map(j => row[j] * scale(j)) |> collect_list())
-        |> collect_list()
+            order |> map(j => row[j] * scale(j)) |> collect_mutable())
+        |> collect_mutable()
 
     let sorted_v =
         v
-        |> map(row => order |> map(j => row[j] * sign(j)) |> collect_list())
-        |> collect_list()
+        |> map(row => order |> map(j => row[j] * sign(j))
+            |> collect_mutable())
+        |> collect_mutable()
 
-    let sigma = order |> map(j => norms[j]) |> collect_array()
+    let sigma = order |> map(j => norms[j]) |> collect()
 
     return (sorted_u, sigma, sorted_v)
 si
@@ -116,8 +117,8 @@ let a: Matrix =
     |> map(_ =>
         IO.Std.read_line()!.split([' '])
         |> map(x => double.parse(x))
-        |> collect_list())
-    |> collect_list()
+        |> collect_mutable())
+    |> collect_mutable()
 
 let (u, sigma, v) = svd(a)
 
@@ -142,5 +143,5 @@ show(
             |> map(k => u[i][k] * sigma[k] * v[j][k])
             |> sum()
             |> System.Math.round(12))
-        |> collect_list())
-    |> collect_list())
+        |> collect_mutable())
+    |> collect_mutable())

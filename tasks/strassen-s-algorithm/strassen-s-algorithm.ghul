@@ -3,15 +3,15 @@ use default
 use Matrix = double[][]
 
 zeros(n: int) -> Matrix =>
-    0..n |> map(_ => repeat(0.0, n) |> collect_array()) |> collect_array()
+    0..n |> map(_ => repeat(0.0, n) |> collect()) |> collect()
 
 combine(a: Matrix, b: Matrix, sign: double) -> Matrix =>
     0..a.count
         |> map(i =>
             0..a.count
                 |> map(j => a[i][j] + sign * b[i][j])
-                |> collect_array())
-        |> collect_array()
+                |> collect())
+        |> collect()
 
 add(a: Matrix, b: Matrix) -> Matrix => combine(a, b, 1.0)
 subtract(a: Matrix, b: Matrix) -> Matrix => combine(a, b, -1.0)
@@ -22,8 +22,8 @@ quarter(a: Matrix, row: int, column: int) -> Matrix =>
         |> map(i =>
             0..half
                 |> map(j => a[row * half + i][column * half + j])
-                |> collect_array())
-        |> collect_array()
+                |> collect())
+        |> collect()
 
 join(c11: Matrix, c12: Matrix, c21: Matrix, c22: Matrix) -> Matrix =>
     let half = c11.count in
@@ -38,8 +38,8 @@ join(c11: Matrix, c12: Matrix, c21: Matrix, c22: Matrix) -> Matrix =>
                         else (if left then c21 else c22 fi)
                         fi in
                     part[i % half][j % half])
-                |> collect_array())
-        |> collect_array()
+                |> collect())
+        |> collect()
 
 // Seven products of half-size matrices in place of the usual eight.
 strassen(a: Matrix, b: Matrix) -> Matrix is
@@ -82,14 +82,14 @@ multiply(a: Matrix, b: Matrix) -> Matrix is
                     |> map(j =>
                         let inside = i < m.count /\ j < m.count in
                         if inside then m[i][j] else 0.0 fi)
-                    |> collect_array())
-            |> collect_array()
+                    |> collect())
+            |> collect()
 
     let product = strassen(pad(a), pad(b))
 
     0..a.count
-        |> map(i => product[i] |> take(a.count) |> collect_array())
-        |> collect_array()
+        |> map(i => product[i] |> take(a.count) |> collect())
+        |> collect()
 si
 
 naive(a: Matrix, b: Matrix) -> Matrix =>
@@ -98,8 +98,8 @@ naive(a: Matrix, b: Matrix) -> Matrix =>
             0..a.count
                 |> map(j =>
                     0..a.count |> map(k => a[i][k] * b[k][j]) |> sum())
-                |> collect_array())
-        |> collect_array()
+                |> collect())
+        |> collect()
 
 show(m: Matrix) is
     for row in m do
