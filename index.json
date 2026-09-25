@@ -10473,6 +10473,33 @@
       ]
     },
     {
+      "slug": "gotchas",
+      "title": "Gotchas",
+      "url": "https://rosettacode.org/wiki/Gotchas",
+      "tags": [
+        "basics",
+        "strings",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "gotchas",
+          "heading": null,
+          "source": "tasks/gotchas/gotchas.ghul",
+          "output": "tasks/gotchas/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "graph-colouring",
       "title": "Graph colouring",
       "url": "https://rosettacode.org/wiki/Graph_colouring",
