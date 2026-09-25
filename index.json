@@ -21794,6 +21794,32 @@
       ]
     },
     {
+      "slug": "parse-an-ip-address",
+      "title": "Parse an IP Address",
+      "url": "https://rosettacode.org/wiki/Parse_an_IP_Address",
+      "tags": [
+        "parsing",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "parse-an-ip-address",
+          "heading": null,
+          "source": "tasks/parse-an-ip-address/parse-an-ip-address.ghul",
+          "output": "tasks/parse-an-ip-address/run.expected",
+          "lines": 57,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "parse-ebnf",
       "title": "Parse EBNF",
       "url": "https://rosettacode.org/wiki/Parse_EBNF",
