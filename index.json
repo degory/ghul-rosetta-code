@@ -20015,14 +20015,14 @@
       "images": [
         "tasks/quickhull/hull.png.expected"
       ],
-      "lines": 182,
+      "lines": 181,
       "parts": [
         {
           "id": "quickhull",
           "heading": null,
           "source": "tasks/quickhull/quickhull.ghul",
           "output": "tasks/quickhull/run.expected",
-          "lines": 182,
+          "lines": 181,
           "playground": true,
           "input": false,
           "images": [
@@ -27961,7 +27961,7 @@
       "images": [
         "tasks/water-collected-between-towers/02-the-towers-drawn/towers.png.expected"
       ],
-      "lines": 139,
+      "lines": 138,
       "parts": [
         {
           "id": "water-collected-between-towers/01-counting-the-water",
@@ -27978,7 +27978,7 @@
           "heading": "The towers drawn",
           "source": "tasks/water-collected-between-towers/02-the-towers-drawn/02-the-towers-drawn.ghul",
           "output": "tasks/water-collected-between-towers/02-the-towers-drawn/run.expected",
-          "lines": 104,
+          "lines": 103,
           "playground": true,
           "input": false,
           "images": [

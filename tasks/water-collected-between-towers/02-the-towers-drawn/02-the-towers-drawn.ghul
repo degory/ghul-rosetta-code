@@ -21,8 +21,7 @@ depths(heights: int[]) -> List[int] => (
 
     (0..heights.count)
     |> map(i => Math.min(left[i], right[last - i]) - heights[i])
-    |> collect()
-)
+    |> collect())
 
 let series =
     [[1, 5, 3, 7, 2],
