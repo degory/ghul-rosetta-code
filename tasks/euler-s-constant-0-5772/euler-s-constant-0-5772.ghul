@@ -1,0 +1,50 @@
+use default
+
+euler_maclaurin(n: int) -> double =>
+    let size = cast double(n) in
+    let harmonic = 1::n |> map(k => 1.0 / cast double(k)) |> sum() in
+    let bernoulli = [
+        1.0 / 6.0, -1.0 / 30.0, 1.0 / 42.0, -1.0 / 30.0, 5.0 / 66.0,
+        -691.0 / 2730.0, 7.0 / 6.0
+    ] in
+    let correction =
+        bernoulli
+            |> index()
+            |> map(((i, b)) =>
+                let power = 2 * (i + 1) in
+                let exponent = cast double(power) in
+                b / (exponent * double.pow(size, exponent)))
+            |> sum()
+    in
+    harmonic - double.log(size) - 1.0 / (2.0 * size) + correction
+
+brent_mcmillan(digits: int) -> string is
+    let scale = bigint.pow(10n, digits + 10)
+    let n = 32n
+
+    let ln_2 =
+        1::(4 * digits)
+            |> map(k => scale / (bigint(k) * bigint.pow(2n, k)))
+            |> sum()
+
+    let a mut = -5n * ln_2
+    let b mut = scale
+    let u mut = a
+    let v mut = b
+
+    for k in 1::(4 * cast int(n)) do
+        let kk = bigint(k)
+
+        b = b * n * n / (kk * kk)
+        a = (a * n * n / kk + b) / kk
+        u = u + a
+        v = v + b
+    od
+
+    let gamma = (u * scale / v).to_string()
+
+    "0.{gamma.substring(0, digits)}"
+si
+
+write_line("Euler-Maclaurin, n = 10, in double: {euler_maclaurin(10):F15}")
+write_line("Brent-McMillan to 50 places:        {brent_mcmillan(50)}")
