@@ -6815,6 +6815,32 @@
       ]
     },
     {
+      "slug": "date-manipulation",
+      "title": "Date manipulation",
+      "url": "https://rosettacode.org/wiki/Date_manipulation",
+      "tags": [
+        "date-time",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "date-manipulation",
+          "heading": null,
+          "source": "tasks/date-manipulation/date-manipulation.ghul",
+          "output": "tasks/date-manipulation/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "day-of-the-week",
       "title": "Day of the week",
       "url": "https://rosettacode.org/wiki/Day_of_the_week",
