@@ -1,0 +1,58 @@
+use default
+
+let names = (
+    "audino bagon baltoy banette bidoof braviary bronzor carracosta "
+    "charmeleon cresselia croagunk darmanitan deino emboar emolga "
+    "exeggcute gabite girafarig gulpin haxorus heatmor heatran ivysaur "
+    "jellicent jumpluff kangaskhan kricketune landorus ledyba loudred "
+    "lumineon lunatone machamp magnezone mamoswine nosepass petilil "
+    "pidgeotto pikachu pinsir poliwrath poochyena porygon2 porygonz "
+    "registeel relicanth remoraid rufflet sableye scolipede scrafty "
+    "seaking sealeo silcoon simisear snivy snorlax spoink starly "
+    "tirtouga trapinch treecko tyrogue vigoroth vulpix wailord "
+    "wartortle whismur wingull yamask").split([' '])
+
+longest_chain(words: string[]) -> List[string] is
+    let used = repeat(false, words.count) |> collect_list()
+    let path = LIST[string]()
+    let best = LIST[string]()
+
+    extend(last: char) is
+        if path.count > best.count then
+            best.clear()
+            best.add_range(path)
+        fi
+
+        for i in 0..words.count do
+            if !used[i] /\ words[i][0] == last then
+                used[i] = true
+                path.add(words[i])
+
+                extend(words[i][words[i].length - 1])
+
+                path.remove_at(path.count - 1)
+                used[i] = false
+            fi
+        od
+    si
+
+    for i in 0..words.count do
+        used[i] = true
+        path.add(words[i])
+
+        extend(words[i][words[i].length - 1])
+
+        path.remove_at(0)
+        used[i] = false
+    od
+
+    best
+si
+
+let chain = longest_chain(names)
+
+write_line("Maximum path length: {chain.count}")
+
+for row in chain |> chunk(6) do
+    write_line("  {row |> join(" ")}")
+od

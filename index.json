@@ -14502,6 +14502,32 @@
       ]
     },
     {
+      "slug": "last-letter-first-letter",
+      "title": "Last letter-first letter",
+      "url": "https://rosettacode.org/wiki/Last_letter-first_letter",
+      "tags": [
+        "recursion",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "last-letter-first-letter",
+          "heading": null,
+          "source": "tasks/last-letter-first-letter/last-letter-first-letter.ghul",
+          "output": "tasks/last-letter-first-letter/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "leap-year",
       "title": "Leap year",
       "url": "https://rosettacode.org/wiki/Leap_year",
