@@ -6826,14 +6826,40 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 37,
+      "lines": 40,
       "parts": [
         {
           "id": "date-manipulation",
           "heading": null,
           "source": "tasks/date-manipulation/date-manipulation.ghul",
           "output": "tasks/date-manipulation/run.expected",
-          "lines": 37,
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "dating-agency",
+      "title": "Dating agency",
+      "url": "https://rosettacode.org/wiki/Dating_agency",
+      "tags": [
+        "classes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "dating-agency",
+          "heading": null,
+          "source": "tasks/dating-agency/dating-agency.ghul",
+          "output": "tasks/dating-agency/run.expected",
+          "lines": 34,
           "playground": true,
           "input": false,
           "images": []
