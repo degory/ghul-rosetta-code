@@ -127,7 +127,8 @@ fails to build or run - an entry that does not run should not be posted.
 
 `rosetta diff` shows what a publish would change, without signing in: one line a task, `new`
 where the page has no ghul section yet, `same` or `differs` against the live section, and
-`edited` where the live section is not the one published from here. It reads every published
+`edited` where the live section is not the one published from here, and `unrecorded` where
+nothing records what was published, which `publish` refuses until `rosetta adopt` records it. It reads every published
 and solved task, or only the slugs given, and leaves each differing live section beside its
 markup as `wiki-out/<slug>.live`.
 

@@ -896,7 +896,9 @@ pace_ms() -> int => 30000
 // One line a task, tab-separated: the status, the slug and the title. `new` has no ghul section
 // on the wiki yet; `same` and `differs` compare the live section with wiki-out/<slug>.wiki, and
 // `differs` leaves the live one beside it as wiki-out/<slug>.live. `edited` marks a live section
-// that is not the one published from here. `no-markup` and `no-page` say which side is missing.
+// that is not the one published from here, and `unrecorded` one with no record of what was
+// published: publish refuses both, and `rosetta adopt` records an unrecorded one that is ours.
+// `no-markup` and `no-page` say which side is missing.
 diff(root: string, slugs: LIST[string]) is
     let ledger = LEDGER(IO.Path.combine(root, "ledger"))
     let splice = SECTION_SPLICE()
@@ -935,12 +937,12 @@ diff(root: string, slugs: LIST[string]) is
             let live = page.substring(replaced.start, replaced.end - replaced.start).trim()
             let section = IO.File.read_all_text(markup).trim()
 
-            let edited = entry.published_hash? /\ digest(live) !~ entry.published_hash
-
             let status =
                 if live =~ section then
                     "same"
-                elif edited then
+                elif !entry.published_hash? then
+                    "unrecorded"
+                elif digest(live) !~ entry.published_hash then
                     "edited"
                 else
                     "differs"
