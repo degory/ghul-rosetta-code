@@ -667,7 +667,9 @@ A long run is not by itself a reason to withhold it. What a visitor cannot read 
 sits there saying nothing, and a program that says what it is doing may take as long as the task
 needs. The playground runs five to ten times slower than the same program does natively, so:
 
-- Under about five seconds natively, a solution needs nothing.
+- Under about three seconds natively, a solution needs nothing. The figure is the silence budget
+  divided by the worst of that ten: what matters is not the number but whether someone could be
+  left looking at a blank box for more than about half a minute.
 - Over that, it prints something as it goes, and keeps printing: a line before the work saying it
   will take a while, a line per step, a count against an estimated total. That output is part of
   what the test captures, so it has to be the same on every run - a line per item rather than a
