@@ -1,5 +1,6 @@
 {
   "title": "Compare sorting algorithms' performance",
-  "state": "rejected",
-  "reason": "nondeterministic"
+  "slug": "compare-sorting-algorithms-performance",
+  "state": "solved",
+  "note": "reopened, was rejected/nondeterministic: timings depend on the machine, so the test checks the shape of the reports and plots and that insertion sort is quadratic on shuffled input"
 }

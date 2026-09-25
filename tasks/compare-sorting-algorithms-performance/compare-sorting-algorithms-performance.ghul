@@ -1,0 +1,166 @@
+use default
+
+use Raster.AXES
+use Raster.IMAGE
+use System.Diagnostics.Stopwatch
+use System.Math
+
+use Colour = (red: ubyte, green: ubyte, blue: ubyte)
+use Sorter = (name: string, sort: (LIST[int]) -> void, colour: Colour)
+
+insertion_sort(xs: LIST[int]) is
+    for i in 1..xs.count do
+        let x = xs[i]
+        let j mut = i - 1
+
+        while j >= 0 /\ xs[j] > x do
+            xs[j + 1] = xs[j]
+            j = j - 1
+        od
+
+        xs[j + 1] = x
+    od
+si
+
+shell_sort(xs: LIST[int]) is
+    let gap mut = 1
+
+    while gap < xs.count / 3 do
+        gap = 3 * gap + 1
+    od
+
+    while gap > 0 do
+        for i in gap..xs.count do
+            let x = xs[i]
+            let j mut = i
+
+            while j >= gap /\ xs[j - gap] > x do
+                xs[j] = xs[j - gap]
+                j = j - gap
+            od
+
+            xs[j] = x
+        od
+
+        gap = gap / 3
+    od
+si
+
+quicksort(xs: LIST[int]) => partition_sort(xs, 0, xs.count - 1)
+
+partition_sort(xs: LIST[int], low: int, high: int) is
+    if low >= high then
+        return
+    fi
+
+    let pivot = xs[(low + high) / 2]
+    let i mut = low
+    let j mut = high
+
+    while i <= j do
+        while xs[i] < pivot do i = i + 1 od
+        while xs[j] > pivot do j = j - 1 od
+
+        if i <= j then
+            (xs[i], xs[j]) = (xs[j], xs[i])
+            i = i + 1
+            j = j - 1
+        fi
+    od
+
+    partition_sort(xs, low, j)
+    partition_sort(xs, i, high)
+si
+
+library_sort(xs: LIST[int]) => xs.sort()
+
+let random = System.Random(1)
+
+let inputs = [
+    ("ones", (n: int) => repeat(1, n) |> collect_array()),
+    ("range", (n: int) => (0..n) |> collect_array()),
+    ("shuffled", (n: int) =>
+        (0..n) |> sort_by(_ => random.next()) |> collect_array())
+]
+
+let sorts: Sorter[] = [
+    ("insertion", insertion_sort, (220ub, 60ub, 40ub)),
+    ("shell", shell_sort, (40ub, 140ub, 60ub)),
+    ("quicksort", quicksort, (40ub, 80ub, 200ub)),
+    ("library", library_sort, (150ub, 90ub, 170ub))
+]
+
+let powers = (6::14) |> collect()
+
+microseconds(sort: LIST[int] -> void, data: int[]) -> double =>
+    (0..3)
+    |> map(_ =>
+        let copy = LIST[int](data) in
+        let clock = Stopwatch.start_new() in
+        (
+            sort(copy)
+            clock.elapsed.total_milliseconds * 1000.0
+        ))
+    |> min()!
+
+log2(x: double) -> double => Math.log2(Math.max(x, 1.0))
+
+for (name, make) in inputs do
+    let data = powers |> map(p => make(1 << p)) |> collect()
+
+    let times =
+        sorts
+        |> map(sorter =>
+            data |> map(d => microseconds(sorter.sort, d)) |> collect())
+        |> collect()
+
+    write_line("{name}: time in microseconds")
+    write_line(
+        "{"n",7}"
+        "{sorts |> map(((label, _, _)) => "{label,11}") |> join("")}")
+
+    for (row, p) in powers |> index() do
+        let cells = times |> map(t => "{t[row],11:F0}") |> join("")
+        write_line("{1 << p,7}{cells}")
+    od
+
+    let last = powers.count - 1
+    let growth =
+        (0..sorts.count)
+        |> map(i =>
+            let first = log2(times[i][last - 4]) in
+            let exponent = (log2(times[i][last]) - first) / 4.0 in
+            "{sorts[i].name} {exponent:F1}")
+        |> join(", ")
+
+    write_line(
+        "growth exponent from n = {1 << powers[last - 4]} up: {growth}")
+
+    let image = IMAGE(480, 360)
+    let axes = AXES(image)
+
+    axes.x_title = "log2(sequence length)"
+    axes.y_title = "log2(time in microseconds)"
+    axes.fit(6.0, 0.0, 14.0, 18.0)
+
+    for sorter in sorts do
+        axes.key(sorter.name, sorter.colour)
+    od
+
+    image.colour(150ub, 150ub, 150ub)
+    image.stroke(1.0)
+    axes.draw()
+
+    for ((_, _, colour), t) in zip(sorts, times) do
+        image.colour(colour.red, colour.green, colour.blue)
+        image.stroke(2.0)
+        image.line(
+            zip(powers, t)
+            |> map((p, time) => (x = cast double(p), y = log2(time)))
+            |> collect())
+    od
+
+    image.write("{name}.png")
+    image.show("{name}.png")
+    write_line("")
+od
