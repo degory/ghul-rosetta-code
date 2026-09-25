@@ -1,16 +1,23 @@
 use default
-use System.Diagnostics.Stopwatch
 use System.Math.abs
 use System.Math.pi
 use System.Math.sin
+use System.Threading.AutoResetEvent
 use System.Threading.Thread
 
 let frequency = 0.5D
+let step = 0.001D
 
+// The integrator samples only when the clock is advanced, and the advance
+// waits for that sample to be taken, so the number of samples is what the
+// caller asked for rather than however many the machine managed in the
+// time available.
 class INTEGRATOR is
-    _clock: Stopwatch
     _worker: Thread
+    _sample_due: AutoResetEvent
+    _sample_taken: AutoResetEvent
     _input: (double) -> double
+    _now: double
     _output: double
     _previous: double
     _last: double
@@ -18,7 +25,8 @@ class INTEGRATOR is
 
     init() is
         _input = t => 0.0D
-        _clock = Stopwatch.start_new()
+        _sample_due = AutoResetEvent(false)
+        _sample_taken = AutoResetEvent(false)
         _running = true
         _worker = Thread(() => _integrate())
 
@@ -27,20 +35,34 @@ class INTEGRATOR is
     si
 
     _integrate() is
-        while _running do
-            Thread.sleep(1)
+        while true do
+            _sample_due.wait_one()
 
-            let now = _clock.elapsed.total_seconds
-            let sample = _input(now)
+            if !_running then
+                _sample_taken.set()
 
-            _output = _output + (sample + _previous) * (now - _last) / 2.0D
+                return
+            fi
+
+            let sample = _input(_now)
+
+            _output = _output + (sample + _previous) * (_now - _last) / 2.0D
             _previous = sample
-            _last = now
+            _last = _now
+
+            _sample_taken.set()
         od
     si
 
+    advance(seconds: double) is
+        _now = _now + seconds
+
+        _sample_due.set()
+        _sample_taken.wait_one()
+    si
+
     input(k: (double) -> double) is
-        _previous = k(_clock.elapsed.total_seconds)
+        _previous = k(_now)
         _input = k
     si
 
@@ -49,27 +71,37 @@ class INTEGRATOR is
     stop() is
         _running = false
 
+        _sample_due.set()
+        _sample_taken.wait_one()
+
         _worker.join()
     si
+si
+
+run_for(integrator: INTEGRATOR, seconds: double) is
+    for _ in 0..cast int(seconds / step) do
+        integrator.advance(step)
+    od
 si
 
 let integrator = INTEGRATOR()
 
 integrator.input(t => sin(2.0D * pi * frequency * t))
 
-Thread.sleep(1000)
+run_for(integrator, 1.0D)
 
-let half_way = integrator.output
+let half_period = integrator.output
 
-Thread.sleep(1000)
+run_for(integrator, 1.0D)
+
+let full_period = integrator.output
 
 integrator.input(t => 0.0D)
 
-Thread.sleep(500)
+run_for(integrator, 0.5D)
 
 integrator.stop()
 
-write_line("output half way through is above 0.5: {half_way > 0.5D}")
-let final = abs(integrator.output)
-
-write_line("output is within 0.01 of zero: {final < 0.01D}")
+write_line("integral over half a period: {half_period:F4}")
+write_line("integral over a whole period: {abs(full_period):F4}")
+write_line("integral once the input is zero: {abs(integrator.output):F4}")

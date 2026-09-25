@@ -1,2 +1,3 @@
-output half way through is above 0.5: true
-output is within 0.01 of zero: true
+integral over half a period: 0.6366
+integral over a whole period: 0.0000
+integral once the input is zero: 0.0000
