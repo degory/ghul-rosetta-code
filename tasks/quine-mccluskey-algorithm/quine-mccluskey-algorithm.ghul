@@ -1,0 +1,165 @@
+use default
+
+use Implicant = (bits: int, dashes: int)
+
+ones(value: int) -> int is
+    let remaining mut = value
+    let count mut = 0
+
+    while remaining != 0 do
+        count = count + (remaining & 1)
+        remaining = remaining >> 1
+    od
+
+    return count
+si
+
+covers(implicant: Implicant, minterm: int) -> bool =>
+    (minterm & \implicant.dashes) == implicant.bits
+
+render(implicant: Implicant, variables: int) -> string is
+    let glyphs = LIST[char]()
+
+    for position in 0..variables do
+        let bit = variables - 1 - position
+
+        glyphs.add(
+            if (implicant.dashes >> bit) & 1 == 1 then
+                'X'
+            elif (implicant.bits >> bit) & 1 == 1 then
+                '1'
+            else
+                '0'
+            fi)
+    od
+
+    return string(glyphs |> collect_array())
+si
+
+prime_implicants(minterms: List[int], variables: int) -> List[Implicant] is
+    let primes = LIST[Implicant]()
+
+    let current mut =
+        minterms |> map(m => (bits = m, dashes = 0)) |> distinct() |> collect()
+
+    while current.count > 0 do
+        let combined = LIST[Implicant]()
+        let used = repeat(false, current.count) |> collect_list()
+
+        for i in 0..current.count do
+            for j in i + 1..current.count do
+                let left = current[i]
+                let right = current[j]
+
+                if left.dashes != right.dashes then
+                    continue
+                fi
+
+                let difference = left.bits ^ right.bits
+
+                if ones(difference) != 1 then
+                    continue
+                fi
+
+                used[i] = true
+                used[j] = true
+
+                combined.add(
+                    (bits = left.bits & \difference, dashes = left.dashes | difference))
+            od
+        od
+
+        for i in 0..current.count do
+            if !used[i] then
+                primes.add(current[i])
+            fi
+        od
+
+        current = combined |> distinct() |> collect()
+    od
+
+    return primes |> distinct() |> collect()
+si
+
+// Every prime implicant that alone covers some minterm must be in the answer;
+// the rest is the smallest set of the others that covers what is left, found
+// by trying every combination in increasing size.
+minimal_cover(minterms: List[int], variables: int) -> List[Implicant] is
+    let primes = prime_implicants(minterms, variables)
+
+    let essential =
+        primes
+            |> filter(prime =>
+                minterms
+                    |> any(m =>
+                        covers(prime, m) /\
+                        primes |> count(other => covers(other, m)) == 1))
+            |> collect()
+
+    let uncovered =
+        minterms |> filter(m => !(essential |> any(p => covers(p, m)))) |> collect()
+
+    if uncovered.count == 0 then
+        return essential
+    fi
+
+    let spare = primes |> filter(p => !(essential |> any(e => e =~ p))) |> collect()
+
+    let found =
+        for size in 1::spare.count do
+            let choice = smallest_choice(spare, uncovered, size)
+
+            if choice? then
+                break choice
+            fi
+        od
+
+    if let chosen = found then
+        return essential |> cat(chosen) |> collect()
+    fi
+
+    return essential
+si
+
+smallest_choice(spare: List[Implicant], uncovered: List[int], size: int) -> List[Implicant]? is
+    let chosen = LIST[Implicant]()
+
+    return search(spare, uncovered, size, 0, chosen)
+si
+
+search(
+    spare: List[Implicant],
+    uncovered: List[int],
+    size: int,
+    start: int,
+    chosen: LIST[Implicant]
+) -> List[Implicant]? is
+    if chosen.count == size then
+        if uncovered |> all(m => chosen |> any(p => covers(p, m))) then
+            return chosen |> collect()
+        fi
+
+        return null
+    fi
+
+    for i in start..spare.count do
+        chosen.add(spare[i])
+
+        let found = search(spare, uncovered, size, i + 1, chosen)
+
+        chosen.remove_at(chosen.count - 1)
+
+        if found? then
+            return found
+        fi
+    od
+
+    return null
+si
+
+for (minterms, variables) in [([0, 1, 2, 5], 3), ([0, 1, 2, 5, 6, 7, 8, 9, 10, 14], 4)] do
+    let cover = minimal_cover(minterms, variables)
+
+    write_line("minterms {minterms |> join(", ")}")
+    write_line("  {cover |> map(p => render(p, variables)) |> join(" ")}")
+od
