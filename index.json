@@ -22115,32 +22115,6 @@
       ]
     },
     {
-      "slug": "rosetta-code-fix-code-tags",
-      "title": "Rosetta Code/Fix code tags",
-      "url": "https://rosettacode.org/wiki/Rosetta_Code/Fix_code_tags",
-      "tags": [
-        "text-processing",
-        "strings"
-      ],
-      "interest": 1,
-      "playground": true,
-      "input": false,
-      "images": [],
-      "lines": 20,
-      "parts": [
-        {
-          "id": "rosetta-code-fix-code-tags",
-          "heading": null,
-          "source": "tasks/rosetta-code-fix-code-tags/rosetta-code-fix-code-tags.ghul",
-          "output": "tasks/rosetta-code-fix-code-tags/run.expected",
-          "lines": 20,
-          "playground": true,
-          "input": false,
-          "images": []
-        }
-      ]
-    },
-    {
       "slug": "rot-13",
       "title": "Rot-13",
       "url": "https://rosettacode.org/wiki/Rot-13",
