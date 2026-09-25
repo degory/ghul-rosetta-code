@@ -24,14 +24,14 @@ image.fill(
 )
 
 image.colour(242ub, 198ub, 62ub)
-image.fill(0..10 |> map(corner) |> collect_list())
+image.fill(0..10 |> map(corner) |> collect())
 
 image.colour(148ub, 32ub, 48ub)
 image.stroke(3.0D)
 image.line(
     (0::5)
         |> map(point => corner(point * 4 % 10))
-        |> collect_list()
+        |> collect()
 )
 
 image.write("pentagram.png")

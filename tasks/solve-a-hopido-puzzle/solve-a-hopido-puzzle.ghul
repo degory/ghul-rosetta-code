@@ -37,7 +37,7 @@ moves(s: Square) -> List[Square] =>
     hops
         |> map(((dr, dc)) => (row = s.row + dr, column = s.column + dc))
         |> filter(free)
-        |> collect_list()
+        |> collect()
 
 hop(s: Square, step: int) -> bool is
     order[s] = step
@@ -95,7 +95,7 @@ let path =
         |> map(s => (
             x = cell * (cast double(s.column) + 0.5D),
             y = cell * (cast double(s.row) + 0.5D)))
-        |> collect_list()
+        |> collect()
 
 image.colour(30ub, 60ub, 140ub)
 image.stroke(2.0D)

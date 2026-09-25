@@ -29,13 +29,13 @@ anchored(cells: Iterable[Cell]) -> Shape is
     let sorted =
         cells
             |> sort(reading_order)
-            |> collect_list()
+            |> collect()
 
     let first = sorted[0]
 
     sorted
         |> map(c => cell_at(c.row - first.row, c.column - first.column))
-        |> collect_list()
+        |> collect()
 si
 
 cell_at(row: int, column: int) -> Cell => (row = row, column = column)
@@ -46,7 +46,7 @@ key(shape: Shape) -> string =>
 orientations(cells: List[(int, int)]) -> List[Shape] is
     let found = LIST()
     let current mut =
-        cells |> map(((r, c)) => cell_at(r, c)) |> collect_list()
+        cells |> map(((r, c)) => cell_at(r, c)) |> collect()
 
     for _ in 0..4 do
         for flip in [false, true] do
@@ -60,7 +60,7 @@ orientations(cells: List[(int, int)]) -> List[Shape] is
         od
 
         current =
-            current |> map(c => cell_at(c.column, -c.row)) |> collect_list()
+            current |> map(c => cell_at(c.column, -c.row)) |> collect()
     od
 
     found
@@ -69,7 +69,7 @@ si
 let shapes =
     pieces
         |> map(((name, cells)) => (name, orientations(cells)))
-        |> collect_list()
+        |> collect()
 let board = repeat('.', size * size) |> collect_list()
 let used = repeat(false, pieces.count) |> collect_list()
 

@@ -34,10 +34,10 @@ let black =
                     column >= 1 /\ column <= line.length /\
                         line[column - 1] == '#')
                 |> collect_list())
-        |> collect_list()
+        |> collect()
 
 let original =
-    black |> map(row => row |> collect_list()) |> collect_list()
+    black |> map(row => row |> collect()) |> collect()
 
 let around = [
     (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)
@@ -46,7 +46,7 @@ let around = [
 neighbours(row: int, column: int) -> List[bool] =>
     around
         |> map(((dr, dc)) => black[row + dr][column + dc])
-        |> collect_list()
+        |> collect()
 
 thins(row: int, column: int, first: bool) -> bool is
     if !black[row][column] then

@@ -42,7 +42,7 @@ while factor * factor <= top do
     factor = factor + 1
 od
 
-let primes = 2::top |> filter(p => !composite[p]) |> collect_list()
+let primes = 2::top |> filter(p => !composite[p]) |> collect()
 
 for prime in primes do
     if prime + 1 <= top then
@@ -63,13 +63,13 @@ for first in 0..primes.count do
 od
 
 let untouchable = 1::top |> filter(value => !touched[value])
-                           |> collect_list()
+                           |> collect()
 
 write_line("the untouchable numbers up to 2000:")
 
 let small = untouchable |> filter(value => value <= 2_000)
                         |> map(value => "{value,6}")
-                        |> collect_list()
+                        |> collect()
 
 for row in 0..(small.count + 9) / 10 do
     let last = System.Math.min(row * 10 + 10, small.count)

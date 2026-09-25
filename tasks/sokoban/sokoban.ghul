@@ -15,7 +15,7 @@ let width = level[0].length
 let cells = level |> join("")
 
 let goals =
-    0..cells.length |> filter(i => cells[i] == '.') |> collect_list()
+    0..cells.length |> filter(i => cells[i] == '.') |> collect()
 
 let moves = [
     (step = -1, name = 'l'),

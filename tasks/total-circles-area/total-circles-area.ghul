@@ -83,7 +83,7 @@ outer_arcs(c: Circle, others: List[Circle]) -> List[Arc] is
             let middle = (arc.from + arc.to) / 2.0D in
             let p = on(c, middle) in
             !(others |> any(o => !(o =~ c) /\ covers(o, p.x, p.y))))
-        |> collect_list()
+        |> collect()
 si
 
 area_under(arc: Arc) -> double =>
@@ -94,9 +94,9 @@ area_under(arc: Arc) -> double =>
         c.r * c.y * (Math.cos(arc.to) - Math.cos(arc.from)))
 
 let all = LIST(circles)
-let kept = all |> filter(c => !inside(c, all)) |> collect_list()
+let kept = all |> filter(c => !inside(c, all)) |> collect()
 
-let arcs = kept |> flat_map(c => outer_arcs(c, kept)) |> collect_list()
+let arcs = kept |> flat_map(c => outer_arcs(c, kept)) |> collect()
 let area = arcs |> map(area_under) |> sum()
 
 let hidden = circles.count - kept.count
@@ -133,7 +133,7 @@ for arc in arcs do
             |> map(i =>
                 let t = cast double(i) / 32.0D in
                 on(c, arc.from + (arc.to - arc.from) * t))
-            |> collect_list())
+            |> collect())
 od
 
 image.write("circles.png")

@@ -36,7 +36,7 @@ let points = terms
     |> index()
     |> map(term =>
         (x = cast double(term.index + 1), y = cast double(term.value)))
-    |> collect_list()
+    |> collect()
 
 let image = IMAGE(760, 470)
 

@@ -25,10 +25,10 @@ merkle_root(content: ubyte[]) -> ubyte[] is
                     content[at..System.Math.min(at + block_size,
                                                 content.count)]
                         |> collect_array()))
-            |> collect_list()
+            |> collect()
 
     while hashes.count > 1 do
-        hashes = paired(hashes) |> collect_list()
+        hashes = paired(hashes) |> collect()
     od
 
     return hashes[0]

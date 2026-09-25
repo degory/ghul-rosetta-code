@@ -14,7 +14,7 @@ class NODE is
     children: Collections.List[NODE] =>
         _edges.values
         |> sort((a, b) => a.label <> b.label)
-        |> collect_list()
+        |> collect()
 
     add(suffix: string) is
         if suffix.length == 0 then

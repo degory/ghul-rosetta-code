@@ -18,7 +18,7 @@ sparkline(series: string) -> string is
         |> map(text => double.parse(text))
         |> collect_list()
 
-    let ordered = values |> sort() |> collect_list()
+    let ordered = values |> sort() |> collect()
 
     let lowest = ordered[0]
     let highest = ordered[ordered.count - 1]

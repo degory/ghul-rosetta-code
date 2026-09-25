@@ -30,7 +30,7 @@ top_earners(department: string, wanted: int) -> List[Employee] is
 
     earners.sort((a, b) => b.salary <> a.salary)
 
-    return earners |> take(wanted) |> collect_list()
+    return earners |> take(wanted) |> collect()
 si
 
 let departments = staff |> map(e => e.department) |> collect_list()

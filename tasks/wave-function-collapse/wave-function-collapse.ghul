@@ -44,7 +44,7 @@ attempt() -> List[int]? is
         fi
 
         let candidates =
-            open |> filter(i => options[i].count == least) |> collect_list()
+            open |> filter(i => options[i].count == least) |> collect()
 
         let cell = candidates[random.next(candidates.count)]
         let choice = options[cell][random.next(options[cell].count)]

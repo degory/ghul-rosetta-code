@@ -59,7 +59,7 @@ inside(point: Point, rings: List[Ring]) -> bool =>
         |> count() % 2 == 1
 
 ring(corners: List[(double, double)]) -> Ring =>
-    corners |> map(((x, y)) => (x = x, y = y)) |> collect_list()
+    corners |> map(((x, y)) => (x = x, y = y)) |> collect()
 
 let square = [ring([(0.0D, 0.0D), (10.0D, 0.0D), (10.0D, 10.0D),
                     (0.0D, 10.0D)])]
@@ -102,7 +102,7 @@ image.colour(40ub, 40ub, 60ub)
 
 for hole in square_hole do
     image.line(
-        hole |> cat([hole[0]]) |> collect_list())
+        hole |> cat([hole[0]]) |> collect())
 od
 
 for step_x in 0..49 do

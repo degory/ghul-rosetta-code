@@ -17,7 +17,7 @@ shape(name: char, size: int, rows: string[]) -> Piece =>
             (0..size * size)
                 |> filter(i => rows[i / size][i % size] == '#')
                 |> map(i => (row = i / size, column = i % size))
-                |> collect_list()
+                |> collect()
     )
 
 let pieces = [
@@ -36,7 +36,7 @@ rotated(piece: Piece) -> Piece => (
     cells =
         piece.cells
             |> map(c => (row = c.column, column = piece.size - 1 - c.row))
-            |> collect_list()
+            |> collect()
 )
 
 let well = LIST(repeat('.', width * height))
@@ -112,7 +112,7 @@ lock() -> bool is
     let full =
         (0..height)
             |> filter(r => 0..width |> all(k => !free(r, k)))
-            |> collect_list()
+            |> collect()
 
     for r in full do
         well.remove_range(r * width, width)

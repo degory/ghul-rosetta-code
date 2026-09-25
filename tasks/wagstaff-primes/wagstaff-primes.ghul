@@ -63,7 +63,7 @@ wagstaff(top: int) -> Pipe[(exponent: int, value: bigint)] is
     od
 si
 
-let found = wagstaff(2_000) |> collect_list()
+let found = wagstaff(2_000) |> collect()
 
 write_line("the first ten Wagstaff primes:")
 
