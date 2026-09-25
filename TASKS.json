@@ -7839,6 +7839,14 @@
       "published_hash": "b89c4473e8c94d041eb93dd316d2badc94eb02aeb9214d35a49fddb9f779602e"
     },
     {
+      "title": "Two bullet roulette",
+      "state": "solved"
+    },
+    {
+      "title": "Two identical strings",
+      "state": "solved"
+    },
+    {
       "title": "Two\u0027s complement",
       "slug": "two-s-complement",
       "state": "published",
@@ -7875,6 +7883,10 @@
       "published_hash": "1be2cff6427a946be2a442bddc7a25a9c84968a9b788f893db2a9cfafffb7311"
     },
     {
+      "title": "Ukkonen\u0027s suffix tree construction",
+      "state": "solved"
+    },
+    {
       "title": "Ulam spiral (for primes)",
       "slug": "ulam-spiral-for-primes",
       "state": "published",
@@ -7882,6 +7894,14 @@
       "image_hashes": {
         "Ghul-ulam-spiral-for-primes-ulam.png": "4663fe1db02ff66b23844686d6f1774e06107873"
       }
+    },
+    {
+      "title": "Ultra useful primes",
+      "state": "solved"
+    },
+    {
+      "title": "Unbias a random generator",
+      "state": "solved"
     },
     {
       "title": "Undefined values",
@@ -7900,6 +7920,10 @@
       "slug": "unicode-strings",
       "state": "published",
       "published_hash": "2f834c5d2952603f0a80bb6bbf44b974fd75b3eb03484912e90ce4b9c224300b"
+    },
+    {
+      "title": "Unicode variable names",
+      "state": "solved"
     },
     {
       "title": "Universal Lambda Machine",
@@ -7938,6 +7962,10 @@
       "published_hash": "41ecaf1e77ce8d756e4de16ed420986dc165ee63fc2ae1659910ee9b97cd6972"
     },
     {
+      "title": "Update a configuration file",
+      "state": "solved"
+    },
+    {
       "title": "Upside-down numbers",
       "slug": "upside-down-numbers",
       "state": "published",
@@ -7958,6 +7986,10 @@
     {
       "title": "User:Degory/sandbox",
       "state": "published"
+    },
+    {
+      "title": "Validate International Securities Identification Number",
+      "state": "solved"
     },
     {
       "title": "Vampire number",
@@ -8030,6 +8062,14 @@
       "slug": "vector-products",
       "state": "published",
       "published_hash": "f46b902002cce0abdec4a8d6f408935cff660a4eb7fcb582e71a3297b071948a"
+    },
+    {
+      "title": "Verhoeff algorithm",
+      "state": "solved"
+    },
+    {
+      "title": "Verify distribution uniformity/Chi-squared test",
+      "state": "solved"
     },
     {
       "title": "Verify distribution uniformity/Naive",

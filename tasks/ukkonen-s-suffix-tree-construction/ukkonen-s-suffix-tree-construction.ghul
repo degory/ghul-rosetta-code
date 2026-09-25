@@ -1,0 +1,206 @@
+use default
+use System.Diagnostics.Stopwatch
+
+square_root(n: bigint) -> bigint is
+    let bits = cast int(n.get_bit_length())
+
+    if bits <= 50 then
+        return bigint(System.Math.sqrt(cast double(n)))
+    fi
+
+    let shift = bits / 4
+    let estimate = square_root(n >> 2 * shift) << shift
+    let x mut = (estimate + n / estimate) >> 1
+
+    while x * x > n do
+        x = x - 1n
+    od
+
+    x
+si
+
+// The Gauss-Legendre form of the arithmetic-geometric mean, in integers
+// scaled by a power of ten.
+pi_digits(count: int) -> string is
+    let scale = bigint.pow(10n, count + 10)
+    let a mut = scale
+    let b mut = square_root(scale * scale / 2n)
+    let t mut = scale / 4n
+    let p mut = 1n
+
+    while bigint.abs(a - b) > 1n do
+        let next = (a + b) / 2n
+
+        b = square_root(a * b)
+        t = t - p * (a - next) * (a - next) / scale
+        a = next
+        p = p * 2n
+    od
+
+    let pi = (a + b) * (a + b) / (4n * t)
+
+    pi.to_string().substring(1, count)
+si
+
+// Edges hold [start, end) into the text; a leaf's end is the shared
+// current end, so every leaf grows by one in each phase for free.
+class SUFFIX_TREE is
+    _text: string
+    _start: LIST[int]
+    _end: LIST[int]
+    _link: LIST[int]
+    _children: LIST[MAP[char, int]]
+    _leaf_end: int
+
+    init(text: string) is
+        _text = text
+        _start = LIST[int]()
+        _end = LIST[int]()
+        _link = LIST[int]()
+        _children = LIST[MAP[char, int]]()
+        _leaf_end = 0
+
+        let root = _node(-1, -1)
+        let active_node mut = root
+        let active_edge mut = 0
+        let active_length mut = 0
+        let remainder mut = 0
+
+        for i in 0..text.length do
+            _leaf_end = i + 1
+            remainder = remainder + 1
+
+            let last mut = -1
+
+            while remainder > 0 do
+                if active_length == 0 then
+                    active_edge = i
+                fi
+
+                let edge = text[active_edge]
+
+                if !_children[active_node].contains_key(edge) then
+                    _children[active_node][edge] = _node(i, -1)
+
+                    if last >= 0 then
+                        _link[last] = active_node
+                        last = -1
+                    fi
+                else
+                    let next = _children[active_node][edge]
+                    let length = _length(next)
+
+                    if active_length >= length then
+                        active_edge = active_edge + length
+                        active_length = active_length - length
+                        active_node = next
+                        continue
+                    fi
+
+                    if text[_start[next] + active_length] == text[i] then
+                        if last >= 0 /\ active_node != root then
+                            _link[last] = active_node
+                        fi
+
+                        active_length = active_length + 1
+                        break
+                    fi
+
+                    let cut = _start[next] + active_length
+                    let split = _node(_start[next], cut)
+
+                    _children[active_node][edge] = split
+                    _children[split][text[i]] = _node(i, -1)
+                    _start[next] = _start[next] + active_length
+                    _children[split][text[_start[next]]] = next
+
+                    if last >= 0 then
+                        _link[last] = split
+                    fi
+
+                    last = split
+                fi
+
+                remainder = remainder - 1
+
+                if active_node == root /\ active_length > 0 then
+                    active_length = active_length - 1
+                    active_edge = i - remainder + 1
+                elif active_node != root then
+                    active_node = _link[active_node]
+                fi
+            od
+        od
+    si
+
+    _node(start: int, end: int) -> int is
+        _start.add(start)
+        _end.add(end)
+        _link.add(0)
+        _children.add(MAP[char, int]())
+
+        _start.count - 1
+    si
+
+    _length(node: int) -> int =>
+        (if _end[node] < 0 then _leaf_end else _end[node] fi) - _start[node]
+
+    // The deepest internal node spells the longest string that occurs
+    // at least twice; of several as long, the one found first in the text.
+    longest_repeat() -> string is
+        let best_depth mut = 0
+        let best_start mut = 0
+        let stack = LIST([(0, 0)])
+
+        while stack.count > 0 do
+            let (node, depth) = stack[stack.count - 1]
+
+            stack.remove_at(stack.count - 1)
+
+            for child in _children[node].values do
+                if _end[child] >= 0 then
+                    let child_depth = depth + _length(child)
+
+                    let found = _end[child] - child_depth
+                    let tied = child_depth == best_depth
+                    let earlier = tied /\ found < best_start
+
+                    if child_depth > best_depth \/ earlier then
+                        best_depth = child_depth
+                        best_start = _text.index_of(
+                            _text.substring(found, child_depth))
+                    fi
+
+                    stack.add((child, child_depth))
+                fi
+            od
+        od
+
+        _text.substring(best_start, best_depth)
+    si
+si
+
+let samples = [
+    "GEEKSFORGEEKS", "AAAAAAAAAA", "ABCDEFG", "banana", "ATCGATCGA"
+]
+
+for text in samples do
+    let repeat = SUFFIX_TREE("{text}$").longest_repeat()
+    let shown = if repeat.length > 0 then repeat else "(none)" fi
+
+    write_line("{text,-15} {shown}")
+od
+
+write_line("")
+
+let digits = pi_digits(100_000)
+
+for count in [1_000, 10_000, 100_000] do
+    let clock = Stopwatch.start_new()
+    let tree = SUFFIX_TREE("{digits.substring(0, count)}$")
+    let repeat = tree.longest_repeat()
+    let elapsed = clock.elapsed.total_milliseconds
+
+    write_line("first {count,7:N0} digits: longest repeat {repeat}")
+    write_line("    built and searched in {elapsed:F1} ms")
+od
