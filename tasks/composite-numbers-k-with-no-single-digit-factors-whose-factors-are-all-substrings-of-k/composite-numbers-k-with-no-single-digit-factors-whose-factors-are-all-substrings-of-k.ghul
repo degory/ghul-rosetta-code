@@ -1,0 +1,53 @@
+use default
+
+let limit = 30_000_000
+
+let prime = (
+    let sieve = repeat(true, limit) |> collect_list()
+
+    sieve[0] = false
+    sieve[1] = false
+
+    for p in 2..limit |> take_while(p => p * p < limit) do
+        if sieve[p] then
+            for multiple in from(p * p, p) |> take_while(m => m < limit) do
+                sieve[multiple] = false
+            od
+        fi
+    od
+
+    sieve
+)
+
+factors_are_substrings(k: int) -> bool is
+    let digits = "{k}"
+    let rest mut = k
+    let factor mut = 11
+
+    while factor * factor <= rest do
+        if rest % factor == 0 then
+            if !digits.contains("{factor}") then
+                return false
+            fi
+
+            while rest % factor == 0 do
+                rest = rest / factor
+            od
+        fi
+
+        factor = factor + 2
+    od
+
+    rest == 1 \/ digits.contains("{rest}")
+si
+
+let found =
+    11..limit
+        |> filter(k => k % 2 != 0 /\ k % 3 != 0 /\ k % 5 != 0 /\ k % 7 != 0)
+        |> filter(k => !prime[k] /\ factors_are_substrings(k))
+        |> take(20)
+        |> collect_list()
+
+for row in found |> chunk(10) do
+    write_line(row |> map(k => "{k,11:N0}") |> join(""))
+od
