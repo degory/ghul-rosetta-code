@@ -2656,6 +2656,11 @@
       "published_hash": "14ab9569c1609cdc0a1a09e4e1f0ca9b3c11a29cca473469c459bb6c821762d4"
     },
     {
+      "title": "GSTrans string conversion",
+      "slug": "gstrans-string-conversion",
+      "state": "solved"
+    },
+    {
       "title": "GUI enabling/disabling of controls",
       "state": "rejected",
       "reason": "needs-gui"
@@ -2689,6 +2694,16 @@
       "published_hash": "0943c2132e911ae2985cbe36f89000463ba9bc9c8476951a3ebcdbc40c55b7aa"
     },
     {
+      "title": "Gauss-Jordan matrix inversion",
+      "slug": "gauss-jordan-matrix-inversion",
+      "state": "solved"
+    },
+    {
+      "title": "Gaussian elimination",
+      "slug": "gaussian-elimination",
+      "state": "solved"
+    },
+    {
       "title": "Gaussian primes",
       "slug": "gaussian-primes",
       "state": "published",
@@ -2699,6 +2714,11 @@
       "slug": "general-fizzbuzz",
       "state": "published",
       "published_hash": "eebcb27f7b305fd03bd6f4d6efbc09952d036a1604d24b87b3e9e65e7a02e9af"
+    },
+    {
+      "title": "Generate Chess960 starting position",
+      "slug": "generate-chess960-starting-position",
+      "state": "solved"
     },
     {
       "title": "Generate lower case ASCII alphabet",
@@ -2901,6 +2921,11 @@
       "published_hash": "d56dec71d5e645496df03ecf0305310c71ef1cfde69b0da3c6f35a12542dca31"
     },
     {
+      "title": "Hamiltonian Cycle via Chv\u00E1tal Closure",
+      "slug": "hamiltonian-cycle-via-chvatal-closure",
+      "state": "solved"
+    },
+    {
       "title": "Hamming numbers",
       "slug": "hamming-numbers",
       "state": "published",
@@ -2952,10 +2977,20 @@
       "published_hash": "70ca070564c902bfdfbf3f8643722aa49790837ab1a0f70f33409493ef434300"
     },
     {
+      "title": "Hashtron inference",
+      "slug": "hashtron-inference",
+      "state": "solved"
+    },
+    {
       "title": "Haversine formula",
       "slug": "haversine-formula",
       "state": "published",
       "published_hash": "21a63aa30424fff03ac41bbd21cdcc971d29a8eadbea8227f3faca146ec73157"
+    },
+    {
+      "title": "Held\u2013Karp algorithm",
+      "slug": "held-karp-algorithm",
+      "state": "solved"
     },
     {
       "title": "Hello world/Graphical",
@@ -3011,10 +3046,20 @@
       "published_hash": "ae310cef69636a79b660dd184e2cef6a6e6ed45d817922b992cb2fc2d49a40ff"
     },
     {
+      "title": "Hex words",
+      "slug": "hex-words",
+      "state": "solved"
+    },
+    {
       "title": "Hexapawn",
       "slug": "hexapawn",
       "state": "published",
       "published_hash": "c4eaa33fecb64b60a5ec9568cc269c65201951cb926ef705574d3e54025cfe13"
+    },
+    {
+      "title": "Hickerson series of almost integers",
+      "slug": "hickerson-series-of-almost-integers",
+      "state": "solved"
     },
     {
       "title": "Higher-order functions",
