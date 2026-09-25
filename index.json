@@ -16547,6 +16547,33 @@
       ]
     },
     {
+      "slug": "modular-arithmetic",
+      "title": "Modular arithmetic",
+      "url": "https://rosettacode.org/wiki/Modular_arithmetic",
+      "tags": [
+        "operators",
+        "generics",
+        "traits"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 43,
+      "parts": [
+        {
+          "id": "modular-arithmetic",
+          "heading": null,
+          "source": "tasks/modular-arithmetic/modular-arithmetic.ghul",
+          "output": "tasks/modular-arithmetic/run.expected",
+          "lines": 43,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "modular-exponentiation",
       "title": "Modular exponentiation",
       "url": "https://rosettacode.org/wiki/Modular_exponentiation",
