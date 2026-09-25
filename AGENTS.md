@@ -655,13 +655,28 @@ repository and runs it in the reader's browser. It compiles one source file agai
 runtime, `ghul.raster` and the parts of .NET that work in a browser, reads standard input from a
 box under the output, shows the images a program draws, runs threads, and holds the files a task
 ships in a filesystem of its own. What it rules out is the network, a child process,
-`Environment.exit`, a second source file, and anything that takes minutes there. Deciding whether
-a solution needs one of those takes reading it, so it is part of writing it: a program that
-cannot run there carries a `playground-unsupported` file beside its source, one line saying why,
-written for the reader who opens the link anyway. `scripts/generate-wiki.sh` writes no link for
-it. The link itself transcludes the wiki's `Template:Ghul playground` and passes only the program's path, so the
+`Environment.exit` and a second source file. Deciding whether a solution needs one of those takes
+reading it, so it is part of writing it: a program that cannot run there carries a
+`playground-unsupported` file beside its source, one line saying why, written for the reader who
+opens the link anyway. `scripts/generate-wiki.sh` writes no link for it. The link itself
+transcludes the wiki's `Template:Ghul playground` and passes only the program's path, so the
 wording is the template's rather than each entry's. README.md's 'running a solution in the
 playground' has the detail.
+
+A long run is not by itself a reason to withhold it. What a visitor cannot read is a page that
+sits there saying nothing, and a program that says what it is doing may take as long as the task
+needs. The playground runs five to ten times slower than the same program does natively, so:
+
+- Under about five seconds natively, a solution needs nothing.
+- Over that, it prints something as it goes, and keeps printing: a line before the work saying it
+  will take a while, a line per step, a count against an estimated total. That output is part of
+  what the test captures, so it has to be the same on every run - a line per item rather than a
+  timer, and no elapsed times.
+- `playground-unsupported` is for what genuinely cannot run there: memory the browser will not
+  give, or many minutes even with the progress showing.
+
+Thirty seconds of silence is the most a page should ever ask of someone; several minutes of
+visible progress asks nothing at all.
 
 ## Publishing, and the record of it
 
