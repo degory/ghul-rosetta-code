@@ -1,0 +1,16 @@
+use default
+
+modes[T](values: Iterable[T]) -> List[T] =>
+    let groups = values |> group_by(value => value) in
+    let most = groups.values |> map(group => group.count) |> max()! in
+    groups
+        |> filter(((_, group)) => group.count == most)
+        |> map(((value, _)) => value)
+        |> collect_list()
+
+show[T](values: List[T]) =>
+    write_line("mode of {values} is {modes(values)}")
+
+show([1, 3, 6, 6, 6, 6, 7, 7, 12, 12, 17])
+show([1, 1, 2, 4, 4])
+show(["apple", "pear", "fig", "pear", "fig", "plum"])

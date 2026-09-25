@@ -1,0 +1,78 @@
+use default
+
+use Register = (connection: List[int], length: int)
+
+predict(
+    sequence: List[int], connection: List[int], length: int, n: int
+) -> int =>
+    1::length
+        |> filter(k => k < connection.count)
+        |> map(k => connection[k] & sequence[n - k])
+        |> reduce(0, (a, b) => a ^ b)
+
+shortest_register(sequence: List[int]) -> Register is
+    let connection = LIST([1])
+    let previous mut = LIST([1])
+    let length mut = 0
+    let shift mut = 1
+
+    subtract_shifted(target: LIST[int], shifted: List[int]) is
+        for (i, coefficient) in shifted |> index() do
+            while target.count <= i + shift do
+                target.add(0)
+            od
+
+            target[i + shift] = target[i + shift] ^ coefficient
+        od
+    si
+
+    for n in 0..sequence.count do
+        let discrepancy =
+            sequence[n] ^ predict(sequence, connection, length, n)
+
+        if discrepancy == 0 then
+            shift = shift + 1
+        elif 2 * length <= n then
+            let saved = LIST(connection)
+
+            subtract_shifted(connection, previous)
+            length = n + 1 - length
+            previous = saved
+            shift = 1
+        else
+            subtract_shifted(connection, previous)
+            shift = shift + 1
+        fi
+    od
+
+    (connection, length)
+si
+
+polynomial(coefficients: List[int]) -> string =>
+    coefficients
+        |> index()
+        |> filter(((_, c)) => c == 1)
+        |> map(((power, _)) =>
+            case power
+            when 0 then "1"
+            when 1 then "x"
+            else "x^{power}"
+            esac)
+        |> join(" + ")
+
+regenerates(
+    sequence: List[int], connection: List[int], length: int
+) -> bool =>
+    length..sequence.count
+        |> all(n => predict(sequence, connection, length, n) == sequence[n])
+
+for sequence in [[0, 0, 1, 1, 0, 1, 0], [0, 1, 1, 0, 1, 1, 0, 1, 1]] do
+    let (connection, length) = shortest_register(sequence)
+
+    write_line("sequence:          {sequence}")
+    write_line("connection:        C(x) = {polynomial(connection)}")
+    write_line("linear complexity: {length}")
+    write_line(
+        "regenerates it:    {regenerates(sequence, connection, length)}")
+    write_line("")
+od

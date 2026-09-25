@@ -1,0 +1,40 @@
+use default
+
+let random = System.Random(2011)
+let trials = 100_000
+
+loop_length(n: int) -> int is
+    let seen = repeat(false, n + 1) |> collect_list()
+    let x mut = 1
+    let length mut = 0
+
+    while !seen[x] do
+        seen[x] = true
+        length = length + 1
+        x = random.next(1, n + 1)
+    od
+
+    length
+si
+
+simulated(n: int) -> double =>
+    cast double(1::trials |> map(_ => loop_length(n)) |> sum()) /
+        cast double(trials)
+
+analytical(n: int) -> double =>
+    let size = cast double(n) in
+    1::n
+        |> map(k =>
+            0..k |> map(i => (size - cast(i)) / size) |> product())
+        |> sum()
+
+write_line(" N    average    analytical    (error)")
+write_line("===  =========  ============  =========")
+
+for n in 1::20 do
+    let average = simulated(n)
+    let expected = analytical(n)
+    let error = 100.0 * double.abs(average - expected) / expected
+
+    write_line("{n,3}  {average,9:F4}  {expected,12:F4}  ({error,6:F2}%)")
+od

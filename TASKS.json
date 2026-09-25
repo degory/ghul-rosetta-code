@@ -434,16 +434,36 @@
       "published_hash": "21b6380e202f2c5ba1f32136c57278f005aa740960cda1b86177d3e951422bf0"
     },
     {
+      "title": "Average loop length",
+      "slug": "average-loop-length",
+      "state": "solved"
+    },
+    {
       "title": "Averages/Arithmetic mean",
       "slug": "arithmetic-mean",
       "state": "published",
       "published_hash": "d52a7191a92589abbd8d14f160105ee939a4d031b2001e18d67aea96b127da23"
     },
     {
+      "title": "Averages/Mean angle",
+      "slug": "averages-mean-angle",
+      "state": "solved"
+    },
+    {
+      "title": "Averages/Mean time of day",
+      "slug": "averages-mean-time-of-day",
+      "state": "solved"
+    },
+    {
       "title": "Averages/Median",
       "slug": "averages-median",
       "state": "published",
       "published_hash": "2d71b65f0fdbee6dd96d53c5672af7dbbf243b47da595d9c8c594b3e04362989"
+    },
+    {
+      "title": "Averages/Mode",
+      "slug": "averages-mode",
+      "state": "solved"
     },
     {
       "title": "Averages/Pythagorean means",
@@ -456,6 +476,11 @@
       "slug": "averages-root-mean-square",
       "state": "published",
       "published_hash": "9a5f999652708e95ec06e15482f0c3913ddd417b1c926828a71accb0950f71b1"
+    },
+    {
+      "title": "Averages/Simple moving average",
+      "slug": "averages-simple-moving-average",
+      "state": "solved"
     },
     {
       "title": "B-spline",
@@ -505,6 +530,11 @@
       }
     },
     {
+      "title": "Base64 decode data",
+      "slug": "base64-decode-data",
+      "state": "solved"
+    },
+    {
       "title": "Bell numbers",
       "slug": "bell-numbers",
       "state": "published",
@@ -520,10 +550,30 @@
       }
     },
     {
+      "title": "Berlekamp\u2013Massey algorithm",
+      "slug": "berlekamp-massey-algorithm",
+      "state": "solved"
+    },
+    {
+      "title": "Bernoulli numbers",
+      "slug": "bernoulli-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Bernoulli\u0027s triangle",
       "slug": "bernoullis-triangle",
       "state": "published",
       "published_hash": "4c83211280c82956fdc4e047ff181172bd5e318fe537a868b4530f3376fd52b1"
+    },
+    {
+      "title": "Bernstein basis polynomials",
+      "slug": "bernstein-basis-polynomials",
+      "state": "solved"
+    },
+    {
+      "title": "Best shuffle",
+      "slug": "best-shuffle",
+      "state": "solved"
     },
     {
       "title": "Bifid cipher",
