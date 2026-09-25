@@ -26184,6 +26184,32 @@
       ]
     },
     {
+      "slug": "shoelace-formula-for-polygonal-area",
+      "title": "Shoelace formula for polygonal area",
+      "url": "https://rosettacode.org/wiki/Shoelace_formula_for_polygonal_area",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "shoelace-formula-for-polygonal-area",
+          "heading": null,
+          "source": "tasks/shoelace-formula-for-polygonal-area/shoelace-formula-for-polygonal-area.ghul",
+          "output": "tasks/shoelace-formula-for-polygonal-area/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "short-circuit-evaluation",
       "title": "Short-circuit evaluation",
       "url": "https://rosettacode.org/wiki/Short-circuit_evaluation",
