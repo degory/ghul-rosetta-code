@@ -1,0 +1,163 @@
+use default
+
+// A p-adic number here is k digits, lowest first, and an exponent: its
+// value is the sum of digit i times p^(i + exponent).
+
+use PAdic = (digits: List[bigint], exponent: int)
+
+floor_div(a: bigint, b: bigint) -> bigint =>
+    let q = a / b in
+    if (a % b !~ 0n) /\ ((a < 0n) != (b < 0n)) then q - 1n else q fi
+
+modulo(a: bigint, m: bigint) -> bigint => ((a % m) + m) % m
+
+inverse(value: bigint, m: bigint) -> bigint is
+    let (r0, r1) mut = (modulo(value, m), m)
+    let (s0, s1) mut = (1n, 0n)
+
+    while r1 !~ 0n do
+        let q = r0 / r1
+
+        (r0, r1) = (r1, r0 - q * r1)
+        (s0, s1) = (s1, s0 - q * s1)
+    od
+
+    modulo(s0, m)
+si
+
+without_p(n: bigint, p: bigint) -> (rest: bigint, count: int) is
+    let rest mut = n
+    let count mut = 0
+
+    while rest !~ 0n /\ rest % p =~ 0n do
+        rest = rest / p
+        count = count + 1
+    od
+
+    (rest, count)
+si
+
+to_p_adic(a: bigint, b: bigint, p: bigint, k: int) -> PAdic is
+    let (top, above) = without_p(a, p)
+    let (bottom, below) = without_p(b, p)
+    let divisor = inverse(bottom, p)
+    let remainder mut = top
+    let digits = LIST[bigint]()
+
+    for _ in 0..k do
+        let digit = modulo(modulo(remainder, p) * divisor, p)
+
+        digits.add(digit)
+        remainder = floor_div(remainder - digit * bottom, p)
+    od
+
+    (digits, above - below)
+si
+
+add(x: PAdic, y: PAdic, p: bigint, k: int) -> PAdic is
+    let exponent = int.min(x.exponent, y.exponent)
+
+    aligned(z: PAdic) -> List[bigint] =>
+        repeat(0n, z.exponent - exponent)
+            |> cat(z.digits)
+            |> take(k)
+            |> collect_list()
+
+    let a = aligned(x), b = aligned(y)
+    let digits = LIST[bigint]()
+    let carry mut = 0n
+
+    for i in 0..k do
+        let total = a[i] + b[i] + carry
+
+        digits.add(total % p)
+        carry = total / p
+    od
+
+    (digits, exponent)
+si
+
+show(x: PAdic) -> string =>
+    let text = x.digits |> reverse() |> map(d => "{d}") |> join("") in
+    if x.exponent >= 0 then
+        "...{text}{string('0', x.exponent)}"
+    else
+        let split = text.length + x.exponent in
+        "...{text.substring(0, split)}.{text.substring(split)}"
+    fi
+
+// The rational a/b nearest the digits is the shortest vector (a, b) in the
+// lattice of pairs with a = b * N modulo p^k, found by Gauss reduction. It
+// is only a valid answer when b has no factor of p.
+
+rational(x: PAdic, p: bigint, k: int) -> string is
+    let modulus = bigint.pow(p, k)
+    let n =
+        x.digits
+            |> index()
+            |> map(((i, d)) => d * bigint.pow(p, i))
+            |> sum()
+
+    dot(u: (bigint, bigint), w: (bigint, bigint)) -> bigint =>
+        u.`0 * w.`0 + u.`1 * w.`1
+
+    let u mut = (modulus, 0n)
+    let w mut = (n, 1n)
+
+    if dot(u, u) < dot(w, w) then
+        (u, w) = (w, u)
+    fi
+
+    do
+        let ww = dot(w, w)
+        let q = floor_div(2n * dot(u, w) + ww, 2n * ww)
+        let t = (u.`0 - q * w.`0, u.`1 - q * w.`1)
+
+        if dot(t, t) >= ww then
+            break
+        fi
+
+        (u, w) = (w, t)
+    od
+
+    let (a, b) = w
+
+    if b =~ 0n \/ b % p =~ 0n then
+        return "not recoverable at this precision"
+    fi
+
+    let shift = bigint.pow(p, int.abs(x.exponent))
+    let top = if x.exponent > 0 then a * shift else a fi
+    let bottom = if x.exponent < 0 then b * shift else b fi
+    let sign = if bottom < 0n then -1n else 1n fi
+    let common = bigint.greatest_common_divisor(top, bottom)
+    let (num, den) = (sign * top / common, sign * bottom / common)
+
+    if den =~ 1n then "{num}" else "{num}/{den}" fi
+si
+
+let examples = [
+    (2n, 1n, 2n, 4, 1n, 1n),
+    (4n, 1n, 2n, 4, 3n, 1n),
+    (4n, 1n, 2n, 5, 3n, 1n),
+    (4n, 1n, 2n, 8, 3n, 1n),
+    (4n, 9n, 5n, 4, 8n, 9n),
+    (26n, 25n, 5n, 4, -109n, 125n),
+    (49n, 2n, 7n, 6, -4851n, 2n),
+    (-9n, 5n, 3n, 8, 27n, 7n),
+    (5n, 19n, 2n, 12, -101n, 384n),
+    (2n, 7n, 10n, 7, -1n, 7n),
+    (34n, 21n, 10n, 9, -39034n, 791n)
+]
+
+for (a, b, p, k, c, d) in examples do
+    let x = to_p_adic(a, b, p, k), y = to_p_adic(c, d, p, k)
+    let sum = add(x, y, p, k)
+
+    write_line("{p}-adic to {k} digits:")
+    let first = "{a}/{b}", second = "{c}/{d}"
+
+    write_line("    {first,-11} {show(x)}")
+    write_line("    {second,-11} {show(y)}")
+    write_line("    {"sum",-11} {show(sum)} = {rational(sum, p, k)}\n")
+od
