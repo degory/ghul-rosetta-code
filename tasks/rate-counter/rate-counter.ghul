@@ -1,0 +1,58 @@
+use default
+
+use System.Diagnostics.Stopwatch
+
+class RATE_COUNTER is
+    _clock: Stopwatch
+    _jobs: int
+
+    init() is
+        _clock = Stopwatch()
+        _jobs = 0
+    si
+
+    tick(job: () -> void) is
+        _clock.start()
+        job()
+        _clock.stop()
+        _jobs = _jobs + 1
+    si
+
+    jobs: int => _jobs
+    seconds: double => _clock.elapsed.total_seconds
+    rate: double => cast double(_jobs) / seconds
+si
+
+job() is
+    let total mut = 0L
+
+    for i in 0..10_000 do
+        total = total + cast long(i) * cast long(i)
+    od
+si
+
+let tick_ns = 1.0e9 / cast double(Stopwatch.frequency)
+write_line("timer resolution: {tick_ns:F0} ns")
+
+for count in [100, 1_000, 10_000] do
+    let counter = RATE_COUNTER()
+
+    for _ in 0..count do
+        counter.tick(job)
+    od
+
+    write_line(
+        "{counter.jobs,6} jobs in {counter.seconds * 1000.0,10:F3} ms, "
+        "{counter.rate,12:F0} jobs per second")
+od
+
+let counter = RATE_COUNTER()
+let deadline = Stopwatch.start_new()
+
+while deadline.elapsed.total_seconds < 0.25 do
+    counter.tick(job)
+od
+
+write_line(
+    "{counter.jobs,6} jobs in 250 ms of wall time, "
+    "{counter.rate,12:F0} jobs per second of job time")
