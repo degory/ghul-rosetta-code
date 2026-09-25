@@ -97,7 +97,6 @@ home_prime_chain(start: bigint) -> Pipe[bigint] is
 
         let digits = prime_factors(current)
             |> map(factor => "{factor}")
-            |> collect_list()
 
         current = bigint.parse(digits |> join(""))
     od
@@ -106,7 +105,7 @@ home_prime_chain(start: bigint) -> Pipe[bigint] is
 si
 
 show(start: int) is
-    let chain = home_prime_chain(cast(start)) |> collect_list()
+    let chain = home_prime_chain(cast(start)) |> collect()
     let steps = chain.count - 1
     let stages = 0..steps
         |> map(index => "HP{chain[index]}({steps - index})")

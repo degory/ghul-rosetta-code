@@ -22,7 +22,6 @@ write_line("base 2: {base_2}")
 for base in 3::5 do
     let terms = 0::9
         |> map(n => "{van_der_corput(n, base):F4}")
-        |> collect_list()
 
     write_line("base {base}: {terms |> join(", ")}")
 od
