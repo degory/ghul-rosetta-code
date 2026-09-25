@@ -1,0 +1,50 @@
+use default
+
+coefficients(p: int) -> Pipe[long] is
+    let binomial mut = 1L
+
+    for k in 0::p do
+        yield if k % 2 == 0 then binomial else -binomial fi
+
+        binomial = binomial * cast(p - k) / cast(k + 1)
+    od
+si
+
+term(coefficient: long, power: int) -> string =>
+    let size = long.abs(coefficient) in
+    let sign = if coefficient < 0L then " - " else " + " fi in
+    let number = if size == 1L /\ power > 0 then "" else "{size}" fi in
+    let x = case power
+        when 0 then ""
+        when 1 then "x"
+        else "x^{power}"
+        esac
+    in
+    "{sign}{number}{x}"
+
+expansion(p: int) -> string =>
+    (coefficients(p)
+        |> index()
+        |> map(((k, coefficient)) => term(coefficient, p - k))
+        |> join("")).substring(3)
+
+is_prime(p: int) -> bool =>
+    p >= 2 /\
+    coefficients(p)
+        |> index()
+        |> all(((k, coefficient)) =>
+            let adjusted = case k
+                when 0 then coefficient - 1L
+                when p then coefficient + 1L
+                else coefficient
+                esac
+            in
+            adjusted % cast(p) == 0L)
+
+for p in 0::7 do
+    write_line("(x-1)^{p} = {expansion(p)}")
+od
+
+for limit in [35, 50] do
+    write_line("primes under {limit}: {0..limit |> filter(is_prime)}")
+od
