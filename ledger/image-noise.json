@@ -1,6 +1,6 @@
 {
   "title": "Image noise",
-  "state": "rejected",
-  "reason": "nondeterministic",
-  "note": "the answer is a frame rate, which is what the machine happened to manage"
+  "slug": "image-noise",
+  "state": "solved",
+  "note": "reopened, was rejected/nondeterministic: the frame rate is what the machine manages and the noise is random, so the test checks for a positive rate each second and a 320 by 240 frame"
 }

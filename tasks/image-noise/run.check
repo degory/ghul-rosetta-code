@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# The noise is random and the frame rate is whatever the machine manages, so
+# what is asserted is the shape: a positive rate for each of three seconds,
+# then the last frame written as a 320 by 240 PNG.
+
+out=$1
+
+trap 'rm -f noise.png' EXIT
+
+fail() {
+    echo "$1"
+    cat "$out"
+    exit 1
+}
+
+for second in 1 2 3 ; do
+    grep -qxE "second $second: [1-9][0-9]* frames per second" "$out" ||
+        fail "no frame rate for second $second"
+done
+
+grep -qx '<<image noise.png>>' "$out" || fail "the image was not shown"
+
+[ "$(head -c 8 noise.png | od -An -tx1 | tr -d ' \n')" = 89504e470d0a1a0a ] ||
+    fail "noise.png is not a PNG"
+
+[ "$(od -An -tu1 -j16 -N8 noise.png | tr -s ' ' | sed 's/^ //')" = "0 0 1 64 0 0 0 240" ] ||
+    fail "noise.png is not 320 by 240"

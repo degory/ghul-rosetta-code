@@ -1,0 +1,49 @@
+use default
+
+use Raster.IMAGE
+use System.Diagnostics.Stopwatch
+
+let width = 320
+let height = 240
+let seconds = 3
+
+let live = System.Environment.get_environment_variable("GHUL_LIVE_IMAGES")?
+
+let random = System.Random()
+let image = IMAGE(width, height)
+let noise = repeat(0ub, width * height / 8) |> collect_array()
+
+draw_noise() is
+    random.next_bytes(noise)
+
+    for y in 0..height do
+        for x in 0..width do
+            let i = y * width + x
+            let lit = noise[i / 8] & (1ub << (i % 8)) != 0ub
+            let shade = if lit then 255ub else 0ub fi
+
+            image.set_pixel(x, y, shade, shade, shade)
+        od
+    od
+si
+
+let clock = Stopwatch.start_new()
+
+for second in 1::seconds do
+    let frames mut = 0
+
+    while clock.elapsed.total_seconds < cast double(second) do
+        draw_noise()
+        frames = frames + 1
+
+        if live then
+            image.write("noise.png")
+            image.show("noise.png")
+        fi
+    od
+
+    write_line("second {second}: {frames} frames per second")
+od
+
+image.write("noise.png")
+image.show("noise.png")
