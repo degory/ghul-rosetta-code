@@ -133,7 +133,8 @@ and solved task, or only the slugs given, and leaves each differing live section
 markup as `wiki-out/<slug>.live`.
 
 `rosetta publish` puts these on the wiki. `--minor` marks its edits as minor in the page history, for a run
-that only reformats sections already there. To paste one by hand instead, it goes in alphabetical
+that only reformats sections already there. A run waits 30 seconds between tasks;
+`ROSETTA_PACE_SECONDS` lengthens that when the wiki is slow. To paste one by hand instead, it goes in alphabetical
 position among the language headers: `ghul` sorts after `Genie` and before `Go`. Either way, run
 `rosetta sync` afterwards so the ledger records it.
 

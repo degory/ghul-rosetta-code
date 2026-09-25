@@ -883,8 +883,18 @@ si
 
 // How long a publish run waits between one task's requests and the next's. Paces every request
 // the wiki sees from a run, not only a successful edit, so a task that made a request and then
-// failed still waits before the next one starts.
-pace_ms() -> int => 30000
+// failed still waits before the next one starts. ROSETTA_PACE_SECONDS lengthens it when the
+// wiki is slow to answer.
+pace_ms() -> int is
+    let seconds = System.Environment.get_environment_variable("ROSETTA_PACE_SECONDS")
+    let parsed mut = 0
+
+    if seconds? /\ int.try_parse(seconds, parsed ref) /\ parsed > 0 then
+        return parsed * 1000
+    fi
+
+    30000
+si
 
 // `target` redirects every write to one page, so the whole path - sign in, fetch the real task
 // page, splice, save - can be run against a sandbox. The only thing it leaves untested is which
