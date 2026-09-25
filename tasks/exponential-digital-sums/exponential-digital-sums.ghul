@@ -23,7 +23,7 @@ report(wanted: int, least_ways: int, highest: int) is
     while found < wanted do
         n = n + 1
 
-        let ways = exponents(n, highest) |> collect_list()
+        let ways = exponents(n, highest) |> collect()
 
         if ways.count >= least_ways then
             found = found + 1

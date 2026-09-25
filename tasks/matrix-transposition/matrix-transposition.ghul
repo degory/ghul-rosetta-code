@@ -4,7 +4,7 @@ transpose(matrix: List[List[int]]) -> List[List[int]] is
     let columns = LIST()
 
     for column in 0..matrix[0].count do
-        let row = matrix |> map(source => source[column]) |> collect_list()
+        let row = matrix |> map(source => source[column]) |> collect()
 
         columns.add(row)
     od

@@ -7,8 +7,8 @@ let unknown = -1
 clues_of(text: string) -> List[List[int]] =>
     text.split([' '])
         |> map(word =>
-            word |> map(c => cast int(c) - 64) |> collect_list())
-        |> collect_list()
+            word |> map(c => cast int(c) - 64) |> collect())
+        |> collect()
 
 arrangements(clues: List[int], length: int) -> List[long] is
     let found = LIST()
@@ -54,14 +54,14 @@ class PUZZLE is
                     (0..columns)
                         |> map(c =>
                             0..rows |> map(r => r * columns + c)))
-                |> map(line => line |> collect_list())
-                |> collect_list()
+                |> map(line => line |> collect())
+                |> collect()
 
         choices =
             row_clues |> map(clue => arrangements(clue, columns))
                 |> cat(
                     column_clues |> map(clue => arrangements(clue, rows)))
-                |> collect_list()
+                |> collect()
     si
 
     propagate(cells: Cells) -> bool is
@@ -83,7 +83,7 @@ class PUZZLE is
                     choices[k]
                         |> filter(a =>
                             a & empty == 0L /\ a & filled == filled)
-                        |> collect_list()
+                        |> collect()
 
                 if fits.count == 0 then
                     return false

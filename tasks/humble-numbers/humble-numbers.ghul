@@ -31,7 +31,7 @@ humble() -> Pipe[long] is
 si
 
 let first_fifty =
-    humble() |> take(50) |> map(value => "{value,5}") |> collect_list()
+    humble() |> take(50) |> map(value => "{value,5}") |> collect()
 
 write_line("the first fifty humble numbers:")
 

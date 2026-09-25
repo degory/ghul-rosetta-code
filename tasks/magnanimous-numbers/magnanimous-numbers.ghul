@@ -45,7 +45,7 @@ magnanimous() -> Pipe[int] is
     od
 si
 
-let terms = magnanimous() |> take(400) |> collect_list()
+let terms = magnanimous() |> take(400) |> collect()
 
 write_line("the first 45 magnanimous numbers:")
 

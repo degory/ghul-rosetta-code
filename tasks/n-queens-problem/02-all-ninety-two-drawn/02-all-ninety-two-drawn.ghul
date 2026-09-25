@@ -58,7 +58,7 @@ board(image: IMAGE, solution: List[int], left: int, top: int) is
     od
 si
 
-let solutions = placements(8, LIST()) |> collect_list()
+let solutions = placements(8, LIST()) |> collect()
 
 let down = (solutions.count + across - 1) / across
 

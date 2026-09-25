@@ -70,7 +70,7 @@ let to_place = [('W', 9), ('B', 9)] |> collect_map()
 other(side: char) -> char => if side == 'W' then 'B' else 'W' fi
 
 holding(side: char) -> List[string] =>
-    board.keys |> filter(p => board[p] == side) |> collect_list()
+    board.keys |> filter(p => board[p] == side) |> collect()
 
 count_of(side: char) -> int => holding(side).count
 
@@ -87,7 +87,7 @@ moves(side: char) -> List[Move] is
         return
             empty
                 |> map(p => (from = cast string?(null), to = p))
-                |> collect_list()
+                |> collect()
     fi
 
     let flying = count_of(side) == 3
@@ -136,7 +136,7 @@ si
 
 removable(side: char) -> List[string] is
     let pieces = holding(side)
-    let loose = pieces |> filter(p => !in_mill(p, side)) |> collect_list()
+    let loose = pieces |> filter(p => !in_mill(p, side)) |> collect()
 
     if loose.count > 0 then loose else pieces fi
 si
@@ -146,7 +146,7 @@ pick[T](items: List[T]) -> T => items[random.next(items.count)]
 computer_move(side: char) -> Move is
     let legal = moves(side)
     let winning =
-        legal |> filter(m => makes_mill(m, side)) |> collect_list()
+        legal |> filter(m => makes_mill(m, side)) |> collect()
 
     if winning.count > 0 then
         return pick(winning)
@@ -161,7 +161,7 @@ computer_move(side: char) -> Move is
     let blocking =
         legal
             |> filter(m => threats |> any(t => t =~ m.to))
-            |> collect_list()
+            |> collect()
 
     if blocking.count > 0 then pick(blocking) else pick(legal) fi
 si

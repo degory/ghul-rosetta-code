@@ -38,7 +38,7 @@ let points =
 
              (x = radius * Math.cos(angle),
               y = radius * Math.sin(angle))))
-        |> collect_list()
+        |> collect()
 
 seeded_centres() -> Collections.List[Point] is
     let centres = LIST([points[random.next(points.count)]])
@@ -47,7 +47,7 @@ seeded_centres() -> Collections.List[Point] is
         let weights =
             points
                 |> map(at => nearest(centres, at).distance)
-                |> collect_list()
+                |> collect()
 
         let total = weights |> sum()
 
@@ -95,7 +95,7 @@ recentred() -> Collections.List[Point] is
                 (x = totals[which].x / cast double(sizes[which]),
                  y = totals[which].y / cast double(sizes[which]))
             fi)
-        |> collect_list()
+        |> collect()
 si
 
 let passes mut = 0

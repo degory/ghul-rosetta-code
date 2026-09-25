@@ -152,7 +152,7 @@ centre(i: int) -> (x: double, y: double) =>
 
 image.colour(210ub, 50ub, 40ub)
 image.stroke(4.0D)
-image.line(path |> map(centre) |> collect_list())
+image.line(path |> map(centre) |> collect())
 
 image.write("solved.png")
 

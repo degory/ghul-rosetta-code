@@ -26,7 +26,7 @@ let idoneals = 1::1_850 |> filter(is_idoneal) |> map(n => "{n,5}")
 
 write_line("the 65 known idoneal numbers:")
 
-let rows = idoneals |> collect_list()
+let rows = idoneals |> collect()
 
 for row in 0..13 do
     write_line(rows[row * 5..row * 5 + 5] |> join(""))

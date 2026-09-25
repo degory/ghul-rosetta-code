@@ -90,7 +90,7 @@ axes.y_ticks(
         |> map(set =>
             (value = cast double(datasets.count - set.index) - 0.5,
              label = set.value.label))
-        |> collect_list())
+        |> collect())
 
 axes.fit(0.0, 0.0, 55.0, cast double(datasets.count))
 axes.draw()

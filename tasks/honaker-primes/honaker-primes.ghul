@@ -42,7 +42,7 @@ si
 
 write_line("the first fifty Honaker primes:")
 
-let first_fifty = honakers() |> take(50) |> collect_list()
+let first_fifty = honakers() |> take(50) |> collect()
 
 for row in 0..10 do
     let cells =

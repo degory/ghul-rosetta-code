@@ -34,7 +34,7 @@ plural(count: int, noun: string) -> string =>
     "{count} {noun}{if count == 1 then "" else "s" fi}"
 
 for bags in 1::5 do
-    let ways = trees(bags) |> collect_list()
+    let ways = trees(bags) |> collect()
 
     write_line("{plural(bags, "bag")}, {plural(ways.count, "way")}")
 

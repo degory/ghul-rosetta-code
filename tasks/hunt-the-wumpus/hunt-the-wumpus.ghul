@@ -75,7 +75,7 @@ enter(room: int) is
         let empty =
             (1::caves.count)
                 |> filter(room => !deadly(room))
-                |> collect_list()
+                |> collect()
 
         enter(empty[random.next(empty.count)])
     fi

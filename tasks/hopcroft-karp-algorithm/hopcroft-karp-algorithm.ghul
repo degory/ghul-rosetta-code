@@ -125,7 +125,7 @@ check(2, 6, 6,
 check(3, 3, 3,
     1::3
     |> flat_map(i => 1::3 |> map(j => (from = i, to = j)))
-    |> collect_list(),
+    |> collect(),
     3)
 
 check(4, 2, 2, [], 0)
