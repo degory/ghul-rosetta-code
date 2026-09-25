@@ -134,7 +134,6 @@ write_line("the lengths of the first 201 words:")
 let first_201 = sentence_words()
     |> take(201)
     |> map(letters)
-    |> collect_list()
 
 for row in 0..9 do
     let cells = first_201

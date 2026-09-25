@@ -90,7 +90,7 @@ channel(c: Colour, axis: int) -> int =>
 
 spread(box: List[Weighted], axis: int) -> int =>
     let values =
-        box |> map(w => channel(w.colour, axis)) |> collect_list() in
+        box |> map(w => channel(w.colour, axis)) in
     (values |> reduce(0, int.max)) - (values |> reduce(255, int.min))
 
 widest(box: List[Weighted]) -> int =>

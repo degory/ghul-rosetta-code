@@ -167,7 +167,6 @@ let image = IMAGE(480, 360)
 let points =
     turtle.drawn
         |> flat_map(s => [project(s.from), project(s.to)])
-        |> collect_list()
 
 let low_x = points |> map(p => p.x) |> reduce(0.0D, Math.min)
 let high_x = points |> map(p => p.x) |> reduce(0.0D, Math.max)

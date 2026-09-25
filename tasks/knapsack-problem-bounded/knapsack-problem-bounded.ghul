@@ -35,7 +35,7 @@ let capacity = 400
 
 let copies =
     items
-    |> flat_map(item => repeat(item, item.pieces) |> collect_list())
+    |> flat_map(item => repeat(item, item.pieces))
     |> collect()
 
 let best =
@@ -80,7 +80,7 @@ for back in 0..copies.count do
     fi
 od
 
-let packed = counts |> sort((a, b) => a.key <> b.key) |> collect_list()
+let packed = counts |> sort((a, b) => a.key <> b.key)
 
 for entry in packed do
     write_line("{entry.value} {entry.key}")

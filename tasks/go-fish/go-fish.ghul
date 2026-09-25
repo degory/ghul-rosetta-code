@@ -86,7 +86,6 @@ my_choice() -> int =>
     (let mine =
         (0..ranks.count)
             |> filter(rank => held(me, rank) > 0)
-            |> collect_list()
 
      let known =
          mine |> filter(rank => you_hold.contains(rank)) |> collect()

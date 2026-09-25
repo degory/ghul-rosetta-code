@@ -20,7 +20,6 @@ od
 
 let actual = (1::9)
     |> map(digit => cast double(leading_counts[digit]) / 10.0)
-    |> collect()
 
 let expected = (1::9)
     |> map(digit => 100.0 * log10(1.0 + 1.0 / cast double(digit)))
@@ -39,7 +38,7 @@ box(left: double, bottom: double, right: double, top: double) is
          (x = right, y = bottom),
          (x = right, y = top),
          (x = left, y = top)]
-        |> collect_list())
+)
 si
 
 image.colour(215ub, 215ub, 215ub)

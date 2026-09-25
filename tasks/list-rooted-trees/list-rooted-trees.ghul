@@ -47,4 +47,4 @@ od
 
 let counts = 1::9 |> map(n => trees(n) |> count())
 
-write_line("ways for 1 to 9 bags: {counts |> collect_list()}")
+write_line("ways for 1 to 9 bags: {counts}")

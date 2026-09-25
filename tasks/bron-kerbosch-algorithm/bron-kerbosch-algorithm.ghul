@@ -56,7 +56,6 @@ search(
     let branches =
         candidates
             |> filter(v => !neighbours[pivot].contains(v))
-            |> collect_list()
 
     for vertex in branches do
         let adjacent = neighbours[vertex]

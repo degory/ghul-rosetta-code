@@ -19,6 +19,5 @@ si
 let first_eight = from(1)
     |> filter(is_happy)
     |> take(8)
-    |> collect()
 
 write_line("first happy numbers: {first_eight |> join(" ")}")

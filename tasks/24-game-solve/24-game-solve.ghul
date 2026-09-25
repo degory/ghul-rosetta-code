@@ -39,7 +39,6 @@ solve(terms: List[Term]) -> string? is
                     (0..terms.count)
                         |> filter(k => k != i /\ k != j)
                         |> map(k => terms[k])
-                        |> collect_list()
 
                 let joined = LIST()
 

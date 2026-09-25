@@ -22,7 +22,7 @@ si
 let limit = 100_000
 
 let lengths =
-    1::limit |> map(n => hailstone(n) |> count()) |> collect()
+    1::limit |> map(n => hailstone(n) |> count())
 
 let peak =
     lengths

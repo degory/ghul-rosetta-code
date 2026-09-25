@@ -156,7 +156,6 @@ computer_move(side: char) -> Move is
         moves(other(side))
             |> filter(m => makes_mill(m, other(side)))
             |> map(m => m.to)
-            |> collect_list()
 
     let blocking =
         legal
