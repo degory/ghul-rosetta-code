@@ -1,0 +1,9 @@
+With the Wikipedia pad:
+  message:    HELLOWORLD
+  encrypted:  FLUJSMHUWF
+  decrypted:  HELLOWORLD
+  lines used: 3
+
+With a freshly generated pad of 5 lines:
+  round trip recovers the message: true
+  lines left unused: 4

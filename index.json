@@ -17939,6 +17939,32 @@
       ]
     },
     {
+      "slug": "one-time-pad",
+      "title": "One-time pad",
+      "url": "https://rosettacode.org/wiki/One-time_pad",
+      "tags": [
+        "strings",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 96,
+      "parts": [
+        {
+          "id": "one-time-pad",
+          "heading": null,
+          "source": "tasks/one-time-pad/one-time-pad.ghul",
+          "output": "tasks/one-time-pad/run.expected",
+          "lines": 96,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "one-two-primes",
       "title": "One-two primes",
       "url": "https://rosettacode.org/wiki/One-two_primes",
