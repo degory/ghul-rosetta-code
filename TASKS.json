@@ -1604,6 +1604,21 @@
       "published_hash": "6a92ca98f2404ff12c90f8bfc264933bacd2730f7eb29b9753f86bfb7e6f649d"
     },
     {
+      "title": "Determinant and permanent",
+      "slug": "determinant-and-permanent",
+      "state": "solved"
+    },
+    {
+      "title": "Determine if a string has all the same characters",
+      "slug": "determine-if-a-string-has-all-the-same-characters",
+      "state": "solved"
+    },
+    {
+      "title": "Determine if a string has all unique characters",
+      "slug": "determine-if-a-string-has-all-unique-characters",
+      "state": "solved"
+    },
+    {
       "title": "Determine if a string is collapsible",
       "slug": "determine-if-a-string-is-collapsible",
       "state": "published",
@@ -1643,10 +1658,20 @@
       "published_hash": "2de95a47b20ce29346a712795d5e86e9cf50dbd64ad4f047be59e7780c6daf72"
     },
     {
+      "title": "Dice game probabilities",
+      "slug": "dice-game-probabilities",
+      "state": "solved"
+    },
+    {
       "title": "Digital root",
       "slug": "digital-root",
       "state": "published",
       "published_hash": "07bc2080a05ff5f3245523edadfaa1ef3d1a66f451b890676a4f4e01de1907f9"
+    },
+    {
+      "title": "Digital root/Multiplicative digital root",
+      "slug": "digital-root-multiplicative-digital-root",
+      "state": "solved"
     },
     {
       "title": "Dijkstra\u0027s algorithm",
@@ -1670,10 +1695,35 @@
       "published_hash": "394958dd51bf8fc10386e399460d2a0ad42e4eaa150172b381c049bdbbe55cca"
     },
     {
+      "title": "Disarium numbers",
+      "slug": "disarium-numbers",
+      "state": "solved"
+    },
+    {
+      "title": "Discordian date",
+      "slug": "discordian-date",
+      "state": "solved"
+    },
+    {
+      "title": "Display a linear combination",
+      "slug": "display-a-linear-combination",
+      "state": "solved"
+    },
+    {
       "title": "Display an outline as a nested table",
       "slug": "display-an-outline-as-a-nested-table",
       "state": "published",
       "published_hash": "e811ec26d3c99a0f5047178f64ec33b15db7315996f4844dc86040c36a607302"
+    },
+    {
+      "title": "Distance and Bearing",
+      "slug": "distance-and-bearing",
+      "state": "solved"
+    },
+    {
+      "title": "Distribution of 0 digits in factorial series",
+      "slug": "distribution-of-0-digits-in-factorial-series",
+      "state": "solved"
     },
     {
       "title": "Diversity prediction theorem",
