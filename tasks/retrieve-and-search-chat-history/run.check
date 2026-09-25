@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# The stand-in listens on whichever port is free, so the port is taken out
+# of each address before the output is compared.
+
+sed -E 's|http://127\.0\.0\.1:[0-9]+/|http://127.0.0.1:PORT/|' "$1" |
+    diff "$(dirname "$0")/run.expected-lines" -

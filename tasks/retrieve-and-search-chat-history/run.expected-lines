@@ -1,0 +1,33 @@
+http://127.0.0.1:PORT/conferences/tcl/2026-09-16.tcl
+------
+m 2026-09-16T12:16:51Z ijchain {«Donal Fellows» Since values are in principle immutable (ie, references are easy to share) and representations are just optional views of the value, there's no point in preventing the transformation. It doesn't alter the semantics of the value at all. Or it shouldn't; if it does, that's likely a bug.}
+m 2026-09-16T12:19:34Z ijchain {«Donal Fellows» But "check for other types" is the most likely location of the bug. It's not Tcl thinking.}
+m 2026-09-16T13:59:47Z ijchain {«nico-robert» @Donal Fellows , I've used this command in the past, but never again, as you've long pointed out, it's only useful for debugging.}
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-17.tcl
+------
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-18.tcl
+------
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-19.tcl
+------
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-20.tcl
+------
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-21.tcl
+------
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-22.tcl
+------
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-23.tcl
+------
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-24.tcl
+------
+------
+http://127.0.0.1:PORT/conferences/tcl/2026-09-25.tcl
+------
+------

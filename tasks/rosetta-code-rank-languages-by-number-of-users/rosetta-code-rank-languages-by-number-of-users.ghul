@@ -1,0 +1,118 @@
+use default
+use System.Net.Http.HttpClient
+use System.Net.HttpListener
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Sockets.TcpListener
+use System.Text.Encoding
+use System.Text.Json.JsonDocument
+use System.Text.Json.JsonDocumentOptions
+
+// The task: rank the languages by how many of the wiki's users say they use
+// each, which is the size of the category X User for each language X. Those
+// categories are the subcategories of Category:Language users, fetched from
+// the wiki's API a batch at a time, following its continuation until there
+// is no more.
+languages(api: string) -> List[(name: string, users: int)] is
+    let client = HttpClient()
+
+    // The wiki refuses a request that does not say what is making it.
+    client.default_request_headers.user_agent
+        .parse_add("ghul-rosetta-code/1.0")
+
+    let found = LIST[(name: string, users: int)]()
+    let query =
+        "{api}?action=query&generator=categorymembers"
+        "&gcmtitle=Category:Language_users&gcmtype=subcat"
+        "&gcmlimit=500&prop=categoryinfo&format=json&formatversion=2"
+    let next mut = ""
+
+    do
+        let text = client.get_string_async("{query}{next}").result
+        let reply = JsonDocument.parse(text, _[JsonDocumentOptions])
+        let root = reply.root_element
+
+        for page in root.get_property("query")
+                .get_property("pages").enumerate_array() do
+            let title = page.get_property("title").get_string() ?? ""
+            let info = page.get_property("categoryinfo")
+
+            let name =
+                title.substring("Category:".length)
+                    .replace(" User", "")
+
+            found.add((name, info.get_property("pages").get_int32()))
+        od
+
+        let more: System.Text.Json.JsonElement mut = _
+
+        if !root.try_get_property("continue", more ref) then
+            break
+        fi
+
+        let token = more.get_property("gcmcontinue").get_string() ?? ""
+
+        next =
+            "&gcmcontinue={System.Uri.escape_data_string(token)}"
+            "&continue=gcmcontinue||"
+    od
+
+    found
+si
+
+// Given no API, the entry answers from replies the wiki gave on the date
+// the file names, one reply a request, served on the loopback interface.
+stand_in() -> string is
+    let replies =
+        IO.File.read_all_lines("api-replies.txt")
+            |> skip(1) |> collect_list()
+    let probe = TcpListener(IPAddress.loopback, 0)
+
+    probe.start()
+
+    let port =
+        if let bound: IPEndPoint = probe.local_endpoint then bound.port
+        else throw System.Exception("the probe has no address")
+        fi
+
+    probe.stop()
+
+    let prefix = "http://127.0.0.1:{port}/"
+    let listener = HttpListener()
+
+    listener.prefixes.add(prefix)
+    listener.start()
+
+    Tasks.TASK.run(() is
+        for reply in replies do
+            let context = listener.get_context()
+            let body = Encoding.utf8.get_bytes(reply)
+
+            context.response.output_stream.write(body, 0, body.count)
+            context.response.close()
+        od
+    si)
+
+    "{prefix}w/api.php"
+si
+
+let api = if args.count > 0 then args[0] else stand_in() fi
+
+let ranked =
+    languages(api)
+        |> filter(l => l.users >= 100)
+        |> sort((a, b) =>
+            if a.users != b.users then b.users <> a.users
+            else string.compare_ordinal(a.name, b.name)
+            fi)
+        |> collect_list()
+
+let rank mut = 0
+
+for (i, (name, users)) in ranked |> index() do
+    if i == 0 \/ users != ranked[i - 1].users then
+        rank = i + 1
+    fi
+
+    write_line("Rank: {rank,3} ({users,4} users) {name}")
+od

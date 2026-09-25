@@ -1,0 +1,32 @@
+use default
+
+let out mut = 0
+let most mut = 0
+let peaks = LIST[string]()
+
+for line in IO.File.read_all_lines("mlijobs.txt") do
+    let fields =
+        line.split([' '], System.StringSplitOptions.REMOVE_EMPTY_ENTRIES)
+    let time = fields[3]
+
+    if fields[1] =~ "OUT" then
+        out = out + 1
+
+        if out > most then
+            most = out
+            peaks.clear()
+        fi
+
+        if out == most then
+            peaks.add(time)
+        fi
+    else
+        out = out - 1
+    fi
+od
+
+write_line("Maximum simultaneous licenses in use: {most}, at:")
+
+for time in peaks do
+    write_line("    {time}")
+od

@@ -1,0 +1,6 @@
+{
+  "title": "Yahoo! search interface",
+  "state": "rejected",
+  "reason": "needs-network",
+  "note": "the search API is gone and the results page refuses a plain fetch"
+}

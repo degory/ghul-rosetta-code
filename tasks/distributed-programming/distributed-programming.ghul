@@ -1,0 +1,142 @@
+use default
+use System.Net.HttpListener
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Http.HttpClient
+use System.Net.Http.StringContent
+use System.Net.Sockets.TcpListener
+use System.Text.Encoding
+use System.Text.Json.JsonDocument
+use System.Text.Json.JsonDocumentOptions
+use System.Text.Json.JsonElement
+use System.Text.Json.JsonSerializer
+use System.Text.Json.JsonSerializerOptions
+
+// The two sides speak JSON-RPC 2.0 over HTTP. Run one copy as
+// `serve http://+:8080/` and another with that address to call it.
+
+json(value: object) -> string =>
+    JsonSerializer.serialize(value, JsonSerializerOptions())
+
+call(client: HttpClient, url: string, method: string, arguments: object)
+    -> string
+is
+    let request = MAP[string, object]()
+
+    request["jsonrpc"] = "2.0"
+    request["method"] = method
+    request["params"] = arguments
+    request["id"] = 1
+
+    let content =
+        StringContent(json(request), Encoding.utf8, "application/json")
+
+    let text =
+        client.post_async(url, content).result
+            .content.read_as_string_async().result
+
+    let reply =
+        JsonDocument.parse(text, _[JsonDocumentOptions])
+            .root_element
+
+    if reply.try_get_property("error", _) then
+        "error: {reply.get_property("error").get_property("message")}"
+    else
+        reply.get_property("result").get_raw_text()
+    fi
+si
+
+client(url: string) is
+    let http = HttpClient()
+
+    write_line("sum(1, 2, 3, 4) = {call(http, url, "sum", [1, 2, 3, 4])}")
+    write_line("upper(\"hello\") = {call(http, url, "upper", ["hello"])}")
+    write_line("square(7) = {call(http, url, "square", [7])}")
+si
+
+procedures() -> MAP[string, (JsonElement) -> object] is
+    let offered = MAP[string, (JsonElement) -> object]()
+
+    offered["sum"] = p =>
+        cast object(p.enumerate_array() |> map(e => e.get_int32()) |> sum())
+
+    offered["upper"] = p => (p[0].get_string() ?? "").to_upper_invariant()
+
+    offered
+si
+
+serve(listener: HttpListener) is
+    let offered = procedures()
+
+    while true do
+        let context = listener.get_context()
+        let body =
+            IO.StreamReader(context.request.input_stream).read_to_end()
+
+        let request =
+            JsonDocument.parse(body, _[JsonDocumentOptions])
+                .root_element
+
+        let method = request.get_property("method").get_string() ?? ""
+        let arguments = request.get_property("params")
+        let reply = MAP[string, object]()
+
+        reply["jsonrpc"] = "2.0"
+        reply["id"] = request.get_property("id").get_int32()
+
+        if offered.contains_key(method) then
+            reply["result"] = offered[method](arguments)
+        else
+            let error = MAP[string, object]()
+
+            error["code"] = -32601
+            error["message"] = "method not found"
+            reply["error"] = error
+        fi
+
+        let bytes = Encoding.utf8.get_bytes(json(reply))
+
+        context.response.content_type = "application/json"
+        context.response.output_stream.write(bytes, 0, bytes.count)
+        context.response.close()
+    od
+si
+
+listen(prefix: string) -> HttpListener is
+    let listener = HttpListener()
+
+    listener.prefixes.add(prefix)
+    listener.start()
+
+    listener
+si
+
+// With no arguments, a server on the loopback interface stands in for the
+// remote one and the client calls it.
+stand_in() -> string is
+    let probe = TcpListener(IPAddress.loopback, 0)
+
+    probe.start()
+
+    let port =
+        if let bound: IPEndPoint = probe.local_endpoint then bound.port
+        else throw System.Exception("the probe has no address")
+        fi
+
+    probe.stop()
+
+    let prefix = "http://127.0.0.1:{port}/"
+    let listener = listen(prefix)
+
+    Tasks.TASK.run(() => serve(listener))
+
+    prefix
+si
+
+if args.count > 1 /\ args[0] =~ "serve" then
+    serve(listen(args[1]))
+elif args.count > 0 then
+    client(args[0])
+else
+    client(stand_in())
+fi
