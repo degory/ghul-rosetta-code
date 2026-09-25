@@ -1,0 +1,76 @@
+use default
+
+letter_counts(text: string) -> LIST[int] is
+    let counts = repeat(0, 26) |> collect_list()
+
+    for letter in text do
+        if char.is_letter(letter) then
+            let index = cast int(char.to_lower(letter)) - cast int('a')
+
+            counts[index] = counts[index] + 1
+        fi
+    od
+
+    return counts
+si
+
+fits(word: List[int], available: List[int]) -> bool =>
+    0..26 |> all(i => word[i] <= available[i])
+
+adjust(counts: LIST[int], by: List[int], sign: int) is
+    for letter in 0..26 do
+        counts[letter] = counts[letter] + sign * by[letter]
+    od
+si
+
+let words = IO.File.read_all_lines("unixdict.txt")
+
+anagrams_of(seed: string, wanted: int) -> List[string] is
+    let remaining = letter_counts(seed)
+
+    let candidates =
+        words
+            |> filter(word => word.length > 2)
+            |> map(word => (text = word, counts = letter_counts(word)))
+            |> filter(candidate => fits(candidate.counts, remaining))
+            |> sort((a, b) => b.text.length <> a.text.length)
+            |> collect()
+
+    let found = LIST[string]()
+    let chosen = LIST[string]()
+
+    search(start: int) is
+        if found.count >= wanted then
+            return
+        elif remaining |> all(count => count == 0) then
+            found.add(chosen |> join(" "))
+            return
+        fi
+
+        for i in start..candidates.count do
+            let candidate = candidates[i]
+
+            if fits(candidate.counts, remaining) then
+                adjust(remaining, candidate.counts, -1)
+
+                chosen.add(candidate.text)
+
+                search(i)
+
+                chosen.remove_at(chosen.count - 1)
+
+                adjust(remaining, candidate.counts, 1)
+            fi
+        od
+    si
+
+    search(0)
+
+    return found
+si
+
+for seed in ["Petelomax", "rosetta code", "William Shakespeare"] do
+    write_line("{seed}:")
+
+    anagrams_of(seed, 3) |> each(phrase => write_line("  {phrase}"))
+od
