@@ -18157,14 +18157,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 58,
+      "lines": 59,
       "parts": [
         {
           "id": "parallel-calculations",
           "heading": null,
           "source": "tasks/parallel-calculations/parallel-calculations.ghul",
           "output": "tasks/parallel-calculations/run.expected",
-          "lines": 58,
+          "lines": 59,
           "playground": true,
           "input": false,
           "images": []
