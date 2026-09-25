@@ -730,7 +730,9 @@ build each task as they go.
 Locally, run the tests for the tasks you created or edited, and no others: name them on one command
 line (`tasks/<slug-a> tasks/<slug-b>`). A new task has to be run anyway to capture its expectation,
 and an edited one to show it still passes. A task nobody touched cannot have changed, and CI runs the
-whole suite on every pull request, so adding solutions never calls for running all of them. Whether
+touched tasks on every pull request and every merge queue group, and the whole suite whenever
+something outside the tasks changes (`scripts/tasks-to-test.sh` decides), so adding solutions
+never calls for running all of them. Whether
 to run the whole suite, or a subset, is a judgement call only when something every task depends on
 has changed: the compiler or runtime version, `Directory.Build.props` or `Directory.Packages.props`,
 the test runner or how the tests are run, or a shared script.
