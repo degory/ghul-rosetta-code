@@ -11,7 +11,7 @@ from a file or built at run time. `=~` compares the characters.
 
 Two string literals separated only by white space are one literal, so a comma
 left out of a list of strings joins two elements instead of failing to compile.
-A `;` between them keeps them apart, and reading the count is the cheap check.
+The comma is the fix, and reading the count is the cheap check.
 
 `byte` is the signed type and `ubyte` the unsigned one, the reverse of .NET's
 names for the same two types. Code that reads binary data wants `ubyte`.
