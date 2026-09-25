@@ -1,0 +1,42 @@
+use default
+
+use Matrix = List[List[long]]
+
+minor(m: Matrix, column: int) -> Matrix =>
+    m
+        |> skip(1)
+        |> map(row =>
+            row
+                |> index()
+                |> filter(((j, _)) => j != column)
+                |> map(((_, value)) => value)
+                |> collect_list())
+        |> collect_list()
+
+expand(m: Matrix, alternating: bool) -> long =>
+    if m.count == 0 then
+        1L
+    else
+        0..m.count
+            |> map(j =>
+                let negative = alternating /\ j % 2 == 1 in
+                let sign = if negative then -1L else 1L fi in
+                sign * m[0][j] * expand(minor(m, j), alternating))
+            |> sum()
+    fi
+
+determinant(m: Matrix) -> long => expand(m, true)
+
+permanent(m: Matrix) -> long => expand(m, false)
+
+let matrices = [
+    [[1L, 2L], [3L, 4L]],
+    [[2L, 9L, 4L], [7L, 5L, 3L], [6L, 1L, 8L]],
+    [[0L, 1L, 0L], [0L, 0L, 1L], [1L, 0L, 0L]],
+    [[0L, 1L, 0L], [1L, 0L, 0L], [0L, 0L, 1L]]
+]
+
+for m in matrices do
+    write_line("{m}")
+    write_line("    determinant {determinant(m)}, permanent {permanent(m)}")
+od
