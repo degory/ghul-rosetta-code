@@ -14555,6 +14555,32 @@
       ]
     },
     {
+      "slug": "law-of-cosines-triples",
+      "title": "Law of cosines - triples",
+      "url": "https://rosettacode.org/wiki/Law_of_cosines_-_triples",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "law-of-cosines-triples",
+          "heading": null,
+          "source": "tasks/law-of-cosines-triples/law-of-cosines-triples.ghul",
+          "output": "tasks/law-of-cosines-triples/run.expected",
+          "lines": 35,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "leap-year",
       "title": "Leap year",
       "url": "https://rosettacode.org/wiki/Leap_year",
