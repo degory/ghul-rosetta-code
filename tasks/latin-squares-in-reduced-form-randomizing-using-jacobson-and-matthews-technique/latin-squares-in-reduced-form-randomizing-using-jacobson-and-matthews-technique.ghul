@@ -162,6 +162,8 @@ write_line()
 write_line("Part 3: the 750th square of order 42:")
 write_line(text(cube_42.square))
 
+write_line("\ngenerating 1,000 squares of order 256, the slow part")
+
 let cube_256 = INCIDENCE_CUBE(cyclic(256), random)
 
 for _ in 0..1000 do

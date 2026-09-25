@@ -60,6 +60,8 @@ always_composite(k: int) -> bool is
     return true
 si
 
+write_line("testing odd numbers for a composite k - 2^m at every m")
+
 let found =
     from(3, 2)
     |> filter(always_composite)

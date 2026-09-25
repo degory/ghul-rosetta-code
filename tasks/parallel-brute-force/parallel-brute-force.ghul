@@ -43,6 +43,8 @@ search(first: int) is
     od
 si
 
+write_line("hashing every candidate password, in parallel")
+
 Parallel.`for(0, 26, search)
 
 for (i, hex) in hashes |> index() do

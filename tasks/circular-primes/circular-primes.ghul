@@ -61,6 +61,8 @@ si
 
 repunit(n: int) -> bigint => (bigint.pow(10n, n) - 1n) / 9n
 
+write_line("sieving to {limit:N0}")
+
 let circular = 2..limit |> filter(is_circular) |> take(19) |> collect_list()
 
 write_line("The first 19 circular primes:")
@@ -72,5 +74,6 @@ let repunits =
         |> take(4)
         |> map(n => "R({n})")
 
-write_line("\nThe next 4 circular primes, all repunits:")
+write_line("\ntesting repunits for primality")
+write_line("The next 4 circular primes, all repunits:")
 write_line(repunits |> join(", "))

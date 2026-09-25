@@ -84,5 +84,8 @@ largest_truncatable(base: int) -> bigint is
 si
 
 for base in 3::12 do
-    write_line("base {base,3}: {largest_truncatable(base)}")
+    IO.Std.write("base {base,3}: ")
+    IO.Std.out.flush()
+
+    write_line("{largest_truncatable(base)}")
 od

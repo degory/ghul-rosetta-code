@@ -73,6 +73,8 @@ abbreviated(digits: string) -> string =>
         "{digits[0..20]}...{digits[20..<<0]}"
     fi
 
+write_line("testing concatenated primes for primality, which takes a while")
+write_line("")
 write_line("the first seven Smarandache-Wellin primes:")
 
 let wellin_primes =
