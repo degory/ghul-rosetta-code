@@ -1,0 +1,6 @@
+z^2 - 0.25                               stable
+z^2 + z + 0.5                            stable
+z^3 - 1.2z^2 + 0.07z + 0.3               stable
+z^3 + 3.3z^2 + 4z + 0.8                  not stable
+z^2 - 2.5z + 1                           not stable
+z^4 - 0.6z^3 - 0.1z^2 + 0.3z - 0.05      stable

@@ -13556,6 +13556,32 @@
       ]
     },
     {
+      "slug": "hofstadter-conway-10-000-sequence",
+      "title": "Hofstadter-Conway $10,000 sequence",
+      "url": "https://rosettacode.org/wiki/Hofstadter-Conway_$10,000_sequence",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "hofstadter-conway-10-000-sequence",
+          "heading": null,
+          "source": "tasks/hofstadter-conway-10-000-sequence/hofstadter-conway-10-000-sequence.ghul",
+          "output": "tasks/hofstadter-conway-10-000-sequence/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hofstadter-figure-figure-sequences",
       "title": "Hofstadter Figure-Figure sequences",
       "url": "https://rosettacode.org/wiki/Hofstadter_Figure-Figure_sequences",
@@ -13602,6 +13628,31 @@
           "source": "tasks/hofstadter-q-sequence/hofstadter-q-sequence.ghul",
           "output": "tasks/hofstadter-q-sequence/run.expected",
           "lines": 22,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "holidays-related-to-easter",
+      "title": "Holidays related to Easter",
+      "url": "https://rosettacode.org/wiki/Holidays_related_to_Easter",
+      "tags": [
+        "date-time"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 73,
+      "parts": [
+        {
+          "id": "holidays-related-to-easter",
+          "heading": null,
+          "source": "tasks/holidays-related-to-easter/holidays-related-to-easter.ghul",
+          "output": "tasks/holidays-related-to-easter/run.expected",
+          "lines": 73,
           "playground": true,
           "input": false,
           "images": []
@@ -13768,6 +13819,32 @@
           "source": "tasks/horners-rule-for-polynomial-evaluation/horners-rule-for-polynomial-evaluation.ghul",
           "output": "tasks/horners-rule-for-polynomial-evaluation/run.expected",
           "lines": 11,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "horse-racing",
+      "title": "Horse racing",
+      "url": "https://rosettacode.org/wiki/Horse_racing",
+      "tags": [
+        "puzzles",
+        "simulation"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 69,
+      "parts": [
+        {
+          "id": "horse-racing",
+          "heading": null,
+          "source": "tasks/horse-racing/horse-racing.ghul",
+          "output": "tasks/horse-racing/run.expected",
+          "lines": 69,
           "playground": true,
           "input": false,
           "images": []
@@ -13958,6 +14035,59 @@
       ]
     },
     {
+      "slug": "i-before-e-except-after-c",
+      "title": "I before E except after C",
+      "url": "https://rosettacode.org/wiki/I_before_E_except_after_C",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 22,
+      "parts": [
+        {
+          "id": "i-before-e-except-after-c",
+          "heading": null,
+          "source": "tasks/i-before-e-except-after-c/i-before-e-except-after-c.ghul",
+          "output": "tasks/i-before-e-except-after-c/run.expected",
+          "lines": 22,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "i-m-a-software-engineer-get-me-out-of-here",
+      "title": "I'm a software engineer, get me out of here",
+      "url": "https://rosettacode.org/wiki/I'm_a_software_engineer,_get_me_out_of_here",
+      "tags": [
+        "algorithms",
+        "puzzles",
+        "data-structures"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 144,
+      "parts": [
+        {
+          "id": "i-m-a-software-engineer-get-me-out-of-here",
+          "heading": null,
+          "source": "tasks/i-m-a-software-engineer-get-me-out-of-here/i-m-a-software-engineer-get-me-out-of-here.ghul",
+          "output": "tasks/i-m-a-software-engineer-get-me-out-of-here/run.expected",
+          "lines": 144,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "iban",
       "title": "IBAN",
       "url": "https://rosettacode.org/wiki/IBAN",
@@ -14031,6 +14161,32 @@
           "source": "tasks/identity-matrix/identity-matrix.ghul",
           "output": "tasks/identity-matrix/run.expected",
           "lines": 12,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "idiomatically-determine-all-the-characters-that-can-be-used-for-symbols",
+      "title": "Idiomatically determine all the characters that can be used for symbols",
+      "url": "https://rosettacode.org/wiki/Idiomatically_determine_all_the_characters_that_can_be_used_for_symbols",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "idiomatically-determine-all-the-characters-that-can-be-used-for-symbols",
+          "heading": null,
+          "source": "tasks/idiomatically-determine-all-the-characters-that-can-be-used-for-symbols/idiomatically-determine-all-the-characters-that-can-be-used-for-symbols.ghul",
+          "output": "tasks/idiomatically-determine-all-the-characters-that-can-be-used-for-symbols/run.expected",
+          "lines": 38,
           "playground": true,
           "input": false,
           "images": []
@@ -14194,6 +14350,31 @@
           "output": "tasks/include-a-file/run.expected",
           "lines": 9,
           "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "inconsummate-numbers-in-base-10",
+      "title": "Inconsummate numbers in base 10",
+      "url": "https://rosettacode.org/wiki/Inconsummate_numbers_in_base_10",
+      "tags": [
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 32,
+      "parts": [
+        {
+          "id": "inconsummate-numbers-in-base-10",
+          "heading": null,
+          "source": "tasks/inconsummate-numbers-in-base-10/inconsummate-numbers-in-base-10.ghul",
+          "output": "tasks/inconsummate-numbers-in-base-10/run.expected",
+          "lines": 32,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -14409,6 +14590,32 @@
       ]
     },
     {
+      "slug": "integer-overflow",
+      "title": "Integer overflow",
+      "url": "https://rosettacode.org/wiki/Integer_overflow",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "integer-overflow",
+          "heading": null,
+          "source": "tasks/integer-overflow/integer-overflow.ghul",
+          "output": "tasks/integer-overflow/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "intersecting-number-wheels",
       "title": "Intersecting number wheels",
       "url": "https://rosettacode.org/wiki/Intersecting_number_wheels",
@@ -14534,6 +14741,32 @@
           "source": "tasks/isbn13-check-digit/isbn13-check-digit.ghul",
           "output": "tasks/isbn13-check-digit/run.expected",
           "lines": 18,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "isograms-and-heterograms",
+      "title": "Isograms and heterograms",
+      "url": "https://rosettacode.org/wiki/Isograms_and_heterograms",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "isograms-and-heterograms",
+          "heading": null,
+          "source": "tasks/isograms-and-heterograms/isograms-and-heterograms.ghul",
+          "output": "tasks/isograms-and-heterograms/run.expected",
+          "lines": 39,
           "playground": true,
           "input": false,
           "images": []
@@ -15028,6 +15261,32 @@
           "source": "tasks/jump-anywhere/jump-anywhere.ghul",
           "output": "tasks/jump-anywhere/run.expected",
           "lines": 98,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "jury-stability-criterion",
+      "title": "Jury stability criterion",
+      "url": "https://rosettacode.org/wiki/Jury_stability_criterion",
+      "tags": [
+        "maths",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 74,
+      "parts": [
+        {
+          "id": "jury-stability-criterion",
+          "heading": null,
+          "source": "tasks/jury-stability-criterion/jury-stability-criterion.ghul",
+          "output": "tasks/jury-stability-criterion/run.expected",
+          "lines": 74,
           "playground": true,
           "input": false,
           "images": []

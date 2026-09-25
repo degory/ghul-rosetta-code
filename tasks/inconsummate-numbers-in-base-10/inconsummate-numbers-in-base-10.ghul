@@ -1,0 +1,32 @@
+use default
+
+digit_sum(n: int) -> int => "{n}" |> map(c => cast int(c - '0')) |> sum()
+
+// Every n below 10^7 has a digit sum of at most 63, so any consummate
+// number below 100,000 is n / digit_sum(n) for some n below 6.3 million.
+
+let limit = 100_000
+
+let consummate = (
+    let seen = repeat(false, limit) |> collect_list()
+
+    for n in 1..6_300_000 do
+        let s = digit_sum(n)
+
+        if n % s == 0 /\ n / s < limit then
+            seen[n / s] = true
+        fi
+    od
+
+    seen
+)
+
+let inconsummate = 1..limit |> filter(n => !consummate[n]) |> collect_list()
+
+write_line("The first 50 inconsummate numbers:")
+
+for row in inconsummate |> take(50) |> chunk(10) do
+    write_line(row |> map(n => "{n,5}") |> join(""))
+od
+
+write_line("\nThe one thousandth: {inconsummate[999]}")

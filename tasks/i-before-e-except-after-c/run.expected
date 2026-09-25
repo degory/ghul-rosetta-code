@@ -1,0 +1,5 @@
+I before E when not preceded by C:
+    465 against 213, plausible: true
+E before I when preceded by C:
+    13 against 24, plausible: false
+I before E except after C is plausible: false

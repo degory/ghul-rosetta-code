@@ -1,0 +1,74 @@
+use default
+
+// Coefficients are given from the highest power down, a0 first. Each
+// row of the Jury array is b[i] = a0 * a[i] - an * a[n - i] over the
+// row before, and the polynomial is stable when every row's first entry
+// outweighs its last.
+
+use Polynomial = List[double]
+
+evaluate(p: Polynomial, z: double) -> double =>
+    p |> reduce(0.0, (total: double, a: double) => total * z + a)
+
+next_row(row: Polynomial) -> Polynomial =>
+    let n = row.count - 1 in
+    0..n
+        |> map(i => row[0] * row[i] - row[n] * row[n - i])
+        |> collect_list()
+
+rows(p: Polynomial) -> Pipe[Polynomial] is
+    let row mut = p
+
+    while row.count > 1 do
+        yield row
+
+        row = next_row(row)
+    od
+si
+
+is_stable(p: Polynomial) -> bool =>
+    let n = p.count - 1 in
+    let sign = if n % 2 == 0 then 1.0 else -1.0 fi in
+    p[0] > 0.0 /\
+        evaluate(p, 1.0) > 0.0 /\
+        sign * evaluate(p, -1.0) > 0.0 /\
+        rows(p) |> all(row =>
+            double.abs(row[0]) > double.abs(row[row.count - 1]))
+
+show(p: Polynomial) -> string =>
+    let n = p.count - 1 in
+    let terms =
+        p
+            |> index()
+            |> filter(((_, a)) => a != 0.0)
+            |> map(((i, a)) =>
+                let power = n - i in
+                let x = case power
+                    when 0 then ""
+                    when 1 then "z"
+                    else "z^{power}"
+                    esac
+                in
+                let size = double.abs(a) in
+                let sign = if a < 0.0 then " - " else " + " fi in
+                let unit = size == 1.0 /\ power > 0 in
+                let number = if unit then "" else "{size}" fi in
+                "{sign}{number}{x}")
+            |> join("")
+    in
+    terms.substring(3)
+
+let polynomials = [
+    [1.0, 0.0, -0.25],
+    [1.0, 1.0, 0.5],
+    [1.0, -1.2, 0.07, 0.3],
+    [1.0, 3.3, 4.0, 0.8],
+    [1.0, -2.5, 1.0],
+    [1.0, -0.6, -0.1, 0.3, -0.05]
+]
+
+for p in polynomials do
+    let verdict = if is_stable(p) then "stable" else "not stable" fi
+
+    write_line("{show(p),-40} {verdict}")
+od
