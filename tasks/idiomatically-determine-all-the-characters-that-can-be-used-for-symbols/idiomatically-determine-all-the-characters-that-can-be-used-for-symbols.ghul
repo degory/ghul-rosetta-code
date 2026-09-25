@@ -1,0 +1,38 @@
+use default
+
+use System.Globalization.UnicodeCategory
+
+// These are the tests the ghūl compiler's own scanner applies. An
+// identifier is read in UTF-16 code units, so only the basic plane counts.
+
+starts_identifier(c: char) -> bool =>
+    if cast int(c) <= 0x7E then
+        char.is_ascii_letter(c) \/ c == '_'
+    else
+        char.is_letter(c) \/
+            char.get_unicode_category(c) == UnicodeCategory.LETTER_NUMBER
+    fi
+
+continues_identifier(c: char) -> bool =>
+    starts_identifier(c) \/ char.is_ascii_digit(c) \/ (
+        cast int(c) > 0x7E /\ (
+            let category = char.get_unicode_category(c) in
+            category == UnicodeCategory.DECIMAL_DIGIT_NUMBER \/
+            category == UnicodeCategory.NON_SPACING_MARK \/
+            category == UnicodeCategory.SPACING_COMBINING_MARK \/
+            category == UnicodeCategory.CONNECTOR_PUNCTUATION))
+
+let characters =
+    0..0x10000 |> map(code => cast char(code)) |> collect_list()
+
+let ascii = characters |> take(0x7F)
+
+let ascii_first = ascii |> filter(starts_identifier) |> join("")
+let ascii_later = ascii |> filter(continues_identifier) |> join("")
+let all_first = characters |> count(starts_identifier)
+let all_later = characters |> count(continues_identifier)
+
+write_line("first character, ASCII:  {ascii_first}")
+write_line("later character, ASCII:  {ascii_later}")
+write_line("first character, all:    {all_first}")
+write_line("later character, all:    {all_later}")
