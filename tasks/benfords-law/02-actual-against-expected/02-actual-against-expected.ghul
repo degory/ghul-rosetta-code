@@ -37,8 +37,7 @@ box(left: double, bottom: double, right: double, top: double) is
         [(x = left, y = bottom),
          (x = right, y = bottom),
          (x = right, y = top),
-         (x = left, y = top)]
-)
+         (x = left, y = top)])
 si
 
 image.colour(215ub, 215ub, 215ub)

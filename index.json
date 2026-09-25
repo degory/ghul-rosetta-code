@@ -2435,7 +2435,7 @@
       "images": [
         "tasks/benfords-law/02-actual-against-expected/benford.png.expected"
       ],
-      "lines": 116,
+      "lines": 115,
       "parts": [
         {
           "id": "benfords-law/01-the-distribution",
@@ -2452,7 +2452,7 @@
           "heading": "Actual against expected",
           "source": "tasks/benfords-law/02-actual-against-expected/02-actual-against-expected.ghul",
           "output": "tasks/benfords-law/02-actual-against-expected/run.expected",
-          "lines": 91,
+          "lines": 90,
           "playground": true,
           "input": false,
           "images": [
@@ -4369,14 +4369,14 @@
       "images": [
         "tasks/catmull-clark-subdivision-surface/subdivided.png.expected"
       ],
-      "lines": 207,
+      "lines": 203,
       "parts": [
         {
           "id": "catmull-clark-subdivision-surface",
           "heading": null,
           "source": "tasks/catmull-clark-subdivision-surface/catmull-clark-subdivision-surface.ghul",
           "output": "tasks/catmull-clark-subdivision-surface/run.expected",
-          "lines": 207,
+          "lines": 203,
           "playground": true,
           "input": false,
           "images": [

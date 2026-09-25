@@ -97,8 +97,7 @@ subdivided(mesh: Mesh) -> Mesh is
                 centre(
                     border
                         |> map(((key, faces_here)) =>
-                            centre([points[key.low], points[key.high]]
-))
+                            centre([points[key.low], points[key.high]]))
                         |> cat([points[vertex]])
                         |> collect())
         else
