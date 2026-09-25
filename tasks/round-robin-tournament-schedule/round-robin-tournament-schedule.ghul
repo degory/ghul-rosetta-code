@@ -8,6 +8,7 @@ rounds(players: int) -> Pipe[Collections.List[(int, int)]] is
         yield
             (0..n / 2)
             |> map(i => (seats[i], seats[n - 1 - i]))
+            |> collect()
 
         let last = seats[n - 1]
         seats.remove_at(n - 1)
