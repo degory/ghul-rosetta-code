@@ -22175,6 +22175,32 @@
       ]
     },
     {
+      "slug": "safe-addition",
+      "title": "Safe addition",
+      "url": "https://rosettacode.org/wiki/Safe_addition",
+      "tags": [
+        "maths",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "safe-addition",
+          "heading": null,
+          "source": "tasks/safe-addition/safe-addition.ghul",
+          "output": "tasks/safe-addition/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "safe-primes-and-unsafe-primes",
       "title": "Safe primes and unsafe primes",
       "url": "https://rosettacode.org/wiki/Safe_primes_and_unsafe_primes",
@@ -22283,6 +22309,33 @@
           "source": "tasks/sattolo-cycle/sattolo-cycle.ghul",
           "output": "tasks/sattolo-cycle/run.expected",
           "lines": 25,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "schieber-vishkin-algorithm",
+      "title": "Schieber-Vishkin algorithm",
+      "url": "https://rosettacode.org/wiki/Schieber-Vishkin_algorithm",
+      "tags": [
+        "algorithms",
+        "data-structures",
+        "classes"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 155,
+      "parts": [
+        {
+          "id": "schieber-vishkin-algorithm",
+          "heading": null,
+          "source": "tasks/schieber-vishkin-algorithm/schieber-vishkin-algorithm.ghul",
+          "output": "tasks/schieber-vishkin-algorithm/run.expected",
+          "lines": 155,
           "playground": true,
           "input": false,
           "images": []
@@ -22422,6 +22475,32 @@
       ]
     },
     {
+      "slug": "search-in-paragraph-s-text",
+      "title": "Search in paragraph's text",
+      "url": "https://rosettacode.org/wiki/Search_in_paragraph's_text",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "search-in-paragraph-s-text",
+          "heading": null,
+          "source": "tasks/search-in-paragraph-s-text/search-in-paragraph-s-text.ghul",
+          "output": "tasks/search-in-paragraph-s-text/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "secure-temporary-file",
       "title": "Secure temporary file",
       "url": "https://rosettacode.org/wiki/Secure_temporary_file",
@@ -22441,6 +22520,32 @@
           "source": "tasks/secure-temporary-file/secure-temporary-file.ghul",
           "output": "tasks/secure-temporary-file/run.expected",
           "lines": 34,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sedols",
+      "title": "SEDOLs",
+      "url": "https://rosettacode.org/wiki/SEDOLs",
+      "tags": [
+        "strings",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "sedols",
+          "heading": null,
+          "source": "tasks/sedols/sedols.ghul",
+          "output": "tasks/sedols/run.expected",
+          "lines": 44,
           "playground": true,
           "input": false,
           "images": []
@@ -22551,6 +22656,32 @@
       ]
     },
     {
+      "slug": "semordnilap",
+      "title": "Semordnilap",
+      "url": "https://rosettacode.org/wiki/Semordnilap",
+      "tags": [
+        "strings",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 18,
+      "parts": [
+        {
+          "id": "semordnilap",
+          "heading": null,
+          "source": "tasks/semordnilap/semordnilap.ghul",
+          "output": "tasks/semordnilap/run.expected",
+          "lines": 18,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "send-an-unknown-method-call",
       "title": "Send an unknown method call",
       "url": "https://rosettacode.org/wiki/Send_an_unknown_method_call",
@@ -22570,6 +22701,136 @@
           "source": "tasks/send-an-unknown-method-call/send-an-unknown-method-call.ghul",
           "output": "tasks/send-an-unknown-method-call/run.expected",
           "lines": 33,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sequence-nth-number-with-exactly-n-divisors",
+      "title": "Sequence: nth number with exactly n divisors",
+      "url": "https://rosettacode.org/wiki/Sequence:_nth_number_with_exactly_n_divisors",
+      "tags": [
+        "number-theory",
+        "primes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 46,
+      "parts": [
+        {
+          "id": "sequence-nth-number-with-exactly-n-divisors",
+          "heading": null,
+          "source": "tasks/sequence-nth-number-with-exactly-n-divisors/sequence-nth-number-with-exactly-n-divisors.ghul",
+          "output": "tasks/sequence-nth-number-with-exactly-n-divisors/run.expected",
+          "lines": 46,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sequence-of-non-squares",
+      "title": "Sequence of non-squares",
+      "url": "https://rosettacode.org/wiki/Sequence_of_non-squares",
+      "tags": [
+        "maths",
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 14,
+      "parts": [
+        {
+          "id": "sequence-of-non-squares",
+          "heading": null,
+          "source": "tasks/sequence-of-non-squares/sequence-of-non-squares.ghul",
+          "output": "tasks/sequence-of-non-squares/run.expected",
+          "lines": 14,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sequence-of-primes-by-trial-division",
+      "title": "Sequence of primes by trial division",
+      "url": "https://rosettacode.org/wiki/Sequence_of_primes_by_trial_division",
+      "tags": [
+        "primes",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "sequence-of-primes-by-trial-division",
+          "heading": null,
+          "source": "tasks/sequence-of-primes-by-trial-division/sequence-of-primes-by-trial-division.ghul",
+          "output": "tasks/sequence-of-primes-by-trial-division/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sequence-of-primorial-primes",
+      "title": "Sequence of primorial primes",
+      "url": "https://rosettacode.org/wiki/Sequence_of_primorial_primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 72,
+      "parts": [
+        {
+          "id": "sequence-of-primorial-primes",
+          "heading": null,
+          "source": "tasks/sequence-of-primorial-primes/sequence-of-primorial-primes.ghul",
+          "output": "tasks/sequence-of-primorial-primes/run.expected",
+          "lines": 72,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sequence-smallest-number-greater-than-previous-term-with-exactly-n-divisors",
+      "title": "Sequence: smallest number greater than previous term with exactly n divisors",
+      "url": "https://rosettacode.org/wiki/Sequence:_smallest_number_greater_than_previous_term_with_exactly_n_divisors",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "sequence-smallest-number-greater-than-previous-term-with-exactly-n-divisors",
+          "heading": null,
+          "source": "tasks/sequence-smallest-number-greater-than-previous-term-with-exactly-n-divisors/sequence-smallest-number-greater-than-previous-term-with-exactly-n-divisors.ghul",
+          "output": "tasks/sequence-smallest-number-greater-than-previous-term-with-exactly-n-divisors/run.expected",
+          "lines": 23,
           "playground": true,
           "input": false,
           "images": []

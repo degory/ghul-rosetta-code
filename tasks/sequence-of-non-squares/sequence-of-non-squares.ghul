@@ -1,0 +1,14 @@
+use default
+
+non_square(n: int) -> int =>
+    n + cast int(System.Math.floor(0.5 + System.Math.sqrt(cast double(n))))
+
+is_square(n: int) -> bool =>
+    let root = cast int(System.Math.sqrt(cast double(n))) in
+    root * root == n \/ (root + 1) * (root + 1) == n
+
+write_line(1::22 |> map(non_square) |> join(" "))
+
+let squares = 1..1_000_000 |> count(n => is_square(non_square(n)))
+
+write_line("squares for n below one million: {squares}")

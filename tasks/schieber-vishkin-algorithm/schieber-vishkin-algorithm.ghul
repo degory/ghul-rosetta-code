@@ -1,0 +1,155 @@
+use default
+
+// Nodes are numbered from 1, and node 0 stands above the root. The
+// preprocessing follows Knuth's presentation of the algorithm: pi is a
+// node's preorder number, beta the number with the most trailing zeros
+// in its subtree's preorder range, alfa the set of heights of the betas
+// on its path from the root, and tau maps a beta back to the node that
+// heads its run.
+class LCA is
+    _pi: int[]
+    _beta: int[]
+    _alfa: int[]
+    _tau: int[]
+    _lambda: int[]
+
+    init(parents: int[]) is
+        let n = parents.count - 1
+        let child = repeat(0, n + 1) |> collect_list()
+        let sibling = repeat(0, n + 1) |> collect_list()
+
+        for v in (1::n) |> reverse() do
+            sibling[v] = child[parents[v]]
+            child[parents[v]] = v
+        od
+
+        let pi = repeat(0, n + 1) |> collect_list()
+        let beta = repeat(0, n + 1) |> collect_list()
+        let alfa = repeat(0, n + 1) |> collect_list()
+        let tau = repeat(0, n + 1) |> collect_list()
+        let lambda = repeat(0, n + 1) |> collect_list()
+
+        lambda[0] = -1
+
+        let p mut = child[0]
+        let count mut = 0
+        let walking mut = true
+
+        while walking do
+            do
+                count = count + 1
+                pi[p] = count
+                tau[count] = 0
+                lambda[count] = 1 + lambda[count >> 1]
+
+                if child[p] == 0 then
+                    break
+                fi
+
+                p = child[p]
+            od
+
+            beta[p] = count
+
+            do
+                tau[beta[p]] = parents[p]
+
+                if sibling[p] != 0 then
+                    p = sibling[p]
+                    break
+                fi
+
+                p = parents[p]
+
+                if p == 0 then
+                    walking = false
+                    break
+                fi
+
+                let h = lambda[count & -pi[p]]
+
+                beta[p] = ((count >> h) | 1) << h
+            od
+        od
+
+        lambda[0] = lambda[count]
+
+        down(v: int) is
+            alfa[v] = alfa[parents[v]] | (beta[v] & -beta[v])
+
+            let c mut = child[v]
+
+            while c != 0 do
+                down(c)
+                c = sibling[c]
+            od
+        si
+
+        down(child[0])
+
+        _pi = pi |> collect_array()
+        _beta = beta |> collect_array()
+        _alfa = alfa |> collect_array()
+        _tau = tau |> collect_array()
+        _lambda = lambda |> collect_array()
+    si
+
+    _climb(v: int, h: int) -> int =>
+        let l = _lambda[_alfa[v] & ((1 << h) - 1)] in
+        _tau[((_beta[v] >> l) | 1) << l]
+
+    query(u: int, v: int) -> int is
+        let low = System.Math.min(_beta[u], _beta[v])
+        let high = System.Math.max(_beta[u], _beta[v])
+        let common = _lambda[high & -low]
+        let k = _alfa[u] & _alfa[v] & -(1 << common)
+        let h = _lambda[k & -k]
+        let j = ((_beta[u] >> h) | 1) << h
+        let x = if j == _beta[u] then u else _climb(u, h) fi
+        let y = if j == _beta[v] then v else _climb(v, h) fi
+
+        if _pi[x] <= _pi[y] then x else y fi
+    si
+si
+
+//               1
+//         /     |     \
+//        2      3      4
+//       / \     |    / | \
+//      5   6    7   8  9  10
+//     /|   |       / \     \
+//   11 12  13     14  15    16
+let parents = [0, 0, 1, 1, 1, 2, 2, 3, 4, 4, 4, 5, 5, 6, 8, 8, 10]
+
+let lca = LCA(parents)
+
+naive(u: int, v: int) -> int is
+    let ancestors = SET[int]()
+    let a mut = u
+
+    while a != 0 do
+        ancestors.add(a)
+        a = parents[a]
+    od
+
+    let b mut = v
+
+    while !ancestors.contains(b) do
+        b = parents[b]
+    od
+
+    b
+si
+
+for (u, v) in [(11, 12), (11, 13), (14, 15), (14, 16), (7, 12), (9, 9)] do
+    write_line("lca({u,2}, {v,2}) = {lca.query(u, v)}")
+od
+
+let nodes = parents.count - 1
+let agree =
+    1::nodes
+        |> flat_map(u => 1::nodes |> map(v => (u, v)))
+        |> all(((u, v)) => lca.query(u, v) == naive(u, v))
+
+write_line("")
+write_line("{nodes * nodes} pairs agree with a walk up the tree: {agree}")
