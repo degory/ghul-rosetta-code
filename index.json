@@ -7432,6 +7432,59 @@
       ]
     },
     {
+      "slug": "documentation",
+      "title": "Documentation",
+      "url": "https://rosettacode.org/wiki/Documentation",
+      "tags": [
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "documentation",
+          "heading": null,
+          "source": "tasks/documentation/documentation.ghul",
+          "output": "tasks/documentation/run.expected",
+          "lines": 30,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "dominoes",
+      "title": "Dominoes",
+      "url": "https://rosettacode.org/wiki/Dominoes",
+      "tags": [
+        "puzzles",
+        "recursion",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 138,
+      "parts": [
+        {
+          "id": "dominoes",
+          "heading": null,
+          "source": "tasks/dominoes/dominoes.ghul",
+          "output": "tasks/dominoes/run.expected",
+          "lines": 138,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "doomsday-rule",
       "title": "Doomsday rule",
       "url": "https://rosettacode.org/wiki/Doomsday_rule",
@@ -7877,6 +7930,32 @@
       ]
     },
     {
+      "slug": "earliest-difference-between-prime-gaps",
+      "title": "Earliest difference between prime gaps",
+      "url": "https://rosettacode.org/wiki/Earliest_difference_between_prime_gaps",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "earliest-difference-between-prime-gaps",
+          "heading": null,
+          "source": "tasks/earliest-difference-between-prime-gaps/earliest-difference-between-prime-gaps.ghul",
+          "output": "tasks/earliest-difference-between-prime-gaps/run.expected",
+          "lines": 57,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "eban-numbers",
       "title": "Eban numbers",
       "url": "https://rosettacode.org/wiki/Eban_numbers",
@@ -8134,6 +8213,32 @@
       ]
     },
     {
+      "slug": "elementary-cellular-automaton-random-number-generator",
+      "title": "Elementary cellular automaton/Random number generator",
+      "url": "https://rosettacode.org/wiki/Elementary_cellular_automaton/Random_number_generator",
+      "tags": [
+        "simulation",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "elementary-cellular-automaton-random-number-generator",
+          "heading": null,
+          "source": "tasks/elementary-cellular-automaton-random-number-generator/elementary-cellular-automaton-random-number-generator.ghul",
+          "output": "tasks/elementary-cellular-automaton-random-number-generator/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "elliptic-curve-arithmetic",
       "title": "Elliptic curve arithmetic",
       "url": "https://rosettacode.org/wiki/Elliptic_curve_arithmetic",
@@ -8160,6 +8265,33 @@
           "images": [
             "tasks/elliptic-curve-arithmetic/elliptic-curve.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "elliptic-curve-digital-signature-algorithm",
+      "title": "Elliptic Curve Digital Signature Algorithm",
+      "url": "https://rosettacode.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm",
+      "tags": [
+        "maths",
+        "operators",
+        "optionals"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 109,
+      "parts": [
+        {
+          "id": "elliptic-curve-digital-signature-algorithm",
+          "heading": null,
+          "source": "tasks/elliptic-curve-digital-signature-algorithm/elliptic-curve-digital-signature-algorithm.ghul",
+          "output": "tasks/elliptic-curve-digital-signature-algorithm/run.expected",
+          "lines": 109,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -8372,6 +8504,32 @@
       ]
     },
     {
+      "slug": "entropy-narcissist",
+      "title": "Entropy/Narcissist",
+      "url": "https://rosettacode.org/wiki/Entropy/Narcissist",
+      "tags": [
+        "strings",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "entropy-narcissist",
+          "heading": null,
+          "source": "tasks/entropy-narcissist/entropy-narcissist.ghul",
+          "output": "tasks/entropy-narcissist/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "enumerations",
       "title": "Enumerations",
       "url": "https://rosettacode.org/wiki/Enumerations",
@@ -8525,6 +8683,58 @@
       ]
     },
     {
+      "slug": "erdös-selfridge-categorization-of-primes",
+      "title": "Erdös-Selfridge categorization of primes",
+      "url": "https://rosettacode.org/wiki/Erdös-Selfridge_categorization_of_primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 69,
+      "parts": [
+        {
+          "id": "erdös-selfridge-categorization-of-primes",
+          "heading": null,
+          "source": "tasks/erdös-selfridge-categorization-of-primes/erdös-selfridge-categorization-of-primes.ghul",
+          "output": "tasks/erdös-selfridge-categorization-of-primes/run.expected",
+          "lines": 69,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "erdős-woods-numbers",
+      "title": "Erdős–Woods numbers",
+      "url": "https://rosettacode.org/wiki/Erdős–Woods_numbers",
+      "tags": [
+        "number-theory",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 99,
+      "parts": [
+        {
+          "id": "erdős-woods-numbers",
+          "heading": null,
+          "source": "tasks/erdős-woods-numbers/erdős-woods-numbers.ghul",
+          "output": "tasks/erdős-woods-numbers/run.expected",
+          "lines": 99,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "esthetic-numbers",
       "title": "Esthetic numbers",
       "url": "https://rosettacode.org/wiki/Esthetic_numbers",
@@ -8623,6 +8833,57 @@
           "source": "tasks/euclidean-rhythm/euclidean-rhythm.ghul",
           "output": "tasks/euclidean-rhythm/run.expected",
           "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "euler-method",
+      "title": "Euler method",
+      "url": "https://rosettacode.org/wiki/Euler_method",
+      "tags": [
+        "maths",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "euler-method",
+          "heading": null,
+          "source": "tasks/euler-method/euler-method.ghul",
+          "output": "tasks/euler-method/run.expected",
+          "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "euler-s-constant-0-5772",
+      "title": "Euler's constant 0.5772...",
+      "url": "https://rosettacode.org/wiki/Euler's_constant_0.5772...",
+      "tags": [
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "euler-s-constant-0-5772",
+          "heading": null,
+          "source": "tasks/euler-s-constant-0-5772/euler-s-constant-0-5772.ghul",
+          "output": "tasks/euler-s-constant-0-5772/run.expected",
+          "lines": 50,
           "playground": true,
           "input": false,
           "images": []

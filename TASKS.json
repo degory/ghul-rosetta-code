@@ -1841,6 +1841,16 @@
       }
     },
     {
+      "title": "Documentation",
+      "slug": "documentation",
+      "state": "solved"
+    },
+    {
+      "title": "Dominoes",
+      "slug": "dominoes",
+      "state": "solved"
+    },
+    {
       "title": "Doomsday rule",
       "slug": "doomsday-rule",
       "state": "published",
@@ -1972,6 +1982,11 @@
       "published_hash": "2193a74e0dc4a59e23920200d7c6ea0ba63e7fb9825a07546c568b8ba5f3c112"
     },
     {
+      "title": "Earliest difference between prime gaps",
+      "slug": "earliest-difference-between-prime-gaps",
+      "state": "solved"
+    },
+    {
       "title": "Eban numbers",
       "slug": "eban-numbers",
       "state": "published",
@@ -2024,6 +2039,16 @@
       "slug": "elementary-cellular-automaton-infinite-length",
       "state": "published",
       "published_hash": "0eadcc0e0e6a507b1b3044928aa886aebdeb9f72bc13992fdd8612c50d2af759"
+    },
+    {
+      "title": "Elementary cellular automaton/Random number generator",
+      "slug": "elementary-cellular-automaton-random-number-generator",
+      "state": "solved"
+    },
+    {
+      "title": "Elliptic Curve Digital Signature Algorithm",
+      "slug": "elliptic-curve-digital-signature-algorithm",
+      "state": "solved"
     },
     {
       "title": "Elliptic curve arithmetic",
@@ -2083,6 +2108,11 @@
       "published_hash": "bfc96e71695baae6d36fc7e53d575f82fb9e67dd67caa1ec2b556eef6e8811d7"
     },
     {
+      "title": "Entropy/Narcissist",
+      "slug": "entropy-narcissist",
+      "state": "solved"
+    },
+    {
       "title": "Enumerations",
       "slug": "enumerations",
       "state": "published",
@@ -2107,6 +2137,11 @@
       "published_hash": "7b0a75aad6e75b9a3981c254400a59a93edca5e53d5eb60a4f65e855b4661e1e"
     },
     {
+      "title": "Erd\u00F6s-Selfridge categorization of primes",
+      "slug": "erd\u00F6s-selfridge-categorization-of-primes",
+      "state": "solved"
+    },
+    {
       "title": "Erd\u0151s-Nicolas numbers",
       "slug": "erdos-nicolas-numbers",
       "state": "published",
@@ -2117,6 +2152,11 @@
       "slug": "erdos-primes",
       "state": "published",
       "published_hash": "48b68185f8af071263fb0df29c1a92b05a1f43b8bd277ce6320538759cf001d2"
+    },
+    {
+      "title": "Erd\u0151s\u2013Woods numbers",
+      "slug": "erd\u0151s-woods-numbers",
+      "state": "solved"
     },
     {
       "title": "Esthetic numbers",
@@ -2141,6 +2181,16 @@
       "slug": "euclidean-rhythm",
       "state": "published",
       "published_hash": "482624b66aedab7cc2080e965e288aa81f963c1293e26c3c9f913568628c5f51"
+    },
+    {
+      "title": "Euler method",
+      "slug": "euler-method",
+      "state": "solved"
+    },
+    {
+      "title": "Euler\u0027s constant 0.5772...",
+      "slug": "euler-s-constant-0-5772",
+      "state": "solved"
     },
     {
       "title": "Euler\u0027s identity",
