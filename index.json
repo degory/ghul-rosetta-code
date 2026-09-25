@@ -6602,6 +6602,32 @@
       ]
     },
     {
+      "slug": "cusip",
+      "title": "CUSIP",
+      "url": "https://rosettacode.org/wiki/CUSIP",
+      "tags": [
+        "strings",
+        "pattern-matching"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "cusip",
+          "heading": null,
+          "source": "tasks/cusip/cusip.ghul",
+          "output": "tasks/cusip/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "cut-a-rectangle",
       "title": "Cut a rectangle",
       "url": "https://rosettacode.org/wiki/Cut_a_rectangle",
