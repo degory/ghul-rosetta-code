@@ -182,6 +182,9 @@ jobs:
       run: dotnet tool restore
 
     - name: Run the touched tasks
+      # The container's default shell is sh, which has neither pipefail nor
+      # the ${VAR// /} substitution below.
+      shell: bash
       env:
         TASKS: ${{ needs.changes.outputs.tasks }}
       run: |
