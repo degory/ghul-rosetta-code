@@ -16973,6 +16973,32 @@
       ]
     },
     {
+      "slug": "multiple-regression",
+      "title": "Multiple regression",
+      "url": "https://rosettacode.org/wiki/Multiple_regression",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "multiple-regression",
+          "heading": null,
+          "source": "tasks/multiple-regression/multiple-regression.ghul",
+          "output": "tasks/multiple-regression/run.expected",
+          "lines": 66,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "multiplication-tables",
       "title": "Multiplication tables",
       "url": "https://rosettacode.org/wiki/Multiplication_tables",

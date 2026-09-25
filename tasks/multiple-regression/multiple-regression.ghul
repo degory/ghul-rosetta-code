@@ -1,0 +1,66 @@
+use default
+
+use Matrix = List[List[double]]
+
+transpose(m: Matrix) -> Matrix =>
+    0..m[0].count
+        |> map(c => 0..m.count |> map(r => m[r][c]) |> collect())
+        |> collect()
+
+*(a: Matrix, b: Matrix) -> Matrix =>
+    0..a.count
+        |> map(r => 0..b[0].count
+            |> map(c => 0..b.count |> map(k => a[r][k] * b[k][c]) |> sum())
+            |> collect())
+        |> collect()
+
+solve(a: Matrix, b: List[double]) -> List[double] is
+    let n = b.count
+
+    let rows = 0..n
+        |> map(i => a[i] |> cat([b[i]]) |> collect_list())
+        |> collect_list()
+
+    for k in 0..n do
+        let pivot = k..n |> max_by(i => System.Math.abs(rows[i][k]))!
+        (rows[k], rows[pivot]) = (rows[pivot], rows[k])
+
+        for i in k + 1..n do
+            let factor = rows[i][k] / rows[k][k]
+
+            for j in k::n do
+                rows[i][j] = rows[i][j] - factor * rows[k][j]
+            od
+        od
+    od
+
+    let x = repeat(0.0, n) |> collect_list()
+
+    for k in 0..n |> reverse() do
+        let known = k + 1..n |> map(j => rows[k][j] * x[j]) |> sum()
+        x[k] = (rows[k][n] - known) / rows[k][k]
+    od
+
+    x
+si
+
+regress(y: List[double], x: Matrix) -> List[double] =>
+    let xt = transpose(x) in
+    let xty = xt * (y |> map(v => [v] |> collect()) |> collect()) in
+    solve(xt * x, xty |> map(row => row[0]) |> collect())
+
+let heights = [1.47, 1.50, 1.52, 1.55, 1.57, 1.60, 1.63, 1.65, 1.68,
+               1.70, 1.73, 1.75, 1.78, 1.80, 1.83]
+
+let weights = [52.21, 53.12, 54.48, 55.84, 57.20, 58.57, 59.93, 61.29,
+               63.11, 64.47, 66.28, 68.10, 69.92, 72.19, 74.46]
+
+let x = heights |> map(h => [1.0, h, h * h] |> collect()) |> collect()
+
+let beta = regress(weights, x)
+
+write_line("weight = b0 + b1 * height + b2 * height * height")
+
+for (i, b) in beta |> index() do
+    write_line("b{i} = {b,10:F4}")
+od
