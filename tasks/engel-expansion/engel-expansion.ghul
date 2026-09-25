@@ -40,7 +40,7 @@ si
 show(name: string, fractional: string) is
     let numerator = bigint.parse(fractional)
     let denominator = power(10n, fractional.length)
-    let terms = numerator |> engel(denominator) |> collect_list()
+    let terms = numerator |> engel(denominator) |> collect()
     let (rebuilt, scale) = from_engel(terms)
     let verified = if rebuilt * denominator =~ numerator * scale
         then "round trips" else "DOES NOT ROUND TRIP" fi

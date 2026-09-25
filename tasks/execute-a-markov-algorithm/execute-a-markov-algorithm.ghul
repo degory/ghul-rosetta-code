@@ -13,7 +13,7 @@ load(file: string) -> List[RULE] =>
                 line.substring(0, arrow).trim(),
                 if stops then replacement.substring(1) else replacement fi,
                 stops))
-        |> collect_list()
+        |> collect()
 
 run(rules: List[RULE], input: string) -> string is
     let text mut = input

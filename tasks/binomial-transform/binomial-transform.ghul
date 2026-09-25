@@ -1,7 +1,7 @@
 use default
 
 from_array(values: int[]) -> Collections.List[int] is
-    let result = values |> collect_list()
+    let result = values |> collect()
 
     return result
 si

@@ -78,7 +78,7 @@ let words =
         |> filter(word => word.length == 9)
         |> filter(word => all_letters(word))
         |> filter(word => no_repeats(word))
-        |> collect_list()
+        |> collect()
 
 let key = words[random.next(words.count)].to_upper()
 

@@ -41,7 +41,7 @@ exact(most: int, at_least: int) -> List[double] is
     let inverse_factorial =
         (0..at_least)
             |> map(j => 1.0D / Math.exp(log_factorial(j)))
-            |> collect_list()
+            |> collect()
 
     for _ in 0..days do
         let next = repeat(0.0D, most + 1) |> collect_list()
@@ -61,7 +61,7 @@ exact(most: int, at_least: int) -> List[double] is
                 log_factorial(n) -
                 cast double(n) * Math.log(cast double(days)) in
             1.0D - ways[n] * Math.exp(log_scale))
-        |> collect_list()
+        |> collect()
 si
 
 first_even(chance: (int) -> double, from: int) -> int is
@@ -119,7 +119,7 @@ for (i, at_least) in 2::5 |> index() do
         (1::most / 4)
             |> map(step => step * 4)
             |> map(n => (x = cast double(n), y = curves[i][n]))
-            |> collect_list()
+            |> collect()
 
     image.colour(r, g, b)
     image.stroke(2.0D)

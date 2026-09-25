@@ -41,7 +41,7 @@ lines_for(direction: char) -> LIST[LIST[int]] =>
 // A tile made by a merge takes no further part in the same
 // move, so the scan steps over both tiles it consumed.
 collapse(values: LIST[int]) -> LIST[int] =>
-    (let packed = values |> filter(value => value != 0) |> collect_list()
+    (let packed = values |> filter(value => value != 0) |> collect()
      let result = LIST[int]()
      let at mut = 0
 
@@ -65,7 +65,7 @@ collapse(values: LIST[int]) -> LIST[int] =>
      result)
 
 slide(target: LIST[int], direction: char) -> bool =>
-    (let before = target |> collect_list()
+    (let before = target |> collect()
 
      for line in lines_for(direction) do
          let moved =
@@ -80,7 +80,7 @@ slide(target: LIST[int], direction: char) -> bool =>
 
 spawn() is
     let empty =
-        0..squares |> filter(at => board[at] == 0) |> collect_list()
+        0..squares |> filter(at => board[at] == 0) |> collect()
 
     if empty.count > 0 then
         board[empty[random.next(empty.count)]] =

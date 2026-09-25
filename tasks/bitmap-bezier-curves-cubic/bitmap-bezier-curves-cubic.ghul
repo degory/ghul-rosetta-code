@@ -15,7 +15,7 @@ cubic(a: POINT, b: POINT, c: POINT, d: POINT) -> List[POINT] =>
                   3.0D * u * t * t * c.x + t * t * t * d.x,
               y = u * u * u * a.y + 3.0D * u * u * t * b.y +
                   3.0D * u * t * t * c.y + t * t * t * d.y)))
-        |> collect_list()
+        |> collect()
 
 let start = (x = 20.0D, y = 200.0D)
 let first = (x = 60.0D, y = 20.0D)

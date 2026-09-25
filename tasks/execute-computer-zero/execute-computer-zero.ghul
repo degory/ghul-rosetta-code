@@ -6,7 +6,7 @@ let opcodes =
 assemble(source: string) -> LIST[int] is
     let lines = source.trim_end().split(['\n'])
         |> map(line => line.split([';'])[0].trim())
-        |> collect_list()
+        |> collect()
 
     let labels = MAP()
 
@@ -23,7 +23,7 @@ assemble(source: string) -> LIST[int] is
             if line.contains(':') then line.split([':'])[1] else line fi
         let words = body.split([' '])
             |> filter(w => w.length > 0)
-            |> collect_list()
+            |> collect()
 
         if words.count == 0 then
             memory.add(0)

@@ -17,7 +17,7 @@ use Triangle = (a: P, b: P, c: P)
 sides(t: Triangle) -> List[double] =>
     [(t.b - t.a).length, (t.c - t.b).length, (t.a - t.c).length]
         |> sort()
-        |> collect_list()
+        |> collect()
 
 similar(s: Triangle, t: Triangle) -> bool =>
     let x = sides(s), y = sides(t) in
@@ -123,7 +123,7 @@ for (i, t) in many |> index() do
     let shade = cast ubyte(120 + (i * 37) % 120)
 
     tiles.add(
-        [t.a, t.b, t.c] |> map(p => (x = p.x, y = p.y)) |> collect_list(),
+        [t.a, t.b, t.c] |> map(p => (x = p.x, y = p.y)) |> collect(),
         (shade - 80ub, shade - 30ub, 255ub - shade / 3ub))
 od
 
@@ -134,7 +134,7 @@ image.stroke(1.0D)
 for t in many do
     let corners = [t.a, t.b, t.c, t.a] |> map(p => (x = p.x, y = p.y))
 
-    image.line(corners |> collect_list())
+    image.line(corners |> collect())
 od
 
 image.write("triangles.png")

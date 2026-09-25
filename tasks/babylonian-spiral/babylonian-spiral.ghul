@@ -74,8 +74,8 @@ od
 
 let many = spiral(10000)
 
-let xs = many |> map(p => cast double(p.x)) |> collect_list()
-let ys = many |> map(p => cast double(p.y)) |> collect_list()
+let xs = many |> map(p => cast double(p.x)) |> collect()
+let ys = many |> map(p => cast double(p.y)) |> collect()
 
 let low_x = xs |> reduce(0.0D, Math.min)
 let high_x = xs |> reduce(0.0D, Math.max)
@@ -95,7 +95,7 @@ image.colour(30ub, 60ub, 140ub)
 image.stroke(1.0D)
 image.line(
     many |> map(p => (x = cast double(p.x), y = cast double(p.y)))
-        |> collect_list())
+        |> collect())
 
 image.write("spiral.png")
 

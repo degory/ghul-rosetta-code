@@ -77,7 +77,7 @@ si
 report(name: string, numbers: () -> Pipe[long]) is
     write_line("first 50 {name}:")
 
-    let first_50 = numbers() |> take(50) |> collect_list()
+    let first_50 = numbers() |> take(50) |> collect()
 
     for row in 0..5 do
         let cells = (0..10)

@@ -131,4 +131,4 @@ for line in lines |> skip(1 + string_count) do
     fi
 od
 
-MACHINE(code.to_array(), strings |> collect_list(), data_size).run()
+MACHINE(code.to_array(), strings |> collect(), data_size).run()

@@ -55,7 +55,7 @@ solve(terms: List[Term]) -> string? is
                 fi
 
                 for term in joined do
-                    let next = rest |> cat([term]) |> collect_list()
+                    let next = rest |> cat([term]) |> collect()
 
                     if let found = solve(next) then
                         return found
@@ -76,7 +76,7 @@ while let line = read_line() do
             |> map(i =>
                 let d = cast long(digits[i]) - 48L in
                 (value = Q(d, 1L), text = "{d}"))
-            |> collect_list()
+            |> collect()
 
     if let found = solve(terms) then
         let text = found.substring(1, found.length - 2)

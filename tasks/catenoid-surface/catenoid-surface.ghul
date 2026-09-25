@@ -54,7 +54,7 @@ let quads =
     (0..around)
         |> flat_map(i => 0..along |> map(j => quad(i, j)))
         |> sort((p, q) => depth(p) <> depth(q))
-        |> collect_list()
+        |> collect()
 
 let image = IMAGE(360, 360)
 
@@ -64,7 +64,7 @@ image.stroke(0.6D)
 
 for q in quads do
     let light = brightness(q)
-    let outline = q |> map(p => (x = p.x, y = p.y)) |> collect_list()
+    let outline = q |> map(p => (x = p.x, y = p.y)) |> collect()
 
     image.colour(
         cast ubyte(60.0D * light),
@@ -73,7 +73,7 @@ for q in quads do
     image.fill(outline)
 
     image.colour(20ub, 40ub, 60ub)
-    image.line(outline |> cat([outline[0]]) |> collect_list())
+    image.line(outline |> cat([outline[0]]) |> collect())
 od
 
 write_line("a catenoid, the surface of revolution of y = cosh(x)")
