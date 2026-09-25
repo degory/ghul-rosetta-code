@@ -16974,6 +16974,32 @@
       ]
     },
     {
+      "slug": "multiplicative-order",
+      "title": "Multiplicative order",
+      "url": "https://rosettacode.org/wiki/Multiplicative_order",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 80,
+      "parts": [
+        {
+          "id": "multiplicative-order",
+          "heading": null,
+          "source": "tasks/multiplicative-order/multiplicative-order.ghul",
+          "output": "tasks/multiplicative-order/run.expected",
+          "lines": 80,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "multisplit",
       "title": "Multisplit",
       "url": "https://rosettacode.org/wiki/Multisplit",
