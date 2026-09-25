@@ -1,0 +1,32 @@
+use default
+
+let random = System.Random(3)
+
+rand_n(n: int) -> int => if random.next(n) == 0 then 1 else 0 fi
+
+// A pair of unequal bits is as likely to be 01 as 10, so the first of
+// such a pair is a fair bit.
+unbiased(n: int) -> int is
+    while true do
+        let a = rand_n(n)
+        let b = rand_n(n)
+
+        if a != b then
+            return a
+        fi
+    od
+
+    0
+si
+
+let samples = 100_000
+
+write_line("N   ones from randN   ones from unbiased")
+
+for n in 3::6 do
+    let biased = 1::samples |> count(_ => rand_n(n) == 1)
+    let fair = 1::samples |> count(_ => unbiased(n) == 1)
+    let percent = (k: int) => 100.0 * cast double(k) / cast double(samples)
+
+    write_line("{n}   {percent(biased),14:F2}%   {percent(fair),17:F2}%")
+od

@@ -1,0 +1,79 @@
+use default
+
+let random = System.Random(6)
+
+class REVOLVER is
+    _chambers: LIST[bool]
+
+    init() is
+        _chambers = repeat(false, 6) |> collect_list()
+    si
+
+    _rotate() is
+        let last = _chambers[5]
+
+        for i in (1::5) |> reverse() do
+            _chambers[i] = _chambers[i - 1]
+        od
+
+        _chambers[0] = last
+    si
+
+    load() is
+        while _chambers[1] do
+            _rotate()
+        od
+
+        _chambers[1] = true
+        _rotate()
+    si
+
+    spin() is
+        for _ in 1::random.next(1, 7) do
+            _rotate()
+        od
+    si
+
+    fire() -> bool is
+        let shot = _chambers[0]
+
+        _rotate()
+
+        shot
+    si
+si
+
+// Each method is a sequence of steps, and it is fatal if either shot
+// fires.
+play(method: string) -> bool is
+    let gun = REVOLVER()
+    let dead mut = false
+
+    for step in method.split([' ']) do
+        if step =~ "load" then
+            gun.load()
+        elif step =~ "spin" then
+            gun.spin()
+        else
+            dead = dead \/ gun.fire()
+        fi
+    od
+
+    dead
+si
+
+let methods = [
+    "load spin load spin fire spin fire",
+    "load spin load spin fire fire",
+    "load load spin fire spin fire",
+    "load load spin fire fire"
+]
+
+let trials = 100_000
+
+for (label, method) in zip(["A", "B", "C", "D"], methods) do
+    let deaths = 1::trials |> count(_ => play(method))
+    let rate = 100.0 * cast double(deaths) / cast double(trials)
+
+    write_line("{label}. {method,-34} {rate,6:F2}% deaths")
+od

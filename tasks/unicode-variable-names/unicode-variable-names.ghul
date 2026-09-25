@@ -1,0 +1,15 @@
+@@suppress("non-snake-case-name")
+
+use default
+
+// An identifier starts with a letter of any script and continues with
+// letters, digits, combining marks and connecting punctuation, as C#
+// allows, though not the invisible format characters. A capital Greek
+// letter is still upper case, which the naming convention for a variable
+// would otherwise warn about. The rules are under "naming conventions" in
+// https://github.com/ghul-lang/ghul/blob/main/GHUL.md
+let Δ mut = 1
+
+Δ = Δ + 1
+
+write_line("Δ = {Δ}")

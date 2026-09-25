@@ -1,0 +1,78 @@
+use default
+
+class OPTION(name: string, value: string, enabled: bool) is
+    name: string public
+    value: string public
+    enabled: bool public
+
+    to_string() -> string =>
+        let text = if value.length > 0 then "{name} {value}" else name fi in
+        if enabled then text else "; {text}" fi
+si
+
+// Tabs, control codes and anything outside ASCII are dropped.
+cleaned(line: string) -> string =>
+    string(line |> filter(c => c >= ' ' /\ c <= '~') |> collect_array())
+        .trim()
+
+parse(line: string) -> OPTION? is
+    let enabled = !line.starts_with(";")
+    let body = line.trim_start([';', ' '])
+
+    if body.length == 0 then
+        return null
+    fi
+
+    let skip_empty = System.StringSplitOptions.REMOVE_EMPTY_ENTRIES
+    let words = body.split([' '], skip_empty)
+    let value = words |> skip(1) |> join(" ")
+
+    OPTION(words[0].to_upper(), value, enabled)
+si
+
+let changes = [
+    ("NEEDSPEELING", null, false),
+    ("SEEDSREMOVED", null, true),
+    ("NUMBEROFBANANAS", "1024", true),
+    ("NUMBEROFSTRAWBERRIES", "62000", true)
+]
+
+let output = LIST[string]()
+let options = MAP[string, OPTION]()
+let order = LIST[(line: string?, option: string?)]()
+
+for raw in IO.File.read_all_lines("config.txt") do
+    let line = cleaned(raw)
+
+    if line.length == 0 \/ line.starts_with("#") then
+        order.add((line, null))
+    elif let option = parse(line) then
+        if !options.contains_key(option.name) then
+            options[option.name] = option
+            order.add((null, option.name))
+        fi
+    fi
+od
+
+for (name, value, enabled) in changes do
+    if !options.contains_key(name) then
+        options[name] = OPTION(name, "", enabled)
+        order.add((null, name))
+    fi
+
+    let option = options[name]
+
+    option.enabled = enabled
+
+    if let v = value then
+        option.value = v
+    fi
+od
+
+for (line, name) in order do
+    if let text = line then
+        write_line(text)
+    elif let key = name then
+        write_line(options[key])
+    fi
+od

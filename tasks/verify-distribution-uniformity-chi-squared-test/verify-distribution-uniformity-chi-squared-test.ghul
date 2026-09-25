@@ -1,0 +1,88 @@
+use default
+
+log_gamma(x: double) -> double is
+    let coefficients = [
+        76.18009172947146, -86.50532032941677, 24.01409824083091,
+        -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5
+    ]
+    let tmp = x + 5.5 - (x + 0.5) * System.Math.log(x + 5.5)
+    let series mut = 1.000000000190015
+    let y mut = x
+
+    for c in coefficients do
+        y = y + 1.0
+        series = series + c / y
+    od
+
+    -tmp + System.Math.log(2.5066282746310005 * series / x)
+si
+
+prefactor(a: double, x: double) -> double =>
+    System.Math.exp(-x + a * System.Math.log(x) - log_gamma(a))
+
+// The regularised upper incomplete gamma function Q(a, x), by its series
+// below a + 1 and its continued fraction above.
+upper_gamma(a: double, x: double) -> double is
+    if x < a + 1.0 then
+        let term mut = 1.0 / a
+        let sum mut = term
+        let n mut = a
+
+        for _ in 1::200 do
+            n = n + 1.0
+            term = term * x / n
+            sum = sum + term
+        od
+
+        return 1.0 - sum * prefactor(a, x)
+    fi
+
+    let tiny = 1.0e-300
+    let b mut = x + 1.0 - a
+    let c mut = 1.0 / tiny
+    let dd mut = 1.0 / b
+    let h mut = dd
+
+    for i in 1::200 do
+        let an = -cast double(i) * (cast double(i) - a)
+
+        b = b + 2.0
+        dd = an * dd + b
+        dd = if System.Math.abs(dd) < tiny then tiny else dd fi
+        c = b + an / c
+        c = if System.Math.abs(c) < tiny then tiny else c fi
+        dd = 1.0 / dd
+        h = h * dd * c
+    od
+
+    prefactor(a, x) * h
+si
+
+chi_squared(counts: List[int]) -> double is
+    let total = cast double(counts |> sum())
+    let expected = total / cast double(counts.count)
+
+    counts
+        |> map(k => let e = cast double(k) - expected in e * e / expected)
+        |> sum()
+si
+
+is_uniform(counts: List[int], significance: double) -> bool =>
+    let freedom = cast double(counts.count - 1) in
+    upper_gamma(freedom / 2.0, chi_squared(counts) / 2.0) > significance
+
+for counts in [
+    [199809, 200665, 199607, 200270, 199649],
+    [522573, 244456, 139979, 71531, 21461]
+] do
+    let data = LIST(counts)
+    let distance = chi_squared(data)
+    let freedom = cast double(data.count - 1)
+    let p_value = upper_gamma(freedom / 2.0, distance / 2.0)
+
+    write_line("counts:      {data |> join(" ")}")
+    write_line("chi-squared: {distance:F4}")
+    write_line("p-value:     {p_value:F6}")
+    write_line("uniform:     {is_uniform(data, 0.05)}")
+    write_line("")
+od

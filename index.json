@@ -31433,6 +31433,58 @@
       ]
     },
     {
+      "slug": "two-bullet-roulette",
+      "title": "Two bullet roulette",
+      "url": "https://rosettacode.org/wiki/Two_bullet_roulette",
+      "tags": [
+        "simulation",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 79,
+      "parts": [
+        {
+          "id": "two-bullet-roulette",
+          "heading": null,
+          "source": "tasks/two-bullet-roulette/two-bullet-roulette.ghul",
+          "output": "tasks/two-bullet-roulette/run.expected",
+          "lines": 79,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "two-identical-strings",
+      "title": "Two identical strings",
+      "url": "https://rosettacode.org/wiki/Two_identical_strings",
+      "tags": [
+        "basics",
+        "dotnet-interop"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 10,
+      "parts": [
+        {
+          "id": "two-identical-strings",
+          "heading": null,
+          "source": "tasks/two-identical-strings/two-identical-strings.ghul",
+          "output": "tasks/two-identical-strings/run.expected",
+          "lines": 10,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "two-s-complement",
       "title": "Two's complement",
       "url": "https://rosettacode.org/wiki/Two's_complement",
@@ -31451,6 +31503,33 @@
           "source": "tasks/two-s-complement/two-s-complement.ghul",
           "output": "tasks/two-s-complement/run.expected",
           "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "ukkonen-s-suffix-tree-construction",
+      "title": "Ukkonen's suffix tree construction",
+      "url": "https://rosettacode.org/wiki/Ukkonen's_suffix_tree_construction",
+      "tags": [
+        "algorithms",
+        "data-structures",
+        "strings"
+      ],
+      "interest": 5,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 206,
+      "parts": [
+        {
+          "id": "ukkonen-s-suffix-tree-construction",
+          "heading": null,
+          "source": "tasks/ukkonen-s-suffix-tree-construction/ukkonen-s-suffix-tree-construction.ghul",
+          "output": "tasks/ukkonen-s-suffix-tree-construction/run.expected",
+          "lines": 206,
           "playground": true,
           "input": false,
           "images": []
@@ -31495,6 +31574,58 @@
           "images": [
             "tasks/ulam-spiral-for-primes/02-drawing-the-spiral/ulam.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "ultra-useful-primes",
+      "title": "Ultra useful primes",
+      "url": "https://rosettacode.org/wiki/Ultra_useful_primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "ultra-useful-primes",
+          "heading": null,
+          "source": "tasks/ultra-useful-primes/ultra-useful-primes.ghul",
+          "output": "tasks/ultra-useful-primes/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "unbias-a-random-generator",
+      "title": "Unbias a random generator",
+      "url": "https://rosettacode.org/wiki/Unbias_a_random_generator",
+      "tags": [
+        "simulation",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 32,
+      "parts": [
+        {
+          "id": "unbias-a-random-generator",
+          "heading": null,
+          "source": "tasks/unbias-a-random-generator/unbias-a-random-generator.ghul",
+          "output": "tasks/unbias-a-random-generator/run.expected",
+          "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -31570,6 +31701,31 @@
           "source": "tasks/unicode-strings/unicode-strings.ghul",
           "output": "tasks/unicode-strings/run.expected",
           "lines": 61,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "unicode-variable-names",
+      "title": "Unicode variable names",
+      "url": "https://rosettacode.org/wiki/Unicode_variable_names",
+      "tags": [
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "unicode-variable-names",
+          "heading": null,
+          "source": "tasks/unicode-variable-names/unicode-variable-names.ghul",
+          "output": "tasks/unicode-variable-names/run.expected",
+          "lines": 15,
           "playground": true,
           "input": false,
           "images": []
@@ -31762,6 +31918,33 @@
       ]
     },
     {
+      "slug": "update-a-configuration-file",
+      "title": "Update a configuration file",
+      "url": "https://rosettacode.org/wiki/Update_a_configuration_file",
+      "tags": [
+        "text-processing",
+        "optionals",
+        "classes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "update-a-configuration-file",
+          "heading": null,
+          "source": "tasks/update-a-configuration-file/update-a-configuration-file.ghul",
+          "output": "tasks/update-a-configuration-file/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "upside-down-numbers",
       "title": "Upside-down numbers",
       "url": "https://rosettacode.org/wiki/Upside-down_numbers",
@@ -31938,6 +32121,32 @@
           "source": "tasks/utf-8-encode-and-decode/utf-8-encode-and-decode.ghul",
           "output": "tasks/utf-8-encode-and-decode/run.expected",
           "lines": 72,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "validate-international-securities-identification-number",
+      "title": "Validate International Securities Identification Number",
+      "url": "https://rosettacode.org/wiki/Validate_International_Securities_Identification_Number",
+      "tags": [
+        "strings",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "validate-international-securities-identification-number",
+          "heading": null,
+          "source": "tasks/validate-international-securities-identification-number/validate-international-securities-identification-number.ghul",
+          "output": "tasks/validate-international-securities-identification-number/run.expected",
+          "lines": 37,
           "playground": true,
           "input": false,
           "images": []
@@ -32251,6 +32460,58 @@
           "source": "tasks/vector-products/vector-products.ghul",
           "output": "tasks/vector-products/run.expected",
           "lines": 19,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "verhoeff-algorithm",
+      "title": "Verhoeff algorithm",
+      "url": "https://rosettacode.org/wiki/Verhoeff_algorithm",
+      "tags": [
+        "algorithms",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 98,
+      "parts": [
+        {
+          "id": "verhoeff-algorithm",
+          "heading": null,
+          "source": "tasks/verhoeff-algorithm/verhoeff-algorithm.ghul",
+          "output": "tasks/verhoeff-algorithm/run.expected",
+          "lines": 98,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "verify-distribution-uniformity-chi-squared-test",
+      "title": "Verify distribution uniformity/Chi-squared test",
+      "url": "https://rosettacode.org/wiki/Verify_distribution_uniformity/Chi-squared_test",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "verify-distribution-uniformity-chi-squared-test",
+          "heading": null,
+          "source": "tasks/verify-distribution-uniformity-chi-squared-test/verify-distribution-uniformity-chi-squared-test.ghul",
+          "output": "tasks/verify-distribution-uniformity-chi-squared-test/run.expected",
+          "lines": 88,
           "playground": true,
           "input": false,
           "images": []

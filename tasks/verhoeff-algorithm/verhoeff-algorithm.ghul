@@ -1,0 +1,98 @@
+use default
+
+let d = [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+    [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+    [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+    [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+    [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+    [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+    [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+    [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+    [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+]
+
+let inverse = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9]
+
+let p = [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
+    [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
+    [8, 9, 1, 6, 0, 4, 3, 5, 2, 7],
+    [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
+    [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
+    [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
+    [7, 0, 4, 6, 9, 1, 3, 2, 5, 8]
+]
+
+// Runs the digits from the right through the permutation and the
+// dihedral group, showing each step when asked to.
+verhoeff(digits: string, show: bool) -> int is
+    if show then
+        write_line(" i  ni  p[i, ni]  c")
+        write_line("-------------------")
+    fi
+
+    let c mut = 0
+
+    for (i, ch) in digits.to_char_array() |> reverse() |> index() do
+        let n = cast int(ch) - cast int('0')
+        let permuted = p[i % 8][n]
+
+        c = d[c][permuted]
+
+        if show then
+            write_line("{i,2}  {n}  {permuted,7}  {c,4}")
+        fi
+    od
+
+    c
+si
+
+check_digit(number: string, show: bool) -> int is
+    if show then
+        write_line("Check digit calculations for {number}")
+        write_line("")
+    fi
+
+    let c = verhoeff("{number}0", show)
+    let digit = inverse[c]
+
+    if show then
+        write_line("")
+        write_line("inverse[{c}] = {digit}")
+        write_line("")
+    fi
+
+    write_line("The check digit for {number} is {digit}")
+    write_line("")
+
+    digit
+si
+
+validate(number: string, show: bool) is
+    if show then
+        write_line("Validation calculations for {number}")
+        write_line("")
+    fi
+
+    let valid = verhoeff(number, show) == 0
+
+    if show then
+        write_line("")
+    fi
+
+    let verdict = if valid then "correct" else "incorrect" fi
+
+    write_line("The validation for {number} is {verdict}.")
+    write_line("")
+si
+
+for number in ["236", "12345", "123456789012"] do
+    let show = number.length < 6
+    let digit = check_digit(number, show)
+
+    validate("{number}{digit}", show)
+    validate("{number}9", show)
+od
