@@ -1,0 +1,27 @@
+use default
+
+proper_divisor_sum(n: long) -> long =>
+    from(2L)
+        |> take_while(d => d * d <= n)
+        |> filter(d => n % d == 0L)
+        |> map(d => if d * d == n then d else d + n / d fi)
+        |> sum() + 1L
+
+abundant_odd(start: long) -> Pipe[long] =>
+    from(start, 2L) |> filter(n => proper_divisor_sum(n) > n)
+
+show(n: long) =>
+    let divisor_sum = proper_divisor_sum(n) in
+    write_line("{n,13:N0}  proper divisor sum {divisor_sum,13:N0}")
+
+write_line("The first 25 abundant odd numbers:")
+
+abundant_odd(3L) |> take(25) |> each(show)
+
+write_line("\nThe one thousandth:")
+
+show(abundant_odd(3L) |> skip(999) |> first()!)
+
+write_line("\nThe first above one billion:")
+
+show(abundant_odd(1_000_000_001L) |> first()!)

@@ -1,0 +1,19 @@
+use default
+
+reversed(word: string) -> string => word |> reverse() |> join("")
+
+let words =
+    IO.File.read_lines("words.txt")
+        |> filter(word => word.length > 6)
+        |> map(word => word.to_lower())
+        |> collect_set()
+
+let pairs = words
+    |> sort()
+    |> map(word => (word, reversal = reversed(word)))
+    |> filter(((word, reversal)) =>
+        word < reversal /\ words.contains(reversal))
+
+for (word, reversal) in pairs do
+    write_line("{word,9} <-> {reversal}")
+od

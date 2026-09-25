@@ -1,0 +1,24 @@
+use default
+use System.StringSplitOptions
+
+shortest_unique(line: string) -> int? is
+    let words = line.split(' ', StringSplitOptions.REMOVE_EMPTY_ENTRIES)
+
+    if words.count == 0 then
+        return null
+    fi
+
+    distinct(length: int) -> int =>
+        words
+            |> map(word => word.substring(0, int.min(length, word.length)))
+            |> collect_set()
+            |> count()
+
+    from(1) |> find(length => distinct(length) == words.count)
+si
+
+for line in IO.File.read_lines("days-of-week.txt") do
+    let length = shortest_unique(line)
+
+    write_line(if length? then "{length,2}  {line}" else "" fi)
+od

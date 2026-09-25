@@ -78,6 +78,11 @@
       }
     },
     {
+      "title": "9 billion names of God the integer",
+      "slug": "9-billion-names-of-god-the-integer",
+      "state": "solved"
+    },
+    {
       "title": "99 bottles of beer",
       "slug": "99-bottles-of-beer",
       "state": "published",
@@ -99,10 +104,20 @@
       "published_hash": "97b67c2d093a6570693d83428ab3ae5c7f16b1b21ebeb64b7cea66cff824812b"
     },
     {
+      "title": "ABC correlation",
+      "slug": "abc-correlation",
+      "state": "solved"
+    },
+    {
       "title": "ABC problem",
       "slug": "abc-problem",
       "state": "published",
       "published_hash": "ea9db931cabbf173e82a31ecb79920e74fd2bdd3237efc69d4e2f3937bdcde80"
+    },
+    {
+      "title": "ABC words",
+      "slug": "abc-words",
+      "state": "solved"
     },
     {
       "title": "ADFGVX cipher",
@@ -110,6 +125,11 @@
       "state": "published",
       "note": "reopened, was rejected/nondeterministic: encrypt then decrypt and assert the round trip, with a seeded key",
       "published_hash": "36d665b0c8d67c80ddd1758b7153668e67abd50fa73b9993b79f70f5fbd3bd8b"
+    },
+    {
+      "title": "AKS test for primes",
+      "slug": "aks-test-for-primes",
+      "state": "solved"
     },
     {
       "title": "ASCII art diagram converter",
@@ -122,6 +142,11 @@
       "slug": "avl-tree",
       "state": "published",
       "published_hash": "8230aae2984f6eb295e5b250aad24f2a5cd7ae934a644e32ef423d09252c51fa"
+    },
+    {
+      "title": "Abbreviations, automatic",
+      "slug": "abbreviations-automatic",
+      "state": "solved"
     },
     {
       "title": "Abbreviations, easy",
@@ -158,6 +183,11 @@
       "slug": "abstract-type",
       "state": "published",
       "published_hash": "699320c5e7cf64d8ed55aac66d6ea352988ad12622ba84811a265f352f76b0f4"
+    },
+    {
+      "title": "Abundant odd numbers",
+      "slug": "abundant-odd-numbers",
+      "state": "solved"
     },
     {
       "title": "Abundant, deficient and perfect number classifications",
@@ -219,6 +249,11 @@
       "published_hash": "5de9b984be282720064cbe4a94e885671520693914c367910d9b20dd9e670d61"
     },
     {
+      "title": "Aho\u2013Corasick algorithm",
+      "slug": "aho-corasick-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Algebraic data types",
       "slug": "algebraic-data-types",
       "state": "published",
@@ -229,6 +264,16 @@
       "slug": "align-columns",
       "state": "published",
       "published_hash": "77e9836eb8db22e9874b2bf4f0364114c027aee4877a105279ec760330365111"
+    },
+    {
+      "title": "Aliquot sequence classifications",
+      "slug": "aliquot-sequence-classifications",
+      "state": "solved"
+    },
+    {
+      "title": "Almkvist-Giullera formula for pi",
+      "slug": "almkvist-giullera-formula-for-pi",
+      "state": "solved"
     },
     {
       "title": "Almost prime",
@@ -247,6 +292,11 @@
       "slug": "amicable-pairs",
       "state": "published",
       "published_hash": "6198566abba67f7ebb55152b121b03a345a6a0ea470ec94c34e0ccf3baaeb5fd"
+    },
+    {
+      "title": "Anadromes",
+      "slug": "anadromes",
+      "state": "solved"
     },
     {
       "title": "Anagram generator",

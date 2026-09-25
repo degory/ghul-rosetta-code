@@ -1,0 +1,42 @@
+use default
+
+factorial(n: int) -> bigint => 1::n |> map(k => bigint(k)) |> product()
+
+power_of_ten(exponent: int) -> bigint => bigint.pow(10n, exponent)
+
+integer_term(n: int) -> bigint =>
+    32n * factorial(6 * n) * bigint(532 * n * n + 126 * n + 9) /
+        (3n * bigint.pow(factorial(n), 6))
+
+square_root(n: bigint) -> bigint is
+    let x mut = n
+    let y mut = (x + 1n) / 2n
+
+    while y < x do
+        x = y
+        y = (x + n / x) / 2n
+    od
+
+    x
+si
+
+for n in 0..10 do
+    write_line("{n}: {integer_term(n)}")
+od
+
+let precision = 150
+let digits = 70
+
+let reciprocal_pi_squared = from(0)
+    |> map(n =>
+        integer_term(n) * power_of_ten(precision) /
+            power_of_ten(6 * n + 3))
+    |> take_while(term => term > 0n)
+    |> sum()
+
+let pi_squared =
+    power_of_ten(precision + 2 * digits) / reciprocal_pi_squared
+
+let pi = "{square_root(pi_squared)}"
+
+write_line("\npi = {pi[0]}.{pi.substring(1)}")

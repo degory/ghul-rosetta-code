@@ -313,6 +313,32 @@
       ]
     },
     {
+      "slug": "9-billion-names-of-god-the-integer",
+      "title": "9 billion names of God the integer",
+      "url": "https://rosettacode.org/wiki/9_billion_names_of_God_the_integer",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 65,
+      "parts": [
+        {
+          "id": "9-billion-names-of-god-the-integer",
+          "heading": null,
+          "source": "tasks/9-billion-names-of-god-the-integer/9-billion-names-of-god-the-integer.ghul",
+          "output": "tasks/9-billion-names-of-god-the-integer/run.expected",
+          "lines": 65,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "99-bottles-of-beer",
       "title": "99 bottles of beer",
       "url": "https://rosettacode.org/wiki/99_bottles_of_beer",
@@ -398,6 +424,32 @@
       ]
     },
     {
+      "slug": "abbreviations-automatic",
+      "title": "Abbreviations, automatic",
+      "url": "https://rosettacode.org/wiki/Abbreviations,_automatic",
+      "tags": [
+        "strings",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 24,
+      "parts": [
+        {
+          "id": "abbreviations-automatic",
+          "heading": null,
+          "source": "tasks/abbreviations-automatic/abbreviations-automatic.ghul",
+          "output": "tasks/abbreviations-automatic/run.expected",
+          "lines": 24,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "abbreviations-easy",
       "title": "Abbreviations, easy",
       "url": "https://rosettacode.org/wiki/Abbreviations,_easy",
@@ -452,6 +504,32 @@
       ]
     },
     {
+      "slug": "abc-correlation",
+      "title": "ABC correlation",
+      "url": "https://rosettacode.org/wiki/ABC_correlation",
+      "tags": [
+        "strings",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "abc-correlation",
+          "heading": null,
+          "source": "tasks/abc-correlation/abc-correlation.ghul",
+          "output": "tasks/abc-correlation/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "abc-problem",
       "title": "ABC problem",
       "url": "https://rosettacode.org/wiki/ABC_problem",
@@ -472,6 +550,32 @@
           "source": "tasks/abc-problem/abc-problem.ghul",
           "output": "tasks/abc-problem/run.expected",
           "lines": 28,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "abc-words",
+      "title": "ABC words",
+      "url": "https://rosettacode.org/wiki/ABC_words",
+      "tags": [
+        "strings",
+        "text-processing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 13,
+      "parts": [
+        {
+          "id": "abc-words",
+          "heading": null,
+          "source": "tasks/abc-words/abc-words.ghul",
+          "output": "tasks/abc-words/run.expected",
+          "lines": 13,
           "playground": true,
           "input": false,
           "images": []
@@ -587,6 +691,32 @@
           "source": "tasks/abundant-deficient-and-perfect-number-classifications/abundant-deficient-and-perfect-number-classifications.ghul",
           "output": "tasks/abundant-deficient-and-perfect-number-classifications/run.expected",
           "lines": 37,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "abundant-odd-numbers",
+      "title": "Abundant odd numbers",
+      "url": "https://rosettacode.org/wiki/Abundant_odd_numbers",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "abundant-odd-numbers",
+          "heading": null,
+          "source": "tasks/abundant-odd-numbers/abundant-odd-numbers.ghul",
+          "output": "tasks/abundant-odd-numbers/run.expected",
+          "lines": 27,
           "playground": true,
           "input": false,
           "images": []
@@ -792,6 +922,61 @@
       ]
     },
     {
+      "slug": "aho-corasick-algorithm",
+      "title": "Aho–Corasick algorithm",
+      "url": "https://rosettacode.org/wiki/Aho–Corasick_algorithm",
+      "tags": [
+        "algorithms",
+        "strings",
+        "data-structures",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 79,
+      "parts": [
+        {
+          "id": "aho-corasick-algorithm",
+          "heading": null,
+          "source": "tasks/aho-corasick-algorithm/aho-corasick-algorithm.ghul",
+          "output": "tasks/aho-corasick-algorithm/run.expected",
+          "lines": 79,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "aks-test-for-primes",
+      "title": "AKS test for primes",
+      "url": "https://rosettacode.org/wiki/AKS_test_for_primes",
+      "tags": [
+        "primes",
+        "maths",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "aks-test-for-primes",
+          "heading": null,
+          "source": "tasks/aks-test-for-primes/aks-test-for-primes.ghul",
+          "output": "tasks/aks-test-for-primes/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "algebraic-data-types",
       "title": "Algebraic data types",
       "url": "https://rosettacode.org/wiki/Algebraic_data_types",
@@ -840,6 +1025,56 @@
           "source": "tasks/align-columns/align-columns.ghul",
           "output": "tasks/align-columns/run.expected",
           "lines": 61,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "aliquot-sequence-classifications",
+      "title": "Aliquot sequence classifications",
+      "url": "https://rosettacode.org/wiki/Aliquot_sequence_classifications",
+      "tags": [
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 79,
+      "parts": [
+        {
+          "id": "aliquot-sequence-classifications",
+          "heading": null,
+          "source": "tasks/aliquot-sequence-classifications/aliquot-sequence-classifications.ghul",
+          "output": "tasks/aliquot-sequence-classifications/run.expected",
+          "lines": 79,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "almkvist-giullera-formula-for-pi",
+      "title": "Almkvist-Giullera formula for pi",
+      "url": "https://rosettacode.org/wiki/Almkvist-Giullera_formula_for_pi",
+      "tags": [
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "almkvist-giullera-formula-for-pi",
+          "heading": null,
+          "source": "tasks/almkvist-giullera-formula-for-pi/almkvist-giullera-formula-for-pi.ghul",
+          "output": "tasks/almkvist-giullera-formula-for-pi/run.expected",
+          "lines": 42,
           "playground": true,
           "input": false,
           "images": []
@@ -920,6 +1155,32 @@
           "source": "tasks/amicable-pairs/amicable-pairs.ghul",
           "output": "tasks/amicable-pairs/run.expected",
           "lines": 14,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "anadromes",
+      "title": "Anadromes",
+      "url": "https://rosettacode.org/wiki/Anadromes",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 19,
+      "parts": [
+        {
+          "id": "anadromes",
+          "heading": null,
+          "source": "tasks/anadromes/anadromes.ghul",
+          "output": "tasks/anadromes/run.expected",
+          "lines": 19,
           "playground": true,
           "input": false,
           "images": []

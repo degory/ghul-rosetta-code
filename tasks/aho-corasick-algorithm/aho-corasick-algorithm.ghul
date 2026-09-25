@@ -1,0 +1,79 @@
+use default
+
+class AUTOMATON(patterns: List[string] private) is
+    _moves: LIST[MAP[char, int]]
+    _fail: LIST[int]
+    _found: LIST[LIST[int]]
+
+    init(..) is
+        _moves = LIST()
+        _fail = LIST()
+        _found = LIST()
+
+        _new_state()
+
+        for (number, pattern) in patterns |> index() do
+            let state mut = 0
+
+            for c in pattern do
+                if !_moves[state].contains_key(c) then
+                    _moves[state][c] = _new_state()
+                fi
+
+                state = _moves[state][c]
+            od
+
+            _found[state].add(number)
+        od
+
+        let queue = Queue(_moves[0].values)
+
+        while queue.count > 0 do
+            let state = queue.dequeue()
+
+            for (c, child) in _moves[state] do
+                _fail[child] = _next(_fail[state], c)
+                _found[child].add_range(_found[_fail[child]])
+                queue.enqueue(child)
+            od
+        od
+    si
+
+    _new_state() -> int is
+        _moves.add(MAP())
+        _fail.add(0)
+        _found.add(LIST())
+
+        _moves.count - 1
+    si
+
+    _next(state: int, c: char) -> int =>
+        if _moves[state].contains_key(c) then _moves[state][c]
+        elif state == 0 then 0
+        else _next(_fail[state], c)
+        fi
+
+    matches(text: string) -> Pipe[(pattern: string, position: int)] is
+        let state mut = 0
+
+        for (at, c) in text |> index() do
+            state = _next(state, c)
+
+            for found in _found[state] do
+                let pattern = _patterns[found]
+
+                yield (pattern, position = at - pattern.length + 1)
+            od
+        od
+    si
+si
+
+let patterns = ["a", "ab", "bab", "bc", "bca", "c", "caa"]
+let text = "abccab"
+
+write_line("patterns: {patterns}")
+write_line("text:     {text}")
+
+for (pattern, position) in AUTOMATON(patterns).matches(text) do
+    write_line("{pattern,-4} at {position}")
+od
