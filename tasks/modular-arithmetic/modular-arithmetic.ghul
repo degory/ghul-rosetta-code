@@ -1,0 +1,43 @@
+use default
+
+trait Ring[T] is
+    +(other: T) -> T
+    *(other: T) -> T
+    one: T
+si
+
+struct INTEGER(value: bigint): Ring[INTEGER] is
+    +(other: INTEGER) -> INTEGER => INTEGER(value + other.value)
+    *(other: INTEGER) -> INTEGER => INTEGER(value * other.value)
+    one: INTEGER => INTEGER(1n)
+
+    to_string() -> string => "{value}"
+si
+
+struct MODULAR(value: int, modulus: int): Ring[MODULAR] is
+    +(other: MODULAR) -> MODULAR =>
+        MODULAR((value + other.value) % modulus, modulus)
+
+    *(other: MODULAR) -> MODULAR =>
+        MODULAR(value * other.value % modulus, modulus)
+
+    one: MODULAR => MODULAR(1, modulus)
+
+    to_string() -> string => "{value} (mod {modulus})"
+si
+
+power[T: Ring[T]](x: T, exponent: int) -> T is
+    let result mut = x.one
+
+    for _ in 1::exponent do
+        result = result * x
+    od
+
+    result
+si
+
+f[T: Ring[T]](x: T) -> T => power(x, 100) + x + x.one
+
+write_line("f(10) = {f(INTEGER(10n))}")
+write_line()
+write_line("f(10 mod 13) = {f(MODULAR(10, 13))}")

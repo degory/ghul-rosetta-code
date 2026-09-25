@@ -1,0 +1,31 @@
+use default
+
+digit_sum(n: long) -> long is
+    let total mut = 0L
+    let rest mut = n
+
+    while rest > 0L do
+        total = total + rest % 10L
+        rest = rest / 10L
+    od
+
+    total
+si
+
+least_multiplier(n: long) -> long =>
+    from(1L) |> find(m => digit_sum(n * m) == n)!
+
+let terms = 1L::70L |> map(least_multiplier) |> collect()
+
+write_line("The first 40 terms:")
+
+for row in terms |> take(40) |> chunk(10) do
+    write_line(row |> map(m => "{m,8}") |> join(""))
+od
+
+write_line()
+write_line("The next 30:")
+
+for row in terms |> skip(40) |> chunk(10) do
+    write_line(row |> map(m => "{m,10}") |> join(""))
+od

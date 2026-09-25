@@ -18782,6 +18782,58 @@
       ]
     },
     {
+      "slug": "minimum-multiple-of-m-where-digital-sum-equals-m",
+      "title": "Minimum multiple of m where digital sum equals m",
+      "url": "https://rosettacode.org/wiki/Minimum_multiple_of_m_where_digital_sum_equals_m",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "minimum-multiple-of-m-where-digital-sum-equals-m",
+          "heading": null,
+          "source": "tasks/minimum-multiple-of-m-where-digital-sum-equals-m/minimum-multiple-of-m-where-digital-sum-equals-m.ghul",
+          "output": "tasks/minimum-multiple-of-m-where-digital-sum-equals-m/run.expected",
+          "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "minimum-positive-multiple-in-base-10-using-only-0-and-1",
+      "title": "Minimum positive multiple in base 10 using only 0 and 1",
+      "url": "https://rosettacode.org/wiki/Minimum_positive_multiple_in_base_10_using_only_0_and_1",
+      "tags": [
+        "algorithms",
+        "number-theory"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 56,
+      "parts": [
+        {
+          "id": "minimum-positive-multiple-in-base-10-using-only-0-and-1",
+          "heading": null,
+          "source": "tasks/minimum-positive-multiple-in-base-10-using-only-0-and-1/minimum-positive-multiple-in-base-10-using-only-0-and-1.ghul",
+          "output": "tasks/minimum-positive-multiple-in-base-10-using-only-0-and-1/run.expected",
+          "lines": 56,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "minkowski-question-mark-function",
       "title": "Minkowski question-mark function",
       "url": "https://rosettacode.org/wiki/Minkowski_question-mark_function",
@@ -18865,6 +18917,111 @@
           "images": [
             "tasks/mobius-strip/mobius.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "modified-random-distribution",
+      "title": "Modified random distribution",
+      "url": "https://rosettacode.org/wiki/Modified_random_distribution",
+      "tags": [
+        "simulation",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "modified-random-distribution",
+          "heading": null,
+          "source": "tasks/modified-random-distribution/modified-random-distribution.ghul",
+          "output": "tasks/modified-random-distribution/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "modular-arithmetic",
+      "title": "Modular arithmetic",
+      "url": "https://rosettacode.org/wiki/Modular_arithmetic",
+      "tags": [
+        "operators",
+        "generics",
+        "traits"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 43,
+      "parts": [
+        {
+          "id": "modular-arithmetic",
+          "heading": null,
+          "source": "tasks/modular-arithmetic/modular-arithmetic.ghul",
+          "output": "tasks/modular-arithmetic/run.expected",
+          "lines": 43,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "modular-exponentiation",
+      "title": "Modular exponentiation",
+      "url": "https://rosettacode.org/wiki/Modular_exponentiation",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "modular-exponentiation",
+          "heading": null,
+          "source": "tasks/modular-exponentiation/modular-exponentiation.ghul",
+          "output": "tasks/modular-exponentiation/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "modular-inverse",
+      "title": "Modular inverse",
+      "url": "https://rosettacode.org/wiki/Modular_inverse",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "modular-inverse",
+          "heading": null,
+          "source": "tasks/modular-inverse/modular-inverse.ghul",
+          "output": "tasks/modular-inverse/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -19087,6 +19244,32 @@
       ]
     },
     {
+      "slug": "multi-base-primes",
+      "title": "Multi-base primes",
+      "url": "https://rosettacode.org/wiki/Multi-base_primes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 69,
+      "parts": [
+        {
+          "id": "multi-base-primes",
+          "heading": null,
+          "source": "tasks/multi-base-primes/multi-base-primes.ghul",
+          "output": "tasks/multi-base-primes/run.expected",
+          "lines": 69,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "multi-dimensional-array",
       "title": "Multi-dimensional array",
       "url": "https://rosettacode.org/wiki/Multi-dimensional_array",
@@ -19106,6 +19289,32 @@
           "source": "tasks/multi-dimensional-array/multi-dimensional-array.ghul",
           "output": "tasks/multi-dimensional-array/run.expected",
           "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "multifactorial",
+      "title": "Multifactorial",
+      "url": "https://rosettacode.org/wiki/Multifactorial",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 13,
+      "parts": [
+        {
+          "id": "multifactorial",
+          "heading": null,
+          "source": "tasks/multifactorial/multifactorial.ghul",
+          "output": "tasks/multifactorial/run.expected",
+          "lines": 13,
           "playground": true,
           "input": false,
           "images": []
@@ -19164,6 +19373,32 @@
       ]
     },
     {
+      "slug": "multiple-regression",
+      "title": "Multiple regression",
+      "url": "https://rosettacode.org/wiki/Multiple_regression",
+      "tags": [
+        "maths",
+        "operators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 66,
+      "parts": [
+        {
+          "id": "multiple-regression",
+          "heading": null,
+          "source": "tasks/multiple-regression/multiple-regression.ghul",
+          "output": "tasks/multiple-regression/run.expected",
+          "lines": 66,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "multiplication-tables",
       "title": "Multiplication tables",
       "url": "https://rosettacode.org/wiki/Multiplication_tables",
@@ -19184,6 +19419,32 @@
           "source": "tasks/multiplication-tables/multiplication-tables.ghul",
           "output": "tasks/multiplication-tables/run.expected",
           "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "multiplicative-order",
+      "title": "Multiplicative order",
+      "url": "https://rosettacode.org/wiki/Multiplicative_order",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 80,
+      "parts": [
+        {
+          "id": "multiplicative-order",
+          "heading": null,
+          "source": "tasks/multiplicative-order/multiplicative-order.ghul",
+          "output": "tasks/multiplicative-order/run.expected",
+          "lines": 80,
           "playground": true,
           "input": false,
           "images": []

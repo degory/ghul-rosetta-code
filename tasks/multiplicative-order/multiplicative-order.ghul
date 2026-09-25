@@ -1,0 +1,80 @@
+use default
+
+use Factor = (prime: bigint, power: int)
+
+factorise(n: bigint) -> List[Factor] is
+    let factors = LIST[Factor]()
+    let rest mut = n
+    let p mut = 2n
+
+    while p * p <= rest do
+        let power mut = 0
+
+        while (rest % p).is_zero do
+            rest = rest / p
+            power = power + 1
+        od
+
+        if power > 0 then
+            factors.add((prime = p, power = power))
+        fi
+
+        p = p + 1n
+    od
+
+    if rest > 1n then
+        factors.add((prime = rest, power = 1))
+    fi
+
+    factors
+si
+
+gcd(a: bigint, b: bigint) -> bigint => bigint.greatest_common_divisor(a, b)
+
+lcm(a: bigint, b: bigint) -> bigint => a / gcd(a, b) * b
+
+order_part(
+    a: bigint, q: Factor, totient: bigint, modulus: bigint
+) -> bigint is
+    let cofactor = totient / bigint.pow(q.prime, q.power)
+    let y mut = bigint.mod_pow(a, cofactor, modulus)
+    let d mut = 0
+
+    while !y.is_one do
+        y = bigint.mod_pow(y, q.prime, modulus)
+        d = d + 1
+    od
+
+    bigint.pow(q.prime, d)
+si
+
+order_modulo_prime_power(a: bigint, factor: Factor) -> bigint =>
+    let modulus = bigint.pow(factor.prime, factor.power) in
+    let totient = modulus / factor.prime * (factor.prime - 1n) in
+    factorise(totient)
+        |> map(q => order_part(a, q, totient, modulus))
+        |> reduce(1n, (order, part) => order * part)
+
+multiplicative_order(a: bigint, m: bigint) -> bigint =>
+    factorise(m)
+        |> map(factor => order_modulo_prime_power(a, factor))
+        |> reduce(1n, lcm)
+
+let big = bigint.pow(10n, 100) + 1n
+
+write_line("a = 10 to the power 100, plus 1")
+write_line()
+
+let cases = [
+    ("37", 37n, 1000n),
+    ("37", 37n, 3343n),
+    ("a", big, 7919n),
+    ("a", big, 15485863n),
+    ("a", big, 22801763489n),
+    ("1511678068", 1511678068n, 7379191741n),
+    ("3047753288", 3047753288n, 2257683301n)
+]
+
+for (label, a, m) in cases do
+    write_line("order of {label} modulo {m} = {multiplicative_order(a, m)}")
+od

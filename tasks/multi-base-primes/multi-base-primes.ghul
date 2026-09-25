@@ -1,0 +1,69 @@
+use default
+
+let digits = "0123456789abcdefghijklmnopqrstuvwxyz"
+
+sieve(limit: int) -> List[bool] is
+    let composite = repeat(false, limit + 1) |> collect_list()
+
+    composite[0] = true
+    composite[1] = true
+
+    for p in 2..limit do
+        if !composite[p] /\ p <= limit / p then
+            for multiple in from(p * p, p) |> take_while(m => m <= limit) do
+                composite[multiple] = true
+            od
+        fi
+    od
+
+    composite |> map(c => !c) |> collect()
+si
+
+in_base(n: int, base: int) -> string is
+    let text = System.Text.StringBuilder()
+    let rest mut = n
+
+    while rest > 0 do
+        text.insert(0, digits[rest % base])
+        rest = rest / base
+    od
+
+    text.to_string()
+si
+
+power(base: int, exponent: int) -> int =>
+    1::exponent |> reduce(1, (p, _) => p * base)
+
+let is_prime = sieve(power(36, 4))
+
+for length in 1::4 do
+    let bases_of = MAP[string, LIST[int]]()
+
+    for base in 2::36 do
+        let low = if length == 1 then 0 else power(base, length - 1) fi
+
+        for n in low..power(base, length) do
+            if is_prime[n] then
+                let text = in_base(n, base)
+
+                if !bases_of.contains_key(text) then
+                    bases_of[text] = LIST[int]()
+                fi
+
+                bases_of[text].add(base)
+            fi
+        od
+    od
+
+    let most = bases_of.values |> map(bases => bases.count) |> max()!
+
+    write_line("{length} character strings, most bases: {most}")
+
+    let winners = bases_of
+        |> filter(e => e.value.count == most)
+        |> sort_by(e => e.key)
+
+    for entry in winners do
+        write_line("  {entry.key} -> [{entry.value |> join(" ")}]")
+    od
+od
