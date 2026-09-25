@@ -1,0 +1,50 @@
+use default
+
+use System.Security.Cryptography.SHA256
+use Tasks.Parallel
+use System.Collections.Concurrent.ConcurrentDictionary
+
+let hashes = [
+    "1115dd800feaacefdf481f1f9070374a2a81e27880f187396db67958b207cbad",
+    "3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b",
+    "74e1bb62f8dabb8125a58852b63bdf6eaef667cb56ac7f7cdba6d7305c50a22f"
+]
+
+let targets = hashes
+    |> map(hex => System.Convert.from_hex_string(hex))
+    |> collect()
+
+let found = ConcurrentDictionary[int, string]()
+
+search(first: int) is
+    let word = LIST[ubyte](repeat(cast ubyte(97), 5))
+    word[0] = cast ubyte(97 + first)
+
+    for b in 0..26 do
+        for c in 0..26 do
+            for d in 0..26 do
+                for e in 0..26 do
+                    word[1] = cast ubyte(97 + b)
+                    word[2] = cast ubyte(97 + c)
+                    word[3] = cast ubyte(97 + d)
+                    word[4] = cast ubyte(97 + e)
+
+                    let hash = SHA256.hash_data(word.to_array())
+
+                    for (i, target) in targets |> index() do
+                        if hash =~ target then
+                            found[i] = System.Text.Encoding.ascii
+                                .get_string(word.to_array())
+                        fi
+                    od
+                od
+            od
+        od
+    od
+si
+
+Parallel.`for(0, 26, search)
+
+for (i, hex) in hashes |> index() do
+    write_line("{hex}  {found[i]}")
+od
