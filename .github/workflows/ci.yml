@@ -217,6 +217,9 @@ jobs:
     - name: Build the root project
       run: dotnet build
 
+    - name: Check the line-width check
+      run: scripts/check-width.sh --self-test
+
     - name: Check the line width
       run: scripts/check-width.sh --hard
 
