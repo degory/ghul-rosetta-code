@@ -1,0 +1,9 @@
+patterns: [a, ab, bab, bc, bca, c, caa]
+text:     abccab
+a    at 0
+ab   at 0
+bc   at 1
+c    at 2
+c    at 3
+a    at 4
+ab   at 4
