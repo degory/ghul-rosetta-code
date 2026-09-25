@@ -1,0 +1,34 @@
+use default
+
+use System.Runtime.InteropServices.Marshal
+
+// Managed memory is never freed explicitly: constructing an object or
+// an array takes it from the garbage-collected heap, and the collector
+// reclaims it once nothing refers to it. A struct held in a local
+// variable lives on the stack. Memory outside the collector's reach is
+// taken and given back by hand through Marshal, which also reads and
+// writes it.
+
+struct POINT(x: int, y: int)
+
+let on_heap = repeat(0, 1000) |> collect_array()
+let on_stack = POINT(3, 4)
+
+write_line("managed array of {on_heap.count} ints, left to the collector")
+write_line("struct in a local: {on_stack.x}, {on_stack.y}")
+
+let size = 4 * 10
+let block = Marshal.alloc_h_global(size)
+
+for i in 0..10 do
+    Marshal.write_int32(block, 4 * i, i * i)
+od
+
+let squares =
+    0..10 |> map(i => Marshal.read_int32(block, 4 * i)) |> join(" ")
+
+write_line("unmanaged block of {size} bytes holds: {squares}")
+
+Marshal.free_h_global(block)
+
+write_line("unmanaged block freed")
