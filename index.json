@@ -11800,6 +11800,32 @@
       ]
     },
     {
+      "slug": "hamiltonian-cycle-via-chvatal-closure",
+      "title": "Hamiltonian Cycle via Chvátal Closure",
+      "url": "https://rosettacode.org/wiki/Hamiltonian_Cycle_via_Chvátal_Closure",
+      "tags": [
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 102,
+      "parts": [
+        {
+          "id": "hamiltonian-cycle-via-chvatal-closure",
+          "heading": null,
+          "source": "tasks/hamiltonian-cycle-via-chvatal-closure/hamiltonian-cycle-via-chvatal-closure.ghul",
+          "output": "tasks/hamiltonian-cycle-via-chvatal-closure/run.expected",
+          "lines": 102,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hamming-numbers",
       "title": "Hamming numbers",
       "url": "https://rosettacode.org/wiki/Hamming_numbers",
