@@ -6881,6 +6881,11 @@
       }
     },
     {
+      "title": "Steffensen\u0027s method",
+      "slug": "steffensen-s-method",
+      "state": "solved"
+    },
+    {
       "title": "Stem-and-leaf plot",
       "slug": "stem-and-leaf-plot",
       "state": "published",
@@ -6903,6 +6908,16 @@
       "slug": "stirling-numbers-of-the-second-kind",
       "state": "published",
       "published_hash": "5bd2fb3bc038a96991bbf96e1a397f1d30bfcbe0537e3f9d924dcbb5321808e9"
+    },
+    {
+      "title": "Straddling checkerboard",
+      "slug": "straddling-checkerboard",
+      "state": "solved"
+    },
+    {
+      "title": "Strassen\u0027s algorithm",
+      "slug": "strassen-s-algorithm",
+      "state": "solved"
     },
     {
       "title": "Stream merge",
@@ -6995,6 +7010,11 @@
       "published_hash": "58ba7eef3305dfd763365af22a667bc79c876f00aa68437668d7b0675b0bc849"
     },
     {
+      "title": "Sub-unit squares",
+      "slug": "sub-unit-squares",
+      "state": "solved"
+    },
+    {
       "title": "Subleq",
       "slug": "subleq",
       "state": "published",
@@ -7019,6 +7039,11 @@
       "published_hash": "469ca32a1bd3bff420349d975eafc49527a48472606dd4dcd53cba1c33cec592"
     },
     {
+      "title": "Subtractive generator",
+      "slug": "subtractive-generator",
+      "state": "solved"
+    },
+    {
       "title": "Successive prime differences",
       "slug": "successive-prime-differences",
       "state": "published",
@@ -7041,6 +7066,11 @@
       "slug": "suffix-tree",
       "state": "published",
       "published_hash": "4b871de8e63b37db6f866f6bced06e363d133678fb92e3a81f71555c12bb6fb8"
+    },
+    {
+      "title": "Suffixation of decimal numbers",
+      "slug": "suffixation-of-decimal-numbers",
+      "state": "solved"
     },
     {
       "title": "Sum and product of an array",
@@ -7077,6 +7107,11 @@
       "slug": "sum-of-a-series",
       "state": "published",
       "published_hash": "039d8ca51130325a34c3326fdecb81ca7b9a9b3e267250a785e19d0352883580"
+    },
+    {
+      "title": "Sum of elements below main diagonal of matrix",
+      "slug": "sum-of-elements-below-main-diagonal-of-matrix",
+      "state": "solved"
     },
     {
       "title": "Sum of squares",
@@ -7118,6 +7153,11 @@
       "published_hash": "0dce743d7a068f57dc955b88399d6da8d11bc8499a27ac7ffbc4dc7544d3f029"
     },
     {
+      "title": "Super-d numbers",
+      "slug": "super-d-numbers",
+      "state": "solved"
+    },
+    {
       "title": "Superellipse",
       "slug": "superellipse",
       "state": "published",
@@ -7125,6 +7165,11 @@
       "image_hashes": {
         "Ghul-superellipse-superellipse.png": "55d03336f213decb800835f7ffb8375c84c64446"
       }
+    },
+    {
+      "title": "Superpermutation minimisation",
+      "slug": "superpermutation-minimisation",
+      "state": "solved"
     },
     {
       "title": "Sutherland-Hodgman polygon clipping",
@@ -7146,6 +7191,11 @@
       "slug": "symmetric-difference",
       "state": "published",
       "published_hash": "3be0ac0154cb6584f412a170f499424c764b3644a746af89985ef54bde3f764b"
+    },
+    {
+      "title": "Sync subtitles",
+      "slug": "sync-subtitles",
+      "state": "solved"
     },
     {
       "title": "Synchronous concurrency",

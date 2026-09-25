@@ -1,0 +1,11 @@
+ n  joined  recursive  contains all
+ 1       1          1  true
+ 2       4          3  true
+ 3      18          9  true
+ 4      96         33  true
+ 5     600        153  true
+ 6    4320        873  true
+ 7   35280       5913  true
+
+recursive(3) = ABCABACBA
+recursive(4) = ABCDABCADBCABDCABACDBACBDACBADCBA

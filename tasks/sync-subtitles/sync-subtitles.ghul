@@ -1,0 +1,31 @@
+use default
+use System.TimeSpan
+
+let format = "hh\\:mm\\:ss\\,fff"
+
+shift(stamp: string, offset: TimeSpan) -> string =>
+    (TimeSpan.parse_exact(stamp, format, null) + offset).to_string(format)
+
+synced(lines: string[], seconds: int) -> Pipe[string] =>
+    let offset = TimeSpan.from_seconds(cast double(seconds)) in
+    lines |> map(line =>
+        if line.contains(" --> ") then
+            let parts = line.split([' ']) in
+            "{shift(parts[0], offset)} --> {shift(parts[2], offset)}"
+        else
+            line
+        fi)
+
+let lines = IO.File.read_all_lines("movie.srt")
+
+for seconds in [9, -9] do
+    write_line("Shifted by {seconds} seconds:")
+    write_line("")
+
+    for line in synced(lines, seconds) |> take(8) do
+        write_line(line)
+    od
+
+    write_line("...")
+    write_line("")
+od

@@ -28701,6 +28701,32 @@
       ]
     },
     {
+      "slug": "steffensen-s-method",
+      "title": "Steffensen's method",
+      "url": "https://rosettacode.org/wiki/Steffensen's_method",
+      "tags": [
+        "maths",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 56,
+      "parts": [
+        {
+          "id": "steffensen-s-method",
+          "heading": null,
+          "source": "tasks/steffensen-s-method/steffensen-s-method.ghul",
+          "output": "tasks/steffensen-s-method/run.expected",
+          "lines": 56,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "stem-and-leaf-plot",
       "title": "Stem-and-leaf plot",
       "url": "https://rosettacode.org/wiki/Stem-and-leaf_plot",
@@ -28799,6 +28825,59 @@
           "source": "tasks/stirling-numbers-of-the-second-kind/stirling-numbers-of-the-second-kind.ghul",
           "output": "tasks/stirling-numbers-of-the-second-kind/run.expected",
           "lines": 53,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "straddling-checkerboard",
+      "title": "Straddling checkerboard",
+      "url": "https://rosettacode.org/wiki/Straddling_checkerboard",
+      "tags": [
+        "strings",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 90,
+      "parts": [
+        {
+          "id": "straddling-checkerboard",
+          "heading": null,
+          "source": "tasks/straddling-checkerboard/straddling-checkerboard.ghul",
+          "output": "tasks/straddling-checkerboard/run.expected",
+          "lines": 90,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "strassen-s-algorithm",
+      "title": "Strassen's algorithm",
+      "url": "https://rosettacode.org/wiki/Strassen's_algorithm",
+      "tags": [
+        "maths",
+        "recursion",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 150,
+      "parts": [
+        {
+          "id": "strassen-s-algorithm",
+          "heading": null,
+          "source": "tasks/strassen-s-algorithm/strassen-s-algorithm.ghul",
+          "output": "tasks/strassen-s-algorithm/run.expected",
+          "lines": 150,
           "playground": true,
           "input": false,
           "images": []
@@ -29211,6 +29290,32 @@
       ]
     },
     {
+      "slug": "sub-unit-squares",
+      "title": "Sub-unit squares",
+      "url": "https://rosettacode.org/wiki/Sub-unit_squares",
+      "tags": [
+        "number-theory",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 29,
+      "parts": [
+        {
+          "id": "sub-unit-squares",
+          "heading": null,
+          "source": "tasks/sub-unit-squares/sub-unit-squares.ghul",
+          "output": "tasks/sub-unit-squares/run.expected",
+          "lines": 29,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "subleq",
       "title": "Subleq",
       "url": "https://rosettacode.org/wiki/Subleq",
@@ -29307,6 +29412,32 @@
           "source": "tasks/substring-top-and-tail/substring-top-and-tail.ghul",
           "output": "tasks/substring-top-and-tail/run.expected",
           "lines": 7,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "subtractive-generator",
+      "title": "Subtractive generator",
+      "url": "https://rosettacode.org/wiki/Subtractive_generator",
+      "tags": [
+        "algorithms",
+        "classes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "subtractive-generator",
+          "heading": null,
+          "source": "tasks/subtractive-generator/subtractive-generator.ghul",
+          "output": "tasks/subtractive-generator/run.expected",
+          "lines": 41,
           "playground": true,
           "input": false,
           "images": []
@@ -29412,6 +29543,33 @@
           "source": "tasks/suffix-tree/suffix-tree.ghul",
           "output": "tasks/suffix-tree/run.expected",
           "lines": 83,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "suffixation-of-decimal-numbers",
+      "title": "Suffixation of decimal numbers",
+      "url": "https://rosettacode.org/wiki/Suffixation_of_decimal_numbers",
+      "tags": [
+        "strings",
+        "dotnet-interop",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 64,
+      "parts": [
+        {
+          "id": "suffixation-of-decimal-numbers",
+          "heading": null,
+          "source": "tasks/suffixation-of-decimal-numbers/suffixation-of-decimal-numbers.ghul",
+          "output": "tasks/suffixation-of-decimal-numbers/run.expected",
+          "lines": 64,
           "playground": true,
           "input": false,
           "images": []
@@ -29575,6 +29733,32 @@
       ]
     },
     {
+      "slug": "sum-of-elements-below-main-diagonal-of-matrix",
+      "title": "Sum of elements below main diagonal of matrix",
+      "url": "https://rosettacode.org/wiki/Sum_of_elements_below_main_diagonal_of_matrix",
+      "tags": [
+        "basics",
+        "pipes"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 16,
+      "parts": [
+        {
+          "id": "sum-of-elements-below-main-diagonal-of-matrix",
+          "heading": null,
+          "source": "tasks/sum-of-elements-below-main-diagonal-of-matrix/sum-of-elements-below-main-diagonal-of-matrix.ghul",
+          "output": "tasks/sum-of-elements-below-main-diagonal-of-matrix/run.expected",
+          "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sum-of-squares",
       "title": "Sum of squares",
       "url": "https://rosettacode.org/wiki/Sum_of_squares",
@@ -29711,6 +29895,32 @@
       ]
     },
     {
+      "slug": "super-d-numbers",
+      "title": "Super-d numbers",
+      "url": "https://rosettacode.org/wiki/Super-d_numbers",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "super-d-numbers",
+          "heading": null,
+          "source": "tasks/super-d-numbers/super-d-numbers.ghul",
+          "output": "tasks/super-d-numbers/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "super-poulet-numbers",
       "title": "Super-Poulet numbers",
       "url": "https://rosettacode.org/wiki/Super-Poulet_numbers",
@@ -29766,6 +29976,33 @@
           "images": [
             "tasks/superellipse/superellipse.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "superpermutation-minimisation",
+      "title": "Superpermutation minimisation",
+      "url": "https://rosettacode.org/wiki/Superpermutation_minimisation",
+      "tags": [
+        "strings",
+        "recursion",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 70,
+      "parts": [
+        {
+          "id": "superpermutation-minimisation",
+          "heading": null,
+          "source": "tasks/superpermutation-minimisation/superpermutation-minimisation.ghul",
+          "output": "tasks/superpermutation-minimisation/run.expected",
+          "lines": 70,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -29846,6 +30083,33 @@
           "source": "tasks/symmetric-difference/symmetric-difference.ghul",
           "output": "tasks/symmetric-difference/run.expected",
           "lines": 17,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "sync-subtitles",
+      "title": "Sync subtitles",
+      "url": "https://rosettacode.org/wiki/Sync_subtitles",
+      "tags": [
+        "text-processing",
+        "dotnet-interop",
+        "date-time"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "sync-subtitles",
+          "heading": null,
+          "source": "tasks/sync-subtitles/sync-subtitles.ghul",
+          "output": "tasks/sync-subtitles/run.expected",
+          "lines": 31,
           "playground": true,
           "input": false,
           "images": []

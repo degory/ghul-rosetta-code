@@ -1,0 +1,56 @@
+use default
+
+aitken(f: double -> double, p0: double) -> double is
+    let p1 = f(p0)
+    let p2 = f(p1)
+    let p1m0 = p1 - p0
+
+    p0 - (p1m0 * p1m0) / (p2 - 2.0 * p1 + p0)
+si
+
+steffensen_aitken(
+    f: double -> double,
+    initial: double,
+    tolerance: double,
+    iterations: int
+) -> double? is
+    let p0 mut = initial
+    let p mut = aitken(f, p0)
+    let count mut = 1
+
+    while System.Math.abs(p - p0) > tolerance /\ count < iterations do
+        p0 = p
+        p = aitken(f, p0)
+        count = count + 1
+    od
+
+    if System.Math.abs(p - p0) > tolerance then null else p fi
+si
+
+de_casteljau(c0: double, c1: double, c2: double, t: double) -> double =>
+    let s = 1.0 - t in
+    s * (s * c0 + t * c1) + t * (s * c1 + t * c2)
+
+x(t: double) -> double => de_casteljau(2.0, -8.0, 2.0, t)
+y(t: double) -> double => de_casteljau(1.0, 2.0, 3.0, t)
+
+implicit_equation(x: double, y: double) -> double => 5.0 * x * x + y - 5.0
+
+f(t: double) -> double => implicit_equation(x(t), y(t)) + t
+
+for i in 0::10 do
+    let t0 = cast double(i) / 10.0
+    let prefix = "t0 = {t0:F1} :"
+
+    if let t = steffensen_aitken(f, t0, 0.00000001, 1000) then
+        let (px, py) = (x(t), y(t))
+
+        if System.Math.abs(implicit_equation(px, py)) <= 0.000001 then
+            write_line("{prefix} intersection at ({px:F6}, {py:F6})")
+        else
+            write_line("{prefix} spurious solution")
+        fi
+    else
+        write_line("{prefix} no answer")
+    fi
+od
