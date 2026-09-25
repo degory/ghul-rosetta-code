@@ -16573,6 +16573,32 @@
       ]
     },
     {
+      "slug": "modular-inverse",
+      "title": "Modular inverse",
+      "url": "https://rosettacode.org/wiki/Modular_inverse",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 21,
+      "parts": [
+        {
+          "id": "modular-inverse",
+          "heading": null,
+          "source": "tasks/modular-inverse/modular-inverse.ghul",
+          "output": "tasks/modular-inverse/run.expected",
+          "lines": 21,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "monads-list-monad",
       "title": "Monads/List monad",
       "url": "https://rosettacode.org/wiki/Monads/List_monad",
