@@ -1,0 +1,42 @@
+use default
+
+let limit = 35_000_000
+
+let chowla = repeat(0, limit + 1) |> collect_list()
+
+for divisor in 2::limit / 2 do
+    let multiple mut = divisor * 2
+
+    while multiple <= limit do
+        chowla[multiple] = chowla[multiple] + divisor
+
+        multiple = multiple + divisor
+    od
+od
+
+for n in 1::37 do
+    write_line("chowla({n}) = {chowla[n]}")
+od
+
+write_line("")
+
+let counts mut = 0
+let bound mut = 100
+
+for n in 2::10_000_000 do
+    if chowla[n] == 0 then
+        counts = counts + 1
+    fi
+
+    if n == bound then
+        write_line("{counts,10:N0} primes up to {bound,12:N0}")
+
+        bound = bound * 10
+    fi
+od
+
+write_line("")
+
+2::limit
+    |> filter(n => chowla[n] == n - 1)
+    |> each(n => write_line("{n,12:N0} is perfect"))
