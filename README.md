@@ -48,6 +48,11 @@ scripts/capture.sh tasks/binary-digits
 yourself it is what the task asks for - capturing is how a wrong answer becomes a permanent
 expectation.
 
+It refuses a task that did not compile. Captured, those errors would become what the test
+asserts, and it would pass from then on by continuing to fail to build. A task that cannot be
+written yet is recorded as blocked against the issue that stops it, rather than committed as a
+broken build with its errors pinned.
+
 ## showing a task more than one way
 
 Some tasks are worth showing twice - the built-in one-liner, and the same thing written out. Those
