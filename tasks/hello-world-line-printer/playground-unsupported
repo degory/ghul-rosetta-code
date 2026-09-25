@@ -1,0 +1,1 @@
+The program writes to a line printer device, /dev/lp0 unless it is given another path, and the browser has no device to write to.

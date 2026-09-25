@@ -1,5 +1,6 @@
 {
   "title": "Rate counter",
-  "state": "rejected",
-  "reason": "nondeterministic"
+  "slug": "rate-counter",
+  "state": "solved",
+  "note": "reopened, was rejected/nondeterministic: the rates differ every run, so the test checks the report's shape and that every rate is positive"
 }

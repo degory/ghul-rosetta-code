@@ -1,0 +1,10 @@
+8 files under sample
+
+empty                     2  ##
+1 to 9 bytes              1  #
+10 to 99 bytes            2  ##
+100 to 999 bytes          1  #
+1000 to 9999 bytes        1  #
+10000 to 99999 bytes      1  #
+
+6 of 8 files are under 1000 bytes, holding 4.0% of the 15624 bytes

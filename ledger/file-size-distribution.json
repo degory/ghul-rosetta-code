@@ -1,5 +1,6 @@
 {
   "title": "File size distribution",
-  "state": "rejected",
-  "reason": "nondeterministic"
+  "slug": "file-size-distribution",
+  "state": "solved",
+  "note": "reopened, was rejected/nondeterministic: the directory is taken from the command line, so the test walks a sample tree shipped with the task and the output is fixed"
 }

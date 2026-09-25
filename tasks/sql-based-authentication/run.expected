@@ -1,0 +1,7 @@
+create alice: created
+create bob: created
+create alice: name taken
+login alice / wonderland: accepted
+login alice / again: refused
+login bob / builder: accepted
+login carol / anything: refused

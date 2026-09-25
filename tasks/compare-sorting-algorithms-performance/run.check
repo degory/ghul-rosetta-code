@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Timings depend on the machine, so what is asserted is the shape of each of
+# the three reports and plots, plus the one result no machine changes:
+# insertion sort grows as the square of the length on shuffled input.
+
+out=$1
+
+trap 'rm -f ones.png range.png shuffled.png' EXIT
+
+fail() {
+    echo "$1"
+    cat "$out"
+    exit 1
+}
+
+number='[0-9]+\.[0-9]'
+growth="growth exponent from n = 1024 up: insertion $number, shell $number, quicksort $number, library $number"
+
+for input in ones range shuffled ; do
+    section=$(sed -n "/^$input: time in microseconds\$/,/^<<image $input.png>>\$/p" "$out")
+
+    [ -n "$section" ] || fail "no report for $input"
+
+    rows=$(grep -cE '^ *[0-9]+( +[0-9]+){4}$' <<< "$section")
+    [ "$rows" = 9 ] || fail "expected nine timing rows for $input, found $rows"
+
+    grep -qxE "$growth" <<< "$section" || fail "no growth line for $input"
+
+    [ "$(od -An -tu1 -j16 -N8 "$input.png" 2>/dev/null | tr -s ' ' | sed 's/^ //')" = "0 0 1 224 0 0 1 104" ] ||
+        fail "$input.png is missing or not 480 by 360"
+done
+
+exponent=$(sed -n '/^shuffled:/,$ s/^growth exponent.*insertion \([0-9.]*\),.*/\1/p' "$out")
+
+awk -v e="$exponent" 'BEGIN { exit !(e >= 1.6) }' ||
+    fail "insertion sort on shuffled input grew as n to the $exponent, not quadratically"

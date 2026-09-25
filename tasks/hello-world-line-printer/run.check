@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# The test has no printer, so the program is given a file to use as one, and
+# what reached that file is what is checked.
+
+out=$1
+printer=printer.out
+
+trap 'rm -f "$printer"' EXIT
+
+if [ -s "$out" ] ; then
+    echo "nothing should go to standard output, got:"
+    cat "$out"
+    exit 1
+fi
+
+if [ "$(cat "$printer" 2>/dev/null)" != "Hello World!" ] ; then
+    echo "the printer did not receive the line"
+    exit 1
+fi

@@ -1,0 +1,46 @@
+use default
+
+let root = if args.count > 0 then args[0] else "." fi
+
+let sizes =
+    IO.Directory.enumerate_files(root, "*", IO.SearchOption.ALL_DIRECTORIES)
+    |> map(path => IO.FileInfo(path).length)
+    |> collect()
+
+bucket(size: long) -> int =>
+    if size == 0L then
+        0
+    else
+        cast int(System.Math.log10(cast double(size))) + 1
+    fi
+
+label(bucket: int) -> string =>
+    if bucket == 0 then
+        "empty"
+    else
+        "{System.Math.pow(10.0, cast double(bucket - 1))} to "
+        "{System.Math.pow(10.0, cast double(bucket)) - 1.0} bytes"
+    fi
+
+let counts =
+    sizes
+    |> group_by(bucket)
+    |> map(entry => (bucket = entry.key, count = entry.value.count))
+    |> sort_by(entry => entry.bucket)
+    |> collect()
+
+write_line("{sizes.count} files under {root}")
+write_line("")
+
+for (b, count) in counts do
+    write_line("{label(b),-22} {count,4}  {string('#', count)}")
+od
+
+let total = sizes |> sum()
+let small = sizes |> filter(size => size < 1000L) |> collect()
+let share = 100.0 * cast double(small |> sum()) / cast double(total)
+
+write_line("")
+write_line(
+    "{small.count} of {sizes.count} files are under 1000 bytes, "
+    "holding {share:F1}% of the {total} bytes")

@@ -1,0 +1,104 @@
+use default
+
+use Microsoft.Data.Sqlite.SqliteConnection
+use Microsoft.Data.Sqlite.SqliteException
+use System.Security.Cryptography.MD5
+use System.Security.Cryptography.RandomNumberGenerator
+use System.Text.Encoding
+
+// SQLite, through Microsoft.Data.Sqlite, stands in for MySQL: an
+// in-memory database needs no server, and the table and the three
+// operations are the ones the task gives.
+connect_db() -> SqliteConnection is
+    let db = SqliteConnection("Data Source=:memory:")
+    db.open()
+
+    let use create = db.create_command()
+
+    create.command_text =
+        "create table users ("
+        "    userid integer primary key autoincrement,"
+        "    username varchar(32) unique not null,"
+        "    pass_salt blob not null,"
+        "    pass_md5 blob not null)"
+
+    create.execute_non_query()
+
+    return db
+si
+
+digest(salt: ubyte[], password: string) -> ubyte[] =>
+    MD5.hash_data(
+        salt |> cat(Encoding.utf8.get_bytes(password)) |> collect_array())
+
+create_user(db: SqliteConnection, username: string, password: string)
+    -> bool
+is
+    let salt = RandomNumberGenerator.get_bytes(16)
+    let use insert = db.create_command()
+
+    insert.command_text =
+        "insert into users (username, pass_salt, pass_md5) "
+        "values ($user, $salt, $md5)"
+
+    insert.parameters.add_with_value("$user", username)
+    insert.parameters.add_with_value("$salt", salt)
+    insert.parameters.add_with_value("$md5", digest(salt, password))
+
+    try
+        insert.execute_non_query()
+        return true
+    catch e: SqliteException
+        return false
+    yrt
+si
+
+authenticate_user(db: SqliteConnection, username: string, password: string)
+    -> bool
+is
+    let use select = db.create_command()
+
+    select.command_text =
+        "select pass_salt, pass_md5 from users where username = $user"
+
+    select.parameters.add_with_value("$user", username)
+
+    let use row = select.execute_reader()
+
+    if !row.read() then
+        return false
+    fi
+
+    let salt = row.get_field_value[ubyte[]](0)
+    let stored = row.get_field_value[ubyte[]](1)
+
+    return digest(salt, password) =~ stored
+si
+
+let use db = connect_db()
+
+for (username, password) in [("alice", "wonderland"), ("bob", "builder"),
+    ("alice", "again")]
+do
+    let outcome =
+        if create_user(db, username, password) then
+            "created"
+        else
+            "name taken"
+        fi
+
+    write_line("create {username}: {outcome}")
+od
+
+for (username, password) in [("alice", "wonderland"), ("alice", "again"),
+    ("bob", "builder"), ("carol", "anything")]
+do
+    let verdict =
+        if authenticate_user(db, username, password) then
+            "accepted"
+        else
+            "refused"
+        fi
+
+    write_line("login {username} / {password}: {verdict}")
+od

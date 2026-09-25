@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Every timing depends on the machine and how busy it is, so what is asserted
+# is the shape: the resolution line, one line for each fixed number of jobs,
+# and a line for the jobs that fitted in a fixed time, each with a positive
+# rate.
+
+out=$1
+
+fail() {
+    echo "$1"
+    cat "$out"
+    exit 1
+}
+
+[ "$(wc -l < "$out")" = 5 ] || fail "expected five lines"
+
+grep -qxE 'timer resolution: [0-9]+ ns' "$out" || fail "no resolution line"
+
+for count in 100 1000 10000 ; do
+    grep -qE "^ *$count jobs in +[0-9]+\.[0-9]{3} ms, +[1-9][0-9]* jobs per second\$" "$out" ||
+        fail "no line for $count jobs"
+done
+
+grep -qE '^ *[1-9][0-9]* jobs in 250 ms of wall time, +[1-9][0-9]* jobs per second of job time$' "$out" ||
+    fail "no line for the timed run"
