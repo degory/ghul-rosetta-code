@@ -1,0 +1,70 @@
+use default
+
+let small_primes =
+    (3..1000)
+    |> filter(p =>
+        (2..p) |> take_while(d => d * d <= p) |> all(d => p % d != 0))
+    |> collect()
+
+is_strong_probable_prime(n: bigint, a: bigint) -> bool is
+    let d mut = n - 1n
+    let s mut = 0
+
+    while d.is_even do
+        d = d / 2n
+        s = s + 1
+    od
+
+    let x mut = bigint.mod_pow(a, d, n)
+
+    if x.is_one \/ x =~ n - 1n then
+        return true
+    fi
+
+    for _ in 1..s do
+        x = x * x % n
+
+        if x =~ n - 1n then
+            return true
+        fi
+    od
+
+    return false
+si
+
+is_prime(n: bigint) -> bool =>
+    [2n, 3n, 5n, 7n, 11n, 13n, 17n]
+    |> all(a => n =~ a \/ is_strong_probable_prime(n, a))
+
+has_small_factor(k: int, m: int, powers: Collections.List[int]) -> bool =>
+    (0..small_primes.count)
+    |> any(i =>
+        (k + powers[i]) % small_primes[i] == 0 /\
+        bigint(k) + bigint.pow(2n, m) !~ bigint(small_primes[i]))
+
+always_composite(k: int) -> bool is
+    let powers = small_primes |> map(_ => 1) |> collect_list()
+
+    for m in 1..k do
+        for i in 0..small_primes.count do
+            powers[i] = powers[i] * 2 % small_primes[i]
+        od
+
+        if !has_small_factor(k, m, powers) /\
+            is_prime(bigint(k) + bigint.pow(2n, m))
+        then
+            return false
+        fi
+    od
+
+    return true
+si
+
+let found =
+    from(3, 2)
+    |> filter(always_composite)
+    |> take(5)
+    |> map(k => "{k}")
+    |> join(" ")
+
+write_line("the first 5 terms: {found}")

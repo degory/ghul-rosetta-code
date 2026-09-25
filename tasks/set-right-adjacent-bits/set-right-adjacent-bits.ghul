@@ -1,0 +1,39 @@
+use default
+
+set_right_adjacent(bits: string, n: int) -> string is
+    let remaining mut = 0
+
+    return
+        bits
+        |> map(bit =>
+            if bit == '1' then
+                remaining = n
+                '1'
+            elif remaining > 0 then
+                remaining = remaining - 1
+                '1'
+            else
+                '0'
+            fi)
+        |> map(c => "{c}")
+        |> join("")
+si
+
+show(bits: string, n: int) is
+    write_line("n = {n}; Width e = {bits.length}:")
+    write_line("")
+    write_line("    Input b: {bits}")
+    write_line("     Result: {set_right_adjacent(bits, n)}")
+    write_line("")
+si
+
+for bits in ["1000", "0100", "0010", "0000"] do
+    show(bits, 2)
+od
+
+let wide =
+    "010000000000100000000010000000010000000100000010000010000100010010"
+
+for n in 0::3 do
+    show(wide, n)
+od

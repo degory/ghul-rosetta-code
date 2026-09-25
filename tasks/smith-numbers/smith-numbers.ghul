@@ -1,0 +1,37 @@
+use default
+
+prime_factors(n: int) -> Pipe[int] is
+    let remaining mut = n
+    let divisor mut = 2
+
+    while divisor * divisor <= remaining do
+        if remaining % divisor == 0 then
+            yield divisor
+            remaining = remaining / divisor
+        else
+            divisor = divisor + 1
+        fi
+    od
+
+    if remaining > 1 then
+        yield remaining
+    fi
+si
+
+digit_sum(n: int) -> int =>
+    if n < 10 then n else n % 10 + digit_sum(n / 10) fi
+
+is_smith(n: int) -> bool is
+    let factors = prime_factors(n) |> collect()
+
+    return factors.count > 1 /\
+        (factors |> map(digit_sum) |> sum()) == digit_sum(n)
+si
+
+let smith = (1..10_000) |> filter(is_smith) |> collect()
+
+write_line("{smith.count} Smith numbers below 10000:")
+
+for row in smith |> chunk(12) do
+    write_line(row |> map(n => "{n,5}") |> join(""))
+od

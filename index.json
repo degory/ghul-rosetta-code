@@ -26914,6 +26914,32 @@
       ]
     },
     {
+      "slug": "sequence-smallest-number-with-exactly-n-divisors",
+      "title": "Sequence: smallest number with exactly n divisors",
+      "url": "https://rosettacode.org/wiki/Sequence:_smallest_number_with_exactly_n_divisors",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "sequence-smallest-number-with-exactly-n-divisors",
+          "heading": null,
+          "source": "tasks/sequence-smallest-number-with-exactly-n-divisors/sequence-smallest-number-with-exactly-n-divisors.ghul",
+          "output": "tasks/sequence-smallest-number-with-exactly-n-divisors/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "set",
       "title": "Set",
       "url": "https://rosettacode.org/wiki/Set",
@@ -27020,6 +27046,84 @@
           "images": [
             "tasks/set-puzzle/set.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "set-right-adjacent-bits",
+      "title": "Set right-adjacent bits",
+      "url": "https://rosettacode.org/wiki/Set_right-adjacent_bits",
+      "tags": [
+        "strings",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "set-right-adjacent-bits",
+          "heading": null,
+          "source": "tasks/set-right-adjacent-bits/set-right-adjacent-bits.ghul",
+          "output": "tasks/set-right-adjacent-bits/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "set-the-card-game",
+      "title": "Set, the card game",
+      "url": "https://rosettacode.org/wiki/Set,_the_card_game",
+      "tags": [
+        "game",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 58,
+      "parts": [
+        {
+          "id": "set-the-card-game",
+          "heading": null,
+          "source": "tasks/set-the-card-game/set-the-card-game.ghul",
+          "output": "tasks/set-the-card-game/run.expected",
+          "lines": 58,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "seven-sided-dice-from-five-sided-dice",
+      "title": "Seven-sided dice from five-sided dice",
+      "url": "https://rosettacode.org/wiki/Seven-sided_dice_from_five-sided_dice",
+      "tags": [
+        "simulation",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "seven-sided-dice-from-five-sided-dice",
+          "heading": null,
+          "source": "tasks/seven-sided-dice-from-five-sided-dice/seven-sided-dice-from-five-sided-dice.ghul",
+          "output": "tasks/seven-sided-dice-from-five-sided-dice/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -27153,6 +27257,32 @@
           "lines": 25,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "shoelace-formula-for-polygonal-area",
+      "title": "Shoelace formula for polygonal area",
+      "url": "https://rosettacode.org/wiki/Shoelace_formula_for_polygonal_area",
+      "tags": [
+        "maths",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "shoelace-formula-for-polygonal-area",
+          "heading": null,
+          "source": "tasks/shoelace-formula-for-polygonal-area/shoelace-formula-for-polygonal-area.ghul",
+          "output": "tasks/shoelace-formula-for-polygonal-area/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
@@ -27750,6 +27880,32 @@
       ]
     },
     {
+      "slug": "singular-value-decomposition",
+      "title": "Singular value decomposition",
+      "url": "https://rosettacode.org/wiki/Singular_value_decomposition",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": true,
+      "images": [],
+      "lines": 146,
+      "parts": [
+        {
+          "id": "singular-value-decomposition",
+          "heading": null,
+          "source": "tasks/singular-value-decomposition/singular-value-decomposition.ghul",
+          "output": "tasks/singular-value-decomposition/run.expected",
+          "lines": 146,
+          "playground": true,
+          "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sisyphus-sequence",
       "title": "Sisyphus sequence",
       "url": "https://rosettacode.org/wiki/Sisyphus_sequence",
@@ -27860,6 +28016,32 @@
       ]
     },
     {
+      "slug": "smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k",
+      "title": "Smallest number k such that k+2^m is composite for all m less than k",
+      "url": "https://rosettacode.org/wiki/Smallest_number_k_such_that_k+2^m_is_composite_for_all_m_less_than_k",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 70,
+      "parts": [
+        {
+          "id": "smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k",
+          "heading": null,
+          "source": "tasks/smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k/smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k.ghul",
+          "output": "tasks/smallest-number-k-such-that-k-2-m-is-composite-for-all-m-less-than-k/run.expected",
+          "lines": 70,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "smarandache-prime-digital-sequence",
       "title": "Smarandache prime-digital sequence",
       "url": "https://rosettacode.org/wiki/Smarandache_prime-digital_sequence",
@@ -27880,6 +28062,59 @@
           "source": "tasks/smarandache-prime-digital-sequence/smarandache-prime-digital-sequence.ghul",
           "output": "tasks/smarandache-prime-digital-sequence/run.expected",
           "lines": 35,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "smarandache-wellin-primes",
+      "title": "Smarandache-Wellin primes",
+      "url": "https://rosettacode.org/wiki/Smarandache-Wellin_primes",
+      "tags": [
+        "primes",
+        "number-theory",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 100,
+      "parts": [
+        {
+          "id": "smarandache-wellin-primes",
+          "heading": null,
+          "source": "tasks/smarandache-wellin-primes/smarandache-wellin-primes.ghul",
+          "output": "tasks/smarandache-wellin-primes/run.expected",
+          "lines": 100,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "smith-numbers",
+      "title": "Smith numbers",
+      "url": "https://rosettacode.org/wiki/Smith_numbers",
+      "tags": [
+        "number-theory",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 37,
+      "parts": [
+        {
+          "id": "smith-numbers",
+          "heading": null,
+          "source": "tasks/smith-numbers/smith-numbers.ghul",
+          "output": "tasks/smith-numbers/run.expected",
+          "lines": 37,
           "playground": true,
           "input": false,
           "images": []

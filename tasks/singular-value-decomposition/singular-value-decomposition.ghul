@@ -1,0 +1,146 @@
+use default
+
+use Matrix = LIST[LIST[double]]
+
+zeros(rows: int, columns: int) -> Matrix =>
+    (0..rows)
+    |> map(_ => repeat(0.0, columns) |> collect_list())
+    |> collect_list()
+
+identity(n: int) -> Matrix is
+    let result = zeros(n, n)
+
+    for i in 0..n do
+        result[i][i] = 1.0
+    od
+
+    return result
+si
+
+transpose(a: Matrix) -> Matrix =>
+    (0..a[0].count)
+    |> map(j => (0..a.count) |> map(i => a[i][j]) |> collect_list())
+    |> collect_list()
+
+column_dot(a: Matrix, p: int, q: int) -> double =>
+    a |> map(row => row[p] * row[q]) |> sum()
+
+rotate(a: Matrix, p: int, q: int, c: double, s: double) is
+    for row in a do
+        let (x, y) = (row[p], row[q])
+        row[p] = c * x - s * y
+        row[q] = s * x + c * y
+    od
+si
+
+svd(a: Matrix) -> (u: Matrix, sigma: double[], v: Matrix) is
+    if a.count < a[0].count then
+        let (u, sigma, v) = svd(transpose(a))
+        return (v, sigma, u)
+    fi
+
+    let n = a[0].count
+    let u = a |> map(row => row |> collect_list()) |> collect_list()
+    let v = identity(n)
+    let converged mut = false
+
+    while !converged do
+        converged = true
+
+        for p in 0..n do
+            for q in p + 1..n do
+                let alpha = column_dot(u, p, p)
+                let beta = column_dot(u, q, q)
+                let gamma = column_dot(u, p, q)
+
+                let threshold = 1.0e-12 * System.Math.sqrt(alpha * beta)
+
+                if System.Math.abs(gamma) > threshold then
+                    converged = false
+
+                    let zeta = (beta - alpha) / (2.0 * gamma)
+                    let sign = if zeta >= 0.0 then 1.0 else -1.0 fi
+                    let root = System.Math.sqrt(1.0 + zeta * zeta)
+                    let t = sign / (System.Math.abs(zeta) + root)
+                    let c = 1.0 / System.Math.sqrt(1.0 + t * t)
+
+                    rotate(u, p, q, c, c * t)
+                    rotate(v, p, q, c, c * t)
+                fi
+            od
+        od
+    od
+
+    let norms =
+        (0..n)
+        |> map(j => System.Math.sqrt(column_dot(u, j, j)))
+        |> collect()
+
+    let order = (0..n) |> sort_by_descending(j => norms[j]) |> collect()
+    let last = u.count - 1
+
+    let sign = (j: int) => if u[last][j] < 0.0 then -1.0 else 1.0 fi
+
+    let scale = (j: int) =>
+        if norms[j] > 0.0 then sign(j) / norms[j] else 0.0 fi
+
+    let sorted_u =
+        u
+        |> map(row =>
+            order |> map(j => row[j] * scale(j)) |> collect_list())
+        |> collect_list()
+
+    let sorted_v =
+        v
+        |> map(row => order |> map(j => row[j] * sign(j)) |> collect_list())
+        |> collect_list()
+
+    let sigma = order |> map(j => norms[j]) |> collect_array()
+
+    return (sorted_u, sigma, sorted_v)
+si
+
+show(m: Matrix) is
+    for row in m do
+        write_line(row |> map(x => "{x}") |> join(" "))
+    od
+
+    write_line("")
+si
+
+let size = IO.Std.read_line()!.split([' '])
+let rows = int.parse(size[0])
+
+let a: Matrix =
+    (0..rows)
+    |> map(_ =>
+        IO.Std.read_line()!.split([' '])
+        |> map(x => double.parse(x))
+        |> collect_list())
+    |> collect_list()
+
+let (u, sigma, v) = svd(a)
+
+let diagonal = zeros(sigma.count, sigma.count)
+
+for i in 0..sigma.count do
+    diagonal[i][i] = sigma[i]
+od
+
+show(u)
+show(diagonal)
+show(v)
+
+write_line("U * S * V transposed:")
+
+show(
+    (0..u.count)
+    |> map(i =>
+        (0..v.count)
+        |> map(j =>
+            (0..sigma.count)
+            |> map(k => u[i][k] * sigma[k] * v[j][k])
+            |> sum()
+            |> System.Math.round(12))
+        |> collect_list())
+    |> collect_list())

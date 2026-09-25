@@ -1,0 +1,100 @@
+use default
+
+is_strong_probable_prime(n: bigint, a: bigint) -> bool is
+    let d mut = n - 1n
+    let s mut = 0
+
+    while d.is_even do
+        d = d / 2n
+        s = s + 1
+    od
+
+    let x mut = bigint.mod_pow(a, d, n)
+
+    if x.is_one \/ x =~ n - 1n then
+        return true
+    fi
+
+    for _ in 1..s do
+        x = x * x % n
+
+        if x =~ n - 1n then
+            return true
+        fi
+    od
+
+    return false
+si
+
+is_probable_prime(n: bigint) -> bool =>
+    n > 1n /\
+    [2n, 3n, 5n, 7n, 11n, 13n, 17n]
+    |> all(a =>
+        n =~ a \/ (!(n % a).is_zero /\ is_strong_probable_prime(n, a)))
+
+primes() -> Pipe[int] =>
+    from(2)
+    |> filter(p =>
+        (2..p) |> take_while(d => d * d <= p) |> all(d => p % d != 0))
+
+wellin_numbers() -> Pipe[(index: int, last: int, digits: string)] is
+    let digits mut = ""
+    let index mut = 0
+
+    for p in primes() do
+        digits = "{digits}{p}"
+        index = index + 1
+        yield (index, p, digits)
+    od
+si
+
+derived(digits: string) -> bigint =>
+    bigint.parse(
+        ('0'::'9')
+        |> map(d => "{digits |> count(c => c == d)}")
+        |> join(""))
+
+ordinal(n: int) -> string =>
+    if n % 100 >= 11 /\ n % 100 <= 13 then
+        "{n}th"
+    else
+        case n % 10
+        when 1 then "{n}st"
+        when 2 then "{n}nd"
+        when 3 then "{n}rd"
+        else "{n}th"
+        esac
+    fi
+
+abbreviated(digits: string) -> string =>
+    if digits.length <= 40 then
+        digits
+    else
+        "{digits[0..20]}...{digits[20..<<0]}"
+    fi
+
+write_line("the first seven Smarandache-Wellin primes:")
+
+let wellin_primes =
+    wellin_numbers()
+    |> filter(w => is_probable_prime(bigint.parse(w.digits)))
+    |> take(7)
+
+for (i, w) in wellin_primes |> index() do
+    write_line(
+        "{ordinal(i + 1),4}: index {w.index,4}  digits {w.digits.length,5}"
+        "  last prime {w.last,5}  {abbreviated(w.digits)}")
+od
+
+write_line("")
+write_line("the first twenty derived Smarandache-Wellin primes:")
+
+let derived_primes =
+    wellin_numbers()
+    |> map(w => (w.index, derived(w.digits)))
+    |> filter(((_, d)) => is_probable_prime(d))
+    |> take(20)
+
+for (i, (position, d)) in derived_primes |> index() do
+    write_line("{ordinal(i + 1),4}: index {position,4}  {d}")
+od
