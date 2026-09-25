@@ -10876,6 +10876,32 @@
       ]
     },
     {
+      "slug": "gaussian-elimination",
+      "title": "Gaussian elimination",
+      "url": "https://rosettacode.org/wiki/Gaussian_elimination",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 56,
+      "parts": [
+        {
+          "id": "gaussian-elimination",
+          "heading": null,
+          "source": "tasks/gaussian-elimination/gaussian-elimination.ghul",
+          "output": "tasks/gaussian-elimination/run.expected",
+          "lines": 56,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "gaussian-primes",
       "title": "Gaussian primes",
       "url": "https://rosettacode.org/wiki/Gaussian_primes",

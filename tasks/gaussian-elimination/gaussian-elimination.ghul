@@ -1,0 +1,56 @@
+use default
+
+largest_magnitude(values: Iterable[double]) -> double =>
+    values |> reduce(0.0, (m, v) => System.Math.max(m, System.Math.abs(v)))
+
+solve(a: List[List[double]], b: List[double]) -> List[double] is
+    let n = b.count
+
+    let rows = 0..n
+        |> map(i => a[i] |> cat([b[i]]) |> collect_list())
+        |> collect_list()
+
+    let scales = rows
+        |> map(row => largest_magnitude(row |> take(n)))
+        |> collect_list()
+
+    for k in 0..n do
+        let pivot = k..n
+            |> max_by(i => System.Math.abs(rows[i][k]) / scales[i])!
+
+        (rows[k], rows[pivot]) = (rows[pivot], rows[k])
+        (scales[k], scales[pivot]) = (scales[pivot], scales[k])
+
+        for i in k + 1..n do
+            let factor = rows[i][k] / rows[k][k]
+
+            for j in k::n do
+                rows[i][j] = rows[i][j] - factor * rows[k][j]
+            od
+        od
+    od
+
+    let x = repeat(0.0, n) |> collect_list()
+
+    for k in 0..n |> reverse() do
+        let known = k + 1..n |> map(j => rows[k][j] * x[j]) |> sum()
+        x[k] = (rows[k][n] - known) / rows[k][k]
+    od
+
+    x
+si
+
+let a = [
+    [1.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+    [1.00, 0.63, 0.39, 0.25, 0.16, 0.10],
+    [1.00, 1.26, 1.58, 1.98, 2.49, 3.13],
+    [1.00, 1.88, 3.55, 6.70, 12.62, 23.80],
+    [1.00, 2.51, 6.32, 15.88, 39.90, 100.28],
+    [1.00, 3.14, 9.87, 31.01, 97.41, 306.02]
+]
+
+let b = [-0.01, 0.61, 0.91, 0.99, 0.60, 0.02]
+
+for (i, value) in solve(a, b) |> index() do
+    write_line("x[{i}] = {value,14:F10}")
+od
