@@ -1,0 +1,7 @@
+use default
+
+let printer = if args.count > 0 then args[0] else "/dev/lp0" fi
+
+let use device = IO.StreamWriter(printer, true)
+
+device.write_line("Hello World!")
