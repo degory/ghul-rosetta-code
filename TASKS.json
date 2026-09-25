@@ -3050,6 +3050,16 @@
       "published_hash": "d332c29c669cdfd7351146ef848f5d8b29a89d2aa10a1ec8c4949509dbee8dea"
     },
     {
+      "title": "Hofstadter-Conway $10,000 sequence",
+      "slug": "hofstadter-conway-10-000-sequence",
+      "state": "solved"
+    },
+    {
+      "title": "Holidays related to Easter",
+      "slug": "holidays-related-to-easter",
+      "state": "solved"
+    },
+    {
       "title": "Home primes",
       "slug": "home-primes",
       "state": "published",
@@ -3087,6 +3097,11 @@
       "slug": "horners-rule-for-polynomial-evaluation",
       "state": "published",
       "published_hash": "a8267c2c332ce8b37f674f6a38b95e4a89149d70aaa11c7f7c7f49ec518d8071"
+    },
+    {
+      "title": "Horse racing",
+      "slug": "horse-racing",
+      "state": "solved"
     },
     {
       "title": "Host introspection",
@@ -3139,6 +3154,16 @@
       "published_hash": "8652d0257daed6297200c5ff1d2f1097970923409108afa28847be41920d5ac9"
     },
     {
+      "title": "I before E except after C",
+      "slug": "i-before-e-except-after-c",
+      "state": "solved"
+    },
+    {
+      "title": "I\u0027m a software engineer, get me out of here",
+      "slug": "i-m-a-software-engineer-get-me-out-of-here",
+      "state": "solved"
+    },
+    {
       "title": "IBAN",
       "slug": "iban",
       "state": "published",
@@ -3161,6 +3186,11 @@
       "slug": "identity-matrix",
       "state": "published",
       "published_hash": "2e7df58bf6874c558a264d285acd694d31fc3aa00529027583fcd0d12ea48f85"
+    },
+    {
+      "title": "Idiomatically determine all the characters that can be used for symbols",
+      "slug": "idiomatically-determine-all-the-characters-that-can-be-used-for-symbols",
+      "state": "solved"
     },
     {
       "title": "Idiomatically determine all the lowercase and uppercase letters",
@@ -3206,6 +3236,11 @@
       "slug": "include-a-file",
       "state": "published",
       "published_hash": "72aa0224c7ecf18c6885920aa00df73b247d05c66e7738e12c782432571da741"
+    },
+    {
+      "title": "Inconsummate numbers in base 10",
+      "slug": "inconsummate-numbers-in-base-10",
+      "state": "solved"
     },
     {
       "title": "Increasing gaps between consecutive Niven numbers",
@@ -3262,6 +3297,11 @@
       "published_hash": "5afacf165f0f1184a4a7fdb35ad2d4dd88cf647d16a7ea41118173e7c0dd4b74"
     },
     {
+      "title": "Integer overflow",
+      "slug": "integer-overflow",
+      "state": "solved"
+    },
+    {
       "title": "Integer sequence",
       "state": "rejected",
       "reason": "output-unbounded"
@@ -3302,6 +3342,11 @@
       "state": "rejected",
       "reason": "no-equivalent",
       "note": "ghul has no inverted statement form: a condition follows if, and nothing reverses it"
+    },
+    {
+      "title": "Isograms and heterograms",
+      "slug": "isograms-and-heterograms",
+      "state": "solved"
     },
     {
       "title": "Isqrt (integer square root) of X",
@@ -3419,6 +3464,11 @@
       "slug": "jump-anywhere",
       "state": "published",
       "published_hash": "3de2ba06c1467f27da8b5f0264783285cccae184c2a75513032b6c6b98891fc4"
+    },
+    {
+      "title": "Jury stability criterion",
+      "slug": "jury-stability-criterion",
+      "state": "solved"
     },
     {
       "title": "K-d tree",
