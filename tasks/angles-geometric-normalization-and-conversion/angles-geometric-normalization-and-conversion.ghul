@@ -1,0 +1,43 @@
+use default
+
+normalize(angle: double, turn: double) -> double =>
+    angle - turn * System.Math.truncate(angle / turn) + 0.0
+
+convert(angle: double, from: double, to: double) -> double =>
+    normalize(angle, from) / from * to
+
+let scales =
+    [
+        (name = "degrees", turn = 360.0),
+        (name = "gradians", turn = 400.0),
+        (name = "mils", turn = 6400.0),
+        (name = "radians", turn = System.Math.tau)
+    ]
+
+let angles =
+    [
+        -2.0, -1.0, 0.0, 1.0, 2.0, 6.2831853,
+        16.0, 57.2957795, 359.0, 399.0, 6399.0, 1000000.0
+    ]
+
+for source in scales do
+    let others = scales |> filter(s => s.name !~ source.name) |> collect()
+
+    write_line("")
+    write_line("{source.name}")
+
+    let headings = others |> map(s => "{s.name,14}") |> join("")
+
+    write_line("{"angle",14}{"normalized",14}{headings}")
+
+    for angle in angles do
+        let converted =
+            others
+                |> map(s => "{convert(angle, source.turn, s.turn),14:F7}")
+                |> join("")
+
+        let normalized = normalize(angle, source.turn)
+
+        write_line("{angle,14:F7}{normalized,14:F7}{converted}")
+    od
+od
