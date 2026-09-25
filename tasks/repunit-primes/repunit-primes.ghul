@@ -93,8 +93,8 @@ si
 let limit = 1000
 
 // The base is named before its search rather than after it, so a reader
-// watching the program run sees which one is taking the time. A base can take
-// several seconds, and all of them together rather longer than that.
+// watching the program run sees which one is taking the time. A base can
+// take several seconds, and all of them together rather longer.
 for base in 2::16 do
     IO.Std.write("base {base,3}: ")
     IO.Std.out.flush()

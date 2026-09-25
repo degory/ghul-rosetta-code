@@ -40,7 +40,10 @@ prime_implicants(minterms: List[int], variables: int) -> List[Implicant] is
     let primes = LIST[Implicant]()
 
     let current mut =
-        minterms |> map(m => (bits = m, dashes = 0)) |> distinct() |> collect()
+        minterms
+            |> map(m => (bits = m, dashes = 0))
+            |> distinct()
+            |> collect()
 
     while current.count > 0 do
         let combined = LIST[Implicant]()
@@ -65,7 +68,9 @@ prime_implicants(minterms: List[int], variables: int) -> List[Implicant] is
                 used[j] = true
 
                 combined.add(
-                    (bits = left.bits & \difference, dashes = left.dashes | difference))
+                    (
+                        bits = left.bits & \difference,
+                        dashes = left.dashes | difference))
             od
         od
 
@@ -81,9 +86,9 @@ prime_implicants(minterms: List[int], variables: int) -> List[Implicant] is
     return primes |> distinct() |> collect()
 si
 
-// Every prime implicant that alone covers some minterm must be in the answer;
-// the rest is the smallest set of the others that covers what is left, found
-// by trying every combination in increasing size.
+// Every prime implicant that alone covers some minterm must be in the
+// answer; the rest is the smallest set of the others that covers what is
+// left, found by trying every combination in increasing size.
 minimal_cover(minterms: List[int], variables: int) -> List[Implicant] is
     let primes = prime_implicants(minterms, variables)
 
@@ -97,13 +102,16 @@ minimal_cover(minterms: List[int], variables: int) -> List[Implicant] is
             |> collect()
 
     let uncovered =
-        minterms |> filter(m => !(essential |> any(p => covers(p, m)))) |> collect()
+        minterms
+            |> filter(m => !(essential |> any(p => covers(p, m))))
+            |> collect()
 
     if uncovered.count == 0 then
         return essential
     fi
 
-    let spare = primes |> filter(p => !(essential |> any(e => e =~ p))) |> collect()
+    let spare =
+        primes |> filter(p => !(essential |> any(e => e =~ p))) |> collect()
 
     let found =
         for size in 1::spare.count do
@@ -121,7 +129,11 @@ minimal_cover(minterms: List[int], variables: int) -> List[Implicant] is
     return essential
 si
 
-smallest_choice(spare: List[Implicant], uncovered: List[int], size: int) -> List[Implicant]? is
+smallest_choice(
+    spare: List[Implicant],
+    uncovered: List[int],
+    size: int
+) -> List[Implicant]? is
     let chosen = LIST[Implicant]()
 
     return search(spare, uncovered, size, 0, chosen)
@@ -157,7 +169,9 @@ search(
     return null
 si
 
-for (minterms, variables) in [([0, 1, 2, 5], 3), ([0, 1, 2, 5, 6, 7, 8, 9, 10, 14], 4)] do
+let examples = [([0, 1, 2, 5], 3), ([0, 1, 2, 5, 6, 7, 8, 9, 10, 14], 4)]
+
+for (minterms, variables) in examples do
     let cover = minimal_cover(minterms, variables)
 
     write_line("minterms {minterms |> join(", ")}")

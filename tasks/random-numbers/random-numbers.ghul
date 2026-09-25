@@ -25,6 +25,8 @@ let variance =
         |> sum() / cast double(sample.count)
 
 write_line("{sample.count} values")
-write_line("first five: {sample |> take(5) |> map(v => "{v:F4}") |> join(" ")}")
+let first_five = sample |> take(5) |> map(v => "{v:F4}") |> join(" ")
+
+write_line("first five: {first_five}")
 write_line("mean {average:F4}")
 write_line("standard deviation {sqrt(variance):F4}")

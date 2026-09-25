@@ -8,8 +8,8 @@ let terminators = ['.', '!', '?']
 // splits in two if only the typewriter one is taken as part of a word.
 let apostrophes = ['\'', '\u2019']
 
-// The book proper sits between Gutenberg's own markers, which are not part of
-// what the task asks to read.
+// The book proper sits between Gutenberg's own markers, which are not
+// part of what the task asks to read.
 book_text(path: string) -> string is
     let whole = IO.File.read_all_text(path)
     let start = whole.index_of("*** START OF THE PROJECT GUTENBERG EBOOK")
@@ -32,7 +32,9 @@ words_of(text: string) -> List[string] is
         fi
 
     for letter in text do
-        if char.is_letter(letter) \/ apostrophes |> any(a => a == letter) then
+        if char.is_letter(letter) \/
+            apostrophes |> any(a => a == letter)
+        then
             current.append(letter)
         else
             flush()
@@ -50,8 +52,8 @@ si
 
 let words = words_of(book_text("war-of-the-worlds.txt"))
 
-// Each following word is stored once per time it was seen, so drawing one at
-// random draws it with the weight the book gave it.
+// Each following word is stored once per time it was seen, so drawing
+// one at random draws it with the weight the book gave it.
 let after_one = MAP[string, LIST[string]]()
 let after_two = MAP[(string, string), LIST[string]]()
 
@@ -75,7 +77,8 @@ for i in 0..words.count - 2 do
     after_two[pair].add(next)
 od
 
-pick(choices: List[string]) -> string => choices[random.next(0, choices.count)]
+pick(choices: List[string]) -> string =>
+    choices[random.next(0, choices.count)]
 
 sentence() -> string is
     let chosen = LIST[string]()

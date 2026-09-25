@@ -47,7 +47,8 @@ let starts_and_ends =
             0::9
                 |> filter(last =>
                     square_endings |> any(e => e == (last + first) % 10) /\
-                    square_endings |> any(e => e == (last - first + 10) % 10))
+                    square_endings
+                        |> any(e => e == (last - first + 10) % 10))
                 |> map(last => (first = first, last = last)))
         |> collect()
 
@@ -64,7 +65,8 @@ while block < limit do
 
         let first_candidate = start + cast long(pair.last)
 
-        let n mut = if first_candidate < start then start else first_candidate fi
+        let n mut =
+            if first_candidate < start then start else first_candidate fi
 
         while n < stop do
             if is_rare(n) then

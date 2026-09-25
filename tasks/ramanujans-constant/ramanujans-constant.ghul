@@ -52,8 +52,8 @@ pi() -> bigint is
     return 4n * a * a / (scale - total)
 si
 
-// The series converges quickly only for a small exponent, so the argument is
-// halved until it is, and the result squared back the same number of times.
+// The series converges quickly only for a small exponent, so the argument
+// is halved until it is, and the result squared back as many times.
 let halvings = 8
 
 exp(x: bigint) -> bigint is
@@ -79,8 +79,8 @@ exp(x: bigint) -> bigint is
     return value
 si
 
-// The working scale carries more digits than are shown, because each squaring
-// in exp doubles the error in the last of them.
+// The working scale carries more digits than are shown, because each
+// squaring in exp doubles the error in the last of them.
 show(heegner: int, value: bigint) is
     let rounded = value / power_of_ten(guard + digits - shown)
     let whole = rounded / power_of_ten(shown)
@@ -92,5 +92,7 @@ si
 let pi_value = pi()
 
 for heegner in [19, 43, 67, 163] do
-    show(heegner, exp(pi_value * integer_sqrt(bigint(heegner) * scale * scale) / scale))
+    let root = integer_sqrt(bigint(heegner) * scale * scale)
+
+    show(heegner, exp(pi_value * root / scale))
 od
