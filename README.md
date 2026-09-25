@@ -185,7 +185,7 @@ tasks/binary-digits/
 
 It is Markdown, and `scripts/generate-wiki.sh` converts it to wiki markup and places it ahead of
 the `<syntaxhighlight>` block. The supported subset is deliberately small: paragraphs, `#`/`##`
-headings, `*`/`-` bullet lists, `1.` numbered lists, `**bold**`, `*italic*`, and
+headings, `*`/`-` bullet lists, `1.` numbered lists, `**bold**`, `*italic*`, `` `code` `` and
 `[link text](url)`. Anything else in the file is passed through unconverted rather than dropped,
 so a construct outside the subset is visible on the rendered page rather than silently missing.
 

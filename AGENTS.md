@@ -594,8 +594,8 @@ sets the task up to be rejected again.
 
 A note before the source is written as Markdown in `tasks/<slug>/notes.md`, or
 beside a part's source for a task with parts: paragraphs, `#`/`##` headings,
-bullet and numbered lists, `**bold**`, `*italic*`, and `[text](url)` links are
-the supported subset. `scripts/generate-wiki.sh` converts it to wiki markup and
+bullet and numbered lists, `**bold**`, `*italic*`, `` `code` `` spans and
+`[text](url)` links are the supported subset. `scripts/generate-wiki.sh` converts it to wiki markup and
 places it ahead of the code. Render it on its own and read the result before
 doing anything else with it:
 

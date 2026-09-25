@@ -5,11 +5,11 @@ namespace Rosetta is
     // Converts the small Markdown subset a task's `notes.md` may carry into MediaWiki markup.
     //
     // The subset is deliberately narrow: paragraphs, `#`/`##` headings, `*`/`-` bullet lists,
-    // `1.` numbered lists, `**bold**`, `*italic*`/`_italic_`, and `[text](url)` links. That
-    // covers what explanatory prose on a Rosetta Code page actually uses; anything else in the
-    // source (tables, images, nested lists) is passed through a paragraph unconverted rather than
-    // silently dropped, so a construct this does not understand is visible on the rendered page
-    // rather than missing from it.
+    // `1.` numbered lists, `**bold**`, `*italic*`/`_italic_`, `` `code` `` and `[text](url)`
+    // links. That covers what explanatory prose on a Rosetta Code page actually uses; anything
+    // else in the source (tables, images, nested lists) is passed through a paragraph
+    // unconverted rather than silently dropped, so a construct this does not understand is
+    // visible on the rendered page rather than missing from it.
     //
     // Heading levels start one below the page's own `=={{header|ghul}}==`, so Markdown `#` is
     // wiki `===` and `##` is `====`.
@@ -122,10 +122,36 @@ namespace Rosetta is
             return if m.success then m.groups[1].value.trim() else null fi
         si
 
-        // Links first, so bold/italic never reaches into a URL - an underscore in a Wikipedia
-        // link's path is not an italic marker. The link's own display text still gets bold and
-        // italic applied, since that text is prose the writer might reasonably emphasise.
+        // Code spans first, so nothing else reaches inside one: a backtick span is literal, and
+        // an asterisk or underscore within it is part of the code rather than a marker.
         _inline(text: string) -> string is
+            let out = System.Text.StringBuilder()
+            let codes = Regex.matches(text, "`([^`]+)`")
+
+            let position mut = 0
+
+            for i in 0..codes.count do
+                let code = codes[i]
+
+                out.append(_links(text.substring(position, code.index - position)))
+                out.append("<code>{_escape(code.groups[1].value)}</code>")
+
+                position = code.index + code.length
+            od
+
+            out.append(_links(text.substring(position)))
+
+            return out.to_string()
+        si
+
+        // MediaWiki parses HTML inside a code element, so a span holding an operator that
+        // starts a tag - `<>`, `<<` - would otherwise be read as one and vanish.
+        _escape(text: string) -> string => text.replace("&", "&amp;").replace("<", "&lt;")
+
+        // Links before emphasis, so bold/italic never reaches into a URL - an underscore in a
+        // Wikipedia link's path is not an italic marker. The link's own display text still gets
+        // bold and italic applied, since that text is prose the writer might reasonably emphasise.
+        _links(text: string) -> string is
             let out = System.Text.StringBuilder()
             let links = Regex.matches(text, "\\[([^\\]]+)\\]\\(([^)]+)\\)")
 
