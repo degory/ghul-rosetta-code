@@ -1,0 +1,34 @@
+use default
+
+let fifth =
+    0..250
+        |> map(n => repeat(cast long(n), 5) |> product())
+        |> collect_list()
+let root = 1..250 |> map(n => (fifth[n], n)) |> collect_map()
+
+search() -> (int, int, int, int, int)? is
+    for x0 in 1..250 do
+        for x1 in x0 + 1..250 do
+            for x2 in x1 + 1..250 do
+                for x3 in x2 + 1..250 do
+                    let total =
+                        fifth[x0] + fifth[x1] + fifth[x2] + fifth[x3]
+
+                    if total > fifth[249] then
+                        break
+                    fi
+
+                    if root.contains_key(total) then
+                        return (x0, x1, x2, x3, root[total])
+                    fi
+                od
+            od
+        od
+    od
+
+    null
+si
+
+if let (x0, x1, x2, x3, y) = search() then
+    write_line("{x0}^5 + {x1}^5 + {x2}^5 + {x3}^5 = {y}^5")
+fi

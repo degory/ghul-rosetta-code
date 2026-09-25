@@ -1,0 +1,73 @@
+use default
+
+struct FRACTION(numerator: long, denominator: long)
+
+fraction(numerator: long, denominator: long) -> FRACTION =>
+    let common = greatest_common_divisor(numerator, denominator) in
+    let divisor = long.abs(common) in
+    let sign = if denominator < 0L then -1L else 1L fi in
+    FRACTION(sign * numerator / divisor, sign * denominator / divisor)
+
+greatest_common_divisor(a: long, b: long) -> long =>
+    if b == 0L then a else greatest_common_divisor(b, a % b) fi
+
+-(a: FRACTION, b: FRACTION) -> FRACTION =>
+    fraction(
+        a.numerator * b.denominator - b.numerator * a.denominator,
+        a.denominator * b.denominator)
+
+*(a: FRACTION, b: FRACTION) -> FRACTION =>
+    fraction(a.numerator * b.numerator, a.denominator * b.denominator)
+
+bernoulli(n: int) -> FRACTION is
+    let a =
+        0::n |> map(m => fraction(1L, cast long(m + 1))) |> collect_list()
+
+    for m in 1::n do
+        for j in 1::m |> reverse() do
+            a[j - 1] = fraction(cast long(j), 1L) * (a[j - 1] - a[j])
+        od
+    od
+
+    a[0]
+si
+
+binomial(n: int, k: int) -> long =>
+    1::k
+        |> reduce(1L, (c: long, i: int) =>
+            c * cast long(n - k + i) / cast long(i))
+
+term(coefficient: FRACTION, power: int) -> string =>
+    let top = long.abs(coefficient.numerator) in
+    let bottom = coefficient.denominator in
+    let number = if bottom == 1L then "{top}" else "{top}/{bottom}" fi in
+    let variable = if power == 1 then "n" else "n^{power}" fi in
+    if top == 1L /\ bottom == 1L then variable else "{number}{variable}" fi
+
+faulhaber(p: int) -> string =>
+    let terms =
+        0::p
+            |> map(j =>
+                (coefficient =
+                    fraction(binomial(p + 1, j), cast long(p + 1)) *
+                        bernoulli(j),
+                 power = p + 1 - j))
+            |> filter(t => t.coefficient.numerator != 0L)
+            |> collect_list()
+    in
+    terms
+        |> index()
+        |> map(((i, t)) =>
+            let negative = t.coefficient.numerator < 0L in
+            let sign =
+                if i == 0 then (if negative then "-" else "" fi)
+                elif negative then " - "
+                else " + "
+                fi
+            in
+            "{sign}{term(t.coefficient, t.power)}")
+        |> join("")
+
+for p in 0..10 do
+    write_line("{p} : {faulhaber(p)}")
+od

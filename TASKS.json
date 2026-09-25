@@ -2394,6 +2394,10 @@
       "published_hash": "971a0c8a8b505c32107f0f2f42f89c2a87d39a593f9dbb5fa05a929a9443f854"
     },
     {
+      "title": "Euler\u0027s sum of powers conjecture",
+      "state": "solved"
+    },
+    {
       "title": "Evaluate binomial coefficients",
       "slug": "evaluate-binomial-coefficients",
       "state": "published",
@@ -2428,6 +2432,10 @@
       "slug": "catch-an-exception-thrown-in-a-nested-call",
       "state": "published",
       "published_hash": "98ed74d636972328ebd7f8e260324d9f1fd21c73553fb720fb9e3b4b93a36d9b"
+    },
+    {
+      "title": "Executable library",
+      "state": "solved"
     },
     {
       "title": "Execute Brain****",
@@ -2466,6 +2474,26 @@
       "published_hash": "4a7ec67dfc082a9d8ae6863d5de1bc89e834ea3444fff87517bf43a62a4c4c7e"
     },
     {
+      "title": "Experimental Verification of the NKT Law: Interpolating the Masses of 8 Planets Using NASA Data as of 30\u201331/12/2024",
+      "state": "rejected",
+      "reason": "excluded"
+    },
+    {
+      "title": "Experimental Verification of the NKTg Law Using NASA Mercury Data in 2025",
+      "state": "rejected",
+      "reason": "excluded"
+    },
+    {
+      "title": "Experimental Verification of the NKTg Law Using NASA Neptune Data (2023\u20132024)",
+      "state": "rejected",
+      "reason": "excluded"
+    },
+    {
+      "title": "Experimental Verification of the NKTg Law in Earth Orbit Based on NASA\u2019s 2025 Earth Dataset",
+      "state": "rejected",
+      "reason": "excluded"
+    },
+    {
       "title": "Exponential digital sums",
       "slug": "exponential-digital-sums",
       "state": "published",
@@ -2476,6 +2504,14 @@
       "slug": "exponentiation-operator",
       "state": "published",
       "published_hash": "d843c9ec2583a8b33d6e61e5e0f698478b0e3f0714d9679a57898ea08d7338db"
+    },
+    {
+      "title": "Exponentiation order",
+      "state": "solved"
+    },
+    {
+      "title": "Exponentiation with infix operators in (or operating on) the base",
+      "state": "solved"
     },
     {
       "title": "Extend your language",
@@ -2579,10 +2615,18 @@
       "published_hash": "2499e90184a30d709a4e541c312d33749ad1fa09fec5163a4255b944096d2282"
     },
     {
+      "title": "Faulhaber\u0027s formula",
+      "state": "solved"
+    },
+    {
       "title": "Faulhaber\u0027s triangle",
       "slug": "faulhabers-triangle",
       "state": "published",
       "published_hash": "7117375dd7b84117a086af59aaaf24a64296c0221b578868b75c7d18b4376b9d"
+    },
+    {
+      "title": "Feigenbaum constant calculation",
+      "state": "solved"
     },
     {
       "title": "Fermat numbers",
@@ -2665,10 +2709,22 @@
       "published_hash": "69d953e38e5670cf688c5824f79b90fe89ed63c9c8a8ca230e930addc7b82e99"
     },
     {
+      "title": "Find Chess960 starting position identifier",
+      "state": "solved"
+    },
+    {
       "title": "Find common directory path",
       "slug": "find-common-directory-path",
       "state": "published",
       "published_hash": "a08c92c39b5c5250d4a5dea405c808c9107ede55e0ee4b272fb4b4725d03ca4e"
+    },
+    {
+      "title": "Find duplicate files",
+      "state": "solved"
+    },
+    {
+      "title": "Find if a point is within a triangle",
+      "state": "solved"
     },
     {
       "title": "Find largest left truncatable prime in a given base",
@@ -4810,6 +4866,11 @@
       "slug": "n-smooth-numbers",
       "state": "published",
       "published_hash": "bd3dc5cd197ebe4887d77cd821ad4c428d283d6e555a7a056fc51b1775aa7b5f"
+    },
+    {
+      "title": "NKTgLaw",
+      "state": "rejected",
+      "reason": "excluded"
     },
     {
       "title": "Named parameters",
