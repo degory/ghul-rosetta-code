@@ -1,0 +1,77 @@
+use default
+
+let top = 99
+
+is_prime(n: int) -> bool =>
+    n > 1 /\ (2..n) |> take_while(d => d * d <= n) |> all(d => n % d != 0)
+
+prime_factor_sum(n: int) -> int is
+    let remaining mut = n
+    let sum mut = 0
+    let divisor mut = 2
+
+    while remaining > 1 do
+        if remaining % divisor == 0 then
+            sum = sum + divisor
+            remaining = remaining / divisor
+        else
+            divisor = divisor + 1
+        fi
+    od
+
+    return sum
+si
+
+let descendants = (0::top) |> map(_ => LIST[long]()) |> collect()
+descendants[0].add(1L)
+
+for p in (2::top) |> filter(is_prime) do
+    for sum in p::top do
+        for d in descendants[sum - p] |> collect() do
+            descendants[sum].add(d * cast long(p))
+        od
+    od
+od
+
+for sum in 1::top do
+    descendants[sum].remove(cast long(sum))
+    descendants[sum].sort()
+od
+
+ancestors(n: int) -> Pipe[int] is
+    let current mut = n
+
+    while current > 1 /\ !is_prime(current) do
+        let parent = prime_factor_sum(current)
+
+        if parent == current then
+            return
+        fi
+
+        yield parent
+        current = parent
+    od
+si
+
+abbreviated(list: Collections.List[long]) -> string =>
+    if list.count == 0 then
+        "none"
+    elif list.count <= 6 then
+        list |> map(d => "{d}") |> join(" ")
+    else
+        "{list[0]} {list[1]} {list[2]} ... {list[list.count - 1]}"
+    fi
+
+for n in 1::top do
+    let chain = ancestors(n) |> sort() |> collect()
+    let children = descendants[n]
+
+    write_line("[{n}] level {chain.count}, ancestors: "
+        "{if chain.count == 0 then "none" else chain |> join(" ") fi}")
+    write_line("    {children.count} descendants: {abbreviated(children)}")
+od
+
+write_line("")
+write_line(
+    "total descendants: "
+    "{(1::top) |> map(n => descendants[n].count) |> sum()}")

@@ -22839,6 +22839,33 @@
       ]
     },
     {
+      "slug": "playfair-cipher",
+      "title": "Playfair cipher",
+      "url": "https://rosettacode.org/wiki/Playfair_cipher",
+      "tags": [
+        "strings",
+        "generators",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 89,
+      "parts": [
+        {
+          "id": "playfair-cipher",
+          "heading": null,
+          "source": "tasks/playfair-cipher/playfair-cipher.ghul",
+          "output": "tasks/playfair-cipher/run.expected",
+          "lines": 89,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "playing-cards",
       "title": "Playing cards",
       "url": "https://rosettacode.org/wiki/Playing_cards",
@@ -23027,6 +23054,32 @@
       ]
     },
     {
+      "slug": "polynomial-regression",
+      "title": "Polynomial regression",
+      "url": "https://rosettacode.org/wiki/Polynomial_regression",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 67,
+      "parts": [
+        {
+          "id": "polynomial-regression",
+          "heading": null,
+          "source": "tasks/polynomial-regression/polynomial-regression.ghul",
+          "output": "tasks/polynomial-regression/run.expected",
+          "lines": 67,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "polyspiral",
       "title": "Polyspiral",
       "url": "https://rosettacode.org/wiki/Polyspiral",
@@ -23187,6 +23240,58 @@
       ]
     },
     {
+      "slug": "primality-by-wilson-s-theorem",
+      "title": "Primality by Wilson's theorem",
+      "url": "https://rosettacode.org/wiki/Primality_by_Wilson's_theorem",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 23,
+      "parts": [
+        {
+          "id": "primality-by-wilson-s-theorem",
+          "heading": null,
+          "source": "tasks/primality-by-wilson-s-theorem/primality-by-wilson-s-theorem.ghul",
+          "output": "tasks/primality-by-wilson-s-theorem/run.expected",
+          "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "prime-conspiracy",
+      "title": "Prime conspiracy",
+      "url": "https://rosettacode.org/wiki/Prime_conspiracy",
+      "tags": [
+        "primes",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 43,
+      "parts": [
+        {
+          "id": "prime-conspiracy",
+          "heading": null,
+          "source": "tasks/prime-conspiracy/prime-conspiracy.ghul",
+          "output": "tasks/prime-conspiracy/run.expected",
+          "lines": 43,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "prime-decomposition",
       "title": "Prime decomposition",
       "url": "https://rosettacode.org/wiki/Prime_decomposition",
@@ -23206,6 +23311,58 @@
           "source": "tasks/prime-decomposition/prime-decomposition.ghul",
           "output": "tasks/prime-decomposition/run.expected",
           "lines": 43,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "prime-numbers-whose-neighboring-pairs-are-tetraprimes",
+      "title": "Prime numbers whose neighboring pairs are tetraprimes",
+      "url": "https://rosettacode.org/wiki/Prime_numbers_whose_neighboring_pairs_are_tetraprimes",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 79,
+      "parts": [
+        {
+          "id": "prime-numbers-whose-neighboring-pairs-are-tetraprimes",
+          "heading": null,
+          "source": "tasks/prime-numbers-whose-neighboring-pairs-are-tetraprimes/prime-numbers-whose-neighboring-pairs-are-tetraprimes.ghul",
+          "output": "tasks/prime-numbers-whose-neighboring-pairs-are-tetraprimes/run.expected",
+          "lines": 79,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "prime-reciprocal-sum",
+      "title": "Prime reciprocal sum",
+      "url": "https://rosettacode.org/wiki/Prime_reciprocal_sum",
+      "tags": [
+        "primes",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "prime-reciprocal-sum",
+          "heading": null,
+          "source": "tasks/prime-reciprocal-sum/prime-reciprocal-sum.ghul",
+          "output": "tasks/prime-reciprocal-sum/run.expected",
+          "lines": 78,
           "playground": true,
           "input": false,
           "images": []
@@ -23233,6 +23390,59 @@
           "output": "tasks/prime-triangle/run.expected",
           "lines": 61,
           "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "primes-allocate-descendants-to-their-ancestors",
+      "title": "Primes - allocate descendants to their ancestors",
+      "url": "https://rosettacode.org/wiki/Primes_-_allocate_descendants_to_their_ancestors",
+      "tags": [
+        "primes",
+        "number-theory",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 77,
+      "parts": [
+        {
+          "id": "primes-allocate-descendants-to-their-ancestors",
+          "heading": null,
+          "source": "tasks/primes-allocate-descendants-to-their-ancestors/primes-allocate-descendants-to-their-ancestors.ghul",
+          "output": "tasks/primes-allocate-descendants-to-their-ancestors/run.expected",
+          "lines": 77,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "primes-n-2-m-1",
+      "title": "Primes: n*2^m+1",
+      "url": "https://rosettacode.org/wiki/Primes:_n*2^m+1",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "primes-n-2-m-1",
+          "heading": null,
+          "source": "tasks/primes-n-2-m-1/primes-n-2-m-1.ghul",
+          "output": "tasks/primes-n-2-m-1/run.expected",
+          "lines": 63,
+          "playground": true,
           "input": false,
           "images": []
         }
@@ -23319,6 +23529,32 @@
       ]
     },
     {
+      "slug": "probabilistic-choice",
+      "title": "Probabilistic choice",
+      "url": "https://rosettacode.org/wiki/Probabilistic_choice",
+      "tags": [
+        "simulation",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 42,
+      "parts": [
+        {
+          "id": "probabilistic-choice",
+          "heading": null,
+          "source": "tasks/probabilistic-choice/probabilistic-choice.ghul",
+          "output": "tasks/probabilistic-choice/run.expected",
+          "lines": 42,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "problem-of-apollonius",
       "title": "Problem of Apollonius",
       "url": "https://rosettacode.org/wiki/Problem_of_Apollonius",
@@ -23345,6 +23581,32 @@
           "images": [
             "tasks/problem-of-apollonius/apollonius.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "product-of-min-and-max-prime-factors",
+      "title": "Product of min and max prime factors",
+      "url": "https://rosettacode.org/wiki/Product_of_min_and_max_prime_factors",
+      "tags": [
+        "primes",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 33,
+      "parts": [
+        {
+          "id": "product-of-min-and-max-prime-factors",
+          "heading": null,
+          "source": "tasks/product-of-min-and-max-prime-factors/product-of-min-and-max-prime-factors.ghul",
+          "output": "tasks/product-of-min-and-max-prime-factors/run.expected",
+          "lines": 33,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },

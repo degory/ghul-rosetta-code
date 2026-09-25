@@ -1,0 +1,200 @@
+[1] level 0, ancestors: none
+    0 descendants: none
+[2] level 0, ancestors: none
+    0 descendants: none
+[3] level 0, ancestors: none
+    0 descendants: none
+[4] level 0, ancestors: none
+    0 descendants: none
+[5] level 0, ancestors: none
+    1 descendants: 6
+[6] level 1, ancestors: 5
+    2 descendants: 8 9
+[7] level 0, ancestors: none
+    2 descendants: 10 12
+[8] level 2, ancestors: 5 6
+    3 descendants: 15 16 18
+[9] level 2, ancestors: 5 6
+    4 descendants: 14 20 24 27
+[10] level 1, ancestors: 7
+    5 descendants: 21 25 30 32 36
+[11] level 0, ancestors: none
+    5 descendants: 28 40 45 48 54
+[12] level 1, ancestors: 7
+    7 descendants: 35 42 50 ... 81
+[13] level 0, ancestors: none
+    8 descendants: 22 56 63 ... 108
+[14] level 3, ancestors: 5 6 9
+    10 descendants: 33 49 70 ... 162
+[15] level 3, ancestors: 5 6 8
+    12 descendants: 26 44 105 ... 243
+[16] level 3, ancestors: 5 6 8
+    14 descendants: 39 55 66 ... 324
+[17] level 0, ancestors: none
+    16 descendants: 52 88 99 ... 486
+[18] level 3, ancestors: 5 6 8
+    19 descendants: 65 77 78 ... 729
+[19] level 0, ancestors: none
+    22 descendants: 34 104 117 ... 972
+[20] level 3, ancestors: 5 6 9
+    26 descendants: 51 91 130 ... 1458
+[21] level 2, ancestors: 7 10
+    30 descendants: 38 68 195 ... 2187
+[22] level 1, ancestors: 13
+    35 descendants: 57 85 102 ... 2916
+[23] level 0, ancestors: none
+    39 descendants: 76 136 153 ... 4374
+[24] level 3, ancestors: 5 6 9
+    46 descendants: 95 114 119 ... 6561
+[25] level 2, ancestors: 7 10
+    52 descendants: 46 152 171 ... 8748
+[26] level 4, ancestors: 5 6 8 15
+    60 descendants: 69 133 169 ... 13122
+[27] level 3, ancestors: 5 6 9
+    67 descendants: 92 285 304 ... 19683
+[28] level 1, ancestors: 11
+    77 descendants: 115 138 187 ... 26244
+[29] level 0, ancestors: none
+    86 descendants: 184 207 399 ... 39366
+[30] level 2, ancestors: 7 10
+    98 descendants: 161 209 221 ... 59049
+[31] level 0, ancestors: none
+    110 descendants: 58 345 368 ... 78732
+[32] level 2, ancestors: 7 10
+    124 descendants: 87 247 322 ... 118098
+[33] level 4, ancestors: 5 6 9 14
+    140 descendants: 62 116 483 ... 177147
+[34] level 1, ancestors: 19
+    157 descendants: 93 145 174 ... 236196
+[35] level 2, ancestors: 7 12
+    175 descendants: 124 232 261 ... 354294
+[36] level 2, ancestors: 7 10
+    197 descendants: 155 186 203 ... 531441
+[37] level 0, ancestors: none
+    218 descendants: 248 279 435 ... 708588
+[38] level 3, ancestors: 7 10 21
+    244 descendants: 217 310 361 ... 1062882
+[39] level 4, ancestors: 5 6 8 16
+    272 descendants: 74 465 496 ... 1594323
+[40] level 1, ancestors: 11
+    302 descendants: 111 319 391 ... 2125764
+[41] level 0, ancestors: none
+    335 descendants: 148 651 775 ... 3188646
+[42] level 2, ancestors: 7 12
+    372 descendants: 185 222 341 ... 4782969
+[43] level 0, ancestors: none
+    412 descendants: 82 296 333 ... 6377292
+[44] level 4, ancestors: 5 6 8 15
+    456 descendants: 123 259 370 ... 9565938
+[45] level 1, ancestors: 11
+    504 descendants: 86 164 555 ... 14348907
+[46] level 3, ancestors: 7 10 25
+    557 descendants: 129 205 246 ... 19131876
+[47] level 0, ancestors: none
+    613 descendants: 172 328 369 ... 28697814
+[48] level 1, ancestors: 11
+    677 descendants: 215 258 287 ... 43046721
+[49] level 4, ancestors: 5 6 9 14
+    744 descendants: 94 344 387 ... 57395628
+[50] level 2, ancestors: 7 12
+    819 descendants: 141 301 430 ... 86093442
+[51] level 4, ancestors: 5 6 9 20
+    899 descendants: 188 645 688 ... 129140163
+[52] level 1, ancestors: 17
+    987 descendants: 235 282 451 ... 172186884
+[53] level 0, ancestors: none
+    1082 descendants: 376 423 903 ... 258280326
+[54] level 1, ancestors: 11
+    1186 descendants: 329 470 473 ... 387420489
+[55] level 4, ancestors: 5 6 8 16
+    1298 descendants: 106 705 752 ... 516560652
+[56] level 1, ancestors: 13
+    1420 descendants: 159 559 658 ... 774840978
+[57] level 2, ancestors: 13 22
+    1552 descendants: 212 987 1175 ... 1162261467
+[58] level 1, ancestors: 31
+    1695 descendants: 265 318 517 ... 1549681956
+[59] level 0, ancestors: none
+    1849 descendants: 424 477 1645 ... 2324522934
+[60] level 2, ancestors: 7 12
+    2018 descendants: 371 530 611 ... 3486784401
+[61] level 0, ancestors: none
+    2197 descendants: 118 795 848 ... 4649045868
+[62] level 5, ancestors: 5 6 9 14 33
+    2394 descendants: 177 742 817 ... 6973568802
+[63] level 1, ancestors: 13
+    2605 descendants: 122 236 1113 ... 10460353203
+[64] level 2, ancestors: 7 12
+    2833 descendants: 183 295 354 ... 13947137604
+[65] level 4, ancestors: 5 6 8 18
+    3079 descendants: 244 472 531 ... 20920706406
+[66] level 4, ancestors: 5 6 8 16
+    3344 descendants: 305 366 413 ... 31381059609
+[67] level 0, ancestors: none
+    3629 descendants: 488 549 885 ... 41841412812
+[68] level 3, ancestors: 7 10 21
+    3936 descendants: 427 610 732 ... 62762119218
+[69] level 5, ancestors: 5 6 8 15 26
+    4268 descendants: 134 915 976 ... 94143178827
+[70] level 4, ancestors: 5 6 9 14
+    4624 descendants: 201 649 854 ... 125524238436
+[71] level 0, ancestors: none
+    5006 descendants: 268 1281 1525 ... 188286357654
+[72] level 2, ancestors: 7 12
+    5419 descendants: 335 402 671 ... 282429536481
+[73] level 0, ancestors: none
+    5860 descendants: 142 536 603 ... 376572715308
+[74] level 5, ancestors: 5 6 8 16 39
+    6336 descendants: 213 469 670 ... 564859072962
+[75] level 1, ancestors: 13
+    6845 descendants: 146 284 1005 ... 847288609443
+[76] level 1, ancestors: 23
+    7393 descendants: 219 355 426 ... 1129718145924
+[77] level 4, ancestors: 5 6 8 18
+    7979 descendants: 292 568 639 ... 1694577218886
+[78] level 4, ancestors: 5 6 8 18
+    8608 descendants: 365 438 497 ... 2541865828329
+[79] level 0, ancestors: none
+    9281 descendants: 584 657 1065 ... 3389154437772
+[80] level 1, ancestors: 13
+    10003 descendants: 511 730 871 ... 5083731656658
+[81] level 2, ancestors: 7 12
+    10776 descendants: 158 1095 1168 ... 7625597484987
+[82] level 1, ancestors: 43
+    11603 descendants: 237 781 1022 ... 10167463313316
+[83] level 0, ancestors: none
+    12487 descendants: 316 1533 1825 ... 15251194969974
+[84] level 4, ancestors: 5 6 9 14
+    13435 descendants: 395 474 803 ... 22876792454961
+[85] level 2, ancestors: 13 22
+    14445 descendants: 166 632 711 ... 30502389939948
+[86] level 2, ancestors: 11 45
+    15527 descendants: 249 553 790 ... 45753584909922
+[87] level 3, ancestors: 7 10 32
+    16681 descendants: 332 1185 1264 ... 68630377364883
+[88] level 1, ancestors: 17
+    17914 descendants: 415 498 1106 ... 91507169819844
+[89] level 0, ancestors: none
+    19231 descendants: 664 747 1659 ... 137260754729766
+[90] level 1, ancestors: 13
+    20636 descendants: 581 830 869 ... 205891132094649
+[91] level 4, ancestors: 5 6 9 20
+    22134 descendants: 178 1245 1328 ... 274521509459532
+[92] level 4, ancestors: 5 6 9 27
+    23732 descendants: 267 1027 1162 ... 411782264189298
+[93] level 2, ancestors: 19 34
+    25436 descendants: 356 1743 2075 ... 617673396283947
+[94] level 5, ancestors: 5 6 9 14 49
+    27251 descendants: 445 534 913 ... 823564528378596
+[95] level 4, ancestors: 5 6 9 24
+    29186 descendants: 712 801 2905 ... 1235346792567894
+[96] level 1, ancestors: 13
+    31246 descendants: 623 890 1068 ... 1853020188851841
+[97] level 0, ancestors: none
+    33438 descendants: 1335 1424 1602 ... 2470693585135788
+[98] level 4, ancestors: 5 6 8 16
+    35772 descendants: 1246 1501 1780 ... 3706040377703682
+[99] level 1, ancestors: 17
+    38257 descendants: 194 1869 2225 ... 5559060566555523
+
+total descendants: 546986

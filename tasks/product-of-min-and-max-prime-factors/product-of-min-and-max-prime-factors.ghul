@@ -1,0 +1,33 @@
+use default
+
+prime_factors(n: int) -> Pipe[int] is
+    let remaining mut = n
+    let divisor mut = 2
+
+    while divisor * divisor <= remaining do
+        if remaining % divisor == 0 then
+            yield divisor
+            remaining = remaining / divisor
+        else
+            divisor = divisor + 1
+        fi
+    od
+
+    if remaining > 1 then
+        yield remaining
+    fi
+si
+
+min_max_product(n: int) -> int is
+    let factors = prime_factors(n) |> collect()
+
+    if factors.count == 0 then
+        1
+    else
+        factors[0] * factors[factors.count - 1]
+    fi
+si
+
+for row in (1::100) |> map(min_max_product) |> chunk(10) do
+    write_line(row |> map(p => "{p,5}") |> join(""))
+od

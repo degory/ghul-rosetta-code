@@ -1,0 +1,67 @@
+use default
+
+power_sum(xs: double[], k: int) -> double =>
+    xs |> map(x => System.Math.pow(x, cast(k))) |> sum()
+
+moment(xs: double[], ys: double[], k: int) -> double =>
+    zip(xs, ys) |> map((x, y) => y * System.Math.pow(x, cast(k))) |> sum()
+
+solve(a: LIST[LIST[double]], b: LIST[double]) -> double[] is
+    let n = b.count
+
+    for column in 0..n do
+        let pivot =
+            (column..n)
+            |> max_by(row => System.Math.abs(a[row][column]))!
+
+        (a[column], a[pivot]) = (a[pivot], a[column])
+        (b[column], b[pivot]) = (b[pivot], b[column])
+
+        for row in column + 1..n do
+            let factor = a[row][column] / a[column][column]
+
+            for k in column..n do
+                a[row][k] = a[row][k] - factor * a[column][k]
+            od
+
+            b[row] = b[row] - factor * b[column]
+        od
+    od
+
+    let solution = repeat(0.0, n) |> collect_list()
+
+    for row in (0..n) |> reverse() do
+        let known =
+            (row + 1..n)
+            |> map(k => a[row][k] * solution[k])
+            |> sum()
+
+        solution[row] = (b[row] - known) / a[row][row]
+    od
+
+    return solution |> collect_array()
+si
+
+fit(xs: double[], ys: double[], degree: int) -> double[] =>
+    solve(
+        (0::degree)
+            |> map(i =>
+                (0::degree)
+                |> map(j => power_sum(xs, i + j))
+                |> collect_list())
+            |> collect_list(),
+        (0::degree) |> map(i => moment(xs, ys, i)) |> collect_list())
+
+let x = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+let y = [1.0, 6.0, 17.0, 34.0, 57.0, 86.0, 121.0, 162.0, 209.0, 262.0,
+    321.0]
+
+let coefficients = fit(x, y, 2)
+
+write_line("coefficients, highest power first:")
+write_line(
+    coefficients
+    |> collect_list()
+    |> reverse()
+    |> map(c => "{c:F6}")
+    |> join(", "))

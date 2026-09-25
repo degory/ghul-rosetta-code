@@ -1,0 +1,43 @@
+use default
+
+primes(limit: int) -> Pipe[int] is
+    let composite = repeat(false, limit) |> collect_list()
+
+    for n in 2..limit do
+        if !composite[n] then
+            yield n
+
+            if n <= limit / n then
+                let multiple mut = n * n
+
+                while multiple < limit do
+                    composite[multiple] = true
+                    multiple = multiple + n
+                od
+            fi
+        fi
+    od
+si
+
+let count = 1_000_000
+let transitions = repeat(0, 100) |> collect_list()
+let previous mut = 2
+
+for p in primes(15_500_000) |> skip(1) |> take(count - 1) do
+    let digit = p % 10
+    let key = previous * 10 + digit
+    transitions[key] = transitions[key] + 1
+    previous = digit
+od
+
+write_line("{count:N0} first primes. "
+    "Transitions prime % 10 -> next-prime % 10.")
+
+for key in (0..100) |> filter(key => transitions[key] > 0) do
+    let frequency =
+        100.0 * cast double(transitions[key]) / cast double(count)
+
+    write_line(
+        "{key / 10} -> {key % 10} count: {transitions[key],6} "
+        "frequency: {frequency:F2} %")
+od
