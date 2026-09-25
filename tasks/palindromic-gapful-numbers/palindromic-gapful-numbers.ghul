@@ -1,0 +1,40 @@
+use default
+
+// palindromes that start and end with the digit, in increasing order: each
+// length's first half runs upward from the digit, and the second half
+// mirrors it
+
+palindromes(digit: int) -> Pipe[long] is
+    for length in from(3) do
+        let half = (length + 1) / 2
+        let scale = repeat(10L, half - 1) |> product()
+        let low = cast long(digit) * scale
+        let high = cast long(digit + 1) * scale
+
+        for left in from(low) |> take_while(n => n < high) do
+            let text = "{left}"
+            let mirrored = text |> reverse() |> skip(length % 2) |> join("")
+
+            yield long.parse("{text}{mirrored}")
+        od
+    od
+si
+
+gapful(digit: int) -> Pipe[long] =>
+    palindromes(digit) |> filter(n => n % cast long(11 * digit) == 0L)
+
+show(title: string, skip_count: int, take_count: int) is
+    write_line(title)
+
+    for digit in 1::9 do
+        let numbers = gapful(digit) |> skip(skip_count) |> take(take_count)
+
+        write_line("{digit}: {numbers |> join(" ")}")
+    od
+
+    write_line("")
+si
+
+show("The first 20 ending with each digit:", 0, 20)
+show("The 86th to 100th:", 85, 15)
+show("The 991st to 1000th:", 990, 10)
