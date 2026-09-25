@@ -1,10 +1,6 @@
 use default
 
-class OPTION(name: string, value: string, enabled: bool) is
-    name: string public
-    value: string public
-    enabled: bool public
-
+class OPTION(name: string, value: string public, enabled: bool public) is
     to_string() -> string =>
         let text = if value.length > 0 then "{name} {value}" else name fi in
         if enabled then text else "; {text}" fi

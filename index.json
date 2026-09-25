@@ -31930,14 +31930,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 78,
+      "lines": 74,
       "parts": [
         {
           "id": "update-a-configuration-file",
           "heading": null,
           "source": "tasks/update-a-configuration-file/update-a-configuration-file.ghul",
           "output": "tasks/update-a-configuration-file/run.expected",
-          "lines": 78,
+          "lines": 74,
           "playground": true,
           "input": false,
           "images": []
