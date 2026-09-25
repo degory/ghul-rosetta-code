@@ -14,22 +14,6 @@
 
 set -e
 
-# A line is measured in characters, because what the limit is about is how wide
-# it looks. awk counts characters only under a UTF-8 locale and bytes otherwise,
-# so one is chosen here rather than inherited: a developer shell usually has
-# one and a container usually does not, which had this reporting an accented
-# 61-character line as 91 over the limit on CI and inside the limit locally.
-for CANDIDATE in C.UTF-8 C.utf8 en_US.UTF-8 ; do
-    if locale -a 2>/dev/null | grep -qxF "$CANDIDATE" ; then
-        export LC_ALL=$CANDIDATE
-        break
-    fi
-done
-
-if [ "$(printf '\303\251' | awk '{print length($0)}')" != 1 ] ; then
-    echo "no UTF-8 locale available: measuring bytes, not characters" >&2
-fi
-
 SOFT=64
 HARD=76
 
@@ -62,9 +46,23 @@ sources() {
     rm -f "$exempt"
 }
 
+# A line is measured in characters, because what the limit is about is how wide
+# it looks where the solution is read. awk's own length counts characters under
+# a UTF-8 locale and bytes otherwise, and the container CI runs in has no UTF-8
+# locale at all, which measured an accented 61-character line as 91. So the
+# characters are counted here instead of asked for: in UTF-8 every byte of a
+# character after its first is a continuation byte, so the count is the bytes
+# less those. Same answer under any locale, and under mawk as under gawk.
 measure() {
-    sources | tr '\n' '\0' | xargs -0 awk -v limit="$1" \
-        'length > limit { printf "%4d %s:%d\n", length, FILENAME, FNR }'
+    sources | tr '\n' '\0' | xargs -0 awk -v limit="$1" '
+        {
+            rest = $0
+            width = length($0) - gsub(/[\200-\277]/, "", rest)
+
+            if (width > limit) {
+                printf "%4d %s:%d\n", width, FILENAME, FNR
+            }
+        }'
 }
 
 OVER=$(measure "$LIMIT" | sort -rn)
