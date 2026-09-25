@@ -12012,6 +12012,32 @@
       ]
     },
     {
+      "slug": "hashtron-inference",
+      "title": "Hashtron inference",
+      "url": "https://rosettacode.org/wiki/Hashtron_inference",
+      "tags": [
+        "algorithms",
+        "maths"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 64,
+      "parts": [
+        {
+          "id": "hashtron-inference",
+          "heading": null,
+          "source": "tasks/hashtron-inference/hashtron-inference.ghul",
+          "output": "tasks/hashtron-inference/run.expected",
+          "lines": 64,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "haversine-formula",
       "title": "Haversine formula",
       "url": "https://rosettacode.org/wiki/Haversine_formula",
