@@ -19131,14 +19131,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 98,
+      "lines": 97,
       "parts": [
         {
           "id": "penta-power-prime-seeds",
           "heading": null,
           "source": "tasks/penta-power-prime-seeds/penta-power-prime-seeds.ghul",
           "output": "tasks/penta-power-prime-seeds/run.expected",
-          "lines": 98,
+          "lines": 97,
           "playground": false,
           "input": false,
           "images": []
@@ -19343,14 +19343,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 38,
+      "lines": 37,
       "parts": [
         {
           "id": "percolation-mean-run-density",
           "heading": null,
           "source": "tasks/percolation-mean-run-density/percolation-mean-run-density.ghul",
           "output": "tasks/percolation-mean-run-density/run.expected",
-          "lines": 38,
+          "lines": 37,
           "playground": true,
           "input": false,
           "images": []
@@ -19694,14 +19694,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 74,
+      "lines": 73,
       "parts": [
         {
           "id": "permutations-rank-of-a-permutation",
           "heading": null,
           "source": "tasks/permutations-rank-of-a-permutation/permutations-rank-of-a-permutation.ghul",
           "output": "tasks/permutations-rank-of-a-permutation/run.expected",
-          "lines": 74,
+          "lines": 73,
           "playground": true,
           "input": false,
           "images": []
