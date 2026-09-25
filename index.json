@@ -17624,6 +17624,32 @@
       ]
     },
     {
+      "slug": "numerical-integration-romberg-integration",
+      "title": "Numerical integration/Romberg integration",
+      "url": "https://rosettacode.org/wiki/Numerical_integration/Romberg_integration",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 49,
+      "parts": [
+        {
+          "id": "numerical-integration-romberg-integration",
+          "heading": null,
+          "source": "tasks/numerical-integration-romberg-integration/numerical-integration-romberg-integration.ghul",
+          "output": "tasks/numerical-integration-romberg-integration/run.expected",
+          "lines": 49,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "o-halloran-numbers",
       "title": "O'Halloran numbers",
       "url": "https://rosettacode.org/wiki/O'Halloran_numbers",
