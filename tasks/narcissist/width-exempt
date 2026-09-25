@@ -1,0 +1,3 @@
+# The program is its own source held as a string literal, so wrapping the
+# line would make it a different program.
+narcissist.ghul
