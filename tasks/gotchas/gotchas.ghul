@@ -1,0 +1,31 @@
+use default
+
+// == compares identity, not characters
+let literal = "hello"
+let built = "{"hel"}{"lo"}"
+
+write_line("== says {literal == built}")
+write_line("=~ says {literal =~ built}")
+
+// adjacent string literals join, so a missing comma merges two elements
+let colours = [
+    "red"
+    "green",
+    "blue"
+]
+
+write_line("{colours.count} colours: {colours}")
+
+// byte is signed, ubyte unsigned
+write_line("byte {cast byte(200)}, ubyte {cast ubyte(200)}")
+
+// a pipe resumes where the last read stopped, and restarts once exhausted
+let evens = [1, 2, 3, 4, 5, 6] |> filter(x => x % 2 == 0)
+
+write_line("first even: {evens |> first()}")
+
+for e in evens do
+    write_line("next even: {e}")
+od
+
+write_line("all evens: {evens |> collect_list()}")

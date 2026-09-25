@@ -1,0 +1,8 @@
+== says false
+=~ says true
+2 colours: [redgreen, blue]
+byte -56, ubyte 200
+first even: 2
+next even: 4
+next even: 6
+all evens: [2, 4, 6]
