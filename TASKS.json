@@ -6087,6 +6087,11 @@
       "published_hash": "37fea0814a45776db69eb04e5dc1537887bc672e50b63d0fe57c6ff9dd48b34b"
     },
     {
+      "title": "SEDOLs",
+      "slug": "sedols",
+      "state": "solved"
+    },
+    {
       "title": "SHA-1",
       "slug": "sha-1",
       "state": "published",
@@ -6103,6 +6108,11 @@
       "slug": "sha-256-merkle-tree",
       "state": "published",
       "published_hash": "0ae45735daf4397a9627fa92ea821a932aacc679a30e9e01b702d5c853a1af23"
+    },
+    {
+      "title": "Safe addition",
+      "slug": "safe-addition",
+      "state": "solved"
     },
     {
       "title": "Safe primes and unsafe primes",
@@ -6127,6 +6137,11 @@
       "slug": "sattolo-cycle",
       "state": "published",
       "published_hash": "710b80b876d568052614c6a40bac9788ed57b481a3d2810bf6a7234ddc658bd5"
+    },
+    {
+      "title": "Schieber-Vishkin algorithm",
+      "slug": "schieber-vishkin-algorithm",
+      "state": "solved"
     },
     {
       "title": "Scope modifiers",
@@ -6159,6 +6174,11 @@
       "published_hash": "e23894e393d375b377748b3940ae18970b1fd0f483c30c3ee0c6f9a3cb3088a9"
     },
     {
+      "title": "Search in paragraph\u0027s text",
+      "slug": "search-in-paragraph-s-text",
+      "state": "solved"
+    },
+    {
       "title": "Secure temporary file",
       "slug": "secure-temporary-file",
       "state": "published",
@@ -6189,10 +6209,40 @@
       "published_hash": "876df1c6a47ea58111f291ca7fa9aebc6a9d8e9cc395f84b02910603a8c4f1a8"
     },
     {
+      "title": "Semordnilap",
+      "slug": "semordnilap",
+      "state": "solved"
+    },
+    {
       "title": "Send an unknown method call",
       "slug": "send-an-unknown-method-call",
       "state": "published",
       "published_hash": "f9b396b28dcadb78127bd560f385dc1885dbdc9b6ca95fed8d1ac4a56993e51a"
+    },
+    {
+      "title": "Sequence of non-squares",
+      "slug": "sequence-of-non-squares",
+      "state": "solved"
+    },
+    {
+      "title": "Sequence of primes by trial division",
+      "slug": "sequence-of-primes-by-trial-division",
+      "state": "solved"
+    },
+    {
+      "title": "Sequence of primorial primes",
+      "slug": "sequence-of-primorial-primes",
+      "state": "solved"
+    },
+    {
+      "title": "Sequence: nth number with exactly n divisors",
+      "slug": "sequence-nth-number-with-exactly-n-divisors",
+      "state": "solved"
+    },
+    {
+      "title": "Sequence: smallest number greater than previous term with exactly n divisors",
+      "slug": "sequence-smallest-number-greater-than-previous-term-with-exactly-n-divisors",
+      "state": "solved"
     },
     {
       "title": "Set",

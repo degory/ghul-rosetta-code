@@ -1,0 +1,29 @@
+use default
+
+primes() -> Pipe[int] is
+    let found = LIST[int]()
+    let candidate mut = 2
+
+    while true do
+        let is_prime =
+            found
+                |> take_while(p => p * p <= candidate)
+                |> all(p => candidate % p != 0)
+
+        if is_prime then
+            found.add(candidate)
+
+            yield candidate
+        fi
+
+        candidate = candidate + 1
+    od
+si
+
+let first = primes() |> take(100) |> collect_list()
+
+for row in 0..10 do
+    let cells = first |> skip(row * 10) |> take(10)
+
+    write_line(cells |> map(p => "{p,4}") |> join(""))
+od

@@ -1,0 +1,23 @@
+use default
+
+divisor_count(n: int) -> int =>
+    1::n
+        |> take_while(d => d * d <= n)
+        |> filter(d => n % d == 0)
+        |> map(d => if d * d == n then 1 else 2 fi)
+        |> sum()
+
+let terms = LIST[int]()
+let candidate mut = 0
+
+for n in 1::15 do
+    candidate = candidate + 1
+
+    while divisor_count(candidate) != n do
+        candidate = candidate + 1
+    od
+
+    terms.add(candidate)
+od
+
+write_line(terms |> join(" "))

@@ -1,0 +1,8 @@
+lca(11, 12) = 5
+lca(11, 13) = 2
+lca(14, 15) = 8
+lca(14, 16) = 4
+lca( 7, 12) = 1
+lca( 9,  9) = 9
+
+256 pairs agree with a walk up the tree: true
