@@ -1,0 +1,109 @@
+use default
+
+use Point = (x: bigint, y: bigint)
+
+let p = 1073741789n
+let a = 355n
+let b = 671n
+let order = 1073807281n
+let base: Point = (13693n, 10088n)
+
+modulo(value: bigint, m: bigint) -> bigint => ((value % m) + m) % m
+
+inverse(value: bigint, m: bigint) -> bigint =>
+    bigint.mod_pow(modulo(value, m), m - 2n, m)
+
+on_curve(point: Point?) -> bool =>
+    if let (x, y) = point then
+        modulo(y * y - (x * x * x + a * x + b), p) =~ 0n
+    else
+        true
+    fi
+
++(u: Point?, v: Point?) -> Point? =>
+    if let (x1, y1) = u then
+        if let (x2, y2) = v then
+            if x1 =~ x2 /\ modulo(y1 + y2, p) =~ 0n then
+                null
+            else
+                let slope =
+                    if x1 =~ x2 then
+                        (3n * x1 * x1 + a) * inverse(2n * y1, p)
+                    else
+                        (y2 - y1) * inverse(x2 - x1, p)
+                    fi
+                in
+                let x3 = modulo(slope * slope - x1 - x2, p) in
+                (x3, modulo(slope * (x1 - x3) - y1, p))
+            fi
+        else
+            u
+        fi
+    else
+        v
+    fi
+
+*(k: bigint, point: Point?) -> Point? is
+    let result: Point? mut = null
+    let addend mut = point
+    let rest mut = k
+
+    while rest > 0n do
+        if !rest.is_even then
+            result = result + addend
+        fi
+
+        addend = addend + addend
+        rest = rest / 2n
+    od
+
+    result
+si
+
+let random = System.Random(1363)
+
+random_below(limit: bigint) -> bigint =>
+    bigint(random.next_int64(1L, cast long(limit)))
+
+sign(hash: bigint, secret: bigint) -> (c: bigint, d: bigint) is
+    do
+        let u = random_below(order)
+        let (x, _) = (u * base)!
+        let c = modulo(x, order)
+        let d = modulo(inverse(u, order) * (hash + secret * c), order)
+
+        if c !~ 0n /\ d !~ 0n then
+            return (c, d)
+        fi
+    od
+si
+
+verify(hash: bigint, public_key: Point?, c: bigint, d: bigint) -> bool =>
+    let h = inverse(d, order) in
+    let h1 = modulo(hash * h, order), h2 = modulo(c * h, order) in
+    let sum = h1 * base + h2 * public_key in
+    if let (x, _) = sum then modulo(x, order) =~ c else false fi
+
+assert on_curve(base) else "base point is not on the curve"
+assert (order * base) == null else "base point does not have order r"
+
+let secret = random_below(order)
+let public_key = secret * base
+let hash = 0x789ABCDEn
+
+write_line("curve:      y^2 = x^3 + {a}x + {b} (mod {p})")
+write_line("base point: {base}, order {order}")
+write_line("private:    {secret}")
+write_line("public:     {public_key!}")
+write_line("hash:       0x{hash:X}")
+
+let (c, d) = sign(hash, secret)
+
+write_line("signature:  ({c}, {d})")
+write_line("verified:   {verify(hash, public_key, c, d)}")
+
+let tampered = hash ^ 0x0010_0000n
+
+let accepted = verify(tampered, public_key, c, d)
+
+write_line("tampered:   0x{tampered:X} verified: {accepted}")
