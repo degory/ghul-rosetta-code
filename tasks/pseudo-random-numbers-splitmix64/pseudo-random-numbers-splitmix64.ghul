@@ -1,0 +1,41 @@
+use default
+
+class SPLITMIX64 is
+    _state: ulong
+
+    init(seed: ulong) is
+        _state = seed
+    si
+
+    next_int() -> ulong is
+        _state = _state + 0x9e3779b97f4a7c15ul
+
+        let z mut = _state
+
+        z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ul
+        z = (z ^ (z >> 27)) * 0x94d049bb133111ebul
+
+        z ^ (z >> 31)
+    si
+
+    next_float() -> double =>
+        cast double(next_int() >> 11) / 9_007_199_254_740_992.0
+si
+
+let first = SPLITMIX64(1234567ul)
+
+for _ in 1::5 do
+    write_line("{first.next_int(),20}")
+od
+
+let generator = SPLITMIX64(987654321ul)
+let counts = repeat(0, 5) |> collect_list()
+
+for _ in 1::100_000 do
+    let bucket = cast int(generator.next_float() * 5.0)
+
+    counts[bucket] = counts[bucket] + 1
+od
+
+write_line("")
+write_line(0..5 |> map(i => "{i}: {counts[i]}") |> join(", "))
