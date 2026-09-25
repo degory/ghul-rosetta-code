@@ -14807,6 +14807,32 @@
       ]
     },
     {
+      "slug": "levenshtein-distance-alignment",
+      "title": "Levenshtein distance/Alignment",
+      "url": "https://rosettacode.org/wiki/Levenshtein_distance/Alignment",
+      "tags": [
+        "strings",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 62,
+      "parts": [
+        {
+          "id": "levenshtein-distance-alignment",
+          "heading": null,
+          "source": "tasks/levenshtein-distance-alignment/levenshtein-distance-alignment.ghul",
+          "output": "tasks/levenshtein-distance-alignment/run.expected",
+          "lines": 62,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "linear-congruential-generator",
       "title": "Linear congruential generator",
       "url": "https://rosettacode.org/wiki/Linear_congruential_generator",
