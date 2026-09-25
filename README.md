@@ -131,7 +131,8 @@ where the page has no ghul section yet, `same` or `differs` against the live sec
 and solved task, or only the slugs given, and leaves each differing live section beside its
 markup as `wiki-out/<slug>.live`.
 
-`rosetta publish` puts these on the wiki. To paste one by hand instead, it goes in alphabetical
+`rosetta publish` puts these on the wiki. `--minor` marks its edits as minor in the page history, for a run
+that only reformats sections already there. To paste one by hand instead, it goes in alphabetical
 position among the language headers: `ghul` sorts after `Genie` and before `Go`. Either way, run
 `rosetta sync` afterwards so the ledger records it.
 

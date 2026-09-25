@@ -366,8 +366,9 @@ namespace Rosetta is
             fi
         si
 
-        // Replaces a page's whole text. `log_in` must have run first.
-        edit(title: string, text: string, summary: string) is
+        // Replaces a page's whole text. `log_in` must have run first. A minor edit is marked
+        // as one in the page history, where readers who watch the page can filter it out.
+        edit(title: string, text: string, summary: string, minor: bool) is
             assert _csrf_token? else "log_in has not run, so there is no edit token"
 
             let token = _csrf_token
@@ -378,6 +379,11 @@ namespace Rosetta is
             fields["title"] = title
             fields["text"] = text
             fields["summary"] = summary
+
+            if minor then
+                fields["minor"] = "1"
+            fi
+
             fields["token"] = token
             fields["format"] = "json"
             fields["formatversion"] = "2"
