@@ -30215,6 +30215,32 @@
       ]
     },
     {
+      "slug": "wilson-primes-of-order-n",
+      "title": "Wilson primes of order n",
+      "url": "https://rosettacode.org/wiki/Wilson_primes_of_order_n",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 51,
+      "parts": [
+        {
+          "id": "wilson-primes-of-order-n",
+          "heading": null,
+          "source": "tasks/wilson-primes-of-order-n/wilson-primes-of-order-n.ghul",
+          "output": "tasks/wilson-primes-of-order-n/run.expected",
+          "lines": 51,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "wireworld",
       "title": "Wireworld",
       "url": "https://rosettacode.org/wiki/Wireworld",

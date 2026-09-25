@@ -1,0 +1,51 @@
+use default
+
+let limit = 11_000
+let orders = 11
+
+is_prime(n: int) -> bool =>
+    n > 1 /\ (2..n) |> take_while(d => d * d <= n) |> all(d => n % d != 0)
+
+factorials_mod(count: int, modulus: long) -> LIST[long] is
+    let result = LIST[long]([1L])
+
+    for k in 1..count do
+        result.add(result[k - 1] * cast long(k) % modulus)
+    od
+
+    return result
+si
+
+is_wilson(p: int, n: int, factorials: LIST[long], modulus: long) -> bool is
+    let sign = if n % 2 == 0 then 1L else -1L fi
+    let product = factorials[n - 1] * factorials[p - n] % modulus
+
+    return (product - sign + modulus) % modulus == 0L
+si
+
+let wilson = (1::orders) |> map(_ => LIST[int]()) |> collect()
+
+for p in (2..limit) |> filter(is_prime) do
+    let modulus = cast long(p) * cast long(p)
+    let factorials = factorials_mod(p, modulus)
+
+    for n in 1::orders do
+        if n <= p /\ is_wilson(p, n, factorials, modulus) then
+            wilson[n - 1].add(p)
+        fi
+    od
+od
+
+write_line("Wilson primes below {limit}:")
+write_line(" n  primes")
+
+for (n, primes) in wilson |> index() do
+    let listed =
+        if primes.count == 0 then
+            "none"
+        else
+            primes |> map(p => "{p}") |> join(" ")
+        fi
+
+    write_line("{n + 1,2}  {listed}")
+od
