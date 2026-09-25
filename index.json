@@ -26076,6 +26076,32 @@
       ]
     },
     {
+      "slug": "seven-sided-dice-from-five-sided-dice",
+      "title": "Seven-sided dice from five-sided dice",
+      "url": "https://rosettacode.org/wiki/Seven-sided_dice_from_five-sided_dice",
+      "tags": [
+        "simulation",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 50,
+      "parts": [
+        {
+          "id": "seven-sided-dice-from-five-sided-dice",
+          "heading": null,
+          "source": "tasks/seven-sided-dice-from-five-sided-dice/seven-sided-dice-from-five-sided-dice.ghul",
+          "output": "tasks/seven-sided-dice-from-five-sided-dice/run.expected",
+          "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "sexy-primes",
       "title": "Sexy primes",
       "url": "https://rosettacode.org/wiki/Sexy_primes",
