@@ -1,0 +1,10 @@
+Print a greeting.
+
+=={{header|C}}==
+<lang>puts("Hello");</lang>
+
+=={{header|Perl}}==
+<lang>print "Hello\n";</lang>
+
+=={{header|Python}}==
+<lang python>print("Hello")</lang>

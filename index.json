@@ -22089,6 +22089,32 @@
       ]
     },
     {
+      "slug": "rosetta-code-find-bare-lang-tags",
+      "title": "Rosetta Code/Find bare lang tags",
+      "url": "https://rosettacode.org/wiki/Rosetta_Code/Find_bare_lang_tags",
+      "tags": [
+        "text-processing",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "rosetta-code-find-bare-lang-tags",
+          "heading": null,
+          "source": "tasks/rosetta-code-find-bare-lang-tags/rosetta-code-find-bare-lang-tags.ghul",
+          "output": "tasks/rosetta-code-find-bare-lang-tags/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rot-13",
       "title": "Rot-13",
       "url": "https://rosettacode.org/wiki/Rot-13",

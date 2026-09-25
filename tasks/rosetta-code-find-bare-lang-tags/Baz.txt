@@ -1,0 +1,8 @@
+Show a loop.
+
+<lang>for each item: show item</lang>
+
+<lang>repeat until done</lang>
+
+=={{header|Perl}}==
+<lang perl>print for 1 .. 3;</lang>
