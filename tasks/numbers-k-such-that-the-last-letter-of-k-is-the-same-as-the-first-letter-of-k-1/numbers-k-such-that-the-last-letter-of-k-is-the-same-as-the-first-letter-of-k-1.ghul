@@ -52,7 +52,12 @@ for row in found |> take(50) |> chunk(10) do
 od
 
 for size in [1_000, 10_000, 100_000, 1_000_000] do
+    IO.Std.write("\nspelling out numbers until {size:N0} of them match: ")
+    IO.Std.out.flush()
+
     let first = found |> take(size) |> collect_list()
+
+    write_line("done")
     let breakdown =
         0..10
             |> map(digit =>
