@@ -20,7 +20,7 @@ si
 brilliant_numbers(max_digits: int) -> LIST[long] is
     let found = LIST()
     let limit = repeat(10, max_digits) |> product()
-    let primes = primes_below(limit) |> collect_list()
+    let primes = primes_below(limit)
     let start mut = 0
 
     for digits in 1::max_digits do

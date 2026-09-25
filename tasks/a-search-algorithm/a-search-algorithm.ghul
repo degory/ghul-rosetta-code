@@ -102,7 +102,6 @@ od
 let route =
     (0..backwards.count)
         |> map(step => backwards[backwards.count - 1 - step])
-        |> collect_list()
 
 let on_route = SET(route |> map(at))
 

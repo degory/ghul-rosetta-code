@@ -35,7 +35,6 @@ Directory.create_directory(scratch)
 let reversed =
     records("infile.dat", record_length)
         |> map(record => reverse(record))
-        |> collect_list()
 
 let joined = reversed |> join("")
 

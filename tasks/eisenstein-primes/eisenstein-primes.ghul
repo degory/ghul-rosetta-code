@@ -38,7 +38,6 @@ let primes =
             elif x.b != y.b then x.b - y.b
             else x.a - y.a
             fi)
-        |> collect_list()
 
 write_line("the first 100 Eisenstein primes, nearest 0 first:")
 

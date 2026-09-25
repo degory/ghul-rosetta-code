@@ -267,14 +267,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 88,
+      "lines": 87,
       "parts": [
         {
           "id": "24-game-solve",
           "heading": null,
           "source": "tasks/24-game-solve/24-game-solve.ghul",
           "output": "tasks/24-game-solve/run.expected",
-          "lines": 88,
+          "lines": 87,
           "playground": true,
           "input": true,
           "images": []
@@ -296,14 +296,14 @@
       "images": [
         "tasks/3d-turtle-graphics/turtle.png.expected"
       ],
-      "lines": 190,
+      "lines": 189,
       "parts": [
         {
           "id": "3d-turtle-graphics",
           "heading": null,
           "source": "tasks/3d-turtle-graphics/3d-turtle-graphics.ghul",
           "output": "tasks/3d-turtle-graphics/run.expected",
-          "lines": 190,
+          "lines": 189,
           "playground": true,
           "input": false,
           "images": [
@@ -407,14 +407,14 @@
       "images": [
         "tasks/a-search-algorithm/route.png.expected"
       ],
-      "lines": 191,
+      "lines": 190,
       "parts": [
         {
           "id": "a-search-algorithm",
           "heading": null,
           "source": "tasks/a-search-algorithm/a-search-algorithm.ghul",
           "output": "tasks/a-search-algorithm/run.expected",
-          "lines": 191,
+          "lines": 190,
           "playground": true,
           "input": false,
           "images": [
@@ -2696,7 +2696,7 @@
       "images": [
         "tasks/benfords-law/02-actual-against-expected/benford.png.expected"
       ],
-      "lines": 117,
+      "lines": 115,
       "parts": [
         {
           "id": "benfords-law/01-the-distribution",
@@ -2713,7 +2713,7 @@
           "heading": "Actual against expected",
           "source": "tasks/benfords-law/02-actual-against-expected/02-actual-against-expected.ghul",
           "output": "tasks/benfords-law/02-actual-against-expected/run.expected",
-          "lines": 92,
+          "lines": 90,
           "playground": true,
           "input": false,
           "images": [
@@ -3899,14 +3899,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 85,
+      "lines": 84,
       "parts": [
         {
           "id": "bron-kerbosch-algorithm",
           "heading": null,
           "source": "tasks/bron-kerbosch-algorithm/bron-kerbosch-algorithm.ghul",
           "output": "tasks/bron-kerbosch-algorithm/run.expected",
-          "lines": 85,
+          "lines": 84,
           "playground": true,
           "input": false,
           "images": []
@@ -4630,14 +4630,14 @@
       "images": [
         "tasks/catmull-clark-subdivision-surface/subdivided.png.expected"
       ],
-      "lines": 208,
+      "lines": 203,
       "parts": [
         {
           "id": "catmull-clark-subdivision-surface",
           "heading": null,
           "source": "tasks/catmull-clark-subdivision-surface/catmull-clark-subdivision-surface.ghul",
           "output": "tasks/catmull-clark-subdivision-surface/run.expected",
-          "lines": 208,
+          "lines": 203,
           "playground": true,
           "input": false,
           "images": [
@@ -6739,14 +6739,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 112,
+      "lines": 111,
       "parts": [
         {
           "id": "countdown",
           "heading": null,
           "source": "tasks/countdown/countdown.ghul",
           "output": "tasks/countdown/run.expected",
-          "lines": 112,
+          "lines": 111,
           "playground": true,
           "input": false,
           "images": []
@@ -9123,14 +9123,14 @@
       "images": [
         "tasks/eisenstein-primes/eisenstein.png.expected"
       ],
-      "lines": 70,
+      "lines": 69,
       "parts": [
         {
           "id": "eisenstein-primes",
           "heading": null,
           "source": "tasks/eisenstein-primes/eisenstein-primes.ghul",
           "output": "tasks/eisenstein-primes/run.expected",
-          "lines": 70,
+          "lines": 69,
           "playground": true,
           "input": false,
           "images": [
@@ -11559,14 +11559,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 62,
+      "lines": 61,
       "parts": [
         {
           "id": "fixed-length-records",
           "heading": null,
           "source": "tasks/fixed-length-records/fixed-length-records.ghul",
           "output": "tasks/fixed-length-records/run.expected",
-          "lines": 62,
+          "lines": 61,
           "playground": true,
           "input": false,
           "images": []
@@ -12023,14 +12023,14 @@
       "playground": false,
       "input": false,
       "images": [],
-      "lines": 157,
+      "lines": 156,
       "parts": [
         {
           "id": "four-is-the-number-of-letters-in-the",
           "heading": null,
           "source": "tasks/four-is-the-number-of-letters-in-the/four-is-the-number-of-letters-in-the.ghul",
           "output": "tasks/four-is-the-number-of-letters-in-the/run.expected",
-          "lines": 157,
+          "lines": 156,
           "playground": false,
           "input": false,
           "images": []
@@ -12796,14 +12796,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 224,
+      "lines": 223,
       "parts": [
         {
           "id": "go-fish",
           "heading": null,
           "source": "tasks/go-fish/go-fish.ghul",
           "output": "tasks/go-fish/run.expected",
-          "lines": 224,
+          "lines": 223,
           "playground": true,
           "input": true,
           "images": []
@@ -13457,14 +13457,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 24,
+      "lines": 23,
       "parts": [
         {
           "id": "happy-numbers",
           "heading": null,
           "source": "tasks/happy-numbers/happy-numbers.ghul",
           "output": "tasks/happy-numbers/run.expected",
-          "lines": 24,
+          "lines": 23,
           "playground": true,
           "input": false,
           "images": []
@@ -14476,14 +14476,14 @@
       "images": [
         "tasks/huffman-coding/02-the-tree-drawn/huffman.png.expected"
       ],
-      "lines": 223,
+      "lines": 222,
       "parts": [
         {
           "id": "huffman-coding/01-the-code-table",
           "heading": "The code table",
           "source": "tasks/huffman-coding/01-the-code-table/01-the-code-table.ghul",
           "output": "tasks/huffman-coding/01-the-code-table/run.expected",
-          "lines": 86,
+          "lines": 85,
           "playground": true,
           "input": false,
           "images": []
@@ -15888,14 +15888,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 31,
+      "lines": 30,
       "parts": [
         {
           "id": "kaprekar-numbers",
           "heading": null,
           "source": "tasks/kaprekar-numbers/kaprekar-numbers.ghul",
           "output": "tasks/kaprekar-numbers/run.expected",
-          "lines": 31,
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []
@@ -17923,14 +17923,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 30,
+      "lines": 29,
       "parts": [
         {
           "id": "mad-libs",
           "heading": null,
           "source": "tasks/mad-libs/mad-libs.ghul",
           "output": "tasks/mad-libs/run.expected",
-          "lines": 30,
+          "lines": 29,
           "playground": true,
           "input": true,
           "images": []
@@ -18144,7 +18144,7 @@
       "images": [
         "tasks/marching-squares/02-contours-of-a-field/contours.png.expected"
       ],
-      "lines": 234,
+      "lines": 233,
       "parts": [
         {
           "id": "marching-squares/01-tracing-a-perimeter",
@@ -18161,7 +18161,7 @@
           "heading": "Contours of a field",
           "source": "tasks/marching-squares/02-contours-of-a-field/02-contours-of-a-field.ghul",
           "output": "tasks/marching-squares/02-contours-of-a-field/run.expected",
-          "lines": 140,
+          "lines": 139,
           "playground": true,
           "input": false,
           "images": [
@@ -18495,14 +18495,14 @@
         "tasks/median-filter/cleaned.png.expected",
         "tasks/median-filter/noisy.png.expected"
       ],
-      "lines": 98,
+      "lines": 97,
       "parts": [
         {
           "id": "median-filter",
           "heading": null,
           "source": "tasks/median-filter/median-filter.ghul",
           "output": "tasks/median-filter/run.expected",
-          "lines": 98,
+          "lines": 97,
           "playground": true,
           "input": false,
           "images": [
@@ -18710,14 +18710,14 @@
       "playground": true,
       "input": true,
       "images": [],
-      "lines": 306,
+      "lines": 305,
       "parts": [
         {
           "id": "mill-game",
           "heading": null,
           "source": "tasks/mill-game/mill-game.ghul",
           "output": "tasks/mill-game/run.expected",
-          "lines": 306,
+          "lines": 305,
           "playground": true,
           "input": true,
           "images": []

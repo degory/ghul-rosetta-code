@@ -48,7 +48,6 @@ solve(numbers: List[Found], target: int, best: Found) -> Found is
                 (0..numbers.count)
                     |> filter(k => k != i /\ k != j)
                     |> map(k => numbers[k])
-                    |> collect_list()
 
             let (a, b) = (numbers[i].value, numbers[j].value)
 

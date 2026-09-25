@@ -13,7 +13,6 @@ let text mut = story |> join("\n")
 let blanks =
     Regex.matches(text, "<[^>]+>")
         |> map(m => m.value)
-        |> collect_list()
 
 for blank in blanks do
     if text.contains(blank) then

@@ -7,7 +7,7 @@ from_array(values: int[]) -> Collections.List[int] is
 si
 
 text_of(values: Collections.List[int]) -> string is
-    let texts = values |> map(value => "{value}") |> collect_list()
+    let texts = values |> map(value => "{value}")
 
     return texts |> join(" ")
 si

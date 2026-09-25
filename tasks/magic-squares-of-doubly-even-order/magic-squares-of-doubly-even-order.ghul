@@ -23,8 +23,8 @@ check(square: List[List[int]]) -> bool is
         square
             |> cat(0..n |> map(c => column(square, c)))
             |> cat([
-                0..n |> map(i => square[i][i]) |> collect_list(),
-                0..n |> map(i => square[i][n - 1 - i]) |> collect_list()
+                0..n |> map(i => square[i][i]),
+                0..n |> map(i => square[i][n - 1 - i])
             ])
 
     lines |> all(line => line |> sum() == target)

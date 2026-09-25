@@ -25,7 +25,7 @@ announce(except: string, what: string) is
     Monitor.enter(members)
 
     let listening =
-        members |> filter(m => m.nickname !~ except) |> collect_list()
+        members |> filter(m => m.nickname !~ except)
 
     Monitor.exit(members)
 

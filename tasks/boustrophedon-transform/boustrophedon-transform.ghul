@@ -63,8 +63,8 @@ boustrophedon(term: (int) -> bigint, count: int) -> Pipe[bigint] is
 si
 
 report(name: string, term: (int) -> bigint) is
-    let transformed = boustrophedon(term, 15) |> collect_list()
-    let texts = transformed |> map(value => "{value}") |> collect_list()
+    let transformed = boustrophedon(term, 15)
+    let texts = transformed |> map(value => "{value}")
 
     let stretched = boustrophedon(term, 1_000) |> collect()
     let digits = stretched[999].to_string()

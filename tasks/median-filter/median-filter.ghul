@@ -56,7 +56,6 @@ median_filter(source: IMAGE) -> IMAGE is
                         source.pixel(
                             Math.clamp(x + dx, 0, source.width - 1),
                             Math.clamp(y + dy, 0, source.height - 1)))
-                    |> collect_list()
 
             let middle = (pick: RGB -> ubyte) =>
                 let sorted =

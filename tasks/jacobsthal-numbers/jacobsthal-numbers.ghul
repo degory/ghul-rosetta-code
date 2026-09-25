@@ -38,7 +38,7 @@ is_prime(n: bigint) -> bool =>
 
 show(label: string, values: Pipe[bigint], count: int) is
     write_line("{label}:")
-    let rows = values |> take(count) |> chunk(10) |> collect()
+    let rows = values |> take(count) |> chunk(10)
 
     rows |> each(row =>
         write_line(row |> map(v => "{v,16}") |> join(" ")))
