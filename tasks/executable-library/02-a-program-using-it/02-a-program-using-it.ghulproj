@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+
+    <AssemblyName>binary</AssemblyName>
+    <GhulCompiler>dotnet ghul-compiler --test-run</GhulCompiler>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../01-the-library/01-the-library.ghulproj"
+                      AdditionalProperties="AssemblyName=hailstone" />
+    <GhulSources Include="**/*.ghul" />
+  </ItemGroup>
+</Project>
