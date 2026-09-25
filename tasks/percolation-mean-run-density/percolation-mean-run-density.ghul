@@ -1,0 +1,38 @@
+use default
+
+// Seeded, so the run is reproducible.
+let random = System.Random(7)
+let trials = 100
+
+runs(n: int, p: double) -> int is
+    let count mut = 0
+    let inside mut = false
+
+    for _ in 0..n do
+        let one = random.next_double() < p
+
+        if one /\ !inside then
+            count = count + 1
+        fi
+
+        inside = one
+    od
+
+    count
+si
+
+for p in [0.1, 0.3, 0.5, 0.7, 0.9] do
+    let theory = p * (1.0 - p)
+
+    write_line("p = {p:F1}, K(p) = {theory:F4}, {trials} trials each")
+    write_line("       n  simulated  difference")
+
+    for n in [100, 1_000, 10_000, 100_000] do
+        let total = 0..trials |> map(_ => runs(n, p)) |> sum()
+        let simulated = cast double(total) / cast double(trials * n)
+
+        write_line("{n,8}  {simulated,9:F4}  {simulated - theory,10:F6}")
+    od
+
+    write_line("")
+od

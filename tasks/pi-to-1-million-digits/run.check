@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# The time differs on every run, so what is asserted is the digits, and that
+# a time was reported.
+
+expected="3.141592653589793238462643383279 ... 399634646042209010610577945815
+999999 decimal places"
+
+if [ "$(head -2 "$1")" != "$expected" ]; then
+    echo "the digits are wrong:"
+    cat "$1"
+
+    exit 1
+fi
+
+if ! sed -n 3p "$1" | grep -qE '^computed in [0-9]+\.[0-9]{2} seconds$'; then
+    echo "the third line should give the time taken:"
+    cat "$1"
+
+    exit 1
+fi

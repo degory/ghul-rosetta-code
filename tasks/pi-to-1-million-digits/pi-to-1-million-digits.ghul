@@ -1,0 +1,107 @@
+use default
+use System.Diagnostics.Stopwatch
+
+// The Chudnovsky series, summed by binary splitting.
+
+let c3_over_24 = 640_320n * 640_320n * 640_320n / 24n
+
+split(a: long, b: long) -> (p: bigint, q: bigint, t: bigint) is
+    if b - a == 1L then
+        if a == 0L then
+            return (1n, 1n, 13_591_409n)
+        fi
+
+        let k = bigint(a)
+        let p = (6n * k - 5n) * (2n * k - 1n) * (6n * k - 1n)
+        let q = k * k * k * c3_over_24
+        let t = p * (13_591_409n + 545_140_134n * k)
+
+        return (p, q, if a % 2L == 0L then t else -t fi)
+    fi
+
+    let middle = (a + b) / 2L
+    let left = split(a, middle)
+    let right = split(middle, b)
+
+    let t = left.t * right.q + left.p * right.t
+
+    (left.p * right.p, left.q * right.q, t)
+si
+
+// Each level takes the square root of the top half of the bits, which is
+// right to half the precision, and one Newton step doubles that.
+square_root(n: bigint) -> bigint is
+    let bits = cast int(n.get_bit_length())
+
+    if bits <= 50 then
+        return bigint(System.Math.sqrt(cast double(n)))
+    fi
+
+    let shift = bits / 4
+    let estimate = square_root(n >> 2 * shift) << shift
+    let x mut = (estimate + n / estimate) >> 1
+
+    while x * x > n do
+        x = x - 1n
+    od
+
+    x
+si
+
+// Decimal conversion by repeatedly halving the number of digits, since
+// converting a million-digit number a digit at a time is quadratic.
+decimal(n: bigint) -> string is
+    let powers = LIST([1_000_000_000_000_000_000n])
+
+    while powers[powers.count - 1] * powers[powers.count - 1] <= n do
+        powers.add(powers[powers.count - 1] * powers[powers.count - 1])
+    od
+
+    let text = System.Text.StringBuilder()
+
+    write(part: bigint, level: int, padded: bool) is
+        if level < 0 then
+            let digits = part.to_string()
+
+            let shown =
+                if padded then digits.pad_left(18, '0') else digits fi
+
+            text.append(shown)
+        else
+            let remainder mut = 0n
+            let high = bigint.div_rem(part, powers[level], remainder ref)
+
+            if padded \/ !high.is_zero then
+                write(high, level - 1, padded)
+                write(remainder, level - 1, true)
+            else
+                write(remainder, level - 1, false)
+            fi
+        fi
+    si
+
+    write(n, powers.count - 1, false)
+    text.to_string()
+si
+
+
+pi_digits(digits: int) -> string is
+    let guard = 10
+    let terms = cast long(digits / 14 + 2)
+    let (_, q, t) = split(0L, terms)
+    let scale = bigint.pow(10n, digits + guard)
+    let root = square_root(10_005n * scale * scale)
+    let pi = q * 426_880n * root / t
+
+    let text = decimal(pi)
+
+    "{text[0]}.{text.substring(1, digits - 1)}"
+si
+
+let clock = Stopwatch.start_new()
+let pi = pi_digits(1_000_000)
+let elapsed = clock.elapsed.total_seconds
+
+write_line("{pi.substring(0, 32)} ... {pi.substring(pi.length - 30)}")
+write_line("{pi.length - 2} decimal places")
+write_line("computed in {elapsed:F2} seconds")

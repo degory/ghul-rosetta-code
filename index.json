@@ -19035,6 +19035,32 @@
       ]
     },
     {
+      "slug": "penholodigital-squares",
+      "title": "Penholodigital squares",
+      "url": "https://rosettacode.org/wiki/Penholodigital_squares",
+      "tags": [
+        "maths",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 92,
+      "parts": [
+        {
+          "id": "penholodigital-squares",
+          "heading": null,
+          "source": "tasks/penholodigital-squares/penholodigital-squares.ghul",
+          "output": "tasks/penholodigital-squares/run.expected",
+          "lines": 92,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "penneys-game",
       "title": "Penney's game",
       "url": "https://rosettacode.org/wiki/Penney's_game",
@@ -19090,6 +19116,32 @@
           "images": [
             "tasks/penrose-tiling/penrose.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "penta-power-prime-seeds",
+      "title": "Penta-power prime seeds",
+      "url": "https://rosettacode.org/wiki/Penta-power_prime_seeds",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 98,
+      "parts": [
+        {
+          "id": "penta-power-prime-seeds",
+          "heading": null,
+          "source": "tasks/penta-power-prime-seeds/penta-power-prime-seeds.ghul",
+          "output": "tasks/penta-power-prime-seeds/run.expected",
+          "lines": 98,
+          "playground": false,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -19280,6 +19332,32 @@
       ]
     },
     {
+      "slug": "percolation-mean-run-density",
+      "title": "Percolation/Mean run density",
+      "url": "https://rosettacode.org/wiki/Percolation/Mean_run_density",
+      "tags": [
+        "simulation",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 38,
+      "parts": [
+        {
+          "id": "percolation-mean-run-density",
+          "heading": null,
+          "source": "tasks/percolation-mean-run-density/percolation-mean-run-density.ghul",
+          "output": "tasks/percolation-mean-run-density/run.expected",
+          "lines": 38,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "percolation-site-percolation",
       "title": "Percolation/Site percolation",
       "url": "https://rosettacode.org/wiki/Percolation/Site_percolation",
@@ -19329,6 +19407,32 @@
           "source": "tasks/perfect-numbers/perfect-numbers.ghul",
           "output": "tasks/perfect-numbers/run.expected",
           "lines": 16,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "perfect-shuffle",
+      "title": "Perfect shuffle",
+      "url": "https://rosettacode.org/wiki/Perfect_shuffle",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 25,
+      "parts": [
+        {
+          "id": "perfect-shuffle",
+          "heading": null,
+          "source": "tasks/perfect-shuffle/perfect-shuffle.ghul",
+          "output": "tasks/perfect-shuffle/run.expected",
+          "lines": 25,
           "playground": true,
           "input": false,
           "images": []
@@ -19473,6 +19577,33 @@
       ]
     },
     {
+      "slug": "permutation-test",
+      "title": "Permutation test",
+      "url": "https://rosettacode.org/wiki/Permutation_test",
+      "tags": [
+        "maths",
+        "recursion",
+        "closures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 40,
+      "parts": [
+        {
+          "id": "permutation-test",
+          "heading": null,
+          "source": "tasks/permutation-test/permutation-test.ghul",
+          "output": "tasks/permutation-test/run.expected",
+          "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "permutations",
       "title": "Permutations",
       "url": "https://rosettacode.org/wiki/Permutations",
@@ -19552,6 +19683,32 @@
       ]
     },
     {
+      "slug": "permutations-rank-of-a-permutation",
+      "title": "Permutations/Rank of a permutation",
+      "url": "https://rosettacode.org/wiki/Permutations/Rank_of_a_permutation",
+      "tags": [
+        "algorithms",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 74,
+      "parts": [
+        {
+          "id": "permutations-rank-of-a-permutation",
+          "heading": null,
+          "source": "tasks/permutations-rank-of-a-permutation/permutations-rank-of-a-permutation.ghul",
+          "output": "tasks/permutations-rank-of-a-permutation/run.expected",
+          "lines": 74,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pernicious-numbers",
       "title": "Pernicious numbers",
       "url": "https://rosettacode.org/wiki/Pernicious_numbers",
@@ -19572,6 +19729,60 @@
           "output": "tasks/pernicious-numbers/run.expected",
           "lines": 32,
           "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "phrase-reversals",
+      "title": "Phrase reversals",
+      "url": "https://rosettacode.org/wiki/Phrase_reversals",
+      "tags": [
+        "strings",
+        "pipes",
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 11,
+      "parts": [
+        {
+          "id": "phrase-reversals",
+          "heading": null,
+          "source": "tasks/phrase-reversals/phrase-reversals.ghul",
+          "output": "tasks/phrase-reversals/run.expected",
+          "lines": 11,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "pi-to-1-million-digits",
+      "title": "Pi to 1 million digits",
+      "url": "https://rosettacode.org/wiki/Pi_to_1_million_digits",
+      "tags": [
+        "maths",
+        "algorithms",
+        "recursion"
+      ],
+      "interest": 4,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 107,
+      "parts": [
+        {
+          "id": "pi-to-1-million-digits",
+          "heading": null,
+          "source": "tasks/pi-to-1-million-digits/pi-to-1-million-digits.ghul",
+          "output": "tasks/pi-to-1-million-digits/run.expected",
+          "lines": 107,
+          "playground": false,
           "input": false,
           "images": []
         }
@@ -19707,6 +19918,32 @@
           "images": [
             "tasks/pinstripe-display/pinstripe.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "piprimes",
+      "title": "Piprimes",
+      "url": "https://rosettacode.org/wiki/Piprimes",
+      "tags": [
+        "primes",
+        "basics"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 28,
+      "parts": [
+        {
+          "id": "piprimes",
+          "heading": null,
+          "source": "tasks/piprimes/piprimes.ghul",
+          "output": "tasks/piprimes/run.expected",
+          "lines": 28,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
