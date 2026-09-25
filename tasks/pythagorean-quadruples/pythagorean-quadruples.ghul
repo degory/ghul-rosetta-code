@@ -1,0 +1,24 @@
+use default
+
+let limit = 2_200
+
+let two_squares = repeat(false, 2 * limit * limit + 1) |> collect_list()
+
+for a in 1::limit do
+    for b in a::limit do
+        two_squares[a * a + b * b] = true
+    od
+od
+
+let represented = repeat(false, limit + 1) |> collect_list()
+
+for d in 1::limit do
+    for c in 1..d do
+        if two_squares[d * d - c * c] then
+            represented[d] = true
+            break
+        fi
+    od
+od
+
+write_line(1::limit |> filter(d => !represented[d]) |> join(" "))

@@ -1,0 +1,42 @@
+use default
+
+class PCG32 is
+    _state: ulong
+    _increment: ulong
+
+    init(seed: ulong, sequence: ulong) is
+        _increment = (sequence << 1) | 1ul
+        _state = (_increment + seed) * 6364136223846793005ul + _increment
+    si
+
+    next_int() -> uint is
+        let old = _state
+        let shifted = cast uint(((old >> 18) ^ old) >> 27)
+        let rotation = cast int(old >> 59)
+
+        _state = old * 6364136223846793005ul + _increment
+
+        (shifted >> rotation) | (shifted << (-rotation & 31))
+    si
+
+    next_float() -> double =>
+        cast double(cast ulong(next_int())) / 4_294_967_296.0
+si
+
+let first = PCG32(42ul, 54ul)
+
+for _ in 1::5 do
+    write_line("{first.next_int(),10}")
+od
+
+let generator = PCG32(987654321ul, 1ul)
+let counts = repeat(0, 5) |> collect_list()
+
+for _ in 1::100_000 do
+    let bucket = cast int(generator.next_float() * 5.0)
+
+    counts[bucket] = counts[bucket] + 1
+od
+
+write_line("")
+write_line(0..5 |> map(i => "{i}: {counts[i]}") |> join(", "))

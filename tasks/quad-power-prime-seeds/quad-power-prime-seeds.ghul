@@ -1,0 +1,97 @@
+use default
+
+let small_primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+
+is_prime(n: bigint) -> bool is
+    for p in small_primes do
+        if n =~ bigint(p) then
+            return true
+        elif (n % bigint(p)).is_zero then
+            return false
+        fi
+    od
+
+    if n < 2n then
+        return false
+    fi
+
+    let d mut = n - 1n
+    let shifts mut = 0
+
+    while d.is_even do
+        d = d / 2n
+        shifts = shifts + 1
+    od
+
+    for witness in small_primes do
+        let x mut = bigint.mod_pow(bigint(witness), d, n)
+
+        if x.is_one \/ x =~ n - 1n then
+            continue
+        fi
+
+        let composite mut = true
+
+        for _ in 1..shifts do
+            x = x * x % n
+
+            if x =~ n - 1n then
+                composite = false
+                break
+            fi
+        od
+
+        if composite then
+            return false
+        fi
+    od
+
+    true
+si
+
+is_seed(n: long) -> bool is
+    let big = bigint(n)
+    let power mut = big
+
+    for _ in 1::4 do
+        if !is_prime(power + big + 1n) then
+            return false
+        fi
+
+        power = power * big
+    od
+
+    true
+si
+
+let seeds = LIST[long]()
+let milestones = LIST[(limit: long, seed: long, index: int)]()
+let next_milestone mut = 1_000_000L
+let n mut = 1L
+
+while next_milestone <= 3_000_000L do
+    if is_seed(n) then
+        seeds.add(n)
+
+        if n > next_milestone then
+            milestones.add((next_milestone, n, seeds.count))
+            next_milestone = next_milestone + 1_000_000L
+        fi
+    fi
+
+    n = n + 1L
+od
+
+write_line("First fifty quad-power prime seeds:")
+
+for row in 0..5 do
+    let cells = seeds |> skip(row * 10) |> take(10)
+
+    write_line(cells |> map(s => "{s,8}") |> join(""))
+od
+
+write_line("")
+
+for (limit, seed, index) in milestones do
+    write_line("First over {limit,10:N0}: {seed,10:N0}, index {index}")
+od

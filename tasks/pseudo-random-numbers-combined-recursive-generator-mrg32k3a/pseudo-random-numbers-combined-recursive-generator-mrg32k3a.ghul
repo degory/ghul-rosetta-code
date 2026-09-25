@@ -1,0 +1,47 @@
+use default
+
+class MRG32K3A is
+    _first: long[]
+    _second: long[]
+
+    init(seed: long) is
+        _first = [seed, 0L, 0L]
+        _second = [seed, 0L, 0L]
+    si
+
+    // % keeps the sign of a negative dividend, so fold it back into range
+    modulo(n: long, m: long) -> long static => ((n % m) + m) % m
+
+    next_int() -> long is
+        let m1 = 4_294_967_087L
+        let m2 = 4_294_944_443L
+
+        let x1 = modulo(1_403_580L * _first[1] - 810_728L * _first[2], m1)
+        let x2 = modulo(527_612L * _second[0] - 1_370_589L * _second[2], m2)
+
+        _first = [x1, _first[0], _first[1]]
+        _second = [x2, _second[0], _second[1]]
+
+        modulo(x1 - x2, m1) + 1L
+    si
+
+    next_float() -> double => cast double(next_int()) / 4_294_967_088.0
+si
+
+let first = MRG32K3A(1234567L)
+
+for _ in 1::5 do
+    write_line("{first.next_int(),10}")
+od
+
+let generator = MRG32K3A(987654321L)
+let counts = repeat(0, 5) |> collect_list()
+
+for _ in 1::100_000 do
+    let bucket = cast int(generator.next_float() * 5.0)
+
+    counts[bucket] = counts[bucket] + 1
+od
+
+write_line("")
+write_line(0..5 |> map(i => "{i}: {counts[i]}") |> join(", "))

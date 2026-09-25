@@ -1,0 +1,41 @@
+use default
+
+class XORSHIFT_STAR is
+    _state: ulong
+
+    init(seed: ulong) is
+        _state = seed
+    si
+
+    next_int() -> uint is
+        let x mut = _state
+
+        x = x ^ (x >> 12)
+        x = x ^ (x << 25)
+        x = x ^ (x >> 27)
+        _state = x
+
+        cast uint((x * 0x2545F4914F6CDD1Dul) >> 32)
+    si
+
+    next_float() -> double =>
+        cast double(cast ulong(next_int())) / 4_294_967_296.0
+si
+
+let first = XORSHIFT_STAR(1234567ul)
+
+for _ in 1::5 do
+    write_line("{first.next_int(),10}")
+od
+
+let generator = XORSHIFT_STAR(987654321ul)
+let counts = repeat(0, 5) |> collect_list()
+
+for _ in 1::100_000 do
+    let bucket = cast int(generator.next_float() * 5.0)
+
+    counts[bucket] = counts[bucket] + 1
+od
+
+write_line("")
+write_line(0..5 |> map(i => "{i}: {counts[i]}") |> join(", "))
