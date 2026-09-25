@@ -1,0 +1,64 @@
+use default
+
+let lines = IO.File.read_all_lines("readings.txt")
+let separators = ['\t', ' ']
+let skip_empty = System.StringSplitOptions.REMOVE_EMPTY_ENTRIES
+
+let total mut = 0.0
+let readings mut = 0
+let gap mut = 0
+let longest mut = 0
+let longest_ends = LIST[string]()
+
+for line in lines do
+    let fields = line.split(separators, skip_empty)
+    let date = fields[0]
+    let line_total mut = 0.0
+    let accepted mut = 0
+
+    for i in 0..24 do
+        let value = double.parse(fields[1 + 2 * i])
+        let flag = int.parse(fields[2 + 2 * i])
+
+        if flag < 1 then
+            gap = gap + 1
+        else
+            if gap > 0 /\ gap == longest then
+                longest_ends.add(date)
+            elif gap > longest then
+                longest = gap
+                longest_ends.clear()
+                longest_ends.add(date)
+            fi
+
+            gap = 0
+            line_total = line_total + value
+            accepted = accepted + 1
+        fi
+    od
+
+    total = total + line_total
+    readings = readings + accepted
+
+    if date >= "2004-12-29" then
+        let average =
+            if accepted > 0 then line_total / cast double(accepted)
+            else 0.0
+            fi
+
+        write_line(
+            "Line: {date}  Reject: {24 - accepted,2}  "
+            "Accept: {accepted,2}  "
+            "Line_tot: {line_total,10:F3}  Line_avg: {average,10:F3}")
+    fi
+od
+
+write_line("")
+write_line("File     = readings.txt")
+write_line("Total    = {total,10:F3}")
+write_line("Readings = {readings,6}")
+write_line("Average  = {total / cast double(readings),10:F3}")
+write_line("")
+write_line(
+    "Maximum run of {longest} consecutive false readings ends at the "
+    "line starting with {longest_ends |> join(", ")}")

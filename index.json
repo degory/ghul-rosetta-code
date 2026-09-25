@@ -30144,6 +30144,33 @@
       ]
     },
     {
+      "slug": "syntax-highlighting-using-mediawiki-formatting",
+      "title": "Syntax highlighting using Mediawiki formatting",
+      "url": "https://rosettacode.org/wiki/Syntax_highlighting_using_Mediawiki_formatting",
+      "tags": [
+        "text-processing",
+        "strings",
+        "parsing"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 78,
+      "parts": [
+        {
+          "id": "syntax-highlighting-using-mediawiki-formatting",
+          "heading": null,
+          "source": "tasks/syntax-highlighting-using-mediawiki-formatting/syntax-highlighting-using-mediawiki-formatting.ghul",
+          "output": "tasks/syntax-highlighting-using-mediawiki-formatting/run.expected",
+          "lines": 78,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "szymanskis-algorithm",
       "title": "Szymański's algorithm",
       "url": "https://rosettacode.org/wiki/Szymański's_algorithm",
@@ -30163,6 +30190,33 @@
           "source": "tasks/szymanskis-algorithm/szymanskis-algorithm.ghul",
           "output": "tasks/szymanskis-algorithm/run.expected",
           "lines": 96,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "take-notes-on-the-command-line",
+      "title": "Take notes on the command line",
+      "url": "https://rosettacode.org/wiki/Take_notes_on_the_command_line",
+      "tags": [
+        "basics",
+        "dotnet-interop",
+        "date-time"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 33,
+      "parts": [
+        {
+          "id": "take-notes-on-the-command-line",
+          "heading": null,
+          "source": "tasks/take-notes-on-the-command-line/take-notes-on-the-command-line.ghul",
+          "output": "tasks/take-notes-on-the-command-line/run.expected",
+          "lines": 33,
           "playground": true,
           "input": false,
           "images": []
@@ -30294,6 +30348,32 @@
           "source": "tasks/taxicab-numbers/taxicab-numbers.ghul",
           "output": "tasks/taxicab-numbers/run.expected",
           "lines": 77,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "teacup-rim-text",
+      "title": "Teacup rim text",
+      "url": "https://rosettacode.org/wiki/Teacup_rim_text",
+      "tags": [
+        "strings",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 22,
+      "parts": [
+        {
+          "id": "teacup-rim-text",
+          "heading": null,
+          "source": "tasks/teacup-rim-text/teacup-rim-text.ghul",
+          "output": "tasks/teacup-rim-text/run.expected",
+          "lines": 22,
           "playground": true,
           "input": false,
           "images": []
@@ -30634,6 +30714,58 @@
       ]
     },
     {
+      "slug": "test-a-function",
+      "title": "Test a function",
+      "url": "https://rosettacode.org/wiki/Test_a_function",
+      "tags": [
+        "dotnet-interop",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 67,
+      "parts": [
+        {
+          "id": "test-a-function",
+          "heading": null,
+          "source": "tasks/test-a-function/test-a-function.ghul",
+          "output": "tasks/test-a-function/run.expected",
+          "lines": 67,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "test-integerness",
+      "title": "Test integerness",
+      "url": "https://rosettacode.org/wiki/Test_integerness",
+      "tags": [
+        "maths",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 48,
+      "parts": [
+        {
+          "id": "test-integerness",
+          "heading": null,
+          "source": "tasks/test-integerness/test-integerness.ghul",
+          "output": "tasks/test-integerness/run.expected",
+          "lines": 48,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "tetris",
       "title": "Tetris",
       "url": "https://rosettacode.org/wiki/Tetris",
@@ -30660,6 +30792,32 @@
       ]
     },
     {
+      "slug": "text-processing-1",
+      "title": "Text processing/1",
+      "url": "https://rosettacode.org/wiki/Text_processing/1",
+      "tags": [
+        "text-processing",
+        "parsing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 64,
+      "parts": [
+        {
+          "id": "text-processing-1",
+          "heading": null,
+          "source": "tasks/text-processing-1/text-processing-1.ghul",
+          "output": "tasks/text-processing-1/run.expected",
+          "lines": 64,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "text-processing-2",
       "title": "Text processing/2",
       "url": "https://rosettacode.org/wiki/Text_processing/2",
@@ -30680,6 +30838,33 @@
           "source": "tasks/text-processing-2/text-processing-2.ghul",
           "output": "tasks/text-processing-2/run.expected",
           "lines": 54,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "textonyms",
+      "title": "Textonyms",
+      "url": "https://rosettacode.org/wiki/Textonyms",
+      "tags": [
+        "strings",
+        "data-structures",
+        "optionals"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 56,
+      "parts": [
+        {
+          "id": "textonyms",
+          "heading": null,
+          "source": "tasks/textonyms/textonyms.ghul",
+          "output": "tasks/textonyms/run.expected",
+          "lines": 56,
           "playground": true,
           "input": false,
           "images": []
@@ -30759,6 +30944,33 @@
           "source": "tasks/the-twelve-days-of-christmas/the-twelve-days-of-christmas.ghul",
           "output": "tasks/the-twelve-days-of-christmas/run.expected",
           "lines": 32,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "thiele-s-interpolation-formula",
+      "title": "Thiele's interpolation formula",
+      "url": "https://rosettacode.org/wiki/Thiele's_interpolation_formula",
+      "tags": [
+        "maths",
+        "recursion",
+        "classes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 61,
+      "parts": [
+        {
+          "id": "thiele-s-interpolation-formula",
+          "heading": null,
+          "source": "tasks/thiele-s-interpolation-formula/thiele-s-interpolation-formula.ghul",
+          "output": "tasks/thiele-s-interpolation-formula/run.expected",
+          "lines": 61,
           "playground": true,
           "input": false,
           "images": []
@@ -30898,6 +31110,32 @@
       ]
     },
     {
+      "slug": "tonelli-shanks-algorithm",
+      "title": "Tonelli-Shanks algorithm",
+      "url": "https://rosettacode.org/wiki/Tonelli-Shanks_algorithm",
+      "tags": [
+        "number-theory",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 82,
+      "parts": [
+        {
+          "id": "tonelli-shanks-algorithm",
+          "heading": null,
+          "source": "tasks/tonelli-shanks-algorithm/tonelli-shanks-algorithm.ghul",
+          "output": "tasks/tonelli-shanks-algorithm/run.expected",
+          "lines": 82,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "top-rank-per-group",
       "title": "Top rank per group",
       "url": "https://rosettacode.org/wiki/Top_rank_per_group",
@@ -31003,6 +31241,32 @@
           "images": [
             "tasks/total-circles-area/circles.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "totient-function",
+      "title": "Totient function",
+      "url": "https://rosettacode.org/wiki/Totient_function",
+      "tags": [
+        "number-theory",
+        "primes"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 43,
+      "parts": [
+        {
+          "id": "totient-function",
+          "heading": null,
+          "source": "tasks/totient-function/totient-function.ghul",
+          "output": "tasks/totient-function/run.expected",
+          "lines": 43,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },

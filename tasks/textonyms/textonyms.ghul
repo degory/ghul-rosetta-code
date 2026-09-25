@@ -1,0 +1,56 @@
+use default
+
+let keys = "22233344455566677778889999"
+
+digits(word: string) -> string? is
+    let result = System.Text.StringBuilder()
+
+    for c in word.to_lower() do
+        if c < 'a' \/ c > 'z' then
+            return null
+        fi
+
+        result.append(keys[cast int(c) - cast int('a')])
+    od
+
+    result.to_string()
+si
+
+let groups = MAP[string, LIST[string]]()
+let representable mut = 0
+
+for word in IO.File.read_all_lines("unixdict.txt") do
+    if let key = digits(word) then
+        representable = representable + 1
+
+        if !groups.contains_key(key) then
+            groups[key] = LIST[string]()
+        fi
+
+        groups[key].add(word)
+    fi
+od
+
+let textonyms = groups |> filter(g => g.value.count > 1) |> collect_list()
+
+write_line(
+    "There are {representable} words in unixdict.txt which can be "
+    "represented by the digit key mapping.")
+write_line(
+    "They require {groups.count} digit combinations to represent them.")
+write_line("{textonyms.count} digit combinations represent textonyms.")
+write_line("")
+
+let most = textonyms |> sort((a, b) => b.value.count <> a.value.count)
+
+for group in most |> take(5) do
+    write_line("{group.key,-8} {group.value |> join(", ")}")
+od
+
+let longest = textonyms |> sort((a, b) => b.key.length <> a.key.length)
+
+write_line("")
+
+for group in longest |> take(3) do
+    write_line("{group.key} {group.value |> join(", ")}")
+od

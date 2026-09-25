@@ -1,0 +1,18 @@
+decimal  25.000000    true
+decimal  24.999999    false
+decimal  25.000100    false
+double   -2.1E+120    true
+double   -0.05        false
+double   NaN          false
+double   Infinity     false
+double   25           true
+fraction 5/2          false
+fraction -6/3         true
+fraction 0/7          true
+complex  5+0i         true
+complex  5+1i         false
+complex  1.5+0i       false
+
+24.999999 within 0.00001 of an integer: true
+25.0001 within 0.00001 of an integer: false
+3.0000000000001 within 0.00001 of an integer: true

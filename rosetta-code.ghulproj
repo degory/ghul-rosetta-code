@@ -17,6 +17,7 @@
          their sources together and cannot resolve what it does not
          reference. A task adding a package adds it here as well. -->
     <PackageReference Include="ghul.raster" />
+    <PackageReference Include="MSTest.TestFramework" />
 
     <!-- Hello world/Web server's ASP.NET part builds under the Web SDK,
          which carries the framework rather than a package. This project

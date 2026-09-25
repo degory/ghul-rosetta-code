@@ -7204,6 +7204,11 @@
       "published_hash": "529ef694f956cd232d1b243da58401bfb47d3216e0015b57c24a05f9b9e58b3f"
     },
     {
+      "title": "Syntax highlighting using Mediawiki formatting",
+      "slug": "syntax-highlighting-using-mediawiki-formatting",
+      "state": "solved"
+    },
+    {
       "title": "System time",
       "state": "rejected",
       "reason": "nondeterministic"
@@ -7218,6 +7223,11 @@
       "title": "Table creation/Postal addresses",
       "state": "rejected",
       "reason": "needs-native-lib"
+    },
+    {
+      "title": "Take notes on the command line",
+      "slug": "take-notes-on-the-command-line",
+      "state": "solved"
     },
     {
       "title": "Tamagotchi emulator",
@@ -7248,6 +7258,11 @@
       "slug": "taxicab-numbers",
       "state": "published",
       "published_hash": "86c6892835008ad75aac66ea399e4c042543d4f87254a3b2f5f855d4c733631f"
+    },
+    {
+      "title": "Teacup rim text",
+      "slug": "teacup-rim-text",
+      "state": "solved"
     },
     {
       "title": "Temperature conversion",
@@ -7343,10 +7358,25 @@
       "published_hash": "3b77f44ab408edd9833558938d13992ec5a99384ccb56ca7d9c2d8d514aeaabf"
     },
     {
+      "title": "Test a function",
+      "slug": "test-a-function",
+      "state": "solved"
+    },
+    {
+      "title": "Test integerness",
+      "slug": "test-integerness",
+      "state": "solved"
+    },
+    {
       "title": "Tetris",
       "slug": "tetris",
       "state": "published",
       "published_hash": "86a9dcf9a5c4edecd9a08158295e9699f4c7b8a99cf5bab8e575c21b3c58c959"
+    },
+    {
+      "title": "Text processing/1",
+      "slug": "text-processing-1",
+      "state": "solved"
     },
     {
       "title": "Text processing/2",
@@ -7358,6 +7388,11 @@
       "title": "Text processing/Max licenses in use",
       "state": "rejected",
       "reason": "needs-network"
+    },
+    {
+      "title": "Textonyms",
+      "slug": "textonyms",
+      "state": "solved"
     },
     {
       "title": "The Name Game",
@@ -7376,6 +7411,11 @@
       "slug": "the-sieve-of-sundaram",
       "state": "published",
       "published_hash": "60c1e9fa9d344b23bf430da889ba675a121af9be4e9237e52aae0890a1a76bdd"
+    },
+    {
+      "title": "Thiele\u0027s interpolation formula",
+      "slug": "thiele-s-interpolation-formula",
+      "state": "solved"
     },
     {
       "title": "Thue-Morse",
@@ -7409,6 +7449,11 @@
       "published_hash": "ff960b13f642135c78ad3b9b70aa289d990fb7a88fe244eebcfae5683a0923db"
     },
     {
+      "title": "Tonelli-Shanks algorithm",
+      "slug": "tonelli-shanks-algorithm",
+      "state": "solved"
+    },
+    {
       "title": "Top rank per group",
       "slug": "top-rank-per-group",
       "state": "published",
@@ -7440,6 +7485,11 @@
       "image_hashes": {
         "Ghul-total-circles-area-circles.png": "337a588d31f462e7f090e7c8c4b98fa615576b53"
       }
+    },
+    {
+      "title": "Totient function",
+      "slug": "totient-function",
+      "state": "solved"
     },
     {
       "title": "Towers of Hanoi",

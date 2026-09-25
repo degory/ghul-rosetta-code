@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# The notes carry the time they were taken, so what is asserted is the
+# shape: two timestamps, each followed by its tab-indented note.
+
+stamp='^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$'
+
+if [ "$(wc -l < "$1")" != "4" ]; then
+    echo "expected four lines, got $(wc -l < "$1")"
+    cat "$1"
+
+    exit 1
+fi
+
+if ! sed -n 1p "$1" | grep -qE "$stamp" || ! sed -n 3p "$1" | grep -qE "$stamp"; then
+    echo "lines 1 and 3 should be timestamps:"
+    cat "$1"
+
+    exit 1
+fi
+
+if [ "$(sed -n 2p "$1")" != "$(printf '\tbuy milk')" ] ||
+   [ "$(sed -n 4p "$1")" != "$(printf '\tcall the dentist')" ]; then
+    echo "lines 2 and 4 should be the notes, each after a tab:"
+    cat "$1"
+
+    exit 1
+fi

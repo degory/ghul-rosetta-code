@@ -1,0 +1,7 @@
+pass  an_empty_string_is_a_palindrome
+pass  a_single_letter_is_a_palindrome
+pass  a_word_that_reads_the_same_backwards_is_a_palindrome
+pass  case_spaces_and_punctuation_are_ignored
+pass  a_word_that_does_not_is_not
+
+5 of 5 tests passed

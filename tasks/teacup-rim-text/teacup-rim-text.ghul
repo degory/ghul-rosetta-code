@@ -1,0 +1,22 @@
+use default
+
+rotations(word: string) -> List[string] =>
+    0..word.length
+        |> map(i => "{word.substring(i)}{word.substring(0, i)}")
+        |> collect_list()
+
+let words = SET(IO.File.read_all_lines("unixdict.txt"))
+let shown = SET[string]()
+
+for word in words |> filter(w => w.length > 2) |> sort() do
+    let ring = rotations(word)
+    let distinct = ring |> collect_set()
+
+    if distinct.count > 1 /\ ring |> all(words.contains) then
+        let key = ring |> sort() |> join(" ")
+
+        if shown.add(key) then
+            write_line(ring |> join(" "))
+        fi
+    fi
+od
