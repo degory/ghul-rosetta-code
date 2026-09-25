@@ -22174,6 +22174,32 @@
       ]
     },
     {
+      "slug": "password-generator",
+      "title": "Password generator",
+      "url": "https://rosettacode.org/wiki/Password_generator",
+      "tags": [
+        "strings",
+        "closures"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 80,
+      "parts": [
+        {
+          "id": "password-generator",
+          "heading": null,
+          "source": "tasks/password-generator/password-generator.ghul",
+          "output": "tasks/password-generator/run.expected",
+          "lines": 80,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "pathological-floating-point-problems",
       "title": "Pathological floating point problems",
       "url": "https://rosettacode.org/wiki/Pathological_floating_point_problems",
