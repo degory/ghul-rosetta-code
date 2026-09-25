@@ -21,6 +21,10 @@ is_generated(value: int) -> bool =>
 let digit_sum mut = 1
 
 for value in 1::limit do
+    if value % 100_000_000 == 0 then
+        write_line("  {value:N0} of {limit:N0}")
+    fi
+
     let generator = value + digit_sum
 
     if generator <= limit then

@@ -66,6 +66,10 @@ fortunate(count: int) -> Pipe[int] is
 
             yield m
             found = found + 1
+
+            if found % 10 == 0 then
+                write_line("  found {found} of {count}")
+            fi
         fi
     od
 si
