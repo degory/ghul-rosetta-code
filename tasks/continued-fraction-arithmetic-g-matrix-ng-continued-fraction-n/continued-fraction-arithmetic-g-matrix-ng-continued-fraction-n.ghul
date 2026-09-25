@@ -1,0 +1,65 @@
+use default
+
+use Matrix = (a1: long, a: long, b1: long, b: long)
+
+r2cf(numerator: long, denominator: long) -> Pipe[long] is
+    let n1 mut = numerator
+    let n2 mut = denominator
+
+    while n2 != 0L do
+        let whole = n1 / n2
+
+        (n1, n2) = (n2, n1 - whole * n2)
+
+        yield whole
+    od
+si
+
+square_root_of_two() -> Pipe[long] => [1L] |> cat(repeat(2L))
+
+transform(matrix: Matrix, source: Iterable[long]) -> Pipe[long] is
+    let (a1, a, b1, b) mut = matrix
+    let terms = source.iterator
+
+    while b1 != 0L \/ b != 0L do
+        if b1 != 0L /\ b != 0L /\ a1 / b1 == a / b then
+            let t = a / b
+
+            (a1, a, b1, b) = (b1, b, a1 - b1 * t, a - b * t)
+
+            yield t
+        elif terms.move_next() then
+            let t = terms.current
+
+            (a1, a, b1, b) = (a + a1 * t, a1, b + b1 * t, b1)
+        else
+            (a, b) = (a1, b1)
+        fi
+    od
+si
+
+show(terms: Iterable[long]) -> string =>
+    let shown = terms |> take(21) |> collect_list() in
+    let rest = shown |> skip(1) |> take(19) |> join(", ") in
+    let more = if shown.count > 20 then ", ..." else "" fi in
+    if shown.count == 1 then "[{shown[0]}]"
+    else "[{shown[0]}; {rest}{more}]"
+    fi
+
+let half_plus: Matrix = (2L, 1L, 0L, 2L)
+let quarter: Matrix = (1L, 0L, 0L, 4L)
+let reciprocal: Matrix = (0L, 1L, 1L, 0L)
+let average_with_one: Matrix = (1L, 1L, 0L, 2L)
+
+write_line("[1; 5, 2] + 1/2 = {show(transform(half_plus, r2cf(13L, 11L)))}")
+write_line("[3; 7] + 1/2    = {show(transform(half_plus, r2cf(22L, 7L)))}")
+write_line("[3; 7] / 4      = {show(transform(quarter, r2cf(22L, 7L)))}")
+
+let inverse_root = transform(reciprocal, square_root_of_two())
+
+write_line("1/√2            = {show(inverse_root)}")
+
+let midpoint =
+    transform(average_with_one, transform(reciprocal, square_root_of_two()))
+
+write_line("(1 + 1/√2)/2    = {show(midpoint)}")
