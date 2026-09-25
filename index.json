@@ -6177,6 +6177,32 @@
       ]
     },
     {
+      "slug": "count-the-coins",
+      "title": "Count the coins",
+      "url": "https://rosettacode.org/wiki/Count_the_coins",
+      "tags": [
+        "algorithms",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 20,
+      "parts": [
+        {
+          "id": "count-the-coins",
+          "heading": null,
+          "source": "tasks/count-the-coins/count-the-coins.ghul",
+          "output": "tasks/count-the-coins/run.expected",
+          "lines": 20,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "countdown",
       "title": "Countdown",
       "url": "https://rosettacode.org/wiki/Countdown",
