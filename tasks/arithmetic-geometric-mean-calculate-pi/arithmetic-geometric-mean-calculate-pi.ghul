@@ -1,0 +1,56 @@
+use default
+
+let digits = 100
+let guard = 12
+
+power_of_ten(n: int) -> bigint is
+    let value mut = 1n
+
+    for _ in 0..n do
+        value = value * 10n
+    od
+
+    return value
+si
+
+integer_sqrt(n: bigint) -> bigint is
+    if n < 2n then
+        return n
+    fi
+
+    let root mut = n
+    let next mut = (root + 1n) / 2n
+
+    while next < root do
+        root = next
+        next = (root + n / root) / 2n
+    od
+
+    return root
+si
+
+let scale = power_of_ten(digits + guard)
+
+pi(rounds: int) -> bigint is
+    let a mut = scale
+    let g mut = integer_sqrt(scale * scale / 2n)
+    let total mut = 0n
+    let weight mut = 4n
+
+    for _ in 1::rounds do
+        let next_a = (a + g) / 2n
+        let next_g = integer_sqrt(a * g)
+
+        a = next_a
+        g = next_g
+
+        total = total + weight * (a * a - g * g) / scale
+        weight = weight * 2n
+    od
+
+    return 4n * a * a / (scale - total)
+si
+
+let text = (pi(10) / power_of_ten(guard)).to_string()
+
+write_line("{text[0..1]}.{text[1..text.length]}")
