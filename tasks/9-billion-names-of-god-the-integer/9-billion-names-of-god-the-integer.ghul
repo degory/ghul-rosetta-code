@@ -1,0 +1,65 @@
+use default
+
+at_most(total: int, largest: int) -> int =>
+    if total == 0 then 1
+    elif largest == 0 then 0
+    elif largest > total then at_most(total, total)
+    else at_most(total, largest - 1) + at_most(total - largest, largest)
+    fi
+
+row(n: int) -> List[int] =>
+    1::n |> map(first => at_most(n - first, first)) |> collect_list()
+
+for n in 1::25 do
+    let cells = row(n) |> map(count => "{count,4}") |> join("")
+
+    write_line("{"",(25 - n) * 2}{cells}")
+od
+
+g(n: int) -> bigint is
+    let ways = repeat(0n, n + 1) |> collect_list()
+
+    ways[0] = 1n
+
+    for part in 1::n do
+        for total in part::n do
+            ways[total] = ways[total] + ways[total - part]
+        od
+    od
+
+    ways[n]
+si
+
+pentagonal(k: int) -> int => k * (3 * k - 1) / 2
+
+p(n: int) -> bigint is
+    let partitions = LIST([1n])
+
+    for m in 1::n do
+        term(offset: int) -> bigint =>
+            if offset <= m then partitions[m - offset] else 0n fi
+
+        let total = from(1)
+            |> take_while(k => pentagonal(k) <= m)
+            |> map(k =>
+                let pair = term(pentagonal(k)) + term(pentagonal(-k)) in
+                if k % 2 == 1 then pair else -pair fi)
+            |> sum()
+
+        partitions.add(total)
+    od
+
+    partitions[n]
+si
+
+write_line("")
+
+for n in [23, 123, 1234, 12345] do
+    write_line("G({n}) = {g(n)}")
+od
+
+write_line("")
+
+for n in [23, 123, 1234, 12345] do
+    write_line("P({n}) = {p(n)}")
+od
