@@ -1,0 +1,10 @@
+{
+  "task": "HTTPS/Client-authenticated",
+  "url": "https://rosettacode.org/wiki/HTTPS/Client-authenticated",
+  "status": "solved",
+  "tags": [
+    "dotnet-interop",
+    "concurrency"
+  ],
+  "interest": 3
+}

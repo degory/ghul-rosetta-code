@@ -1,5 +1,6 @@
 {
   "title": "HTTP",
-  "state": "rejected",
-  "reason": "needs-network"
+  "slug": "http",
+  "state": "solved",
+  "note": "reopened, was rejected/needs-network: a local stand-in server makes it testable; an endpoint argument uses the real one"
 }

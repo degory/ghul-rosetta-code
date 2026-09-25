@@ -575,9 +575,29 @@ with `run.check`. `needs-native-lib` is for a library .NET does not have, not fo
 one: a shared library is reached with `DllImport` on a bodyless static, so a task whose point is
 that call is solvable. `needs-interaction` is for a task with no
 output worth reading rather than one that prompts: a prompting program is driven by `run.session`
-and a program reading a stream by `run.in`. `needs-network` is for a task whose own point is
-reaching another machine; a client and server talking over the loopback address inside one program
-are not that.
+and a program reading a stream by `run.in`. `needs-network` is narrower still: a task whose point is
+talking to a service is solved against a stand-in for it, as below, and the reason is left for one
+where the live data or the particular machine is the whole of the answer.
+
+### A task that talks to a service
+
+A client for HTTP, HTTPS, SMTP, DNS, FTP, SOAP or a web API is written against an endpoint it is
+given, and runs without the network by serving that endpoint itself. `tasks/http` is the model:
+
+- The task's own code comes first, taking the endpoint as a parameter: `fetch(url)`,
+  `query(server, name, kind)`, `send_email(server, port, ...)`.
+- The entry reads the endpoint from its arguments. With none it calls `stand_in()`, which starts
+  the counterpart on the loopback address, on a port the system picks, in the same program, and
+  returns where it is. The test passes no arguments, so its output is the same on every run.
+- `stand_in()` comes after the task's code, under one comment saying what it serves, and is kept
+  as short as the protocol allows: it is published with the entry, and the reader should still
+  see the client as the point.
+- A TLS stand-in makes its certificate for the run, and the client trusts that one certificate
+  by thumbprint while talking to it, and the system's store otherwise. Nothing accepts any
+  certificate.
+- A stand-in for a web API answers from a recorded reply shipped with the task and listed in
+  `playground-files`, whose first line names the date it was captured.
+- The task carries `playground-unsupported`: the playground has no sockets.
 
 A rejection can also be reversed, when what made the task impossible stops being true. That is
 `reopen`, and it takes the reason for the reversal rather than being a bare undo:

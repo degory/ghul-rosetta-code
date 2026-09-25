@@ -1,0 +1,11 @@
+{
+  "task": "Send email",
+  "url": "https://rosettacode.org/wiki/Send_email",
+  "status": "solved",
+  "tags": [
+    "dotnet-interop",
+    "concurrency",
+    "text-processing"
+  ],
+  "interest": 2
+}

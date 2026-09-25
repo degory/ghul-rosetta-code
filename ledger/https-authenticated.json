@@ -1,5 +1,6 @@
 {
   "title": "HTTPS/Authenticated",
-  "state": "rejected",
-  "reason": "needs-network"
+  "slug": "https-authenticated",
+  "state": "solved",
+  "note": "reopened, was rejected/needs-network: a local stand-in server makes it testable; an endpoint argument uses the real one"
 }

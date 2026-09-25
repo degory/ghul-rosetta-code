@@ -1,0 +1,91 @@
+use default
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Mail.MailAddress
+use System.Net.Mail.MailMessage
+use System.Net.Mail.SmtpClient
+use System.Net.Sockets.TcpListener
+
+// The task: send a message through an SMTP server. SmtpClient throws an
+// SmtpException naming the server's reply when anything is refused, and
+// returns quietly once the server has accepted the message.
+send_email(
+    server: string,
+    port: int,
+    from: string,
+    to: string,
+    cc: string,
+    subject: string,
+    text: string
+) is
+    let message = MailMessage(MailAddress(from), MailAddress(to))
+
+    message.cc.add(cc)
+    message.subject = subject
+    message.body = text
+
+    SmtpClient(server, port).send(message)
+si
+
+// With no server named the entry runs one of its own on the loopback
+// interface, speaking just enough SMTP to accept a message and show what it
+// was handed.
+stand_in() -> int is
+    let listener = TcpListener(IPAddress.loopback, 0)
+
+    listener.start()
+
+    Tasks.TASK.run(() is
+        let connection = listener.accept_tcp_client().get_stream()
+        let reader = IO.StreamReader(connection)
+        let writer = IO.StreamWriter(connection)
+
+        writer.auto_flush = true
+        writer.write("220 stand-in ready\r\n")
+
+        let line mut = reader.read_line() ?? "QUIT"
+
+        while !line.starts_with("QUIT") do
+            if line.starts_with("DATA") then
+                writer.write("354 go ahead\r\n")
+
+                let text mut = reader.read_line() ?? "."
+
+                while text !~ "." do
+                    let shown =
+                        text.starts_with("Subject:") \/ !text.contains(':')
+
+                    if shown /\ text.length > 0 then
+                        write_line("  | {text}")
+                    fi
+
+                    text = reader.read_line() ?? "."
+                od
+            elif line.starts_with("MAIL") \/ line.starts_with("RCPT") then
+                write_line("  {line}")
+            fi
+
+            writer.write("250 ok\r\n")
+            line = reader.read_line() ?? "QUIT"
+        od
+
+        writer.write("221 bye\r\n")
+    si)
+
+    if let bound: IPEndPoint = listener.local_endpoint then bound.port
+    else throw System.Exception("the listener has no address")
+    fi
+si
+
+let (server, port) =
+    if args.count == 2 then (args[0], int.parse(args[1]))
+    else ("127.0.0.1", stand_in())
+    fi
+
+write_line("sending:")
+
+send_email(
+    server, port, "sender@example.com", "recipient@example.com",
+    "copy@example.com", "Rosetta Code", "Hello from the task.")
+
+write_line("sent")
