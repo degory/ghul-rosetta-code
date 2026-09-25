@@ -2,7 +2,6 @@ use default
 
 let small_primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
-// Miller-Rabin with the first fifteen primes as witnesses.
 is_prime(n: bigint) -> bool is
     for p in small_primes do
         if n =~ bigint(p) then

@@ -1,6 +1,5 @@
 use default
 
-// Seeded, so the run is reproducible.
 let random = System.Random(7)
 let trials = 100
 

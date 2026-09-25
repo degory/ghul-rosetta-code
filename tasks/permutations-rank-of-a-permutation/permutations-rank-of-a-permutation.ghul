@@ -35,7 +35,6 @@ rank(permutation: List[int]) -> bigint is
     total
 si
 
-// Seeded, so the run is reproducible.
 let random = System.Random(12)
 
 random_below(limit: bigint) -> bigint =>
