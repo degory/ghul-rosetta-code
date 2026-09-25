@@ -14633,6 +14633,32 @@
       ]
     },
     {
+      "slug": "least-m-such-that-n-m-is-prime",
+      "title": "Least m such that n! + m is prime",
+      "url": "https://rosettacode.org/wiki/Least_m_such_that_n!_+_m_is_prime",
+      "tags": [
+        "primes",
+        "number-theory"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 63,
+      "parts": [
+        {
+          "id": "least-m-such-that-n-m-is-prime",
+          "heading": null,
+          "source": "tasks/least-m-such-that-n-m-is-prime/least-m-such-that-n-m-is-prime.ghul",
+          "output": "tasks/least-m-such-that-n-m-is-prime/run.expected",
+          "lines": 63,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "left-factorials",
       "title": "Left factorials",
       "url": "https://rosettacode.org/wiki/Left_factorials",
