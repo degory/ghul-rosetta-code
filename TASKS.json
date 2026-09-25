@@ -1011,6 +1011,11 @@
       "published_hash": "a6ae2d8c487f64cbd1a4388f096db4c6705b3956ab0a852f54ba4722b251fd52"
     },
     {
+      "title": "CUSIP",
+      "slug": "cusip",
+      "state": "solved"
+    },
+    {
       "title": "Caesar cipher",
       "slug": "caesar-cipher",
       "state": "published",
@@ -1611,10 +1616,20 @@
       "published_hash": "de82c253faca2ba53ed723291a93d9f1bb6fa33310091880ef0974b811e0923c"
     },
     {
+      "title": "Count the coins",
+      "slug": "count-the-coins",
+      "state": "solved"
+    },
+    {
       "title": "Countdown",
       "slug": "countdown",
       "state": "published",
       "published_hash": "e04f2d6b877de697a1cb9ae3b5bcc4b8b22f5add3a817daa88b7bde02b5044ea"
+    },
+    {
+      "title": "Cramer\u0027s rule",
+      "slug": "cramer-s-rule",
+      "state": "solved"
     },
     {
       "title": "Create a file",
@@ -1649,6 +1664,11 @@
       "slug": "cuban-primes",
       "state": "published",
       "published_hash": "0cc8e949c44edbab6019373dcab9d2093b666bb1c8f04b62420e975d5c6af3a6"
+    },
+    {
+      "title": "Cullen and Woodall numbers",
+      "slug": "cullen-and-woodall-numbers",
+      "state": "solved"
     },
     {
       "title": "Cumulative standard deviation",
@@ -1702,6 +1722,11 @@
       "published_hash": "5f7f91b062a8c46d377cfcdcf5f11eaba26d18470cd1be40934c337248a4d513"
     },
     {
+      "title": "Cyclotomic polynomial",
+      "slug": "cyclotomic-polynomial",
+      "state": "solved"
+    },
+    {
       "title": "Damm algorithm",
       "slug": "damm-algorithm",
       "state": "published",
@@ -1714,10 +1739,25 @@
       "published_hash": "280281fc0d390ad0643a8001f91d3f710429b44719bf82f4d9b992fbe5199169"
     },
     {
+      "title": "Date manipulation",
+      "slug": "date-manipulation",
+      "state": "solved"
+    },
+    {
+      "title": "Dating agency",
+      "slug": "dating-agency",
+      "state": "solved"
+    },
+    {
       "title": "Day of the week",
       "slug": "day-of-the-week",
       "state": "published",
       "published_hash": "6c693fb598af1e7cb28e0bac1193db5425e9279c017de5e3835ebaaba71cae8b"
+    },
+    {
+      "title": "De Polignac numbers",
+      "slug": "de-polignac-numbers",
+      "state": "solved"
     },
     {
       "title": "Deal cards for FreeCell",
@@ -1745,6 +1785,11 @@
       "slug": "deconvolution-1d",
       "state": "published",
       "published_hash": "b9a8e178e9074f5fae014b8816a64285c4fb44616a076456a6de5d7a2da51ce2"
+    },
+    {
+      "title": "Deconvolution/2D\u002B",
+      "slug": "deconvolution-2d",
+      "state": "solved"
     },
     {
       "title": "Decorate-sort-undecorate idiom",
@@ -7334,6 +7379,11 @@
       "slug": "zumkeller-numbers",
       "state": "published",
       "published_hash": "00c34403fe2bcdf6a6b57c92ba5a29b66174d3e52dd8427350ca282cea0c1c86"
+    },
+    {
+      "title": "de Bruijn sequences",
+      "slug": "de-bruijn-sequences",
+      "state": "solved"
     }
   ]
 }

@@ -1,0 +1,61 @@
+use default
+
+de_bruijn(k: int, n: int) -> string is
+    let a = repeat(0, k * n) |> collect_list()
+    let digits = LIST[int]()
+
+    extend(t: int, p: int) is
+        if t > n then
+            if n % p == 0 then
+                for j in 1::p do
+                    digits.add(a[j])
+                od
+            fi
+        else
+            a[t] = a[t - p]
+            extend(t + 1, p)
+
+            for j in a[t - p] + 1..k do
+                a[t] = j
+                extend(t + 1, t)
+            od
+        fi
+    si
+
+    extend(1, 1)
+
+    digits |> map(d => "{d}") |> join("")
+si
+
+missing_pins(sequence: string) -> List[string] =>
+    let wrapped = "{sequence}{sequence[0..3]}" in
+    let seen = 0..wrapped.length - 3
+        |> map(i => wrapped.substring(i, 4))
+        |> collect_set() in
+    0..10_000
+        |> map(pin => pin.to_string("D4"))
+        |> filter(pin => !seen.contains(pin))
+        |> collect()
+
+describe(missing: List[string]) -> string =>
+    if missing.count == 0 then
+        "no PINs missing"
+    else
+        "missing {missing |> join(", ")}"
+    fi
+
+verify(label: string, sequence: string) =>
+    write_line("{label}: {describe(missing_pins(sequence))}")
+
+let sequence = de_bruijn(10, 4)
+
+write_line("Length: {sequence.length}")
+write_line("First 130 digits:")
+write_line(sequence[0..130])
+write_line("Last 130 digits:")
+write_line(sequence[130..<<0])
+write_line()
+
+verify("Original", sequence)
+verify("Reversed", string(sequence |> reverse() |> collect_array()))
+verify("4444th digit replaced", "{sequence[0..4443]}.{sequence[4444..<0]}")

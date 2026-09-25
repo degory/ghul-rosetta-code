@@ -1,0 +1,168 @@
+use default
+
+union Tensor is
+    SCALAR(value: int)
+    ARRAY(items: List[Tensor])
+si
+
+parse_all(text: string) -> List[Tensor] is
+    let at mut = 0
+
+    skip_spaces() is
+        while at < text.length /\ char.is_white_space(text[at]) do
+            at = at + 1
+        od
+    si
+
+    value() -> Tensor is
+        skip_spaces()
+
+        if text[at] == '[' then
+            let items = LIST[Tensor]()
+            at = at + 1
+
+            while text[at] != ']' do
+                items.add(value())
+                skip_spaces()
+
+                if text[at] == ',' then
+                    at = at + 1
+                fi
+            od
+
+            at = at + 1
+            return Tensor.ARRAY(items)
+        fi
+
+        let start = at
+
+        while text[at] == '-' \/ char.is_digit(text[at]) do
+            at = at + 1
+        od
+
+        Tensor.SCALAR(int.parse(text[start..at]))
+    si
+
+    let found = LIST[Tensor]()
+
+    while at < text.length do
+        if text[at] == '[' then
+            found.add(value())
+        else
+            at = at + 1
+        fi
+    od
+
+    found
+si
+
+shape(tensor: Tensor) -> List[int] =>
+    if let (items): Tensor.ARRAY = tensor then
+        [items.count] |> cat(shape(items[0])) |> collect()
+    else
+        []
+    fi
+
+strides_of(dimensions: List[int]) -> List[int] =>
+    0..dimensions.count
+        |> map(level => dimensions[level + 1..<0] |> product())
+        |> collect()
+
+embed(tensor: Tensor, strides: List[int]) -> List[int] is
+    let size = shape(tensor)
+        |> zip(strides)
+        |> map((extent, stride) => (extent - 1) * stride)
+        |> sum()
+
+    let values = repeat(0, size + 1) |> collect_list()
+
+    place(t: Tensor, level: int, offset: int) is
+        case t
+        when (value): Tensor.SCALAR then
+            values[offset] = value
+        when (items): Tensor.ARRAY then
+            for (i, item) in items |> index() do
+                place(item, level + 1, offset + i * strides[level])
+            od
+        esac
+    si
+
+    place(tensor, 0, 0)
+    values
+si
+
+deconvolve_1d(g: List[int], f: List[int]) -> List[int] is
+    let h = LIST[int]()
+
+    for n in 0..g.count - f.count + 1 do
+        let lower = System.Math.max(0, n - f.count + 1)
+        let overlap = lower..n |> map(i => f[n - i] * h[i]) |> sum()
+
+        h.add((g[n] - overlap) / f[0])
+    od
+
+    h
+si
+
+reshape(
+    values: List[int], dimensions: List[int], strides: List[int]
+) -> Tensor is
+    build(level: int, offset: int) -> Tensor =>
+        if level == dimensions.count then
+            Tensor.SCALAR(values[offset])
+        else
+            Tensor.ARRAY(
+                0..dimensions[level]
+                    |> map(i =>
+                        build(level + 1, offset + i * strides[level]))
+                    |> collect())
+        fi
+
+    build(0, 0)
+si
+
+deconvolve(g: Tensor, f: Tensor) -> Tensor =>
+    let g_shape = shape(g) in
+    let strides = strides_of(g_shape) in
+    let h_shape = g_shape
+        |> zip(shape(f))
+        |> map((g_extent, f_extent) => g_extent - f_extent + 1)
+        |> collect() in
+    let h_values = deconvolve_1d(embed(g, strides), embed(f, strides)) in
+    reshape(h_values, h_shape, strides)
+
+show(tensor: Tensor) -> string =>
+    case tensor
+    when (value): Tensor.SCALAR then "{value}"
+    when (items): Tensor.ARRAY then "[{items |> map(show) |> join(", ")}]"
+    esac
+
+show_across_lines(tensor: Tensor) -> string =>
+    if let (items): Tensor.ARRAY = tensor then
+        "[\n{items |> map(item => "    {show(item)}") |> join(",\n")}\n]"
+    else
+        show(tensor)
+    fi
+
+let tests = parse_all(IO.File.read_all_text("test-data.txt"))
+    |> chunk(3)
+    |> map(c => (h = c[0], f = c[1], g = c[2]))
+    |> collect()
+
+for (dimension, (h, f, g)) in tests |> index() do
+    let h_found = deconvolve(g, f) =~ h
+    let f_found = deconvolve(g, h) =~ f
+
+    write_line(
+        "dimension {dimension + 1}: deconv(g, f) = h {h_found}, "
+        "deconv(g, h) = f {f_found}")
+od
+
+let (h, f, g) = tests[2]
+
+write_line()
+write_line("deconv(g, f):")
+write_line(show_across_lines(deconvolve(g, f)))
+write_line()
+write_line("deconv(g, h):")
+write_line(show_across_lines(deconvolve(g, h)))

@@ -1,0 +1,34 @@
+use default
+
+class LADY(name: string) is
+    is_nice: bool => name |> map(c => cast int(c)) |> sum() % 2 == 0
+si
+
+last_letter(name: string) -> int => cast int(name[name.length - 1])
+
+class SAILOR(name: string) is
+    finds_lovable(lady: LADY) -> bool =>
+        last_letter(name) % 2 == last_letter(lady.name) % 2
+si
+
+class AGENCY(ladies: List[LADY]) is
+    suggestions: Pipe[LADY] => ladies |> filter(lady => lady.is_nice)
+si
+
+let agency = AGENCY(
+    [
+        "Ada", "Beatrice", "Cora", "Delia", "Edith",
+        "Flora", "Grace", "Hazel", "Iris", "Juno"
+    ] |> map(name => LADY(name)) |> collect()
+)
+
+let sailor = SAILOR("Popeye")
+
+let suggested = agency.suggestions |> map(lady => lady.name)
+
+let dated = agency.suggestions
+    |> filter(lady => sailor.finds_lovable(lady))
+    |> map(lady => lady.name)
+
+write_line("The agency suggests: {suggested |> join(", ")}")
+write_line("{sailor.name} offers to date: {dated |> join(", ")}")

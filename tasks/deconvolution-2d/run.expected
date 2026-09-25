@@ -1,0 +1,16 @@
+dimension 1: deconv(g, f) = h true, deconv(g, h) = f true
+dimension 2: deconv(g, f) = h true, deconv(g, h) = f true
+dimension 3: deconv(g, f) = h true, deconv(g, h) = f true
+
+deconv(g, f):
+[
+    [[-6, -8, -5, 9], [-7, 9, -6, -8], [2, -7, 9, 8]],
+    [[7, 4, 4, -6], [9, 9, 4, -4], [-3, 7, -2, -3]]
+]
+
+deconv(g, h):
+[
+    [[-9, 5, -8], [3, 5, 1]],
+    [[-1, -7, 2], [-5, -6, 6]],
+    [[8, 5, 8], [-2, -6, -4]]
+]
