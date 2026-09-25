@@ -4329,6 +4329,11 @@
       "published_hash": "0f3ea04b24d2e45b0bc59cfe7485d871e7f4dec5c4a56b4dbbe631b646d68637"
     },
     {
+      "title": "MD5",
+      "slug": "md5",
+      "state": "solved"
+    },
+    {
       "title": "MD5/Implementation",
       "slug": "md5-implementation",
       "state": "published",
@@ -4424,6 +4429,16 @@
       "published_hash": "fb04f051e0d70a8dd2d077250f6cd0de894e13be6f0a2b33a4d11169852f4736"
     },
     {
+      "title": "Maximum triangle path sum",
+      "slug": "maximum-triangle-path-sum",
+      "state": "solved"
+    },
+    {
+      "title": "Mayan calendar",
+      "slug": "mayan-calendar",
+      "state": "solved"
+    },
+    {
       "title": "Mayan numerals",
       "slug": "mayan-numerals",
       "state": "published",
@@ -4454,6 +4469,11 @@
       "published_hash": "435eb7eacfc0f171d04abcb95b5fd949e859de303b839ac4fc6f3f37e1d78010"
     },
     {
+      "title": "McNuggets problem",
+      "slug": "mcnuggets-problem",
+      "state": "solved"
+    },
+    {
       "title": "Median filter",
       "slug": "median-filter",
       "state": "published",
@@ -4462,6 +4482,16 @@
         "Ghul-median-filter-noisy.png": "f1236ae745ddfc6eb628f27a876756a00b5ad4bd",
         "Ghul-median-filter-cleaned.png": "663b18355ac696c16092d43457674fb58f873771"
       }
+    },
+    {
+      "title": "Meissel-Mertens constant",
+      "slug": "meissel-mertens-constant",
+      "state": "solved"
+    },
+    {
+      "title": "Memory allocation",
+      "slug": "memory-allocation",
+      "state": "solved"
     },
     {
       "title": "Memory layout of a data structure",
@@ -4488,6 +4518,11 @@
       "published_hash": "5c4855143778fda6035224fd6a331da03f787fb652f1244020936be6c8752516"
     },
     {
+      "title": "Metallic ratios",
+      "slug": "metallic-ratios",
+      "state": "solved"
+    },
+    {
       "title": "Metaprogramming",
       "state": "rejected",
       "reason": "no-equivalent",
@@ -4498,6 +4533,11 @@
       "slug": "metered-concurrency",
       "state": "published",
       "published_hash": "c21445fa655e769757c82ca7515dd29ee42effc06597b9257c2d2e26db5f3b31"
+    },
+    {
+      "title": "Metronome",
+      "slug": "metronome",
+      "state": "solved"
     },
     {
       "title": "Mian-Chowla sequence",
@@ -4516,6 +4556,16 @@
       "slug": "mill-game",
       "state": "published",
       "published_hash": "df21681def74e9694ac219cfcc16affc607755fb29b7212021c4e3c1b5d18d3c"
+    },
+    {
+      "title": "Miller-Rabin primality test",
+      "slug": "miller-rabin-primality-test",
+      "state": "solved"
+    },
+    {
+      "title": "Mind boggling card trick",
+      "slug": "mind-boggling-card-trick",
+      "state": "solved"
     },
     {
       "title": "Minesweeper game",

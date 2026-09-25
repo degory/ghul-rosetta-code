@@ -1,0 +1,52 @@
+use default
+
+let names = [
+    "Platinum", "Golden", "Silver", "Bronze", "Copper",
+    "Nickel", "Aluminium", "Iron", "Tin", "Lead"
+]
+
+lucas(b: bigint) -> Pipe[bigint] is
+    let (x, y) mut = (1n, 1n)
+
+    yield x
+
+    for _ in from(0) do
+        yield y
+
+        (x, y) = (y, b * y + x)
+    od
+si
+
+// successive ratios of the sequence, each truncated to the given number of
+// places, until one repeats the one before it
+
+approximate(b: bigint, places: int) -> (value: string, iterations: int) =>
+    let scale = bigint.pow(10n, places) in
+    let (n, pair) =
+        lucas(b)
+            |> windows(2)
+            |> map(terms => terms[1] * scale / terms[0])
+            |> windows(2)
+            |> index()
+            |> find(((_, ratios)) => ratios[0] =~ ratios[1])!
+    in
+    let digits = pair[1].to_string().pad_left(places + 1, '0') in
+    let split = digits.length - places in
+    ("{digits.substring(0, split)}.{digits.substring(split)}", n + 1)
+
+for b in 0::9 do
+    let (value, iterations) = approximate(bigint(b), 32)
+    let sequence = lucas(bigint(b)) |> take(15) |> join(" ")
+
+    write_line("{names[b]} ratio, b = {b}:")
+    write_line("    Lucas sequence: {sequence}")
+    write_line("    value: {value}, after {iterations} iterations")
+od
+
+let (golden, iterations) = approximate(1n, 256)
+
+write_line("\nGolden ratio to 256 places, after {iterations} iterations:")
+
+for line in golden |> chunk(64) do
+    write_line("    {line |> join("")}")
+od

@@ -1,0 +1,4 @@
+managed array of 1000 ints, left to the collector
+struct in a local: 3, 4
+unmanaged block of 40 bytes holds: 0 1 4 9 16 25 36 49 64 81
+unmanaged block freed

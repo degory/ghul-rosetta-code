@@ -1,0 +1,39 @@
+use default
+
+let random = System.Random(52)
+
+shuffled[T](items: Iterable[T]) -> LIST[T] =>
+    items |> sort_by(_ => random.next()) |> collect_list()
+
+trial() -> (black_in_black: int, red_in_red: int) is
+    let deck = shuffled(repeat('R', 26) |> cat(repeat('B', 26)))
+    let black = LIST[char]()
+    let red = LIST[char]()
+
+    let pairs = deck |> chunk(2) |> map(pair => (pair[0], pair[1]))
+
+    for (top, next) in pairs do
+        if top == 'B' then black.add(next) else red.add(next) fi
+    od
+
+    let swap = random.next(int.min(black.count, red.count) + 1)
+    let black_bunch = shuffled(black) |> take(swap) |> collect_list()
+    let red_bunch = shuffled(red) |> take(swap) |> collect_list()
+
+    for card in black_bunch do black.remove(card) od
+    for card in red_bunch do red.remove(card) od
+
+    black.add_range(red_bunch)
+    red.add_range(black_bunch)
+
+    (black |> count(c => c == 'B'), red |> count(c => c == 'R'))
+si
+
+for number in 1::10 do
+    let (black_in_black, red_in_red) = trial()
+    let holds = if black_in_black == red_in_red then "holds" else "FAILS" fi
+
+    write_line(
+        "trial {number,2}: {black_in_black,2} black in the black pile, "
+        "{red_in_red,2} red in the red pile: {holds}")
+od
