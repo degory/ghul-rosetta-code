@@ -21667,6 +21667,32 @@
       ]
     },
     {
+      "slug": "resistor-mesh",
+      "title": "Resistor mesh",
+      "url": "https://rosettacode.org/wiki/Resistor_mesh",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 82,
+      "parts": [
+        {
+          "id": "resistor-mesh",
+          "heading": null,
+          "source": "tasks/resistor-mesh/resistor-mesh.ghul",
+          "output": "tasks/resistor-mesh/run.expected",
+          "lines": 82,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "return-multiple-values",
       "title": "Return multiple values",
       "url": "https://rosettacode.org/wiki/Return_multiple_values",
