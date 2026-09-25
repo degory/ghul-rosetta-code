@@ -1,0 +1,47 @@
+use default
+
+optimal_order(dims: List[long]) -> (cost: long, order: string) is
+    let n = dims.count - 1
+    let cost =
+        0..n |> map(_ => repeat(0L, n) |> collect_list()) |> collect_list()
+    let split =
+        0..n |> map(_ => repeat(0, n) |> collect_list()) |> collect_list()
+
+    for length in 2::n do
+        for i in 0::n - length do
+            let j = i + length - 1
+
+            let (best, at) =
+                i..j
+                    |> map(k =>
+                        let product = dims[i] * dims[k + 1] * dims[j + 1] in
+                        (cost[i][k] + cost[k + 1][j] + product, k))
+                    |> min_by(((c, _)) => c)!
+
+            cost[i][j] = best
+            split[i][j] = at
+        od
+    od
+
+    order(i: int, j: int) -> string =>
+        if i == j then
+            "A{i + 1}"
+        else
+            "({order(i, split[i][j])}{order(split[i][j] + 1, j)})"
+        fi
+
+    (cost[0][n - 1], order(0, n - 1))
+si
+
+let lists = [
+    [1L, 5L, 25L, 30L, 100L, 70L, 2L, 1L, 100L, 250L, 1L, 1000L, 2L],
+    [1000L, 1L, 500L, 12L, 1L, 700L, 2500L, 3L, 2L, 5L, 14L, 10L]
+]
+
+for dims in lists do
+    let (cost, order) = optimal_order(dims)
+
+    write_line("dimensions: {dims}")
+    write_line("order:      {order}")
+    write_line("cost:       {cost}\n")
+od
