@@ -6933,14 +6933,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 37,
+      "lines": 40,
       "parts": [
         {
           "id": "de-polignac-numbers",
           "heading": null,
           "source": "tasks/de-polignac-numbers/de-polignac-numbers.ghul",
           "output": "tasks/de-polignac-numbers/run.expected",
-          "lines": 37,
+          "lines": 40,
           "playground": true,
           "input": false,
           "images": []
@@ -7050,6 +7050,33 @@
           "source": "tasks/deconvolution-1d/deconvolution-1d.ghul",
           "output": "tasks/deconvolution-1d/run.expected",
           "lines": 31,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "deconvolution-2d",
+      "title": "Deconvolution/2D+",
+      "url": "https://rosettacode.org/wiki/Deconvolution/2D+",
+      "tags": [
+        "maths",
+        "unions",
+        "parsing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 168,
+      "parts": [
+        {
+          "id": "deconvolution-2d",
+          "heading": null,
+          "source": "tasks/deconvolution-2d/deconvolution-2d.ghul",
+          "output": "tasks/deconvolution-2d/run.expected",
+          "lines": 168,
           "playground": true,
           "input": false,
           "images": []
