@@ -14528,6 +14528,33 @@
       ]
     },
     {
+      "slug": "latin-squares-in-reduced-form",
+      "title": "Latin Squares in reduced form",
+      "url": "https://rosettacode.org/wiki/Latin_Squares_in_reduced_form",
+      "tags": [
+        "generators",
+        "recursion",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 65,
+      "parts": [
+        {
+          "id": "latin-squares-in-reduced-form",
+          "heading": null,
+          "source": "tasks/latin-squares-in-reduced-form/latin-squares-in-reduced-form.ghul",
+          "output": "tasks/latin-squares-in-reduced-form/run.expected",
+          "lines": 65,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "leap-year",
       "title": "Leap year",
       "url": "https://rosettacode.org/wiki/Leap_year",
