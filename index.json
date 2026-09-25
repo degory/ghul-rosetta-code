@@ -20302,6 +20302,32 @@
       ]
     },
     {
+      "slug": "product-of-min-and-max-prime-factors",
+      "title": "Product of min and max prime factors",
+      "url": "https://rosettacode.org/wiki/Product_of_min_and_max_prime_factors",
+      "tags": [
+        "primes",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 33,
+      "parts": [
+        {
+          "id": "product-of-min-and-max-prime-factors",
+          "heading": null,
+          "source": "tasks/product-of-min-and-max-prime-factors/product-of-min-and-max-prime-factors.ghul",
+          "output": "tasks/product-of-min-and-max-prime-factors/run.expected",
+          "lines": 33,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "program-name",
       "title": "Program name",
       "url": "https://rosettacode.org/wiki/Program_name",
