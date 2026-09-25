@@ -1,5 +1,6 @@
 {
   "title": "System time",
-  "state": "rejected",
-  "reason": "nondeterministic"
+  "slug": "system-time",
+  "state": "solved",
+  "note": "reopened, was rejected/nondeterministic: the time differs every run, so the test checks its shape and that it is within a minute of the clock"
 }

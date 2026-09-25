@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# The time is different on every run, so what is asserted is that both lines
+# say the same moment, and that it is within a minute of the clock this
+# check reads.
+
+out=$1
+
+stamp=$(sed -n 's/^system time (UTC): \([0-9-]* [0-9:]*\)\.[0-9]\{3\}$/\1/p' "$out")
+seconds=$(sed -n 's/^seconds since the Unix epoch: \([0-9]*\)$/\1/p' "$out")
+
+if [ -z "$stamp" ] || [ -z "$seconds" ] ; then
+    echo "unexpected output:"
+    cat "$out"
+    exit 1
+fi
+
+if [ "$(date -u -d "$stamp" +%s)" != "$seconds" ] ; then
+    echo "the two lines disagree: $stamp is not $seconds"
+    exit 1
+fi
+
+drift=$(( $(date -u +%s) - seconds ))
+
+if [ "${drift#-}" -gt 60 ] ; then
+    echo "reported time is $drift seconds away from now"
+    exit 1
+fi
