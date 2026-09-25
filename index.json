@@ -11629,6 +11629,33 @@
       ]
     },
     {
+      "slug": "gstrans-string-conversion",
+      "title": "GSTrans string conversion",
+      "url": "https://rosettacode.org/wiki/GSTrans_string_conversion",
+      "tags": [
+        "strings",
+        "unions",
+        "parsing"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 114,
+      "parts": [
+        {
+          "id": "gstrans-string-conversion",
+          "heading": null,
+          "source": "tasks/gstrans-string-conversion/gstrans-string-conversion.ghul",
+          "output": "tasks/gstrans-string-conversion/run.expected",
+          "lines": 114,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "guess-the-number",
       "title": "Guess the number",
       "url": "https://rosettacode.org/wiki/Guess_the_number",
