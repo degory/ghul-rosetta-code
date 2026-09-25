@@ -1,8 +1,8 @@
 use default
 
 trait Clock is
-    now: System.DateTime;
-    wait_until(time: System.DateTime);
+    now: System.DateTime
+    wait_until(time: System.DateTime)
 si
 
 class SYSTEM_CLOCK: Clock is
