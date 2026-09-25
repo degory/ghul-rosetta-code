@@ -9,7 +9,7 @@ let directions = "wasd"
 
 let random = System.Random(20260908)
 
-let board = repeat(0, squares) |> collect_list()
+let board = repeat(0, squares) |> collect_mutable()
 
 // The board indices of each row or column, ordered along the
 // direction of travel, so one collapse serves all four moves.
@@ -69,7 +69,7 @@ slide(target: LIST[int], direction: char) -> bool =>
 
      for line in lines_for(direction) do
          let moved =
-             collapse(line |> map(at => target[at]) |> collect_list())
+             collapse(line |> map(at => target[at]) |> collect_mutable())
 
          for at in 0..side do
              target[line[at]] = moved[at]
@@ -91,7 +91,7 @@ si
 stuck() -> bool =>
     !(directions
         |> any(direction =>
-            slide(board |> collect_list(), direction)))
+            slide(board |> collect_mutable(), direction)))
 
 show() is
     for row in 0..side do

@@ -52,7 +52,7 @@ for at in half_hull(backwards) do
     hull.add(at)
 od
 
-let spelled = hull |> map(at => "({at.x},{at.y})") |> join(", ")
+let spelled = hull |> map(at => "({at.x},{at.y})") |> join()
 
 write_line("{points.count} points")
 write_line("hull of {hull.count}: {spelled}")

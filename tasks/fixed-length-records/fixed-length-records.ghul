@@ -20,7 +20,7 @@ records(path: string, length: int) -> Pipe[string] is
 si
 
 reverse(record: string) -> string is
-    let characters = record |> collect_array()
+    let characters = record |> collect()
 
     System.Array.reverse(characters)
 

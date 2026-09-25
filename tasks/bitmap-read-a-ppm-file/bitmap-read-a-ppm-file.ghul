@@ -12,7 +12,7 @@ class BITMAP is
         self.width = width
         self.height = height
 
-        bytes = repeat(0ub, width * height * 3) |> collect_list()
+        bytes = repeat(0ub, width * height * 3) |> collect_mutable()
     si
 
     set_pixel(x: int, y: int, colour: COLOUR) is
@@ -57,7 +57,7 @@ read_ppm(path: string) -> BITMAP is
         return string(
             (from..at)
                 |> map(index => cast char(raw[index]))
-                |> collect_array()
+                |> collect()
         )
     si
 
@@ -89,7 +89,7 @@ write_ppm(image: BITMAP, path: string) is
 
     file.write(header, 0, header.count)
 
-    let pixels = image.bytes |> collect_array()
+    let pixels = image.bytes |> collect()
 
     file.write(pixels, 0, pixels.count)
 

@@ -36,7 +36,7 @@ let graph =
 
 potentials(graph: Matrix) -> Collections.List[double]? is
     let size = graph.count
-    let potential = repeat(0.0, size) |> collect_list()
+    let potential = repeat(0.0, size) |> collect_mutable()
 
     relax() -> bool is
         let changed mut = false
@@ -83,7 +83,7 @@ shortest_from(
 
     distance[source] = 0.0
 
-    let settled = repeat(false, size) |> collect_list()
+    let settled = repeat(false, size) |> collect_mutable()
 
     for _ in 0..size do
         let next: int? mut = null

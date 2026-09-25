@@ -19,11 +19,11 @@ mutate(parent: string, rate: double) -> string =>
                 if random.next_double() < rate then random_letter()
                 else letter
                 fi)
-            |> collect_array())
+            |> collect())
 
 let parent mut =
     string(
-        0..target.length |> map(_ => random_letter()) |> collect_array())
+        0..target.length |> map(_ => random_letter()) |> collect())
 
 let generation mut = 0
 

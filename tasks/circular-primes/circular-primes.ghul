@@ -3,7 +3,7 @@ use default
 let limit = 1_000_000
 
 let prime = (
-    let sieve = repeat(true, limit) |> collect_list()
+    let sieve = repeat(true, limit) |> collect_mutable()
 
     sieve[0] = false
     sieve[1] = false
@@ -63,7 +63,8 @@ repunit(n: int) -> bigint => (bigint.pow(10n, n) - 1n) / 9n
 
 write_line("sieving to {limit:N0}")
 
-let circular = 2..limit |> filter(is_circular) |> take(19) |> collect_list()
+let circular =
+    2..limit |> filter(is_circular) |> take(19) |> collect_mutable()
 
 write_line("The first 19 circular primes:")
 write_line("{circular}")
@@ -76,4 +77,4 @@ let repunits =
 
 write_line("\ntesting repunits for primality")
 write_line("The next 4 circular primes, all repunits:")
-write_line(repunits |> join(", "))
+write_line(repunits |> join())

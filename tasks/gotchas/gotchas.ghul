@@ -28,4 +28,4 @@ for e in evens do
     write_line("next even: {e}")
 od
 
-write_line("all evens: {evens |> collect_list()}")
+write_line("all evens: {evens |> collect_mutable()}")

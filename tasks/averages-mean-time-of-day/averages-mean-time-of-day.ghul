@@ -12,7 +12,7 @@ mean_angle(angles: List[double]) -> double =>
         angles |> map(a => double.cos(a)) |> sum())
 
 mean_time(times: List[string]) -> string =>
-    let angle = mean_angle(times |> map(to_angle) |> collect_list()) in
+    let angle = mean_angle(times |> map(to_angle) |> collect_mutable()) in
     let turn = if angle < 0.0 then angle + double.tau else angle fi in
     let seconds = double.round(turn / double.tau * seconds_per_day) in
     System.TimeSpan.from_seconds(seconds).to_string()

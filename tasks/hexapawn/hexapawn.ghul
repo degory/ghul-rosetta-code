@@ -31,7 +31,7 @@ play(board: string, move: Move) -> string =>
                 elif i == move.from then '.'
                 else board[i]
                 fi)
-            |> collect_array())
+            |> collect())
 
 has_won(board: string, side: char) -> bool =>
     let far_rank = if side == 'W' then 0 else 6 fi in

@@ -1,7 +1,7 @@
 use default
 
 common_directory_path(paths: string[]) -> string is
-    let segments = paths |> map(p => p.split(['/'])) |> collect_array()
+    let segments = paths |> map(p => p.split(['/'])) |> collect()
     let common = LIST()
 
     for i in 0..segments[0].count do

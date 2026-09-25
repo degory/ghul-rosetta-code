@@ -74,7 +74,7 @@ fortunate(count: int) -> Pipe[int] is
     od
 si
 
-let seen = fortunate(75) |> collect_list()
+let seen = fortunate(75) |> collect_mutable()
 
 seen.sort()
 

@@ -67,7 +67,7 @@ nearest(tree: Tree, target: Point) -> Found is
         visited = visited)
 si
 
-place(p: Point) -> string => p |> map(c => "{c:F6}") |> join(", ")
+place(p: Point) -> string => p |> map(c => "{c:F6}") |> join()
 
 show(name: string, points: Collections.List[Point], target: Point) is
     let (point, distance, visited) = nearest(build(points, 0), target)

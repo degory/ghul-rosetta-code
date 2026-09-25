@@ -33,7 +33,7 @@ unrank(index: bigint) -> LIST[bigint] is
     let values = (digits |> join("")).split([' '])
         |> filter(text => text.length > 0)
         |> map(text => bigint.parse(text))
-        |> collect_list()
+        |> collect_mutable()
 
     return values
 si

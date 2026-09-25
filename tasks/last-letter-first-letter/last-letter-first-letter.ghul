@@ -13,7 +13,7 @@ let names = (
     "wartortle whismur wingull yamask").split([' '])
 
 longest_chain(words: string[]) -> List[string] is
-    let used = repeat(false, words.count) |> collect_list()
+    let used = repeat(false, words.count) |> collect_mutable()
     let path = LIST[string]()
     let best = LIST[string]()
 

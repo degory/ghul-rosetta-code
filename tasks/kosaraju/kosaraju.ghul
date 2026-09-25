@@ -14,7 +14,7 @@ for vertex in 0..edges.count do
     od
 od
 
-let visited = repeat(false, edges.count) |> collect_list()
+let visited = repeat(false, edges.count) |> collect_mutable()
 let order = LIST[int]()
 
 visit(vertex: int) is
@@ -31,7 +31,7 @@ visit(vertex: int) is
     order.add(vertex)
 si
 
-let root = repeat(-1, edges.count) |> collect_list()
+let root = repeat(-1, edges.count) |> collect_mutable()
 
 assign(vertex: int, component: int) is
     if root[vertex] >= 0 then

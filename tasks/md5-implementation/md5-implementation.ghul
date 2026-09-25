@@ -14,7 +14,7 @@ let sines =
                     System.Math.abs(
                         System.Math.sin(cast double(step + 1))) *
                     4294967296.0D)))
-        |> collect_array()
+        |> collect()
 
 rotate_left(value: uint, count: int) -> uint =>
     (value << count) | (value >>> (32 - count))
@@ -54,7 +54,7 @@ md5(message: ubyte[]) -> string is
     while start < block.count do
         let words =
             0..16 |> map(index => word(block, start + index * 4))
-                  |> collect_array()
+                  |> collect()
 
         let a mut = state[0]
         let b mut = state[1]

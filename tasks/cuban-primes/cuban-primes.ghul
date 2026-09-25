@@ -3,7 +3,7 @@ use default
 let small_primes = LIST()
 let sieve_limit = 1_000
 
-let marked = repeat(false, sieve_limit + 1) |> collect_list()
+let marked = repeat(false, sieve_limit + 1) |> collect_mutable()
 
 for candidate in 2::sieve_limit do
     if !marked[candidate] then

@@ -77,10 +77,10 @@ library_sort(xs: LIST[int]) => xs.sort()
 let random = System.Random(1)
 
 let inputs = [
-    ("ones", (n: int) => repeat(1, n) |> collect_array()),
-    ("range", (n: int) => (0..n) |> collect_array()),
+    ("ones", (n: int) => repeat(1, n) |> collect()),
+    ("range", (n: int) => (0..n) |> collect()),
     ("shuffled", (n: int) =>
-        (0..n) |> sort_by(_ => random.next()) |> collect_array())
+        (0..n) |> sort_by(_ => random.next()) |> collect())
 ]
 
 let sorts: Sorter[] = [
@@ -131,7 +131,7 @@ for (name, make) in inputs do
             let first = log2(times[i][last - 4]) in
             let exponent = (log2(times[i][last]) - first) / 4.0 in
             "{sorts[i].name} {exponent:F1}")
-        |> join(", ")
+        |> join()
 
     write_line(
         "growth exponent from n = {1 << powers[last - 4]} up: {growth}")

@@ -9,12 +9,12 @@ class GRAPH(order: int public) is
     _in_blossom: LIST[bool]
 
     init(..) is
-        _edges = 0..order |> map(_ => LIST[int]()) |> collect_list()
-        _match = repeat[int?](null, order) |> collect_list()
-        _parent = repeat[int?](null, order) |> collect_list()
-        _base = 0..order |> collect_list()
-        _seen = repeat(false, order) |> collect_list()
-        _in_blossom = repeat(false, order) |> collect_list()
+        _edges = 0..order |> map(_ => LIST[int]()) |> collect_mutable()
+        _match = repeat[int?](null, order) |> collect_mutable()
+        _parent = repeat[int?](null, order) |> collect_mutable()
+        _base = 0..order |> collect_mutable()
+        _seen = repeat(false, order) |> collect_mutable()
+        _in_blossom = repeat(false, order) |> collect_mutable()
     si
 
     join(a: int, b: int) is
@@ -41,7 +41,7 @@ class GRAPH(order: int public) is
     _base_of(v: int) -> int => _base[v]
 
     _lca(left: int, right: int) -> int is
-        let reached = repeat(false, order) |> collect_list()
+        let reached = repeat(false, order) |> collect_mutable()
         let a mut = left
 
         while true do

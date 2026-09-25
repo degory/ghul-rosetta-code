@@ -1,14 +1,14 @@
 use default
 
 to_text(bytes: List[ubyte]) -> string =>
-    string(bytes |> map(b => cast char(b)) |> collect_array())
+    string(bytes |> map(b => cast char(b)) |> collect())
 
 replace_byte(
     bytes: List[ubyte], old: ubyte, replacement: ubyte
 ) -> LIST[ubyte] is
     let result = bytes
         |> map(b => if b == old then replacement else b fi)
-        |> collect_list()
+        |> collect_mutable()
 
     result
 si

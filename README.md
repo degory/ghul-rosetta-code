@@ -26,7 +26,7 @@ nobody re-reads.
 - `scripts/new-task.sh` - scaffolds a task and its test.
 - `scripts/ledger-only.sh` - whether a change touches nothing but the ledger, which the ledger,
   review and CI workflows all ask it rather than each keeping a copy of the test.
-- `scripts/redundant-collect.sh` - finds `collect_list()` and `collect()` calls a solution does not need,
+- `scripts/redundant-collect.sh` - finds `collect_mutable()` and `collect()` calls a solution does not need,
   by trying each task without them and keeping only what its test still passes. A collect that
   starts work, such as launching tasks or threads, changes timing the test cannot see, so read
   each removal before keeping it.

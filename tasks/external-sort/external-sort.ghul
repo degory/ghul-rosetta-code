@@ -40,7 +40,7 @@ write_source(path: string) is
         path,
         0..values
             |> map(_ => "{random.next(1_000_000)}")
-            |> collect_array())
+            |> collect())
 si
 
 split(path: string) -> List[string] is
@@ -54,7 +54,7 @@ split(path: string) -> List[string] is
             let part = "run-{parts.count}.txt"
 
             File.write_all_lines(
-                part, held |> map(v => "{v}") |> collect_array())
+                part, held |> map(v => "{v}") |> collect())
 
             parts.add(part)
             held.clear()
@@ -113,7 +113,9 @@ let sorted =
     File.read_all_lines("sorted.txt") |> map(int.parse) |> collect()
 
 let in_memory =
-    File.read_all_lines("unsorted.txt") |> map(int.parse) |> collect_list()
+    File.read_all_lines("unsorted.txt")
+        |> map(int.parse)
+        |> collect_mutable()
 
 in_memory.sort()
 

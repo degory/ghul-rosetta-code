@@ -35,7 +35,7 @@ let program = parse(source)
 let steps = 20
 
 write_line("the first {steps} values from 2:")
-write_line(run(program, 2n) |> take(steps) |> join(", "))
+write_line(run(program, 2n) |> take(steps) |> join())
 
 let primes =
     run(program, 2n)

@@ -5,7 +5,7 @@ quibble(words: string[]) -> string =>
     when 0 then "\{\}"
     when 1 then "\{{words[0]}\}"
     else (
-        let front = words[0..<1] |> join(", ")
+        let front = words[0..<1] |> join()
 
         "\{{front} and {words[words.count - 1]}\}"
     )

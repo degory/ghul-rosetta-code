@@ -83,7 +83,7 @@ for word in misspelled do
     let candidates = dictionary
         |> map(candidate =>
             (candidate, jaro_winkler_distance(word, candidate)))
-        |> collect_list()
+        |> collect_mutable()
 
     candidates.sort(((_, a), (_, b)) => System.Math.sign(a - b))
 

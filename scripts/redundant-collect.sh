@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 #
-# Finds collect_list() and collect() calls a solution does not need, by
+# Finds collect_mutable() and collect() calls a solution does not need, by
 # trying without each one and keeping the change only when the task's
 # captured test still passes.
 #
 #   scripts/redundant-collect.sh [-j N] tasks/<slug>...
 #
-# Each `|> collect_list()` or `|> collect()` site is tried last to first,
+# Each `|> collect_mutable()` or `|> collect()` site is tried last to first,
 # so an edit never moves a site still to be tried. At each site the call
-# is first deleted, leaving the pipe lazy; failing that, collect_list()
+# is first deleted, leaving the pipe lazy; failing that, collect_mutable()
 # is narrowed to collect(). An edit stays only when the test passes and
 # runs no slower than three times the unedited run plus ten seconds.
 #
@@ -70,7 +70,7 @@ process_task() {
     local file
     while IFS= read -r file; do
         local count
-        count=$(perl -0777 -ne 'my $n = () = /[ \t]*\|>[ \t]*collect(?:_list)?\(\)/g; print "$n\n"' "$file")
+        count=$(perl -0777 -ne 'my $n = () = /[ \t]*\|>[ \t]*collect(?:_mutable)?\(\)/g; print "$n\n"' "$file")
 
         local k
         for ((k = count; k >= 1; k--)); do
@@ -80,7 +80,7 @@ process_task() {
                 local $/;
                 my $text = <>;
                 my @sites;
-                while ($text =~ /[ \t]*\|>[ \t]*(collect(?:_list)?)\(\)/g) {
+                while ($text =~ /[ \t]*\|>[ \t]*(collect(?:_mutable)?)\(\)/g) {
                     push @sites, [$-[0], $+[0], $1];
                 }
                 my ($start, $end, $call) = @{$sites[$k - 1]};
@@ -131,7 +131,7 @@ process_task() {
                 outcome=flagged
             fi
 
-            if [[ "$outcome" != removed && "$call" == collect_list ]]; then
+            if [[ "$outcome" != removed && "$call" == collect_mutable ]]; then
                 edit narrow "$k" "$file"
                 read -r status elapsed < <(run_test "$task")
 
@@ -152,7 +152,7 @@ process_task() {
 
 # Rewrites site K of FILE in place: `delete` removes the call, and the
 # whole line where the call stands alone on it; `narrow` turns
-# collect_list() into collect().
+# collect_mutable() into collect().
 edit() {
     local mode="$1" k="$2" file="$3"
 
@@ -161,7 +161,7 @@ edit() {
         local $/;
         my $text = <>;
         my @sites;
-        while ($text =~ /[ \t]*\|>[ \t]*collect(?:_list)?\(\)/g) {
+        while ($text =~ /[ \t]*\|>[ \t]*collect(?:_mutable)?\(\)/g) {
             push @sites, [$-[0], $+[0]];
         }
         my ($start, $end) = @{$sites[$k - 1]};
@@ -177,7 +177,7 @@ edit() {
             }
         } else {
             my $matched = substr($text, $start, $end - $start);
-            $matched =~ s/collect_list\(\)/collect()/;
+            $matched =~ s/collect_mutable\(\)/collect()/;
             substr($text, $start, $end - $start) = $matched;
         }
         print $text;

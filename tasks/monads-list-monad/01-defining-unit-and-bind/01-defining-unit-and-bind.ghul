@@ -14,5 +14,5 @@ divisors(n: int) -> Iterable[int] =>
 spellings(n: int) -> Iterable[string] =>
     ["{n}", "0b{to_string(n, 2)}"]
 
-write_line((unit(6) >>= divisors) |> join(", "))
-write_line((unit(6) >>= divisors >>= spellings) |> join(", "))
+write_line((unit(6) >>= divisors) |> join())
+write_line((unit(6) >>= divisors >>= spellings) |> join())

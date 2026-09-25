@@ -25,7 +25,7 @@ is
     let table = [
         (steps = 0, next = 0, label = ""),
         (steps = 0, next = 0, label = "")
-    ] |> collect_list()
+    ] |> collect_mutable()
 
     for value in 2::limit do
         let cheapest =

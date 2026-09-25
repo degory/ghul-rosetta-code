@@ -6,11 +6,12 @@ best_shuffle(text: string) -> string is
             |> group_by(i => text[i])
             |> map(((_, positions)) => positions)
             |> sort_by_descending(positions => positions.count)
-            |> collect_list()
+            |> collect_mutable()
 
-    let order = groups |> flat_map(positions => positions) |> collect_list()
+    let order =
+        groups |> flat_map(positions => positions) |> collect_mutable()
     let shift = groups |> map(positions => positions.count) |> max() ?? 0
-    let shuffled = repeat(' ', text.length) |> collect_list()
+    let shuffled = repeat(' ', text.length) |> collect_mutable()
 
     for (at, position) in order |> index() do
         shuffled[position] = text[order[(at + shift) % order.count]]

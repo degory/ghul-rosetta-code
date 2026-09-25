@@ -5,7 +5,7 @@ use System.Math
 
 let days = 365
 let random = System.Random(365)
-let counts = repeat(0, days) |> collect_list()
+let counts = repeat(0, days) |> collect_mutable()
 
 shared(people: int, at_least: int) -> bool is
     for day in 0..days do
@@ -34,7 +34,7 @@ log_factorial(n: int) -> double =>
     1::n |> reduce(0.0D, (s, i) => s + Math.log(cast double(i)))
 
 exact(most: int, at_least: int) -> List[double] is
-    let ways mut = repeat(0.0D, most + 1) |> collect_list()
+    let ways mut = repeat(0.0D, most + 1) |> collect_mutable()
 
     ways[0] = 1.0D
 
@@ -44,7 +44,7 @@ exact(most: int, at_least: int) -> List[double] is
             |> collect()
 
     for _ in 0..days do
-        let next = repeat(0.0D, most + 1) |> collect_list()
+        let next = repeat(0.0D, most + 1) |> collect_mutable()
 
         for m in 0::most do
             for j in 0..Math.min(at_least, m + 1) do

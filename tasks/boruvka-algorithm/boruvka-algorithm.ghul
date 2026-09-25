@@ -13,7 +13,7 @@ let edges: List[Edge] =
         (2, 3, 4)
     ]
 
-let tree = repeat(0, vertices) |> collect_list()
+let tree = repeat(0, vertices) |> collect_mutable()
 
 for vertex in 0..vertices do
     tree[vertex] = vertex

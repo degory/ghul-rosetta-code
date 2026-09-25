@@ -3,7 +3,7 @@ use default
 let random = System.Random(52)
 
 shuffled[T](items: Iterable[T]) -> LIST[T] =>
-    items |> sort_by(_ => random.next()) |> collect_list()
+    items |> sort_by(_ => random.next()) |> collect_mutable()
 
 trial() -> (black_in_black: int, red_in_red: int) is
     let deck = shuffled(repeat('R', 26) |> cat(repeat('B', 26)))
@@ -17,8 +17,8 @@ trial() -> (black_in_black: int, red_in_red: int) is
     od
 
     let swap = random.next(int.min(black.count, red.count) + 1)
-    let black_bunch = shuffled(black) |> take(swap) |> collect_list()
-    let red_bunch = shuffled(red) |> take(swap) |> collect_list()
+    let black_bunch = shuffled(black) |> take(swap) |> collect_mutable()
+    let red_bunch = shuffled(red) |> take(swap) |> collect_mutable()
 
     for card in black_bunch do black.remove(card) od
     for card in red_bunch do red.remove(card) od

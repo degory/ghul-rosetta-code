@@ -13,12 +13,13 @@ value_in(digits: List[int], base: int) -> long =>
 // every base up to n itself, so only those bases are tried.
 
 is_pan_base_non_prime(n: int) -> bool =>
-    let digits = "{n}" |> map(c => cast int(c - '0')) |> collect_list() in
+    let digits = "{n}" |> map(c => cast int(c - '0'))
+        |> collect_mutable() in
     let lowest = (digits |> max()!) + 1 in
     lowest..int.max(lowest + 1, n + 1)
         |> all(base => !is_prime(value_in(digits, base)))
 
-let found = 2::1000 |> filter(is_pan_base_non_prime) |> collect_list()
+let found = 2::1000 |> filter(is_pan_base_non_prime) |> collect_mutable()
 
 write_line("The first 40 pan-base non-primes:")
 write_line(found |> take(40) |> join(" "))

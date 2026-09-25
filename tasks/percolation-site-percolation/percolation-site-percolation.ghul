@@ -14,9 +14,9 @@ class GRID is
         filled =
             (0..size * size)
                 |> map(_ => random.next_double() < p)
-                |> collect_array()
+                |> collect()
 
-        reached = repeat(false, size * size) |> collect_list()
+        reached = repeat(false, size * size) |> collect_mutable()
     si
 
     is_filled(column: int, row: int) -> bool =>

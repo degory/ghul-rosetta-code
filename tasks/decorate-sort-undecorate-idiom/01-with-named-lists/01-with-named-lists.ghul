@@ -14,5 +14,5 @@ si
 let words =
     ["Rosetta", "Code", "is", "a", "programming", "chrestomathy", "site"]
 
-write_line(words |> decorate_sort_undecorate(w => w.length) |> join(", "))
-write_line(words |> decorate_sort_undecorate(w => w[0]) |> join(", "))
+write_line(words |> decorate_sort_undecorate(w => w.length) |> join())
+write_line(words |> decorate_sort_undecorate(w => w[0]) |> join())

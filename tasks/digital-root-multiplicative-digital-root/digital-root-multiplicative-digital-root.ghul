@@ -30,7 +30,7 @@ for target in 0::9 do
         from(0L)
             |> filter(n => root(n).root == cast long(target))
             |> take(5)
-            |> collect_list()
+            |> collect_mutable()
 
     write_line("{target,3}: {numbers}")
 od

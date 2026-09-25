@@ -109,7 +109,7 @@ show(start: int) is
     let steps = chain.count - 1
     let stages = 0..steps
         |> map(index => "HP{chain[index]}({steps - index})")
-        |> collect_list()
+        |> collect_mutable()
 
     if steps == 0 then
         stages.add("HP{chain[0]}")

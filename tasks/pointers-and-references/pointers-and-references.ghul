@@ -37,6 +37,6 @@ let boxes = [BOX(10), BOX(20)]
 
 boxes |> each(b => bump_box(b))
 
-let values = boxes |> map(b => b.value) |> join(", ")
+let values = boxes |> map(b => b.value) |> join()
 
 write_line("elements are the objects themselves: {values}")

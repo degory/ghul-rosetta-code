@@ -31,7 +31,7 @@ report(wanted: int, least_ways: int, highest: int) is
         if ways.count >= least_ways then
             found = found + 1
 
-            write_line(ways |> map(e => "{n}^{e}") |> join(", "))
+            write_line(ways |> map(e => "{n}^{e}") |> join())
         fi
     od
 si

@@ -30,7 +30,7 @@ cyclotomic(n: int) -> List[long] is
         |> collect()
 
     let degree = factors |> map(f => f.power * f.exponent) |> sum()
-    let series = repeat(0L, degree + 1) |> collect_list()
+    let series = repeat(0L, degree + 1) |> collect_mutable()
     series[0] = 1L
 
     for (power, exponent) in factors do

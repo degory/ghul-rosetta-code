@@ -8,7 +8,7 @@ digit_sum(n: int) -> int => "{n}" |> map(c => cast int(c - '0')) |> sum()
 let limit = 100_000
 
 let consummate = (
-    let seen = repeat(false, limit) |> collect_list()
+    let seen = repeat(false, limit) |> collect_mutable()
 
     for n in 1..6_300_000 do
         let s = digit_sum(n)
@@ -21,7 +21,8 @@ let consummate = (
     seen
 )
 
-let inconsummate = 1..limit |> filter(n => !consummate[n]) |> collect_list()
+let inconsummate = 1..limit |> filter(n => !consummate[n])
+    |> collect_mutable()
 
 write_line("The first 50 inconsummate numbers:")
 

@@ -16,7 +16,7 @@ class GRID is
         floors =
             (0..(height + 1) * width)
                 |> map(_ => random.next_double() < p)
-                |> collect_array()
+                |> collect()
 
         sides =
             (0..height * (width + 1))
@@ -24,9 +24,9 @@ class GRID is
                     let column = i % (width + 1) in
                     column == 0 \/ column == width \/
                         random.next_double() < p)
-                |> collect_array()
+                |> collect()
 
-        wet = repeat(false, width * height) |> collect_list()
+        wet = repeat(false, width * height) |> collect_mutable()
     si
 
     floor(column: int, row: int) -> bool => floors[row * width + column]

@@ -30,7 +30,7 @@ si
 modulo(value: bigint, m: bigint) -> bigint => ((value % m) + m) % m
 
 smallest_start(n: int) -> bigint? is
-    let primes = 2..n |> filter(is_prime) |> collect_list()
+    let primes = 2..n |> filter(is_prime) |> collect_mutable()
 
     let divides =
         0..n
@@ -40,7 +40,7 @@ smallest_start(n: int) -> bigint? is
                     |> filter(((_, p)) => v % p == 0)
                     |> map(((i, _)) => 1L << i)
                     |> reduce(0L, (x: long, y: long) => x | y))
-            |> collect_list()
+            |> collect_mutable()
 
     let partitions: List[Partition] mut =
         [(0L, 0L, (1L << primes.count) - 1L)]
@@ -65,9 +65,9 @@ smallest_start(n: int) -> bigint? is
                             |> cat(
                                 set_bits(far & unassigned)
                                     |> map(w => (a, b ^ w, unassigned ^ w)))
-                            |> collect_list()
+                            |> collect_mutable()
                     fi)
-                |> collect_list()
+                |> collect_mutable()
     od
 
     product_of(mask: long) -> bigint =>

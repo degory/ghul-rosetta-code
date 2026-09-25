@@ -69,7 +69,7 @@ divide(width: double, height: double, count: int) -> List[Triangle] is
 
             let candidate =
                 triangles |> index() |> filter(e => e.index != largest)
-                    |> map(e => e.value) |> collect_list()
+                    |> map(e => e.value) |> collect_mutable()
 
             candidate.add(first)
             candidate.add(second)

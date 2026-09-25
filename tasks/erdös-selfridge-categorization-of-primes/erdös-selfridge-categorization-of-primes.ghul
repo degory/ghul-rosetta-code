@@ -3,7 +3,7 @@ use default
 let limit = 15_485_864
 
 let smallest_factor = (
-    let factors = repeat(0, limit + 1) |> collect_list()
+    let factors = repeat(0, limit + 1) |> collect_mutable()
 
     for n in 2::limit do
         if factors[n] == 0 then
@@ -18,7 +18,7 @@ let smallest_factor = (
     factors
 )
 
-let category = repeat(0, limit + 1) |> collect_list()
+let category = repeat(0, limit + 1) |> collect_mutable()
 
 prime_factors(n: int) -> Pipe[int] is
     let rest mut = n
@@ -45,7 +45,7 @@ let primes =
     2::limit
         |> filter(n => smallest_factor[n] == n)
         |> take(1_000_000)
-        |> collect_list()
+        |> collect_mutable()
 
 for p in primes do
     category[p] = categorise(p)

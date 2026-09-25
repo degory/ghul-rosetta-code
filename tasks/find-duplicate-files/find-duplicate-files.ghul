@@ -26,7 +26,7 @@ same_contents(root: string, size: long, paths: Iterable[string])
                 same
                     |> map(path => Path.get_relative_path(root, path))
                     |> sort()
-                    |> collect_array()))
+                    |> collect()))
         |> filter(((_, paths)) => paths.count > 1)
 
 duplicates(root: string, minimum: long) -> List[Group] =>
@@ -37,7 +37,7 @@ duplicates(root: string, minimum: long) -> List[Group] =>
         |> flat_map(((size, files)) =>
             same_contents(root, size, files |> map(((path, _)) => path)))
         |> sort_by_descending(((size, _)) => size)
-        |> collect_list()
+        |> collect_mutable()
 
 let root =
     Path.combine(

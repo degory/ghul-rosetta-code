@@ -53,12 +53,12 @@ emirps() -> Ghul.Pipes.Pipe[int] is
 si
 
 let first_twenty = emirps() |> take(20)
-let first_twenty_text = first_twenty |> map(n => "{n}") |> join(", ")
+let first_twenty_text = first_twenty |> map(n => "{n}") |> join()
 
 write_line("first 20 emirps: {first_twenty_text}")
 
 let in_range = 7700::8000 |> filter(is_emirp)
-let in_range_text = in_range |> map(n => "{n}") |> join(", ")
+let in_range_text = in_range |> map(n => "{n}") |> join()
 
 write_line("emirps between 7700 and 8000: {in_range_text}")
 

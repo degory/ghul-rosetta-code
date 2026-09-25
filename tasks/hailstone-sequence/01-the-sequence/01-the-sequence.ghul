@@ -17,8 +17,8 @@ si
 
 let sequence = hailstone(27) |> collect()
 write_line("length of hailstone(27): {sequence.count}")
-let first = sequence[0..4] |> join(", ")
-let last = sequence[4..<<0] |> join(", ")
+let first = sequence[0..4] |> join()
+let last = sequence[4..<<0] |> join()
 
 write_line("first four: {first}")
 write_line("last four: {last}")

@@ -42,8 +42,8 @@ step(grid: Grid) -> Grid is
         |> map(row =>
             0..grid[0].count
                 |> map(column => alive(row, column))
-                |> collect_list())
-        |> collect_list()
+                |> collect_mutable())
+        |> collect_mutable()
 si
 
 show(generation: int, grid: Grid) is
@@ -62,7 +62,7 @@ parse(rows: string[]) -> Grid is
     let grid = LIST()
 
     for row in rows do
-        grid.add(row |> map(c => c == '#') |> collect_list())
+        grid.add(row |> map(c => c == '#') |> collect_mutable())
     od
 
     grid

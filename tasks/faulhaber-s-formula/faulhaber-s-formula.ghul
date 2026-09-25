@@ -21,7 +21,9 @@ greatest_common_divisor(a: long, b: long) -> long =>
 
 bernoulli(n: int) -> FRACTION is
     let a =
-        0::n |> map(m => fraction(1L, cast long(m + 1))) |> collect_list()
+        0::n
+            |> map(m => fraction(1L, cast long(m + 1)))
+            |> collect_mutable()
 
     for m in 1::n do
         for j in 1::m |> reverse() do
@@ -53,7 +55,7 @@ faulhaber(p: int) -> string =>
                         bernoulli(j),
                  power = p + 1 - j))
             |> filter(t => t.coefficient.numerator != 0L)
-            |> collect_list()
+            |> collect_mutable()
     in
     terms
         |> index()

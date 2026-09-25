@@ -7,7 +7,7 @@ show(label: string, sequence: List[char]) is
     write_line(label)
 
     for (row, line) in sequence |> chunk(50) |> index() do
-        write_line("{row * 50,5}  {string(line |> collect_array())}")
+        write_line("{row * 50,5}  {string(line |> collect())}")
     od
 
     let tally =
@@ -42,7 +42,7 @@ mutate(sequence: LIST[char]) -> string is
 si
 
 let sequence =
-    0..200 |> map(_ => bases[random.next(0, 4)]) |> collect_list()
+    0..200 |> map(_ => bases[random.next(0, 4)]) |> collect_mutable()
 
 show("original sequence:", sequence)
 

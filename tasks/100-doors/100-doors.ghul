@@ -1,6 +1,6 @@
 use default
 
-let doors = repeat(false, 100) |> collect_list()
+let doors = repeat(false, 100) |> collect_mutable()
 
 for pass in 1::100 do
     let door mut = pass

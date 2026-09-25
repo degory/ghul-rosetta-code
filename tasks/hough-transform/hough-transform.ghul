@@ -28,7 +28,7 @@ let source = IMAGE.read("pentagon.png")
 let diagonal = Math.sqrt(2.0D) * cast double(size) / 2.0D
 let distances = cast int(2.0D * diagonal) + 1
 
-let votes = repeat(0, angles * distances) |> collect_list()
+let votes = repeat(0, angles * distances) |> collect_mutable()
 
 for y in 0..size do
     for x in 0..size do

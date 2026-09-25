@@ -21,7 +21,7 @@ si
 let doughnuts = ["iced", "jam", "plain"]
 let picks = combos(doughnuts, 2)
 
-let choices = doughnuts |> join(", ")
+let choices = doughnuts |> join()
 
 write_line("choosing 2 from {choices}: {picks |> count()} ways")
 

@@ -24,7 +24,7 @@ od
 let cliques = LIST[List[string]]()
 
 report(clique: SET[string]) is
-    let members = clique |> collect_list()
+    let members = clique |> collect_mutable()
 
     members.sort()
 

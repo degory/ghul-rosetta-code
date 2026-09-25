@@ -21,4 +21,4 @@ under_represented(position: int) -> char =>
                 missing
             fi)
 
-write_line(string(0..4 |> map(under_represented) |> collect_array()))
+write_line(string(0..4 |> map(under_represented) |> collect()))

@@ -1,7 +1,7 @@
 use default
 
 de_bruijn(k: int, n: int) -> string is
-    let a = repeat(0, k * n) |> collect_list()
+    let a = repeat(0, k * n) |> collect_mutable()
     let digits = LIST[int]()
 
     extend(t: int, p: int) is
@@ -57,5 +57,5 @@ write_line(sequence[130..<<0])
 write_line()
 
 verify("Original", sequence)
-verify("Reversed", string(sequence |> reverse() |> collect_array()))
+verify("Reversed", string(sequence |> reverse() |> collect()))
 verify("4444th digit replaced", "{sequence[0..4443]}.{sequence[4444..<0]}")

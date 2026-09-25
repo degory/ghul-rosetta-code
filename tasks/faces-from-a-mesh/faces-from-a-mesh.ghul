@@ -6,7 +6,7 @@ rotations(face: List[int]) -> Pipe[LIST[int]] =>
         |> map(offset =>
             0..face.count
                 |> map(index => face[(index + offset) % face.count])
-                |> collect_list())
+                |> collect_mutable())
 
 same_perimeter(one: List[int], other: List[int]) -> bool =>
     one.count == other.count /\

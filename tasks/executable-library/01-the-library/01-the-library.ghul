@@ -18,8 +18,8 @@ namespace Hailstone is
 
     entry() is
         let sequence = hailstone(27L)
-        let first = sequence |> take(4) |> join(", ")
-        let last = sequence |> skip(sequence.count - 4) |> join(", ")
+        let first = sequence |> take(4) |> join()
+        let last = sequence |> skip(sequence.count - 4) |> join()
 
         write_line(
             "hailstone(27) has {sequence.count} elements: "

@@ -3,7 +3,7 @@ use default
 let digits = "0123456789abcdefghijklmnopqrstuvwxyz"
 
 sieve(limit: int) -> List[bool] is
-    let composite = repeat(false, limit + 1) |> collect_list()
+    let composite = repeat(false, limit + 1) |> collect_mutable()
 
     composite[0] = true
     composite[1] = true
