@@ -1,0 +1,27 @@
+use default
+
+use System.Numerics.Complex
+
+roots_of_unity(n: int) -> Pipe[Complex] =>
+    (0..n)
+    |> map(k => Complex.from_polar_coordinates(
+        1.0, 2.0 * System.Math.pi * cast double(k) / cast double(n)))
+
+tidy(x: double) -> double =>
+    if System.Math.abs(x) < 0.00005 then 0.0 else x fi
+
+show(z: Complex) -> string is
+    let re = tidy(z.real)
+    let im = tidy(z.imaginary)
+    let sign = if im < 0.0 then "-" else "+" fi
+
+    return "{re,7:F4} {sign} {System.Math.abs(im):F4}i"
+si
+
+for n in 1::6 do
+    write_line("n = {n}:")
+
+    for z in roots_of_unity(n) do
+        write_line("  {show(z)}")
+    od
+od

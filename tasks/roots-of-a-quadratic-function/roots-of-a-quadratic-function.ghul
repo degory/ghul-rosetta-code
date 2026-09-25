@@ -1,0 +1,48 @@
+use default
+
+use Math = System.Math
+
+union Roots is
+    REAL(first: double, second: double)
+    COMPLEX(re: double, im: double)
+si
+
+solve(a: double, b: double, c: double) -> Roots is
+    let discriminant = b * b - 4.0 * a * c
+
+    if discriminant < 0.0 then
+        let im = Math.sqrt(-discriminant) / (2.0 * a)
+        return Roots.COMPLEX(-b / (2.0 * a), im)
+    fi
+
+    let sign = if b < 0.0 then -1.0 else 1.0 fi
+    let q = -(b + sign * Math.sqrt(discriminant)) / 2.0
+
+    if q == 0.0 then
+        return Roots.REAL(0.0, 0.0)
+    fi
+
+    return Roots.REAL(q / a, c / q)
+si
+
+describe(roots: Roots) -> string =>
+    case roots
+    when (first, second): Roots.REAL then
+        "{first:G6} and {second:G6}"
+    when (re, im): Roots.COMPLEX then
+        "{re:G6} + {im:G6}i and {re:G6} - {im:G6}i"
+    esac
+
+let equations = [
+    (1.0, -1.0e9, 1.0),
+    (1.0, -3.0, 2.0),
+    (1.0, 2.0, 1.0),
+    (1.0, 2.0, 5.0),
+    (2.0, 0.0, -8.0),
+    (1.0, 0.0, 0.0)
+]
+
+for (a, b, c) in equations do
+    let roots = describe(solve(a, b, c))
+    write_line("a = {a:G6}, b = {b:G6}, c = {c:G6}: {roots}")
+od

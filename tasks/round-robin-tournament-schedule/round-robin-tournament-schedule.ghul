@@ -1,0 +1,39 @@
+use default
+
+rounds(players: int) -> Pipe[Collections.List[(int, int)]] is
+    let n = if players % 2 == 0 then players else players + 1 fi
+    let seats = (1::n) |> collect_list()
+
+    for _ in 1..n do
+        yield
+            (0..n / 2)
+            |> map(i => (seats[i], seats[n - 1 - i]))
+            |> collect()
+
+        let last = seats[n - 1]
+        seats.remove_at(n - 1)
+        seats.insert(1, last)
+    od
+si
+
+show(player: int, players: int) -> string =>
+    if player > players then "bye" else "{player}" fi
+
+schedule(players: int) is
+    write_line("{players} players:")
+
+    for (round, games) in rounds(players) |> index() do
+        let line =
+            games
+            |> map(((a, b)) =>
+                "{show(a, players),3} v {show(b, players),-3}")
+            |> join(" ")
+
+        write_line("round {round + 1,2}: {line}".trim_end())
+    od
+
+    write_line("")
+si
+
+schedule(12)
+schedule(5)

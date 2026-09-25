@@ -1,0 +1,30 @@
+use default
+
+use Math = System.Math
+
+rk4(
+    f: (double, double) -> double, dt: double
+) -> ((double, double)) -> (double, double) =>
+    ((t, y)) => (
+        let dy1 = dt * f(t, y)
+        let dy2 = dt * f(t + dt / 2.0, y + dy1 / 2.0)
+        let dy3 = dt * f(t + dt / 2.0, y + dy2 / 2.0)
+        let dy4 = dt * f(t + dt, y + dy3)
+
+        (t + dt, y + (dy1 + 2.0 * dy2 + 2.0 * dy3 + dy4) / 6.0)
+    )
+
+exact(t: double) -> double => Math.pow(t * t + 4.0, 2.0) / 16.0
+
+let step = rk4((t, y) => t * Math.sqrt(y), 0.1)
+let point mut = (0.0, 1.0)
+
+for n in 0::100 do
+    let (t, y) = point
+
+    if n % 10 == 0 then
+        write_line("y({t,4:F1}) = {y,12:F6}  error = {y - exact(t):E6}")
+    fi
+
+    point = step(point)
+od

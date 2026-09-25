@@ -25249,6 +25249,32 @@
       ]
     },
     {
+      "slug": "resistor-mesh",
+      "title": "Resistor mesh",
+      "url": "https://rosettacode.org/wiki/Resistor_mesh",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 83,
+      "parts": [
+        {
+          "id": "resistor-mesh",
+          "heading": null,
+          "source": "tasks/resistor-mesh/resistor-mesh.ghul",
+          "output": "tasks/resistor-mesh/run.expected",
+          "lines": 83,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "return-multiple-values",
       "title": "Return multiple values",
       "url": "https://rosettacode.org/wiki/Return_multiple_values",
@@ -25565,6 +25591,112 @@
       ]
     },
     {
+      "slug": "roots-of-a-function",
+      "title": "Roots of a function",
+      "url": "https://rosettacode.org/wiki/Roots_of_a_function",
+      "tags": [
+        "maths",
+        "generators",
+        "unions"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "roots-of-a-function",
+          "heading": null,
+          "source": "tasks/roots-of-a-function/roots-of-a-function.ghul",
+          "output": "tasks/roots-of-a-function/run.expected",
+          "lines": 57,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "roots-of-a-quadratic-function",
+      "title": "Roots of a quadratic function",
+      "url": "https://rosettacode.org/wiki/Roots_of_a_quadratic_function",
+      "tags": [
+        "maths",
+        "unions",
+        "pattern-matching"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 48,
+      "parts": [
+        {
+          "id": "roots-of-a-quadratic-function",
+          "heading": null,
+          "source": "tasks/roots-of-a-quadratic-function/roots-of-a-quadratic-function.ghul",
+          "output": "tasks/roots-of-a-quadratic-function/run.expected",
+          "lines": 48,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "roots-of-unity",
+      "title": "Roots of unity",
+      "url": "https://rosettacode.org/wiki/Roots_of_unity",
+      "tags": [
+        "maths",
+        "dotnet-interop"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "roots-of-unity",
+          "heading": null,
+          "source": "tasks/roots-of-unity/roots-of-unity.ghul",
+          "output": "tasks/roots-of-unity/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "rosetta-code-find-bare-lang-tags",
+      "title": "Rosetta Code/Find bare lang tags",
+      "url": "https://rosettacode.org/wiki/Rosetta_Code/Find_bare_lang_tags",
+      "tags": [
+        "text-processing",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "rosetta-code-find-bare-lang-tags",
+          "heading": null,
+          "source": "tasks/rosetta-code-find-bare-lang-tags/rosetta-code-find-bare-lang-tags.ghul",
+          "output": "tasks/rosetta-code-find-bare-lang-tags/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rot-13",
       "title": "Rot-13",
       "url": "https://rosettacode.org/wiki/Rot-13",
@@ -25622,6 +25754,58 @@
       ]
     },
     {
+      "slug": "round-robin-tournament-schedule",
+      "title": "Round-robin tournament schedule",
+      "url": "https://rosettacode.org/wiki/Round-robin_tournament_schedule",
+      "tags": [
+        "algorithms",
+        "generators"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "round-robin-tournament-schedule",
+          "heading": null,
+          "source": "tasks/round-robin-tournament-schedule/round-robin-tournament-schedule.ghul",
+          "output": "tasks/round-robin-tournament-schedule/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "routh-hurwitz-stability-criterion",
+      "title": "Routh–Hurwitz stability criterion",
+      "url": "https://rosettacode.org/wiki/Routh–Hurwitz_stability_criterion",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 95,
+      "parts": [
+        {
+          "id": "routh-hurwitz-stability-criterion",
+          "heading": null,
+          "source": "tasks/routh-hurwitz-stability-criterion/routh-hurwitz-stability-criterion.ghul",
+          "output": "tasks/routh-hurwitz-stability-criterion/run.expected",
+          "lines": 95,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "rpg-attributes-generator",
       "title": "RPG attributes generator",
       "url": "https://rosettacode.org/wiki/RPG_attributes_generator",
@@ -25641,6 +25825,32 @@
           "source": "tasks/rpg-attributes-generator/rpg-attributes-generator.ghul",
           "output": "tasks/rpg-attributes-generator/run.expected",
           "lines": 40,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "rsa-code",
+      "title": "RSA code",
+      "url": "https://rosettacode.org/wiki/RSA_code",
+      "tags": [
+        "number-theory",
+        "strings"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 54,
+      "parts": [
+        {
+          "id": "rsa-code",
+          "heading": null,
+          "source": "tasks/rsa-code/rsa-code.ghul",
+          "output": "tasks/rsa-code/run.expected",
+          "lines": 54,
           "playground": true,
           "input": false,
           "images": []
@@ -25697,6 +25907,32 @@
           "source": "tasks/run-length-encoding/run-length-encoding.ghul",
           "output": "tasks/run-length-encoding/run.expected",
           "lines": 50,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "runge-kutta-method",
+      "title": "Runge-Kutta method",
+      "url": "https://rosettacode.org/wiki/Runge-Kutta_method",
+      "tags": [
+        "maths",
+        "closures"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 30,
+      "parts": [
+        {
+          "id": "runge-kutta-method",
+          "heading": null,
+          "source": "tasks/runge-kutta-method/runge-kutta-method.ghul",
+          "output": "tasks/runge-kutta-method/run.expected",
+          "lines": 30,
           "playground": true,
           "input": false,
           "images": []

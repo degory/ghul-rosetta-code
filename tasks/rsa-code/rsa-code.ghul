@@ -1,0 +1,54 @@
+use default
+
+use System.Text.Encoding
+
+let n = bigint.parse("9516311845790656153499716760847001433441357")
+let e = 65537n
+let d = bigint.parse("5617843187844953170308463622230283376298685")
+
+let block_size = 17
+
+encode(block: Collections.List[ubyte]) -> bigint =>
+    block |> reduce(0n, (total, b) => total * 256n + bigint(cast int(b)))
+
+decode(number: bigint) -> ubyte[] is
+    let bytes = LIST[ubyte]()
+    let remaining mut = number
+
+    while remaining > 0n do
+        bytes.insert(0, cast ubyte(cast int(remaining % 256n)))
+        remaining = remaining / 256n
+    od
+
+    return bytes |> collect_array()
+si
+
+for message in [
+    "Rosetta Code",
+    "A longer message is split into blocks, each smaller than n"
+] do
+    write_line("plaintext: {message}")
+
+    let blocks =
+        Encoding.utf8.get_bytes(message)
+        |> chunk(block_size)
+        |> map(encode)
+        |> collect()
+
+    let decrypted = LIST[ubyte]()
+
+    for block in blocks do
+        let encrypted = bigint.mod_pow(block, e, n)
+        let restored = bigint.mod_pow(encrypted, d, n)
+
+        write_line("  encoded:   {block}")
+        write_line("  encrypted: {encrypted}")
+        write_line("  decrypted: {restored}")
+
+        decrypted.add_range(decode(restored))
+    od
+
+    let text = Encoding.utf8.get_string(decrypted |> collect_array())
+    write_line("decrypted: {text}")
+    write_line("")
+od

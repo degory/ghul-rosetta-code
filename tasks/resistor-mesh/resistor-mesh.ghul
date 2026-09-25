@@ -1,0 +1,83 @@
+use default
+
+use Node = (row: int, col: int)
+
+let size = 10
+
+neighbours(node: Node) -> Pipe[Node] =>
+    [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    |> map(((dr, dc)) => (row = node.row + dr, col = node.col + dc))
+    |> filter(n => n.row >= 0 /\ n.row < size /\ n.col >= 0 /\ n.col < size)
+
+index_of(node: Node) -> int => node.row * size + node.col
+
+solve(matrix: LIST[LIST[double]], rhs: LIST[double]) -> LIST[double] is
+    let n = rhs.count
+
+    for column in 0..n do
+        let pivot =
+            (column..n)
+            |> max_by(row => System.Math.abs(matrix[row][column]))!
+
+        (matrix[column], matrix[pivot]) = (matrix[pivot], matrix[column])
+        (rhs[column], rhs[pivot]) = (rhs[pivot], rhs[column])
+
+        for row in column + 1..n do
+            let factor = matrix[row][column] / matrix[column][column]
+
+            if factor != 0.0 then
+                for k in column..n do
+                    matrix[row][k] =
+                        matrix[row][k] - factor * matrix[column][k]
+                od
+
+                rhs[row] = rhs[row] - factor * rhs[column]
+            fi
+        od
+    od
+
+    let result = repeat(0.0, n) |> collect_list()
+
+    for row in (0..n) |> reverse() do
+        let known =
+            (row + 1..n) |> map(k => matrix[row][k] * result[k]) |> sum()
+
+        result[row] = (rhs[row] - known) / matrix[row][row]
+    od
+
+    return result
+si
+
+resistance(a: Node, b: Node) -> double is
+    let count = size * size
+    let matrix =
+        (0..count)
+        |> map(_ => repeat(0.0, count) |> collect_list())
+        |> collect_list()
+    let current = repeat(0.0, count) |> collect_list()
+
+    for row in 0..size do
+        for col in 0..size do
+            let node = (row = row, col = col)
+            let i = index_of(node)
+
+            if node =~ b then
+                matrix[i][i] = 1.0
+            else
+                for other in neighbours(node) do
+                    matrix[i][i] = matrix[i][i] + 1.0
+                    matrix[i][index_of(other)] = -1.0
+                od
+            fi
+        od
+    od
+
+    current[index_of(a)] = 1.0
+
+    return solve(matrix, current)[index_of(a)]
+si
+
+let a = (row = 1, col = 1)
+let b = (row = 6, col = 7)
+
+write_line("R between {a} and {b} = {resistance(a, b):F14} ohms")
