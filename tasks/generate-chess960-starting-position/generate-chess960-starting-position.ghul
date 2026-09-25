@@ -5,7 +5,7 @@ let knight_pairs = 0..5
     |> collect()
 
 position(number: int) -> string is
-    let squares = repeat('.', 8) |> collect_list()
+    let squares = repeat('.', 8) |> collect_mutable()
 
     place(piece: char, among_empty: int) is
         let square = 0..8
@@ -32,7 +32,7 @@ position(number: int) -> string is
         place(piece, 0)
     od
 
-    string(squares |> collect_array())
+    string(squares |> collect())
 si
 
 is_legal(rank: string) -> bool =>

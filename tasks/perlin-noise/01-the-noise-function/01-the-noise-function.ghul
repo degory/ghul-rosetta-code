@@ -24,7 +24,7 @@ let permutation = [
 let p =
     (0..512)
     |> map(index => permutation[index % 256])
-    |> collect_array()
+    |> collect()
 
 fade(t: double) -> double => t * t * t * (t * (t * 6.0 - 15.0) + 10.0)
 

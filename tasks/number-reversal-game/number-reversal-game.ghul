@@ -4,7 +4,7 @@ use IO.Std.read_line
 let random = System.Random(9)
 
 shuffled() -> LIST[int] is
-    let digits = 1::9 |> collect_list()
+    let digits = 1::9 |> collect_mutable()
 
     for i in 0..8 do
         let other = i + random.next(9 - i)

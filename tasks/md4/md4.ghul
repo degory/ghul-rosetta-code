@@ -43,7 +43,7 @@ md4(message: ubyte[]) -> string is
         let words =
             0..16
                 |> map(index => word(block, start + index * 4))
-                |> collect_array()
+                |> collect()
 
         let registers = LIST(state)
 

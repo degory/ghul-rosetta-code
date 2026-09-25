@@ -41,7 +41,7 @@ swarm(problem: PROBLEM) -> (best: V2, particles: LIST[PARTICLE]) is
                         between(-span.x, span.x),
                         between(-span.y, span.y)),
                     at))
-            |> collect_list()
+            |> collect_mutable()
 
     let best mut = particles[0].best
 

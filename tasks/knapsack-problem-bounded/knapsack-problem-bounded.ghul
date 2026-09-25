@@ -40,7 +40,7 @@ let copies =
 
 let best =
     0::copies.count
-    |> map(_ => repeat(0, capacity + 1) |> collect_list())
+    |> map(_ => repeat(0, capacity + 1) |> collect_mutable())
     |> collect()
 
 for at in 0..copies.count do

@@ -5,10 +5,10 @@ shuffle(deck: List[int]) -> List[int] =>
     0..deck.count
         |> map(i =>
             if i % 2 == 0 then deck[i / 2] else deck[half + i / 2] fi)
-        |> collect_list()
+        |> collect_mutable()
 
 shuffles_needed(size: int) -> int is
-    let original = 0..size |> collect_list()
+    let original = 0..size |> collect_mutable()
     let deck mut = shuffle(original)
     let count mut = 1
 

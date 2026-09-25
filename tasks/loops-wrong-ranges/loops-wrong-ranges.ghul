@@ -22,9 +22,9 @@ for (start, stop, step, comment) in cases do
         from(start, step)
             |> take_while(v => v <= stop)
             |> take(11)
-            |> collect_list()
+            |> collect_mutable()
 
-    let shown = values |> take(10) |> join(", ")
+    let shown = values |> take(10) |> join()
     let more = if values.count > 10 then ", ..." else "" fi
 
     write_line("{comment}")

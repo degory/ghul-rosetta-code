@@ -76,7 +76,7 @@ write_line("prefixes of \"{example}\", key 2")
 write_line("")
 
 for prefix in built.prefixes do
-    let words_after = built.by_prefix[prefix] |> join(", ")
+    let words_after = built.by_prefix[prefix] |> join()
 
     write_line("  {prefix,-10} {words_after}".trim_end())
 od
@@ -86,7 +86,7 @@ let size = if args.count > 1 then int.parse(args[1]) else 2 fi
 let length = if args.count > 2 then int.parse(args[2]) else 60 fi
 
 let words = IO.File.read_all_text(path).split([' ', '\n', '\r', '\t'])
-let corpus = words |> filter(w => w.length > 0) |> collect_array()
+let corpus = words |> filter(w => w.length > 0) |> collect()
 let source = suffixes(corpus, size)
 let random = System.Random(2026)
 let start = source.prefixes[random.next(0, source.prefixes.count)]

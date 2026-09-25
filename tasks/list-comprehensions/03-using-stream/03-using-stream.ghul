@@ -9,4 +9,4 @@ triples(n: int) -> Pipe[(int, int, int)] =>
         fi)
     |> filter(((a, b, c)) => a * a + b * b == c * c)
 
-write_line(triples(20) |> join(", "))
+write_line(triples(20) |> join())

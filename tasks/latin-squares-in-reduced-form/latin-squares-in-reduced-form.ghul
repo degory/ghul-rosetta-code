@@ -32,7 +32,7 @@ reduced_latin_squares(n: int) -> Pipe[List[List[int]]] =>
                 if row == 0 then column + 1
                 elif column == 0 then row + 1
                 else 0 fi)
-            |> collect_list())
+            |> collect_mutable())
         |> collect() in
     let cells = 1..n
         |> flat_map(row => 1..n |> map(column => (row, column)))

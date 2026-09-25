@@ -35,7 +35,7 @@ for _ in 1::5 do
 od
 
 let generator = MRG32K3A(987654321L)
-let counts = repeat(0, 5) |> collect_list()
+let counts = repeat(0, 5) |> collect_mutable()
 
 for _ in 1::100_000 do
     let bucket = cast int(generator.next_float() * 5.0)
@@ -44,4 +44,4 @@ for _ in 1::100_000 do
 od
 
 write_line("")
-write_line(0..5 |> map(i => "{i}: {counts[i]}") |> join(", "))
+write_line(0..5 |> map(i => "{i}: {counts[i]}") |> join())

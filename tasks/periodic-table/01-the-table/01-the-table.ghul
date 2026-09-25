@@ -47,7 +47,7 @@ let table = symbols()
 
 let grid =
     repeat(0, 9)
-    |> map(_ => repeat(" ", 18) |> collect_list())
+    |> map(_ => repeat(" ", 18) |> collect_mutable())
     |> collect()
 
 for z in 1::118 do

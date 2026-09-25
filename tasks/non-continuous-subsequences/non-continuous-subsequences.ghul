@@ -14,5 +14,5 @@ continuous(chosen: List[int]) -> bool =>
 (1..(1 << elements.count))
     |> map(selected)
     |> filter(chosen => chosen.count > 1 /\ !continuous(chosen))
-    |> map(chosen => chosen |> join(", "))
+    |> map(chosen => chosen |> join())
     |> each(line => write_line(line))

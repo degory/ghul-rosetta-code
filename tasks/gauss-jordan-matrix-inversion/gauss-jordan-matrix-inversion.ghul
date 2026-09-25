@@ -7,8 +7,8 @@ invert(a: List[List[double]]) -> List[List[double]] is
         |> map(i =>
             a[i]
                 |> cat(0..n |> map(j => if i == j then 1.0 else 0.0 fi))
-                |> collect_list())
-        |> collect_list()
+                |> collect_mutable())
+        |> collect_mutable()
 
     for k in 0..n do
         let pivot = k..n |> max_by(i => System.Math.abs(rows[i][k]))!

@@ -1,7 +1,7 @@
 use default
 
 primes(limit: int) -> Pipe[int] is
-    let composite = repeat(false, limit) |> collect_list()
+    let composite = repeat(false, limit) |> collect_mutable()
 
     for n in 2..limit do
         if !composite[n] then
@@ -20,7 +20,7 @@ primes(limit: int) -> Pipe[int] is
 si
 
 let count = 1_000_000
-let transitions = repeat(0, 100) |> collect_list()
+let transitions = repeat(0, 100) |> collect_mutable()
 let previous mut = 2
 
 for p in primes(15_500_000) |> skip(1) |> take(count - 1) do

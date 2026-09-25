@@ -18,7 +18,7 @@ vigesimal(n: int) -> List[int] is
 si
 
 glyph(digit: int) -> string[] is
-    let rows = ["    ", "    ", "    ", "    "] |> collect_list()
+    let rows = ["    ", "    ", "    ", "    "] |> collect_mutable()
 
     if digit == 0 then
         rows[3] = " @  "
@@ -34,7 +34,7 @@ glyph(digit: int) -> string[] is
         fi
     fi
 
-    rows |> collect_array()
+    rows |> collect()
 si
 
 cartouche(n: int) -> List[string] is

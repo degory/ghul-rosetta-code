@@ -11,7 +11,7 @@ in_base(n: long, base: int) -> string is
         rest = rest / cast long(base)
     od
 
-    string(digits |> reverse() |> collect_array())
+    string(digits |> reverse() |> collect())
 si
 
 value_of(digits: string, base: int) -> long =>
@@ -67,7 +67,7 @@ roots(base: int) -> List[long] is
 si
 
 reversed(s: string) -> string =>
-    string(s.to_char_array() |> reverse() |> collect_array())
+    string(s.to_char_array() |> reverse() |> collect())
 
 show(n: long, base: int) -> string =>
     "{in_base(n, base)}² = {in_base(n * n, base)}"

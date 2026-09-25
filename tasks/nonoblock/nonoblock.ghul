@@ -8,7 +8,7 @@ placements(cells: int, blocks: List[int]) -> Pipe[List[int]] is
         yield []
     else
         let first = blocks[0]
-        let rest = blocks |> skip(1) |> collect_list()
+        let rest = blocks |> skip(1) |> collect_mutable()
         let needed = (rest |> sum()) + rest.count
 
         for start in 0::cells - first - needed do
@@ -17,7 +17,7 @@ placements(cells: int, blocks: List[int]) -> Pipe[List[int]] is
             for tail in placements(int.max(cells - offset, 0), rest) do
                 let shifted = tail |> map(p => p + offset)
 
-                yield [start] |> cat(shifted) |> collect_list()
+                yield [start] |> cat(shifted) |> collect_mutable()
             od
         od
     fi
@@ -40,7 +40,7 @@ let cases: List[(cells: int, blocks: List[int])] = [
 ]
 
 for (cells, blocks) in cases do
-    let found = placements(cells, blocks) |> collect_list()
+    let found = placements(cells, blocks) |> collect_mutable()
 
     write_line("{cells} cells and {blocks} blocks: {found.count} positions")
 

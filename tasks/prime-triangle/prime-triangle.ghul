@@ -36,8 +36,8 @@ is
 si
 
 arrangements(size: int) -> Pipe[List[int]] =>
-    extend([1] |> collect_list(),
-           repeat(false, size + 1) |> collect_list(),
+    extend([1] |> collect_mutable(),
+           repeat(false, size + 1) |> collect_mutable(),
            size)
 
 let totals = LIST[int]()

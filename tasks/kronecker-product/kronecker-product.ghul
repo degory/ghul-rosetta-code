@@ -6,8 +6,8 @@ kronecker(left: int[][], right: int[][]) -> int[][] =>
             |> map(column =>
                 left[row / right.count][column / right[0].count] *
                     right[row % right.count][column % right[0].count])
-            |> collect_array())
-        |> collect_array()
+            |> collect())
+        |> collect()
 
 pad(text: string, width: int) -> string =>
     if text.length >= width then

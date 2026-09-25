@@ -28,7 +28,7 @@ solve(a: LIST[LIST[double]], b: LIST[double]) -> double[] is
         od
     od
 
-    let solution = repeat(0.0, n) |> collect_list()
+    let solution = repeat(0.0, n) |> collect_mutable()
 
     for row in (0..n) |> reverse() do
         let known =
@@ -39,7 +39,7 @@ solve(a: LIST[LIST[double]], b: LIST[double]) -> double[] is
         solution[row] = (b[row] - known) / a[row][row]
     od
 
-    return solution |> collect_array()
+    return solution |> collect()
 si
 
 fit(xs: double[], ys: double[], degree: int) -> double[] =>
@@ -48,9 +48,9 @@ fit(xs: double[], ys: double[], degree: int) -> double[] =>
             |> map(i =>
                 (0::degree)
                 |> map(j => power_sum(xs, i + j))
-                |> collect_list())
-            |> collect_list(),
-        (0::degree) |> map(i => moment(xs, ys, i)) |> collect_list())
+                |> collect_mutable())
+            |> collect_mutable(),
+        (0::degree) |> map(i => moment(xs, ys, i)) |> collect_mutable())
 
 let x = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
 let y = [1.0, 6.0, 17.0, 34.0, 57.0, 86.0, 121.0, 162.0, 209.0, 262.0,
@@ -61,7 +61,7 @@ let coefficients = fit(x, y, 2)
 write_line("coefficients, highest power first:")
 write_line(
     coefficients
-    |> collect_list()
+    |> collect_mutable()
     |> reverse()
     |> map(c => "{c:F6}")
-    |> join(", "))
+    |> join())

@@ -70,8 +70,8 @@ let shapes =
     pieces
         |> map(((name, cells)) => (name, orientations(cells)))
         |> collect()
-let board = repeat('.', size * size) |> collect_list()
-let used = repeat(false, pieces.count) |> collect_list()
+let board = repeat('.', size * size) |> collect_mutable()
+let used = repeat(false, pieces.count) |> collect_mutable()
 
 fits(shape: Shape, at: Cell) -> bool =>
     shape |> all(c =>

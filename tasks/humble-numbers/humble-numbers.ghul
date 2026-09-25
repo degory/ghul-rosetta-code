@@ -5,7 +5,7 @@ humble() -> Pipe[long] is
     found.add(1L)
 
     let factors = [2L, 3L, 5L, 7L]
-    let next_index = repeat(0, factors.count) |> collect_list()
+    let next_index = repeat(0, factors.count) |> collect_mutable()
 
     do
         yield found[found.count - 1]
@@ -39,7 +39,7 @@ for row in 0..5 do
     write_line(first_fifty[row * 10..row * 10 + 10] |> join(""))
 od
 
-let widths = repeat(0, 20) |> collect_list()
+let widths = repeat(0, 20) |> collect_mutable()
 
 for value in humble() do
     let width = "{value}".length

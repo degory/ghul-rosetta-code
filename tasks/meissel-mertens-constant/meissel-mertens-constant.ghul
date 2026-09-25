@@ -8,7 +8,7 @@ let gamma = 0.57721566490153286
 let limit = 10_000_000
 
 let prime = (
-    let sieve = repeat(true, limit) |> collect_list()
+    let sieve = repeat(true, limit) |> collect_mutable()
 
     sieve[0] = false
     sieve[1] = false

@@ -58,11 +58,11 @@ for n in 1::10000 do
     fi
 od
 
-let seeds_text = seeds |> map(n => "{n}") |> join(", ")
+let seeds_text = seeds |> map(n => "{n}") |> join()
 let related_starts = palindromic_starts
     |> filter(n => seeds.contains(n) \/ seen.contains(bigint(n)))
     |> map(n => "{n}")
-    |> join(", ")
+    |> join()
 
 write_line("seed Lychrel candidates: {seeds.count}")
 write_line("{seeds_text}")
