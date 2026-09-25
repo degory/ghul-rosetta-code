@@ -1,0 +1,10 @@
+sequence:          [0, 0, 1, 1, 0, 1, 0]
+connection:        C(x) = 1 + x + x^2 + x^4
+linear complexity: 4
+regenerates it:    true
+
+sequence:          [0, 1, 1, 0, 1, 1, 0, 1, 1]
+connection:        C(x) = 1 + x + x^2
+linear complexity: 2
+regenerates it:    true
+
