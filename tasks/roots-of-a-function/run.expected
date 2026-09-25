@@ -1,0 +1,10 @@
+from -1 to 3 in steps of 0.1:
+  root at 0 (exact)
+  root at 1 (exact)
+  root at 2 (exact)
+
+from -0.95 to 3.05 in steps of 0.3:
+  root at -1.011922028E-19 (approximate)
+  root at 1 (approximate)
+  root at 2 (approximate)
+

@@ -21983,6 +21983,33 @@
       ]
     },
     {
+      "slug": "roots-of-a-function",
+      "title": "Roots of a function",
+      "url": "https://rosettacode.org/wiki/Roots_of_a_function",
+      "tags": [
+        "maths",
+        "generators",
+        "unions"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 57,
+      "parts": [
+        {
+          "id": "roots-of-a-function",
+          "heading": null,
+          "source": "tasks/roots-of-a-function/roots-of-a-function.ghul",
+          "output": "tasks/roots-of-a-function/run.expected",
+          "lines": 57,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "roots-of-a-quadratic-function",
       "title": "Roots of a quadratic function",
       "url": "https://rosettacode.org/wiki/Roots_of_a_quadratic_function",
