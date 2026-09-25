@@ -30298,6 +30298,33 @@
       ]
     },
     {
+      "slug": "word-ladder",
+      "title": "Word ladder",
+      "url": "https://rosettacode.org/wiki/Word_ladder",
+      "tags": [
+        "algorithms",
+        "strings",
+        "optionals"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 53,
+      "parts": [
+        {
+          "id": "word-ladder",
+          "heading": null,
+          "source": "tasks/word-ladder/word-ladder.ghul",
+          "output": "tasks/word-ladder/run.expected",
+          "lines": 53,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "word-search",
       "title": "Word search",
       "url": "https://rosettacode.org/wiki/Word_search",
