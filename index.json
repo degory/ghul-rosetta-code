@@ -12324,6 +12324,32 @@
       ]
     },
     {
+      "slug": "hex-words",
+      "title": "Hex words",
+      "url": "https://rosettacode.org/wiki/Hex_words",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 45,
+      "parts": [
+        {
+          "id": "hex-words",
+          "heading": null,
+          "source": "tasks/hex-words/hex-words.ghul",
+          "output": "tasks/hex-words/run.expected",
+          "lines": 45,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "hexapawn",
       "title": "Hexapawn",
       "url": "https://rosettacode.org/wiki/Hexapawn",
