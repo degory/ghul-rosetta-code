@@ -7,8 +7,8 @@
 #   git diff --name-only BASE HEAD | scripts/ledger-only.sh
 #
 # ledger.yml approves such a change unread, review.yml does not review it, and
-# ci.yml runs no tasks for it in the merge queue, so all three ask here rather
-# than each carrying its own copy of the test.
+# scripts/tasks-to-test.sh, which ci.yml asks, runs no task for it, so all three
+# ask here rather than each carrying its own copy of the test.
 
 set -euo pipefail
 

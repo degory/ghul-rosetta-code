@@ -45,79 +45,31 @@ jobs:
       run: |
         set -euo pipefail
 
-        # The queue runs the whole suite, unless the group changes nothing but
-        # the ledger, which no task reads. The test is the base commit's copy:
-        # the one in the group could be part of the change it is judging.
-        if [ "$EVENT" != pull_request ] ; then
-            TEST=$(mktemp)
-
-            if git show "$BASE:scripts/ledger-only.sh" > "$TEST" 2>/dev/null \
-                && git diff --name-only "$BASE" "$HEAD" | bash "$TEST" ; then
-                echo "full=false" >>"$GITHUB_OUTPUT"
-                echo "tasks=" >>"$GITHUB_OUTPUT"
-                echo "queue run of a ledger-only group: no tasks"
-            else
-                echo "full=true" >>"$GITHUB_OUTPUT"
-                echo "queue run: the whole suite"
-            fi
-
-            exit 0
-        fi
-
         CHANGED=$(git diff --name-only "$BASE" "$HEAD")
         echo "changed:"; echo "$CHANGED" | sed 's/^/  /'
 
-        # A task project reaching outside its own task directory would make a
-        # task's result depend on a directory the diff does not name. A
-        # reference between the parts of one task stays inside it, and the
-        # task is run whole, so only one that leaves the task counts.
-        LEAVING=
+        # The decision is the base commit's copy of scripts/tasks-to-test.sh,
+        # for a pull request and a queue group alike: the one in the change
+        # could be part of what it is judging. A base without it runs the
+        # whole suite.
+        DECIDE=$(mktemp -d)
 
-        for PROJECT in $(grep -rl ProjectReference tasks \
-            --include='*.ghulproj' --include='*.csproj' || true) ; do
-            TASK=$(echo "$PROJECT" | cut -d/ -f1,2)
-
-            for REFERENCE in $(grep -o 'ProjectReference Include="[^"]*"' "$PROJECT" \
-                | sed 's/.*Include="\(.*\)"/\1/') ; do
-                TARGET=$(realpath -m --relative-to=. "$(dirname "$PROJECT")/$REFERENCE")
-
-                case "$TARGET" in
-                    "$TASK"/*) ;;
-                    *) LEAVING="$LEAVING $PROJECT" ;;
-                esac
-            done
-        done
-
-        if [ -n "$LEAVING" ] ; then
-            echo "full=true" >>"$GITHUB_OUTPUT"
-            echo "a ProjectReference leaves its task:$LEAVING - the whole suite"
-            exit 0
+        if git show "$BASE:scripts/tasks-to-test.sh" > "$DECIDE/tasks-to-test.sh" 2>/dev/null \
+            && git show "$BASE:scripts/ledger-only.sh" > "$DECIDE/ledger-only.sh" 2>/dev/null ; then
+            ANSWER=$(echo "$CHANGED" | bash "$DECIDE/tasks-to-test.sh")
+        else
+            ANSWER=full
         fi
 
-        # The ledger records a task's state and runs nothing, so a change to
-        # it is not a reason to run the whole suite. Tested for a non-empty
-        # result rather than by grep's exit status: -q with -v does not mean
-        # the same thing in every grep.
-        OUTSIDE=$(echo "$CHANGED" | grep -v -e '^tasks/' -e '^ledger/' || true)
-
-        if [ -n "$OUTSIDE" ] ; then
+        if [ "$ANSWER" = full ] ; then
             echo "full=true" >>"$GITHUB_OUTPUT"
-            echo "a change outside tasks/: the whole suite"
-            exit 0
-        fi
-
-        TASKS=$(echo "$CHANGED" | grep '^tasks/' | cut -d/ -f1,2 | sort -u | tr '\n' ' ' || true)
-
-        if [ -z "${TASKS// /}" ] ; then
-            echo "full=false" >>"$GITHUB_OUTPUT"
-            echo "tasks=" >>"$GITHUB_OUTPUT"
-            echo "no task changed"
+            echo "$EVENT: the whole suite"
             exit 0
         fi
 
         echo "full=false" >>"$GITHUB_OUTPUT"
-        echo "tasks=$TASKS" >>"$GITHUB_OUTPUT"
-        echo "tasks to run: $TASKS"
+        echo "tasks=$ANSWER" >>"$GITHUB_OUTPUT"
+        echo "$EVENT: tasks to run: ${ANSWER:-none}"
 
 
   # Every task is its own project, so the suite is a few hundred separate
