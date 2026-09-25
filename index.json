@@ -26965,6 +26965,33 @@
       ]
     },
     {
+      "slug": "smarandache-wellin-primes",
+      "title": "Smarandache-Wellin primes",
+      "url": "https://rosettacode.org/wiki/Smarandache-Wellin_primes",
+      "tags": [
+        "primes",
+        "number-theory",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": false,
+      "input": false,
+      "images": [],
+      "lines": 100,
+      "parts": [
+        {
+          "id": "smarandache-wellin-primes",
+          "heading": null,
+          "source": "tasks/smarandache-wellin-primes/smarandache-wellin-primes.ghul",
+          "output": "tasks/smarandache-wellin-primes/run.expected",
+          "lines": 100,
+          "playground": false,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "smith-numbers",
       "title": "Smith numbers",
       "url": "https://rosettacode.org/wiki/Smith_numbers",
