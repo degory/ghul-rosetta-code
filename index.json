@@ -17650,6 +17650,32 @@
       ]
     },
     {
+      "slug": "numerical-integration-tanh-sinh-quadrature",
+      "title": "Numerical integration/Tanh-Sinh Quadrature",
+      "url": "https://rosettacode.org/wiki/Numerical_integration/Tanh-Sinh_Quadrature",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 41,
+      "parts": [
+        {
+          "id": "numerical-integration-tanh-sinh-quadrature",
+          "heading": null,
+          "source": "tasks/numerical-integration-tanh-sinh-quadrature/numerical-integration-tanh-sinh-quadrature.ghul",
+          "output": "tasks/numerical-integration-tanh-sinh-quadrature/run.expected",
+          "lines": 41,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "o-halloran-numbers",
       "title": "O'Halloran numbers",
       "url": "https://rosettacode.org/wiki/O'Halloran_numbers",
