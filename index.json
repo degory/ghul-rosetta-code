@@ -19954,6 +19954,32 @@
       ]
     },
     {
+      "slug": "polynomial-regression",
+      "title": "Polynomial regression",
+      "url": "https://rosettacode.org/wiki/Polynomial_regression",
+      "tags": [
+        "maths",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 67,
+      "parts": [
+        {
+          "id": "polynomial-regression",
+          "heading": null,
+          "source": "tasks/polynomial-regression/polynomial-regression.ghul",
+          "output": "tasks/polynomial-regression/run.expected",
+          "lines": 67,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "polyspiral",
       "title": "Polyspiral",
       "url": "https://rosettacode.org/wiki/Polyspiral",
