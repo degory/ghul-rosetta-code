@@ -14686,6 +14686,32 @@
       ]
     },
     {
+      "slug": "legendre-prime-counting-function",
+      "title": "Legendre prime counting function",
+      "url": "https://rosettacode.org/wiki/Legendre_prime_counting_function",
+      "tags": [
+        "primes",
+        "recursion"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "legendre-prime-counting-function",
+          "heading": null,
+          "source": "tasks/legendre-prime-counting-function/legendre-prime-counting-function.ghul",
+          "output": "tasks/legendre-prime-counting-function/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "leonardo-numbers",
       "title": "Leonardo numbers",
       "url": "https://rosettacode.org/wiki/Leonardo_numbers",
