@@ -33,7 +33,10 @@
 
     <!-- Terminator-free sources. A build of this project is the only
          thing that reports a stray `;`: CI builds each task through its
-         own project, and those do not carry the flag. -->
+         own project, and those do not carry the flag. CI's Solution
+         hygiene job is this build, so a stray one fails rather than
+         scrolling past. -->
     <GhulOptions Include="--warn redundant-semicolon" />
+    <GhulOptions Include="--warn-as-error redundant-semicolon" />
   </ItemGroup>
 </Project>
