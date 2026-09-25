@@ -1,0 +1,20 @@
+use default
+
+use System.Text.RegularExpressions.Regex
+
+let tag = "syntaxhighlight"
+
+let rules = [
+    ("<lang\\s+([\\w-]+)\\s*>", "<{tag} lang=$1>"),
+    ("<lang\\s*>", "<{tag} lang=text>"),
+    ("</lang\\s*>", "</{tag}>")
+]
+
+let fixed =
+    rules
+    |> reduce(
+        IO.File.read_all_text("input.txt"),
+        (text, (pattern, replacement)) =>
+            Regex.replace(text, pattern, replacement))
+
+write_line(fixed)
