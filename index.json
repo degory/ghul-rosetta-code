@@ -9802,6 +9802,33 @@
       ]
     },
     {
+      "slug": "find-largest-left-truncatable-prime-in-a-given-base",
+      "title": "Find largest left truncatable prime in a given base",
+      "url": "https://rosettacode.org/wiki/Find_largest_left_truncatable_prime_in_a_given_base",
+      "tags": [
+        "primes",
+        "number-theory",
+        "algorithms"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 88,
+      "parts": [
+        {
+          "id": "find-largest-left-truncatable-prime-in-a-given-base",
+          "heading": null,
+          "source": "tasks/find-largest-left-truncatable-prime-in-a-given-base/find-largest-left-truncatable-prime-in-a-given-base.ghul",
+          "output": "tasks/find-largest-left-truncatable-prime-in-a-given-base/run.expected",
+          "lines": 88,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "find-limit-of-recursion",
       "title": "Find limit of recursion",
       "url": "https://rosettacode.org/wiki/Find_limit_of_recursion",
@@ -9821,6 +9848,32 @@
           "source": "tasks/find-limit-of-recursion/find-limit-of-recursion.ghul",
           "output": "tasks/find-limit-of-recursion/run.expected",
           "lines": 23,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "find-palindromic-numbers-in-both-binary-and-ternary-bases",
+      "title": "Find palindromic numbers in both binary and ternary bases",
+      "url": "https://rosettacode.org/wiki/Find_palindromic_numbers_in_both_binary_and_ternary_bases",
+      "tags": [
+        "number-theory",
+        "generators"
+      ],
+      "interest": 4,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 60,
+      "parts": [
+        {
+          "id": "find-palindromic-numbers-in-both-binary-and-ternary-bases",
+          "heading": null,
+          "source": "tasks/find-palindromic-numbers-in-both-binary-and-ternary-bases/find-palindromic-numbers-in-both-binary-and-ternary-bases.ghul",
+          "output": "tasks/find-palindromic-numbers-in-both-binary-and-ternary-bases/run.expected",
+          "lines": 60,
           "playground": true,
           "input": false,
           "images": []
@@ -9907,6 +9960,57 @@
           "images": [
             "tasks/find-the-intersection-of-two-lines/crossing.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "find-the-last-sunday-of-each-month",
+      "title": "Find the last Sunday of each month",
+      "url": "https://rosettacode.org/wiki/Find_the_last_Sunday_of_each_month",
+      "tags": [
+        "date-time"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 15,
+      "parts": [
+        {
+          "id": "find-the-last-sunday-of-each-month",
+          "heading": null,
+          "source": "tasks/find-the-last-sunday-of-each-month/find-the-last-sunday-of-each-month.ghul",
+          "output": "tasks/find-the-last-sunday-of-each-month/run.expected",
+          "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "find-the-missing-permutation",
+      "title": "Find the missing permutation",
+      "url": "https://rosettacode.org/wiki/Find_the_missing_permutation",
+      "tags": [
+        "pipes",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 24,
+      "parts": [
+        {
+          "id": "find-the-missing-permutation",
+          "heading": null,
+          "source": "tasks/find-the-missing-permutation/find-the-missing-permutation.ghul",
+          "output": "tasks/find-the-missing-permutation/run.expected",
+          "lines": 24,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -10008,6 +10112,84 @@
           "source": "tasks/first-class-functions-use-numbers-analogously/first-class-functions-use-numbers-analogously.ghul",
           "output": "tasks/first-class-functions-use-numbers-analogously/run.expected",
           "lines": 21,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "first-perfect-square-in-base-n-with-n-unique-digits",
+      "title": "First perfect square in base n with n unique digits",
+      "url": "https://rosettacode.org/wiki/First_perfect_square_in_base_n_with_n_unique_digits",
+      "tags": [
+        "number-theory",
+        "algorithms"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 60,
+      "parts": [
+        {
+          "id": "first-perfect-square-in-base-n-with-n-unique-digits",
+          "heading": null,
+          "source": "tasks/first-perfect-square-in-base-n-with-n-unique-digits/first-perfect-square-in-base-n-with-n-unique-digits.ghul",
+          "output": "tasks/first-perfect-square-in-base-n-with-n-unique-digits/run.expected",
+          "lines": 60,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "first-power-of-2-that-has-leading-decimal-digits-of-12",
+      "title": "First power of 2 that has leading decimal digits of 12",
+      "url": "https://rosettacode.org/wiki/First_power_of_2_that_has_leading_decimal_digits_of_12",
+      "tags": [
+        "number-theory",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 35,
+      "parts": [
+        {
+          "id": "first-power-of-2-that-has-leading-decimal-digits-of-12",
+          "heading": null,
+          "source": "tasks/first-power-of-2-that-has-leading-decimal-digits-of-12/first-power-of-2-that-has-leading-decimal-digits-of-12.ghul",
+          "output": "tasks/first-power-of-2-that-has-leading-decimal-digits-of-12/run.expected",
+          "lines": 35,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "five-weekends",
+      "title": "Five weekends",
+      "url": "https://rosettacode.org/wiki/Five_weekends",
+      "tags": [
+        "date-time",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "five-weekends",
+          "heading": null,
+          "source": "tasks/five-weekends/five-weekends.ghul",
+          "output": "tasks/five-weekends/run.expected",
+          "lines": 34,
           "playground": true,
           "input": false,
           "images": []
@@ -10262,6 +10444,32 @@
           "heading": null,
           "source": "tasks/floyds-triangle/floyds-triangle.ghul",
           "output": "tasks/floyds-triangle/run.expected",
+          "lines": 27,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "forbidden-numbers",
+      "title": "Forbidden numbers",
+      "url": "https://rosettacode.org/wiki/Forbidden_numbers",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 27,
+      "parts": [
+        {
+          "id": "forbidden-numbers",
+          "heading": null,
+          "source": "tasks/forbidden-numbers/forbidden-numbers.ghul",
+          "output": "tasks/forbidden-numbers/run.expected",
           "lines": 27,
           "playground": true,
           "input": false,
@@ -10583,6 +10791,32 @@
       ]
     },
     {
+      "slug": "fraction-reduction",
+      "title": "Fraction reduction",
+      "url": "https://rosettacode.org/wiki/Fraction_reduction",
+      "tags": [
+        "number-theory",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 91,
+      "parts": [
+        {
+          "id": "fraction-reduction",
+          "heading": null,
+          "source": "tasks/fraction-reduction/fraction-reduction.ghul",
+          "output": "tasks/fraction-reduction/run.expected",
+          "lines": 91,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "fractran",
       "title": "Fractran",
       "url": "https://rosettacode.org/wiki/Fractran",
@@ -10710,6 +10944,32 @@
           "source": "tasks/function-definition/function-definition.ghul",
           "output": "tasks/function-definition/run.expected",
           "lines": 15,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "function-frequency",
+      "title": "Function frequency",
+      "url": "https://rosettacode.org/wiki/Function_frequency",
+      "tags": [
+        "text-processing",
+        "strings"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 26,
+      "parts": [
+        {
+          "id": "function-frequency",
+          "heading": null,
+          "source": "tasks/function-frequency/function-frequency.ghul",
+          "output": "tasks/function-frequency/run.expected",
+          "lines": 26,
           "playground": true,
           "input": false,
           "images": []
