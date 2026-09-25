@@ -1,0 +1,29 @@
+use default
+
+write_line(" i       d")
+
+let a1 mut = 1.0
+let a2 mut = 0.0
+let d1 mut = 3.2
+
+for i in 2::13 do
+    let a mut = a1 + (a1 - a2) / d1
+
+    for _ in 1::10 do
+        let x mut = 0.0
+        let y mut = 0.0
+
+        for _ in 1::(1 << i) do
+            y = 1.0 - 2.0 * y * x
+            x = a - x * x
+        od
+
+        a = a - x / y
+    od
+
+    let d = (a1 - a2) / (a - a1)
+
+    write_line("{i,2}  {d:F8}")
+
+    (d1, a2, a1) = (d, a1, a)
+od
