@@ -51,8 +51,29 @@ is_probable_prime(n: bigint) -> bool is
     return true
 si
 
-let small_primes =
-    2::60_000 |> filter(n => 2::n / 2 |> all(d => n % d != 0)) |> collect()
+primes_to(limit: int) -> List[int] is
+    let composite = repeat(false, limit + 1) |> collect_list()
+
+    let factor mut = 2
+
+    while factor * factor <= limit do
+        if !composite[factor] then
+            let multiple mut = factor * factor
+
+            while multiple <= limit do
+                composite[multiple] = true
+
+                multiple = multiple + factor
+            od
+        fi
+
+        factor = factor + 1
+    od
+
+    return 2::limit |> filter(n => !composite[n]) |> collect()
+si
+
+let small_primes = primes_to(60_000)
 
 has_small_factor(n: bigint) -> bool =>
     small_primes |> any(p => n > bigint(p) /\ n % bigint(p) =~ 0n)
@@ -71,12 +92,18 @@ si
 
 let limit = 1000
 
+// The base is named before its search rather than after it, so a reader
+// watching the program run sees which one is taking the time. A base can take
+// several seconds, and all of them together rather longer than that.
 for base in 2::16 do
+    IO.Std.write("base {base,3}: ")
+    IO.Std.out.flush()
+
     let found =
         2::limit
             |> filter(is_prime)
             |> filter(digits => is_repunit_prime(base, digits))
             |> collect()
 
-    write_line("base {base,3}: {if found.count == 0 then "none" else found |> join(" ") fi}")
+    write_line(if found.count == 0 then "none" else found |> join(" ") fi)
 od
