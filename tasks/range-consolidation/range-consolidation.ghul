@@ -22,7 +22,6 @@ consolidate(ranges: List[RANGE]) -> List[RANGE] is
     let sorted = ranges
         |> map(normalised)
         |> sort(by_lower_bound)
-        |> collect()
     let merged = LIST()
 
     for bounds in sorted do

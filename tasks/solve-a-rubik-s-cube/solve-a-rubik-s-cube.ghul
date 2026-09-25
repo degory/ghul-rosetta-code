@@ -69,7 +69,6 @@ key(phase: int, state: int[]) -> string is
                     |> reduce(0, (a, b) => a | b)
 
             [edges | state[31]] |> cat(state[32..40])
-                |> collect_list()
         elif phase == 3 then
             let edges =
                 (0..12)

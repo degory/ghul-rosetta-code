@@ -41,7 +41,7 @@ sort_tree(node: NODE, descending: bool) is
             node.children |> sort_by(child => child.text)
         fi
 
-    let ranked = ordered |> collect()
+    let ranked = ordered
 
     node.children.clear()
 

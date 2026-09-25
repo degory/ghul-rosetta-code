@@ -149,7 +149,6 @@ let text = IO.File.read_all_lines("nonogram_problems.txt")
 let problems =
     (0..(text.count + 1) / 3)
         |> map(i => (rows = text[3 * i], columns = text[3 * i + 1]))
-        |> collect_list()
 
 for (number, problem) in problems |> index() do
     let puzzle = PUZZLE(clues_of(problem.rows), clues_of(problem.columns))

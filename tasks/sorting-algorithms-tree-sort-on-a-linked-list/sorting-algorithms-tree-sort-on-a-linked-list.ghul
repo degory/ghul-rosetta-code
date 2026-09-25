@@ -62,6 +62,6 @@ let values = LinkedList.NODE(
     )
 )
 
-let sorted = in_order(build_tree(values)) |> collect_list()
+let sorted = in_order(build_tree(values))
 
 write_line(sorted |> join(", "))

@@ -53,7 +53,7 @@ show(sizes: int[]) is
 
     write_line("partitions({sizes |> join(", ")}):")
 
-    partitions(items, sizes |> collect())
+    partitions(items, sizes)
         |> each(partition =>
             write_line("  ({partition |> map(braces) |> join(", ")})"))
 si

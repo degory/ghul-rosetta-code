@@ -16,7 +16,6 @@ sparkline(series: string) -> string is
     let values =
         series.split(separators, StringSplitOptions.REMOVE_EMPTY_ENTRIES)
         |> map(text => double.parse(text))
-        |> collect_list()
 
     let ordered = values |> sort() |> collect()
 

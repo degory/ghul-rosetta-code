@@ -7,7 +7,6 @@ bead_sort(values: List[int]) -> List[int] is
     let beads =
         (0..tallest)
         |> map(level => values |> filter(value => value > level) |> count())
-        |> collect_list()
 
     return
         (0..values.count)

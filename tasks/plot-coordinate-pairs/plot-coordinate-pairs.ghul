@@ -21,7 +21,6 @@ marker(at: POINT) -> List[POINT] =>
      (x = at.x, y = at.y + 2.8),
      (x = at.x + 0.14, y = at.y),
      (x = at.x, y = at.y - 2.8)]
-    |> collect_list()
 
 let image = IMAGE(480, 360)
 

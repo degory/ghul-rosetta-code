@@ -50,7 +50,6 @@ class GRID is
         let squares =
             (0..word.length)
                 |> map(i => at(row + dr * i, column + dc * i))
-                |> collect_list()
 
         let covered = squares |> filter(s => cells[s] == ' ') |> count()
 

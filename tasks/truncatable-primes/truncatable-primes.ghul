@@ -47,7 +47,6 @@ right_truncatable(text: string) -> bool => (
 
 let primes = (2..(limit + 1))
     |> filter(n => !composite[n])
-    |> collect()
 
 let largest_left mut = 0
 let largest_right mut = 0

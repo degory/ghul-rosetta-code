@@ -49,7 +49,7 @@ write_line("recurrence and floor functions agree to term 63: {agree}")
 write_line("first 10 L-system strings:")
 l_system() |> take(10) |> each(s => write_line(s))
 
-let strings = l_system() |> take(32) |> collect()
+let strings = l_system() |> take(32)
 let lengths_match = strings |> index()
     |> all((n, s) => s.length == by_recurrence[n])
 write_line(
