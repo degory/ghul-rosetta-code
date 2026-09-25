@@ -1,7 +1,4 @@
-ghūl catches most of the classic mistakes at compile time: there is no implicit
-conversion between numeric types, an optional value cannot be used until it has
-been tested, a variable declared with `let` cannot be reassigned unless it says
-`mut`, and `==` is rejected on structs. What is left are constructs that compile
+These are constructs that compile
 and run, and do something other than what they look like they do. Four of them
 follow, each with what to do instead.
 
