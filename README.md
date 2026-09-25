@@ -24,6 +24,8 @@ nobody re-reads.
   right and carries its own top-level statements. Build and run tasks individually.
 - `TASKS.json` - the ledger: every task that has been done, queued, rejected or blocked, and why.
 - `scripts/new-task.sh` - scaffolds a task and its test.
+- `scripts/redundant-collect.sh` - finds `collect_list()` and `collect()` calls a solution does not need,
+  by trying each task without them and keeping only what its test still passes.
 - `tools/rosetta/` - the ledger and the wiki client.
 - `GHUL.md` - language reference, a copy of the master in the
   [`ghul`](https://github.com/degory/ghul) repo. Refresh it when it falls behind; never edit it
