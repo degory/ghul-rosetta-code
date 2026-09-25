@@ -10485,14 +10485,14 @@
       "playground": true,
       "input": false,
       "images": [],
-      "lines": 39,
+      "lines": 31,
       "parts": [
         {
           "id": "gotchas",
           "heading": null,
           "source": "tasks/gotchas/gotchas.ghul",
           "output": "tasks/gotchas/run.expected",
-          "lines": 39,
+          "lines": 31,
           "playground": true,
           "input": false,
           "images": []
