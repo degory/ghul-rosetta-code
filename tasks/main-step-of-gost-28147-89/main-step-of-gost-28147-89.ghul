@@ -1,0 +1,46 @@
+use default
+
+use System.Numerics.BitOperations
+
+let s_boxes = [
+    [4, 10, 9, 2, 13, 8, 0, 14, 6, 11, 1, 12, 7, 15, 5, 3],
+    [14, 11, 4, 12, 6, 13, 15, 10, 2, 3, 8, 1, 0, 7, 5, 9],
+    [5, 8, 1, 13, 10, 3, 4, 2, 14, 15, 12, 7, 6, 0, 9, 11],
+    [7, 13, 10, 1, 0, 8, 9, 15, 14, 4, 6, 12, 11, 2, 5, 3],
+    [6, 12, 7, 1, 5, 15, 13, 8, 4, 10, 9, 14, 0, 3, 11, 2],
+    [4, 11, 10, 0, 7, 2, 1, 13, 3, 6, 8, 5, 9, 12, 15, 14],
+    [13, 11, 4, 1, 3, 15, 5, 9, 0, 10, 14, 7, 6, 8, 2, 12],
+    [1, 15, 13, 0, 5, 7, 10, 4, 9, 2, 3, 14, 6, 11, 8, 12]
+]
+
+substitute(x: uint) -> uint =>
+    0..8
+        |> map(i =>
+            let nibble = cast int((x >> (4 * i)) & 0xFui) in
+            cast uint(s_boxes[i][nibble]) << (4 * i))
+        |> reduce(0ui, (a: uint, b: uint) => a | b)
+
+// one round of the Feistel network: the left half is combined with the key
+// element, substituted, rotated left 11 bits and mixed into the right half
+
+main_step(block: ulong, key: uint) -> ulong =>
+    let low = cast uint(block & 0xFFFF_FFFFul) in
+    let high = cast uint(block >> 32) in
+    let rotated = BitOperations.rotate_left(substitute(low + key), 11) in
+    let mixed = rotated ^ high in
+    (cast ulong(low) << 32) | cast ulong(mixed)
+
+little_endian(bytes: List[int]) -> ulong =>
+    bytes
+        |> index()
+        |> map(((i, b)) => cast ulong(b) << (8 * i))
+        |> reduce(0ul, (a: ulong, b: ulong) => a | b)
+
+let input = little_endian([0x21, 0x04, 0x3B, 0x04, 0x30, 0x04, 0x32, 0x04])
+let key = cast uint(little_endian([0xF9, 0x04, 0xC1, 0xE2]))
+let output = main_step(input, key)
+
+write_line(
+    0..8
+        |> map(i => "[{(output >> (8 * i)) & 0xFFul:x2}]")
+        |> join(""))
