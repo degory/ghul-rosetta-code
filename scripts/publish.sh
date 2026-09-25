@@ -9,7 +9,7 @@
 # --replace and --note <text> work as they do there, in any position.
 #
 # The record is the point of this script. `rosetta publish` writes each page's
-# new digest into TASKS.json as it goes, and that digest is the only thing a
+# new digest into ledger/ as it goes, and that digest is the only thing a
 # later run can use to tell an edit made on the wiki from one made here. A run
 # whose record never reaches main leaves every one of those pages unpublishable
 # until somebody works out by hand what happened to them, which is what this
@@ -87,7 +87,7 @@ fi
 # to go out - the run this script is part of is already a deliberate, explicit act - but it is
 # worth saying before the edit is sent, not after.
 if [ -n "$SOLVED" ] ; then
-    PUBLISHING=$(jq -r '.tasks[] | select(.state == "solved" and .slug != null) | .slug' TASKS.json)
+    PUBLISHING=$(jq -r 'select(.state == "solved" and .slug != null) | .slug' ledger/*.json)
 else
     PUBLISHING="${SLUGS[*]}"
 fi
@@ -108,16 +108,16 @@ fi
 STATUS=0
 dotnet run --project tools/rosetta -- publish "$@" || STATUS=$?
 
-if [ -z "$(git status --porcelain TASKS.json)" ] ; then
+if [ -z "$(git status --porcelain ledger)" ] ; then
     echo "nothing was published, so there is no record to land"
     git checkout --quiet "$WAS"
     git branch --quiet -D "$BRANCH"
     exit "$STATUS"
 fi
 
-PUBLISHED=$(git diff --unified=0 TASKS.json | grep -c '^+.*published_hash' || true)
+PUBLISHED=$(git diff --unified=0 ledger | grep -c '^+.*published_hash' || true)
 
-git add TASKS.json tasks/*/task.json
+git add ledger tasks/*/task.json
 git commit --quiet -m "Record $PUBLISHED published sections' digests
 
 Written by scripts/publish.sh from the run that made the edits."

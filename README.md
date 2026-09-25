@@ -22,14 +22,12 @@ nobody re-reads.
   editor loads them all in one analysis session. It builds as a library, which type-checks every
   solution in one pass, but it produces none of the programs: each task is a program in its own
   right and carries its own top-level statements. Build and run tasks individually.
-- `TASKS.json` - the ledger: every task that has been done, queued, rejected or blocked, and why.
+- `ledger/` - the ledger: one file per task that has been done, queued, rejected or blocked, and why.
 - `scripts/new-task.sh` - scaffolds a task and its test.
 - `scripts/redundant-collect.sh` - finds `collect_list()` and `collect()` calls a solution does not need,
   by trying each task without them and keeping only what its test still passes. A collect that
   starts work, such as launching tasks or threads, changes timing the test cannot see, so read
   each removal before keeping it.
-- `scripts/rebase-on-main.sh` - rebases a branch onto main, resolving the conflicts in `TASKS.json`
-  and `index.json` that any two branches in flight have with each other.
 - `tools/rosetta/` - the ledger and the wiki client.
 - `GHUL.md` - language reference, a copy of the master in the
   [`ghul`](https://github.com/degory/ghul) repo. Refresh it when it falls behind; never edit it
@@ -152,7 +150,7 @@ the same line and asserted by the same kind of expectation - but it goes on the 
 MediaWiki keeps every frame of a GIF in the scaled thumbnail an entry shows, while a scaled
 animated PNG is its first frame alone. So the markup names `plot.gif` wherever the PNG holds more
 than one frame, and publishing rewrites the frames as a GIF and uploads that. Only the PNG is kept
-here: it is what the test asserts, and what `index.json` and ghul.dev refer to.
+here: it is what the test asserts, and what the index and ghul.dev refer to.
 `tasks/animate-a-pendulum` is one.
 
 ## writing solutions for the wiki
@@ -262,8 +260,10 @@ shared through `data/` is listed by its path there (`../../data/unixdict.txt`).
 
 ## status
 
-`TASKS.json` is the ledger: one entry per task that has been done or decided about, keyed by its
-Rosetta Code title.
+`ledger/` is the ledger: one file per task that has been done or decided about, keyed by its
+Rosetta Code title and named for its slug, or for a key made from the title while it has none. One
+file per task is what lets two branches working on different tasks land in either order without
+touching the same file.
 
 | state | meaning |
 |-------|---------|
@@ -282,7 +282,7 @@ that the same task is never assessed twice.
 true. It records the verdict it overturned in the entry's note, so the reversal is readable rather
 than looking like a task nobody ever decided about.
 
-Only tasks that have been judged are in the file. The 1300-odd others are whatever
+Only tasks that have been judged are in the ledger. The 1300-odd others are whatever
 `Category:Programming Tasks` holds that the ledger does not mention.
 
 Each `task.json` carries a copy of its own task's state, because that is what
@@ -292,12 +292,13 @@ nothing but the index.
 
 ## tags and the index
 
-`index.json` lists every task for [ghul.dev](https://ghul.dev)'s Rosetta Code explorer. It is
-generated, and CI fails when it is out of date or when a task's tags or interest score are
-missing or invalid:
+`index.json` lists every task for [ghul.dev](https://ghul.dev)'s Rosetta Code explorer and the
+playground. It is generated rather than committed: `.github/workflows/index.yml` regenerates it on
+every push to main and publishes it as the only file on the `index` branch, which is where both
+read it. CI fails a pull request whose tags or interest scores are missing or invalid:
 
 ```sh
-dotnet run --project tools/rosetta -- index            # regenerate index.json
+dotnet run --project tools/rosetta -- index            # write index.json locally, to look at
 dotnet run --project tools/rosetta -- index --check    # what CI runs
 ```
 

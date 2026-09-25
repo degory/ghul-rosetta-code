@@ -14,8 +14,8 @@ Not loaded by local Claude Code; only the cloud reviewer reads this.
 tasks. Each is a runnable project under `tasks/<slug>/` whose test asserts what
 the program prints, so a compiler change that breaks a posted solution fails a
 test here rather than leaving a wrong answer on a public page.
-`TASKS.json` is the ledger recording every task that has been solved, queued,
-rejected or blocked, and why.
+`ledger/` is the ledger, one file per task, recording every task that has been
+solved, queued, rejected or blocked, and why.
 
 A solution is posted to a wiki page beside implementations in fifty other
 languages, under the maintainer's account, and is read far more often than it is
@@ -63,7 +63,7 @@ rather than restating them here.
   file saying why. Without one the entry publishes a link that throws.
 - **A task's status out of step with the ledger.** `task.json`'s `status` is
   written by `rosetta sync` and never by hand, so one left at `queued` while
-  `TASKS.json` says `solved` means it was edited rather than synced.
+  its `ledger/` file says `solved` means it was edited rather than synced.
 - **An annotation that is the point of the example.** A type inference
   recovers is usually noise, but a task demonstrating abstraction, or a
   variable whose declared type is what the reader came for, keeps it. Ask what

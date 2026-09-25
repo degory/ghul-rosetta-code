@@ -8,7 +8,7 @@ use Rosetta
 // The ghūl solutions' side of Rosetta Code: what has been done, what is worth doing, and getting
 // a finished solution onto the wiki.
 //
-//   rosetta sync                     reconcile TASKS.json with the wiki and with tasks/
+//   rosetta sync                     reconcile ledger/ with the wiki and with tasks/
 //   rosetta candidates [count] [--category <Category:X>]
 //                                    tasks nothing has been decided about yet
 //   rosetta show [state]             ledger entries, all of them or one state's
@@ -19,7 +19,7 @@ use Rosetta
 //   rosetta publish --rehearse <page> [--api <url>] <slug>
 //   rosetta adopt <slug> ...          record the live section as ours, when it matches wiki-out/
 //   rosetta render-notes <path>      a task's notes.md as wiki markup, to stdout
-//   rosetta index [--check]          write index.json, or report whether it is current
+//   rosetta index [--check]          write index.json, or only validate the tags it would carry
 //   rosetta edit-page <title> <file> <summary> [--dry-run]
 //                                    replace a page that is not a task's, such as a template
 //
@@ -145,9 +145,10 @@ sync(root: string) is
     fi
 si
 
-// index.json is generated, and CI runs this with --check so a task added or
-// retagged without regenerating it fails there rather than reaching the site
-// out of date
+// index.json is generated from the task directories rather than committed: a workflow
+// on main writes it and publishes it on the index branch. --check validates the
+// tags and interest scores without writing, which is what a pull request runs,
+// and a failing validation writes nothing, so a bad task.json is never served.
 write_index(root: string, check: bool) is
     let index = TASK_INDEX(root)
     let text = index.render()
@@ -160,17 +161,11 @@ write_index(root: string, check: bool) is
         error.write_line("{index.problems.count} problems in task.json tags or interest")
 
         System.Environment.exit_code = 1
+
+        return
     fi
 
-    let current = if IO.File.exists(index.path) then IO.File.read_all_text(index.path) else "" fi
-
-    if check then
-        if current !~ text then
-            error.write_line("index.json is out of date - run: dotnet run --project tools/rosetta -- index")
-
-            System.Environment.exit_code = 1
-        fi
-    elif current !~ text then
+    if !check then
         IO.File.write_all_text(index.path, text)
 
         write_line("index.json written")

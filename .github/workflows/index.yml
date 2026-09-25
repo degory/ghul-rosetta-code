@@ -1,0 +1,64 @@
+name: Index
+
+# index.json is what ghul.dev's Rosetta Code explorer and the playground's
+# example menu read, from the index branch. It is generated here rather than
+# committed on main, so that two pull requests adding tasks never conflict over
+# it: each lands with only its own task directory, and this regenerates the
+# whole index from what main now holds.
+#
+# The index branch carries nothing but index.json, and each run replaces it
+# with a single commit, so its history stays one commit long.
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: index
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    name: Publish index.json
+
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:10.0
+
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Restore .NET tools
+      run: dotnet tool restore
+
+    # Fails, rather than writing, when a task's tags or interest score do not
+    # validate, so a bad task.json stops here instead of being served.
+    - name: Generate index.json
+      run: dotnet run --project tools/rosetta -- index
+
+    - name: Publish on the index branch
+      env:
+        REPOSITORY: ${{ github.repository }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SOURCE: ${{ github.sha }}
+      run: |
+        set -eu
+
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+        publish=$(mktemp -d)
+        cp index.json "$publish/"
+        cd "$publish"
+
+        git init -q -b index
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add index.json
+        git commit -q -m "index.json for $SOURCE"
+        git push -q --force "https://x-access-token:$TOKEN@github.com/$REPOSITORY.git" index

@@ -54,20 +54,38 @@ jobs:
         CHANGED=$(git diff --name-only "$BASE" "$HEAD")
         echo "changed:"; echo "$CHANGED" | sed 's/^/  /'
 
-        # A task project reaching outside its own directory would make a
-        # task's result depend on a directory the diff does not name.
-        REFERRING=$(grep -rl ProjectReference tasks \
-            --include='*.ghulproj' --include='*.csproj' || true)
+        # A task project reaching outside its own task directory would make a
+        # task's result depend on a directory the diff does not name. A
+        # reference between the parts of one task stays inside it, and the
+        # task is run whole, so only one that leaves the task counts.
+        LEAVING=
 
-        if [ -n "$REFERRING" ] ; then
+        for PROJECT in $(grep -rl ProjectReference tasks \
+            --include='*.ghulproj' --include='*.csproj' || true) ; do
+            TASK=$(echo "$PROJECT" | cut -d/ -f1,2)
+
+            for REFERENCE in $(grep -o 'ProjectReference Include="[^"]*"' "$PROJECT" \
+                | sed 's/.*Include="\(.*\)"/\1/') ; do
+                TARGET=$(realpath -m --relative-to=. "$(dirname "$PROJECT")/$REFERENCE")
+
+                case "$TARGET" in
+                    "$TASK"/*) ;;
+                    *) LEAVING="$LEAVING $PROJECT" ;;
+                esac
+            done
+        done
+
+        if [ -n "$LEAVING" ] ; then
             echo "full=true" >>"$GITHUB_OUTPUT"
-            echo "a task project carries a ProjectReference: the whole suite"
+            echo "a ProjectReference leaves its task:$LEAVING - the whole suite"
             exit 0
         fi
 
-        # Tested for a non-empty result rather than by grep's exit status:
-        # -q with -v does not mean the same thing in every grep.
-        OUTSIDE=$(echo "$CHANGED" | grep -v '^tasks/' || true)
+        # The ledger records a task's state and runs nothing, so a change to
+        # it is not a reason to run the whole suite. Tested for a non-empty
+        # result rather than by grep's exit status: -q with -v does not mean
+        # the same thing in every grep.
+        OUTSIDE=$(echo "$CHANGED" | grep -v -e '^tasks/' -e '^ledger/' || true)
 
         if [ -n "$OUTSIDE" ] ; then
             echo "full=true" >>"$GITHUB_OUTPUT"
@@ -75,7 +93,7 @@ jobs:
             exit 0
         fi
 
-        TASKS=$(echo "$CHANGED" | cut -d/ -f1,2 | sort -u | tr '\n' ' ')
+        TASKS=$(echo "$CHANGED" | grep '^tasks/' | cut -d/ -f1,2 | sort -u | tr '\n' ' ' || true)
 
         if [ -z "${TASKS// /}" ] ; then
             echo "full=false" >>"$GITHUB_OUTPUT"
@@ -164,9 +182,9 @@ jobs:
         dotnet ghul-test --use-dotnet-build $TASKS
 
 
-  # index.json is what ghul.dev's explorer reads, and is generated from the
-  # task directories. A task added or retagged without regenerating it, or
-  # with tags or an interest score that do not validate, fails here.
+  # index.json is what ghul.dev's explorer reads. It is generated from the
+  # task directories and published by index.yml on each push to main; here a
+  # task whose tags or interest score do not validate fails before it lands.
   index:
     name: Task index
 
@@ -182,12 +200,11 @@ jobs:
     - name: Restore .NET tools
       run: dotnet tool restore
 
-    - name: Check index.json is current
+    - name: Check task tags and interest
       run: dotnet run --project tools/rosetta -- index --check
 
-    # The ledger is a merge conflict away from being unreadable, and nothing
-    # else in the build reads it: index.json comes from the task directories.
-    # Listing it fails on anything the reader cannot parse.
+    # Nothing else in the build reads the ledger: index.json comes from the
+    # task directories. Listing it fails on any entry the reader cannot parse.
     - name: Check the ledger is readable
       run: dotnet run --project tools/rosetta -- show > /dev/null
 
