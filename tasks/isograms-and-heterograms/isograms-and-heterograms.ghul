@@ -1,0 +1,39 @@
+use default
+
+isogram_order(word: string) -> int =>
+    let counts =
+        word
+            |> group_by(c => c)
+            |> map(((_, occurrences)) => occurrences.count)
+            |> collect_set()
+    in
+    if counts.count == 1 then counts |> first()! else 0 fi
+
+let words =
+    IO.File.read_all_lines("unixdict.txt")
+        |> map(word => word.to_lower())
+        |> map(word => (word, n = isogram_order(word)))
+        |> collect_list()
+
+let isograms =
+    words
+        |> filter(((_, n)) => n > 1)
+        |> sort_by(((word, n)) => (-n, -word.length, word))
+        |> collect_list()
+
+write_line("n-isograms with n > 1:")
+
+for (word, n) in isograms do
+    write_line("{n}  {word}")
+od
+
+let heterograms =
+    words
+        |> filter(((word, n)) => n == 1 /\ word.length > 10)
+        |> sort_by(((word, _)) => (-word.length, word))
+
+write_line("\nHeterograms with more than 10 letters:")
+
+for (word, _) in heterograms do
+    write_line(word)
+od
