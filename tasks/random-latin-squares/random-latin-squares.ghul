@@ -1,0 +1,60 @@
+use default
+
+let random = System.Random(1783)
+
+// Each cell takes a symbol drawn at random from those still free in its row
+// and its column, so every Latin square of the size is reachable. A row can
+// still paint itself into a corner, and the square is started again when it
+// does.
+try_row(rows: List[List[int]], size: int) -> List[int]? is
+    let row = repeat(-1, size) |> collect_list()
+    let taken = repeat(false, size) |> collect_list()
+
+    for column in 0..size do
+        let free =
+            0..size
+                |> filter(symbol =>
+                    !taken[symbol] /\ rows |> all(above => above[column] != symbol))
+                |> collect()
+
+        if free.count == 0 then
+            return null
+        fi
+
+        let chosen = free[random.next(0, free.count)]
+
+        row[column] = chosen
+        taken[chosen] = true
+    od
+
+    return row
+si
+
+latin_square(size: int) -> List[List[int]] is
+    let found =
+        for _ in from(1) do
+            let rows = LIST[List[int]]()
+
+            for _ in 0..size do
+                if let row = try_row(rows, size) then
+                    rows.add(row)
+                fi
+            od
+
+            if rows.count == size then
+                break rows
+            fi
+        od
+
+    return found!
+si
+
+for square in 1::2 do
+    write_line("square {square}:")
+
+    for row in latin_square(5) do
+        write_line("  {row |> join(" ")}")
+    od
+
+    write_line("")
+od
