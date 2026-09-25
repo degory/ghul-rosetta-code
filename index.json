@@ -15954,6 +15954,57 @@
       ]
     },
     {
+      "slug": "maximum-triangle-path-sum",
+      "title": "Maximum triangle path sum",
+      "url": "https://rosettacode.org/wiki/Maximum_triangle_path_sum",
+      "tags": [
+        "algorithms",
+        "pipes"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "maximum-triangle-path-sum",
+          "heading": null,
+          "source": "tasks/maximum-triangle-path-sum/maximum-triangle-path-sum.ghul",
+          "output": "tasks/maximum-triangle-path-sum/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "mayan-calendar",
+      "title": "Mayan calendar",
+      "url": "https://rosettacode.org/wiki/Mayan_calendar",
+      "tags": [
+        "date-time"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 55,
+      "parts": [
+        {
+          "id": "mayan-calendar",
+          "heading": null,
+          "source": "tasks/mayan-calendar/mayan-calendar.ghul",
+          "output": "tasks/mayan-calendar/run.expected",
+          "lines": 55,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "mayan-numerals",
       "title": "Mayan numerals",
       "url": "https://rosettacode.org/wiki/Mayan_numerals",
@@ -16107,6 +16158,32 @@
       ]
     },
     {
+      "slug": "mcnuggets-problem",
+      "title": "McNuggets problem",
+      "url": "https://rosettacode.org/wiki/McNuggets_problem",
+      "tags": [
+        "number-theory",
+        "pipes"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 11,
+      "parts": [
+        {
+          "id": "mcnuggets-problem",
+          "heading": null,
+          "source": "tasks/mcnuggets-problem/mcnuggets-problem.ghul",
+          "output": "tasks/mcnuggets-problem/run.expected",
+          "lines": 11,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "md4",
       "title": "MD4",
       "url": "https://rosettacode.org/wiki/MD4",
@@ -16126,6 +16203,32 @@
           "source": "tasks/md4/md4.ghul",
           "output": "tasks/md4/run.expected",
           "lines": 94,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "md5",
+      "title": "MD5",
+      "url": "https://rosettacode.org/wiki/MD5",
+      "tags": [
+        "dotnet-interop",
+        "strings"
+      ],
+      "interest": 1,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 22,
+      "parts": [
+        {
+          "id": "md5",
+          "heading": null,
+          "source": "tasks/md5/md5.ghul",
+          "output": "tasks/md5/run.expected",
+          "lines": 22,
           "playground": true,
           "input": false,
           "images": []
@@ -16187,6 +16290,58 @@
             "tasks/median-filter/cleaned.png.expected",
             "tasks/median-filter/noisy.png.expected"
           ]
+        }
+      ]
+    },
+    {
+      "slug": "meissel-mertens-constant",
+      "title": "Meissel-Mertens constant",
+      "url": "https://rosettacode.org/wiki/Meissel-Mertens_constant",
+      "tags": [
+        "primes",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 44,
+      "parts": [
+        {
+          "id": "meissel-mertens-constant",
+          "heading": null,
+          "source": "tasks/meissel-mertens-constant/meissel-mertens-constant.ghul",
+          "output": "tasks/meissel-mertens-constant/run.expected",
+          "lines": 44,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "memory-allocation",
+      "title": "Memory allocation",
+      "url": "https://rosettacode.org/wiki/Memory_allocation",
+      "tags": [
+        "dotnet-interop",
+        "basics"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 34,
+      "parts": [
+        {
+          "id": "memory-allocation",
+          "heading": null,
+          "source": "tasks/memory-allocation/memory-allocation.ghul",
+          "output": "tasks/memory-allocation/run.expected",
+          "lines": 34,
+          "playground": true,
+          "input": false,
+          "images": []
         }
       ]
     },
@@ -16297,6 +16452,32 @@
       ]
     },
     {
+      "slug": "metallic-ratios",
+      "title": "Metallic ratios",
+      "url": "https://rosettacode.org/wiki/Metallic_ratios",
+      "tags": [
+        "maths",
+        "generators"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 52,
+      "parts": [
+        {
+          "id": "metallic-ratios",
+          "heading": null,
+          "source": "tasks/metallic-ratios/metallic-ratios.ghul",
+          "output": "tasks/metallic-ratios/run.expected",
+          "lines": 52,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
       "slug": "metered-concurrency",
       "title": "Metered concurrency",
       "url": "https://rosettacode.org/wiki/Metered_concurrency",
@@ -16316,6 +16497,31 @@
           "source": "tasks/metered-concurrency/metered-concurrency.ghul",
           "output": "tasks/metered-concurrency/run.expected",
           "lines": 36,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "metronome",
+      "title": "Metronome",
+      "url": "https://rosettacode.org/wiki/Metronome",
+      "tags": [
+        "simulation"
+      ],
+      "interest": 2,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 31,
+      "parts": [
+        {
+          "id": "metronome",
+          "heading": null,
+          "source": "tasks/metronome/metronome.ghul",
+          "output": "tasks/metronome/run.expected",
+          "lines": 31,
           "playground": true,
           "input": false,
           "images": []
@@ -16398,6 +16604,58 @@
           "lines": 306,
           "playground": true,
           "input": true,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "miller-rabin-primality-test",
+      "title": "Miller-Rabin primality test",
+      "url": "https://rosettacode.org/wiki/Miller-Rabin_primality_test",
+      "tags": [
+        "primes",
+        "maths"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 59,
+      "parts": [
+        {
+          "id": "miller-rabin-primality-test",
+          "heading": null,
+          "source": "tasks/miller-rabin-primality-test/miller-rabin-primality-test.ghul",
+          "output": "tasks/miller-rabin-primality-test/run.expected",
+          "lines": 59,
+          "playground": true,
+          "input": false,
+          "images": []
+        }
+      ]
+    },
+    {
+      "slug": "mind-boggling-card-trick",
+      "title": "Mind boggling card trick",
+      "url": "https://rosettacode.org/wiki/Mind_boggling_card_trick",
+      "tags": [
+        "simulation",
+        "puzzles"
+      ],
+      "interest": 3,
+      "playground": true,
+      "input": false,
+      "images": [],
+      "lines": 39,
+      "parts": [
+        {
+          "id": "mind-boggling-card-trick",
+          "heading": null,
+          "source": "tasks/mind-boggling-card-trick/mind-boggling-card-trick.ghul",
+          "output": "tasks/mind-boggling-card-trick/run.expected",
+          "lines": 39,
+          "playground": true,
+          "input": false,
           "images": []
         }
       ]
