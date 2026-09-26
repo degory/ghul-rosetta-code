@@ -1,13 +1,13 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let columns = 15
 let rows = 14
 let spacing = 50.0D
 let radius = spacing / 3.0D
 let offset = radius / 2.5D
-let step = 2.0D * Math.pi / 15.0D
+let step = 2.0D * pi / 15.0D
 
 let image = IMAGE(
     cast int(spacing) * (columns + 1), cast int(spacing) * (rows + 1))
@@ -23,8 +23,8 @@ for row in 0..rows do
         let x = spacing * cast double(column + 1)
         let y = spacing * cast double(row + 1)
         let angle = -step * cast double(row + column)
-        let dx = offset * Math.sin(angle)
-        let dy = -offset * Math.cos(angle)
+        let dx = offset * sin(angle)
+        let dy = -offset * cos(angle)
 
         image.colour(255ub, 255ub, 255ub)
         image.disc(x + dx, y + dy, radius)

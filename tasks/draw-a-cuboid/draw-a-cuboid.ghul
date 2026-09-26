@@ -1,7 +1,7 @@
 use default
 use Raster.IMAGE
 use Raster.SHAPES
-use System.Math
+use System.Math.*
 
 use Point = (x: double, y: double, z: double)
 use Flat = (x: double, y: double)
@@ -10,13 +10,13 @@ let width = 2.0D
 let height = 3.0D
 let depth = 4.0D
 
-let yaw = Math.pi / 6.0D
-let pitch = Math.pi / 7.0D
+let yaw = pi / 6.0D
+let pitch = pi / 7.0D
 
 project(p: Point) -> Flat =>
-    let x = p.x * Math.cos(yaw) - p.z * Math.sin(yaw) in
-    let z = p.x * Math.sin(yaw) + p.z * Math.cos(yaw) in
-    (x = x, y = p.y * Math.cos(pitch) + z * Math.sin(pitch))
+    let x = p.x * cos(yaw) - p.z * sin(yaw) in
+    let z = p.x * sin(yaw) + p.z * cos(yaw) in
+    (x = x, y = p.y * cos(pitch) + z * sin(pitch))
 
 corner(i: int, j: int, k: int) -> Flat =>
     project((

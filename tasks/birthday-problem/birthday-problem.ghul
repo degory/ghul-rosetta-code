@@ -1,7 +1,7 @@
 use default
 use Raster.Anchor
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let days = 365
 let random = System.Random(365)
@@ -31,7 +31,7 @@ simulated(people: int, at_least: int, trials: int) -> double =>
     cast double(hits) / cast double(trials)
 
 log_factorial(n: int) -> double =>
-    1::n |> reduce(0.0D, (s, i) => s + Math.log(cast double(i)))
+    1::n |> reduce(0.0D, (s, i) => s + log(cast double(i)))
 
 exact(most: int, at_least: int) -> List[double] is
     let ways mut = repeat(0.0D, most + 1) |> collect_mutable()
@@ -40,14 +40,14 @@ exact(most: int, at_least: int) -> List[double] is
 
     let inverse_factorial =
         (0..at_least)
-            |> map(j => 1.0D / Math.exp(log_factorial(j)))
+            |> map(j => 1.0D / exp(log_factorial(j)))
             |> collect()
 
     for _ in 0..days do
         let next = repeat(0.0D, most + 1) |> collect_mutable()
 
         for m in 0::most do
-            for j in 0..Math.min(at_least, m + 1) do
+            for j in 0..min(at_least, m + 1) do
                 next[m] = next[m] + ways[m - j] * inverse_factorial[j]
             od
         od
@@ -59,8 +59,8 @@ exact(most: int, at_least: int) -> List[double] is
         |> map(n =>
             let log_scale =
                 log_factorial(n) -
-                cast double(n) * Math.log(cast double(days)) in
-            1.0D - ways[n] * Math.exp(log_scale))
+                cast double(n) * log(cast double(days)) in
+            1.0D - ways[n] * exp(log_scale))
         |> collect()
 si
 

@@ -1,20 +1,21 @@
 use default
+use System.Math.*
 
 let seconds_per_day = 24.0 * 60.0 * 60.0
 
 to_angle(time: string) -> double =>
     let seconds = System.TimeSpan.parse(time).total_seconds in
-    double.tau * seconds / seconds_per_day
+    tau * seconds / seconds_per_day
 
 mean_angle(angles: List[double]) -> double =>
-    double.atan2(
-        angles |> map(a => double.sin(a)) |> sum(),
-        angles |> map(a => double.cos(a)) |> sum())
+    atan2(
+        angles |> map(a => sin(a)) |> sum(),
+        angles |> map(a => cos(a)) |> sum())
 
 mean_time(times: List[string]) -> string =>
     let angle = mean_angle(times |> map(to_angle) |> collect()) in
-    let turn = if angle < 0.0 then angle + double.tau else angle fi in
-    let seconds = double.round(turn / double.tau * seconds_per_day) in
+    let turn = if angle < 0.0 then angle + tau else angle fi in
+    let seconds = round(turn / tau * seconds_per_day) in
     System.TimeSpan.from_seconds(seconds).to_string()
 
 let times = ["23:00:17", "23:40:20", "00:12:45", "00:17:19"]

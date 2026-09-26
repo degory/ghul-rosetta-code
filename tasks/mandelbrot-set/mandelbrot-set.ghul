@@ -1,5 +1,5 @@
-use System.Math
 use Raster.IMAGE
+use System.Math.*
 
 let width = 600
 let height = 450
@@ -22,7 +22,7 @@ escape(cx: double, cy: double) -> int =>
 
 band(level: double, phase: double) -> ubyte =>
     cast ubyte(
-        127.5D * (1.0D - Math.cos(6.0D * Math.pi * level + phase))
+        127.5D * (1.0D - cos(6.0D * pi * level + phase))
     )
 
 let image = IMAGE(width, height)
@@ -38,8 +38,8 @@ for row in 0..height do
 
         if steps < limit then
             let level =
-                Math.log(cast double(steps) + 1.0D) /
-                Math.log(cast double(limit) + 1.0D)
+                log(cast double(steps) + 1.0D) /
+                log(cast double(limit) + 1.0D)
 
             image.set_pixel(
                 column, row,

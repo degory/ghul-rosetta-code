@@ -1,10 +1,11 @@
 use default
+use System.Math.*
 
 power_sum(xs: double[], k: int) -> double =>
-    xs |> map(x => System.Math.pow(x, cast(k))) |> sum()
+    xs |> map(x => pow(x, cast(k))) |> sum()
 
 moment(xs: double[], ys: double[], k: int) -> double =>
-    zip(xs, ys) |> map((x, y) => y * System.Math.pow(x, cast(k))) |> sum()
+    zip(xs, ys) |> map((x, y) => y * pow(x, cast(k))) |> sum()
 
 solve(a: LIST[LIST[double]], b: LIST[double]) -> double[] is
     let n = b.count
@@ -12,7 +13,7 @@ solve(a: LIST[LIST[double]], b: LIST[double]) -> double[] is
     for column in 0..n do
         let pivot =
             (column..n)
-            |> max_by(row => System.Math.abs(a[row][column]))!
+            |> max_by(row => abs(a[row][column]))!
 
         (a[column], a[pivot]) = (a[pivot], a[column])
         (b[column], b[pivot]) = (b[pivot], b[column])

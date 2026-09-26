@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use RGB = (red: ubyte, green: ubyte, blue: ubyte)
 
@@ -47,10 +47,10 @@ si
 lerp(a: double, b: double, t: double) -> double => a + (b - a) * t
 
 bilinear(source: IMAGE, x: double, y: double) -> (double, double, double) is
-    let x0 = Math.min(cast int(Math.floor(x)), source.width - 1)
-    let y0 = Math.min(cast int(Math.floor(y)), source.height - 1)
-    let x1 = Math.min(x0 + 1, source.width - 1)
-    let y1 = Math.min(y0 + 1, source.height - 1)
+    let x0 = min(cast int(floor(x)), source.width - 1)
+    let y0 = min(cast int(floor(y)), source.height - 1)
+    let x1 = min(x0 + 1, source.width - 1)
+    let y1 = min(y0 + 1, source.height - 1)
     let tx = x - cast double(x0), ty = y - cast double(y0)
 
     let a = source.pixel(x0, y0), b = source.pixel(x1, y0)
@@ -66,8 +66,8 @@ bilinear(source: IMAGE, x: double, y: double) -> (double, double, double) is
 si
 
 enlarge(source: IMAGE, factor: double) -> IMAGE is
-    let width = cast int(Math.round(cast double(source.width) * factor))
-    let height = cast int(Math.round(cast double(source.height) * factor))
+    let width = cast int(round(cast double(source.width) * factor))
+    let height = cast int(round(cast double(source.height) * factor))
     let result = IMAGE(width, height)
     let across = cast double(source.width - 1) / cast double(width - 1)
     let down = cast double(source.height - 1) / cast double(height - 1)
@@ -80,9 +80,9 @@ enlarge(source: IMAGE, factor: double) -> IMAGE is
 
             result.set_pixel(
                 x, y,
-                cast ubyte(Math.round(r)),
-                cast ubyte(Math.round(g)),
-                cast ubyte(Math.round(b)))
+                cast ubyte(round(r)),
+                cast ubyte(round(g)),
+                cast ubyte(round(b)))
         od
     od
 

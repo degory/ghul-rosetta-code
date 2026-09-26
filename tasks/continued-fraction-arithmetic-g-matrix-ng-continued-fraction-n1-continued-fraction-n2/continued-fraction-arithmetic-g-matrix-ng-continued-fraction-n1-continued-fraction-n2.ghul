@@ -1,4 +1,5 @@
 use default
+use System.Math.*
 
 use Row = (p12: bigint, p1: bigint, p2: bigint, p: bigint)
 
@@ -60,8 +61,8 @@ combine(
         if b =~ 0n /\ b2 =~ 0n then true
         elif b =~ 0n \/ b2 =~ 0n then false
         else
-            double.abs(ratio(a1, b1) - ratio(a, b)) >
-                double.abs(ratio(a2, b2) - ratio(a, b))
+            abs(ratio(a1, b1) - ratio(a, b)) >
+                abs(ratio(a2, b2) - ratio(a, b))
         fi
 
     while !is_zero(bottom) do
@@ -74,7 +75,7 @@ combine(
             yield t
         else
             if waited == patience then
-                yield bigint(double.round(ratio(top.p, bottom.p)))
+                yield bigint(round(ratio(top.p, bottom.p)))
 
                 return
             fi

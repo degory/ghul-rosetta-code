@@ -1,6 +1,6 @@
 use default
+use System.Math.*
 
-use System.Math
 
 struct UNCERTAIN(value: double, error: double) is
     +(other: UNCERTAIN) -> UNCERTAIN =>
@@ -11,31 +11,31 @@ struct UNCERTAIN(value: double, error: double) is
 
     *(other: UNCERTAIN) -> UNCERTAIN =>
         let product = value * other.value in
-        UNCERTAIN(product, Math.abs(product) * relative_with(other))
+        UNCERTAIN(product, abs(product) * relative_with(other))
 
     /(other: UNCERTAIN) -> UNCERTAIN =>
         let quotient = value / other.value in
-        UNCERTAIN(quotient, Math.abs(quotient) * relative_with(other))
+        UNCERTAIN(quotient, abs(quotient) * relative_with(other))
 
     +(c: double) -> UNCERTAIN => UNCERTAIN(value + c, error)
     -(c: double) -> UNCERTAIN => UNCERTAIN(value - c, error)
-    *(c: double) -> UNCERTAIN => UNCERTAIN(value * c, Math.abs(c * error))
-    /(c: double) -> UNCERTAIN => UNCERTAIN(value / c, Math.abs(error / c))
+    *(c: double) -> UNCERTAIN => UNCERTAIN(value * c, abs(c * error))
+    /(c: double) -> UNCERTAIN => UNCERTAIN(value / c, abs(error / c))
 
     added_error(other: UNCERTAIN) -> double =>
-        Math.sqrt(error * error + other.error * other.error)
+        sqrt(error * error + other.error * other.error)
 
     relative_with(other: UNCERTAIN) -> double =>
         let mine = error / value in
         let theirs = other.error / other.value in
-        Math.sqrt(mine * mine + theirs * theirs)
+        sqrt(mine * mine + theirs * theirs)
 
     to_string() -> string => "{value} ± {error}"
 si
 
 power(a: UNCERTAIN, c: double) -> UNCERTAIN =>
-    let raised = Math.pow(a.value, c) in
-    UNCERTAIN(raised, Math.abs(raised * c * a.error / a.value))
+    let raised = pow(a.value, c) in
+    UNCERTAIN(raised, abs(raised * c * a.error / a.value))
 
 let x1 = UNCERTAIN(100.0, 1.1)
 let y1 = UNCERTAIN(50.0, 1.2)

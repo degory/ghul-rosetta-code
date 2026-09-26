@@ -1,4 +1,5 @@
 use default
+use System.Math.*
 
 is_prime(n: int) -> bool is
     if n < 2 then
@@ -26,9 +27,9 @@ is_gaussian_prime(a: int, b: int) -> bool =>
     if a != 0 /\ b != 0 then
         is_prime(a * a + b * b)
     elif a != 0 then
-        is_prime(System.Math.abs(a)) /\ System.Math.abs(a) % 4 == 3
+        is_prime(abs(a)) /\ abs(a) % 4 == 3
     elif b != 0 then
-        is_prime(System.Math.abs(b)) /\ System.Math.abs(b) % 4 == 3
+        is_prime(abs(b)) /\ abs(b) % 4 == 3
     else
         false
     fi

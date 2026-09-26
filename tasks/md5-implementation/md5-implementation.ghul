@@ -1,4 +1,5 @@
 use default
+use System.Math.*
 
 let shifts =
     [7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
@@ -10,9 +11,9 @@ let sines =
     0..64
         |> map(step =>
             cast uint(
-                System.Math.floor(
-                    System.Math.abs(
-                        System.Math.sin(cast double(step + 1))) *
+                floor(
+                    abs(
+                        sin(cast double(step + 1))) *
                     4294967296.0D)))
         |> collect()
 

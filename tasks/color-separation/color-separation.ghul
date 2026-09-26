@@ -1,7 +1,7 @@
 use default
 use Raster.Anchor
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use RGB = (red: ubyte, green: ubyte, blue: ubyte)
 
@@ -48,7 +48,7 @@ si
 use Layer = (name: string, row: int, column: int, show: RGB -> RGB)
 
 byte(v: double) -> ubyte =>
-    cast ubyte(Math.round(255.0D * Math.clamp(v, 0.0D, 1.0D)))
+    cast ubyte(round(255.0D * clamp(v, 0.0D, 1.0D)))
 
 fraction(b: ubyte) -> double => cast double(b) / 255.0D
 
@@ -60,7 +60,7 @@ ink(amount: double, r: double, g: double, b: double) -> RGB =>
 
 cmyk(p: RGB) -> (c: double, m: double, y: double, k: double) is
     let r = fraction(p.red), g = fraction(p.green), b = fraction(p.blue)
-    let k = 1.0D - Math.max(r, Math.max(g, b))
+    let k = 1.0D - max(r, max(g, b))
 
     if k >= 1.0D then
         return (0.0D, 0.0D, 0.0D, 1.0D)

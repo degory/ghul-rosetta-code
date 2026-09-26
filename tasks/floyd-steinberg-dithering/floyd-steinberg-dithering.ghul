@@ -1,5 +1,6 @@
 use default
 use Raster.IMAGE
+use System.Math.*
 
 use Math = System.Math
 
@@ -20,10 +21,10 @@ brightness(pixel_x: int, pixel_y: int) -> double =>
      if away > 1.0D then
          sky
      else
-         (let z = Math.sqrt(1.0D - away)
+         (let z = sqrt(1.0D - away)
           let facing = x * light.x + y * light.y + z * light.z
 
-          0.06D + 0.94D * Math.max(0.0D, facing))
+          0.06D + 0.94D * max(0.0D, facing))
      fi)
 
 let source = IMAGE(width, height)
@@ -34,7 +35,7 @@ let grey = LIST()
 for pixel_y in 0..height do
     for pixel_x in 0..width do
         let value = brightness(pixel_x, pixel_y)
-        let shade = cast ubyte(Math.round(255.0D * value))
+        let shade = cast ubyte(round(255.0D * value))
 
         grey.add(value)
         source.set_pixel(pixel_x, pixel_y, shade, shade, shade)
@@ -46,7 +47,7 @@ let palette = 2
 nearest(value: double) -> double =>
     (let steps = cast double(palette - 1)
 
-     Math.round(Math.min(1.0D, Math.max(0.0D, value)) * steps) / steps)
+     round(min(1.0D, max(0.0D, value)) * steps) / steps)
 
 spread(pixel_x: int, pixel_y: int, error: double, part: double) is
     if pixel_x >= 0 /\ pixel_x < width /\ pixel_y < height then
@@ -63,7 +64,7 @@ for pixel_y in 0..height do
         let chosen = nearest(wanted)
         let error = wanted - chosen
 
-        let shade = cast ubyte(Math.round(255.0D * chosen))
+        let shade = cast ubyte(round(255.0D * chosen))
 
         dithered.set_pixel(pixel_x, pixel_y, shade, shade, shade)
 

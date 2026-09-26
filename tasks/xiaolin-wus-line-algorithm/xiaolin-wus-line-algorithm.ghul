@@ -1,11 +1,11 @@
-use System.Math
 use Raster.IMAGE
+use System.Math.*
 
 let image = IMAGE(400, 300)
 
 image.colour(0ub, 0ub, 0ub)
 
-fraction(value: double) -> double => value - Math.floor(value)
+fraction(value: double) -> double => value - floor(value)
 
 rest(value: double) -> double => 1.0D - fraction(value)
 
@@ -22,11 +22,11 @@ endpoint(
     gradient: double, gap: double,
     steep: bool
 ) -> (column: int, height: double) is
-    let ends_at = Math.round(x)
+    let ends_at = round(x)
     let height = y + gradient * (ends_at - x)
 
     let column = cast int(ends_at)
-    let base = cast int(Math.floor(height))
+    let base = cast int(floor(height))
 
     mark(column, base, steep, rest(height) * gap)
     mark(column, base + 1, steep, fraction(height) * gap)
@@ -36,7 +36,7 @@ si
 
 line(from_x: double, from_y: double, to_x: double, to_y: double) is
     let steep =
-        Math.abs(to_y - from_y) > Math.abs(to_x - from_x)
+        abs(to_y - from_y) > abs(to_x - from_x)
 
     let ax mut = if steep then from_y else from_x fi
     let ay mut = if steep then from_x else from_y fi
@@ -64,7 +64,7 @@ line(from_x: double, from_y: double, to_x: double, to_y: double) is
     let height mut = first.height + gradient
 
     for column in first.column + 1..last.column do
-        let base = cast int(Math.floor(height))
+        let base = cast int(floor(height))
 
         mark(column, base, steep, rest(height))
         mark(column, base + 1, steep, fraction(height))
@@ -75,12 +75,12 @@ si
 
 for spoke in 0..13 do
     let angle =
-        Math.pi * (cast double(spoke) / 12.0D - 0.5D)
+        pi * (cast double(spoke) / 12.0D - 0.5D)
 
     line(
         10.0D, 150.0D,
-        10.0D + 380.0D * Math.cos(angle),
-        150.0D - 140.0D * Math.sin(angle)
+        10.0D + 380.0D * cos(angle),
+        150.0D - 140.0D * sin(angle)
     )
 od
 

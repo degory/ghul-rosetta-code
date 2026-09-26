@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 pt(x: double, y: double) -> (x: double, y: double) => (x = x, y = y)
 
@@ -54,8 +54,8 @@ class FIELD is
     si
 
     at(x: int, y: int) -> double =>
-        values[Math.clamp(y, 0, height - 1) * width +
-            Math.clamp(x, 0, width - 1)]
+        values[clamp(y, 0, height - 1) * width +
+            clamp(x, 0, width - 1)]
 
     put(x: int, y: int, v: double) is
         values[y * width + x] = v
@@ -125,10 +125,10 @@ canny(f: FIELD, low: double, high: double) -> FIELD is
                 n(-1, 1) + 2.0D * n(0, 1) + n(1, 1) -
                 n(-1, -1) - 2.0D * n(0, -1) - n(1, -1)
 
-            magnitude.put(x, y, Math.sqrt(gx * gx + gy * gy))
+            magnitude.put(x, y, sqrt(gx * gx + gy * gy))
 
-            let angle = Math.atan2(gy, gx) * 180.0D / Math.pi
-            let sector = cast int(Math.round((angle + 180.0D) / 45.0D)) % 4
+            let angle = atan2(gy, gx) * 180.0D / pi
+            let sector = cast int(round((angle + 180.0D) / 45.0D)) % 4
 
             direction[y * w + x] = sector
         od

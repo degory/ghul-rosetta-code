@@ -1,6 +1,7 @@
 use default
 use Raster.IMAGE
 use Raster.SHAPES
+use System.Math.*
 
 use Math = System.Math
 use Point = (x: double, y: double)
@@ -10,7 +11,7 @@ union Half(a: Point, b: Point, c: Point) is
     FAT(..)
 si
 
-let phi = (1.0D + Math.sqrt(5.0D)) / 2.0D
+let phi = (1.0D + sqrt(5.0D)) / 2.0D
 
 towards(from: Point, to: Point) -> Point =>
     (x = from.x + (to.x - from.x) / phi,
@@ -33,11 +34,11 @@ split(tile: Half) -> Pipe[Half] is
 si
 
 spoke(index: int) -> Half =>
-    (let low = cast double(2 * index - 1) * Math.pi / 10.0D
-     let high = cast double(2 * index + 1) * Math.pi / 10.0D
+    (let low = cast double(2 * index - 1) * pi / 10.0D
+     let high = cast double(2 * index + 1) * pi / 10.0D
 
-     let first = (x = Math.cos(low), y = Math.sin(low))
-     let second = (x = Math.cos(high), y = Math.sin(high))
+     let first = (x = cos(low), y = sin(low))
+     let second = (x = cos(high), y = sin(high))
      let middle = (x = 0.0D, y = 0.0D)
 
      if index % 2 == 0 then

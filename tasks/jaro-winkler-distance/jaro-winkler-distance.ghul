@@ -1,4 +1,5 @@
 use default
+use System.Math.*
 
 let dictionary = [
     "accommodate", "believe", "commitment", "definite", "existence",
@@ -18,7 +19,7 @@ jaro_similarity(left: string, right: string) -> double is
         return 1.0D
     fi
 
-    let window = (System.Math.max(left.length, right.length) / 2) - 1
+    let window = (max(left.length, right.length) / 2) - 1
     let left_match = LIST()
     let right_match = LIST()
     for _ in left do left_match.add(false) od
@@ -27,8 +28,8 @@ jaro_similarity(left: string, right: string) -> double is
     let matches mut = 0
 
     for i in 0..left.length do
-        let low = System.Math.max(0, i - window)
-        let high = System.Math.min(i + window + 1, right.length)
+        let low = max(0, i - window)
+        let high = min(i + window + 1, right.length)
 
         for j in low..high do
             if !right_match[j] /\ left[i] == right[j] then
@@ -67,8 +68,8 @@ jaro_winkler_distance(left: string, right: string) -> double is
     let similarity = jaro_similarity(left, right)
 
     let prefix mut = 0
-    let shorter = System.Math.min(left.length, right.length)
-    let limit = System.Math.min(4, shorter)
+    let shorter = min(left.length, right.length)
+    let limit = min(4, shorter)
 
     while prefix < limit /\ left[prefix] == right[prefix] do
         prefix = prefix + 1
@@ -85,7 +86,7 @@ for word in misspelled do
             (candidate, jaro_winkler_distance(word, candidate)))
         |> collect_mutable()
 
-    candidates.sort(((_, a), (_, b)) => System.Math.sign(a - b))
+    candidates.sort(((_, a), (_, b)) => sign(a - b))
 
     for (candidate, distance) in candidates |> take(2) do
         write_line("{word} -> {candidate} {distance:F4}")

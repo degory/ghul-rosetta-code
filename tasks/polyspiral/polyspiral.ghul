@@ -1,7 +1,7 @@
 use default
 use Raster.ANIMATION
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let size = 150
 let frames = 72
@@ -17,9 +17,9 @@ draw(image: IMAGE, increment: double) is
     let angle mut = increment
 
     for segment in 0..segments do
-        let radians = angle * Math.pi / 180.0D
-        let next_x = x + length * Math.cos(radians)
-        let next_y = y + length * Math.sin(radians)
+        let radians = angle * pi / 180.0D
+        let next_x = x + length * cos(radians)
+        let next_y = y + length * sin(radians)
         let fade = cast double(segment) / cast double(segments)
 
         image.colour(

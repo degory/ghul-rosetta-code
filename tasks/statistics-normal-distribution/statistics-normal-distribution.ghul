@@ -1,16 +1,16 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let random = System.Random(1809)
 
 normal() -> Pipe[double] is
     while true do
-        let r = Math.sqrt(-2.0D * Math.log(1.0D - random.next_double()))
-        let angle = 2.0D * Math.pi * random.next_double()
+        let r = sqrt(-2.0D * log(1.0D - random.next_double()))
+        let angle = 2.0D * pi * random.next_double()
 
-        yield r * Math.cos(angle)
-        yield r * Math.sin(angle)
+        yield r * cos(angle)
+        yield r * sin(angle)
     od
 si
 
@@ -21,7 +21,7 @@ let mean =
     samples |> sum() / cast double(size)
 
 let deviation =
-    Math.sqrt(
+    sqrt(
         samples
         |> map(x => (x - mean) * (x - mean))
         |> sum() / cast double(size))
@@ -37,14 +37,14 @@ let bins = 16
 let counts = repeat(0, bins) |> collect_mutable()
 
 for x in samples do
-    let bin = cast int(Math.floor((x - low) / width))
+    let bin = cast int(floor((x - low) / width))
 
     if bin >= 0 /\ bin < bins then
         counts[bin] = counts[bin] + 1
     fi
 od
 
-let tallest = counts |> reduce(0, (a, b) => Math.max(a, b))
+let tallest = counts |> reduce(0, (a, b) => max(a, b))
 
 for bin in 0..bins do
     let from = low + width * cast double(bin)
@@ -72,7 +72,7 @@ let curve =
     (0::160)
         |> map(i =>
             let x = low + cast double(i) * 0.05D in
-            let y = Math.exp(-x * x / 2.0D) / Math.sqrt(2.0D * Math.pi) in
+            let y = exp(-x * x / 2.0D) / sqrt(2.0D * pi) in
             (x = x, y = y))
         |> collect()
 

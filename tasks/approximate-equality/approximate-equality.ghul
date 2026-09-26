@@ -1,13 +1,13 @@
 use default
-use System.Math
+use System.Math.*
 
 ≈(left: double, right: double) -> bool is
     if left == right then
         return true
     fi
 
-    let difference = Math.abs(left - right)
-    let largest = Math.max(Math.abs(left), Math.abs(right))
+    let difference = abs(left - right)
+    let largest = max(abs(left), abs(right))
 
     difference <= largest * 1.0e-9
 si
@@ -18,8 +18,8 @@ let pairs = [
     (left = 10000000000000.001 / 10000.0, right = 1000000000.0000001),
     (left = 0.001, right = 0.0010000001),
     (left = 0.000000000000000000000101, right = 0.0),
-    (left = Math.sqrt(2.0) * Math.sqrt(2.0), right = 2.0),
-    (left = -Math.sqrt(2.0) * Math.sqrt(2.0), right = 2.0),
+    (left = sqrt(2.0) * sqrt(2.0), right = 2.0),
+    (left = -sqrt(2.0) * sqrt(2.0), right = 2.0),
     (left = 100000000000000003.0, right = 100000000000000004.0),
     (left = 3.14159265358979323846, right = 3.14159265358979324)
 ]

@@ -1,6 +1,7 @@
 use default
 use Raster.IMAGE
 use Point = (x: double, y: double, z: double)
+use System.Math.*
 
 -(a: Point, b: Point) -> Point =>
     (x = a.x - b.x, y = a.y - b.y, z = a.z - b.z)
@@ -17,7 +18,7 @@ use Point = (x: double, y: double, z: double)
      y = a.z * b.x - a.x * b.z,
      z = a.x * b.y - a.y * b.x)
 
-length(p: Point) -> double => System.Math.sqrt(p ⋅ p)
+length(p: Point) -> double => sqrt(p ⋅ p)
 
 class FACE(a: Point, b: Point, c: Point) is
     normal: Point => (b - a) × (c - a)
@@ -63,8 +64,8 @@ hull(points: List[Point]) -> LIST[FACE] is
 
     let peak =
         points |> reduce(points[0], (best, candidate) =>
-            if System.Math.abs(face.normal ⋅ (candidate - low)) >
-               System.Math.abs(face.normal ⋅ (best - low)) then
+            if abs(face.normal ⋅ (candidate - low)) >
+               abs(face.normal ⋅ (best - low)) then
                 candidate
             else
                 best

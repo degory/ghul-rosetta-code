@@ -1,8 +1,8 @@
 use default
 use Raster.Anchor
 use Raster.IMAGE
-use System.Math
 use System.StringSplitOptions
+use System.Math.*
 
 struct P(x: double, y: double) is
     -(o: P) -> P => P(x - o.x, y - o.y)
@@ -16,8 +16,8 @@ use Triangle = P[]
 shadow(t: Triangle, axis: P) -> (low: double, high: double) =>
     let lengths = t |> map(p => p ⋅ axis) |> collect() in
     (
-        low = lengths |> reduce(lengths[0], Math.min),
-        high = lengths |> reduce(lengths[0], Math.max))
+        low = lengths |> reduce(lengths[0], min),
+        high = lengths |> reduce(lengths[0], max))
 
 separated(a: Triangle, b: Triangle, axis: P, touching: bool) -> bool =>
     let s = shadow(a, axis), t = shadow(b, axis) in
@@ -78,11 +78,11 @@ image.clear(252ub, 250ub, 245ub)
 for (i, (a, b)) in pairs |> index() do
     let left = cast double(i % 4 * panel), top = cast double(i / 4 * panel)
     let all = a |> cat(b) |> collect()
-    let low_x = all |> map(p => p.x) |> reduce(all[0].x, Math.min)
-    let high_x = all |> map(p => p.x) |> reduce(all[0].x, Math.max)
-    let low_y = all |> map(p => p.y) |> reduce(all[0].y, Math.min)
-    let high_y = all |> map(p => p.y) |> reduce(all[0].y, Math.max)
-    let scale = 90.0D / Math.max(high_x - low_x, high_y - low_y)
+    let low_x = all |> map(p => p.x) |> reduce(all[0].x, min)
+    let high_x = all |> map(p => p.x) |> reduce(all[0].x, max)
+    let low_y = all |> map(p => p.y) |> reduce(all[0].y, min)
+    let high_y = all |> map(p => p.y) |> reduce(all[0].y, max)
+    let scale = 90.0D / max(high_x - low_x, high_y - low_y)
 
     let place = p =>
         (

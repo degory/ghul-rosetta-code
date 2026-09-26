@@ -1,5 +1,6 @@
 use default
 use Raster.IMAGE
+use System.Math.*
 
 use Math = System.Math
 use Colour = (red: ubyte, green: ubyte, blue: ubyte)
@@ -8,13 +9,13 @@ from_hsv(hue: double, saturation: double, value: double) -> Colour =>
     (let sextant = hue / 60.0D
      let rising = value * (1.0D - saturation)
      let falling =
-         value * (1.0D - saturation * (sextant - Math.floor(sextant)))
+         value * (1.0D - saturation * (sextant - floor(sextant)))
      let climbing =
          value *
-         (1.0D - saturation * (1.0D - sextant + Math.floor(sextant)))
+         (1.0D - saturation * (1.0D - sextant + floor(sextant)))
 
      let channels =
-         case cast int(Math.floor(sextant)) % 6
+         case cast int(floor(sextant)) % 6
          when 0 then (red = value, green = climbing, blue = rising)
          when 1 then (red = falling, green = value, blue = rising)
          when 2 then (red = rising, green = value, blue = climbing)
@@ -23,9 +24,9 @@ from_hsv(hue: double, saturation: double, value: double) -> Colour =>
          else (red = value, green = rising, blue = falling)
          esac
 
-     (red = cast ubyte(Math.round(255.0D * channels.red)),
-      green = cast ubyte(Math.round(255.0D * channels.green)),
-      blue = cast ubyte(Math.round(255.0D * channels.blue))))
+     (red = cast ubyte(round(255.0D * channels.red)),
+      green = cast ubyte(round(255.0D * channels.green)),
+      blue = cast ubyte(round(255.0D * channels.blue))))
 
 let size = 480
 let radius = 224.0D
@@ -40,17 +41,17 @@ for pixel_y in 0..size do
     for pixel_x in 0..size do
         let across = cast double(pixel_x) + 0.5D - centre
         let down = cast double(pixel_y) + 0.5D - centre
-        let away = Math.sqrt(across * across + down * down)
+        let away = sqrt(across * across + down * down)
         let covered =
-            Math.min(1.0D, Math.max(0.0D, radius + 0.5D - away))
+            min(1.0D, max(0.0D, radius + 0.5D - away))
 
         if covered > 0.0D then
-            let angle = Math.atan2(-down, across) * 180.0D / Math.pi
+            let angle = atan2(-down, across) * 180.0D / pi
             let turned =
                 if angle < 0.0D then angle + 360.0D else angle fi
 
             image.colour(
-                from_hsv(turned, Math.min(1.0D, away / radius), 1.0D))
+                from_hsv(turned, min(1.0D, away / radius), 1.0D))
 
             image.blend(pixel_x, pixel_y, covered)
         fi

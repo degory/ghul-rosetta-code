@@ -1,7 +1,7 @@
 use default
 use Raster.COLOUR_MAP
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 struct VEC(x: double, y: double, z: double) is
     -(other: VEC) -> VEC => VEC(x - other.x, y - other.y, z - other.z)
@@ -9,7 +9,7 @@ struct VEC(x: double, y: double, z: double) is
     ×(o: VEC) -> VEC =>
         VEC(y * o.z - z * o.y, z * o.x - x * o.z, x * o.y - y * o.x)
 
-    length: double => Math.sqrt(x * x + y * y + z * z)
+    length: double => sqrt(x * x + y * y + z * z)
 si
 
 use Patch = (corners: List[VEC], phase: double)
@@ -22,17 +22,17 @@ let yaw = 0.62D
 let pitch = 0.5D
 
 turned(p: VEC) -> VEC is
-    let x = p.x * Math.cos(yaw) - p.y * Math.sin(yaw)
-    let y = p.x * Math.sin(yaw) + p.y * Math.cos(yaw)
+    let x = p.x * cos(yaw) - p.y * sin(yaw)
+    let y = p.x * sin(yaw) + p.y * cos(yaw)
 
     VEC(
         x,
-        p.z * Math.cos(pitch) - y * Math.sin(pitch),
-        p.z * Math.sin(pitch) + y * Math.cos(pitch))
+        p.z * cos(pitch) - y * sin(pitch),
+        p.z * sin(pitch) + y * cos(pitch))
 si
 
 angle(i: int) -> double =>
-    2.0D * Math.pi * cast double(turns) *
+    2.0D * pi * cast double(turns) *
     cast double(i) / cast double(around)
 
 radius(j: int) -> double => reach * cast double(j) / cast double(along)
@@ -42,9 +42,9 @@ corner(i: int, j: int) -> VEC is
     let r = radius(j)
 
     VEC(
-        r * Math.cos(t),
-        r * Math.sin(t),
-        Math.sqrt(r) * Math.cos(t / 2.0D))
+        r * cos(t),
+        r * sin(t),
+        sqrt(r) * cos(t / 2.0D))
 si
 
 patch(i: int, j: int) -> Patch =>
@@ -54,7 +54,7 @@ patch(i: int, j: int) -> Patch =>
             turned(corner(i + 1, j)),
             turned(corner(i + 1, j + 1)),
             turned(corner(i, j + 1))],
-        phase = angle(i) / (2.0D * Math.pi * cast double(turns)))
+        phase = angle(i) / (2.0D * pi * cast double(turns)))
 
 depth(p: Patch) -> double => p.corners |> map(c => c.z) |> sum()
 
@@ -63,7 +63,7 @@ brightness(p: Patch) -> double is
     let n = (c[1] - c[0]) × (c[3] - c[0])
 
     if n.length == 0.0D then 0.6D
-    else 0.55D + 0.45D * Math.abs(n.z) / n.length
+    else 0.55D + 0.45D * abs(n.z) / n.length
     fi
 si
 

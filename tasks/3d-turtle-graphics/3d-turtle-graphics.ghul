@@ -1,13 +1,13 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 struct V3(x: double, y: double, z: double) is
     +(o: V3) -> V3 => V3(x + o.x, y + o.y, z + o.z)
     -(o: V3) -> V3 => V3(x - o.x, y - o.y, z - o.z)
     *(k: double) -> V3 => V3(x * k, y * k, z * k)
     ⋅(o: V3) -> double => x * o.x + y * o.y + z * o.z
-    length: double => Math.sqrt(self ⋅ self)
+    length: double => sqrt(self ⋅ self)
 si
 
 use Segment = (from: V3, to: V3, colour: (ubyte, ubyte, ubyte))
@@ -41,18 +41,18 @@ class TURTLE is
     si
 
     turn(degrees: double) is
-        let a = degrees * Math.pi / 180.0D
-        let h = heading * Math.cos(a) + left * Math.sin(a)
+        let a = degrees * pi / 180.0D
+        let h = heading * cos(a) + left * sin(a)
 
-        left = left * Math.cos(a) - heading * Math.sin(a)
+        left = left * cos(a) - heading * sin(a)
         heading = h
     si
 
     pitch(degrees: double) is
-        let a = degrees * Math.pi / 180.0D
-        let h = heading * Math.cos(a) + up * Math.sin(a)
+        let a = degrees * pi / 180.0D
+        let h = heading * cos(a) + up * sin(a)
 
-        up = up * Math.cos(a) - heading * Math.sin(a)
+        up = up * cos(a) - heading * sin(a)
         heading = h
     si
 
@@ -87,9 +87,9 @@ house(t: TURTLE, size: double) is
     box(t, size, size, size)
 
     let apex = size / 2.0D
-    let rise = size / Math.sqrt(2.0D)
-    let slant = Math.sqrt(apex * apex + apex * apex + rise * rise)
-    let climb = Math.asin(rise / slant) * 180.0D / Math.pi
+    let rise = size / sqrt(2.0D)
+    let slant = sqrt(apex * apex + apex * apex + rise * rise)
+    let climb = asin(rise / slant) * 180.0D / pi
 
     t.pitch(90.0D)
     t.forward(size)
@@ -117,7 +117,7 @@ si
 bar_chart(t: TURTLE, values: double[], size: double) is
     let start = t.state
     let width = size / cast double(values.count)
-    let most = values |> reduce(0.0D, Math.max)
+    let most = values |> reduce(0.0D, max)
 
     for value in values do
         box(t, width * 0.8D, width * 0.8D, size * value / most)
@@ -153,13 +153,13 @@ write_line("{turtle.drawn.count} segments drawn")
 let facing = (at_home.`1 - V3(1.0D, 0.0D, 0.0D)).length < 1.0e-9
 write_line("facing the way it started: {facing}")
 
-let yaw = 35.0D * Math.pi / 180.0D
-let elevation = 25.0D * Math.pi / 180.0D
+let yaw = 35.0D * pi / 180.0D
+let elevation = 25.0D * pi / 180.0D
 
 project(p: V3) -> (x: double, y: double) =>
-    let across = p.x * Math.cos(yaw) - p.y * Math.sin(yaw) in
-    let depth = p.x * Math.sin(yaw) + p.y * Math.cos(yaw) in
-    let height = p.z * Math.cos(elevation) + depth * Math.sin(elevation) in
+    let across = p.x * cos(yaw) - p.y * sin(yaw) in
+    let depth = p.x * sin(yaw) + p.y * cos(yaw) in
+    let height = p.z * cos(elevation) + depth * sin(elevation) in
     (x = across, y = height)
 
 let image = IMAGE(480, 360)
@@ -168,10 +168,10 @@ let points =
     turtle.drawn
         |> flat_map(s => [project(s.from), project(s.to)])
 
-let low_x = points |> map(p => p.x) |> reduce(0.0D, Math.min)
-let high_x = points |> map(p => p.x) |> reduce(0.0D, Math.max)
-let low_y = points |> map(p => p.y) |> reduce(0.0D, Math.min)
-let high_y = points |> map(p => p.y) |> reduce(0.0D, Math.max)
+let low_x = points |> map(p => p.x) |> reduce(0.0D, min)
+let high_x = points |> map(p => p.x) |> reduce(0.0D, max)
+let low_y = points |> map(p => p.y) |> reduce(0.0D, min)
+let high_y = points |> map(p => p.y) |> reduce(0.0D, max)
 
 image.view(low_x - 20.0D, low_y - 20.0D, high_x + 20.0D, high_y + 20.0D)
 image.clear(252ub, 250ub, 245ub)

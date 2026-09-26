@@ -1,14 +1,14 @@
 use default
 use Raster.ANIMATION
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 struct VEC(x: double, y: double) is
     +(other: VEC) -> VEC => VEC(x + other.x, y + other.y)
     -(other: VEC) -> VEC => VEC(x - other.x, y - other.y)
     *(k: double) -> VEC => VEC(x * k, y * k)
 
-    length: double => Math.sqrt(x * x + y * y)
+    length: double => sqrt(x * x + y * y)
 
     limited(low: double, high: double) -> VEC =>
         if length > high then
@@ -33,10 +33,10 @@ let frames = 240
 let sight = 6.0D
 let personal_space = 1.5D
 
-row_of(y: double) -> int => rows - 1 - cast int(Math.floor(y / 2.0D))
+row_of(y: double) -> int => rows - 1 - cast int(floor(y / 2.0D))
 
 column_of(x: double) -> int =>
-    (cast int(Math.floor(x)) % columns + columns) % columns
+    (cast int(floor(x)) % columns + columns) % columns
 
 is_wall(point: VEC) -> bool =>
     point.y < 0.0D \/ point.y >= height \/
@@ -51,9 +51,9 @@ wall_push(point: VEC) -> VEC is
 
             if is_wall(probe) then
                 let away = point - probe
-                let distance = Math.max(away.length, 0.5D)
+                let distance = max(away.length, 0.5D)
 
-                push = push + away * Math.pow(distance, -3.0D)
+                push = push + away * pow(distance, -3.0D)
             fi
         od
     od

@@ -1,13 +1,13 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 struct P(x: double, y: double) is
     -(o: P) -> P => P(x - o.x, y - o.y)
-    length: double => Math.sqrt(x * x + y * y)
+    length: double => sqrt(x * x + y * y)
 si
 
-let full = 2.0D * Math.pi
+let full = 2.0D * pi
 
 centre_of(a: P, b: P, c: P) -> P is
     let d =
@@ -25,13 +25,13 @@ curve(start: P, middle: P, finish: P, steps: int) -> List[P] is
     let centre = centre_of(start, middle, finish)
     let radius = (start - centre).length
 
-    angle(p) => Math.atan2(p.y - centre.y, p.x - centre.x)
+    angle(p) => atan2(p.y - centre.y, p.x - centre.x)
 
     let from = angle(start)
     let through = angle(middle)
     let turn mut = angle(finish) - from
 
-    let wrap = a => a - full * Math.floor(a / full)
+    let wrap = a => a - full * floor(a / full)
 
     if (wrap(through - from) < wrap(turn)) != (turn > 0.0D) then
         turn = if turn > 0.0D then turn - full else turn + full fi
@@ -40,8 +40,8 @@ curve(start: P, middle: P, finish: P, steps: int) -> List[P] is
     (0::steps)
         |> map(i =>
             let a = from + turn * cast double(i) / cast double(steps) in
-            let x = centre.x + radius * Math.cos(a) in
-            P(x, centre.y + radius * Math.sin(a)))
+            let x = centre.x + radius * cos(a) in
+            P(x, centre.y + radius * sin(a)))
         |> collect()
 si
 

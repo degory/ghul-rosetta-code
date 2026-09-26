@@ -1,4 +1,5 @@
 use default
+use System.Math.*
 
 let root = if args.count > 0 then args[0] else "." fi
 
@@ -11,15 +12,15 @@ bucket(size: long) -> int =>
     if size == 0L then
         0
     else
-        cast int(System.Math.log10(cast double(size))) + 1
+        cast int(log10(cast double(size))) + 1
     fi
 
 label(bucket: int) -> string =>
     if bucket == 0 then
         "empty"
     else
-        "{System.Math.pow(10.0, cast double(bucket - 1))} to "
-        "{System.Math.pow(10.0, cast double(bucket)) - 1.0} bytes"
+        "{pow(10.0, cast double(bucket - 1))} to "
+        "{pow(10.0, cast double(bucket)) - 1.0} bytes"
     fi
 
 let counts =

@@ -3,7 +3,7 @@ use Raster.Anchor
 use Raster.IMAGE
 use System.DateTime
 use System.Globalization.CultureInfo
-use System.Math
+use System.Math.*
 
 let cycles = [("Physical", 23), ("Emotional", 28), ("Mental", 33)]
 
@@ -20,7 +20,7 @@ date(text: string) -> DateTime =>
 show(d: DateTime) -> string => d.to_string("yyyy-MM-dd")
 
 level(position: int, length: int) -> double =>
-    Math.sin(2.0D * Math.pi * cast double(position) / cast double(length))
+    sin(2.0D * pi * cast double(position) / cast double(length))
 
 report(birth: DateTime, target: DateTime) is
     let days = cast int((target - birth).total_days)
@@ -31,14 +31,14 @@ report(birth: DateTime, target: DateTime) is
         let position = days % length
         let quadrant = position * 4 / length
         let value = level(position, length)
-        let percentage = Math.floor(value * 1000.0D) / 10.0D
+        let percentage = floor(value * 1000.0D) / 10.0D
 
         let description =
             if percentage > 95.0D then
                 "peak"
             elif percentage < -95.0D then
                 "valley"
-            elif Math.abs(percentage) < 5.0D then
+            elif abs(percentage) < 5.0D then
                 "critical transition"
             else
                 let (trend, next) = quadrants[quadrant] in
@@ -87,7 +87,7 @@ for (i, (label, length)) in cycles |> index() do
                 let day = cast double(q) / 4.0D in
                 let turn =
                     (cast double(centre) + day) / cast double(length) in
-                (x = day, y = Math.sin(2.0D * Math.pi * turn)))
+                (x = day, y = sin(2.0D * pi * turn)))
             |> collect())
     image.text(-wide + 10.0D * cast double(i), 1.45D, 13.0D, label)
 od

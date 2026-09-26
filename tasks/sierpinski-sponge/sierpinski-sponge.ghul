@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use Cell = (x: int, y: int, z: int)
 use Flat = (x: double, y: double)
@@ -35,8 +35,8 @@ si
 
 project(x: double, y: double, z: double) -> Flat =>
     (
-        x = (x - z) * Math.cos(Math.pi / 6.0D),
-        y = y - (x + z) * Math.sin(Math.pi / 6.0D))
+        x = (x - z) * cos(pi / 6.0D),
+        y = y - (x + z) * sin(pi / 6.0D))
 
 let faces = [
     (
