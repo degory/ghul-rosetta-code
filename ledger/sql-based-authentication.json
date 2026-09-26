@@ -1,6 +1,7 @@
 {
   "title": "SQL-based authentication",
   "slug": "sql-based-authentication",
-  "state": "solved",
-  "note": "SQLite, through Microsoft.Data.Sqlite, stands in for MySQL; the table and the three operations are the task's"
+  "state": "published",
+  "note": "SQLite, through Microsoft.Data.Sqlite, stands in for MySQL; the table and the three operations are the task's",
+  "published_hash": "8f9bd66762758af02d4295d605f834c1900a877d0a6249c5d24765e1c97391e0"
 }
