@@ -1,0 +1,47 @@
+use default
+use System.DateTime
+use System.Net.HttpListener
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Sockets.TcpListener
+
+// The test's entry: serves the logs as they stood on the day
+// logs/CAPTURED.txt names, on the loopback interface, and searches back
+// from that day. Not part of the published solution.
+stand_in() -> string is
+    let probe = TcpListener(IPAddress.loopback, 0)
+
+    probe.start()
+
+    let port =
+        if let bound: IPEndPoint = probe.local_endpoint then bound.port
+        else throw System.Exception("the probe has no address")
+        fi
+
+    probe.stop()
+
+    let prefix = "http://127.0.0.1:{port}/conferences/tcl/"
+    let listener = HttpListener()
+
+    listener.prefixes.add(prefix)
+    listener.start()
+
+    Tasks.TASK.run(() is
+        while true do
+            let context = listener.get_context()
+            let path = context.request.url?.absolute_path ?? ""
+            let name = IO.Path.get_file_name(path) ?? ""
+            let body = IO.File.read_all_bytes(IO.Path.combine("logs", name))
+
+            context.response.output_stream.write(body, 0, body.count)
+            context.response.close()
+        od
+    si)
+
+    prefix
+si
+
+@entry()
+test_entry(args: string[]) is
+    search(stand_in(), DateTime(2026, 9, 25), args[0])
+si

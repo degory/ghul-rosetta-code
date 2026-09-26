@@ -581,22 +581,30 @@ where the live data or the particular machine is the whole of the answer.
 
 ### A task that talks to a service
 
-A client for HTTP, HTTPS, SMTP, DNS, FTP, SOAP or a web API is written against an endpoint it is
-given, and runs without the network by serving that endpoint itself. `tasks/http` is the model:
+A client for HTTP, HTTPS, SMTP, DNS, FTP, SOAP or a web API is published against the real service,
+and tested against a stand-in the published code never mentions. `tasks/https` is the model:
 
-- The task's own code comes first, taking the endpoint as a parameter: `fetch(url)`,
-  `query(server, name, kind)`, `send_email(server, port, ...)`.
-- The entry reads the endpoint from its arguments. With none it calls `stand_in()`, which starts
-  the counterpart on the loopback address, on a port the system picks, in the same program, and
-  returns where it is. The test passes no arguments, so its output is the same on every run.
-- `stand_in()` comes after the task's code, under one comment saying what it serves, and is kept
-  as short as the protocol allows: it is published with the entry, and the reader should still
-  see the client as the point.
-- A TLS stand-in makes its certificate for the run, and the client trusts that one certificate
-  by thumbprint while talking to it, and the system's store otherwise. Nothing accepts any
-  certificate.
-- A stand-in for a web API answers from a recorded reply shipped with the task and listed in
-  `playground-files`, whose first line names the date it was captured.
+- `tasks/<slug>/<slug>.ghul` is the only file the wiki gets, so it is the task alone: the client in
+  a function that takes whatever a stand-in has to replace (an endpoint, an `HttpClientHandler`, a
+  resolver's answer), and top-level statements that call it with the real service, the one the
+  task names or the other entries use. No argument selects anything test-shaped.
+- `tasks/<slug>/stand-in.ghul` holds the stand-in and an `@entry()` function, `test_entry`, that
+  starts it on the loopback address, on a port the system picks, and calls the published
+  function against it. The test runs that entry, so its output is the same on every run and
+  needs no network.
+- The project sets `GhulGlobalNamespace` so the two files share names, and
+  `GhulNoWarn` to `top-level-statements-not-run`, since under the test the published file's
+  top-level statements are not the entry.
+- A TLS stand-in makes its certificate for the run and passes a handler that trusts that one
+  certificate by thumbprint. Nothing accepts any certificate.
+- A stand-in for a web API answers from a recorded reply shipped with the task, whose first line
+  names the date it was captured.
+- `tasks/<slug>/wiki-output.txt` is a run of the published file against the real service,
+  recorded by hand, and `scripts/generate-wiki.sh` shows it in place of the test's output, which
+  is the stand-in's answer. A long run is trimmed with an ellipsis. Where the service cannot be
+  reached from here, or needs an account (sending email), there is no recording.
+- `dotnet run --project tasks/<slug>` runs the test's entry, the stand-in. To run the published
+  file against the real service, compile that one file on its own, with no project, and run it.
 - The task carries `playground-unsupported`: the playground has no sockets.
 
 A rejection can also be reversed, when what made the task impossible stops being true. That is

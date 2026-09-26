@@ -1,85 +1,10 @@
 use default
 use System.Net.Http.HttpClient
 use System.Net.Http.HttpClientHandler
-use System.Net.IPAddress
-use System.Net.IPEndPoint
-use System.Net.Security.SslStream
-use System.Net.Sockets.TcpListener
-use System.Security.Cryptography.HashAlgorithmName
-use System.Security.Cryptography.RSA
-use System.Security.Cryptography.RSASignaturePadding
-use System.Security.Cryptography.X509Certificates.CertificateRequest
-use System.Security.Cryptography.X509Certificates.X509Certificate2
-use System.Security.Cryptography.X509Certificates.X509CertificateLoader
-use System.Security.Cryptography.X509Certificates.X509ContentType
-use System.Security.Cryptography.X509Certificates.X509KeyStorageFlags
-use System.Text.Encoding
 
-// The task: fetch a URL over HTTPS, checking the server's certificate.
-// Trusted is null for the system's own certificate store, or the one
-// certificate to accept instead.
-fetch(url: string, trusted: X509Certificate2?) -> string is
-    let handler = HttpClientHandler()
-
-    if let only = trusted then
-        handler.server_certificate_custom_validation_callback =
-            (_, certificate, _, _) =>
-                certificate?.thumbprint =~ only.thumbprint
-    fi
-
+// The handler decides which server certificates are trusted: a plain one
+// checks them against the system's own store.
+fetch(url: string, handler: HttpClientHandler) -> string =>
     HttpClient(handler).get_string_async(url).result
-si
 
-// With no URL the entry serves a page of its own over TLS on the loopback
-// interface, under a certificate made for the run, and trusts only that.
-stand_in() -> (url: string, certificate: X509Certificate2) is
-    let request = CertificateRequest(
-        "CN=localhost", RSA.create(2048), HashAlgorithmName.sha256,
-        RSASignaturePadding.pkcs1)
-    let made = request.create_self_signed(
-        System.DateTimeOffset.now.add_days(-1.0),
-        System.DateTimeOffset.now.add_days(1.0))
-    let pfx: ubyte[] = made.export(X509ContentType.PFX)
-    let certificate = X509CertificateLoader.load_pkcs12(
-        pfx, cast string?(null), X509KeyStorageFlags.DEFAULT_KEY_SET, null)
-
-    let listener = TcpListener(IPAddress.loopback, 0)
-
-    listener.start()
-
-    let port =
-        if let bound: IPEndPoint = listener.local_endpoint then bound.port
-        else throw System.Exception("the listener has no address")
-        fi
-
-    Tasks.TASK.run(() is
-        let tls = SslStream(listener.accept_tcp_client().get_stream())
-
-        tls.authenticate_as_server(certificate)
-
-        let reader = IO.StreamReader(tls)
-
-        while (reader.read_line() ?? "").length > 0 do
-        od
-
-        let body = "Hello over TLS\n"
-        let response =
-            "HTTP/1.1 200 OK\r\nContent-Length: {body.length}\r\n"
-            "Connection: close\r\n\r\n{body}"
-        let bytes = Encoding.utf8.get_bytes(response)
-
-        tls.write(bytes, 0, bytes.count)
-        tls.flush()
-        tls.close()
-    si)
-
-    ("https://localhost:{port}/", certificate)
-si
-
-if args.count > 0 then
-    IO.Std.write(fetch(args[0], null))
-else
-    let (url, certificate) = stand_in()
-
-    IO.Std.write(fetch(url, certificate))
-fi
+IO.Std.write(fetch("https://www.example.com", HttpClientHandler()))

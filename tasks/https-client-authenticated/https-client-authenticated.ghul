@@ -2,108 +2,27 @@ use default
 use System.Net.Http.ClientCertificateOption
 use System.Net.Http.HttpClient
 use System.Net.Http.HttpClientHandler
-use System.Net.IPAddress
-use System.Net.IPEndPoint
-use System.Net.Security.SslStream
-use System.Net.Sockets.TcpListener
-use System.Security.Cryptography.HashAlgorithmName
-use System.Security.Cryptography.RSA
-use System.Security.Cryptography.RSASignaturePadding
-use System.Security.Cryptography.X509Certificates.CertificateRequest
-use System.Security.Cryptography.X509Certificates.X509Certificate
 use System.Security.Cryptography.X509Certificates.X509Certificate2
 use System.Security.Cryptography.X509Certificates.X509CertificateLoader
-use System.Security.Cryptography.X509Certificates.X509ContentType
 use System.Security.Cryptography.X509Certificates.X509KeyStorageFlags
-use System.Text.Encoding
 
 // The task: an HTTPS request that proves who the client is with a
-// certificate of its own. Trusted is null for the system's certificate
-// store, or the one server certificate to accept instead.
+// certificate of its own. badssl.com publishes exactly such a certificate
+// and key, reachable only by presenting it.
 fetch(
-    url: string,
-    identity: X509Certificate2,
-    trusted: X509Certificate2?
+    url: string, identity: X509Certificate2, handler: HttpClientHandler
 ) -> string is
-    let handler = HttpClientHandler()
-
     handler.client_certificate_options = ClientCertificateOption.MANUAL
     handler.client_certificates.add(identity)
-
-    if let only = trusted then
-        handler.server_certificate_custom_validation_callback =
-            (_, certificate, _, _) =>
-                certificate?.thumbprint =~ only.thumbprint
-    fi
 
     HttpClient(handler).get_string_async(url).result
 si
 
-self_signed(name: string) -> X509Certificate2 is
-    let request = CertificateRequest(
-        "CN={name}", RSA.create(2048), HashAlgorithmName.sha256,
-        RSASignaturePadding.pkcs1)
-    let made = request.create_self_signed(
-        System.DateTimeOffset.now.add_days(-1.0),
-        System.DateTimeOffset.now.add_days(1.0))
-    let pfx: ubyte[] = made.export(X509ContentType.PFX)
+let pfx = HttpClient().get_byte_array_async(
+    "https://badssl.com/certs/badssl.com-client.p12").result
+let identity = X509CertificateLoader.load_pkcs12(
+    pfx, cast string?("badssl.com"), X509KeyStorageFlags.DEFAULT_KEY_SET,
+    null)
 
-    X509CertificateLoader.load_pkcs12(
-        pfx, cast string?(null), X509KeyStorageFlags.DEFAULT_KEY_SET, null)
-si
-
-// With no URL the entry serves a page of its own over TLS on the loopback
-// interface. It demands a client certificate and admits only the one it is
-// told to expect.
-stand_in(
-    expected: X509Certificate2
-) -> (url: string, certificate: X509Certificate2) is
-    let certificate = self_signed("localhost")
-    let listener = TcpListener(IPAddress.loopback, 0)
-
-    listener.start()
-
-    let port =
-        if let bound: IPEndPoint = listener.local_endpoint then bound.port
-        else throw System.Exception("the listener has no address")
-        fi
-
-    Tasks.TASK.run(() is
-        let tls = SslStream(
-            listener.accept_tcp_client().get_stream(), false,
-            (_, presented: X509Certificate?, _, _) =>
-                presented?.get_cert_hash_string() =~ expected.thumbprint)
-
-        tls.authenticate_as_server(certificate, true, false)
-
-        let reader = IO.StreamReader(tls)
-
-        while (reader.read_line() ?? "").length > 0 do
-        od
-
-        let body = "Hello, {tls.remote_certificate?.subject}\n"
-        let response =
-            "HTTP/1.1 200 OK\r\nContent-Length: {body.length}\r\n"
-            "Connection: close\r\n\r\n{body}"
-        let bytes = Encoding.utf8.get_bytes(response)
-
-        tls.write(bytes, 0, bytes.count)
-        tls.flush()
-        tls.close()
-    si)
-
-    ("https://localhost:{port}/", certificate)
-si
-
-if args.count == 2 then
-    let identity = X509CertificateLoader.load_pkcs12_from_file(
-        args[1], cast string?(null), X509KeyStorageFlags.DEFAULT_KEY_SET,
-        null)
-
-    IO.Std.write(fetch(args[0], identity, null))
-else
-    let identity = self_signed("rosetta-client")
-    let (url, certificate) = stand_in(identity)
-
-    IO.Std.write(fetch(url, identity, certificate))
-fi
+IO.Std.write(fetch(
+    "https://client.badssl.com/", identity, HttpClientHandler()))

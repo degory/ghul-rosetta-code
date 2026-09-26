@@ -1,48 +1,8 @@
 use default
 use System.Net.Http.HttpClient
-use System.Net.HttpListener
-use System.Net.IPAddress
-use System.Net.IPEndPoint
-use System.Net.Sockets.TcpListener
-use System.Text.Encoding
 
 // The task: fetch a URL and print what it holds.
 fetch(url: string) -> string =>
     HttpClient().get_string_async(url).result
 
-// Run with a URL and the entry fetches that. Run with none and it serves a
-// page of its own on the loopback interface and fetches that instead, so
-// the output is the same on every run and needs no network.
-stand_in() -> string is
-    let probe = TcpListener(IPAddress.loopback, 0)
-
-    probe.start()
-
-    let port =
-        if let bound: IPEndPoint = probe.local_endpoint then bound.port
-        else throw System.Exception("the probe has no address")
-        fi
-
-    probe.stop()
-
-    let prefix = "http://127.0.0.1:{port}/"
-    let listener = HttpListener()
-
-    listener.prefixes.add(prefix)
-    listener.start()
-
-    Tasks.TASK.run(() is
-        let context = listener.get_context()
-        let body = Encoding.utf8.get_bytes("Hello from a local page\n")
-
-        context.response.content_type = "text/plain"
-        context.response.output_stream.write(body, 0, body.count)
-        context.response.close()
-    si)
-
-    prefix
-si
-
-let url = if args.count > 0 then args[0] else stand_in() fi
-
-IO.Std.write(fetch(url))
+IO.Std.write(fetch("http://example.com"))

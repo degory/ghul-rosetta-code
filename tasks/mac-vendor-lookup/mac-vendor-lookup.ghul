@@ -1,10 +1,5 @@
 use default
 use System.Net.Http.HttpClient
-use System.Net.HttpListener
-use System.Net.IPAddress
-use System.Net.IPEndPoint
-use System.Net.Sockets.TcpListener
-use System.Text.Encoding
 
 // The task: ask an online registry who made the device a MAC address
 // belongs to. An address it does not know is "N/A"; a failure to reach it
@@ -25,65 +20,17 @@ vendor(api: string, mac: string) -> string? is
     yrt
 si
 
-// Given no registry, the entry answers from a short list of its own on the
-// loopback interface, in the way api.macvendors.com does.
-stand_in() -> string is
-    let probe = TcpListener(IPAddress.loopback, 0)
-
-    probe.start()
-
-    let port =
-        if let bound: IPEndPoint = probe.local_endpoint then bound.port
-        else throw System.Exception("the probe has no address")
-        fi
-
-    probe.stop()
-
-    let prefix = "http://127.0.0.1:{port}/"
-    let listener = HttpListener()
-    let known = [
-        ("FC-FB-FB", "Cisco Systems, Inc"),
-        ("88-53-2E", "Intel Corporate"),
-        ("D4-F4-6F", "Apple, Inc.")
-    ]
-
-    listener.prefixes.add(prefix)
-    listener.start()
-
-    Tasks.TASK.run(() is
-        while true do
-            let context = listener.get_context()
-            let path = context.request.url?.absolute_path ?? ""
-            let asked = path.trim_start('/')
-            let found = known |> find(k => asked.starts_with(k.`0))
-
-            if let (_, name) = found then
-                let body = Encoding.utf8.get_bytes(name)
-
-                context.response.output_stream.write(body, 0, body.count)
-            else
-                context.response.status_code = 404
-            fi
-
-            context.response.close()
-        od
-    si)
-
-    prefix
-si
-
-let api = if args.count > 0 then args[0] else stand_in() fi
-
 let macs = [
     "FC-FB-FB-01-FA-21", "88:53:2E:67:07:BE",
     "D4:F4:6F:C9:EF:8D", "23:45:67"
 ]
 
 for mac in macs do
-    // The real registry refuses more than about one request a second.
-    if args.count > 0 then
-        System.Threading.Thread.sleep(1500)
-    fi
+    // The registry refuses more than about one request a second.
+    System.Threading.Thread.sleep(1500)
 
-    write_line("{mac,-18} {vendor(api, mac.replace(':', '-')) ?? "null"}")
+    let found =
+        vendor("https://api.macvendors.com/", mac.replace(':', '-'))
+
+    write_line("{mac,-18} {found ?? "null"}")
 od

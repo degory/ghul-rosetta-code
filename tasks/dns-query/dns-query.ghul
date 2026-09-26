@@ -1,107 +1,19 @@
 use default
+use System.Net.Dns
 use System.Net.IPAddress
-use System.Net.IPEndPoint
-use System.Net.Sockets.UdpClient
-use System.Text.Encoding
+use System.Net.Sockets.AddressFamily
 
-// The task: ask a DNS server for a name's addresses, one question for its
-// IPv4 addresses (type 1, A) and one for its IPv6 addresses (type 28,
-// AAAA), and read the answers out of the reply.
-query(server: IPEndPoint, name: string, kind: int) -> List[IPAddress] is
-    let packet = LIST[ubyte]([
-        0x12ub, 0x34ub, 1ub, 0ub, 0ub, 1ub, 0ub, 0ub, 0ub, 0ub, 0ub, 0ub
-    ])
+report(addresses: IPAddress[]) is
+    for (label, family) in [
+        ("IPv4", AddressFamily.INTER_NETWORK),
+        ("IPv6", AddressFamily.INTER_NETWORK_V6)
+    ] do
+        let matching = addresses |> filter(a => a.address_family == family)
 
-    for label in name.split(['.']) do
-        packet.add(cast ubyte(label.length))
-        packet.add_range(Encoding.ascii.get_bytes(label))
-    od
-
-    packet.add_range([0ub, 0ub, cast ubyte(kind), 0ub, 1ub])
-
-    let client = UdpClient()
-    let sent = packet |> collect()
-
-    client.send(sent, sent.count, server)
-
-    let from: IPEndPoint? mut = null
-    let reply = client.receive(from ref)
-
-    word(at: int) -> int =>
-        cast int(reply[at]) * 256 + cast int(reply[at + 1])
-
-    // A name in the reply is labels ending in a zero, or a two-byte
-    // pointer back to one already given.
-    skip_name(at: int) -> int =>
-        if reply[at] >= 0xC0ub then at + 2
-        elif reply[at] == 0ub then at + 1
-        else skip_name(at + cast int(reply[at]) + 1)
-        fi
-
-    let found = LIST[IPAddress]()
-    let at mut = skip_name(12) + 4
-
-    for _ in 1::word(6) do
-        at = skip_name(at)
-
-        let length = word(at + 8)
-
-        if word(at) == kind then
-            let data =
-                reply |> skip(at + 10) |> take(length) |> collect()
-
-            found.add(IPAddress(data))
-        fi
-
-        at = at + 10 + length
-    od
-
-    found
-si
-
-// With no server named the entry answers its own questions on the loopback
-// interface, with the addresses www.kame.net had when this was written.
-stand_in() -> IPEndPoint is
-    let server = UdpClient(IPEndPoint(IPAddress.loopback, 0))
-
-    Tasks.TASK.run(() is
-        for _ in 1::2 do
-            let from: IPEndPoint? mut = null
-            let question = server.receive(from ref)
-            let kind = cast int(question[question.count - 3])
-            let address =
-                if kind == 1 then "210.155.141.200"
-                else "2001:2f0:0:8800:226:2dff:fe0b:4311"
-                fi
-            let data = IPAddress.parse(address).get_address_bytes()
-            let reply = LIST[ubyte](question)
-
-            reply[2] = 0x81ub
-            reply[3] = 0x80ub
-            reply[7] = 1ub
-            reply.add_range([0xC0ub, 12ub, 0ub, cast ubyte(kind), 0ub, 1ub])
-            reply.add_range([0ub, 0ub, 0x0Eub, 0x10ub])
-            reply.add_range([0ub, cast ubyte(data.count)])
-            reply.add_range(data)
-
-            let bytes = reply |> collect()
-
-            server.send(bytes, bytes.count, from)
+        for address in matching do
+            write_line("{label}: {address}")
         od
-    si)
-
-    if let bound: IPEndPoint = server.client.local_end_point then bound
-    else throw System.Exception("the stand-in has no address")
-    fi
+    od
 si
 
-let server =
-    if args.count > 0 then IPEndPoint(IPAddress.parse(args[0]), 53)
-    else stand_in()
-    fi
-
-for (label, kind) in [("IPv4", 1), ("IPv6", 28)] do
-    for address in query(server, "www.kame.net", kind) do
-        write_line("{label}: {address}")
-    od
-od
+report(Dns.get_host_addresses("www.kame.net"))

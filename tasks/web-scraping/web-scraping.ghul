@@ -1,56 +1,15 @@
 use default
 use System.Net.Http.HttpClient
-use System.Net.HttpListener
-use System.Net.IPAddress
-use System.Net.IPEndPoint
-use System.Net.Sockets.TcpListener
-use System.Text.Encoding
 use System.Text.RegularExpressions.Regex
 
-// The task: fetch the US Naval Observatory's clock page and print just the
-// UTC time from its HTML.
-utc_time(url: string) -> string? =>
-    let page = HttpClient().get_string_async(url).result in
-    let found = Regex.match(page, "\\d\\d:\\d\\d:\\d\\d UTC") in
-    if found.success then found.value else null fi
+// The task: fetch a page and pull just the UTC time out of its HTML.
+utc_time(url: string) -> string? is
+    let page = HttpClient().get_string_async(url).result
+    let found = Regex.match(page, "(\\d\\d:\\d\\d:\\d\\d)</span> UTC")
 
-// The page has been gone since 2011. Given no URL, the entry serves a copy
-// of it, as the task records it, on the loopback interface.
-stand_in() -> string is
-    let probe = TcpListener(IPAddress.loopback, 0)
-
-    probe.start()
-
-    let port =
-        if let bound: IPEndPoint = probe.local_endpoint then bound.port
-        else throw System.Exception("the probe has no address")
-        fi
-
-    probe.stop()
-
-    let prefix = "http://127.0.0.1:{port}/cgi-bin/timer.pl"
-    let listener = HttpListener()
-
-    listener.prefixes.add("{prefix}/")
-    listener.start()
-
-    Tasks.TASK.run(() is
-        let context = listener.get_context()
-        let page = Encoding.utf8.get_bytes(
-            "<TITLE>What time is it?</TITLE>\n"
-            "<H2> US Naval Observatory Master Clock Time</H2> <H3><PRE>\n"
-            "<BR>Jul. 27, 22:57:22 UTC   Universal Time\n"
-            "<BR>Jul. 27, 06:57:22 PM EDT  Eastern Time\n"
-            "<BR>Jul. 27, 05:57:22 PM CDT  Central Time\n"
-            "</PRE></H3>\n")
-
-        context.response.output_stream.write(page, 0, page.count)
-        context.response.close()
-    si)
-
-    prefix
+    if found.success then "{found.groups[1].value} UTC" else null fi
 si
 
-let url = if args.count > 0 then args[0] else stand_in() fi
+let found = utc_time("https://www.utctime.net/")
 
-write_line(utc_time(url) ?? "no UTC time on the page")
+write_line(found ?? "no UTC time on the page")

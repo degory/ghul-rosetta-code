@@ -25,7 +25,9 @@
          builds under the plain SDK, so it asks for the reference. -->
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
 
-    <GhulSources Include="tasks/**/*.ghul" />
+    <!-- A stand-in.ghul reaches into its own task's file, which only that
+         task's project shares names with, so it is built there, not here. -->
+    <GhulSources Include="tasks/**/*.ghul" Exclude="tasks/**/stand-in.ghul" />
     <GhulSources Include="root/**/*.ghul" />
 
     <!-- Every task is a whole program, so in this aggregate none of the

@@ -179,7 +179,13 @@ emit_body() {
     # whose subject is what it writes to standard error or the status it ends
     # with: run here with no arguments it prints its usage, or crashes, or
     # says nothing at all. Its recorded expectation is the run worth showing.
-    if [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || [ -f "$DIR/run.check" ] \
+    # A task that talks to a service is tested against a stand-in, so what
+    # its test prints is the stand-in's answer. A reader wants the answer the
+    # published code gets from the real service, recorded by hand from a run
+    # against it in wiki-output.txt.
+    if [ -f "$DIR/wiki-output.txt" ] ; then
+        OUTPUT=$(cat "$DIR/wiki-output.txt")
+    elif [ -f "$DIR/run.in" ] || [ -f "$DIR/run.session" ] || [ -f "$DIR/run.check" ] \
         || [ -f "$DIR/run.args" ] || [ -f "$DIR/run.err.expected" ] \
         || [ -f "$DIR/run.exit.expected" ] ; then
         if [ ! -f "$EXPECTED" ] ; then
