@@ -407,8 +407,7 @@ while scores |> all(s => s < 500) do
         (0..4)
             |> filter(s => s != winner)
             |> flat_map(s => hands[s])
-            |> map(card => points(card))
-            |> sum()
+            |> sum_by(card => points(card))
 
     scores[winner] = scores[winner] + won
     verbose = false

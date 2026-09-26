@@ -95,8 +95,7 @@ rational(x: PAdic, p: bigint, k: int) -> string is
     let n =
         x.digits
             |> index()
-            |> map(((i, d)) => d * bigint.pow(p, i))
-            |> sum()
+            |> sum_by(((i, d)) => d * bigint.pow(p, i))
 
     dot(u: (bigint, bigint), w: (bigint, bigint)) -> bigint =>
         u.`0 * w.`0 + u.`1 * w.`1

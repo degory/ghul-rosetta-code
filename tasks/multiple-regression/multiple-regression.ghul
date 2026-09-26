@@ -10,7 +10,7 @@ transpose(m: Matrix) -> Matrix =>
 *(a: Matrix, b: Matrix) -> Matrix =>
     0..a.count
         |> map(r => 0..b[0].count
-            |> map(c => 0..b.count |> map(k => a[r][k] * b[k][c]) |> sum())
+            |> map(c => 0..b.count |> sum_by(k => a[r][k] * b[k][c]))
             |> collect())
         |> collect()
 
@@ -37,7 +37,7 @@ solve(a: Matrix, b: List[double]) -> List[double] is
     let x = repeat(0.0, n) |> collect_mutable()
 
     for k in 0..n |> reverse() do
-        let known = k + 1..n |> map(j => rows[k][j] * x[j]) |> sum()
+        let known = k + 1..n |> sum_by(j => rows[k][j] * x[j])
         x[k] = (rows[k][n] - known) / rows[k][k]
     od
 

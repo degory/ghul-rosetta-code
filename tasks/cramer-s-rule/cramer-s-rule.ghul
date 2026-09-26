@@ -18,8 +18,7 @@ determinant(m: Matrix) -> int =>
         m[0][0]
     else
         0..m.count
-            |> map(c => sign(c) * m[0][c] * determinant(minor(m, c)))
-            |> sum()
+            |> sum_by(c => sign(c) * m[0][c] * determinant(minor(m, c)))
     fi
 
 with_column(m: Matrix, column: int, values: List[int]) -> Matrix =>

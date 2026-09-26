@@ -74,4 +74,4 @@ od
 write_line("")
 write_line(
     "total descendants: "
-    "{(1::top) |> map(n => descendants[n].count) |> sum()}")
+    "{(1::top) |> sum_by(n => descendants[n].count)}")

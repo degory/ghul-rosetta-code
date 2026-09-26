@@ -43,7 +43,7 @@ running(
     adjusted
 si
 
-let harmonic = 1::n |> map(i => 1.0 / cast double(i)) |> sum()
+let harmonic = 1::n |> sum_by(i => 1.0 / cast double(i))
 
 benjamini_hochberg() -> List[double] =>
     running(

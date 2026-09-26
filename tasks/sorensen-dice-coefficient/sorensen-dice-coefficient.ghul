@@ -23,9 +23,8 @@ shared(
 ) -> int =>
     left
         |> filter(entry => right.contains_key(entry.key))
-        |> map(entry =>
+        |> sum_by(entry =>
             System.Math.min(entry.value, right[entry.key]))
-        |> sum()
 
 size(counted: MAP[string, int]) -> int =>
     counted.values |> sum()

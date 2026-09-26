@@ -21,8 +21,7 @@ use Crossing = (edge: int, t: double, node: NODE)
 
 area(polygon: List[P]) -> double =>
     (0..polygon.count)
-        |> map(i => polygon[i] × polygon[(i + 1) % polygon.count])
-        |> sum()
+        |> sum_by(i => polygon[i] × polygon[(i + 1) % polygon.count])
 
 contains(polygon: List[P], p: P) -> bool is
     let inside mut = false

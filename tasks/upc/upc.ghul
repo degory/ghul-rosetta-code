@@ -70,8 +70,8 @@ si
 sound(found: List[int]) -> bool =>
     (found
         |> index()
-        |> map(d => d.value * (if d.index % 2 == 0 then 3 else 1 fi))
-        |> sum()) % 10 == 0
+        |> sum_by(d =>
+            d.value * (if d.index % 2 == 0 then 3 else 1 fi))) % 10 == 0
 
 turned(scan: string) -> string =>
     string(

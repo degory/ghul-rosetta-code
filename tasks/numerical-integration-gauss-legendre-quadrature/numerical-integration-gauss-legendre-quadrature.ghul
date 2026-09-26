@@ -43,8 +43,7 @@ integrate(f: double -> double, a: double, b: double, n: int) -> double =>
     let half = (b - a) / 2.0 in
     let middle = (a + b) / 2.0 in
     half * (nodes_and_weights(n)
-        |> map(nw => nw.weight * f(half * nw.node + middle))
-        |> sum())
+        |> sum_by(nw => nw.weight * f(half * nw.node + middle)))
 
 write_line("Nodes and weights for 5 points:")
 

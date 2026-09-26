@@ -18,8 +18,7 @@ romberg(
 
         let h = width / cast double(intervals)
         let inner = 1..intervals
-            |> map(j => f(lower + cast double(j) * h))
-            |> sum()
+            |> sum_by(j => f(lower + cast double(j) * h))
 
         let row = LIST[double]([(ends / 2.0 + inner) * h])
         let factor mut = 1.0

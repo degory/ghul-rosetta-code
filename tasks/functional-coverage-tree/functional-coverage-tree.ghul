@@ -14,11 +14,9 @@ class NODE(name: string, weight: double, own_coverage: double?) is
             0.0D
         else
             let weighted = children
-                |> map(child => child.weight * child.coverage)
-                |> sum()
+                |> sum_by(child => child.weight * child.coverage)
             let total = children
-                |> map(child => child.weight)
-                |> sum()
+                |> sum_by(child => child.weight)
 
             weighted / total
         fi

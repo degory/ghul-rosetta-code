@@ -5,7 +5,7 @@ luhn(number: string) -> bool is
         number
             |> reverse()
             |> index()
-            |> map(entry =>
+            |> sum_by(entry =>
                 (
                     let digit = cast int(entry.value) - cast int('0')
 
@@ -17,7 +17,6 @@ luhn(number: string) -> bool is
                         if doubled > 9 then doubled - 9 else doubled fi
                     fi
                 ))
-            |> sum()
 
     return total % 10 == 0
 si

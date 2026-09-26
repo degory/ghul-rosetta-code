@@ -54,7 +54,7 @@ deviation(xs: List[double]) -> double is
     let m = mean(xs)
 
     sqrt(
-        (xs |> map(x => (x - m) * (x - m)) |> sum()) /
+        (xs |> sum_by(x => (x - m) * (x - m))) /
         cast double(xs.count))
 si
 

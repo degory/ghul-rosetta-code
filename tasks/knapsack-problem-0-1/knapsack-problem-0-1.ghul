@@ -88,7 +88,7 @@ for item in taken do
     write_line(row(item.name, "{item.weight}", "{item.value}"))
 od
 
-let weight = taken |> map(item => item.weight) |> sum()
-let value = taken |> map(item => item.value) |> sum()
+let weight = taken |> sum_by(item => item.weight)
+let value = taken |> sum_by(item => item.value)
 
 write_line(row("total", "{weight}", "{value}"))

@@ -23,7 +23,7 @@ transpose(a: Matrix) -> Matrix =>
     |> collect_mutable()
 
 column_dot(a: Matrix, p: int, q: int) -> double =>
-    a |> map(row => row[p] * row[q]) |> sum()
+    a |> sum_by(row => row[p] * row[q])
 
 rotate(a: Matrix, p: int, q: int, c: double, s: double) is
     for row in a do
@@ -140,8 +140,7 @@ show(
         (0..v.count)
         |> map(j =>
             (0..sigma.count)
-            |> map(k => u[i][k] * sigma[k] * v[j][k])
-            |> sum()
+            |> sum_by(k => u[i][k] * sigma[k] * v[j][k])
             |> System.Math.round(12))
         |> collect_mutable())
     |> collect_mutable())

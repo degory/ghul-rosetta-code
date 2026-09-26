@@ -2,7 +2,6 @@ use default
 
 s(n: int) -> double =>
     (1::n)
-        |> map(k => 1.0 / cast double(k * k))
-        |> sum()
+        |> sum_by(k => 1.0 / cast double(k * k))
 
 write_line("S(1000) = {s(1000)}")

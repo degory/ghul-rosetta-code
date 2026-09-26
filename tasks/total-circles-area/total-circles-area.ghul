@@ -97,7 +97,7 @@ let all = LIST(circles)
 let kept = all |> filter(c => !inside(c, all)) |> collect()
 
 let arcs = kept |> flat_map(c => outer_arcs(c, kept)) |> collect()
-let area = arcs |> map(area_under) |> sum()
+let area = arcs |> sum_by(area_under)
 
 let hidden = circles.count - kept.count
 

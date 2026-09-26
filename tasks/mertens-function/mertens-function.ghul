@@ -24,7 +24,7 @@ mobius(value: int) -> int is
 si
 
 mertens(limit: int) -> int =>
-    1::limit |> map(mobius) |> sum()
+    1::limit |> sum_by(mobius)
 
 write_line("the Mertens function for 1 to 99:")
 
