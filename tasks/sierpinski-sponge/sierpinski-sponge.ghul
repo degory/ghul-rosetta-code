@@ -54,10 +54,8 @@ let faces = [
 ]
 
 let cells =
-    (0..size)
-        |> flat_map(x =>
-            0..size |> flat_map(y =>
-                0..size |> map(z => (x = x, y = y, z = z))))
+    [(x = x, y = y, z = z)
+        for x in 0..size for y in 0..size for z in 0..size]
         |> filter(solid)
         |> sort((a, b) => (a.x + a.y + a.z) - (b.x + b.y + b.z))
         |> collect()

@@ -23,10 +23,8 @@ class GRAPH(order: int public) is
     si
 
     matched: List[(a: int, b: int)] =>
-        0..order
-            |> filter(a => (_match[a] ?? -1) > a)
-            |> map(a => (a = a, b = _match[a]!))
-            |> collect()
+        [(a = a, b = _match[a]!)
+            for a in 0..order if (_match[a] ?? -1) > a]
 
     maximise() is
         for root in 0..order do

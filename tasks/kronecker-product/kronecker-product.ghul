@@ -17,10 +17,10 @@ pad(text: string, width: int) -> string =>
     fi
 
 show(matrix: int[][]) is
-    let width = matrix
-        |> flat_map(row => row |> map(value => "{value}".length))
-        |> reduce(1, (widest, length) =>
-            if length > widest then length else widest fi)
+    let width =
+        ["{value}".length for row in matrix for value in row]
+            |> reduce(1, (widest, length) =>
+                if length > widest then length else widest fi)
 
     matrix
         |> each(row => write_line(row

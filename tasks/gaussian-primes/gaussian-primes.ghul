@@ -35,11 +35,9 @@ is_gaussian_prime(a: int, b: int) -> bool =>
     fi
 
 let primes_under_100 =
-    (-10::10)
-        |> flat_map(a => (-10::10)
-            |> filter(b => a * a + b * b < 100 /\ is_gaussian_prime(a, b))
-            |> map(b => (a = a, b = b)))
-        |> collect()
+    [(a = a, b = b)
+        for a in -10::10 for b in -10::10
+        if a * a + b * b < 100 /\ is_gaussian_prime(a, b)]
 
 let count = primes_under_100.count
 let listing = primes_under_100

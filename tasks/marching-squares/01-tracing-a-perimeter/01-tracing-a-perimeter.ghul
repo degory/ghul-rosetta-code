@@ -54,12 +54,9 @@ heading(value: int, previous: Step?) -> Step =>
     esac
 
 let inked =
-    (0..grid.count)
-        |> flat_map(row =>
-            (0..grid[row].length)
-                |> map(column => (column = column, row = row)))
-        |> filter(cell => filled(cell.column, cell.row))
-        |> collect()
+    [(column = column, row = row)
+        for row in 0..grid.count for column in 0..grid[row].length
+        if filled(column, row)]
 
 assert inked.count > 0 else "the grid has no filled cell"
 

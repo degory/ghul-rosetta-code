@@ -9,8 +9,7 @@ let matrix = [
 ]
 
 let below =
-    0..matrix.count
-        |> flat_map(i => 0..i |> map(j => matrix[i][j]))
+    [matrix[i][j] for i in 0..matrix.count for j in 0..i]
         |> sum()
 
 write_line("sum of the elements below the main diagonal: {below}")

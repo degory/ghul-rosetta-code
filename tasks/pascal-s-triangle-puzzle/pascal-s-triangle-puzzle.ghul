@@ -15,10 +15,10 @@ pyramid(base: List[int]) -> List[List[int]] is
     rows
 si
 
-let solutions = 0::151
-    |> flat_map(x => 0::151 |> map(z => (x, z)))
-    |> map(((x, z)) => pyramid([x, 11, x + z, 4, z]))
-    |> filter(p => p[0][0] == 151 /\ p[2][0] == 40)
+let solutions =
+    [(x, z) for x in 0::151 for z in 0::151]
+        |> map(((x, z)) => pyramid([x, 11, x + z, 4, z]))
+        |> filter(p => p[0][0] == 151 /\ p[2][0] == 40)
 
 for p in solutions do
     for (depth, row) in p |> index() do

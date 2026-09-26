@@ -63,8 +63,7 @@ for (first, second) in [(9, 5), (7, 1), (15, 15), (8, 8), (3, 12)] do
 od
 
 let wrong =
-    0::15
-    |> flat_map(a => 0::15 |> map(b => (a = a, b = b)))
+    [(a = a, b = b) for a in 0::15 for b in 0::15]
     |> count(pair => !adds_correctly(pair.a, pair.b))
 
 write_line("")

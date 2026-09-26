@@ -1,8 +1,7 @@
 use default
 
-let knight_pairs = 0..5
-    |> flat_map(lower => lower + 1..5 |> map(higher => (lower, higher)))
-    |> collect()
+let knight_pairs =
+    [(lower, higher) for lower in 0..5 for higher in lower + 1..5]
 
 position(number: int) -> string is
     let squares = repeat('.', 8) |> collect_mutable()

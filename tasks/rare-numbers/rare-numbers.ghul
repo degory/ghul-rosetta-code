@@ -42,14 +42,11 @@ si
 // their difference, so a pair of those digits that can end neither square
 // rules out every number that starts and ends with them.
 let starts_and_ends =
-    1::9
-        |> flat_map(first =>
-            0::9
-                |> filter(last =>
-                    square_endings |> any(e => e == (last + first) % 10) /\
-                    square_endings
-                        |> any(e => e == (last - first + 10) % 10))
-                |> map(last => (first = first, last = last)))
+    [(first = first, last = last)
+        for first in 1::9 for last in 0::9
+        if square_endings |> any(e => e == (last + first) % 10) /\
+            square_endings
+                |> any(e => e == (last - first + 10) % 10)]
 
 let limit = 2_100_000_000L
 

@@ -12,8 +12,7 @@ magic_numbers() -> Pipe[bigint] is
         length = length + 1
 
         let next =
-            current
-                |> flat_map(n => 0::9 |> map(d => n * 10n + bigint(d)))
+            [n * 10n + bigint(d) for n in current for d in 0::9]
                 |> filter(n => n % bigint(length) =~ 0n)
                 |> collect()
 

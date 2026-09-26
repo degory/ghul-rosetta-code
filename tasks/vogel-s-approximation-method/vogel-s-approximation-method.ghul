@@ -74,9 +74,8 @@ for (row, amounts) in allocation |> index() do
 od
 
 let total =
-    (0..contractors.count)
-    |> flat_map(r =>
-        (0..tasks.count) |> map(c => allocation[r][c] * costs[r][c]))
+    [allocation[r][c] * costs[r][c]
+        for r in 0..contractors.count for c in 0..tasks.count]
     |> sum()
 
 write_line("")

@@ -70,10 +70,8 @@ largest_truncatable(base: int) -> bigint is
                     if candidate > best then candidate else best fi)
 
         level =
-            level
-                |> flat_map(candidate =>
-                    1::base - 1
-                        |> map(digit => bigint(digit) * place + candidate))
+            [bigint(digit) * place + candidate
+                for candidate in level for digit in 1::base - 1]
                 |> filter(is_prime)
                 |> collect()
 

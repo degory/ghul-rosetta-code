@@ -79,9 +79,7 @@ let untouchable = 1::top |> filter(value => !touched[value])
 
 write_line("the untouchable numbers up to 2000:")
 
-let small = untouchable |> filter(value => value <= 2_000)
-                        |> map(value => "{value,6}")
-                        |> collect()
+let small = ["{value,6}" for value in untouchable if value <= 2_000]
 
 for row in 0..(small.count + 9) / 10 do
     let last = min(row * 10 + 10, small.count)

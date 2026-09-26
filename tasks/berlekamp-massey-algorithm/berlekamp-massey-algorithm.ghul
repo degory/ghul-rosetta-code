@@ -5,9 +5,8 @@ use Register = (connection: List[int], length: int)
 predict(
     sequence: List[int], connection: List[int], length: int, n: int
 ) -> int =>
-    1::length
-        |> filter(k => k < connection.count)
-        |> map(k => connection[k] & sequence[n - k])
+    [connection[k] & sequence[n - k]
+        for k in 1::length if k < connection.count]
         |> reduce(0, (a, b) => a ^ b)
 
 shortest_register(sequence: List[int]) -> Register is

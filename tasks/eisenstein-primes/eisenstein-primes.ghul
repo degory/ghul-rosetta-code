@@ -30,8 +30,7 @@ show(e: Eisenstein) -> string =>
 let reach = 60
 
 let primes =
-    (-reach::reach)
-        |> flat_map(a => -reach::reach |> map(b => (a = a, b = b)))
+    [(a = a, b = b) for a in -reach::reach for b in -reach::reach]
         |> filter(is_eisenstein_prime)
         |> sort((x, y) =>
             if norm(x) != norm(y) then norm(x) - norm(y)

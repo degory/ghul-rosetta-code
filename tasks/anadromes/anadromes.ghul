@@ -3,9 +3,9 @@ use default
 reversed(word: string) -> string => word |> reverse() |> join("")
 
 let words =
-    IO.File.read_lines("words.txt")
-        |> filter(word => word.length > 6)
-        |> map(word => word.to_lower())
+    [word.to_lower()
+        for word in IO.File.read_lines("words.txt")
+        if word.length > 6]
         |> collect_set()
 
 let pairs = words

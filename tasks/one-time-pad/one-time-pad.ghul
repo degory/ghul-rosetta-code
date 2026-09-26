@@ -5,10 +5,7 @@ use IO.Path
 use System.Security.Cryptography.RandomNumberGenerator
 
 letters(text: string) -> string =>
-    string(text
-        |> filter(c => char.is_letter(c))
-        |> map(c => char.to_upper(c))
-        |> collect())
+    string([char.to_upper(c) for c in text if char.is_letter(c)])
 
 random_group() -> string =>
     string(1::6

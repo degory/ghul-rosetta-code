@@ -80,10 +80,8 @@ md4(message: ubyte[]) -> string is
     od
 
     return
-        state
-            |> flat_map(value =>
-                0..4 |> map(index => (value >>> (8 * index)) & 0xFFu))
-            |> map(byte_value => "{byte_value:x2}")
+        ["{(value >>> (8 * index)) & 0xFFu:x2}"
+            for value in state for index in 0..4]
             |> join("")
 si
 

@@ -7,12 +7,9 @@ has_five_weekends(year: int, month: int) -> bool =>
 let years = 1900::2100
 
 let months =
-    years
-        |> flat_map(year =>
-            1::12
-                |> filter(month => has_five_weekends(year, month))
-                |> map(month => System.DateTime(year, month, 1)))
-        |> collect()
+    [System.DateTime(year, month, 1)
+        for year in years for month in 1::12
+        if has_five_weekends(year, month)]
 
 show(label: string, dates: Collections.Iterable[System.DateTime]) is
     write_line(label)
