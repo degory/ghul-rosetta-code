@@ -9,33 +9,6 @@ let connections =
      (from = 4, to = 5), (from = 4, to = 6), (from = 4, to = 7),
      (from = 5, to = 7)]
 
-permutations(values: List[int]) -> Pipe[List[int]] is
-    if values.count == 0 then
-        yield LIST()
-    else
-        for chosen in 0..values.count do
-            let rest =
-                values
-                    |> index()
-                    |> filter(entry => entry.index != chosen)
-                    |> map(entry => entry.value)
-                    |> collect()
-
-            for tail in permutations(rest) do
-                let whole = LIST()
-
-                whole.add(values[chosen])
-
-                for value in tail do
-                    whole.add(value)
-                od
-
-                yield whole
-            od
-        od
-    fi
-si
-
 peaceful(pegs: List[int]) -> bool =>
     connections
         |> all(line => Math.abs(pegs[line.from] - pegs[line.to]) > 1)

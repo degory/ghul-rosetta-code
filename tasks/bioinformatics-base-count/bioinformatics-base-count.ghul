@@ -14,7 +14,7 @@ let sequence =
 
 let width = 50
 
-let counts = "ACGT" |> collect_map(base => base, base => 0)
+let counts = "ACGT" |> collect_mutable_map(base => base, base => 0)
 
 for base in sequence do
     counts[base] = counts[base] + 1
