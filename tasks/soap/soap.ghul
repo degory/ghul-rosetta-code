@@ -1,28 +1,23 @@
 use default
-// The envelope's namespace, which every SOAP message carries.
-let soap = "http://schemas.xmlsoap.org/soap/envelope/"
-
 use System.Net.Http.HttpClient
 use System.Net.Http.StringContent
-use System.Net.HttpListener
-use System.Net.IPAddress
-use System.Net.IPEndPoint
-use System.Net.Sockets.TcpListener
 use System.Text.Encoding
 use System.Xml.Linq.XDocument
 
-// The task: call two functions a SOAP service offers. A call is an XML
-// envelope posted to the service, naming the function in the SOAPAction
-// header and in the body, and the answer comes back in an envelope too.
+// The envelope's namespace, which every SOAP message carries.
+soap_ns() -> string => "http://schemas.xmlsoap.org/soap/envelope/"
+
+// A call is an XML envelope posted to the service, naming the function in
+// the SOAPAction header and in the body; the answer comes back in an
+// envelope too.
 call(endpoint: string, function: string) -> string is
     let envelope =
-        "<soap:Envelope xmlns:soap=\"{soap}\"><soap:Body>"
-        "<{function} xmlns=\"http://example.com/soap\"/>"
-        "</soap:Body>"
-        "</soap:Envelope>"
+        "<soap:Envelope xmlns:soap=\"{soap_ns()}\"><soap:Body>"
+        "<{function} xmlns=\"http://example.com/soap/\"/>"
+        "</soap:Body></soap:Envelope>"
     let content = StringContent(envelope, Encoding.utf8, "text/xml")
 
-    let action = "\"http://example.com/soap#{function}\""
+    let action = "\"http://example.com/soap/{function}\""
 
     content.headers.add("SOAPAction", action)
 
@@ -31,53 +26,13 @@ call(endpoint: string, function: string) -> string is
     let document = XDocument.parse(text)
 
     document.descendants()
-        |> filter(e => e.name.local_name =~ "return")
+        |> filter(e => e.name.local_name =~ "{function}Result")
         |> map(e => e.value)
         |> first() ?? "no result"
 si
 
-// Given no endpoint, the entry answers its own calls on the loopback
-// interface, the way the service the task describes would.
-stand_in() -> string is
-    let probe = TcpListener(IPAddress.loopback, 0)
-
-    probe.start()
-
-    let port =
-        if let bound: IPEndPoint = probe.local_endpoint then bound.port
-        else throw System.Exception("the probe has no address")
-        fi
-
-    probe.stop()
-
-    let prefix = "http://127.0.0.1:{port}/soap/"
-    let listener = HttpListener()
-
-    listener.prefixes.add(prefix)
-    listener.start()
-
-    Tasks.TASK.run(() is
-        for _ in 1::2 do
-            let context = listener.get_context()
-            let action = context.request.headers["SOAPAction"] ?? ""
-            let function = action.trim('"').split(['#'])[1]
-            let reply = Encoding.utf8.get_bytes(
-                "<soap:Envelope xmlns:soap=\"{soap}\"><soap:Body>"
-                "<{function}Response>"
-                "<return>{function} was called</return>"
-                "</{function}Response></soap:Body></soap:Envelope>")
-
-            context.response.content_type = "text/xml"
-            context.response.output_stream.write(reply, 0, reply.count)
-            context.response.close()
-        od
-    si)
-
-    prefix
-si
-
-let endpoint = if args.count > 0 then args[0] else stand_in() fi
-
 for function in ["soapFunc", "anotherSoapFunc"] do
-    write_line("{function}: {call(endpoint, function)}")
+    let answer = call("http://example.com/soap/wsdl", function)
+
+    write_line("{function}: {answer}")
 od

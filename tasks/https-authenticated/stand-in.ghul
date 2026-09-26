@@ -13,10 +13,9 @@ use System.Security.Cryptography.X509Certificates.X509ContentType
 use System.Security.Cryptography.X509Certificates.X509KeyStorageFlags
 use System.Text.Encoding
 
-// The test's entry: a page served over TLS on the loopback interface, under
-// a certificate made for the run, fetched by the task's own code with a
-// handler that trusts only that certificate. Not part of the published
-// solution.
+// The test's entry: serves a page of its own over TLS on the loopback
+// interface, under a certificate made for the run, and lets in only the
+// user rosetta, password code. Not part of the published solution.
 @entry()
 test_entry() is
     let request = CertificateRequest(
@@ -39,24 +38,38 @@ test_entry() is
         fi
 
     Tasks.TASK.run(() is
-        let tls = SslStream(listener.accept_tcp_client().get_stream())
+        for _ in 1::2 do
+            let tls = SslStream(listener.accept_tcp_client().get_stream())
 
-        tls.authenticate_as_server(certificate)
+            tls.authenticate_as_server(certificate)
 
-        let reader = IO.StreamReader(tls)
+            let reader = IO.StreamReader(tls)
 
-        while (reader.read_line() ?? "").length > 0 do
+            let expected = System.Convert.to_base64_string(
+                Encoding.utf8.get_bytes("rosetta:code"))
+            let allowed mut = false
+            let line mut = reader.read_line() ?? ""
+
+            while line.length > 0 do
+                let basic = "Authorization: Basic {expected}"
+
+                allowed = allowed \/ line =~ basic
+                line = reader.read_line() ?? ""
+            od
+
+            let (status, body) =
+                if allowed then ("200 OK", "welcome, rosetta\n")
+                else ("401 Unauthorized", "who are you?\n")
+                fi
+            let response =
+                "HTTP/1.1 {status}\r\nContent-Length: {body.length}\r\n"
+                "Connection: close\r\n\r\n{body}"
+            let bytes = Encoding.utf8.get_bytes(response)
+
+            tls.write(bytes, 0, bytes.count)
+            tls.flush()
+            tls.close()
         od
-
-        let body = "Hello over TLS\n"
-        let response =
-            "HTTP/1.1 200 OK\r\nContent-Length: {body.length}\r\n"
-            "Connection: close\r\n\r\n{body}"
-        let bytes = Encoding.utf8.get_bytes(response)
-
-        tls.write(bytes, 0, bytes.count)
-        tls.flush()
-        tls.close()
     si)
 
     let handler = HttpClientHandler()
@@ -65,5 +78,8 @@ test_entry() is
         (_, presented, _, _) =>
             presented?.thumbprint =~ certificate.thumbprint
 
-    IO.Std.write(fetch("https://localhost:{port}/", handler))
+    let url = "https://localhost:{port}/"
+
+    IO.Std.write(fetch(url, "rosetta", "wrong", handler))
+    IO.Std.write(fetch(url, "rosetta", "code", handler))
 si

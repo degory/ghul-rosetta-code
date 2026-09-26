@@ -1,0 +1,42 @@
+use default
+use System.Net.HttpListener
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Sockets.TcpListener
+use System.Text.Encoding
+
+// The test's entry: a page shaped like the one the solution scrapes,
+// with a fixed time, served on the loopback interface. Not part of the
+// published solution.
+@entry()
+test_entry() is
+    let probe = TcpListener(IPAddress.loopback, 0)
+
+    probe.start()
+
+    let port =
+        if let bound: IPEndPoint = probe.local_endpoint then bound.port
+        else throw System.Exception("the probe has no address")
+        fi
+
+    probe.stop()
+
+    let prefix = "http://127.0.0.1:{port}/cgi-bin/timer.pl"
+    let listener = HttpListener()
+
+    listener.prefixes.add("{prefix}/")
+    listener.start()
+
+    Tasks.TASK.run(() is
+        let context = listener.get_context()
+        let page = Encoding.utf8.get_bytes(
+            "<title>UTC Time</title>\n"
+            "<p>Current time: <strong><span id=\"time3\">22:57:22</span>"
+            " UTC</strong>.</p>\n")
+
+        context.response.output_stream.write(page, 0, page.count)
+        context.response.close()
+    si)
+
+    write_line(utc_time(prefix) ?? "no UTC time on the page")
+si

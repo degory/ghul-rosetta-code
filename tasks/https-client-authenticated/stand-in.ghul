@@ -7,28 +7,33 @@ use System.Security.Cryptography.HashAlgorithmName
 use System.Security.Cryptography.RSA
 use System.Security.Cryptography.RSASignaturePadding
 use System.Security.Cryptography.X509Certificates.CertificateRequest
+use System.Security.Cryptography.X509Certificates.X509Certificate
 use System.Security.Cryptography.X509Certificates.X509Certificate2
 use System.Security.Cryptography.X509Certificates.X509CertificateLoader
 use System.Security.Cryptography.X509Certificates.X509ContentType
 use System.Security.Cryptography.X509Certificates.X509KeyStorageFlags
 use System.Text.Encoding
 
-// The test's entry: a page served over TLS on the loopback interface, under
-// a certificate made for the run, fetched by the task's own code with a
-// handler that trusts only that certificate. Not part of the published
-// solution.
-@entry()
-test_entry() is
+self_signed(name: string) -> X509Certificate2 is
     let request = CertificateRequest(
-        "CN=localhost", RSA.create(2048), HashAlgorithmName.sha256,
+        "CN={name}", RSA.create(2048), HashAlgorithmName.sha256,
         RSASignaturePadding.pkcs1)
     let made = request.create_self_signed(
         System.DateTimeOffset.now.add_days(-1.0),
         System.DateTimeOffset.now.add_days(1.0))
     let pfx: ubyte[] = made.export(X509ContentType.PFX)
-    let certificate = X509CertificateLoader.load_pkcs12(
-        pfx, cast string?(null), X509KeyStorageFlags.DEFAULT_KEY_SET, null)
 
+    X509CertificateLoader.load_pkcs12(
+        pfx, cast string?(null), X509KeyStorageFlags.DEFAULT_KEY_SET, null)
+si
+
+// The test's entry: serves a page of its own over TLS on the loopback
+// interface, demanding a client certificate and admitting only the one it
+// is told to expect. Not part of the published solution.
+@entry()
+test_entry() is
+    let identity = self_signed("rosetta-client")
+    let certificate = self_signed("localhost")
     let listener = TcpListener(IPAddress.loopback, 0)
 
     listener.start()
@@ -39,16 +44,19 @@ test_entry() is
         fi
 
     Tasks.TASK.run(() is
-        let tls = SslStream(listener.accept_tcp_client().get_stream())
+        let tls = SslStream(
+            listener.accept_tcp_client().get_stream(), false,
+            (_, presented: X509Certificate?, _, _) =>
+                presented?.get_cert_hash_string() =~ identity.thumbprint)
 
-        tls.authenticate_as_server(certificate)
+        tls.authenticate_as_server(certificate, true, false)
 
         let reader = IO.StreamReader(tls)
 
         while (reader.read_line() ?? "").length > 0 do
         od
 
-        let body = "Hello over TLS\n"
+        let body = "Hello, {tls.remote_certificate?.subject}\n"
         let response =
             "HTTP/1.1 200 OK\r\nContent-Length: {body.length}\r\n"
             "Connection: close\r\n\r\n{body}"
@@ -65,5 +73,5 @@ test_entry() is
         (_, presented, _, _) =>
             presented?.thumbprint =~ certificate.thumbprint
 
-    IO.Std.write(fetch("https://localhost:{port}/", handler))
+    IO.Std.write(fetch("https://localhost:{port}/", identity, handler))
 si
