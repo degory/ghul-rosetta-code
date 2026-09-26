@@ -198,9 +198,7 @@ bit_of(thunk: THUNK) -> int =>
     fi
 
 bits_of(bytes: List[int]) -> List[bool] =>
-    bytes
-        |> flat_map(b => 0..8 |> map(i => (b >> (7 - i)) & 1 == 1))
-        |> collect()
+    [(b >> (7 - i)) & 1 == 1 for b in bytes for i in 0..8]
 
 run_bits(program: string, limit: int) -> string is
     let bits = program |> map(c => c == '1') |> collect()

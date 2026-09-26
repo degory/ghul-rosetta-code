@@ -161,10 +161,8 @@ picture().write("picture.png")
 let input = IMAGE.read("picture.png")
 
 let pixels =
-    (0..input.height)
-        |> flat_map(y => 0..input.width |> map(x => input.pixel(x, y)))
-        |> map(of)
-        |> collect()
+    [of(input.pixel(x, y))
+        for y in 0..input.height for x in 0..input.width]
 
 let counts = MAP()
 

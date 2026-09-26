@@ -91,8 +91,7 @@ si
 
 shuffled_tableau(random: System.Random) -> Grid is
     let tiles =
-        0::6
-            |> flat_map(a => a::6 |> map(b => (a, b)))
+        [(a, b) for a in 0::6 for b in a::6]
             |> sort_by(_ => random.next())
 
     let grid =

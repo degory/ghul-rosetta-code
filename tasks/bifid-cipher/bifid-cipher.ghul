@@ -7,9 +7,8 @@ class SQUARE(letters: string) is
 si
 
 normalize(text: string) -> string =>
-    text.to_upper()
-        |> filter(ch => ch >= 'A' /\ ch <= 'Z')
-        |> map(ch => if ch == 'J' then 'I' else ch fi)
+    [if ch == 'J' then 'I' else ch fi
+        for ch in text.to_upper() if ch >= 'A' /\ ch <= 'Z']
         |> map(ch => "{ch}")
         |> join("")
 

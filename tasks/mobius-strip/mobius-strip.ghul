@@ -61,8 +61,7 @@ quad(i: int, j: int) -> (at: int, corners: Quad) =>
         corner(i + 1, j + 1), corner(i, j + 1)])
 
 let quads =
-    (0..around)
-        |> flat_map(i => 0..across |> map(j => quad(i, j)))
+    [quad(i, j) for i in 0..around for j in 0..across]
         |> sort((p, q) => depth(p.corners) <> depth(q.corners))
         |> collect()
 

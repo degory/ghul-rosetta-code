@@ -153,9 +153,7 @@ computer_move(side: char) -> Move is
     fi
 
     let threats =
-        moves(other(side))
-            |> filter(m => makes_mill(m, other(side)))
-            |> map(m => m.to)
+        [m.to for m in moves(other(side)) if makes_mill(m, other(side))]
 
     let blocking =
         legal

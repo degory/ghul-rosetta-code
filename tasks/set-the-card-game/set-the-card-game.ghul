@@ -36,14 +36,9 @@ for count in [9, 12] do
     od
 
     let sets =
-        (0..count)
-        |> flat_map(i =>
-            (i + 1..count)
-            |> flat_map(j =>
-                (j + 1..count)
-                |> filter(k => is_set(cards[i], cards[j], cards[k]))
-                |> map(k => (cards[i], cards[j], cards[k]))))
-        |> collect()
+        [(cards[i], cards[j], cards[k])
+            for i in 0..count for j in i + 1..count for k in j + 1..count
+            if is_set(cards[i], cards[j], cards[k])]
 
     write_line("")
     write_line("sets found: {sets.count}")

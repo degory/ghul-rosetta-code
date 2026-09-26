@@ -68,8 +68,7 @@ brightness(p: Patch) -> double is
 si
 
 let patches =
-    (0..around)
-        |> flat_map(i => 0..along |> map(j => patch(i, j)))
+    [patch(i, j) for i in 0..around for j in 0..along]
         |> sort((p, q) => depth(p) <> depth(q))
         |> collect()
 

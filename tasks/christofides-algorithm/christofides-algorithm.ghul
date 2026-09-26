@@ -19,12 +19,11 @@ spanning_tree(n: int) -> List[Edge] is
     let edges = LIST[Edge]()
 
     while in_tree.count < n do
-        let next = in_tree
-            |> flat_map(from =>
-                0..n
-                    |> filter(to => !in_tree.contains(to))
-                    |> map(to => (from, to)))
-            |> min_by(((from, to)) => distance(from, to))!
+        let next =
+            [(from, to)
+                for from in in_tree for to in 0..n
+                if !in_tree.contains(to)]
+                |> min_by(((from, to)) => distance(from, to))!
 
         edges.add(next)
         in_tree.add(next.to)

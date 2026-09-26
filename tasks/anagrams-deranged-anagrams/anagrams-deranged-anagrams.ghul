@@ -9,14 +9,10 @@ is_deranged(first: string, second: string) -> bool =>
 let words = IO.File.read_all_lines("unixdict.txt")
 
 let deranged =
-    words
-        |> group_by(sorted_letters)
-        |> map(set => set.value)
-        |> flat_map(set =>
-            0..set.count
-                |> flat_map(i =>
-                    i + 1::set.count - 1
-                        |> map(j => (first = set[i], second = set[j]))))
+    [(first = set[i], second = set[j])
+        for set in words |> group_by(sorted_letters) |> map(s => s.value)
+        for i in 0..set.count
+        for j in i + 1::set.count - 1]
         |> filter(pair => is_deranged(pair.first, pair.second))
 
 if let longest = deranged |> max_by(pair => pair.first.length) then

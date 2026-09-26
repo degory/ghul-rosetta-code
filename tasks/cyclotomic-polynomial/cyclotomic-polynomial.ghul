@@ -23,11 +23,11 @@ mobius(n: int) -> int is
 si
 
 cyclotomic(n: int) -> List[long] is
-    let factors = 1::n
-        |> filter(d => n % d == 0)
-        |> map(d => (power = d, exponent = mobius(n / d)))
-        |> filter(f => f.exponent != 0)
-        |> collect()
+    let factors =
+        [(power = d, exponent = mobius(n / d))
+            for d in 1::n if n % d == 0]
+            |> filter(f => f.exponent != 0)
+            |> collect()
 
     let degree = factors |> map(f => f.power * f.exponent) |> sum()
     let series = repeat(0L, degree + 1) |> collect_mutable()

@@ -2,7 +2,7 @@ use default
 
 is_valid_iban(raw: string) -> bool is
     let iban =
-        raw |> filter(ch => ch != ' ') |> map(ch => "{ch}") |> join("")
+        ["{ch}" for ch in raw if ch != ' '] |> join("")
 
     let is_letter = ch => ch >= 'A' /\ ch <= 'Z'
 

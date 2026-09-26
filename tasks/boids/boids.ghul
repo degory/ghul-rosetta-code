@@ -145,19 +145,13 @@ write_line("")
 let random = System.Random(1)
 
 let flock =
-    cave
-        |> index()
-        |> flat_map(r =>
-            r.value
-                |> index()
-                |> filter(c => c.value == 'O')
-                |> map(c => VEC(
-                    cast double(c.index) + 0.5D,
-                    height - 2.0D * cast double(r.index) - 1.0D)))
-        |> map(position => BOID(
-            position,
-            VEC(0.3D, random.next_double() * 0.4D - 0.2D)))
-        |> collect()
+    [BOID(
+        VEC(cast double(c.index) + 0.5D,
+            height - 2.0D * cast double(r.index) - 1.0D),
+        VEC(0.3D, random.next_double() * 0.4D - 0.2D))
+        for r in cave |> index()
+        for c in r.value |> index()
+        if c.value == 'O']
 
 let image = IMAGE(240, 90)
 

@@ -14,9 +14,9 @@ digit_powers(number: int) -> int =>
         |> filter(digit => digit > 0)
         |> reduce(0, (total, digit) => total + power(digit, digit))
 
-let munchausen = (1::5000)
-    |> filter(number => digit_powers(number) == number)
-    |> map(number => "{number}")
-    |> join(" ")
+let munchausen =
+    ["{number}"
+        for number in 1::5000 if digit_powers(number) == number]
+        |> join(" ")
 
 write_line("Munchausen numbers up to 5000: {munchausen}")

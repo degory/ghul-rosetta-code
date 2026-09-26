@@ -87,9 +87,8 @@ square_roots(u: bigint, p: bigint, digits: int) -> List[bigint] is
         modulus = modulus * p
 
         roots =
-            roots
-                |> flat_map(r =>
-                    0..cast int(p) |> map(t => r + bigint(t) * step))
+            [r + bigint(t) * step
+                for r in roots for t in 0..cast int(p)]
                 |> filter(r => modulo(r * r - u, modulus) =~ 0n)
                 |> collect_set()
                 |> sort()

@@ -28,10 +28,7 @@ for (character, nemesis) in nemeses do
     by_character[character].add(nemesis)
 od
 
-ages
-    |> filter(row => by_character.contains_key(row.name))
-    |> flat_map(row =>
-        by_character[row.name]
-            |> map(nemesis =>
-                "{row.age}, {row.name}, {row.name}, {nemesis}"))
+["{row.age}, {row.name}, {row.name}, {nemesis}"
+    for row in ages if by_character.contains_key(row.name)
+    for nemesis in by_character[row.name]]
     |> each(row => write_line(row))

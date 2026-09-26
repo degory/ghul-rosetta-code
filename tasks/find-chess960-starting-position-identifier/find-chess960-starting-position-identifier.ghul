@@ -11,8 +11,7 @@ without(pieces: string, removed: string) -> string =>
     pieces |> filter(p => removed.index_of(p) < 0) |> join("")
 
 let knight_pairs =
-    0::4
-        |> flat_map(first => first + 1::4 |> map(second => (first, second)))
+    [(first, second) for first in 0::4 for second in first + 1::4]
         |> collect_mutable()
 
 sp_id(pieces: string) -> int =>

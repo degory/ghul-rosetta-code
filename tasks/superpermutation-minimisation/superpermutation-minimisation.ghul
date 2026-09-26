@@ -43,11 +43,9 @@ si
 permutations(letters: string) -> List[string] =>
     if letters.length <= 1 then LIST([letters])
     else
-        0..letters.length
-            |> flat_map(i =>
-                permutations(letters.remove(i, 1))
-                    |> map(rest => "{letters[i]}{rest}"))
-            |> collect()
+        ["{letters[i]}{rest}"
+            for i in 0..letters.length
+            for rest in permutations(letters.remove(i, 1))]
     fi
 
 contains_all(s: string, n: int) -> bool =>

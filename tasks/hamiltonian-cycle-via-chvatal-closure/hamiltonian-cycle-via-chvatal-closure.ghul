@@ -93,9 +93,8 @@ test(name: string, g: Graph) is
     write_line()
 si
 
-let k5_less_one_edge = 0..5
-    |> flat_map(u => u + 1..5 |> map(v => (u, v)))
-    |> filter(e => e !~ (0, 1))
+let k5_less_one_edge =
+    [(u, v) for u in 0..5 for v in u + 1..5 if (u, v) !~ (0, 1)]
 
 test("K5 without the edge 0-1", graph(5, k5_less_one_edge))
 test("A cycle of 5", graph(5, [(0, 1), (1, 2), (2, 3), (3, 4), (4, 0)]))

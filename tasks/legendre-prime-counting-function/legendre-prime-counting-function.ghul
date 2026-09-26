@@ -11,10 +11,7 @@ for p in 2..200 do
     fi
 od
 
-let primes = 2..limit
-    |> filter(n => !composite[n])
-    |> map(p => cast long(p))
-    |> collect()
+let primes = [cast long(n) for n in 2..limit if !composite[n]]
 
 phi(x: long, a: int) -> long =>
     if a == 0 then

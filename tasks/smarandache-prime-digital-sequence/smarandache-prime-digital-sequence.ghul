@@ -14,10 +14,8 @@ prime_digit_numbers() -> Pipe[int] is
         yield in level
 
         level =
-            level
-                |> flat_map(value =>
-                    prime_digits |> map(digit => value * 10 + digit))
-                |> collect()
+            [value * 10 + digit
+                for value in level for digit in prime_digits]
     od
 si
 

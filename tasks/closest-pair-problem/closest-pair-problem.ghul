@@ -16,9 +16,8 @@ closer(p: Pair, q: Pair) -> Pair =>
 pair(a: P, b: P) -> Pair => ((a - b).length, a, b)
 
 brute_force(points: List[P]) -> Pair =>
-    (0..points.count)
-        |> flat_map(i =>
-            i + 1..points.count |> map(j => pair(points[i], points[j])))
+    [pair(points[i], points[j])
+        for i in 0..points.count for j in i + 1..points.count]
         |> reduce((double.max_value, points[0], points[0]), closer)
 
 closest(by_x: List[P], by_y: List[P]) -> Pair is

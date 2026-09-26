@@ -49,14 +49,10 @@ crosses(point: Point, from: Point, to: Point) -> bool is
 si
 
 inside(point: Point, rings: List[Ring]) -> bool =>
-    rings
-        |> flat_map(ring =>
-            0..ring.count
-                |> map(index =>
-                    crosses(point, ring[index],
-                            ring[(index + 1) % ring.count])))
-        |> filter(crossing => crossing)
-        |> count() % 2 == 1
+    [true
+        for ring in rings for index in 0..ring.count
+        if crosses(point, ring[index], ring[(index + 1) % ring.count])]
+        .count % 2 == 1
 
 ring(corners: List[(double, double)]) -> Ring =>
     corners |> map(((x, y)) => (x = x, y = y)) |> collect()

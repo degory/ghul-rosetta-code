@@ -16,11 +16,10 @@ read(path: string) -> Grid is
 si
 
 heads_around(grid: Grid, row: int, column: int) -> int =>
-    (row - 1::row + 1)
-        |> flat_map(r => column - 1::column + 1 |> map(c => (r, c)))
-        |> filter(((r, c)) =>
-            r >= 0 /\ r < grid.count /\ c >= 0 /\ c < grid[r].length /\
-            grid[r][c] == 'H')
+    [(r, c)
+        for r in row - 1::row + 1 for c in column - 1::column + 1
+        if r >= 0 /\ r < grid.count /\ c >= 0 /\ c < grid[r].length /\
+            grid[r][c] == 'H']
         |> count()
 
 next(grid: Grid, row: int, column: int) -> char =>

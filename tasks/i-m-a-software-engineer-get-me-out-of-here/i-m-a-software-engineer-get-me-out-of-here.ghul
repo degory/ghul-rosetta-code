@@ -29,12 +29,10 @@ let country = [
 ]
 
 let cells =
-    0..country.count
-        |> flat_map(row =>
-            0..country[row].length
-                |> filter(column => char.is_digit(country[row][column]))
-                |> map(column => (row, column)))
-        |> collect()
+    [(row, column)
+        for row in 0..country.count
+        for column in 0..country[row].length
+        if char.is_digit(country[row][column])]
 
 let number =
     cells |> index() |> map(((i, cell)) => (cell, i)) |> collect_map()
@@ -119,8 +117,7 @@ write_line("    {route((21, 11), (1, 11))}")
 write_line("    {route((1, 11), (21, 11))}")
 
 let (longest, from, to) =
-    0..size
-        |> flat_map(i => 0..size |> map(j => (distance[i][j], i, j)))
+    [(distance[i][j], i, j) for i in 0..size for j in 0..size]
         |> filter(((d, _, _)) => d < unreachable)
         |> max_by(((d, _, _)) => d)!
 
