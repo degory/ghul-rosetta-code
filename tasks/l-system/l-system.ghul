@@ -1,7 +1,7 @@
 use default
 use Raster
 
-expand(axiom: string, rules: MAP[char, string], steps: int) -> string is
+expand(axiom: string, rules: Map[char, string], steps: int) -> string is
     let current mut = axiom
 
     for _ in 0..steps do
@@ -19,7 +19,7 @@ expand(axiom: string, rules: MAP[char, string], steps: int) -> string is
     return current
 si
 
-interpret(program: string, operations: MAP[char, () -> void]) is
+interpret(program: string, operations: Map[char, () -> void]) is
     for symbol in program do
         if operations.contains_key(symbol) then
             operations[symbol]()
@@ -58,7 +58,7 @@ let drawing = [
     ('F', () => pen.forward(2.0)),
     ('+', () => pen.turn(-25.0)),
     ('-', () => pen.turn(25.0))
-] |> collect_map()
+] |> collect_mutable_map()
 
 drawing['['] = () =>
     saved.add((x = pen.x, y = pen.y, heading = pen.heading))

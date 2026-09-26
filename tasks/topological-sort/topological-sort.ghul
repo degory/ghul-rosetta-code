@@ -30,7 +30,7 @@ compile_order(graph: MAP[string, SET[string]])
     -> (ordered: List[string], blocked: List[string])
 is
     let pending = graph.keys
-        |> collect_map(name => name, name => SET(graph[name]))
+        |> collect_mutable_map(name => name, name => SET(graph[name]))
 
     let ordered = LIST()
 

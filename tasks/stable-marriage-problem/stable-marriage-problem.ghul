@@ -62,7 +62,7 @@ rank(preferences: string[], name: string) -> int is
 si
 
 prefers(
-    preferences: MAP[string, string[]],
+    preferences: Map[string, string[]],
     judge: string,
     a: string,
     b: string

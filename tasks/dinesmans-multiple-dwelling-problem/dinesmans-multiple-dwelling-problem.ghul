@@ -1,29 +1,5 @@
 use default
 
-permutations(items: List[int]) -> Pipe[List[int]] is
-    if items.count == 0 then
-        yield LIST()
-    else
-        for i in 0..items.count do
-            let rest = LIST(items)
-
-            rest.remove_at(i)
-
-            for tail in permutations(rest) do
-                let whole = LIST()
-
-                whole.add(items[i])
-
-                for value in tail do
-                    whole.add(value)
-                od
-
-                yield whole
-            od
-        od
-    fi
-si
-
 adjacent(left: int, right: int) -> bool =>
     if left > right then left - right else right - left fi == 1
 
