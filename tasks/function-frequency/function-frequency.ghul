@@ -53,10 +53,13 @@ callees(method: MethodBase) -> Pipe[MethodBase] is
         at = at + op.size
 
         if calls |> any(c => c.value == op.value) then
-            yield method.module.resolve_method(
+            if let callee = method.module.resolve_method(
                 BitConverter.to_int32(il, at),
                 method.declaring_type?.get_generic_arguments(),
                 generic_args)
+            then
+                yield callee
+            fi
         fi
 
         at = at + operand_size(op.operand_type, il, at)
