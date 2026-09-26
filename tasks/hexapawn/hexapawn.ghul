@@ -40,9 +40,14 @@ has_won(board: string, side: char) -> bool =>
 
 square(index: int) -> string => "{"abc"[index % 3]}{3 - index / 3}"
 
+let symbols = "WB." |> zip("♙♟.") |> collect_map()
+
 show(board: string) is
     for row in 0..3 do
-        write_line("{3 - row} {board.substring(row * 3, 3)}")
+        let pieces =
+            board.substring(row * 3, 3) |> map(p => symbols[p]) |> join("")
+
+        write_line("{3 - row} {pieces}")
     od
 
     write_line("  abc")
