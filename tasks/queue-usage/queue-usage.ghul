@@ -1,8 +1,8 @@
 use default
 
-let queue = Queue()
+let queue = QUEUE()
 
-report_empty(pending: Queue[string]) is
+report_empty(pending: QUEUE[string]) is
     let state = if pending.count == 0 then "yes" else "no" fi
 
     write_line("empty: {state}")

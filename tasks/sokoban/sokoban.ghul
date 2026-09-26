@@ -34,7 +34,7 @@ solve() -> string? is
     let initial = cells.replace('@', ' ').replace('.', ' ')
 
     let seen = SET()
-    let queue = Collections.Queue()
+    let queue = Collections.QUEUE()
 
     seen.add("{start}:{initial}")
     queue.enqueue((player = start, boxes = initial, path = ""))

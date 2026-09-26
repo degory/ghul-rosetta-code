@@ -12,7 +12,7 @@ neighbours(word: string) -> Pipe[string] =>
 
 ladder(start: string, goal: string) -> Collections.List[string]? is
     let previous = MAP[string, string]()
-    let queue = Collections.Queue[string]()
+    let queue = Collections.QUEUE[string]()
 
     previous[start] = start
     queue.enqueue(start)

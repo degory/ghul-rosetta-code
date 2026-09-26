@@ -3,7 +3,7 @@ use default
 b10(n: int) -> string is
     let parent = repeat(-1, n) |> collect_mutable()
     let digit = repeat('0', n) |> collect_mutable()
-    let queue = Collections.Queue[int]()
+    let queue = Collections.QUEUE[int]()
 
     let start = 1 % n
     parent[start] = start

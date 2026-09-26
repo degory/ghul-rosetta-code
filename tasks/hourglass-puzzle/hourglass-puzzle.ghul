@@ -46,7 +46,7 @@ si
 
 plan(start: State) -> List[string]? is
     let seen = SET()
-    let queue = Collections.Queue()
+    let queue = Collections.QUEUE()
 
     queue.enqueue((state = start, path = LIST()))
     seen.add(start)

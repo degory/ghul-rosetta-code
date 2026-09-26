@@ -1,7 +1,7 @@
 use default
 use System.Runtime.CompilerServices.ICriticalNotifyCompletion
 
-let ready = Queue[() -> void]()
+let ready = QUEUE[() -> void]()
 
 struct PAUSE: ICriticalNotifyCompletion is
     init() is si

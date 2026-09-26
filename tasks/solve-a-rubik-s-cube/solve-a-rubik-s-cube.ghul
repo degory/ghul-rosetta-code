@@ -104,7 +104,7 @@ solve_phase(phase: int, start: int[]) -> List[int] is
         return found
     fi
 
-    let queue = Collections.Queue()
+    let queue = Collections.QUEUE()
     let direction = MAP()
     let last_move = MAP()
     let previous = MAP()

@@ -37,7 +37,7 @@ postorder[T](tree: Tree[T]) -> Pipe[T] is
 si
 
 levelorder[T](tree: Tree[T]) -> Pipe[T] is
-    let pending = Queue[Tree[T]]()
+    let pending = QUEUE[Tree[T]]()
 
     pending.enqueue(tree)
 

@@ -116,7 +116,7 @@ neighbours(i: int) -> Pipe[int] =>
 
 shortest_path(start: int, finish: int) -> List[int] is
     let previous = MAP()
-    let queue = Collections.Queue()
+    let queue = Collections.QUEUE()
 
     queue.enqueue(start)
     previous[start] = start

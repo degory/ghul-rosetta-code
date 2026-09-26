@@ -42,7 +42,7 @@ class BIPARTITE(left: int, right: int) is
     si
 
     _layer() -> bool is
-        let waiting = Queue[int]()
+        let waiting = QUEUE[int]()
 
         for u in 0..left do
             if _partner_of_left[u]? then
