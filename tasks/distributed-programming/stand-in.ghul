@@ -1,0 +1,31 @@
+use default
+use System.Net.IPAddress
+use System.Net.IPEndPoint
+use System.Net.Sockets.TcpListener
+
+// The test's entry: a server on the loopback interface stands in for the
+// remote one and the client calls it. Not part of the published solution.
+stand_in() -> string is
+    let probe = TcpListener(IPAddress.loopback, 0)
+
+    probe.start()
+
+    let port =
+        if let bound: IPEndPoint = probe.local_endpoint then bound.port
+        else throw System.Exception("the probe has no address")
+        fi
+
+    probe.stop()
+
+    let prefix = "http://127.0.0.1:{port}/"
+    let listener = listen(prefix)
+
+    Tasks.TASK.run(() => serve(listener))
+
+    prefix
+si
+
+@entry()
+test_entry() is
+    client(stand_in())
+si

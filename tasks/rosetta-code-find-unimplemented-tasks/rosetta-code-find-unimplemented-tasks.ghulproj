@@ -6,6 +6,10 @@
     <AssemblyName>binary</AssemblyName>
     <GhulCompiler>dotnet ghul-compiler --test-run</GhulCompiler>
     <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
+
+    <!-- stand-in.ghul carries the test: only rosetta-code-find-unimplemented-tasks.ghul is published -->
+    <GhulGlobalNamespace>true</GhulGlobalNamespace>
+    <GhulNoWarn>top-level-statements-not-run</GhulNoWarn>
   </PropertyGroup>
 
   <ItemGroup>

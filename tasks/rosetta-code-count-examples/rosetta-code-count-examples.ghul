@@ -1,10 +1,5 @@
 use default
 use System.Net.Http.HttpClient
-use System.Net.HttpListener
-use System.Net.IPAddress
-use System.Net.IPEndPoint
-use System.Net.Sockets.TcpListener
-use System.Text.Encoding
 use System.Text.Json.JsonDocument
 use System.Text.Json.JsonDocumentOptions
 use System.Text.RegularExpressions.Regex
@@ -67,42 +62,5 @@ count_examples(api: string) is
     write_line("")
     write_line("Total: {total} examples.")
 si
-// Given no API, the entry answers from replies the wiki gave on the date
-// the file names, one reply a request, served on the loopback interface.
-stand_in() -> string is
-    let replies =
-        IO.File.read_all_lines("api-replies.txt")
-            |> skip(1)
-    let probe = TcpListener(IPAddress.loopback, 0)
 
-    probe.start()
-
-    let port =
-        if let bound: IPEndPoint = probe.local_endpoint then bound.port
-        else throw System.Exception("the probe has no address")
-        fi
-
-    probe.stop()
-
-    let prefix = "http://127.0.0.1:{port}/"
-    let listener = HttpListener()
-
-    listener.prefixes.add(prefix)
-    listener.start()
-
-    Tasks.TASK.run(() is
-        for reply in replies do
-            let context = listener.get_context()
-            let body = Encoding.utf8.get_bytes(reply)
-
-            context.response.output_stream.write(body, 0, body.count)
-            context.response.close()
-        od
-    si)
-
-    "{prefix}w/api.php"
-si
-
-let api = if args.count > 0 then args[0] else stand_in() fi
-
-count_examples(api)
+count_examples("https://rosettacode.org/w/api.php")

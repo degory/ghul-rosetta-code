@@ -1,0 +1,13 @@
+use default
+use System.Net.IPAddress
+
+// The test's entry: the addresses www.kame.net resolved to when the test
+// was captured, in place of a lookup that would need the network. Not
+// part of the published solution.
+@entry()
+test_entry() is
+    report([
+        IPAddress.parse("2001:2f0:0:8800:226:2dff:fe0b:4311"),
+        IPAddress.parse("210.155.141.200")
+    ])
+si

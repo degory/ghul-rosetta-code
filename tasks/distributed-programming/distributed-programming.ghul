@@ -1,10 +1,7 @@
 use default
 use System.Net.HttpListener
-use System.Net.IPAddress
-use System.Net.IPEndPoint
 use System.Net.Http.HttpClient
 use System.Net.Http.StringContent
-use System.Net.Sockets.TcpListener
 use System.Text.Encoding
 use System.Text.Json.JsonDocument
 use System.Text.Json.JsonDocumentOptions
@@ -111,32 +108,12 @@ listen(prefix: string) -> HttpListener is
     listener
 si
 
-// With no arguments, a server on the loopback interface stands in for the
-// remote one and the client calls it.
-stand_in() -> string is
-    let probe = TcpListener(IPAddress.loopback, 0)
-
-    probe.start()
-
-    let port =
-        if let bound: IPEndPoint = probe.local_endpoint then bound.port
-        else throw System.Exception("the probe has no address")
-        fi
-
-    probe.stop()
-
-    let prefix = "http://127.0.0.1:{port}/"
-    let listener = listen(prefix)
-
-    Tasks.TASK.run(() => serve(listener))
-
-    prefix
-si
-
 if args.count > 1 /\ args[0] =~ "serve" then
     serve(listen(args[1]))
 elif args.count > 0 then
     client(args[0])
 else
-    client(stand_in())
+    write_line(
+        "usage: distributed-programming serve <prefix> | "
+        "distributed-programming <url>")
 fi

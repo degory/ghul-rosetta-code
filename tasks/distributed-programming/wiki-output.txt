@@ -1,0 +1,3 @@
+sum(1, 2, 3, 4) = 10
+upper("hello") = "HELLO"
+square(7) = error: method not found
