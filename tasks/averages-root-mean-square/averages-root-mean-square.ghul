@@ -4,8 +4,7 @@ use System.Math
 root_mean_square(values: Collections.List[double]) -> double is
     let squares =
         values
-            |> map(v => v * v)
-            |> sum()
+            |> sum_by(v => v * v)
 
     return Math.sqrt(squares / cast(values.count))
 si

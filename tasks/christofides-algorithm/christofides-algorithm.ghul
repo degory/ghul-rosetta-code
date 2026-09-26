@@ -12,7 +12,7 @@ distance(a: int, b: int) -> double =>
     double.sqrt((ax - bx) * (ax - bx) + (ay - by) * (ay - by))
 
 length(edges: Iterable[Edge]) -> double =>
-    edges |> map(((from, to)) => distance(from, to)) |> sum()
+    edges |> sum_by(((from, to)) => distance(from, to))
 
 spanning_tree(n: int) -> List[Edge] is
     let in_tree = SET([0])

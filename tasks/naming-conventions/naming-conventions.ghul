@@ -20,7 +20,7 @@ enum Colour is
 si
 
 total_area(shapes: Shape[]) -> double =>
-    shapes |> map(shape => shape.area) |> sum()
+    shapes |> sum_by(shape => shape.area)
 
 // a leading underscore makes a member private to its class
 class COUNTER is

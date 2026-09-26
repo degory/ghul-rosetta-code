@@ -47,7 +47,7 @@ corner(i: int, j: int) -> VEC =>
     turned(surface(angle(i), v))
 
 depth(quad: Quad) -> double =>
-    quad |> map(c => c.z) |> sum()
+    quad |> sum_by(c => c.z)
 
 brightness(quad: Quad) -> double =>
     let n = (quad[1] - quad[0]) × (quad[3] - quad[0]) in

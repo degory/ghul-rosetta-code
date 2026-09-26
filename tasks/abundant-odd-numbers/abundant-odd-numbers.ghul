@@ -4,8 +4,7 @@ proper_divisor_sum(n: long) -> long =>
     from(2L)
         |> take_while(d => d * d <= n)
         |> filter(d => n % d == 0L)
-        |> map(d => if d * d == n then d else d + n / d fi)
-        |> sum() + 1L
+        |> sum_by(d => if d * d == n then d else d + n / d fi) + 1L
 
 abundant_odd(start: long) -> Pipe[long] =>
     from(start, 2L) |> filter(n => proper_divisor_sum(n) > n)

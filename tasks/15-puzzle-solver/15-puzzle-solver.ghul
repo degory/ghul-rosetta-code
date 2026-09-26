@@ -27,8 +27,7 @@ class SOLVER is
             tiles
                 |> index()
                 |> filter(t => t.value != 0)
-                |> map(t => distance(t.value, t.index))
-                |> sum()
+                |> sum_by(t => distance(t.value, t.index))
     si
 
     solve() is

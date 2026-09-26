@@ -40,7 +40,7 @@ solve(matrix: LIST[LIST[double]], rhs: LIST[double]) -> LIST[double] is
 
     for row in (0..n) |> reverse() do
         let known =
-            (row + 1..n) |> map(k => matrix[row][k] * result[k]) |> sum()
+            (row + 1..n) |> sum_by(k => matrix[row][k] * result[k])
 
         result[row] = (rhs[row] - known) / matrix[row][row]
     od

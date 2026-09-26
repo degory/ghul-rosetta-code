@@ -24,7 +24,7 @@ tanh_sinh(
         let previous = result
         let n = (1 << k) - 1
 
-        result = half_width * (-n::n |> map(weighted) |> sum())
+        result = half_width * (-n::n |> sum_by(weighted))
 
         if k > 1 /\ abs(result - previous) < accuracy then
             return result

@@ -56,7 +56,7 @@ patch(i: int, j: int) -> Patch =>
             turned(corner(i, j + 1))],
         phase = angle(i) / (2.0D * pi * cast double(turns)))
 
-depth(p: Patch) -> double => p.corners |> map(c => c.z) |> sum()
+depth(p: Patch) -> double => p.corners |> sum_by(c => c.z)
 
 brightness(p: Patch) -> double is
     let c = p.corners

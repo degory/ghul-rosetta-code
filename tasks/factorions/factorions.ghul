@@ -13,8 +13,7 @@ si
 
 digit_factorial_sum(n: int, base_value: int) -> int =>
     digits(n, base_value)
-        |> map(factorial)
-        |> sum()
+        |> sum_by(factorial)
 
 factorions(base_value: int) -> List[int] =>
     1..1_500_000

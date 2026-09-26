@@ -9,7 +9,7 @@ cholesky(a: List[List[double]]) -> List[List[double]] is
 
     for i in 0..size do
         for k in 0::i do
-            let overlap = 0..k |> map(j => l[i][j] * l[k][j]) |> sum()
+            let overlap = 0..k |> sum_by(j => l[i][j] * l[k][j])
 
             l[i][k] =
                 if i == k then

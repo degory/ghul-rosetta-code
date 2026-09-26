@@ -22,8 +22,7 @@ arrangements(clues: List[int], length: int) -> List[long] is
         let rest =
             clues
                 |> skip(i + 1)
-                |> map(n => n + 1)
-                |> sum()
+                |> sum_by(n => n + 1)
 
         for at in start::length - clues[i] - rest do
             let block = ((1L << clues[i]) - 1L) << at

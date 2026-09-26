@@ -7,7 +7,7 @@ use Matrix = List[List[bigint]]
         |> map(i =>
             0..b[0].count
                 |> map(j =>
-                    0..b.count |> map(k => a[i][k] * b[k][j]) |> sum())
+                    0..b.count |> sum_by(k => a[i][k] * b[k][j]))
                 |> collect())
         |> collect()
 

@@ -46,8 +46,8 @@ for (name, portion, value) in taken do
     write_line("{name,10} {portion,5:F2} {value,6:F2}")
 od
 
-let total_weight = taken |> map(t => t.portion) |> sum()
-let total_value = taken |> map(t => t.value) |> sum()
+let total_weight = taken |> sum_by(t => t.portion)
+let total_value = taken |> sum_by(t => t.value)
 
 write_line("")
 write_line("TOTAL WEIGHT: {total_weight:F2}")

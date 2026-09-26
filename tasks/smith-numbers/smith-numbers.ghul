@@ -25,7 +25,7 @@ is_smith(n: int) -> bool is
     let factors = prime_factors(n) |> collect()
 
     return factors.count > 1 /\
-        (factors |> map(digit_sum) |> sum()) == digit_sum(n)
+        (factors |> sum_by(digit_sum)) == digit_sum(n)
 si
 
 let smith = (1..10_000) |> filter(is_smith) |> collect()

@@ -7,8 +7,7 @@ by_convolution(n: int) -> long is
     fi
 
     return (0..n)
-        |> map(i => by_convolution(i) * by_convolution(n - 1 - i))
-        |> sum()
+        |> sum_by(i => by_convolution(i) * by_convolution(n - 1 - i))
 si
 
 // C(n) = 2 * (2n - 1) * C(n - 1) / (n + 1)

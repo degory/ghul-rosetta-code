@@ -65,10 +65,10 @@ is_magic(square: Square) -> bool =>
     let lines =
         (0..n |> map(i => square[i] |> sum()))
             |> cat(
-                0..n |> map(j => 0..n |> map(i => square[i][j]) |> sum()))
+                0..n |> map(j => 0..n |> sum_by(i => square[i][j])))
             |> cat([
-                0..n |> map(i => square[i][i]) |> sum(),
-                0..n |> map(i => square[i][n - 1 - i]) |> sum()])
+                0..n |> sum_by(i => square[i][i]),
+                0..n |> sum_by(i => square[i][n - 1 - i])])
     in
     lines |> all(total => total == target)
 

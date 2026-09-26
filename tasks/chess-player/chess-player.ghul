@@ -288,13 +288,12 @@ centrality(square: int) -> int =>
 evaluate(position: POSITION) -> int =>
     (0..64)
         |> filter(s => position.squares[s] != '.')
-        |> map(s =>
+        |> sum_by(s =>
             let piece = position.squares[s] in
             let minor = "nbp".contains(char.to_lower(piece)) in
             let bonus = if minor then 2 * centrality(s) else 0 fi in
             let worth = value(piece) + bonus in
             if position.mine(piece) then worth else -worth fi)
-        |> sum()
 
 let mate = 100000
 

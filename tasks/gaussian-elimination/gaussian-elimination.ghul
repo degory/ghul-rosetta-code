@@ -34,7 +34,7 @@ solve(a: List[List[double]], b: List[double]) -> List[double] is
     let x = repeat(0.0, n) |> collect_mutable()
 
     for k in 0..n |> reverse() do
-        let known = k + 1..n |> map(j => rows[k][j] * x[j]) |> sum()
+        let known = k + 1..n |> sum_by(j => rows[k][j] * x[j])
         x[k] = (rows[k][n] - known) / rows[k][k]
     od
 

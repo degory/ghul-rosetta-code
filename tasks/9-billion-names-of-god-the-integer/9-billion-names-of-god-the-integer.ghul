@@ -41,10 +41,9 @@ p(n: int) -> bigint is
 
         let total = from(1)
             |> take_while(k => pentagonal(k) <= m)
-            |> map(k =>
+            |> sum_by(k =>
                 let pair = term(pentagonal(k)) + term(pentagonal(-k)) in
                 if k % 2 == 1 then pair else -pair fi)
-            |> sum()
 
         partitions.add(total)
     od

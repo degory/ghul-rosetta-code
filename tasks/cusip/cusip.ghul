@@ -19,7 +19,7 @@ weighted(c: char, position: int) -> int =>
     value / 10 + value % 10
 
 check_digit(cusip: string) -> int =>
-    let total = 0..8 |> map(i => weighted(cusip[i], i)) |> sum() in
+    let total = 0..8 |> sum_by(i => weighted(cusip[i], i)) in
     (10 - total % 10) % 10
 
 is_valid(cusip: string) -> bool =>

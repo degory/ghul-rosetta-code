@@ -30,23 +30,8 @@ kolakoski(values: int[], length: int) -> List[int] is
     return sequence[0..length]
 si
 
-run_lengths(sequence: List[int]) -> List[int] is
-    let runs = LIST()
-    let run mut = 0
-
-    for i in 0..sequence.count do
-        run = run + 1
-
-        let last = i + 1 == sequence.count
-
-        if last \/ sequence[i + 1] != sequence[i] then
-            runs.add(run)
-            run = 0
-        fi
-    od
-
-    return runs
-si
+run_lengths(sequence: List[int]) -> List[int] =>
+    sequence |> group() |> map(run => run.count) |> collect_list()
 
 self_describing(sequence: List[int]) -> bool => (
     let runs = run_lengths(sequence)

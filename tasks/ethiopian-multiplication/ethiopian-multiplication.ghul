@@ -14,6 +14,6 @@ ethiopian(left: int, right: int) -> int =>
                     total = double(row.total)))
         |> take_while(row => row.multiplier > 0)
         |> filter(row => !is_even(row.multiplier))
-        |> map(row => row.total) |> sum()
+        |> sum_by(row => row.total)
 
 write_line("17 x 34 = {ethiopian(17, 34)}")

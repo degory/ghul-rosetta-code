@@ -23,8 +23,7 @@ let mean =
 let deviation =
     sqrt(
         samples
-        |> map(x => (x - mean) * (x - mean))
-        |> sum() / cast double(size))
+        |> sum_by(x => (x - mean) * (x - mean)) / cast double(size))
 
 write_line("{size:N0} samples by the Box-Muller transform")
 write_line("mean {mean:F6}, standard deviation {deviation:F6}")

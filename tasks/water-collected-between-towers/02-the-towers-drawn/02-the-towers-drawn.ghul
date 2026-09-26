@@ -36,8 +36,7 @@ let series =
 let gap = 2.5
 
 let span =
-    (series |> map(towers => cast double(towers.count) + gap)
-            |> sum()) - gap
+    (series |> sum_by(towers => cast double(towers.count) + gap)) - gap
 
 let tallest =
     series

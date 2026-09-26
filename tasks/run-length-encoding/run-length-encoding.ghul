@@ -2,17 +2,10 @@ use default
 
 encode(text: string) -> string is
     let runs = System.Text.StringBuilder()
-    let at mut = 0
 
-    while at < text.length do
-        let start = at
-
-        while at < text.length /\ text[at] == text[start] do
-            at = at + 1
-        od
-
-        runs.append(at - start)
-        runs.append(text[start])
+    for run in text |> group() do
+        runs.append(run.count)
+        runs.append(run[0])
     od
 
     return runs.to_string()

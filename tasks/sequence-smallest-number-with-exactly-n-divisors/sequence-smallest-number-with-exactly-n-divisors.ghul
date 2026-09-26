@@ -4,8 +4,7 @@ divisor_count(n: int) -> int =>
     (1..n + 1)
     |> take_while(d => d * d <= n)
     |> filter(d => n % d == 0)
-    |> map(d => if d * d == n then 1 else 2 fi)
-    |> sum()
+    |> sum_by(d => if d * d == n then 1 else 2 fi)
 
 let terms =
     (1::15)

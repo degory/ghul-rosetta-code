@@ -27,8 +27,7 @@ error(r: double) -> double =>
     cases
         |> index()
         |> map(c => model(r, cast double(c.index)) - cast double(c.value))
-        |> map(d => d * d)
-        |> sum()
+        |> sum_by(d => d * d)
 
 golden_section(low: double, high: double) -> double is
     let ratio = (sqrt(5.0D) - 1.0D) / 2.0D

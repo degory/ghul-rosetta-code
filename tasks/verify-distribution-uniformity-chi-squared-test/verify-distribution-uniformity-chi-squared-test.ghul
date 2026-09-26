@@ -63,8 +63,8 @@ chi_squared(counts: List[int]) -> double is
     let expected = total / cast double(counts.count)
 
     counts
-        |> map(k => let e = cast double(k) - expected in e * e / expected)
-        |> sum()
+        |> sum_by(k =>
+            let e = cast double(k) - expected in e * e / expected)
 si
 
 is_uniform(counts: List[int], significance: double) -> bool =>
