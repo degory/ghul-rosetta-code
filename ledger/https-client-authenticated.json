@@ -1,6 +1,7 @@
 {
   "title": "HTTPS/Client-authenticated",
   "slug": "https-client-authenticated",
-  "state": "solved",
-  "note": "reopened, was rejected/needs-network: a local stand-in server makes it testable; an endpoint argument uses the real one"
+  "state": "published",
+  "note": "reopened, was rejected/needs-network: a local stand-in server makes it testable; an endpoint argument uses the real one",
+  "published_hash": "0ea79850c273a1bea45e44dc8a70ee2419dc77fe0d72764cd59646306d6ab015"
 }
