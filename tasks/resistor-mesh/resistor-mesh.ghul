@@ -6,7 +6,7 @@ let size = 10
 
 neighbours(node: Node) -> Pipe[Node] =>
     [(-1, 0), (1, 0), (0, -1), (0, 1)]
-    |> map(((dr, dc)) => (row = node.row + dr, col = node.col + dc))
+    |> map((dr, dc) => (row = node.row + dr, col = node.col + dc))
     |> filter(n => n.row >= 0 /\ n.row < size /\ n.col >= 0 /\ n.col < size)
 
 index_of(node: Node) -> int => node.row * size + node.col

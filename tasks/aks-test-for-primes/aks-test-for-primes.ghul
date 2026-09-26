@@ -25,14 +25,14 @@ term(coefficient: long, power: int) -> string =>
 expansion(p: int) -> string =>
     (coefficients(p)
         |> index()
-        |> map(((k, coefficient)) => term(coefficient, p - k))
+        |> map((k, coefficient) => term(coefficient, p - k))
         |> join("")).substring(3)
 
 is_prime(p: int) -> bool =>
     p >= 2 /\
     coefficients(p)
         |> index()
-        |> all(((k, coefficient)) =>
+        |> all((k, coefficient) =>
             let adjusted = case k
                 when 0 then coefficient - 1L
                 when p then coefficient + 1L

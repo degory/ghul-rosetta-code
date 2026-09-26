@@ -10,7 +10,7 @@ exact_root(square: long) -> long? =>
 triples(k: long, limit: long) -> Pipe[Triple] =>
     1L::limit
         |> flat_map(a => a::limit |> map(b => (a, b)))
-        |> map(((a, b)) =>
+        |> map((a, b) =>
             (a = a, b = b, c = exact_root(a * a + b * b - k * a * b)))
         |> filter(t => t.c? /\ t.c! <= limit)
         |> map(t => (a = t.a, b = t.b, c = t.c!))

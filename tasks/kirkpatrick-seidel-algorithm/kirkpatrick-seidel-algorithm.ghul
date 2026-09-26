@@ -51,7 +51,7 @@ bridge(points: List[P], a: double) -> (P, P) is
         return bridge(kept, a)
     fi
 
-    let k = median(pairs |> map(((p, q)) => slope(p, q)))
+    let k = median(pairs |> map((p, q) => slope(p, q)))
     let height = p => p.y - k * p.x
     let top = points |> map(height) |> reduce(height(points[0]), max)
     let touching =

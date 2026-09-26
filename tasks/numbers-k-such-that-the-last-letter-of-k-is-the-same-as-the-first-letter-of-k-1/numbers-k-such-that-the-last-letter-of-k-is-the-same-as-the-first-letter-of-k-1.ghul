@@ -30,7 +30,7 @@ english(n: long) -> string =>
         let hundreds = "{small[cast int(n / 100L)]} hundred" in
         if rest == 0L then hundreds else "{hundreds} and {english(rest)}" fi
     else
-        let (size, name) = scales |> find(((size, _)) => n >= size)! in
+        let (size, name) = scales |> find((size, _) => n >= size)! in
         let rest = n % size in
         let head = "{english(n / size)} {name}" in
         if rest == 0L then head

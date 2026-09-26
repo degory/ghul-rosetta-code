@@ -33,7 +33,7 @@ main_step(block: ulong, key: uint) -> ulong =>
 little_endian(bytes: List[int]) -> ulong =>
     bytes
         |> index()
-        |> map(((i, b)) => cast ulong(b) << (8 * i))
+        |> map((i, b) => cast ulong(b) << (8 * i))
         |> reduce(0ul, (a: ulong, b: ulong) => a | b)
 
 let input = little_endian([0x21, 0x04, 0x3B, 0x04, 0x30, 0x04, 0x32, 0x04])

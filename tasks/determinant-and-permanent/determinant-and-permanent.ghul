@@ -8,8 +8,8 @@ minor(m: Matrix, column: int) -> Matrix =>
         |> map(row =>
             row
                 |> index()
-                |> filter(((j, _)) => j != column)
-                |> map(((_, value)) => value)
+                |> filter((j, _) => j != column)
+                |> map((_, value) => value)
                 |> collect())
         |> collect()
 

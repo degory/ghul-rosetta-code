@@ -20,23 +20,23 @@ same_contents(root: string, size: long, paths: Iterable[string])
     -> Pipe[Group] =>
     paths
         |> group_by(digest)
-        |> map(((_, same)) =>
+        |> map((_, same) =>
             (size,
              paths =
                 same
                     |> map(path => Path.get_relative_path(root, path))
                     |> sort()
                     |> collect()))
-        |> filter(((_, paths)) => paths.count > 1)
+        |> filter((_, paths) => paths.count > 1)
 
 duplicates(root: string, minimum: long) -> List[Group] =>
     Directory.enumerate_files(root, "*", IO.SearchOption.ALL_DIRECTORIES)
         |> map(path => (path, size = IO.FileInfo(path).length))
-        |> filter(((_, size)) => size >= minimum)
-        |> group_by(((_, size)) => size)
-        |> flat_map(((size, files)) =>
-            same_contents(root, size, files |> map(((path, _)) => path)))
-        |> sort_by_descending(((size, _)) => size)
+        |> filter((_, size) => size >= minimum)
+        |> group_by((_, size) => size)
+        |> flat_map((size, files) =>
+            same_contents(root, size, files |> map((path, _) => path)))
+        |> sort_by_descending((size, _) => size)
         |> collect()
 
 let root =

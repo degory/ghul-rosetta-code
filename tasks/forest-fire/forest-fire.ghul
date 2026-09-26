@@ -24,7 +24,7 @@ inside(row: int, column: int) -> bool =>
 near_fire(forest: Forest, row: int, column: int) -> bool =>
     (row - 1::row + 1)
         |> flat_map(r => column - 1::column + 1 |> map(c => (r, c)))
-        |> any(((r, c)) => forest[r][c] == Cell.BURNING)
+        |> any((r, c) => forest[r][c] == Cell.BURNING)
 
 next(forest: Forest, row: int, column: int) -> Cell =>
     if !inside(row, column) then

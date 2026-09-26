@@ -58,7 +58,7 @@ faulhaber(p: int) -> string =>
     in
     terms
         |> index()
-        |> map(((i, t)) =>
+        |> map((i, t) =>
             let negative = t.coefficient.numerator < 0L in
             let sign =
                 if i == 0 then (if negative then "-" else "" fi)

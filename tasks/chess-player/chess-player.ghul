@@ -80,13 +80,13 @@ attacked(position: POSITION, square: int, by_white: bool) -> bool is
 
     holds(position, pawn_row, column - 1, by_white, "p") \/
     holds(position, pawn_row, column + 1, by_white, "p") \/
-    knight_steps |> any(((dr, dc)) =>
+    knight_steps |> any((dr, dc) =>
         holds(position, row + dr, column + dc, by_white, "n")) \/
-    king_steps |> any(((dr, dc)) =>
+    king_steps |> any((dr, dc) =>
         holds(position, row + dr, column + dc, by_white, "k")) \/
-    rook_steps |> any(((dr, dc)) =>
+    rook_steps |> any((dr, dc) =>
         ray_hits(position, row, column, dr, dc, by_white, "rq")) \/
-    bishop_steps |> any(((dr, dc)) =>
+    bishop_steps |> any((dr, dc) =>
         ray_hits(position, row, column, dr, dc, by_white, "bq"))
 si
 

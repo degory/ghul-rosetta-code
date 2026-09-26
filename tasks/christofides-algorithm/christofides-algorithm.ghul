@@ -12,7 +12,7 @@ distance(a: int, b: int) -> double =>
     double.sqrt((ax - bx) * (ax - bx) + (ay - by) * (ay - by))
 
 length(edges: Iterable[Edge]) -> double =>
-    edges |> sum_by(((from, to)) => distance(from, to))
+    edges |> sum_by((from, to) => distance(from, to))
 
 spanning_tree(n: int) -> List[Edge] is
     let in_tree = SET([0])
@@ -23,7 +23,7 @@ spanning_tree(n: int) -> List[Edge] is
             [(from, to)
                 for from in in_tree for to in 0..n
                 if !in_tree.contains(to)]
-                |> min_by(((from, to)) => distance(from, to))!
+                |> min_by((from, to) => distance(from, to))!
 
         edges.add(next)
         in_tree.add(next.to)
@@ -41,8 +41,8 @@ perfect_matching(vertices: List[int]) -> List[Edge] =>
                 let rest =
                     vertices
                         |> index()
-                        |> filter(((at, _)) => at != 0 /\ at != partner)
-                        |> map(((_, vertex)) => vertex)
+                        |> filter((at, _) => at != 0 /\ at != partner)
+                        |> map((_, vertex) => vertex)
                         |> collect()
                 in
                 [(from = vertices[0], to = vertices[partner])]
@@ -68,7 +68,7 @@ eulerian_circuit(n: int, edges: List[Edge]) -> List[int] is
 
     while stack.count > 0 do
         let vertex = stack.peek()
-        let next = unused[vertex] |> find(((edge, _)) => !used[edge])
+        let next = unused[vertex] |> find((edge, _) => !used[edge])
 
         if let (edge, other) = next then
             used[edge] = true
@@ -86,7 +86,7 @@ let tree = spanning_tree(n)
 
 let odd = 0..n
     |> filter(v =>
-        tree |> count(((from, to)) => from == v \/ to == v) % 2 == 1)
+        tree |> count((from, to) => from == v \/ to == v) % 2 == 1)
     |> collect()
 
 let matching = perfect_matching(odd)

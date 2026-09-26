@@ -40,7 +40,7 @@ feasts(
     easter: DateTime, shown: DateTime -> string, days: List[(string, int)]
 ) -> string =>
     days
-        |> map(((name, offset)) =>
+        |> map((name, offset) =>
             "{name} {shown(easter.add_days(cast double(offset)))}")
         |> join()
 

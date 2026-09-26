@@ -35,13 +35,13 @@ let cells =
         if char.is_digit(country[row][column])]
 
 let number =
-    cells |> index() |> map(((i, cell)) => (cell, i)) |> collect_map()
+    cells |> index() |> map((i, cell) => (cell, i)) |> collect_map()
 
 moves(cell: Cell) -> Pipe[Cell] =>
     let (row, column) = cell in
     let step = cast int(country[row][column] - '0') in
     [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-        |> map(((dr, dc)) => (row + dr * step, column + dc * step))
+        |> map((dr, dc) => (row + dr * step, column + dc * step))
         |> filter(target => step > 0 /\ number.contains_key(target))
 
 let size = cells.count
@@ -91,13 +91,13 @@ route(from: Cell, to: Cell) -> string is
         steps.add(cells[at])
     od
 
-    steps |> map(((row, column)) => "({row}, {column})") |> join(" -> ")
+    steps |> map((row, column) => "({row}, {column})") |> join(" -> ")
 si
 
 let hq: Cell = (11, 11)
 let start = number[hq]
 
-let safe = cells |> filter(((row, column)) => country[row][column] == '0')
+let safe = cells |> filter((row, column) => country[row][column] == '0')
 
 let days =
     safe
@@ -118,8 +118,8 @@ write_line("    {route((1, 11), (21, 11))}")
 
 let (longest, from, to) =
     [(distance[i][j], i, j) for i in 0..size for j in 0..size]
-        |> filter(((d, _, _)) => d < unreachable)
-        |> max_by(((d, _, _)) => d)!
+        |> filter((d, _, _) => d < unreachable)
+        |> max_by((d, _, _) => d)!
 
 write_line("    the longest shortest route takes {longest} days:")
 write_line("    {route(cells[from], cells[to])}")

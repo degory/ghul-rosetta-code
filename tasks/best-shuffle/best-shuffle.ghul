@@ -4,7 +4,7 @@ best_shuffle(text: string) -> string is
     let groups =
         0..text.length
             |> group_by(i => text[i])
-            |> map(((_, positions)) => positions)
+            |> map((_, positions) => positions)
             |> sort_by_descending(positions => positions.count)
 
     let order =

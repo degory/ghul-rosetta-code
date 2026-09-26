@@ -3,8 +3,8 @@ use default
 positions(pieces: string, piece: char) -> List[int] =>
     pieces
         |> index()
-        |> filter(((_, p)) => p == piece)
-        |> map(((i, _)) => i)
+        |> filter((_, p) => p == piece)
+        |> map((i, _) => i)
         |> collect()
 
 without(pieces: string, removed: string) -> string =>

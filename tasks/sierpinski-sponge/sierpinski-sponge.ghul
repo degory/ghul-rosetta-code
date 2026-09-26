@@ -75,7 +75,7 @@ for c in cells do
         if !solid(beside) then
             let outline =
                 face.corners
-                    |> map(((dx, dy, dz)) => project(
+                    |> map((dx, dy, dz) => project(
                         cast double(c.x + dx),
                         cast double(c.y + dy),
                         cast double(c.z + dz)))

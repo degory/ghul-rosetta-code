@@ -7,6 +7,6 @@ triples(n: int) -> Pipe[(int, int, int)] =>
         elif b < n then (a, b, c) || (a, b + 1, b + 1)
         else (a, b, c) || (a + 1, a + 1, a + 1)
         fi)
-    |> filter(((a, b, c)) => a * a + b * b == c * c)
+    |> filter((a, b, c) => a * a + b * b == c * c)
 
 write_line(triples(20) |> join())

@@ -37,8 +37,8 @@ smallest_start(n: int) -> bigint? is
             |> map(v =>
                 primes
                     |> index()
-                    |> filter(((_, p)) => v % p == 0)
-                    |> map(((i, _)) => 1L << i)
+                    |> filter((_, p) => v % p == 0)
+                    |> map((i, _) => 1L << i)
                     |> reduce(0L, (x: long, y: long) => x | y))
             |> collect_mutable()
 
@@ -73,14 +73,14 @@ smallest_start(n: int) -> bigint? is
     product_of(mask: long) -> bigint =>
         primes
             |> index()
-            |> filter(((i, _)) => mask & (1L << i) != 0L)
-            |> map(((_, p)) => bigint(p))
+            |> filter((i, _) => mask & (1L << i) != 0L)
+            |> map((_, p) => bigint(p))
             |> product()
 
     let size = bigint(n)
 
     partitions
-        |> map(((a, b, _)) =>
+        |> map((a, b, _) =>
             let x = product_of(a), y = product_of(b) in
             size * inverse(x, y) % y * x - size)
         |> min()
@@ -89,7 +89,7 @@ si
 let found =
     from(3)
         |> map(k => (k, start = smallest_start(k)))
-        |> filter(((_, start)) => start?)
+        |> filter((_, start) => start?)
         |> take(20)
 
 write_line("The first 20 Erdős–Woods numbers and their smallest starts:")

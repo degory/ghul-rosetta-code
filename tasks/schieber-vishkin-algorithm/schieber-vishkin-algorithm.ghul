@@ -149,7 +149,7 @@ let nodes = parents.count - 1
 let agree =
     1::nodes
         |> flat_map(u => 1::nodes |> map(v => (u, v)))
-        |> all(((u, v)) => lca.query(u, v) == naive(u, v))
+        |> all((u, v) => lca.query(u, v) == naive(u, v))
 
 write_line("")
 write_line("{nodes * nodes} pairs agree with a walk up the tree: {agree}")
