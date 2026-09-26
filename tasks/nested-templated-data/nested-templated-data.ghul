@@ -12,7 +12,7 @@ si
 
 at(position: int) -> Template => Template.INDEX(position)
 
-group(items: List[Template]) -> Template => Template.GROUP(items)
+group_of(items: List[Template]) -> Template => Template.GROUP(items)
 
 fill(template: Template, payloads: List[string]) -> Filled =>
     case template
@@ -46,9 +46,9 @@ positions(template: Template) -> Pipe[int] is
 si
 
 let template =
-    group([group([group([at(1), at(2)]),
-                  group([at(3), at(4), at(1)]),
-                  at(5)])])
+    group_of([group_of([group_of([at(1), at(2)]),
+                        group_of([at(3), at(4), at(1)]),
+                        at(5)])])
 
 let payloads = 0::6 |> map(index => "Payload#{index}") |> collect()
 
@@ -66,7 +66,7 @@ write_line()
 write_line("payloads never used:")
 write_line("  {unused |> join(", ")}")
 
-let short_template = group([at(0), at(9)])
+let short_template = group_of([at(0), at(9)])
 
 write_line()
 write_line("a template naming an index with no payload:")
