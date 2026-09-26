@@ -1,10 +1,11 @@
 {
-    "task": "Function frequency",
-    "url": "https://rosettacode.org/wiki/Function_frequency",
-    "status": "solved",
-    "tags": [
-        "text-processing",
-        "strings"
-    ],
-    "interest": 3
+  "task": "Function frequency",
+  "url": "https://rosettacode.org/wiki/Function_frequency",
+  "status": "solved",
+  "tags": [
+    "dotnet-interop",
+    "generators",
+    "pipes"
+  ],
+  "interest": 4
 }
