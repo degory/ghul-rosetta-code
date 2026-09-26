@@ -1,26 +1,123 @@
 use default
+use System.BitConverter
+use System.Reflection.Assembly
+use System.Reflection.BindingFlags
+use System.Reflection.MethodBase
+use System.Reflection.Emit.OpCode
+use System.Reflection.Emit.OpCodes
+use System.Reflection.Emit.OperandType
 use System.Text.RegularExpressions.Regex
 
-let keywords =
-    [
-        "if", "elif", "while", "for", "case", "when", "return", "cast",
-        "assert", "let", "use", "isa", "typeof", "yield", "await", "break"
-    ]
+let opcodes =
+    (typeof OpCodes)
+        .get_fields(BindingFlags.PUBLIC | BindingFlags.STATIC)
+        |> map(f => cast OpCode(f.get_value(null)))
+        |> collect_map(op => cast int(op.value) & 0xFFFF, op => op)
 
-let source = IO.File.read_all_text("function-frequency.ghul")
+let calls = [OpCodes.call, OpCodes.callvirt, OpCodes.newobj]
 
-let calls = Regex.matches(source, "([A-Za-z_][A-Za-z_0-9]*)[ ]*\\(")
+let everything =
+    BindingFlags.PUBLIC | BindingFlags.NON_PUBLIC |
+    BindingFlags.INSTANCE | BindingFlags.STATIC |
+    BindingFlags.DECLARED_ONLY
 
-let most_used =
-    calls
-        |> map(call => call.groups[1].value)
-        |> filter(name => !(keywords |> any(keyword => keyword =~ name)))
+callees(method: MethodBase) -> Pipe[MethodBase] is
+    let il = method.get_method_body()?.get_i_l_as_byte_array()
+
+    if !il? then
+        return
+    fi
+
+    let generic_args =
+        if method.is_generic_method then
+            method.get_generic_arguments()
+        else
+            null
+        fi
+
+    let at mut = 0
+
+    while at < il.count do
+        let first = cast int(il[at])
+
+        // Two-byte opcodes all start with 0xFE.
+        let code =
+            if first == 0xFE then
+                0xFE00 | cast int(il[at + 1])
+            else
+                first
+            fi
+
+        let op = opcodes[code]
+
+        at = at + op.size
+
+        if calls |> any(c => c.value == op.value) then
+            yield method.module.resolve_method(
+                BitConverter.to_int32(il, at),
+                method.declaring_type?.get_generic_arguments(),
+                generic_args)
+        fi
+
+        at = at + operand_size(op.operand_type, il, at)
+    od
+si
+
+operand_size(kind: OperandType, il: ubyte[], at: int) -> int =>
+    case kind
+    when OperandType.INLINE_NONE then 0
+    when
+        OperandType.SHORT_INLINE_BR_TARGET,
+        OperandType.SHORT_INLINE_I,
+        OperandType.SHORT_INLINE_VAR
+    then 1
+    when OperandType.INLINE_VAR then 2
+    when OperandType.INLINE_I8, OperandType.INLINE_R then 8
+    // A switch is a target count followed by that many targets.
+    when OperandType.INLINE_SWITCH then
+        4 + 4 * BitConverter.to_int32(il, at)
+    else 4
+    esac
+
+// A type keeps its own name; a member is spelled the way ghūl spells
+// an imported one, and a property accessor by its property.
+ghul_name(method: MethodBase) -> string is
+    if method.is_constructor then
+        return (method.declaring_type?.name ?? "").split(['`'])[0]
+    fi
+
+    let accessor = Regex.match(method.name, "^[gs]et_(.*)$")
+    let name =
+        if method.is_special_name /\ accessor.success then
+            accessor.groups[1].value
+        else
+            method.name
+        fi
+
+    if name =~ "Item" then
+        return "[]"
+    fi
+
+    return Regex
+        .replace(name, "(?<=[a-z].*)(?<!_)([A-Z])", "_$1")
+        .to_lower_invariant()
+si
+
+let most_called =
+    Assembly.get_executing_assembly().get_types()
+        |> flat_map(type =>
+            cat(
+                type.get_methods(everything),
+                type.get_constructors(everything)))
+        |> flat_map(callees)
+        |> map(ghul_name)
         |> group_by(name => name)
         |> map(uses => (name = uses.key, uses = uses.value.count))
-        |> sort((a, b) => b.uses <> a.uses)
+        |> sort((a, b) =>
+            if a.uses != b.uses then b.uses <> a.uses
+            else a.name <> b.name fi)
         |> take(10)
-        |> collect()
 
-for used in most_used do
-    write_line("{used.uses,4}  {used.name}")
+for called in most_called do
+    write_line("{called.uses,4}  {called.name}")
 od
