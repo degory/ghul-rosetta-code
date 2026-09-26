@@ -103,6 +103,7 @@ ghul_name(method: MethodBase) -> string is
         .to_lower_invariant()
 si
 
+// The counts are of the IL this compiler generated for the program.
 let most_called =
     Assembly.get_executing_assembly().get_types()
         |> flat_map(type =>
