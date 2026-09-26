@@ -84,8 +84,8 @@ show(armies: Armies, n: int) is
     for row in 0..n do
         let squares = 0..n |> map(column =>
             let bit = 1ul << row * n + column in
-            if armies.black & bit != 0ul then "B"
-            elif armies.white & bit != 0ul then "W"
+            if armies.black & bit != 0ul then "♛"
+            elif armies.white & bit != 0ul then "♕"
             elif (row + column) % 2 == 0 then "."
             else ":"
             fi)

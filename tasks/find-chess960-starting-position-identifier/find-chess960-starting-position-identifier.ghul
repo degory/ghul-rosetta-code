@@ -24,6 +24,10 @@ sp_id(pieces: string) -> int =>
     let light = bishops |> find(b => b % 2 == 1)! / 2 in
     96 * n + 16 * q + 4 * dark + light
 
+let symbols = "KQRBN" |> zip("♔♕♖♗♘") |> collect_map()
+
 for pieces in ["QNRBBNKR", "RNBQKBNR", "RQNBBKRN", "RNQBBKRN"] do
-    write_line("{pieces}: {sp_id(pieces)}")
+    let shown = pieces |> map(p => symbols[p]) |> join("")
+
+    write_line("{pieces} {shown}: {sp_id(pieces)}")
 od

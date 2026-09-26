@@ -41,10 +41,14 @@ is_legal(rank: string) -> bool =>
     let king = rank.index_of('K') in
     (bishops[0] + bishops[1]) % 2 == 1 /\ rooks[0] < king /\ king < rooks[1]
 
+let symbols = "KQRBN" |> zip("♔♕♖♗♘") |> collect_map()
+
 let random = System.Random(960)
 
 for _ in 1::5 do
-    write_line(position(random.next(960)))
+    let rank = position(random.next(960))
+
+    write_line(rank |> map(p => symbols[p]) |> join(""))
 od
 
 let positions = 0..960 |> map(position) |> collect()
