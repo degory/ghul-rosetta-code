@@ -8,7 +8,7 @@ linear_combination(scalars: List[int]) -> string =>
     let terms =
         scalars
             |> index()
-            |> filter(((_, c)) => c != 0)
+            |> filter((_, c) => c != 0)
             |> collect()
     in
     if terms.count == 0 then
@@ -19,7 +19,7 @@ linear_combination(scalars: List[int]) -> string =>
         let rest =
             terms
                 |> skip(1)
-                |> map(((i, c)) =>
+                |> map((i, c) =>
                     let sign = if c < 0 then " - " else " + " fi in
                     "{sign}{term(c, i + 1)}")
                 |> join("")

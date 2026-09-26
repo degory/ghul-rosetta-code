@@ -84,11 +84,11 @@ subdivided(mesh: Mesh) -> Mesh is
 
         let touching_edges =
             edge_faces
-                |> filter(((key, faces_here)) =>
+                |> filter((key, faces_here) =>
                     key.low == vertex \/ key.high == vertex)
 
         let border =
-            touching_edges |> filter(((key, faces_here)) =>
+            touching_edges |> filter((key, faces_here) =>
                 faces_here.count == 1)
                 |> collect()
 
@@ -96,7 +96,7 @@ subdivided(mesh: Mesh) -> Mesh is
             new_points[vertex] =
                 centre(
                     border
-                        |> map(((key, faces_here)) =>
+                        |> map((key, faces_here) =>
                             centre([points[key.low], points[key.high]]))
                         |> cat([points[vertex]])
                         |> collect())
@@ -110,7 +110,7 @@ subdivided(mesh: Mesh) -> Mesh is
             let edge_average =
                 centre(
                     touching_edges
-                        |> map(((key, faces_here)) =>
+                        |> map((key, faces_here) =>
                             centre([points[key.low], points[key.high]]))
                         |> collect())
 

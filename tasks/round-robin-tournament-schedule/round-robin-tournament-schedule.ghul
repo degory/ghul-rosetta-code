@@ -25,7 +25,7 @@ schedule(players: int) is
     for (round, games) in rounds(players) |> index() do
         let line =
             games
-            |> map(((a, b)) =>
+            |> map((a, b) =>
                 "{show(a, players),3} v {show(b, players),-3}")
             |> join(" ")
 

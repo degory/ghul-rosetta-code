@@ -17,7 +17,7 @@ si
 
 let solutions =
     [(x, z) for x in 0::151 for z in 0::151]
-        |> map(((x, z)) => pyramid([x, 11, x + z, 4, z]))
+        |> map((x, z) => pyramid([x, 11, x + z, 4, z]))
         |> filter(p => p[0][0] == 151 /\ p[2][0] == 40)
 
 for p in solutions do

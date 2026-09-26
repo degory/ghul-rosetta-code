@@ -50,8 +50,8 @@ si
 polynomial(coefficients: List[int]) -> string =>
     coefficients
         |> index()
-        |> filter(((_, c)) => c == 1)
-        |> map(((power, _)) =>
+        |> filter((_, c) => c == 1)
+        |> map((power, _) =>
             case power
             when 0 then "1"
             when 1 then "x"

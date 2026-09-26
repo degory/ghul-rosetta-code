@@ -29,7 +29,7 @@ write_line("an 8 queens solution:")
 
 if let first_solution = placements(8, LIST()) |> first() then
     first_solution |> index()
-    |> each(((row, column)) =>
+    |> each((row, column) =>
         write_line(
             (0..8)
                 |> map(c => if c == column then "♕" else "." fi)

@@ -45,7 +45,7 @@ free(s: Square) -> bool => open.contains(s) /\ !order.contains_key(s)
 
 moves(s: Square) -> List[Square] =>
     jumps
-        |> map(((dr, dc)) => (row = s.row + dr, column = s.column + dc))
+        |> map((dr, dc) => (row = s.row + dr, column = s.column + dc))
         |> filter(free)
         |> collect()
 

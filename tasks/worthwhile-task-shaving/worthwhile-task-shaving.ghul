@@ -27,15 +27,15 @@ let units = [
 
 describe(seconds: double) -> string =>
     units
-    |> filter(((_, _, below)) => seconds < below)
-    |> map(((name, size, _)) =>
+    |> filter((_, _, below) => seconds < below)
+    |> map((name, size, _) =>
         let count = cast int(seconds / size) in
         "{count} {name}{if count == 1 then "" else "s" fi}")
     |> first() ?? ""
 
 
 write_line("{"",-13}how often you do the task (over five years)")
-let headings = per_year |> map(((name, _)) => "{name,-11}") |> join("")
+let headings = per_year |> map((name, _) => "{name,-11}") |> join("")
 
 write_line("{"shaved off",-11}| {headings}".trim_end())
 write_line(string('-', 13 + 11 * per_year.count))
@@ -43,7 +43,7 @@ write_line(string('-', 13 + 11 * per_year.count))
 for (label, seconds) in shaved do
     let cells =
         per_year
-        |> map(((_, times)) => describe(seconds * times * 5.0))
+        |> map((_, times) => describe(seconds * times * 5.0))
         |> map(cell => "{cell,-11}")
         |> join("")
 

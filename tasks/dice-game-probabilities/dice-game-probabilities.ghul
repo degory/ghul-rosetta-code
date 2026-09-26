@@ -24,7 +24,7 @@ beats(dice1: int, faces1: int, dice2: int, faces2: int) -> double =>
     let wins =
         first
             |> index()
-            |> sum_by(((a, ways)) =>
+            |> sum_by((a, ways) =>
                 ways * (second |> take(a) |> sum()))
     in
     let games = (first |> sum()) * (second |> sum()) in

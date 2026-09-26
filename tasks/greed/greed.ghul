@@ -59,7 +59,7 @@ show() is
 si
 
 can_move() -> bool =>
-    directions.values |> any(((dx, dy)) => reach(dx, dy) > 0)
+    directions.values |> any((dx, dy) => reach(dx, dy) > 0)
 
 show()
 

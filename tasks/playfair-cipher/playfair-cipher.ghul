@@ -71,7 +71,7 @@ class PLAYFAIR(key: string, alphabet: Alphabet) is
         digraphs(text) |> map(pair => shift(pair, -1)) |> join(" ")
 
     prepared(text: string) -> string =>
-        digraphs(text) |> map(((a, b)) => "{a}{b}") |> join(" ")
+        digraphs(text) |> map((a, b) => "{a}{b}") |> join(" ")
 si
 
 let key = "Playfair example"

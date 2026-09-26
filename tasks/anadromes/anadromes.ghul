@@ -11,7 +11,7 @@ let words =
 let pairs = words
     |> sort()
     |> map(word => (word, reversal = reversed(word)))
-    |> filter(((word, reversal)) =>
+    |> filter((word, reversal) =>
         word < reversal /\ words.contains(reversal))
 
 for (word, reversal) in pairs do

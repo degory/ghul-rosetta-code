@@ -5,7 +5,7 @@ let source = IO.File.read_all_text("entropy-narcissist.ghul")
 let entropy =
     source
         |> group_by(c => c)
-        |> sum_by(((_, occurrences)) =>
+        |> sum_by((_, occurrences) =>
             let share =
                 cast double(occurrences.count) / cast double(source.length)
             in

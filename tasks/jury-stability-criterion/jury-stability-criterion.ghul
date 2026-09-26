@@ -40,8 +40,8 @@ show(p: Polynomial) -> string =>
     let terms =
         p
             |> index()
-            |> filter(((_, a)) => a != 0.0)
-            |> map(((i, a)) =>
+            |> filter((_, a) => a != 0.0)
+            |> map((i, a) =>
                 let power = n - i in
                 let x = case power
                     when 0 then ""

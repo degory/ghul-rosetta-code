@@ -12,7 +12,7 @@ let swaps = MAP(
         ("mother", "father"), ("father", "mother"),
         ("wife", "husband"), ("husband", "wife")
     ]
-    |> map(((word, swap)) => KeyValuePair(word, swap)))
+    |> map((word, swap) => KeyValuePair(word, swap)))
 
 reverse_gender(text: string) -> string is
     let word_pattern = Regex("[A-Za-z]+")

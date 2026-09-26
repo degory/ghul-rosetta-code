@@ -4,7 +4,7 @@ isogram_order(word: string) -> int =>
     let counts =
         word
             |> group_by(c => c)
-            |> map(((_, occurrences)) => occurrences.count)
+            |> map((_, occurrences) => occurrences.count)
             |> collect_set()
     in
     if counts.count == 1 then counts |> first()! else 0 fi
@@ -16,8 +16,8 @@ let words =
 
 let isograms =
     words
-        |> filter(((_, n)) => n > 1)
-        |> sort_by(((word, n)) => (-n, -word.length, word))
+        |> filter((_, n) => n > 1)
+        |> sort_by((word, n) => (-n, -word.length, word))
 
 write_line("n-isograms with n > 1:")
 
@@ -27,8 +27,8 @@ od
 
 let heterograms =
     words
-        |> filter(((word, n)) => n == 1 /\ word.length > 10)
-        |> sort_by(((word, _)) => (-word.length, word))
+        |> filter((word, n) => n == 1 /\ word.length > 10)
+        |> sort_by((word, _) => (-word.length, word))
 
 write_line("\nHeterograms with more than 10 letters:")
 

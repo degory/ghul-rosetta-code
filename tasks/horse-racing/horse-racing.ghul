@@ -42,11 +42,11 @@ adjustment(horse: string) -> double =>
 
 let finishers =
     races
-        |> flat_map(((winner, runners)) => times(winner, runners))
-        |> map(((horse, time)) =>
+        |> flat_map((winner, runners) => times(winner, runners))
+        |> map((horse, time) =>
             (horse, time = time + adjustment(horse)))
         |> cat([(horse = "J", time = 95.8)])
-        |> sort_by(((_, time)) => time)
+        |> sort_by((_, time) => time)
         |> collect()
 
 write_line("Race 4\n")

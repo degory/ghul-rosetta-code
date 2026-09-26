@@ -25,7 +25,7 @@ corner(i: int, j: int, k: int) -> Flat =>
         z = depth * cast double(k) - depth / 2.0D))
 
 outline(corners: (int, int, int)[]) -> List[Flat] =>
-    corners |> map(((i, j, k)) => corner(i, j, k)) |> collect()
+    corners |> map((i, j, k) => corner(i, j, k)) |> collect()
 
 let top = outline([(0, 1, 0), (1, 1, 0), (1, 1, 1), (0, 1, 1)])
 let front = outline([(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)])

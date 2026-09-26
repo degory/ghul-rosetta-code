@@ -37,7 +37,7 @@ let best =
             (below: List[int], row: List[int]) -> List[int] =>
                 row
                     |> index()
-                    |> map(((i, value)) =>
+                    |> map((i, value) =>
                         value + int.max(below[i], below[i + 1]))
                     |> collect())
 

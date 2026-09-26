@@ -10,7 +10,7 @@ euler_maclaurin(n: int) -> double =>
     let correction =
         bernoulli
             |> index()
-            |> sum_by(((i, b)) =>
+            |> sum_by((i, b) =>
                 let power = 2 * (i + 1) in
                 let exponent = cast double(power) in
                 b / (exponent * double.pow(size, exponent)))

@@ -9,9 +9,9 @@ let lines = [
 
 winner(board: List[char]) -> char? =>
     lines
-        |> filter(((a, b, c)) =>
+        |> filter((a, b, c) =>
             board[a] != ' ' /\ board[a] == board[b] /\ board[b] == board[c])
-        |> map(((a, _, _)) => board[a])
+        |> map((a, _, _) => board[a])
         |> first()
 
 free(board: List[char]) -> Pipe[int] =>

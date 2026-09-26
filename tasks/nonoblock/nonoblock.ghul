@@ -27,7 +27,7 @@ draw(cells: int, blocks: List[int], starts: List[int]) -> string =>
     let filled =
         starts
             |> index()
-            |> flat_map(((i, start)) => start..start + blocks[i])
+            |> flat_map((i, start) => start..start + blocks[i])
             |> collect_set()
     in
     let row =

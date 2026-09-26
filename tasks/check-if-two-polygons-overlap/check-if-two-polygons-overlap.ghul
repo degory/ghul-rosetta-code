@@ -35,7 +35,7 @@ overlap(first: Polygon, second: Polygon) -> bool =>
         |> any(axis => separated(first, second, axis)))
 
 polygon(corners: List[(double, double)]) -> Polygon =>
-    corners |> map(((x, y)) => (x = x, y = y)) |> collect()
+    corners |> map((x, y) => (x = x, y = y)) |> collect()
 
 let shapes =
     [(name = "A",

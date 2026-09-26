@@ -28,7 +28,7 @@ perimeter(edges: List[Edge]) -> List[int]? is
         join(to, from)
     od
 
-    if neighbours |> any(((vertex, ends)) => ends.count != 2) then
+    if neighbours |> any((vertex, ends) => ends.count != 2) then
         return null
     fi
 
@@ -55,7 +55,7 @@ perimeter(edges: List[Edge]) -> List[int]? is
 si
 
 edges(pairs: List[(int, int)]) -> List[Edge] =>
-    pairs |> map(((from, to)) => (from = from, to = to)) |> collect()
+    pairs |> map((from, to) => (from = from, to = to)) |> collect()
 
 let perimeters =
     [(name = "Q", face = [8, 1, 3], against = "R", other = [1, 3, 8]),

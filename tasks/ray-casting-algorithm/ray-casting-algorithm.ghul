@@ -55,7 +55,7 @@ inside(point: Point, rings: List[Ring]) -> bool =>
         .count % 2 == 1
 
 ring(corners: List[(double, double)]) -> Ring =>
-    corners |> map(((x, y)) => (x = x, y = y)) |> collect()
+    corners |> map((x, y) => (x = x, y = y)) |> collect()
 
 let square = [ring([(0.0D, 0.0D), (10.0D, 0.0D), (10.0D, 10.0D),
                     (0.0D, 10.0D)])]
