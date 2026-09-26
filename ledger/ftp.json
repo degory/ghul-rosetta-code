@@ -1,6 +1,7 @@
 {
   "title": "FTP",
   "slug": "ftp",
-  "state": "solved",
-  "note": "reopened, was rejected/needs-network: a local stand-in server makes it testable; an endpoint argument uses the real one"
+  "state": "published",
+  "note": "reopened, was rejected/needs-network: a local stand-in server makes it testable; an endpoint argument uses the real one",
+  "published_hash": "670f4507ad3da1ac23b54a3045bbc03455abfaa993be9dc981b49f83b2bfeb9b"
 }
