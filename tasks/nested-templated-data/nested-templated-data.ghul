@@ -47,8 +47,8 @@ si
 
 let template =
     group([group([group([at(1), at(2)]),
-                        group([at(3), at(4), at(1)]),
-                        at(5)])])
+                  group([at(3), at(4), at(1)]),
+                  at(5)])])
 
 let payloads = 0::6 |> map(index => "Payload#{index}") |> collect()
 
