@@ -1,6 +1,6 @@
 use default
 
-transpose(matrix: List[List[int]]) -> List[List[int]] is
+transposed(matrix: List[List[int]]) -> List[List[int]] is
     let columns = LIST()
 
     for column in 0..matrix[0].count do
@@ -27,4 +27,4 @@ let matrix = [
 ]
 
 show("original", matrix)
-show("transposed", transpose(matrix))
+show("transposed", transposed(matrix))
