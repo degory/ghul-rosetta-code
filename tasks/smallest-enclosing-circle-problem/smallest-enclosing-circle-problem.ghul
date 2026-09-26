@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 struct P(x: double, y: double) is
     +(o: P) -> P => P(x + o.x, y + o.y)
@@ -9,7 +9,7 @@ struct P(x: double, y: double) is
     ⋅(o: P) -> double => x * o.x + y * o.y
     ×(o: P) -> double => x * o.y - y * o.x
 
-    length: double => Math.sqrt(self ⋅ self)
+    length: double => sqrt(self ⋅ self)
 si
 
 struct CIRCLE(centre: P, radius: double) is
@@ -78,9 +78,9 @@ od
 let scattered =
     (0..60)
         |> map(_ =>
-            let angle = 2.0D * Math.pi * random.next_double() in
-            let r = 4.0D * Math.sqrt(random.next_double()) in
-            P(1.5D * r * Math.cos(angle), r * Math.sin(angle)))
+            let angle = 2.0D * pi * random.next_double() in
+            let r = 4.0D * sqrt(random.next_double()) in
+            P(1.5D * r * cos(angle), r * sin(angle)))
         |> collect()
 
 let circle = enclose(scattered)
@@ -100,7 +100,7 @@ image.stroke(2.0D)
 image.circle(circle.centre.x, circle.centre.y, circle.radius)
 
 for p in scattered do
-    if Math.abs((p - circle.centre).length - circle.radius) < 1.0e-6 then
+    if abs((p - circle.centre).length - circle.radius) < 1.0e-6 then
         image.colour(210ub, 50ub, 40ub)
         image.dot(p.x, p.y, 5.0D)
     else

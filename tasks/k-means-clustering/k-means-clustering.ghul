@@ -1,6 +1,7 @@
 use default
 use Raster.COLOUR_MAP
 use Raster.IMAGE
+use System.Math.*
 
 use Math = System.Math
 use Point = (x: double, y: double)
@@ -33,11 +34,11 @@ si
 let points =
     (1::sample_size)
         |> map(_ =>
-            (let angle = random.next_double() * 2.0D * Math.pi
-             let radius = Math.sqrt(random.next_double())
+            (let angle = random.next_double() * 2.0D * pi
+             let radius = sqrt(random.next_double())
 
-             (x = radius * Math.cos(angle),
-              y = radius * Math.sin(angle))))
+             (x = radius * cos(angle),
+              y = radius * sin(angle))))
         |> collect()
 
 seeded_centres() -> Collections.List[Point] is

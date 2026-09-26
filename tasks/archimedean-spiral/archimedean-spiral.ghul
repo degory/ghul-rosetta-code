@@ -1,14 +1,14 @@
 use Ghul.Pipes
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let turns = 5.0D
 let steps = 2000
 
-let last = turns * 2.0D * Math.pi
+let last = turns * 2.0D * pi
 
 at(angle: double) -> (x: double, y: double) =>
-    (x = angle * Math.cos(angle), y = angle * Math.sin(angle))
+    (x = angle * cos(angle), y = angle * sin(angle))
 
 let image = IMAGE(400, 400)
 

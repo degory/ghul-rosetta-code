@@ -2,9 +2,10 @@ use default
 use Raster.IMAGE
 use Raster.SHAPES
 use Raster.Anchor
+use System.Math.*
 
 let radius = 1.0D
-let rise = System.Math.sqrt(3.0D)
+let rise = sqrt(3.0D)
 
 let pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" |> collect_mutable()
 
@@ -41,9 +42,9 @@ let chosen = LIST[char]()
 corners(x: double, y: double) -> LIST[(double, double)] =>
     0..6
         |> map(corner =>
-            let angle = cast double(corner) * System.Math.pi / 3.0D in
-            (x + radius * 0.92D * System.Math.cos(angle),
-             y + radius * 0.92D * System.Math.sin(angle)))
+            let angle = cast double(corner) * pi / 3.0D in
+            (x + radius * 0.92D * cos(angle),
+             y + radius * 0.92D * sin(angle)))
         |> collect_mutable()
 
 draw() is

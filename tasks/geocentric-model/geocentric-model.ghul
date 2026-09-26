@@ -1,7 +1,7 @@
 use default
+use System.Math.*
 use Raster.ANIMATION
 use Raster.IMAGE
-use System.Math
 
 use Colour = (red: ubyte, green: ubyte, blue: ubyte)
 
@@ -28,8 +28,8 @@ let bodies: Body[] = [
 
 around_sun(body: Body, year: double) -> (x: double, y: double) =>
     let turns = body.start / 360.0D + year / body.period in
-    let angle = 2.0D * Math.pi * turns in
-    (x = body.radius * Math.cos(angle), y = body.radius * Math.sin(angle))
+    let angle = 2.0D * pi * turns in
+    (x = body.radius * cos(angle), y = body.radius * sin(angle))
 
 around_earth(body: Body, year: double) -> (x: double, y: double) =>
     let p = around_sun(body, year), e = around_sun(earth, year) in
@@ -37,7 +37,7 @@ around_earth(body: Body, year: double) -> (x: double, y: double) =>
 
 turning(body: Body, from: double, to: double) -> double =>
     let a = around_earth(body, from), b = around_earth(body, to) in
-    Math.atan2(a.x * b.y - a.y * b.x, a.x * b.x + a.y * b.y)
+    atan2(a.x * b.y - a.y * b.x, a.x * b.x + a.y * b.y)
 
 retrograde_loops(body: Body) -> int is
     let steps = cast int(years * 2000.0D)

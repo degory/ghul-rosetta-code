@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let n = 17
 
@@ -50,8 +50,8 @@ image.clear(252ub, 252ub, 250ub)
 
 at(i: int) -> (x: double, y: double) =>
     let turn = cast double(i) / cast double(n) in
-    let angle = Math.pi / 2.0D - 2.0D * Math.pi * turn in
-    (x = Math.cos(angle), y = Math.sin(angle))
+    let angle = pi / 2.0D - 2.0D * pi * turn in
+    (x = cos(angle), y = sin(angle))
 
 image.colour(40ub, 90ub, 180ub)
 image.stroke(1.2D)

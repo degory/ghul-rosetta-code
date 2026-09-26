@@ -1,13 +1,16 @@
 use default
+use System.Math.*
+use double.degrees_to_radians
+use double.radians_to_degrees
 
 mean_angle(degrees: List[double]) -> double =>
     let radians =
         degrees
-            |> map(d => double.degrees_to_radians(d))
+            |> map(d => degrees_to_radians(d))
     in
-    let sines = radians |> map(r => double.sin(r)) |> sum() in
-    let cosines = radians |> map(r => double.cos(r)) |> sum() in
-    double.radians_to_degrees(double.atan2(sines, cosines))
+    let sines = radians |> map(r => sin(r)) |> sum() in
+    let cosines = radians |> map(r => cos(r)) |> sum() in
+    radians_to_degrees(atan2(sines, cosines))
 
 let lists = [[350.0, 10.0], [90.0, 180.0, 270.0, 360.0], [10.0, 20.0, 30.0]]
 

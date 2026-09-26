@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use Step = (x: int, y: int)
 
@@ -10,7 +10,7 @@ steps_of_length(squared: int) -> List[Step] is
 
     while 2 * a * a <= squared do
         let rest = cast double(squared - a * a)
-        let b = cast int(Math.round(Math.sqrt(rest)))
+        let b = cast int(round(sqrt(rest)))
 
         if a * a + b * b == squared then
             for (x, y) in [(a, b), (b, a)] do
@@ -27,9 +27,9 @@ steps_of_length(squared: int) -> List[Step] is
 si
 
 bend(from: Step, to: Step) -> double =>
-    let turn = Math.atan2(cast double(from.y), cast double(from.x)) -
-        Math.atan2(cast double(to.y), cast double(to.x)) in
-    turn - 2.0D * Math.pi * Math.floor(turn / (2.0D * Math.pi))
+    let turn = atan2(cast double(from.y), cast double(from.x)) -
+        atan2(cast double(to.y), cast double(to.x)) in
+    turn - 2.0D * pi * floor(turn / (2.0D * pi))
 
 spiral(count: int) -> List[Step] is
     let points = LIST([(x = 0, y = 0), (x = 0, y = 1)])
@@ -77,14 +77,14 @@ let many = spiral(10000)
 let xs = many |> map(p => cast double(p.x)) |> collect()
 let ys = many |> map(p => cast double(p.y)) |> collect()
 
-let low_x = xs |> reduce(0.0D, Math.min)
-let high_x = xs |> reduce(0.0D, Math.max)
-let low_y = ys |> reduce(0.0D, Math.min)
-let high_y = ys |> reduce(0.0D, Math.max)
+let low_x = xs |> reduce(0.0D, min)
+let high_x = xs |> reduce(0.0D, max)
+let low_y = ys |> reduce(0.0D, min)
+let high_y = ys |> reduce(0.0D, max)
 
 let middle_x = (low_x + high_x) / 2.0D
 let middle_y = (low_y + high_y) / 2.0D
-let half = Math.max(high_x - low_x, high_y - low_y) * 0.52D
+let half = max(high_x - low_x, high_y - low_y) * 0.52D
 
 let image = IMAGE(400, 400)
 

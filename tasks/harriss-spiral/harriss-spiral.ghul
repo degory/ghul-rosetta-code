@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use Point = (x: double, y: double)
 
@@ -18,22 +18,22 @@ quarter_arc(image: IMAGE, from: Point, to: Point) is
     let half = (x = (to.x - from.x) / 2.0D, y = (to.y - from.y) / 2.0D)
     let centre = (x = middle.x + half.y, y = middle.y - half.x)
 
-    let start = Math.atan2(from.y - centre.y, from.x - centre.x)
-    let finish = Math.atan2(to.y - centre.y, to.x - centre.x)
+    let start = atan2(from.y - centre.y, from.x - centre.x)
+    let finish = atan2(to.y - centre.y, to.x - centre.x)
     let sweep mut = finish - start
 
-    if sweep > Math.pi then sweep = sweep - 2.0D * Math.pi fi
-    if sweep < -Math.pi then sweep = sweep + 2.0D * Math.pi fi
+    if sweep > pi then sweep = sweep - 2.0D * pi fi
+    if sweep < -pi then sweep = sweep + 2.0D * pi fi
 
-    let size = Math.sqrt(half.x * half.x + half.y * half.y)
-    let radius = Math.sqrt(2.0D) * size
+    let size = sqrt(half.x * half.x + half.y * half.y)
+    let radius = sqrt(2.0D) * size
 
     image.line(
         (0::24)
             |> map(i =>
                 let a = start + sweep * cast double(i) / 24.0D in
-                (x = centre.x + radius * Math.cos(a),
-                 y = centre.y + radius * Math.sin(a)))
+                (x = centre.x + radius * cos(a),
+                 y = centre.y + radius * sin(a)))
             |> collect())
 si
 
@@ -46,12 +46,12 @@ harriss(
     let side mut = length
 
     for step in 0..steps do
-        let radians = angle * Math.pi / 180.0D
+        let radians = angle * pi / 180.0D
         let next = (
-            x = here.x + side * Math.cos(radians),
-            y = here.y + side * Math.sin(radians))
+            x = here.x + side * cos(radians),
+            y = here.y + side * sin(radians))
 
-        let quadrant = cast int(Math.round(angle / 90.0D))
+        let quadrant = cast int(round(angle / 90.0D))
         let colour = colours[(quadrant % 4 + 4) % 4]
 
         image.colour(colour.red, colour.green, colour.blue)
@@ -72,7 +72,7 @@ let x = 450.0D
 let y = 630.0D
 let base = 525.0D / plastic / plastic
 
-scaled(power: int) -> double => base / Math.pow(plastic, cast double(power))
+scaled(power: int) -> double => base / pow(plastic, cast double(power))
 
 let left = x - (scaled(1) + scaled(3))
 let high = y - (base + scaled(2))

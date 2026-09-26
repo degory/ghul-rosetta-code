@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use Circle = (x: double, y: double, r: double)
 use Arc = (circle: Circle, from: double, to: double)
@@ -33,18 +33,18 @@ let circles: Circle[] = [
     (0.0152957411D, 0.0638919221D, 0.9771215985D)
 ]
 
-let turn = 2.0D * Math.pi
+let turn = 2.0D * pi
 
-wrap(angle: double) -> double => angle - turn * Math.floor(angle / turn)
+wrap(angle: double) -> double => angle - turn * floor(angle / turn)
 
 distance(a: Circle, b: Circle) -> double =>
-    Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))
+    sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))
 
 inside(c: Circle, others: List[Circle]) -> bool =>
     others |> any(o => !(o =~ c) /\ distance(o, c) + c.r <= o.r)
 
 on(c: Circle, angle: double) -> (x: double, y: double) =>
-    (x = c.x + c.r * Math.cos(angle), y = c.y + c.r * Math.sin(angle))
+    (x = c.x + c.r * cos(angle), y = c.y + c.r * sin(angle))
 
 covers(o: Circle, x: double, y: double) -> bool =>
     (x - o.x) * (x - o.x) + (y - o.y) * (y - o.y) < o.r * o.r
@@ -52,13 +52,13 @@ covers(o: Circle, x: double, y: double) -> bool =>
 crossings(c: Circle, o: Circle) -> List[double] is
     let d = distance(c, o)
 
-    if d >= c.r + o.r \/ d <= Math.abs(c.r - o.r) then
+    if d >= c.r + o.r \/ d <= abs(c.r - o.r) then
         return LIST()
     fi
 
-    let base = Math.atan2(o.y - c.y, o.x - c.x)
+    let base = atan2(o.y - c.y, o.x - c.x)
     let cosine = (c.r * c.r + d * d - o.r * o.r) / (2.0D * c.r * d)
-    let spread = Math.acos(cosine)
+    let spread = acos(cosine)
 
     [base - spread, base + spread]
 si
@@ -71,11 +71,11 @@ outer_arcs(c: Circle, others: List[Circle]) -> List[Arc] is
             |> map(wrap))
 
     if angles.count == 0 then
-        return [(circle = c, from = 0.0D, to = 2.0D * Math.pi)]
+        return [(circle = c, from = 0.0D, to = 2.0D * pi)]
     fi
 
     angles.sort()
-    angles.add(angles[0] + 2.0D * Math.pi)
+    angles.add(angles[0] + 2.0D * pi)
 
     (0..angles.count - 1)
         |> map(i => (circle = c, from = angles[i], to = angles[i + 1]))
@@ -90,8 +90,8 @@ area_under(arc: Arc) -> double =>
     let c = arc.circle in
     0.5D * (
         c.r * c.r * (arc.to - arc.from) +
-        c.r * c.x * (Math.sin(arc.to) - Math.sin(arc.from)) -
-        c.r * c.y * (Math.cos(arc.to) - Math.cos(arc.from)))
+        c.r * c.x * (sin(arc.to) - sin(arc.from)) -
+        c.r * c.y * (cos(arc.to) - cos(arc.from)))
 
 let all = LIST(circles)
 let kept = all |> filter(c => !inside(c, all)) |> collect()

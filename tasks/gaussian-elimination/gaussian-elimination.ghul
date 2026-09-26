@@ -1,7 +1,8 @@
 use default
+use System.Math.*
 
 largest_magnitude(values: Iterable[double]) -> double =>
-    values |> reduce(0.0, (m, v) => System.Math.max(m, System.Math.abs(v)))
+    values |> reduce(0.0, (m, v) => max(m, abs(v)))
 
 solve(a: List[List[double]], b: List[double]) -> List[double] is
     let n = b.count
@@ -16,7 +17,7 @@ solve(a: List[List[double]], b: List[double]) -> List[double] is
 
     for k in 0..n do
         let pivot = k..n
-            |> max_by(i => System.Math.abs(rows[i][k]) / scales[i])!
+            |> max_by(i => abs(rows[i][k]) / scales[i])!
 
         (rows[k], rows[pivot]) = (rows[pivot], rows[k])
         (scales[k], scales[pivot]) = (scales[pivot], scales[k])

@@ -1,7 +1,7 @@
 use default
+use System.Math.*
 use Raster.Anchor
 use Raster.IMAGE
-use System.Math.sqrt
 
 use Rule = (name: string, next: (double, double) -> double)
 
@@ -77,7 +77,7 @@ plot(
     let left = cast double(at % 2) * width
     let top = cast double(at / 2) * height
     let middle = (x = left + width / 2.0D, y = top + height / 2.0D)
-    let scale = (System.Math.min(width, height) / 2.0D - 14.0D) / reach
+    let scale = (min(width, height) / 2.0D - 14.0D) / reach
 
     image.colour(170ub, 170ub, 170ub)
     image.stroke(1.0D)
@@ -115,8 +115,8 @@ let runs = rules
 
 let reach = runs
     |> flat_map(run => run.xs |> cat(run.ys))
-    |> map(System.Math.abs)
-    |> reduce(0.0D, System.Math.max)
+    |> map(abs)
+    |> reduce(0.0D, max)
 
 for run in runs |> index() do
     write_line("rule {run.index + 1}: {run.value.rule.name}")

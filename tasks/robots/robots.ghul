@@ -1,6 +1,6 @@
 use default
 use IO.Std.read_line
-use System.Math
+use System.Math.*
 
 let width = 30
 let height = 12
@@ -25,7 +25,7 @@ while robots.count < 8 do
     fi
 od
 
-toward(from: int, to: int) -> int => Math.sign(to - from)
+toward(from: int, to: int) -> int => sign(to - from)
 
 draw() is
     write_line("+{"".pad_right(width, '-')}+")
@@ -69,8 +69,8 @@ while alive /\ robots.count > 0 do
         player = anywhere()
     elif let index = 0..9 |> find(i => keys[i] =~ key) then
         let next = (
-            x = Math.clamp(player.x + index % 3 - 1, 0, width - 1),
-            y = Math.clamp(player.y + index / 3 - 1, 0, height - 1))
+            x = clamp(player.x + index % 3 - 1, 0, width - 1),
+            y = clamp(player.y + index / 3 - 1, 0, height - 1))
 
         if junk.contains(next) then
             write_line("junk is in the way")

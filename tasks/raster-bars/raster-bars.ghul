@@ -1,7 +1,7 @@
 use default
 use Raster.ANIMATION
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use Colour = (red: double, green: double, blue: double)
 
@@ -19,13 +19,13 @@ let bars = [
 ]
 
 channel(value: double) -> ubyte =>
-    cast ubyte(Math.round(255.0D * Math.clamp(value, 0.0D, 1.0D)))
+    cast ubyte(round(255.0D * clamp(value, 0.0D, 1.0D)))
 
 draw_bar(image: IMAGE, colour: Colour, top: double) is
     for row in 0..thickness do
         let across = (cast double(row) + 0.5D) / cast double(thickness)
-        let shine = Math.sin(across * Math.pi)
-        let glint = Math.pow(shine, 12.0D) * 0.5D
+        let shine = sin(across * pi)
+        let glint = pow(shine, 12.0D) * 0.5D
         let y = top + cast double(row)
 
         image.colour(
@@ -44,7 +44,7 @@ draw(image: IMAGE, time: double) is
 
     for bar in bars do
         let top =
-            Math.round(travel + travel * Math.sin(time - bar.phase))
+            round(travel + travel * sin(time - bar.phase))
 
         draw_bar(image, bar.colour, top)
     od
@@ -54,7 +54,7 @@ let image = IMAGE(width, height)
 let animation = ANIMATION(width, height)
 
 for frame in 0..frames do
-    let time = 2.0D * Math.pi * cast double(frame) / cast double(frames)
+    let time = 2.0D * pi * cast double(frame) / cast double(frames)
 
     draw(image, time)
     animation.add(image, 40)

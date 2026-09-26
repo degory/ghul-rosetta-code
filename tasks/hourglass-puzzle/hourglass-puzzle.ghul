@@ -1,6 +1,6 @@
 use default
 use IO.Std.read_line
-use System.Math
+use System.Math.*
 
 let small = 4
 let large = 7
@@ -23,10 +23,10 @@ wait(s: State) -> State? =>
     let sands = running(s) in
     if sands.count == 0 then null
     else
-        let step = sands |> reduce(sands[0], (a, b) => Math.min(a, b)) in
+        let step = sands |> reduce(sands[0], (a, b) => min(a, b)) in
         (
-            small = Math.max(s.small - step, 0),
-            large = Math.max(s.large - step, 0),
+            small = max(s.small - step, 0),
+            large = max(s.large - step, 0),
             time = s.time + step)
     fi
 

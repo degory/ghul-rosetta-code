@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use POINT = (x: double, y: double)
 
@@ -10,10 +10,10 @@ around(radius: double) -> List[POINT] =>
     (0..steps + 1)
         |> map(step =>
             (let angle =
-                 2.0D * Math.pi * cast double(step) / cast double(steps)
+                 2.0D * pi * cast double(step) / cast double(steps)
 
-             (x = 150.0D + radius * Math.cos(angle),
-              y = 150.0D + radius * Math.sin(angle))))
+             (x = 150.0D + radius * cos(angle),
+              y = 150.0D + radius * sin(angle))))
         |> collect()
 
 let image = IMAGE(300, 300)

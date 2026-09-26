@@ -1,18 +1,18 @@
 use default
-use System.Math
+use System.Math.*
 
 jaro(left: string, right: string) -> double is
     if left.length == 0 \/ right.length == 0 then
         return if left.length == right.length then 1.0D else 0.0D fi
     fi
 
-    let window = Math.max(left.length, right.length) / 2 - 1
+    let window = max(left.length, right.length) / 2 - 1
     let taken = SET()
     let matched_left = LIST()
 
     for i in 0..left.length do
-        let first = Math.max(0, i - window)
-        let last = Math.min(i + window + 1, right.length)
+        let first = max(0, i - window)
+        let last = min(i + window + 1, right.length)
 
         for j in first..last do
             if !taken.contains(j) /\ left[i] == right[j] then

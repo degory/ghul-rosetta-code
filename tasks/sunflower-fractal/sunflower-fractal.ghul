@@ -1,9 +1,9 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let seeds = 3000
-let phi = (Math.sqrt(5.0D) + 1.0D) / 2.0D
+let phi = (sqrt(5.0D) + 1.0D) / 2.0D
 
 let image = IMAGE(400, 400)
 
@@ -14,11 +14,11 @@ image.stroke(1.0D)
 
 for i in 0::seeds do
     let n = cast double(i)
-    let r = Math.pow(n, phi) / cast double(seeds)
-    let angle = 2.0D * Math.pi * phi * n
+    let r = pow(n, phi) / cast double(seeds)
+    let angle = 2.0D * pi * phi * n
 
     image.circle(
-        r * Math.sin(angle), r * Math.cos(angle),
+        r * sin(angle), r * cos(angle),
         5.0D * n / cast double(seeds))
 od
 

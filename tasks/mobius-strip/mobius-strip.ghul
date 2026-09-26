@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 struct VEC(x: double, y: double, z: double) is
     -(other: VEC) -> VEC => VEC(x - other.x, y - other.y, z - other.z)
@@ -10,7 +10,7 @@ struct VEC(x: double, y: double, z: double) is
 
     ⋅(o: VEC) -> double => x * o.x + y * o.y + z * o.z
 
-    length: double => Math.sqrt(self ⋅ self)
+    length: double => sqrt(self ⋅ self)
 si
 
 use Quad = List[VEC]
@@ -21,8 +21,8 @@ let yaw = 0.25D
 let pitch = 0.6D
 
 surface(u: double, v: double) -> VEC =>
-    let r = 1.0D + 0.5D * v * Math.cos(u / 2.0D) in
-    VEC(r * Math.cos(u), r * Math.sin(u), 0.5D * v * Math.sin(u / 2.0D))
+    let r = 1.0D + 0.5D * v * cos(u / 2.0D) in
+    VEC(r * cos(u), r * sin(u), 0.5D * v * sin(u / 2.0D))
 
 normal(u: double) -> VEC =>
     let h = 1.0e-6 in
@@ -30,17 +30,17 @@ normal(u: double) -> VEC =>
         (surface(u, h) - surface(u, 0.0D))
 
 turned(p: VEC) -> VEC is
-    let x = p.x * Math.cos(yaw) - p.y * Math.sin(yaw)
-    let y = p.x * Math.sin(yaw) + p.y * Math.cos(yaw)
+    let x = p.x * cos(yaw) - p.y * sin(yaw)
+    let y = p.x * sin(yaw) + p.y * cos(yaw)
 
     VEC(
         x,
-        p.z * Math.cos(pitch) - y * Math.sin(pitch),
-        p.z * Math.sin(pitch) + y * Math.cos(pitch))
+        p.z * cos(pitch) - y * sin(pitch),
+        p.z * sin(pitch) + y * cos(pitch))
 si
 
 angle(i: int) -> double =>
-    2.0D * Math.pi * cast double(i) / cast double(around)
+    2.0D * pi * cast double(i) / cast double(around)
 
 corner(i: int, j: int) -> VEC =>
     let v = 2.0D * cast double(j) / cast double(across) - 1.0D in
@@ -52,7 +52,7 @@ depth(quad: Quad) -> double =>
 brightness(quad: Quad) -> double =>
     let n = (quad[1] - quad[0]) × (quad[3] - quad[0]) in
     if n.length == 0.0D then 0.5D
-    else 0.3D + 0.7D * Math.abs(n.z) / n.length
+    else 0.3D + 0.7D * abs(n.z) / n.length
     fi
 
 quad(i: int, j: int) -> (at: int, corners: Quad) =>
@@ -67,7 +67,7 @@ let quads =
         |> collect()
 
 let start = normal(0.0D)
-let finish = normal(2.0D * Math.pi)
+let finish = normal(2.0D * pi)
 let turn = start ⋅ finish / (start.length * finish.length)
 
 write_line("a Möbius strip of width 1 around a circle of radius 1")
@@ -84,7 +84,7 @@ image.stroke(0.6D)
 
 for q in quads do
     let light = brightness(q.corners)
-    let tone = 0.5D + 0.5D * Math.cos(angle(q.at))
+    let tone = 0.5D + 0.5D * cos(angle(q.at))
     let outline =
         q.corners |> map(p => (x = p.x, y = p.y)) |> collect()
 

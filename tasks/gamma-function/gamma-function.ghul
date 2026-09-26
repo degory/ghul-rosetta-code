@@ -1,4 +1,5 @@
 use default
+use System.Math.*
 
 let g = 7.0
 let coefficients = [
@@ -9,17 +10,17 @@ let coefficients = [
 
 gamma(x: double) -> double =>
     if x < 0.5 then
-        let sine = System.Math.sin(System.Math.pi * x)
+        let sine = sin(pi * x)
 
-        System.Math.pi / (sine * gamma(1.0 - x))
+        pi / (sine * gamma(1.0 - x))
     else
         let xm = x - 1.0
         let t = xm + g + 0.5
         let term = (sum, i) => sum + coefficients[i] / (xm + cast double(i))
         let a = 1::8 |> reduce(coefficients[0], term)
-        let scale = System.Math.sqrt(2.0 * System.Math.pi)
+        let scale = sqrt(2.0 * pi)
 
-        scale * System.Math.pow(t, xm + 0.5) * System.Math.exp(-t) * a
+        scale * pow(t, xm + 0.5) * exp(-t) * a
     fi
 
 for x in [1.0, 2.0, 5.0, 0.5, 1.5, 10.0] do

@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let colours = ["red", "green", "purple"]
 let numbers = ["one", "two", "three"]
@@ -92,18 +92,18 @@ outline(symbol: int, x: double, y: double)
     (0..steps)
         |> map(i =>
             let turn = cast double(i) / cast double(steps) in
-            let t = 2.0D * Math.pi * turn in
+            let t = 2.0D * pi * turn in
             case symbol
             when 0 then
-                (x = x + 8.0D * Math.cos(t), y = y + 18.0D * Math.sin(t))
+                (x = x + 8.0D * cos(t), y = y + 18.0D * sin(t))
             when 1 then
-                let dy = 18.0D * Math.sin(t) in
-                (x = x + 7.0D * Math.cos(t) + 4.0D * Math.sin(dy / 6.0D),
+                let dy = 18.0D * sin(t) in
+                (x = x + 7.0D * cos(t) + 4.0D * sin(dy / 6.0D),
                  y = y + dy)
             else
-                let s = Math.sin(t) in
-                let c = Math.cos(t) in
-                let k = 1.0D / (Math.abs(s) + Math.abs(c)) in
+                let s = sin(t) in
+                let c = cos(t) in
+                let k = 1.0D / (abs(s) + abs(c)) in
                 (x = x + 9.0D * c * k, y = y + 19.0D * s * k)
             esac)
         |> collect()

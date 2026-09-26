@@ -1,5 +1,5 @@
 use default
-use System.Math
+use System.Math.*
 
 use RealSet = (double) -> bool
 
@@ -72,12 +72,12 @@ probes |> each(probe =>
 let ripples: RealSet =
     value =>
         0.0D < value /\ value < 10.0D /\
-            Math.abs(Math.sin(Math.pi * value * value)) > 0.5D
+            abs(sin(pi * value * value)) > 0.5D
 
 let waves: RealSet =
     value =>
         0.0D < value /\ value < 10.0D /\
-            Math.abs(Math.sin(Math.pi * value)) > 0.5D
+            abs(sin(pi * value)) > 0.5D
 
 write_line()
 write_line("length of A - B over (0,10): "

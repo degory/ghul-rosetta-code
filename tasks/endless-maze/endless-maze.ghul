@@ -1,6 +1,6 @@
 use default
 use IO.Std.read_line
-use System.Math
+use System.Math.*
 
 let random = System.Random(2026)
 
@@ -89,13 +89,13 @@ do
 od
 
 let low_x =
-    visited |> map(v => v.`0) |> reduce(0, (a, b) => Math.min(a, b))
+    visited |> map(v => v.`0) |> reduce(0, (a, b) => min(a, b))
 let high_x =
-    visited |> map(v => v.`0) |> reduce(0, (a, b) => Math.max(a, b))
+    visited |> map(v => v.`0) |> reduce(0, (a, b) => max(a, b))
 let low_y =
-    visited |> map(v => v.`1) |> reduce(0, (a, b) => Math.min(a, b))
+    visited |> map(v => v.`1) |> reduce(0, (a, b) => min(a, b))
 let high_y =
-    visited |> map(v => v.`1) |> reduce(0, (a, b) => Math.max(a, b))
+    visited |> map(v => v.`1) |> reduce(0, (a, b) => max(a, b))
 
 known(column: int, row: int, side: int) -> bool =>
     decided.contains_key((column, row, side)) /\

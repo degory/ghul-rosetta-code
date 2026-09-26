@@ -2,7 +2,7 @@ use default
 use Raster.ANIMATION
 use Raster.IMAGE
 use Raster.SHAPES
-use System.Math
+use System.Math.*
 
 use Point = (x: double, y: double, z: double)
 use Colour = (red: ubyte, green: ubyte, blue: ubyte)
@@ -34,13 +34,13 @@ let faces: (normal: Point, u: Point, v: Point, colour: Colour)[] = [
 ]
 
 turned(p: Point, angle: double) -> Point is
-    let x = p.x * Math.cos(angle) + p.z * Math.sin(angle)
-    let z = p.z * Math.cos(angle) - p.x * Math.sin(angle)
+    let x = p.x * cos(angle) + p.z * sin(angle)
+    let z = p.z * cos(angle) - p.x * sin(angle)
 
     (
         x = x,
-        y = p.y * Math.cos(tilt) - z * Math.sin(tilt),
-        z = p.y * Math.sin(tilt) + z * Math.cos(tilt))
+        y = p.y * cos(tilt) - z * sin(tilt),
+        z = p.y * sin(tilt) + z * cos(tilt))
 si
 
 square(
@@ -95,7 +95,7 @@ image.view(-2.8D, -2.8D, 2.8D, 2.8D)
 let animation = ANIMATION(size, size)
 
 for frame in 0..frames do
-    let angle = 2.0D * Math.pi * cast double(frame) / cast double(frames)
+    let angle = 2.0D * pi * cast double(frame) / cast double(frames)
 
     draw(image, angle)
     animation.add(image, 50)

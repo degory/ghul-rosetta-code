@@ -1,4 +1,5 @@
 use default
+use System.Math.*
 
 romberg(
     f: double -> double, lower: double, upper: double,
@@ -34,7 +35,7 @@ romberg(
         let latest = row[i]
         let previous = rows[i - 1][i - 1]
 
-        if System.Math.abs(latest - previous) < accuracy then
+        if abs(latest - previous) < accuracy then
             return latest
         fi
     od
@@ -42,8 +43,8 @@ romberg(
     rows[rows.count - 1][rows.count - 1]
 si
 
-let sine = romberg(x => System.Math.sin(x), 0.0, 1.0, 5, 1.0e-9)
-let exponential = romberg(x => System.Math.exp(x), -3.0, 3.0, 5, 1.0e-9)
+let sine = romberg(x => sin(x), 0.0, 1.0, 5, 1.0e-9)
+let exponential = romberg(x => exp(x), -3.0, 3.0, 5, 1.0e-9)
 
 write_line("sin(x) from 0 to 1: {sine:F8}")
 write_line("exp(x) from -3 to 3: {exponential:F7}")

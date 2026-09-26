@@ -1,7 +1,7 @@
 use default
 use Raster.Anchor
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let cases = [
     27, 27, 27, 44, 44, 59, 59, 59, 59, 59, 59, 59, 59, 60, 60, 61, 61,
@@ -20,7 +20,7 @@ let start = 27.0D
 let population = 7.8e9
 
 model(r: double, t: double) -> double =>
-    let growth = Math.exp(r * t) in
+    let growth = exp(r * t) in
     start * growth / (1.0D + start * (growth - 1.0D) / population)
 
 error(r: double) -> double =>
@@ -31,7 +31,7 @@ error(r: double) -> double =>
         |> sum()
 
 golden_section(low: double, high: double) -> double is
-    let ratio = (Math.sqrt(5.0D) - 1.0D) / 2.0D
+    let ratio = (sqrt(5.0D) - 1.0D) / 2.0D
     let a mut = low, b mut = high
 
     while b - a > 1.0e-12 do
@@ -47,7 +47,7 @@ si
 let r = golden_section(0.0D, 0.5D)
 
 write_line("the r that fits the world Covid-19 data best is {r:F8}")
-write_line("so R0 is roughly e^(12r) = {Math.exp(12.0D * r):F7}")
+write_line("so R0 is roughly e^(12r) = {exp(12.0D * r):F7}")
 
 let image = IMAGE(420, 280)
 let days = cast double(cases.count)
@@ -75,13 +75,13 @@ image.stroke(2.0D)
 image.line(
     (0::cases.count * 4)
         |> map(q => cast double(q) / 4.0D)
-        |> map(t => (x = t, y = Math.log10(model(r, t))))
+        |> map(t => (x = t, y = log10(model(r, t))))
         |> collect())
 
 image.colour(40ub, 80ub, 170ub)
 
 for (day, count) in cases |> index() do
-    image.dot(cast double(day), Math.log10(cast double(count)), 2.5D)
+    image.dot(cast double(day), log10(cast double(count)), 2.5D)
 od
 
 image.write("fit.png")

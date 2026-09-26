@@ -1,5 +1,5 @@
-use System.Math
 use Raster.IMAGE
+use System.Math.*
 
 use VECTOR = (x: double, y: double, z: double)
 
@@ -12,7 +12,7 @@ let small = (centre = (x = 10.0, y = 10.0, z = 18.0), radius = 14.0)
 let light = (x = -0.5, y = 0.6, z = 1.0)
 
 normalized(v: VECTOR) -> VECTOR is
-    let length = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
+    let length = sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
 
     return (x = v.x / length, y = v.y / length, z = v.z / length)
 si
@@ -31,7 +31,7 @@ depths(
         return (hit = false, near = 0.0, far = 0.0)
     fi
 
-    let half = Math.sqrt(squared)
+    let half = sqrt(squared)
 
     return (hit = true, near = centre.z - half, far = centre.z + half)
 si
@@ -48,7 +48,7 @@ shade(normal: VECTOR) -> ubyte is
         return 20ub
     fi
 
-    return cast ubyte(20.0 + 235.0 * Math.pow(lit, 1.6))
+    return cast ubyte(20.0 + 235.0 * pow(lit, 1.6))
 si
 
 axis(index: int) -> double =>

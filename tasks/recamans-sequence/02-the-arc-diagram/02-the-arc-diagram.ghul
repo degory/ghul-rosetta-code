@@ -2,6 +2,7 @@ use default
 use Math = System.Math
 use Raster.Anchor
 use Raster.IMAGE
+use System.Math.*
 
 recaman() -> Pipe[int] is
     let seen = SET()
@@ -29,12 +30,12 @@ let hops = (1..terms.count)
     |> collect()
 
 let highest =
-    terms |> reduce(0, (best, term) => Math.max(best, term))
+    terms |> reduce(0, (best, term) => max(best, term))
 
 let widest =
     hops
-    |> map(hop => Math.abs(hop.to - hop.from))
-    |> reduce(0, (best, span) => Math.max(best, span))
+    |> map(hop => abs(hop.to - hop.from))
+    |> reduce(0, (best, span) => max(best, span))
 
 let deepest = cast double(widest) / 2.0
 
@@ -71,7 +72,7 @@ for hop in hops |> index() do
     let (from, to) = hop.value
 
     let middle = cast double(from + to) / 2.0
-    let radius = cast double(Math.abs(to - from)) / 2.0
+    let radius = cast double(abs(to - from)) / 2.0
 
     if hop.index % 2 == 0 then
         image.arc(middle, 0.0, radius, 0.0, 180.0)

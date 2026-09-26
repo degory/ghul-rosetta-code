@@ -1,7 +1,7 @@
 use default
 use Raster.Anchor
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 pt(x: double, y: double) -> (x: double, y: double) => (x = x, y = y)
 
@@ -46,7 +46,7 @@ si
 use Kernel = (name: string, weights: int[], divisor: int)
 
 channel(value: double) -> ubyte =>
-    cast ubyte(Math.clamp(Math.round(value), 0.0D, 255.0D))
+    cast ubyte(clamp(round(value), 0.0D, 255.0D))
 
 convolve(source: IMAGE, kernel: Kernel) -> IMAGE is
     let result = IMAGE(source.width, source.height)
@@ -58,8 +58,8 @@ convolve(source: IMAGE, kernel: Kernel) -> IMAGE is
 
             for j in -1::1 do
                 for i in -1::1 do
-                    let sx = Math.clamp(x + i, 0, source.width - 1)
-                    let sy = Math.clamp(y + j, 0, source.height - 1)
+                    let sx = clamp(x + i, 0, source.width - 1)
+                    let sy = clamp(y + j, 0, source.height - 1)
                     let p = source.pixel(sx, sy)
                     let w = cast double(kernel.weights[(j + 1) * 3 + i + 1])
 

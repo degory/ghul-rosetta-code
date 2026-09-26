@@ -1,6 +1,6 @@
 use default
+use System.Math.*
 
-use System.Math
 
 tanh_sinh(
     f: double -> double, lower: double, upper: double,
@@ -9,14 +9,14 @@ tanh_sinh(
     let h = 0.1
     let half_width = (upper - lower) / 2.0
     let centre = (upper + lower) / 2.0
-    let quarter_turn = Math.pi / 2.0
+    let quarter_turn = pi / 2.0
 
     weighted(i: int) -> double =>
         let t = cast double(i) * h in
-        let s = Math.sinh(t) * quarter_turn in
-        let cosh_s = Math.cosh(s) in
-        let slope = Math.cosh(t) * quarter_turn / (cosh_s * cosh_s) in
-        f(centre + half_width * Math.tanh(s)) * h * slope
+        let s = sinh(t) * quarter_turn in
+        let cosh_s = cosh(s) in
+        let slope = cosh(t) * quarter_turn / (cosh_s * cosh_s) in
+        f(centre + half_width * tanh(s)) * h * slope
 
     let result mut = 0.0
 
@@ -26,7 +26,7 @@ tanh_sinh(
 
         result = half_width * (-n::n |> map(weighted) |> sum())
 
-        if k > 1 /\ Math.abs(result - previous) < accuracy then
+        if k > 1 /\ abs(result - previous) < accuracy then
             return result
         fi
     od
@@ -34,8 +34,8 @@ tanh_sinh(
     result
 si
 
-let sine = tanh_sinh(x => Math.sin(x), 0.0, 1.0, 5, 1.0e-9)
-let exponential = tanh_sinh(x => Math.exp(x), -3.0, 3.0, 5, 1.0e-9)
+let sine = tanh_sinh(x => sin(x), 0.0, 1.0, 5, 1.0e-9)
+let exponential = tanh_sinh(x => exp(x), -3.0, 3.0, 5, 1.0e-9)
 
 write_line("sin(x) from 0 to 1: {sine:F8}")
 write_line("exp(x) from -3 to 3: {exponential:F7}")

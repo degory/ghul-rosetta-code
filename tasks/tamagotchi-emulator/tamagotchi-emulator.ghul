@@ -1,7 +1,7 @@
 use default
 use IO.Std.read_line
-use System.Math
 use System.Random
+use System.Math.*
 
 let random = Random(12)
 
@@ -43,7 +43,7 @@ class PET(name: string) is
 
     pass_an_hour() is
         age = age + 1
-        hunger = Math.min(hunger + 1, 10)
+        hunger = min(hunger + 1, 10)
 
         if age % 3 == 0 then
             happiness = happiness - 1
@@ -83,7 +83,7 @@ while pet.alive do
 
     case line.trim().to_lower()
     when "feed" then
-        pet.hunger = Math.max(pet.hunger - 4, 0)
+        pet.hunger = max(pet.hunger - 4, 0)
         write_line("{pet.name} eats")
     when "play" then
         let hand = if random.next(2) == 0 then "left" else "right" fi
@@ -93,10 +93,10 @@ while pet.alive do
         write_line("> {guess}")
 
         if guess.trim() =~ hand then
-            pet.happiness = Math.min(pet.happiness + 3, 10)
+            pet.happiness = min(pet.happiness + 3, 10)
             write_line("found it! {pet.name} is delighted")
         else
-            pet.happiness = Math.min(pet.happiness + 1, 10)
+            pet.happiness = min(pet.happiness + 1, 10)
             write_line("it was in the {hand} hand")
             write_line("{pet.name} enjoyed the game anyway")
         fi

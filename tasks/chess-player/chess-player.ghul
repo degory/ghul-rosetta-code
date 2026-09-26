@@ -1,6 +1,6 @@
 use default
-use System.Math
 use IO.Std.read_line
+use System.Math.*
 
 use Move = (from: int, to: int, promotion: char)
 
@@ -228,7 +228,7 @@ played(position: POSITION, move: Move) -> POSITION is
         next.squares[move.to + behind] = '.'
     fi
 
-    if kind == 'k' /\ Math.abs(move.to - move.from) == 2 then
+    if kind == 'k' /\ abs(move.to - move.from) == 2 then
         let (rook_from, rook_to) =
             if move.to > move.from then (move.from + 3, move.from + 1)
             else (move.from - 4, move.from - 1)
@@ -239,7 +239,7 @@ played(position: POSITION, move: Move) -> POSITION is
     fi
 
     next.en_passant =
-        if kind == 'p' /\ Math.abs(move.to - move.from) == 16 then
+        if kind == 'p' /\ abs(move.to - move.from) == 16 then
             (move.to + move.from) / 2
         else -1
         fi
@@ -283,7 +283,7 @@ value(piece: char) -> int =>
 centrality(square: int) -> int =>
     let row = square / 8 in
     let column = square % 8 in
-    6 - Math.abs(2 * row - 7) / 2 - Math.abs(2 * column - 7) / 2
+    6 - abs(2 * row - 7) / 2 - abs(2 * column - 7) / 2
 
 evaluate(position: POSITION) -> int =>
     (0..64)

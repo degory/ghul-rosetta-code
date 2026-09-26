@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 let bins = 10
 
@@ -19,7 +19,7 @@ class TALLY is
         total = total + x
         squares = squares + x * x
 
-        let bin = Math.min(cast int(x * cast double(bins)), bins - 1)
+        let bin = min(cast int(x * cast double(bins)), bins - 1)
 
         histogram[bin] = histogram[bin] + 1
     si
@@ -27,7 +27,7 @@ class TALLY is
     mean: double => total / cast double(count)
 
     deviation: double =>
-        Math.sqrt(squares / cast double(count) - mean * mean)
+        sqrt(squares / cast double(count) - mean * mean)
 si
 
 let random = System.Random(100)
@@ -54,12 +54,12 @@ for size in sizes do
 od
 
 write_line()
-write_line("1/sqrt(12) = {1.0D / Math.sqrt(12.0D):F6}")
+write_line("1/sqrt(12) = {1.0D / sqrt(12.0D):F6}")
 write_line()
 write_line("histogram of the 1000 sample:")
 
 let small = tallies[1]
-let tallest = small.histogram |> reduce(0, (a, b) => Math.max(a, b))
+let tallest = small.histogram |> reduce(0, (a, b) => max(a, b))
 
 for bin in 0..bins do
     let n = small.histogram[bin]

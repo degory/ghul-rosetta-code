@@ -1,6 +1,6 @@
 use Raster.ANIMATION
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use STATE = (angle: double, rate: double)
 
@@ -15,7 +15,7 @@ let frames = 40
 let substeps = 25
 
 advance(state: STATE, dt: double) -> STATE is
-    let rate = state.rate - dt * gravity / length * Math.sin(state.angle)
+    let rate = state.rate - dt * gravity / length * sin(state.angle)
 
     (angle = state.angle + dt * rate, rate = rate)
 si
@@ -33,8 +33,8 @@ quarter_period(dt: double) -> double is
 si
 
 draw(image: IMAGE, angle: double) is
-    let x = length * Math.sin(angle)
-    let y = -length * Math.cos(angle)
+    let x = length * sin(angle)
+    let y = -length * cos(angle)
 
     image.clear()
 
@@ -55,7 +55,7 @@ si
 let period = 4.0D * quarter_period(0.0002D)
 
 let tick = period / cast double(frames * substeps)
-let delay = cast int(Math.round(1000.0D * period / cast double(frames)))
+let delay = cast int(round(1000.0D * period / cast double(frames)))
 
 let image = IMAGE(width, height)
 

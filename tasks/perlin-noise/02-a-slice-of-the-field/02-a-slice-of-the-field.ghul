@@ -1,7 +1,7 @@
 use default
-use System.Math
 use Raster.COLOUR_MAP
 use Raster.IMAGE
+use System.Math.*
 
 let permutation = [
     151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225,
@@ -53,13 +53,13 @@ grad(hash: int, x: double, y: double, z: double) -> double is
 si
 
 noise(at_x: double, at_y: double, at_z: double) -> double is
-    let unit_x = cast int(Math.floor(at_x)) & 255
-    let unit_y = cast int(Math.floor(at_y)) & 255
-    let unit_z = cast int(Math.floor(at_z)) & 255
+    let unit_x = cast int(floor(at_x)) & 255
+    let unit_y = cast int(floor(at_y)) & 255
+    let unit_z = cast int(floor(at_z)) & 255
 
-    let x = at_x - Math.floor(at_x)
-    let y = at_y - Math.floor(at_y)
-    let z = at_z - Math.floor(at_z)
+    let x = at_x - floor(at_x)
+    let y = at_y - floor(at_y)
+    let z = at_z - floor(at_z)
 
     let u = fade(x)
     let v = fade(y)

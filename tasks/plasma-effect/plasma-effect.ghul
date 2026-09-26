@@ -1,18 +1,18 @@
-use System.Math
 use Raster.IMAGE
+use System.Math.*
 
 let width = 480
 let height = 360
 
 plasma(x: double, y: double) -> double =>
-    (Math.sin(x / 16.0) +
-     Math.sin(y / 8.0) +
-     Math.sin((x + y) / 16.0) +
-     Math.sin(Math.sqrt(x * x + y * y) / 8.0) +
+    (sin(x / 16.0) +
+     sin(y / 8.0) +
+     sin((x + y) / 16.0) +
+     sin(sqrt(x * x + y * y) / 8.0) +
      4.0) / 8.0
 
 channel(value: double, phase: double) -> ubyte =>
-    cast ubyte(127.5 + 127.4 * Math.sin(Math.pi * (value * 5.0 + phase)))
+    cast ubyte(127.5 + 127.4 * sin(pi * (value * 5.0 + phase)))
 
 let image = IMAGE(width, height)
 

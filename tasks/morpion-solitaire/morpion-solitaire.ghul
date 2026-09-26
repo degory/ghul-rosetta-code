@@ -1,6 +1,6 @@
 use default
 use Raster.IMAGE
-use System.Math
+use System.Math.*
 
 use Move = (x: int, y: int, d: int, k: int)
 
@@ -128,13 +128,13 @@ for group in 0..(played.count + 3) / 4 do
 od
 
 let low_x =
-    points |> map(p => p.`0) |> reduce(0, (a, b) => Math.min(a, b))
+    points |> map(p => p.`0) |> reduce(0, (a, b) => min(a, b))
 let high_x =
-    points |> map(p => p.`0) |> reduce(0, (a, b) => Math.max(a, b))
+    points |> map(p => p.`0) |> reduce(0, (a, b) => max(a, b))
 let low_y =
-    points |> map(p => p.`1) |> reduce(0, (a, b) => Math.min(a, b))
+    points |> map(p => p.`1) |> reduce(0, (a, b) => min(a, b))
 let high_y =
-    points |> map(p => p.`1) |> reduce(0, (a, b) => Math.max(a, b))
+    points |> map(p => p.`1) |> reduce(0, (a, b) => max(a, b))
 
 let cell = 36
 

@@ -1,4 +1,5 @@
 use default
+use System.Math.*
 
 // The reciprocal differences are memoised by their order and starting
 // row, since the continued fraction asks for the same ones repeatedly.
@@ -47,9 +48,9 @@ class THIELE is
 si
 
 let xs = 0..32 |> map(i => cast double(i) * 0.05) |> collect()
-let sines = xs |> map(System.Math.sin) |> collect()
-let cosines = xs |> map(System.Math.cos) |> collect()
-let tangents = xs |> map(System.Math.tan) |> collect()
+let sines = xs |> map(sin) |> collect()
+let cosines = xs |> map(cos) |> collect()
+let tangents = xs |> map(tan) |> collect()
 
 let inverse_sin = THIELE(sines, xs)
 let inverse_cos = THIELE(cosines, xs)
@@ -58,4 +59,4 @@ let inverse_tan = THIELE(tangents, xs)
 write_line("6 × asin(0.5) = {6.0 * inverse_sin.at(0.5):F14}")
 write_line("3 × acos(0.5) = {3.0 * inverse_cos.at(0.5):F14}")
 write_line("4 × atan(1.0) = {4.0 * inverse_tan.at(1.0):F14}")
-write_line("π             = {System.Math.pi:F14}")
+write_line("π             = {pi:F14}")

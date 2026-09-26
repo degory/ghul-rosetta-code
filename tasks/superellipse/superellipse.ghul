@@ -1,6 +1,7 @@
 use default
 use Raster.AXES
 use Raster.IMAGE
+use System.Math.*
 
 use Math = System.Math
 
@@ -9,18 +10,18 @@ let a = 200.0D
 let b = 200.0D
 
 shaped(turn: double, half_axis: double) -> double =>
-    (let value = Math.pow(Math.abs(turn), 2.0D / n) * half_axis
+    (let value = pow(abs(turn), 2.0D / n) * half_axis
 
      if turn < 0.0D then -value else value fi)
 
 outline(steps: int) -> Pipe[(x: double, y: double)] =>
     (0::steps)
         |> map(step =>
-            (let angle = 2.0D * Math.pi * cast double(step) /
+            (let angle = 2.0D * pi * cast double(step) /
                     cast double(steps)
 
-             (x = shaped(Math.cos(angle), a),
-              y = shaped(Math.sin(angle), b))))
+             (x = shaped(cos(angle), a),
+              y = shaped(sin(angle), b))))
 
 let image = IMAGE(560, 560)
 

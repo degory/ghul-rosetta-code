@@ -2,7 +2,7 @@ use default
 use Raster.ANIMATION
 use Raster.IMAGE
 use Raster.SHAPES
-use System.Math
+use System.Math.*
 
 use Point = (x: double, y: double, z: double)
 
@@ -14,8 +14,8 @@ dot(a: Point, b: Point) -> double => a.x * b.x + a.y * b.y + a.z * b.z
 scale(p: Point, k: double) -> Point =>
     (x = p.x * k, y = p.y * k, z = p.z * k)
 
-let up = scale((x = 1.0D, y = 1.0D, z = 1.0D), 1.0D / Math.sqrt(3.0D))
-let across = scale((x = 1.0D, y = -1.0D, z = 0.0D), 1.0D / Math.sqrt(2.0D))
+let up = scale((x = 1.0D, y = 1.0D, z = 1.0D), 1.0D / sqrt(3.0D))
+let across = scale((x = 1.0D, y = -1.0D, z = 0.0D), 1.0D / sqrt(2.0D))
 let toward = (
     x = up.y * across.z - up.z * across.y,
     y = up.z * across.x - up.x * across.z,
@@ -38,14 +38,14 @@ let faces = [
     (corners = [4, 5, 7, 6], normal = (x = 0.0D, y = 0.0D, z = 1.0D))
 ]
 
-let light = scale((x = -0.5D, y = 0.8D, z = 0.4D), 1.0D / Math.sqrt(1.05D))
+let light = scale((x = -0.5D, y = 0.8D, z = 0.4D), 1.0D / sqrt(1.05D))
 
 turned(p: Point, angle: double) -> Point =>
     let a = dot(p, across), b = dot(p, toward) in
     (
-        x = a * Math.cos(angle) + b * Math.sin(angle),
+        x = a * cos(angle) + b * sin(angle),
         y = dot(p, up),
-        z = b * Math.cos(angle) - a * Math.sin(angle))
+        z = b * cos(angle) - a * sin(angle))
 
 draw(image: IMAGE, angle: double) is
     image.clear(250ub, 250ub, 247ub)
@@ -63,7 +63,7 @@ draw(image: IMAGE, angle: double) is
                     |> map(p => (x = p.x, y = p.y))
                     |> collect()
 
-            let bright = 0.3D + 0.7D * Math.max(0.0D, dot(normal, light))
+            let bright = 0.3D + 0.7D * max(0.0D, dot(normal, light))
 
             shapes.add(
                 outline,
@@ -93,7 +93,7 @@ let animation = ANIMATION(size, size)
 
 for frame in 0..frames do
     let turn = cast double(frame) / cast double(frames)
-    let angle = 2.0D * Math.pi / 3.0D * turn
+    let angle = 2.0D * pi / 3.0D * turn
 
     draw(image, angle)
     animation.add(image, 50)
